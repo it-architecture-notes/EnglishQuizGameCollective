@@ -1,0 +1,2 @@
+## Review Context
+When a new chat window opened review the main PROJECT_CONTEXT and other context files under .cursor/context. Don't provide a summary, just update your memory and let me know when finished.

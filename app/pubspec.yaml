@@ -1,0 +1,36 @@
+name: english_quiz_game
+description: Portrait-only English quiz mobile app (Android + iOS).
+publish_to: none
+version: 1.0.0+1
+
+environment:
+  sdk: ^3.6.0
+
+dependencies:
+  flutter:
+    sdk: flutter
+  flutter_riverpod: ^2.6.1
+  path_provider: ^2.1.4
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^5.0.0
+
+flutter:
+  uses-material-design: true
+  assets:
+    - assets/images/backgrounds/phone_tall/
+    - assets/images/backgrounds/phone_wide/
+    - assets/images/backgrounds/tablet_43/
+    - assets/images/backgrounds/tablet_1610/
+    - assets/images/buttons/
+    - assets/images/characters/
+    - assets/images/avatars/
+    - assets/images/quiz/
+    - assets/images/quiz/plane-1/
+    - assets/data/state/
+    - assets/data/config/
+    - assets/data/settings/
+    - assets/data/flow/
+    - assets/flow-icons/

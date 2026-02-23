@@ -1,0 +1,5 @@
+[
+  {"mainLevel": 1, "levelNumber": 1, "iconImageName": "apple", "title": "Fruits"},
+  {"mainLevel": 1, "levelNumber": 2, "iconImageName": "colors", "title": "Colors"},
+  {"mainLevel": 1, "levelNumber": 3, "iconImageName": "numbers", "title": "Numbers"}
+]
