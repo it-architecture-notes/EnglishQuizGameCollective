@@ -1,7 +1,6 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 
 import '../../models/quiz_flow.dart';
 import '../../services/game_config_loader.dart';
@@ -72,9 +71,12 @@ class _ImageQuizScreenState extends State<ImageQuizScreen> {
 
       // Shuffle question order
       final shuffled = List<String>.from(paths)..shuffle(Random());
-      // Precache images
-      for (final path in shuffled) {
-        await precacheImage(AssetImage(path), context);
+      // Precache images (only use context when mounted)
+      if (mounted) {
+        for (final path in shuffled) {
+          if (!mounted) break;
+          await precacheImage(AssetImage(path), context);
+        }
       }
 
       if (mounted) {
@@ -258,13 +260,32 @@ class _ImageQuizScreenState extends State<ImageQuizScreen> {
               final isCorrect = option == _correctAnswer();
               final isSelected = _selectedIndex == i;
               Color? bgColor;
+              Color? fgColor;
               if (_answerLocked) {
                 if (isCorrect) {
-                  bgColor = Colors.green.shade300;
+                  bgColor = Colors.green.shade600;
+                  fgColor = Colors.white;
                 } else if (isSelected && !isCorrect) {
-                  bgColor = Colors.red.shade300;
+                  bgColor = Colors.red.shade600;
+                  fgColor = Colors.white;
                 }
               }
+              final buttonStyle = bgColor != null
+                  ? ElevatedButton.styleFrom(
+                      backgroundColor: bgColor,
+                      foregroundColor: fgColor,
+                      surfaceTintColor: Colors.transparent,
+                      disabledBackgroundColor: bgColor,
+                      disabledForegroundColor: fgColor,
+                      minimumSize: const Size(kMinTouchTarget, kMinTouchTarget),
+                    )
+                  : ElevatedButton.styleFrom(
+                      minimumSize: const Size(kMinTouchTarget, kMinTouchTarget),
+                      // Keep original grey look when disabled (avoid blue flicker)
+                      disabledBackgroundColor: Colors.grey.shade300,
+                      disabledForegroundColor: Colors.grey.shade800,
+                      surfaceTintColor: Colors.transparent,
+                    );
               return Padding(
                 padding: const EdgeInsets.only(bottom: 12),
                 child: SizedBox(
@@ -272,13 +293,15 @@ class _ImageQuizScreenState extends State<ImageQuizScreen> {
                   height: kMinTouchTarget + 8,
                   child: ElevatedButton(
                     onPressed: _answerLocked ? null : () => _onAnswerTap(i),
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: bgColor,
-                      minimumSize: const Size(kMinTouchTarget, kMinTouchTarget),
-                    ),
+                    style: buttonStyle,
                     child: Text(
                       _capitalize(option),
-                      style: Theme.of(context).textTheme.titleMedium,
+                      style: fgColor != null
+                          ? Theme.of(context).textTheme.titleMedium?.copyWith(
+                                color: fgColor,
+                                fontWeight: FontWeight.w600,
+                              )
+                          : Theme.of(context).textTheme.titleMedium,
                     ),
                   ),
                 ),
@@ -286,21 +309,20 @@ class _ImageQuizScreenState extends State<ImageQuizScreen> {
             }),
           ),
         ),
-        // Next / Finish
-        if (_showNext)
-          Padding(
-            padding: const EdgeInsets.all(16),
-            child: SizedBox(
-              width: double.infinity,
-              height: kMinTouchTarget + 8,
-              child: FilledButton(
-                onPressed: _goNext,
-                child: Text(isLast ? 'Finish' : 'Next'),
-              ),
-            ),
-          )
-        else
-          const SizedBox(height: 16),
+        // Next / Finish — reserve space so layout doesn't jump when button appears
+        Padding(
+          padding: const EdgeInsets.all(16),
+          child: SizedBox(
+            width: double.infinity,
+            height: kMinTouchTarget + 8,
+            child: _showNext
+                ? FilledButton(
+                    onPressed: _goNext,
+                    child: Text(isLast ? 'Finish' : 'Next'),
+                  )
+                : const SizedBox.shrink(),
+          ),
+        ),
       ],
     );
   }

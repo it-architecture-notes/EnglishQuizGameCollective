@@ -1,0 +1,146 @@
+{
+  "character1": "mike",
+  "character2": "sarah",
+  "questions": [
+    {
+      "line1": {
+        "en": "Excuse me, where is the _____?",
+        "tr": "Affedersiniz, _____ nerede?",
+        "es": "Perdona, ¿dónde está _____?"
+      },
+      "line2": {
+        "en": "The departure gate is on the right.",
+        "tr": "Kalkış kapısı sağda.",
+        "es": "La puerta de embarque está a la derecha."
+      },
+      "answer": "gate",
+      "distractors": ["ticket", "luggage", "passport"]
+    },
+    {
+      "line1": {
+        "en": "Do you have your _____ ready?",
+        "tr": "_____ hazır mı?",
+        "es": "¿Tienes tu _____ listo?"
+      },
+      "line2": {
+        "en": "Yes, I have it right here.",
+        "tr": "Evet, burada.",
+        "es": "Sí, lo tengo aquí."
+      },
+      "answer": "passport",
+      "distractors": ["gate", "seat", "trolley"]
+    },
+    {
+      "line1": {
+        "en": "I need to drop off my _____ at check-in.",
+        "tr": "Check-in'de _____ bırakmam lazım.",
+        "es": "Necesito dejar mi _____ en el mostrador."
+      },
+      "line2": {
+        "en": "The check-in counter is straight ahead.",
+        "tr": "Check-in gişesi düz ileride.",
+        "es": "El mostrador está recto adelante."
+      },
+      "answer": "luggage",
+      "distractors": ["passport", "ticket", "boarding"]
+    },
+    {
+      "line1": {
+        "en": "Where can I get my boarding _____?",
+        "tr": "Biniş _____ nereden alabilirim?",
+        "es": "¿Dónde puedo obtener mi _____ de embarque?"
+      },
+      "line2": {
+        "en": "You can print it at the self-service kiosk.",
+        "tr": "Self-servis kiosktan yazdırabilirsin.",
+        "es": "Puedes imprimirla en el quiosco de autoservicio."
+      },
+      "answer": "pass",
+      "distractors": ["gate", "seat", "trolley"]
+    },
+    {
+      "line1": {
+        "en": "We need to go through security and _____ control.",
+        "tr": "Güvenlik ve _____ kontrolünden geçmemiz lazım.",
+        "es": "Necesitamos pasar por seguridad y control de _____."
+      },
+      "line2": {
+        "en": "I know, let's hurry up.",
+        "tr": "Biliyorum, hadi acele edelim.",
+        "es": "Lo sé, vamos a apresurarnos."
+      },
+      "answer": "passport",
+      "distractors": ["luggage", "seat", "runway"]
+    },
+    {
+      "line1": {
+        "en": "Our flight is at terminal _____.",
+        "tr": "Uçuşumuz _____ terminalinde.",
+        "es": "Nuestro vuelo es en la terminal _____."
+      },
+      "line2": {
+        "en": "We should take the shuttle to get there.",
+        "tr": "Oraya gitmek için servis otobüsünü almalıyız.",
+        "es": "Deberíamos tomar el autobús para llegar."
+      },
+      "answer": "two",
+      "distractors": ["one", "gate", "runway"]
+    },
+    {
+      "line1": {
+        "en": "The _____ has been delayed by two hours.",
+        "tr": "_____ iki saat ertelendi.",
+        "es": "El _____ se ha retrasado dos horas."
+      },
+      "line2": {
+        "en": "Oh no, I hope we don't miss our connection.",
+        "tr": "Ay hayır, bağlantı uçuşumuzu kaçırmayalım.",
+        "es": "Vaya, espero que no perdamos nuestro vuelo de conexión."
+      },
+      "answer": "flight",
+      "distractors": ["gate", "bus", "trolley"]
+    },
+    {
+      "line1": {
+        "en": "Let's find our _____ number before boarding.",
+        "tr": "Binmeden önce _____ numaramızı bulalım.",
+        "es": "Busquemos nuestro número de _____ antes de embarcar."
+      },
+      "line2": {
+        "en": "It says 24A and 24B on the boarding pass.",
+        "tr": "Biniş kartında 24A ve 24B yazıyor.",
+        "es": "Dice 24A y 24B en la tarjeta de embarque."
+      },
+      "answer": "seat",
+      "distractors": ["gate", "row", "cabin"]
+    },
+    {
+      "line1": {
+        "en": "Is there a _____ near the gate for bags?",
+        "tr": "Kapı yakınında bavullar için _____ var mı?",
+        "es": "¿Hay un _____ cerca de la puerta para las maletas?"
+      },
+      "line2": {
+        "en": "Yes, there is a luggage trolley over there.",
+        "tr": "Evet, orada bir bagaj arabası var.",
+        "es": "Sí, hay un carrito de equipaje allí."
+      },
+      "answer": "trolley",
+      "distractors": ["counter", "lounge", "runway"]
+    },
+    {
+      "line1": {
+        "en": "We are landing on _____ number three.",
+        "tr": "Üç numaralı _____ üzerine iniyoruz.",
+        "es": "Aterrizaremos en la _____ número tres."
+      },
+      "line2": {
+        "en": "Great, we'll be at the terminal in minutes.",
+        "tr": "Harika, dakikalar içinde terminalde olacağız.",
+        "es": "Genial, estaremos en la terminal en minutos."
+      },
+      "answer": "runway",
+      "distractors": ["gate", "seat", "lounge"]
+    }
+  ]
+}

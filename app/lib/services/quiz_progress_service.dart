@@ -1,8 +1,7 @@
 import 'dart:convert';
-import 'dart:io';
 
 import 'package:flutter/foundation.dart';
-import 'package:path_provider/path_provider.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 /// Per-level progress for a quiz type.
 class LevelProgress {
@@ -84,26 +83,28 @@ class QuizTypeProgress {
   }
 }
 
-/// Persists quiz progress per quiz type to a JSON file in app documents directory.
+/// Persists quiz progress per quiz type using SharedPreferences.
+/// On web (Chrome), data stays in localStorage for the origin; run on the same
+/// port to keep your progress across sessions.
 class QuizProgressService {
   QuizProgressService._();
   static final QuizProgressService _instance = QuizProgressService._();
   static QuizProgressService get instance => _instance;
 
-  static String _fileName(String quizType) => '${quizType}_progress.json';
+  static const String _keyPrefix = 'quiz_progress_';
+  static String _key(String quizType) => '$_keyPrefix$quizType';
 
-  Future<File> _fileFor(String quizType) async {
-    final dir = await getApplicationDocumentsDirectory();
-    return File('${dir.path}/${_fileName(quizType)}');
-  }
+  SharedPreferences? _prefs;
+  Future<SharedPreferences> get _preferences async =>
+      _prefs ??= await SharedPreferences.getInstance();
 
-  /// Loads progress for [quizType]. Returns default (empty) if file missing or invalid.
+  /// Loads progress for [quizType]. Returns default (empty) if missing or invalid.
   Future<QuizTypeProgress> loadProgress(String quizType) async {
     try {
-      final file = await _fileFor(quizType);
-      if (!await file.exists()) return const QuizTypeProgress();
-      final content = await file.readAsString();
-      final map = jsonDecode(content) as Map<String, dynamic>;
+      final prefs = await _preferences;
+      final json = prefs.getString(_key(quizType));
+      if (json == null) return const QuizTypeProgress();
+      final map = jsonDecode(json) as Map<String, dynamic>;
       return QuizTypeProgress.fromJson(map);
     } catch (e, st) {
       debugPrint('QuizProgressService.loadProgress($quizType): $e\n$st');
@@ -114,8 +115,9 @@ class QuizProgressService {
   /// Saves progress for [quizType].
   Future<void> saveProgress(String quizType, QuizTypeProgress progress) async {
     try {
-      final file = await _fileFor(quizType);
-      await file.writeAsString(
+      final prefs = await _preferences;
+      await prefs.setString(
+        _key(quizType),
         const JsonEncoder.withIndent('  ').convert(progress.toJson()),
       );
     } catch (e, st) {

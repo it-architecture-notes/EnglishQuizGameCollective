@@ -10,7 +10,7 @@ dependencies:
   flutter:
     sdk: flutter
   flutter_riverpod: ^2.6.1
-  path_provider: ^2.1.4
+  shared_preferences: ^2.3.3
 
 dev_dependencies:
   flutter_test:
@@ -27,10 +27,12 @@ flutter:
     - assets/images/buttons/
     - assets/images/characters/
     - assets/images/avatars/
-    - assets/images/quiz/
-    - assets/images/quiz/plane-1/
+    - assets/images/level-icons/
     - assets/data/state/
     - assets/data/config/
     - assets/data/settings/
     - assets/data/flow/
-    - assets/flow-icons/
+    - assets/quiz-data/image-quiz/quiz-images/
+    - assets/quiz-data/image-quiz/quiz-images/airport-1/
+    - assets/quiz-data/vocabulary-quiz/
+    - assets/quiz-data/grammar-quiz/
