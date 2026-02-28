@@ -5,27 +5,33 @@ String imageQuizLevelKey(String iconImageName, int levelNumber) {
   return '$iconImageName-$levelNumber';
 }
 
-const String _quizImagePrefix = 'assets/images/quiz/';
+const String _quizImagePrefix = 'assets/quiz-data/image-quiz/quiz-images/';
 
-/// Prefix with trailing slash for listAssets filtering (e.g. "assets/images/quiz/plane-1/").
+/// Prefix with trailing slash for listAssets filtering (e.g. "assets/quiz-data/image-quiz/quiz-images/plane-1/").
 String imageQuizLevelAssetPrefix(String levelKey) {
   return '$_quizImagePrefix$levelKey/';
 }
 
 /// Discovers image asset paths for an image quiz level from the bundle.
-/// Returns full asset paths (e.g. assets/images/quiz/plane-1/pilot.png).
-/// Use [imageQuizLevelKey] to build the level key.
+/// Returns full asset paths (e.g. assets/quiz-data/image-quiz/quiz-images/plane-1/pilot.png).
+/// Excludes macOS .DS_Store and other non-image metadata files.
 Future<List<String>> loadImageQuizLevelAssetPaths(String levelKey) async {
   final manifest = await AssetManifest.loadFromAssetBundle(rootBundle);
   final prefix = imageQuizLevelAssetPrefix(levelKey);
   final all = manifest.listAssets();
   final paths = all
-      .where((String path) => path.startsWith(prefix))
+      .where((String path) => path.startsWith(prefix) && !_isDsStore(path))
       .toList();
   return paths;
 }
 
-/// Basename without extension from an asset path (e.g. "assets/images/quiz/plane-1/pilot.png" -> "pilot").
+/// Excludes macOS .DS_Store (case-insensitive) so it never appears as an answer.
+bool _isDsStore(String path) {
+  final name = path.split('/').last.toLowerCase();
+  return name == '.ds_store';
+}
+
+/// Basename without extension from an asset path (e.g. "assets/quiz-data/image-quiz/quiz-images/plane-1/pilot.png" -> "pilot").
 String assetPathToBasename(String path) {
   final name = path.split('/').last;
   final dot = name.lastIndexOf('.');

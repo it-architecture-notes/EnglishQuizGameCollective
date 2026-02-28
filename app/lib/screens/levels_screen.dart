@@ -7,6 +7,7 @@ import '../services/quiz_flow_loader.dart';
 import 'image_quiz_screen.dart';
 import 'placeholders/quiz_placeholder_screen.dart';
 import 'transitions/custom_page_routes.dart';
+import 'vocabulary_quiz_screen.dart';
 
 /// Builds the flattened list of items (banner + sub-level cells) from loaded flow data.
 /// Each banner counts as 1 item; each sub-level counts as 1 item (batch size applies to this list).
@@ -245,7 +246,7 @@ class _LevelsScreenState extends State<LevelsScreen> {
   }
 
   Widget _buildSubLevelCell(BuildContext context, SubLevel sub, double iconSize) {
-    final iconPath = 'assets/flow-icons/${sub.iconImageName}.png';
+    final iconPath = 'assets/images/level-icons/${sub.iconImageName}.png';
 
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 4, vertical: 8),
@@ -298,6 +299,13 @@ class _LevelsScreenState extends State<LevelsScreen> {
     if (widget.quizType == 'image') {
       Navigator.of(context).push(
         popFadeRoute(ImageQuizScreen(
+          quizType: widget.quizType,
+          subLevel: sub,
+        )),
+      );
+    } else if (widget.quizType == 'vocabulary') {
+      Navigator.of(context).push(
+        popFadeRoute(VocabularyQuizScreen(
           quizType: widget.quizType,
           subLevel: sub,
         )),

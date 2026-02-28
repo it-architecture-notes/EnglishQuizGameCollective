@@ -25,18 +25,31 @@
 
 - A resolution service (e.g. `lib/services/resolution_service.dart`) derives the bucket from logical size (width/height) and optionally short-edge length. Backgrounds are loaded from the folder for the current bucket; one background image per bucket.
 
-## Asset and data layout
+## Asset Layout
 
-- **Image assets** live under `assets/images/`:
-  - `backgrounds/` — One subfolder per bucket: `phone_tall/`, `phone_wide/`, `tablet_43/`, `tablet_1610/`. Each contains the background image(s) for that aspect-ratio group.
-  - `buttons/` — UI buttons (optional resolution subfolders later).
-  - `characters/` — Character art (narrative/achievements).
-  - `avatars/` — User avatar images.
-  - `quiz/` — Images for quiz questions (optional resolution subfolders later).
-
-- **JSON data** lives under `assets/data/`:
-  - `state/` — App/play state (e.g. progress, unlocked levels). Mutable; read/written at runtime.
-  - `config/` — Configuration and flow (e.g. level definitions, flow control). Loaded at startup; typically read-only.
-  - `settings/` — App settings (e.g. sound, language). Loaded at startup; may be written when user changes settings.
+app/assets/
+├── images/                          ← ALL image assets
+│   ├── backgrounds/
+│   │   ├── phone_tall/              ← background.png (placeholder: steel blue)
+│   │   ├── phone_wide/              ← background.png (placeholder: sea green)
+│   │   ├── tablet_43/               ← background.png (placeholder: orange)
+│   │   └── tablet_1610/             ← background.png (placeholder: purple)
+│   ├── buttons/
+│   ├── characters/
+│   ├── avatars/
+│   └── level-icons/                 ← [iconImageName].png per sub-level card
+├── data/                            ← ALL JSON data
+│   ├── state/
+│   ├── config/                      ← quiz_config.json
+│   ├── settings/
+│   └── flow/                        ← [quizType]-quiz-flow.json + [quizType]-flow-main-levels.json
+└── quiz-data/                       ← quiz content, split by type
+    ├── image-quiz/
+    │   └── quiz-images/             ← [images] one subfolder per level: {iconImageName}-{levelNumber}/
+    │       └── airport-1/
+    ├── vocabulary-quiz/             ← [json] one file per level: {iconImageName}-{levelNumber}.json
+    │   ├── greetings-1.json
+    │   └── ...
+    └── grammar-quiz/                ← [json] one file per level (empty, future)
 
 All asset paths are registered in `pubspec.yaml` under `flutter: assets:`.
