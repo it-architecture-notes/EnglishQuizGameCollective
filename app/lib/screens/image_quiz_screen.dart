@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import '../../models/quiz_flow.dart';
 import '../../services/game_config_loader.dart';
 import '../../services/image_quiz_level_loader.dart';
+import '../../services/profile_service.dart';
 import '../../services/quiz_progress_service.dart';
 
 /// Minimum images per level (spec).
@@ -104,8 +105,8 @@ class _ImageQuizScreenState extends State<ImageQuizScreen> {
 
   List<String> _buildOptions() {
     final correct = _correctAnswer();
-    final wrongPool =
-        _vocabulary.where((s) => s != correct).toList()..shuffle(Random());
+    final wrongPool = _vocabulary.where((s) => s != correct).toList()
+      ..shuffle(Random());
     final wrong = wrongPool.take(3).toList();
     final options = [correct, ...wrong]..shuffle(Random());
     return options;
@@ -124,8 +125,7 @@ class _ImageQuizScreenState extends State<ImageQuizScreen> {
         // Auto-advance after delay
         Future.delayed(
           Duration(
-            milliseconds:
-                (_config.autoAdvanceDelaySeconds * 1000).round(),
+            milliseconds: (_config.autoAdvanceDelaySeconds * 1000).round(),
           ),
           () {
             if (!mounted) return;
@@ -156,8 +156,7 @@ class _ImageQuizScreenState extends State<ImageQuizScreen> {
 
   int _stars() {
     if (_questionAssetPaths.isEmpty) return 0;
-    final rate =
-        (_correctCount / _questionAssetPaths.length) * 100;
+    final rate = (_correctCount / _questionAssetPaths.length) * 100;
     if (rate >= 85) return 3;
     if (rate >= 70) return 2;
     if (rate >= 60) return 1;
@@ -174,6 +173,12 @@ class _ImageQuizScreenState extends State<ImageQuizScreen> {
         levelNumber: widget.subLevel.levelNumber,
         stars: stars,
         diamondsEarned: _diamondsEarned(),
+      );
+    }
+    if (stars >= 1) {
+      await ProfileService.instance.registerQuizCompletion(
+        quizType: widget.quizType,
+        questionCount: _questionAssetPaths.length,
       );
     }
     if (mounted) Navigator.of(context).pop();

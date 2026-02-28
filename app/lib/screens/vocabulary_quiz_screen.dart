@@ -6,6 +6,7 @@ import '../models/quiz_flow.dart';
 import '../models/vocabulary_quiz.dart';
 import '../services/app_settings_service.dart';
 import '../services/game_config_loader.dart';
+import '../services/profile_service.dart';
 import '../services/quiz_progress_service.dart';
 import '../services/vocabulary_quiz_loader.dart';
 
@@ -102,7 +103,8 @@ class _VocabularyQuizScreenState extends State<VocabularyQuizScreen> {
         _correctCount++;
         _showNext = false;
         Future.delayed(
-          Duration(milliseconds: (_config.autoAdvanceDelaySeconds * 1000).round()),
+          Duration(
+              milliseconds: (_config.autoAdvanceDelaySeconds * 1000).round()),
           () {
             if (!mounted) return;
             _goNext();
@@ -155,6 +157,12 @@ class _VocabularyQuizScreenState extends State<VocabularyQuizScreen> {
         diamondsEarned: _diamondsEarned(),
       );
     }
+    if (stars >= 1) {
+      await ProfileService.instance.registerQuizCompletion(
+        quizType: widget.quizType,
+        questionCount: _questions.length,
+      );
+    }
     if (mounted) Navigator.of(context).pop();
   }
 
@@ -186,7 +194,8 @@ class _VocabularyQuizScreenState extends State<VocabularyQuizScreen> {
                   ),
                 ),
                 Padding(
-                  padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 16),
+                  padding:
+                      const EdgeInsets.symmetric(vertical: 12, horizontal: 16),
                   child: Text(
                     'Full Conversation',
                     style: Theme.of(ctx).textTheme.titleMedium?.copyWith(
@@ -198,7 +207,8 @@ class _VocabularyQuizScreenState extends State<VocabularyQuizScreen> {
                 Expanded(
                   child: ListView.separated(
                     controller: scrollController,
-                    padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: 16, vertical: 12),
                     itemCount: _questions.length,
                     separatorBuilder: (_, __) => const SizedBox(height: 12),
                     itemBuilder: (_, i) {
@@ -355,7 +365,8 @@ class _VocabularyQuizScreenState extends State<VocabularyQuizScreen> {
               ],
               Expanded(
                 child: OutlinedButton.icon(
-                  onPressed: _conversationUnlocked ? _showFullConversation : null,
+                  onPressed:
+                      _conversationUnlocked ? _showFullConversation : null,
                   icon: const Icon(Icons.chat_bubble_outline, size: 18),
                   label: const Text('Full Conversation'),
                 ),
@@ -443,12 +454,10 @@ class _VocabularyQuizScreenState extends State<VocabularyQuizScreen> {
           imagePath,
           fit: BoxFit.cover,
           errorBuilder: (_, __, ___) {
-            final initial =
-                name.isNotEmpty ? name[0].toUpperCase() : '?';
+            final initial = name.isNotEmpty ? name[0].toUpperCase() : '?';
             return CircleAvatar(
               radius: size / 2,
-              backgroundColor:
-                  Theme.of(context).colorScheme.primaryContainer,
+              backgroundColor: Theme.of(context).colorScheme.primaryContainer,
               child: Text(
                 initial,
                 style: TextStyle(
@@ -514,7 +523,10 @@ class _VocabularyQuizScreenState extends State<VocabularyQuizScreen> {
             child: Container(
               padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 1),
               decoration: BoxDecoration(
-                color: Theme.of(context).colorScheme.primary.withValues(alpha: 0.15),
+                color: Theme.of(context)
+                    .colorScheme
+                    .primary
+                    .withValues(alpha: 0.15),
                 borderRadius: BorderRadius.circular(4),
                 border: Border.all(
                   color: Theme.of(context).colorScheme.primary,

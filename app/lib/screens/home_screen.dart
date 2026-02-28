@@ -3,11 +3,13 @@ import 'package:flutter/material.dart';
 import '../services/resolution_service.dart';
 import 'levels_screen.dart';
 import 'panel_overlay.dart';
+import 'profile_panel_screen.dart';
 import 'transitions/custom_page_routes.dart';
 
 /// Home screen design colors (light lavender background, purple accent).
 class _HomeColors {
-  static const Color background = Color(0xFFF8F8FF); // Ghost white / light lavender
+  static const Color background =
+      Color(0xFFF8F8FF); // Ghost white / light lavender
   static const Color primary = Color(0xFF6B3AFF); // Vibrant purple
   static const Color onPrimary = Color(0xFFFFFFFF); // White text & icons
 }
@@ -34,7 +36,9 @@ class _HomeScreenState extends State<HomeScreen> {
           children: [
             Container(color: _HomeColors.background),
             Center(
-              child: isTablet ? _buildTabletQuizButtons() : _buildPhoneQuizButtons(),
+              child: isTablet
+                  ? _buildTabletQuizButtons()
+                  : _buildPhoneQuizButtons(),
             ),
             Positioned(
               left: 0,
@@ -54,9 +58,11 @@ class _HomeScreenState extends State<HomeScreen> {
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
-          _quizButton('Image Quiz', _openLevelSelection('Image Quiz', popFadeRoute)),
+          _quizButton(
+              'Image Quiz', _openLevelSelection('Image Quiz', popFadeRoute)),
           const SizedBox(height: 16),
-          _quizButton('Vocabulary', _openLevelSelection('Vocabulary', popFadeRoute)),
+          _quizButton(
+              'Vocabulary', _openLevelSelection('Vocabulary', popFadeRoute)),
           const SizedBox(height: 16),
           _quizButton('Grammar', _openLevelSelection('Grammar', popFadeRoute)),
         ],
@@ -75,8 +81,10 @@ class _HomeScreenState extends State<HomeScreen> {
         physics: const NeverScrollableScrollPhysics(),
         childAspectRatio: 1.8,
         children: [
-          _quizButton('Image Quiz', _openLevelSelection('Image Quiz', popFadeRoute)),
-          _quizButton('Vocabulary', _openLevelSelection('Vocabulary', popFadeRoute)),
+          _quizButton(
+              'Image Quiz', _openLevelSelection('Image Quiz', popFadeRoute)),
+          _quizButton(
+              'Vocabulary', _openLevelSelection('Vocabulary', popFadeRoute)),
           _quizButton('Grammar', _openLevelSelection('Grammar', popFadeRoute)),
         ],
       ),
@@ -134,10 +142,17 @@ class _HomeScreenState extends State<HomeScreen> {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
-          _navItem(Icons.person_outline, 'Me', () => _showPanel('Profile', 'Profile & avatar – coming soon')),
-          _navItem(Icons.emoji_events, 'Trophies', () => _showPanel('Achievements', 'Achievements – coming soon')),
-          _navItem(Icons.favorite, 'Friends', () => _showPanel('Friends', 'Animal friend grid – coming soon')),
-          _navItem(Icons.settings, 'Settings', () => _showPanel('Settings', 'App settings – coming soon')),
+          _navItem(
+            Icons.person_outline,
+            'Me',
+            () => showProfilePanelOverlay(context),
+          ),
+          _navItem(Icons.emoji_events, 'Trophies',
+              () => _showPanel('Achievements', 'Achievements – coming soon')),
+          _navItem(Icons.favorite, 'Friends',
+              () => _showPanel('Friends', 'Animal friend grid – coming soon')),
+          _navItem(Icons.settings, 'Settings',
+              () => _showPanel('Settings', 'App settings – coming soon')),
         ],
       ),
     );
@@ -174,16 +189,6 @@ class _HomeScreenState extends State<HomeScreen> {
         ),
       ),
     );
-  }
-
-  void _push(Widget screen) {
-    Navigator.of(context).push(
-      MaterialPageRoute<void>(builder: (_) => screen),
-    );
-  }
-
-  void _pushWith(Widget screen, Route<void> Function(Widget) routeBuilder) {
-    Navigator.of(context).push(routeBuilder(screen));
   }
 
   void _showPanel(String title, String bodyText) {
