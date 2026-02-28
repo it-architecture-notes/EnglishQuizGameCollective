@@ -1,0 +1,22 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Flutter (state in project)",
+      "request": "launch",
+      "type": "dart",
+      "program": "lib/main.dart",
+      "cwd": "${workspaceFolder}/app",
+      "args": [
+        "--dart-define=QUIZ_STATE_PATH=${workspaceFolder}/app/assets/data/state"
+      ]
+    },
+    {
+      "name": "Flutter",
+      "request": "launch",
+      "type": "dart",
+      "program": "lib/main.dart",
+      "cwd": "${workspaceFolder}/app"
+    }
+  ]
+}
