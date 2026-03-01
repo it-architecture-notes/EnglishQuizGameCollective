@@ -50,6 +50,8 @@ class BannerItem extends LevelListItem {
 }
 
 class SubLevelItem extends LevelListItem {
-  SubLevelItem(this.sub);
+  SubLevelItem(this.sub, {required this.ordinalLevelIndex});
   final SubLevel sub;
+  /// 1-based position in subLevels list (progression key).
+  final int ordinalLevelIndex;
 }

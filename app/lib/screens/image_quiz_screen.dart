@@ -2,7 +2,9 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 
+import '../../models/level_completion_result.dart';
 import '../../models/quiz_flow.dart';
+import '../../services/achievement_service.dart';
 import '../../services/game_config_loader.dart';
 import '../../services/image_quiz_level_loader.dart';
 import '../../services/profile_service.dart';
@@ -21,10 +23,13 @@ class ImageQuizScreen extends StatefulWidget {
     super.key,
     required this.subLevel,
     required this.quizType,
+    required this.ordinalLevelIndex,
   });
 
   final SubLevel subLevel;
   final String quizType;
+  /// 1-based position in subLevels list (progression key).
+  final int ordinalLevelIndex;
 
   @override
   State<ImageQuizScreen> createState() => _ImageQuizScreenState();
@@ -42,6 +47,7 @@ class _ImageQuizScreenState extends State<ImageQuizScreen> {
   bool _showNext = false;
   int? _selectedIndex; // 0..3 index into current options
   List<String> _currentOptions = [];
+  DateTime? _quizStartTime;
 
   static String _levelKey(SubLevel sub) =>
       imageQuizLevelKey(sub.iconImageName, sub.levelNumber);
@@ -86,6 +92,7 @@ class _ImageQuizScreenState extends State<ImageQuizScreen> {
           _questionAssetPaths = shuffled;
           _vocabulary = vocabulary;
           _phase = _Phase.playing;
+          _quizStartTime = DateTime.now();
           _currentOptions = _buildOptions();
         });
       }
@@ -116,10 +123,12 @@ class _ImageQuizScreenState extends State<ImageQuizScreen> {
     if (_answerLocked) return;
     final option = _currentOptions[optionIndex];
     final correct = _correctAnswer();
+    final isCorrect = option == correct;
+    AchievementService.instance.recordAnswer(isCorrect);
     setState(() {
       _answerLocked = true;
       _selectedIndex = optionIndex;
-      if (option == correct) {
+      if (isCorrect) {
         _correctCount++;
         _showNext = false;
         // Auto-advance after delay
@@ -167,10 +176,14 @@ class _ImageQuizScreenState extends State<ImageQuizScreen> {
 
   Future<void> _onEndOk() async {
     final stars = _stars();
+    if (_quizStartTime != null) {
+      final duration = DateTime.now().difference(_quizStartTime!).inSeconds;
+      await AchievementService.instance.recordQuizCompleted(duration);
+    }
     if (stars >= 1) {
       await QuizProgressService.instance.recordLevelCompletion(
         quizType: widget.quizType,
-        levelNumber: widget.subLevel.levelNumber,
+        levelNumber: widget.ordinalLevelIndex,
         stars: stars,
         diamondsEarned: _diamondsEarned(),
       );
@@ -181,7 +194,12 @@ class _ImageQuizScreenState extends State<ImageQuizScreen> {
         questionCount: _questionAssetPaths.length,
       );
     }
-    if (mounted) Navigator.of(context).pop();
+    if (mounted) {
+      Navigator.of(context).pop(LevelCompletionResult(
+        ordinalLevelIndex: widget.ordinalLevelIndex,
+        completed: stars >= 1,
+      ));
+    }
   }
 
   @override
@@ -191,7 +209,10 @@ class _ImageQuizScreenState extends State<ImageQuizScreen> {
         title: Text(widget.subLevel.title),
         leading: IconButton(
           icon: const Icon(Icons.arrow_back),
-          onPressed: () => Navigator.of(context).pop(),
+          onPressed: () => Navigator.of(context).pop(LevelCompletionResult(
+                ordinalLevelIndex: widget.ordinalLevelIndex,
+                completed: false,
+              )),
         ),
       ),
       body: SafeArea(
@@ -225,7 +246,10 @@ class _ImageQuizScreenState extends State<ImageQuizScreen> {
             ),
             const SizedBox(height: 24),
             FilledButton(
-              onPressed: () => Navigator.of(context).pop(),
+              onPressed: () => Navigator.of(context).pop(LevelCompletionResult(
+                    ordinalLevelIndex: widget.ordinalLevelIndex,
+                    completed: false,
+                  )),
               child: const Text('Back to Levels'),
             ),
           ],

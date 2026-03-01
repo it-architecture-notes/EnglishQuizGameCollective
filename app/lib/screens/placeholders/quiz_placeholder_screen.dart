@@ -7,10 +7,13 @@ class QuizPlaceholderScreen extends StatelessWidget {
     super.key,
     required this.quizType,
     required this.subLevel,
+    this.ordinalLevelIndex,
   });
 
   final String quizType;
   final SubLevel subLevel;
+  /// 1-based position in subLevels list (optional, for API consistency).
+  final int? ordinalLevelIndex;
 
   @override
   Widget build(BuildContext context) {

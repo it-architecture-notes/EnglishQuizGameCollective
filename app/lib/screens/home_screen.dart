@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../services/resolution_service.dart';
+import 'achievements_panel_content.dart';
 import 'levels_screen.dart';
 import 'panel_overlay.dart';
 import 'profile_panel_screen.dart';
@@ -148,7 +149,7 @@ class _HomeScreenState extends State<HomeScreen> {
             () => showProfilePanelOverlay(context),
           ),
           _navItem(Icons.emoji_events, 'Trophies',
-              () => _showPanel('Achievements', 'Achievements – coming soon')),
+              () => _showAchievementsPanel()),
           _navItem(Icons.favorite, 'Friends',
               () => _showPanel('Friends', 'Animal friend grid – coming soon')),
           _navItem(Icons.settings, 'Settings',
@@ -205,6 +206,14 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
         ),
       ),
+    );
+  }
+
+  void _showAchievementsPanel() {
+    showPanelOverlay(
+      context,
+      title: 'Achievements',
+      body: const AchievementsPanelContent(),
     );
   }
 }

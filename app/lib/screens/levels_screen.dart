@@ -1,9 +1,12 @@
 import 'dart:math' as math;
 
 import 'package:flutter/material.dart';
+import 'package:scrollable_positioned_list/scrollable_positioned_list.dart';
 
+import '../models/level_completion_result.dart';
 import '../models/quiz_flow.dart';
 import '../services/quiz_flow_loader.dart';
+import '../services/quiz_progress_service.dart';
 import 'image_quiz_screen.dart';
 import 'placeholders/quiz_placeholder_screen.dart';
 import 'transitions/custom_page_routes.dart';
@@ -16,7 +19,8 @@ List<LevelListItem> buildLevelItems(QuizFlowData data) {
   final shownBanners = <int>{};
   final items = <LevelListItem>[];
 
-  for (final sub in data.subLevels) {
+  for (var i = 0; i < data.subLevels.length; i++) {
+    final sub = data.subLevels[i];
     final meta = metaByMain[sub.mainLevel];
     if (meta == null) continue;
 
@@ -24,7 +28,7 @@ List<LevelListItem> buildLevelItems(QuizFlowData data) {
       shownBanners.add(sub.mainLevel);
       items.add(BannerItem(meta));
     }
-    items.add(SubLevelItem(sub));
+    items.add(SubLevelItem(sub, ordinalLevelIndex: i + 1));
   }
 
   return items;
@@ -38,7 +42,7 @@ List<_LayoutRow> _itemsToLayoutRows(List<LevelListItem> items) {
     if (item is BannerItem) {
       rows.add(_BannerLayoutRow(item.meta));
     } else if (item is SubLevelItem) {
-      rows.add(_SubsLayoutRow([item.sub]));
+      rows.add(_SubsLayoutRow(item));
     }
   }
   return rows;
@@ -54,8 +58,8 @@ class _BannerLayoutRow extends _LayoutRow {
 }
 
 class _SubsLayoutRow extends _LayoutRow {
-  _SubsLayoutRow(this.subs) : super._();
-  final List<SubLevel> subs;
+  _SubsLayoutRow(this.subLevelItem) : super._();
+  final SubLevelItem subLevelItem;
 }
 
 class LevelsScreen extends StatefulWidget {
@@ -71,11 +75,14 @@ class LevelsScreen extends StatefulWidget {
 class _LevelsScreenState extends State<LevelsScreen> {
   List<LevelListItem> _items = [];
   int _visibleCount = 10;
+  int _lastCompletedOrdinalIndex = 0;
+  int _firstLockedOrdinalIndex = 2; // 2 = level 1 unlocked only
+  int? _justReturnedFromOrdinal;
   String? _loadError;
   bool _loading = true;
-  late ScrollController _scrollController;
+  late ItemScrollController _itemScrollController;
+  late ItemPositionsListener _itemPositionsListener;
 
-  static const double _loadMoreThreshold = 300;
   static const int _batchSize = 10;
   /// Curvy path: (sin+1)/2 drives position from left (0) to right (1).
   static const double _sinFrequency = 0.5;
@@ -83,26 +90,75 @@ class _LevelsScreenState extends State<LevelsScreen> {
   @override
   void initState() {
     super.initState();
-    _scrollController = ScrollController()..addListener(_onScroll);
+    _itemScrollController = ItemScrollController();
+    _itemPositionsListener = ItemPositionsListener.create();
+    _itemPositionsListener.itemPositions.addListener(_onScroll);
     _loadData();
   }
 
   @override
   void dispose() {
-    _scrollController.removeListener(_onScroll);
-    _scrollController.dispose();
+    _itemPositionsListener.itemPositions.removeListener(_onScroll);
     super.dispose();
   }
 
   Future<void> _loadData() async {
     try {
       final data = await loadQuizFlow(widget.quizType);
-      final items = buildLevelItems(data);
+      final progress = await QuizProgressService.instance.loadProgress(widget.quizType);
+      final allItems = buildLevelItems(data);
+
+      int lastCompleted = 0;
+      for (final item in allItems) {
+        if (item is SubLevelItem) {
+          final lp = progress.level(item.ordinalLevelIndex);
+          if (lp.isCompleted && item.ordinalLevelIndex > lastCompleted) {
+            lastCompleted = item.ordinalLevelIndex;
+          }
+        }
+      }
+
+      final horizon = lastCompleted + 10;
+      final filteredItems = <LevelListItem>[];
+      for (var i = 0; i < allItems.length; i++) {
+        final item = allItems[i];
+        if (item is SubLevelItem) {
+          if (item.ordinalLevelIndex <= horizon) filteredItems.add(item);
+        } else if (item is BannerItem) {
+          var hasVisibleSub = false;
+          for (var j = i + 1; j < allItems.length; j++) {
+            final next = allItems[j];
+            if (next is BannerItem) break;
+            if (next is SubLevelItem && next.ordinalLevelIndex <= horizon) {
+              hasVisibleSub = true;
+              break;
+            }
+          }
+          if (hasVisibleSub) filteredItems.add(item);
+        }
+      }
+
+      final visibleCount = filteredItems.length < _batchSize
+          ? filteredItems.length
+          : _batchSize.clamp(0, filteredItems.length);
+
       if (mounted) {
         setState(() {
-          _items = items;
-          _visibleCount = _items.length < _batchSize ? _items.length : _batchSize;
+          _items = filteredItems;
+          _visibleCount = visibleCount;
+          _lastCompletedOrdinalIndex = lastCompleted;
+          _firstLockedOrdinalIndex = lastCompleted + 2;
           _loading = false;
+        });
+        WidgetsBinding.instance.addPostFrameCallback((_) {
+          if (!mounted) return;
+          final toScroll = _justReturnedFromOrdinal;
+          if (toScroll != null) {
+            _scrollToOrdinal(toScroll);
+            setState(() => _justReturnedFromOrdinal = null);
+          } else {
+            _scrollToFurthestUnlocked();
+          }
         });
       }
     } catch (e, st) {
@@ -117,8 +173,14 @@ class _LevelsScreenState extends State<LevelsScreen> {
   }
 
   void _onScroll() {
-    final pos = _scrollController.position;
-    if (pos.pixels >= pos.maxScrollExtent - _loadMoreThreshold) {
+    if (_items.length - _visibleCount <= 0) return;
+    final positions = _itemPositionsListener.itemPositions.value;
+    if (positions.isEmpty) return;
+    final maxVisible = positions
+        .where((p) => p.itemTrailingEdge > 0)
+        .map((p) => p.index)
+        .fold<int>(0, (a, b) => a > b ? a : b);
+    if (maxVisible >= _visibleCount - 2) {
       final newCount = (_visibleCount + _batchSize).clamp(0, _items.length);
       if (newCount != _visibleCount && mounted) {
         setState(() => _visibleCount = newCount);
@@ -129,6 +191,29 @@ class _LevelsScreenState extends State<LevelsScreen> {
   List<_LayoutRow> get _visibleLayoutRows {
     final slice = _items.take(_visibleCount).toList();
     return _itemsToLayoutRows(slice);
+  }
+
+  void _scrollToOrdinal(int ordinal) {
+    final rows = _visibleLayoutRows;
+    for (var i = 0; i < rows.length; i++) {
+      final row = rows[i];
+      if (row is _SubsLayoutRow &&
+          row.subLevelItem.ordinalLevelIndex == ordinal) {
+        _itemScrollController.scrollTo(
+          index: i,
+          duration: const Duration(milliseconds: 400),
+          curve: Curves.easeInOut,
+          alignment: 0.3,
+        );
+        return;
+      }
+    }
+  }
+
+  void _scrollToFurthestUnlocked() {
+    final targetOrdinal = _lastCompletedOrdinalIndex + 1;
+    if (targetOrdinal <= 0) return;
+    _scrollToOrdinal(targetOrdinal.clamp(1, 999));
   }
 
   @override
@@ -173,8 +258,9 @@ class _LevelsScreenState extends State<LevelsScreen> {
         ),
       ),
       body: SafeArea(
-        child: ListView.builder(
-          controller: _scrollController,
+        child: ScrollablePositionedList.builder(
+          itemScrollController: _itemScrollController,
+          itemPositionsListener: _itemPositionsListener,
           padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
           itemCount: visibleRows.length,
           itemBuilder: (context, index) {
@@ -193,10 +279,10 @@ class _LevelsScreenState extends State<LevelsScreen> {
   Widget _buildRow(BuildContext context, _LayoutRow row, int globalSubRowIndex) {
     return switch (row) {
       _BannerLayoutRow(meta: final meta) => _buildBanner(context, meta),
-      _SubsLayoutRow(subs: final subs) => _buildSubLevelRow(
+      _SubsLayoutRow(subLevelItem: final item) => _buildSubLevelRow(
             context,
             globalSubRowIndex,
-            subs,
+            item,
           ),
     };
   }
@@ -222,7 +308,7 @@ class _LevelsScreenState extends State<LevelsScreen> {
   Widget _buildSubLevelRow(
     BuildContext context,
     int globalSubRowIndex,
-    List<SubLevel> subs,
+    SubLevelItem subLevelItem,
   ) {
     final width = MediaQuery.sizeOf(context).width;
     const horizontalPadding = 16.0 * 2; // ListView horizontal padding
@@ -234,26 +320,42 @@ class _LevelsScreenState extends State<LevelsScreen> {
     const phase = -math.pi / 2;
     final t = (math.sin(globalSubRowIndex * _sinFrequency + phase) + 1) / 2;
     final leftOffset = t * pathRange;
+    final isUnlocked = subLevelItem.ordinalLevelIndex <= _firstLockedOrdinalIndex;
+    final isLocked = !isUnlocked;
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 4),
       child: Row(
         children: [
           SizedBox(width: leftOffset),
-          SizedBox(width: cellWidth, child: _buildSubLevelCell(context, subs.single, iconSize)),
+          SizedBox(
+            width: cellWidth,
+            child: _buildSubLevelCell(
+              context,
+              subLevelItem,
+              iconSize,
+              isLocked: isLocked,
+            ),
+          ),
         ],
       ),
     );
   }
 
-  Widget _buildSubLevelCell(BuildContext context, SubLevel sub, double iconSize) {
+  Widget _buildSubLevelCell(
+    BuildContext context,
+    SubLevelItem subLevelItem,
+    double iconSize, {
+    required bool isLocked,
+  }) {
+    final sub = subLevelItem.sub;
     final iconPath = 'assets/images/level-icons/${sub.iconImageName}.png';
 
-    return Padding(
+    Widget cell = Padding(
       padding: const EdgeInsets.symmetric(horizontal: 4, vertical: 8),
       child: Material(
         color: Colors.transparent,
         child: InkWell(
-          onTap: () => _openQuiz(context, sub),
+          onTap: isLocked ? null : () => _openQuiz(context, subLevelItem),
           borderRadius: BorderRadius.circular(12),
           child: Column(
             mainAxisSize: MainAxisSize.min,
@@ -293,30 +395,53 @@ class _LevelsScreenState extends State<LevelsScreen> {
         ),
       ),
     );
+
+    if (isLocked) {
+      cell = ColorFiltered(
+        colorFilter: const ColorFilter.matrix(<double>[
+          0.2126, 0.7152, 0.0722, 0, 0,
+          0.2126, 0.7152, 0.0722, 0, 0,
+          0.2126, 0.7152, 0.0722, 0, 0,
+          0, 0, 0, 1, 0,
+        ]),
+        child: cell,
+      );
+    }
+    return cell;
   }
 
-  void _openQuiz(BuildContext context, SubLevel sub) {
-    if (widget.quizType == 'image') {
-      Navigator.of(context).push(
-        popFadeRoute(ImageQuizScreen(
-          quizType: widget.quizType,
-          subLevel: sub,
-        )),
-      );
-    } else if (widget.quizType == 'vocabulary') {
-      Navigator.of(context).push(
-        popFadeRoute(VocabularyQuizScreen(
-          quizType: widget.quizType,
-          subLevel: sub,
-        )),
-      );
-    } else {
-      Navigator.of(context).push(
-        popFadeRoute(QuizPlaceholderScreen(
-          quizType: widget.quizType,
-          subLevel: sub,
-        )),
-      );
+  void _openQuiz(BuildContext context, SubLevelItem subLevelItem) async {
+    final sub = subLevelItem.sub;
+    final route = popFadeRoute<LevelCompletionResult>(
+      widget.quizType == 'image'
+          ? ImageQuizScreen(
+              quizType: widget.quizType,
+              subLevel: sub,
+              ordinalLevelIndex: subLevelItem.ordinalLevelIndex,
+            )
+          : widget.quizType == 'vocabulary'
+              ? VocabularyQuizScreen(
+                  quizType: widget.quizType,
+                  subLevel: sub,
+                  ordinalLevelIndex: subLevelItem.ordinalLevelIndex,
+                )
+              : QuizPlaceholderScreen(
+                  quizType: widget.quizType,
+                  subLevel: sub,
+                  ordinalLevelIndex: subLevelItem.ordinalLevelIndex,
+                ),
+    );
+
+    final result = await Navigator.of(context).push<LevelCompletionResult>(route);
+
+    if (!mounted) return;
+    if (result != null && result.completed) {
+      setState(() {
+        _justReturnedFromOrdinal = result.ordinalLevelIndex;
+      });
+      await _loadData();
+      if (!mounted) return;
+      _scrollToOrdinal(result.ordinalLevelIndex);
     }
   }
 

@@ -2,8 +2,10 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 
+import '../models/level_completion_result.dart';
 import '../models/quiz_flow.dart';
 import '../models/vocabulary_quiz.dart';
+import '../services/achievement_service.dart';
 import '../services/app_settings_service.dart';
 import '../services/game_config_loader.dart';
 import '../services/profile_service.dart';
@@ -20,10 +22,13 @@ class VocabularyQuizScreen extends StatefulWidget {
     super.key,
     required this.subLevel,
     required this.quizType,
+    required this.ordinalLevelIndex,
   });
 
   final SubLevel subLevel;
   final String quizType;
+  /// 1-based position in subLevels list (progression key).
+  final int ordinalLevelIndex;
 
   @override
   State<VocabularyQuizScreen> createState() => _VocabularyQuizScreenState();
@@ -48,6 +53,7 @@ class _VocabularyQuizScreenState extends State<VocabularyQuizScreen> {
 
   bool _showTranslation = false;
   bool _conversationUnlocked = false;
+  DateTime? _quizStartTime;
 
   @override
   void initState() {
@@ -70,6 +76,7 @@ class _VocabularyQuizScreenState extends State<VocabularyQuizScreen> {
           _userLanguage = lang;
           _level = level;
           _phase = _Phase.playing;
+          _quizStartTime = DateTime.now();
           _currentOptions = _buildOptions(level.questions[0]);
         });
       }
@@ -96,10 +103,12 @@ class _VocabularyQuizScreenState extends State<VocabularyQuizScreen> {
     if (_answerLocked) return;
     final selected = _currentOptions[optionIndex];
     final correct = _questions[_currentIndex].answer;
+    final isCorrect = selected == correct;
+    AchievementService.instance.recordAnswer(isCorrect);
     setState(() {
       _answerLocked = true;
       _selectedIndex = optionIndex;
-      if (selected == correct) {
+      if (isCorrect) {
         _correctCount++;
         _showNext = false;
         Future.delayed(
@@ -149,10 +158,14 @@ class _VocabularyQuizScreenState extends State<VocabularyQuizScreen> {
 
   Future<void> _onEndOk() async {
     final stars = _stars();
+    if (_quizStartTime != null) {
+      final duration = DateTime.now().difference(_quizStartTime!).inSeconds;
+      await AchievementService.instance.recordQuizCompleted(duration);
+    }
     if (stars >= 1) {
       await QuizProgressService.instance.recordLevelCompletion(
         quizType: widget.quizType,
-        levelNumber: widget.subLevel.levelNumber,
+        levelNumber: widget.ordinalLevelIndex,
         stars: stars,
         diamondsEarned: _diamondsEarned(),
       );
@@ -163,7 +176,12 @@ class _VocabularyQuizScreenState extends State<VocabularyQuizScreen> {
         questionCount: _questions.length,
       );
     }
-    if (mounted) Navigator.of(context).pop();
+    if (mounted) {
+      Navigator.of(context).pop(LevelCompletionResult(
+        ordinalLevelIndex: widget.ordinalLevelIndex,
+        completed: stars >= 1,
+      ));
+    }
   }
 
   // ── Full conversation panel ────────────────────────────────────────────────
@@ -251,7 +269,10 @@ class _VocabularyQuizScreenState extends State<VocabularyQuizScreen> {
         title: Text(widget.subLevel.title),
         leading: IconButton(
           icon: const Icon(Icons.arrow_back),
-          onPressed: () => Navigator.of(context).pop(),
+          onPressed: () => Navigator.of(context).pop(LevelCompletionResult(
+                ordinalLevelIndex: widget.ordinalLevelIndex,
+                completed: false,
+              )),
         ),
       ),
       body: SafeArea(child: _buildBody()),
@@ -282,7 +303,10 @@ class _VocabularyQuizScreenState extends State<VocabularyQuizScreen> {
           ),
           const SizedBox(height: 24),
           FilledButton(
-            onPressed: () => Navigator.of(context).pop(),
+            onPressed: () => Navigator.of(context).pop(LevelCompletionResult(
+                  ordinalLevelIndex: widget.ordinalLevelIndex,
+                  completed: false,
+                )),
             child: const Text('Back to Levels'),
           ),
         ],

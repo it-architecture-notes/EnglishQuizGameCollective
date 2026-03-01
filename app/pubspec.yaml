@@ -10,6 +10,7 @@ dependencies:
   flutter:
     sdk: flutter
   flutter_riverpod: ^2.6.1
+  scrollable_positioned_list: ^0.3.8
   shared_preferences: ^2.3.3
 
 dev_dependencies:
@@ -28,6 +29,7 @@ flutter:
     - assets/images/characters/
     - assets/images/avatars/
     - assets/images/level-icons/
+    - assets/images/achievements/
     - assets/data/state/
     - assets/data/config/
     - assets/data/settings/
