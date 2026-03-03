@@ -1,5 +1,3 @@
-import 'dart:math';
-
 import '../models/profile_state.dart';
 import 'achievement_config_loader.dart';
 import 'achievement_service.dart';
@@ -41,7 +39,7 @@ class AchievementProgressService {
     int totalQuizzesCompleted = 0;
     int totalPerfectScores = 0;
     int categoriesPlayed = 0;
-    int maxStreakDays = 0;
+    final maxStreakDays = profile.currentStreak;
     int totalLevels = 0;
     int levelsWith3Stars = 0;
     int minPerfectPerType = 999;
@@ -57,10 +55,6 @@ class AchievementProgressService {
       totalQuizzesCompleted += completed;
       totalPerfectScores += perfect;
       if (completed > 0) categoriesPlayed++;
-      maxStreakDays = max(
-        maxStreakDays,
-        profile.currentStreakByQuizType[quizType] ?? 0,
-      );
 
       try {
         final flow = await loadQuizFlow(quizType);

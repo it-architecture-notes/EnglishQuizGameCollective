@@ -1,3 +1,3 @@
 # Active Progress Context
 
-No active issue. Issue-5 (Vocabulary Test Quiz Page) is complete.
+No active issue. Add the next issue here when starting work.

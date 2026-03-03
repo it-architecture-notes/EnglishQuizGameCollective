@@ -60,4 +60,9 @@ class AchievementService {
       state.copyWith(bestQuizTimeSeconds: durationSeconds),
     );
   }
+
+  /// Overwrite persisted state (for test data seeding only).
+  Future<void> saveStateForTesting(AchievementState state) async {
+    await _saveState(state);
+  }
 }

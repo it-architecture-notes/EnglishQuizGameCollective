@@ -1,6 +1,8 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 import '../services/resolution_service.dart';
+import '../services/test_data_service.dart';
 import 'achievements_panel_content.dart';
 import 'levels_screen.dart';
 import 'panel_overlay.dart';
@@ -152,8 +154,7 @@ class _HomeScreenState extends State<HomeScreen> {
               () => _showAchievementsPanel()),
           _navItem(Icons.favorite, 'Friends',
               () => _showPanel('Friends', 'Animal friend grid – coming soon')),
-          _navItem(Icons.settings, 'Settings',
-              () => _showPanel('Settings', 'App settings – coming soon')),
+          _navItem(Icons.settings, 'Settings', () => _showSettingsPanel()),
         ],
       ),
     );
@@ -203,6 +204,106 @@ class _HomeScreenState extends State<HomeScreen> {
           style: TextStyle(
             fontSize: 16,
             color: Colors.grey[700],
+          ),
+        ),
+      ),
+    );
+  }
+
+  void _showSettingsPanel() {
+    showPanelOverlay(
+      context,
+      title: 'Settings',
+      body: SingleChildScrollView(
+        child: Padding(
+          padding: const EdgeInsets.only(bottom: 16),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                'App settings – coming soon',
+                style: TextStyle(fontSize: 16, color: Colors.grey[700]),
+              ),
+              if (kDebugMode) ...[
+                const SizedBox(height: 24),
+                Text(
+                  'Issue-8 test data',
+                  style: TextStyle(
+                    fontSize: 14,
+                    fontWeight: FontWeight.w600,
+                    color: Colors.grey[800],
+                  ),
+                ),
+                const SizedBox(height: 8),
+                Wrap(
+                  spacing: 8,
+                  runSpacing: 8,
+                  children: [
+                    ElevatedButton(
+                      onPressed: () async {
+                        await TestDataService.instance.seedTrophyTestData();
+                        if (context.mounted) {
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            const SnackBar(
+                              content: Text(
+                                'Trophy test data seeded. Open Trophies to verify.',
+                              ),
+                            ),
+                          );
+                        }
+                      },
+                      child: const Text('Seed trophy test data'),
+                    ),
+                    ElevatedButton(
+                      onPressed: () async {
+                        await TestDataService.instance.seedStreakTestData3Day();
+                        if (context.mounted) {
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            const SnackBar(
+                              content: Text(
+                                '3-day streak seed: complete one level today to unlock.',
+                              ),
+                            ),
+                          );
+                        }
+                      },
+                      child: const Text('Seed 3-day streak test'),
+                    ),
+                    ElevatedButton(
+                      onPressed: () async {
+                        await TestDataService.instance.seedStreakTestData30Day();
+                        if (context.mounted) {
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            const SnackBar(
+                              content: Text(
+                                '30-day streak seed: complete one level today to unlock.',
+                              ),
+                            ),
+                          );
+                        }
+                      },
+                      child: const Text('Seed 30-day streak test'),
+                    ),
+                    ElevatedButton(
+                      onPressed: () async {
+                        await TestDataService.instance.clearTestData();
+                        if (context.mounted) {
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            const SnackBar(
+                              content: Text('Test data cleared.'),
+                            ),
+                          );
+                        }
+                      },
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: Colors.red.shade300,
+                      ),
+                      child: const Text('Clear test data'),
+                    ),
+                  ],
+                ),
+              ],
+            ],
           ),
         ),
       ),

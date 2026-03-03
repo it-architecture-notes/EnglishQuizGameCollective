@@ -4,8 +4,8 @@ class ProfileState {
     required this.dateJoinedIso,
     required this.avatarName,
     this.avatarAssetPath,
-    this.currentStreakByQuizType = const {},
-    this.lastPlayedDayByQuizType = const {},
+    this.lastPlayedDay,
+    this.currentStreak = 0,
     this.totalQuestionsAnsweredByQuizType = const {},
   });
 
@@ -13,8 +13,10 @@ class ProfileState {
   final String dateJoinedIso;
   final String avatarName;
   final String? avatarAssetPath;
-  final Map<String, int> currentStreakByQuizType;
-  final Map<String, String> lastPlayedDayByQuizType;
+  /// Last calendar day (YYYY-MM-DD) user completed any level with ≥1 star.
+  final String? lastPlayedDay;
+  /// Consecutive calendar days with at least one completed level (any quiz type).
+  final int currentStreak;
   final Map<String, int> totalQuestionsAnsweredByQuizType;
 
   static const String defaultAvatarName = 'Player';
@@ -37,8 +39,8 @@ class ProfileState {
     String? avatarName,
     String? avatarAssetPath,
     bool clearAvatarAssetPath = false,
-    Map<String, int>? currentStreakByQuizType,
-    Map<String, String>? lastPlayedDayByQuizType,
+    String? lastPlayedDay,
+    int? currentStreak,
     Map<String, int>? totalQuestionsAnsweredByQuizType,
   }) {
     return ProfileState(
@@ -48,10 +50,8 @@ class ProfileState {
       avatarAssetPath: clearAvatarAssetPath
           ? null
           : (avatarAssetPath ?? this.avatarAssetPath),
-      currentStreakByQuizType:
-          currentStreakByQuizType ?? this.currentStreakByQuizType,
-      lastPlayedDayByQuizType:
-          lastPlayedDayByQuizType ?? this.lastPlayedDayByQuizType,
+      lastPlayedDay: lastPlayedDay ?? this.lastPlayedDay,
+      currentStreak: currentStreak ?? this.currentStreak,
       totalQuestionsAnsweredByQuizType: totalQuestionsAnsweredByQuizType ??
           this.totalQuestionsAnsweredByQuizType,
     );
@@ -62,23 +62,46 @@ class ProfileState {
         'dateJoinedIso': dateJoinedIso,
         'avatarName': avatarName,
         'avatarAssetPath': avatarAssetPath,
-        'currentStreakByQuizType': currentStreakByQuizType,
-        'lastPlayedDayByQuizType': lastPlayedDayByQuizType,
+        'lastPlayedDay': lastPlayedDay,
+        'currentStreak': currentStreak,
         'totalQuestionsAnsweredByQuizType': totalQuestionsAnsweredByQuizType,
       };
 
   static ProfileState fromJson(Map<String, dynamic> json) {
+    final lastPlayedDay = json['lastPlayedDay'] as String?;
+    final currentStreak = (json['currentStreak'] as num?)?.toInt();
+
+    if (lastPlayedDay != null && currentStreak != null) {
+      return ProfileState(
+        userId: (json['userId'] as String?) ?? '',
+        dateJoinedIso: (json['dateJoinedIso'] as String?) ?? '',
+        avatarName: (json['avatarName'] as String?) ?? defaultAvatarName,
+        avatarAssetPath: json['avatarAssetPath'] as String?,
+        lastPlayedDay: lastPlayedDay,
+        currentStreak: currentStreak,
+        totalQuestionsAnsweredByQuizType: _intMap(
+          json['totalQuestionsAnsweredByQuizType'],
+        ),
+      );
+    }
+    final oldLastByType = _stringMap(json['lastPlayedDayByQuizType']);
+    final oldStreakByType = _intMap(json['currentStreakByQuizType']);
+    String? migratedLast = lastPlayedDay;
+    int migratedStreak = currentStreak ?? 0;
+    if (oldLastByType.isNotEmpty) {
+      final sorted = oldLastByType.values.toList()..sort();
+      migratedLast = sorted.last;
+    }
+    if (oldStreakByType.isNotEmpty) {
+      migratedStreak = oldStreakByType.values.fold(0, (a, b) => a > b ? a : b);
+    }
     return ProfileState(
       userId: (json['userId'] as String?) ?? '',
       dateJoinedIso: (json['dateJoinedIso'] as String?) ?? '',
       avatarName: (json['avatarName'] as String?) ?? defaultAvatarName,
       avatarAssetPath: json['avatarAssetPath'] as String?,
-      currentStreakByQuizType: _intMap(
-        json['currentStreakByQuizType'],
-      ),
-      lastPlayedDayByQuizType: _stringMap(
-        json['lastPlayedDayByQuizType'],
-      ),
+      lastPlayedDay: migratedLast,
+      currentStreak: migratedStreak,
       totalQuestionsAnsweredByQuizType: _intMap(
         json['totalQuestionsAnsweredByQuizType'],
       ),

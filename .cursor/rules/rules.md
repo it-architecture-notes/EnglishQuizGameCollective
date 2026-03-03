@@ -2,10 +2,10 @@
 
 ## How to Progress
 
-The full-project-context.md file serves as a master issue list of all high-level project use cases and user stories. 
-The developer selects a single item from this list and adds it to active-progress-context.md to indicate it is the current focus of implementation.
+The developer adds issues one by one to active-progress-context.md to indicate it is the current focus of implementation.
 Only one use case—whether it is a new feature, an enhancement, or a bug fix—is actively worked on at any given time.
-When the implementation of the active item is complete, and after it has been verified and accepted by the developer, it is moved from active-progress-context.md to progress-context-archive.md.
+When the implementation of the active item is complete, and after it has been verified and accepted by the developer, it is moved from active-progress-context.md to progress-context-archive.md by summarizing.
+Also the issue in active-progress-context.md when completed, moved to full-project-issue-archive.md exactly as it is without summarizing it.
 Archived items should be listed in reverse chronological order (most recent first) to maintain a clear history of completed work.
 
 ## Handling Ambiguity
@@ -50,3 +50,4 @@ Do not refactor code outside the scope of the current task.
 Do not add logging, error handling, or tests unless requested. If required these will be asked as feature enhancements.
 Do not suggest architectural improvements mid-task — note them in a comment at the end instead.
 Do not push to remote, open PRs, or send messages to external systems without explicit instruction.
+Do not automatically start the app when implementation is done, I will start it manually using the terminal.

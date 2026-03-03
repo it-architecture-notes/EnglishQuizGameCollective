@@ -124,8 +124,8 @@ class ProfileService {
     final today = _dayKey(localNow);
     final yesterday = _dayKey(localNow.subtract(const Duration(days: 1)));
 
-    final lastDay = profile.lastPlayedDayByQuizType[quizType];
-    final currentStreak = profile.currentStreakByQuizType[quizType] ?? 0;
+    final lastDay = profile.lastPlayedDay;
+    final currentStreak = profile.currentStreak;
     int nextStreak;
     if (lastDay == today) {
       nextStreak = currentStreak;
@@ -135,12 +135,6 @@ class ProfileService {
       nextStreak = 1;
     }
 
-    final updatedStreaks =
-        Map<String, int>.from(profile.currentStreakByQuizType)
-          ..[quizType] = nextStreak;
-    final updatedLastPlayed =
-        Map<String, String>.from(profile.lastPlayedDayByQuizType)
-          ..[quizType] = today;
     final updatedQuestionCounts =
         Map<String, int>.from(profile.totalQuestionsAnsweredByQuizType)
           ..[quizType] =
@@ -148,8 +142,8 @@ class ProfileService {
                   questionCount;
 
     final updated = profile.copyWith(
-      currentStreakByQuizType: updatedStreaks,
-      lastPlayedDayByQuizType: updatedLastPlayed,
+      lastPlayedDay: today,
+      currentStreak: nextStreak,
       totalQuestionsAnsweredByQuizType: updatedQuestionCounts,
     );
     await saveProfile(updated);
@@ -192,7 +186,7 @@ class ProfileService {
           totalLevels: totalLevels,
           totalQuestionsAnswered:
               profile.totalQuestionsAnsweredByQuizType[quizType] ?? 0,
-          currentStreak: profile.currentStreakByQuizType[quizType] ?? 0,
+          currentStreak: profile.currentStreak,
         ),
       );
     }
