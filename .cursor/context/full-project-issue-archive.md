@@ -764,3 +764,17 @@ Use Cases:
       "show_progress_bar": true
     }
     ]
+
+**Issue-9: Friends Page**
+
+Description:
+There will be a friends page as a panel and user will be able to free some animals using their diamonds.
+
+Use Case:
+- A friends page will be opened from the home screen using the relevant button.
+- On the panel there will be a grid of 12 animals. Animal icons will be locked (greyed) in the beginning.
+- Animal images (square) will be placed under the assets in the a well named and placed directory.
+- The user will be able to free these animals using the collected diamonds.
+- Grid animals will be sorted in the grid based on a game configuration in the json. How many diamonds are needed per animal will be added in the same config.
+- There will be a popup message when the panel started stating that diamonds are needed to free the animals.
+- When an animal is freed there will be an animation of that animal being happy and jumping.

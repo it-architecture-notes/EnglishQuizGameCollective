@@ -2,6 +2,12 @@
 
 Completed items in reverse chronological order.
 
+## Issue-9: Friends Page (completed)
+
+- **Summary:** Friends panel (opened via Friends heart button on home) shows a grid of 12 animals from config. Animals are locked (greyed) until freed with diamonds. Config in `assets/data/config/friends.json` (id, image, diamondCost, name). First-time popup: "Diamonds are needed to free the animals." On free: confirm dialog, then happy/jump animation. Diamond balance = lifetime diamonds (from profile summary) minus cost of freed animals. State persisted in SharedPreferences (FriendsState: freedAnimalIds, hintDismissed).
+- **Deliverables:** `lib/models/friends_state.dart`; `lib/services/friends_service.dart`, `lib/services/friends_config_loader.dart`; `lib/screens/friends_panel_content.dart` (grid, locked/unlocked tiles, hint dialog, free flow, animation); `app/assets/data/config/friends.json`; `app/assets/images/friends/`; home_screen Friends button opens panel; TestDataService seed for diamonds; unit and widget tests in `test/models/`, `test/services/`, `test/screens/`.
+- **Verification:** Open Friends from home → panel with 12 animals; hint on first open; tap locked animal with enough diamonds → confirm → freed and animation; with 0 diamonds tap animal → "Not enough diamonds." snackbar.
+
 ## Issue-8: Achievements Page (completed)
 
 - **Summary:** Achievements panel (opened via Trophies on home) shows config-driven achievements in a scrollable list. Locked achievements are greyed out; progress-type achievements show a progress bar. Config in `assets/data/config/achievements.json` (id, type, title, description, icon keys, goal_value, tracking_key, show_progress_bar). Progress computed on panel open from profile + achievement state; grants applied from existing stats so new achievements can be added later. State persisted in SharedPreferences (AchievementState: quiz times, correct streak; profile supplies streaks, totals, categories). Achievements are global across all quiz types.

@@ -1,3 +1,4 @@
 # Active Progress Context
 
-No active issue. Add the next issue here when starting work.
+## Next issue
+(Add the next issue description and use case here when ready.)
