@@ -104,6 +104,18 @@ class TestDataService {
     );
   }
 
+  /// Seeds image quiz progress with [totalDiamonds] so Friends panel
+  /// shows that many diamonds for testing (e.g. 150).
+  Future<void> seedDiamondsForFriendsTest(int totalDiamonds) async {
+    final imageProgress = QuizTypeProgress.fromJson({
+      'levels': <String, Map<String, dynamic>>{
+        '1': {'levelNumber': 1, 'highestStars': 1, 'highestDiamonds': 5},
+      },
+      'totalDiamonds': totalDiamonds,
+    });
+    await QuizProgressService.instance.saveProgress('image', imageProgress);
+  }
+
   /// Sets profile so that completing one level today gives a 30-day streak.
   /// lastPlayedDay = 29 days ago, currentStreak = 29.
   Future<void> seedStreakTestData30Day() async {

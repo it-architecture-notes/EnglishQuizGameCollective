@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import '../services/resolution_service.dart';
 import '../services/test_data_service.dart';
 import 'achievements_panel_content.dart';
+import 'friends_panel_content.dart';
 import 'levels_screen.dart';
 import 'panel_overlay.dart';
 import 'profile_panel_screen.dart';
@@ -152,8 +153,7 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
           _navItem(Icons.emoji_events, 'Trophies',
               () => _showAchievementsPanel()),
-          _navItem(Icons.favorite, 'Friends',
-              () => _showPanel('Friends', 'Animal friend grid – coming soon')),
+          _navItem(Icons.favorite, 'Friends', () => _showFriendsPanel()),
           _navItem(Icons.settings, 'Settings', () => _showSettingsPanel()),
         ],
       ),
@@ -188,23 +188,6 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
             ),
           ],
-        ),
-      ),
-    );
-  }
-
-  void _showPanel(String title, String bodyText) {
-    showPanelOverlay(
-      context,
-      title: title,
-      body: Padding(
-        padding: const EdgeInsets.only(bottom: 8),
-        child: Text(
-          bodyText,
-          style: TextStyle(
-            fontSize: 16,
-            color: Colors.grey[700],
-          ),
         ),
       ),
     );
@@ -286,6 +269,19 @@ class _HomeScreenState extends State<HomeScreen> {
                     ),
                     ElevatedButton(
                       onPressed: () async {
+                        await TestDataService.instance.seedDiamondsForFriendsTest(150);
+                        if (context.mounted) {
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            const SnackBar(
+                              content: Text('150 diamonds seeded. Open Friends to test freeing.'),
+                            ),
+                          );
+                        }
+                      },
+                      child: const Text('150 diamonds (Friends test)'),
+                    ),
+                    ElevatedButton(
+                      onPressed: () async {
                         await TestDataService.instance.clearTestData();
                         if (context.mounted) {
                           ScaffoldMessenger.of(context).showSnackBar(
@@ -315,6 +311,14 @@ class _HomeScreenState extends State<HomeScreen> {
       context,
       title: 'Achievements',
       body: const AchievementsPanelContent(),
+    );
+  }
+
+  void _showFriendsPanel() {
+    showPanelOverlay(
+      context,
+      title: 'Friends',
+      body: const FriendsPanelContent(),
     );
   }
 }
