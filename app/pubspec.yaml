@@ -30,6 +30,7 @@ flutter:
     - assets/images/avatars/
     - assets/images/level-icons/
     - assets/images/achievements/
+    - assets/images/friends/
     - assets/data/state/
     - assets/data/config/
     - assets/data/settings/

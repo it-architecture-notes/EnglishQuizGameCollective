@@ -1,0 +1,16 @@
+{
+  "animals": [
+    { "id": "bear", "image": "bear", "diamondCost": 10, "name": "Bear" },
+    { "id": "lion", "image": "lion", "diamondCost": 15, "name": "Lion" },
+    { "id": "elephant", "image": "elephant", "diamondCost": 20, "name": "Elephant" },
+    { "id": "rabbit", "image": "rabbit", "diamondCost": 8, "name": "Rabbit" },
+    { "id": "fox", "image": "fox", "diamondCost": 12, "name": "Fox" },
+    { "id": "owl", "image": "owl", "diamondCost": 18, "name": "Owl" },
+    { "id": "deer", "image": "deer", "diamondCost": 14, "name": "Deer" },
+    { "id": "panda", "image": "panda", "diamondCost": 25, "name": "Panda" },
+    { "id": "wolf", "image": "wolf", "diamondCost": 16, "name": "Wolf" },
+    { "id": "squirrel", "image": "squirrel", "diamondCost": 8, "name": "Squirrel" },
+    { "id": "hedgehog", "image": "hedgehog", "diamondCost": 10, "name": "Hedgehog" },
+    { "id": "penguin", "image": "penguin", "diamondCost": 22, "name": "Penguin" }
+  ]
+}
