@@ -2,6 +2,12 @@
 
 Completed items in reverse chronological order.
 
+## Issue-10: Settings Page (completed)
+
+- **Summary:** Settings panel (opened via Settings gear on home) provides language dropdown (from `localization.json`), Music on/off toggle, and Sound/FX on/off toggle. Language selection updates all visible UI labels immediately via `LocalizationLoader` and `currentLocalizedStringsProvider`. Music toggle stops quiz music immediately when off; quiz screens use `ref.listen(settingsProvider)` to resume when toggled on during a session. Sound/FX toggle silences click, correct, and wrong effects when off. All settings persisted via `AppSettingsService` (SharedPreferences) and restored on app restart.
+- **Deliverables:** `lib/screens/settings_panel_content.dart`; `lib/providers/settings_provider.dart`, `lib/providers/localization_provider.dart`; `lib/services/app_settings_service.dart`, `lib/services/audio_service.dart`, `lib/services/localization_loader.dart`; `assets/data/settings/localization.json`, `assets/audio/`; home_screen Settings button opens panel; image_quiz_screen and vocabulary_quiz_screen wired for reactive music and SFX; tests in `test/screens/`, `test/services/`, `test/providers/`.
+- **Verification:** Open Settings from home → panel with dropdown and toggles; change language → labels update; toggle Music/FX → behavior and persistence after restart.
+
 ## Issue-9: Friends Page (completed)
 
 - **Summary:** Friends panel (opened via Friends heart button on home) shows a grid of 12 animals from config. Animals are locked (greyed) until freed with diamonds. Config in `assets/data/config/friends.json` (id, image, diamondCost, name). First-time popup: "Diamonds are needed to free the animals." On free: confirm dialog, then happy/jump animation. Diamond balance = lifetime diamonds (from profile summary) minus cost of freed animals. State persisted in SharedPreferences (FriendsState: freedAnimalIds, hintDismissed).
