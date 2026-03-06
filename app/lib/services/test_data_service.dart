@@ -104,6 +104,26 @@ class TestDataService {
     );
   }
 
+  /// Seeds image quiz so the first 10 levels appear completed with 2 stars each.
+  /// Use to test levels screen (e.g. current level = 11 at top).
+  Future<void> seedImageQuizFirst10Levels2Stars() async {
+    const stars = 2;
+    const diamondsPerLevel = 2;
+    final levels = <int, LevelProgress>{};
+    for (var i = 1; i <= 10; i++) {
+      levels[i] = LevelProgress(
+        levelNumber: i,
+        highestStars: stars,
+        highestDiamonds: diamondsPerLevel,
+      );
+    }
+    final progress = QuizTypeProgress(
+      levels: levels,
+      totalDiamonds: 10 * diamondsPerLevel,
+    );
+    await QuizProgressService.instance.saveProgress('image', progress);
+  }
+
   /// Seeds image quiz progress with [totalDiamonds] so Friends panel
   /// shows that many diamonds for testing (e.g. 150).
   Future<void> seedDiamondsForFriendsTest(int totalDiamonds) async {

@@ -22,6 +22,7 @@ For architectural decisions (new library, pattern change, data model change), al
 Do not add comments, types, or docstrings to code you did not change.
 
 ## Commit & Git
+Never implement or build on the main branch. Always checkout to a feature branch (e.g. `feature/issue-10-settings`) before starting implementation of an issue.
 Never commit unless explicitly asked.
 Never force-push or amend published commits without explicit instruction.
 
@@ -44,6 +45,9 @@ Before adding a helper or utility, check if the codebase already has one that se
 
 ## Shared Types
 When modifying shared types or interfaces, consider the impact on all usages across the codebase.
+
+## Testing
+Do not generate test code (unit tests, widget tests, integration tests). The developer will test manually.
 
 ## Boundaries
 Do not refactor code outside the scope of the current task.

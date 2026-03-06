@@ -1,12 +1,16 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../models/level_completion_result.dart';
 import '../models/quiz_flow.dart';
 import '../models/vocabulary_quiz.dart';
+import '../providers/localization_provider.dart';
+import '../providers/settings_provider.dart';
 import '../services/achievement_service.dart';
 import '../services/app_settings_service.dart';
+import '../services/audio_service.dart' as audio;
 import '../services/game_config_loader.dart';
 import '../services/profile_service.dart';
 import '../services/quiz_progress_service.dart';
@@ -17,7 +21,7 @@ const String _kBlank = '_____';
 
 enum _Phase { loading, playing, end }
 
-class VocabularyQuizScreen extends StatefulWidget {
+class VocabularyQuizScreen extends ConsumerStatefulWidget {
   const VocabularyQuizScreen({
     super.key,
     required this.subLevel,
@@ -31,16 +35,16 @@ class VocabularyQuizScreen extends StatefulWidget {
   final int ordinalLevelIndex;
 
   @override
-  State<VocabularyQuizScreen> createState() => _VocabularyQuizScreenState();
+  ConsumerState<VocabularyQuizScreen> createState() =>
+      _VocabularyQuizScreenState();
 }
 
-class _VocabularyQuizScreenState extends State<VocabularyQuizScreen> {
+class _VocabularyQuizScreenState extends ConsumerState<VocabularyQuizScreen> {
   _Phase _phase = _Phase.loading;
   String? _loadError;
 
   VocabularyLevel? _level;
   GameConfig _config = const GameConfig();
-  String _userLanguage = 'en';
 
   List<VocabularyQuestion> get _questions => _level?.questions ?? [];
 
@@ -61,10 +65,15 @@ class _VocabularyQuizScreenState extends State<VocabularyQuizScreen> {
     _loadLevel();
   }
 
+  @override
+  void dispose() {
+    audio.stopQuizMusic();
+    super.dispose();
+  }
+
   Future<void> _loadLevel() async {
     try {
       final config = await GameConfig.load();
-      final lang = await AppSettingsService.getLanguage();
       final level = await loadVocabularyLevel(
         widget.subLevel.iconImageName,
         widget.subLevel.levelNumber,
@@ -73,12 +82,13 @@ class _VocabularyQuizScreenState extends State<VocabularyQuizScreen> {
       if (mounted) {
         setState(() {
           _config = config;
-          _userLanguage = lang;
           _level = level;
           _phase = _Phase.playing;
           _quizStartTime = DateTime.now();
           _currentOptions = _buildOptions(level.questions[0]);
         });
+        final musicOn = ref.read(settingsProvider).valueOrNull?.musicOn ?? true;
+        audio.startQuizMusic(musicOn: musicOn);
       }
     } catch (e, st) {
       debugPrint('VocabularyQuizScreen _loadLevel: $e\n$st');
@@ -104,6 +114,12 @@ class _VocabularyQuizScreenState extends State<VocabularyQuizScreen> {
     final selected = _currentOptions[optionIndex];
     final correct = _questions[_currentIndex].answer;
     final isCorrect = selected == correct;
+    final soundFxOn = ref.read(settingsProvider).valueOrNull?.soundFxOn ?? true;
+    if (isCorrect) {
+      audio.playCorrect(soundFxOn: soundFxOn);
+    } else {
+      audio.playWrong(soundFxOn: soundFxOn);
+    }
     AchievementService.instance.recordAnswer(isCorrect);
     setState(() {
       _answerLocked = true;
@@ -187,6 +203,8 @@ class _VocabularyQuizScreenState extends State<VocabularyQuizScreen> {
   // ── Full conversation panel ────────────────────────────────────────────────
 
   void _showFullConversation() {
+    final strings = ref.read(currentLocalizedStringsProvider).valueOrNull ?? {};
+    final title = strings['full_conversation'] ?? 'Full Conversation';
     showModalBottomSheet<void>(
       context: context,
       isScrollControlled: true,
@@ -215,7 +233,7 @@ class _VocabularyQuizScreenState extends State<VocabularyQuizScreen> {
                   padding:
                       const EdgeInsets.symmetric(vertical: 12, horizontal: 16),
                   child: Text(
-                    'Full Conversation',
+                    title,
                     style: Theme.of(ctx).textTheme.titleMedium?.copyWith(
                           fontWeight: FontWeight.w700,
                         ),
@@ -264,33 +282,46 @@ class _VocabularyQuizScreenState extends State<VocabularyQuizScreen> {
 
   @override
   Widget build(BuildContext context) {
+    ref.listen(settingsProvider, (prev, next) {
+      if (next.valueOrNull?.musicOn == true &&
+          _phase == _Phase.playing &&
+          _level != null) {
+        audio.startQuizMusic(musicOn: true);
+      }
+    });
+    final soundFxOn = ref.read(settingsProvider).valueOrNull?.soundFxOn ?? true;
+    final strings = ref.watch(currentLocalizedStringsProvider).valueOrNull ?? {};
+    final userLanguage = ref.watch(settingsProvider).valueOrNull?.language ?? 'en';
     return Scaffold(
       appBar: AppBar(
         title: Text(widget.subLevel.title),
         leading: IconButton(
           icon: const Icon(Icons.arrow_back),
-          onPressed: () => Navigator.of(context).pop(LevelCompletionResult(
-                ordinalLevelIndex: widget.ordinalLevelIndex,
-                completed: false,
-              )),
+          onPressed: () {
+            audio.playClick(soundFxOn: soundFxOn);
+            Navigator.of(context).pop(LevelCompletionResult(
+                  ordinalLevelIndex: widget.ordinalLevelIndex,
+                  completed: false,
+                ));
+          },
         ),
       ),
-      body: SafeArea(child: _buildBody()),
+      body: SafeArea(child: _buildBody(soundFxOn, strings, userLanguage)),
     );
   }
 
-  Widget _buildBody() {
+  Widget _buildBody(bool soundFxOn, Map<String, String> strings, String userLanguage) {
     if (_loadError != null) {
-      return _buildError();
+      return _buildError(soundFxOn, strings);
     }
     return switch (_phase) {
       _Phase.loading => const Center(child: CircularProgressIndicator()),
-      _Phase.playing => _buildPlaying(),
-      _Phase.end => _buildEnd(),
+      _Phase.playing => _buildPlaying(soundFxOn, strings, userLanguage),
+      _Phase.end => _buildEnd(soundFxOn, strings),
     };
   }
 
-  Widget _buildError() {
+  Widget _buildError(bool soundFxOn, Map<String, String> strings) {
     return Padding(
       padding: const EdgeInsets.all(24),
       child: Column(
@@ -303,11 +334,14 @@ class _VocabularyQuizScreenState extends State<VocabularyQuizScreen> {
           ),
           const SizedBox(height: 24),
           FilledButton(
-            onPressed: () => Navigator.of(context).pop(LevelCompletionResult(
-                  ordinalLevelIndex: widget.ordinalLevelIndex,
-                  completed: false,
-                )),
-            child: const Text('Back to Levels'),
+            onPressed: () {
+              audio.playClick(soundFxOn: soundFxOn);
+              Navigator.of(context).pop(LevelCompletionResult(
+                    ordinalLevelIndex: widget.ordinalLevelIndex,
+                    completed: false,
+                  ));
+            },
+            child: Text(strings['back_to_levels'] ?? 'Back to Levels'),
           ),
         ],
       ),
@@ -316,7 +350,12 @@ class _VocabularyQuizScreenState extends State<VocabularyQuizScreen> {
 
   // ── Playing phase ──────────────────────────────────────────────────────────
 
-  Widget _buildPlaying() {
+  String _questionLabel(Map<String, String> strings, int current, int total) {
+    final template = strings['question_x_of_y'] ?? 'Question %s / %s';
+    return template.replaceFirst('%s', '$current').replaceFirst('%s', '$total');
+  }
+
+  Widget _buildPlaying(bool soundFxOn, Map<String, String> strings, String userLanguage) {
     final q = _questions[_currentIndex];
     final total = _questions.length;
     final isLast = _currentIndex + 1 >= total;
@@ -327,7 +366,7 @@ class _VocabularyQuizScreenState extends State<VocabularyQuizScreen> {
         Padding(
           padding: const EdgeInsets.fromLTRB(16, 8, 16, 0),
           child: Text(
-            'Question ${_currentIndex + 1} / $total',
+            _questionLabel(strings, _currentIndex + 1, total),
             style: Theme.of(context).textTheme.labelLarge?.copyWith(
                   color: Theme.of(context).colorScheme.primary,
                   fontWeight: FontWeight.w600,
@@ -339,7 +378,7 @@ class _VocabularyQuizScreenState extends State<VocabularyQuizScreen> {
         Expanded(
           child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
-            child: _buildCharactersRow(q),
+            child: _buildCharactersRow(q, userLanguage),
           ),
         ),
 
@@ -347,7 +386,7 @@ class _VocabularyQuizScreenState extends State<VocabularyQuizScreen> {
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 16),
           child: Column(
-            children: List.generate(4, (i) => _buildAnswerButton(i, q)),
+            children: List.generate(4, (i) => _buildAnswerButton(i, q, soundFxOn)),
           ),
         ),
 
@@ -359,8 +398,11 @@ class _VocabularyQuizScreenState extends State<VocabularyQuizScreen> {
             height: _kMinTouchTarget + 8,
             child: _showNext
                 ? FilledButton(
-                    onPressed: _goNext,
-                    child: Text(isLast ? 'Finish' : 'Next'),
+                    onPressed: () {
+                      audio.playClick(soundFxOn: soundFxOn);
+                      _goNext();
+                    },
+                    child: Text(isLast ? (strings['finish'] ?? 'Finish') : (strings['next'] ?? 'Next')),
                   )
                 : const SizedBox.shrink(),
           ),
@@ -371,28 +413,34 @@ class _VocabularyQuizScreenState extends State<VocabularyQuizScreen> {
           padding: const EdgeInsets.fromLTRB(16, 0, 16, 12),
           child: Row(
             children: [
-              if (_userLanguage != 'en') ...[
+              if (userLanguage != 'en') ...[
                 Expanded(
                   child: OutlinedButton.icon(
-                    onPressed: () =>
-                        setState(() => _showTranslation = !_showTranslation),
+                    onPressed: () {
+                      audio.playClick(soundFxOn: soundFxOn);
+                      setState(() => _showTranslation = !_showTranslation);
+                    },
                     icon: Icon(
                       _showTranslation
                           ? Icons.translate
                           : Icons.g_translate_outlined,
                       size: 18,
                     ),
-                    label: Text(_showTranslation ? 'English' : 'Translate'),
+                    label: Text(_showTranslation ? (strings['english'] ?? 'English') : (strings['translate'] ?? 'Translate')),
                   ),
                 ),
                 const SizedBox(width: 8),
               ],
               Expanded(
                 child: OutlinedButton.icon(
-                  onPressed:
-                      _conversationUnlocked ? _showFullConversation : null,
+                  onPressed: _conversationUnlocked
+                      ? () {
+                          audio.playClick(soundFxOn: soundFxOn);
+                          _showFullConversation();
+                        }
+                      : null,
                   icon: const Icon(Icons.chat_bubble_outline, size: 18),
-                  label: const Text('Full Conversation'),
+                  label: Text(strings['full_conversation'] ?? 'Full Conversation'),
                 ),
               ),
             ],
@@ -404,12 +452,12 @@ class _VocabularyQuizScreenState extends State<VocabularyQuizScreen> {
 
   // ── Characters row ─────────────────────────────────────────────────────────
 
-  Widget _buildCharactersRow(VocabularyQuestion q) {
+  Widget _buildCharactersRow(VocabularyQuestion q, String userLanguage) {
     final line1Text = _showTranslation
-        ? (q.line1[_userLanguage] ?? q.line1['en'] ?? '')
+        ? (q.line1[userLanguage] ?? q.line1['en'] ?? '')
         : (q.line1['en'] ?? '');
     final line2Text = _showTranslation
-        ? (q.line2[_userLanguage] ?? q.line2['en'] ?? '')
+        ? (q.line2[userLanguage] ?? q.line2['en'] ?? '')
         : (q.line2['en'] ?? '');
 
     final char1 = _level?.character1 ?? '';
@@ -581,7 +629,7 @@ class _VocabularyQuizScreenState extends State<VocabularyQuizScreen> {
 
   // ── Answer buttons ─────────────────────────────────────────────────────────
 
-  Widget _buildAnswerButton(int optionIndex, VocabularyQuestion q) {
+  Widget _buildAnswerButton(int optionIndex, VocabularyQuestion q, bool soundFxOn) {
     final option = _currentOptions[optionIndex];
     final isCorrect = option == q.answer;
     final isSelected = _selectedIndex == optionIndex;
@@ -620,7 +668,12 @@ class _VocabularyQuizScreenState extends State<VocabularyQuizScreen> {
         width: double.infinity,
         height: _kMinTouchTarget + 8,
         child: ElevatedButton(
-          onPressed: _answerLocked ? null : () => _onAnswerTap(optionIndex),
+          onPressed: _answerLocked
+              ? null
+              : () {
+                  audio.playClick(soundFxOn: soundFxOn);
+                  _onAnswerTap(optionIndex);
+                },
           style: buttonStyle,
           child: Text(
             _capitalize(option),
@@ -638,7 +691,7 @@ class _VocabularyQuizScreenState extends State<VocabularyQuizScreen> {
 
   // ── End panel ──────────────────────────────────────────────────────────────
 
-  Widget _buildEnd() {
+  Widget _buildEnd(bool soundFxOn, Map<String, String> strings) {
     final stars = _stars();
     final diamonds = _diamondsEarned();
 
@@ -649,7 +702,7 @@ class _VocabularyQuizScreenState extends State<VocabularyQuizScreen> {
           mainAxisSize: MainAxisSize.min,
           children: [
             Text(
-              'Level complete!',
+              strings['level_complete'] ?? 'Level complete!',
               style: Theme.of(context).textTheme.headlineSmall,
             ),
             const SizedBox(height: 24),
@@ -683,17 +736,23 @@ class _VocabularyQuizScreenState extends State<VocabularyQuizScreen> {
             ),
             const SizedBox(height: 8),
             OutlinedButton.icon(
-              onPressed: _showFullConversation,
+              onPressed: () {
+                audio.playClick(soundFxOn: soundFxOn);
+                _showFullConversation();
+              },
               icon: const Icon(Icons.chat_bubble_outline, size: 18),
-              label: const Text('View Full Conversation'),
+              label: Text(strings['view_full_conversation'] ?? 'View Full Conversation'),
             ),
             const SizedBox(height: 24),
             SizedBox(
               width: double.infinity,
               height: _kMinTouchTarget + 8,
               child: FilledButton(
-                onPressed: _onEndOk,
-                child: const Text('OK'),
+                onPressed: () {
+                  audio.playClick(soundFxOn: soundFxOn);
+                  _onEndOk();
+                },
+                child: Text(strings['ok'] ?? 'OK'),
               ),
             ),
           ],

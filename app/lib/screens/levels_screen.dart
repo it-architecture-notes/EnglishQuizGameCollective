@@ -1,10 +1,14 @@
 import 'dart:math' as math;
 
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:scrollable_positioned_list/scrollable_positioned_list.dart';
 
 import '../models/level_completion_result.dart';
 import '../models/quiz_flow.dart';
+import '../providers/localization_provider.dart';
+import '../providers/settings_provider.dart';
+import '../services/audio_service.dart' as audio;
 import '../services/quiz_flow_loader.dart';
 import '../services/quiz_progress_service.dart';
 import 'image_quiz_screen.dart';
@@ -62,22 +66,24 @@ class _SubsLayoutRow extends _LayoutRow {
   final SubLevelItem subLevelItem;
 }
 
-class LevelsScreen extends StatefulWidget {
+class LevelsScreen extends ConsumerStatefulWidget {
   const LevelsScreen({super.key, required this.quizType});
 
   /// Quiz type slug: 'image', 'vocabulary', 'grammar'.
   final String quizType;
 
   @override
-  State<LevelsScreen> createState() => _LevelsScreenState();
+  ConsumerState<LevelsScreen> createState() => _LevelsScreenState();
 }
 
-class _LevelsScreenState extends State<LevelsScreen> {
+class _LevelsScreenState extends ConsumerState<LevelsScreen> {
   List<LevelListItem> _items = [];
-  int _visibleCount = 10;
-  int _lastCompletedOrdinalIndex = 0;
-  int _firstLockedOrdinalIndex = 2; // 2 = level 1 unlocked only
-  int? _justReturnedFromOrdinal;
+  List<LevelListItem> _filtered = [];
+  QuizTypeProgress _progress = const QuizTypeProgress();
+  /// Window into _filtered: only _filtered[_windowStart.._windowEnd-1] are shown.
+  int _windowStart = 0;
+  int _windowEnd = 0;
+  int? _pendingScrollOrdinal;
   String? _loadError;
   bool _loading = true;
   late ItemScrollController _itemScrollController;
@@ -102,63 +108,67 @@ class _LevelsScreenState extends State<LevelsScreen> {
     super.dispose();
   }
 
+  /// Finds the index in [filtered] where the frontier level starts.
+  /// The frontier is the first unlocked level with 0 stars (current level to play).
+  /// Returns 0 if no frontier found (e.g. all completed or fresh start).
+  int _findFrontierIndex(List<LevelListItem> filtered, QuizTypeProgress progress) {
+    final unlocked = progress.unlockedLevelNumbers;
+    for (var i = 0; i < filtered.length; i++) {
+      final item = filtered[i];
+      if (item is SubLevelItem) {
+        final ordinal = item.ordinalLevelIndex;
+        if (unlocked.contains(ordinal) &&
+            (progress.levels[ordinal]?.highestStars ?? 0) == 0) {
+          if (i > 0 && filtered[i - 1] is BannerItem) return i - 1;
+          return i;
+        }
+      }
+    }
+    return 0;
+  }
+
+  /// Finds the index in [filtered] for a given ordinalLevelIndex.
+  int _findOrdinalIndex(List<LevelListItem> filtered, int ordinal) {
+    for (var i = 0; i < filtered.length; i++) {
+      final item = filtered[i];
+      if (item is SubLevelItem && item.ordinalLevelIndex == ordinal) {
+        if (i > 0 && filtered[i - 1] is BannerItem) return i - 1;
+        return i;
+      }
+    }
+    return 0;
+  }
+
   Future<void> _loadData() async {
     try {
-      final data = await loadQuizFlow(widget.quizType);
-      final progress = await QuizProgressService.instance.loadProgress(widget.quizType);
+      final results = await Future.wait([
+        loadQuizFlow(widget.quizType),
+        QuizProgressService.instance.loadProgress(widget.quizType),
+      ]);
+      final data = results[0] as QuizFlowData;
+      final progress = results[1] as QuizTypeProgress;
       final allItems = buildLevelItems(data);
+      final filtered = _applyFilter(allItems, progress);
 
-      int lastCompleted = 0;
-      for (final item in allItems) {
-        if (item is SubLevelItem) {
-          final lp = progress.level(item.ordinalLevelIndex);
-          if (lp.isCompleted && item.ordinalLevelIndex > lastCompleted) {
-            lastCompleted = item.ordinalLevelIndex;
-          }
-        }
+      int startAt;
+      final pending = _pendingScrollOrdinal;
+      if (pending != null) {
+        _pendingScrollOrdinal = null;
+        startAt = _findOrdinalIndex(filtered, pending);
+      } else {
+        startAt = _findFrontierIndex(filtered, progress);
       }
 
-      final horizon = lastCompleted + 10;
-      final filteredItems = <LevelListItem>[];
-      for (var i = 0; i < allItems.length; i++) {
-        final item = allItems[i];
-        if (item is SubLevelItem) {
-          if (item.ordinalLevelIndex <= horizon) filteredItems.add(item);
-        } else if (item is BannerItem) {
-          var hasVisibleSub = false;
-          for (var j = i + 1; j < allItems.length; j++) {
-            final next = allItems[j];
-            if (next is BannerItem) break;
-            if (next is SubLevelItem && next.ordinalLevelIndex <= horizon) {
-              hasVisibleSub = true;
-              break;
-            }
-          }
-          if (hasVisibleSub) filteredItems.add(item);
-        }
-      }
-
-      final visibleCount = filteredItems.length < _batchSize
-          ? filteredItems.length
-          : _batchSize.clamp(0, filteredItems.length);
+      final end = (startAt + _batchSize).clamp(0, filtered.length);
 
       if (mounted) {
         setState(() {
-          _items = filteredItems;
-          _visibleCount = visibleCount;
-          _lastCompletedOrdinalIndex = lastCompleted;
-          _firstLockedOrdinalIndex = lastCompleted + 2;
+          _items = allItems;
+          _filtered = filtered;
+          _progress = progress;
+          _windowStart = startAt;
+          _windowEnd = end;
           _loading = false;
-        });
-        WidgetsBinding.instance.addPostFrameCallback((_) {
-          if (!mounted) return;
-          final toScroll = _justReturnedFromOrdinal;
-          if (toScroll != null) {
-            _scrollToOrdinal(toScroll);
-            setState(() => _justReturnedFromOrdinal = null);
-          } else {
-            _scrollToFurthestUnlocked();
-          }
         });
       }
     } catch (e, st) {
@@ -172,55 +182,125 @@ class _LevelsScreenState extends State<LevelsScreen> {
     }
   }
 
+  Future<void> _reloadProgress() async {
+    final progress =
+        await QuizProgressService.instance.loadProgress(widget.quizType);
+    if (!mounted) return;
+    final filtered = _applyFilter(_items, progress);
+    setState(() {
+      _progress = progress;
+      _filtered = filtered;
+      _windowEnd = _windowEnd.clamp(0, filtered.length);
+      _windowStart = _windowStart.clamp(0, _windowEnd);
+    });
+  }
+
   void _onScroll() {
-    if (_items.length - _visibleCount <= 0) return;
     final positions = _itemPositionsListener.itemPositions.value;
     if (positions.isEmpty) return;
+
+    final minVisible = positions
+        .where((p) => p.itemLeadingEdge < 1)
+        .map((p) => p.index)
+        .fold<int>(999999, (a, b) => a < b ? a : b);
     final maxVisible = positions
         .where((p) => p.itemTrailingEdge > 0)
         .map((p) => p.index)
         .fold<int>(0, (a, b) => a > b ? a : b);
-    if (maxVisible >= _visibleCount - 2) {
-      final newCount = (_visibleCount + _batchSize).clamp(0, _items.length);
-      if (newCount != _visibleCount && mounted) {
-        setState(() => _visibleCount = newCount);
+
+    final windowedItemCount = _windowEnd - _windowStart;
+
+    if (maxVisible >= windowedItemCount - 2 && _windowEnd < _filtered.length) {
+      final newEnd = (_windowEnd + _batchSize).clamp(0, _filtered.length);
+      if (newEnd != _windowEnd && mounted) {
+        setState(() => _windowEnd = newEnd);
+      }
+    }
+
+    if (minVisible <= 1 && _windowStart > 0) {
+      final oldStart = _windowStart;
+      final newStart = (_windowStart - _batchSize).clamp(0, _filtered.length);
+      if (newStart != oldStart && mounted) {
+        final added = oldStart - newStart;
+        setState(() => _windowStart = newStart);
+        if (_itemScrollController.isAttached) {
+          _itemScrollController.jumpTo(index: minVisible + added);
+        }
       }
     }
   }
 
   List<_LayoutRow> get _visibleLayoutRows {
-    final slice = _items.take(_visibleCount).toList();
-    return _itemsToLayoutRows(slice);
+    final windowed = _filtered.sublist(_windowStart, _windowEnd);
+    return _itemsToLayoutRows(windowed);
   }
 
-  void _scrollToOrdinal(int ordinal) {
-    final rows = _visibleLayoutRows;
-    for (var i = 0; i < rows.length; i++) {
-      final row = rows[i];
-      if (row is _SubsLayoutRow &&
-          row.subLevelItem.ordinalLevelIndex == ordinal) {
-        _itemScrollController.scrollTo(
-          index: i,
-          duration: const Duration(milliseconds: 400),
-          curve: Curves.easeInOut,
-          alignment: 0.3,
-        );
-        return;
+  static const int _maxLockedPreview = 10;
+
+  static List<LevelListItem> _applyFilter(
+    List<LevelListItem> rawItems,
+    QuizTypeProgress progress,
+  ) {
+    final unlocked = progress.unlockedLevelNumbers;
+    final visibleOrdinals = <int>{};
+    var lockedRemaining = _maxLockedPreview;
+    for (final item in rawItems) {
+      if (item is SubLevelItem) {
+        if (unlocked.contains(item.ordinalLevelIndex)) {
+          visibleOrdinals.add(item.ordinalLevelIndex);
+        } else if (lockedRemaining > 0) {
+          visibleOrdinals.add(item.ordinalLevelIndex);
+          lockedRemaining--;
+        }
       }
     }
+
+    final visibleMainLevels = <int>{};
+    for (final item in rawItems) {
+      if (item is SubLevelItem &&
+          visibleOrdinals.contains(item.ordinalLevelIndex)) {
+        visibleMainLevels.add(item.sub.mainLevel);
+      }
+    }
+
+    return rawItems.where((item) {
+      if (item is BannerItem) {
+        return visibleMainLevels.contains(item.meta.mainLevel);
+      }
+      if (item is SubLevelItem) {
+        return visibleOrdinals.contains(item.ordinalLevelIndex);
+      }
+      return false;
+    }).toList();
   }
 
-  void _scrollToFurthestUnlocked() {
-    final targetOrdinal = _lastCompletedOrdinalIndex + 1;
-    if (targetOrdinal <= 0) return;
-    _scrollToOrdinal(targetOrdinal.clamp(1, 999));
+  String _titleFromStrings(Map<String, String> strings) {
+    final key = 'quiz_title_${widget.quizType}';
+    return strings[key] ?? _titleFromSlug(widget.quizType);
+  }
+
+  static String _titleFromSlug(String slug) {
+    switch (slug) {
+      case 'image':
+        return 'Image Quiz';
+      case 'vocabulary':
+        return 'Vocabulary';
+      case 'grammar':
+        return 'Grammar';
+      default:
+        return slug;
+    }
   }
 
   @override
   Widget build(BuildContext context) {
+    final strings =
+        ref.watch(currentLocalizedStringsProvider).valueOrNull ?? {};
+    final title = _titleFromStrings(strings);
+
     if (_loading) {
       return Scaffold(
-        appBar: AppBar(title: Text(_titleFromSlug(widget.quizType))),
+        appBar: AppBar(title: Text(title)),
         body: const Center(child: CircularProgressIndicator()),
       );
     }
@@ -228,7 +308,7 @@ class _LevelsScreenState extends State<LevelsScreen> {
     if (_loadError != null) {
       return Scaffold(
         appBar: AppBar(
-          title: Text(_titleFromSlug(widget.quizType)),
+          title: Text(title),
           leading: IconButton(
             icon: const Icon(Icons.arrow_back),
             onPressed: () => Navigator.of(context).pop(),
@@ -248,10 +328,14 @@ class _LevelsScreenState extends State<LevelsScreen> {
     }
 
     final visibleRows = _visibleLayoutRows;
+    int subRowsBefore = 0;
+    for (var i = 0; i < _windowStart; i++) {
+      if (_filtered[i] is SubLevelItem) subRowsBefore++;
+    }
 
     return Scaffold(
       appBar: AppBar(
-        title: Text(_titleFromSlug(widget.quizType)),
+        title: Text(title),
         leading: IconButton(
           icon: const Icon(Icons.arrow_back),
           onPressed: () => Navigator.of(context).pop(),
@@ -265,10 +349,8 @@ class _LevelsScreenState extends State<LevelsScreen> {
           itemCount: visibleRows.length,
           itemBuilder: (context, index) {
             final row = visibleRows[index];
-            final globalSubRowIndex = visibleRows
-                .take(index)
-                .whereType<_SubsLayoutRow>()
-                .length;
+            final globalSubRowIndex = subRowsBefore +
+                visibleRows.take(index).whereType<_SubsLayoutRow>().length;
             return _buildRow(context, row, globalSubRowIndex);
           },
         ),
@@ -293,7 +375,10 @@ class _LevelsScreenState extends State<LevelsScreen> {
       margin: const EdgeInsets.only(top: 16, bottom: 8),
       padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 16),
       decoration: BoxDecoration(
-        color: Theme.of(context).colorScheme.primaryContainer.withValues(alpha: 0.6),
+        color: Theme.of(context)
+            .colorScheme
+            .primaryContainer
+            .withValues(alpha: 0.6),
         borderRadius: BorderRadius.circular(12),
       ),
       child: Text(
@@ -311,17 +396,21 @@ class _LevelsScreenState extends State<LevelsScreen> {
     SubLevelItem subLevelItem,
   ) {
     final width = MediaQuery.sizeOf(context).width;
-    const horizontalPadding = 16.0 * 2; // ListView horizontal padding
+    const horizontalPadding = 16.0 * 2;
     final iconSize = width / 5;
     final contentWidth = width - horizontalPadding;
-    const cellHorizontalPadding = 8.0; // 4 + 4 from cell
+    const cellHorizontalPadding = 8.0;
     final cellWidth = iconSize + 8 + cellHorizontalPadding;
     final pathRange = (contentWidth - cellWidth).clamp(0.0, double.infinity);
     const phase = -math.pi / 2;
     final t = (math.sin(globalSubRowIndex * _sinFrequency + phase) + 1) / 2;
     final leftOffset = t * pathRange;
-    final isUnlocked = subLevelItem.ordinalLevelIndex <= _firstLockedOrdinalIndex;
-    final isLocked = !isUnlocked;
+
+    final isLocked =
+        !_progress.unlockedLevelNumbers.contains(subLevelItem.ordinalLevelIndex);
+    final stars =
+        _progress.levels[subLevelItem.ordinalLevelIndex]?.highestStars ?? 0;
+
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 4),
       child: Row(
@@ -334,6 +423,7 @@ class _LevelsScreenState extends State<LevelsScreen> {
               subLevelItem,
               iconSize,
               isLocked: isLocked,
+              stars: stars,
             ),
           ),
         ],
@@ -346,16 +436,59 @@ class _LevelsScreenState extends State<LevelsScreen> {
     SubLevelItem subLevelItem,
     double iconSize, {
     required bool isLocked,
+    required int stars,
   }) {
     final sub = subLevelItem.sub;
     final iconPath = 'assets/images/level-icons/${sub.iconImageName}.png';
 
-    Widget cell = Padding(
+    Widget iconWidget = ClipRRect(
+      borderRadius: BorderRadius.circular(12),
+      child: Image.asset(
+        iconPath,
+        fit: BoxFit.cover,
+        errorBuilder: (_, __, ___) => Container(
+          color: Colors.grey.shade300,
+          child: Icon(
+            Icons.image_not_supported_outlined,
+            size: iconSize * 0.5,
+            color: Colors.grey.shade600,
+          ),
+        ),
+      ),
+    );
+
+    if (isLocked) {
+      iconWidget = ColorFiltered(
+        colorFilter: const ColorFilter.matrix(<double>[
+          0.2126, 0.7152, 0.0722, 0, 0,
+          0.2126, 0.7152, 0.0722, 0, 0,
+          0.2126, 0.7152, 0.0722, 0, 0,
+          0, 0, 0, 0.5, 0,
+        ]),
+        child: iconWidget,
+      );
+      iconWidget = Stack(
+        alignment: Alignment.center,
+        children: [
+          iconWidget,
+          const Icon(Icons.lock_rounded, color: Colors.white70, size: 28),
+        ],
+      );
+    }
+
+    return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 4, vertical: 8),
       child: Material(
         color: Colors.transparent,
         child: InkWell(
-          onTap: isLocked ? null : () => _openQuiz(context, subLevelItem),
+          onTap: isLocked
+              ? null
+              : () {
+                  final soundFxOn =
+                      ref.read(settingsProvider).valueOrNull?.soundFxOn ?? true;
+                  audio.playClick(soundFxOn: soundFxOn);
+                  _openQuiz(context, subLevelItem);
+                },
           borderRadius: BorderRadius.circular(12),
           child: Column(
             mainAxisSize: MainAxisSize.min,
@@ -363,31 +496,39 @@ class _LevelsScreenState extends State<LevelsScreen> {
               SizedBox(
                 width: iconSize,
                 height: iconSize,
-                child: ClipRRect(
-                  borderRadius: BorderRadius.circular(12),
-                  child: Image.asset(
-                    iconPath,
-                    fit: BoxFit.cover,
-                    errorBuilder: (_, __, ___) => Container(
-                      color: Colors.grey.shade300,
-                      child: Icon(
-                        Icons.image_not_supported_outlined,
-                        size: iconSize * 0.5,
-                        color: Colors.grey.shade600,
-                      ),
-                    ),
-                  ),
-                ),
+                child: iconWidget,
               ),
               const SizedBox(height: 6),
               SizedBox(
                 width: iconSize + 8,
-                child: Text(
-                  sub.title,
-                  textAlign: TextAlign.center,
-                  maxLines: 2,
-                  overflow: TextOverflow.ellipsis,
-                  style: Theme.of(context).textTheme.bodySmall,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
+                  children: [
+                    Text(
+                      sub.title,
+                      textAlign: TextAlign.center,
+                      maxLines: 2,
+                      overflow: TextOverflow.ellipsis,
+                      style: Theme.of(context).textTheme.bodySmall?.copyWith(
+                            color: isLocked ? Colors.grey.shade400 : null,
+                          ),
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      children: List.generate(
+                        3,
+                        (i) => Icon(
+                          i < stars
+                              ? Icons.star_rounded
+                              : Icons.star_border_rounded,
+                          size: 12,
+                          color: isLocked
+                              ? Colors.grey.shade300
+                              : Colors.amber,
+                        ),
+                      ),
+                    ),
+                  ],
                 ),
               ),
             ],
@@ -395,19 +536,6 @@ class _LevelsScreenState extends State<LevelsScreen> {
         ),
       ),
     );
-
-    if (isLocked) {
-      cell = ColorFiltered(
-        colorFilter: const ColorFilter.matrix(<double>[
-          0.2126, 0.7152, 0.0722, 0, 0,
-          0.2126, 0.7152, 0.0722, 0, 0,
-          0.2126, 0.7152, 0.0722, 0, 0,
-          0, 0, 0, 1, 0,
-        ]),
-        child: cell,
-      );
-    }
-    return cell;
   }
 
   void _openQuiz(BuildContext context, SubLevelItem subLevelItem) async {
@@ -432,29 +560,16 @@ class _LevelsScreenState extends State<LevelsScreen> {
                 ),
     );
 
-    final result = await Navigator.of(context).push<LevelCompletionResult>(route);
-
+    final result =
+        await Navigator.of(context).push<LevelCompletionResult>(route);
     if (!mounted) return;
-    if (result != null && result.completed) {
-      setState(() {
-        _justReturnedFromOrdinal = result.ordinalLevelIndex;
-      });
-      await _loadData();
-      if (!mounted) return;
-      _scrollToOrdinal(result.ordinalLevelIndex);
-    }
-  }
+    if (result == null) return;
 
-  static String _titleFromSlug(String slug) {
-    switch (slug) {
-      case 'image':
-        return 'Image Quiz';
-      case 'vocabulary':
-        return 'Vocabulary';
-      case 'grammar':
-        return 'Grammar';
-      default:
-        return slug;
+    if (result.completed) {
+      _pendingScrollOrdinal = result.ordinalLevelIndex;
+      await _loadData();
+    } else {
+      await _reloadProgress();
     }
   }
 }

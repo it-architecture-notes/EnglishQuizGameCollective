@@ -1,10 +1,14 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../models/level_completion_result.dart';
 import '../../models/quiz_flow.dart';
+import '../../providers/localization_provider.dart';
+import '../../providers/settings_provider.dart';
 import '../../services/achievement_service.dart';
+import '../../services/audio_service.dart' as audio;
 import '../../services/game_config_loader.dart';
 import '../../services/image_quiz_level_loader.dart';
 import '../../services/profile_service.dart';
@@ -18,7 +22,7 @@ const double kMinTouchTarget = 48;
 
 enum _Phase { loading, playing, end }
 
-class ImageQuizScreen extends StatefulWidget {
+class ImageQuizScreen extends ConsumerStatefulWidget {
   const ImageQuizScreen({
     super.key,
     required this.subLevel,
@@ -32,10 +36,10 @@ class ImageQuizScreen extends StatefulWidget {
   final int ordinalLevelIndex;
 
   @override
-  State<ImageQuizScreen> createState() => _ImageQuizScreenState();
+  ConsumerState<ImageQuizScreen> createState() => _ImageQuizScreenState();
 }
 
-class _ImageQuizScreenState extends State<ImageQuizScreen> {
+class _ImageQuizScreenState extends ConsumerState<ImageQuizScreen> {
   _Phase _phase = _Phase.loading;
   String? _loadError;
   List<String> _questionAssetPaths = [];
@@ -56,6 +60,12 @@ class _ImageQuizScreenState extends State<ImageQuizScreen> {
   void initState() {
     super.initState();
     _loadLevel();
+  }
+
+  @override
+  void dispose() {
+    audio.stopQuizMusic();
+    super.dispose();
   }
 
   Future<void> _loadLevel() async {
@@ -95,6 +105,8 @@ class _ImageQuizScreenState extends State<ImageQuizScreen> {
           _quizStartTime = DateTime.now();
           _currentOptions = _buildOptions();
         });
+        final musicOn = ref.read(settingsProvider).valueOrNull?.musicOn ?? true;
+        audio.startQuizMusic(musicOn: musicOn);
       }
     } catch (e, st) {
       debugPrint('ImageQuizScreen _loadLevel: $e\n$st');
@@ -124,6 +136,12 @@ class _ImageQuizScreenState extends State<ImageQuizScreen> {
     final option = _currentOptions[optionIndex];
     final correct = _correctAnswer();
     final isCorrect = option == correct;
+    final soundFxOn = ref.read(settingsProvider).valueOrNull?.soundFxOn ?? true;
+    if (isCorrect) {
+      audio.playCorrect(soundFxOn: soundFxOn);
+    } else {
+      audio.playWrong(soundFxOn: soundFxOn);
+    }
     AchievementService.instance.recordAnswer(isCorrect);
     setState(() {
       _answerLocked = true;
@@ -204,35 +222,45 @@ class _ImageQuizScreenState extends State<ImageQuizScreen> {
 
   @override
   Widget build(BuildContext context) {
+    ref.listen(settingsProvider, (prev, next) {
+      if (next.valueOrNull?.musicOn == true && _phase == _Phase.playing) {
+        audio.startQuizMusic(musicOn: true);
+      }
+    });
+    final soundFxOn = ref.read(settingsProvider).valueOrNull?.soundFxOn ?? true;
+    final strings = ref.watch(currentLocalizedStringsProvider).valueOrNull ?? {};
     return Scaffold(
       appBar: AppBar(
         title: Text(widget.subLevel.title),
         leading: IconButton(
           icon: const Icon(Icons.arrow_back),
-          onPressed: () => Navigator.of(context).pop(LevelCompletionResult(
-                ordinalLevelIndex: widget.ordinalLevelIndex,
-                completed: false,
-              )),
+          onPressed: () {
+            audio.playClick(soundFxOn: soundFxOn);
+            Navigator.of(context).pop(LevelCompletionResult(
+                  ordinalLevelIndex: widget.ordinalLevelIndex,
+                  completed: false,
+                ));
+          },
         ),
       ),
       body: SafeArea(
-        child: _buildBody(),
+        child: _buildBody(soundFxOn, strings),
       ),
     );
   }
 
-  Widget _buildBody() {
+  Widget _buildBody(bool soundFxOn, Map<String, String> strings) {
     switch (_phase) {
       case _Phase.loading:
-        return _buildLoading();
+        return _buildLoading(soundFxOn, strings);
       case _Phase.playing:
-        return _buildPlaying();
+        return _buildPlaying(soundFxOn, strings);
       case _Phase.end:
-        return _buildEnd();
+        return _buildEnd(soundFxOn, strings);
     }
   }
 
-  Widget _buildLoading() {
+  Widget _buildLoading(bool soundFxOn, Map<String, String> strings) {
     if (_loadError != null) {
       return Padding(
         padding: const EdgeInsets.all(24),
@@ -246,11 +274,14 @@ class _ImageQuizScreenState extends State<ImageQuizScreen> {
             ),
             const SizedBox(height: 24),
             FilledButton(
-              onPressed: () => Navigator.of(context).pop(LevelCompletionResult(
-                    ordinalLevelIndex: widget.ordinalLevelIndex,
-                    completed: false,
-                  )),
-              child: const Text('Back to Levels'),
+              onPressed: () {
+                audio.playClick(soundFxOn: soundFxOn);
+                Navigator.of(context).pop(LevelCompletionResult(
+                      ordinalLevelIndex: widget.ordinalLevelIndex,
+                      completed: false,
+                    ));
+              },
+              child: Text(strings['back_to_levels'] ?? 'Back to Levels'),
             ),
           ],
         ),
@@ -259,7 +290,7 @@ class _ImageQuizScreenState extends State<ImageQuizScreen> {
     return const Center(child: CircularProgressIndicator());
   }
 
-  Widget _buildPlaying() {
+  Widget _buildPlaying(bool soundFxOn, Map<String, String> strings) {
     final path = _questionAssetPaths[_currentIndex];
     final isLast = _currentIndex + 1 >= _questionAssetPaths.length;
 
@@ -321,7 +352,12 @@ class _ImageQuizScreenState extends State<ImageQuizScreen> {
                   width: double.infinity,
                   height: kMinTouchTarget + 8,
                   child: ElevatedButton(
-                    onPressed: _answerLocked ? null : () => _onAnswerTap(i),
+                    onPressed: _answerLocked
+                        ? null
+                        : () {
+                            audio.playClick(soundFxOn: soundFxOn);
+                            _onAnswerTap(i);
+                          },
                     style: buttonStyle,
                     child: Text(
                       _capitalize(option),
@@ -346,8 +382,11 @@ class _ImageQuizScreenState extends State<ImageQuizScreen> {
             height: kMinTouchTarget + 8,
             child: _showNext
                 ? FilledButton(
-                    onPressed: _goNext,
-                    child: Text(isLast ? 'Finish' : 'Next'),
+                    onPressed: () {
+                      audio.playClick(soundFxOn: soundFxOn);
+                      _goNext();
+                    },
+                    child: Text(isLast ? (strings['finish'] ?? 'Finish') : (strings['next'] ?? 'Next')),
                   )
                 : const SizedBox.shrink(),
           ),
@@ -356,7 +395,7 @@ class _ImageQuizScreenState extends State<ImageQuizScreen> {
     );
   }
 
-  Widget _buildEnd() {
+  Widget _buildEnd(bool soundFxOn, Map<String, String> strings) {
     final stars = _stars();
     final diamonds = _diamondsEarned();
 
@@ -367,7 +406,7 @@ class _ImageQuizScreenState extends State<ImageQuizScreen> {
           mainAxisSize: MainAxisSize.min,
           children: [
             Text(
-              'Level complete!',
+              strings['level_complete'] ?? 'Level complete!',
               style: Theme.of(context).textTheme.headlineSmall,
             ),
             const SizedBox(height: 24),
@@ -398,8 +437,11 @@ class _ImageQuizScreenState extends State<ImageQuizScreen> {
               width: double.infinity,
               height: kMinTouchTarget + 8,
               child: FilledButton(
-                onPressed: _onEndOk,
-                child: const Text('OK'),
+                onPressed: () {
+                  audio.playClick(soundFxOn: soundFxOn);
+                  _onEndOk();
+                },
+                child: Text(strings['ok'] ?? 'OK'),
               ),
             ),
           ],

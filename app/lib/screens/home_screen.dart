@@ -1,13 +1,16 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import '../providers/localization_provider.dart';
+import '../providers/settings_provider.dart';
+import '../services/audio_service.dart' as audio;
 import '../services/resolution_service.dart';
-import '../services/test_data_service.dart';
 import 'achievements_panel_content.dart';
 import 'friends_panel_content.dart';
 import 'levels_screen.dart';
 import 'panel_overlay.dart';
 import 'profile_panel_screen.dart';
+import 'settings_panel_content.dart';
 import 'transitions/custom_page_routes.dart';
 
 /// Home screen design colors (light lavender background, purple accent).
@@ -18,19 +21,22 @@ class _HomeColors {
   static const Color onPrimary = Color(0xFFFFFFFF); // White text & icons
 }
 
-class HomeScreen extends StatefulWidget {
+class HomeScreen extends ConsumerStatefulWidget {
   const HomeScreen({super.key});
 
   @override
-  State<HomeScreen> createState() => _HomeScreenState();
+  ConsumerState<HomeScreen> createState() => _HomeScreenState();
 }
 
-class _HomeScreenState extends State<HomeScreen> {
+class _HomeScreenState extends ConsumerState<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.sizeOf(context);
     final bucket = resolutionBucketFromSize(size);
     final isTablet = bucket.isTablet;
+    final strings = ref.watch(currentLocalizedStringsProvider).valueOrNull ?? {};
+    final settings = ref.watch(settingsProvider).valueOrNull;
+    final soundFxOn = settings?.soundFxOn ?? true;
 
     return Scaffold(
       backgroundColor: _HomeColors.background,
@@ -41,14 +47,14 @@ class _HomeScreenState extends State<HomeScreen> {
             Container(color: _HomeColors.background),
             Center(
               child: isTablet
-                  ? _buildTabletQuizButtons()
-                  : _buildPhoneQuizButtons(),
+                  ? _buildTabletQuizButtons(soundFxOn, strings)
+                  : _buildPhoneQuizButtons(soundFxOn, strings),
             ),
             Positioned(
               left: 0,
               right: 0,
               bottom: 0,
-              child: _buildBottomNav(),
+              child: _buildBottomNav(strings, soundFxOn),
             ),
           ],
         ),
@@ -56,25 +62,34 @@ class _HomeScreenState extends State<HomeScreen> {
     );
   }
 
-  Widget _buildPhoneQuizButtons() {
+  Widget _buildPhoneQuizButtons(bool soundFxOn, Map<String, String> strings) {
+    void withClick(VoidCallback action) {
+      audio.playClick(soundFxOn: soundFxOn);
+      action();
+    }
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 28),
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
-          _quizButton(
-              'Image Quiz', _openLevelSelection('Image Quiz', popFadeRoute)),
+          _quizButton(strings['quiz_title_image'] ?? 'Image Quiz',
+              () => withClick(_openLevelSelection('image', popFadeRoute))),
           const SizedBox(height: 16),
-          _quizButton(
-              'Vocabulary', _openLevelSelection('Vocabulary', popFadeRoute)),
+          _quizButton(strings['quiz_title_vocabulary'] ?? 'Vocabulary',
+              () => withClick(_openLevelSelection('vocabulary', popFadeRoute))),
           const SizedBox(height: 16),
-          _quizButton('Grammar', _openLevelSelection('Grammar', popFadeRoute)),
+          _quizButton(strings['quiz_title_grammar'] ?? 'Grammar',
+              () => withClick(_openLevelSelection('grammar', popFadeRoute))),
         ],
       ),
     );
   }
 
-  Widget _buildTabletQuizButtons() {
+  Widget _buildTabletQuizButtons(bool soundFxOn, Map<String, String> strings) {
+    void withClick(VoidCallback action) {
+      audio.playClick(soundFxOn: soundFxOn);
+      action();
+    }
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 48),
       child: GridView.count(
@@ -85,11 +100,12 @@ class _HomeScreenState extends State<HomeScreen> {
         physics: const NeverScrollableScrollPhysics(),
         childAspectRatio: 1.8,
         children: [
-          _quizButton(
-              'Image Quiz', _openLevelSelection('Image Quiz', popFadeRoute)),
-          _quizButton(
-              'Vocabulary', _openLevelSelection('Vocabulary', popFadeRoute)),
-          _quizButton('Grammar', _openLevelSelection('Grammar', popFadeRoute)),
+          _quizButton(strings['quiz_title_image'] ?? 'Image Quiz',
+              () => withClick(_openLevelSelection('image', popFadeRoute))),
+          _quizButton(strings['quiz_title_vocabulary'] ?? 'Vocabulary',
+              () => withClick(_openLevelSelection('vocabulary', popFadeRoute))),
+          _quizButton(strings['quiz_title_grammar'] ?? 'Grammar',
+              () => withClick(_openLevelSelection('grammar', popFadeRoute))),
         ],
       ),
     );
@@ -115,32 +131,22 @@ class _HomeScreenState extends State<HomeScreen> {
     );
   }
 
-  static String _quizTypeToSlug(String label) {
-    switch (label) {
-      case 'Image Quiz':
-        return 'image';
-      case 'Vocabulary':
-        return 'vocabulary';
-      case 'Grammar':
-        return 'grammar';
-      default:
-        return label.toLowerCase().replaceAll(' ', '_');
-    }
-  }
-
   VoidCallback _openLevelSelection(
-    String quizType,
+    String slug,
     Route<void> Function(Widget) routeBuilder,
   ) {
     return () {
-      final slug = _quizTypeToSlug(quizType);
       Navigator.of(context).push(
         routeBuilder(LevelsScreen(quizType: slug)),
       );
     };
   }
 
-  Widget _buildBottomNav() {
+  Widget _buildBottomNav(Map<String, String> strings, bool soundFxOn) {
+    void withClick(VoidCallback action) {
+      audio.playClick(soundFxOn: soundFxOn);
+      action();
+    }
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 16),
       child: Row(
@@ -148,13 +154,15 @@ class _HomeScreenState extends State<HomeScreen> {
         children: [
           _navItem(
             Icons.person_outline,
-            'Me',
-            () => showProfilePanelOverlay(context),
+            strings['nav_me'] ?? 'Me',
+            () => withClick(() => showProfilePanelOverlay(context)),
           ),
-          _navItem(Icons.emoji_events, 'Trophies',
-              () => _showAchievementsPanel()),
-          _navItem(Icons.favorite, 'Friends', () => _showFriendsPanel()),
-          _navItem(Icons.settings, 'Settings', () => _showSettingsPanel()),
+          _navItem(Icons.emoji_events, strings['nav_trophies'] ?? 'Trophies',
+              () => withClick(() => _showAchievementsPanel(strings))),
+          _navItem(Icons.favorite, strings['nav_friends'] ?? 'Friends',
+              () => withClick(() => _showFriendsPanel(strings))),
+          _navItem(Icons.settings, strings['nav_settings'] ?? 'Settings',
+              () => withClick(() => _showSettingsPanel(strings))),
         ],
       ),
     );
@@ -193,131 +201,26 @@ class _HomeScreenState extends State<HomeScreen> {
     );
   }
 
-  void _showSettingsPanel() {
+  void _showSettingsPanel(Map<String, String> strings) {
     showPanelOverlay(
       context,
-      title: 'Settings',
-      body: SingleChildScrollView(
-        child: Padding(
-          padding: const EdgeInsets.only(bottom: 16),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                'App settings – coming soon',
-                style: TextStyle(fontSize: 16, color: Colors.grey[700]),
-              ),
-              if (kDebugMode) ...[
-                const SizedBox(height: 24),
-                Text(
-                  'Issue-8 test data',
-                  style: TextStyle(
-                    fontSize: 14,
-                    fontWeight: FontWeight.w600,
-                    color: Colors.grey[800],
-                  ),
-                ),
-                const SizedBox(height: 8),
-                Wrap(
-                  spacing: 8,
-                  runSpacing: 8,
-                  children: [
-                    ElevatedButton(
-                      onPressed: () async {
-                        await TestDataService.instance.seedTrophyTestData();
-                        if (context.mounted) {
-                          ScaffoldMessenger.of(context).showSnackBar(
-                            const SnackBar(
-                              content: Text(
-                                'Trophy test data seeded. Open Trophies to verify.',
-                              ),
-                            ),
-                          );
-                        }
-                      },
-                      child: const Text('Seed trophy test data'),
-                    ),
-                    ElevatedButton(
-                      onPressed: () async {
-                        await TestDataService.instance.seedStreakTestData3Day();
-                        if (context.mounted) {
-                          ScaffoldMessenger.of(context).showSnackBar(
-                            const SnackBar(
-                              content: Text(
-                                '3-day streak seed: complete one level today to unlock.',
-                              ),
-                            ),
-                          );
-                        }
-                      },
-                      child: const Text('Seed 3-day streak test'),
-                    ),
-                    ElevatedButton(
-                      onPressed: () async {
-                        await TestDataService.instance.seedStreakTestData30Day();
-                        if (context.mounted) {
-                          ScaffoldMessenger.of(context).showSnackBar(
-                            const SnackBar(
-                              content: Text(
-                                '30-day streak seed: complete one level today to unlock.',
-                              ),
-                            ),
-                          );
-                        }
-                      },
-                      child: const Text('Seed 30-day streak test'),
-                    ),
-                    ElevatedButton(
-                      onPressed: () async {
-                        await TestDataService.instance.seedDiamondsForFriendsTest(150);
-                        if (context.mounted) {
-                          ScaffoldMessenger.of(context).showSnackBar(
-                            const SnackBar(
-                              content: Text('150 diamonds seeded. Open Friends to test freeing.'),
-                            ),
-                          );
-                        }
-                      },
-                      child: const Text('150 diamonds (Friends test)'),
-                    ),
-                    ElevatedButton(
-                      onPressed: () async {
-                        await TestDataService.instance.clearTestData();
-                        if (context.mounted) {
-                          ScaffoldMessenger.of(context).showSnackBar(
-                            const SnackBar(
-                              content: Text('Test data cleared.'),
-                            ),
-                          );
-                        }
-                      },
-                      style: ElevatedButton.styleFrom(
-                        backgroundColor: Colors.red.shade300,
-                      ),
-                      child: const Text('Clear test data'),
-                    ),
-                  ],
-                ),
-              ],
-            ],
-          ),
-        ),
-      ),
+      title: strings['settings_title'] ?? 'Settings',
+      body: const SettingsPanelContent(),
     );
   }
 
-  void _showAchievementsPanel() {
+  void _showAchievementsPanel(Map<String, String> strings) {
     showPanelOverlay(
       context,
-      title: 'Achievements',
+      title: strings['nav_trophies'] ?? 'Trophies',
       body: const AchievementsPanelContent(),
     );
   }
 
-  void _showFriendsPanel() {
+  void _showFriendsPanel(Map<String, String> strings) {
     showPanelOverlay(
       context,
-      title: 'Friends',
+      title: strings['nav_friends'] ?? 'Friends',
       body: const FriendsPanelContent(),
     );
   }

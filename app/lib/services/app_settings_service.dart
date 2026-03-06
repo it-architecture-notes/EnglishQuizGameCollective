@@ -3,25 +3,21 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 /// Manages user-facing app settings persisted via SharedPreferences.
 ///
-/// Currently stores:
-/// - [getLanguage] / [setLanguage]: the user's preferred translation language
-///   (BCP-47 code such as "en", "tr", "es"). Defaults to "en".
-///
-/// The vocabulary quiz screen reads [getLanguage] to decide whether to show
-/// the translate toggle. The actual language selection UI lives in the
-/// Settings screen (future issue).
+/// Stores: language ([getLanguage]/[setLanguage]), music on/off ([getMusicOn]/[setMusicOn]),
+/// sound/FX on/off ([getSoundFxOn]/[setSoundFxOn]). Defaults: language "en", music on, sound/FX on.
 class AppSettingsService {
   AppSettingsService._();
 
   static const String _langKey = 'app_language';
-  static const String _defaultLanguage = 'es';
+  static const String _musicKey = 'app_music_on';
+  static const String _soundFxKey = 'app_sound_fx_on';
+  static const String _defaultLanguage = 'en';
 
   static SharedPreferences? _prefs;
 
   static Future<SharedPreferences> get _preferences async =>
       _prefs ??= await SharedPreferences.getInstance();
 
-  /// Returns the user's preferred language code. Defaults to [_defaultLanguage].
   static Future<String> getLanguage() async {
     try {
       final prefs = await _preferences;
@@ -32,14 +28,50 @@ class AppSettingsService {
     }
   }
 
-  /// Persists [lang] as the user's preferred language code (e.g. "tr", "es").
-  /// Pass "en" to disable translation (hides translate button in vocabulary quiz).
   static Future<void> setLanguage(String lang) async {
     try {
       final prefs = await _preferences;
       await prefs.setString(_langKey, lang);
     } catch (e, st) {
       debugPrint('AppSettingsService.setLanguage: $e\n$st');
+    }
+  }
+
+  static Future<bool> getMusicOn() async {
+    try {
+      final prefs = await _preferences;
+      return prefs.getBool(_musicKey) ?? true;
+    } catch (e, st) {
+      debugPrint('AppSettingsService.getMusicOn: $e\n$st');
+      return true;
+    }
+  }
+
+  static Future<void> setMusicOn(bool value) async {
+    try {
+      final prefs = await _preferences;
+      await prefs.setBool(_musicKey, value);
+    } catch (e, st) {
+      debugPrint('AppSettingsService.setMusicOn: $e\n$st');
+    }
+  }
+
+  static Future<bool> getSoundFxOn() async {
+    try {
+      final prefs = await _preferences;
+      return prefs.getBool(_soundFxKey) ?? true;
+    } catch (e, st) {
+      debugPrint('AppSettingsService.getSoundFxOn: $e\n$st');
+      return true;
+    }
+  }
+
+  static Future<void> setSoundFxOn(bool value) async {
+    try {
+      final prefs = await _preferences;
+      await prefs.setBool(_soundFxKey, value);
+    } catch (e, st) {
+      debugPrint('AppSettingsService.setSoundFxOn: $e\n$st');
     }
   }
 }
