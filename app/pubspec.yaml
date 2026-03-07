@@ -28,6 +28,7 @@ flutter:
     - assets/images/backgrounds/tablet_1610/
     - assets/images/buttons/
     - assets/images/characters/
+    - assets/images/grammar-characters/
     - assets/images/avatars/
     - assets/images/level-icons/
     - assets/images/achievements/

@@ -25,7 +25,14 @@
     "quiz_title_vocabulary": "Vocabulary",
     "quiz_title_grammar": "Grammar",
     "full_conversation": "Full Conversation",
-    "view_full_conversation": "View Full Conversation"
+    "view_full_conversation": "View Full Conversation",
+    "grammar_find_correct_order": "Which sentence is correct?",
+    "grammar_is_correct": "Is this sentence correct?",
+    "grammar_which_correct": "Which is correct?",
+    "grammar_fill_blanks": "Fill in the blanks:",
+    "grammar_yes": "Yes",
+    "grammar_no": "No",
+    "grammar_correct_answer": "Correct answer:"
   },
   "fr": {
     "settings_title": "Paramètres",
@@ -53,7 +60,14 @@
     "quiz_title_vocabulary": "Vocabulaire",
     "quiz_title_grammar": "Grammaire",
     "full_conversation": "Conversation complète",
-    "view_full_conversation": "Voir la conversation"
+    "view_full_conversation": "Voir la conversation",
+    "grammar_find_correct_order": "Trouvez la phrase correctement ordonnée.",
+    "grammar_is_correct": "Cette phrase est-elle grammaticalement correcte ?",
+    "grammar_which_correct": "Quelle phrase est grammaticalement correcte ?",
+    "grammar_fill_blanks": "Remplissez les blancs.",
+    "grammar_yes": "Oui",
+    "grammar_no": "Non",
+    "grammar_correct_answer": "Bonne réponse :"
   },
   "es": {
     "settings_title": "Ajustes",
@@ -81,7 +95,14 @@
     "quiz_title_vocabulary": "Vocabulario",
     "quiz_title_grammar": "Gramática",
     "full_conversation": "Conversación completa",
-    "view_full_conversation": "Ver conversación"
+    "view_full_conversation": "Ver conversación",
+    "grammar_find_correct_order": "Encuentra la oración correctamente ordenada.",
+    "grammar_is_correct": "¿Es gramaticalmente correcta esta oración?",
+    "grammar_which_correct": "¿Qué oración es gramaticalmente correcta?",
+    "grammar_fill_blanks": "Completa los espacios en blanco.",
+    "grammar_yes": "Sí",
+    "grammar_no": "No",
+    "grammar_correct_answer": "Respuesta correcta:"
   },
   "tr": {
     "settings_title": "Ayarlar",
@@ -109,6 +130,13 @@
     "quiz_title_vocabulary": "Kelime",
     "quiz_title_grammar": "Dil Bilgisi",
     "full_conversation": "Tam konuşma",
-    "view_full_conversation": "Konuşmayı görüntüle"
+    "view_full_conversation": "Konuşmayı görüntüle",
+    "grammar_find_correct_order": "Doğru sıralanmış cümleyi bulun.",
+    "grammar_is_correct": "Bu cümle dilbilgisi açısından doğru mu?",
+    "grammar_which_correct": "Hangi cümle dilbilgisi açısından doğru?",
+    "grammar_fill_blanks": "Boşlukları doldurun.",
+    "grammar_yes": "Evet",
+    "grammar_no": "Hayır",
+    "grammar_correct_answer": "Doğru cevap:"
   }
 }

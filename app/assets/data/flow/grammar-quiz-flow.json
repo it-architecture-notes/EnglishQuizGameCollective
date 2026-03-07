@@ -1,4 +1,4 @@
 [
-  {"mainLevel": 1, "levelNumber": 1, "iconImageName": "verb", "title": "Simple Verbs"},
-  {"mainLevel": 1, "levelNumber": 2, "iconImageName": "noun", "title": "Nouns"}
+  {"mainLevel": 1, "levelNumber": 1, "iconImageName": "airport", "title": "Grammar at the Airport"},
+  {"mainLevel": 1, "levelNumber": 2, "iconImageName": "airport", "title": "More Airport Grammar"}
 ]

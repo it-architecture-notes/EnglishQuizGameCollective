@@ -11,6 +11,7 @@ import '../providers/settings_provider.dart';
 import '../services/audio_service.dart' as audio;
 import '../services/quiz_flow_loader.dart';
 import '../services/quiz_progress_service.dart';
+import 'grammar_quiz_screen.dart';
 import 'image_quiz_screen.dart';
 import 'placeholders/quiz_placeholder_screen.dart';
 import 'transitions/custom_page_routes.dart';
@@ -553,11 +554,17 @@ class _LevelsScreenState extends ConsumerState<LevelsScreen> {
                   subLevel: sub,
                   ordinalLevelIndex: subLevelItem.ordinalLevelIndex,
                 )
-              : QuizPlaceholderScreen(
-                  quizType: widget.quizType,
-                  subLevel: sub,
-                  ordinalLevelIndex: subLevelItem.ordinalLevelIndex,
-                ),
+              : widget.quizType == 'grammar'
+                  ? GrammarQuizScreen(
+                      quizType: widget.quizType,
+                      subLevel: sub,
+                      ordinalLevelIndex: subLevelItem.ordinalLevelIndex,
+                    )
+                  : QuizPlaceholderScreen(
+                      quizType: widget.quizType,
+                      subLevel: sub,
+                      ordinalLevelIndex: subLevelItem.ordinalLevelIndex,
+                    ),
     );
 
     final result =

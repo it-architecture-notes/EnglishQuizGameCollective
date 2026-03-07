@@ -867,3 +867,33 @@ Settings must be reactive (UI updates instantly)
 Localization must be driven from config JSON, not hardcoded
 Acceptance criteria = externally observable behavior
 Architectural constraints = internal design rules
+
+**Issue-11: Grammar Quiz Page**
+
+Description: There will be a grammar quiz page with multiple choice selections.
+
+Use Cases:
+
+* Grammar Quiz Question Types are as follows, all of them are multi choice:
+    - Similar to Vocabulary Page a conversation between two parties will be presented with one verb is empty and the user will try to find the right tense for the verb, or the right auxillary
+    - There will be 4 selections with different orders of the words and only one of them is a correct sentence and user will try to find which one.
+    - Banked close: where there will be many empty places in the sentence on the middle top of the screen and user will try to find the right choice with all the words in sequence are correct. so the answer will be like (e.g.was/have/asked)
+    - (Yes/No): Is the given sentence gramatically correct or not.
+    - Which of them are correct: one of the selections is correct for a given context. e.g.
+        A) Me and John are going.
+        B) John and I are going.
+        C) John and me are going.
+        D) Me and him are going.
+* A quiz can have these questions mixed, so not necessarily only one type. We have to have an object identifying question type and necessary fields for the question. You decide on the ojbect structure but obviously there will be a question type.
+* No drag drop questions
+* For every question except first one which is similar to vocab quiz and has to chararacters talking, there will be a character on the screen and a speech bubble and the question will be in the bubble. character images will be read from a folder (your choice but don't share with vocabulary folder) under assets and will be randomly selected every time. Images will be not full body length but from hip or chest up.
+* Right wrong behaviour is same as vocab or image quiz
+* No translation or toggling is needed for grammar
+* Rewards and final screen structure is same as other quizzez.
+* grammar quiz data follow the same pattern as vocabulary (one JSON file per level)
+* except yes/no all questions have have 4 answer options
+* Grammar quiz progress be tracked and persisted like other quizzes.
+* For yes/no there will be only 2 buttons not 4 buttons with 2 empty.
+* Banked cloze: one choice fills ALL blanks at once (not one blank at a time). Each option shows a sequence like "was/have/asked".
+* All 5 question types to be built in this issue.
+* AI creates sample quiz data JSON files for the existing 2 levels (airport-1, airport-2) with mixed question types.
