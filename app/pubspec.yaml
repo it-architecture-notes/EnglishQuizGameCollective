@@ -33,10 +33,12 @@ flutter:
     - assets/images/level-icons/
     - assets/images/achievements/
     - assets/images/friends/
+    - assets/images/story/
     - assets/data/state/
     - assets/data/config/
     - assets/data/settings/
     - assets/data/flow/
+    - assets/data/story/
     - assets/quiz-data/image-quiz/quiz-images/
     - assets/quiz-data/image-quiz/quiz-images/airport-1/
     - assets/quiz-data/vocabulary-quiz/

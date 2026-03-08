@@ -6,14 +6,20 @@ import 'package:scrollable_positioned_list/scrollable_positioned_list.dart';
 
 import '../models/level_completion_result.dart';
 import '../models/quiz_flow.dart';
+import '../models/story_config.dart';
+import '../models/story_progress.dart';
 import '../providers/localization_provider.dart';
 import '../providers/settings_provider.dart';
 import '../services/audio_service.dart' as audio;
 import '../services/quiz_flow_loader.dart';
 import '../services/quiz_progress_service.dart';
+import '../services/story_config_loader.dart';
+import '../services/story_progress_service.dart';
+import '../services/story_trigger_service.dart';
 import 'grammar_quiz_screen.dart';
 import 'image_quiz_screen.dart';
 import 'placeholders/quiz_placeholder_screen.dart';
+import 'story/story_overlay_screen.dart';
 import 'transitions/custom_page_routes.dart';
 import 'vocabulary_quiz_screen.dart';
 
@@ -81,6 +87,12 @@ class _LevelsScreenState extends ConsumerState<LevelsScreen> {
   List<LevelListItem> _items = [];
   List<LevelListItem> _filtered = [];
   QuizTypeProgress _progress = const QuizTypeProgress();
+  StoryConfigData _storyConfig = const StoryConfigData(
+    mainLevels: [],
+    templatesById: {},
+  );
+  StoryProgressState _storyProgress = const StoryProgressState();
+
   /// Window into _filtered: only _filtered[_windowStart.._windowEnd-1] are shown.
   int _windowStart = 0;
   int _windowEnd = 0;
@@ -91,6 +103,7 @@ class _LevelsScreenState extends ConsumerState<LevelsScreen> {
   late ItemPositionsListener _itemPositionsListener;
 
   static const int _batchSize = 10;
+
   /// Curvy path: (sin+1)/2 drives position from left (0) to right (1).
   static const double _sinFrequency = 0.5;
 
@@ -112,7 +125,8 @@ class _LevelsScreenState extends ConsumerState<LevelsScreen> {
   /// Finds the index in [filtered] where the frontier level starts.
   /// The frontier is the first unlocked level with 0 stars (current level to play).
   /// Returns 0 if no frontier found (e.g. all completed or fresh start).
-  int _findFrontierIndex(List<LevelListItem> filtered, QuizTypeProgress progress) {
+  int _findFrontierIndex(
+      List<LevelListItem> filtered, QuizTypeProgress progress) {
     final unlocked = progress.unlockedLevelNumbers;
     for (var i = 0; i < filtered.length; i++) {
       final item = filtered[i];
@@ -142,14 +156,33 @@ class _LevelsScreenState extends ConsumerState<LevelsScreen> {
 
   Future<void> _loadData() async {
     try {
-      final results = await Future.wait([
-        loadQuizFlow(widget.quizType),
-        QuizProgressService.instance.loadProgress(widget.quizType),
-      ]);
-      final data = results[0] as QuizFlowData;
-      final progress = results[1] as QuizTypeProgress;
+      final data = await loadQuizFlow(widget.quizType);
+      final progress = await QuizProgressService.instance.loadProgress(
+        widget.quizType,
+      );
+      StoryConfigData storyConfig = const StoryConfigData(
+        mainLevels: [],
+        templatesById: {},
+      );
+      StoryProgressState storyProgress = const StoryProgressState();
+      try {
+        final storyResults = await Future.wait([
+          loadStoryConfig(widget.quizType),
+          StoryProgressService.instance.loadProgress(widget.quizType),
+        ]);
+        storyConfig = storyResults[0] as StoryConfigData;
+        storyProgress = storyResults[1] as StoryProgressState;
+      } catch (e, st) {
+        debugPrint('LevelsScreen story load skipped: $e\n$st');
+      }
       final allItems = buildLevelItems(data);
       final filtered = _applyFilter(allItems, progress);
+      storyProgress = await _syncCompletedStoryPages(
+        storyConfig: storyConfig,
+        storyProgress: storyProgress,
+        progress: progress,
+        allItems: allItems,
+      );
 
       int startAt;
       final pending = _pendingScrollOrdinal;
@@ -167,6 +200,8 @@ class _LevelsScreenState extends ConsumerState<LevelsScreen> {
           _items = allItems;
           _filtered = filtered;
           _progress = progress;
+          _storyConfig = storyConfig;
+          _storyProgress = storyProgress;
           _windowStart = startAt;
           _windowEnd = end;
           _loading = false;
@@ -181,6 +216,44 @@ class _LevelsScreenState extends ConsumerState<LevelsScreen> {
       }
       debugPrint('LevelsScreen load error: $e\n$st');
     }
+  }
+
+  Future<StoryProgressState> _syncCompletedStoryPages({
+    required StoryConfigData storyConfig,
+    required StoryProgressState storyProgress,
+    required QuizTypeProgress progress,
+    required List<LevelListItem> allItems,
+  }) async {
+    final flowSubLevels = allItems.whereType<SubLevelItem>().toList();
+    var updated = storyProgress;
+    var changed = false;
+    for (final mainStory in storyConfig.mainLevels) {
+      final ready = StoryTriggerService.pagesReadyToMarkCompleted(
+        mainStory: mainStory,
+        storyProgress: updated,
+        quizProgress: progress,
+        mainLevelId: mainStory.mainLevelId,
+        flowSubLevels: flowSubLevels,
+      );
+      for (final page in ready) {
+        if (updated.isCompleted(
+          mainLevelId: mainStory.mainLevelId,
+          eventId: page.eventId,
+        )) {
+          continue;
+        }
+        updated = updated.markCompleted(
+          mainLevelId: mainStory.mainLevelId,
+          eventId: page.eventId,
+        );
+        changed = true;
+      }
+    }
+    if (changed) {
+      await StoryProgressService.instance
+          .saveProgress(widget.quizType, updated);
+    }
+    return updated;
   }
 
   Future<void> _reloadProgress() async {
@@ -359,36 +432,108 @@ class _LevelsScreenState extends ConsumerState<LevelsScreen> {
     );
   }
 
-  Widget _buildRow(BuildContext context, _LayoutRow row, int globalSubRowIndex) {
+  Widget _buildRow(
+      BuildContext context, _LayoutRow row, int globalSubRowIndex) {
     return switch (row) {
       _BannerLayoutRow(meta: final meta) => _buildBanner(context, meta),
       _SubsLayoutRow(subLevelItem: final item) => _buildSubLevelRow(
-            context,
-            globalSubRowIndex,
-            item,
-          ),
+          context,
+          globalSubRowIndex,
+          item,
+        ),
     };
   }
 
   Widget _buildBanner(BuildContext context, MainLevelMeta meta) {
-    return Container(
-      width: double.infinity,
-      margin: const EdgeInsets.only(top: 16, bottom: 8),
-      padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 16),
-      decoration: BoxDecoration(
-        color: Theme.of(context)
-            .colorScheme
-            .primaryContainer
-            .withValues(alpha: 0.6),
-        borderRadius: BorderRadius.circular(12),
-      ),
-      child: Text(
-        meta.title,
-        style: Theme.of(context).textTheme.titleMedium?.copyWith(
-              fontWeight: FontWeight.w600,
-            ),
-      ),
+    final firstOrdinal = _firstOrdinalForMain(meta.mainLevel);
+    final isStoryUnlocked = firstOrdinal != null &&
+        _progress.unlockedLevelNumbers.contains(firstOrdinal);
+    final storyIconPath =
+        _storyConfig.storyForMainLevel(meta.mainLevel)?.storyIconAssetPath;
+
+    return Stack(
+      clipBehavior: Clip.none,
+      children: [
+        Container(
+          width: double.infinity,
+          margin: const EdgeInsets.only(top: 16, bottom: 8),
+          padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 16),
+          decoration: BoxDecoration(
+            color: Theme.of(context)
+                .colorScheme
+                .primaryContainer
+                .withValues(alpha: 0.6),
+            borderRadius: BorderRadius.circular(12),
+          ),
+          child: Text(
+            meta.title,
+            style: Theme.of(context).textTheme.titleMedium?.copyWith(
+                  fontWeight: FontWeight.w600,
+                ),
+          ),
+        ),
+        Positioned(
+          top: -2,
+          right: 10,
+          child: _buildStoryIcon(
+            context,
+            isUnlocked: isStoryUnlocked,
+            iconPath: storyIconPath,
+          ),
+        ),
+      ],
     );
+  }
+
+  Widget _buildStoryIcon(
+    BuildContext context, {
+    required bool isUnlocked,
+    required String? iconPath,
+  }) {
+    final bg = isUnlocked
+        ? Theme.of(context).colorScheme.tertiaryContainer
+        : Colors.grey.shade400;
+    final border = isUnlocked
+        ? Theme.of(context).colorScheme.tertiary
+        : Colors.grey.shade600;
+    return Container(
+      width: 38,
+      height: 38,
+      decoration: BoxDecoration(
+        shape: BoxShape.circle,
+        color: bg,
+        border: Border.all(color: border, width: 1.5),
+      ),
+      child: isUnlocked
+          ? ClipOval(
+              child: iconPath != null
+                  ? Image.asset(
+                      iconPath,
+                      fit: BoxFit.cover,
+                      errorBuilder: (_, __, ___) =>
+                          const Icon(Icons.menu_book_rounded, size: 20),
+                    )
+                  : const Icon(Icons.menu_book_rounded, size: 20),
+            )
+          : const Center(
+              child: Text(
+                '?',
+                style: TextStyle(
+                  fontWeight: FontWeight.w700,
+                  color: Colors.white,
+                ),
+              ),
+            ),
+    );
+  }
+
+  int? _firstOrdinalForMain(int mainLevel) {
+    for (final item in _items) {
+      if (item is SubLevelItem && item.sub.mainLevel == mainLevel) {
+        return item.ordinalLevelIndex;
+      }
+    }
+    return null;
   }
 
   Widget _buildSubLevelRow(
@@ -407,8 +552,8 @@ class _LevelsScreenState extends ConsumerState<LevelsScreen> {
     final t = (math.sin(globalSubRowIndex * _sinFrequency + phase) + 1) / 2;
     final leftOffset = t * pathRange;
 
-    final isLocked =
-        !_progress.unlockedLevelNumbers.contains(subLevelItem.ordinalLevelIndex);
+    final isLocked = !_progress.unlockedLevelNumbers
+        .contains(subLevelItem.ordinalLevelIndex);
     final stars =
         _progress.levels[subLevelItem.ordinalLevelIndex]?.highestStars ?? 0;
 
@@ -461,10 +606,26 @@ class _LevelsScreenState extends ConsumerState<LevelsScreen> {
     if (isLocked) {
       iconWidget = ColorFiltered(
         colorFilter: const ColorFilter.matrix(<double>[
-          0.2126, 0.7152, 0.0722, 0, 0,
-          0.2126, 0.7152, 0.0722, 0, 0,
-          0.2126, 0.7152, 0.0722, 0, 0,
-          0, 0, 0, 0.5, 0,
+          0.2126,
+          0.7152,
+          0.0722,
+          0,
+          0,
+          0.2126,
+          0.7152,
+          0.0722,
+          0,
+          0,
+          0.2126,
+          0.7152,
+          0.0722,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0.5,
+          0,
         ]),
         child: iconWidget,
       );
@@ -523,9 +684,7 @@ class _LevelsScreenState extends ConsumerState<LevelsScreen> {
                               ? Icons.star_rounded
                               : Icons.star_border_rounded,
                           size: 12,
-                          color: isLocked
-                              ? Colors.grey.shade300
-                              : Colors.amber,
+                          color: isLocked ? Colors.grey.shade300 : Colors.amber,
                         ),
                       ),
                     ),
@@ -541,6 +700,7 @@ class _LevelsScreenState extends ConsumerState<LevelsScreen> {
 
   void _openQuiz(BuildContext context, SubLevelItem subLevelItem) async {
     final sub = subLevelItem.sub;
+    await _showBeforeStoryIfNeeded(subLevelItem);
     final route = popFadeRoute<LevelCompletionResult>(
       widget.quizType == 'image'
           ? ImageQuizScreen(
@@ -573,10 +733,63 @@ class _LevelsScreenState extends ConsumerState<LevelsScreen> {
     if (result == null) return;
 
     if (result.completed) {
+      final localByOrdinal = StoryTriggerService.localLevelByOrdinal(
+        _items.whereType<SubLevelItem>(),
+      );
+      final completedLocalLevel =
+          localByOrdinal[subLevelItem.ordinalLevelIndex] ?? 1;
+      final mainLevelId = sub.mainLevel;
+      final mainStory = _storyConfig.storyForMainLevel(mainLevelId);
+      final afterPage = StoryTriggerService.findAfterLevelPage(
+        mainStory: mainStory,
+        storyProgress: _storyProgress,
+        mainLevelId: mainLevelId,
+        completedLocalLevel: completedLocalLevel,
+        flowSubLevels: _items.whereType<SubLevelItem>(),
+      );
       _pendingScrollOrdinal = result.ordinalLevelIndex;
+      await _loadData();
+      if (afterPage != null && mounted) {
+        await _showStoryPage(afterPage);
+      }
       await _loadData();
     } else {
       await _reloadProgress();
     }
+  }
+
+  Future<void> _showBeforeStoryIfNeeded(SubLevelItem subLevelItem) async {
+    final localByOrdinal = StoryTriggerService.localLevelByOrdinal(
+      _items.whereType<SubLevelItem>(),
+    );
+    final localLevel = localByOrdinal[subLevelItem.ordinalLevelIndex] ?? 1;
+    final mainLevelId = subLevelItem.sub.mainLevel;
+    final mainStory = _storyConfig.storyForMainLevel(mainLevelId);
+    final page = StoryTriggerService.findBeforeLevelPage(
+      mainStory: mainStory,
+      storyProgress: _storyProgress,
+      mainLevelId: mainLevelId,
+      currentLocalLevel: localLevel,
+      flowSubLevels: _items.whereType<SubLevelItem>(),
+    );
+    if (page == null || !mounted) return;
+    await _showStoryPage(page);
+  }
+
+  Future<void> _showStoryPage(StoryPageConfig page) async {
+    final language = ref.read(settingsProvider).valueOrNull?.language ?? 'en';
+    final strings =
+        ref.read(currentLocalizedStringsProvider).valueOrNull ?? const {};
+    final template = _storyConfig.templatesById[page.pageTemplateId];
+    await StoryOverlayScreen.show(
+      context,
+      page: page,
+      template: template,
+      languageCode: language,
+      continueLabel: strings['story_continue'] ?? 'Continue',
+      congratulationsLabel:
+          strings['story_congratulations'] ?? 'Congratulations!',
+      isFinalPage: page.trigger.type == StoryTriggerType.afterLevel,
+    );
   }
 }

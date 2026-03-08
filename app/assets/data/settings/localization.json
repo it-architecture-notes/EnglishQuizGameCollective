@@ -32,7 +32,9 @@
     "grammar_fill_blanks": "Fill in the blanks:",
     "grammar_yes": "Yes",
     "grammar_no": "No",
-    "grammar_correct_answer": "Correct answer:"
+    "grammar_correct_answer": "Correct answer:",
+    "story_continue": "Continue",
+    "story_congratulations": "Congratulations!"
   },
   "fr": {
     "settings_title": "Paramètres",
@@ -67,7 +69,9 @@
     "grammar_fill_blanks": "Remplissez les blancs.",
     "grammar_yes": "Oui",
     "grammar_no": "Non",
-    "grammar_correct_answer": "Bonne réponse :"
+    "grammar_correct_answer": "Bonne réponse :",
+    "story_continue": "Continuer",
+    "story_congratulations": "Félicitations !"
   },
   "es": {
     "settings_title": "Ajustes",
@@ -102,7 +106,9 @@
     "grammar_fill_blanks": "Completa los espacios en blanco.",
     "grammar_yes": "Sí",
     "grammar_no": "No",
-    "grammar_correct_answer": "Respuesta correcta:"
+    "grammar_correct_answer": "Respuesta correcta:",
+    "story_continue": "Continuar",
+    "story_congratulations": "¡Felicitaciones!"
   },
   "tr": {
     "settings_title": "Ayarlar",
@@ -137,6 +143,8 @@
     "grammar_fill_blanks": "Boşlukları doldurun.",
     "grammar_yes": "Evet",
     "grammar_no": "Hayır",
-    "grammar_correct_answer": "Doğru cevap:"
+    "grammar_correct_answer": "Doğru cevap:",
+    "story_continue": "Devam Et",
+    "story_congratulations": "Tebrikler!"
   }
 }
