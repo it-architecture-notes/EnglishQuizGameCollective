@@ -22,6 +22,7 @@ Future<List<String>> loadImageQuizLevelAssetPaths(String levelKey) async {
   final paths = all
       .where((String path) => path.startsWith(prefix) && !_isDsStore(path))
       .toList();
+  paths.sort();
   return paths;
 }
 

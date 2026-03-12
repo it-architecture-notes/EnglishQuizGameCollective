@@ -1,4 +1,6 @@
 [
   {"mainLevel": 1, "levelNumber": 1, "iconImageName": "airport", "title": "Grammar at the Airport"},
-  {"mainLevel": 1, "levelNumber": 2, "iconImageName": "airport", "title": "More Airport Grammar"}
+  {"mainLevel": 1, "levelNumber": 2, "iconImageName": "airport", "title": "More Airport Grammar"},
+  {"mainLevel": 1, "levelNumber": 1001, "iconImageName": "reminder", "title": "Reminder 1", "kind": "reminder", "reminderIndex": 1},
+  {"mainLevel": 1, "levelNumber": 1002, "iconImageName": "reminder", "title": "Reminder 2", "kind": "reminder", "reminderIndex": 2}
 ]

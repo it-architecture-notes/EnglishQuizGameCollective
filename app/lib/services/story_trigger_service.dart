@@ -114,6 +114,18 @@ class StoryTriggerService {
     return localByOrdinal;
   }
 
+  static int resolveTriggerLevel({
+    required StoryPageConfig page,
+    required int mainLevelId,
+    required Iterable<SubLevelItem> flowSubLevels,
+  }) {
+    return _resolveTriggerLevel(
+      page: page,
+      mainLevelId: mainLevelId,
+      flowSubLevels: flowSubLevels,
+    );
+  }
+
   static int _resolveTriggerLevel({
     required StoryPageConfig page,
     required int mainLevelId,

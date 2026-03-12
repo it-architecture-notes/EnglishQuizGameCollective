@@ -1,7 +1,13 @@
 import '../models/achievement_state.dart';
+import '../models/reminder_progress.dart';
+import '../models/story_progress.dart';
 import 'achievement_service.dart';
+import 'image_quiz_level_loader.dart';
 import 'profile_service.dart';
 import 'quiz_progress_service.dart';
+import 'quiz_flow_loader.dart';
+import 'reminder_progress_service.dart';
+import 'story_progress_service.dart';
 
 /// Seeds persisted state for testing Issue-8 achievements and streaks.
 /// Use from Settings panel only.
@@ -95,6 +101,30 @@ class TestDataService {
       'grammar',
       const QuizTypeProgress(),
     );
+    await ReminderProgressService.instance.saveProgress(
+      'image',
+      const ReminderProgressData(),
+    );
+    await ReminderProgressService.instance.saveProgress(
+      'vocabulary',
+      const ReminderProgressData(),
+    );
+    await ReminderProgressService.instance.saveProgress(
+      'grammar',
+      const ReminderProgressData(),
+    );
+    await StoryProgressService.instance.saveProgress(
+      'image',
+      const StoryProgressState(),
+    );
+    await StoryProgressService.instance.saveProgress(
+      'vocabulary',
+      const StoryProgressState(),
+    );
+    await StoryProgressService.instance.saveProgress(
+      'grammar',
+      const StoryProgressState(),
+    );
     await AchievementService.instance.saveStateForTesting(
       const AchievementState(),
     );
@@ -122,6 +152,67 @@ class TestDataService {
       totalDiamonds: 10 * diamondsPerLevel,
     );
     await QuizProgressService.instance.saveProgress('image', progress);
+  }
+
+  /// Seeds image quiz main level 1 so all regular levels are completed with
+  /// 2 stars and the first 3 questions of each level are marked wrong once.
+  /// This is intended to unlock Reminder 1 and let reminder generation run
+  /// against realistic wrong-answer counters.
+  Future<void> seedImageMainLevel1ReminderTest() async {
+    final flow = await loadQuizFlow('image');
+    final mainLevelOneLevels = flow.subLevels
+        .where((subLevel) => subLevel.mainLevel == 1 && !subLevel.isReminder)
+        .toList(growable: false);
+
+    final levels = <int, LevelProgress>{};
+    final wrongAnswerCounters = <String, int>{};
+    var totalDiamonds = 0;
+
+    for (final subLevel in mainLevelOneLevels) {
+      final levelKey = imageQuizLevelKey(
+        subLevel.iconImageName,
+        subLevel.levelNumber,
+      );
+      List<String> paths = const [];
+      try {
+        paths = await loadImageQuizLevelAssetPaths(levelKey);
+      } catch (_) {
+        paths = const [];
+      }
+      final questionCount = paths.length;
+      final diamonds = questionCount >= 3 ? questionCount - 3 : 0;
+      totalDiamonds += diamonds;
+      levels[subLevel.levelNumber] = LevelProgress(
+        levelNumber: subLevel.levelNumber,
+        highestStars: 2,
+        highestDiamonds: diamonds,
+      );
+      final wrongQuestionsToSeed = questionCount >= 3 ? 3 : questionCount;
+      for (var i = 0; i < wrongQuestionsToSeed; i++) {
+        wrongAnswerCounters[buildReminderQuestionId(subLevel.levelNumber, i)] = 1;
+      }
+    }
+
+    await QuizProgressService.instance.saveProgress(
+      'image',
+      QuizTypeProgress(
+        levels: levels,
+        totalDiamonds: totalDiamonds,
+      ),
+    );
+    await ReminderProgressService.instance.saveProgress(
+      'image',
+      ReminderProgressData(
+        wrongAnswerCounters: wrongAnswerCounters,
+        remindersByMainLevel: const {
+          1: [ReminderLevelState(), ReminderLevelState()],
+        },
+      ),
+    );
+    await StoryProgressService.instance.saveProgress(
+      'image',
+      const StoryProgressState(),
+    );
   }
 
   /// Seeds image quiz progress with [totalDiamonds] so Friends panel

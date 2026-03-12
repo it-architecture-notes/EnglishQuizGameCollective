@@ -3,6 +3,7 @@ class LevelCompletionResult {
   const LevelCompletionResult({
     required this.ordinalLevelIndex,
     required this.completed,
+    this.isReminder = false,
   });
 
   /// 1-based position in the subLevels list (progression key).
@@ -10,4 +11,6 @@ class LevelCompletionResult {
 
   /// True if user earned at least 1 star (level passed).
   final bool completed;
+
+  final bool isReminder;
 }

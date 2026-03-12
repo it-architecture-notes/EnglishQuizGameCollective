@@ -5,6 +5,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../models/level_completion_result.dart';
 import '../../models/quiz_flow.dart';
+import '../../models/reminder_progress.dart';
 import '../../providers/localization_provider.dart';
 import '../../providers/settings_provider.dart';
 import '../../services/achievement_service.dart';
@@ -13,9 +14,13 @@ import '../../services/game_config_loader.dart';
 import '../../services/image_quiz_level_loader.dart';
 import '../../services/profile_service.dart';
 import '../../services/quiz_progress_service.dart';
+import '../../services/reminder_progress_service.dart';
 
 /// Minimum images per level (spec).
 const int kMinImagesPerLevel = 4;
+
+// TODO(test): remove before release — auto-completes after first answer.
+const bool _kTestAutoComplete = true;
 
 /// Minimum touch target size (accessibility).
 const double kMinTouchTarget = 48;
@@ -28,12 +33,18 @@ class ImageQuizScreen extends ConsumerStatefulWidget {
     required this.subLevel,
     required this.quizType,
     required this.ordinalLevelIndex,
+    this.reminderMode = false,
+    this.reminderQuestionIds,
+    this.reminderSourceLevelsByLevelNumber,
   });
 
   final SubLevel subLevel;
   final String quizType;
   /// 1-based position in subLevels list (progression key).
   final int ordinalLevelIndex;
+  final bool reminderMode;
+  final List<String>? reminderQuestionIds;
+  final Map<int, SubLevel>? reminderSourceLevelsByLevelNumber;
 
   @override
   ConsumerState<ImageQuizScreen> createState() => _ImageQuizScreenState();
@@ -43,12 +54,19 @@ class _ImageQuizScreenState extends ConsumerState<ImageQuizScreen> {
   _Phase _phase = _Phase.loading;
   String? _loadError;
   List<String> _questionAssetPaths = [];
+  List<String> _currentQuestionIds = [];
+  List<String> _initialReminderQuestionIds = [];
+  final List<String> _nextReviewQuestionIds = [];
+  final Map<String, String> _assetPathByQuestionId = {};
+  final Map<String, List<String>> _vocabularyByQuestionId = {};
   List<String> _vocabulary = [];
   GameConfig _config = const GameConfig();
   int _currentIndex = 0;
   int _correctCount = 0;
   bool _answerLocked = false;
   bool _showNext = false;
+  bool _reviewingMistakes = false;
+  int _initialQuestionCount = 0;
   int? _selectedIndex; // 0..3 index into current options
   List<String> _currentOptions = [];
   DateTime? _quizStartTime;
@@ -56,10 +74,18 @@ class _ImageQuizScreenState extends ConsumerState<ImageQuizScreen> {
   static String _levelKey(SubLevel sub) =>
       imageQuizLevelKey(sub.iconImageName, sub.levelNumber);
 
+  bool get _isReminder => widget.reminderMode;
+  String? get _currentQuestionId =>
+      _currentQuestionIds.isEmpty ? null : _currentQuestionIds[_currentIndex];
+
   @override
   void initState() {
     super.initState();
-    _loadLevel();
+    if (_isReminder) {
+      _loadReminderLevel();
+    } else {
+      _loadLevel();
+    }
   }
 
   @override
@@ -88,6 +114,12 @@ class _ImageQuizScreenState extends ConsumerState<ImageQuizScreen> {
 
       // Shuffle question order
       final shuffled = List<String>.from(paths)..shuffle(Random());
+      final questionIds = shuffled
+          .map((path) => buildReminderQuestionId(
+                widget.subLevel.levelNumber,
+                paths.indexOf(path),
+              ))
+          .toList(growable: false);
       // Precache images (only use context when mounted)
       if (mounted) {
         for (final path in shuffled) {
@@ -100,7 +132,9 @@ class _ImageQuizScreenState extends ConsumerState<ImageQuizScreen> {
         setState(() {
           _config = config;
           _questionAssetPaths = shuffled;
+          _currentQuestionIds = questionIds;
           _vocabulary = vocabulary;
+          _initialQuestionCount = shuffled.length;
           _phase = _Phase.playing;
           _quizStartTime = DateTime.now();
           _currentOptions = _buildOptions();
@@ -119,12 +153,91 @@ class _ImageQuizScreenState extends ConsumerState<ImageQuizScreen> {
     }
   }
 
+  Future<void> _loadReminderLevel() async {
+    try {
+      final config = await GameConfig.load();
+      final reminderQuestionIds = widget.reminderQuestionIds ?? const [];
+      final sourceLevels = widget.reminderSourceLevelsByLevelNumber ?? const {};
+      final loadedPaths = <int, List<String>>{};
+      final loadedVocabulary = <int, List<String>>{};
+      final assetPathByQuestionId = <String, String>{};
+      final vocabularyByQuestionId = <String, List<String>>{};
+      final validQuestionIds = <String>[];
+
+      for (final questionId in reminderQuestionIds) {
+        final (levelNumber, questionIndex) = parseReminderQuestionId(questionId);
+        final sourceLevel = sourceLevels[levelNumber];
+        if (sourceLevel == null) continue;
+        final levelKey = imageQuizLevelKey(
+          sourceLevel.iconImageName,
+          sourceLevel.levelNumber,
+        );
+        final paths = loadedPaths[levelNumber] ??=
+            await loadImageQuizLevelAssetPaths(levelKey);
+        if (questionIndex < 0 || questionIndex >= paths.length) continue;
+        final vocabulary = loadedVocabulary[levelNumber] ??=
+            paths.map(assetPathToBasename).toList(growable: false);
+        assetPathByQuestionId[questionId] = paths[questionIndex];
+        vocabularyByQuestionId[questionId] = vocabulary;
+        validQuestionIds.add(questionId);
+      }
+
+      if (validQuestionIds.isEmpty) {
+        throw Exception('No reminder questions were available for this level.');
+      }
+
+      if (mounted) {
+        for (final questionId in validQuestionIds) {
+          final path = assetPathByQuestionId[questionId];
+          if (path == null || !mounted) continue;
+          await precacheImage(AssetImage(path), context);
+        }
+      }
+
+      if (!mounted) return;
+      setState(() {
+        _config = config;
+        _assetPathByQuestionId
+          ..clear()
+          ..addAll(assetPathByQuestionId);
+        _vocabularyByQuestionId
+          ..clear()
+          ..addAll(vocabularyByQuestionId);
+        _currentQuestionIds = List<String>.from(validQuestionIds);
+        _initialReminderQuestionIds = List<String>.from(validQuestionIds);
+        _questionAssetPaths = validQuestionIds
+            .map((questionId) => assetPathByQuestionId[questionId]!)
+            .toList(growable: false);
+        _initialQuestionCount = validQuestionIds.length;
+        _reviewingMistakes = false;
+        _phase = _Phase.playing;
+        _quizStartTime = DateTime.now();
+        _currentOptions = _buildOptions();
+      });
+      final musicOn = ref.read(settingsProvider).valueOrNull?.musicOn ?? true;
+      audio.startQuizMusic(musicOn: musicOn);
+    } catch (e, st) {
+      debugPrint('ImageQuizScreen _loadReminderLevel: $e\n$st');
+      if (mounted) {
+        setState(() {
+          _loadError = e.toString();
+          _phase = _Phase.loading;
+        });
+      }
+    }
+  }
+
   String _correctAnswer() =>
       assetPathToBasename(_questionAssetPaths[_currentIndex]);
 
   List<String> _buildOptions() {
     final correct = _correctAnswer();
-    final wrongPool = _vocabulary.where((s) => s != correct).toList()
+    final vocabularyPool = _isReminder
+        ? (_currentQuestionId != null
+            ? _vocabularyByQuestionId[_currentQuestionId!] ?? const <String>[]
+            : const <String>[])
+        : _vocabulary;
+    final wrongPool = vocabularyPool.where((s) => s != correct).toList()
       ..shuffle(Random());
     final wrong = wrongPool.take(3).toList();
     final options = [correct, ...wrong]..shuffle(Random());
@@ -133,6 +246,11 @@ class _ImageQuizScreenState extends ConsumerState<ImageQuizScreen> {
 
   void _onAnswerTap(int optionIndex) {
     if (_answerLocked) return;
+    if (_kTestAutoComplete) {
+      _correctCount = 100;
+      setState(() => _phase = _Phase.end);
+      return;
+    }
     final option = _currentOptions[optionIndex];
     final correct = _correctAnswer();
     final isCorrect = option == correct;
@@ -141,6 +259,17 @@ class _ImageQuizScreenState extends ConsumerState<ImageQuizScreen> {
       audio.playCorrect(soundFxOn: soundFxOn);
     } else {
       audio.playWrong(soundFxOn: soundFxOn);
+      final questionId = _currentQuestionId;
+      if (_isReminder) {
+        if (questionId != null) {
+          _nextReviewQuestionIds.add(questionId);
+        }
+      } else if (questionId != null) {
+        ReminderProgressService.instance.recordWrongAnswer(
+          widget.quizType,
+          questionId,
+        );
+      }
     }
     AchievementService.instance.recordAnswer(isCorrect);
     setState(() {
@@ -167,6 +296,24 @@ class _ImageQuizScreenState extends ConsumerState<ImageQuizScreen> {
 
   void _goNext() {
     if (_currentIndex + 1 >= _questionAssetPaths.length) {
+      if (_isReminder && _nextReviewQuestionIds.isNotEmpty) {
+        final nextQuestionIds = List<String>.from(_nextReviewQuestionIds)
+          ..shuffle(Random());
+        _nextReviewQuestionIds.clear();
+        setState(() {
+          _currentQuestionIds = nextQuestionIds;
+          _questionAssetPaths = nextQuestionIds
+              .map((questionId) => _assetPathByQuestionId[questionId]!)
+              .toList(growable: false);
+          _currentIndex = 0;
+          _answerLocked = false;
+          _showNext = false;
+          _selectedIndex = null;
+          _currentOptions = _buildOptions();
+          _reviewingMistakes = true;
+        });
+        return;
+      }
       setState(() {
         _phase = _Phase.end;
       });
@@ -193,6 +340,23 @@ class _ImageQuizScreenState extends ConsumerState<ImageQuizScreen> {
   int _diamondsEarned() => _correctCount;
 
   Future<void> _onEndOk() async {
+    if (_isReminder) {
+      await ReminderProgressService.instance.markReminderCompleted(
+        quizType: widget.quizType,
+        mainLevel: widget.subLevel.mainLevel,
+        reminderIndex: widget.subLevel.reminderIndex,
+        answeredIds: _initialReminderQuestionIds,
+      );
+      if (mounted) {
+        Navigator.of(context).pop(LevelCompletionResult(
+          ordinalLevelIndex: widget.ordinalLevelIndex,
+          completed: true,
+          isReminder: true,
+        ));
+      }
+      return;
+    }
+
     final stars = _stars();
     if (_quizStartTime != null) {
       final duration = DateTime.now().difference(_quizStartTime!).inSeconds;
@@ -293,9 +457,31 @@ class _ImageQuizScreenState extends ConsumerState<ImageQuizScreen> {
   Widget _buildPlaying(bool soundFxOn, Map<String, String> strings) {
     final path = _questionAssetPaths[_currentIndex];
     final isLast = _currentIndex + 1 >= _questionAssetPaths.length;
+    final reminderProgress = _reviewingMistakes
+        ? 1.0
+        : (_initialQuestionCount <= 0 ? 0.0 : (_currentIndex + 1) / _initialQuestionCount);
 
     return Column(
       children: [
+        if (_isReminder)
+          Padding(
+            padding: const EdgeInsets.fromLTRB(16, 8, 16, 0),
+            child: Column(
+              children: [
+                Text(
+                  _reviewingMistakes
+                      ? (strings['reviewing_mistakes'] ?? 'Reviewing Mistakes')
+                      : '${_currentIndex + 1} / $_initialQuestionCount',
+                  style: Theme.of(context).textTheme.labelLarge?.copyWith(
+                        color: Theme.of(context).colorScheme.primary,
+                        fontWeight: FontWeight.w600,
+                      ),
+                ),
+                const SizedBox(height: 8),
+                LinearProgressIndicator(value: reminderProgress),
+              ],
+            ),
+          ),
         // Question image
         Expanded(
           flex: 2,
@@ -386,7 +572,13 @@ class _ImageQuizScreenState extends ConsumerState<ImageQuizScreen> {
                       audio.playClick(soundFxOn: soundFxOn);
                       _goNext();
                     },
-                    child: Text(isLast ? (strings['finish'] ?? 'Finish') : (strings['next'] ?? 'Next')),
+                    child: Text(
+                      _isReminder
+                          ? (strings['next'] ?? 'Next')
+                          : (isLast
+                              ? (strings['finish'] ?? 'Finish')
+                              : (strings['next'] ?? 'Next')),
+                    ),
                   )
                 : const SizedBox.shrink(),
           ),
@@ -396,6 +588,40 @@ class _ImageQuizScreenState extends ConsumerState<ImageQuizScreen> {
   }
 
   Widget _buildEnd(bool soundFxOn, Map<String, String> strings) {
+    if (_isReminder) {
+      return Center(
+        child: Padding(
+          padding: const EdgeInsets.all(24),
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Text(
+                strings['level_complete'] ?? 'Level complete!',
+                style: Theme.of(context).textTheme.headlineSmall,
+              ),
+              const SizedBox(height: 16),
+              Text(
+                strings['reviewing_mistakes'] ?? 'Reviewing Mistakes',
+                style: Theme.of(context).textTheme.titleMedium,
+              ),
+              const SizedBox(height: 24),
+              SizedBox(
+                width: double.infinity,
+                height: kMinTouchTarget + 8,
+                child: FilledButton(
+                  onPressed: () {
+                    audio.playClick(soundFxOn: soundFxOn);
+                    _onEndOk();
+                  },
+                  child: Text(strings['ok'] ?? 'OK'),
+                ),
+              ),
+            ],
+          ),
+        ),
+      );
+    }
+
     final stars = _stars();
     final diamonds = _diamondsEarned();
 

@@ -1,14 +1,20 @@
-# Project Context - What does this app does
-This is a portrait-orientation mobile app developed for both Android and iOS. It is a language learning quiz application that presents users with multiple-choice questions across three main categories:
+# Project Context - What this app does
+This is a portrait-orientation Flutter mobile app for Android and iOS. It is a language-learning quiz game with three main quiz categories:
 
-**Image Quiz:** Displays an image and asks the user to identify what it represents by selecting the correct answer.
+**Image Quiz:** Users identify the correct word for a shown image.
 
-**Vocabulary Quiz:** Presents a step-by-step conversation with blanks in one or both parts of the dialogue, challenging the user to fill in the missing vocabulary.
+**Vocabulary Quiz:** Users complete conversation-based cloze questions.
 
-**Grammar Quiz:** Similar to the vocabulary quiz, but focuses on selecting the correct grammatical structure rather than vocabulary.
+**Grammar Quiz:** Users solve mixed grammar-focused multiple-choice question types.
 
-As users progress through levels, they earn rewards such as stars and diamonds upon completing each level. The app also includes features like user profiles, avatar selection, achievements, and settings.
+Users progress through levels and earn stars and diamonds. The app includes profile/avatar management, achievements, friends (animal unlocks using diamonds), and settings.
 
-During gameplay, narrative-driven achievements are unlocked—similar to the storytelling style in games like Gardenscapes—but with a focus on helping others and solving problems.
+## Current Implementation Snapshot
+- Progression-based levels are implemented (unlock by performance, replay support, saved best stars/diamonds).
+- All three quiz types are implemented and wired to shared reward/progress persistence.
+- Profile panel is implemented with editable name/avatar and lifetime progress stats.
+- Achievements are config-driven and shown in a dedicated panel with lock/progress states.
+- Friends panel is implemented with diamond-based unlock flow and persistent state.
+- Settings panel is implemented with language, music, and sound/FX toggles, including persistence.
 
-Currently, the app stores both configuration and state data in JSON files. It is designed to support multiple device types with varying screen resolutions, including mobile phones and tablets.
+Configuration and game content are driven by local JSON assets, and user state is persisted locally on device storage. The app supports multiple phone/tablet aspect-ratio buckets with resolution-aware asset loading.

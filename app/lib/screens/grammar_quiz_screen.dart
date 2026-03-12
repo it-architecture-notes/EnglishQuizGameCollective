@@ -6,6 +6,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../models/grammar_quiz.dart';
 import '../models/level_completion_result.dart';
 import '../models/quiz_flow.dart';
+import '../models/reminder_progress.dart';
 import '../providers/localization_provider.dart';
 import '../providers/settings_provider.dart';
 import '../services/achievement_service.dart';
@@ -14,8 +15,12 @@ import '../services/game_config_loader.dart';
 import '../services/grammar_quiz_loader.dart';
 import '../services/profile_service.dart';
 import '../services/quiz_progress_service.dart';
+import '../services/reminder_progress_service.dart';
 
 const double _kMinTouchTarget = 48.0;
+
+// TODO(test): remove before release — auto-completes after first answer.
+const bool _kTestAutoComplete = true;
 const String _kBlank = '_____';
 
 /// Fallback when no grammar character images are found in the bundle.
@@ -27,17 +32,37 @@ const List<String> _kGrammarCharacterFallbacks = [
 
 enum _Phase { loading, playing, end }
 
+class _ReminderGrammarEntry {
+  const _ReminderGrammarEntry({
+    required this.questionId,
+    required this.question,
+    required this.levelCharacter1,
+    required this.levelCharacter2,
+  });
+
+  final String questionId;
+  final GrammarQuestion question;
+  final String levelCharacter1;
+  final String levelCharacter2;
+}
+
 class GrammarQuizScreen extends ConsumerStatefulWidget {
   const GrammarQuizScreen({
     super.key,
     required this.subLevel,
     required this.quizType,
     required this.ordinalLevelIndex,
+    this.reminderMode = false,
+    this.reminderQuestionIds,
+    this.reminderSourceLevelsByLevelNumber,
   });
 
   final SubLevel subLevel;
   final String quizType;
   final int ordinalLevelIndex;
+  final bool reminderMode;
+  final List<String>? reminderQuestionIds;
+  final Map<int, SubLevel>? reminderSourceLevelsByLevelNumber;
 
   @override
   ConsumerState<GrammarQuizScreen> createState() => _GrammarQuizScreenState();
@@ -50,7 +75,25 @@ class _GrammarQuizScreenState extends ConsumerState<GrammarQuizScreen> {
   GrammarLevel? _level;
   GameConfig _config = const GameConfig();
 
-  List<GrammarQuestion> get _questions => _level?.questions ?? [];
+  final Map<String, _ReminderGrammarEntry> _reminderEntriesById = {};
+  List<String> _currentQuestionIds = [];
+  List<String> _initialReminderQuestionIds = [];
+  final List<String> _nextReviewQuestionIds = [];
+  bool _reviewingMistakes = false;
+  int _initialQuestionCount = 0;
+
+  bool get _isReminder => widget.reminderMode;
+  List<GrammarQuestion> get _questions => _isReminder
+      ? _currentQuestionIds
+          .map((questionId) => _reminderEntriesById[questionId]!.question)
+          .toList(growable: false)
+      : _level?.questions ?? [];
+  String? get _currentQuestionId =>
+      _isReminder && _currentQuestionIds.isNotEmpty
+          ? _currentQuestionIds[_currentIndex]
+          : null;
+  _ReminderGrammarEntry? get _currentReminderEntry =>
+      _currentQuestionId == null ? null : _reminderEntriesById[_currentQuestionId];
 
   int _currentIndex = 0;
   int _correctCount = 0;
@@ -71,7 +114,11 @@ class _GrammarQuizScreenState extends ConsumerState<GrammarQuizScreen> {
   @override
   void initState() {
     super.initState();
-    _loadLevel();
+    if (_isReminder) {
+      _loadReminderLevel();
+    } else {
+      _loadLevel();
+    }
   }
 
   @override
@@ -126,6 +173,89 @@ class _GrammarQuizScreenState extends ConsumerState<GrammarQuizScreen> {
     }
   }
 
+  Future<void> _loadReminderLevel() async {
+    try {
+      final config = await GameConfig.load();
+      final characterPaths = await loadGrammarCharacterImages();
+      final paths = characterPaths.isNotEmpty
+          ? characterPaths
+          : _kGrammarCharacterFallbacks;
+      final reminderQuestionIds = widget.reminderQuestionIds ?? const [];
+      final sourceLevels = widget.reminderSourceLevelsByLevelNumber ?? const {};
+      final loadedLevels = <int, GrammarLevel>{};
+      final loadedEntries = <String, _ReminderGrammarEntry>{};
+      final validQuestionIds = <String>[];
+
+      for (final questionId in reminderQuestionIds) {
+        final (levelNumber, questionIndex) = parseReminderQuestionId(questionId);
+        final sourceLevel = sourceLevels[levelNumber];
+        if (sourceLevel == null) continue;
+        final level = loadedLevels[levelNumber] ??= await loadGrammarLevel(
+          sourceLevel.iconImageName,
+          sourceLevel.levelNumber,
+        );
+        if (questionIndex < 0 || questionIndex >= level.questions.length) {
+          continue;
+        }
+        loadedEntries[questionId] = _ReminderGrammarEntry(
+          questionId: questionId,
+          question: level.questions[questionIndex],
+          levelCharacter1: level.character1,
+          levelCharacter2: level.character2,
+        );
+        validQuestionIds.add(questionId);
+      }
+
+      if (validQuestionIds.isEmpty) {
+        throw Exception('No reminder questions were available for this level.');
+      }
+
+      final reminderLevel = GrammarLevel(
+        questions: validQuestionIds
+            .map((questionId) => loadedEntries[questionId]!.question)
+            .toList(growable: false),
+      );
+      final strings = ref.read(currentLocalizedStringsProvider).valueOrNull ?? {};
+      final (options, correct) =
+          _buildOptionsFor(reminderLevel.questions[0], reminderLevel, strings);
+      final charMap = <int, String>{};
+      for (var i = 0; i < reminderLevel.questions.length; i++) {
+        if (reminderLevel.questions[i] is! GrammarConversationQuestion &&
+            paths.isNotEmpty) {
+          charMap[i] = paths[_random.nextInt(paths.length)];
+        }
+      }
+
+      if (!mounted) return;
+      setState(() {
+        _config = config;
+        _level = reminderLevel;
+        _grammarCharacterPaths = paths;
+        _questionCharacterPath
+          ..clear()
+          ..addAll(charMap);
+        _reminderEntriesById
+          ..clear()
+          ..addAll(loadedEntries);
+        _currentQuestionIds = List<String>.from(validQuestionIds);
+        _initialReminderQuestionIds = List<String>.from(validQuestionIds);
+        _initialQuestionCount = validQuestionIds.length;
+        _reviewingMistakes = false;
+        _phase = _Phase.playing;
+        _quizStartTime = DateTime.now();
+        _currentOptions = options;
+        _correctAnswer = correct;
+      });
+      final musicOn = ref.read(settingsProvider).valueOrNull?.musicOn ?? true;
+      audio.startQuizMusic(musicOn: musicOn);
+    } catch (e, st) {
+      debugPrint('GrammarQuizScreen _loadReminderLevel: $e\n$st');
+      if (mounted) {
+        setState(() => _loadError = e.toString());
+      }
+    }
+  }
+
   (List<String>, String) _buildOptionsFor(
     GrammarQuestion q,
     GrammarLevel level,
@@ -163,6 +293,11 @@ class _GrammarQuizScreenState extends ConsumerState<GrammarQuizScreen> {
 
   void _onAnswerTap(int optionIndex) {
     if (_answerLocked) return;
+    if (_kTestAutoComplete) {
+      _correctCount = 100;
+      setState(() => _phase = _Phase.end);
+      return;
+    }
     final selected = _currentOptions[optionIndex];
     final isCorrect = selected == _correctAnswer;
     final soundFxOn = ref.read(settingsProvider).valueOrNull?.soundFxOn ?? true;
@@ -170,6 +305,17 @@ class _GrammarQuizScreenState extends ConsumerState<GrammarQuizScreen> {
       audio.playCorrect(soundFxOn: soundFxOn);
     } else {
       audio.playWrong(soundFxOn: soundFxOn);
+      if (_isReminder) {
+        final questionId = _currentQuestionId;
+        if (questionId != null) {
+          _nextReviewQuestionIds.add(questionId);
+        }
+      } else {
+        ReminderProgressService.instance.recordWrongAnswer(
+          widget.quizType,
+          buildReminderQuestionId(widget.subLevel.levelNumber, _currentIndex),
+        );
+      }
     }
     AchievementService.instance.recordAnswer(isCorrect);
     setState(() {
@@ -193,6 +339,41 @@ class _GrammarQuizScreenState extends ConsumerState<GrammarQuizScreen> {
 
   void _goNext() {
     if (_currentIndex + 1 >= _questions.length) {
+      if (_isReminder && _nextReviewQuestionIds.isNotEmpty) {
+        final nextQuestionIds = List<String>.from(_nextReviewQuestionIds)
+          ..shuffle(_random);
+        _nextReviewQuestionIds.clear();
+        final reminderQuestions = nextQuestionIds
+            .map((questionId) => _reminderEntriesById[questionId]!.question)
+            .toList(growable: false);
+        final reminderLevel = GrammarLevel(questions: reminderQuestions);
+        final strings = ref.read(currentLocalizedStringsProvider).valueOrNull ?? {};
+        final (options, correct) =
+            _buildOptionsFor(reminderQuestions[0], reminderLevel, strings);
+        final charMap = <int, String>{};
+        for (var i = 0; i < reminderQuestions.length; i++) {
+          if (reminderQuestions[i] is! GrammarConversationQuestion &&
+              _grammarCharacterPaths.isNotEmpty) {
+            charMap[i] =
+                _grammarCharacterPaths[_random.nextInt(_grammarCharacterPaths.length)];
+          }
+        }
+        setState(() {
+          _level = reminderLevel;
+          _currentQuestionIds = nextQuestionIds;
+          _questionCharacterPath
+            ..clear()
+            ..addAll(charMap);
+          _currentIndex = 0;
+          _answerLocked = false;
+          _showNext = false;
+          _selectedIndex = null;
+          _currentOptions = options;
+          _correctAnswer = correct;
+          _reviewingMistakes = true;
+        });
+        return;
+      }
       setState(() => _phase = _Phase.end);
       return;
     }
@@ -221,6 +402,23 @@ class _GrammarQuizScreenState extends ConsumerState<GrammarQuizScreen> {
   int _diamondsEarned() => _correctCount;
 
   Future<void> _onEndOk() async {
+    if (_isReminder) {
+      await ReminderProgressService.instance.markReminderCompleted(
+        quizType: widget.quizType,
+        mainLevel: widget.subLevel.mainLevel,
+        reminderIndex: widget.subLevel.reminderIndex,
+        answeredIds: _initialReminderQuestionIds,
+      );
+      if (mounted) {
+        Navigator.of(context).pop(LevelCompletionResult(
+          ordinalLevelIndex: widget.ordinalLevelIndex,
+          completed: true,
+          isReminder: true,
+        ));
+      }
+      return;
+    }
+
     final stars = _stars();
     if (_quizStartTime != null) {
       final duration = DateTime.now().difference(_quizStartTime!).inSeconds;
@@ -325,21 +523,34 @@ class _GrammarQuizScreenState extends ConsumerState<GrammarQuizScreen> {
 
   Widget _buildPlaying(bool soundFxOn, Map<String, String> strings) {
     final q = _questions[_currentIndex];
-    final total = _questions.length;
-    final isLast = _currentIndex + 1 >= total;
+    final total = _isReminder ? _initialQuestionCount : _questions.length;
+    final isLast = _currentIndex + 1 >= _questions.length;
     final isConversation = q is GrammarConversationQuestion;
     final optionCount = q is GrammarYesNoQuestion ? 2 : 4;
+    final reminderProgress = _reviewingMistakes
+        ? 1.0
+        : (total <= 0 ? 0.0 : (_currentIndex + 1) / total);
 
     return Column(
       children: [
         Padding(
           padding: const EdgeInsets.fromLTRB(16, 8, 16, 0),
-          child: Text(
-            _questionLabel(strings, _currentIndex + 1, total),
-            style: Theme.of(context).textTheme.labelLarge?.copyWith(
-                  color: Theme.of(context).colorScheme.primary,
-                  fontWeight: FontWeight.w600,
-                ),
+          child: Column(
+            children: [
+              Text(
+                _isReminder && _reviewingMistakes
+                    ? (strings['reviewing_mistakes'] ?? 'Reviewing Mistakes')
+                    : _questionLabel(strings, _currentIndex + 1, total),
+                style: Theme.of(context).textTheme.labelLarge?.copyWith(
+                      color: Theme.of(context).colorScheme.primary,
+                      fontWeight: FontWeight.w600,
+                    ),
+              ),
+              if (_isReminder) ...[
+                const SizedBox(height: 8),
+                LinearProgressIndicator(value: reminderProgress),
+              ],
+            ],
           ),
         ),
         Expanded(
@@ -371,9 +582,11 @@ class _GrammarQuizScreenState extends ConsumerState<GrammarQuizScreen> {
                       _goNext();
                     },
                     child: Text(
-                      isLast
-                          ? (strings['finish'] ?? 'Finish')
-                          : (strings['next'] ?? 'Next'),
+                      _isReminder
+                          ? (strings['next'] ?? 'Next')
+                          : (isLast
+                              ? (strings['finish'] ?? 'Finish')
+                              : (strings['next'] ?? 'Next')),
                     ),
                   )
                 : const SizedBox.shrink(),
@@ -384,8 +597,12 @@ class _GrammarQuizScreenState extends ConsumerState<GrammarQuizScreen> {
   }
 
   Widget _buildConversationLayout(GrammarConversationQuestion q) {
-    final char1 = q.character1.isNotEmpty ? q.character1 : _level!.character1;
-    final char2 = q.character2.isNotEmpty ? q.character2 : _level!.character2;
+    final char1 = q.character1.isNotEmpty
+        ? q.character1
+        : (_currentReminderEntry?.levelCharacter1 ?? _level!.character1);
+    final char2 = q.character2.isNotEmpty
+        ? q.character2
+        : (_currentReminderEntry?.levelCharacter2 ?? _level!.character2);
     final line1Text = q.line1['en'] ?? '';
     final line2Text = q.line2['en'] ?? '';
 
@@ -803,6 +1020,40 @@ class _GrammarQuizScreenState extends ConsumerState<GrammarQuizScreen> {
   }
 
   Widget _buildEnd(bool soundFxOn, Map<String, String> strings) {
+    if (_isReminder) {
+      return Center(
+        child: Padding(
+          padding: const EdgeInsets.all(24),
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Text(
+                strings['level_complete'] ?? 'Level complete!',
+                style: Theme.of(context).textTheme.headlineSmall,
+              ),
+              const SizedBox(height: 16),
+              Text(
+                strings['reviewing_mistakes'] ?? 'Reviewing Mistakes',
+                style: Theme.of(context).textTheme.titleMedium,
+              ),
+              const SizedBox(height: 24),
+              SizedBox(
+                width: double.infinity,
+                height: _kMinTouchTarget + 8,
+                child: FilledButton(
+                  onPressed: () {
+                    audio.playClick(soundFxOn: soundFxOn);
+                    _onEndOk();
+                  },
+                  child: Text(strings['ok'] ?? 'OK'),
+                ),
+              ),
+            ],
+          ),
+        ),
+      );
+    }
+
     final stars = _stars();
     final diamonds = _diamondsEarned();
 

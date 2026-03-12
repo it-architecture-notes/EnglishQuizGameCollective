@@ -5,13 +5,20 @@ class SubLevel {
     required this.levelNumber,
     required this.iconImageName,
     required this.title,
+    this.kind = 'regular',
+    this.reminderIndex = 0,
   });
 
   final int mainLevel;
-  /// Unique level number within this quiz type (1-based); use for progress and state.
+  /// Unique level number within this quiz type; regular levels stay sequential,
+  /// reminder levels use a high non-colliding value.
   final int levelNumber;
   final String iconImageName;
   final String title;
+  final String kind;
+  final int reminderIndex;
+
+  bool get isReminder => kind == 'reminder';
 
   static SubLevel fromJson(Map<String, dynamic> json) {
     return SubLevel(
@@ -19,6 +26,8 @@ class SubLevel {
       levelNumber: json['levelNumber'] as int,
       iconImageName: json['iconImageName'] as String,
       title: json['title'] as String,
+      kind: json['kind'] as String? ?? 'regular',
+      reminderIndex: (json['reminderIndex'] as num?)?.toInt() ?? 0,
     );
   }
 }
@@ -52,6 +61,7 @@ class BannerItem extends LevelListItem {
 class SubLevelItem extends LevelListItem {
   SubLevelItem(this.sub, {required this.ordinalLevelIndex});
   final SubLevel sub;
-  /// 1-based position in subLevels list (progression key).
+  /// Progress key used by map navigation and quiz completion callbacks.
+  /// For regular levels this matches the historical level numbering.
   final int ordinalLevelIndex;
 }

@@ -1,3 +1,3 @@
 # Active Progress Context
 
-(No active issue.)
+_No active issue._

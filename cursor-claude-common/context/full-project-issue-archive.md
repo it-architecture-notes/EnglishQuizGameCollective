@@ -1,5 +1,47 @@
 
 
+**Issue-13: Reminder Quiz Levels at the end of Main Level**
+
+Description: At the end of each main level we will include 2 reminder levels automatically which will ask a mix of questions from the level in the main level. The purpose is to remind the already compeleted items to the user. This is for every quiz type.
+
+Use Cases:
+- In the flow configuration, at the end of each level there will be two reminder quizzez. These quizzes will have common questions from the previous mainLevel levels. Their icon name will be iconImageName = "reminder.png"
+- These levels will not have configured questions, they will pick the questions from the previous level based on this logic:
+    - App will keep the wrongly answered each question from the levels of a main level in the gameplay state. e.g if users answers a question wrong in level 2 of main level this will be recorded so that question may be repeated in the reminder levels.
+    - Some arbitatry questions from the previous levels some of the questions.
+    - Don't make reminder level over 30 questions if wrong answers are over 60 (2 times 30) then remove starting from the least wrongly answered looking at the counter. If you need to decide between the wrongly answered with same wrong count then select randomly. Don't include any regular questions if wrong answers are more than than 60. If wrong questions is less then 60 then complete it to 60 by selecting random questions from the previous levels.
+- Quizzez will be exactly same format of the quiz type (e.g. for image quiz reminder level quizzez, the page design etc will be the same as image quizzez)
+- Quizzez will be included in the story flow as they are configured as part of the main level flow.
+
+FAQ answers:
+- User answered the same question wrong 3 times appear only once in the reminders.
+- User played the same level and this time answered correctly, doesn't matter, still present in the reminders.
+- User played the same level and this time answered wrong even previuous correct not in wrong list, include in the reminders.
+- User played the same level and this time answered wrong and previuously in the wrong list, include in the reminders by increasing wrong counter.
+- Random questions exclude wrong questions.
+- The number of questions is dynamic since we don't know how many questions will be wrong.
+- Questions distributed to reminder levels randomly, NOT first half to first reminder. shuffle(allReminderQuestions) split into two groups.
+- Same question cannot appear in two levels
+- If the user answers the same question wrong again, repeat it at the end of quiz until getting right. When you repeat the wrong questions in the reminder level ask them randomly at the end. so if there are 20 questions in total in the reminder level, user answers 5 wrong, ask this 5 with random order at the end, if still answers 3 wrong, ask after asking 5 questions this 3 in random order etc.
+- There is no star and diamond earning in reminder levels
+- Main level story is completed only after reminder levels
+- Reminder levels will appear in the map UI with the same special icon picked from assets.
+- question pool for reminders is all the levels in the same main level but not the reminder levels
+- When are reminder questions generated is up to your decision.
+- Wrong answer tracking is kept in the state json files.
+- Reminder levels can be played only once and cannot be repeated. Since the user need to answer all questions right at some point. If user quits in the middle they can restart the reminder level again. User can play regular levels as much as they prefer.
+- Reminder levels are locked and shown locked until the turn comes to them. Reminder levels are always at the end of main level.
+- Main levels should not have less than 60 questions but in that case use all the questions in the main level as the regular questions and reminder levels will have less than 30 questions.
+- If the user quits in the middle of the reminder level the same questions are repeated again, that means reminder level answers do not clear the wrong answer list.
+- The scenario: 65 wrong answers, need to remove 5 to get down to 60. If the bottom 10 all have the same wrong count (e.g., all wrong once), randomly select which 5 to remove.
+- No need to show users see how many times they've gotten a question wrong.
+- For a reminder level to be considered "completed," the user needs to get ALL questions correct (due to the repetition of wrong questions at the end)
+- The list is only cleared/updated once the entire Reminder Level is successfully completed, and we clear only the questions answered in that reminder level since there are more than one reminder levels.
+- the 50 wrong answers and 10 randoms shuffled together first, then sliced
+- the progress bar stays at 100% while they loop through. there be a visual indicator (like a header saying "Reviewing Mistakes")
+
+---
+
 **Issue-12: Main Level Story Implemenation**
 
 * Description

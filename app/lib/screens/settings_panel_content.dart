@@ -137,6 +137,21 @@ class SettingsPanelContent extends ConsumerWidget {
                       ),
                       ElevatedButton(
                         onPressed: () async {
+                          await TestDataService.instance.seedImageMainLevel1ReminderTest();
+                          if (context.mounted) {
+                            ScaffoldMessenger.of(context).showSnackBar(
+                              const SnackBar(
+                                content: Text(
+                                  'Image main level 1 seeded: regular levels complete with 2 stars and 3 wrong questions each. Open Image Quiz to test reminders.',
+                                ),
+                              ),
+                            );
+                          }
+                        },
+                        child: const Text('Seed image reminder test'),
+                      ),
+                      ElevatedButton(
+                        onPressed: () async {
                           await TestDataService.instance.clearTestData();
                           if (context.mounted) {
                             ScaffoldMessenger.of(context).showSnackBar(

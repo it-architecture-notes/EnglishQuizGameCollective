@@ -5,21 +5,39 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../models/level_completion_result.dart';
 import '../models/quiz_flow.dart';
+import '../models/reminder_progress.dart';
 import '../models/vocabulary_quiz.dart';
 import '../providers/localization_provider.dart';
 import '../providers/settings_provider.dart';
 import '../services/achievement_service.dart';
-import '../services/app_settings_service.dart';
 import '../services/audio_service.dart' as audio;
 import '../services/game_config_loader.dart';
 import '../services/profile_service.dart';
 import '../services/quiz_progress_service.dart';
+import '../services/reminder_progress_service.dart';
 import '../services/vocabulary_quiz_loader.dart';
 
 const double _kMinTouchTarget = 48.0;
+
+// TODO(test): remove before release — auto-completes after first answer.
+const bool _kTestAutoComplete = true;
 const String _kBlank = '_____';
 
 enum _Phase { loading, playing, end }
+
+class _ReminderVocabularyEntry {
+  const _ReminderVocabularyEntry({
+    required this.questionId,
+    required this.character1,
+    required this.character2,
+    required this.question,
+  });
+
+  final String questionId;
+  final String character1;
+  final String character2;
+  final VocabularyQuestion question;
+}
 
 class VocabularyQuizScreen extends ConsumerStatefulWidget {
   const VocabularyQuizScreen({
@@ -27,12 +45,18 @@ class VocabularyQuizScreen extends ConsumerStatefulWidget {
     required this.subLevel,
     required this.quizType,
     required this.ordinalLevelIndex,
+    this.reminderMode = false,
+    this.reminderQuestionIds,
+    this.reminderSourceLevelsByLevelNumber,
   });
 
   final SubLevel subLevel;
   final String quizType;
   /// 1-based position in subLevels list (progression key).
   final int ordinalLevelIndex;
+  final bool reminderMode;
+  final List<String>? reminderQuestionIds;
+  final Map<int, SubLevel>? reminderSourceLevelsByLevelNumber;
 
   @override
   ConsumerState<VocabularyQuizScreen> createState() =>
@@ -46,7 +70,25 @@ class _VocabularyQuizScreenState extends ConsumerState<VocabularyQuizScreen> {
   VocabularyLevel? _level;
   GameConfig _config = const GameConfig();
 
-  List<VocabularyQuestion> get _questions => _level?.questions ?? [];
+  final Map<String, _ReminderVocabularyEntry> _reminderEntriesById = {};
+  List<String> _currentQuestionIds = [];
+  List<String> _initialReminderQuestionIds = [];
+  final List<String> _nextReviewQuestionIds = [];
+  bool _reviewingMistakes = false;
+  int _initialQuestionCount = 0;
+
+  bool get _isReminder => widget.reminderMode;
+  List<VocabularyQuestion> get _questions => _isReminder
+      ? _currentQuestionIds
+          .map((questionId) => _reminderEntriesById[questionId]!.question)
+          .toList(growable: false)
+      : _level?.questions ?? [];
+  String? get _currentQuestionId =>
+      _isReminder && _currentQuestionIds.isNotEmpty
+          ? _currentQuestionIds[_currentIndex]
+          : null;
+  _ReminderVocabularyEntry? get _currentReminderEntry =>
+      _currentQuestionId == null ? null : _reminderEntriesById[_currentQuestionId];
 
   int _currentIndex = 0;
   int _correctCount = 0;
@@ -62,7 +104,11 @@ class _VocabularyQuizScreenState extends ConsumerState<VocabularyQuizScreen> {
   @override
   void initState() {
     super.initState();
-    _loadLevel();
+    if (_isReminder) {
+      _loadReminderLevel();
+    } else {
+      _loadLevel();
+    }
   }
 
   @override
@@ -100,6 +146,65 @@ class _VocabularyQuizScreenState extends ConsumerState<VocabularyQuizScreen> {
     }
   }
 
+  Future<void> _loadReminderLevel() async {
+    try {
+      final config = await GameConfig.load();
+      final reminderQuestionIds = widget.reminderQuestionIds ?? const [];
+      final sourceLevels = widget.reminderSourceLevelsByLevelNumber ?? const {};
+      final loadedLevels = <int, VocabularyLevel>{};
+      final loadedEntries = <String, _ReminderVocabularyEntry>{};
+      final validQuestionIds = <String>[];
+
+      for (final questionId in reminderQuestionIds) {
+        final (levelNumber, questionIndex) = parseReminderQuestionId(questionId);
+        final sourceLevel = sourceLevels[levelNumber];
+        if (sourceLevel == null) continue;
+        final level = loadedLevels[levelNumber] ??= await loadVocabularyLevel(
+          sourceLevel.iconImageName,
+          sourceLevel.levelNumber,
+        );
+        if (questionIndex < 0 || questionIndex >= level.questions.length) {
+          continue;
+        }
+        loadedEntries[questionId] = _ReminderVocabularyEntry(
+          questionId: questionId,
+          character1: level.character1,
+          character2: level.character2,
+          question: level.questions[questionIndex],
+        );
+        validQuestionIds.add(questionId);
+      }
+
+      if (validQuestionIds.isEmpty) {
+        throw Exception('No reminder questions were available for this level.');
+      }
+
+      if (!mounted) return;
+      setState(() {
+        _config = config;
+        _reminderEntriesById
+          ..clear()
+          ..addAll(loadedEntries);
+        _currentQuestionIds = List<String>.from(validQuestionIds);
+        _initialReminderQuestionIds = List<String>.from(validQuestionIds);
+        _initialQuestionCount = validQuestionIds.length;
+        _reviewingMistakes = false;
+        _phase = _Phase.playing;
+        _quizStartTime = DateTime.now();
+        _currentOptions = _buildOptions(_questions[0]);
+      });
+      final musicOn = ref.read(settingsProvider).valueOrNull?.musicOn ?? true;
+      audio.startQuizMusic(musicOn: musicOn);
+    } catch (e, st) {
+      debugPrint('VocabularyQuizScreen _loadReminderLevel: $e\n$st');
+      if (mounted) {
+        setState(() {
+          _loadError = e.toString();
+        });
+      }
+    }
+  }
+
   // ── Options ────────────────────────────────────────────────────────────────
 
   List<String> _buildOptions(VocabularyQuestion q) {
@@ -111,14 +216,31 @@ class _VocabularyQuizScreenState extends ConsumerState<VocabularyQuizScreen> {
 
   void _onAnswerTap(int optionIndex) {
     if (_answerLocked) return;
+    if (_kTestAutoComplete) {
+      _correctCount = 100;
+      setState(() => _phase = _Phase.end);
+      return;
+    }
+    final question = _questions[_currentIndex];
     final selected = _currentOptions[optionIndex];
-    final correct = _questions[_currentIndex].answer;
+    final correct = question.answer;
     final isCorrect = selected == correct;
     final soundFxOn = ref.read(settingsProvider).valueOrNull?.soundFxOn ?? true;
     if (isCorrect) {
       audio.playCorrect(soundFxOn: soundFxOn);
     } else {
       audio.playWrong(soundFxOn: soundFxOn);
+      if (_isReminder) {
+        final questionId = _currentQuestionId;
+        if (questionId != null) {
+          _nextReviewQuestionIds.add(questionId);
+        }
+      } else {
+        ReminderProgressService.instance.recordWrongAnswer(
+          widget.quizType,
+          buildReminderQuestionId(widget.subLevel.levelNumber, _currentIndex),
+        );
+      }
     }
     AchievementService.instance.recordAnswer(isCorrect);
     setState(() {
@@ -143,9 +265,24 @@ class _VocabularyQuizScreenState extends ConsumerState<VocabularyQuizScreen> {
 
   void _goNext() {
     if (_currentIndex + 1 >= _questions.length) {
+      if (_isReminder && _nextReviewQuestionIds.isNotEmpty) {
+        final nextQuestionIds = List<String>.from(_nextReviewQuestionIds)
+          ..shuffle(Random());
+        _nextReviewQuestionIds.clear();
+        setState(() {
+          _currentQuestionIds = nextQuestionIds;
+          _currentIndex = 0;
+          _answerLocked = false;
+          _showNext = false;
+          _selectedIndex = null;
+          _currentOptions = _buildOptions(_questions[0]);
+          _reviewingMistakes = true;
+        });
+        return;
+      }
       setState(() {
         _phase = _Phase.end;
-        _conversationUnlocked = true;
+        _conversationUnlocked = !_isReminder;
       });
       return;
     }
@@ -173,6 +310,23 @@ class _VocabularyQuizScreenState extends ConsumerState<VocabularyQuizScreen> {
   int _diamondsEarned() => _correctCount;
 
   Future<void> _onEndOk() async {
+    if (_isReminder) {
+      await ReminderProgressService.instance.markReminderCompleted(
+        quizType: widget.quizType,
+        mainLevel: widget.subLevel.mainLevel,
+        reminderIndex: widget.subLevel.reminderIndex,
+        answeredIds: _initialReminderQuestionIds,
+      );
+      if (mounted) {
+        Navigator.of(context).pop(LevelCompletionResult(
+          ordinalLevelIndex: widget.ordinalLevelIndex,
+          completed: true,
+          isReminder: true,
+        ));
+      }
+      return;
+    }
+
     final stars = _stars();
     if (_quizStartTime != null) {
       final duration = DateTime.now().difference(_quizStartTime!).inSeconds;
@@ -357,20 +511,32 @@ class _VocabularyQuizScreenState extends ConsumerState<VocabularyQuizScreen> {
 
   Widget _buildPlaying(bool soundFxOn, Map<String, String> strings, String userLanguage) {
     final q = _questions[_currentIndex];
-    final total = _questions.length;
-    final isLast = _currentIndex + 1 >= total;
+    final total = _isReminder ? _initialQuestionCount : _questions.length;
+    final isLast = _currentIndex + 1 >= _questions.length;
+    final reminderProgress = _reviewingMistakes
+        ? 1.0
+        : (total <= 0 ? 0.0 : (_currentIndex + 1) / total);
 
     return Column(
       children: [
-        // Progress
         Padding(
           padding: const EdgeInsets.fromLTRB(16, 8, 16, 0),
-          child: Text(
-            _questionLabel(strings, _currentIndex + 1, total),
-            style: Theme.of(context).textTheme.labelLarge?.copyWith(
-                  color: Theme.of(context).colorScheme.primary,
-                  fontWeight: FontWeight.w600,
-                ),
+          child: Column(
+            children: [
+              Text(
+                _isReminder && _reviewingMistakes
+                    ? (strings['reviewing_mistakes'] ?? 'Reviewing Mistakes')
+                    : _questionLabel(strings, _currentIndex + 1, total),
+                style: Theme.of(context).textTheme.labelLarge?.copyWith(
+                      color: Theme.of(context).colorScheme.primary,
+                      fontWeight: FontWeight.w600,
+                    ),
+              ),
+              if (_isReminder) ...[
+                const SizedBox(height: 8),
+                LinearProgressIndicator(value: reminderProgress),
+              ],
+            ],
           ),
         ),
 
@@ -402,50 +568,57 @@ class _VocabularyQuizScreenState extends ConsumerState<VocabularyQuizScreen> {
                       audio.playClick(soundFxOn: soundFxOn);
                       _goNext();
                     },
-                    child: Text(isLast ? (strings['finish'] ?? 'Finish') : (strings['next'] ?? 'Next')),
+                    child: Text(
+                      _isReminder
+                          ? (strings['next'] ?? 'Next')
+                          : (isLast
+                              ? (strings['finish'] ?? 'Finish')
+                              : (strings['next'] ?? 'Next')),
+                    ),
                   )
                 : const SizedBox.shrink(),
           ),
         ),
 
         // Translate + Full Conversation
-        Padding(
-          padding: const EdgeInsets.fromLTRB(16, 0, 16, 12),
-          child: Row(
-            children: [
-              if (userLanguage != 'en') ...[
+        if (!_isReminder)
+          Padding(
+            padding: const EdgeInsets.fromLTRB(16, 0, 16, 12),
+            child: Row(
+              children: [
+                if (userLanguage != 'en') ...[
+                  Expanded(
+                    child: OutlinedButton.icon(
+                      onPressed: () {
+                        audio.playClick(soundFxOn: soundFxOn);
+                        setState(() => _showTranslation = !_showTranslation);
+                      },
+                      icon: Icon(
+                        _showTranslation
+                            ? Icons.translate
+                            : Icons.g_translate_outlined,
+                        size: 18,
+                      ),
+                      label: Text(_showTranslation ? (strings['english'] ?? 'English') : (strings['translate'] ?? 'Translate')),
+                    ),
+                  ),
+                  const SizedBox(width: 8),
+                ],
                 Expanded(
                   child: OutlinedButton.icon(
-                    onPressed: () {
-                      audio.playClick(soundFxOn: soundFxOn);
-                      setState(() => _showTranslation = !_showTranslation);
-                    },
-                    icon: Icon(
-                      _showTranslation
-                          ? Icons.translate
-                          : Icons.g_translate_outlined,
-                      size: 18,
-                    ),
-                    label: Text(_showTranslation ? (strings['english'] ?? 'English') : (strings['translate'] ?? 'Translate')),
+                    onPressed: _conversationUnlocked
+                        ? () {
+                            audio.playClick(soundFxOn: soundFxOn);
+                            _showFullConversation();
+                          }
+                        : null,
+                    icon: const Icon(Icons.chat_bubble_outline, size: 18),
+                    label: Text(strings['full_conversation'] ?? 'Full Conversation'),
                   ),
                 ),
-                const SizedBox(width: 8),
               ],
-              Expanded(
-                child: OutlinedButton.icon(
-                  onPressed: _conversationUnlocked
-                      ? () {
-                          audio.playClick(soundFxOn: soundFxOn);
-                          _showFullConversation();
-                        }
-                      : null,
-                  icon: const Icon(Icons.chat_bubble_outline, size: 18),
-                  label: Text(strings['full_conversation'] ?? 'Full Conversation'),
-                ),
-              ),
-            ],
+            ),
           ),
-        ),
       ],
     );
   }
@@ -460,8 +633,8 @@ class _VocabularyQuizScreenState extends ConsumerState<VocabularyQuizScreen> {
         ? (q.line2[userLanguage] ?? q.line2['en'] ?? '')
         : (q.line2['en'] ?? '');
 
-    final char1 = _level?.character1 ?? '';
-    final char2 = _level?.character2 ?? '';
+    final char1 = _currentReminderEntry?.character1 ?? _level?.character1 ?? '';
+    final char2 = _currentReminderEntry?.character2 ?? _level?.character2 ?? '';
 
     return Row(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -692,6 +865,40 @@ class _VocabularyQuizScreenState extends ConsumerState<VocabularyQuizScreen> {
   // ── End panel ──────────────────────────────────────────────────────────────
 
   Widget _buildEnd(bool soundFxOn, Map<String, String> strings) {
+    if (_isReminder) {
+      return Center(
+        child: Padding(
+          padding: const EdgeInsets.all(24),
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Text(
+                strings['level_complete'] ?? 'Level complete!',
+                style: Theme.of(context).textTheme.headlineSmall,
+              ),
+              const SizedBox(height: 16),
+              Text(
+                strings['reviewing_mistakes'] ?? 'Reviewing Mistakes',
+                style: Theme.of(context).textTheme.titleMedium,
+              ),
+              const SizedBox(height: 24),
+              SizedBox(
+                width: double.infinity,
+                height: _kMinTouchTarget + 8,
+                child: FilledButton(
+                  onPressed: () {
+                    audio.playClick(soundFxOn: soundFxOn);
+                    _onEndOk();
+                  },
+                  child: Text(strings['ok'] ?? 'OK'),
+                ),
+              ),
+            ],
+          ),
+        ),
+      );
+    }
+
     final stars = _stars();
     final diamonds = _diamondsEarned();
 
