@@ -488,7 +488,7 @@ class _LevelsScreenState extends ConsumerState<LevelsScreen> {
     return _itemsToLayoutRows(windowed);
   }
 
-  static const int _maxLockedPreview = 10;
+  static const int _maxLockedPreview = 12;
 
   List<LevelListItem> _applyFilter(
     List<LevelListItem> rawItems,
@@ -500,10 +500,21 @@ class _LevelsScreenState extends ConsumerState<LevelsScreen> {
     final regularFlowSubLevels = _regularSubLevelsFrom(rawItems);
     for (final item in rawItems) {
       if (item is SubLevelItem) {
-        // Always include reminder levels in the filtered list so scroll indices
-        // match the flow (otherwise startAt=10 can show L9 instead of Reminder 2).
         if (item.sub.isReminder) {
-          visibleOrdinals.add(item.ordinalLevelIndex);
+          // Unlocked/completed reminders always show; locked reminders count
+          // against the budget the same as locked regular levels.
+          final isUnlocked = _isReminderUnlocked(item) ||
+              ReminderProgressService.instance.isReminderCompleted(
+                data: reminderProgress,
+                mainLevel: item.sub.mainLevel,
+                reminderIndex: item.sub.reminderIndex,
+              );
+          if (isUnlocked) {
+            visibleOrdinals.add(item.ordinalLevelIndex);
+          } else if (lockedRemaining > 0) {
+            visibleOrdinals.add(item.ordinalLevelIndex);
+            lockedRemaining--;
+          }
           continue;
         }
         final isUnlocked = _isRegularLevelUnlocked(

@@ -20,12 +20,12 @@ import '../../services/reminder_progress_service.dart';
 const int kMinImagesPerLevel = 4;
 
 // TODO(test): remove before release — auto-completes after first answer.
-const bool _kTestAutoComplete = true;
+const bool _kTestAutoComplete = false;
 
 /// Minimum touch target size (accessibility).
 const double kMinTouchTarget = 48;
 
-enum _Phase { loading, playing, end }
+enum _Phase { loading, playing, end, gameOver }
 
 class ImageQuizScreen extends ConsumerStatefulWidget {
   const ImageQuizScreen({
@@ -40,6 +40,7 @@ class ImageQuizScreen extends ConsumerStatefulWidget {
 
   final SubLevel subLevel;
   final String quizType;
+
   /// 1-based position in subLevels list (progression key).
   final int ordinalLevelIndex;
   final bool reminderMode;
@@ -50,7 +51,8 @@ class ImageQuizScreen extends ConsumerStatefulWidget {
   ConsumerState<ImageQuizScreen> createState() => _ImageQuizScreenState();
 }
 
-class _ImageQuizScreenState extends ConsumerState<ImageQuizScreen> {
+class _ImageQuizScreenState extends ConsumerState<ImageQuizScreen>
+    with TickerProviderStateMixin {
   _Phase _phase = _Phase.loading;
   String? _loadError;
   List<String> _questionAssetPaths = [];
@@ -71,6 +73,22 @@ class _ImageQuizScreenState extends ConsumerState<ImageQuizScreen> {
   List<String> _currentOptions = [];
   DateTime? _quizStartTime;
 
+  // Timer
+  late AnimationController _timerController;
+
+  // Monster / guest animal
+  int _monsterStep = 0;
+  int _wrongCount = 0;
+  int _monsterStepThreshold = 1;
+  String _guestAnimal = 'squirrel';
+  String _selectedMonster = 'monster';
+
+  // Wind effect when monster moves to next stone
+  late AnimationController _windController;
+
+  // Idle attack loop while waiting for an answer
+  late AnimationController _monsterIdleController;
+
   static String _levelKey(SubLevel sub) =>
       imageQuizLevelKey(sub.iconImageName, sub.levelNumber);
 
@@ -81,6 +99,21 @@ class _ImageQuizScreenState extends ConsumerState<ImageQuizScreen> {
   @override
   void initState() {
     super.initState();
+    _timerController = AnimationController(
+      vsync: this,
+      duration: Duration(seconds: _config.imageQuizTimerSeconds),
+    );
+    _timerController.addStatusListener((status) {
+      if (status == AnimationStatus.completed) _onTimerExpired();
+    });
+    _windController = AnimationController(
+      vsync: this,
+      duration: const Duration(milliseconds: 500),
+    );
+    _monsterIdleController = AnimationController(
+      vsync: this,
+      duration: const Duration(milliseconds: 700),
+    );
     if (_isReminder) {
       _loadReminderLevel();
     } else {
@@ -90,6 +123,9 @@ class _ImageQuizScreenState extends ConsumerState<ImageQuizScreen> {
 
   @override
   void dispose() {
+    _timerController.dispose();
+    _windController.dispose();
+    _monsterIdleController.dispose();
     audio.stopQuizMusic();
     super.dispose();
   }
@@ -120,6 +156,18 @@ class _ImageQuizScreenState extends ConsumerState<ImageQuizScreen> {
                 paths.indexOf(path),
               ))
           .toList(growable: false);
+
+      final totalQuestions = shuffled.length;
+      final threshold = max(1, min(4, (totalQuestions * 0.1).round()));
+      final animalNames = await discoverGuestAnimalNames();
+      final monsterNames = await discoverMonsterNames();
+      final guestAnimal = animalNames.isNotEmpty
+          ? animalNames[Random().nextInt(animalNames.length)]
+          : 'squirrel';
+      final selectedMonster = monsterNames.isNotEmpty
+          ? monsterNames[Random().nextInt(monsterNames.length)]
+          : 'monster';
+
       // Precache images (only use context when mounted)
       if (mounted) {
         for (final path in shuffled) {
@@ -135,10 +183,16 @@ class _ImageQuizScreenState extends ConsumerState<ImageQuizScreen> {
           _currentQuestionIds = questionIds;
           _vocabulary = vocabulary;
           _initialQuestionCount = shuffled.length;
+          _monsterStepThreshold = threshold;
+          _guestAnimal = guestAnimal;
+          _selectedMonster = selectedMonster;
           _phase = _Phase.playing;
           _quizStartTime = DateTime.now();
           _currentOptions = _buildOptions();
         });
+        _timerController.duration =
+            Duration(seconds: _config.imageQuizTimerSeconds);
+        _startTimer();
         final musicOn = ref.read(settingsProvider).valueOrNull?.musicOn ?? true;
         audio.startQuizMusic(musicOn: musicOn);
       }
@@ -165,7 +219,8 @@ class _ImageQuizScreenState extends ConsumerState<ImageQuizScreen> {
       final validQuestionIds = <String>[];
 
       for (final questionId in reminderQuestionIds) {
-        final (levelNumber, questionIndex) = parseReminderQuestionId(questionId);
+        final (levelNumber, questionIndex) =
+            parseReminderQuestionId(questionId);
         final sourceLevel = sourceLevels[levelNumber];
         if (sourceLevel == null) continue;
         final levelKey = imageQuizLevelKey(
@@ -194,6 +249,17 @@ class _ImageQuizScreenState extends ConsumerState<ImageQuizScreen> {
         }
       }
 
+      final totalQuestions = validQuestionIds.length;
+      final threshold = max(1, min(4, (totalQuestions * 0.1).round()));
+      final animalNames = await discoverGuestAnimalNames();
+      final monsterNames = await discoverMonsterNames();
+      final guestAnimal = animalNames.isNotEmpty
+          ? animalNames[Random().nextInt(animalNames.length)]
+          : 'squirrel';
+      final selectedMonster = monsterNames.isNotEmpty
+          ? monsterNames[Random().nextInt(monsterNames.length)]
+          : 'monster';
+
       if (!mounted) return;
       setState(() {
         _config = config;
@@ -209,11 +275,17 @@ class _ImageQuizScreenState extends ConsumerState<ImageQuizScreen> {
             .map((questionId) => assetPathByQuestionId[questionId]!)
             .toList(growable: false);
         _initialQuestionCount = validQuestionIds.length;
+        _monsterStepThreshold = threshold;
+        _guestAnimal = guestAnimal;
+        _selectedMonster = selectedMonster;
         _reviewingMistakes = false;
         _phase = _Phase.playing;
         _quizStartTime = DateTime.now();
         _currentOptions = _buildOptions();
       });
+      _timerController.duration =
+          Duration(seconds: _config.imageQuizTimerSeconds);
+      _startTimer();
       final musicOn = ref.read(settingsProvider).valueOrNull?.musicOn ?? true;
       audio.startQuizMusic(musicOn: musicOn);
     } catch (e, st) {
@@ -226,6 +298,117 @@ class _ImageQuizScreenState extends ConsumerState<ImageQuizScreen> {
       }
     }
   }
+
+  // ── Timer ─────────────────────────────────────────────────────────────────
+
+  void _startTimer() {
+    _timerController
+      ..reset()
+      ..forward();
+    if (!_monsterIdleController.isAnimating) {
+      _monsterIdleController.repeat(reverse: true);
+    }
+  }
+
+  void _onTimerExpired() {
+    if (_answerLocked) return;
+    _timerController.stop();
+    final soundFxOn = ref.read(settingsProvider).valueOrNull?.soundFxOn ?? true;
+    audio.playWrong(soundFxOn: soundFxOn);
+    final questionId = _currentQuestionId;
+    if (_isReminder) {
+      if (questionId != null) _nextReviewQuestionIds.add(questionId);
+    } else if (questionId != null) {
+      ReminderProgressService.instance.recordWrongAnswer(
+        widget.quizType,
+        questionId,
+      );
+    }
+    AchievementService.instance.recordAnswer(false);
+    _recordWrongForMonster();
+    setState(() {
+      _answerLocked = true;
+      _selectedIndex = null; // no option tapped — only correct highlighted
+      _showNext = true;
+    });
+  }
+
+  // ── Monster ───────────────────────────────────────────────────────────────
+
+  void _recordWrongForMonster() {
+    _wrongCount++;
+    final newStep = min(4, _wrongCount ~/ _monsterStepThreshold);
+    if (newStep > _monsterStep) {
+      _monsterStep = newStep;
+      // Pause idle during the 500ms stone-movement transition, then resume
+      _monsterIdleController
+        ..stop()
+        ..reset();
+      WidgetsBinding.instance.addPostFrameCallback((_) {
+        if (mounted) _windController.forward(from: 0);
+      });
+      Future.delayed(const Duration(milliseconds: 500), () {
+        if (mounted && _phase == _Phase.playing) {
+          _monsterIdleController.repeat(reverse: true);
+        }
+      });
+      if (_monsterStep >= 4) {
+        WidgetsBinding.instance.addPostFrameCallback((_) {
+          if (mounted) {
+            _monsterIdleController
+              ..stop()
+              ..reset();
+            setState(() => _phase = _Phase.gameOver);
+          }
+        });
+      }
+    }
+  }
+
+  // step 0=laughing(-1) … step 4=crying(-5)
+  Widget _animalImage({int step = -1}) {
+    final index = (step < 0 ? _monsterStep : step).clamp(0, 4) + 1;
+    final path = 'assets/images/animals/$_guestAnimal/$_guestAnimal-$index.png';
+    return Image.asset(
+      path,
+      width: 72,
+      height: 72,
+      fit: BoxFit.contain,
+      errorBuilder: (_, __, ___) => Container(
+        width: 72,
+        height: 72,
+        decoration: BoxDecoration(
+          color: Colors.amber.shade100,
+          borderRadius: BorderRadius.circular(12),
+          border: Border.all(color: Colors.amber.shade400),
+        ),
+        child: Icon(Icons.pets, color: Colors.amber.shade700, size: 32),
+      ),
+    );
+  }
+
+  Widget _monsterImage() {
+    final path = 'assets/images/monsters/$_selectedMonster.png';
+    return Image.asset(
+      path,
+      width: 72,
+      height: 72,
+      fit: BoxFit.contain,
+      errorBuilder: (_, __, ___) => Container(
+        width: 72,
+        height: 72,
+        decoration: BoxDecoration(
+          color: Colors.purple.shade100,
+          borderRadius: BorderRadius.circular(12),
+          border: Border.all(color: Colors.purple.shade400),
+        ),
+        child:
+            Icon(Icons.pest_control, color: Colors.purple.shade700, size: 32),
+      ),
+    );
+  }
+
+  // ── Answer logic ──────────────────────────────────────────────────────────
 
   String _correctAnswer() =>
       assetPathToBasename(_questionAssetPaths[_currentIndex]);
@@ -251,6 +434,7 @@ class _ImageQuizScreenState extends ConsumerState<ImageQuizScreen> {
       setState(() => _phase = _Phase.end);
       return;
     }
+    _timerController.stop();
     final option = _currentOptions[optionIndex];
     final correct = _correctAnswer();
     final isCorrect = option == correct;
@@ -270,6 +454,7 @@ class _ImageQuizScreenState extends ConsumerState<ImageQuizScreen> {
           questionId,
         );
       }
+      _recordWrongForMonster();
     }
     AchievementService.instance.recordAnswer(isCorrect);
     setState(() {
@@ -312,8 +497,12 @@ class _ImageQuizScreenState extends ConsumerState<ImageQuizScreen> {
           _currentOptions = _buildOptions();
           _reviewingMistakes = true;
         });
+        _startTimer();
         return;
       }
+      _monsterIdleController
+        ..stop()
+        ..reset();
       setState(() {
         _phase = _Phase.end;
       });
@@ -326,6 +515,7 @@ class _ImageQuizScreenState extends ConsumerState<ImageQuizScreen> {
       _selectedIndex = null;
       _currentOptions = _buildOptions();
     });
+    _startTimer();
   }
 
   int _stars() {
@@ -384,6 +574,8 @@ class _ImageQuizScreenState extends ConsumerState<ImageQuizScreen> {
     }
   }
 
+  // ── Build ─────────────────────────────────────────────────────────────────
+
   @override
   Widget build(BuildContext context) {
     ref.listen(settingsProvider, (prev, next) {
@@ -392,7 +584,8 @@ class _ImageQuizScreenState extends ConsumerState<ImageQuizScreen> {
       }
     });
     final soundFxOn = ref.read(settingsProvider).valueOrNull?.soundFxOn ?? true;
-    final strings = ref.watch(currentLocalizedStringsProvider).valueOrNull ?? {};
+    final strings =
+        ref.watch(currentLocalizedStringsProvider).valueOrNull ?? {};
     return Scaffold(
       appBar: AppBar(
         title: Text(widget.subLevel.title),
@@ -401,9 +594,9 @@ class _ImageQuizScreenState extends ConsumerState<ImageQuizScreen> {
           onPressed: () {
             audio.playClick(soundFxOn: soundFxOn);
             Navigator.of(context).pop(LevelCompletionResult(
-                  ordinalLevelIndex: widget.ordinalLevelIndex,
-                  completed: false,
-                ));
+              ordinalLevelIndex: widget.ordinalLevelIndex,
+              completed: false,
+            ));
           },
         ),
       ),
@@ -421,6 +614,8 @@ class _ImageQuizScreenState extends ConsumerState<ImageQuizScreen> {
         return _buildPlaying(soundFxOn, strings);
       case _Phase.end:
         return _buildEnd(soundFxOn, strings);
+      case _Phase.gameOver:
+        return _buildGameOver(soundFxOn, strings);
     }
   }
 
@@ -441,9 +636,9 @@ class _ImageQuizScreenState extends ConsumerState<ImageQuizScreen> {
               onPressed: () {
                 audio.playClick(soundFxOn: soundFxOn);
                 Navigator.of(context).pop(LevelCompletionResult(
-                      ordinalLevelIndex: widget.ordinalLevelIndex,
-                      completed: false,
-                    ));
+                  ordinalLevelIndex: widget.ordinalLevelIndex,
+                  completed: false,
+                ));
               },
               child: Text(strings['back_to_levels'] ?? 'Back to Levels'),
             ),
@@ -457,34 +652,26 @@ class _ImageQuizScreenState extends ConsumerState<ImageQuizScreen> {
   Widget _buildPlaying(bool soundFxOn, Map<String, String> strings) {
     final path = _questionAssetPaths[_currentIndex];
     final isLast = _currentIndex + 1 >= _questionAssetPaths.length;
-    final reminderProgress = _reviewingMistakes
-        ? 1.0
-        : (_initialQuestionCount <= 0 ? 0.0 : (_currentIndex + 1) / _initialQuestionCount);
 
     return Column(
       children: [
+        // Reminder question counter (reminder mode only)
         if (_isReminder)
           Padding(
             padding: const EdgeInsets.fromLTRB(16, 8, 16, 0),
-            child: Column(
-              children: [
-                Text(
-                  _reviewingMistakes
-                      ? (strings['reviewing_mistakes'] ?? 'Reviewing Mistakes')
-                      : '${_currentIndex + 1} / $_initialQuestionCount',
-                  style: Theme.of(context).textTheme.labelLarge?.copyWith(
-                        color: Theme.of(context).colorScheme.primary,
-                        fontWeight: FontWeight.w600,
-                      ),
-                ),
-                const SizedBox(height: 8),
-                LinearProgressIndicator(value: reminderProgress),
-              ],
+            child: Text(
+              _reviewingMistakes
+                  ? (strings['reviewing_mistakes'] ?? 'Reviewing Mistakes')
+                  : '${_currentIndex + 1} / $_initialQuestionCount',
+              style: Theme.of(context).textTheme.labelLarge?.copyWith(
+                    color: Theme.of(context).colorScheme.primary,
+                    fontWeight: FontWeight.w600,
+                  ),
             ),
           ),
-        // Question image
+        // Question image (smaller to give room for monster row)
         Expanded(
-          flex: 2,
+          flex: 1,
           child: Padding(
             padding: const EdgeInsets.all(16),
             child: Image.asset(
@@ -495,6 +682,136 @@ class _ImageQuizScreenState extends ConsumerState<ImageQuizScreen> {
                 child: const Icon(Icons.image_not_supported, size: 64),
               ),
             ),
+          ),
+        ),
+        // Guest animal + monster (jumps stone to stone) + step stones below
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 4),
+          child: LayoutBuilder(
+            builder: (context, constraints) {
+              const animalSize = 72.0;
+              const monsterSize = 72.0;
+              const stoneSize = 20.0;
+              const stoneRowHeight = 26.0;
+              const gap = 8.0;
+              final totalWidth = constraints.maxWidth;
+
+              // Monster center range: starts above rightmost stone, ends above leftmost stone
+              final maxMonsterCenter = totalWidth - monsterSize / 2;
+              final minMonsterCenter = animalSize + gap + monsterSize / 2;
+              final range = maxMonsterCenter - minMonsterCenter;
+
+              // Stone i=0 is rightmost (step-0 landing), i=3 is leftmost (step-3 landing)
+              // Monster center at step k aligns with stone k center
+              final step = _monsterStep.clamp(0, 3);
+              final monsterCenter = maxMonsterCenter - step * (range / 3);
+              final monsterLeft = monsterCenter - monsterSize / 2;
+
+              const pieTimerSize = 40.0;
+              const pieTimerGap = 6.0;
+              const monsterTop = pieTimerSize + pieTimerGap;
+
+              return SizedBox(
+                height: monsterTop + monsterSize + stoneRowHeight,
+                child: Stack(
+                  children: [
+                    // Animal — fixed at left, aligned with monster
+                    Positioned(
+                      left: 0,
+                      top: monsterTop,
+                      child: _animalImage(),
+                    ),
+                    // Monster — moves stone to stone with wind behind it
+                    AnimatedPositioned(
+                      duration: const Duration(milliseconds: 500),
+                      curve: Curves.easeInOut,
+                      left: monsterLeft,
+                      top: monsterTop,
+                      child: Stack(
+                        clipBehavior: Clip.none,
+                        children: [
+                          Positioned.fill(
+                            child: AnimatedBuilder(
+                              animation: _windController,
+                              builder: (context, _) => CustomPaint(
+                                painter: _WindPainter(_windController.value),
+                                size: const Size(72, 72),
+                              ),
+                            ),
+                          ),
+                          // Pie countdown timer — centered above monster, moves with it
+                          Positioned(
+                            top: -(pieTimerSize + pieTimerGap),
+                            left: (monsterSize - pieTimerSize) / 2,
+                            child: AnimatedBuilder(
+                              animation: _timerController,
+                              builder: (context, _) {
+                                final remaining = 1.0 - _timerController.value;
+                                final color = Color.lerp(
+                                    Colors.red, Colors.green, remaining)!;
+                                return CustomPaint(
+                                  size: Size(pieTimerSize, pieTimerSize),
+                                  painter: _PieTimerPainter(
+                                    progress: remaining,
+                                    color: color,
+                                  ),
+                                );
+                              },
+                            ),
+                          ),
+                          // Idle attack loop: scale up 10% + lunge left 10% of size
+                          AnimatedBuilder(
+                            animation: _monsterIdleController,
+                            builder: (context, child) {
+                              final t = CurvedAnimation(
+                                parent: _monsterIdleController,
+                                curve: Curves.easeInOut,
+                              ).value;
+                              return Transform.translate(
+                                offset: Offset(-monsterSize * 0.10 * t, 0),
+                                child: Transform.scale(
+                                  scale: 1.0 + 0.10 * t,
+                                  child: child,
+                                ),
+                              );
+                            },
+                            child: _monsterImage(),
+                          ),
+                        ],
+                      ),
+                    ),
+                    // Step stones — individually positioned to align with monster landing spots
+                    // i=0 rightmost (green) → i=3 leftmost (red); grey when consumed
+                    ...List.generate(4, (i) {
+                      const stoneColors = [
+                        Colors.green,
+                        Colors.yellow,
+                        Colors.orange,
+                        Colors.red,
+                      ];
+                      final stoneCenter = maxMonsterCenter - i * (range / 3);
+                      final stoneLeft = stoneCenter - stoneSize / 2;
+                      final consumed = i < _monsterStep;
+                      return Positioned(
+                        bottom: 0,
+                        left: stoneLeft,
+                        child: AnimatedContainer(
+                          duration: const Duration(milliseconds: 300),
+                          width: stoneSize,
+                          height: stoneSize,
+                          decoration: BoxDecoration(
+                            color: consumed
+                                ? Colors.grey.shade300
+                                : stoneColors[i],
+                            borderRadius: BorderRadius.circular(4),
+                          ),
+                        ),
+                      );
+                    }),
+                  ],
+                ),
+              );
+            },
           ),
         ),
         // Answer buttons
@@ -527,7 +844,6 @@ class _ImageQuizScreenState extends ConsumerState<ImageQuizScreen> {
                     )
                   : ElevatedButton.styleFrom(
                       minimumSize: const Size(kMinTouchTarget, kMinTouchTarget),
-                      // Keep original grey look when disabled (avoid blue flicker)
                       disabledBackgroundColor: Colors.grey.shade300,
                       disabledForegroundColor: Colors.grey.shade800,
                       surfaceTintColor: Colors.transparent,
@@ -676,8 +992,159 @@ class _ImageQuizScreenState extends ConsumerState<ImageQuizScreen> {
     );
   }
 
+  Widget _buildGameOver(bool soundFxOn, Map<String, String> strings) {
+    return Center(
+      child: Padding(
+        padding: const EdgeInsets.all(24),
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            // Animal and monster face to face
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                _animalImage(step: 4),
+                const SizedBox(width: 8),
+                // Flip monster horizontally so it faces the animal
+                Transform.scale(
+                  scaleX: -1,
+                  child: _monsterImage(),
+                ),
+              ],
+            ),
+            const SizedBox(height: 16),
+            Text(
+              strings['game_over'] ?? 'Game Over!',
+              style: Theme.of(context).textTheme.headlineSmall,
+            ),
+            const SizedBox(height: 8),
+            Text(
+              strings['monster_caught_animal'] ??
+                  'The monster caught your friend!',
+              textAlign: TextAlign.center,
+              style: Theme.of(context).textTheme.bodyMedium,
+            ),
+            const SizedBox(height: 32),
+            SizedBox(
+              width: double.infinity,
+              height: kMinTouchTarget + 8,
+              child: FilledButton(
+                onPressed: () {
+                  audio.playClick(soundFxOn: soundFxOn);
+                  Navigator.of(context).pop(LevelCompletionResult(
+                    ordinalLevelIndex: widget.ordinalLevelIndex,
+                    completed: false,
+                    isReminder: _isReminder,
+                  ));
+                },
+                child: Text(strings['back_to_levels'] ?? 'Back to Levels'),
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
   String _capitalize(String s) {
     if (s.isEmpty) return s;
     return s[0].toUpperCase() + s.substring(1).toLowerCase();
   }
+}
+
+class _PieTimerPainter extends CustomPainter {
+  const _PieTimerPainter({required this.progress, required this.color});
+
+  /// 1.0 = full circle (time just started), 0.0 = empty (time up).
+  final double progress;
+  final Color color;
+
+  @override
+  void paint(Canvas canvas, Size size) {
+    final center = Offset(size.width / 2, size.height / 2);
+    final radius = size.width / 2;
+    final rect = Rect.fromCircle(center: center, radius: radius);
+
+    // Background track
+    canvas.drawCircle(
+      center,
+      radius,
+      Paint()..color = Colors.grey.shade300,
+    );
+
+    // Filled pie slice (shrinks clockwise as time runs out)
+    if (progress > 0) {
+      canvas.drawArc(
+        rect,
+        -pi / 2, // start at 12 o'clock
+        2 * pi * progress, // sweep clockwise
+        true, // close to center (pie slice)
+        Paint()..color = color,
+      );
+    }
+
+    // Border ring
+    canvas.drawCircle(
+      center,
+      radius,
+      Paint()
+        ..color = Colors.grey.shade500
+        ..style = PaintingStyle.stroke
+        ..strokeWidth = 1.5,
+    );
+  }
+
+  @override
+  bool shouldRepaint(covariant _PieTimerPainter old) =>
+      old.progress != progress || old.color != color;
+}
+
+class _WindPainter extends CustomPainter {
+  _WindPainter(this.value);
+
+  final double value;
+
+  // Horizontal wind lines trailing to the RIGHT of the monster (behind it as it moves left).
+  // Lines start just outside the right edge and extend further right.
+  // Fade in fast, fade out slowly over the animation duration.
+  @override
+  void paint(Canvas canvas, Size size) {
+    if (value <= 0 || value >= 1) return;
+    // Fade in during first 30%, stay visible, fade out in last 30%
+    final opacity = value < 0.3
+        ? value / 0.3
+        : value > 0.7
+            ? (1 - value) / 0.3
+            : 1.0;
+    if (opacity <= 0) return;
+
+    // Lines shift rightward as animation progresses (trail effect)
+    final shift = size.width * 0.4 * value;
+
+    // 5 horizontal lines at different vertical positions and lengths
+    const lineSpecs = [
+      (yFrac: 0.20, length: 48.0, width: 2.5),
+      (yFrac: 0.35, length: 36.0, width: 2.0),
+      (yFrac: 0.50, length: 56.0, width: 3.0),
+      (yFrac: 0.65, length: 32.0, width: 2.0),
+      (yFrac: 0.80, length: 44.0, width: 2.5),
+    ];
+
+    for (final spec in lineSpecs) {
+      final paint = Paint()
+        ..color = Colors.lightBlue.withValues(alpha: opacity * 0.85)
+        ..strokeWidth = spec.width
+        ..style = PaintingStyle.stroke
+        ..strokeCap = StrokeCap.round;
+      final y = size.height * spec.yFrac;
+      // Start just beyond the right edge, extend further right
+      final startX = size.width + 6 + shift;
+      final endX = startX + spec.length;
+      canvas.drawLine(Offset(startX, y), Offset(endX, y), paint);
+    }
+  }
+
+  @override
+  bool shouldRepaint(covariant _WindPainter oldDelegate) =>
+      oldDelegate.value != value;
 }

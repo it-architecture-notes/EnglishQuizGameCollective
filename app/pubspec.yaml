@@ -34,6 +34,17 @@ flutter:
     - assets/images/achievements/
     - assets/images/friends/
     - assets/images/story/
+    - assets/images/monsters/
+    - assets/images/animals/cat/
+    - assets/images/animals/dino/
+    - assets/images/animals/dog/
+    - assets/images/animals/elephant/
+    - assets/images/animals/fox/
+    - assets/images/animals/giraffe/
+    - assets/images/animals/lion/
+    - assets/images/animals/panda/
+    - assets/images/animals/rabbit/
+    - assets/images/animals/squirrel/
     - assets/data/state/
     - assets/data/config/
     - assets/data/settings/

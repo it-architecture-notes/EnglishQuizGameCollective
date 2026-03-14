@@ -1,4 +1,65 @@
+**Issue-14: Image Quiz Timer and Monster Action**
+Description: Only for image quiz, a timer will be set for each question to answer and for each question a target closing monster action will be added. Applies to both normal and reminder mode.
 
+Use Cases:
+- The image quiz question image is smaller at the top of the screen to give room to the monster/animal row below it.
+- A pie-chart countdown timer appears centered above the monster and moves with it. It starts full green and drains clockwise turning red as time runs out.
+- Between the quiz image and the answer buttons there is a row showing: guest animal (left, fixed) | 4 step stones (spread across the width) | monster (right, moves left).
+- Guest animal is randomly selected per quiz session by discovering subfolders under `assets/images/animals/`.
+- Every guest animal has its own folder under `assets/images/animals/{name}/` with 5 pose images: `{name}-1.png` (happy) through `{name}-5.png` (crying).
+- The monster is discovered from `assets/images/monsters/` — one PNG per monster, named `{name}.png`.
+- For every "x" wrong answers the monster jumps one step closer to the guest animal, and the animal's pose changes. There are 4 steps of approach; step 4 is capture (game over).
+- Step stones are individually positioned so the monster lands exactly above each stone. Stone colors left→right: red, orange, yellow, green (danger→safe). Consumed stones turn grey.
+- When the monster reaches step 4, the quiz ends with a game-over overlay showing the guest animal (crying) and the monster face-to-face side by side. Quiz ends with zero stars and zero diamonds.
+- The monster plays a looping idle attack animation while waiting for an answer (scales up 10% and lunges left 10% of its size, easeInOut, 700 ms loop). The idle pauses during the 500 ms stone-jump transition then resumes.
+- A wind trail (light-blue horizontal lines) animates to the right of the monster each time it jumps to a new stone.
+
+FAQ / Confirmed Decisions:
+- Timer is per question. When it expires it counts as a wrong answer: correct answer button turns green, no red button shown, Next button appears. No auto-advance on expiry.
+- Timer duration is configurable in `game_config.json`, default 5 seconds.
+- X threshold formula: `x = max(1, min(4, (totalQuestions * 0.1).round()))`.
+- Pose per step — 0: {name}-1.png, 1: {name}-2.png, 2: {name}-3.png, 3: {name}-4.png, 4: {name}-5.png (game over).
+- Correct answers reset the timer; monster stays where it is.
+- Monster and animal state is per quiz session, resets on every new image quiz game.
+- Wrong answer due to timer expiry counts toward the monster wrong-answer count.
+- Monster step transition is a smooth 500 ms AnimatedPositioned slide.
+- Timer and monster apply in both normal and reminder mode. Monster/wrong-count persist across the mistake-review pass in reminder mode.
+- The locked-levels preview in the levels screen shows the next 12 locked levels (raised from 10), and locked reminder levels now count against that budget.
+- Animal and monster names are discovered at runtime from the asset manifest (no config list needed).
+
+Asset Structure:
+```
+app/assets/images/
+├── monsters/
+│   └── {name}.png              ← one PNG per monster
+└── animals/
+    └── {name}/
+        ├── {name}-1.png        ← happy
+        ├── {name}-2.png        ← smile
+        ├── {name}-3.png        ← normal
+        ├── {name}-4.png        ← worried
+        └── {name}-5.png        ← crying
+```
+
+Config (`game_config.json`):
+```json
+{
+  "autoAdvanceDelaySeconds": 1.5,
+  "imageQuizTimerSeconds": 5
+}
+```
+
+Key Files Changed:
+- `app/lib/screens/image_quiz_screen.dart` — main implementation
+- `app/lib/services/image_quiz_level_loader.dart` — added `discoverGuestAnimalNames()`, `discoverMonsterNames()`
+- `app/lib/services/game_config_loader.dart` — only `autoAdvanceDelaySeconds` and `imageQuizTimerSeconds`
+- `app/assets/data/config/game_config.json` — removed guestAnimals/monsters fields
+- `app/pubspec.yaml` — registered 10 animal folders + monsters folder
+- `app/lib/screens/levels_screen.dart` — locked-preview limit raised to 12, reminder levels counted
+
+Branch: `feature/issue-14-image-quiz-timer-monster`
+
+---
 
 **Issue-13: Reminder Quiz Levels at the end of Main Level**
 

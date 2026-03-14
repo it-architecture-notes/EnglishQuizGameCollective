@@ -18,6 +18,9 @@ One use case and feature at a time. Do not bundle multiple use cases or add “n
 For any feature request to be implemented, present a plan first and wait for approval.
 For architectural decisions (new library, pattern change, data model change), always ask.
 
+## Plans Location
+Always create and store plans under **cursor-claude-common/plans/** (e.g. `cursor-claude-common/plans/issue-14-image-quiz-timer-monster-cursor.md`). Use claude or cursor in the file name depending on the AI. Do not create plans under `.cursor/plans/` or other locations. Use descriptive filenames that include the issue or feature (e.g. `issue-N-short-name.md` or `game-level-fix.md`). When creating a plan in Cursor that may have a counterpart created by Claude, use a distinct name so both can coexist: e.g. suffix Cursor-authored plans with **-cursor** (e.g. `issue-14-image-quiz-timer-monster-cursor.md`); the Claude version may be `issue-14-image-quiz-timer-monster.md` without the suffix.
+
 ## Scope Control
 Do not add comments, types, or docstrings to code you did not change.
 

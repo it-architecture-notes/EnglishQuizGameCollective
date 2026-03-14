@@ -3,9 +3,13 @@ import 'dart:convert';
 import 'package:flutter/services.dart';
 
 class GameConfig {
-  const GameConfig({this.autoAdvanceDelaySeconds = 1.5});
+  const GameConfig({
+    this.autoAdvanceDelaySeconds = 1.5,
+    this.imageQuizTimerSeconds = 5,
+  });
 
   final double autoAdvanceDelaySeconds;
+  final int imageQuizTimerSeconds;
 
   static const String _path = 'assets/data/config/game_config.json';
 
@@ -16,6 +20,8 @@ class GameConfig {
       return GameConfig(
         autoAdvanceDelaySeconds:
             (map['autoAdvanceDelaySeconds'] as num?)?.toDouble() ?? 1.5,
+        imageQuizTimerSeconds:
+            (map['imageQuizTimerSeconds'] as num?)?.toInt() ?? 5,
       );
     } catch (e) {
       return const GameConfig();

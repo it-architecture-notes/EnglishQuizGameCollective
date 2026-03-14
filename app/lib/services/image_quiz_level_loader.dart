@@ -45,3 +45,42 @@ Future<List<String>> loadImageQuizLevelVocabulary(String levelKey) async {
   final basenames = paths.map(assetPathToBasename).toList();
   return basenames;
 }
+
+const String _animalsPrefix = 'assets/images/animals/';
+const String _monstersPrefix = 'assets/images/monsters/';
+
+/// Discovers guest animal names from the bundle (subfolders of assets/images/animals/).
+/// Returns unique folder names, e.g. [dog, squirrel, ...], sorted. Empty if none found.
+Future<List<String>> discoverGuestAnimalNames() async {
+  final manifest = await AssetManifest.loadFromAssetBundle(rootBundle);
+  final names = <String>{};
+  for (final path in manifest.listAssets()) {
+    if (!path.startsWith(_animalsPrefix) || _isDsStore(path)) continue;
+    final after = path.substring(_animalsPrefix.length);
+    final segment = after.split('/').first;
+    if (segment.isNotEmpty) names.add(segment);
+  }
+  final list = names.toList()..sort();
+  return list;
+}
+
+/// Discovers monster names from the bundle (assets/images/monsters/).
+/// If path is monsters/X.png then name is X; if monsters/Subdir/file.png then name is Subdir.
+/// Returns unique names, sorted. Empty if none found.
+Future<List<String>> discoverMonsterNames() async {
+  final manifest = await AssetManifest.loadFromAssetBundle(rootBundle);
+  final names = <String>{};
+  for (final path in manifest.listAssets()) {
+    if (!path.startsWith(_monstersPrefix) || _isDsStore(path)) continue;
+    final after = path.substring(_monstersPrefix.length);
+    final parts = after.split('/');
+    if (parts.length == 1) {
+      final name = assetPathToBasename(parts.first);
+      if (name.isNotEmpty) names.add(name);
+    } else {
+      if (parts.first.isNotEmpty) names.add(parts.first);
+    }
+  }
+  final list = names.toList()..sort();
+  return list;
+}

@@ -1,3 +1,4 @@
 {
-  "autoAdvanceDelaySeconds": 1.5
+  "autoAdvanceDelaySeconds": 1.5,
+  "imageQuizTimerSeconds": 5
 }
