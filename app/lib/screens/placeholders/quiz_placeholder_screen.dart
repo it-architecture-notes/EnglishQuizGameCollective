@@ -38,7 +38,7 @@ class QuizPlaceholderScreen extends StatelessWidget {
               ),
               const SizedBox(height: 12),
               Text(
-                '$quizType • Level ${subLevel.levelNumber}',
+                '$quizType • ${subLevel.progressKey}',
                 style: Theme.of(context).textTheme.bodySmall?.copyWith(
                       color: Colors.grey,
                     ),

@@ -63,7 +63,7 @@ class StoryTriggerService {
   }) {
     if (mainStory == null) return const [];
     final mappers = _buildMappers(flowSubLevels);
-    final byLocal = mappers[mainLevelId] ?? const <int, int>{};
+    final byLocal = mappers[mainLevelId] ?? const <int, String>{};
 
     final ready = <StoryPageConfig>[];
     for (final page in mainStory.storySequences) {
@@ -83,12 +83,12 @@ class StoryTriggerService {
 
       var allCoveredPassed = true;
       for (var localLevel = start; localLevel <= end; localLevel++) {
-        final ordinal = byLocal[localLevel];
-        if (ordinal == null) {
+        final progressKey = byLocal[localLevel];
+        if (progressKey == null) {
           allCoveredPassed = false;
           break;
         }
-        final stars = quizProgress.levels[ordinal]?.highestStars ?? 0;
+        final stars = quizProgress.levels[progressKey]?.highestStars ?? 0;
         if (stars < 1) {
           allCoveredPassed = false;
           break;
@@ -133,22 +133,22 @@ class StoryTriggerService {
   }) {
     if (page.trigger.level > 0) return page.trigger.level;
     final byMain =
-        _buildMappers(flowSubLevels)[mainLevelId] ?? const <int, int>{};
+        _buildMappers(flowSubLevels)[mainLevelId] ?? const <int, String>{};
     if (byMain.isEmpty) return 1;
     return byMain.keys.reduce((a, b) => a > b ? a : b);
   }
 
-  static Map<int, Map<int, int>> _buildMappers(
+  static Map<int, Map<int, String>> _buildMappers(
       Iterable<SubLevelItem> flowSubLevels) {
     final localCounterByMain = <int, int>{};
-    final mapper = <int, Map<int, int>>{};
+    final mapper = <int, Map<int, String>>{};
 
     for (final item in flowSubLevels) {
       final mainLevelId = item.sub.mainLevel;
       final nextLocal = (localCounterByMain[mainLevelId] ?? 0) + 1;
       localCounterByMain[mainLevelId] = nextLocal;
-      mapper.putIfAbsent(mainLevelId, () => <int, int>{})[nextLocal] =
-          item.ordinalLevelIndex;
+      mapper.putIfAbsent(mainLevelId, () => <int, String>{})[nextLocal] =
+          item.progressKey;
     }
     return mapper;
   }

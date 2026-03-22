@@ -10,22 +10,18 @@ const String _kGrammarCharactersPrefix = 'assets/images/grammar-characters/';
 
 /// Builds the asset path for a grammar level JSON file.
 ///
-/// [iconImageName] comes from [SubLevel.iconImageName] (e.g. "airport").
-/// [levelNumber] comes from [SubLevel.levelNumber] (e.g. 1).
+/// [iconImageName] comes from [SubLevel.iconImageName] (e.g. "airport-1").
 /// Result: "assets/quiz-data/grammar-quiz/airport-1.json"
-String grammarDataPath(String iconImageName, int levelNumber) {
-  return 'assets/quiz-data/grammar-quiz/$iconImageName-$levelNumber.json';
+String grammarDataPath(String iconImageName) {
+  return 'assets/quiz-data/grammar-quiz/$iconImageName.json';
 }
 
 /// Loads and parses a [GrammarLevel] for the given level.
 ///
 /// Throws an [Exception] if the file is missing, cannot be parsed, or contains
 /// fewer than [kMinGrammarQuestions] questions.
-Future<GrammarLevel> loadGrammarLevel(
-  String iconImageName,
-  int levelNumber,
-) async {
-  final path = grammarDataPath(iconImageName, levelNumber);
+Future<GrammarLevel> loadGrammarLevel(String iconImageName) async {
+  final path = grammarDataPath(iconImageName);
   final String jsonString;
   try {
     jsonString = await rootBundle.loadString(path);

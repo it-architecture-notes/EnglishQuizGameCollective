@@ -6,26 +6,26 @@ import 'package:shared_preferences/shared_preferences.dart';
 /// Per-level progress for a quiz type.
 class LevelProgress {
   const LevelProgress({
-    required this.levelNumber,
+    required this.progressKey,
     this.highestStars = 0,
     this.highestDiamonds = 0,
   });
 
-  final int levelNumber;
+  final String progressKey;
   final int highestStars;
   final int highestDiamonds;
 
   bool get isCompleted => highestStars >= 1;
 
   Map<String, dynamic> toJson() => {
-        'levelNumber': levelNumber,
+        'progressKey': progressKey,
         'highestStars': highestStars,
         'highestDiamonds': highestDiamonds,
       };
 
   static LevelProgress fromJson(Map<String, dynamic> json) {
     return LevelProgress(
-      levelNumber: json['levelNumber'] as int,
+      progressKey: json['progressKey'] as String,
       highestStars: (json['highestStars'] as num?)?.toInt() ?? 0,
       highestDiamonds: (json['highestDiamonds'] as num?)?.toInt() ?? 0,
     );
@@ -39,41 +39,33 @@ class QuizTypeProgress {
     this.totalDiamonds = 0,
   });
 
-  final Map<int, LevelProgress> levels;
+  final Map<String, LevelProgress> levels;
   final int totalDiamonds;
 
-  /// Level numbers that are unlocked (level 1 always; N+1 if level N is completed).
-  Set<int> get unlockedLevelNumbers {
-    final unlocked = <int>{1};
-    int maxCompleted = 0;
-    for (final p in levels.values) {
-      if (p.isCompleted && p.levelNumber > maxCompleted) {
-        maxCompleted = p.levelNumber;
-      }
-    }
-    for (var i = 1; i <= maxCompleted + 1; i++) {
-      unlocked.add(i);
-    }
-    return unlocked;
-  }
-
-  LevelProgress level(int levelNumber) =>
-      levels[levelNumber] ?? LevelProgress(levelNumber: levelNumber);
+  LevelProgress level(String progressKey) =>
+      levels[progressKey] ?? LevelProgress(progressKey: progressKey);
 
   Map<String, dynamic> toJson() => {
         'levels': levels.map(
-          (k, v) => MapEntry(k.toString(), v.toJson()),
+          (k, v) => MapEntry(k, v.toJson()),
         ),
         'totalDiamonds': totalDiamonds,
       };
 
   static QuizTypeProgress fromJson(Map<String, dynamic> json) {
     final levelsMap = json['levels'] as Map<String, dynamic>? ?? {};
-    final levels = <int, LevelProgress>{};
+    final levels = <String, LevelProgress>{};
     for (final e in levelsMap.entries) {
-      final k = int.tryParse(e.key);
-      if (k != null && e.value is Map<String, dynamic>) {
-        levels[k] = LevelProgress.fromJson(e.value as Map<String, dynamic>);
+      if (e.value is Map<String, dynamic>) {
+        final data = e.value as Map<String, dynamic>;
+        // Support old int-keyed format (pre-migration): reconstruct a LevelProgress
+        // with progressKey = the map key (string form of old int).
+        final progressKey = data['progressKey'] as String? ?? e.key;
+        levels[e.key] = LevelProgress(
+          progressKey: progressKey,
+          highestStars: (data['highestStars'] as num?)?.toInt() ?? 0,
+          highestDiamonds: (data['highestDiamonds'] as num?)?.toInt() ?? 0,
+        );
       }
     }
     return QuizTypeProgress(
@@ -129,19 +121,19 @@ class QuizProgressService {
   /// Call only after end-of-level screen when level is completed (≥1 star).
   Future<QuizTypeProgress> recordLevelCompletion({
     required String quizType,
-    required int levelNumber,
+    required String progressKey,
     required int stars,
     required int diamondsEarned,
   }) async {
     final current = await loadProgress(quizType);
-    final existing = current.level(levelNumber);
+    final existing = current.level(progressKey);
     final newStars = stars > existing.highestStars ? stars : existing.highestStars;
     final diamondDelta = diamondsEarned > existing.highestDiamonds
         ? diamondsEarned - existing.highestDiamonds
         : 0;
-    final updatedLevels = Map<int, LevelProgress>.from(current.levels)
-      ..[levelNumber] = LevelProgress(
-        levelNumber: levelNumber,
+    final updatedLevels = Map<String, LevelProgress>.from(current.levels)
+      ..[progressKey] = LevelProgress(
+        progressKey: progressKey,
         highestStars: newStars,
         highestDiamonds: diamondsEarned > existing.highestDiamonds
             ? diamondsEarned

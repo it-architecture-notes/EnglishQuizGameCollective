@@ -45,18 +45,21 @@ class VocabularyQuizScreen extends ConsumerStatefulWidget {
     required this.subLevel,
     required this.quizType,
     required this.ordinalLevelIndex,
+    required this.progressKey,
     this.reminderMode = false,
     this.reminderQuestionIds,
-    this.reminderSourceLevelsByLevelNumber,
+    this.reminderSourceLevelsByProgressKey,
   });
 
   final SubLevel subLevel;
   final String quizType;
-  /// 1-based position in subLevels list (progression key).
+  /// 1-based position in subLevels list; used for scroll navigation only.
   final int ordinalLevelIndex;
+  /// Stable progress key used for persisting completion state.
+  final String progressKey;
   final bool reminderMode;
   final List<String>? reminderQuestionIds;
-  final Map<int, SubLevel>? reminderSourceLevelsByLevelNumber;
+  final Map<String, SubLevelItem>? reminderSourceLevelsByProgressKey;
 
   @override
   ConsumerState<VocabularyQuizScreen> createState() =>
@@ -120,10 +123,7 @@ class _VocabularyQuizScreenState extends ConsumerState<VocabularyQuizScreen> {
   Future<void> _loadLevel() async {
     try {
       final config = await GameConfig.load();
-      final level = await loadVocabularyLevel(
-        widget.subLevel.iconImageName,
-        widget.subLevel.levelNumber,
-      );
+      final level = await loadVocabularyLevel(widget.subLevel.iconImageName);
 
       if (mounted) {
         setState(() {
@@ -150,19 +150,17 @@ class _VocabularyQuizScreenState extends ConsumerState<VocabularyQuizScreen> {
     try {
       final config = await GameConfig.load();
       final reminderQuestionIds = widget.reminderQuestionIds ?? const [];
-      final sourceLevels = widget.reminderSourceLevelsByLevelNumber ?? const {};
-      final loadedLevels = <int, VocabularyLevel>{};
+      final sourceLevels = widget.reminderSourceLevelsByProgressKey ?? const {};
+      final loadedLevels = <String, VocabularyLevel>{};
       final loadedEntries = <String, _ReminderVocabularyEntry>{};
       final validQuestionIds = <String>[];
 
       for (final questionId in reminderQuestionIds) {
-        final (levelNumber, questionIndex) = parseReminderQuestionId(questionId);
-        final sourceLevel = sourceLevels[levelNumber];
-        if (sourceLevel == null) continue;
-        final level = loadedLevels[levelNumber] ??= await loadVocabularyLevel(
-          sourceLevel.iconImageName,
-          sourceLevel.levelNumber,
-        );
+        final (progressKey, questionIndex) = parseReminderQuestionId(questionId);
+        final sourceItem = sourceLevels[progressKey];
+        if (sourceItem == null) continue;
+        final level = loadedLevels[progressKey] ??=
+            await loadVocabularyLevel(sourceItem.sub.iconImageName);
         if (questionIndex < 0 || questionIndex >= level.questions.length) {
           continue;
         }
@@ -238,7 +236,7 @@ class _VocabularyQuizScreenState extends ConsumerState<VocabularyQuizScreen> {
       } else {
         ReminderProgressService.instance.recordWrongAnswer(
           widget.quizType,
-          buildReminderQuestionId(widget.subLevel.levelNumber, _currentIndex),
+          buildReminderQuestionId(widget.progressKey, _currentIndex),
         );
       }
     }
@@ -335,7 +333,7 @@ class _VocabularyQuizScreenState extends ConsumerState<VocabularyQuizScreen> {
     if (stars >= 1) {
       await QuizProgressService.instance.recordLevelCompletion(
         quizType: widget.quizType,
-        levelNumber: widget.ordinalLevelIndex,
+        progressKey: widget.progressKey,
         stars: stars,
         diamondsEarned: _diamondsEarned(),
       );

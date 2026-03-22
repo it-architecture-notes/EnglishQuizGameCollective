@@ -17,12 +17,12 @@ class ReminderQuestionBuilder {
 
   static ReminderQuestionSplit build({
     required Map<String, int> wrongAnswerCounters,
-    required Map<int, int> questionCountByLevelNumber,
+    required Map<String, int> questionCountByProgressKey,
     Random? random,
   }) {
     final rng = random ?? Random();
     final allIds = <String>[];
-    for (final entry in questionCountByLevelNumber.entries) {
+    for (final entry in questionCountByProgressKey.entries) {
       for (var index = 0; index < entry.value; index++) {
         allIds.add(buildReminderQuestionId(entry.key, index));
       }

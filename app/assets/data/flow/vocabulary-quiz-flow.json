@@ -1,7 +1,7 @@
 [
-  {"mainLevel": 1, "levelNumber": 1, "iconImageName": "airport", "title": "Items in a Airport"},
-  {"mainLevel": 1, "levelNumber": 2, "iconImageName": "airport", "title": "Items in a Airport"},
-  {"mainLevel": 1, "levelNumber": 3, "iconImageName": "airport", "title": "Items in a Airport"},
-  {"mainLevel": 1, "levelNumber": 1001, "iconImageName": "reminder", "title": "Reminder 1", "kind": "reminder", "reminderIndex": 1},
-  {"mainLevel": 1, "levelNumber": 1002, "iconImageName": "reminder", "title": "Reminder 2", "kind": "reminder", "reminderIndex": 2}
+  {"mainLevel": 1, "iconImageName": "airport-1", "title": "Items in a Airport"},
+  {"mainLevel": 1, "iconImageName": "airport-2", "title": "Items in a Airport"},
+  {"mainLevel": 1, "iconImageName": "airport-3", "title": "Items in a Airport"},
+  {"mainLevel": 1, "iconImageName": "reminder", "title": "Reminder 1", "kind": "reminder", "reminderIndex": 1},
+  {"mainLevel": 1, "iconImageName": "reminder", "title": "Reminder 2", "kind": "reminder", "reminderIndex": 2}
 ]

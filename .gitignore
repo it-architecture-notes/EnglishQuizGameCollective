@@ -3,6 +3,7 @@
 /claude_samples
 /.claude/plans/
 /.cursor/plans/
+/cursor-claude-common/plans/
 # -----------------------------------------------------------------------------
 # App (Flutter) – build, tools, IDE, OS
 # -----------------------------------------------------------------------------

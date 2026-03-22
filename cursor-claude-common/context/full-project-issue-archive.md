@@ -1,3 +1,19 @@
+**Issue-15: Speech Bubbles between monster and animal**
+Description: When monster approaches to animal there will be talk with them in every approach step in the selected local language.
+
+Use Cases:
+- In image quiz when user gives a wrong answer and in threshold monster is approaching the animal. In this step after monster's move is completed two speech bubbles will appear above both images and bubbles will present the text of a conversation. They will show an exchange between the animal and monster.
+- Also at the end of the game when monster captures the animal, again two bubbles will be added to the failure overlay and when animal's cry image is presented, one random choice of step 4 choices will be presented.
+- Bubbles will be dismissed when user pushes the next button after the wrong answer.
+- Attacker (monster) and guest (animal) bubbles will appear at the same time.
+- The conversation will be configured in JSON file and will structured as:
+    - Language (same as app settings if not in json file default to en)
+    - An array of possible step 1 conversations (one of the choices will be selected when monster moves from step stone 0 to step stone 1)
+    - An array of possible step 2 conversation etc
+    - Step 4
+
+---
+
 **Issue-14: Image Quiz Timer and Monster Action**
 Description: Only for image quiz, a timer will be set for each question to answer and for each question a target closing monster action will be added. Applies to both normal and reminder mode.
 

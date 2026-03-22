@@ -64,12 +64,12 @@ class ReminderProgressService {
   Future<ReminderProgressData> generateReminderQuestions({
     required String quizType,
     required int mainLevel,
-    required Map<int, int> questionCountByLevelNumber,
+    required Map<String, int> questionCountByProgressKey,
   }) async {
     final current = await loadProgress(quizType);
     final split = ReminderQuestionBuilder.build(
       wrongAnswerCounters: current.wrongAnswerCounters,
-      questionCountByLevelNumber: questionCountByLevelNumber,
+      questionCountByProgressKey: questionCountByProgressKey,
     );
     final remindersByMainLevel =
         Map<int, List<ReminderLevelState>>.from(current.remindersByMainLevel);
@@ -132,7 +132,7 @@ class ReminderProgressService {
           .toList();
       if (regularItems.isEmpty) return false;
       for (final item in regularItems) {
-        final stars = quizProgress.levels[item.ordinalLevelIndex]?.highestStars ?? 0;
+        final stars = quizProgress.levels[item.progressKey]?.highestStars ?? 0;
         if (stars < 1) return false;
       }
       return true;

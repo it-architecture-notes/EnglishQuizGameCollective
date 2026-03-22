@@ -1,15 +1,15 @@
-String buildReminderQuestionId(int levelNumber, int questionIndex) {
-  return '${levelNumber}_$questionIndex';
+String buildReminderQuestionId(String progressKey, int questionIndex) {
+  return '${progressKey}_$questionIndex';
 }
 
-(int levelNumber, int questionIndex) parseReminderQuestionId(String questionId) {
-  final underscoreIndex = questionId.indexOf('_');
-  if (underscoreIndex <= 0 || underscoreIndex >= questionId.length - 1) {
+(String progressKey, int questionIndex) parseReminderQuestionId(String questionId) {
+  final lastUnderscore = questionId.lastIndexOf('_');
+  if (lastUnderscore <= 0 || lastUnderscore >= questionId.length - 1) {
     throw ArgumentError('Invalid reminder question id: $questionId');
   }
-  final levelNumber = int.parse(questionId.substring(0, underscoreIndex));
-  final questionIndex = int.parse(questionId.substring(underscoreIndex + 1));
-  return (levelNumber, questionIndex);
+  final progressKey = questionId.substring(0, lastUnderscore);
+  final questionIndex = int.parse(questionId.substring(lastUnderscore + 1));
+  return (progressKey, questionIndex);
 }
 
 class ReminderLevelState {

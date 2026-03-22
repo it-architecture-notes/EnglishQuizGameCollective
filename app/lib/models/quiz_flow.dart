@@ -2,7 +2,6 @@
 class SubLevel {
   const SubLevel({
     required this.mainLevel,
-    required this.levelNumber,
     required this.iconImageName,
     required this.title,
     this.kind = 'regular',
@@ -10,9 +9,6 @@ class SubLevel {
   });
 
   final int mainLevel;
-  /// Unique level number within this quiz type; regular levels stay sequential,
-  /// reminder levels use a high non-colliding value.
-  final int levelNumber;
   final String iconImageName;
   final String title;
   final String kind;
@@ -20,10 +16,16 @@ class SubLevel {
 
   bool get isReminder => kind == 'reminder';
 
+  /// Stable progress key used for persisting completion state.
+  /// Regular level: "{mainLevel}_{iconImageName}", e.g. "1_airport".
+  /// Reminder level: "{mainLevel}_reminder_{reminderIndex}", e.g. "1_reminder_1".
+  String get progressKey => isReminder
+      ? '${mainLevel}_reminder_$reminderIndex'
+      : '${mainLevel}_$iconImageName';
+
   static SubLevel fromJson(Map<String, dynamic> json) {
     return SubLevel(
       mainLevel: json['mainLevel'] as int,
-      levelNumber: json['levelNumber'] as int,
       iconImageName: json['iconImageName'] as String,
       title: json['title'] as String,
       kind: json['kind'] as String? ?? 'regular',
@@ -59,9 +61,10 @@ class BannerItem extends LevelListItem {
 }
 
 class SubLevelItem extends LevelListItem {
-  SubLevelItem(this.sub, {required this.ordinalLevelIndex});
+  SubLevelItem(this.sub, {required this.ordinalLevelIndex, required this.progressKey});
   final SubLevel sub;
-  /// Progress key used by map navigation and quiz completion callbacks.
-  /// For regular levels this matches the historical level numbering.
+  /// 1-based position in the subLevels array; used for scroll navigation only.
   final int ordinalLevelIndex;
+  /// Stable progress key derived from SubLevel.progressKey at build time.
+  final String progressKey;
 }

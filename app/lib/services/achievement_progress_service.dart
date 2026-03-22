@@ -59,9 +59,8 @@ class AchievementProgressService {
       try {
         final flow = await loadQuizFlow(quizType);
         totalLevels += flow.subLevels.length;
-        for (var i = 0; i < flow.subLevels.length; i++) {
-          final ordinal = i + 1;
-          if ((progress.levels[ordinal]?.highestStars ?? 0) >= 3) {
+        for (final sub in flow.subLevels) {
+          if ((progress.levels[sub.progressKey]?.highestStars ?? 0) >= 3) {
             levelsWith3Stars++;
           }
         }

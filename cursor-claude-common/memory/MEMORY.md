@@ -5,8 +5,8 @@ Flutter mobile language learning quiz app (portrait-only, Android/iOS). Three qu
 
 ## Current State
 - **Active issue:** None
-- **Current branch:** feature/issue-14-image-quiz-timer-monster (ready to merge)
-- **Last completed:** Issue-14 (Image Quiz Timer and Monster Action)
+- **Current branch:** main
+- **Last completed:** Issue-15 (Speech Bubbles) & Issue-16 (progressKey refactor)
 
 ## Tech Stack
 - Flutter (Dart), Riverpod, portrait-only
@@ -35,6 +35,8 @@ Flutter mobile language learning quiz app (portrait-only, Android/iOS). Three qu
 - Story images: `app/assets/images/story/`
 
 ## Completed Issues (summary)
+16 → progressKey refactor (removed levelNumber from flow JSON; progress keyed by "{mainLevel}_{iconImageName}"; vocab/grammar loaders simplified)
+15 → Speech Bubbles (monster/animal conversation bubbles on each step; step1–4 choices per language; game-over overlay bubbles)
 14 → Image Quiz Timer & Monster (pie-chart timer, monster advances on wrong answers, guest animal poses, idle animation, wind trail, game-over overlay, asset discovery)
 13 → Reminder Levels (2 reminder quizzes per main level, wrong-answer weighted, scroll fixes)
 12 → Main Level Story (Gardenscapes-style story overlays per main level)

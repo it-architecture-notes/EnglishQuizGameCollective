@@ -3,6 +3,7 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import '../../models/guest_animal_conversations.dart';
 import '../../models/level_completion_result.dart';
 import '../../models/quiz_flow.dart';
 import '../../models/reminder_progress.dart';
@@ -11,6 +12,7 @@ import '../../providers/settings_provider.dart';
 import '../../services/achievement_service.dart';
 import '../../services/audio_service.dart' as audio;
 import '../../services/game_config_loader.dart';
+import '../../services/guest_animal_conversations_loader.dart';
 import '../../services/image_quiz_level_loader.dart';
 import '../../services/profile_service.dart';
 import '../../services/quiz_progress_service.dart';
@@ -33,19 +35,22 @@ class ImageQuizScreen extends ConsumerStatefulWidget {
     required this.subLevel,
     required this.quizType,
     required this.ordinalLevelIndex,
+    required this.progressKey,
     this.reminderMode = false,
     this.reminderQuestionIds,
-    this.reminderSourceLevelsByLevelNumber,
+    this.reminderSourceLevelsByProgressKey,
   });
 
   final SubLevel subLevel;
   final String quizType;
 
-  /// 1-based position in subLevels list (progression key).
+  /// 1-based position in subLevels list; used for scroll navigation only.
   final int ordinalLevelIndex;
+  /// Stable progress key used for persisting completion state.
+  final String progressKey;
   final bool reminderMode;
   final List<String>? reminderQuestionIds;
-  final Map<int, SubLevel>? reminderSourceLevelsByLevelNumber;
+  final Map<String, SubLevelItem>? reminderSourceLevelsByProgressKey;
 
   @override
   ConsumerState<ImageQuizScreen> createState() => _ImageQuizScreenState();
@@ -89,8 +94,13 @@ class _ImageQuizScreenState extends ConsumerState<ImageQuizScreen>
   // Idle attack loop while waiting for an answer
   late AnimationController _monsterIdleController;
 
+  // Speech bubbles (step 1–3 in-play; step 4 on game-over)
+  LanguageConversations? _conversations;
+  StepChoice? _bubbleConversation;
+  StepChoice? _gameOverBubble;
+
   static String _levelKey(SubLevel sub) =>
-      imageQuizLevelKey(sub.iconImageName, sub.levelNumber);
+      imageQuizLevelKey(sub.iconImageName);
 
   bool get _isReminder => widget.reminderMode;
   String? get _currentQuestionId =>
@@ -152,7 +162,7 @@ class _ImageQuizScreenState extends ConsumerState<ImageQuizScreen>
       final shuffled = List<String>.from(paths)..shuffle(Random());
       final questionIds = shuffled
           .map((path) => buildReminderQuestionId(
-                widget.subLevel.levelNumber,
+                widget.progressKey,
                 paths.indexOf(path),
               ))
           .toList(growable: false);
@@ -168,6 +178,10 @@ class _ImageQuizScreenState extends ConsumerState<ImageQuizScreen>
           ? monsterNames[Random().nextInt(monsterNames.length)]
           : 'monster';
 
+      final conversationsConfig = await loadGuestAnimalConversations();
+      final language = ref.read(settingsProvider).valueOrNull?.language ?? 'en';
+      final conversations = getForLanguage(conversationsConfig, language);
+
       // Precache images (only use context when mounted)
       if (mounted) {
         for (final path in shuffled) {
@@ -179,6 +193,7 @@ class _ImageQuizScreenState extends ConsumerState<ImageQuizScreen>
       if (mounted) {
         setState(() {
           _config = config;
+          _conversations = conversations;
           _questionAssetPaths = shuffled;
           _currentQuestionIds = questionIds;
           _vocabulary = vocabulary;
@@ -211,26 +226,23 @@ class _ImageQuizScreenState extends ConsumerState<ImageQuizScreen>
     try {
       final config = await GameConfig.load();
       final reminderQuestionIds = widget.reminderQuestionIds ?? const [];
-      final sourceLevels = widget.reminderSourceLevelsByLevelNumber ?? const {};
-      final loadedPaths = <int, List<String>>{};
-      final loadedVocabulary = <int, List<String>>{};
+      final sourceLevels = widget.reminderSourceLevelsByProgressKey ?? const {};
+      final loadedPaths = <String, List<String>>{};
+      final loadedVocabulary = <String, List<String>>{};
       final assetPathByQuestionId = <String, String>{};
       final vocabularyByQuestionId = <String, List<String>>{};
       final validQuestionIds = <String>[];
 
       for (final questionId in reminderQuestionIds) {
-        final (levelNumber, questionIndex) =
+        final (progressKey, questionIndex) =
             parseReminderQuestionId(questionId);
-        final sourceLevel = sourceLevels[levelNumber];
-        if (sourceLevel == null) continue;
-        final levelKey = imageQuizLevelKey(
-          sourceLevel.iconImageName,
-          sourceLevel.levelNumber,
-        );
-        final paths = loadedPaths[levelNumber] ??=
+        final sourceItem = sourceLevels[progressKey];
+        if (sourceItem == null) continue;
+        final levelKey = imageQuizLevelKey(sourceItem.sub.iconImageName);
+        final paths = loadedPaths[progressKey] ??=
             await loadImageQuizLevelAssetPaths(levelKey);
         if (questionIndex < 0 || questionIndex >= paths.length) continue;
-        final vocabulary = loadedVocabulary[levelNumber] ??=
+        final vocabulary = loadedVocabulary[progressKey] ??=
             paths.map(assetPathToBasename).toList(growable: false);
         assetPathByQuestionId[questionId] = paths[questionIndex];
         vocabularyByQuestionId[questionId] = vocabulary;
@@ -260,9 +272,14 @@ class _ImageQuizScreenState extends ConsumerState<ImageQuizScreen>
           ? monsterNames[Random().nextInt(monsterNames.length)]
           : 'monster';
 
+      final conversationsConfig = await loadGuestAnimalConversations();
+      final language = ref.read(settingsProvider).valueOrNull?.language ?? 'en';
+      final conversations = getForLanguage(conversationsConfig, language);
+
       if (!mounted) return;
       setState(() {
         _config = config;
+        _conversations = conversations;
         _assetPathByQuestionId
           ..clear()
           ..addAll(assetPathByQuestionId);
@@ -350,6 +367,11 @@ class _ImageQuizScreenState extends ConsumerState<ImageQuizScreen>
       Future.delayed(const Duration(milliseconds: 500), () {
         if (mounted && _phase == _Phase.playing) {
           _monsterIdleController.repeat(reverse: true);
+          // Show speech bubbles after the slide completes (steps 1–3 only)
+          if (_monsterStep >= 1 && _monsterStep <= 3 && _conversations != null) {
+            final pair = pickRandomStepConversation(_conversations!, _monsterStep);
+            if (pair != null) setState(() => _bubbleConversation = pair);
+          }
         }
       });
       if (_monsterStep >= 4) {
@@ -358,7 +380,13 @@ class _ImageQuizScreenState extends ConsumerState<ImageQuizScreen>
             _monsterIdleController
               ..stop()
               ..reset();
-            setState(() => _phase = _Phase.gameOver);
+            final step4Bubble = _conversations != null
+                ? pickRandomStepConversation(_conversations!, 4)
+                : null;
+            setState(() {
+              _phase = _Phase.gameOver;
+              _gameOverBubble = step4Bubble;
+            });
           }
         });
       }
@@ -463,6 +491,7 @@ class _ImageQuizScreenState extends ConsumerState<ImageQuizScreen>
       if (isCorrect) {
         _correctCount++;
         _showNext = false;
+        _bubbleConversation = null;
         // Auto-advance after delay
         Future.delayed(
           Duration(
@@ -494,6 +523,7 @@ class _ImageQuizScreenState extends ConsumerState<ImageQuizScreen>
           _answerLocked = false;
           _showNext = false;
           _selectedIndex = null;
+          _bubbleConversation = null;
           _currentOptions = _buildOptions();
           _reviewingMistakes = true;
         });
@@ -505,6 +535,7 @@ class _ImageQuizScreenState extends ConsumerState<ImageQuizScreen>
         ..reset();
       setState(() {
         _phase = _Phase.end;
+        _bubbleConversation = null;
       });
       return;
     }
@@ -513,6 +544,7 @@ class _ImageQuizScreenState extends ConsumerState<ImageQuizScreen>
       _answerLocked = false;
       _showNext = false;
       _selectedIndex = null;
+      _bubbleConversation = null;
       _currentOptions = _buildOptions();
     });
     _startTimer();
@@ -555,7 +587,7 @@ class _ImageQuizScreenState extends ConsumerState<ImageQuizScreen>
     if (stars >= 1) {
       await QuizProgressService.instance.recordLevelCompletion(
         quizType: widget.quizType,
-        levelNumber: widget.ordinalLevelIndex,
+        progressKey: widget.progressKey,
         stars: stars,
         diamondsEarned: _diamondsEarned(),
       );
@@ -684,6 +716,29 @@ class _ImageQuizScreenState extends ConsumerState<ImageQuizScreen>
             ),
           ),
         ),
+        // Speech bubbles — appear above animal/monster after slide completes
+        if (_showNext && _bubbleConversation != null)
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 16),
+            child: Row(
+              crossAxisAlignment: CrossAxisAlignment.end,
+              children: [
+                Expanded(
+                  child: _SpeechBubble(
+                    _bubbleConversation!.guest,
+                    maxWidth: 160,
+                  ),
+                ),
+                const SizedBox(width: 8),
+                Expanded(
+                  child: _SpeechBubble(
+                    _bubbleConversation!.attacker,
+                    maxWidth: 160,
+                  ),
+                ),
+              ],
+            ),
+          ),
         // Guest animal + monster (jumps stone to stone) + step stones below
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 4),
@@ -993,22 +1048,49 @@ class _ImageQuizScreenState extends ConsumerState<ImageQuizScreen>
   }
 
   Widget _buildGameOver(bool soundFxOn, Map<String, String> strings) {
+    const bubbleMaxWidth = 100.0;
     return Center(
       child: Padding(
         padding: const EdgeInsets.all(24),
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
-            // Animal and monster face to face
+            // Animal and monster face to face, with step-4 bubbles above if available
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                _animalImage(step: 4),
+                Column(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    if (_gameOverBubble != null)
+                      Padding(
+                        padding: const EdgeInsets.only(bottom: 6),
+                        child: _SpeechBubble(
+                          _gameOverBubble!.guest,
+                          maxWidth: bubbleMaxWidth,
+                        ),
+                      ),
+                    _animalImage(step: 4),
+                  ],
+                ),
                 const SizedBox(width: 8),
-                // Flip monster horizontally so it faces the animal
-                Transform.scale(
-                  scaleX: -1,
-                  child: _monsterImage(),
+                Column(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    if (_gameOverBubble != null)
+                      Padding(
+                        padding: const EdgeInsets.only(bottom: 6),
+                        child: _SpeechBubble(
+                          _gameOverBubble!.attacker,
+                          maxWidth: bubbleMaxWidth,
+                        ),
+                      ),
+                    Transform.scale(
+                      scaleX: -1,
+                      child: _monsterImage(),
+                    ),
+                  ],
                 ),
               ],
             ),
@@ -1049,6 +1131,39 @@ class _ImageQuizScreenState extends ConsumerState<ImageQuizScreen>
   String _capitalize(String s) {
     if (s.isEmpty) return s;
     return s[0].toUpperCase() + s.substring(1).toLowerCase();
+  }
+}
+
+class _SpeechBubble extends StatelessWidget {
+  const _SpeechBubble(this.text, {this.maxWidth = 120});
+
+  final String text;
+  final double maxWidth;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      constraints: BoxConstraints(maxWidth: maxWidth),
+      padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 6),
+      decoration: BoxDecoration(
+        color: Colors.white,
+        borderRadius: BorderRadius.circular(12),
+        border: Border.all(color: Colors.grey.shade400),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.black.withValues(alpha: 0.1),
+            blurRadius: 4,
+            offset: const Offset(0, 1),
+          ),
+        ],
+      ),
+      child: Text(
+        text,
+        style: Theme.of(context).textTheme.bodySmall,
+        maxLines: 3,
+        overflow: TextOverflow.ellipsis,
+      ),
+    );
   }
 }
 

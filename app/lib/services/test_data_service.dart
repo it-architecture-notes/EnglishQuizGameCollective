@@ -44,8 +44,9 @@ class TestDataService {
 
     final imageLevels = <String, Map<String, dynamic>>{};
     for (var i = 1; i <= 50; i++) {
-      imageLevels[i.toString()] = {
-        'levelNumber': i,
+      final key = 'test_level_$i';
+      imageLevels[key] = {
+        'progressKey': key,
         'highestStars': i <= 10 ? 3 : 1,
         'highestDiamonds': 0,
       };
@@ -58,7 +59,11 @@ class TestDataService {
 
     final vocabProgress = QuizTypeProgress.fromJson({
       'levels': <String, Map<String, dynamic>>{
-        '1': {'levelNumber': 1, 'highestStars': 3, 'highestDiamonds': 0},
+        '1_airport-1': {
+          'progressKey': '1_airport-1',
+          'highestStars': 3,
+          'highestDiamonds': 0,
+        },
       },
       'totalDiamonds': 0,
     });
@@ -139,10 +144,11 @@ class TestDataService {
   Future<void> seedImageQuizFirst10Levels2Stars() async {
     const stars = 2;
     const diamondsPerLevel = 2;
-    final levels = <int, LevelProgress>{};
+    final levels = <String, LevelProgress>{};
     for (var i = 1; i <= 10; i++) {
-      levels[i] = LevelProgress(
-        levelNumber: i,
+      final key = 'test_level_$i';
+      levels[key] = LevelProgress(
+        progressKey: key,
         highestStars: stars,
         highestDiamonds: diamondsPerLevel,
       );
@@ -164,15 +170,12 @@ class TestDataService {
         .where((subLevel) => subLevel.mainLevel == 1 && !subLevel.isReminder)
         .toList(growable: false);
 
-    final levels = <int, LevelProgress>{};
+    final levels = <String, LevelProgress>{};
     final wrongAnswerCounters = <String, int>{};
     var totalDiamonds = 0;
 
     for (final subLevel in mainLevelOneLevels) {
-      final levelKey = imageQuizLevelKey(
-        subLevel.iconImageName,
-        subLevel.levelNumber,
-      );
+      final levelKey = imageQuizLevelKey(subLevel.iconImageName);
       List<String> paths = const [];
       try {
         paths = await loadImageQuizLevelAssetPaths(levelKey);
@@ -182,14 +185,15 @@ class TestDataService {
       final questionCount = paths.length;
       final diamonds = questionCount >= 3 ? questionCount - 3 : 0;
       totalDiamonds += diamonds;
-      levels[subLevel.levelNumber] = LevelProgress(
-        levelNumber: subLevel.levelNumber,
+      final progressKey = subLevel.progressKey;
+      levels[progressKey] = LevelProgress(
+        progressKey: progressKey,
         highestStars: 2,
         highestDiamonds: diamonds,
       );
       final wrongQuestionsToSeed = questionCount >= 3 ? 3 : questionCount;
       for (var i = 0; i < wrongQuestionsToSeed; i++) {
-        wrongAnswerCounters[buildReminderQuestionId(subLevel.levelNumber, i)] = 1;
+        wrongAnswerCounters[buildReminderQuestionId(progressKey, i)] = 1;
       }
     }
 
@@ -220,7 +224,11 @@ class TestDataService {
   Future<void> seedDiamondsForFriendsTest(int totalDiamonds) async {
     final imageProgress = QuizTypeProgress.fromJson({
       'levels': <String, Map<String, dynamic>>{
-        '1': {'levelNumber': 1, 'highestStars': 1, 'highestDiamonds': 5},
+        '1_airport': {
+          'progressKey': '1_airport',
+          'highestStars': 1,
+          'highestDiamonds': 5,
+        },
       },
       'totalDiamonds': totalDiamonds,
     });

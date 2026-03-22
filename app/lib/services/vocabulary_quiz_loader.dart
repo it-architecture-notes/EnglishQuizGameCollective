@@ -8,22 +8,18 @@ const int kMinVocabularyQuestions = 4;
 
 /// Builds the asset path for a vocabulary level JSON file.
 ///
-/// [iconImageName] comes from [SubLevel.iconImageName] (e.g. "airport").
-/// [levelNumber] comes from [SubLevel.levelNumber] (e.g. 1).
+/// [iconImageName] comes from [SubLevel.iconImageName] (e.g. "airport-1").
 /// Result: "assets/quiz-data/vocabulary-quiz/airport-1.json"
-String vocabularyDataPath(String iconImageName, int levelNumber) {
-  return 'assets/quiz-data/vocabulary-quiz/$iconImageName-$levelNumber.json';
+String vocabularyDataPath(String iconImageName) {
+  return 'assets/quiz-data/vocabulary-quiz/$iconImageName.json';
 }
 
 /// Loads and parses a [VocabularyLevel] for the given level.
 ///
 /// Throws an [Exception] if the file is missing, cannot be parsed, or contains
 /// fewer than [kMinVocabularyQuestions] questions.
-Future<VocabularyLevel> loadVocabularyLevel(
-  String iconImageName,
-  int levelNumber,
-) async {
-  final path = vocabularyDataPath(iconImageName, levelNumber);
+Future<VocabularyLevel> loadVocabularyLevel(String iconImageName) async {
+  final path = vocabularyDataPath(iconImageName);
   final String jsonString;
   try {
     jsonString = await rootBundle.loadString(path);

@@ -52,17 +52,21 @@ class GrammarQuizScreen extends ConsumerStatefulWidget {
     required this.subLevel,
     required this.quizType,
     required this.ordinalLevelIndex,
+    required this.progressKey,
     this.reminderMode = false,
     this.reminderQuestionIds,
-    this.reminderSourceLevelsByLevelNumber,
+    this.reminderSourceLevelsByProgressKey,
   });
 
   final SubLevel subLevel;
   final String quizType;
+  /// 1-based position in subLevels list; used for scroll navigation only.
   final int ordinalLevelIndex;
+  /// Stable progress key used for persisting completion state.
+  final String progressKey;
   final bool reminderMode;
   final List<String>? reminderQuestionIds;
-  final Map<int, SubLevel>? reminderSourceLevelsByLevelNumber;
+  final Map<String, SubLevelItem>? reminderSourceLevelsByProgressKey;
 
   @override
   ConsumerState<GrammarQuizScreen> createState() => _GrammarQuizScreenState();
@@ -130,10 +134,7 @@ class _GrammarQuizScreenState extends ConsumerState<GrammarQuizScreen> {
   Future<void> _loadLevel() async {
     try {
       final config = await GameConfig.load();
-      final level = await loadGrammarLevel(
-        widget.subLevel.iconImageName,
-        widget.subLevel.levelNumber,
-      );
+      final level = await loadGrammarLevel(widget.subLevel.iconImageName);
       final characterPaths = await loadGrammarCharacterImages();
       final paths = characterPaths.isNotEmpty
           ? characterPaths
@@ -181,19 +182,17 @@ class _GrammarQuizScreenState extends ConsumerState<GrammarQuizScreen> {
           ? characterPaths
           : _kGrammarCharacterFallbacks;
       final reminderQuestionIds = widget.reminderQuestionIds ?? const [];
-      final sourceLevels = widget.reminderSourceLevelsByLevelNumber ?? const {};
-      final loadedLevels = <int, GrammarLevel>{};
+      final sourceLevels = widget.reminderSourceLevelsByProgressKey ?? const {};
+      final loadedLevels = <String, GrammarLevel>{};
       final loadedEntries = <String, _ReminderGrammarEntry>{};
       final validQuestionIds = <String>[];
 
       for (final questionId in reminderQuestionIds) {
-        final (levelNumber, questionIndex) = parseReminderQuestionId(questionId);
-        final sourceLevel = sourceLevels[levelNumber];
-        if (sourceLevel == null) continue;
-        final level = loadedLevels[levelNumber] ??= await loadGrammarLevel(
-          sourceLevel.iconImageName,
-          sourceLevel.levelNumber,
-        );
+        final (progressKey, questionIndex) = parseReminderQuestionId(questionId);
+        final sourceItem = sourceLevels[progressKey];
+        if (sourceItem == null) continue;
+        final level = loadedLevels[progressKey] ??=
+            await loadGrammarLevel(sourceItem.sub.iconImageName);
         if (questionIndex < 0 || questionIndex >= level.questions.length) {
           continue;
         }
@@ -313,7 +312,7 @@ class _GrammarQuizScreenState extends ConsumerState<GrammarQuizScreen> {
       } else {
         ReminderProgressService.instance.recordWrongAnswer(
           widget.quizType,
-          buildReminderQuestionId(widget.subLevel.levelNumber, _currentIndex),
+          buildReminderQuestionId(widget.progressKey, _currentIndex),
         );
       }
     }
@@ -427,7 +426,7 @@ class _GrammarQuizScreenState extends ConsumerState<GrammarQuizScreen> {
     if (stars >= 1) {
       await QuizProgressService.instance.recordLevelCompletion(
         quizType: widget.quizType,
-        levelNumber: widget.ordinalLevelIndex,
+        progressKey: widget.progressKey,
         stars: stars,
         diamondsEarned: _diamondsEarned(),
       );

@@ -11,38 +11,38 @@ void main() {
       SubLevelItem(
         const SubLevel(
           mainLevel: 1,
-          levelNumber: 1,
           iconImageName: 'a',
           title: 'A',
         ),
         ordinalLevelIndex: 1,
+        progressKey: '1_a',
       ),
       SubLevelItem(
         const SubLevel(
           mainLevel: 1,
-          levelNumber: 2,
           iconImageName: 'b',
           title: 'B',
         ),
         ordinalLevelIndex: 2,
+        progressKey: '1_b',
       ),
       SubLevelItem(
         const SubLevel(
           mainLevel: 1,
-          levelNumber: 3,
           iconImageName: 'c',
           title: 'C',
         ),
         ordinalLevelIndex: 3,
+        progressKey: '1_c',
       ),
       SubLevelItem(
         const SubLevel(
           mainLevel: 2,
-          levelNumber: 4,
           iconImageName: 'd',
           title: 'D',
         ),
         ordinalLevelIndex: 4,
+        progressKey: '2_d',
       ),
     ];
 
@@ -129,9 +129,9 @@ void main() {
     test('pagesReadyToMarkCompleted requires all covered levels passed', () {
       final quizProgress = QuizTypeProgress(
         levels: const {
-          1: LevelProgress(levelNumber: 1, highestStars: 2, highestDiamonds: 2),
-          2: LevelProgress(levelNumber: 2, highestStars: 3, highestDiamonds: 3),
-          3: LevelProgress(levelNumber: 3, highestStars: 0, highestDiamonds: 1),
+          '1_a': LevelProgress(progressKey: '1_a', highestStars: 2, highestDiamonds: 2),
+          '1_b': LevelProgress(progressKey: '1_b', highestStars: 3, highestDiamonds: 3),
+          '1_c': LevelProgress(progressKey: '1_c', highestStars: 0, highestDiamonds: 1),
         },
       );
 
@@ -151,8 +151,8 @@ void main() {
         () {
       final quizProgress = QuizTypeProgress(
         levels: const {
-          2: LevelProgress(levelNumber: 2, highestStars: 3, highestDiamonds: 3),
-          3: LevelProgress(levelNumber: 3, highestStars: 0, highestDiamonds: 0),
+          '1_b': LevelProgress(progressKey: '1_b', highestStars: 3, highestDiamonds: 3),
+          '1_c': LevelProgress(progressKey: '1_c', highestStars: 0, highestDiamonds: 0),
         },
       );
 

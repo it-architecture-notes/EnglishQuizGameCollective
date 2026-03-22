@@ -44,7 +44,7 @@ List<LevelListItem> buildLevelItems(QuizFlowData data) {
       shownBanners.add(sub.mainLevel);
       items.add(BannerItem(meta));
     }
-    items.add(SubLevelItem(sub, ordinalLevelIndex: sub.levelNumber));
+    items.add(SubLevelItem(sub, ordinalLevelIndex: i + 1, progressKey: sub.progressKey));
   }
 
   return items;
@@ -179,10 +179,10 @@ class _LevelsScreenState extends ConsumerState<LevelsScreen> {
         final isFrontier = isRem
             ? _isReminderUnlocked(item) && !_isReminderCompleted(item)
             : _isRegularLevelUnlocked(item, progress) &&
-                (progress.levels[item.ordinalLevelIndex]?.highestStars ?? 0) == 0;
+                (progress.levels[item.progressKey]?.highestStars ?? 0) == 0;
         final isCompleted = isRem
             ? _isReminderCompleted(item)
-            : (progress.levels[item.ordinalLevelIndex]?.highestStars ?? 0) > 0;
+            : (progress.levels[item.progressKey]?.highestStars ?? 0) > 0;
         if (isFrontier) return lastCompletedIndex ?? 0;
         if (isCompleted) lastCompletedIndex = i;
       }
@@ -204,26 +204,45 @@ class _LevelsScreenState extends ConsumerState<LevelsScreen> {
 
   List<SubLevelItem> get _regularSubLevels => _regularSubLevelsFrom(_items);
 
-  Map<int, SubLevel> _regularSourceLevelsByMain(int mainLevel) {
+  Map<String, SubLevelItem> _regularSourceLevelsByMain(int mainLevel) {
     return {
       for (final item in _regularSubLevels.where(
         (item) => item.sub.mainLevel == mainLevel,
       ))
-        item.sub.levelNumber: item.sub,
+        item.progressKey: item,
     };
   }
 
-  int? _firstRegularOrdinalForMain(
+  SubLevelItem? _firstRegularItemForMain(
     int mainLevel, {
     Iterable<SubLevelItem>? regularFlowSubLevels,
   }) {
     final flow = regularFlowSubLevels ?? _regularSubLevels;
     for (final item in flow) {
-      if (item.sub.mainLevel == mainLevel) {
-        return item.ordinalLevelIndex;
-      }
+      if (item.sub.mainLevel == mainLevel) return item;
     }
     return null;
+  }
+
+  Set<String> _computeUnlockedKeys(
+    Iterable<SubLevelItem> regularItems,
+    QuizTypeProgress progress,
+  ) {
+    final ordered = regularItems.toList();
+    final unlocked = <String>{};
+    if (ordered.isEmpty) return unlocked;
+    unlocked.add(ordered.first.progressKey);
+
+    int maxCompletedIndex = -1;
+    for (var i = 0; i < ordered.length; i++) {
+      if (progress.levels[ordered[i].progressKey]?.isCompleted == true) {
+        maxCompletedIndex = i;
+      }
+    }
+    for (var i = 0; i <= maxCompletedIndex + 1 && i < ordered.length; i++) {
+      unlocked.add(ordered[i].progressKey);
+    }
+    return unlocked;
   }
 
   bool _isRegularLevelUnlocked(
@@ -235,15 +254,15 @@ class _LevelsScreenState extends ConsumerState<LevelsScreen> {
     final flow = regularFlowSubLevels ?? _regularSubLevels;
     final reminders = reminderProgress ?? _reminderProgress;
     final baseUnlocked =
-        progress.unlockedLevelNumbers.contains(item.ordinalLevelIndex);
+        _computeUnlockedKeys(flow, progress).contains(item.progressKey);
     if (!baseUnlocked) return false;
 
-    final firstRegularOrdinal = _firstRegularOrdinalForMain(
+    final firstRegularItem = _firstRegularItemForMain(
       item.sub.mainLevel,
       regularFlowSubLevels: flow,
     );
-    if (firstRegularOrdinal == null) return false;
-    if (item.ordinalLevelIndex != firstRegularOrdinal) return true;
+    if (firstRegularItem == null) return false;
+    if (item.progressKey != firstRegularItem.progressKey) return true;
 
     final previousMainLevel = item.sub.mainLevel - 1;
     if (previousMainLevel < 1) return true;
@@ -656,20 +675,9 @@ class _LevelsScreenState extends ConsumerState<LevelsScreen> {
   }
 
   Widget _buildBanner(BuildContext context, MainLevelMeta meta) {
-    final firstOrdinal = _firstRegularOrdinalForMain(meta.mainLevel);
-    final isStoryUnlocked = firstOrdinal != null &&
-        _isRegularLevelUnlocked(
-          SubLevelItem(
-            SubLevel(
-              mainLevel: meta.mainLevel,
-              levelNumber: firstOrdinal,
-              iconImageName: '',
-              title: '',
-            ),
-            ordinalLevelIndex: firstOrdinal,
-          ),
-          _progress,
-        );
+    final firstItem = _firstRegularItemForMain(meta.mainLevel);
+    final isStoryUnlocked = firstItem != null &&
+        _isRegularLevelUnlocked(firstItem, _progress);
     final storyIconPath =
         _storyConfig.storyForMainLevel(meta.mainLevel)?.storyIconAssetPath;
 
@@ -774,7 +782,7 @@ class _LevelsScreenState extends ConsumerState<LevelsScreen> {
     final isLocked = !isUnlocked && !isCompletedReminder;
     final stars = isReminder
         ? 0
-        : _progress.levels[subLevelItem.ordinalLevelIndex]?.highestStars ?? 0;
+        : _progress.levels[subLevelItem.progressKey]?.highestStars ?? 0;
 
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 4),
@@ -942,27 +950,22 @@ class _LevelsScreenState extends ConsumerState<LevelsScreen> {
   // Quiz navigation
   // ---------------------------------------------------------------------------
 
-  Future<Map<int, int>> _buildRegularQuestionCountsForMain(int mainLevel) async {
-    final counts = <int, int>{};
-    final regularSourceLevels = _regularSourceLevelsByMain(mainLevel);
-    for (final sourceLevel in regularSourceLevels.values) {
+  Future<Map<String, int>> _buildRegularQuestionCountsForMain(int mainLevel) async {
+    final counts = <String, int>{};
+    final regularItems = _regularSubLevels
+        .where((item) => item.sub.mainLevel == mainLevel);
+    for (final item in regularItems) {
+      final sub = item.sub;
       if (widget.quizType == 'image') {
-        final levelKey =
-            imageQuizLevelKey(sourceLevel.iconImageName, sourceLevel.levelNumber);
+        final levelKey = imageQuizLevelKey(sub.iconImageName);
         final paths = await loadImageQuizLevelAssetPaths(levelKey);
-        counts[sourceLevel.levelNumber] = paths.length;
+        counts[item.progressKey] = paths.length;
       } else if (widget.quizType == 'vocabulary') {
-        final level = await loadVocabularyLevel(
-          sourceLevel.iconImageName,
-          sourceLevel.levelNumber,
-        );
-        counts[sourceLevel.levelNumber] = level.questions.length;
+        final level = await loadVocabularyLevel(sub.iconImageName);
+        counts[item.progressKey] = level.questions.length;
       } else if (widget.quizType == 'grammar') {
-        final level = await loadGrammarLevel(
-          sourceLevel.iconImageName,
-          sourceLevel.levelNumber,
-        );
-        counts[sourceLevel.levelNumber] = level.questions.length;
+        final level = await loadGrammarLevel(sub.iconImageName);
+        counts[item.progressKey] = level.questions.length;
       }
     }
     return counts;
@@ -975,7 +978,7 @@ class _LevelsScreenState extends ConsumerState<LevelsScreen> {
     final updated = await ReminderProgressService.instance.generateReminderQuestions(
       quizType: widget.quizType,
       mainLevel: mainLevel,
-      questionCountByLevelNumber: counts,
+      questionCountByProgressKey: counts,
     );
     if (!mounted) return;
     setState(() {
@@ -987,7 +990,7 @@ class _LevelsScreenState extends ConsumerState<LevelsScreen> {
     SubLevelItem subLevelItem, {
     bool reminderMode = false,
     List<String>? reminderQuestionIds,
-    Map<int, SubLevel>? reminderSourceLevelsByLevelNumber,
+    Map<String, SubLevelItem>? reminderSourceLevelsByProgressKey,
   }) {
     final sub = subLevelItem.sub;
     return popFadeRoute<LevelCompletionResult>(
@@ -996,30 +999,33 @@ class _LevelsScreenState extends ConsumerState<LevelsScreen> {
               quizType: widget.quizType,
               subLevel: sub,
               ordinalLevelIndex: subLevelItem.ordinalLevelIndex,
+              progressKey: subLevelItem.progressKey,
               reminderMode: reminderMode,
               reminderQuestionIds: reminderQuestionIds,
-              reminderSourceLevelsByLevelNumber:
-                  reminderSourceLevelsByLevelNumber,
+              reminderSourceLevelsByProgressKey:
+                  reminderSourceLevelsByProgressKey,
             )
           : widget.quizType == 'vocabulary'
               ? VocabularyQuizScreen(
                   quizType: widget.quizType,
                   subLevel: sub,
                   ordinalLevelIndex: subLevelItem.ordinalLevelIndex,
+                  progressKey: subLevelItem.progressKey,
                   reminderMode: reminderMode,
                   reminderQuestionIds: reminderQuestionIds,
-                  reminderSourceLevelsByLevelNumber:
-                      reminderSourceLevelsByLevelNumber,
+                  reminderSourceLevelsByProgressKey:
+                      reminderSourceLevelsByProgressKey,
                 )
               : widget.quizType == 'grammar'
                   ? GrammarQuizScreen(
                       quizType: widget.quizType,
                       subLevel: sub,
                       ordinalLevelIndex: subLevelItem.ordinalLevelIndex,
+                      progressKey: subLevelItem.progressKey,
                       reminderMode: reminderMode,
                       reminderQuestionIds: reminderQuestionIds,
-                      reminderSourceLevelsByLevelNumber:
-                          reminderSourceLevelsByLevelNumber,
+                      reminderSourceLevelsByProgressKey:
+                          reminderSourceLevelsByProgressKey,
                     )
                   : QuizPlaceholderScreen(
                       quizType: widget.quizType,
@@ -1052,7 +1058,7 @@ class _LevelsScreenState extends ConsumerState<LevelsScreen> {
       subLevelItem,
       reminderMode: sub.isReminder,
       reminderQuestionIds: sub.isReminder ? reminderState.questionIds : null,
-      reminderSourceLevelsByLevelNumber:
+      reminderSourceLevelsByProgressKey:
           sub.isReminder ? _regularSourceLevelsByMain(sub.mainLevel) : null,
     );
 

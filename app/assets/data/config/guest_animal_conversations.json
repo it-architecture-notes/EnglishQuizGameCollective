@@ -1,0 +1,80 @@
+{
+  "guestAnimalConversations": [
+    {
+      "language": "en",
+      "step1Choices": [
+        { "attacker": "I smell something tasty...", "guest": "Who's there?!" },
+        { "attacker": "I'm coming to get you!", "guest": "Oh no..." }
+      ],
+      "step2Choices": [
+        { "attacker": "I think it's you... and I'm hungry!", "guest": "Oh no... stay back!" },
+        { "attacker": "You won't escape me now!", "guest": "Uh oh, this isn't good" }
+      ],
+      "step3Choices": [
+        { "attacker": "I will eat you!", "guest": "Please don't! I'm too young to be a snack!" },
+        { "attacker": "Too late! Dinner time!", "guest": "Aaaahhh!" }
+      ],
+      "step4Choices": [
+        { "attacker": "I'm coming to get you!", "guest": "Oh no..." },
+        { "attacker": "You won't escape me now!", "guest": "Uh oh, this isn't good" }
+      ]
+    },
+    {
+      "language": "fr",
+      "step1Choices": [
+        { "attacker": "Je sens quelque chose de délicieux...", "guest": "Qui est là?!" },
+        { "attacker": "Je vais vous trouver!", "guest": "Oh non..." }
+      ],
+      "step2Choices": [
+        { "attacker": "C'est toi... et je suis affamé!", "guest": "Oh non... restez à distance!" },
+        { "attacker": "Vous ne pourrez pas m'échapper maintenant!", "guest": "Oh non, c'est pas bon" }
+      ],
+      "step3Choices": [
+        { "attacker": "Je vais vous manger!", "guest": "S'il vous plaît ne me mangez pas! Je suis trop jeune pour être un snack!" },
+        { "attacker": "Trop tard! Dîner!", "guest": "Aaaahhh!" }
+      ],
+      "step4Choices": [
+        { "attacker": "Je vais vous trouver!", "guest": "Oh non..." },
+        { "attacker": "Vous ne pourrez pas m'échapper maintenant!", "guest": "Oh non, c'est pas bon" }
+      ]
+    },
+    {
+      "language": "es",
+      "step1Choices": [
+        { "attacker": "Huelo algo delicioso...", "guest": "¿Quién está ahí?" },
+        { "attacker": "¡Voy a por ti!", "guest": "¡Oh no!" }
+      ],
+      "step2Choices": [
+        { "attacker": "¡Creo que eres tú... y tengo hambre!", "guest": "¡Oh no... aléjate!" },
+        { "attacker": "¡No podrás escaparte!", "guest": "Oh no, esto no es bueno" }
+      ],
+      "step3Choices": [
+        { "attacker": "¡Te voy a comer!", "guest": "¡Por favor no! ¡Soy muy joven para ser un snack!" },
+        { "attacker": "¡Demasiado tarde! ¡Hora de cenar!", "guest": "¡Aaaahhh!" }
+      ],
+      "step4Choices": [
+        { "attacker": "¡Voy a por ti!", "guest": "¡Oh no!" },
+        { "attacker": "¡No podrás escaparte!", "guest": "Oh no, esto no es bueno" }
+      ]
+    },
+    {
+      "language": "tr",
+      "step1Choices": [
+        { "attacker": "Lezzetli bir şey kokluyorum...", "guest": "Orada kim var?!" },
+        { "attacker": "Seni almak için geliyorum!", "guest": "Oh hayır..." }
+      ],
+      "step2Choices": [
+        { "attacker": "Sanırım sensin... ve açım!", "guest": "Oh hayır... uzak dur!" },
+        { "attacker": "Benden kaçamayacaksın!", "guest": "Ah hayır, bu iyi değil" }
+      ],
+      "step3Choices": [
+        { "attacker": "Seni yiyeceğim!", "guest": "Lütfen yapma! Atıştırmalık olmak için çok gencim!" },
+        { "attacker": "Çok geç! Yemek zamanı!", "guest": "Aaaahhh!" }
+      ],
+      "step4Choices": [
+        { "attacker": "Seni almak için geliyorum!", "guest": "Oh hayır..." },
+        { "attacker": "Benden kaçamayacaksın!", "guest": "Ah hayır, bu iyi değil" }
+      ]
+    }
+  ]
+}

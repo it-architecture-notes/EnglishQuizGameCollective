@@ -28,11 +28,9 @@ flutter:
     - assets/images/backgrounds/tablet_1610/
     - assets/images/buttons/
     - assets/images/characters/
-    - assets/images/grammar-characters/
     - assets/images/avatars/
     - assets/images/level-icons/
     - assets/images/achievements/
-    - assets/images/friends/
     - assets/images/story/
     - assets/images/monsters/
     - assets/images/animals/cat/
@@ -50,8 +48,7 @@ flutter:
     - assets/data/settings/
     - assets/data/flow/
     - assets/data/story/
-    - assets/quiz-data/image-quiz/quiz-images/
-    - assets/quiz-data/image-quiz/quiz-images/airport-1/
+    - assets/quiz-data/image-quiz/quiz-images/market-vegetables-1/
     - assets/quiz-data/vocabulary-quiz/
     - assets/quiz-data/grammar-quiz/
     - assets/audio/

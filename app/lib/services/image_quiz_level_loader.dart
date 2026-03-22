@@ -1,13 +1,13 @@
 import 'package:flutter/services.dart';
 
-/// Level key = iconImageName-levelNumber, e.g. plane-4.
-String imageQuizLevelKey(String iconImageName, int levelNumber) {
-  return '$iconImageName-$levelNumber';
+/// Level key = iconImageName (folder name under quiz-images/, e.g. "airport").
+String imageQuizLevelKey(String iconImageName) {
+  return iconImageName;
 }
 
 const String _quizImagePrefix = 'assets/quiz-data/image-quiz/quiz-images/';
 
-/// Prefix with trailing slash for listAssets filtering (e.g. "assets/quiz-data/image-quiz/quiz-images/plane-1/").
+/// Prefix with trailing slash for listAssets filtering (e.g. "assets/quiz-data/image-quiz/quiz-images/airport/").
 String imageQuizLevelAssetPrefix(String levelKey) {
   return '$_quizImagePrefix$levelKey/';
 }
