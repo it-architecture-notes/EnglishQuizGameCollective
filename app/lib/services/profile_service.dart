@@ -5,6 +5,7 @@ import 'package:flutter/services.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../models/profile_state.dart';
+import '../quiz_game_constants.dart';
 import 'quiz_flow_loader.dart';
 import 'quiz_progress_service.dart';
 
@@ -49,7 +50,7 @@ class ProfileService {
   static ProfileService get instance => _instance;
 
   static const String _profileKey = 'user_profile_state';
-  static const List<String> _quizTypes = ['image', 'vocabulary', 'grammar'];
+  static const List<String> _quizTypes = [kQuizGameType];
   static const String _avatarPrefix = 'assets/images/avatars/';
 
   SharedPreferences? _prefs;
@@ -169,7 +170,7 @@ class ProfileService {
 
       int totalLevels = 0;
       try {
-        final flowData = await loadQuizFlow(quizType);
+        final flowData = await loadGameFlow();
         totalLevels = flowData.subLevels.length;
       } catch (_) {
         totalLevels = 0;

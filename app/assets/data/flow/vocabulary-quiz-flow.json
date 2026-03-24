@@ -1,7 +1,0 @@
-[
-  {"mainLevel": 1, "iconImageName": "airport-1", "title": "Items in a Airport"},
-  {"mainLevel": 1, "iconImageName": "airport-2", "title": "Items in a Airport"},
-  {"mainLevel": 1, "iconImageName": "airport-3", "title": "Items in a Airport"},
-  {"mainLevel": 1, "iconImageName": "reminder", "title": "Reminder 1", "kind": "reminder", "reminderIndex": 1},
-  {"mainLevel": 1, "iconImageName": "reminder", "title": "Reminder 2", "kind": "reminder", "reminderIndex": 2}
-]

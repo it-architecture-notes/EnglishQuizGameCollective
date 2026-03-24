@@ -1,0 +1,84 @@
+{
+  "levelQuestions": [
+    {
+      "type": "grammar",
+      "template": "ConvoTemplate-1",
+      "questionData": {
+        "character1": "mike",
+        "character2": "sarah",
+        "line1": {
+          "en": "How long _____ you been waiting?"
+        },
+        "line2": {
+          "en": "About forty minutes. The line is very slow."
+        },
+        "answer": "have",
+        "distractors": [
+          "has",
+          "had",
+          "are"
+        ]
+      }
+    },
+    {
+      "type": "grammar",
+      "template": "ConvoTemplate-1",
+      "questionData": {
+        "character1": "mike",
+        "character2": "sarah",
+        "line1": {
+          "en": "How long _____ you been waiting?"
+        },
+        "line2": {
+          "en": "About forty minutes. The line is very slow."
+        },
+        "answer": "have",
+        "distractors": [
+          "has",
+          "had",
+          "are"
+        ]
+      }
+    },
+    {
+      "type": "grammar",
+      "template": "ConvoTemplate-1",
+      "questionData": {
+        "character1": "mike",
+        "character2": "sarah",
+        "line1": {
+          "en": "How long _____ you been waiting?"
+        },
+        "line2": {
+          "en": "About forty minutes. The line is very slow."
+        },
+        "answer": "have",
+        "distractors": [
+          "has",
+          "had",
+          "are"
+        ]
+      }
+    },
+    {
+      "type": "grammar",
+      "template": "ConvoTemplate-1",
+      "questionData": {
+        "character1": "mike",
+        "character2": "sarah",
+        "line1": {
+          "en": "How long _____ you been waiting?"
+        },
+        "line2": {
+          "en": "About forty minutes. The line is very slow."
+        },
+        "answer": "have",
+        "distractors": [
+          "has",
+          "had",
+          "are"
+        ]
+      }
+    }
+  ]
+}

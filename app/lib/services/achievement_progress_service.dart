@@ -1,4 +1,5 @@
 import '../models/profile_state.dart';
+import '../quiz_game_constants.dart';
 import 'achievement_config_loader.dart';
 import 'achievement_service.dart';
 import 'quiz_flow_loader.dart';
@@ -28,7 +29,7 @@ class AchievementProgressService {
       AchievementProgressService._();
   static AchievementProgressService get instance => _instance;
 
-  static const List<String> _quizTypes = ['image', 'vocabulary', 'grammar'];
+  static const List<String> _quizTypes = [kQuizGameType];
 
   Future<List<AchievementProgress>> computeProgress({
     required List<AchievementDefinition> definitions,
@@ -57,7 +58,7 @@ class AchievementProgressService {
       if (completed > 0) categoriesPlayed++;
 
       try {
-        final flow = await loadQuizFlow(quizType);
+        final flow = await loadGameFlow();
         totalLevels += flow.subLevels.length;
         for (final sub in flow.subLevels) {
           if ((progress.levels[sub.progressKey]?.highestStars ?? 0) >= 3) {

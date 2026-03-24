@@ -4,7 +4,7 @@ import 'package:flutter/services.dart';
 
 import '../models/quiz_flow.dart';
 
-/// Result of loading flow data for a quiz type.
+/// Result of loading flow data for the unified game.
 class QuizFlowData {
   const QuizFlowData({
     required this.subLevels,
@@ -15,11 +15,10 @@ class QuizFlowData {
   final List<MainLevelMeta> mainLevels;
 }
 
-/// Loads [quizType]-quiz-flow.json and [quizType]-flow-main-levels.json from assets.
-Future<QuizFlowData> loadQuizFlow(String quizType) async {
-  final prefix = 'assets/data/flow/$quizType';
-  final subLevelsPath = '$prefix-quiz-flow.json';
-  final mainLevelsPath = '$prefix-flow-main-levels.json';
+/// Loads `assets/data/flow/game-flow.json` and `game-flow-main-levels.json`.
+Future<QuizFlowData> loadGameFlow() async {
+  const subLevelsPath = 'assets/data/flow/game-flow.json';
+  const mainLevelsPath = 'assets/data/flow/game-flow-main-levels.json';
 
   String subLevelsJson;
   String mainLevelsJson;

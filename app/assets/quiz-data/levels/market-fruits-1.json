@@ -1,0 +1,184 @@
+{
+  "levelQuestions": [
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "Apple",
+        "wrongAnswers": [
+          "Avocado",
+          "Blackberry",
+          "Cantaloupe"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "Avocado",
+        "wrongAnswers": [
+          "Apple",
+          "Blackberry",
+          "Cantaloupe"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "Blackberry",
+        "wrongAnswers": [
+          "Apple",
+          "Avocado",
+          "Cantaloupe"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "Cantaloupe",
+        "wrongAnswers": [
+          "Apple",
+          "Avocado",
+          "Blackberry"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "Coconut",
+        "wrongAnswers": [
+          "Apple",
+          "Avocado",
+          "Blackberry"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "Dates",
+        "wrongAnswers": [
+          "Apple",
+          "Avocado",
+          "Blackberry"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "Fig",
+        "wrongAnswers": [
+          "Apple",
+          "Avocado",
+          "Blackberry"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "Grapefruit",
+        "wrongAnswers": [
+          "Apple",
+          "Avocado",
+          "Blackberry"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "Mango",
+        "wrongAnswers": [
+          "Apple",
+          "Avocado",
+          "Blackberry"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "Orange",
+        "wrongAnswers": [
+          "Apple",
+          "Avocado",
+          "Blackberry"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "Peach",
+        "wrongAnswers": [
+          "Apple",
+          "Avocado",
+          "Blackberry"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "Pineapple",
+        "wrongAnswers": [
+          "Apple",
+          "Avocado",
+          "Blackberry"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "Pomegranate",
+        "wrongAnswers": [
+          "Apple",
+          "Avocado",
+          "Blackberry"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "Quince",
+        "wrongAnswers": [
+          "Apple",
+          "Avocado",
+          "Blackberry"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "Strawberry",
+        "wrongAnswers": [
+          "Apple",
+          "Avocado",
+          "Blackberry"
+        ]
+      }
+    }
+  ]
+}

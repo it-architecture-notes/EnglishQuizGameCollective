@@ -48,6 +48,7 @@ flutter:
     - assets/data/settings/
     - assets/data/flow/
     - assets/data/story/
+    - assets/quiz-data/levels/
     - assets/quiz-data/image-quiz/quiz-images/market-vegetables-1/
     - assets/quiz-data/vocabulary-quiz/
     - assets/quiz-data/grammar-quiz/

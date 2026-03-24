@@ -12,21 +12,17 @@ import '../models/story_progress.dart';
 import '../providers/localization_provider.dart';
 import '../providers/settings_provider.dart';
 import '../services/audio_service.dart' as audio;
-import '../services/grammar_quiz_loader.dart';
-import '../services/image_quiz_level_loader.dart';
+import '../quiz_game_constants.dart';
+import '../services/level_config_loader.dart';
 import '../services/quiz_flow_loader.dart';
 import '../services/quiz_progress_service.dart';
 import '../services/reminder_progress_service.dart';
 import '../services/story_config_loader.dart';
 import '../services/story_progress_service.dart';
 import '../services/story_trigger_service.dart';
-import '../services/vocabulary_quiz_loader.dart';
-import 'grammar_quiz_screen.dart';
-import 'image_quiz_screen.dart';
-import 'placeholders/quiz_placeholder_screen.dart';
+import 'quiz_runner_screen.dart';
 import 'story/story_overlay_screen.dart';
 import 'transitions/custom_page_routes.dart';
-import 'vocabulary_quiz_screen.dart';
 
 /// Builds the flattened list of items (banner + sub-level cells) from loaded flow data.
 /// Each banner counts as 1 item; each sub-level counts as 1 item (batch size applies to this list).
@@ -79,10 +75,7 @@ class _SubsLayoutRow extends _LayoutRow {
 }
 
 class LevelsScreen extends ConsumerStatefulWidget {
-  const LevelsScreen({super.key, required this.quizType});
-
-  /// Quiz type slug: 'image', 'vocabulary', 'grammar'.
-  final String quizType;
+  const LevelsScreen({super.key});
 
   @override
   ConsumerState<LevelsScreen> createState() => _LevelsScreenState();
@@ -314,11 +307,11 @@ class _LevelsScreenState extends ConsumerState<LevelsScreen> {
 
   Future<void> _loadData({int? anchorOrdinal}) async {
     try {
-      final data = await loadQuizFlow(widget.quizType);
+      final data = await loadGameFlow();
       final progressFuture =
-          QuizProgressService.instance.loadProgress(widget.quizType);
+          QuizProgressService.instance.loadProgress(kQuizGameType);
       final reminderProgressFuture =
-          ReminderProgressService.instance.loadProgress(widget.quizType);
+          ReminderProgressService.instance.loadProgress(kQuizGameType);
       final progress = await progressFuture;
       final reminderProgress = await reminderProgressFuture;
       StoryConfigData storyConfig = const StoryConfigData(
@@ -328,8 +321,8 @@ class _LevelsScreenState extends ConsumerState<LevelsScreen> {
       StoryProgressState storyProgress = const StoryProgressState();
       try {
         final storyResults = await Future.wait([
-          loadStoryConfig(widget.quizType),
-          StoryProgressService.instance.loadProgress(widget.quizType),
+          loadStoryConfig(kQuizGameType),
+          StoryProgressService.instance.loadProgress(kQuizGameType),
         ]);
         storyConfig = storyResults[0] as StoryConfigData;
         storyProgress = storyResults[1] as StoryProgressState;
@@ -451,7 +444,7 @@ class _LevelsScreenState extends ConsumerState<LevelsScreen> {
     }
     if (changed) {
       await StoryProgressService.instance
-          .saveProgress(widget.quizType, updated);
+          .saveProgress(kQuizGameType, updated);
     }
     return updated;
   }
@@ -575,21 +568,7 @@ class _LevelsScreenState extends ConsumerState<LevelsScreen> {
   // ---------------------------------------------------------------------------
 
   String _titleFromStrings(Map<String, String> strings) {
-    final key = 'quiz_title_${widget.quizType}';
-    return strings[key] ?? _titleFromSlug(widget.quizType);
-  }
-
-  static String _titleFromSlug(String slug) {
-    switch (slug) {
-      case 'image':
-        return 'Image Quiz';
-      case 'vocabulary':
-        return 'Vocabulary';
-      case 'grammar':
-        return 'Grammar';
-      default:
-        return slug;
-    }
+    return strings['quiz_title_game'] ?? 'Levels';
   }
 
   // ---------------------------------------------------------------------------
@@ -956,16 +935,11 @@ class _LevelsScreenState extends ConsumerState<LevelsScreen> {
         .where((item) => item.sub.mainLevel == mainLevel);
     for (final item in regularItems) {
       final sub = item.sub;
-      if (widget.quizType == 'image') {
-        final levelKey = imageQuizLevelKey(sub.iconImageName);
-        final paths = await loadImageQuizLevelAssetPaths(levelKey);
-        counts[item.progressKey] = paths.length;
-      } else if (widget.quizType == 'vocabulary') {
-        final level = await loadVocabularyLevel(sub.iconImageName);
-        counts[item.progressKey] = level.questions.length;
-      } else if (widget.quizType == 'grammar') {
-        final level = await loadGrammarLevel(sub.iconImageName);
-        counts[item.progressKey] = level.questions.length;
+      try {
+        final cfg = await loadLevelConfig(sub.iconImageName);
+        counts[item.progressKey] = cfg.questions.length;
+      } catch (_) {
+        counts[item.progressKey] = 10;
       }
     }
     return counts;
@@ -976,7 +950,7 @@ class _LevelsScreenState extends ConsumerState<LevelsScreen> {
     if (reminderState.questionIds.isNotEmpty) return;
     final counts = await _buildRegularQuestionCountsForMain(mainLevel);
     final updated = await ReminderProgressService.instance.generateReminderQuestions(
-      quizType: widget.quizType,
+      quizType: kQuizGameType,
       mainLevel: mainLevel,
       questionCountByProgressKey: counts,
     );
@@ -994,44 +968,14 @@ class _LevelsScreenState extends ConsumerState<LevelsScreen> {
   }) {
     final sub = subLevelItem.sub;
     return popFadeRoute<LevelCompletionResult>(
-      widget.quizType == 'image'
-          ? ImageQuizScreen(
-              quizType: widget.quizType,
-              subLevel: sub,
-              ordinalLevelIndex: subLevelItem.ordinalLevelIndex,
-              progressKey: subLevelItem.progressKey,
-              reminderMode: reminderMode,
-              reminderQuestionIds: reminderQuestionIds,
-              reminderSourceLevelsByProgressKey:
-                  reminderSourceLevelsByProgressKey,
-            )
-          : widget.quizType == 'vocabulary'
-              ? VocabularyQuizScreen(
-                  quizType: widget.quizType,
-                  subLevel: sub,
-                  ordinalLevelIndex: subLevelItem.ordinalLevelIndex,
-                  progressKey: subLevelItem.progressKey,
-                  reminderMode: reminderMode,
-                  reminderQuestionIds: reminderQuestionIds,
-                  reminderSourceLevelsByProgressKey:
-                      reminderSourceLevelsByProgressKey,
-                )
-              : widget.quizType == 'grammar'
-                  ? GrammarQuizScreen(
-                      quizType: widget.quizType,
-                      subLevel: sub,
-                      ordinalLevelIndex: subLevelItem.ordinalLevelIndex,
-                      progressKey: subLevelItem.progressKey,
-                      reminderMode: reminderMode,
-                      reminderQuestionIds: reminderQuestionIds,
-                      reminderSourceLevelsByProgressKey:
-                          reminderSourceLevelsByProgressKey,
-                    )
-                  : QuizPlaceholderScreen(
-                      quizType: widget.quizType,
-                      subLevel: sub,
-                      ordinalLevelIndex: subLevelItem.ordinalLevelIndex,
-                    ),
+      QuizRunnerScreen(
+        subLevel: sub,
+        ordinalLevelIndex: subLevelItem.ordinalLevelIndex,
+        progressKey: subLevelItem.progressKey,
+        reminderMode: reminderMode,
+        reminderQuestionIds: reminderQuestionIds,
+        reminderSourceLevelsByProgressKey: reminderSourceLevelsByProgressKey,
+      ),
     );
   }
 

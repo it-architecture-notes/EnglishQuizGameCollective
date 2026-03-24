@@ -5,6 +5,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../models/guest_animal_conversations.dart';
 import '../../models/level_completion_result.dart';
+import '../../models/level_config.dart';
 import '../../models/quiz_flow.dart';
 import '../../models/reminder_progress.dart';
 import '../../providers/localization_provider.dart';
@@ -13,7 +14,9 @@ import '../../services/achievement_service.dart';
 import '../../services/audio_service.dart' as audio;
 import '../../services/game_config_loader.dart';
 import '../../services/guest_animal_conversations_loader.dart';
+import '../../services/image_asset_resolver.dart';
 import '../../services/image_quiz_level_loader.dart';
+import '../../services/level_config_loader.dart';
 import '../../services/profile_service.dart';
 import '../../services/quiz_progress_service.dart';
 import '../../services/reminder_progress_service.dart';
@@ -39,7 +42,11 @@ class ImageQuizScreen extends ConsumerStatefulWidget {
     this.reminderMode = false,
     this.reminderQuestionIds,
     this.reminderSourceLevelsByProgressKey,
+    this.preloadedLevelConfig,
   });
+
+  /// When set, questions load from unified level JSON instead of manifest discovery.
+  final LevelConfig? preloadedLevelConfig;
 
   final SubLevel subLevel;
   final String quizType;
@@ -67,6 +74,8 @@ class _ImageQuizScreenState extends ConsumerState<ImageQuizScreen>
   final Map<String, String> _assetPathByQuestionId = {};
   final Map<String, List<String>> _vocabularyByQuestionId = {};
   List<String> _vocabulary = [];
+  /// Per-question wrong answers when using [LevelConfig] (same order as [_questionAssetPaths]).
+  List<List<String>>? _configWrongAnswers;
   GameConfig _config = const GameConfig();
   int _currentIndex = 0;
   int _correctCount = 0;
@@ -144,73 +153,169 @@ class _ImageQuizScreenState extends ConsumerState<ImageQuizScreen>
     final key = _levelKey(widget.subLevel);
     try {
       final config = await GameConfig.load();
-      final paths = await loadImageQuizLevelAssetPaths(key);
-      final vocabulary = paths.map(assetPathToBasename).toList();
 
-      if (vocabulary.length < kMinImagesPerLevel) {
+      LevelConfig? levelCfg = widget.preloadedLevelConfig;
+      if (levelCfg == null) {
+        try {
+          levelCfg = await loadLevelConfig(widget.subLevel.iconImageName);
+        } catch (_) {
+          levelCfg = null;
+        }
+      }
+
+      if (levelCfg == null) {
+        // Legacy: manifest discovery (no unified level JSON)
+        final paths = await loadImageQuizLevelAssetPaths(key);
+        final vocabulary = paths.map(assetPathToBasename).toList();
+
+        if (vocabulary.length < kMinImagesPerLevel) {
+          if (mounted) {
+            setState(() {
+              _loadError =
+                  'This level needs at least $kMinImagesPerLevel images (found ${vocabulary.length}).';
+              _phase = _Phase.loading;
+            });
+          }
+          return;
+        }
+
+        final shuffled = List<String>.from(paths)..shuffle(Random());
+        final questionIds = shuffled
+            .map((path) => buildReminderQuestionId(
+                  widget.progressKey,
+                  paths.indexOf(path),
+                ))
+            .toList(growable: false);
+
+        final totalQuestions = shuffled.length;
+        final threshold = max(1, min(4, (totalQuestions * 0.1).round()));
+        final animalNames = await discoverGuestAnimalNames();
+        final monsterNames = await discoverMonsterNames();
+        final guestAnimal = animalNames.isNotEmpty
+            ? animalNames[Random().nextInt(animalNames.length)]
+            : 'squirrel';
+        final selectedMonster = monsterNames.isNotEmpty
+            ? monsterNames[Random().nextInt(monsterNames.length)]
+            : 'monster';
+
+        final conversationsConfig = await loadGuestAnimalConversations();
+        final language =
+            ref.read(settingsProvider).valueOrNull?.language ?? 'en';
+        final conversations = getForLanguage(conversationsConfig, language);
+
+        if (mounted) {
+          for (final path in shuffled) {
+            if (!mounted) break;
+            await precacheImage(AssetImage(path), context);
+          }
+        }
+
         if (mounted) {
           setState(() {
-            _loadError =
-                'This level needs at least $kMinImagesPerLevel images (found ${vocabulary.length}).';
-            _phase = _Phase.loading;
+            _configWrongAnswers = null;
+            _config = config;
+            _conversations = conversations;
+            _questionAssetPaths = shuffled;
+            _currentQuestionIds = questionIds;
+            _vocabulary = vocabulary;
+            _initialQuestionCount = shuffled.length;
+            _monsterStepThreshold = threshold;
+            _guestAnimal = guestAnimal;
+            _selectedMonster = selectedMonster;
+            _phase = _Phase.playing;
+            _quizStartTime = DateTime.now();
+            _currentOptions = _buildOptions();
           });
+          _timerController.duration =
+              Duration(seconds: _config.imageQuizTimerSeconds);
+          _startTimer();
+          final musicOn = ref.read(settingsProvider).valueOrNull?.musicOn ?? true;
+          audio.startQuizMusic(musicOn: musicOn);
         }
         return;
       }
 
-      // Shuffle question order
-      final shuffled = List<String>.from(paths)..shuffle(Random());
-      final questionIds = shuffled
-          .map((path) => buildReminderQuestionId(
-                widget.progressKey,
-                paths.indexOf(path),
-              ))
-          .toList(growable: false);
-
-      final totalQuestions = shuffled.length;
-      final threshold = max(1, min(4, (totalQuestions * 0.1).round()));
-      final animalNames = await discoverGuestAnimalNames();
-      final monsterNames = await discoverMonsterNames();
-      final guestAnimal = animalNames.isNotEmpty
-          ? animalNames[Random().nextInt(animalNames.length)]
-          : 'squirrel';
-      final selectedMonster = monsterNames.isNotEmpty
-          ? monsterNames[Random().nextInt(monsterNames.length)]
-          : 'monster';
-
-      final conversationsConfig = await loadGuestAnimalConversations();
-      final language = ref.read(settingsProvider).valueOrNull?.language ?? 'en';
-      final conversations = getForLanguage(conversationsConfig, language);
-
-      // Precache images (only use context when mounted)
-      if (mounted) {
-        for (final path in shuffled) {
-          if (!mounted) break;
-          await precacheImage(AssetImage(path), context);
+      final imageRows = levelCfg.questions
+          .where(
+            (q) =>
+                q.type == LevelQuestionType.image &&
+                q.template == 'imageQuizTemplate-1',
+          )
+          .toList();
+      if (imageRows.length == levelCfg.questions.length &&
+          imageRows.isNotEmpty) {
+        final paths = <String>[];
+        final wrongLists = <List<String>>[];
+        for (final row in imageRows) {
+          final d = row.imageData;
+          if (d == null) continue;
+          final path = await resolveQuizImageAsset(key, d.imageName);
+          if (path == null) {
+            throw Exception('Missing image asset for: ${d.imageName}');
+          }
+          paths.add(path);
+          wrongLists.add(d.wrongAnswers);
         }
+        if (paths.length < kMinImagesPerLevel) {
+          throw Exception(
+            'This level needs at least $kMinImagesPerLevel images (found ${paths.length}).',
+          );
+        }
+        final questionIds = List.generate(
+          paths.length,
+          (i) => buildReminderQuestionId(widget.progressKey, i),
+        );
+        final totalQuestions = paths.length;
+        final threshold = max(1, min(4, (totalQuestions * 0.1).round()));
+        final animalNames = await discoverGuestAnimalNames();
+        final monsterNames = await discoverMonsterNames();
+        final guestAnimal = animalNames.isNotEmpty
+            ? animalNames[Random().nextInt(animalNames.length)]
+            : 'squirrel';
+        final selectedMonster = monsterNames.isNotEmpty
+            ? monsterNames[Random().nextInt(monsterNames.length)]
+            : 'monster';
+
+        final conversationsConfig = await loadGuestAnimalConversations();
+        final language =
+            ref.read(settingsProvider).valueOrNull?.language ?? 'en';
+        final conversations = getForLanguage(conversationsConfig, language);
+
+        if (mounted) {
+          for (final path in paths) {
+            if (!mounted) break;
+            await precacheImage(AssetImage(path), context);
+          }
+        }
+
+        if (mounted) {
+          setState(() {
+            _config = config;
+            _conversations = conversations;
+            _questionAssetPaths = paths;
+            _currentQuestionIds = questionIds;
+            _configWrongAnswers = wrongLists;
+            _vocabulary = paths.map(assetPathToBasename).toList();
+            _initialQuestionCount = paths.length;
+            _monsterStepThreshold = threshold;
+            _guestAnimal = guestAnimal;
+            _selectedMonster = selectedMonster;
+            _phase = _Phase.playing;
+            _quizStartTime = DateTime.now();
+            _currentOptions = _buildOptions();
+          });
+          _timerController.duration =
+              Duration(seconds: _config.imageQuizTimerSeconds);
+          _startTimer();
+          final musicOn = ref.read(settingsProvider).valueOrNull?.musicOn ?? true;
+          audio.startQuizMusic(musicOn: musicOn);
+        }
+        return;
       }
 
-      if (mounted) {
-        setState(() {
-          _config = config;
-          _conversations = conversations;
-          _questionAssetPaths = shuffled;
-          _currentQuestionIds = questionIds;
-          _vocabulary = vocabulary;
-          _initialQuestionCount = shuffled.length;
-          _monsterStepThreshold = threshold;
-          _guestAnimal = guestAnimal;
-          _selectedMonster = selectedMonster;
-          _phase = _Phase.playing;
-          _quizStartTime = DateTime.now();
-          _currentOptions = _buildOptions();
-        });
-        _timerController.duration =
-            Duration(seconds: _config.imageQuizTimerSeconds);
-        _startTimer();
-        final musicOn = ref.read(settingsProvider).valueOrNull?.musicOn ?? true;
-        audio.startQuizMusic(musicOn: musicOn);
-      }
+      throw Exception(
+        'Unified level "${widget.subLevel.iconImageName}" is not image-only',
+      );
     } catch (e, st) {
       debugPrint('ImageQuizScreen _loadLevel: $e\n$st');
       if (mounted) {
@@ -231,6 +336,7 @@ class _ImageQuizScreenState extends ConsumerState<ImageQuizScreen>
       final loadedVocabulary = <String, List<String>>{};
       final assetPathByQuestionId = <String, String>{};
       final vocabularyByQuestionId = <String, List<String>>{};
+      final wrongThreeByQuestionId = <String, List<String>>{};
       final validQuestionIds = <String>[];
 
       for (final questionId in reminderQuestionIds) {
@@ -239,6 +345,34 @@ class _ImageQuizScreenState extends ConsumerState<ImageQuizScreen>
         final sourceItem = sourceLevels[progressKey];
         if (sourceItem == null) continue;
         final levelKey = imageQuizLevelKey(sourceItem.sub.iconImageName);
+        LevelConfig? lc;
+        try {
+          lc = await loadLevelConfig(sourceItem.sub.iconImageName);
+        } catch (_) {
+          lc = null;
+        }
+        if (lc != null &&
+            questionIndex >= 0 &&
+            questionIndex < lc.questions.length) {
+          final q = lc.questions[questionIndex];
+          if (q.type == LevelQuestionType.image && q.imageData != null) {
+            final path = await resolveQuizImageAsset(
+              levelKey,
+              q.imageData!.imageName,
+            );
+            if (path != null) {
+              assetPathByQuestionId[questionId] = path;
+              final manifestPaths = loadedPaths[progressKey] ??=
+                  await loadImageQuizLevelAssetPaths(levelKey);
+              final vocabulary = loadedVocabulary[progressKey] ??=
+                  manifestPaths.map(assetPathToBasename).toList(growable: false);
+              vocabularyByQuestionId[questionId] = vocabulary;
+              wrongThreeByQuestionId[questionId] = q.imageData!.wrongAnswers;
+              validQuestionIds.add(questionId);
+              continue;
+            }
+          }
+        }
         final paths = loadedPaths[progressKey] ??=
             await loadImageQuizLevelAssetPaths(levelKey);
         if (questionIndex < 0 || questionIndex >= paths.length) continue;
@@ -299,6 +433,9 @@ class _ImageQuizScreenState extends ConsumerState<ImageQuizScreen>
         _phase = _Phase.playing;
         _quizStartTime = DateTime.now();
         _currentOptions = _buildOptions();
+        _configWrongAnswers = validQuestionIds
+            .map((id) => wrongThreeByQuestionId[id] ?? <String>[])
+            .toList(growable: false);
       });
       _timerController.duration =
           Duration(seconds: _config.imageQuizTimerSeconds);
@@ -443,6 +580,13 @@ class _ImageQuizScreenState extends ConsumerState<ImageQuizScreen>
 
   List<String> _buildOptions() {
     final correct = _correctAnswer();
+    if (_configWrongAnswers != null &&
+        _currentIndex < _configWrongAnswers!.length) {
+      final wrong = _configWrongAnswers![_currentIndex];
+      if (wrong.length == 3) {
+        return ([correct, ...wrong]..shuffle(Random()));
+      }
+    }
     final vocabularyPool = _isReminder
         ? (_currentQuestionId != null
             ? _vocabularyByQuestionId[_currentQuestionId!] ?? const <String>[]

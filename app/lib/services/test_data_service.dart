@@ -165,7 +165,7 @@ class TestDataService {
   /// This is intended to unlock Reminder 1 and let reminder generation run
   /// against realistic wrong-answer counters.
   Future<void> seedImageMainLevel1ReminderTest() async {
-    final flow = await loadQuizFlow('image');
+    final flow = await loadGameFlow();
     final mainLevelOneLevels = flow.subLevels
         .where((subLevel) => subLevel.mainLevel == 1 && !subLevel.isReminder)
         .toList(growable: false);

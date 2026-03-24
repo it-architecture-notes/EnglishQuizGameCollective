@@ -1,0 +1,268 @@
+{
+  "levelQuestions": [
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "Rug-Carpet",
+        "wrongAnswers": [
+          "armchair",
+          "bookshelf",
+          "chair"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "armchair",
+        "wrongAnswers": [
+          "Rug-Carpet",
+          "bookshelf",
+          "chair"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "bookshelf",
+        "wrongAnswers": [
+          "Rug-Carpet",
+          "armchair",
+          "chair"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "chair",
+        "wrongAnswers": [
+          "Rug-Carpet",
+          "armchair",
+          "bookshelf"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "coat-rack",
+        "wrongAnswers": [
+          "Rug-Carpet",
+          "armchair",
+          "bookshelf"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "coffee table",
+        "wrongAnswers": [
+          "Rug-Carpet",
+          "armchair",
+          "bookshelf"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "curtains",
+        "wrongAnswers": [
+          "Rug-Carpet",
+          "armchair",
+          "bookshelf"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "cushion-pillows",
+        "wrongAnswers": [
+          "Rug-Carpet",
+          "armchair",
+          "bookshelf"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "fireplace",
+        "wrongAnswers": [
+          "Rug-Carpet",
+          "armchair",
+          "bookshelf"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "floor lamp",
+        "wrongAnswers": [
+          "Rug-Carpet",
+          "armchair",
+          "bookshelf"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "framed photo",
+        "wrongAnswers": [
+          "Rug-Carpet",
+          "armchair",
+          "bookshelf"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "light switch",
+        "wrongAnswers": [
+          "Rug-Carpet",
+          "armchair",
+          "bookshelf"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "mirror",
+        "wrongAnswers": [
+          "Rug-Carpet",
+          "armchair",
+          "bookshelf"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "picture",
+        "wrongAnswers": [
+          "Rug-Carpet",
+          "armchair",
+          "bookshelf"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "plant",
+        "wrongAnswers": [
+          "Rug-Carpet",
+          "armchair",
+          "bookshelf"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "remote control",
+        "wrongAnswers": [
+          "Rug-Carpet",
+          "armchair",
+          "bookshelf"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "side table",
+        "wrongAnswers": [
+          "Rug-Carpet",
+          "armchair",
+          "bookshelf"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "sofa-couch",
+        "wrongAnswers": [
+          "Rug-Carpet",
+          "armchair",
+          "bookshelf"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "table",
+        "wrongAnswers": [
+          "Rug-Carpet",
+          "armchair",
+          "bookshelf"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "tv stand",
+        "wrongAnswers": [
+          "Rug-Carpet",
+          "armchair",
+          "bookshelf"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "vase",
+        "wrongAnswers": [
+          "Rug-Carpet",
+          "armchair",
+          "bookshelf"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "wall clock",
+        "wrongAnswers": [
+          "Rug-Carpet",
+          "armchair",
+          "bookshelf"
+        ]
+      }
+    }
+  ]
+}

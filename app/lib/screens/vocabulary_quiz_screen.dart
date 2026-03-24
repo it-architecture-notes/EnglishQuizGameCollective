@@ -12,6 +12,8 @@ import '../providers/settings_provider.dart';
 import '../services/achievement_service.dart';
 import '../services/audio_service.dart' as audio;
 import '../services/game_config_loader.dart';
+import '../services/level_config_loader.dart';
+import '../services/level_config_mappers.dart';
 import '../services/profile_service.dart';
 import '../services/quiz_progress_service.dart';
 import '../services/reminder_progress_service.dart';
@@ -120,10 +122,19 @@ class _VocabularyQuizScreenState extends ConsumerState<VocabularyQuizScreen> {
     super.dispose();
   }
 
+  Future<VocabularyLevel> _loadVocabularyForIcon(String iconImageName) async {
+    try {
+      final lc = await loadLevelConfig(iconImageName);
+      return vocabularyLevelFromConfig(lc);
+    } catch (_) {
+      return loadVocabularyLevel(iconImageName);
+    }
+  }
+
   Future<void> _loadLevel() async {
     try {
       final config = await GameConfig.load();
-      final level = await loadVocabularyLevel(widget.subLevel.iconImageName);
+      final level = await _loadVocabularyForIcon(widget.subLevel.iconImageName);
 
       if (mounted) {
         setState(() {
@@ -160,7 +171,7 @@ class _VocabularyQuizScreenState extends ConsumerState<VocabularyQuizScreen> {
         final sourceItem = sourceLevels[progressKey];
         if (sourceItem == null) continue;
         final level = loadedLevels[progressKey] ??=
-            await loadVocabularyLevel(sourceItem.sub.iconImageName);
+            await _loadVocabularyForIcon(sourceItem.sub.iconImageName);
         if (questionIndex < 0 || questionIndex >= level.questions.length) {
           continue;
         }
