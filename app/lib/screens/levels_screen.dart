@@ -12,7 +12,6 @@ import '../models/story_progress.dart';
 import '../providers/localization_provider.dart';
 import '../providers/settings_provider.dart';
 import '../services/audio_service.dart' as audio;
-import '../quiz_game_constants.dart';
 import '../services/level_config_loader.dart';
 import '../services/quiz_flow_loader.dart';
 import '../services/quiz_progress_service.dart';
@@ -309,9 +308,9 @@ class _LevelsScreenState extends ConsumerState<LevelsScreen> {
     try {
       final data = await loadGameFlow();
       final progressFuture =
-          QuizProgressService.instance.loadProgress(kQuizGameType);
+          QuizProgressService.instance.loadProgress();
       final reminderProgressFuture =
-          ReminderProgressService.instance.loadProgress(kQuizGameType);
+          ReminderProgressService.instance.loadProgress();
       final progress = await progressFuture;
       final reminderProgress = await reminderProgressFuture;
       StoryConfigData storyConfig = const StoryConfigData(
@@ -321,8 +320,8 @@ class _LevelsScreenState extends ConsumerState<LevelsScreen> {
       StoryProgressState storyProgress = const StoryProgressState();
       try {
         final storyResults = await Future.wait([
-          loadStoryConfig(kQuizGameType),
-          StoryProgressService.instance.loadProgress(kQuizGameType),
+          loadStoryConfig(),
+          StoryProgressService.instance.loadProgress(),
         ]);
         storyConfig = storyResults[0] as StoryConfigData;
         storyProgress = storyResults[1] as StoryProgressState;
@@ -443,8 +442,7 @@ class _LevelsScreenState extends ConsumerState<LevelsScreen> {
       }
     }
     if (changed) {
-      await StoryProgressService.instance
-          .saveProgress(kQuizGameType, updated);
+      await StoryProgressService.instance.saveProgress(updated);
     }
     return updated;
   }
@@ -950,7 +948,6 @@ class _LevelsScreenState extends ConsumerState<LevelsScreen> {
     if (reminderState.questionIds.isNotEmpty) return;
     final counts = await _buildRegularQuestionCountsForMain(mainLevel);
     final updated = await ReminderProgressService.instance.generateReminderQuestions(
-      quizType: kQuizGameType,
       mainLevel: mainLevel,
       questionCountByProgressKey: counts,
     );

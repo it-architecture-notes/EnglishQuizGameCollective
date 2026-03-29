@@ -158,7 +158,7 @@ class ProfileService {
 
     for (final quizType in _quizTypes) {
       final progress =
-          await QuizProgressService.instance.loadProgress(quizType);
+          await QuizProgressService.instance.loadProgress();
       final completed =
           progress.levels.values.where((level) => level.isCompleted).length;
       final totalStarsForType = progress.levels.values.fold<int>(

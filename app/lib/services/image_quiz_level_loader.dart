@@ -1,19 +1,19 @@
 import 'package:flutter/services.dart';
 
-/// Level key = iconImageName (folder name under quiz-images/, e.g. "airport").
+/// Level key = iconImageName (folder name under quiz-data/levels/, e.g. "airport-1").
 String imageQuizLevelKey(String iconImageName) {
   return iconImageName;
 }
 
-const String _quizImagePrefix = 'assets/quiz-data/image-quiz/quiz-images/';
+const String _quizImagePrefix = 'assets/quiz-data/levels/';
 
-/// Prefix with trailing slash for listAssets filtering (e.g. "assets/quiz-data/image-quiz/quiz-images/airport/").
+/// Prefix with trailing slash for listAssets filtering (e.g. "assets/quiz-data/levels/airport-1/").
 String imageQuizLevelAssetPrefix(String levelKey) {
   return '$_quizImagePrefix$levelKey/';
 }
 
 /// Discovers image asset paths for an image quiz level from the bundle.
-/// Returns full asset paths (e.g. assets/quiz-data/image-quiz/quiz-images/plane-1/pilot.png).
+/// Returns full asset paths (e.g. assets/quiz-data/levels/airport-1/pilot.png).
 /// Excludes macOS .DS_Store and other non-image metadata files.
 Future<List<String>> loadImageQuizLevelAssetPaths(String levelKey) async {
   final manifest = await AssetManifest.loadFromAssetBundle(rootBundle);

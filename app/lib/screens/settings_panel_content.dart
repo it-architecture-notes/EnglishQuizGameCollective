@@ -49,7 +49,7 @@ class SettingsPanelContent extends ConsumerWidget {
                 if (kDebugMode) ...[
                   const SizedBox(height: 24),
                   Text(
-                    'Issue-8 test data',
+                    'Test data',
                     style: TextStyle(
                       fontSize: 14,
                       fontWeight: FontWeight.w600,
@@ -63,92 +63,20 @@ class SettingsPanelContent extends ConsumerWidget {
                     children: [
                       ElevatedButton(
                         onPressed: () async {
-                          await TestDataService.instance.seedTrophyTestData();
+                          await TestDataService.instance
+                              .seedShortQuizEndAfter3With2Stars();
                           if (context.mounted) {
                             ScaffoldMessenger.of(context).showSnackBar(
                               const SnackBar(
                                 content: Text(
-                                  'Trophy test data seeded. Open Trophies to verify.',
+                                  'Short quiz on: levels end after 3 questions with 2 stars. '
+                                  'Start a level to test.',
                                 ),
                               ),
                             );
                           }
                         },
-                        child: const Text('Seed trophy test data'),
-                      ),
-                      ElevatedButton(
-                        onPressed: () async {
-                          await TestDataService.instance.seedStreakTestData3Day();
-                          if (context.mounted) {
-                            ScaffoldMessenger.of(context).showSnackBar(
-                              const SnackBar(
-                                content: Text(
-                                  '3-day streak seed: complete one level today to unlock.',
-                                ),
-                              ),
-                            );
-                          }
-                        },
-                        child: const Text('Seed 3-day streak test'),
-                      ),
-                      ElevatedButton(
-                        onPressed: () async {
-                          await TestDataService.instance.seedStreakTestData30Day();
-                          if (context.mounted) {
-                            ScaffoldMessenger.of(context).showSnackBar(
-                              const SnackBar(
-                                content: Text(
-                                  '30-day streak seed: complete one level today to unlock.',
-                                ),
-                              ),
-                            );
-                          }
-                        },
-                        child: const Text('Seed 30-day streak test'),
-                      ),
-                      ElevatedButton(
-                        onPressed: () async {
-                          await TestDataService.instance.seedDiamondsForFriendsTest(150);
-                          if (context.mounted) {
-                            ScaffoldMessenger.of(context).showSnackBar(
-                              const SnackBar(
-                                content: Text(
-                                    '150 diamonds seeded. Open Friends to test freeing.'),
-                              ),
-                            );
-                          }
-                        },
-                        child: const Text('150 diamonds (Friends test)'),
-                      ),
-                      ElevatedButton(
-                        onPressed: () async {
-                          await TestDataService.instance.seedImageQuizFirst10Levels2Stars();
-                          if (context.mounted) {
-                            ScaffoldMessenger.of(context).showSnackBar(
-                              const SnackBar(
-                                content: Text(
-                                  'Image quiz: first 10 levels seeded with 2 stars. Open Image Quiz to see level 11 at top.',
-                                ),
-                              ),
-                            );
-                          }
-                        },
-                        child: const Text('Seed image quiz (first 10 @ 2 stars)'),
-                      ),
-                      ElevatedButton(
-                        onPressed: () async {
-                          await TestDataService.instance.seedImageMainLevel1ReminderTest();
-                          if (context.mounted) {
-                            ScaffoldMessenger.of(context).showSnackBar(
-                              const SnackBar(
-                                content: Text(
-                                  'Image main level 1 seeded: regular levels complete with 2 stars and 3 wrong questions each. Open Image Quiz to test reminders.',
-                                ),
-                              ),
-                            );
-                          }
-                        },
-                        child: const Text('Seed image reminder test'),
+                        child: const Text('Seed: 3 questions → 2 stars'),
                       ),
                       ElevatedButton(
                         onPressed: () async {

@@ -4,9 +4,9 @@ import 'package:flutter/services.dart';
 
 import '../models/level_config.dart';
 
-/// Loads `assets/quiz-data/levels/{iconImageName}.json`.
+/// Loads `assets/quiz-data/levels/{iconImageName}/questions.json`.
 Future<LevelConfig> loadLevelConfig(String iconImageName) async {
-  final path = 'assets/quiz-data/levels/$iconImageName.json';
+  final path = 'assets/quiz-data/levels/$iconImageName/questions.json';
   final String raw;
   try {
     raw = await rootBundle.loadString(path);

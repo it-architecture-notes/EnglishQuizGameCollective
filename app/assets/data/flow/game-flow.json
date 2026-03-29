@@ -1,113 +1,35 @@
 [
-  {
-    "mainLevel": 1,
-    "iconImageName": "market-vegetables-1",
-    "title": "Market Vegetables - 1"
-  },
-  {
-    "mainLevel": 1,
-    "iconImageName": "market-fruits-1",
-    "title": "Market Fruits - 1"
-  },
-  {
-    "mainLevel": 1,
-    "iconImageName": "market-vegetables-2",
-    "title": "Market Vegetables - 2"
-  },
-  {
-    "mainLevel": 2,
-    "iconImageName": "living room",
-    "title": "Living Room"
-  },
-  {
-    "mainLevel": 2,
-    "iconImageName": "school supplies",
-    "title": "School Supplies"
-  },
-  {
-    "mainLevel": 2,
-    "iconImageName": "reminder",
-    "title": "Reminder 1",
-    "kind": "reminder",
-    "reminderIndex": 1
-  },
-  {
-    "mainLevel": 2,
-    "iconImageName": "reminder",
-    "title": "Reminder 2",
-    "kind": "reminder",
-    "reminderIndex": 2
-  },
-  {
-    "mainLevel": 3,
-    "iconImageName": "living room",
-    "title": "Living Room"
-  },
-  {
-    "mainLevel": 3,
-    "iconImageName": "school supplies",
-    "title": "School Supplies"
-  },
-  {
-    "mainLevel": 3,
-    "iconImageName": "reminder",
-    "title": "Reminder 1",
-    "kind": "reminder",
-    "reminderIndex": 1
-  },
-  {
-    "mainLevel": 3,
-    "iconImageName": "reminder",
-    "title": "Reminder 2",
-    "kind": "reminder",
-    "reminderIndex": 2
-  },
-  {
-    "mainLevel": 4,
-    "iconImageName": "airport-1",
-    "title": "Items in a Airport"
-  },
-  {
-    "mainLevel": 4,
-    "iconImageName": "airport-2",
-    "title": "Items in a Airport"
-  },
-  {
-    "mainLevel": 4,
-    "iconImageName": "reminder",
-    "title": "Reminder 1",
-    "kind": "reminder",
-    "reminderIndex": 1
-  },
-  {
-    "mainLevel": 4,
-    "iconImageName": "reminder",
-    "title": "Reminder 2",
-    "kind": "reminder",
-    "reminderIndex": 2
-  },
-  {
-    "mainLevel": 5,
-    "iconImageName": "grammar-airport-1",
-    "title": "Grammar at the Airport"
-  },
-  {
-    "mainLevel": 5,
-    "iconImageName": "grammar-airport-2",
-    "title": "More Airport Grammar"
-  },
-  {
-    "mainLevel": 5,
-    "iconImageName": "reminder",
-    "title": "Reminder 1",
-    "kind": "reminder",
-    "reminderIndex": 1
-  },
-  {
-    "mainLevel": 5,
-    "iconImageName": "reminder",
-    "title": "Reminder 2",
-    "kind": "reminder",
-    "reminderIndex": 2
-  }
+  { "mainLevel": 1, "iconImageName": "airport-1", "title": "Airport 1" },
+  { "mainLevel": 1, "iconImageName": "airport-2", "title": "Airport 2" },
+  { "mainLevel": 1, "iconImageName": "bathroom", "title": "Bathroom" },
+  { "mainLevel": 1, "iconImageName": "bedroom", "title": "Bedroom" },
+  { "mainLevel": 1, "iconImageName": "body-parts", "title": "Body Parts" },
+  { "mainLevel": 2, "iconImageName": "dressing-1", "title": "Clothes & Style 1" },
+  { "mainLevel": 2, "iconImageName": "dressing-2", "title": "Clothes & Style 2" },
+  { "mainLevel": 2, "iconImageName": "emotions-1", "title": "Emotions 1" },
+  { "mainLevel": 2, "iconImageName": "emotions-2", "title": "Emotions 2" },
+  { "mainLevel": 2, "iconImageName": "farm-animals", "title": "Farm Animals" },
+  { "mainLevel": 3, "iconImageName": "grocery", "title": "Grocery" },
+  { "mainLevel": 3, "iconImageName": "hospital", "title": "Hospital" },
+  { "mainLevel": 3, "iconImageName": "household-equipment-1", "title": "Household Tools 1" },
+  { "mainLevel": 4, "iconImageName": "household-equipment-2", "title": "Household Tools 2" },
+  { "mainLevel": 4, "iconImageName": "jobs-1", "title": "Jobs" },
+  { "mainLevel": 4, "iconImageName": "jobs-2", "title": "Jobs 2" },
+  { "mainLevel": 4, "iconImageName": "jobs-3", "title": "Jobs 3" },
+  { "mainLevel": 4, "iconImageName": "kitchen-1", "title": "Kitchen 1" },
+  { "mainLevel": 5, "iconImageName": "kitchen-2", "title": "Kitchen 2" },
+  { "mainLevel": 5, "iconImageName": "living room", "title": "Living Room" },
+  { "mainLevel": 5, "iconImageName": "market-fruits-1", "title": "Market Fruits 1" },
+  { "mainLevel": 5, "iconImageName": "market-fruits-2", "title": "Market Fruits 2" },
+  { "mainLevel": 5, "iconImageName": "market-vegetables-1", "title": "Market Vegetables 1" },
+  { "mainLevel": 6, "iconImageName": "market-vegetables-2", "title": "Market Vegetables 2" },
+  { "mainLevel": 6, "iconImageName": "nature-1", "title": "Nature 1" },
+  { "mainLevel": 6, "iconImageName": "nature-2", "title": "Nature 2" },
+  { "mainLevel": 6, "iconImageName": "pharmacy", "title": "Pharmacy" },
+  { "mainLevel": 6, "iconImageName": "school supplies", "title": "School Supplies" },
+  { "mainLevel": 7, "iconImageName": "school-1", "title": "School 1" },
+  { "mainLevel": 7, "iconImageName": "school-2", "title": "School 2" },
+  { "mainLevel": 7, "iconImageName": "vehicles", "title": "Vehicles" },
+  { "mainLevel": 7, "iconImageName": "wild-animals-1", "title": "Wild Animals 1" },
+  { "mainLevel": 7, "iconImageName": "wild-animals-2", "title": "Wild Animals 2" }
 ]

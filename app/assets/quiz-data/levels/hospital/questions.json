@@ -1,0 +1,149 @@
+{
+  "levelQuestions": [
+    {
+      "type": "vocab",
+      "template": "ConvoTemplate-1",
+      "questionData": {
+        "character1": "mike",
+        "character2": "sarah",
+        "line1": {
+          "en": "Excuse me, where is the _____?",
+          "tr": "Affedersiniz, _____ nerede?",
+          "es": "Perdona, \u00bfd\u00f3nde est\u00e1 _____?"
+        },
+        "line2": {
+          "en": "The departure gate is on the right.",
+          "tr": "Kalk\u0131\u015f kap\u0131s\u0131 sa\u011fda.",
+          "es": "La puerta de embarque est\u00e1 a la derecha."
+        },
+        "answer": "gate",
+        "distractors": [
+          "ticket",
+          "luggage",
+          "passport"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "caregiver",
+        "wrongAnswers": [
+          "doctor",
+          "nurse",
+          "pharmacist"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "crutches",
+        "wrongAnswers": [
+          "caregiver",
+          "nurse",
+          "pharmacist",
+          "Brussels Sprouts"
+        ]
+      }
+    },
+    {
+      "type": "vocab",
+      "template": "ConvoTemplate-1",
+      "questionData": {
+        "character1": "mike",
+        "character2": "sarah",
+        "line1": {
+          "en": "Do you have your _____ ready?",
+          "tr": "_____ haz\u0131r m\u0131?",
+          "es": "\u00bfTienes tu _____ listo?"
+        },
+        "line2": {
+          "en": "Yes, I have it right here.",
+          "tr": "Evet, burada.",
+          "es": "S\u00ed, lo tengo aqu\u00ed."
+        },
+        "answer": "passport",
+        "distractors": [
+          "gate",
+          "seat",
+          "trolley"
+        ]
+      }
+    },
+    {
+      "type": "vocab",
+      "template": "ConvoTemplate-1",
+      "questionData": {
+        "character1": "mike",
+        "character2": "sarah",
+        "line1": {
+          "en": "I need to drop off my _____ at check-in.",
+          "tr": "Check-in'de _____ b\u0131rakmam laz\u0131m.",
+          "es": "Necesito dejar mi _____ en el mostrador."
+        },
+        "line2": {
+          "en": "The check-in counter is straight ahead.",
+          "tr": "Check-in gi\u015fesi d\u00fcz ileride.",
+          "es": "El mostrador est\u00e1 recto adelante."
+        },
+        "answer": "luggage",
+        "distractors": [
+          "passport",
+          "ticket",
+          "boarding"
+        ]
+      }
+    },
+    {
+      "type": "vocab",
+      "template": "ConvoTemplate-1",
+      "questionData": {
+        "character1": "mike",
+        "character2": "sarah",
+        "line1": {
+          "en": "Where can I get my boarding _____?",
+          "tr": "Bini\u015f _____ nereden alabilirim?",
+          "es": "\u00bfD\u00f3nde puedo obtener mi _____ de embarque?"
+        },
+        "line2": {
+          "en": "You can print it at the self-service kiosk.",
+          "tr": "Self-servis kiosktan yazd\u0131rabilirsin.",
+          "es": "Puedes imprimirla en el quiosco de autoservicio."
+        },
+        "answer": "pass",
+        "distractors": [
+          "gate",
+          "seat",
+          "trolley"
+        ]
+      }
+    },
+    {
+      "type": "vocab",
+      "template": "ConvoTemplate-1",
+      "questionData": {
+        "character1": "mike",
+        "character2": "sarah",
+        "line1": {
+          "en": "We need to go through security and _____ control.",
+          "tr": "G\u00fcvenlik ve _____ kontrol\u00fcnden ge\u00e7memiz laz\u0131m.",
+          "es": "Necesitamos pasar por seguridad y control de _____."
+        },
+        "line2": {
+          "en": "I know, let's hurry up.",
+          "tr": "Biliyorum, hadi acele edelim.",
+          "es": "Lo s\u00e9, vamos a apresurarnos."
+        },
+        "answer": "passport",
+        "distractors": [
+          "luggage",
+          "seat",
+          "runway"
+        ]
+      }
+    }
+  ]
+}

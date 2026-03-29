@@ -1,22 +1,30 @@
 [
   {
     "mainLevel": 1,
-    "title": "Transportation & Places"
+    "title": "Helping the Puppy Heal"
   },
   {
     "mainLevel": 2,
-    "title": "Level 3"
+    "title": "Renovate the Orphanage"
   },
   {
     "mainLevel": 3,
-    "title": "Level 4"
+    "title": "Fix old man's house"
   },
   {
     "mainLevel": 4,
-    "title": "Beginner Words"
+    "title": "Help John Find a Job"
   },
   {
     "mainLevel": 5,
-    "title": "Basics"
+    "title": "Help Annie at the hopspital"
+  },
+  {
+    "mainLevel": 6,
+    "title": "Help Mark with the Farm Errands"
+  },
+  {
+    "mainLevel": 7,
+    "title": "Paint the school classrooms"
   }
 ]

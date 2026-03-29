@@ -3,7 +3,9 @@ import 'dart:convert';
 import 'package:flutter/foundation.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-/// Per-level progress for a quiz type.
+import '../quiz_game_constants.dart';
+
+/// Per-level progress.
 class LevelProgress {
   const LevelProgress({
     required this.progressKey,
@@ -32,7 +34,7 @@ class LevelProgress {
   }
 }
 
-/// Full progress for one quiz type (e.g. image).
+/// Full progress for the unified game.
 class QuizTypeProgress {
   const QuizTypeProgress({
     this.levels = const {},
@@ -58,8 +60,6 @@ class QuizTypeProgress {
     for (final e in levelsMap.entries) {
       if (e.value is Map<String, dynamic>) {
         final data = e.value as Map<String, dynamic>;
-        // Support old int-keyed format (pre-migration): reconstruct a LevelProgress
-        // with progressKey = the map key (string form of old int).
         final progressKey = data['progressKey'] as String? ?? e.key;
         levels[e.key] = LevelProgress(
           progressKey: progressKey,
@@ -75,57 +75,52 @@ class QuizTypeProgress {
   }
 }
 
-/// Persists quiz progress per quiz type using SharedPreferences.
-/// On web (Chrome), data stays in localStorage for the origin; run on the same
-/// port to keep your progress across sessions.
+/// Persists unified game progress using SharedPreferences.
 class QuizProgressService {
   QuizProgressService._();
   static final QuizProgressService _instance = QuizProgressService._();
   static QuizProgressService get instance => _instance;
 
-  static const String _keyPrefix = 'quiz_progress_';
-  static String _key(String quizType) => '$_keyPrefix$quizType';
+  static const String _storageKey = 'quiz_progress_$kQuizGameType';
 
   SharedPreferences? _prefs;
   Future<SharedPreferences> get _preferences async =>
       _prefs ??= await SharedPreferences.getInstance();
 
-  /// Loads progress for [quizType]. Returns default (empty) if missing or invalid.
-  Future<QuizTypeProgress> loadProgress(String quizType) async {
+  /// Loads progress. Returns default (empty) if missing or invalid.
+  Future<QuizTypeProgress> loadProgress() async {
     try {
       final prefs = await _preferences;
-      final json = prefs.getString(_key(quizType));
+      final json = prefs.getString(_storageKey);
       if (json == null) return const QuizTypeProgress();
       final map = jsonDecode(json) as Map<String, dynamic>;
       return QuizTypeProgress.fromJson(map);
     } catch (e, st) {
-      debugPrint('QuizProgressService.loadProgress($quizType): $e\n$st');
+      debugPrint('QuizProgressService.loadProgress: $e\n$st');
       return const QuizTypeProgress();
     }
   }
 
-  /// Saves progress for [quizType].
-  Future<void> saveProgress(String quizType, QuizTypeProgress progress) async {
+  /// Saves progress.
+  Future<void> saveProgress(QuizTypeProgress progress) async {
     try {
       final prefs = await _preferences;
       await prefs.setString(
-        _key(quizType),
+        _storageKey,
         const JsonEncoder.withIndent('  ').convert(progress.toJson()),
       );
     } catch (e, st) {
-      debugPrint('QuizProgressService.saveProgress($quizType): $e\n$st');
+      debugPrint('QuizProgressService.saveProgress: $e\n$st');
     }
   }
 
   /// Records level completion: updates stars (max), diamonds (delta on replay), and persists.
-  /// Call only after end-of-level screen when level is completed (≥1 star).
   Future<QuizTypeProgress> recordLevelCompletion({
-    required String quizType,
     required String progressKey,
     required int stars,
     required int diamondsEarned,
   }) async {
-    final current = await loadProgress(quizType);
+    final current = await loadProgress();
     final existing = current.level(progressKey);
     final newStars = stars > existing.highestStars ? stars : existing.highestStars;
     final diamondDelta = diamondsEarned > existing.highestDiamonds
@@ -143,7 +138,7 @@ class QuizProgressService {
       levels: updatedLevels,
       totalDiamonds: current.totalDiamonds + diamondDelta,
     );
-    await saveProgress(quizType, updated);
+    await saveProgress(updated);
     return updated;
   }
 }

@@ -1,15 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import '../models/level_completion_result.dart';
+import '../providers/settings_provider.dart';
 import '../models/level_config.dart';
 import '../models/quiz_flow.dart';
 import '../models/reminder_progress.dart' show parseReminderQuestionId;
-import '../quiz_game_constants.dart';
+import '../services/audio_service.dart' as audio;
 import '../services/level_config_loader.dart';
 import 'image_quiz_screen.dart';
-import 'vocabulary_quiz_screen.dart';
+import 'transitions/custom_page_routes.dart';
 
-/// Routes to image or vocabulary (convo) quiz based on unified [LevelConfig].
+/// Loads the level config, splits questions into type-homogeneous phases if needed,
+/// and sequences each phase as a separate navigator route. Supports mixed-type levels
+/// (e.g. image + vocab questions in the same sub-level).
 class QuizRunnerScreen extends ConsumerStatefulWidget {
   const QuizRunnerScreen({
     super.key,
@@ -33,159 +37,218 @@ class QuizRunnerScreen extends ConsumerStatefulWidget {
 }
 
 class _QuizRunnerScreenState extends ConsumerState<QuizRunnerScreen> {
-  Widget? _resolved;
   String? _error;
 
   @override
   void initState() {
     super.initState();
-    _resolve();
+    // Defer navigation so the widget is fully mounted first.
+    WidgetsBinding.instance.addPostFrameCallback((_) => _run());
   }
 
-  Future<void> _resolve() async {
+  Future<void> _run() async {
     if (widget.subLevel.isReminder) {
-      await _resolveReminder();
-      return;
+      await _runReminder();
+    } else {
+      await _runRegular();
     }
+  }
+
+  // ─── Regular level ───────────────────────────────────────────────────────
+
+  Future<void> _runRegular() async {
+    LevelConfig cfg;
     try {
-      final cfg = await loadLevelConfig(widget.subLevel.iconImageName);
-      if (!mounted) return;
-      setState(() {
-        _resolved = _buildForConfig(cfg);
-      });
+      cfg = await loadLevelConfig(widget.subLevel.iconImageName);
     } catch (e) {
       if (!mounted) return;
-      setState(() {
-        _error = e.toString();
-      });
+      setState(() => _error = e.toString());
+      return;
     }
+
+    // Split into consecutive type-homogeneous phases (preserves question order).
+    final phases = _splitIntoPhases(cfg);
+
+    bool allCompleted = true;
+    for (final phaseCfg in phases) {
+      if (!mounted) return;
+      final result = await _pushPhase(phaseCfg);
+      if (result == null || !result.completed) allCompleted = false;
+    }
+
+    if (!mounted) return;
+    Navigator.of(context).pop(LevelCompletionResult(
+      ordinalLevelIndex: widget.ordinalLevelIndex,
+      completed: allCompleted,
+    ));
   }
 
-  Future<void> _resolveReminder() async {
+  // ─── Reminder level ──────────────────────────────────────────────────────
+
+  Future<void> _runReminder() async {
     final ids = widget.reminderQuestionIds ?? const <String>[];
     final sources = widget.reminderSourceLevelsByProgressKey ?? {};
     if (ids.isEmpty) {
-      setState(() => _error = 'No reminder questions');
+      if (mounted) setState(() => _error = 'No reminder questions');
       return;
     }
-    final types = <LevelQuestionType>{};
+
+    // Split question IDs by type so each ImageQuizScreen run is type-homogeneous.
+    final imageReminderIds = <String>[];
+    final convoReminderIds = <String>[];
+    final loadedConfigs = <String, LevelConfig>{};
     try {
       for (final id in ids) {
         final (progressKey, questionIndex) = parseReminderQuestionId(id);
         final src = sources[progressKey];
         if (src == null) continue;
-        final cfg = await loadLevelConfig(src.sub.iconImageName);
-        if (questionIndex < 0 || questionIndex >= cfg.questions.length) {
-          continue;
+        final cfg = loadedConfigs[progressKey] ??=
+            await loadLevelConfig(src.sub.iconImageName);
+        if (questionIndex >= 0 && questionIndex < cfg.questions.length) {
+          if (cfg.questions[questionIndex].type == LevelQuestionType.image) {
+            imageReminderIds.add(id);
+          } else {
+            convoReminderIds.add(id);
+          }
         }
-        types.add(cfg.questions[questionIndex].type);
       }
-      if (types.isEmpty) {
-        setState(() => _error = 'Could not resolve reminder questions');
-        return;
-      }
-      final hasImage = types.contains(LevelQuestionType.image);
-      final hasConvo = types.contains(LevelQuestionType.vocab) ||
-          types.contains(LevelQuestionType.grammar);
-      if (hasImage && hasConvo) {
-        setState(
-          () => _error =
-              'Mixed-type reminders are not supported in this build.',
-        );
-        return;
-      }
-      if (!mounted) return;
-      setState(() {
-        if (hasImage) {
-          _resolved = ImageQuizScreen(
-            subLevel: widget.subLevel,
-            quizType: kQuizGameType,
-            ordinalLevelIndex: widget.ordinalLevelIndex,
-            progressKey: widget.progressKey,
-            reminderMode: true,
-            reminderQuestionIds: widget.reminderQuestionIds,
-            reminderSourceLevelsByProgressKey:
-                widget.reminderSourceLevelsByProgressKey,
-          );
-        } else if (hasConvo) {
-          _resolved = VocabularyQuizScreen(
-            subLevel: widget.subLevel,
-            quizType: kQuizGameType,
-            ordinalLevelIndex: widget.ordinalLevelIndex,
-            progressKey: widget.progressKey,
-            reminderMode: true,
-            reminderQuestionIds: widget.reminderQuestionIds,
-            reminderSourceLevelsByProgressKey:
-                widget.reminderSourceLevelsByProgressKey,
-          );
-        } else {
-          _error = 'Unsupported reminder question types';
-        }
-      });
     } catch (e) {
-      if (!mounted) return;
-      setState(() => _error = e.toString());
+      if (mounted) setState(() => _error = e.toString());
+      return;
+    }
+
+    if (imageReminderIds.isEmpty && convoReminderIds.isEmpty) {
+      if (mounted) setState(() => _error = 'Could not resolve reminder questions');
+      return;
+    }
+
+    if (!mounted) return;
+
+    // Run image questions first (if any), then convo questions.
+    if (imageReminderIds.isNotEmpty) {
+      await Navigator.of(context).push<LevelCompletionResult>(
+        popFadeRoute<LevelCompletionResult>(
+          ImageQuizScreen(
+            subLevel: widget.subLevel,
+            ordinalLevelIndex: widget.ordinalLevelIndex,
+            progressKey: widget.progressKey,
+            reminderMode: true,
+            reminderQuestionIds: imageReminderIds,
+            reminderSourceLevelsByProgressKey: sources,
+          ),
+        ),
+      );
+    }
+
+    if (convoReminderIds.isNotEmpty && mounted) {
+      await Navigator.of(context).push<LevelCompletionResult>(
+        popFadeRoute<LevelCompletionResult>(
+          ImageQuizScreen(
+            subLevel: widget.subLevel,
+            ordinalLevelIndex: widget.ordinalLevelIndex,
+            progressKey: widget.progressKey,
+            reminderMode: true,
+            reminderQuestionIds: convoReminderIds,
+            reminderSourceLevelsByProgressKey: sources,
+          ),
+        ),
+      );
+    }
+
+    if (mounted) {
+      Navigator.of(context).pop(LevelCompletionResult(
+        ordinalLevelIndex: widget.ordinalLevelIndex,
+        completed: true,
+        isReminder: true,
+      ));
     }
   }
 
-  Widget _buildForConfig(LevelConfig cfg) {
-    final types = cfg.questions.map((q) => q.type).toSet();
-    if (types.length == 1 && types.first == LevelQuestionType.image) {
-      return ImageQuizScreen(
-        subLevel: widget.subLevel,
-        quizType: kQuizGameType,
-        ordinalLevelIndex: widget.ordinalLevelIndex,
-        progressKey: widget.progressKey,
-        preloadedLevelConfig: cfg,
-      );
+  // ─── Helpers ─────────────────────────────────────────────────────────────
+
+  /// Splits [cfg] into consecutive type-homogeneous sub-configs.
+  /// E.g. [img, img, vocab, img] → [{img,img}, {vocab}, {img}]
+  List<LevelConfig> _splitIntoPhases(LevelConfig cfg) {
+    if (cfg.questions.isEmpty) return [cfg];
+
+    final phases = <LevelConfig>[];
+    final current = <LevelQuestion>[];
+    LevelQuestionType? currentType;
+
+    for (final q in cfg.questions) {
+      final bucket = q.type == LevelQuestionType.image
+          ? LevelQuestionType.image
+          : LevelQuestionType.vocab; // vocab and grammar share the same screen (ImageQuizScreen convo mode)
+      if (currentType == null || bucket == currentType) {
+        current.add(q);
+        currentType = bucket;
+      } else {
+        phases.add(LevelConfig(questions: List.unmodifiable(current)));
+        current.clear();
+        current.add(q);
+        currentType = bucket;
+      }
     }
-    if (types.isNotEmpty &&
-        types.every(
-          (t) =>
-              t == LevelQuestionType.vocab || t == LevelQuestionType.grammar,
-        )) {
-      return VocabularyQuizScreen(
-        subLevel: widget.subLevel,
-        quizType: kQuizGameType,
-        ordinalLevelIndex: widget.ordinalLevelIndex,
-        progressKey: widget.progressKey,
-      );
+    if (current.isNotEmpty) {
+      phases.add(LevelConfig(questions: List.unmodifiable(current)));
     }
-    return Scaffold(
-      appBar: AppBar(title: Text(widget.subLevel.title)),
-      body: Center(
-        child: Padding(
-          padding: const EdgeInsets.all(24),
-          child: Text(
-            'Mixed question types are not supported for "${widget.subLevel.iconImageName}" yet.',
-            textAlign: TextAlign.center,
-          ),
+    return phases;
+  }
+
+  /// Pushes the quiz screen for a type-homogeneous [phaseCfg].
+  Future<LevelCompletionResult?> _pushPhase(LevelConfig phaseCfg) {
+    return Navigator.of(context).push<LevelCompletionResult>(
+      popFadeRoute<LevelCompletionResult>(
+        ImageQuizScreen(
+          subLevel: widget.subLevel,
+          ordinalLevelIndex: widget.ordinalLevelIndex,
+          progressKey: widget.progressKey,
+          preloadedLevelConfig: phaseCfg,
         ),
       ),
     );
   }
 
+  // ─── Build ────────────────────────────────────────────────────────────────
+
+  void _popToLevels(BuildContext context) {
+    final soundFxOn = ref.read(settingsProvider).valueOrNull?.soundFxOn ?? true;
+    audio.playClick(soundFxOn: soundFxOn);
+    Navigator.of(context).pop(LevelCompletionResult(
+      ordinalLevelIndex: widget.ordinalLevelIndex,
+      completed: false,
+    ));
+  }
+
   @override
   Widget build(BuildContext context) {
+    final closeLeading = IconButton(
+      icon: const Icon(Icons.close),
+      tooltip: MaterialLocalizations.of(context).closeButtonTooltip,
+      onPressed: () => _popToLevels(context),
+    );
+
     if (_error != null) {
       return Scaffold(
-        appBar: AppBar(title: Text(widget.subLevel.title)),
+        appBar: AppBar(
+          title: Text(widget.subLevel.title),
+          leading: closeLeading,
+        ),
         body: Center(
           child: Padding(
             padding: const EdgeInsets.all(24),
-            child: Text(
-              _error!,
-              textAlign: TextAlign.center,
-            ),
+            child: Text(_error!, textAlign: TextAlign.center),
           ),
         ),
       );
     }
-    if (_resolved != null) {
-      return _resolved!;
-    }
-    return const Scaffold(
-      body: Center(child: CircularProgressIndicator()),
+    // Show a loading indicator while async init is running.
+    return Scaffold(
+      appBar: AppBar(
+        title: Text(widget.subLevel.title),
+        leading: closeLeading,
+      ),
+      body: const Center(child: CircularProgressIndicator()),
     );
   }
 }
