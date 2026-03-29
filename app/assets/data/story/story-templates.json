@@ -20,6 +20,13 @@
       "requires_text": false,
       "requires_images": false,
       "requires_animation": true
+    },
+    {
+      "template_id": 4,
+      "layout": "scene_story_text",
+      "requires_text": true,
+      "requires_images": true,
+      "requires_animation": false
     }
   ]
 }

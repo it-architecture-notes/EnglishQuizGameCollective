@@ -72,14 +72,14 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
-          _quizButton(strings['quiz_title_image'] ?? 'Image Quiz',
-              () => withClick(_openLevelSelection('image', popFadeRoute))),
-          const SizedBox(height: 16),
-          _quizButton(strings['quiz_title_vocabulary'] ?? 'Vocabulary',
-              () => withClick(_openLevelSelection('vocabulary', popFadeRoute))),
-          const SizedBox(height: 16),
-          _quizButton(strings['quiz_title_grammar'] ?? 'Grammar',
-              () => withClick(_openLevelSelection('grammar', popFadeRoute))),
+          _quizButton(
+            strings['start_game'] ?? 'Start Game',
+            () => withClick(() {
+              Navigator.of(context).push(
+                popFadeRoute(const LevelsScreen()),
+              );
+            }),
+          ),
         ],
       ),
     );
@@ -92,21 +92,13 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
     }
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 48),
-      child: GridView.count(
-        crossAxisCount: 2,
-        mainAxisSpacing: 16,
-        crossAxisSpacing: 16,
-        shrinkWrap: true,
-        physics: const NeverScrollableScrollPhysics(),
-        childAspectRatio: 1.8,
-        children: [
-          _quizButton(strings['quiz_title_image'] ?? 'Image Quiz',
-              () => withClick(_openLevelSelection('image', popFadeRoute))),
-          _quizButton(strings['quiz_title_vocabulary'] ?? 'Vocabulary',
-              () => withClick(_openLevelSelection('vocabulary', popFadeRoute))),
-          _quizButton(strings['quiz_title_grammar'] ?? 'Grammar',
-              () => withClick(_openLevelSelection('grammar', popFadeRoute))),
-        ],
+      child: _quizButton(
+        strings['start_game'] ?? 'Start Game',
+        () => withClick(() {
+          Navigator.of(context).push(
+            popFadeRoute(const LevelsScreen()),
+          );
+        }),
       ),
     );
   }
@@ -129,17 +121,6 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
         child: Text(label),
       ),
     );
-  }
-
-  VoidCallback _openLevelSelection(
-    String slug,
-    Route<void> Function(Widget) routeBuilder,
-  ) {
-    return () {
-      Navigator.of(context).push(
-        routeBuilder(LevelsScreen(quizType: slug)),
-      );
-    };
   }
 
   Widget _buildBottomNav(Map<String, String> strings, bool soundFxOn) {

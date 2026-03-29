@@ -1,0 +1,220 @@
+{
+  "levelQuestions": [
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "Arugula",
+        "wrongAnswers": [
+          "Beet",
+          "Broccoli",
+          "Cabbage"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "Beet",
+        "wrongAnswers": [
+          "Arugula",
+          "Broccoli",
+          "Cabbage"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "Broccoli",
+        "wrongAnswers": [
+          "Arugula",
+          "Beet",
+          "Cabbage"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "Cabbage",
+        "wrongAnswers": [
+          "Arugula",
+          "Beet",
+          "Broccoli"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "Cauliflower",
+        "wrongAnswers": [
+          "Arugula",
+          "Beet",
+          "Broccoli"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "Chili Pepper",
+        "wrongAnswers": [
+          "Arugula",
+          "Beet",
+          "Broccoli"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "Cucumber",
+        "wrongAnswers": [
+          "Arugula",
+          "Beet",
+          "Broccoli"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "Endive",
+        "wrongAnswers": [
+          "Arugula",
+          "Beet",
+          "Broccoli"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "Ginger",
+        "wrongAnswers": [
+          "Arugula",
+          "Beet",
+          "Broccoli"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "Green Pepper",
+        "wrongAnswers": [
+          "Arugula",
+          "Beet",
+          "Broccoli"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "Leek",
+        "wrongAnswers": [
+          "Arugula",
+          "Beet",
+          "Broccoli"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "Mushroom",
+        "wrongAnswers": [
+          "Arugula",
+          "Beet",
+          "Broccoli"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "Onion",
+        "wrongAnswers": [
+          "Arugula",
+          "Beet",
+          "Broccoli"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "Potato",
+        "wrongAnswers": [
+          "Arugula",
+          "Beet",
+          "Broccoli"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "Spinach",
+        "wrongAnswers": [
+          "Arugula",
+          "Beet",
+          "Broccoli"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "Sweet Potato",
+        "wrongAnswers": [
+          "Arugula",
+          "Beet",
+          "Broccoli"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "Tomato",
+        "wrongAnswers": [
+          "Arugula",
+          "Beet",
+          "Broccoli"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "Zucchini",
+        "wrongAnswers": [
+          "Arugula",
+          "Beet",
+          "Broccoli"
+        ]
+      }
+    }
+  ]
+}

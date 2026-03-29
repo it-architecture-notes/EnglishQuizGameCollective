@@ -34,7 +34,9 @@
     "grammar_no": "No",
     "grammar_correct_answer": "Correct answer:",
     "story_continue": "Continue",
-    "story_congratulations": "Congratulations!"
+    "story_congratulations": "Congratulations!",
+    "start_game": "Start Game",
+    "quiz_title_game": "Game"
   },
   "fr": {
     "settings_title": "Paramètres",
@@ -71,7 +73,9 @@
     "grammar_no": "Non",
     "grammar_correct_answer": "Bonne réponse :",
     "story_continue": "Continuer",
-    "story_congratulations": "Félicitations !"
+    "story_congratulations": "Félicitations !",
+    "start_game": "Commencer le jeu",
+    "quiz_title_game": "Jeu"
   },
   "es": {
     "settings_title": "Ajustes",
@@ -108,7 +112,9 @@
     "grammar_no": "No",
     "grammar_correct_answer": "Respuesta correcta:",
     "story_continue": "Continuar",
-    "story_congratulations": "¡Felicitaciones!"
+    "story_congratulations": "¡Felicitaciones!",
+    "start_game": "Comenzar juego",
+    "quiz_title_game": "Juego"
   },
   "tr": {
     "settings_title": "Ayarlar",
@@ -145,6 +151,8 @@
     "grammar_no": "Hayır",
     "grammar_correct_answer": "Doğru cevap:",
     "story_continue": "Devam Et",
-    "story_congratulations": "Tebrikler!"
+    "story_congratulations": "Tebrikler!",
+    "start_game": "Oyuna başla",
+    "quiz_title_game": "Oyun"
   }
 }

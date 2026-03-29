@@ -5,6 +5,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 import '../models/quiz_flow.dart';
 import '../models/reminder_progress.dart';
+import '../quiz_game_constants.dart';
 import 'quiz_progress_service.dart';
 import 'reminder_question_builder.dart';
 
@@ -14,59 +15,51 @@ class ReminderProgressService {
   static final ReminderProgressService _instance = ReminderProgressService._();
   static ReminderProgressService get instance => _instance;
 
-  static const String _keyPrefix = 'reminder_progress_';
-  static String _key(String quizType) => '$_keyPrefix$quizType';
+  static const String _storageKey = 'reminder_progress_$kQuizGameType';
 
   SharedPreferences? _prefs;
   Future<SharedPreferences> get _preferences async =>
       _prefs ??= await SharedPreferences.getInstance();
 
-  Future<ReminderProgressData> loadProgress(String quizType) async {
+  Future<ReminderProgressData> loadProgress() async {
     try {
       final prefs = await _preferences;
-      final json = prefs.getString(_key(quizType));
+      final json = prefs.getString(_storageKey);
       if (json == null) return const ReminderProgressData();
       final map = jsonDecode(json) as Map<String, dynamic>;
       return ReminderProgressData.fromJson(map);
     } catch (e, st) {
-      debugPrint('ReminderProgressService.loadProgress($quizType): $e\n$st');
+      debugPrint('ReminderProgressService.loadProgress: $e\n$st');
       return const ReminderProgressData();
     }
   }
 
-  Future<void> saveProgress(
-    String quizType,
-    ReminderProgressData progress,
-  ) async {
+  Future<void> saveProgress(ReminderProgressData progress) async {
     try {
       final prefs = await _preferences;
       await prefs.setString(
-        _key(quizType),
+        _storageKey,
         const JsonEncoder.withIndent('  ').convert(progress.toJson()),
       );
     } catch (e, st) {
-      debugPrint('ReminderProgressService.saveProgress($quizType): $e\n$st');
+      debugPrint('ReminderProgressService.saveProgress: $e\n$st');
     }
   }
 
-  Future<ReminderProgressData> recordWrongAnswer(
-    String quizType,
-    String questionId,
-  ) async {
-    final current = await loadProgress(quizType);
+  Future<ReminderProgressData> recordWrongAnswer(String questionId) async {
+    final current = await loadProgress();
     final counters = Map<String, int>.from(current.wrongAnswerCounters);
     counters[questionId] = (counters[questionId] ?? 0) + 1;
     final updated = current.copyWith(wrongAnswerCounters: counters);
-    await saveProgress(quizType, updated);
+    await saveProgress(updated);
     return updated;
   }
 
   Future<ReminderProgressData> generateReminderQuestions({
-    required String quizType,
     required int mainLevel,
     required Map<String, int> questionCountByProgressKey,
   }) async {
-    final current = await loadProgress(quizType);
+    final current = await loadProgress();
     final split = ReminderQuestionBuilder.build(
       wrongAnswerCounters: current.wrongAnswerCounters,
       questionCountByProgressKey: questionCountByProgressKey,
@@ -78,17 +71,16 @@ class ReminderProgressService {
       ReminderLevelState(questionIds: split.reminderTwoQuestionIds),
     ];
     final updated = current.copyWith(remindersByMainLevel: remindersByMainLevel);
-    await saveProgress(quizType, updated);
+    await saveProgress(updated);
     return updated;
   }
 
   Future<ReminderProgressData> markReminderCompleted({
-    required String quizType,
     required int mainLevel,
     required int reminderIndex,
     required List<String> answeredIds,
   }) async {
-    final current = await loadProgress(quizType);
+    final current = await loadProgress();
     final counters = Map<String, int>.from(current.wrongAnswerCounters)
       ..removeWhere((questionId, _) => answeredIds.contains(questionId));
     final remindersByMainLevel =
@@ -107,7 +99,7 @@ class ReminderProgressService {
       wrongAnswerCounters: counters,
       remindersByMainLevel: remindersByMainLevel,
     );
-    await saveProgress(quizType, updated);
+    await saveProgress(updated);
     return updated;
   }
 

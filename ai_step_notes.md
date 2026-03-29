@@ -1,18 +1,29 @@
 ** Notes if you are an AI Ignore this file **
 
-1) Clarify your issue using Gemini, ChatGPT, DeepSeek, ask them to ask questions and fix wording in the main part.
-Go and review this issue and ask questions if you see any gaps, also reword the sections for effective understading for an AI development agent.
+1) TO WEB BROWSER AIs: Go and review this issue and ask questions if you see any gaps, also reword the sections for effective understading for an AI development agent.
 
-2) In Main Cursor Agent ask for a plan to be created and placed under commons/plans folder.
-Create a plan for the active issue, and place the plan in an md file following rules for naming and location.
+2) TO MAIN CURSOR P-Mode: Create a plan for the active issue, and place the plan in an md file following rules for naming and location, include cursor in the name.
 
-2b) In parallel ask the same to Claude and ask it to generate another plan file and place in the common plans folder.
+3) TO MAIN CLAUDE: Create a plan for the active issue, and place the plan in an md file following rules for naming and location, include claude in the name.
 
-<Now we have two plan files under common folder>
+4) TO NEW AGENTS CGPT AND GEMINI: Create a plan for the active issue, and place the plan in an md file following rules for naming and location, include <model name> in the name.
 
-2c) Ask Cursor to review the plan created by Claude and fix it's missing parts if it sees and aggrees.
+<Frag plans to commons plans if necessary>
+<Now we have 4 plan files under common folder>
 
-3) Ask cursor agent to develop and build.
+5) TO MAIN CURSOR: review all the plans under commons from 4 models and update your plan if necessary and create a consolidated plan under commons plans.
+
+5) TO MAIN CLAUDE: review all the plans under commons from 4 models and update your plan if necessary.
+
+7) TO MAIN CURSOR P-Mode: review claude's plan again and update consolidated plan if necessary.
+
+6) TO MAIN CLAUDE: can you review and if necessary update the consolidated plan under plans.
+
+7) TO MAIN CURSOR Agent-Mode: review consolidated plan one last time, checkout to feature branch and build.
+
+<Cursor Auto Builds>
+
+7) TO MAIN CURSOR Agent-Mode: commit your changes to feature branch. 
 
 3a) Start the flutter run on chrome and examine the feature
 

@@ -28,8 +28,6 @@ class AchievementProgressService {
       AchievementProgressService._();
   static AchievementProgressService get instance => _instance;
 
-  static const List<String> _quizTypes = ['image', 'vocabulary', 'grammar'];
-
   Future<List<AchievementProgress>> computeProgress({
     required List<AchievementDefinition> definitions,
     required ProfileState profile,
@@ -44,32 +42,29 @@ class AchievementProgressService {
     int levelsWith3Stars = 0;
     int minPerfectPerType = 999;
 
-    for (final quizType in _quizTypes) {
-      final progress =
-          await QuizProgressService.instance.loadProgress(quizType);
-      final completed =
-          progress.levels.values.where((l) => l.isCompleted).length;
-      final perfect =
-          progress.levels.values.where((l) => l.highestStars >= 3).length;
+    final progress = await QuizProgressService.instance.loadProgress();
+    final completed =
+        progress.levels.values.where((l) => l.isCompleted).length;
+    final perfect =
+        progress.levels.values.where((l) => l.highestStars >= 3).length;
 
-      totalQuizzesCompleted += completed;
-      totalPerfectScores += perfect;
-      if (completed > 0) categoriesPlayed++;
+    totalQuizzesCompleted += completed;
+    totalPerfectScores += perfect;
+    if (completed > 0) categoriesPlayed++;
 
-      try {
-        final flow = await loadQuizFlow(quizType);
-        totalLevels += flow.subLevels.length;
-        for (final sub in flow.subLevels) {
-          if ((progress.levels[sub.progressKey]?.highestStars ?? 0) >= 3) {
-            levelsWith3Stars++;
-          }
+    try {
+      final flow = await loadGameFlow();
+      totalLevels += flow.subLevels.length;
+      for (final sub in flow.subLevels) {
+        if ((progress.levels[sub.progressKey]?.highestStars ?? 0) >= 3) {
+          levelsWith3Stars++;
         }
-        final perfectInType = progress.levels.values
-            .where((l) => l.highestStars >= 3)
-            .length;
-        if (perfectInType < minPerfectPerType) minPerfectPerType = perfectInType;
-      } catch (_) {}
-    }
+      }
+      final perfectInType = progress.levels.values
+          .where((l) => l.highestStars >= 3)
+          .length;
+      if (perfectInType < minPerfectPerType) minPerfectPerType = perfectInType;
+    } catch (_) {}
 
     if (minPerfectPerType == 999) minPerfectPerType = 0;
 

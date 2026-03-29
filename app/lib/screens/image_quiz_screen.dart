@@ -5,6 +5,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../models/guest_animal_conversations.dart';
 import '../../models/level_completion_result.dart';
+import '../../models/level_config.dart';
 import '../../models/quiz_flow.dart';
 import '../../models/reminder_progress.dart';
 import '../../providers/localization_provider.dart';
@@ -13,16 +14,22 @@ import '../../services/achievement_service.dart';
 import '../../services/audio_service.dart' as audio;
 import '../../services/game_config_loader.dart';
 import '../../services/guest_animal_conversations_loader.dart';
+import '../../services/image_asset_resolver.dart';
 import '../../services/image_quiz_level_loader.dart';
+import '../../services/level_config_loader.dart';
+import '../../quiz_game_constants.dart';
 import '../../services/profile_service.dart';
 import '../../services/quiz_progress_service.dart';
 import '../../services/reminder_progress_service.dart';
+import '../../services/test_data_service.dart';
 
 /// Minimum images per level (spec).
 const int kMinImagesPerLevel = 4;
 
 // TODO(test): remove before release — auto-completes after first answer.
 const bool _kTestAutoComplete = false;
+
+const String _kBlank = '_____';
 
 /// Minimum touch target size (accessibility).
 const double kMinTouchTarget = 48;
@@ -33,16 +40,18 @@ class ImageQuizScreen extends ConsumerStatefulWidget {
   const ImageQuizScreen({
     super.key,
     required this.subLevel,
-    required this.quizType,
     required this.ordinalLevelIndex,
     required this.progressKey,
     this.reminderMode = false,
     this.reminderQuestionIds,
     this.reminderSourceLevelsByProgressKey,
+    this.preloadedLevelConfig,
   });
 
+  /// When set, questions load from unified level JSON instead of manifest discovery.
+  final LevelConfig? preloadedLevelConfig;
+
   final SubLevel subLevel;
-  final String quizType;
 
   /// 1-based position in subLevels list; used for scroll navigation only.
   final int ordinalLevelIndex;
@@ -67,9 +76,14 @@ class _ImageQuizScreenState extends ConsumerState<ImageQuizScreen>
   final Map<String, String> _assetPathByQuestionId = {};
   final Map<String, List<String>> _vocabularyByQuestionId = {};
   List<String> _vocabulary = [];
+  /// Per-question wrong answers when using [LevelConfig] (same order as [_questionAssetPaths]).
+  List<List<String>>? _configWrongAnswers;
   GameConfig _config = const GameConfig();
   int _currentIndex = 0;
   int _correctCount = 0;
+  /// When true, [_goNext] ends the run after the 3rd question (index 2) with 2 stars.
+  bool _shortQuizDebug = false;
+  bool _endedEarlyShortQuiz = false;
   bool _answerLocked = false;
   bool _showNext = false;
   bool _reviewingMistakes = false;
@@ -99,12 +113,33 @@ class _ImageQuizScreenState extends ConsumerState<ImageQuizScreen>
   StepChoice? _bubbleConversation;
   StepChoice? _gameOverBubble;
 
+  // Convo mode
+  List<ConvoQuestionData> _convoQuestionsData = [];
+  final Map<String, ConvoQuestionData> _convoByQuestionId = {};
+  bool _showTranslation = false;
+  bool _conversationUnlocked = false;
+
   static String _levelKey(SubLevel sub) =>
       imageQuizLevelKey(sub.iconImageName);
 
   bool get _isReminder => widget.reminderMode;
   String? get _currentQuestionId =>
       _currentQuestionIds.isEmpty ? null : _currentQuestionIds[_currentIndex];
+
+  bool get _isConvoMode =>
+      _convoQuestionsData.isNotEmpty || _convoByQuestionId.isNotEmpty;
+
+  ConvoQuestionData? get _currentConvoQuestion {
+    if (!_isConvoMode) return null;
+    if (_isReminder) return _convoByQuestionId[_currentQuestionId ?? ''];
+    return _currentIndex < _convoQuestionsData.length
+        ? _convoQuestionsData[_currentIndex]
+        : null;
+  }
+
+  int get _questionCount => _isConvoMode
+      ? (_isReminder ? _currentQuestionIds.length : _convoQuestionsData.length)
+      : _questionAssetPaths.length;
 
   @override
   void initState() {
@@ -143,74 +178,209 @@ class _ImageQuizScreenState extends ConsumerState<ImageQuizScreen>
   Future<void> _loadLevel() async {
     final key = _levelKey(widget.subLevel);
     try {
+      final shortQuizDebug =
+          await TestDataService.instance.isShortQuizEndAfter3With2Stars();
       final config = await GameConfig.load();
-      final paths = await loadImageQuizLevelAssetPaths(key);
-      final vocabulary = paths.map(assetPathToBasename).toList();
 
-      if (vocabulary.length < kMinImagesPerLevel) {
+      LevelConfig? levelCfg = widget.preloadedLevelConfig;
+      if (levelCfg == null) {
+        try {
+          levelCfg = await loadLevelConfig(widget.subLevel.iconImageName);
+        } catch (_) {
+          levelCfg = null;
+        }
+      }
+
+      if (levelCfg == null) {
+        // Legacy: manifest discovery (no unified level JSON)
+        final paths = await loadImageQuizLevelAssetPaths(key);
+        final vocabulary = paths.map(assetPathToBasename).toList();
+
+        if (vocabulary.length < kMinImagesPerLevel) {
+          if (mounted) {
+            setState(() {
+              _loadError =
+                  'This level needs at least $kMinImagesPerLevel images (found ${vocabulary.length}).';
+              _phase = _Phase.loading;
+            });
+          }
+          return;
+        }
+
+        final shuffled = List<String>.from(paths)..shuffle(Random());
+        final questionIds = shuffled
+            .map((path) => buildReminderQuestionId(
+                  widget.progressKey,
+                  paths.indexOf(path),
+                ))
+            .toList(growable: false);
+
+        final totalQuestions = shuffled.length;
+        final threshold = max(1, min(4, (totalQuestions * 0.1).round()));
+        final animalNames = await discoverGuestAnimalNames();
+        final monsterNames = await discoverMonsterNames();
+        final guestAnimal = animalNames.isNotEmpty
+            ? animalNames[Random().nextInt(animalNames.length)]
+            : 'squirrel';
+        final selectedMonster = monsterNames.isNotEmpty
+            ? monsterNames[Random().nextInt(monsterNames.length)]
+            : 'monster';
+
+        final conversationsConfig = await loadGuestAnimalConversations();
+        final language =
+            ref.read(settingsProvider).valueOrNull?.language ?? 'en';
+        final conversations = getForLanguage(conversationsConfig, language);
+
+        if (mounted) {
+          for (final path in shuffled) {
+            if (!mounted) break;
+            await precacheImage(AssetImage(path), context);
+          }
+        }
+
         if (mounted) {
           setState(() {
-            _loadError =
-                'This level needs at least $kMinImagesPerLevel images (found ${vocabulary.length}).';
-            _phase = _Phase.loading;
+            _configWrongAnswers = null;
+            _config = config;
+            _conversations = conversations;
+            _questionAssetPaths = shuffled;
+            _currentQuestionIds = questionIds;
+            _vocabulary = vocabulary;
+            _initialQuestionCount = shuffled.length;
+            _monsterStepThreshold = threshold;
+            _guestAnimal = guestAnimal;
+            _selectedMonster = selectedMonster;
+            _shortQuizDebug = shortQuizDebug;
+            _endedEarlyShortQuiz = false;
+            _phase = _Phase.playing;
+            _quizStartTime = DateTime.now();
+            _currentOptions = _buildOptions();
           });
+          _timerController.duration =
+              Duration(seconds: _config.imageQuizTimerSeconds);
+          _startTimer();
+          final musicOn = ref.read(settingsProvider).valueOrNull?.musicOn ?? true;
+          audio.startQuizMusic(musicOn: musicOn);
         }
         return;
       }
 
-      // Shuffle question order
-      final shuffled = List<String>.from(paths)..shuffle(Random());
-      final questionIds = shuffled
-          .map((path) => buildReminderQuestionId(
-                widget.progressKey,
-                paths.indexOf(path),
-              ))
-          .toList(growable: false);
-
-      final totalQuestions = shuffled.length;
-      final threshold = max(1, min(4, (totalQuestions * 0.1).round()));
-      final animalNames = await discoverGuestAnimalNames();
-      final monsterNames = await discoverMonsterNames();
-      final guestAnimal = animalNames.isNotEmpty
-          ? animalNames[Random().nextInt(animalNames.length)]
-          : 'squirrel';
-      final selectedMonster = monsterNames.isNotEmpty
-          ? monsterNames[Random().nextInt(monsterNames.length)]
-          : 'monster';
-
-      final conversationsConfig = await loadGuestAnimalConversations();
-      final language = ref.read(settingsProvider).valueOrNull?.language ?? 'en';
-      final conversations = getForLanguage(conversationsConfig, language);
-
-      // Precache images (only use context when mounted)
-      if (mounted) {
-        for (final path in shuffled) {
-          if (!mounted) break;
-          await precacheImage(AssetImage(path), context);
+      final imageRows = levelCfg.questions
+          .where(
+            (q) =>
+                q.type == LevelQuestionType.image &&
+                q.template == 'imageQuizTemplate-1',
+          )
+          .toList();
+      if (imageRows.length == levelCfg.questions.length &&
+          imageRows.isNotEmpty) {
+        final paths = <String>[];
+        final wrongLists = <List<String>>[];
+        for (final row in imageRows) {
+          final d = row.imageData;
+          if (d == null) continue;
+          final path = await resolveQuizImageAsset(key, d.imageName);
+          if (path == null) {
+            throw Exception('Missing image asset for: ${d.imageName}');
+          }
+          paths.add(path);
+          wrongLists.add(d.wrongAnswers);
         }
+        if (paths.length < kMinImagesPerLevel) {
+          throw Exception(
+            'This level needs at least $kMinImagesPerLevel images (found ${paths.length}).',
+          );
+        }
+        final questionIds = List.generate(
+          paths.length,
+          (i) => buildReminderQuestionId(widget.progressKey, i),
+        );
+        final totalQuestions = paths.length;
+        final threshold = max(1, min(4, (totalQuestions * 0.1).round()));
+        final animalNames = await discoverGuestAnimalNames();
+        final monsterNames = await discoverMonsterNames();
+        final guestAnimal = animalNames.isNotEmpty
+            ? animalNames[Random().nextInt(animalNames.length)]
+            : 'squirrel';
+        final selectedMonster = monsterNames.isNotEmpty
+            ? monsterNames[Random().nextInt(monsterNames.length)]
+            : 'monster';
+
+        final conversationsConfig = await loadGuestAnimalConversations();
+        final language =
+            ref.read(settingsProvider).valueOrNull?.language ?? 'en';
+        final conversations = getForLanguage(conversationsConfig, language);
+
+        if (mounted) {
+          for (final path in paths) {
+            if (!mounted) break;
+            await precacheImage(AssetImage(path), context);
+          }
+        }
+
+        if (mounted) {
+          setState(() {
+            _config = config;
+            _conversations = conversations;
+            _questionAssetPaths = paths;
+            _currentQuestionIds = questionIds;
+            _configWrongAnswers = wrongLists;
+            _vocabulary = paths.map(assetPathToBasename).toList();
+            _initialQuestionCount = paths.length;
+            _monsterStepThreshold = threshold;
+            _guestAnimal = guestAnimal;
+            _selectedMonster = selectedMonster;
+            _shortQuizDebug = shortQuizDebug;
+            _endedEarlyShortQuiz = false;
+            _phase = _Phase.playing;
+            _quizStartTime = DateTime.now();
+            _currentOptions = _buildOptions();
+          });
+          _timerController.duration =
+              Duration(seconds: _config.imageQuizTimerSeconds);
+          _startTimer();
+          final musicOn = ref.read(settingsProvider).valueOrNull?.musicOn ?? true;
+          audio.startQuizMusic(musicOn: musicOn);
+        }
+        return;
       }
 
-      if (mounted) {
-        setState(() {
-          _config = config;
-          _conversations = conversations;
-          _questionAssetPaths = shuffled;
-          _currentQuestionIds = questionIds;
-          _vocabulary = vocabulary;
-          _initialQuestionCount = shuffled.length;
-          _monsterStepThreshold = threshold;
-          _guestAnimal = guestAnimal;
-          _selectedMonster = selectedMonster;
-          _phase = _Phase.playing;
-          _quizStartTime = DateTime.now();
-          _currentOptions = _buildOptions();
-        });
-        _timerController.duration =
-            Duration(seconds: _config.imageQuizTimerSeconds);
-        _startTimer();
-        final musicOn = ref.read(settingsProvider).valueOrNull?.musicOn ?? true;
-        audio.startQuizMusic(musicOn: musicOn);
+      // Convo-only level
+      final convoRows = levelCfg.questions
+          .where((q) => q.type != LevelQuestionType.image)
+          .toList();
+      if (convoRows.isNotEmpty) {
+        final convoData = convoRows.map((q) {
+          if (q.convoData == null) {
+            throw Exception('Missing convoData for question');
+          }
+          return q.convoData!;
+        }).toList();
+        final questionIds = List.generate(
+          convoData.length,
+          (i) => buildReminderQuestionId(widget.progressKey, i),
+        );
+        if (mounted) {
+          setState(() {
+            _config = config;
+            _convoQuestionsData = convoData;
+            _currentQuestionIds = questionIds;
+            _initialQuestionCount = convoData.length;
+            _shortQuizDebug = shortQuizDebug;
+            _endedEarlyShortQuiz = false;
+            _phase = _Phase.playing;
+            _quizStartTime = DateTime.now();
+            _currentOptions = _buildOptions();
+          });
+          final musicOn =
+              ref.read(settingsProvider).valueOrNull?.musicOn ?? true;
+          audio.startQuizMusic(musicOn: musicOn);
+        }
+        return;
       }
+      throw Exception(
+        'Unified level "${widget.subLevel.iconImageName}" has no recognized question types',
+      );
     } catch (e, st) {
       debugPrint('ImageQuizScreen _loadLevel: $e\n$st');
       if (mounted) {
@@ -224,6 +394,8 @@ class _ImageQuizScreenState extends ConsumerState<ImageQuizScreen>
 
   Future<void> _loadReminderLevel() async {
     try {
+      final shortQuizDebug =
+          await TestDataService.instance.isShortQuizEndAfter3With2Stars();
       final config = await GameConfig.load();
       final reminderQuestionIds = widget.reminderQuestionIds ?? const [];
       final sourceLevels = widget.reminderSourceLevelsByProgressKey ?? const {};
@@ -231,6 +403,8 @@ class _ImageQuizScreenState extends ConsumerState<ImageQuizScreen>
       final loadedVocabulary = <String, List<String>>{};
       final assetPathByQuestionId = <String, String>{};
       final vocabularyByQuestionId = <String, List<String>>{};
+      final wrongThreeByQuestionId = <String, List<String>>{};
+      final convoByQuestionId = <String, ConvoQuestionData>{};
       final validQuestionIds = <String>[];
 
       for (final questionId in reminderQuestionIds) {
@@ -239,6 +413,38 @@ class _ImageQuizScreenState extends ConsumerState<ImageQuizScreen>
         final sourceItem = sourceLevels[progressKey];
         if (sourceItem == null) continue;
         final levelKey = imageQuizLevelKey(sourceItem.sub.iconImageName);
+        LevelConfig? lc;
+        try {
+          lc = await loadLevelConfig(sourceItem.sub.iconImageName);
+        } catch (_) {
+          lc = null;
+        }
+        if (lc != null &&
+            questionIndex >= 0 &&
+            questionIndex < lc.questions.length) {
+          final q = lc.questions[questionIndex];
+          if (q.type == LevelQuestionType.image && q.imageData != null) {
+            final path = await resolveQuizImageAsset(
+              levelKey,
+              q.imageData!.imageName,
+            );
+            if (path != null) {
+              assetPathByQuestionId[questionId] = path;
+              final manifestPaths = loadedPaths[progressKey] ??=
+                  await loadImageQuizLevelAssetPaths(levelKey);
+              final vocabulary = loadedVocabulary[progressKey] ??=
+                  manifestPaths.map(assetPathToBasename).toList(growable: false);
+              vocabularyByQuestionId[questionId] = vocabulary;
+              wrongThreeByQuestionId[questionId] = q.imageData!.wrongAnswers;
+              validQuestionIds.add(questionId);
+              continue;
+            }
+          } else if (q.type != LevelQuestionType.image && q.convoData != null) {
+            convoByQuestionId[questionId] = q.convoData!;
+            validQuestionIds.add(questionId);
+            continue;
+          }
+        }
         final paths = loadedPaths[progressKey] ??=
             await loadImageQuizLevelAssetPaths(levelKey);
         if (questionIndex < 0 || questionIndex >= paths.length) continue;
@@ -276,10 +482,15 @@ class _ImageQuizScreenState extends ConsumerState<ImageQuizScreen>
       final language = ref.read(settingsProvider).valueOrNull?.language ?? 'en';
       final conversations = getForLanguage(conversationsConfig, language);
 
+      final isConvoReminder = convoByQuestionId.isNotEmpty;
+
       if (!mounted) return;
       setState(() {
         _config = config;
         _conversations = conversations;
+        _convoByQuestionId
+          ..clear()
+          ..addAll(convoByQuestionId);
         _assetPathByQuestionId
           ..clear()
           ..addAll(assetPathByQuestionId);
@@ -288,21 +499,30 @@ class _ImageQuizScreenState extends ConsumerState<ImageQuizScreen>
           ..addAll(vocabularyByQuestionId);
         _currentQuestionIds = List<String>.from(validQuestionIds);
         _initialReminderQuestionIds = List<String>.from(validQuestionIds);
-        _questionAssetPaths = validQuestionIds
-            .map((questionId) => assetPathByQuestionId[questionId]!)
-            .toList(growable: false);
+        if (!isConvoReminder) {
+          _questionAssetPaths = validQuestionIds
+              .map((id) => assetPathByQuestionId[id]!)
+              .toList(growable: false);
+          _configWrongAnswers = validQuestionIds
+              .map((id) => wrongThreeByQuestionId[id] ?? <String>[])
+              .toList(growable: false);
+        }
         _initialQuestionCount = validQuestionIds.length;
         _monsterStepThreshold = threshold;
         _guestAnimal = guestAnimal;
         _selectedMonster = selectedMonster;
+        _shortQuizDebug = shortQuizDebug;
+        _endedEarlyShortQuiz = false;
         _reviewingMistakes = false;
         _phase = _Phase.playing;
         _quizStartTime = DateTime.now();
         _currentOptions = _buildOptions();
       });
-      _timerController.duration =
-          Duration(seconds: _config.imageQuizTimerSeconds);
-      _startTimer();
+      if (!isConvoReminder) {
+        _timerController.duration =
+            Duration(seconds: _config.imageQuizTimerSeconds);
+        _startTimer();
+      }
       final musicOn = ref.read(settingsProvider).valueOrNull?.musicOn ?? true;
       audio.startQuizMusic(musicOn: musicOn);
     } catch (e, st) {
@@ -336,10 +556,7 @@ class _ImageQuizScreenState extends ConsumerState<ImageQuizScreen>
     if (_isReminder) {
       if (questionId != null) _nextReviewQuestionIds.add(questionId);
     } else if (questionId != null) {
-      ReminderProgressService.instance.recordWrongAnswer(
-        widget.quizType,
-        questionId,
-      );
+      ReminderProgressService.instance.recordWrongAnswer(questionId);
     }
     AchievementService.instance.recordAnswer(false);
     _recordWrongForMonster();
@@ -438,11 +655,25 @@ class _ImageQuizScreenState extends ConsumerState<ImageQuizScreen>
 
   // ── Answer logic ──────────────────────────────────────────────────────────
 
-  String _correctAnswer() =>
-      assetPathToBasename(_questionAssetPaths[_currentIndex]);
+  String _correctAnswer() {
+    if (_isConvoMode) return _currentConvoQuestion?.answer ?? '';
+    return assetPathToBasename(_questionAssetPaths[_currentIndex]);
+  }
 
   List<String> _buildOptions() {
+    if (_isConvoMode) {
+      final q = _currentConvoQuestion;
+      if (q == null) return [];
+      return ([q.answer, ...q.distractors]..shuffle(Random()));
+    }
     final correct = _correctAnswer();
+    if (_configWrongAnswers != null &&
+        _currentIndex < _configWrongAnswers!.length) {
+      final wrong = _configWrongAnswers![_currentIndex];
+      if (wrong.length == 3) {
+        return ([correct, ...wrong]..shuffle(Random()));
+      }
+    }
     final vocabularyPool = _isReminder
         ? (_currentQuestionId != null
             ? _vocabularyByQuestionId[_currentQuestionId!] ?? const <String>[]
@@ -462,7 +693,7 @@ class _ImageQuizScreenState extends ConsumerState<ImageQuizScreen>
       setState(() => _phase = _Phase.end);
       return;
     }
-    _timerController.stop();
+    if (!_isConvoMode) _timerController.stop();
     final option = _currentOptions[optionIndex];
     final correct = _correctAnswer();
     final isCorrect = option == correct;
@@ -477,10 +708,7 @@ class _ImageQuizScreenState extends ConsumerState<ImageQuizScreen>
           _nextReviewQuestionIds.add(questionId);
         }
       } else if (questionId != null) {
-        ReminderProgressService.instance.recordWrongAnswer(
-          widget.quizType,
-          questionId,
-        );
+        ReminderProgressService.instance.recordWrongAnswer(questionId);
       }
       _recordWrongForMonster();
     }
@@ -509,16 +737,36 @@ class _ImageQuizScreenState extends ConsumerState<ImageQuizScreen>
   }
 
   void _goNext() {
-    if (_currentIndex + 1 >= _questionAssetPaths.length) {
+    if (_shortQuizDebug &&
+        !_reviewingMistakes &&
+        !_isReminder &&
+        _questionCount >= 3 &&
+        _currentIndex >= 2) {
+      _endedEarlyShortQuiz = true;
+      if (!_isConvoMode) {
+        _monsterIdleController
+          ..stop()
+          ..reset();
+      }
+      setState(() {
+        _phase = _Phase.end;
+        _bubbleConversation = null;
+        if (_isConvoMode && !_isReminder) _conversationUnlocked = true;
+      });
+      return;
+    }
+    if (_currentIndex + 1 >= _questionCount) {
       if (_isReminder && _nextReviewQuestionIds.isNotEmpty) {
         final nextQuestionIds = List<String>.from(_nextReviewQuestionIds)
           ..shuffle(Random());
         _nextReviewQuestionIds.clear();
         setState(() {
           _currentQuestionIds = nextQuestionIds;
-          _questionAssetPaths = nextQuestionIds
-              .map((questionId) => _assetPathByQuestionId[questionId]!)
-              .toList(growable: false);
+          if (!_isConvoMode) {
+            _questionAssetPaths = nextQuestionIds
+                .map((id) => _assetPathByQuestionId[id]!)
+                .toList(growable: false);
+          }
           _currentIndex = 0;
           _answerLocked = false;
           _showNext = false;
@@ -527,15 +775,18 @@ class _ImageQuizScreenState extends ConsumerState<ImageQuizScreen>
           _currentOptions = _buildOptions();
           _reviewingMistakes = true;
         });
-        _startTimer();
+        if (!_isConvoMode) _startTimer();
         return;
       }
-      _monsterIdleController
-        ..stop()
-        ..reset();
+      if (!_isConvoMode) {
+        _monsterIdleController
+          ..stop()
+          ..reset();
+      }
       setState(() {
         _phase = _Phase.end;
         _bubbleConversation = null;
+        if (_isConvoMode && !_isReminder) _conversationUnlocked = true;
       });
       return;
     }
@@ -547,12 +798,13 @@ class _ImageQuizScreenState extends ConsumerState<ImageQuizScreen>
       _bubbleConversation = null;
       _currentOptions = _buildOptions();
     });
-    _startTimer();
+    if (!_isConvoMode) _startTimer();
   }
 
   int _stars() {
-    if (_questionAssetPaths.isEmpty) return 0;
-    final rate = (_correctCount / _questionAssetPaths.length) * 100;
+    if (_endedEarlyShortQuiz) return 2;
+    if (_questionCount == 0) return 0;
+    final rate = (_correctCount / _questionCount) * 100;
     if (rate >= 85) return 3;
     if (rate >= 70) return 2;
     if (rate >= 60) return 1;
@@ -564,7 +816,6 @@ class _ImageQuizScreenState extends ConsumerState<ImageQuizScreen>
   Future<void> _onEndOk() async {
     if (_isReminder) {
       await ReminderProgressService.instance.markReminderCompleted(
-        quizType: widget.quizType,
         mainLevel: widget.subLevel.mainLevel,
         reminderIndex: widget.subLevel.reminderIndex,
         answeredIds: _initialReminderQuestionIds,
@@ -586,7 +837,6 @@ class _ImageQuizScreenState extends ConsumerState<ImageQuizScreen>
     }
     if (stars >= 1) {
       await QuizProgressService.instance.recordLevelCompletion(
-        quizType: widget.quizType,
         progressKey: widget.progressKey,
         stars: stars,
         diamondsEarned: _diamondsEarned(),
@@ -594,8 +844,8 @@ class _ImageQuizScreenState extends ConsumerState<ImageQuizScreen>
     }
     if (stars >= 1) {
       await ProfileService.instance.registerQuizCompletion(
-        quizType: widget.quizType,
-        questionCount: _questionAssetPaths.length,
+        quizType: kQuizGameType,
+        questionCount: _endedEarlyShortQuiz ? 3 : _questionCount,
       );
     }
     if (mounted) {
@@ -618,11 +868,14 @@ class _ImageQuizScreenState extends ConsumerState<ImageQuizScreen>
     final soundFxOn = ref.read(settingsProvider).valueOrNull?.soundFxOn ?? true;
     final strings =
         ref.watch(currentLocalizedStringsProvider).valueOrNull ?? {};
+    final userLanguage =
+        ref.watch(settingsProvider).valueOrNull?.language ?? 'en';
     return Scaffold(
       appBar: AppBar(
         title: Text(widget.subLevel.title),
         leading: IconButton(
-          icon: const Icon(Icons.arrow_back),
+          icon: const Icon(Icons.close),
+          tooltip: MaterialLocalizations.of(context).closeButtonTooltip,
           onPressed: () {
             audio.playClick(soundFxOn: soundFxOn);
             Navigator.of(context).pop(LevelCompletionResult(
@@ -633,17 +886,19 @@ class _ImageQuizScreenState extends ConsumerState<ImageQuizScreen>
         ),
       ),
       body: SafeArea(
-        child: _buildBody(soundFxOn, strings),
+        child: _buildBody(soundFxOn, strings, userLanguage),
       ),
     );
   }
 
-  Widget _buildBody(bool soundFxOn, Map<String, String> strings) {
+  Widget _buildBody(bool soundFxOn, Map<String, String> strings, String userLanguage) {
     switch (_phase) {
       case _Phase.loading:
         return _buildLoading(soundFxOn, strings);
       case _Phase.playing:
-        return _buildPlaying(soundFxOn, strings);
+        return _isConvoMode
+            ? _buildConvoPlaying(soundFxOn, strings, userLanguage)
+            : _buildImagePlaying(soundFxOn, strings);
       case _Phase.end:
         return _buildEnd(soundFxOn, strings);
       case _Phase.gameOver:
@@ -681,7 +936,7 @@ class _ImageQuizScreenState extends ConsumerState<ImageQuizScreen>
     return const Center(child: CircularProgressIndicator());
   }
 
-  Widget _buildPlaying(bool soundFxOn, Map<String, String> strings) {
+  Widget _buildImagePlaying(bool soundFxOn, Map<String, String> strings) {
     final path = _questionAssetPaths[_currentIndex];
     final isLast = _currentIndex + 1 >= _questionAssetPaths.length;
 
@@ -1029,6 +1284,19 @@ class _ImageQuizScreenState extends ConsumerState<ImageQuizScreen>
                 ),
               ],
             ),
+            if (_isConvoMode) ...[
+              const SizedBox(height: 16),
+              OutlinedButton.icon(
+                onPressed: () {
+                  audio.playClick(soundFxOn: soundFxOn);
+                  _showFullConversation(strings);
+                },
+                icon: const Icon(Icons.chat_bubble_outline, size: 18),
+                label: Text(
+                  strings['view_full_conversation'] ?? 'View Full Conversation',
+                ),
+              ),
+            ],
             const SizedBox(height: 32),
             SizedBox(
               width: double.infinity,
@@ -1123,6 +1391,437 @@ class _ImageQuizScreenState extends ConsumerState<ImageQuizScreen>
               ),
             ),
           ],
+        ),
+      ),
+    );
+  }
+
+  // ── Convo mode ────────────────────────────────────────────────────────────
+
+  void _showFullConversation(Map<String, String> strings) {
+    final title = strings['full_conversation'] ?? 'Full Conversation';
+    final questions = _convoQuestionsData;
+    showModalBottomSheet<void>(
+      context: context,
+      isScrollControlled: true,
+      shape: const RoundedRectangleBorder(
+        borderRadius: BorderRadius.vertical(top: Radius.circular(20)),
+      ),
+      builder: (ctx) {
+        return DraggableScrollableSheet(
+          expand: false,
+          initialChildSize: 0.75,
+          minChildSize: 0.4,
+          maxChildSize: 0.95,
+          builder: (_, scrollController) {
+            return Column(
+              children: [
+                const SizedBox(height: 8),
+                Container(
+                  width: 40,
+                  height: 4,
+                  decoration: BoxDecoration(
+                    color: Colors.grey.shade400,
+                    borderRadius: BorderRadius.circular(2),
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.symmetric(
+                      vertical: 12, horizontal: 16),
+                  child: Text(
+                    title,
+                    style: Theme.of(ctx).textTheme.titleMedium?.copyWith(
+                          fontWeight: FontWeight.w700,
+                        ),
+                  ),
+                ),
+                const Divider(height: 1),
+                Expanded(
+                  child: ListView.separated(
+                    controller: scrollController,
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: 16, vertical: 12),
+                    itemCount: questions.length,
+                    separatorBuilder: (_, __) => const SizedBox(height: 12),
+                    itemBuilder: (_, i) {
+                      final q = questions[i];
+                      final c1 = _capitalize(q.character1);
+                      final c2 = _capitalize(q.character2);
+                      final line1 = (q.line1['en'] ?? '')
+                          .replaceAll(_kBlank, q.answer);
+                      final line2 = (q.line2['en'] ?? '')
+                          .replaceAll(_kBlank, q.answer);
+                      return Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            '$c1: $line1',
+                            style: Theme.of(ctx)
+                                .textTheme
+                                .bodyMedium
+                                ?.copyWith(fontWeight: FontWeight.w600),
+                          ),
+                          const SizedBox(height: 4),
+                          Text(
+                            '$c2: $line2',
+                            style: Theme.of(ctx).textTheme.bodyMedium,
+                          ),
+                        ],
+                      );
+                    },
+                  ),
+                ),
+              ],
+            );
+          },
+        );
+      },
+    );
+  }
+
+  Widget _buildConvoPlaying(
+      bool soundFxOn, Map<String, String> strings, String userLanguage) {
+    final q = _currentConvoQuestion;
+    if (q == null) return const Center(child: CircularProgressIndicator());
+    final total = _isReminder ? _initialQuestionCount : _questionCount;
+    final isLast = _currentIndex + 1 >= _questionCount;
+    final reminderProgress = _reviewingMistakes
+        ? 1.0
+        : (total <= 0 ? 0.0 : (_currentIndex + 1) / total);
+
+    return Column(
+      children: [
+        Padding(
+          padding: const EdgeInsets.fromLTRB(16, 8, 16, 0),
+          child: Column(
+            children: [
+              Text(
+                _isReminder && _reviewingMistakes
+                    ? (strings['reviewing_mistakes'] ?? 'Reviewing Mistakes')
+                    : _questionLabel(strings, _currentIndex + 1, total),
+                style: Theme.of(context).textTheme.labelLarge?.copyWith(
+                      color: Theme.of(context).colorScheme.primary,
+                      fontWeight: FontWeight.w600,
+                    ),
+              ),
+              if (_isReminder) ...[
+                const SizedBox(height: 8),
+                LinearProgressIndicator(value: reminderProgress),
+              ],
+            ],
+          ),
+        ),
+        Expanded(
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+            child: _buildCharactersRow(q, userLanguage),
+          ),
+        ),
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 16),
+          child: Column(
+            children: List.generate(
+                4, (i) => _buildConvoAnswerButton(i, q, soundFxOn)),
+          ),
+        ),
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+          child: SizedBox(
+            width: double.infinity,
+            height: kMinTouchTarget + 8,
+            child: _showNext
+                ? FilledButton(
+                    onPressed: () {
+                      audio.playClick(soundFxOn: soundFxOn);
+                      _goNext();
+                    },
+                    child: Text(
+                      _isReminder
+                          ? (strings['next'] ?? 'Next')
+                          : (isLast
+                              ? (strings['finish'] ?? 'Finish')
+                              : (strings['next'] ?? 'Next')),
+                    ),
+                  )
+                : const SizedBox.shrink(),
+          ),
+        ),
+        if (!_isReminder)
+          Padding(
+            padding: const EdgeInsets.fromLTRB(16, 0, 16, 12),
+            child: Row(
+              children: [
+                if (userLanguage != 'en') ...[
+                  Expanded(
+                    child: OutlinedButton.icon(
+                      onPressed: () {
+                        audio.playClick(soundFxOn: soundFxOn);
+                        setState(() => _showTranslation = !_showTranslation);
+                      },
+                      icon: Icon(
+                        _showTranslation
+                            ? Icons.translate
+                            : Icons.g_translate_outlined,
+                        size: 18,
+                      ),
+                      label: Text(
+                        _showTranslation
+                            ? (strings['english'] ?? 'English')
+                            : (strings['translate'] ?? 'Translate'),
+                      ),
+                    ),
+                  ),
+                  const SizedBox(width: 8),
+                ],
+                Expanded(
+                  child: OutlinedButton.icon(
+                    onPressed: _conversationUnlocked
+                        ? () {
+                            audio.playClick(soundFxOn: soundFxOn);
+                            _showFullConversation(strings);
+                          }
+                        : null,
+                    icon: const Icon(Icons.chat_bubble_outline, size: 18),
+                    label: Text(
+                        strings['full_conversation'] ?? 'Full Conversation'),
+                  ),
+                ),
+              ],
+            ),
+          ),
+      ],
+    );
+  }
+
+  String _questionLabel(Map<String, String> strings, int current, int total) {
+    final template = strings['question_x_of_y'] ?? 'Question %s / %s';
+    return template
+        .replaceFirst('%s', '$current')
+        .replaceFirst('%s', '$total');
+  }
+
+  Widget _buildCharactersRow(ConvoQuestionData q, String userLanguage) {
+    final blankInLine1 = q.line1['en']?.contains(_kBlank) ?? false;
+    final line1Text = _showTranslation
+        ? (q.line1[userLanguage] ?? q.line1['en'] ?? '')
+        : (q.line1['en'] ?? '');
+    final line2Text = _showTranslation
+        ? (q.line2[userLanguage] ?? q.line2['en'] ?? '')
+        : (q.line2['en'] ?? '');
+
+    return Row(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Expanded(
+          child: _buildCharacterColumn(
+            name: q.character1,
+            dialogueLine: line1Text,
+            isActive: blankInLine1,
+            alignment: CrossAxisAlignment.start,
+          ),
+        ),
+        const SizedBox(width: 8),
+        Expanded(
+          child: _buildCharacterColumn(
+            name: q.character2,
+            dialogueLine: line2Text,
+            isActive: !blankInLine1,
+            alignment: CrossAxisAlignment.end,
+          ),
+        ),
+      ],
+    );
+  }
+
+  Widget _buildCharacterColumn({
+    required String name,
+    required String dialogueLine,
+    required bool isActive,
+    required CrossAxisAlignment alignment,
+  }) {
+    return Column(
+      crossAxisAlignment: alignment,
+      children: [
+        _buildDialogueBubble(
+          text: dialogueLine,
+          isActive: isActive,
+          alignRight: alignment == CrossAxisAlignment.end,
+        ),
+        const SizedBox(height: 8),
+        Text(
+          _capitalize(name),
+          style: Theme.of(context).textTheme.labelMedium?.copyWith(
+                fontWeight: FontWeight.w600,
+              ),
+          overflow: TextOverflow.ellipsis,
+        ),
+        const SizedBox(height: 4),
+        _buildCharacterAvatar(name, size: 64),
+      ],
+    );
+  }
+
+  Widget _buildCharacterAvatar(String name, {required double size}) {
+    final imagePath = 'assets/images/characters/$name.png';
+    return SizedBox(
+      width: size,
+      height: size,
+      child: ClipRRect(
+        borderRadius: BorderRadius.circular(size / 2),
+        child: Image.asset(
+          imagePath,
+          fit: BoxFit.cover,
+          errorBuilder: (_, __, ___) {
+            final initial = name.isNotEmpty ? name[0].toUpperCase() : '?';
+            return CircleAvatar(
+              radius: size / 2,
+              backgroundColor:
+                  Theme.of(context).colorScheme.primaryContainer,
+              child: Text(
+                initial,
+                style: TextStyle(
+                  fontSize: size * 0.4,
+                  fontWeight: FontWeight.w700,
+                  color: Theme.of(context).colorScheme.onPrimaryContainer,
+                ),
+              ),
+            );
+          },
+        ),
+      ),
+    );
+  }
+
+  Widget _buildDialogueBubble({
+    required String text,
+    required bool isActive,
+    required bool alignRight,
+  }) {
+    final colorScheme = Theme.of(context).colorScheme;
+    final bgColor = isActive
+        ? colorScheme.primaryContainer
+        : colorScheme.surfaceContainerHighest;
+    final borderColor =
+        isActive ? colorScheme.primary : colorScheme.outlineVariant;
+
+    return Container(
+      padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 8),
+      decoration: BoxDecoration(
+        color: bgColor,
+        borderRadius: BorderRadius.only(
+          topLeft: const Radius.circular(12),
+          topRight: const Radius.circular(12),
+          bottomLeft: Radius.circular(alignRight ? 12 : 4),
+          bottomRight: Radius.circular(alignRight ? 4 : 12),
+        ),
+        border: Border.all(color: borderColor, width: 1.5),
+      ),
+      child: _buildBubbleText(text, isActive: isActive),
+    );
+  }
+
+  Widget _buildBubbleText(String text, {required bool isActive}) {
+    if (!text.contains(_kBlank)) {
+      return Text(text, style: Theme.of(context).textTheme.bodySmall);
+    }
+    final parts = text.split(_kBlank);
+    final spans = <InlineSpan>[];
+    for (var i = 0; i < parts.length; i++) {
+      if (parts[i].isNotEmpty) spans.add(TextSpan(text: parts[i]));
+      if (i < parts.length - 1) {
+        spans.add(
+          WidgetSpan(
+            alignment: PlaceholderAlignment.middle,
+            child: Container(
+              padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 1),
+              decoration: BoxDecoration(
+                color: Theme.of(context)
+                    .colorScheme
+                    .primary
+                    .withValues(alpha: 0.15),
+                borderRadius: BorderRadius.circular(4),
+                border: Border.all(
+                  color: Theme.of(context).colorScheme.primary,
+                  width: 1,
+                ),
+              ),
+              child: Text(
+                ' ____ ',
+                style: Theme.of(context).textTheme.bodySmall?.copyWith(
+                      color: Theme.of(context).colorScheme.primary,
+                      fontWeight: FontWeight.w700,
+                      letterSpacing: 1,
+                    ),
+              ),
+            ),
+          ),
+        );
+      }
+    }
+    return RichText(
+      text: TextSpan(
+        style: Theme.of(context).textTheme.bodySmall,
+        children: spans,
+      ),
+    );
+  }
+
+  Widget _buildConvoAnswerButton(
+      int optionIndex, ConvoQuestionData q, bool soundFxOn) {
+    final option = _currentOptions[optionIndex];
+    final isCorrect = option == q.answer;
+    final isSelected = _selectedIndex == optionIndex;
+
+    Color? bgColor;
+    Color? fgColor;
+    if (_answerLocked) {
+      if (isCorrect) {
+        bgColor = Colors.green.shade600;
+        fgColor = Colors.white;
+      } else if (isSelected) {
+        bgColor = Colors.red.shade600;
+        fgColor = Colors.white;
+      }
+    }
+
+    final buttonStyle = bgColor != null
+        ? ElevatedButton.styleFrom(
+            backgroundColor: bgColor,
+            foregroundColor: fgColor,
+            surfaceTintColor: Colors.transparent,
+            disabledBackgroundColor: bgColor,
+            disabledForegroundColor: fgColor,
+            minimumSize: const Size(kMinTouchTarget, kMinTouchTarget),
+          )
+        : ElevatedButton.styleFrom(
+            minimumSize: const Size(kMinTouchTarget, kMinTouchTarget),
+            disabledBackgroundColor: Colors.grey.shade300,
+            disabledForegroundColor: Colors.grey.shade800,
+            surfaceTintColor: Colors.transparent,
+          );
+
+    return Padding(
+      padding: const EdgeInsets.only(bottom: 10),
+      child: SizedBox(
+        width: double.infinity,
+        height: kMinTouchTarget + 8,
+        child: ElevatedButton(
+          onPressed: _answerLocked
+              ? null
+              : () {
+                  audio.playClick(soundFxOn: soundFxOn);
+                  _onAnswerTap(optionIndex);
+                },
+          style: buttonStyle,
+          child: Text(
+            _capitalize(option),
+            style: fgColor != null
+                ? Theme.of(context).textTheme.titleMedium?.copyWith(
+                      color: fgColor,
+                      fontWeight: FontWeight.w600,
+                    )
+                : Theme.of(context).textTheme.titleMedium,
+          ),
         ),
       ),
     );

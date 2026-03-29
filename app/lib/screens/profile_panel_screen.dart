@@ -3,6 +3,7 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 
 import '../models/profile_state.dart';
+import '../quiz_game_constants.dart';
 import '../services/profile_service.dart';
 
 /// Opens the profile as a centered overlay panel (not full screen).
@@ -505,7 +506,9 @@ class _ProfilePanelScreenState extends State<ProfilePanelScreen> {
             children: [
               Expanded(
                 child: Text(
-                  _titleCase(stats.quizType),
+                  stats.quizType == kQuizGameType
+                      ? 'Game'
+                      : _titleCase(stats.quizType),
                   style: Theme.of(context).textTheme.labelLarge?.copyWith(
                         fontWeight: FontWeight.w700,
                         color: sectionColor,

@@ -1,0 +1,187 @@
+{
+  "main_levels": [
+    {
+      "main_level_id": 1,
+      "story_icon_asset_path": "assets/images/story/mainlevel1-story-icon-puppy.png",
+      "story_sequences": [
+        {
+          "event_id": 1001,
+          "page_template_id": 4,
+          "story_text": {
+            "en": "Maya is walking through the park when she hears a sad whimper coming from behind a bush. She finds a tiny puppy with a hurt leg!.Let's help her to take him to the vet by completing the next two levels.",
+            "fr": "Maya marche dans le parc lorsqu'elle entend un petit cri de douleur derrière un buisson. Elle trouve un petit chiot avec une jambe blessée !.Aidez-la à l'emmener au vétérinaire en complétant les deux prochains niveaux."
+          },
+          "page_image_list_for_template": [
+            "assets/images/story/puppy-1.png"
+          ],
+          "page_text_list_for_template": [],
+          "page_animation_list_for_template": [],
+          "trigger": {
+            "type": "before_level",
+            "level": 1
+          },
+          "covered_levels_number": 1
+        },
+        {
+          "event_id": 1002,
+          "page_template_id": 2,
+          "page_text_list_for_template": [
+            {
+              "en": "Great start! Complete the next two levels so the traveler can continue."
+            },
+            {
+              "en": "Watch for key objects and answer carefully."
+            }
+          ],
+          "page_image_list_for_template": [],
+          "page_animation_list_for_template": [
+            "map_path_glow"
+          ],
+          "trigger": {
+            "type": "before_level",
+            "level": 3
+          },
+          "covered_levels_number": 2
+        },
+        {
+          "event_id": 1003,
+          "page_template_id": 3,
+          "page_text_list_for_template": [],
+          "page_image_list_for_template": [],
+          "page_animation_list_for_template": [
+            "confetti_celebration"
+          ],
+          "trigger": {
+            "type": "after_level",
+            "level": 0
+          },
+          "covered_levels_number": 1
+        }
+      ]
+    },
+    {
+      "main_level_id": 2,
+      "story_icon_asset_path": "assets/images/story/story-book.png",
+      "story_sequences": []
+    },
+    {
+      "main_level_id": 3,
+      "story_icon_asset_path": "assets/images/story/story-book.png",
+      "story_sequences": []
+    },
+    {
+      "main_level_id": 4,
+      "story_icon_asset_path": "assets/images/story/story-chat.png",
+      "story_sequences": [
+        {
+          "event_id": 2001,
+          "page_template_id": 1,
+          "page_text_list_for_template": [
+            {
+              "en": "Two friends are preparing for a trip. Help them with key words."
+            }
+          ],
+          "page_image_list_for_template": [
+            "assets/images/story/friend-a.png",
+            "assets/images/story/friend-b.png"
+          ],
+          "page_animation_list_for_template": [],
+          "trigger": {
+            "type": "before_level",
+            "level": 1
+          },
+          "covered_levels_number": 1
+        },
+        {
+          "event_id": 2002,
+          "page_template_id": 2,
+          "page_text_list_for_template": [
+            {
+              "en": "Now complete the next two conversations to unlock the destination."
+            }
+          ],
+          "page_image_list_for_template": [],
+          "page_animation_list_for_template": [
+            "speech_bubble_pulse"
+          ],
+          "trigger": {
+            "type": "before_level",
+            "level": 2
+          },
+          "covered_levels_number": 2
+        },
+        {
+          "event_id": 2003,
+          "page_template_id": 3,
+          "page_text_list_for_template": [],
+          "page_image_list_for_template": [],
+          "page_animation_list_for_template": [
+            "star_burst"
+          ],
+          "trigger": {
+            "type": "after_level",
+            "level": 0
+          },
+          "covered_levels_number": 1
+        }
+      ]
+    },
+    {
+      "main_level_id": 5,
+      "story_icon_asset_path": "assets/images/story/story-grammar.png",
+      "story_sequences": [
+        {
+          "event_id": 3001,
+          "page_template_id": 1,
+          "page_text_list_for_template": [
+            {
+              "en": "A student needs grammar help to pass an important test."
+            }
+          ],
+          "page_image_list_for_template": [
+            "assets/images/story/teacher.png",
+            "assets/images/story/classroom.png"
+          ],
+          "page_animation_list_for_template": [],
+          "trigger": {
+            "type": "before_level",
+            "level": 1
+          },
+          "covered_levels_number": 1
+        },
+        {
+          "event_id": 3002,
+          "page_template_id": 2,
+          "page_text_list_for_template": [
+            {
+              "en": "Keep going. Complete the next two levels to rebuild confidence."
+            }
+          ],
+          "page_image_list_for_template": [],
+          "page_animation_list_for_template": [
+            "grammar_checkmarks"
+          ],
+          "trigger": {
+            "type": "before_level",
+            "level": 2
+          },
+          "covered_levels_number": 2
+        },
+        {
+          "event_id": 3003,
+          "page_template_id": 3,
+          "page_text_list_for_template": [],
+          "page_image_list_for_template": [],
+          "page_animation_list_for_template": [
+            "finale_ribbon"
+          ],
+          "trigger": {
+            "type": "after_level",
+            "level": 0
+          },
+          "covered_levels_number": 1
+        }
+      ]
+    }
+  ]
+}

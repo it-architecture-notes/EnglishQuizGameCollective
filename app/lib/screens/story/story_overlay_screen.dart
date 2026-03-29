@@ -4,6 +4,7 @@ import '../../models/story_config.dart';
 import '../transitions/custom_page_routes.dart';
 import 'story_templates/story_template_a.dart';
 import 'story_templates/story_template_b.dart';
+import 'story_templates/story_template_c.dart';
 
 class StoryOverlayScreen extends StatefulWidget {
   const StoryOverlayScreen({
@@ -103,8 +104,20 @@ class _StoryOverlayScreenState extends State<StoryOverlayScreen>
                 const SizedBox(height: 16),
               ],
               Expanded(
-                child: SingleChildScrollView(
-                  child: _buildTemplate(context),
+                child: LayoutBuilder(
+                  builder: (context, constraints) {
+                    return SingleChildScrollView(
+                      child: ConstrainedBox(
+                        constraints: BoxConstraints(
+                          minHeight: constraints.maxHeight,
+                        ),
+                        child: _buildTemplate(
+                          context,
+                          scrollViewportHeight: constraints.maxHeight,
+                        ),
+                      ),
+                    );
+                  },
                 ),
               ),
               const SizedBox(height: 24),
@@ -134,16 +147,25 @@ class _StoryOverlayScreenState extends State<StoryOverlayScreen>
     );
   }
 
-  Widget _buildTemplate(BuildContext context) {
+  Widget _buildTemplate(
+    BuildContext context, {
+    double? scrollViewportHeight,
+  }) {
     return switch (widget.template?.layout) {
       'scene_animation_dialogues' => StoryTemplateB(
           page: widget.page,
           languageCode: widget.languageCode,
         ),
       'animation_only' => _buildAnimationOnly(context),
+      'scene_story_text' => StoryTemplateC(
+          page: widget.page,
+          languageCode: widget.languageCode,
+          scrollViewportHeight: scrollViewportHeight,
+        ),
       _ => StoryTemplateA(
           page: widget.page,
           languageCode: widget.languageCode,
+          scrollViewportHeight: scrollViewportHeight,
         ),
     };
   }

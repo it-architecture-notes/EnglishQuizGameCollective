@@ -48,7 +48,37 @@ flutter:
     - assets/data/settings/
     - assets/data/flow/
     - assets/data/story/
-    - assets/quiz-data/image-quiz/quiz-images/market-vegetables-1/
-    - assets/quiz-data/vocabulary-quiz/
-    - assets/quiz-data/grammar-quiz/
+    - assets/quiz-data/levels/airport-1/
+    - assets/quiz-data/levels/airport-2/
+    - assets/quiz-data/levels/bathroom/
+    - assets/quiz-data/levels/bedroom/
+    - assets/quiz-data/levels/body-parts/
+    - assets/quiz-data/levels/dressing-1/
+    - assets/quiz-data/levels/dressing-2/
+    - assets/quiz-data/levels/emotions-1/
+    - assets/quiz-data/levels/emotions-2/
+    - assets/quiz-data/levels/farm-animals/
+    - assets/quiz-data/levels/grocery/
+    - assets/quiz-data/levels/hospital/
+    - assets/quiz-data/levels/household-equipment-1/
+    - assets/quiz-data/levels/household-equipment-2/
+    - assets/quiz-data/levels/jobs-1/
+    - assets/quiz-data/levels/jobs-2/
+    - assets/quiz-data/levels/jobs-3/
+    - assets/quiz-data/levels/kitchen-1/
+    - assets/quiz-data/levels/kitchen-2/
+    - assets/quiz-data/levels/living-room/
+    - assets/quiz-data/levels/market-fruits-1/
+    - assets/quiz-data/levels/market-fruits-2/
+    - assets/quiz-data/levels/market-vegetables-1/
+    - assets/quiz-data/levels/market-vegetables-2/
+    - assets/quiz-data/levels/nature-1/
+    - assets/quiz-data/levels/nature-2/
+    - assets/quiz-data/levels/pharmacy/
+    - assets/quiz-data/levels/school supplies/
+    - assets/quiz-data/levels/school-1/
+    - assets/quiz-data/levels/school-2/
+    - assets/quiz-data/levels/vehicles/
+    - assets/quiz-data/levels/wild-animals-1/
+    - assets/quiz-data/levels/wild-animals-2/
     - assets/audio/

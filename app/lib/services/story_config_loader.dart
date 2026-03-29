@@ -3,9 +3,10 @@ import 'dart:convert';
 import 'package:flutter/services.dart';
 
 import '../models/story_config.dart';
+import '../quiz_game_constants.dart';
 
-Future<StoryConfigData> loadStoryConfig(String quizType) async {
-  final storiesPath = 'assets/data/story/$quizType-main-level-stories.json';
+Future<StoryConfigData> loadStoryConfig() async {
+  const storiesPath = 'assets/data/story/$kQuizGameType-main-level-stories.json';
   const templatesPath = 'assets/data/story/story-templates.json';
 
   String storiesJson;
