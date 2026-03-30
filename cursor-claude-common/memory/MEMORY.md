@@ -5,7 +5,7 @@ Flutter mobile language learning quiz app (portrait-only, Android/iOS). Unified 
 
 ## Current State
 - **Active issue:** None
-- **Current branch:** feature/issue-17-unified-level-map (ready to merge)
+- **Current branch:** main
 - **Last completed:** Issue-17 (Unified Level Map & Single Quiz Screen)
 
 ## Tech Stack

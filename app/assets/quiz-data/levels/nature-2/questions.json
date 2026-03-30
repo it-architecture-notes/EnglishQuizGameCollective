@@ -1,0 +1,124 @@
+{
+  "levelQuestions": [
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "lightning",
+        "wrongAnswers": [
+          "moon",
+          "mountain",
+          "ocean"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "moon",
+        "wrongAnswers": [
+          "lightning",
+          "mountain",
+          "ocean"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "mountain",
+        "wrongAnswers": [
+          "lightning",
+          "moon",
+          "ocean"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "ocean",
+        "wrongAnswers": [
+          "lightning",
+          "moon",
+          "mountain"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "rain",
+        "wrongAnswers": [
+          "lightning",
+          "moon",
+          "mountain"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "rainbow",
+        "wrongAnswers": [
+          "lightning",
+          "moon",
+          "mountain"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "river",
+        "wrongAnswers": [
+          "lightning",
+          "moon",
+          "mountain"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "rocks",
+        "wrongAnswers": [
+          "lightning",
+          "moon",
+          "mountain"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "sand",
+        "wrongAnswers": [
+          "lightning",
+          "moon",
+          "mountain"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "sea",
+        "wrongAnswers": [
+          "lightning",
+          "moon",
+          "mountain"
+        ]
+      }
+    }
+  ]
+}

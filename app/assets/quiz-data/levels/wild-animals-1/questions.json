@@ -1,0 +1,124 @@
+{
+  "levelQuestions": [
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "alligator",
+        "wrongAnswers": [
+          "animal",
+          "bat",
+          "bear"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "animal",
+        "wrongAnswers": [
+          "alligator",
+          "bat",
+          "bear"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "bat",
+        "wrongAnswers": [
+          "alligator",
+          "animal",
+          "bear"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "bear",
+        "wrongAnswers": [
+          "alligator",
+          "animal",
+          "bat"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "bird",
+        "wrongAnswers": [
+          "alligator",
+          "animal",
+          "bat"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "butterfly",
+        "wrongAnswers": [
+          "alligator",
+          "animal",
+          "bat"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "camel",
+        "wrongAnswers": [
+          "alligator",
+          "animal",
+          "bat"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "crab",
+        "wrongAnswers": [
+          "alligator",
+          "animal",
+          "bat"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "crow",
+        "wrongAnswers": [
+          "alligator",
+          "animal",
+          "bat"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "deer",
+        "wrongAnswers": [
+          "alligator",
+          "animal",
+          "bat"
+        ]
+      }
+    }
+  ]
+}

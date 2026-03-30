@@ -1,0 +1,244 @@
+{
+  "levelQuestions": [
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "apron",
+        "wrongAnswers": [
+          "baking-tray",
+          "blender",
+          "bowl"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "baking-tray",
+        "wrongAnswers": [
+          "apron",
+          "blender",
+          "bowl"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "blender",
+        "wrongAnswers": [
+          "apron",
+          "baking-tray",
+          "bowl"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "bowl",
+        "wrongAnswers": [
+          "apron",
+          "baking-tray",
+          "blender"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "can-opener",
+        "wrongAnswers": [
+          "apron",
+          "baking-tray",
+          "blender"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "casserole-dish",
+        "wrongAnswers": [
+          "apron",
+          "baking-tray",
+          "blender"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "chefs-knife",
+        "wrongAnswers": [
+          "apron",
+          "baking-tray",
+          "blender"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "colander",
+        "wrongAnswers": [
+          "apron",
+          "baking-tray",
+          "blender"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "cooking-pot",
+        "wrongAnswers": [
+          "apron",
+          "baking-tray",
+          "blender"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "cutting-board",
+        "wrongAnswers": [
+          "apron",
+          "baking-tray",
+          "blender"
+        ]
+      }
+    },
+    {
+      "type": "vocab",
+      "template": "ConvoTemplate-1",
+      "questionData": {
+        "character1": "mike",
+        "character2": "sarah",
+        "line1": {
+          "en": "Should I _____ the oven first?",
+          "tr": "Önce fırını _____ mı?",
+          "es": "¿Debería _____ el horno primero?"
+        },
+        "line2": {
+          "en": "Yes, set it to 180 degrees.",
+          "tr": "Evet, 180 dereceye ayarla.",
+          "es": "Sí, ponlo a 180 grados."
+        },
+        "answer": "preheat",
+        "distractors": [
+          "clean",
+          "open",
+          "fill"
+        ]
+      }
+    },
+    {
+      "type": "vocab",
+      "template": "ConvoTemplate-1",
+      "questionData": {
+        "character1": "mike",
+        "character2": "sarah",
+        "line1": {
+          "en": "How long should I let the soup _____?",
+          "tr": "Çorbayı ne kadar _____ bırakmalıyım?",
+          "es": "¿Cuánto tiempo debo dejar _____ la sopa?"
+        },
+        "line2": {
+          "en": "About twenty minutes on low heat.",
+          "tr": "Kısık ateşte yaklaşık yirmi dakika.",
+          "es": "Unos veinte minutos a fuego lento."
+        },
+        "answer": "simmer",
+        "distractors": [
+          "bake",
+          "freeze",
+          "taste"
+        ]
+      }
+    },
+    {
+      "type": "vocab",
+      "template": "ConvoTemplate-1",
+      "questionData": {
+        "character1": "mike",
+        "character2": "sarah",
+        "line1": {
+          "en": "Can you _____ the onions for me?",
+          "tr": "Soğanları benim için _____ misin?",
+          "es": "¿Puedes _____ las cebollas para mí?"
+        },
+        "line2": {
+          "en": "Sure, I'll do it right away.",
+          "tr": "Tabii, hemen yapayım.",
+          "es": "Claro, lo hago ahora mismo."
+        },
+        "answer": "chop",
+        "distractors": [
+          "boil",
+          "bake",
+          "serve"
+        ]
+      }
+    },
+    {
+      "type": "grammar",
+      "template": "ConvoTemplate-1",
+      "questionData": {
+        "character1": "mike",
+        "character2": "sarah",
+        "line1": {
+          "en": "_____ you making enough food for everyone?",
+          "tr": "Herkes için yeterince yemek yapıyor _____?",
+          "es": "¿_____ cocinando suficiente comida para todos?"
+        },
+        "line2": {
+          "en": "Yes, I made extra just in case.",
+          "tr": "Evet, ihtimale karşı fazladan yaptım.",
+          "es": "Sí, hice de más por si acaso."
+        },
+        "answer": "Are",
+        "distractors": [
+          "Is",
+          "Do",
+          "Have"
+        ]
+      }
+    },
+    {
+      "type": "grammar",
+      "template": "ConvoTemplate-1",
+      "questionData": {
+        "character1": "mike",
+        "character2": "sarah",
+        "line1": {
+          "en": "You _____ wash your hands before cooking.",
+          "tr": "Yemek yapmadan önce ellerini _____ yıkamalısın.",
+          "es": "_____ lavarte las manos antes de cocinar."
+        },
+        "line2": {
+          "en": "You are absolutely right, I forgot.",
+          "tr": "Kesinlikle haklısın, unutmuşum.",
+          "es": "Tienes toda la razón, lo olvidé."
+        },
+        "answer": "should",
+        "distractors": [
+          "could",
+          "would",
+          "might"
+        ]
+      }
+    }
+  ]
+}

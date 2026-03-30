@@ -1,0 +1,28 @@
+{
+  "levelQuestions": [
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "tongue",
+        "wrongAnswers": [
+          "tooth",
+          "back",
+          "brain"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "tooth",
+        "wrongAnswers": [
+          "tongue",
+          "back",
+          "brain"
+        ]
+      }
+    }
+  ]
+}

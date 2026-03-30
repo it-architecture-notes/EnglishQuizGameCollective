@@ -1,0 +1,28 @@
+{
+  "levelQuestions": [
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "vase",
+        "wrongAnswers": [
+          "wall-clock",
+          "rug-carpet",
+          "armchair"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "wall-clock",
+        "wrongAnswers": [
+          "vase",
+          "rug-carpet",
+          "armchair"
+        ]
+      }
+    }
+  ]
+}

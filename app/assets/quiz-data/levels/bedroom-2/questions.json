@@ -1,0 +1,100 @@
+{
+  "levelQuestions": [
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "laundry-basket",
+        "wrongAnswers": [
+          "mattress",
+          "nightstand",
+          "pillow"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "mattress",
+        "wrongAnswers": [
+          "laundry-basket",
+          "nightstand",
+          "pillow"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "nightstand",
+        "wrongAnswers": [
+          "laundry-basket",
+          "mattress",
+          "pillow"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "pillow",
+        "wrongAnswers": [
+          "laundry-basket",
+          "mattress",
+          "nightstand"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "slippers",
+        "wrongAnswers": [
+          "laundry-basket",
+          "mattress",
+          "nightstand"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "textile",
+        "wrongAnswers": [
+          "laundry-basket",
+          "mattress",
+          "nightstand"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "wardrobe-or-closet",
+        "wrongAnswers": [
+          "laundry-basket",
+          "mattress",
+          "nightstand"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "windows",
+        "wrongAnswers": [
+          "laundry-basket",
+          "mattress",
+          "nightstand"
+        ]
+      }
+    }
+  ]
+}

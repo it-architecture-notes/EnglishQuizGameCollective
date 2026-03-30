@@ -1,0 +1,124 @@
+{
+  "levelQuestions": [
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "paper-clip",
+        "wrongAnswers": [
+          "pen",
+          "pencil",
+          "pencil-case"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "pen",
+        "wrongAnswers": [
+          "paper-clip",
+          "pencil",
+          "pencil-case"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "pencil",
+        "wrongAnswers": [
+          "paper-clip",
+          "pen",
+          "pencil-case"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "pencil-case",
+        "wrongAnswers": [
+          "paper-clip",
+          "pen",
+          "pencil"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "pencil-sharpener",
+        "wrongAnswers": [
+          "paper-clip",
+          "pen",
+          "pencil"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "pin",
+        "wrongAnswers": [
+          "paper-clip",
+          "pen",
+          "pencil"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "ruler",
+        "wrongAnswers": [
+          "paper-clip",
+          "pen",
+          "pencil"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "scissors",
+        "wrongAnswers": [
+          "paper-clip",
+          "pen",
+          "pencil"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "tape",
+        "wrongAnswers": [
+          "paper-clip",
+          "pen",
+          "pencil"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "whiteboard-marker",
+        "wrongAnswers": [
+          "paper-clip",
+          "pen",
+          "pencil"
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,124 @@
+{
+  "levelQuestions": [
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "fever",
+        "wrongAnswers": [
+          "happy",
+          "healthy",
+          "hungry"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "happy",
+        "wrongAnswers": [
+          "fever",
+          "healthy",
+          "hungry"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "healthy",
+        "wrongAnswers": [
+          "fever",
+          "happy",
+          "hungry"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "hungry",
+        "wrongAnswers": [
+          "fever",
+          "happy",
+          "healthy"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "hurt-injured",
+        "wrongAnswers": [
+          "fever",
+          "happy",
+          "healthy"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "in-love",
+        "wrongAnswers": [
+          "fever",
+          "happy",
+          "healthy"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "jealous-envious",
+        "wrongAnswers": [
+          "fever",
+          "happy",
+          "healthy"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "kind-helpful",
+        "wrongAnswers": [
+          "fever",
+          "happy",
+          "healthy"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "laughing",
+        "wrongAnswers": [
+          "fever",
+          "happy",
+          "healthy"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "lazy",
+        "wrongAnswers": [
+          "fever",
+          "happy",
+          "healthy"
+        ]
+      }
+    }
+  ]
+}

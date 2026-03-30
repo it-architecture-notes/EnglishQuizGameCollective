@@ -1,0 +1,124 @@
+{
+  "levelQuestions": [
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "boat",
+        "wrongAnswers": [
+          "bulldozer",
+          "bus",
+          "cable-car"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "bulldozer",
+        "wrongAnswers": [
+          "boat",
+          "bus",
+          "cable-car"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "bus",
+        "wrongAnswers": [
+          "boat",
+          "bulldozer",
+          "cable-car"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "cable-car",
+        "wrongAnswers": [
+          "boat",
+          "bulldozer",
+          "bus"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "car",
+        "wrongAnswers": [
+          "boat",
+          "bulldozer",
+          "bus"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "crane-truck",
+        "wrongAnswers": [
+          "boat",
+          "bulldozer",
+          "bus"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "cruise",
+        "wrongAnswers": [
+          "boat",
+          "bulldozer",
+          "bus"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "ferry",
+        "wrongAnswers": [
+          "boat",
+          "bulldozer",
+          "bus"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "fire-truck",
+        "wrongAnswers": [
+          "boat",
+          "bulldozer",
+          "bus"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "forklift",
+        "wrongAnswers": [
+          "boat",
+          "bulldozer",
+          "bus"
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,124 @@
+{
+  "levelQuestions": [
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "accountant",
+        "wrongAnswers": [
+          "actress",
+          "architect",
+          "artist"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "actress",
+        "wrongAnswers": [
+          "accountant",
+          "architect",
+          "artist"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "architect",
+        "wrongAnswers": [
+          "accountant",
+          "actress",
+          "artist"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "artist",
+        "wrongAnswers": [
+          "accountant",
+          "actress",
+          "architect"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "astronaut",
+        "wrongAnswers": [
+          "accountant",
+          "actress",
+          "architect"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "baker",
+        "wrongAnswers": [
+          "accountant",
+          "actress",
+          "architect"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "barber",
+        "wrongAnswers": [
+          "accountant",
+          "actress",
+          "architect"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "bus-driver",
+        "wrongAnswers": [
+          "accountant",
+          "actress",
+          "architect"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "butcher",
+        "wrongAnswers": [
+          "accountant",
+          "actress",
+          "architect"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "carpenter",
+        "wrongAnswers": [
+          "accountant",
+          "actress",
+          "architect"
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,124 @@
+{
+  "levelQuestions": [
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "firefighter",
+        "wrongAnswers": [
+          "gardener",
+          "judge",
+          "lawyer"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "gardener",
+        "wrongAnswers": [
+          "firefighter",
+          "judge",
+          "lawyer"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "judge",
+        "wrongAnswers": [
+          "firefighter",
+          "gardener",
+          "lawyer"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "lawyer",
+        "wrongAnswers": [
+          "firefighter",
+          "gardener",
+          "judge"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "librarian",
+        "wrongAnswers": [
+          "firefighter",
+          "gardener",
+          "judge"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "mechanic",
+        "wrongAnswers": [
+          "firefighter",
+          "gardener",
+          "judge"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "miner",
+        "wrongAnswers": [
+          "firefighter",
+          "gardener",
+          "judge"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "musician",
+        "wrongAnswers": [
+          "firefighter",
+          "gardener",
+          "judge"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "nurse",
+        "wrongAnswers": [
+          "firefighter",
+          "gardener",
+          "judge"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "painter",
+        "wrongAnswers": [
+          "firefighter",
+          "gardener",
+          "judge"
+        ]
+      }
+    }
+  ]
+}

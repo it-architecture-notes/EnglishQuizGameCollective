@@ -4,11 +4,11 @@
       "type": "image",
       "template": "imageQuizTemplate-1",
       "questionData": {
-        "imageName": "Arugula",
+        "imageName": "celery",
         "wrongAnswers": [
-          "Beet",
-          "Broccoli",
-          "Cabbage"
+          "chili-pepper",
+          "corn",
+          "cucumber"
         ]
       }
     },
@@ -16,11 +16,11 @@
       "type": "image",
       "template": "imageQuizTemplate-1",
       "questionData": {
-        "imageName": "Beet",
+        "imageName": "chili-pepper",
         "wrongAnswers": [
-          "Arugula",
-          "Broccoli",
-          "Cabbage"
+          "celery",
+          "corn",
+          "cucumber"
         ]
       }
     },
@@ -28,11 +28,11 @@
       "type": "image",
       "template": "imageQuizTemplate-1",
       "questionData": {
-        "imageName": "Broccoli",
+        "imageName": "corn",
         "wrongAnswers": [
-          "Arugula",
-          "Beet",
-          "Cabbage"
+          "celery",
+          "chili-pepper",
+          "cucumber"
         ]
       }
     },
@@ -40,11 +40,11 @@
       "type": "image",
       "template": "imageQuizTemplate-1",
       "questionData": {
-        "imageName": "Cabbage",
+        "imageName": "cucumber",
         "wrongAnswers": [
-          "Arugula",
-          "Beet",
-          "Broccoli"
+          "celery",
+          "chili-pepper",
+          "corn"
         ]
       }
     },
@@ -52,11 +52,11 @@
       "type": "image",
       "template": "imageQuizTemplate-1",
       "questionData": {
-        "imageName": "Cauliflower",
+        "imageName": "eggplant",
         "wrongAnswers": [
-          "Arugula",
-          "Beet",
-          "Broccoli"
+          "celery",
+          "chili-pepper",
+          "corn"
         ]
       }
     },
@@ -64,11 +64,11 @@
       "type": "image",
       "template": "imageQuizTemplate-1",
       "questionData": {
-        "imageName": "Chili Pepper",
+        "imageName": "endive",
         "wrongAnswers": [
-          "Arugula",
-          "Beet",
-          "Broccoli"
+          "celery",
+          "chili-pepper",
+          "corn"
         ]
       }
     },
@@ -76,11 +76,11 @@
       "type": "image",
       "template": "imageQuizTemplate-1",
       "questionData": {
-        "imageName": "Cucumber",
+        "imageName": "garlic",
         "wrongAnswers": [
-          "Arugula",
-          "Beet",
-          "Broccoli"
+          "celery",
+          "chili-pepper",
+          "corn"
         ]
       }
     },
@@ -88,11 +88,11 @@
       "type": "image",
       "template": "imageQuizTemplate-1",
       "questionData": {
-        "imageName": "Endive",
+        "imageName": "ginger",
         "wrongAnswers": [
-          "Arugula",
-          "Beet",
-          "Broccoli"
+          "celery",
+          "chili-pepper",
+          "corn"
         ]
       }
     },
@@ -100,11 +100,11 @@
       "type": "image",
       "template": "imageQuizTemplate-1",
       "questionData": {
-        "imageName": "Ginger",
+        "imageName": "green-bean",
         "wrongAnswers": [
-          "Arugula",
-          "Beet",
-          "Broccoli"
+          "celery",
+          "chili-pepper",
+          "corn"
         ]
       }
     },
@@ -112,107 +112,11 @@
       "type": "image",
       "template": "imageQuizTemplate-1",
       "questionData": {
-        "imageName": "Green Pepper",
+        "imageName": "green-pepper",
         "wrongAnswers": [
-          "Arugula",
-          "Beet",
-          "Broccoli"
-        ]
-      }
-    },
-    {
-      "type": "image",
-      "template": "imageQuizTemplate-1",
-      "questionData": {
-        "imageName": "Leek",
-        "wrongAnswers": [
-          "Arugula",
-          "Beet",
-          "Broccoli"
-        ]
-      }
-    },
-    {
-      "type": "image",
-      "template": "imageQuizTemplate-1",
-      "questionData": {
-        "imageName": "Mushroom",
-        "wrongAnswers": [
-          "Arugula",
-          "Beet",
-          "Broccoli"
-        ]
-      }
-    },
-    {
-      "type": "image",
-      "template": "imageQuizTemplate-1",
-      "questionData": {
-        "imageName": "Onion",
-        "wrongAnswers": [
-          "Arugula",
-          "Beet",
-          "Broccoli"
-        ]
-      }
-    },
-    {
-      "type": "image",
-      "template": "imageQuizTemplate-1",
-      "questionData": {
-        "imageName": "Potato",
-        "wrongAnswers": [
-          "Arugula",
-          "Beet",
-          "Broccoli"
-        ]
-      }
-    },
-    {
-      "type": "image",
-      "template": "imageQuizTemplate-1",
-      "questionData": {
-        "imageName": "Spinach",
-        "wrongAnswers": [
-          "Arugula",
-          "Beet",
-          "Broccoli"
-        ]
-      }
-    },
-    {
-      "type": "image",
-      "template": "imageQuizTemplate-1",
-      "questionData": {
-        "imageName": "Sweet Potato",
-        "wrongAnswers": [
-          "Arugula",
-          "Beet",
-          "Broccoli"
-        ]
-      }
-    },
-    {
-      "type": "image",
-      "template": "imageQuizTemplate-1",
-      "questionData": {
-        "imageName": "Tomato",
-        "wrongAnswers": [
-          "Arugula",
-          "Beet",
-          "Broccoli"
-        ]
-      }
-    },
-    {
-      "type": "image",
-      "template": "imageQuizTemplate-1",
-      "questionData": {
-        "imageName": "Zucchini",
-        "wrongAnswers": [
-          "Arugula",
-          "Beet",
-          "Broccoli"
+          "celery",
+          "chili-pepper",
+          "corn"
         ]
       }
     }

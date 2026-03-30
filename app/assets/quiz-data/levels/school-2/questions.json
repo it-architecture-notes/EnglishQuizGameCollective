@@ -1,0 +1,124 @@
+{
+  "levelQuestions": [
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "fountain",
+        "wrongAnswers": [
+          "gym",
+          "hall",
+          "janitor"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "gym",
+        "wrongAnswers": [
+          "fountain",
+          "hall",
+          "janitor"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "hall",
+        "wrongAnswers": [
+          "fountain",
+          "gym",
+          "janitor"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "janitor",
+        "wrongAnswers": [
+          "fountain",
+          "gym",
+          "hall"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "library",
+        "wrongAnswers": [
+          "fountain",
+          "gym",
+          "hall"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "lockers",
+        "wrongAnswers": [
+          "fountain",
+          "gym",
+          "hall"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "playground",
+        "wrongAnswers": [
+          "fountain",
+          "gym",
+          "hall"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "projector",
+        "wrongAnswers": [
+          "fountain",
+          "gym",
+          "hall"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "restroom",
+        "wrongAnswers": [
+          "fountain",
+          "gym",
+          "hall"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "science-lab",
+        "wrongAnswers": [
+          "fountain",
+          "gym",
+          "hall"
+        ]
+      }
+    }
+  ]
+}

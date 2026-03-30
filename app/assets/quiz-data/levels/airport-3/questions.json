@@ -1,0 +1,40 @@
+{
+  "levelQuestions": [
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "traveler",
+        "wrongAnswers": [
+          "tray-table",
+          "visa",
+          "airplane-ticket"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "tray-table",
+        "wrongAnswers": [
+          "traveler",
+          "visa",
+          "airplane-ticket"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "visa",
+        "wrongAnswers": [
+          "traveler",
+          "tray-table",
+          "airplane-ticket"
+        ]
+      }
+    }
+  ]
+}

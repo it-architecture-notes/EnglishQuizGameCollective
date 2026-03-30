@@ -1,0 +1,124 @@
+{
+  "levelQuestions": [
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "ice-cream",
+        "wrongAnswers": [
+          "milk",
+          "peanuts",
+          "popcorn"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "milk",
+        "wrongAnswers": [
+          "ice-cream",
+          "peanuts",
+          "popcorn"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "peanuts",
+        "wrongAnswers": [
+          "ice-cream",
+          "milk",
+          "popcorn"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "popcorn",
+        "wrongAnswers": [
+          "ice-cream",
+          "milk",
+          "peanuts"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "salt",
+        "wrongAnswers": [
+          "ice-cream",
+          "milk",
+          "peanuts"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "soap",
+        "wrongAnswers": [
+          "ice-cream",
+          "milk",
+          "peanuts"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "spices",
+        "wrongAnswers": [
+          "ice-cream",
+          "milk",
+          "peanuts"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "sugar",
+        "wrongAnswers": [
+          "ice-cream",
+          "milk",
+          "peanuts"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "sunflower-oil",
+        "wrongAnswers": [
+          "ice-cream",
+          "milk",
+          "peanuts"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "toilet-paper",
+        "wrongAnswers": [
+          "ice-cream",
+          "milk",
+          "peanuts"
+        ]
+      }
+    }
+  ]
+}

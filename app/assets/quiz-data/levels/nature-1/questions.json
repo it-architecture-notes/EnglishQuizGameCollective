@@ -1,0 +1,124 @@
+{
+  "levelQuestions": [
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "canyon",
+        "wrongAnswers": [
+          "clouds",
+          "desert",
+          "flowers"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "clouds",
+        "wrongAnswers": [
+          "canyon",
+          "desert",
+          "flowers"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "desert",
+        "wrongAnswers": [
+          "canyon",
+          "clouds",
+          "flowers"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "flowers",
+        "wrongAnswers": [
+          "canyon",
+          "clouds",
+          "desert"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "fog",
+        "wrongAnswers": [
+          "canyon",
+          "clouds",
+          "desert"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "forest",
+        "wrongAnswers": [
+          "canyon",
+          "clouds",
+          "desert"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "grass",
+        "wrongAnswers": [
+          "canyon",
+          "clouds",
+          "desert"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "hail",
+        "wrongAnswers": [
+          "canyon",
+          "clouds",
+          "desert"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "island",
+        "wrongAnswers": [
+          "canyon",
+          "clouds",
+          "desert"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "lake",
+        "wrongAnswers": [
+          "canyon",
+          "clouds",
+          "desert"
+        ]
+      }
+    }
+  ]
+}

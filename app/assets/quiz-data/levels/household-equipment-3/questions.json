@@ -1,0 +1,52 @@
+{
+  "levelQuestions": [
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "screws",
+        "wrongAnswers": [
+          "spatula",
+          "tissue",
+          "vacuum"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "spatula",
+        "wrongAnswers": [
+          "screws",
+          "tissue",
+          "vacuum"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "tissue",
+        "wrongAnswers": [
+          "screws",
+          "spatula",
+          "vacuum"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "vacuum",
+        "wrongAnswers": [
+          "screws",
+          "spatula",
+          "tissue"
+        ]
+      }
+    }
+  ]
+}

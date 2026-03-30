@@ -4,11 +4,11 @@
       "type": "image",
       "template": "imageQuizTemplate-1",
       "questionData": {
-        "imageName": "Artichoke",
+        "imageName": "artichoke",
         "wrongAnswers": [
-          "Asparagus",
-          "Bell Pepper",
-          "Brussels Sprouts"
+          "arugula",
+          "asparagus",
+          "beet"
         ]
       }
     },
@@ -16,11 +16,11 @@
       "type": "image",
       "template": "imageQuizTemplate-1",
       "questionData": {
-        "imageName": "Asparagus",
+        "imageName": "arugula",
         "wrongAnswers": [
-          "Artichoke",
-          "Bell Pepper",
-          "Brussels Sprouts"
+          "artichoke",
+          "asparagus",
+          "beet"
         ]
       }
     },
@@ -28,11 +28,11 @@
       "type": "image",
       "template": "imageQuizTemplate-1",
       "questionData": {
-        "imageName": "Bell Pepper",
+        "imageName": "asparagus",
         "wrongAnswers": [
-          "Artichoke",
-          "Asparagus",
-          "Brussels Sprouts"
+          "artichoke",
+          "arugula",
+          "beet"
         ]
       }
     },
@@ -40,11 +40,11 @@
       "type": "image",
       "template": "imageQuizTemplate-1",
       "questionData": {
-        "imageName": "Brussels Sprouts",
+        "imageName": "beet",
         "wrongAnswers": [
-          "Artichoke",
-          "Asparagus",
-          "Bell Pepper"
+          "artichoke",
+          "arugula",
+          "asparagus"
         ]
       }
     },
@@ -52,11 +52,11 @@
       "type": "image",
       "template": "imageQuizTemplate-1",
       "questionData": {
-        "imageName": "Carrot",
+        "imageName": "bell-pepper",
         "wrongAnswers": [
-          "Artichoke",
-          "Asparagus",
-          "Bell Pepper"
+          "artichoke",
+          "arugula",
+          "asparagus"
         ]
       }
     },
@@ -64,11 +64,11 @@
       "type": "image",
       "template": "imageQuizTemplate-1",
       "questionData": {
-        "imageName": "Celery",
+        "imageName": "broccoli",
         "wrongAnswers": [
-          "Artichoke",
-          "Asparagus",
-          "Bell Pepper"
+          "artichoke",
+          "arugula",
+          "asparagus"
         ]
       }
     },
@@ -76,11 +76,11 @@
       "type": "image",
       "template": "imageQuizTemplate-1",
       "questionData": {
-        "imageName": "Corn",
+        "imageName": "brussels-sprouts",
         "wrongAnswers": [
-          "Artichoke",
-          "Asparagus",
-          "Bell Pepper"
+          "artichoke",
+          "arugula",
+          "asparagus"
         ]
       }
     },
@@ -88,11 +88,11 @@
       "type": "image",
       "template": "imageQuizTemplate-1",
       "questionData": {
-        "imageName": "Eggplant",
+        "imageName": "cabbage",
         "wrongAnswers": [
-          "Artichoke",
-          "Asparagus",
-          "Bell Pepper"
+          "artichoke",
+          "arugula",
+          "asparagus"
         ]
       }
     },
@@ -100,11 +100,11 @@
       "type": "image",
       "template": "imageQuizTemplate-1",
       "questionData": {
-        "imageName": "Garlic",
+        "imageName": "carrot",
         "wrongAnswers": [
-          "Artichoke",
-          "Asparagus",
-          "Bell Pepper"
+          "artichoke",
+          "arugula",
+          "asparagus"
         ]
       }
     },
@@ -112,107 +112,11 @@
       "type": "image",
       "template": "imageQuizTemplate-1",
       "questionData": {
-        "imageName": "Green Bean",
+        "imageName": "cauliflower",
         "wrongAnswers": [
-          "Artichoke",
-          "Asparagus",
-          "Bell Pepper"
-        ]
-      }
-    },
-    {
-      "type": "image",
-      "template": "imageQuizTemplate-1",
-      "questionData": {
-        "imageName": "Kale",
-        "wrongAnswers": [
-          "Artichoke",
-          "Asparagus",
-          "Bell Pepper"
-        ]
-      }
-    },
-    {
-      "type": "image",
-      "template": "imageQuizTemplate-1",
-      "questionData": {
-        "imageName": "Lettuce",
-        "wrongAnswers": [
-          "Artichoke",
-          "Asparagus",
-          "Bell Pepper"
-        ]
-      }
-    },
-    {
-      "type": "image",
-      "template": "imageQuizTemplate-1",
-      "questionData": {
-        "imageName": "Okra",
-        "wrongAnswers": [
-          "Artichoke",
-          "Asparagus",
-          "Bell Pepper"
-        ]
-      }
-    },
-    {
-      "type": "image",
-      "template": "imageQuizTemplate-1",
-      "questionData": {
-        "imageName": "Peas",
-        "wrongAnswers": [
-          "Artichoke",
-          "Asparagus",
-          "Bell Pepper"
-        ]
-      }
-    },
-    {
-      "type": "image",
-      "template": "imageQuizTemplate-1",
-      "questionData": {
-        "imageName": "Radish",
-        "wrongAnswers": [
-          "Artichoke",
-          "Asparagus",
-          "Bell Pepper"
-        ]
-      }
-    },
-    {
-      "type": "image",
-      "template": "imageQuizTemplate-1",
-      "questionData": {
-        "imageName": "Squash",
-        "wrongAnswers": [
-          "Artichoke",
-          "Asparagus",
-          "Bell Pepper"
-        ]
-      }
-    },
-    {
-      "type": "image",
-      "template": "imageQuizTemplate-1",
-      "questionData": {
-        "imageName": "Swiss Chard",
-        "wrongAnswers": [
-          "Artichoke",
-          "Asparagus",
-          "Bell Pepper"
-        ]
-      }
-    },
-    {
-      "type": "image",
-      "template": "imageQuizTemplate-1",
-      "questionData": {
-        "imageName": "Turnip",
-        "wrongAnswers": [
-          "Artichoke",
-          "Asparagus",
-          "Bell Pepper"
+          "artichoke",
+          "arugula",
+          "asparagus"
         ]
       }
     }

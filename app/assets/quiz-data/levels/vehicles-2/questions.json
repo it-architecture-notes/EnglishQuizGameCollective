@@ -1,0 +1,124 @@
+{
+  "levelQuestions": [
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "limousine",
+        "wrongAnswers": [
+          "plane",
+          "scooter",
+          "ship"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "plane",
+        "wrongAnswers": [
+          "limousine",
+          "scooter",
+          "ship"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "scooter",
+        "wrongAnswers": [
+          "limousine",
+          "plane",
+          "ship"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "ship",
+        "wrongAnswers": [
+          "limousine",
+          "plane",
+          "scooter"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "spaceship",
+        "wrongAnswers": [
+          "limousine",
+          "plane",
+          "scooter"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "submarine",
+        "wrongAnswers": [
+          "limousine",
+          "plane",
+          "scooter"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "subway",
+        "wrongAnswers": [
+          "limousine",
+          "plane",
+          "scooter"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "tractor",
+        "wrongAnswers": [
+          "limousine",
+          "plane",
+          "scooter"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "train",
+        "wrongAnswers": [
+          "limousine",
+          "plane",
+          "scooter"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "tram",
+        "wrongAnswers": [
+          "limousine",
+          "plane",
+          "scooter"
+        ]
+      }
+    }
+  ]
+}

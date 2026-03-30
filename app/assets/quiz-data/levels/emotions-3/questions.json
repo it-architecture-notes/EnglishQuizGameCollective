@@ -1,0 +1,124 @@
+{
+  "levelQuestions": [
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "lonely",
+        "wrongAnswers": [
+          "nervous",
+          "proud",
+          "sad"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "nervous",
+        "wrongAnswers": [
+          "lonely",
+          "proud",
+          "sad"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "proud",
+        "wrongAnswers": [
+          "lonely",
+          "nervous",
+          "sad"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "sad",
+        "wrongAnswers": [
+          "lonely",
+          "nervous",
+          "proud"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "scared",
+        "wrongAnswers": [
+          "lonely",
+          "nervous",
+          "proud"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "sorry",
+        "wrongAnswers": [
+          "lonely",
+          "nervous",
+          "proud"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "stressed",
+        "wrongAnswers": [
+          "lonely",
+          "nervous",
+          "proud"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "surprised",
+        "wrongAnswers": [
+          "lonely",
+          "nervous",
+          "proud"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "thankful",
+        "wrongAnswers": [
+          "lonely",
+          "nervous",
+          "proud"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "thirsty",
+        "wrongAnswers": [
+          "lonely",
+          "nervous",
+          "proud"
+        ]
+      }
+    }
+  ]
+}

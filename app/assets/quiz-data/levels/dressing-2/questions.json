@@ -1,0 +1,124 @@
+{
+  "levelQuestions": [
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "hat",
+        "wrongAnswers": [
+          "high-heels",
+          "hoodie",
+          "jacket"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "high-heels",
+        "wrongAnswers": [
+          "hat",
+          "hoodie",
+          "jacket"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "hoodie",
+        "wrongAnswers": [
+          "hat",
+          "high-heels",
+          "jacket"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "jacket",
+        "wrongAnswers": [
+          "hat",
+          "high-heels",
+          "hoodie"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "jeans",
+        "wrongAnswers": [
+          "hat",
+          "high-heels",
+          "hoodie"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "mittens",
+        "wrongAnswers": [
+          "hat",
+          "high-heels",
+          "hoodie"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "necklace",
+        "wrongAnswers": [
+          "hat",
+          "high-heels",
+          "hoodie"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "pajamas",
+        "wrongAnswers": [
+          "hat",
+          "high-heels",
+          "hoodie"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "pants",
+        "wrongAnswers": [
+          "hat",
+          "high-heels",
+          "hoodie"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "ring",
+        "wrongAnswers": [
+          "hat",
+          "high-heels",
+          "hoodie"
+        ]
+      }
+    }
+  ]
+}

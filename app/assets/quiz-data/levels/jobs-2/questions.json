@@ -1,0 +1,124 @@
+{
+  "levelQuestions": [
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "cashier",
+        "wrongAnswers": [
+          "chef",
+          "cleaner-janitor",
+          "clerk"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "chef",
+        "wrongAnswers": [
+          "cashier",
+          "cleaner-janitor",
+          "clerk"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "cleaner-janitor",
+        "wrongAnswers": [
+          "cashier",
+          "chef",
+          "clerk"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "clerk",
+        "wrongAnswers": [
+          "cashier",
+          "chef",
+          "cleaner-janitor"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "construction-worker",
+        "wrongAnswers": [
+          "cashier",
+          "chef",
+          "cleaner-janitor"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "dentist",
+        "wrongAnswers": [
+          "cashier",
+          "chef",
+          "cleaner-janitor"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "doctor",
+        "wrongAnswers": [
+          "cashier",
+          "chef",
+          "cleaner-janitor"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "electrician",
+        "wrongAnswers": [
+          "cashier",
+          "chef",
+          "cleaner-janitor"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "engineer",
+        "wrongAnswers": [
+          "cashier",
+          "chef",
+          "cleaner-janitor"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "farmer",
+        "wrongAnswers": [
+          "cashier",
+          "chef",
+          "cleaner-janitor"
+        ]
+      }
+    }
+  ]
+}

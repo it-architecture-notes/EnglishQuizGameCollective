@@ -1,0 +1,16 @@
+{
+  "levelQuestions": [
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "watch",
+        "wrongAnswers": [
+          "beanie",
+          "belt",
+          "blouse"
+        ]
+      }
+    }
+  ]
+}

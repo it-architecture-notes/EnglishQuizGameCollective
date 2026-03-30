@@ -1,0 +1,124 @@
+{
+  "levelQuestions": [
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "kale",
+        "wrongAnswers": [
+          "leek",
+          "lettuce",
+          "mushroom"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "leek",
+        "wrongAnswers": [
+          "kale",
+          "lettuce",
+          "mushroom"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "lettuce",
+        "wrongAnswers": [
+          "kale",
+          "leek",
+          "mushroom"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "mushroom",
+        "wrongAnswers": [
+          "kale",
+          "leek",
+          "lettuce"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "okra",
+        "wrongAnswers": [
+          "kale",
+          "leek",
+          "lettuce"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "onion",
+        "wrongAnswers": [
+          "kale",
+          "leek",
+          "lettuce"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "peas",
+        "wrongAnswers": [
+          "kale",
+          "leek",
+          "lettuce"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "potato",
+        "wrongAnswers": [
+          "kale",
+          "leek",
+          "lettuce"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "radish",
+        "wrongAnswers": [
+          "kale",
+          "leek",
+          "lettuce"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "spinach",
+        "wrongAnswers": [
+          "kale",
+          "leek",
+          "lettuce"
+        ]
+      }
+    }
+  ]
+}

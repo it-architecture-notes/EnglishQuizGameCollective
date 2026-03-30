@@ -1,0 +1,124 @@
+{
+  "levelQuestions": [
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "almond",
+        "wrongAnswers": [
+          "beans",
+          "bread",
+          "butter"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "beans",
+        "wrongAnswers": [
+          "almond",
+          "bread",
+          "butter"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "bread",
+        "wrongAnswers": [
+          "almond",
+          "beans",
+          "butter"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "butter",
+        "wrongAnswers": [
+          "almond",
+          "beans",
+          "bread"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "cheese",
+        "wrongAnswers": [
+          "almond",
+          "beans",
+          "bread"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "eggs",
+        "wrongAnswers": [
+          "almond",
+          "beans",
+          "bread"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "flour",
+        "wrongAnswers": [
+          "almond",
+          "beans",
+          "bread"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "garbage-bag",
+        "wrongAnswers": [
+          "almond",
+          "beans",
+          "bread"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "hazelnut",
+        "wrongAnswers": [
+          "almond",
+          "beans",
+          "bread"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "honey",
+        "wrongAnswers": [
+          "almond",
+          "beans",
+          "bread"
+        ]
+      }
+    }
+  ]
+}

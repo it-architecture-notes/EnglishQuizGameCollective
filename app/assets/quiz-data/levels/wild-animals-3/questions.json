@@ -1,0 +1,124 @@
+{
+  "levelQuestions": [
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "lion",
+        "wrongAnswers": [
+          "monkey",
+          "mouse",
+          "owl"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "monkey",
+        "wrongAnswers": [
+          "lion",
+          "mouse",
+          "owl"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "mouse",
+        "wrongAnswers": [
+          "lion",
+          "monkey",
+          "owl"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "owl",
+        "wrongAnswers": [
+          "lion",
+          "monkey",
+          "mouse"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "parrot",
+        "wrongAnswers": [
+          "lion",
+          "monkey",
+          "mouse"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "penguin",
+        "wrongAnswers": [
+          "lion",
+          "monkey",
+          "mouse"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "rhinoceros",
+        "wrongAnswers": [
+          "lion",
+          "monkey",
+          "mouse"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "sea-turtle",
+        "wrongAnswers": [
+          "lion",
+          "monkey",
+          "mouse"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "shark",
+        "wrongAnswers": [
+          "lion",
+          "monkey",
+          "mouse"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "snake",
+        "wrongAnswers": [
+          "lion",
+          "monkey",
+          "mouse"
+        ]
+      }
+    }
+  ]
+}

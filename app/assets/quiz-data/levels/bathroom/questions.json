@@ -1,26 +1,14 @@
 {
   "levelQuestions": [
     {
-      "type": "vocab",
-      "template": "ConvoTemplate-1",
+      "type": "image",
+      "template": "imageQuizTemplate-1",
       "questionData": {
-        "character1": "mike",
-        "character2": "sarah",
-        "line1": {
-          "en": "Excuse me, where is the _____?",
-          "tr": "Affedersiniz, _____ nerede?",
-          "es": "Perdona, \u00bfd\u00f3nde est\u00e1 _____?"
-        },
-        "line2": {
-          "en": "The departure gate is on the right.",
-          "tr": "Kalk\u0131\u015f kap\u0131s\u0131 sa\u011fda.",
-          "es": "La puerta de embarque est\u00e1 a la derecha."
-        },
-        "answer": "gate",
-        "distractors": [
-          "ticket",
-          "luggage",
-          "passport"
+        "imageName": "bath-mat",
+        "wrongAnswers": [
+          "bathrobe",
+          "bathtub",
+          "comb"
         ]
       }
     },
@@ -28,11 +16,35 @@
       "type": "image",
       "template": "imageQuizTemplate-1",
       "questionData": {
-        "imageName": "hand-cream",
+        "imageName": "bathrobe",
         "wrongAnswers": [
-          "scales",
-          "soap",
-          "towel"
+          "bath-mat",
+          "bathtub",
+          "comb"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "bathtub",
+        "wrongAnswers": [
+          "bath-mat",
+          "bathrobe",
+          "comb"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "comb",
+        "wrongAnswers": [
+          "bath-mat",
+          "bathrobe",
+          "bathtub"
         ]
       }
     },
@@ -42,8 +54,68 @@
       "questionData": {
         "imageName": "face-mask",
         "wrongAnswers": [
-          "sink",
-          "comb",
+          "bath-mat",
+          "bathrobe",
+          "bathtub"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "hair-dryer",
+        "wrongAnswers": [
+          "bath-mat",
+          "bathrobe",
+          "bathtub"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "hand-cream",
+        "wrongAnswers": [
+          "bath-mat",
+          "bathrobe",
+          "bathtub"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "scales",
+        "wrongAnswers": [
+          "bath-mat",
+          "bathrobe",
+          "bathtub"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "shaving-razor",
+        "wrongAnswers": [
+          "bath-mat",
+          "bathrobe",
+          "bathtub"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "shower",
+        "wrongAnswers": [
+          "bath-mat",
+          "bathrobe",
           "bathtub"
         ]
       }
@@ -55,14 +127,38 @@
         "character1": "mike",
         "character2": "sarah",
         "line1": {
+          "en": "Excuse me, where is the _____?",
+          "tr": "Affedersiniz, _____ nerede?",
+          "es": "Perdona, ¿dónde está _____?"
+        },
+        "line2": {
+          "en": "The departure gate is on the right.",
+          "tr": "Kalkış kapısı sağda.",
+          "es": "La puerta de embarque está a la derecha."
+        },
+        "answer": "gate",
+        "distractors": [
+          "ticket",
+          "luggage",
+          "passport"
+        ]
+      }
+    },
+    {
+      "type": "vocab",
+      "template": "ConvoTemplate-1",
+      "questionData": {
+        "character1": "mike",
+        "character2": "sarah",
+        "line1": {
           "en": "Do you have your _____ ready?",
-          "tr": "_____ haz\u0131r m\u0131?",
-          "es": "\u00bfTienes tu _____ listo?"
+          "tr": "_____ hazır mı?",
+          "es": "¿Tienes tu _____ listo?"
         },
         "line2": {
           "en": "Yes, I have it right here.",
           "tr": "Evet, burada.",
-          "es": "S\u00ed, lo tengo aqu\u00ed."
+          "es": "Sí, lo tengo aquí."
         },
         "answer": "passport",
         "distractors": [
@@ -80,13 +176,13 @@
         "character2": "sarah",
         "line1": {
           "en": "I need to drop off my _____ at check-in.",
-          "tr": "Check-in'de _____ b\u0131rakmam laz\u0131m.",
+          "tr": "Check-in'de _____ bırakmam lazım.",
           "es": "Necesito dejar mi _____ en el mostrador."
         },
         "line2": {
           "en": "The check-in counter is straight ahead.",
-          "tr": "Check-in gi\u015fesi d\u00fcz ileride.",
-          "es": "El mostrador est\u00e1 recto adelante."
+          "tr": "Check-in gişesi düz ileride.",
+          "es": "El mostrador está recto adelante."
         },
         "answer": "luggage",
         "distractors": [
@@ -104,12 +200,12 @@
         "character2": "sarah",
         "line1": {
           "en": "Where can I get my boarding _____?",
-          "tr": "Bini\u015f _____ nereden alabilirim?",
-          "es": "\u00bfD\u00f3nde puedo obtener mi _____ de embarque?"
+          "tr": "Biniş _____ nereden alabilirim?",
+          "es": "¿Dónde puedo obtener mi _____ de embarque?"
         },
         "line2": {
           "en": "You can print it at the self-service kiosk.",
-          "tr": "Self-servis kiosktan yazd\u0131rabilirsin.",
+          "tr": "Self-servis kiosktan yazdırabilirsin.",
           "es": "Puedes imprimirla en el quiosco de autoservicio."
         },
         "answer": "pass",
@@ -128,13 +224,13 @@
         "character2": "sarah",
         "line1": {
           "en": "We need to go through security and _____ control.",
-          "tr": "G\u00fcvenlik ve _____ kontrol\u00fcnden ge\u00e7memiz laz\u0131m.",
+          "tr": "Güvenlik ve _____ kontrolünden geçmemiz lazım.",
           "es": "Necesitamos pasar por seguridad y control de _____."
         },
         "line2": {
           "en": "I know, let's hurry up.",
           "tr": "Biliyorum, hadi acele edelim.",
-          "es": "Lo s\u00e9, vamos a apresurarnos."
+          "es": "Lo sé, vamos a apresurarnos."
         },
         "answer": "passport",
         "distractors": [

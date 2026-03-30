@@ -1,0 +1,124 @@
+{
+  "levelQuestions": [
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "iv-drip",
+        "wrongAnswers": [
+          "mri-machine",
+          "nurse",
+          "paramedic"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "mri-machine",
+        "wrongAnswers": [
+          "iv-drip",
+          "nurse",
+          "paramedic"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "nurse",
+        "wrongAnswers": [
+          "iv-drip",
+          "mri-machine",
+          "paramedic"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "paramedic",
+        "wrongAnswers": [
+          "iv-drip",
+          "mri-machine",
+          "nurse"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "patient",
+        "wrongAnswers": [
+          "iv-drip",
+          "mri-machine",
+          "nurse"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "patient-monitor",
+        "wrongAnswers": [
+          "iv-drip",
+          "mri-machine",
+          "nurse"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "scale",
+        "wrongAnswers": [
+          "iv-drip",
+          "mri-machine",
+          "nurse"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "stretcher",
+        "wrongAnswers": [
+          "iv-drip",
+          "mri-machine",
+          "nurse"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "thermometer",
+        "wrongAnswers": [
+          "iv-drip",
+          "mri-machine",
+          "nurse"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "walker",
+        "wrongAnswers": [
+          "iv-drip",
+          "mri-machine",
+          "nurse"
+        ]
+      }
+    }
+  ]
+}

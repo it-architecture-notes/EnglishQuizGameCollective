@@ -4,11 +4,11 @@
       "type": "image",
       "template": "imageQuizTemplate-1",
       "questionData": {
-        "imageName": "Apple",
+        "imageName": "apple",
         "wrongAnswers": [
-          "Avocado",
-          "Blackberry",
-          "Cantaloupe"
+          "apricot",
+          "avocado",
+          "banana"
         ]
       }
     },
@@ -16,11 +16,11 @@
       "type": "image",
       "template": "imageQuizTemplate-1",
       "questionData": {
-        "imageName": "Avocado",
+        "imageName": "apricot",
         "wrongAnswers": [
-          "Apple",
-          "Blackberry",
-          "Cantaloupe"
+          "apple",
+          "avocado",
+          "banana"
         ]
       }
     },
@@ -28,11 +28,11 @@
       "type": "image",
       "template": "imageQuizTemplate-1",
       "questionData": {
-        "imageName": "Blackberry",
+        "imageName": "avocado",
         "wrongAnswers": [
-          "Apple",
-          "Avocado",
-          "Cantaloupe"
+          "apple",
+          "apricot",
+          "banana"
         ]
       }
     },
@@ -40,11 +40,11 @@
       "type": "image",
       "template": "imageQuizTemplate-1",
       "questionData": {
-        "imageName": "Cantaloupe",
+        "imageName": "banana",
         "wrongAnswers": [
-          "Apple",
-          "Avocado",
-          "Blackberry"
+          "apple",
+          "apricot",
+          "avocado"
         ]
       }
     },
@@ -52,11 +52,11 @@
       "type": "image",
       "template": "imageQuizTemplate-1",
       "questionData": {
-        "imageName": "Coconut",
+        "imageName": "blackberry",
         "wrongAnswers": [
-          "Apple",
-          "Avocado",
-          "Blackberry"
+          "apple",
+          "apricot",
+          "avocado"
         ]
       }
     },
@@ -64,11 +64,11 @@
       "type": "image",
       "template": "imageQuizTemplate-1",
       "questionData": {
-        "imageName": "Dates",
+        "imageName": "blueberry",
         "wrongAnswers": [
-          "Apple",
-          "Avocado",
-          "Blackberry"
+          "apple",
+          "apricot",
+          "avocado"
         ]
       }
     },
@@ -76,11 +76,11 @@
       "type": "image",
       "template": "imageQuizTemplate-1",
       "questionData": {
-        "imageName": "Fig",
+        "imageName": "cantaloupe",
         "wrongAnswers": [
-          "Apple",
-          "Avocado",
-          "Blackberry"
+          "apple",
+          "apricot",
+          "avocado"
         ]
       }
     },
@@ -88,11 +88,11 @@
       "type": "image",
       "template": "imageQuizTemplate-1",
       "questionData": {
-        "imageName": "Grapefruit",
+        "imageName": "cherry",
         "wrongAnswers": [
-          "Apple",
-          "Avocado",
-          "Blackberry"
+          "apple",
+          "apricot",
+          "avocado"
         ]
       }
     },
@@ -100,11 +100,11 @@
       "type": "image",
       "template": "imageQuizTemplate-1",
       "questionData": {
-        "imageName": "Mango",
+        "imageName": "coconut",
         "wrongAnswers": [
-          "Apple",
-          "Avocado",
-          "Blackberry"
+          "apple",
+          "apricot",
+          "avocado"
         ]
       }
     },
@@ -112,71 +112,11 @@
       "type": "image",
       "template": "imageQuizTemplate-1",
       "questionData": {
-        "imageName": "Orange",
+        "imageName": "cranberry",
         "wrongAnswers": [
-          "Apple",
-          "Avocado",
-          "Blackberry"
-        ]
-      }
-    },
-    {
-      "type": "image",
-      "template": "imageQuizTemplate-1",
-      "questionData": {
-        "imageName": "Peach",
-        "wrongAnswers": [
-          "Apple",
-          "Avocado",
-          "Blackberry"
-        ]
-      }
-    },
-    {
-      "type": "image",
-      "template": "imageQuizTemplate-1",
-      "questionData": {
-        "imageName": "Pineapple",
-        "wrongAnswers": [
-          "Apple",
-          "Avocado",
-          "Blackberry"
-        ]
-      }
-    },
-    {
-      "type": "image",
-      "template": "imageQuizTemplate-1",
-      "questionData": {
-        "imageName": "Pomegranate",
-        "wrongAnswers": [
-          "Apple",
-          "Avocado",
-          "Blackberry"
-        ]
-      }
-    },
-    {
-      "type": "image",
-      "template": "imageQuizTemplate-1",
-      "questionData": {
-        "imageName": "Quince",
-        "wrongAnswers": [
-          "Apple",
-          "Avocado",
-          "Blackberry"
-        ]
-      }
-    },
-    {
-      "type": "image",
-      "template": "imageQuizTemplate-1",
-      "questionData": {
-        "imageName": "Strawberry",
-        "wrongAnswers": [
-          "Apple",
-          "Avocado",
-          "Blackberry"
+          "apple",
+          "apricot",
+          "avocado"
         ]
       }
     }

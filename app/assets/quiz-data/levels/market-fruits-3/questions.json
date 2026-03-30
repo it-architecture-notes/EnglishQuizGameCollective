@@ -1,0 +1,124 @@
+{
+  "levelQuestions": [
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "plum",
+        "wrongAnswers": [
+          "peach",
+          "pear",
+          "pineapple"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "peach",
+        "wrongAnswers": [
+          "plum",
+          "pear",
+          "pineapple"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "pear",
+        "wrongAnswers": [
+          "plum",
+          "peach",
+          "pineapple"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "pineapple",
+        "wrongAnswers": [
+          "plum",
+          "peach",
+          "pear"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "pomegranate",
+        "wrongAnswers": [
+          "plum",
+          "peach",
+          "pear"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "pumpkin",
+        "wrongAnswers": [
+          "plum",
+          "peach",
+          "pear"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "quince",
+        "wrongAnswers": [
+          "plum",
+          "peach",
+          "pear"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "raspberry",
+        "wrongAnswers": [
+          "plum",
+          "peach",
+          "pear"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "strawberry",
+        "wrongAnswers": [
+          "plum",
+          "peach",
+          "pear"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "watermelon",
+        "wrongAnswers": [
+          "plum",
+          "peach",
+          "pear"
+        ]
+      }
+    }
+  ]
+}

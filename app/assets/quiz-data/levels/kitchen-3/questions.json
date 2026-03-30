@@ -1,0 +1,124 @@
+{
+  "levelQuestions": [
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "hand-blender",
+        "wrongAnswers": [
+          "jar",
+          "kitchen-scale",
+          "kitchen-timer"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "jar",
+        "wrongAnswers": [
+          "hand-blender",
+          "kitchen-scale",
+          "kitchen-timer"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "kitchen-scale",
+        "wrongAnswers": [
+          "hand-blender",
+          "jar",
+          "kitchen-timer"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "kitchen-timer",
+        "wrongAnswers": [
+          "hand-blender",
+          "jar",
+          "kitchen-scale"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "ladle",
+        "wrongAnswers": [
+          "hand-blender",
+          "jar",
+          "kitchen-scale"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "lemon-squeezer",
+        "wrongAnswers": [
+          "hand-blender",
+          "jar",
+          "kitchen-scale"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "measuring-cup",
+        "wrongAnswers": [
+          "hand-blender",
+          "jar",
+          "kitchen-scale"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "microwave",
+        "wrongAnswers": [
+          "hand-blender",
+          "jar",
+          "kitchen-scale"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "mortar",
+        "wrongAnswers": [
+          "hand-blender",
+          "jar",
+          "kitchen-scale"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "oven-mitt",
+        "wrongAnswers": [
+          "hand-blender",
+          "jar",
+          "kitchen-scale"
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,124 @@
+{
+  "levelQuestions": [
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "alone",
+        "wrongAnswers": [
+          "angry",
+          "bored",
+          "brave"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "angry",
+        "wrongAnswers": [
+          "alone",
+          "bored",
+          "brave"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "bored",
+        "wrongAnswers": [
+          "alone",
+          "angry",
+          "brave"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "brave",
+        "wrongAnswers": [
+          "alone",
+          "angry",
+          "bored"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "calm-relaxed",
+        "wrongAnswers": [
+          "alone",
+          "angry",
+          "bored"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "confident",
+        "wrongAnswers": [
+          "alone",
+          "angry",
+          "bored"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "confused",
+        "wrongAnswers": [
+          "alone",
+          "angry",
+          "bored"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "curious",
+        "wrongAnswers": [
+          "alone",
+          "angry",
+          "bored"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "disgusted",
+        "wrongAnswers": [
+          "alone",
+          "angry",
+          "bored"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "embarrassed",
+        "wrongAnswers": [
+          "alone",
+          "angry",
+          "bored"
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,40 @@
+{
+  "levelQuestions": [
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "toothpaste",
+        "wrongAnswers": [
+          "walnut",
+          "water",
+          "almond"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "walnut",
+        "wrongAnswers": [
+          "toothpaste",
+          "water",
+          "almond"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "water",
+        "wrongAnswers": [
+          "toothpaste",
+          "walnut",
+          "almond"
+        ]
+      }
+    }
+  ]
+}

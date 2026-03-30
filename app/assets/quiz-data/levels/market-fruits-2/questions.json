@@ -1,0 +1,124 @@
+{
+  "levelQuestions": [
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "dates",
+        "wrongAnswers": [
+          "dragon-fruit",
+          "fig",
+          "grape"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "dragon-fruit",
+        "wrongAnswers": [
+          "dates",
+          "fig",
+          "grape"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "fig",
+        "wrongAnswers": [
+          "dates",
+          "dragon-fruit",
+          "grape"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "grape",
+        "wrongAnswers": [
+          "dates",
+          "dragon-fruit",
+          "fig"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "grapefruit",
+        "wrongAnswers": [
+          "dates",
+          "dragon-fruit",
+          "fig"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "kiwi",
+        "wrongAnswers": [
+          "dates",
+          "dragon-fruit",
+          "fig"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "mango",
+        "wrongAnswers": [
+          "dates",
+          "dragon-fruit",
+          "fig"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "olive",
+        "wrongAnswers": [
+          "dates",
+          "dragon-fruit",
+          "fig"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "orange",
+        "wrongAnswers": [
+          "dates",
+          "dragon-fruit",
+          "fig"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "papaya",
+        "wrongAnswers": [
+          "dates",
+          "dragon-fruit",
+          "fig"
+        ]
+      }
+    }
+  ]
+}

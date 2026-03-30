@@ -1,0 +1,52 @@
+{
+  "levelQuestions": [
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "squirrel",
+        "wrongAnswers": [
+          "tiger",
+          "whale",
+          "wolf"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "tiger",
+        "wrongAnswers": [
+          "squirrel",
+          "whale",
+          "wolf"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "whale",
+        "wrongAnswers": [
+          "squirrel",
+          "tiger",
+          "wolf"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "wolf",
+        "wrongAnswers": [
+          "squirrel",
+          "tiger",
+          "whale"
+        ]
+      }
+    }
+  ]
+}

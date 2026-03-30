@@ -1,0 +1,124 @@
+{
+  "levelQuestions": [
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "dish-rack",
+        "wrongAnswers": [
+          "dish-soap",
+          "dishwasher",
+          "electric-kettle"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "dish-soap",
+        "wrongAnswers": [
+          "dish-rack",
+          "dishwasher",
+          "electric-kettle"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "dishwasher",
+        "wrongAnswers": [
+          "dish-rack",
+          "dish-soap",
+          "electric-kettle"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "electric-kettle",
+        "wrongAnswers": [
+          "dish-rack",
+          "dish-soap",
+          "dishwasher"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "fork",
+        "wrongAnswers": [
+          "dish-rack",
+          "dish-soap",
+          "dishwasher"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "fridge",
+        "wrongAnswers": [
+          "dish-rack",
+          "dish-soap",
+          "dishwasher"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "frying-pan",
+        "wrongAnswers": [
+          "dish-rack",
+          "dish-soap",
+          "dishwasher"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "funnel",
+        "wrongAnswers": [
+          "dish-rack",
+          "dish-soap",
+          "dishwasher"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "grater",
+        "wrongAnswers": [
+          "dish-rack",
+          "dish-soap",
+          "dishwasher"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "hand-mixer",
+        "wrongAnswers": [
+          "dish-rack",
+          "dish-soap",
+          "dishwasher"
+        ]
+      }
+    }
+  ]
+}

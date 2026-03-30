@@ -1,0 +1,52 @@
+{
+  "levelQuestions": [
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "nail",
+        "wrongAnswers": [
+          "plunger",
+          "screw",
+          "spanner"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "plunger",
+        "wrongAnswers": [
+          "nail",
+          "screw",
+          "spanner"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "screw",
+        "wrongAnswers": [
+          "nail",
+          "plunger",
+          "spanner"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "spanner",
+        "wrongAnswers": [
+          "nail",
+          "plunger",
+          "screw"
+        ]
+      }
+    }
+  ]
+}

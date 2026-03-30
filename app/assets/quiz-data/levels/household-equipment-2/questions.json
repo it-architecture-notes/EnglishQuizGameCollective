@@ -1,0 +1,124 @@
+{
+  "levelQuestions": [
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "batteries",
+        "wrongAnswers": [
+          "box-cutter",
+          "broom",
+          "duct-tape"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "box-cutter",
+        "wrongAnswers": [
+          "batteries",
+          "broom",
+          "duct-tape"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "broom",
+        "wrongAnswers": [
+          "batteries",
+          "box-cutter",
+          "duct-tape"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "duct-tape",
+        "wrongAnswers": [
+          "batteries",
+          "box-cutter",
+          "broom"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "flashlight",
+        "wrongAnswers": [
+          "batteries",
+          "box-cutter",
+          "broom"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "hammer",
+        "wrongAnswers": [
+          "batteries",
+          "box-cutter",
+          "broom"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "hand-saw",
+        "wrongAnswers": [
+          "batteries",
+          "box-cutter",
+          "broom"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "ironing-board",
+        "wrongAnswers": [
+          "batteries",
+          "box-cutter",
+          "broom"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "measure-tape",
+        "wrongAnswers": [
+          "batteries",
+          "box-cutter",
+          "broom"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "mop",
+        "wrongAnswers": [
+          "batteries",
+          "box-cutter",
+          "broom"
+        ]
+      }
+    }
+  ]
+}

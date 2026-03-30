@@ -1,0 +1,100 @@
+{
+  "levelQuestions": [
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "goat",
+        "wrongAnswers": [
+          "goose",
+          "horse",
+          "pig"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "goose",
+        "wrongAnswers": [
+          "goat",
+          "horse",
+          "pig"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "horse",
+        "wrongAnswers": [
+          "goat",
+          "goose",
+          "pig"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "pig",
+        "wrongAnswers": [
+          "goat",
+          "goose",
+          "horse"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "quail",
+        "wrongAnswers": [
+          "goat",
+          "goose",
+          "horse"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "rabbit",
+        "wrongAnswers": [
+          "goat",
+          "goose",
+          "horse"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "sheep",
+        "wrongAnswers": [
+          "goat",
+          "goose",
+          "horse"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "turkey",
+        "wrongAnswers": [
+          "goat",
+          "goose",
+          "horse"
+        ]
+      }
+    }
+  ]
+}

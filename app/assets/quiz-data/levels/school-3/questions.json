@@ -1,0 +1,64 @@
+{
+  "levelQuestions": [
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "street-map",
+        "wrongAnswers": [
+          "student",
+          "swing",
+          "trainer"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "student",
+        "wrongAnswers": [
+          "street-map",
+          "swing",
+          "trainer"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "swing",
+        "wrongAnswers": [
+          "street-map",
+          "student",
+          "trainer"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "trainer",
+        "wrongAnswers": [
+          "street-map",
+          "student",
+          "swing"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "whiteboard",
+        "wrongAnswers": [
+          "street-map",
+          "student",
+          "swing"
+        ]
+      }
+    }
+  ]
+}

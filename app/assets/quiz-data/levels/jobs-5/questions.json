@@ -1,0 +1,52 @@
+{
+  "levelQuestions": [
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "teacher",
+        "wrongAnswers": [
+          "veterinarian",
+          "waiter",
+          "writer"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "veterinarian",
+        "wrongAnswers": [
+          "teacher",
+          "waiter",
+          "writer"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "waiter",
+        "wrongAnswers": [
+          "teacher",
+          "veterinarian",
+          "writer"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "writer",
+        "wrongAnswers": [
+          "teacher",
+          "veterinarian",
+          "waiter"
+        ]
+      }
+    }
+  ]
+}

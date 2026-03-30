@@ -1,0 +1,124 @@
+{
+  "levelQuestions": [
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "art-room",
+        "wrongAnswers": [
+          "bookshelves",
+          "bulletin-board",
+          "cafeteria"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "bookshelves",
+        "wrongAnswers": [
+          "art-room",
+          "bulletin-board",
+          "cafeteria"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "bulletin-board",
+        "wrongAnswers": [
+          "art-room",
+          "bookshelves",
+          "cafeteria"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "cafeteria",
+        "wrongAnswers": [
+          "art-room",
+          "bookshelves",
+          "bulletin-board"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "classroom",
+        "wrongAnswers": [
+          "art-room",
+          "bookshelves",
+          "bulletin-board"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "clock",
+        "wrongAnswers": [
+          "art-room",
+          "bookshelves",
+          "bulletin-board"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "cross-guard",
+        "wrongAnswers": [
+          "art-room",
+          "bookshelves",
+          "bulletin-board"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "desk-chair",
+        "wrongAnswers": [
+          "art-room",
+          "bookshelves",
+          "bulletin-board"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "fire-alarm",
+        "wrongAnswers": [
+          "art-room",
+          "bookshelves",
+          "bulletin-board"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "flag",
+        "wrongAnswers": [
+          "art-room",
+          "bookshelves",
+          "bulletin-board"
+        ]
+      }
+    }
+  ]
+}

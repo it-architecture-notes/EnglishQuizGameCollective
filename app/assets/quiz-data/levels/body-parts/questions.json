@@ -1,0 +1,124 @@
+{
+  "levelQuestions": [
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "back",
+        "wrongAnswers": [
+          "brain",
+          "chest",
+          "ear"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "brain",
+        "wrongAnswers": [
+          "back",
+          "chest",
+          "ear"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "chest",
+        "wrongAnswers": [
+          "back",
+          "brain",
+          "ear"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "ear",
+        "wrongAnswers": [
+          "back",
+          "brain",
+          "chest"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "elbow",
+        "wrongAnswers": [
+          "back",
+          "brain",
+          "chest"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "eyes",
+        "wrongAnswers": [
+          "back",
+          "brain",
+          "chest"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "finger",
+        "wrongAnswers": [
+          "back",
+          "brain",
+          "chest"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "foot",
+        "wrongAnswers": [
+          "back",
+          "brain",
+          "chest"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "hair",
+        "wrongAnswers": [
+          "back",
+          "brain",
+          "chest"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "hand",
+        "wrongAnswers": [
+          "back",
+          "brain",
+          "chest"
+        ]
+      }
+    }
+  ]
+}

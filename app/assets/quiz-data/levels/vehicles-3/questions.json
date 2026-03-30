@@ -1,0 +1,28 @@
+{
+  "levelQuestions": [
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "truck",
+        "wrongAnswers": [
+          "van",
+          "boat",
+          "bulldozer"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "van",
+        "wrongAnswers": [
+          "truck",
+          "boat",
+          "bulldozer"
+        ]
+      }
+    }
+  ]
+}

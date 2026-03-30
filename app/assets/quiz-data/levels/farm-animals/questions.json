@@ -1,0 +1,124 @@
+{
+  "levelQuestions": [
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "alpaca",
+        "wrongAnswers": [
+          "bee",
+          "bull",
+          "cat"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "bee",
+        "wrongAnswers": [
+          "alpaca",
+          "bull",
+          "cat"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "bull",
+        "wrongAnswers": [
+          "alpaca",
+          "bee",
+          "cat"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "cat",
+        "wrongAnswers": [
+          "alpaca",
+          "bee",
+          "bull"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "chicken",
+        "wrongAnswers": [
+          "alpaca",
+          "bee",
+          "bull"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "cow",
+        "wrongAnswers": [
+          "alpaca",
+          "bee",
+          "bull"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "donkey",
+        "wrongAnswers": [
+          "alpaca",
+          "bee",
+          "bull"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "food",
+        "wrongAnswers": [
+          "alpaca",
+          "bee",
+          "bull"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "gallic-rooster",
+        "wrongAnswers": [
+          "alpaca",
+          "bee",
+          "bull"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "german-shepherd",
+        "wrongAnswers": [
+          "alpaca",
+          "bee",
+          "bull"
+        ]
+      }
+    }
+  ]
+}

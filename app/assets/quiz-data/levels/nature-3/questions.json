@@ -1,0 +1,112 @@
+{
+  "levelQuestions": [
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "snow",
+        "wrongAnswers": [
+          "stars",
+          "stones",
+          "storm"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "stars",
+        "wrongAnswers": [
+          "snow",
+          "stones",
+          "storm"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "stones",
+        "wrongAnswers": [
+          "snow",
+          "stars",
+          "storm"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "storm",
+        "wrongAnswers": [
+          "snow",
+          "stars",
+          "stones"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "sun",
+        "wrongAnswers": [
+          "snow",
+          "stars",
+          "stones"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "thunder",
+        "wrongAnswers": [
+          "snow",
+          "stars",
+          "stones"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "tree",
+        "wrongAnswers": [
+          "snow",
+          "stars",
+          "stones"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "volcano",
+        "wrongAnswers": [
+          "snow",
+          "stars",
+          "stones"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "wind",
+        "wrongAnswers": [
+          "snow",
+          "stars",
+          "stones"
+        ]
+      }
+    }
+  ]
+}

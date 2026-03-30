@@ -1,0 +1,124 @@
+{
+  "levelQuestions": [
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "pilot",
+        "wrongAnswers": [
+          "plumber",
+          "police",
+          "postman"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "plumber",
+        "wrongAnswers": [
+          "pilot",
+          "police",
+          "postman"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "police",
+        "wrongAnswers": [
+          "pilot",
+          "plumber",
+          "postman"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "postman",
+        "wrongAnswers": [
+          "pilot",
+          "plumber",
+          "police"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "programmer",
+        "wrongAnswers": [
+          "pilot",
+          "plumber",
+          "police"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "scientist",
+        "wrongAnswers": [
+          "pilot",
+          "plumber",
+          "police"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "soldier",
+        "wrongAnswers": [
+          "pilot",
+          "plumber",
+          "police"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "surgeon",
+        "wrongAnswers": [
+          "pilot",
+          "plumber",
+          "police"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "tailor",
+        "wrongAnswers": [
+          "pilot",
+          "plumber",
+          "police"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "taxi-driver",
+        "wrongAnswers": [
+          "pilot",
+          "plumber",
+          "police"
+        ]
+      }
+    }
+  ]
+}
