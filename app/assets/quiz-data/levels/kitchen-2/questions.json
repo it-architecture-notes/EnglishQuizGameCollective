@@ -4,11 +4,23 @@
       "type": "image",
       "template": "imageQuizTemplate-1",
       "questionData": {
+        "imageName": "coffee-mug",
+        "wrongAnswers": [
+          "dish-rack",
+          "dish-soap",
+          "dishwasher"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
         "imageName": "dish-rack",
         "wrongAnswers": [
+          "coffee-mug",
           "dish-soap",
-          "dishwasher",
-          "electric-kettle"
+          "dishwasher"
         ]
       }
     },
@@ -18,9 +30,9 @@
       "questionData": {
         "imageName": "dish-soap",
         "wrongAnswers": [
+          "coffee-mug",
           "dish-rack",
-          "dishwasher",
-          "electric-kettle"
+          "dishwasher"
         ]
       }
     },
@@ -30,9 +42,9 @@
       "questionData": {
         "imageName": "dishwasher",
         "wrongAnswers": [
+          "coffee-mug",
           "dish-rack",
-          "dish-soap",
-          "electric-kettle"
+          "dish-soap"
         ]
       }
     },
@@ -42,9 +54,9 @@
       "questionData": {
         "imageName": "electric-kettle",
         "wrongAnswers": [
+          "coffee-mug",
           "dish-rack",
-          "dish-soap",
-          "dishwasher"
+          "dish-soap"
         ]
       }
     },
@@ -54,9 +66,9 @@
       "questionData": {
         "imageName": "fork",
         "wrongAnswers": [
+          "coffee-mug",
           "dish-rack",
-          "dish-soap",
-          "dishwasher"
+          "dish-soap"
         ]
       }
     },
@@ -66,9 +78,9 @@
       "questionData": {
         "imageName": "fridge",
         "wrongAnswers": [
+          "coffee-mug",
           "dish-rack",
-          "dish-soap",
-          "dishwasher"
+          "dish-soap"
         ]
       }
     },
@@ -78,9 +90,9 @@
       "questionData": {
         "imageName": "frying-pan",
         "wrongAnswers": [
+          "coffee-mug",
           "dish-rack",
-          "dish-soap",
-          "dishwasher"
+          "dish-soap"
         ]
       }
     },
@@ -90,9 +102,9 @@
       "questionData": {
         "imageName": "funnel",
         "wrongAnswers": [
+          "coffee-mug",
           "dish-rack",
-          "dish-soap",
-          "dishwasher"
+          "dish-soap"
         ]
       }
     },
@@ -102,9 +114,9 @@
       "questionData": {
         "imageName": "grater",
         "wrongAnswers": [
+          "coffee-mug",
           "dish-rack",
-          "dish-soap",
-          "dishwasher"
+          "dish-soap"
         ]
       }
     },
@@ -114,9 +126,9 @@
       "questionData": {
         "imageName": "hand-mixer",
         "wrongAnswers": [
+          "coffee-mug",
           "dish-rack",
-          "dish-soap",
-          "dishwasher"
+          "dish-soap"
         ]
       }
     }

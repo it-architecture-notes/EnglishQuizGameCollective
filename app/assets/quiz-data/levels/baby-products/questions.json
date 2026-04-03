@@ -1,0 +1,100 @@
+{
+  "levelQuestions": [
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "baby-crib",
+        "wrongAnswers": [
+          "diaper",
+          "feeder",
+          "high-chair"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "diaper",
+        "wrongAnswers": [
+          "baby-crib",
+          "feeder",
+          "high-chair"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "feeder",
+        "wrongAnswers": [
+          "baby-crib",
+          "diaper",
+          "high-chair"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "high-chair",
+        "wrongAnswers": [
+          "baby-crib",
+          "diaper",
+          "feeder"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "onesie",
+        "wrongAnswers": [
+          "baby-crib",
+          "diaper",
+          "feeder"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "pacifier",
+        "wrongAnswers": [
+          "baby-crib",
+          "diaper",
+          "feeder"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "stroller",
+        "wrongAnswers": [
+          "baby-crib",
+          "diaper",
+          "feeder"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "toys",
+        "wrongAnswers": [
+          "baby-crib",
+          "diaper",
+          "feeder"
+        ]
+      }
+    }
+  ]
+}

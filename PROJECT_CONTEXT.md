@@ -17,4 +17,4 @@ Users progress through levels and earn stars and diamonds. The app includes prof
 - Friends panel is implemented with diamond-based unlock flow and persistent state.
 - Settings panel is implemented with language, music, and sound/FX toggles, including persistence.
 
-Configuration and game content are driven by local JSON assets, and user state is persisted locally on device storage. The app supports multiple phone/tablet aspect-ratio buckets with resolution-aware asset loading.
+Configuration and game content are driven by local JSON assets (`questions.json` per level under `assets/quiz-data/levels/{iconImageName}/`, including image rows and templates such as `ConvoTemplate-1` and `ConvoTemplate-2`), and user state is persisted locally on device storage. The app supports multiple phone/tablet aspect-ratio buckets with resolution-aware asset loading.

@@ -18,10 +18,10 @@ IMG_EXT = {".png", ".jpg", ".jpeg", ".webp"}
 PLANNED_CONVO: dict[str, int] = {"kitchen-1": 5}
 
 # Only these folders keep vocabulary/grammar rows; others are image-only (drops copy-paste convo).
-CONVO_SOURCES: frozenset[str] = frozenset({"airport-1", "bathroom", "kitchen-1"})
+CONVO_SOURCES: frozenset[str] = frozenset({"travel-1", "bathroom", "kitchen-1"})
 
 OVERFLOW_DEST: dict[str, str] = {
-    "airport-1": "airport-3",
+    "travel-1": "travel-3",
     "bathroom": "bathroom-2",
     "bedroom": "bedroom-2",
     "body-parts": "body-parts-2",
@@ -47,7 +47,7 @@ def _load_theme_groups() -> list[list[str]]:
     if bundled.is_file():
         return json.loads(bundled.read_text(encoding="utf-8"))
     return [
-        ["airport-1", "airport-2", "airport-3"],
+        ["travel-1", "travel-2", "travel-3"],
         ["bathroom", "bathroom-2"],
         ["bedroom", "bedroom-2"],
         ["body-parts", "body-parts-2", "body-parts-3"],
@@ -80,7 +80,7 @@ def _load_theme_groups() -> list[list[str]]:
 THEME_GROUPS: list[list[str]] = _load_theme_groups()
 
 FLOW_INSERT: dict[str, dict] = {
-    "airport-1": {"mainLevel": 1, "iconImageName": "airport-3", "title": "Airport 3"},
+    "travel-1": {"mainLevel": 1, "iconImageName": "travel-3", "title": "Travel 3"},
     "bathroom": {"mainLevel": 1, "iconImageName": "bathroom-2", "title": "Bathroom 2"},
     "bedroom": {"mainLevel": 1, "iconImageName": "bedroom-2", "title": "Bedroom 2"},
     "body-parts": {"mainLevel": 1, "iconImageName": "body-parts-2", "title": "Body Parts 2"},
@@ -122,7 +122,7 @@ FLOW_INSERT: dict[str, dict] = {
 }
 
 PUBSPEC_LINES: dict[str, str] = {
-    "airport-3": "    - assets/quiz-data/levels/airport-3/",
+    "travel-3": "    - assets/quiz-data/levels/travel-3/",
     "bathroom-2": "    - assets/quiz-data/levels/bathroom-2/",
     "bedroom-2": "    - assets/quiz-data/levels/bedroom-2/",
     "body-parts-2": "    - assets/quiz-data/levels/body-parts-2/",

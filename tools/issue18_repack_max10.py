@@ -20,7 +20,7 @@ IMG_EXT = {".png", ".jpg", ".jpeg", ".webp"}
 
 # Ordered theme groups: all images in the group are flattened, sorted by basename, then cut into chunks of 10.
 THEME_GROUPS: list[list[str]] = [
-    ["airport-1", "airport-2", "airport-3"],
+    ["travel-1", "travel-2", "travel-3"],
     ["bathroom", "bathroom-2"],
     ["bedroom", "bedroom-2"],
     ["body-parts", "body-parts-2"],

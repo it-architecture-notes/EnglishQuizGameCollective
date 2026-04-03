@@ -4,11 +4,11 @@
       "type": "image",
       "template": "imageQuizTemplate-1",
       "questionData": {
-        "imageName": "alligator",
+        "imageName": "beige",
         "wrongAnswers": [
-          "animal",
-          "bat",
-          "bear"
+          "cyan",
+          "dark-blue",
+          "gold"
         ]
       }
     },
@@ -16,11 +16,11 @@
       "type": "image",
       "template": "imageQuizTemplate-1",
       "questionData": {
-        "imageName": "animal",
+        "imageName": "cyan",
         "wrongAnswers": [
-          "alligator",
-          "bat",
-          "bear"
+          "beige",
+          "dark-blue",
+          "gold"
         ]
       }
     },
@@ -28,11 +28,11 @@
       "type": "image",
       "template": "imageQuizTemplate-1",
       "questionData": {
-        "imageName": "bat",
+        "imageName": "dark-blue",
         "wrongAnswers": [
-          "alligator",
-          "animal",
-          "bear"
+          "beige",
+          "cyan",
+          "gold"
         ]
       }
     },
@@ -40,11 +40,11 @@
       "type": "image",
       "template": "imageQuizTemplate-1",
       "questionData": {
-        "imageName": "bear",
+        "imageName": "gold",
         "wrongAnswers": [
-          "alligator",
-          "animal",
-          "bat"
+          "beige",
+          "cyan",
+          "dark-blue"
         ]
       }
     },
@@ -52,11 +52,11 @@
       "type": "image",
       "template": "imageQuizTemplate-1",
       "questionData": {
-        "imageName": "bird",
+        "imageName": "gray",
         "wrongAnswers": [
-          "alligator",
-          "animal",
-          "bat"
+          "beige",
+          "cyan",
+          "dark-blue"
         ]
       }
     },
@@ -64,11 +64,11 @@
       "type": "image",
       "template": "imageQuizTemplate-1",
       "questionData": {
-        "imageName": "butterfly",
+        "imageName": "green",
         "wrongAnswers": [
-          "alligator",
-          "animal",
-          "bat"
+          "beige",
+          "cyan",
+          "dark-blue"
         ]
       }
     },
@@ -76,11 +76,11 @@
       "type": "image",
       "template": "imageQuizTemplate-1",
       "questionData": {
-        "imageName": "camel",
+        "imageName": "magenta",
         "wrongAnswers": [
-          "alligator",
-          "animal",
-          "bat"
+          "beige",
+          "cyan",
+          "dark-blue"
         ]
       }
     },
@@ -88,11 +88,11 @@
       "type": "image",
       "template": "imageQuizTemplate-1",
       "questionData": {
-        "imageName": "crab",
+        "imageName": "maroon",
         "wrongAnswers": [
-          "alligator",
-          "animal",
-          "bat"
+          "beige",
+          "cyan",
+          "dark-blue"
         ]
       }
     },
@@ -100,11 +100,11 @@
       "type": "image",
       "template": "imageQuizTemplate-1",
       "questionData": {
-        "imageName": "crow",
+        "imageName": "peach",
         "wrongAnswers": [
-          "alligator",
-          "animal",
-          "bat"
+          "beige",
+          "cyan",
+          "dark-blue"
         ]
       }
     },
@@ -112,11 +112,11 @@
       "type": "image",
       "template": "imageQuizTemplate-1",
       "questionData": {
-        "imageName": "deer",
+        "imageName": "turqoise",
         "wrongAnswers": [
-          "alligator",
-          "animal",
-          "bat"
+          "beige",
+          "cyan",
+          "dark-blue"
         ]
       }
     },
@@ -124,35 +124,11 @@
       "type": "image",
       "template": "imageQuizTemplate-1",
       "questionData": {
-        "imageName": "pigeon",
+        "imageName": "violet",
         "wrongAnswers": [
-          "alligator",
-          "animal",
-          "bat"
-        ]
-      }
-    },
-    {
-      "type": "image",
-      "template": "imageQuizTemplate-1",
-      "questionData": {
-        "imageName": "seagull",
-        "wrongAnswers": [
-          "alligator",
-          "animal",
-          "bat"
-        ]
-      }
-    },
-    {
-      "type": "image",
-      "template": "imageQuizTemplate-1",
-      "questionData": {
-        "imageName": "swan",
-        "wrongAnswers": [
-          "alligator",
-          "animal",
-          "bat"
+          "beige",
+          "cyan",
+          "dark-blue"
         ]
       }
     }

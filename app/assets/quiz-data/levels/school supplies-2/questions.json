@@ -100,6 +100,18 @@
       "type": "image",
       "template": "imageQuizTemplate-1",
       "questionData": {
+        "imageName": "stapler",
+        "wrongAnswers": [
+          "paper-clip",
+          "pen",
+          "pencil"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
         "imageName": "tape",
         "wrongAnswers": [
           "paper-clip",

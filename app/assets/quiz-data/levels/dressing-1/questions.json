@@ -119,6 +119,30 @@
           "blouse"
         ]
       }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "raincoat",
+        "wrongAnswers": [
+          "beanie",
+          "belt",
+          "blouse"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "snow-boots",
+        "wrongAnswers": [
+          "beanie",
+          "belt",
+          "blouse"
+        ]
+      }
     }
   ]
 }

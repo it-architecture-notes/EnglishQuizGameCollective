@@ -4,6 +4,66 @@
       "type": "image",
       "template": "imageQuizTemplate-1",
       "questionData": {
+        "imageName": "light-switch",
+        "wrongAnswers": [
+          "mirror",
+          "picture",
+          "plant"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "mirror",
+        "wrongAnswers": [
+          "light-switch",
+          "picture",
+          "plant"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "picture",
+        "wrongAnswers": [
+          "light-switch",
+          "mirror",
+          "plant"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "plant",
+        "wrongAnswers": [
+          "light-switch",
+          "mirror",
+          "picture"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "remote-control",
+        "wrongAnswers": [
+          "light-switch",
+          "mirror",
+          "picture"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
         "imageName": "rug-carpet",
         "wrongAnswers": [
           "light-switch",
@@ -16,9 +76,9 @@
       "type": "image",
       "template": "imageQuizTemplate-1",
       "questionData": {
-        "imageName": "light-switch",
+        "imageName": "side-table",
         "wrongAnswers": [
-          "rug-carpet",
+          "light-switch",
           "mirror",
           "picture"
         ]
@@ -28,71 +88,11 @@
       "type": "image",
       "template": "imageQuizTemplate-1",
       "questionData": {
-        "imageName": "mirror",
-        "wrongAnswers": [
-          "rug-carpet",
-          "light-switch",
-          "picture"
-        ]
-      }
-    },
-    {
-      "type": "image",
-      "template": "imageQuizTemplate-1",
-      "questionData": {
-        "imageName": "picture",
-        "wrongAnswers": [
-          "rug-carpet",
-          "light-switch",
-          "mirror"
-        ]
-      }
-    },
-    {
-      "type": "image",
-      "template": "imageQuizTemplate-1",
-      "questionData": {
-        "imageName": "plant",
-        "wrongAnswers": [
-          "rug-carpet",
-          "light-switch",
-          "mirror"
-        ]
-      }
-    },
-    {
-      "type": "image",
-      "template": "imageQuizTemplate-1",
-      "questionData": {
-        "imageName": "remote-control",
-        "wrongAnswers": [
-          "rug-carpet",
-          "light-switch",
-          "mirror"
-        ]
-      }
-    },
-    {
-      "type": "image",
-      "template": "imageQuizTemplate-1",
-      "questionData": {
-        "imageName": "side-table",
-        "wrongAnswers": [
-          "rug-carpet",
-          "light-switch",
-          "mirror"
-        ]
-      }
-    },
-    {
-      "type": "image",
-      "template": "imageQuizTemplate-1",
-      "questionData": {
         "imageName": "sofa-couch",
         "wrongAnswers": [
-          "rug-carpet",
           "light-switch",
-          "mirror"
+          "mirror",
+          "picture"
         ]
       }
     },
@@ -102,9 +102,9 @@
       "questionData": {
         "imageName": "table",
         "wrongAnswers": [
-          "rug-carpet",
           "light-switch",
-          "mirror"
+          "mirror",
+          "picture"
         ]
       }
     },
@@ -114,9 +114,9 @@
       "questionData": {
         "imageName": "tv-stand",
         "wrongAnswers": [
-          "rug-carpet",
           "light-switch",
-          "mirror"
+          "mirror",
+          "picture"
         ]
       }
     }

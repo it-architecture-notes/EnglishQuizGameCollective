@@ -4,11 +4,11 @@
       "type": "image",
       "template": "imageQuizTemplate-1",
       "questionData": {
-        "imageName": "clothes-pin",
+        "imageName": "bench",
         "wrongAnswers": [
-          "nail",
-          "plunger",
-          "screw"
+          "bridge",
+          "bus-stop-sign",
+          "fountain"
         ]
       }
     },
@@ -16,11 +16,11 @@
       "type": "image",
       "template": "imageQuizTemplate-1",
       "questionData": {
-        "imageName": "nail",
+        "imageName": "bridge",
         "wrongAnswers": [
-          "clothes-pin",
-          "plunger",
-          "screw"
+          "bench",
+          "bus-stop-sign",
+          "fountain"
         ]
       }
     },
@@ -28,11 +28,11 @@
       "type": "image",
       "template": "imageQuizTemplate-1",
       "questionData": {
-        "imageName": "plunger",
+        "imageName": "bus-stop-sign",
         "wrongAnswers": [
-          "clothes-pin",
-          "nail",
-          "screw"
+          "bench",
+          "bridge",
+          "fountain"
         ]
       }
     },
@@ -40,11 +40,11 @@
       "type": "image",
       "template": "imageQuizTemplate-1",
       "questionData": {
-        "imageName": "screw",
+        "imageName": "fountain",
         "wrongAnswers": [
-          "clothes-pin",
-          "nail",
-          "plunger"
+          "bench",
+          "bridge",
+          "bus-stop-sign"
         ]
       }
     },
@@ -52,11 +52,11 @@
       "type": "image",
       "template": "imageQuizTemplate-1",
       "questionData": {
-        "imageName": "spanner",
+        "imageName": "parking-meter",
         "wrongAnswers": [
-          "clothes-pin",
-          "nail",
-          "plunger"
+          "bench",
+          "bridge",
+          "bus-stop-sign"
         ]
       }
     },
@@ -64,11 +64,11 @@
       "type": "image",
       "template": "imageQuizTemplate-1",
       "questionData": {
-        "imageName": "tumble-dryer",
+        "imageName": "recycle-bin",
         "wrongAnswers": [
-          "clothes-pin",
-          "nail",
-          "plunger"
+          "bench",
+          "bridge",
+          "bus-stop-sign"
         ]
       }
     },
@@ -76,11 +76,11 @@
       "type": "image",
       "template": "imageQuizTemplate-1",
       "questionData": {
-        "imageName": "washing-machine",
+        "imageName": "sidewalk",
         "wrongAnswers": [
-          "clothes-pin",
-          "nail",
-          "plunger"
+          "bench",
+          "bridge",
+          "bus-stop-sign"
         ]
       }
     }

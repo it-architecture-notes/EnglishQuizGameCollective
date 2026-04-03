@@ -4,11 +4,11 @@
       "type": "image",
       "template": "imageQuizTemplate-1",
       "questionData": {
-        "imageName": "clothes-pin",
+        "imageName": "air-pump",
         "wrongAnswers": [
-          "nail",
-          "plunger",
-          "screw"
+          "car-wash",
+          "fire-extinguisher",
+          "fuel-nozzle"
         ]
       }
     },
@@ -16,11 +16,11 @@
       "type": "image",
       "template": "imageQuizTemplate-1",
       "questionData": {
-        "imageName": "nail",
+        "imageName": "car-wash",
         "wrongAnswers": [
-          "clothes-pin",
-          "plunger",
-          "screw"
+          "air-pump",
+          "fire-extinguisher",
+          "fuel-nozzle"
         ]
       }
     },
@@ -28,11 +28,11 @@
       "type": "image",
       "template": "imageQuizTemplate-1",
       "questionData": {
-        "imageName": "plunger",
+        "imageName": "fire-extinguisher",
         "wrongAnswers": [
-          "clothes-pin",
-          "nail",
-          "screw"
+          "air-pump",
+          "car-wash",
+          "fuel-nozzle"
         ]
       }
     },
@@ -40,11 +40,11 @@
       "type": "image",
       "template": "imageQuizTemplate-1",
       "questionData": {
-        "imageName": "screw",
+        "imageName": "fuel-nozzle",
         "wrongAnswers": [
-          "clothes-pin",
-          "nail",
-          "plunger"
+          "air-pump",
+          "car-wash",
+          "fire-extinguisher"
         ]
       }
     },
@@ -52,11 +52,11 @@
       "type": "image",
       "template": "imageQuizTemplate-1",
       "questionData": {
-        "imageName": "spanner",
+        "imageName": "gas-pump",
         "wrongAnswers": [
-          "clothes-pin",
-          "nail",
-          "plunger"
+          "air-pump",
+          "car-wash",
+          "fire-extinguisher"
         ]
       }
     },
@@ -64,11 +64,11 @@
       "type": "image",
       "template": "imageQuizTemplate-1",
       "questionData": {
-        "imageName": "tumble-dryer",
+        "imageName": "parking-space",
         "wrongAnswers": [
-          "clothes-pin",
-          "nail",
-          "plunger"
+          "air-pump",
+          "car-wash",
+          "fire-extinguisher"
         ]
       }
     },
@@ -76,11 +76,11 @@
       "type": "image",
       "template": "imageQuizTemplate-1",
       "questionData": {
-        "imageName": "washing-machine",
+        "imageName": "windshield-squeegee",
         "wrongAnswers": [
-          "clothes-pin",
-          "nail",
-          "plunger"
+          "air-pump",
+          "car-wash",
+          "fire-extinguisher"
         ]
       }
     }

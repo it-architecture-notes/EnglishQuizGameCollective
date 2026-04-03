@@ -1,0 +1,100 @@
+{
+  "levelQuestions": [
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "bubble-wrap",
+        "wrongAnswers": [
+          "envelope",
+          "label",
+          "package-parcel"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "envelope",
+        "wrongAnswers": [
+          "bubble-wrap",
+          "label",
+          "package-parcel"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "label",
+        "wrongAnswers": [
+          "bubble-wrap",
+          "envelope",
+          "package-parcel"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "package-parcel",
+        "wrongAnswers": [
+          "bubble-wrap",
+          "envelope",
+          "label"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "post-clerk",
+        "wrongAnswers": [
+          "bubble-wrap",
+          "envelope",
+          "label"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "post-stamp",
+        "wrongAnswers": [
+          "bubble-wrap",
+          "envelope",
+          "label"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "postbox",
+        "wrongAnswers": [
+          "bubble-wrap",
+          "envelope",
+          "label"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "postcard",
+        "wrongAnswers": [
+          "bubble-wrap",
+          "envelope",
+          "label"
+        ]
+      }
+    }
+  ]
+}

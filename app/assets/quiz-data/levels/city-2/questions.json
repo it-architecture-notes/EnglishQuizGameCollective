@@ -4,11 +4,11 @@
       "type": "image",
       "template": "imageQuizTemplate-1",
       "questionData": {
-        "imageName": "alligator",
+        "imageName": "bus-stop",
         "wrongAnswers": [
-          "animal",
-          "bat",
-          "bear"
+          "crosswalk",
+          "elevator",
+          "escalator"
         ]
       }
     },
@@ -16,11 +16,11 @@
       "type": "image",
       "template": "imageQuizTemplate-1",
       "questionData": {
-        "imageName": "animal",
+        "imageName": "crosswalk",
         "wrongAnswers": [
-          "alligator",
-          "bat",
-          "bear"
+          "bus-stop",
+          "elevator",
+          "escalator"
         ]
       }
     },
@@ -28,11 +28,11 @@
       "type": "image",
       "template": "imageQuizTemplate-1",
       "questionData": {
-        "imageName": "bat",
+        "imageName": "elevator",
         "wrongAnswers": [
-          "alligator",
-          "animal",
-          "bear"
+          "bus-stop",
+          "crosswalk",
+          "escalator"
         ]
       }
     },
@@ -40,11 +40,11 @@
       "type": "image",
       "template": "imageQuizTemplate-1",
       "questionData": {
-        "imageName": "bear",
+        "imageName": "escalator",
         "wrongAnswers": [
-          "alligator",
-          "animal",
-          "bat"
+          "bus-stop",
+          "crosswalk",
+          "elevator"
         ]
       }
     },
@@ -52,11 +52,11 @@
       "type": "image",
       "template": "imageQuizTemplate-1",
       "questionData": {
-        "imageName": "bird",
+        "imageName": "fire-hydrant",
         "wrongAnswers": [
-          "alligator",
-          "animal",
-          "bat"
+          "bus-stop",
+          "crosswalk",
+          "elevator"
         ]
       }
     },
@@ -64,11 +64,11 @@
       "type": "image",
       "template": "imageQuizTemplate-1",
       "questionData": {
-        "imageName": "butterfly",
+        "imageName": "road",
         "wrongAnswers": [
-          "alligator",
-          "animal",
-          "bat"
+          "bus-stop",
+          "crosswalk",
+          "elevator"
         ]
       }
     },
@@ -76,11 +76,11 @@
       "type": "image",
       "template": "imageQuizTemplate-1",
       "questionData": {
-        "imageName": "camel",
+        "imageName": "skyscraper",
         "wrongAnswers": [
-          "alligator",
-          "animal",
-          "bat"
+          "bus-stop",
+          "crosswalk",
+          "elevator"
         ]
       }
     },
@@ -88,11 +88,11 @@
       "type": "image",
       "template": "imageQuizTemplate-1",
       "questionData": {
-        "imageName": "crab",
+        "imageName": "stairs",
         "wrongAnswers": [
-          "alligator",
-          "animal",
-          "bat"
+          "bus-stop",
+          "crosswalk",
+          "elevator"
         ]
       }
     },
@@ -100,11 +100,11 @@
       "type": "image",
       "template": "imageQuizTemplate-1",
       "questionData": {
-        "imageName": "crow",
+        "imageName": "statute",
         "wrongAnswers": [
-          "alligator",
-          "animal",
-          "bat"
+          "bus-stop",
+          "crosswalk",
+          "elevator"
         ]
       }
     },
@@ -112,11 +112,11 @@
       "type": "image",
       "template": "imageQuizTemplate-1",
       "questionData": {
-        "imageName": "deer",
+        "imageName": "traffic-light",
         "wrongAnswers": [
-          "alligator",
-          "animal",
-          "bat"
+          "bus-stop",
+          "crosswalk",
+          "elevator"
         ]
       }
     },
@@ -124,35 +124,11 @@
       "type": "image",
       "template": "imageQuizTemplate-1",
       "questionData": {
-        "imageName": "pigeon",
+        "imageName": "tunnel",
         "wrongAnswers": [
-          "alligator",
-          "animal",
-          "bat"
-        ]
-      }
-    },
-    {
-      "type": "image",
-      "template": "imageQuizTemplate-1",
-      "questionData": {
-        "imageName": "seagull",
-        "wrongAnswers": [
-          "alligator",
-          "animal",
-          "bat"
-        ]
-      }
-    },
-    {
-      "type": "image",
-      "template": "imageQuizTemplate-1",
-      "questionData": {
-        "imageName": "swan",
-        "wrongAnswers": [
-          "alligator",
-          "animal",
-          "bat"
+          "bus-stop",
+          "crosswalk",
+          "elevator"
         ]
       }
     }

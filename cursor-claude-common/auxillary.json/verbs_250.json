@@ -1,0 +1,1803 @@
+[
+  {
+    "verb": "run",
+    "type": "base",
+    "level": "A1",
+    "categories": [
+      "money-bank",
+      "common"
+    ]
+  },
+  {
+    "verb": "look forward to",
+    "type": "phrasal",
+    "level": "A1",
+    "categories": [
+      "city"
+    ]
+  },
+  {
+    "verb": "see",
+    "type": "base",
+    "level": "A2",
+    "categories": [
+      "city",
+      "money-bank"
+    ]
+  },
+  {
+    "verb": "explain",
+    "type": "base",
+    "level": "B1",
+    "categories": [
+      "money-bank",
+      "school"
+    ]
+  },
+  {
+    "verb": "come",
+    "type": "base",
+    "level": "B1",
+    "categories": [
+      "money-bank"
+    ]
+  },
+  {
+    "verb": "cancel",
+    "type": "base",
+    "level": "A2",
+    "categories": [
+      "home",
+      "school"
+    ]
+  },
+  {
+    "verb": "disagree",
+    "type": "base",
+    "level": "A2",
+    "categories": [
+      "school",
+      "home"
+    ]
+  },
+  {
+    "verb": "earn",
+    "type": "base",
+    "level": "A1",
+    "categories": [
+      "travel",
+      "school"
+    ]
+  },
+  {
+    "verb": "lose",
+    "type": "base",
+    "level": "A2",
+    "categories": [
+      "money-bank"
+    ]
+  },
+  {
+    "verb": "fill out",
+    "type": "phrasal",
+    "level": "B1",
+    "categories": [
+      "common"
+    ]
+  },
+  {
+    "verb": "check out",
+    "type": "phrasal",
+    "level": "B1",
+    "categories": [
+      "money-bank",
+      "emotions"
+    ]
+  },
+  {
+    "verb": "smell",
+    "type": "base",
+    "level": "A1",
+    "categories": [
+      "money-bank",
+      "kitchen"
+    ]
+  },
+  {
+    "verb": "create",
+    "type": "base",
+    "level": "A2",
+    "categories": [
+      "common"
+    ]
+  },
+  {
+    "verb": "talk",
+    "type": "base",
+    "level": "A2",
+    "categories": [
+      "travel",
+      "city"
+    ]
+  },
+  {
+    "verb": "study",
+    "type": "base",
+    "level": "B1",
+    "categories": [
+      "school",
+      "city"
+    ]
+  },
+  {
+    "verb": "come back",
+    "type": "phrasal",
+    "level": "A2",
+    "categories": [
+      "emotions",
+      "money-bank"
+    ]
+  },
+  {
+    "verb": "work out",
+    "type": "phrasal",
+    "level": "A1",
+    "categories": [
+      "home",
+      "emotions"
+    ]
+  },
+  {
+    "verb": "count",
+    "type": "base",
+    "level": "B1",
+    "categories": [
+      "kitchen"
+    ]
+  },
+  {
+    "verb": "lift",
+    "type": "base",
+    "level": "A2",
+    "categories": [
+      "travel",
+      "emotions"
+    ]
+  },
+  {
+    "verb": "watch",
+    "type": "base",
+    "level": "A2",
+    "categories": [
+      "common"
+    ]
+  },
+  {
+    "verb": "let",
+    "type": "base",
+    "level": "A2",
+    "categories": [
+      "home"
+    ]
+  },
+  {
+    "verb": "write down",
+    "type": "phrasal",
+    "level": "A1",
+    "categories": [
+      "travel",
+      "kitchen"
+    ]
+  },
+  {
+    "verb": "want",
+    "type": "base",
+    "level": "A1",
+    "categories": [
+      "travel",
+      "common"
+    ]
+  },
+  {
+    "verb": "discover",
+    "type": "base",
+    "level": "A2",
+    "categories": [
+      "home",
+      "city"
+    ]
+  },
+  {
+    "verb": "look for",
+    "type": "phrasal",
+    "level": "B1",
+    "categories": [
+      "travel",
+      "money-bank"
+    ]
+  },
+  {
+    "verb": "look",
+    "type": "base",
+    "level": "A1",
+    "categories": [
+      "emotions",
+      "school"
+    ]
+  },
+  {
+    "verb": "carry on",
+    "type": "phrasal",
+    "level": "A2",
+    "categories": [
+      "kitchen"
+    ]
+  },
+  {
+    "verb": "get out",
+    "type": "phrasal",
+    "level": "A1",
+    "categories": [
+      "kitchen"
+    ]
+  },
+  {
+    "verb": "put away",
+    "type": "phrasal",
+    "level": "A2",
+    "categories": [
+      "city"
+    ]
+  },
+  {
+    "verb": "sit down",
+    "type": "phrasal",
+    "level": "A1",
+    "categories": [
+      "money-bank",
+      "travel"
+    ]
+  },
+  {
+    "verb": "relax",
+    "type": "base",
+    "level": "A1",
+    "categories": [
+      "school",
+      "kitchen"
+    ]
+  },
+  {
+    "verb": "break up",
+    "type": "phrasal",
+    "level": "A1",
+    "categories": [
+      "city"
+    ]
+  },
+  {
+    "verb": "make",
+    "type": "base",
+    "level": "A2",
+    "categories": [
+      "travel",
+      "city"
+    ]
+  },
+  {
+    "verb": "catch",
+    "type": "base",
+    "level": "A1",
+    "categories": [
+      "money-bank",
+      "city"
+    ]
+  },
+  {
+    "verb": "cut",
+    "type": "base",
+    "level": "A1",
+    "categories": [
+      "money-bank"
+    ]
+  },
+  {
+    "verb": "bring",
+    "type": "base",
+    "level": "A1",
+    "categories": [
+      "home"
+    ]
+  },
+  {
+    "verb": "pick",
+    "type": "base",
+    "level": "A1",
+    "categories": [
+      "money-bank",
+      "school"
+    ]
+  },
+  {
+    "verb": "turn down",
+    "type": "phrasal",
+    "level": "B1",
+    "categories": [
+      "kitchen"
+    ]
+  },
+  {
+    "verb": "play",
+    "type": "base",
+    "level": "A1",
+    "categories": [
+      "common",
+      "money-bank"
+    ]
+  },
+  {
+    "verb": "go",
+    "type": "base",
+    "level": "A1",
+    "categories": [
+      "city",
+      "home"
+    ]
+  },
+  {
+    "verb": "pull",
+    "type": "base",
+    "level": "B1",
+    "categories": [
+      "money-bank",
+      "travel"
+    ]
+  },
+  {
+    "verb": "tell",
+    "type": "base",
+    "level": "B1",
+    "categories": [
+      "school"
+    ]
+  },
+  {
+    "verb": "bake",
+    "type": "base",
+    "level": "A1",
+    "categories": [
+      "emotions"
+    ]
+  },
+  {
+    "verb": "plug",
+    "type": "base",
+    "level": "B1",
+    "categories": [
+      "emotions",
+      "travel"
+    ]
+  },
+  {
+    "verb": "fall",
+    "type": "base",
+    "level": "A2",
+    "categories": [
+      "common",
+      "city"
+    ]
+  },
+  {
+    "verb": "empty",
+    "type": "base",
+    "level": "B1",
+    "categories": [
+      "money-bank"
+    ]
+  },
+  {
+    "verb": "look around",
+    "type": "phrasal",
+    "level": "A1",
+    "categories": [
+      "kitchen"
+    ]
+  },
+  {
+    "verb": "stir",
+    "type": "base",
+    "level": "A2",
+    "categories": [
+      "school"
+    ]
+  },
+  {
+    "verb": "prepare",
+    "type": "base",
+    "level": "A2",
+    "categories": [
+      "home"
+    ]
+  },
+  {
+    "verb": "do",
+    "type": "base",
+    "level": "B1",
+    "categories": [
+      "travel"
+    ]
+  },
+  {
+    "verb": "begin",
+    "type": "base",
+    "level": "A2",
+    "categories": [
+      "travel"
+    ]
+  },
+  {
+    "verb": "charge",
+    "type": "base",
+    "level": "A2",
+    "categories": [
+      "school",
+      "emotions"
+    ]
+  },
+  {
+    "verb": "drive",
+    "type": "base",
+    "level": "A1",
+    "categories": [
+      "common"
+    ]
+  },
+  {
+    "verb": "smile",
+    "type": "base",
+    "level": "A1",
+    "categories": [
+      "school"
+    ]
+  },
+  {
+    "verb": "hurt",
+    "type": "base",
+    "level": "B1",
+    "categories": [
+      "school",
+      "travel"
+    ]
+  },
+  {
+    "verb": "hate",
+    "type": "base",
+    "level": "A2",
+    "categories": [
+      "school",
+      "money-bank"
+    ]
+  },
+  {
+    "verb": "call back",
+    "type": "phrasal",
+    "level": "A1",
+    "categories": [
+      "city",
+      "emotions"
+    ]
+  },
+  {
+    "verb": "give up",
+    "type": "phrasal",
+    "level": "A2",
+    "categories": [
+      "home"
+    ]
+  },
+  {
+    "verb": "put",
+    "type": "base",
+    "level": "A1",
+    "categories": [
+      "travel",
+      "money-bank"
+    ]
+  },
+  {
+    "verb": "walk",
+    "type": "base",
+    "level": "A1",
+    "categories": [
+      "city"
+    ]
+  },
+  {
+    "verb": "build",
+    "type": "base",
+    "level": "B1",
+    "categories": [
+      "kitchen",
+      "money-bank"
+    ]
+  },
+  {
+    "verb": "say",
+    "type": "base",
+    "level": "A1",
+    "categories": [
+      "kitchen",
+      "city"
+    ]
+  },
+  {
+    "verb": "hold",
+    "type": "base",
+    "level": "A2",
+    "categories": [
+      "common",
+      "emotions"
+    ]
+  },
+  {
+    "verb": "check in",
+    "type": "phrasal",
+    "level": "A2",
+    "categories": [
+      "kitchen",
+      "school"
+    ]
+  },
+  {
+    "verb": "sell",
+    "type": "base",
+    "level": "B1",
+    "categories": [
+      "emotions"
+    ]
+  },
+  {
+    "verb": "laugh",
+    "type": "base",
+    "level": "A1",
+    "categories": [
+      "travel",
+      "kitchen"
+    ]
+  },
+  {
+    "verb": "move",
+    "type": "base",
+    "level": "A1",
+    "categories": [
+      "travel"
+    ]
+  },
+  {
+    "verb": "pay",
+    "type": "base",
+    "level": "B1",
+    "categories": [
+      "common"
+    ]
+  },
+  {
+    "verb": "get on",
+    "type": "phrasal",
+    "level": "A1",
+    "categories": [
+      "common"
+    ]
+  },
+  {
+    "verb": "close",
+    "type": "base",
+    "level": "A2",
+    "categories": [
+      "kitchen"
+    ]
+  },
+  {
+    "verb": "jump",
+    "type": "base",
+    "level": "B1",
+    "categories": [
+      "money-bank",
+      "kitchen"
+    ]
+  },
+  {
+    "verb": "look after",
+    "type": "phrasal",
+    "level": "A2",
+    "categories": [
+      "kitchen"
+    ]
+  },
+  {
+    "verb": "write",
+    "type": "base",
+    "level": "A1",
+    "categories": [
+      "common"
+    ]
+  },
+  {
+    "verb": "learn",
+    "type": "base",
+    "level": "B1",
+    "categories": [
+      "kitchen",
+      "travel"
+    ]
+  },
+  {
+    "verb": "live",
+    "type": "base",
+    "level": "A2",
+    "categories": [
+      "money-bank"
+    ]
+  },
+  {
+    "verb": "remove",
+    "type": "base",
+    "level": "A1",
+    "categories": [
+      "city",
+      "money-bank"
+    ]
+  },
+  {
+    "verb": "find",
+    "type": "base",
+    "level": "A2",
+    "categories": [
+      "money-bank",
+      "city"
+    ]
+  },
+  {
+    "verb": "press",
+    "type": "base",
+    "level": "A1",
+    "categories": [
+      "school"
+    ]
+  },
+  {
+    "verb": "drink",
+    "type": "base",
+    "level": "B1",
+    "categories": [
+      "school",
+      "home"
+    ]
+  },
+  {
+    "verb": "wash",
+    "type": "base",
+    "level": "B1",
+    "categories": [
+      "emotions"
+    ]
+  },
+  {
+    "verb": "enter",
+    "type": "base",
+    "level": "A2",
+    "categories": [
+      "money-bank",
+      "school"
+    ]
+  },
+  {
+    "verb": "rest",
+    "type": "base",
+    "level": "B1",
+    "categories": [
+      "city"
+    ]
+  },
+  {
+    "verb": "put on",
+    "type": "phrasal",
+    "level": "A2",
+    "categories": [
+      "city",
+      "kitchen"
+    ]
+  },
+  {
+    "verb": "break down",
+    "type": "phrasal",
+    "level": "A1",
+    "categories": [
+      "city",
+      "money-bank"
+    ]
+  },
+  {
+    "verb": "clean up",
+    "type": "phrasal",
+    "level": "A2",
+    "categories": [
+      "money-bank"
+    ]
+  },
+  {
+    "verb": "show",
+    "type": "base",
+    "level": "A2",
+    "categories": [
+      "money-bank",
+      "kitchen"
+    ]
+  },
+  {
+    "verb": "peel",
+    "type": "base",
+    "level": "A2",
+    "categories": [
+      "common",
+      "home"
+    ]
+  },
+  {
+    "verb": "order",
+    "type": "base",
+    "level": "A1",
+    "categories": [
+      "money-bank"
+    ]
+  },
+  {
+    "verb": "lend",
+    "type": "base",
+    "level": "B1",
+    "categories": [
+      "home"
+    ]
+  },
+  {
+    "verb": "clean",
+    "type": "base",
+    "level": "A2",
+    "categories": [
+      "school",
+      "travel"
+    ]
+  },
+  {
+    "verb": "receive",
+    "type": "base",
+    "level": "A2",
+    "categories": [
+      "city"
+    ]
+  },
+  {
+    "verb": "run out",
+    "type": "phrasal",
+    "level": "B1",
+    "categories": [
+      "travel",
+      "money-bank"
+    ]
+  },
+  {
+    "verb": "depart",
+    "type": "base",
+    "level": "B1",
+    "categories": [
+      "travel"
+    ]
+  },
+  {
+    "verb": "fill",
+    "type": "base",
+    "level": "B1",
+    "categories": [
+      "school"
+    ]
+  },
+  {
+    "verb": "listen",
+    "type": "base",
+    "level": "A1",
+    "categories": [
+      "money-bank",
+      "emotions"
+    ]
+  },
+  {
+    "verb": "follow",
+    "type": "base",
+    "level": "A1",
+    "categories": [
+      "city"
+    ]
+  },
+  {
+    "verb": "treat",
+    "type": "base",
+    "level": "B1",
+    "categories": [
+      "kitchen"
+    ]
+  },
+  {
+    "verb": "drop",
+    "type": "base",
+    "level": "B1",
+    "categories": [
+      "school",
+      "travel"
+    ]
+  },
+  {
+    "verb": "deliver",
+    "type": "base",
+    "level": "A2",
+    "categories": [
+      "travel"
+    ]
+  },
+  {
+    "verb": "give back",
+    "type": "phrasal",
+    "level": "A2",
+    "categories": [
+      "money-bank"
+    ]
+  },
+  {
+    "verb": "enjoy",
+    "type": "base",
+    "level": "B1",
+    "categories": [
+      "common"
+    ]
+  },
+  {
+    "verb": "reserve",
+    "type": "base",
+    "level": "A1",
+    "categories": [
+      "kitchen",
+      "money-bank"
+    ]
+  },
+  {
+    "verb": "weigh",
+    "type": "base",
+    "level": "B1",
+    "categories": [
+      "emotions",
+      "money-bank"
+    ]
+  },
+  {
+    "verb": "call",
+    "type": "base",
+    "level": "A2",
+    "categories": [
+      "common"
+    ]
+  },
+  {
+    "verb": "boil",
+    "type": "base",
+    "level": "A2",
+    "categories": [
+      "kitchen"
+    ]
+  },
+  {
+    "verb": "wait",
+    "type": "base",
+    "level": "A2",
+    "categories": [
+      "school",
+      "kitchen"
+    ]
+  },
+  {
+    "verb": "fix",
+    "type": "base",
+    "level": "B1",
+    "categories": [
+      "home"
+    ]
+  },
+  {
+    "verb": "check",
+    "type": "base",
+    "level": "A2",
+    "categories": [
+      "travel",
+      "common"
+    ]
+  },
+  {
+    "verb": "slice",
+    "type": "base",
+    "level": "B1",
+    "categories": [
+      "emotions"
+    ]
+  },
+  {
+    "verb": "agree",
+    "type": "base",
+    "level": "B1",
+    "categories": [
+      "travel"
+    ]
+  },
+  {
+    "verb": "go on",
+    "type": "phrasal",
+    "level": "A2",
+    "categories": [
+      "kitchen",
+      "travel"
+    ]
+  },
+  {
+    "verb": "think",
+    "type": "base",
+    "level": "B1",
+    "categories": [
+      "kitchen"
+    ]
+  },
+  {
+    "verb": "need",
+    "type": "base",
+    "level": "A2",
+    "categories": [
+      "common",
+      "home"
+    ]
+  },
+  {
+    "verb": "change",
+    "type": "base",
+    "level": "A2",
+    "categories": [
+      "emotions"
+    ]
+  },
+  {
+    "verb": "answer",
+    "type": "base",
+    "level": "B1",
+    "categories": [
+      "money-bank"
+    ]
+  },
+  {
+    "verb": "mix",
+    "type": "base",
+    "level": "A1",
+    "categories": [
+      "kitchen"
+    ]
+  },
+  {
+    "verb": "remember",
+    "type": "base",
+    "level": "A2",
+    "categories": [
+      "school",
+      "home"
+    ]
+  },
+  {
+    "verb": "repair",
+    "type": "base",
+    "level": "A1",
+    "categories": [
+      "common",
+      "money-bank"
+    ]
+  },
+  {
+    "verb": "work",
+    "type": "base",
+    "level": "A1",
+    "categories": [
+      "school",
+      "city"
+    ]
+  },
+  {
+    "verb": "set up",
+    "type": "phrasal",
+    "level": "A1",
+    "categories": [
+      "home"
+    ]
+  },
+  {
+    "verb": "call off",
+    "type": "phrasal",
+    "level": "A1",
+    "categories": [
+      "common"
+    ]
+  },
+  {
+    "verb": "fry",
+    "type": "base",
+    "level": "A1",
+    "categories": [
+      "money-bank"
+    ]
+  },
+  {
+    "verb": "love",
+    "type": "base",
+    "level": "A1",
+    "categories": [
+      "emotions",
+      "kitchen"
+    ]
+  },
+  {
+    "verb": "hear",
+    "type": "base",
+    "level": "A1",
+    "categories": [
+      "school",
+      "travel"
+    ]
+  },
+  {
+    "verb": "get up",
+    "type": "phrasal",
+    "level": "B1",
+    "categories": [
+      "travel",
+      "common"
+    ]
+  },
+  {
+    "verb": "pick up",
+    "type": "phrasal",
+    "level": "B1",
+    "categories": [
+      "kitchen",
+      "home"
+    ]
+  },
+  {
+    "verb": "feel",
+    "type": "base",
+    "level": "A2",
+    "categories": [
+      "school",
+      "city"
+    ]
+  },
+  {
+    "verb": "come in",
+    "type": "phrasal",
+    "level": "A2",
+    "categories": [
+      "travel"
+    ]
+  },
+  {
+    "verb": "climb",
+    "type": "base",
+    "level": "B1",
+    "categories": [
+      "city",
+      "common"
+    ]
+  },
+  {
+    "verb": "forget",
+    "type": "base",
+    "level": "A1",
+    "categories": [
+      "school"
+    ]
+  },
+  {
+    "verb": "get off",
+    "type": "phrasal",
+    "level": "A1",
+    "categories": [
+      "emotions",
+      "school"
+    ]
+  },
+  {
+    "verb": "teach",
+    "type": "base",
+    "level": "A1",
+    "categories": [
+      "home"
+    ]
+  },
+  {
+    "verb": "choose",
+    "type": "base",
+    "level": "B1",
+    "categories": [
+      "school",
+      "kitchen"
+    ]
+  },
+  {
+    "verb": "unplug",
+    "type": "base",
+    "level": "A2",
+    "categories": [
+      "home",
+      "emotions"
+    ]
+  },
+  {
+    "verb": "prefer",
+    "type": "base",
+    "level": "A2",
+    "categories": [
+      "common"
+    ]
+  },
+  {
+    "verb": "start",
+    "type": "base",
+    "level": "A2",
+    "categories": [
+      "city"
+    ]
+  },
+  {
+    "verb": "stop",
+    "type": "base",
+    "level": "A1",
+    "categories": [
+      "home",
+      "kitchen"
+    ]
+  },
+  {
+    "verb": "turn on",
+    "type": "phrasal",
+    "level": "B1",
+    "categories": [
+      "school",
+      "common"
+    ]
+  },
+  {
+    "verb": "take care of",
+    "type": "phrasal",
+    "level": "A2",
+    "categories": [
+      "travel",
+      "emotions"
+    ]
+  },
+  {
+    "verb": "take",
+    "type": "base",
+    "level": "A1",
+    "categories": [
+      "school"
+    ]
+  },
+  {
+    "verb": "use",
+    "type": "base",
+    "level": "B1",
+    "categories": [
+      "kitchen"
+    ]
+  },
+  {
+    "verb": "sleep",
+    "type": "base",
+    "level": "A2",
+    "categories": [
+      "kitchen"
+    ]
+  },
+  {
+    "verb": "taste",
+    "type": "base",
+    "level": "B1",
+    "categories": [
+      "money-bank",
+      "common"
+    ]
+  },
+  {
+    "verb": "invest",
+    "type": "base",
+    "level": "B1",
+    "categories": [
+      "emotions",
+      "common"
+    ]
+  },
+  {
+    "verb": "buy",
+    "type": "base",
+    "level": "A2",
+    "categories": [
+      "common",
+      "money-bank"
+    ]
+  },
+  {
+    "verb": "go ahead",
+    "type": "phrasal",
+    "level": "A1",
+    "categories": [
+      "travel"
+    ]
+  },
+  {
+    "verb": "grill",
+    "type": "base",
+    "level": "A2",
+    "categories": [
+      "home"
+    ]
+  },
+  {
+    "verb": "go out",
+    "type": "phrasal",
+    "level": "A2",
+    "categories": [
+      "city"
+    ]
+  },
+  {
+    "verb": "stand up",
+    "type": "phrasal",
+    "level": "A2",
+    "categories": [
+      "travel"
+    ]
+  },
+  {
+    "verb": "get",
+    "type": "base",
+    "level": "A1",
+    "categories": [
+      "school",
+      "city"
+    ]
+  },
+  {
+    "verb": "win",
+    "type": "base",
+    "level": "A1",
+    "categories": [
+      "emotions",
+      "common"
+    ]
+  },
+  {
+    "verb": "figure out",
+    "type": "phrasal",
+    "level": "A1",
+    "categories": [
+      "common",
+      "money-bank"
+    ]
+  },
+  {
+    "verb": "open",
+    "type": "base",
+    "level": "B1",
+    "categories": [
+      "home",
+      "travel"
+    ]
+  },
+  {
+    "verb": "cook",
+    "type": "base",
+    "level": "B1",
+    "categories": [
+      "kitchen"
+    ]
+  },
+  {
+    "verb": "take part in",
+    "type": "phrasal",
+    "level": "B1",
+    "categories": [
+      "city"
+    ]
+  },
+  {
+    "verb": "pack",
+    "type": "base",
+    "level": "B1",
+    "categories": [
+      "travel",
+      "city"
+    ]
+  },
+  {
+    "verb": "be",
+    "type": "base",
+    "level": "B1",
+    "categories": [
+      "emotions"
+    ]
+  },
+  {
+    "verb": "take off",
+    "type": "phrasal",
+    "level": "A2",
+    "categories": [
+      "kitchen"
+    ]
+  },
+  {
+    "verb": "run into",
+    "type": "phrasal",
+    "level": "A1",
+    "categories": [
+      "travel"
+    ]
+  },
+  {
+    "verb": "go back",
+    "type": "phrasal",
+    "level": "B1",
+    "categories": [
+      "common"
+    ]
+  },
+  {
+    "verb": "come out",
+    "type": "phrasal",
+    "level": "A2",
+    "categories": [
+      "travel",
+      "city"
+    ]
+  },
+  {
+    "verb": "turn up",
+    "type": "phrasal",
+    "level": "A2",
+    "categories": [
+      "school",
+      "city"
+    ]
+  },
+  {
+    "verb": "heal",
+    "type": "base",
+    "level": "A2",
+    "categories": [
+      "kitchen",
+      "school"
+    ]
+  },
+  {
+    "verb": "take back",
+    "type": "phrasal",
+    "level": "A2",
+    "categories": [
+      "common"
+    ]
+  },
+  {
+    "verb": "know",
+    "type": "base",
+    "level": "A2",
+    "categories": [
+      "common"
+    ]
+  },
+  {
+    "verb": "push",
+    "type": "base",
+    "level": "A1",
+    "categories": [
+      "home"
+    ]
+  },
+  {
+    "verb": "bring up",
+    "type": "phrasal",
+    "level": "A1",
+    "categories": [
+      "city"
+    ]
+  },
+  {
+    "verb": "search",
+    "type": "base",
+    "level": "A1",
+    "categories": [
+      "emotions",
+      "travel"
+    ]
+  },
+  {
+    "verb": "guess",
+    "type": "base",
+    "level": "A2",
+    "categories": [
+      "kitchen"
+    ]
+  },
+  {
+    "verb": "measure",
+    "type": "base",
+    "level": "A2",
+    "categories": [
+      "kitchen",
+      "school"
+    ]
+  },
+  {
+    "verb": "touch",
+    "type": "base",
+    "level": "B1",
+    "categories": [
+      "money-bank"
+    ]
+  },
+  {
+    "verb": "look up",
+    "type": "phrasal",
+    "level": "B1",
+    "categories": [
+      "travel",
+      "common"
+    ]
+  },
+  {
+    "verb": "look down",
+    "type": "phrasal",
+    "level": "A2",
+    "categories": [
+      "kitchen"
+    ]
+  },
+  {
+    "verb": "plan",
+    "type": "base",
+    "level": "A2",
+    "categories": [
+      "common",
+      "city"
+    ]
+  },
+  {
+    "verb": "take away",
+    "type": "phrasal",
+    "level": "B1",
+    "categories": [
+      "common"
+    ]
+  },
+  {
+    "verb": "wake up",
+    "type": "phrasal",
+    "level": "A1",
+    "categories": [
+      "emotions",
+      "kitchen"
+    ]
+  },
+  {
+    "verb": "exit",
+    "type": "base",
+    "level": "A2",
+    "categories": [
+      "kitchen",
+      "city"
+    ]
+  },
+  {
+    "verb": "throw",
+    "type": "base",
+    "level": "A1",
+    "categories": [
+      "money-bank"
+    ]
+  },
+  {
+    "verb": "send",
+    "type": "base",
+    "level": "A1",
+    "categories": [
+      "common",
+      "emotions"
+    ]
+  },
+  {
+    "verb": "arrive",
+    "type": "base",
+    "level": "A1",
+    "categories": [
+      "emotions"
+    ]
+  },
+  {
+    "verb": "read",
+    "type": "base",
+    "level": "A2",
+    "categories": [
+      "travel"
+    ]
+  },
+  {
+    "verb": "decide",
+    "type": "base",
+    "level": "B1",
+    "categories": [
+      "travel",
+      "kitchen"
+    ]
+  },
+  {
+    "verb": "pour",
+    "type": "base",
+    "level": "B1",
+    "categories": [
+      "travel"
+    ]
+  },
+  {
+    "verb": "hang out",
+    "type": "phrasal",
+    "level": "A2",
+    "categories": [
+      "money-bank",
+      "common"
+    ]
+  },
+  {
+    "verb": "find out",
+    "type": "phrasal",
+    "level": "B1",
+    "categories": [
+      "city",
+      "home"
+    ]
+  },
+  {
+    "verb": "book",
+    "type": "base",
+    "level": "A1",
+    "categories": [
+      "common",
+      "money-bank"
+    ]
+  },
+  {
+    "verb": "add",
+    "type": "base",
+    "level": "A2",
+    "categories": [
+      "home",
+      "emotions"
+    ]
+  },
+  {
+    "verb": "save",
+    "type": "base",
+    "level": "A2",
+    "categories": [
+      "emotions"
+    ]
+  },
+  {
+    "verb": "travel",
+    "type": "base",
+    "level": "B1",
+    "categories": [
+      "common",
+      "city"
+    ]
+  },
+  {
+    "verb": "serve",
+    "type": "base",
+    "level": "A2",
+    "categories": [
+      "school",
+      "city"
+    ]
+  },
+  {
+    "verb": "hope",
+    "type": "base",
+    "level": "B1",
+    "categories": [
+      "school",
+      "city"
+    ]
+  },
+  {
+    "verb": "eat",
+    "type": "base",
+    "level": "A1",
+    "categories": [
+      "emotions",
+      "school"
+    ]
+  },
+  {
+    "verb": "carry",
+    "type": "base",
+    "level": "B1",
+    "categories": [
+      "common"
+    ]
+  },
+  {
+    "verb": "return",
+    "type": "base",
+    "level": "A1",
+    "categories": [
+      "home",
+      "school"
+    ]
+  },
+  {
+    "verb": "cry",
+    "type": "base",
+    "level": "A2",
+    "categories": [
+      "travel"
+    ]
+  },
+  {
+    "verb": "get in",
+    "type": "phrasal",
+    "level": "A1",
+    "categories": [
+      "city",
+      "travel"
+    ]
+  },
+  {
+    "verb": "try",
+    "type": "base",
+    "level": "A1",
+    "categories": [
+      "city"
+    ]
+  },
+  {
+    "verb": "speak",
+    "type": "base",
+    "level": "A1",
+    "categories": [
+      "money-bank",
+      "school"
+    ]
+  },
+  {
+    "verb": "ask",
+    "type": "base",
+    "level": "A2",
+    "categories": [
+      "money-bank"
+    ]
+  },
+  {
+    "verb": "turn off",
+    "type": "phrasal",
+    "level": "A1",
+    "categories": [
+      "travel",
+      "school"
+    ]
+  },
+  {
+    "verb": "keep",
+    "type": "base",
+    "level": "B1",
+    "categories": [
+      "common"
+    ]
+  },
+  {
+    "verb": "help",
+    "type": "base",
+    "level": "A1",
+    "categories": [
+      "money-bank",
+      "kitchen"
+    ]
+  },
+  {
+    "verb": "grow",
+    "type": "base",
+    "level": "A1",
+    "categories": [
+      "money-bank",
+      "emotions"
+    ]
+  },
+  {
+    "verb": "spend",
+    "type": "base",
+    "level": "A2",
+    "categories": [
+      "emotions",
+      "school"
+    ]
+  },
+  {
+    "verb": "give",
+    "type": "base",
+    "level": "B1",
+    "categories": [
+      "travel",
+      "emotions"
+    ]
+  },
+  {
+    "verb": "unpack",
+    "type": "base",
+    "level": "A2",
+    "categories": [
+      "school",
+      "kitchen"
+    ]
+  },
+  {
+    "verb": "have",
+    "type": "base",
+    "level": "A2",
+    "categories": [
+      "travel"
+    ]
+  },
+  {
+    "verb": "come across",
+    "type": "phrasal",
+    "level": "B1",
+    "categories": [
+      "city",
+      "school"
+    ]
+  },
+  {
+    "verb": "turn",
+    "type": "base",
+    "level": "B1",
+    "categories": [
+      "home",
+      "school"
+    ]
+  },
+  {
+    "verb": "borrow",
+    "type": "base",
+    "level": "A1",
+    "categories": [
+      "emotions",
+      "common"
+    ]
+  },
+  {
+    "verb": "leave",
+    "type": "base",
+    "level": "B1",
+    "categories": [
+      "emotions",
+      "kitchen"
+    ]
+  }
+]

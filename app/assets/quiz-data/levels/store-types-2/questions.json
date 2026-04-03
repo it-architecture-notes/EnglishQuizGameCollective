@@ -4,11 +4,11 @@
       "type": "image",
       "template": "imageQuizTemplate-1",
       "questionData": {
-        "imageName": "clothes-pin",
+        "imageName": "bakery",
         "wrongAnswers": [
-          "nail",
-          "plunger",
-          "screw"
+          "bookstore",
+          "car-repair-shop",
+          "electronics store"
         ]
       }
     },
@@ -16,11 +16,11 @@
       "type": "image",
       "template": "imageQuizTemplate-1",
       "questionData": {
-        "imageName": "nail",
+        "imageName": "bookstore",
         "wrongAnswers": [
-          "clothes-pin",
-          "plunger",
-          "screw"
+          "bakery",
+          "car-repair-shop",
+          "electronics store"
         ]
       }
     },
@@ -28,11 +28,11 @@
       "type": "image",
       "template": "imageQuizTemplate-1",
       "questionData": {
-        "imageName": "plunger",
+        "imageName": "car-repair-shop",
         "wrongAnswers": [
-          "clothes-pin",
-          "nail",
-          "screw"
+          "bakery",
+          "bookstore",
+          "electronics store"
         ]
       }
     },
@@ -40,11 +40,11 @@
       "type": "image",
       "template": "imageQuizTemplate-1",
       "questionData": {
-        "imageName": "screw",
+        "imageName": "electronics store",
         "wrongAnswers": [
-          "clothes-pin",
-          "nail",
-          "plunger"
+          "bakery",
+          "bookstore",
+          "car-repair-shop"
         ]
       }
     },
@@ -52,11 +52,11 @@
       "type": "image",
       "template": "imageQuizTemplate-1",
       "questionData": {
-        "imageName": "spanner",
+        "imageName": "pet-shop",
         "wrongAnswers": [
-          "clothes-pin",
-          "nail",
-          "plunger"
+          "bakery",
+          "bookstore",
+          "car-repair-shop"
         ]
       }
     },
@@ -64,11 +64,11 @@
       "type": "image",
       "template": "imageQuizTemplate-1",
       "questionData": {
-        "imageName": "tumble-dryer",
+        "imageName": "post-office",
         "wrongAnswers": [
-          "clothes-pin",
-          "nail",
-          "plunger"
+          "bakery",
+          "bookstore",
+          "car-repair-shop"
         ]
       }
     },
@@ -76,11 +76,11 @@
       "type": "image",
       "template": "imageQuizTemplate-1",
       "questionData": {
-        "imageName": "washing-machine",
+        "imageName": "stadium",
         "wrongAnswers": [
-          "clothes-pin",
-          "nail",
-          "plunger"
+          "bakery",
+          "bookstore",
+          "car-repair-shop"
         ]
       }
     }

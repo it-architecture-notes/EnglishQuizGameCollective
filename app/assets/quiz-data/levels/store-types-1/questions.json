@@ -4,11 +4,11 @@
       "type": "image",
       "template": "imageQuizTemplate-1",
       "questionData": {
-        "imageName": "clothes-pin",
+        "imageName": "bank",
         "wrongAnswers": [
-          "nail",
-          "plunger",
-          "screw"
+          "fish-market",
+          "restaurant",
+          "stationery-store"
         ]
       }
     },
@@ -16,11 +16,11 @@
       "type": "image",
       "template": "imageQuizTemplate-1",
       "questionData": {
-        "imageName": "nail",
+        "imageName": "fish-market",
         "wrongAnswers": [
-          "clothes-pin",
-          "plunger",
-          "screw"
+          "bank",
+          "restaurant",
+          "stationery-store"
         ]
       }
     },
@@ -28,11 +28,11 @@
       "type": "image",
       "template": "imageQuizTemplate-1",
       "questionData": {
-        "imageName": "plunger",
+        "imageName": "restaurant",
         "wrongAnswers": [
-          "clothes-pin",
-          "nail",
-          "screw"
+          "bank",
+          "fish-market",
+          "stationery-store"
         ]
       }
     },
@@ -40,11 +40,11 @@
       "type": "image",
       "template": "imageQuizTemplate-1",
       "questionData": {
-        "imageName": "screw",
+        "imageName": "stationery-store",
         "wrongAnswers": [
-          "clothes-pin",
-          "nail",
-          "plunger"
+          "bank",
+          "fish-market",
+          "restaurant"
         ]
       }
     },
@@ -52,11 +52,11 @@
       "type": "image",
       "template": "imageQuizTemplate-1",
       "questionData": {
-        "imageName": "spanner",
+        "imageName": "supermarket",
         "wrongAnswers": [
-          "clothes-pin",
-          "nail",
-          "plunger"
+          "bank",
+          "fish-market",
+          "restaurant"
         ]
       }
     },
@@ -64,11 +64,11 @@
       "type": "image",
       "template": "imageQuizTemplate-1",
       "questionData": {
-        "imageName": "tumble-dryer",
+        "imageName": "theatre",
         "wrongAnswers": [
-          "clothes-pin",
-          "nail",
-          "plunger"
+          "bank",
+          "fish-market",
+          "restaurant"
         ]
       }
     },
@@ -76,11 +76,11 @@
       "type": "image",
       "template": "imageQuizTemplate-1",
       "questionData": {
-        "imageName": "washing-machine",
+        "imageName": "toy",
         "wrongAnswers": [
-          "clothes-pin",
-          "nail",
-          "plunger"
+          "bank",
+          "fish-market",
+          "restaurant"
         ]
       }
     }

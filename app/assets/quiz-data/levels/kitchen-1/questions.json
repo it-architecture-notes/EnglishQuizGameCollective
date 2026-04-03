@@ -239,6 +239,24 @@
           "might"
         ]
       }
+    },
+    {
+      "type": "vocab",
+      "template": "ConvoTemplate-2",
+      "questionData": {
+        "imageName": "blender",
+        "sentence": {
+          "en": "I use the _____ to mix soup.",
+          "tr": "I use the _____ (blender) to mix soup.",
+          "es": "I use the _____ (licuadora) to mix soup."
+        },
+        "answer": "blender",
+        "distractors": [
+          "bowl",
+          "apron",
+          "baking-tray"
+        ]
+      }
     }
   ]
 }

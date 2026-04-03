@@ -4,11 +4,47 @@
       "type": "image",
       "template": "imageQuizTemplate-1",
       "questionData": {
+        "imageName": "scales",
+        "wrongAnswers": [
+          "shaving-razor",
+          "shower",
+          "shower-curtains"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "shaving-razor",
+        "wrongAnswers": [
+          "scales",
+          "shower",
+          "shower-curtains"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "shower",
+        "wrongAnswers": [
+          "scales",
+          "shaving-razor",
+          "shower-curtains"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
         "imageName": "shower-curtains",
         "wrongAnswers": [
-          "sink",
-          "toilet",
-          "toothbrush"
+          "scales",
+          "shaving-razor",
+          "shower"
         ]
       }
     },
@@ -18,9 +54,9 @@
       "questionData": {
         "imageName": "sink",
         "wrongAnswers": [
-          "shower-curtains",
-          "toilet",
-          "toothbrush"
+          "scales",
+          "shaving-razor",
+          "shower"
         ]
       }
     },
@@ -30,9 +66,9 @@
       "questionData": {
         "imageName": "toilet",
         "wrongAnswers": [
-          "shower-curtains",
-          "sink",
-          "toothbrush"
+          "scales",
+          "shaving-razor",
+          "shower"
         ]
       }
     },
@@ -42,9 +78,9 @@
       "questionData": {
         "imageName": "toothbrush",
         "wrongAnswers": [
-          "shower-curtains",
-          "sink",
-          "toilet"
+          "scales",
+          "shaving-razor",
+          "shower"
         ]
       }
     },
@@ -54,9 +90,9 @@
       "questionData": {
         "imageName": "towel",
         "wrongAnswers": [
-          "shower-curtains",
-          "sink",
-          "toilet"
+          "scales",
+          "shaving-razor",
+          "shower"
         ]
       }
     }

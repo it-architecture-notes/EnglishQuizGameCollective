@@ -4,11 +4,23 @@
       "type": "image",
       "template": "imageQuizTemplate-1",
       "questionData": {
+        "imageName": "beach",
+        "wrongAnswers": [
+          "lightning",
+          "moon",
+          "mountain"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
         "imageName": "lightning",
         "wrongAnswers": [
+          "beach",
           "moon",
-          "mountain",
-          "ocean"
+          "mountain"
         ]
       }
     },
@@ -18,9 +30,9 @@
       "questionData": {
         "imageName": "moon",
         "wrongAnswers": [
+          "beach",
           "lightning",
-          "mountain",
-          "ocean"
+          "mountain"
         ]
       }
     },
@@ -30,9 +42,9 @@
       "questionData": {
         "imageName": "mountain",
         "wrongAnswers": [
+          "beach",
           "lightning",
-          "moon",
-          "ocean"
+          "moon"
         ]
       }
     },
@@ -42,9 +54,9 @@
       "questionData": {
         "imageName": "ocean",
         "wrongAnswers": [
+          "beach",
           "lightning",
-          "moon",
-          "mountain"
+          "moon"
         ]
       }
     },
@@ -54,9 +66,9 @@
       "questionData": {
         "imageName": "rain",
         "wrongAnswers": [
+          "beach",
           "lightning",
-          "moon",
-          "mountain"
+          "moon"
         ]
       }
     },
@@ -66,9 +78,9 @@
       "questionData": {
         "imageName": "rainbow",
         "wrongAnswers": [
+          "beach",
           "lightning",
-          "moon",
-          "mountain"
+          "moon"
         ]
       }
     },
@@ -78,9 +90,9 @@
       "questionData": {
         "imageName": "river",
         "wrongAnswers": [
+          "beach",
           "lightning",
-          "moon",
-          "mountain"
+          "moon"
         ]
       }
     },
@@ -90,9 +102,9 @@
       "questionData": {
         "imageName": "rocks",
         "wrongAnswers": [
+          "beach",
           "lightning",
-          "moon",
-          "mountain"
+          "moon"
         ]
       }
     },
@@ -102,9 +114,9 @@
       "questionData": {
         "imageName": "sand",
         "wrongAnswers": [
+          "beach",
           "lightning",
-          "moon",
-          "mountain"
+          "moon"
         ]
       }
     },
@@ -114,9 +126,9 @@
       "questionData": {
         "imageName": "sea",
         "wrongAnswers": [
+          "beach",
           "lightning",
-          "moon",
-          "mountain"
+          "moon"
         ]
       }
     }

@@ -4,11 +4,11 @@
       "type": "image",
       "template": "imageQuizTemplate-1",
       "questionData": {
-        "imageName": "clothes-pin",
+        "imageName": "atm",
         "wrongAnswers": [
-          "nail",
-          "plunger",
-          "screw"
+          "bank-clerk",
+          "cash",
+          "coin"
         ]
       }
     },
@@ -16,11 +16,11 @@
       "type": "image",
       "template": "imageQuizTemplate-1",
       "questionData": {
-        "imageName": "nail",
+        "imageName": "bank-clerk",
         "wrongAnswers": [
-          "clothes-pin",
-          "plunger",
-          "screw"
+          "atm",
+          "cash",
+          "coin"
         ]
       }
     },
@@ -28,11 +28,11 @@
       "type": "image",
       "template": "imageQuizTemplate-1",
       "questionData": {
-        "imageName": "plunger",
+        "imageName": "cash",
         "wrongAnswers": [
-          "clothes-pin",
-          "nail",
-          "screw"
+          "atm",
+          "bank-clerk",
+          "coin"
         ]
       }
     },
@@ -40,11 +40,11 @@
       "type": "image",
       "template": "imageQuizTemplate-1",
       "questionData": {
-        "imageName": "screw",
+        "imageName": "coin",
         "wrongAnswers": [
-          "clothes-pin",
-          "nail",
-          "plunger"
+          "atm",
+          "bank-clerk",
+          "cash"
         ]
       }
     },
@@ -52,11 +52,11 @@
       "type": "image",
       "template": "imageQuizTemplate-1",
       "questionData": {
-        "imageName": "spanner",
+        "imageName": "credit-card",
         "wrongAnswers": [
-          "clothes-pin",
-          "nail",
-          "plunger"
+          "atm",
+          "bank-clerk",
+          "cash"
         ]
       }
     },
@@ -64,11 +64,11 @@
       "type": "image",
       "template": "imageQuizTemplate-1",
       "questionData": {
-        "imageName": "tumble-dryer",
+        "imageName": "safe",
         "wrongAnswers": [
-          "clothes-pin",
-          "nail",
-          "plunger"
+          "atm",
+          "bank-clerk",
+          "cash"
         ]
       }
     },
@@ -76,11 +76,11 @@
       "type": "image",
       "template": "imageQuizTemplate-1",
       "questionData": {
-        "imageName": "washing-machine",
+        "imageName": "wallet",
         "wrongAnswers": [
-          "clothes-pin",
-          "nail",
-          "plunger"
+          "atm",
+          "bank-clerk",
+          "cash"
         ]
       }
     }

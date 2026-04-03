@@ -1,0 +1,100 @@
+{
+  "levelQuestions": [
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "hose",
+        "wrongAnswers": [
+          "lawnmower",
+          "pot",
+          "pruning-shears"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "lawnmower",
+        "wrongAnswers": [
+          "hose",
+          "pot",
+          "pruning-shears"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "pot",
+        "wrongAnswers": [
+          "hose",
+          "lawnmower",
+          "pruning-shears"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "pruning-shears",
+        "wrongAnswers": [
+          "hose",
+          "lawnmower",
+          "pot"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "rake",
+        "wrongAnswers": [
+          "hose",
+          "lawnmower",
+          "pot"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "shovel",
+        "wrongAnswers": [
+          "hose",
+          "lawnmower",
+          "pot"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "watering-can",
+        "wrongAnswers": [
+          "hose",
+          "lawnmower",
+          "pot"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "wheelbarrow",
+        "wrongAnswers": [
+          "hose",
+          "lawnmower",
+          "pot"
+        ]
+      }
+    }
+  ]
+}

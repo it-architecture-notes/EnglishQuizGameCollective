@@ -4,11 +4,11 @@
       "type": "image",
       "template": "imageQuizTemplate-1",
       "questionData": {
-        "imageName": "peach",
+        "imageName": "black",
         "wrongAnswers": [
-          "pear",
-          "pineapple",
-          "plum"
+          "blue",
+          "brown",
+          "olive"
         ]
       }
     },
@@ -16,11 +16,11 @@
       "type": "image",
       "template": "imageQuizTemplate-1",
       "questionData": {
-        "imageName": "pear",
+        "imageName": "blue",
         "wrongAnswers": [
-          "peach",
-          "pineapple",
-          "plum"
+          "black",
+          "brown",
+          "olive"
         ]
       }
     },
@@ -28,11 +28,11 @@
       "type": "image",
       "template": "imageQuizTemplate-1",
       "questionData": {
-        "imageName": "pineapple",
+        "imageName": "brown",
         "wrongAnswers": [
-          "peach",
-          "pear",
-          "plum"
+          "black",
+          "blue",
+          "olive"
         ]
       }
     },
@@ -40,11 +40,11 @@
       "type": "image",
       "template": "imageQuizTemplate-1",
       "questionData": {
-        "imageName": "plum",
+        "imageName": "olive",
         "wrongAnswers": [
-          "peach",
-          "pear",
-          "pineapple"
+          "black",
+          "blue",
+          "brown"
         ]
       }
     },
@@ -52,11 +52,11 @@
       "type": "image",
       "template": "imageQuizTemplate-1",
       "questionData": {
-        "imageName": "pomegranate",
+        "imageName": "orange",
         "wrongAnswers": [
-          "peach",
-          "pear",
-          "pineapple"
+          "black",
+          "blue",
+          "brown"
         ]
       }
     },
@@ -64,11 +64,11 @@
       "type": "image",
       "template": "imageQuizTemplate-1",
       "questionData": {
-        "imageName": "pumpkin",
+        "imageName": "pink",
         "wrongAnswers": [
-          "peach",
-          "pear",
-          "pineapple"
+          "black",
+          "blue",
+          "brown"
         ]
       }
     },
@@ -76,11 +76,11 @@
       "type": "image",
       "template": "imageQuizTemplate-1",
       "questionData": {
-        "imageName": "quince",
+        "imageName": "purple",
         "wrongAnswers": [
-          "peach",
-          "pear",
-          "pineapple"
+          "black",
+          "blue",
+          "brown"
         ]
       }
     },
@@ -88,11 +88,11 @@
       "type": "image",
       "template": "imageQuizTemplate-1",
       "questionData": {
-        "imageName": "raspberry",
+        "imageName": "red",
         "wrongAnswers": [
-          "peach",
-          "pear",
-          "pineapple"
+          "black",
+          "blue",
+          "brown"
         ]
       }
     },
@@ -100,11 +100,11 @@
       "type": "image",
       "template": "imageQuizTemplate-1",
       "questionData": {
-        "imageName": "strawberry",
+        "imageName": "white",
         "wrongAnswers": [
-          "peach",
-          "pear",
-          "pineapple"
+          "black",
+          "blue",
+          "brown"
         ]
       }
     },
@@ -112,11 +112,11 @@
       "type": "image",
       "template": "imageQuizTemplate-1",
       "questionData": {
-        "imageName": "watermelon",
+        "imageName": "yellow",
         "wrongAnswers": [
-          "peach",
-          "pear",
-          "pineapple"
+          "black",
+          "blue",
+          "brown"
         ]
       }
     }

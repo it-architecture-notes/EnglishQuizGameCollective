@@ -1,17 +1,781 @@
 
 
+drwxr-xr-x  10 nsahin  staff    320 Mar 29 17:29 baby-products
+drwxr-xr-x@ 14 nsahin  staff    448 Mar 29 09:40 bathroom
+drwxr-xr-x@  8 nsahin  staff    256 Mar 29 09:40 bathroom-2
+drwxr-xr-x@ 13 nsahin  staff    416 Mar 29 09:40 bedroom
+drwxr-xr-x@ 11 nsahin  staff    352 Mar 29 09:40 bedroom-2
+drwxr-xr-x@ 13 nsahin  staff    416 Mar 29 09:40 body-parts
+drwxr-xr-x@ 13 nsahin  staff    416 Mar 29 09:40 body-parts-2
+drwxr-xr-x@  5 nsahin  staff    160 Mar 29 09:40 body-parts-3
+drwxr-xr-x   9 nsahin  staff    288 Mar 29 10:42 city-1
+drwxr-xr-x  13 nsahin  staff    416 Mar 29 11:00 city-2
+drwxr-xr-x  13 nsahin  staff    416 Mar 29 18:20 colors-2
+drwxr-xr-x@ 13 nsahin  staff    416 Mar 29 09:40 dressing-2
+drwxr-xr-x@ 13 nsahin  staff    416 Mar 29 09:40 dressing-3
+drwxr-xr-x@  4 nsahin  staff    128 Mar 29 09:40 dressing-4
+drwxr-xr-x@ 13 nsahin  staff    416 Mar 29 09:40 emotions-1
+drwxr-xr-x@ 13 nsahin  staff    416 Mar 29 09:40 emotions-2
+drwxr-xr-x@ 13 nsahin  staff    416 Mar 29 09:40 emotions-3
+drwxr-xr-x@  4 nsahin  staff    128 Mar 29 09:40 emotions-4
+drwxr-xr-x@ 13 nsahin  staff    416 Mar 29 09:40 farm-animals
+drwxr-xr-x@ 12 nsahin  staff    384 Mar 30 14:26 farm-animals-2
+drwxr-xr-x  10 nsahin  staff    320 Mar 29 17:36 gardening
+drwxr-xr-x   9 nsahin  staff    288 Mar 29 15:27 gas-station-1
+drwxr-xr-x  14 nsahin  staff    448 Mar 29 19:45 geometric-shapes
+drwxr-xr-x@ 14 nsahin  staff    448 Mar 29 09:40 grocery
+drwxr-xr-x@ 13 nsahin  staff    416 Mar 29 09:40 grocery-2
+drwxr-xr-x@  6 nsahin  staff    192 Mar 29 09:40 grocery-3
+drwxr-xr-x@ 13 nsahin  staff    416 Mar 29 09:40 hospital
+drwxr-xr-x@ 13 nsahin  staff    416 Mar 29 09:40 hospital-2
+drwxr-xr-x@  4 nsahin  staff    128 Mar 29 09:40 hospital-3
+drwxr-xr-x  15 nsahin  staff    480 Mar 30 14:50 house-parts
+drwxr-xr-x@ 17 nsahin  staff    544 Mar 29 11:14 household-equipment-1
+drwxr-xr-x@ 14 nsahin  staff    448 Mar 29 09:40 household-equipment-2
+drwxr-xr-x@  7 nsahin  staff    224 Mar 29 09:40 household-equipment-3
+drwxr-xr-x@ 10 nsahin  staff    320 Mar 30 15:06 household-equipment-4
+drwxr-xr-x  17 nsahin  staff    544 Mar 30 14:44 insects
+drwxr-xr-x@ 13 nsahin  staff    416 Mar 29 09:40 jobs-1
+drwxr-xr-x@ 13 nsahin  staff    416 Mar 29 09:40 jobs-2
+drwxr-xr-x@ 13 nsahin  staff    416 Mar 29 09:40 jobs-3
+drwxr-xr-x@ 13 nsahin  staff    416 Mar 29 09:40 jobs-4
+drwxr-xr-x@  7 nsahin  staff    224 Mar 29 09:40 jobs-5
+drwxr-xr-x@ 13 nsahin  staff    416 Mar 29 09:40 kitchen-1
+drwxr-xr-x@ 14 nsahin  staff    448 Mar 30 14:36 kitchen-2
+drwxr-xr-x@ 13 nsahin  staff    416 Mar 29 09:40 kitchen-3
+drwxr-xr-x@ 13 nsahin  staff    416 Mar 29 09:40 kitchen-4
+drwxr-xr-x@ 13 nsahin  staff    416 Mar 29 09:40 kitchen-5
+drwxr-xr-x@ 13 nsahin  staff    416 Mar 29 09:40 living-room
+drwxr-xr-x@ 13 nsahin  staff    416 Mar 29 09:40 living-room-2
+drwxr-xr-x@  5 nsahin  staff    160 Mar 29 09:40 living-room-3
+drwxr-xr-x@ 13 nsahin  staff    416 Mar 29 09:40 market-fruits-1
+drwxr-xr-x@ 14 nsahin  staff    448 Mar 29 09:40 market-fruits-2
+drwxr-xr-x@ 13 nsahin  staff    416 Mar 29 09:40 market-fruits-3
+drwxr-xr-x@ 14 nsahin  staff    448 Mar 29 09:40 market-vegetables-1
+drwxr-xr-x@ 13 nsahin  staff    416 Mar 29 09:40 market-vegetables-2
+drwxr-xr-x@ 13 nsahin  staff    416 Mar 29 09:40 market-vegetables-3
+drwxr-xr-x@  9 nsahin  staff    288 Mar 29 09:40 market-vegetables-4
+drwxr-xr-x   9 nsahin  staff    288 Mar 29 15:24 money-bank
+drwxr-xr-x@ 14 nsahin  staff    448 Mar 29 09:40 nature-1
+drwxr-xr-x@ 15 nsahin  staff    480 Mar 30 14:54 nature-2
+drwxr-xr-x@ 12 nsahin  staff    384 Mar 29 09:40 nature-3
+-rw-r--r--@  1 nsahin  staff    119 Mar 30 14:52 output.txt
+drwxr-xr-x@ 13 nsahin  staff    416 Mar 29 09:40 pharmacy
+drwxr-xr-x@ 10 nsahin  staff    320 Mar 29 09:40 pharmacy-2
+drwxr-xr-x  10 nsahin  staff    320 Mar 29 11:14 post-office
+drwxr-xr-x   9 nsahin  staff    288 Mar 29 10:06 restaurant-dining-1
+drwxr-xr-x  10 nsahin  staff    320 Mar 29 10:06 restaurant-dining-2
+drwxr-xr-x@ 13 nsahin  staff    416 Mar 29 09:40 school supplies
+drwxr-xr-x@ 14 nsahin  staff    448 Mar 30 15:03 school supplies-2
+drwxr-xr-x@ 14 nsahin  staff    448 Mar 29 09:40 school-1
+drwxr-xr-x@ 13 nsahin  staff    416 Mar 29 09:40 school-2
+drwxr-xr-x@  8 nsahin  staff    256 Mar 29 09:40 school-3
+drwxr-xr-x   9 nsahin  staff    288 Mar 29 17:52 store-types-1
+drwxr-xr-x   9 nsahin  staff    288 Mar 29 17:52 store-types-2
+drwxr-xr-x   9 nsahin  staff    288 Mar 29 17:53 store-types-3
+drwxr-xr-x@ 13 nsahin  staff    416 Mar 29 09:40 travel-1
+drwxr-xr-x@ 14 nsahin  staff    448 Mar 29 09:40 travel-2
+drwxr-xr-x@  6 nsahin  staff    192 Mar 29 09:40 travel-3
+drwxr-xr-x@ 13 nsahin  staff    416 Mar 29 09:40 vehicles
+drwxr-xr-x@ 13 nsahin  staff    416 Mar 29 09:40 vehicles-2
+drwxr-xr-x@  5 nsahin  staff    160 Mar 29 09:40 vehicles-3
+drwxr-xr-x@ 16 nsahin  staff    512 Mar 30 14:26 wild-animals-1
+drwxr-xr-x@ 13 nsahin  staff    416 Mar 29 09:40 wild-animals-2
+drwxr-xr-x@ 13 nsahin  staff    416 Mar 29 09:40 wild-animals-3
+drwxr-xr-x@  7 nsahin  staff    224 Mar 29 09:40 wild-animals-4
+
+
+
+Main Level -1
+drwxr-xr-x  12 nsahin  staff    384 Mar 29 18:20 colors-1
+drwxr-xr-x@ 16 nsahin  staff    512 Mar 29 11:14 dressing-1
+rwxr-xr-x@ 13  nsahin  staff    416 Mar 29 09:40 living-room
+drwxr-xr-x@ 13 nsahin  staff    416 Mar 29 09:40 farm-animals
+drwxr-xr-x@ 13 nsahin  staff    416 Mar 29 09:40 market-fruits-1
+Main Level -2
 
 
 
 
 
 
+ACCEPT BODY:
+
+<body class="MasterPage simplication registered Applicant AttOccasionalPostingDetailEx">
+
+<script>
+    $(document).ready(function () {
+       
+            logo2src = $('#tblHeaderLogo_Ad').attr('src');
+            var img = new Image();
+            if (logo2src != undefined)
+                img.src = logo2src;
+       
+            var is_maf = "False" == "True";
+
+            img.onload = function () {
+                var height = img.height;
+                var width = img.width;
+                // code here to use the dimensions
+                if (width <= 200 || is_maf ) {
+                    $('.simplication-logo-wrapper.simplication-logo-2 ').addClass('is-logo');
+                } else {
+                    $('.simplication-logo-wrapper.simplication-logo-2 ').addClass('is-banner');
+                }
+            }
+
+
+    }); 
+
+</script>
+<div id="simplicationHeader" class="visible-lg visible-md hidden-sm hidden-xs">
+    <div class="simplication-brand-wrapper container">
+        
+        <div class="simplication-logo-wrapper simplication-logo-1">
+          
+            <a href="http://www.ocsb.ca" title="Visit Ottawa Catholic School Board" target="_blank">
+            <img class="simplication-logo logo-responsive" src="/WebServices/WhiteLabelImage.aspx?SITE_ID=3a2762ac-f6d2-4eb2-9ec9-90c5af375661&amp;IMAGE_FIELD=IMAGE_LEFT_FILE" alt="Ottawa Catholic School Board">
+            </a>
+            
+        </div>
+        
+        
+    </div>
+</div>   
+<div class="simplication-site-name container mb-10 hidden-lg hidden-md hidden-sm visible-xs" style="display: none;">
+    <div class="simplication-brand brand bg-white p-20" id="simplication-brand"> 
+        <strong><a class="co-black" href="http://www.ocsb.ca" title="Visit Ottawa Catholic School Board">Ottawa Catholic School Board</a></strong> 
+    </div>
+</div>
+
+
+<nav class="navbar-default">
+    <div class="container">
+      <div class="navbar-header simplication-brand-header"></div>
+      <div id="navbar" class="navbar-collapse collapse">
+           <ul id="ctl00_ctl09_AttTopNavigation1_divContents" class="nav navbar-nav"><li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Portfolio</a><ul class="dropdown-menu"><li><a href="/Applicant/AttStart.aspx">Account Summary</a></li><li class=""><a href="/Applicant/Portfolio/Default.aspx/personal">View &amp; Edit Portfolio</a></li><li class="hidden"><a href="/Applicant/Portfolio/Default.aspx/personal">Personal Info</a></li><li class="hidden"><a href="/Applicant/Portfolio/Default.aspx/qualification">Qualifications</a></li><li class="hidden"><a href="/Applicant/Portfolio/Default.aspx/languages">Language Skills</a></li><li class="hidden"><a href="/Applicant/Portfolio/Default.aspx/experience">Experience</a></li><li class="hidden"><a href="/Applicant/Portfolio/Default.aspx/education">Education</a></li><li class="hidden"><a href="/Applicant/Portfolio/Default.aspx/references">References</a></li><li class="hidden"><a href="/Applicant/Portfolio/Default.aspx/resume">Résumés &amp; Cover Letters</a></li><li class="hidden"><a href="/Applicant/Portfolio/Default.aspx/pastoral-references">Religious Accreditation</a></li><li class="hidden"><a href="/Applicant/Portfolio/Default.aspx/supporting-documents">Supporting Documents</a></li><li></li></ul></li><li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Job Postings</a><ul class="dropdown-menu"><li><a href="/Applicant/AttSearchEx.aspx">Search Jobs</a></li><li><a href="/Applicant/AttManageJobAlerts.aspx">Manage Job Alerts</a></li><li><a href="/Applicant/AttJobApplicationLog.aspx">Jobs Applied To</a></li><li><a href="/Applicant/AttApplicationinprogress.aspx">Applications Started But Not Submitted</a></li><li><a href="/Applicant/AttApplicationWithdrawn.aspx">Applications Withdrawn From</a></li></ul></li><li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">EasyConnect</a><ul class="dropdown-menu"><li><a href="/Applicant/AttOccasionalPreferences.aspx">My Preferences</a></li><li><a href="/Applicant/AttCalendar.aspx">My Calendar</a></li><li><a href="/Applicant/AttOccasionalJobBoard.aspx">Job Board</a></li><li><a href="/Applicant/AttOccasionalPostings.aspx?TAB=PA">Assignments Offered</a></li><li><a href="/Applicant/AttOccasionalPostings.aspx?TAB=AP">Assignments Accepted</a></li></ul></li><li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">PD &amp; Events</a><ul class="dropdown-menu"><li><a href="/Common/AttPDCatalogEx.aspx">PD Catalog</a></li></ul></li></ul>
+       </div><!--/.nav-collapse -->
+       
+       <script src="/assets/common/login/AccountSwitcher.js"></script>
+        <div class="user-menu-nav"> 
+           <ul class="menu-items">
+            <li class="menu-item menu-item-user-type hidden-xs hidden-sm visible-lg visible-md"><div class="btn btn-primary-outline menu-user-type-label">Employee</div></li>
+            <li class="menu-item help"><a href="https://www.applytoeducation.com/applicant-tips-and-tutorials" target="_blank" title="Help and Training"><i class="fas fa-question-circle menu-item-icon"></i></a>  </li>
+            <li class="dropdown menu-item ">
+                <a href="#" class="account-menu" data-toggle="modal" data-target="#account-menu-modal" aria-expanded="true" title=" Zeynep Honca Sahin, Application #16506792, Position Category:ECE, EA and Support Staff">
+                    <i class="fas fa-user-circle menu-item-icon"></i>
+                    <span class="account-text-label hidden-xs hidden-sm visible-lg visible-md">Account</span>
+                </a>
+            </li>
+            <li class="menu-item visible-xs hidden-sm hidden-lg hidden-md"><a role="button" data-toggle="collapse" class="navbar-toggle" data-target="#navbar" aria-expanded="false" aria-controls="navbar"><i class="fa fa-bars menu-item-icon"></i></a></li>
+           </ul>  
+        </div>
+        
+     
+    </div><!--/.container -->
+ </nav>
+        
+
+
+<!-- Modal -->
+<div class="modal fade" id="account-menu-modal" data-simplication="True" data-applicant="true" tabindex="-1" role="dialog" aria-labelledby="AccountMenuLabel">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+            
+         
+          <h4 class="modal-title" id="AccountMenuLabel" data-website="www.ocsb.ca">Ottawa Catholic School Board</h4>
+            
+          
+        <button type="button" class="btn btn-transparent btn-close ml-auto" data-dismiss="modal" aria-label="Close">   
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+             <path d="M14 1.41L12.59 0L7 5.59L1.41 0L0 1.41L5.59 7L0 12.59L1.41 14L7 8.41L12.59 14L14 12.59L8.41 7L14 1.41Z" fill="#323232"></path>
+            </svg>
+        </button>
+        
+         
+      
+      </div>
+      <div class="modal-body clearfix">
+        <div class="row account-summary-row">
+          <div class="col-lg-4">
+              <div class="account-info">
+                  <div class="account-name mb-5"><h5> Zeynep Honca Sahin</h5></div>
+                   <div class="application-number-label  bold">Application # <span class="application-number " id="ApplicationNumber"><input type="text" readonly="" style="width:40%;" class="clipboard-text transparent" value="16506792"></span></div>
+
+                  <div class="account-category-label">Position Category</div>
+                  <div class="account-category"><h6>ECE, EA and Support Staff</h6></div>
+
+                  <div class="btn-primary-outline user-type">Employee</div>
+
+              </div>
+          </div>
+          <div class="col-lg-4">
+               <div class="account-panel account-settings">
+                   <div class="panel-header">Account Settings</div>
+                   <ul class="icons-mixed">
+                     
+                        <li><a href="/Applicant/AttChangePassword.aspx"><i class="fa fa-lock"></i> Change Password</a></li>
+                        <li><a href="/Applicant/AttActivityLog.aspx"><i class="fa fa-user"></i> Activity Log</a></li>
+                        
+                     </ul>
+                </div>
+          </div>
+           <div class="col-lg-4">
+                <div class="account-panel account-language">
+                    <div class="panel-header">Language</div>
+                     <div class="language-actions">
+                       
+                         <button class="btn btn-primary btn-xs btn-set-lang btn-lang-en" data-language="en"><span translate="no">English</span></button>
+                         <button class="btn btn-default btn-xs btn-set-lang btn-lang-fr" data-language="fr"><span translate="no">Français</span></button>
+                         
+                     </div>
+                </div>
+
+          </div>
+         </div>
+          <div class="account-btn-actions">
+               <a class="btn btn-default btn-logout" href="/Common/AttLogOff.aspx"><i class="fas fa-sign-out-alt"></i> Sign out</a>
+              
+              
+                <a class="btn btn-primary d-none" href="https://network.applytoeducation.com/AttLogin.aspx?SITE_USER_ID=91063482-3fbd-4019-a611-8ad8409b0b26">Return to ApplyToEducation</a>
+               
+          
+          </div>
+    
+      </div>
+
+        
+      <div class="modal-footer">
+          <img src="/images/powered_by_ate.png">
+      </div>
+     
+    </div>
+  </div>
+</div>
+
+
+<div id="ctl00_ctl09_AttTopNavigation1_divApplicationSteps" class="application-process-wrapper container"></div>
+
+<script type="text/javascript">
+	$(function () {
+		if (!$("div#app").data("showemployerquestions")) {
+			$("a[href*='Applicant/Portfolio/Default.aspx/employer-questions']").remove();
+		}
+
+		if ($(window).width() < 991) {
+			$("ul[id*='AttTopNavigation'] li:has(> a[href*='Applicant/Portfolio/Default.aspx'])").removeClass('hidden');
+			$("ul[id*='AttTopNavigation'] li:has(> a[href*='Applicant/Portfolio/Default.aspx/personal'])").first().addClass('hidden');
+		} else {
+			$("ul[id*='AttTopNavigation'] li:has(> a[href*='Applicant/Portfolio/Default.aspx'])").addClass('hidden');
+			$("ul[id*='AttTopNavigation'] li:has(> a[href*='Applicant/Portfolio/Default.aspx/personal'])").first().removeClass('hidden');
+		}
+    });
+</script>
+
+<section id="main-content">
+    <div class="container"> 
+        <div id="ctl00_divBody" class="divBody divBodyWhiteLabel">
+            <span id="ctl00_lblPageHeader" class="PageHeader">Assignment Details</span>
+            <form method="post" action="./AttOccasionalPostingDetailEx.aspx?TAB=JB&amp;AbsenceID=51f9d06d-0525-45f9-a5c3-6c76252f0ed3" id="aspnetForm" autocomplete="off">
+<div class="aspNetHidden">
+<input type="hidden" name="__SCREEN_WIDTH" id="__SCREEN_WIDTH" value="2560">
+<input type="hidden" name="__SCREEN_HEIGHT" id="__SCREEN_HEIGHT" value="1440">
+<input type="hidden" name="__SCREEN_COLOR_DEPTH" id="__SCREEN_COLOR_DEPTH" value="undefined">
+<input type="hidden" name="ctl00_ToolkitScriptManager1_HiddenField" id="ctl00_ToolkitScriptManager1_HiddenField" value="">
+<input type="hidden" name="__EVENTTARGET" id="__EVENTTARGET" value="">
+<input type="hidden" name="__EVENTARGUMENT" id="__EVENTARGUMENT" value="">
+<input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE" value="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">
+</div>
+
+<script type="text/javascript">
+//<![CDATA[
+var theForm = document.forms['aspnetForm'];
+if (!theForm) {
+    theForm = document.aspnetForm;
+}
+function __doPostBack(eventTarget, eventArgument) {
+    if (!theForm.onsubmit || (theForm.onsubmit() != false)) {
+        theForm.__EVENTTARGET.value = eventTarget;
+        theForm.__EVENTARGUMENT.value = eventArgument;
+        theForm.submit();
+    }
+}
+//]]>
+</script>
+
+
+<script src="/WebResource.axd?d=pynGkmcFUV13He1Qd6_TZHhTtS_Rjjj3Hq0sqo7WvUNgxP0WK_DCAwvo979FNAtfaCt310sdJ3_RBl0_DdwweQ2&amp;t=638901382200000000" type="text/javascript"></script>
+
+
+<script language="JavaScript" type="text/javascript">
+if(document.getElementById('__SCREEN_WIDTH'))document.getElementById('__SCREEN_WIDTH').value=screen.width;
+if(document.getElementById('__SCREEN_HEIGHT'))document.getElementById('__SCREEN_HEIGHT').value=screen.height;
+if(document.getElementById('__SCREEN_COLOR_DEPTH'))document.getElementById('__SCREEN_COLOR_DEPTH').value=screen.colordepth;
+</script>
+<script src="/ScriptResource.axd?d=yeSNAJTOPtPimTGCAo3LlUr84B7-XoXnGQYRsspqpnhFk8R7gYxgB8Vx9pFqmb_MlXlBA9tWoLJ7BvsIcLtgFCyHqsMm_2UuaZYDL8n5Dg8YwLxVAS-HoaHHOEMcritY0&amp;t=ffffffffec54f2d7" type="text/javascript"></script>
+<script type="text/javascript">
+//<![CDATA[
+if (typeof(Sys) === 'undefined') throw new Error('ASP.NET Ajax client-side framework failed to load.');
+//]]>
+</script>
+
+<script src="/ScriptResource.axd?d=DT3YJR8QaqV61-teuz0hgpFv2oFa1RUUOMhNY7QCwl4axSWKCYnL5q_2Z7rbGX8hnLxWTdHIN6jC9EgGRjlfJUI2q8aBouFW3sILL3SzyZnTD0PNmk4z0AYLacJssM5ORNgcb1aixoItNh3pkGM41A2&amp;t=ffffffffec54f2d7" type="text/javascript"></script>
+<div class="aspNetHidden">
+
+	<input type="hidden" name="__VIEWSTATEGENERATOR" id="__VIEWSTATEGENERATOR" value="5934DDBA">
+	<input type="hidden" name="__SCROLLPOSITIONX" id="__SCROLLPOSITIONX" value="0">
+	<input type="hidden" name="__SCROLLPOSITIONY" id="__SCROLLPOSITIONY" value="0">
+	<input type="hidden" name="__VIEWSTATEENCRYPTED" id="__VIEWSTATEENCRYPTED" value="">
+	<input type="hidden" name="__EVENTVALIDATION" id="__EVENTVALIDATION" value="kkhaWKNsvBo4aW27TNb4ppSQ8F7V+pjheuU9S38kuOdzCu2I4krE7sW4EUlVADAfcQ7Kh2goeyHrQZJkYG7i2G3hjcjV3PpBktBnF0WGsUOPNsqTw5zeWjlxBEO1aYhfKttZ25Uh7QfUiadFtQEqNfeWaSVd2Phg2w3QtW3bVpbqoh67NvDs2MS8YqRuKQJHM1PC9L+/H0VA6o3ToehxPg==">
+</div>
+                <script type="text/javascript">
+//<![CDATA[
+Sys.WebForms.PageRequestManager._initialize('ctl00$ToolkitScriptManager1', 'aspnetForm', [], [], [], 90, 'ctl00');
+//]]>
+</script>
+ 
+                
+    <div style="padding: 5px;">
+        <input type="hidden" name="ctl00$ContentPlaceHolder1$hfSeqNo" id="ctl00_ContentPlaceHolder1_hfSeqNo">
+
+        <div class="row opnav">
+            <div class="col col-xs-6">
+                <a id="ctl00_ContentPlaceHolder1_lbBackToSearchResult" class="aspNetDisabled btn btn-default">Back to search results</a>
+            </div>
+            <div class="col col-xs-6" style="text-align: right;">
+                
+                
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col col-sm-6">
+                <div class="row">
+                    <div class="col col-xs-4 LabelHeader">
+                        Job Code:
+                    </div>
+                    <div class="col col-xs-8 LabelRegular">
+                        15589274
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col col-xs-4 LabelHeader">
+                        Employer:
+                    </div>
+                    <div class="col col-xs-8 LabelRegular notranslate">
+                        Ottawa Catholic School Board
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col col-xs-4 LabelHeader">
+                        Location:
+                    </div>
+                    <div class="col col-xs-8 LabelRegular notranslate">
+                        St. Elizabeth School
+                        <br>1366 Coldrey Avenue<br>https://goo.gl/maps/9QvjHg2iytz<br>
+                        &nbsp;
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col col-xs-4 LabelHeader">
+                        Bell Hours:
+                    </div>
+                    <div class="col col-xs-8 LabelRegular">
+                        8:00AM to 2:30PM
+                    </div>
+                </div>
+                <div id="ctl00_ContentPlaceHolder1_divLocationNotes" class="row">
+                    <div class="col col-xs-4 LabelHeader">
+                        Location Information:
+                    </div>
+                    <div class="col col-xs-8 LabelRegular notranslate">
+                        Staff Parking lot is on Coldrey ave at the end of the school yard.<br>&nbsp;
+                    </div>
+                </div>
+                <div id="ctl00_ContentPlaceHolder1_divEcLinks" class="row">
+                    <div class="col col-xs-4 LabelHeader">
+                        Links:
+                    </div>
+                    <div class="col col-xs-8 LabelRegular notranslate">
+                        <a href="https://docs.google.com/document/d/16lkKFMp0hCcnrWTmqWQNDO4nrRZrU2ZP7ByWAl37_ZY/edit?usp=sharing" target="blank">Information for Casual Employees</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col col-sm-6">
+                <div class="row">
+                    <div class="col col-xs-4 LabelHeader">
+                        Status:
+                    </div>
+                    <div class="col col-xs-8 LabelRegular">
+                        Open
+                    </div>
+                </div>
+                
+                
+                
+                <div class="row">
+                    <div class="col col-xs-4 LabelHeader">
+                        Job Type:
+                    </div>
+                    <div class="col col-xs-8 LabelRegular">
+                        Occasional
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="description">
+        <div class="LabelHeader">
+            Job Description &amp; Requirements
+        </div>
+        <div class="LabelRegular notranslate">
+            
+        </div>
+        <div class="LabelRegular">
+            &nbsp;<br><div class="LabelHeader" style="padding-bottom: 5px;">This posting includes/involves:</div><ul><li>Nut Free</li><li>Scent Free</li><li>Life Threatening Allergies</li></ul>
+        </div>
+        
+    </div>
+
+    <div class="row">
+        <div class="col col-sm-6">
+            <div class="row">
+                <div class="col col-xs-4 LabelHeader">
+                    Assignment Starts:
+                </div>
+                <div class="col col-xs-8 LabelRegular">
+                    2026-03-31 11:15 AM
+                </div>
+            </div>
+            <div class="row">
+                <div class="col col-xs-4 LabelHeader">
+                    Assignment Ends:
+                </div>
+                <div class="col col-xs-8 LabelRegular">
+                    2026-03-31 03:00 PM
+                </div>                
+            </div>
+        </div>
+    </div>
+
+    <div>
+	<table class="zkGrid table employees nocancel" cellspacing="0" id="ctl00_ContentPlaceHolder1_gvTimeframes" style="border-collapse:collapse;">
+		<tbody><tr class="even noborder" align="right">
+			<td colspan="8">
+            <div style="text-align:right; display:inline; margin-right:20px;">
+                <span id="ctl00_ContentPlaceHolder1_gvTimeframes_ctl01_lblIndex" style="font-weight:bold;">&nbsp;Pages:&nbsp;1 of 1&nbsp;&nbsp;&nbsp;</span><span style="font-weight:bold;margin-left:3px;margin-right:3px;">1</span>
+            </div>
+        </td>
+		</tr><tr class="employeesheader">
+			<th scope="col">
+                    Date
+                </th><th scope="col">
+                    Time
+                </th><th scope="col">
+                    Assignment
+                </th><th scope="col">
+                    Filling In For
+                </th><th scope="col">
+                    Pay
+                </th><th scope="col">
+                    Approved to Export
+                </th><th scope="col">
+                    Sent to HR
+                </th><th scope="col">
+                    &nbsp;
+                </th>
+		</tr><tr class=" ">
+			<td>
+                    2026-03-31
+                </td><td>
+                    11:15 AM to 03:00 PM
+                </td><td class="notranslate">
+                    Educational Assistant
+                </td><td class="notranslate">
+                    No Employee Absent
+                </td><td>
+                    3.500
+                </td><td>
+                    Awaiting Approval
+                </td><td>
+                    No
+                </td><td>
+                    &nbsp;<br>&nbsp;
+                </td>
+		</tr><tr class="even noborder" align="right">
+			<td colspan="8">
+            <div style="text-align:right; display:inline; margin-right:20px;">
+                <span id="ctl00_ContentPlaceHolder1_gvTimeframes_ctl05_lblIndex" style="font-weight:bold;">&nbsp;Pages:&nbsp;1 of 1&nbsp;&nbsp;&nbsp;</span><span style="font-weight:bold;margin-left:3px;margin-right:3px;">1</span>
+            </div>
+        </td>
+		</tr>
+	</tbody></table>
+</div>
+
+    
+
+    <div id="ctl00_ContentPlaceHolder1_divAccept" style="margin-left: 7px;">
+        <div class="alert alert-info accept">
+            
+
+            
+
+            If you need to include a note to the principal, please enter it in the box below:
+            <textarea name="ctl00$ContentPlaceHolder1$tbNote" rows="2" cols="20" maxlength="500" id="ctl00_ContentPlaceHolder1_tbNote" title="Max 500 characters" class="form-control note"></textarea>
+
+            <div style="text-align: center; padding-top: 10px;">
+                <input onclick="__doPostBack('ctl00$ContentPlaceHolder1$btnAccept','')" name="ctl00$ContentPlaceHolder1$btnAccept" type="button" id="ctl00_ContentPlaceHolder1_btnAccept" class="btn btn-primary" value="Accept">
+                <input onclick="__doPostBack('ctl00$ContentPlaceHolder1$btnDecline','')" name="ctl00$ContentPlaceHolder1$btnDecline" type="button" id="ctl00_ContentPlaceHolder1_btnDecline" class="btn btn-default" value="Decline">
+            </div>
+        </div>
+    </div>
+
+    
+
+    <div class="hidden">
+        <div id="ctl00_ContentPlaceHolder1_vsCancellation" style="display:none;">
+
+</div>
+    </div>
+
+    
+
+<script type="text/javascript">
+    function HideError() {
+        $("div[id$='_divErrors']").attr('class', 'modal fade');
+        $("div[id$='_divErrors']").attr('style', 'display: none; z-index: 3500;');
+    }
+
+    function ShowError(msg) {
+        $('#msg').text(msg);
+        $("div[id$='_divErrors']").modal({ backdrop: 'static', keyboard: false });
+    }
+</script>
+
+<div id="ctl00_ContentPlaceHolder1_epError_divErrors" role="dialog" class="modal fade" style="display: none;">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title"></h4>
+            </div>
+            <div class="modal-body" id="msg">
+                
+            </div>
+            <div class="modal-footer">
+                <a id="ctl00_ContentPlaceHolder1_epError_hlnkOk" class="btn btn-primary" data-dismiss="modal" href="javascript:HideError();">OK</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+    <div id="overlay">&nbsp;</div>
+
+                <input name="ctl00$hdnIsGuest" type="hidden" id="ctl00_hdnIsGuest">
+            
+<script type="text/javascript">
+//<![CDATA[
+var Page_ValidationSummaries =  new Array(document.getElementById("ctl00_ContentPlaceHolder1_vsCancellation"));
+//]]>
+</script>
+
+<script type="text/javascript">
+//<![CDATA[
+var ctl00_ContentPlaceHolder1_vsCancellation = document.all ? document.all["ctl00_ContentPlaceHolder1_vsCancellation"] : document.getElementById("ctl00_ContentPlaceHolder1_vsCancellation");
+ctl00_ContentPlaceHolder1_vsCancellation.headertext = "The assignment could not be cancelled for the following reason(s):";
+ctl00_ContentPlaceHolder1_vsCancellation.showmessagebox = "True";
+ctl00_ContentPlaceHolder1_vsCancellation.showsummary = "False";
+ctl00_ContentPlaceHolder1_vsCancellation.validationGroup = "cancellation";
+//]]>
+</script>
+
+
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-KKNDCDRHH7"></script>
+<script type="text/javascript">
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-KKNDCDRHH7');
+</script>
+<script type="text/javascript"> 
+  if (typeof TrackPageView == 'function') { 
+  } 
+  else { 
+  var _gaq = _gaq || []; 
+  _gaq.push(['_setAccount', 'UA-21592019-7']); 
+  _gaq.push(['_setDomainName', 'simplication.com']); 
+  _gaq.push(['_trackPageview']); 
+ 
+  } 
+  (function() { 
+  var ga = document.createElement('script'); 
+  ga.type = 'text/javascript'; 
+  ga.async = true; 
+  ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js'; 
+  var s = document.getElementsByTagName('script')[0]; 
+  s.parentNode.insertBefore(ga, s); 
+  })(); 
+ 
+</script> 
+
+<script type="text/javascript">
+//<![CDATA[
+(function() {var fn = function() {$get("ctl00_ToolkitScriptManager1_HiddenField").value = '';Sys.Application.remove_init(fn);};Sys.Application.add_init(fn);})();
+(function(id) {
+    var e = document.getElementById(id);
+    if (e) {
+        e.dispose = function() {
+            Array.remove(Page_ValidationSummaries, document.getElementById(id));
+        }
+        e = null;
+    }
+})('ctl00_ContentPlaceHolder1_vsCancellation');
+
+theForm.oldSubmit = theForm.submit;
+theForm.submit = WebForm_SaveScrollPositionSubmit;
+
+theForm.oldOnSubmit = theForm.onsubmit;
+theForm.onsubmit = WebForm_SaveScrollPositionOnSubmit;
+//]]>
+</script>
+</form>
+        </div>
+     </div>
+</section>
+
+
+<div class="marketing-container">
+<section class="sections">
+      <div class="footer  bg-white mt-20">
+        <div class="background-img-section">
+          <div class="w-layout-blockcontainer m-container w-container">
+            <div class="sections-block">
+              <div class="section-block">
+                <div class="footer-block">
+
+                  <div class="footer-bottom-block">
+                    <div class="footer-link-block">
+                      <a href="https://www.applytoeducation.com/about-us" class="footer-link">About us</a>
+                      <a href="https://www.applytoeducation.com/contact-us" class="footer-link">Contact Us</a>
+                      <a href="https://www.applytoeducation.com/about-us#careers" class="footer-link">Careers</a>
+                      <a href="https://www.applytoeducation.com/tips-and-tutorials" class="footer-link hide">Tips and Tutorials</a>
+                      <a href="https://www.applytoeducation.com/privacy-policy" class="footer-link">Privacy Policy</a>
+                      <a href="https://www.applytoeducation.com/terms-of-use" class="footer-link">Terms of Use</a>
+                      <a href="https://www.applytoeducation.com/accessibility" class="footer-link">Accessibility</a>
+                    </div>
+                    <div class="footer-social-block">
+                      <div class="footer-social-link-block">
+                        <a href="https://www.facebook.com/applytoeducation" target="_blank" class="footer-social-link w-inline-block">
+                          <div class="social-icon-code w-embed"><svg width="100%" height="100%" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                              <path d="M17.8775 9.80102C17.8775 5.28554 14.2396 1.62549 9.75123 1.62549C5.26284 1.62549 1.625 5.28554 1.625 9.80102C1.625 13.8826 4.59595 17.2647 8.48137 17.8779V12.1647H6.41839V9.80048H8.48137V7.9997C8.48137 5.95081 9.69435 4.81855 11.5509 4.81855C12.4394 4.81855 13.3701 4.97837 13.3701 4.97837V6.99043H12.3446C11.3353 6.99043 11.0211 7.62102 11.0211 8.26787V9.80102H13.2748L12.9145 12.1641H11.0211V17.8779C14.9065 17.2647 17.8775 13.8826 17.8775 9.80102Z" fill="currentColor"></path>
+                            </svg></div>
+                        </a>
+                        <a href="https://www.linkedin.com/company/applytoeducation-hr-solutions/about/" target="_blank" class="footer-social-link w-inline-block">
+                          <div class="social-icon-code w-embed"><svg width="100%" height="100%" viewBox="0 0 21 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                              <path d="M17.897 3.51334V15.9895C17.897 16.2747 17.7837 16.5483 17.582 16.75C17.3803 16.9517 17.1067 17.065 16.8215 17.065H4.34531C4.06006 17.065 3.78649 16.9517 3.58479 16.75C3.38309 16.5483 3.26978 16.2747 3.26978 15.9895V3.51334C3.26978 3.22809 3.38309 2.95452 3.58479 2.75282C3.78649 2.55112 4.06006 2.43781 4.34531 2.43781H16.8215C17.1067 2.43781 17.3803 2.55112 17.582 2.75282C17.7837 2.95452 17.897 3.22809 17.897 3.51334ZM7.5719 8.03056H5.42084V14.914H7.5719V8.03056ZM7.76549 5.6644C7.76663 5.50169 7.7357 5.34035 7.67448 5.18959C7.61326 5.03883 7.52294 4.90161 7.40869 4.78575C7.29443 4.6699 7.15848 4.57769 7.00858 4.51438C6.85869 4.45107 6.6978 4.41791 6.53509 4.41678H6.49637C6.16548 4.41678 5.84814 4.54823 5.61417 4.7822C5.3802 5.01617 5.24875 5.33351 5.24875 5.6644C5.24875 5.99528 5.3802 6.31262 5.61417 6.54659C5.84814 6.78057 6.16548 6.91201 6.49637 6.91201C6.65909 6.91601 6.821 6.88792 6.97286 6.82932C7.12472 6.77073 7.26354 6.68278 7.3814 6.57052C7.49926 6.45825 7.59385 6.32386 7.65975 6.17503C7.72565 6.0262 7.76158 5.86584 7.76549 5.70311V5.6644ZM15.7459 10.7323C15.7459 8.66297 14.4295 7.85848 13.1216 7.85848C12.6934 7.83704 12.2671 7.92824 11.8851 8.123C11.5031 8.31776 11.1789 8.60926 10.9448 8.96842H10.8845V8.03056H8.86253V14.914H11.0136V11.2529C10.9825 10.8779 11.1006 10.5058 11.3423 10.2174C11.5839 9.92905 11.9296 9.74767 12.3042 9.71269H12.386C13.07 9.71269 13.5777 10.1429 13.5777 11.227V14.914H15.7287L15.7459 10.7323Z" fill="currentColor"></path>
+                            </svg></div>
+                        </a>
+                        <a href="https://twitter.com/Apply2Ed" target="_blank" class="footer-social-link w-inline-block">
+                          <div class="social-icon-code w-embed"><svg width="100%" height="100%" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                              <path d="M16.7105 6.43687C16.7204 6.58015 16.7204 6.72343 16.7204 6.86802C16.7204 11.274 13.3663 16.3554 7.23307 16.3554V16.3527C5.4213 16.3554 3.64716 15.8364 2.12195 14.8579C2.38539 14.8896 2.65016 14.9054 2.91559 14.9061C4.41703 14.9074 5.87556 14.4036 7.05678 13.476C5.62994 13.4489 4.37874 12.5186 3.94164 11.1604C4.44146 11.2568 4.95647 11.237 5.44705 11.103C3.89146 10.7887 2.77231 9.42193 2.77231 7.83465C2.77231 7.82013 2.77231 7.80626 2.77231 7.7924C3.23582 8.05056 3.75479 8.19384 4.28564 8.20968C2.82051 7.23051 2.36889 5.2814 3.25364 3.75751C4.94657 5.84065 7.44436 7.10704 10.1257 7.24107C9.85697 6.08297 10.2241 4.8694 11.0903 4.05529C12.4333 2.79286 14.5455 2.85757 15.808 4.19989C16.5547 4.05265 17.2704 3.77864 17.9254 3.3904C17.6765 4.16225 17.1556 4.8179 16.4596 5.23453C17.1206 5.15661 17.7663 4.97966 18.3744 4.70961C17.9267 5.38044 17.3629 5.96478 16.7105 6.43687Z" fill="currentColor"></path>
+                            </svg></div>
+                        </a>
+                      </div>
+                      <div class="footer-copyright" style="color:#5c6077;">© 2003-2026, All Rights Reserved</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+</div>
+<link href="/assets/marketing/css/branding.css" rel="stylesheet" type="text/css">
 
 
 
-Family/People - Relationships (mother, father, baby, friend, etc.)
 
-Beach/Swimming
+<div class="block-ui-wrapper" style="display:none;">
+    <div class="body-overlay-loader"></div>
+    <div class="block-ui-message">
+        <i class="fa fa-spinner fa-spin"></i>&nbsp;Please wait while loading application information.
+    </div>
+</div>
 
-Sports and Recreation 
+<div id="alert_modal" class="modal fade" role="dialog" style="display: none;">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Information</h4>
+            </div>
+            <div class="modal-body"></div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-dismiss="modal" id="btnOK">OK</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="confirm_modal" class="modal fade job-application-dialog" role="dialog" style="display: none;">
+    <div class="modal-dialog">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h4 class="modal-title">Incomplete Job Application</h4>
+        </div>
+        <div class="modal-body"></div>
+        <div class="modal-footer">
+        <button type="button" class="btn btn-primary" data-dismiss="modal" id="btnConfirm">Yes</button>
+        <button type="button" class="btn btn-default" data-dismiss="modal" id="btnCancel">No</button>
+        </div>
+    </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    $("#btnConfirm").click(function (e) {
+		e.preventDefault();
+		var jobApplicationDialog = $(".job-application-dialog").find(".modal-dialog");
+		start_application(jobApplicationDialog.attr("job_posting_id"));
+    });
+
+    $("#btnCancel").click(function (e) {
+		e.preventDefault();
+		var jobApplicationDialog = $(".job-application-dialog").find(".modal-dialog");
+		stopCheckUnfinished(jobApplicationDialog.attr("job_posting_id"), jobApplicationDialog.attr("applicant_id"));
+    });
+</script>
+
+
+
+
+</body>
+
+ACCEPT SECTION
+
+<div id="ctl00_ContentPlaceHolder1_divAccept" style="margin-left: 7px;">
+        <div class="alert alert-info accept">
+            
+
+            
+
+            If you need to include a note to the principal, please enter it in the box below:
+            <textarea name="ctl00$ContentPlaceHolder1$tbNote" rows="2" cols="20" maxlength="500" id="ctl00_ContentPlaceHolder1_tbNote" title="Max 500 characters" class="form-control note"></textarea>
+
+            <div style="text-align: center; padding-top: 10px;">
+                <input onclick="__doPostBack('ctl00$ContentPlaceHolder1$btnAccept','')" name="ctl00$ContentPlaceHolder1$btnAccept" type="button" id="ctl00_ContentPlaceHolder1_btnAccept" class="btn btn-primary" value="Accept">
+                <input onclick="__doPostBack('ctl00$ContentPlaceHolder1$btnDecline','')" name="ctl00$ContentPlaceHolder1$btnDecline" type="button" id="ctl00_ContentPlaceHolder1_btnDecline" class="btn btn-default" value="Decline">
+            </div>
+        </div>
+    </div>
+
+ACCEPT BUTTON:
+
+<div style="text-align: center; padding-top: 10px;">
+                <input onclick="__doPostBack('ctl00$ContentPlaceHolder1$btnAccept','')" name="ctl00$ContentPlaceHolder1$btnAccept" type="button" id="ctl00_ContentPlaceHolder1_btnAccept" class="btn btn-primary" value="Accept">
+                <input onclick="__doPostBack('ctl00$ContentPlaceHolder1$btnDecline','')" name="ctl00$ContentPlaceHolder1$btnDecline" type="button" id="ctl00_ContentPlaceHolder1_btnDecline" class="btn btn-default" value="Decline">
+            </div>
 

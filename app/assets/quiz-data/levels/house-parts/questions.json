@@ -4,11 +4,11 @@
       "type": "image",
       "template": "imageQuizTemplate-1",
       "questionData": {
-        "imageName": "alligator",
+        "imageName": "balcony",
         "wrongAnswers": [
-          "animal",
-          "bat",
-          "bear"
+          "chimney",
+          "fence",
+          "fireplace"
         ]
       }
     },
@@ -16,11 +16,11 @@
       "type": "image",
       "template": "imageQuizTemplate-1",
       "questionData": {
-        "imageName": "animal",
+        "imageName": "chimney",
         "wrongAnswers": [
-          "alligator",
-          "bat",
-          "bear"
+          "balcony",
+          "fence",
+          "fireplace"
         ]
       }
     },
@@ -28,11 +28,11 @@
       "type": "image",
       "template": "imageQuizTemplate-1",
       "questionData": {
-        "imageName": "bat",
+        "imageName": "fence",
         "wrongAnswers": [
-          "alligator",
-          "animal",
-          "bear"
+          "balcony",
+          "chimney",
+          "fireplace"
         ]
       }
     },
@@ -40,11 +40,11 @@
       "type": "image",
       "template": "imageQuizTemplate-1",
       "questionData": {
-        "imageName": "bear",
+        "imageName": "fireplace",
         "wrongAnswers": [
-          "alligator",
-          "animal",
-          "bat"
+          "balcony",
+          "chimney",
+          "fence"
         ]
       }
     },
@@ -52,11 +52,11 @@
       "type": "image",
       "template": "imageQuizTemplate-1",
       "questionData": {
-        "imageName": "bird",
+        "imageName": "gate",
         "wrongAnswers": [
-          "alligator",
-          "animal",
-          "bat"
+          "balcony",
+          "chimney",
+          "fence"
         ]
       }
     },
@@ -64,11 +64,11 @@
       "type": "image",
       "template": "imageQuizTemplate-1",
       "questionData": {
-        "imageName": "butterfly",
+        "imageName": "grill-barbecue",
         "wrongAnswers": [
-          "alligator",
-          "animal",
-          "bat"
+          "balcony",
+          "chimney",
+          "fence"
         ]
       }
     },
@@ -76,11 +76,11 @@
       "type": "image",
       "template": "imageQuizTemplate-1",
       "questionData": {
-        "imageName": "camel",
+        "imageName": "hammock",
         "wrongAnswers": [
-          "alligator",
-          "animal",
-          "bat"
+          "balcony",
+          "chimney",
+          "fence"
         ]
       }
     },
@@ -88,11 +88,11 @@
       "type": "image",
       "template": "imageQuizTemplate-1",
       "questionData": {
-        "imageName": "crab",
+        "imageName": "patio",
         "wrongAnswers": [
-          "alligator",
-          "animal",
-          "bat"
+          "balcony",
+          "chimney",
+          "fence"
         ]
       }
     },
@@ -100,11 +100,11 @@
       "type": "image",
       "template": "imageQuizTemplate-1",
       "questionData": {
-        "imageName": "crow",
+        "imageName": "porch",
         "wrongAnswers": [
-          "alligator",
-          "animal",
-          "bat"
+          "balcony",
+          "chimney",
+          "fence"
         ]
       }
     },
@@ -112,11 +112,11 @@
       "type": "image",
       "template": "imageQuizTemplate-1",
       "questionData": {
-        "imageName": "deer",
+        "imageName": "roof",
         "wrongAnswers": [
-          "alligator",
-          "animal",
-          "bat"
+          "balcony",
+          "chimney",
+          "fence"
         ]
       }
     },
@@ -124,11 +124,11 @@
       "type": "image",
       "template": "imageQuizTemplate-1",
       "questionData": {
-        "imageName": "pigeon",
+        "imageName": "sprinkler",
         "wrongAnswers": [
-          "alligator",
-          "animal",
-          "bat"
+          "balcony",
+          "chimney",
+          "fence"
         ]
       }
     },
@@ -136,11 +136,11 @@
       "type": "image",
       "template": "imageQuizTemplate-1",
       "questionData": {
-        "imageName": "seagull",
+        "imageName": "swing",
         "wrongAnswers": [
-          "alligator",
-          "animal",
-          "bat"
+          "balcony",
+          "chimney",
+          "fence"
         ]
       }
     },
@@ -148,11 +148,11 @@
       "type": "image",
       "template": "imageQuizTemplate-1",
       "questionData": {
-        "imageName": "swan",
+        "imageName": "tool-shed",
         "wrongAnswers": [
-          "alligator",
-          "animal",
-          "bat"
+          "balcony",
+          "chimney",
+          "fence"
         ]
       }
     }

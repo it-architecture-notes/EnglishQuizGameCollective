@@ -4,11 +4,11 @@
       "type": "image",
       "template": "imageQuizTemplate-1",
       "questionData": {
-        "imageName": "clothes-pin",
+        "imageName": "jug-pitcher",
         "wrongAnswers": [
-          "nail",
-          "plunger",
-          "screw"
+          "menu",
+          "pepper",
+          "soup-bowl"
         ]
       }
     },
@@ -16,11 +16,11 @@
       "type": "image",
       "template": "imageQuizTemplate-1",
       "questionData": {
-        "imageName": "nail",
+        "imageName": "menu",
         "wrongAnswers": [
-          "clothes-pin",
-          "plunger",
-          "screw"
+          "jug-pitcher",
+          "pepper",
+          "soup-bowl"
         ]
       }
     },
@@ -28,11 +28,11 @@
       "type": "image",
       "template": "imageQuizTemplate-1",
       "questionData": {
-        "imageName": "plunger",
+        "imageName": "pepper",
         "wrongAnswers": [
-          "clothes-pin",
-          "nail",
-          "screw"
+          "jug-pitcher",
+          "menu",
+          "soup-bowl"
         ]
       }
     },
@@ -40,11 +40,11 @@
       "type": "image",
       "template": "imageQuizTemplate-1",
       "questionData": {
-        "imageName": "screw",
+        "imageName": "soup-bowl",
         "wrongAnswers": [
-          "clothes-pin",
-          "nail",
-          "plunger"
+          "jug-pitcher",
+          "menu",
+          "pepper"
         ]
       }
     },
@@ -52,11 +52,11 @@
       "type": "image",
       "template": "imageQuizTemplate-1",
       "questionData": {
-        "imageName": "spanner",
+        "imageName": "straw",
         "wrongAnswers": [
-          "clothes-pin",
-          "nail",
-          "plunger"
+          "jug-pitcher",
+          "menu",
+          "pepper"
         ]
       }
     },
@@ -64,11 +64,11 @@
       "type": "image",
       "template": "imageQuizTemplate-1",
       "questionData": {
-        "imageName": "tumble-dryer",
+        "imageName": "toothpick",
         "wrongAnswers": [
-          "clothes-pin",
-          "nail",
-          "plunger"
+          "jug-pitcher",
+          "menu",
+          "pepper"
         ]
       }
     },
@@ -76,11 +76,11 @@
       "type": "image",
       "template": "imageQuizTemplate-1",
       "questionData": {
-        "imageName": "washing-machine",
+        "imageName": "tray",
         "wrongAnswers": [
-          "clothes-pin",
-          "nail",
-          "plunger"
+          "jug-pitcher",
+          "menu",
+          "pepper"
         ]
       }
     }

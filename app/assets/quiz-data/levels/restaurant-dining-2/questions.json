@@ -1,0 +1,100 @@
+{
+  "levelQuestions": [
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "bill",
+        "wrongAnswers": [
+          "glass-of-water",
+          "napkin",
+          "salt-shaker"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "glass-of-water",
+        "wrongAnswers": [
+          "bill",
+          "napkin",
+          "salt-shaker"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "napkin",
+        "wrongAnswers": [
+          "bill",
+          "glass-of-water",
+          "salt-shaker"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "salt-shaker",
+        "wrongAnswers": [
+          "bill",
+          "glass-of-water",
+          "napkin"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "soda-can",
+        "wrongAnswers": [
+          "bill",
+          "glass-of-water",
+          "napkin"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "take-out-box",
+        "wrongAnswers": [
+          "bill",
+          "glass-of-water",
+          "napkin"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "tip-jar",
+        "wrongAnswers": [
+          "bill",
+          "glass-of-water",
+          "napkin"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "waiter",
+        "wrongAnswers": [
+          "bill",
+          "glass-of-water",
+          "napkin"
+        ]
+      }
+    }
+  ]
+}

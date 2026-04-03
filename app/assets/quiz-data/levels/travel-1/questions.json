@@ -227,6 +227,24 @@
           "runway"
         ]
       }
+    },
+    {
+      "type": "vocab",
+      "template": "ConvoTemplate-2",
+      "questionData": {
+        "imageName": "cockpit",
+        "sentence": {
+          "en": "The pilot flies the plane from the _____.",
+          "tr": "The pilot flies the plane from the _____ (kokpit).",
+          "es": "The pilot flies the plane from the _____ (cabina de mando)."
+        },
+        "answer": "cockpit",
+        "distractors": [
+          "tower",
+          "trolley",
+          "hostess"
+        ]
+      }
     }
   ]
 }

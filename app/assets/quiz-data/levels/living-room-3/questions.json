@@ -7,8 +7,8 @@
         "imageName": "vase",
         "wrongAnswers": [
           "wall-clock",
-          "rug-carpet",
-          "armchair"
+          "armchair",
+          "bookshelf"
         ]
       }
     },
@@ -19,8 +19,8 @@
         "imageName": "wall-clock",
         "wrongAnswers": [
           "vase",
-          "rug-carpet",
-          "armchair"
+          "armchair",
+          "bookshelf"
         ]
       }
     }

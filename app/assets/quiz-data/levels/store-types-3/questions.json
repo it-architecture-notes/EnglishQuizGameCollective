@@ -4,11 +4,11 @@
       "type": "image",
       "template": "imageQuizTemplate-1",
       "questionData": {
-        "imageName": "clothes-pin",
+        "imageName": "art-gallery",
         "wrongAnswers": [
-          "nail",
-          "plunger",
-          "screw"
+          "cafe",
+          "clothing-store",
+          "dry-cleaner"
         ]
       }
     },
@@ -16,11 +16,11 @@
       "type": "image",
       "template": "imageQuizTemplate-1",
       "questionData": {
-        "imageName": "nail",
+        "imageName": "cafe",
         "wrongAnswers": [
-          "clothes-pin",
-          "plunger",
-          "screw"
+          "art-gallery",
+          "clothing-store",
+          "dry-cleaner"
         ]
       }
     },
@@ -28,11 +28,11 @@
       "type": "image",
       "template": "imageQuizTemplate-1",
       "questionData": {
-        "imageName": "plunger",
+        "imageName": "clothing-store",
         "wrongAnswers": [
-          "clothes-pin",
-          "nail",
-          "screw"
+          "art-gallery",
+          "cafe",
+          "dry-cleaner"
         ]
       }
     },
@@ -40,11 +40,11 @@
       "type": "image",
       "template": "imageQuizTemplate-1",
       "questionData": {
-        "imageName": "screw",
+        "imageName": "dry-cleaner",
         "wrongAnswers": [
-          "clothes-pin",
-          "nail",
-          "plunger"
+          "art-gallery",
+          "cafe",
+          "clothing-store"
         ]
       }
     },
@@ -52,11 +52,11 @@
       "type": "image",
       "template": "imageQuizTemplate-1",
       "questionData": {
-        "imageName": "spanner",
+        "imageName": "flower-shop",
         "wrongAnswers": [
-          "clothes-pin",
-          "nail",
-          "plunger"
+          "art-gallery",
+          "cafe",
+          "clothing-store"
         ]
       }
     },
@@ -64,11 +64,11 @@
       "type": "image",
       "template": "imageQuizTemplate-1",
       "questionData": {
-        "imageName": "tumble-dryer",
+        "imageName": "furniture-store",
         "wrongAnswers": [
-          "clothes-pin",
-          "nail",
-          "plunger"
+          "art-gallery",
+          "cafe",
+          "clothing-store"
         ]
       }
     },
@@ -76,11 +76,11 @@
       "type": "image",
       "template": "imageQuizTemplate-1",
       "questionData": {
-        "imageName": "washing-machine",
+        "imageName": "shoe-store",
         "wrongAnswers": [
-          "clothes-pin",
-          "nail",
-          "plunger"
+          "art-gallery",
+          "cafe",
+          "clothing-store"
         ]
       }
     }

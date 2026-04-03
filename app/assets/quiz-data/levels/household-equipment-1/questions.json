@@ -76,6 +76,30 @@
       "type": "image",
       "template": "imageQuizTemplate-1",
       "questionData": {
+        "imageName": "key",
+        "wrongAnswers": [
+          "bolt-and-nuts",
+          "bucket",
+          "drill"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "keychain",
+        "wrongAnswers": [
+          "bolt-and-nuts",
+          "bucket",
+          "drill"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
         "imageName": "ladder",
         "wrongAnswers": [
           "bolt-and-nuts",
@@ -113,6 +137,18 @@
       "template": "imageQuizTemplate-1",
       "questionData": {
         "imageName": "screwdriver",
+        "wrongAnswers": [
+          "bolt-and-nuts",
+          "bucket",
+          "drill"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "umbrella",
         "wrongAnswers": [
           "bolt-and-nuts",
           "bucket",

@@ -17,7 +17,7 @@ class SubLevel {
   bool get isReminder => kind == 'reminder';
 
   /// Stable progress key used for persisting completion state.
-  /// Regular level: "{mainLevel}_{iconImageName}", e.g. "1_airport".
+  /// Regular level: "{mainLevel}_{iconImageName}", e.g. "1_travel-1".
   /// Reminder level: "{mainLevel}_reminder_{reminderIndex}", e.g. "1_reminder_1".
   String get progressKey => isReminder
       ? '${mainLevel}_reminder_$reminderIndex'

@@ -85,42 +85,6 @@
       }
     },
     {
-      "type": "image",
-      "template": "imageQuizTemplate-1",
-      "questionData": {
-        "imageName": "scales",
-        "wrongAnswers": [
-          "bath-mat",
-          "bathrobe",
-          "bathtub"
-        ]
-      }
-    },
-    {
-      "type": "image",
-      "template": "imageQuizTemplate-1",
-      "questionData": {
-        "imageName": "shaving-razor",
-        "wrongAnswers": [
-          "bath-mat",
-          "bathrobe",
-          "bathtub"
-        ]
-      }
-    },
-    {
-      "type": "image",
-      "template": "imageQuizTemplate-1",
-      "questionData": {
-        "imageName": "shower",
-        "wrongAnswers": [
-          "bath-mat",
-          "bathrobe",
-          "bathtub"
-        ]
-      }
-    },
-    {
       "type": "vocab",
       "template": "ConvoTemplate-1",
       "questionData": {
@@ -237,6 +201,24 @@
           "luggage",
           "seat",
           "runway"
+        ]
+      }
+    },
+    {
+      "type": "vocab",
+      "template": "ConvoTemplate-2",
+      "questionData": {
+        "imageName": "bathtub",
+        "sentence": {
+          "en": "I relax in the _____ after a long day.",
+          "tr": "I relax in the _____ (küvet) after a long day.",
+          "es": "I relax in the _____ (bañera) after a long day."
+        },
+        "answer": "bathtub",
+        "distractors": [
+          "shower",
+          "comb",
+          "bathrobe"
         ]
       }
     }

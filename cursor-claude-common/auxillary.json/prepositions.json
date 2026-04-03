@@ -1,0 +1,272 @@
+[
+  {
+    "preposition": "of",
+    "type": "relation",
+    "level": "A1",
+    "categories": ["possession", "descriptions"]
+  },
+  {
+    "preposition": "in",
+    "type": "place/time",
+    "level": "A1",
+    "categories": ["location", "dates"]
+  },
+  {
+    "preposition": "to",
+    "type": "direction",
+    "level": "A1",
+    "categories": ["movement", "destination"]
+  },
+  {
+    "preposition": "for",
+    "type": "purpose/time",
+    "level": "A1",
+    "categories": ["reasons", "duration"]
+  },
+  {
+    "preposition": "with",
+    "type": "association",
+    "level": "A1",
+    "categories": ["company", "tools"]
+  },
+  {
+    "preposition": "on",
+    "type": "place/time",
+    "level": "A1",
+    "categories": ["surfaces", "days"]
+  },
+  {
+    "preposition": "at",
+    "type": "place/time",
+    "level": "A1",
+    "categories": ["specific locations", "hours"]
+  },
+  {
+    "preposition": "by",
+    "type": "agent/place",
+    "level": "A1",
+    "categories": ["methods", "proximity"]
+  },
+  {
+    "preposition": "from",
+    "type": "origin",
+    "level": "A1",
+    "categories": ["starting points", "sources"]
+  },
+  {
+    "preposition": "about",
+    "type": "topic",
+    "level": "A1",
+    "categories": ["subjects", "descriptions"]
+  },
+  {
+    "preposition": "under",
+    "type": "place",
+    "level": "A1",
+    "categories": ["location", "objects"]
+  },
+  {
+    "preposition": "above",
+    "type": "place",
+    "level": "A2",
+    "categories": ["location", "measurements"]
+  },
+  {
+    "preposition": "below",
+    "type": "place",
+    "level": "A2",
+    "categories": ["location", "measurements"]
+  },
+  {
+    "preposition": "behind",
+    "type": "place",
+    "level": "A1",
+    "categories": ["location", "directions"]
+  },
+  {
+    "preposition": "between",
+    "type": "place",
+    "level": "A1",
+    "categories": ["location", "relationships"]
+  },
+  {
+    "preposition": "beside",
+    "type": "place",
+    "level": "A2",
+    "categories": ["location", "proximity"]
+  },
+  {
+    "preposition": "near",
+    "type": "place",
+    "level": "A1",
+    "categories": ["location", "proximity"]
+  },
+  {
+    "preposition": "inside",
+    "type": "place",
+    "level": "A2",
+    "categories": ["location", "containers"]
+  },
+  {
+    "preposition": "outside",
+    "type": "place",
+    "level": "A2",
+    "categories": ["location", "environment"]
+  },
+  {
+    "preposition": "across",
+    "type": "movement",
+    "level": "A2",
+    "categories": ["travel", "directions"]
+  },
+  {
+    "preposition": "through",
+    "type": "movement",
+    "level": "A2",
+    "categories": ["travel", "obstacles"]
+  },
+  {
+    "preposition": "over",
+    "type": "movement/place",
+    "level": "A2",
+    "categories": ["travel", "position"]
+  },
+  {
+    "preposition": "into",
+    "type": "movement",
+    "level": "A1",
+    "categories": ["travel", "containers"]
+  },
+  {
+    "preposition": "onto",
+    "type": "movement",
+    "level": "A2",
+    "categories": ["travel", "surfaces"]
+  },
+  {
+    "preposition": "towards",
+    "type": "movement",
+    "level": "B1",
+    "categories": ["travel", "direction"]
+  },
+  {
+    "preposition": "past",
+    "type": "movement",
+    "level": "A2",
+    "categories": ["travel", "directions"]
+  },
+  {
+    "preposition": "down",
+    "type": "movement",
+    "level": "A1",
+    "categories": ["travel", "directions"]
+  },
+  {
+    "preposition": "up",
+    "type": "movement",
+    "level": "A1",
+    "categories": ["travel", "directions"]
+  },
+  {
+    "preposition": "along",
+    "type": "movement",
+    "level": "A2",
+    "categories": ["travel", "paths"]
+  },
+  {
+    "preposition": "before",
+    "type": "time",
+    "level": "A1",
+    "categories": ["events", "schedules"]
+  },
+  {
+    "preposition": "after",
+    "type": "time",
+    "level": "A1",
+    "categories": ["events", "schedules"]
+  },
+  {
+    "preposition": "during",
+    "type": "time",
+    "level": "A2",
+    "categories": ["events", "duration"]
+  },
+  {
+    "preposition": "until",
+    "type": "time",
+    "level": "A2",
+    "categories": ["events", "deadlines"]
+  },
+  {
+    "preposition": "since",
+    "type": "time",
+    "level": "A2",
+    "categories": ["past events", "duration"]
+  },
+  {
+    "preposition": "without",
+    "type": "condition",
+    "level": "A2",
+    "categories": ["absence", "needs"]
+  },
+  {
+    "preposition": "as",
+    "type": "role",
+    "level": "A2",
+    "categories": ["jobs", "comparisons"]
+  },
+  {
+    "preposition": "like",
+    "type": "comparison",
+    "level": "A1",
+    "categories": ["descriptions", "similarities"]
+  },
+  {
+    "preposition": "against",
+    "type": "opposition",
+    "level": "B1",
+    "categories": ["conflict", "position"]
+  },
+  {
+    "preposition": "among",
+    "type": "place",
+    "level": "B1",
+    "categories": ["groups", "location"]
+  },
+  {
+    "preposition": "around",
+    "type": "movement/place",
+    "level": "A2",
+    "categories": ["travel", "surfaces"]
+  },
+  {
+    "preposition": "within",
+    "type": "place/time",
+    "level": "B1",
+    "categories": ["limits", "boundaries"]
+  },
+  {
+    "preposition": "beyond",
+    "type": "place",
+    "level": "B1",
+    "categories": ["limits", "unknown"]
+  },
+  {
+    "preposition": "despite",
+    "type": "contrast",
+    "level": "B1",
+    "categories": ["conditions", "obstacles"]
+  },
+  {
+    "preposition": "except",
+    "type": "exclusion",
+    "level": "A2",
+    "categories": ["groups", "conditions"]
+  },
+  {
+    "preposition": "per",
+    "type": "distribution",
+    "level": "B1",
+    "categories": ["measurements", "quantity"]
+  }
+]

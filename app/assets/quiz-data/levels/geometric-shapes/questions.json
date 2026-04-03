@@ -4,11 +4,11 @@
       "type": "image",
       "template": "imageQuizTemplate-1",
       "questionData": {
-        "imageName": "alligator",
+        "imageName": "circle",
         "wrongAnswers": [
-          "animal",
-          "bat",
-          "bear"
+          "cone",
+          "cube",
+          "cylinder"
         ]
       }
     },
@@ -16,11 +16,11 @@
       "type": "image",
       "template": "imageQuizTemplate-1",
       "questionData": {
-        "imageName": "animal",
+        "imageName": "cone",
         "wrongAnswers": [
-          "alligator",
-          "bat",
-          "bear"
+          "circle",
+          "cube",
+          "cylinder"
         ]
       }
     },
@@ -28,11 +28,11 @@
       "type": "image",
       "template": "imageQuizTemplate-1",
       "questionData": {
-        "imageName": "bat",
+        "imageName": "cube",
         "wrongAnswers": [
-          "alligator",
-          "animal",
-          "bear"
+          "circle",
+          "cone",
+          "cylinder"
         ]
       }
     },
@@ -40,11 +40,11 @@
       "type": "image",
       "template": "imageQuizTemplate-1",
       "questionData": {
-        "imageName": "bear",
+        "imageName": "cylinder",
         "wrongAnswers": [
-          "alligator",
-          "animal",
-          "bat"
+          "circle",
+          "cone",
+          "cube"
         ]
       }
     },
@@ -52,11 +52,11 @@
       "type": "image",
       "template": "imageQuizTemplate-1",
       "questionData": {
-        "imageName": "bird",
+        "imageName": "ellipse",
         "wrongAnswers": [
-          "alligator",
-          "animal",
-          "bat"
+          "circle",
+          "cone",
+          "cube"
         ]
       }
     },
@@ -64,11 +64,11 @@
       "type": "image",
       "template": "imageQuizTemplate-1",
       "questionData": {
-        "imageName": "butterfly",
+        "imageName": "hexagonal",
         "wrongAnswers": [
-          "alligator",
-          "animal",
-          "bat"
+          "circle",
+          "cone",
+          "cube"
         ]
       }
     },
@@ -76,11 +76,11 @@
       "type": "image",
       "template": "imageQuizTemplate-1",
       "questionData": {
-        "imageName": "camel",
+        "imageName": "pentagon",
         "wrongAnswers": [
-          "alligator",
-          "animal",
-          "bat"
+          "circle",
+          "cone",
+          "cube"
         ]
       }
     },
@@ -88,11 +88,11 @@
       "type": "image",
       "template": "imageQuizTemplate-1",
       "questionData": {
-        "imageName": "crab",
+        "imageName": "pyramid",
         "wrongAnswers": [
-          "alligator",
-          "animal",
-          "bat"
+          "circle",
+          "cone",
+          "cube"
         ]
       }
     },
@@ -100,11 +100,11 @@
       "type": "image",
       "template": "imageQuizTemplate-1",
       "questionData": {
-        "imageName": "crow",
+        "imageName": "rectangle",
         "wrongAnswers": [
-          "alligator",
-          "animal",
-          "bat"
+          "circle",
+          "cone",
+          "cube"
         ]
       }
     },
@@ -112,11 +112,11 @@
       "type": "image",
       "template": "imageQuizTemplate-1",
       "questionData": {
-        "imageName": "deer",
+        "imageName": "sphere",
         "wrongAnswers": [
-          "alligator",
-          "animal",
-          "bat"
+          "circle",
+          "cone",
+          "cube"
         ]
       }
     },
@@ -124,11 +124,11 @@
       "type": "image",
       "template": "imageQuizTemplate-1",
       "questionData": {
-        "imageName": "pigeon",
+        "imageName": "square",
         "wrongAnswers": [
-          "alligator",
-          "animal",
-          "bat"
+          "circle",
+          "cone",
+          "cube"
         ]
       }
     },
@@ -136,23 +136,11 @@
       "type": "image",
       "template": "imageQuizTemplate-1",
       "questionData": {
-        "imageName": "seagull",
+        "imageName": "trapezoid",
         "wrongAnswers": [
-          "alligator",
-          "animal",
-          "bat"
-        ]
-      }
-    },
-    {
-      "type": "image",
-      "template": "imageQuizTemplate-1",
-      "questionData": {
-        "imageName": "swan",
-        "wrongAnswers": [
-          "alligator",
-          "animal",
-          "bat"
+          "circle",
+          "cone",
+          "cube"
         ]
       }
     }

@@ -4,11 +4,23 @@
       "type": "image",
       "template": "imageQuizTemplate-1",
       "questionData": {
+        "imageName": "duck",
+        "wrongAnswers": [
+          "goat",
+          "goose",
+          "horse"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
         "imageName": "goat",
         "wrongAnswers": [
+          "duck",
           "goose",
-          "horse",
-          "pig"
+          "horse"
         ]
       }
     },
@@ -18,9 +30,9 @@
       "questionData": {
         "imageName": "goose",
         "wrongAnswers": [
+          "duck",
           "goat",
-          "horse",
-          "pig"
+          "horse"
         ]
       }
     },
@@ -30,9 +42,9 @@
       "questionData": {
         "imageName": "horse",
         "wrongAnswers": [
+          "duck",
           "goat",
-          "goose",
-          "pig"
+          "goose"
         ]
       }
     },
@@ -42,9 +54,9 @@
       "questionData": {
         "imageName": "pig",
         "wrongAnswers": [
+          "duck",
           "goat",
-          "goose",
-          "horse"
+          "goose"
         ]
       }
     },
@@ -54,9 +66,9 @@
       "questionData": {
         "imageName": "quail",
         "wrongAnswers": [
+          "duck",
           "goat",
-          "goose",
-          "horse"
+          "goose"
         ]
       }
     },
@@ -66,9 +78,9 @@
       "questionData": {
         "imageName": "rabbit",
         "wrongAnswers": [
+          "duck",
           "goat",
-          "goose",
-          "horse"
+          "goose"
         ]
       }
     },
@@ -78,9 +90,9 @@
       "questionData": {
         "imageName": "sheep",
         "wrongAnswers": [
+          "duck",
           "goat",
-          "goose",
-          "horse"
+          "goose"
         ]
       }
     },
@@ -90,9 +102,9 @@
       "questionData": {
         "imageName": "turkey",
         "wrongAnswers": [
+          "duck",
           "goat",
-          "goose",
-          "horse"
+          "goose"
         ]
       }
     }

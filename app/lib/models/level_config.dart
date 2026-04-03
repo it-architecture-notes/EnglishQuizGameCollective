@@ -33,6 +33,22 @@ class ConvoQuestionData {
   final List<String> distractors;
 }
 
+/// Parsed `questionData` for [ConvoTemplate-2] (image + cloze sentence + cloze image).
+class ConvoTemplate2QuestionData {
+  const ConvoTemplate2QuestionData({
+    required this.imageName,
+    required this.sentence,
+    required this.answer,
+    required this.distractors,
+  });
+
+  /// Basename without extension; must exist under the level folder.
+  final String imageName;
+  final Map<String, String> sentence;
+  final String answer;
+  final List<String> distractors;
+}
+
 /// One entry in `levelQuestions`.
 class LevelQuestion {
   const LevelQuestion({
@@ -41,6 +57,7 @@ class LevelQuestion {
     required this.template,
     this.imageData,
     this.convoData,
+    this.convo2Data,
   });
 
   final String? questionId;
@@ -48,6 +65,7 @@ class LevelQuestion {
   final String template;
   final ImageQuestionData? imageData;
   final ConvoQuestionData? convoData;
+  final ConvoTemplate2QuestionData? convo2Data;
 
 }
 
@@ -113,6 +131,24 @@ class LevelConfig {
     );
   }
 
+  static ConvoTemplate2QuestionData _parseConvo2Data(Map<String, dynamic> data) {
+    final imageName = data['imageName'] as String? ?? '';
+    final distractors = (data['distractors'] as List<dynamic>? ?? [])
+        .map((e) => e.toString())
+        .toList();
+    if (distractors.length != 3) {
+      throw FormatException(
+        'ConvoTemplate-2 must have exactly 3 distractors (got ${distractors.length})',
+      );
+    }
+    return ConvoTemplate2QuestionData(
+      imageName: imageName,
+      sentence: _stringMap(data['sentence']),
+      answer: data['answer'] as String? ?? '',
+      distractors: distractors,
+    );
+  }
+
   static LevelQuestion _parseQuestion(Map<String, dynamic> json) {
     final type = _parseType(json['type'] as String? ?? '');
     final template = json['template'] as String? ?? '';
@@ -122,12 +158,16 @@ class LevelConfig {
     }
     ImageQuestionData? imageData;
     ConvoQuestionData? convoData;
+    ConvoTemplate2QuestionData? convo2Data;
     switch (template) {
       case 'imageQuizTemplate-1':
         imageData = _parseImageData(qd);
         break;
       case 'ConvoTemplate-1':
         convoData = _parseConvoData(qd);
+        break;
+      case 'ConvoTemplate-2':
+        convo2Data = _parseConvo2Data(qd);
         break;
       default:
         throw FormatException('Unknown template: $template');
@@ -138,6 +178,7 @@ class LevelConfig {
       template: template,
       imageData: imageData,
       convoData: convoData,
+      convo2Data: convo2Data,
     );
   }
 
