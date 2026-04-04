@@ -1,0 +1,232 @@
+{
+  "levelQuestions": [
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "alone",
+        "wrongAnswers": [
+          "lonely",
+          "bored",
+          "nervous"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "angry",
+        "wrongAnswers": [
+          "bored",
+          "nervous",
+          "proud"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "bored",
+        "wrongAnswers": [
+          "tired-exhausted",
+          "lonely",
+          "alone"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "fever",
+        "wrongAnswers": [
+          "tired-exhausted",
+          "nervous",
+          "healthy"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "happy",
+        "wrongAnswers": [
+          "proud",
+          "healthy",
+          "bored"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "healthy",
+        "wrongAnswers": [
+          "happy",
+          "proud",
+          "nervous"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "lonely",
+        "wrongAnswers": [
+          "alone",
+          "bored",
+          "nervous"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "nervous",
+        "wrongAnswers": [
+          "angry",
+          "fever",
+          "bored"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "proud",
+        "wrongAnswers": [
+          "happy",
+          "healthy",
+          "alone"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "tired-exhausted",
+        "wrongAnswers": [
+          "fever",
+          "bored",
+          "lonely"
+        ]
+      }
+    },
+    {
+      "type": "vocab",
+      "template": "ConvoTemplate-1",
+      "questionData": {
+        "character1": "mike",
+        "character2": "sarah",
+        "line1": {
+          "en": "How do you _____ right now?",
+          "tr": "Şu an nasıl _____?",
+          "es": "¿Cómo te _____ ahora mismo?"
+        },
+        "line2": {
+          "en": "I feel really happy today!",
+          "tr": "Bugün gerçekten mutlu hissediyorum!",
+          "es": "¡Me siento muy feliz hoy!"
+        },
+        "answer": "feel",
+        "distractors": [
+          "show",
+          "look",
+          "find"
+        ]
+      }
+    },
+    {
+      "type": "vocab",
+      "template": "ConvoTemplate-1",
+      "questionData": {
+        "character1": "sarah",
+        "character2": "mike",
+        "line1": {
+          "en": "It is okay to _____ your feelings.",
+          "tr": "Duygularını _____ etmek normaldir.",
+          "es": "Está bien _____ tus sentimientos."
+        },
+        "line2": {
+          "en": "Thank you, I will try to do that.",
+          "tr": "Teşekkürler, bunu yapmaya çalışacağım.",
+          "es": "Gracias, voy a intentarlo."
+        },
+        "answer": "express",
+        "distractors": [
+          "hide",
+          "forget",
+          "ignore"
+        ]
+      }
+    },
+    {
+      "type": "grammar",
+      "template": "ConvoTemplate-1",
+      "questionData": {
+        "character1": "mike",
+        "character2": "sarah",
+        "line1": {
+          "en": "_____ you feeling nervous about the test?",
+          "tr": "Sınav hakkında gergin _____ misin?",
+          "es": "¿_____ nerviosa por el examen?"
+        },
+        "line2": {
+          "en": "Yes, I am a little nervous.",
+          "tr": "Evet, biraz gerginim.",
+          "es": "Sí, estoy un poco nerviosa."
+        },
+        "answer": "Are",
+        "distractors": [
+          "Do",
+          "Is",
+          "Have"
+        ]
+      }
+    },
+    {
+      "type": "vocab",
+      "template": "ConvoTemplate-2",
+      "questionData": {
+        "imageName": "happy",
+        "sentence": {
+          "en": "She looks very _____ today.",
+          "tr": "She looks very _____ today. (mutlu)",
+          "es": "She looks very _____ today. (feliz)"
+        },
+        "answer": "happy",
+        "distractors": [
+          "angry",
+          "lonely",
+          "nervous"
+        ]
+      }
+    },
+    {
+      "type": "vocab",
+      "template": "ConvoTemplate-2",
+      "questionData": {
+        "imageName": "angry",
+        "sentence": {
+          "en": "He got _____ when he lost the game.",
+          "tr": "He got _____ when he lost the game. (kızgın)",
+          "es": "He got _____ when he lost the game. (enojado)"
+        },
+        "answer": "angry",
+        "distractors": [
+          "happy",
+          "proud",
+          "bored"
+        ]
+      }
+    }
+  ]
+}

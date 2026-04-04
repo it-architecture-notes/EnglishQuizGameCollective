@@ -51,7 +51,7 @@ flutter:
     - assets/quiz-data/levels/travel-1/
     - assets/quiz-data/levels/travel-2/
     - assets/quiz-data/levels/travel-3/
-    - assets/quiz-data/levels/bathroom/
+    - assets/quiz-data/levels/in-the-bathroom/
     - assets/quiz-data/levels/bathroom-2/
     - assets/quiz-data/levels/bedroom/
     - assets/quiz-data/levels/bedroom-2/
@@ -115,4 +115,32 @@ flutter:
     - assets/quiz-data/levels/wild-animals-2/
     - assets/quiz-data/levels/wild-animals-3/
     - assets/quiz-data/levels/wild-animals-4/
+    - assets/quiz-data/levels/at-the-airport/
+    - assets/quiz-data/levels/visiting-the-doctor/
+    - assets/quiz-data/levels/at-the-pharmacy/
+    - assets/quiz-data/levels/cooking-at-home/
+    - assets/quiz-data/levels/grocery-shopping/
+    - assets/quiz-data/levels/at-the-farmers-market/
+    - assets/quiz-data/levels/morning-routine/
+    - assets/quiz-data/levels/getting-dressed/
+    - assets/quiz-data/levels/school-day/
+    - assets/quiz-data/levels/relaxing-at-home/
+    - assets/quiz-data/levels/on-the-farm/
+    - assets/quiz-data/levels/wildlife-watching/
+    - assets/quiz-data/levels/driving-around-town/
+    - assets/quiz-data/levels/gardening-at-home/
+    - assets/quiz-data/levels/eating-at-a-restaurant/
+    - assets/quiz-data/levels/home-repairs/
+    - assets/quiz-data/levels/at-the-bank/
+    - assets/quiz-data/levels/shopping-for-clothes/
+    - assets/quiz-data/levels/at-the-post-office/
+    - assets/quiz-data/levels/exploring-nature/
+    - assets/quiz-data/levels/baby-care/
+    - assets/quiz-data/levels/expressing-emotions/
+    - assets/quiz-data/levels/body-and-health/
+    - assets/quiz-data/levels/city-walk/
+    - assets/quiz-data/levels/going-to-work/
+    - assets/quiz-data/levels/at-the-gas-station/
+    - assets/quiz-data/levels/insect-world/
+    - assets/quiz-data/levels/home-decoration/
     - assets/audio/

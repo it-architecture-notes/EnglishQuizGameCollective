@@ -1,0 +1,172 @@
+{
+  "levelQuestions": [
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "almond",
+        "wrongAnswers": ["peanuts", "walnut", "popcorn"]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "beans",
+        "wrongAnswers": ["butter", "bread", "milk"]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "bread",
+        "wrongAnswers": ["butter", "milk", "beans"]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "butter",
+        "wrongAnswers": ["milk", "bread", "ice-cream"]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "ice-cream",
+        "wrongAnswers": ["butter", "milk", "popcorn"]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "milk",
+        "wrongAnswers": ["butter", "bread", "ice-cream"]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "peanuts",
+        "wrongAnswers": ["almond", "walnut", "popcorn"]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "popcorn",
+        "wrongAnswers": ["peanuts", "almond", "walnut"]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "toothpaste",
+        "wrongAnswers": ["butter", "beans", "walnut"]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "walnut",
+        "wrongAnswers": ["almond", "peanuts", "popcorn"]
+      }
+    },
+    {
+      "type": "vocab",
+      "template": "ConvoTemplate-1",
+      "questionData": {
+        "character1": "mike",
+        "character2": "sarah",
+        "line1": {
+          "en": "I need to _____ some fresh vegetables at the market.",
+          "tr": "Marketten taze sebze _____ lazım.",
+          "es": "Necesito _____ algunas verduras frescas en el mercado."
+        },
+        "line2": {
+          "en": "Good idea. The vegetables look great today.",
+          "tr": "İyi fikir. Bugün sebzeler çok güzel görünüyor.",
+          "es": "Buena idea. Las verduras se ven muy bien hoy."
+        },
+        "answer": "buy",
+        "distractors": ["get", "find", "sell"]
+      }
+    },
+    {
+      "type": "vocab",
+      "template": "ConvoTemplate-1",
+      "questionData": {
+        "character1": "mike",
+        "character2": "sarah",
+        "line1": {
+          "en": "Can you _____ some milk while you're at the store?",
+          "tr": "Marketteyken biraz süt _____ misin?",
+          "es": "¿Puedes _____ algo de leche mientras estás en la tienda?"
+        },
+        "line2": {
+          "en": "Sure, I'll pick up a carton.",
+          "tr": "Tabii, bir kutu alırım.",
+          "es": "Claro, cogeré un cartón."
+        },
+        "answer": "get",
+        "distractors": ["buy", "carry", "find"]
+      }
+    },
+    {
+      "type": "grammar",
+      "template": "ConvoTemplate-1",
+      "questionData": {
+        "character1": "mike",
+        "character2": "sarah",
+        "line1": {
+          "en": "_____ we need more butter for the cake?",
+          "tr": "Pasta için daha fazla tereyağına ihtiyacımız var mı?",
+          "es": "¿_____ necesitamos más mantequilla para el pastel?"
+        },
+        "line2": {
+          "en": "Yes, let's grab an extra pack.",
+          "tr": "Evet, bir paket daha alalım.",
+          "es": "Sí, cojamos un paquete más."
+        },
+        "answer": "Do",
+        "distractors": ["Should", "Must", "Will"]
+      }
+    },
+    {
+      "type": "vocab",
+      "template": "ConvoTemplate-2",
+      "questionData": {
+        "imageName": "milk",
+        "sentence": {
+          "en": "Always check that the _____ is fresh before you buy it.",
+          "tr": "Always check that the _____ is fresh before you buy it. (süt)",
+          "es": "Always check that the _____ is fresh before you buy it. (leche)"
+        },
+        "answer": "milk",
+        "distractors": ["butter", "ice-cream", "beans"]
+      }
+    },
+    {
+      "type": "vocab",
+      "template": "ConvoTemplate-2",
+      "questionData": {
+        "imageName": "bread",
+        "sentence": {
+          "en": "She bought a loaf of _____ at the grocery store.",
+          "tr": "She bought a loaf of _____ at the grocery store. (ekmek)",
+          "es": "She bought a loaf of _____ at the grocery store. (pan)"
+        },
+        "answer": "bread",
+        "distractors": ["butter", "milk", "toothpaste"]
+      }
+    }
+  ]
+}

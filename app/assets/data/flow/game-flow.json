@@ -1,337 +1,142 @@
 [
   {
     "mainLevel": 1,
-    "iconImageName": "travel-1",
-    "title": "Travel 1"
+    "iconImageName": "morning-routine",
+    "title": "Morning Routine"
   },
   {
     "mainLevel": 1,
-    "iconImageName": "travel-2",
-    "title": "Travel 2"
+    "iconImageName": "getting-dressed",
+    "title": "Getting Dressed"
   },
   {
     "mainLevel": 1,
-    "iconImageName": "travel-3",
-    "title": "Travel 3"
+    "iconImageName": "body-and-health",
+    "title": "Body & Health"
   },
   {
     "mainLevel": 1,
-    "iconImageName": "bathroom",
-    "title": "Bathroom"
+    "iconImageName": "expressing-emotions",
+    "title": "Expressing Emotions"
   },
   {
     "mainLevel": 1,
-    "iconImageName": "bathroom-2",
-    "title": "Bathroom 2"
-  },
-  {
-    "mainLevel": 1,
-    "iconImageName": "bedroom",
-    "title": "Bedroom"
-  },
-  {
-    "mainLevel": 1,
-    "iconImageName": "bedroom-2",
-    "title": "Bedroom 2"
-  },
-  {
-    "mainLevel": 1,
-    "iconImageName": "body-parts",
-    "title": "Body Parts"
-  },
-  {
-    "mainLevel": 1,
-    "iconImageName": "body-parts-2",
-    "title": "Body Parts 2"
-  },
-  {
-    "mainLevel": 1,
-    "iconImageName": "body-parts-3",
-    "title": "Body Parts 3"
+    "iconImageName": "school-day",
+    "title": "School Day"
   },
   {
     "mainLevel": 2,
-    "iconImageName": "dressing-1",
-    "title": "Clothes & Style 1"
+    "iconImageName": "grocery-shopping",
+    "title": "Grocery Shopping"
   },
   {
     "mainLevel": 2,
-    "iconImageName": "dressing-2",
-    "title": "Clothes & Style 2"
+    "iconImageName": "at-the-farmers-market",
+    "title": "At the Farmer's Market"
   },
   {
     "mainLevel": 2,
-    "iconImageName": "dressing-3",
-    "title": "Clothes & Style 3"
+    "iconImageName": "at-the-bank",
+    "title": "At the Bank"
   },
   {
     "mainLevel": 2,
-    "iconImageName": "dressing-4",
-    "title": "Clothes & Style 4"
+    "iconImageName": "at-the-post-office",
+    "title": "At the Post Office"
   },
   {
     "mainLevel": 2,
-    "iconImageName": "emotions-1",
-    "title": "Emotions 1"
-  },
-  {
-    "mainLevel": 2,
-    "iconImageName": "emotions-2",
-    "title": "Emotions 2"
-  },
-  {
-    "mainLevel": 2,
-    "iconImageName": "emotions-3",
-    "title": "Emotions 3"
-  },
-  {
-    "mainLevel": 2,
-    "iconImageName": "emotions-4",
-    "title": "Emotions 4"
-  },
-  {
-    "mainLevel": 2,
-    "iconImageName": "farm-animals",
-    "title": "Farm Animals"
-  },
-  {
-    "mainLevel": 2,
-    "iconImageName": "farm-animals-2",
-    "title": "Farm Animals 2"
+    "iconImageName": "shopping-for-clothes",
+    "title": "Shopping for Clothes"
   },
   {
     "mainLevel": 3,
-    "iconImageName": "grocery",
-    "title": "Grocery"
+    "iconImageName": "visiting-the-doctor",
+    "title": "Visiting the Doctor"
   },
   {
     "mainLevel": 3,
-    "iconImageName": "grocery-2",
-    "title": "Grocery 2"
+    "iconImageName": "at-the-pharmacy",
+    "title": "At the Pharmacy"
   },
   {
     "mainLevel": 3,
-    "iconImageName": "grocery-3",
-    "title": "Grocery 3"
+    "iconImageName": "baby-care",
+    "title": "Baby Care"
   },
   {
     "mainLevel": 3,
-    "iconImageName": "hospital",
-    "title": "Hospital"
+    "iconImageName": "going-to-work",
+    "title": "Going to Work"
   },
   {
     "mainLevel": 3,
-    "iconImageName": "hospital-2",
-    "title": "Hospital 2"
-  },
-  {
-    "mainLevel": 3,
-    "iconImageName": "hospital-3",
-    "title": "Hospital 3"
-  },
-  {
-    "mainLevel": 3,
-    "iconImageName": "household-equipment-1",
-    "title": "Household Tools 1"
-  },
-  {
-    "mainLevel": 3,
-    "iconImageName": "household-equipment-3",
-    "title": "Household Tools 3"
+    "iconImageName": "on-the-farm",
+    "title": "On the Farm"
   },
   {
     "mainLevel": 4,
-    "iconImageName": "household-equipment-2",
-    "title": "Household Tools 2"
+    "iconImageName": "cooking-at-home",
+    "title": "Cooking at Home"
   },
   {
     "mainLevel": 4,
-    "iconImageName": "household-equipment-4",
-    "title": "Household Tools 4"
+    "iconImageName": "eating-at-a-restaurant",
+    "title": "Eating at a Restaurant"
   },
   {
     "mainLevel": 4,
-    "iconImageName": "jobs-1",
-    "title": "Jobs"
+    "iconImageName": "relaxing-at-home",
+    "title": "Relaxing at Home"
   },
   {
     "mainLevel": 4,
-    "iconImageName": "jobs-2",
-    "title": "Jobs 2"
+    "iconImageName": "home-decoration",
+    "title": "Home Decoration"
   },
   {
     "mainLevel": 4,
-    "iconImageName": "jobs-3",
-    "title": "Jobs 3"
-  },
-  {
-    "mainLevel": 4,
-    "iconImageName": "jobs-4",
-    "title": "Jobs 4"
-  },
-  {
-    "mainLevel": 4,
-    "iconImageName": "jobs-5",
-    "title": "Jobs 5"
-  },
-  {
-    "mainLevel": 4,
-    "iconImageName": "kitchen-1",
-    "title": "Kitchen 1"
+    "iconImageName": "home-repairs",
+    "title": "Home Repairs"
   },
   {
     "mainLevel": 5,
-    "iconImageName": "kitchen-2",
-    "title": "Kitchen 2"
-  },
-  {
-    "mainLevel": 4,
-    "iconImageName": "kitchen-3",
-    "title": "Kitchen 3"
+    "iconImageName": "city-walk",
+    "title": "City Walk"
   },
   {
     "mainLevel": 5,
-    "iconImageName": "kitchen-4",
-    "title": "Kitchen 4"
+    "iconImageName": "driving-around-town",
+    "title": "Driving Around Town"
   },
   {
     "mainLevel": 5,
-    "iconImageName": "kitchen-5",
-    "title": "Kitchen 5"
+    "iconImageName": "at-the-gas-station",
+    "title": "At the Gas Station"
   },
   {
     "mainLevel": 5,
-    "iconImageName": "living-room",
-    "title": "Living Room"
+    "iconImageName": "at-the-airport",
+    "title": "At the Airport"
   },
   {
     "mainLevel": 5,
-    "iconImageName": "living-room-2",
-    "title": "Living Room 2"
-  },
-  {
-    "mainLevel": 5,
-    "iconImageName": "living-room-3",
-    "title": "Living Room 3"
-  },
-  {
-    "mainLevel": 5,
-    "iconImageName": "market-fruits-1",
-    "title": "Market Fruits 1"
-  },
-  {
-    "mainLevel": 5,
-    "iconImageName": "market-fruits-2",
-    "title": "Market Fruits 2"
-  },
-  {
-    "mainLevel": 5,
-    "iconImageName": "market-fruits-3",
-    "title": "Market Fruits 3"
-  },
-  {
-    "mainLevel": 5,
-    "iconImageName": "market-vegetables-1",
-    "title": "Market Vegetables 1"
+    "iconImageName": "wildlife-watching",
+    "title": "Wildlife Watching"
   },
   {
     "mainLevel": 6,
-    "iconImageName": "market-vegetables-2",
-    "title": "Market Vegetables 2"
-  },
-  {
-    "mainLevel": 5,
-    "iconImageName": "market-vegetables-3",
-    "title": "Market Vegetables 3"
+    "iconImageName": "gardening-at-home",
+    "title": "Gardening at Home"
   },
   {
     "mainLevel": 6,
-    "iconImageName": "market-vegetables-4",
-    "title": "Market Vegetables 4"
+    "iconImageName": "exploring-nature",
+    "title": "Exploring Nature"
   },
   {
     "mainLevel": 6,
-    "iconImageName": "nature-1",
-    "title": "Nature 1"
-  },
-  {
-    "mainLevel": 6,
-    "iconImageName": "nature-2",
-    "title": "Nature 2"
-  },
-  {
-    "mainLevel": 6,
-    "iconImageName": "nature-3",
-    "title": "Nature 3"
-  },
-  {
-    "mainLevel": 6,
-    "iconImageName": "pharmacy",
-    "title": "Pharmacy"
-  },
-  {
-    "mainLevel": 6,
-    "iconImageName": "pharmacy-2",
-    "title": "Pharmacy 2"
-  },
-  {
-    "mainLevel": 6,
-    "iconImageName": "school supplies",
-    "title": "School Supplies"
-  },
-  {
-    "mainLevel": 6,
-    "iconImageName": "school supplies-2",
-    "title": "School Supplies 2"
-  },
-  {
-    "mainLevel": 7,
-    "iconImageName": "school-1",
-    "title": "School 1"
-  },
-  {
-    "mainLevel": 7,
-    "iconImageName": "school-2",
-    "title": "School 2"
-  },
-  {
-    "mainLevel": 7,
-    "iconImageName": "school-3",
-    "title": "School 3"
-  },
-  {
-    "mainLevel": 7,
-    "iconImageName": "vehicles",
-    "title": "Vehicles"
-  },
-  {
-    "mainLevel": 7,
-    "iconImageName": "vehicles-2",
-    "title": "Vehicles 2"
-  },
-  {
-    "mainLevel": 7,
-    "iconImageName": "vehicles-3",
-    "title": "Vehicles 3"
-  },
-  {
-    "mainLevel": 7,
-    "iconImageName": "wild-animals-1",
-    "title": "Wild Animals 1"
-  },
-  {
-    "mainLevel": 7,
-    "iconImageName": "wild-animals-2",
-    "title": "Wild Animals 2"
-  },
-  {
-    "mainLevel": 7,
-    "iconImageName": "wild-animals-3",
-    "title": "Wild Animals 3"
-  },
-  {
-    "mainLevel": 7,
-    "iconImageName": "wild-animals-4",
-    "title": "Wild Animals 4"
+    "iconImageName": "insect-world",
+    "title": "Insect World"
   }
 ]

@@ -1,0 +1,148 @@
+{
+  "levelQuestions": [
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "accountant",
+        "wrongAnswers": ["cashier", "plumber", "actress"]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "actress",
+        "wrongAnswers": ["accountant", "teacher", "gardener"]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "cashier",
+        "wrongAnswers": ["accountant", "plumber", "teacher"]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "chef",
+        "wrongAnswers": ["teacher", "firefighter", "pilot"]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "firefighter",
+        "wrongAnswers": ["pilot", "plumber", "chef"]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "gardener",
+        "wrongAnswers": ["veterinarian", "actress", "cashier"]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "pilot",
+        "wrongAnswers": ["firefighter", "chef", "plumber"]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "plumber",
+        "wrongAnswers": ["cashier", "firefighter", "accountant"]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "teacher",
+        "wrongAnswers": ["actress", "cashier", "accountant"]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "veterinarian",
+        "wrongAnswers": ["gardener", "pilot", "chef"]
+      }
+    },
+    {
+      "type": "vocab",
+      "template": "ConvoTemplate-1",
+      "questionData": {
+        "character1": "mike",
+        "character2": "sarah",
+        "line1": { "en": "Where do you _____ every day?", "tr": "Her gün nerede _____?", "es": "¿Dónde _____ todos los días?" },
+        "line2": { "en": "I work at a school as a teacher.", "tr": "Bir okulda öğretmen olarak çalışıyorum.", "es": "Trabajo en una escuela como maestra." },
+        "answer": "work",
+        "distractors": ["live", "study", "sleep"]
+      }
+    },
+    {
+      "type": "vocab",
+      "template": "ConvoTemplate-1",
+      "questionData": {
+        "character1": "sarah",
+        "character2": "mike",
+        "line1": { "en": "How much does a pilot _____ per month?", "tr": "Bir pilot ayda ne kadar _____?", "es": "¿Cuánto _____ un piloto al mes?" },
+        "line2": { "en": "They usually earn a very good salary.", "tr": "Genellikle çok iyi bir maaş kazanırlar.", "es": "Suelen ganar un salario muy bueno." },
+        "answer": "earn",
+        "distractors": ["spend", "pay", "borrow"]
+      }
+    },
+    {
+      "type": "grammar",
+      "template": "ConvoTemplate-1",
+      "questionData": {
+        "character1": "mike",
+        "character2": "sarah",
+        "line1": { "en": "What _____ you do for a living?", "tr": "Geçimini sağlamak için ne _____?", "es": "¿A qué _____ dedicas?" },
+        "line2": { "en": "I am a chef. I cook at a restaurant.", "tr": "Aşçıyım. Bir restoranda yemek pişiriyorum.", "es": "Soy chef. Cocino en un restaurante." },
+        "answer": "do",
+        "distractors": ["are", "have", "can"]
+      }
+    },
+    {
+      "type": "vocab",
+      "template": "ConvoTemplate-2",
+      "questionData": {
+        "imageName": "teacher",
+        "sentence": {
+          "en": "The _____ explains the lesson to the students.",
+          "tr": "The _____ explains the lesson to the students. (öğretmen)",
+          "es": "The _____ explains the lesson to the students. (maestra)"
+        },
+        "answer": "teacher",
+        "distractors": ["cashier", "plumber", "actress"]
+      }
+    },
+    {
+      "type": "vocab",
+      "template": "ConvoTemplate-2",
+      "questionData": {
+        "imageName": "chef",
+        "sentence": {
+          "en": "The _____ prepares delicious meals in the kitchen.",
+          "tr": "The _____ prepares delicious meals in the kitchen. (aşçı)",
+          "es": "The _____ prepares delicious meals in the kitchen. (chef)"
+        },
+        "answer": "chef",
+        "distractors": ["pilot", "gardener", "accountant"]
+      }
+    }
+  ]
+}

@@ -1,0 +1,172 @@
+{
+  "levelQuestions": [
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "alarm-clock",
+        "wrongAnswers": ["bed-frame", "comb", "scales"]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "bath-mat",
+        "wrongAnswers": ["bathrobe", "shower-curtains", "bathtub"]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "bathrobe",
+        "wrongAnswers": ["bath-mat", "shower-curtains", "comb"]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "bathtub",
+        "wrongAnswers": ["shower", "bath-mat", "bathrobe"]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "bed-frame",
+        "wrongAnswers": ["alarm-clock", "scales", "bathrobe"]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "comb",
+        "wrongAnswers": ["shaving-razor", "bathrobe", "bath-mat"]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "scales",
+        "wrongAnswers": ["alarm-clock", "comb", "bed-frame"]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "shaving-razor",
+        "wrongAnswers": ["comb", "bathrobe", "bath-mat"]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "shower",
+        "wrongAnswers": ["bathtub", "shower-curtains", "bath-mat"]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "shower-curtains",
+        "wrongAnswers": ["bath-mat", "bathrobe", "bathtub"]
+      }
+    },
+    {
+      "type": "vocab",
+      "template": "ConvoTemplate-1",
+      "questionData": {
+        "character1": "mike",
+        "character2": "sarah",
+        "line1": {
+          "en": "What time do you usually _____ in the morning?",
+          "tr": "Sabahları genellikle saat kaçta _____?",
+          "es": "¿A qué hora sueles _____ por la mañana?"
+        },
+        "line2": {
+          "en": "I wake up at seven o'clock every day.",
+          "tr": "Her gün saat yedide kalkıyorum.",
+          "es": "Me despierto a las siete todos los días."
+        },
+        "answer": "wake up",
+        "distractors": ["get ready", "go out", "sit down"]
+      }
+    },
+    {
+      "type": "vocab",
+      "template": "ConvoTemplate-1",
+      "questionData": {
+        "character1": "mike",
+        "character2": "sarah",
+        "line1": {
+          "en": "How long does it take you to _____?",
+          "tr": "Hazırlanman ne kadar sürer?",
+          "es": "¿Cuánto tiempo te lleva _____?"
+        },
+        "line2": {
+          "en": "About thirty minutes — I shower and get dressed.",
+          "tr": "Yaklaşık otuz dakika — duş alıyorum ve giyiniyorum.",
+          "es": "Unos treinta minutos — me ducho y me visto."
+        },
+        "answer": "get ready",
+        "distractors": ["wake up", "go out", "sit down"]
+      }
+    },
+    {
+      "type": "grammar",
+      "template": "ConvoTemplate-1",
+      "questionData": {
+        "character1": "mike",
+        "character2": "sarah",
+        "line1": {
+          "en": "Do you _____ take a shower every morning?",
+          "tr": "Her sabah duş almak zorunda mısın?",
+          "es": "¿_____ ducharte todas las mañanas?"
+        },
+        "line2": {
+          "en": "Yes, I have to. It helps me wake up properly.",
+          "tr": "Evet, zorundayım. Düzgün uyanmama yardımcı oluyor.",
+          "es": "Sí, tengo que hacerlo. Me ayuda a despertarme bien."
+        },
+        "answer": "have to",
+        "distractors": ["must not", "cannot", "should not"]
+      }
+    },
+    {
+      "type": "vocab",
+      "template": "ConvoTemplate-2",
+      "questionData": {
+        "imageName": "shower",
+        "sentence": {
+          "en": "He takes a warm _____ every morning before work.",
+          "tr": "He takes a warm _____ every morning before work. (duş)",
+          "es": "He takes a warm _____ every morning before work. (ducha)"
+        },
+        "answer": "shower",
+        "distractors": ["bathtub", "bath-mat", "shower-curtains"]
+      }
+    },
+    {
+      "type": "vocab",
+      "template": "ConvoTemplate-2",
+      "questionData": {
+        "imageName": "alarm-clock",
+        "sentence": {
+          "en": "She set her _____ to ring at six in the morning.",
+          "tr": "She set her _____ to ring at six in the morning. (alarm saati)",
+          "es": "She set her _____ to ring at six in the morning. (despertador)"
+        },
+        "answer": "alarm-clock",
+        "distractors": ["bed-frame", "scales", "comb"]
+      }
+    }
+  ]
+}

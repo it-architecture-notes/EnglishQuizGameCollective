@@ -1,0 +1,675 @@
+LIST 1:
+
+# 1) Daily / Routine Activities
+
+These are the backbone of conversation.
+
+* wake up
+* make the bed
+* brush teeth
+* take a shower
+* get dressed
+* prepare breakfast
+* eat meals (breakfast, lunch, dinner)
+* pack lunch
+* go to work
+* go to school
+* commute (drive, take bus, walk)
+* check emails
+* cook dinner
+* wash dishes
+* clean kitchen
+* take out the trash
+* relax (watch TV, scroll phone)
+* help kids with homework
+* read a book
+* go to sleep
+
+---
+
+# 2) Household Chores (Weekly / Ongoing)
+
+* do laundry
+* fold clothes
+* iron clothes
+* vacuum the house
+* sweep the floor
+* mop the floor
+* clean bathroom
+* clean windows
+* dust furniture
+* change bed sheets
+* organize closet
+* declutter rooms
+* water plants
+* take care of pets (feed, clean, walk)
+* take out recycling
+* clean fridge
+* clean oven
+
+---
+
+# 3) Shopping & Errands
+
+* go grocery shopping
+* buy household supplies
+* buy clothes
+* shop online
+* return items
+* pick up orders
+* go to the pharmacy
+* buy medicine
+* buy gas / fuel
+* go to the bank
+* withdraw money
+* deposit money
+* pay bills
+* send packages
+* pick up mail
+* go to the post office
+
+---
+
+# 4) Food & Eating Activities
+
+* cook meals
+* try new recipes
+* bake (cake, cookies, bread)
+* order takeout
+* eat at a restaurant
+* go out for coffee
+* have a family dinner
+* host guests
+* attend a dinner party
+* prepare lunchboxes
+* grill / barbecue
+* celebrate with meals (birthday, holidays)
+
+---
+
+# 5) Family & Social Activities
+
+* visit relatives
+* host family gatherings
+* celebrate birthdays
+* attend weddings
+* attend funerals
+* go to parties
+* invite friends over
+* play games together
+* watch movies together
+* go for a walk
+* go to the park
+* take family photos
+* have conversations
+* spend time together
+
+---
+
+# 6) Kids & School Activities
+
+* drop kids off at school
+* pick kids up from school
+* attend parent-teacher meetings
+* help with homework
+* attend school events
+* go to sports practice
+* attend school performances
+* prepare school supplies
+* pack school bags
+* read bedtime stories
+
+---
+
+# 7) Work & Productivity
+
+* work from home
+* go to the office
+* attend meetings
+* make phone calls
+* send emails
+* plan schedules
+* manage finances
+* budget expenses
+* pay taxes
+* apply for jobs
+* attend interviews
+
+---
+
+# 8) Health & Personal Care
+
+* go to the doctor
+* go to the dentist
+* take medication
+* exercise (gym, run, yoga)
+* go for a walk
+* get a haircut
+* go to a salon
+* rest when sick
+* take vitamins
+* attend therapy
+
+---
+
+# 9) Transportation & Car-related
+
+* drive to work
+* refuel the car
+* wash the car
+* clean the car
+* take the car for maintenance
+* repair the car
+* renew insurance
+* renew license
+* check tire pressure
+* change tires (seasonal)
+
+---
+
+# 10) Home Maintenance & Projects
+
+* fix things around the house
+* repair appliances
+* paint walls
+* assemble furniture
+* decorate the house
+* renovate rooms
+* mow the lawn
+* shovel snow
+* rake leaves
+* clean the garage
+* organize storage
+
+---
+
+# 11) Leisure & Entertainment
+
+* watch TV shows
+* watch movies
+* play video games
+* listen to music
+* read books
+* go shopping for fun
+* go to the cinema
+* attend concerts
+* attend events
+* go sightseeing
+* go hiking
+* go camping
+
+---
+
+# 12) Seasonal Activities
+
+### Winter
+
+* shovel snow
+* build a snowman
+* go skiing
+* celebrate holidays
+* decorate for holidays
+
+### Spring
+
+* do spring cleaning
+* plant flowers
+* garden work
+
+### Summer
+
+* go on vacation
+* go to the beach
+* have barbecues
+* travel
+
+### Fall
+
+* rake leaves
+* prepare for winter
+* go back to school
+* decorate for fall
+
+---
+
+# 13) Financial & Administrative
+
+* pay rent / mortgage
+* pay utilities
+* review bank statements
+* file taxes
+* renew subscriptions
+* manage subscriptions
+* plan savings
+* invest money
+
+---
+
+# 14) Travel Activities
+
+* plan a trip
+* book flights
+* reserve hotels
+* pack luggage
+* go to the airport
+* check in
+* go through security
+* travel
+* unpack after trip
+
+---
+
+LIST 2: 
+
+Food & groceries
+Weekly grocery shopping, farmers market run, buying produce/fruit, restocking pantry staples, buying snacks & drinks, meal kit delivery pickup, buying baby/toddler food, specialty food store visit, buying holiday food, buying birthday cake, picking up takeout, ordering food delivery, coffee shop run, buying school lunches, stocking the freezer
+Home & chores
+Doing laundry, folding & putting away clothes, vacuuming, mopping floors, cleaning bathrooms, washing dishes, emptying dishwasher, taking out trash & recycling, decluttering rooms, organizing closets, deep-cleaning the kitchen, cleaning windows, making beds, ironing clothes, changing bed sheets, dusting furniture, cleaning out the fridge, replacing light bulbs, fixing minor repairs, pest control, seasonal decoration, putting up/taking down holiday lights, smoke alarm battery check, cleaning gutters, pressure washing driveway
+Transportation & vehicle
+Buying gas, oil change, car wash, tire rotation, vehicle registration renewal, paying car insurance, annual vehicle inspection, getting tires changed (winter/summer), roadside assistance call, buying a new car, parking permit renewal, replacing windshield wipers, battery jump-start or replacement
+Health & medical
+Annual physical/checkup, dental cleaning (×2/year), eye exam, children's pediatric visit, flu shot/vaccinations, prescription pickup, visiting a specialist, urgent care visit, emergency room visit, therapy/counseling session, blood work/lab tests, physical therapy session, buying OTC medicine, first aid restocking, buying vitamins & supplements, health insurance renewal, dental X-rays, orthodontist appointment, dermatologist visit, hearing test
+School & kids
+School drop-off & pickup, school registration, buying school supplies, back-to-school shopping, parent-teacher conferences, school volunteer work, helping with homework, science fair project, school fundraiser, paying school fees, signing permission slips, school picture day, sports team registration, buying sports equipment, attending school events, enrolling in summer camp, after-school activity pickup, tutoring sessions, standardized test prep, graduation ceremony
+Finance & admin
+Paying bills, filing taxes, reviewing bank statements, budgeting/expense tracking, renewing home/renter's insurance, life insurance review, renewing subscriptions, buying birthday/holiday gifts, passport or ID renewal, renewing driver's license, applying for benefits, reviewing investment accounts, paying credit card bills, donating to charity, estate planning review
+Home maintenance & yard
+Mowing the lawn, raking leaves, shoveling snow, salting walkways, planting a garden, watering plants, pruning trees & shrubs, buying lawn & garden supplies, hiring a contractor, painting a room, replacing appliances, plumbing repair, HVAC filter change, furnace/AC service, cleaning dryer vent, power washing deck, staining/sealing deck, pest inspection, checking roof after storms, pool opening & closing
+Social & family events
+Birthday parties, holiday dinners, family reunions, wedding attendance, baby shower, graduation party, barbecues & cookouts, game nights, dinner parties, attending a funeral, religious services, community events, volunteering, anniversary dinner, neighborhood block party, New Year's Eve, Halloween trick-or-treating, Thanksgiving prep, Christmas/holiday prep, Valentine's Day outing
+Leisure & entertainment
+Going out to eat, movie theater, sports game, concert or live show, theme park visit, museum or art gallery, bowling night, mini golf, escape room, arcade, kids' sporting events, beach/lake day, camping trip, fishing trip, hiking, biking, zoo or aquarium, comedy show, wine tasting/brewery visit, national park visit
+Travel & vacations
+Family vacation, weekend road trip, visiting relatives, booking flights & hotels, packing & prepping, airport drop-off/pickup, passport renewal, pet boarding arrangements, travel insurance purchase, currency exchange, staycation planning, day trip to nearby city, booking a rental car, seasonal attractions (pumpkin patch, tree farm)
+Shopping & errands
+Seasonal clothing shopping, shoe shopping, back-to-school clothes, buying household supplies, online shopping/returns, hardware store run, pharmacy run, post office/shipping packages, buying furniture or appliances, electronics purchase, thrift store/consignment, buying holiday gifts, returning/exchanging items, buying pet food & supplies, buying birthday presents
+Pets & animals
+Vet check-up, flea & tick prevention, pet grooming, buying pet food, dog walking, pet boarding during travel, pet training classes, emergency vet visit, renewing pet license, buying toys & accessories
+
+---
+
+LIST 3:
+
+Here is the same list of family activities grouped into **7 main categories** that capture the essential areas of family life over a year.
+
+---
+
+## 1. Household Maintenance & Chores
+*Keeping the home clean, organized, and functional.*
+
+- Doing laundry (washing, drying, folding, putting away)
+- Washing dishes / loading dishwasher
+- Taking out the trash / recycling
+- Sweeping / vacuuming / mopping
+- Dusting furniture
+- Cleaning the bathroom (toilet, shower, sink)
+- Cleaning the kitchen (counters, oven, fridge, pantry)
+- Making the bed / changing bed sheets
+- Ironing clothes
+- Taking care of houseplants
+- Deep cleaning (windows, gutters, carpets)
+- Changing air filters / smoke detector batteries
+- Calling a plumber / electrician / pest control
+- Painting a room / replacing furniture
+- Assembling furniture / hanging pictures
+- Lost item search (keys, phone, wallet)
+
+---
+
+## 2. Cooking, Food & Shopping
+*Getting food and turning it into meals.*
+
+- Grocery shopping
+- Meal planning
+- Meal prepping
+- Cooking breakfast / lunch / dinner
+- Packing lunches
+- Making coffee / tea
+- Baking cookies / holiday treats
+- Ordering takeout / pizza
+- Going out to eat at a restaurant
+- Stocking up on non-perishables
+- Cleaning out the fridge / pantry
+- Going to the farmers market
+- Having a barbecue / cookout
+- Making Thanksgiving dinner
+- Making hot chocolate / apple cider
+- Buying ice cream outside
+
+---
+
+## 3. Transportation & Errands
+*Getting around, maintaining vehicles, and running necessary outside tasks.*
+
+- Getting gas for the car
+- Washing / vacuuming the car
+- Getting an oil change / car repair
+- Rotating or switching tires
+- Jump-starting a dead car battery
+- Renewing car registration / driver's license
+- Getting car insurance renewal
+- Dropping off / picking up kids from school or activities
+- Going to the bank
+- Going to the post office
+- Going to the pharmacy
+- Returning online purchases
+- Going to the hardware store
+- Going to the library
+- Checking the mail
+
+---
+
+## 4. Personal & Family Care
+*Health, hygiene, grooming, and looking after each other.*
+
+- Brushing teeth
+- Taking a shower / bath
+- Getting dressed
+- Getting haircuts
+- Going to the doctor for checkups
+- Going to the dentist
+- Going to the eye doctor
+- Going to the pharmacy / urgent care
+- Dealing with a sick family member (staying home, caregiving)
+- Feeding pets
+- Walking the dog
+- Cleaning litter box
+- Taking pets to the vet
+- Adopting / training a new pet
+- Babysitting younger siblings
+- Teaching a teenager to drive
+- Helping with college applications
+
+---
+
+## 5. Work, School & Responsibilities
+*Obligations related to jobs, education, and household management.*
+
+- Doing homework
+- Helping with school projects
+- Attending parent-teacher conferences
+- Going back to school (buying supplies)
+- Attending PTA / school meetings
+- Attending a school concert / play / dance recital
+- Paying bills (utilities, mortgage, credit cards)
+- Reviewing family budget
+- Transferring money to savings
+- Filing taxes
+- Donating unused clothes / toys
+- Having a garage sale
+- Volunteering as a family (food bank, shelter)
+- Moving to a new house
+
+---
+
+## 6. Leisure, Entertainment & Eating Out
+*Fun, relaxation, and activities done for enjoyment.*
+
+- Watching TV / streaming shows
+- Having family game night
+- Watching a movie together
+- Going to a museum / zoo / aquarium
+- Going to the park / playground
+- Going for a family walk / biking together
+- Going to a baseball game / sporting event
+- Going to an amusement park / water park
+- Going to a concert / Broadway show
+- Going to a drive-in movie
+- Going to a county fair / carnival
+- Reading books / magazines
+- Using phones / tablets / computers (leisure)
+- Playing video games together
+- Going fishing / hiking / camping
+- Going swimming / to the beach / lake
+- Going ice skating / sledding / tubing
+- Building a snowman / snowball fight
+- Going to a tree lighting ceremony
+- Watching fireworks / holiday parades
+- Watching the Super Bowl / Olympics / awards shows
+
+---
+
+## 7. Holidays, Celebrations & Social Events
+*Special occasions that bring the family together.*
+
+- Celebrating birthdays (party, cake, presents, singing)
+- Celebrating anniversaries
+- Going to a wedding / funeral / graduation
+- Attending a birthday party / playdate
+- Visiting grandparents / cousins / extended family
+- Having a date night (parents)
+- Going to a religious service (church, etc.)
+- Attending a religious ceremony (communion, baptism, etc.)
+- Easter egg hunt
+- Halloween (costumes, trick-or-treating, pumpkin carving)
+- Thanksgiving (dinner, travel, parade)
+- Christmas / Hanukkah (decorations, tree, gifts, cards, cookies)
+- New Year's Eve (party, resolutions, fireworks)
+- Lunar New Year / Diwali / Ramadan Iftar / Cinco de Mayo / St. Patrick's Day
+- Going on a family vacation (summer or winter break)
+- Hosting family for holidays
+- Sending holiday cards
+
+--
+
+LIST 4:
+
+1. Maintenance & Errands (Physical Labor)
+The physical tasks required to keep the household, property, and people functioning.
+
+Household Chores: Cooking, cleaning, laundry, taking out the trash.
+
+Transportation: Commuting, school drop-offs, driving to practice.
+
+Upkeep & Repairs: Car maintenance, yard work, seasonal home repairs.
+
+Pet Care: Feeding, walking, grooming.
+
+2. Management & Administration (Mental Labor)
+The behind-the-scenes planning, scheduling, and financial work (often called the "mental load").
+
+Finances: Paying bills, budgeting, filing taxes, managing insurance.
+
+Logistics & Scheduling: Organizing the family calendar, booking doctor/dentist appointments, coordinating carpools.
+
+Education: Helping with homework, communicating with teachers, signing permission slips.
+
+3. Lifestyle & Connection (Social & Emotional)
+The activities focused on relationships, personal growth, and relaxation.
+
+Leisure: Movie nights, reading, pursuing hobbies, playing games.
+
+Socializing: Hosting dinners, going out to eat, playdates, attending parties.
+
+Events & Travel: Planning vacations, celebrating holidays, buying gifts, weekend road trips.
+
+
+SEQUENCE OF ACTIVITIES
+-----
+
+Level 1: Daily Personal Routines (Simplest)
+Why simple: Single-subject, repetitive, highly visual, strong verb-noun collocations (brush teeth, put on socks). No complex transactions or strangers.
+
+Waking up / getting out of bed
+
+Brushing teeth
+
+Taking a shower / bath
+
+Getting dressed
+
+Eating breakfast
+
+Making the bed
+
+Packing a lunch
+
+Feeding a pet
+
+Walking the dog
+
+Getting ready for bed
+
+Level 2: Inside the Home (Basic Chores & Living)
+Why simple: Familiar environment, predictable objects, basic verbs (clean, put, open, close). Still low social interaction.
+
+Doing laundry (wash → dry → fold → put away)
+
+Washing dishes
+
+Taking out the trash
+
+Sweeping / vacuuming
+
+Making dinner
+
+Setting the table
+
+Clearing the table
+
+Watering plants
+
+Making coffee / tea
+
+Watching TV
+
+Level 3: Local errands (familiar places, low stress)
+Why moderate: Short trips, limited vocabulary per location, repetitive scripts ("paper or plastic?"). Introduces basic transactions.
+
+Grocery store
+Making a shopping list
+
+Pushing a cart
+
+Finding an item on a shelf
+
+Reading a price tag
+
+Paying at the checkout
+
+Gas station
+Pumping gas
+
+Paying at the pump
+
+Going inside to pay
+
+Checking tire pressure
+
+Washing the car
+
+Park / playground
+Pushing a child on a swing
+
+Throwing a ball
+
+Having a picnic
+
+Walking on a path
+
+Feeding ducks
+
+Level 4: Service Locations (public interaction, scripts)
+Why moderate to complex: Requires understanding roles (clerk, customer), polite forms, and basic problem-solving.
+
+Restaurant (casual)
+Ordering at a counter
+
+Reading a menu
+
+Asking for the bill
+
+Leaving a tip
+
+Complaining about food (simple)
+
+Post office
+Buying a stamp
+
+Weighing a package
+
+Sending a letter
+
+Filling out a form
+
+Picking up a package
+
+Bank (basic)
+Depositing a check
+
+Withdrawing cash from a teller
+
+Using an ATM
+
+Checking a balance
+
+Paying a bill
+
+Library
+Getting a library card
+
+Checking out a book
+
+Returning a book
+
+Using a computer
+
+Asking a librarian for help
+
+Level 5: Institutional & Transactional (higher language demands)
+Why complex: Unfamiliar vocabulary, abstract concepts, polite forms, potential stress, longer interactions.
+
+At the hospital / clinic
+Checking in at reception
+
+Describing a symptom (e.g., "I have a fever")
+
+Filling out medical forms
+
+Waiting for a doctor
+
+Getting a prescription
+
+At the pharmacy
+Dropping off a prescription
+
+Asking about side effects
+
+Buying over-the-counter medicine
+
+Asking for a dosage explanation
+
+Using insurance
+
+At the airport
+Checking in luggage
+
+Going through security
+
+Finding a gate
+
+Boarding a plane
+
+Asking about a delayed flight
+
+At the hotel
+Checking in
+
+Asking for a different room
+
+Requesting extra towels
+
+Setting a wake-up call
+
+Checking out
+
+At the DMV / government office (most complex)
+Taking a number
+
+Filling out a long form
+
+Showing ID
+
+Paying a fee
+
+Asking about a missing document

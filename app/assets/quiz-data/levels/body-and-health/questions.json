@@ -1,0 +1,232 @@
+{
+  "levelQuestions": [
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "back",
+        "wrongAnswers": [
+          "chest",
+          "leg",
+          "brain"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "brain",
+        "wrongAnswers": [
+          "heart",
+          "tooth",
+          "tongue"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "chest",
+        "wrongAnswers": [
+          "back",
+          "knee",
+          "leg"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "ear",
+        "wrongAnswers": [
+          "tongue",
+          "tooth",
+          "head"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "head",
+        "wrongAnswers": [
+          "ear",
+          "brain",
+          "back"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "heart",
+        "wrongAnswers": [
+          "brain",
+          "chest",
+          "knee"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "knee",
+        "wrongAnswers": [
+          "leg",
+          "back",
+          "chest"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "leg",
+        "wrongAnswers": [
+          "knee",
+          "back",
+          "chest"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "tongue",
+        "wrongAnswers": [
+          "tooth",
+          "ear",
+          "head"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "tooth",
+        "wrongAnswers": [
+          "tongue",
+          "ear",
+          "head"
+        ]
+      }
+    },
+    {
+      "type": "vocab",
+      "template": "ConvoTemplate-1",
+      "questionData": {
+        "character1": "mike",
+        "character2": "sarah",
+        "line1": {
+          "en": "My knee really _____. I can barely walk.",
+          "tr": "Dizim gerçekten _____. Zar zor yürüyebiliyorum.",
+          "es": "Mi rodilla realmente _____. Apenas puedo caminar."
+        },
+        "line2": {
+          "en": "You should see a doctor right away.",
+          "tr": "Hemen bir doktora gitmelisin.",
+          "es": "Deberías ver a un médico de inmediato."
+        },
+        "answer": "hurts",
+        "distractors": [
+          "bends",
+          "moves",
+          "grows"
+        ]
+      }
+    },
+    {
+      "type": "vocab",
+      "template": "ConvoTemplate-1",
+      "questionData": {
+        "character1": "sarah",
+        "character2": "mike",
+        "line1": {
+          "en": "Do you _____ every day to stay healthy?",
+          "tr": "Sağlıklı kalmak için her gün _____ yapıyor musun?",
+          "es": "¿_____ todos los días para mantenerte sano?"
+        },
+        "line2": {
+          "en": "Yes, I jog in the morning and stretch at night.",
+          "tr": "Evet, sabahları koşuyor ve geceleri germe egzersizleri yapıyorum.",
+          "es": "Sí, corro por la mañana y me estiro por la noche."
+        },
+        "answer": "exercise",
+        "distractors": [
+          "sleep",
+          "cook",
+          "study"
+        ]
+      }
+    },
+    {
+      "type": "grammar",
+      "template": "ConvoTemplate-1",
+      "questionData": {
+        "character1": "mike",
+        "character2": "sarah",
+        "line1": {
+          "en": "I have a bad back. What _____ I do?",
+          "tr": "Sırt ağrım var. Ne _____?",
+          "es": "Me duele la espalda. ¿Qué _____ hacer?"
+        },
+        "line2": {
+          "en": "You should rest and use a warm compress.",
+          "tr": "Dinlenmeli ve sıcak kompres kullanmalısın.",
+          "es": "Deberías descansar y usar una compresa caliente."
+        },
+        "answer": "should",
+        "distractors": [
+          "must",
+          "can",
+          "do"
+        ]
+      }
+    },
+    {
+      "type": "vocab",
+      "template": "ConvoTemplate-2",
+      "questionData": {
+        "imageName": "heart",
+        "sentence": {
+          "en": "The _____ pumps blood through the body.",
+          "tr": "The _____ pumps blood through the body. (kalp)",
+          "es": "The _____ pumps blood through the body. (corazón)"
+        },
+        "answer": "heart",
+        "distractors": [
+          "brain",
+          "lung",
+          "kidney"
+        ]
+      }
+    },
+    {
+      "type": "vocab",
+      "template": "ConvoTemplate-2",
+      "questionData": {
+        "imageName": "tooth",
+        "sentence": {
+          "en": "She has a _____ ache and needs to see the dentist.",
+          "tr": "She has a _____ ache and needs to see the dentist. (diş)",
+          "es": "She has a _____ ache and needs to see the dentist. (diente)"
+        },
+        "answer": "tooth",
+        "distractors": [
+          "ear",
+          "head",
+          "back"
+        ]
+      }
+    }
+  ]
+}

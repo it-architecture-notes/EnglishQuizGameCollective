@@ -1,0 +1,162 @@
+{
+  "levelQuestions": [
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "air-pump",
+        "wrongAnswers": ["fuel-nozzle", "windshield-squeegee", "gas-pump"]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "car-wash",
+        "wrongAnswers": ["parking-space", "gas-pump", "air-pump"]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "fire-extinguisher",
+        "wrongAnswers": ["gas-pump", "air-pump", "fuel-nozzle"]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "fuel-nozzle",
+        "wrongAnswers": ["air-pump", "gas-pump", "windshield-squeegee"]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "gas-pump",
+        "wrongAnswers": ["fuel-nozzle", "air-pump", "car-wash"]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "parking-space",
+        "wrongAnswers": ["car-wash", "gas-pump", "air-pump"]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "windshield-squeegee",
+        "wrongAnswers": ["air-pump", "fuel-nozzle", "fire-extinguisher"]
+      }
+    },
+    {
+      "type": "vocab",
+      "template": "ConvoTemplate-1",
+      "questionData": {
+        "character1": "mike",
+        "character2": "sarah",
+        "line1": { "en": "Can you _____ the tank before the road trip?", "tr": "Yol gezisinden önce tankı _____ doldurabilir misin?", "es": "¿Puedes _____ el tanque antes del viaje?" },
+        "line2": { "en": "Sure, I will stop at the gas station now.", "tr": "Tabii, şimdi benzin istasyonunda duracağım.", "es": "Claro, me detendré en la gasolinera ahora." },
+        "answer": "fill up",
+        "distractors": ["empty out", "clean up", "slow down"]
+      }
+    },
+    {
+      "type": "vocab",
+      "template": "ConvoTemplate-1",
+      "questionData": {
+        "character1": "sarah",
+        "character2": "mike",
+        "line1": { "en": "Can you _____ the tire pressure before we leave?", "tr": "Gitmeden önce lastik basıncını _____ edebilir misin?", "es": "¿Puedes _____ la presión de las llantas antes de irnos?" },
+        "line2": { "en": "Good idea. I will use the air pump right away.", "tr": "İyi fikir. Hemen hava pompasını kullanacağım.", "es": "Buena idea. Usaré la bomba de aire enseguida." },
+        "answer": "check",
+        "distractors": ["ignore", "change", "break"]
+      }
+    },
+    {
+      "type": "vocab",
+      "template": "ConvoTemplate-1",
+      "questionData": {
+        "character1": "mike",
+        "character2": "sarah",
+        "line1": { "en": "Where should I _____ while you get fuel?", "tr": "Sen yakıt alırken nereye _____ etmeliyim?", "es": "¿Dónde debo _____ mientras tú consigues combustible?" },
+        "line2": { "en": "You can park next to the car wash.", "tr": "Araba yıkama alanının yanına park edebilirsin.", "es": "Puedes estacionarte junto al lavado de autos." },
+        "answer": "park",
+        "distractors": ["drive", "wait", "turn"]
+      }
+    },
+    {
+      "type": "vocab",
+      "template": "ConvoTemplate-1",
+      "questionData": {
+        "character1": "sarah",
+        "character2": "mike",
+        "line1": { "en": "The tank is _____ now. We can drive for hours.", "tr": "Tank artık _____. Saatlerce sürebiliriz.", "es": "El tanque está _____ ahora. Podemos manejar por horas." },
+        "line2": { "en": "Great! Let us hit the road.", "tr": "Harika! Hadi yola çıkalım.", "es": "¡Genial! Pongámonos en marcha." },
+        "answer": "full",
+        "distractors": ["empty", "broken", "dirty"]
+      }
+    },
+    {
+      "type": "grammar",
+      "template": "ConvoTemplate-1",
+      "questionData": {
+        "character1": "mike",
+        "character2": "sarah",
+        "line1": { "en": "I _____ stop for gas. The tank is almost empty.", "tr": "Benzin almak için durmam _____. Tank neredeyse boş.", "es": "_____ parar a cargar gasolina. El tanque está casi vacío." },
+        "line2": { "en": "There is a gas station at the next exit.", "tr": "Bir sonraki çıkışta bir benzin istasyonu var.", "es": "Hay una gasolinera en la próxima salida." },
+        "answer": "need to",
+        "distractors": ["want to", "used to", "able to"]
+      }
+    },
+    {
+      "type": "vocab",
+      "template": "ConvoTemplate-2",
+      "questionData": {
+        "imageName": "gas-pump",
+        "sentence": {
+          "en": "He used the _____ to fill the car with petrol.",
+          "tr": "He used the _____ to fill the car with petrol. (benzin pompası)",
+          "es": "He used the _____ to fill the car with petrol. (surtidor de gasolina)"
+        },
+        "answer": "gas-pump",
+        "distractors": ["air-pump", "fuel-nozzle", "fire-extinguisher"]
+      }
+    },
+    {
+      "type": "vocab",
+      "template": "ConvoTemplate-2",
+      "questionData": {
+        "imageName": "fuel-nozzle",
+        "sentence": {
+          "en": "She held the _____ and put it into the tank opening.",
+          "tr": "She held the _____ and put it into the tank opening. (yakıt tabancası)",
+          "es": "She held the _____ and put it into the tank opening. (pistola de combustible)"
+        },
+        "answer": "fuel-nozzle",
+        "distractors": ["gas-pump", "windshield-squeegee", "parking-space"]
+      }
+    },
+    {
+      "type": "vocab",
+      "template": "ConvoTemplate-2",
+      "questionData": {
+        "imageName": "car-wash",
+        "sentence": {
+          "en": "After filling up, they drove through the _____ to clean the car.",
+          "tr": "After filling up, they drove through the _____ to clean the car. (araba yıkama)",
+          "es": "After filling up, they drove through the _____ to clean the car. (lavado de autos)"
+        },
+        "answer": "car-wash",
+        "distractors": ["parking-space", "air-pump", "gas-pump"]
+      }
+    }
+  ]
+}

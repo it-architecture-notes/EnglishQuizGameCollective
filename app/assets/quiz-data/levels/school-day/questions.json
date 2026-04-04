@@ -1,0 +1,232 @@
+{
+  "levelQuestions": [
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "art-room",
+        "wrongAnswers": [
+          "gym",
+          "bookshelves",
+          "fountain"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "bookshelves",
+        "wrongAnswers": [
+          "binder",
+          "backpack",
+          "art-room"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "fountain",
+        "wrongAnswers": [
+          "gym",
+          "street-map",
+          "art-room"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "gym",
+        "wrongAnswers": [
+          "art-room",
+          "fountain",
+          "bookshelves"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "street-map",
+        "wrongAnswers": [
+          "binder",
+          "paper-clip",
+          "pen"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "student",
+        "wrongAnswers": [
+          "backpack",
+          "binder",
+          "gym"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "backpack",
+        "wrongAnswers": [
+          "binder",
+          "binder",
+          "pen"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "binder",
+        "wrongAnswers": [
+          "backpack",
+          "paper-clip",
+          "pen"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "paper-clip",
+        "wrongAnswers": [
+          "pen",
+          "binder",
+          "backpack"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "pen",
+        "wrongAnswers": [
+          "paper-clip",
+          "binder",
+          "backpack"
+        ]
+      }
+    },
+    {
+      "type": "vocab",
+      "template": "ConvoTemplate-1",
+      "questionData": {
+        "character1": "mike",
+        "character2": "sarah",
+        "line1": {
+          "en": "Do you _____ every night before the exam?",
+          "tr": "Sınavdan önce her gece _____ misin?",
+          "es": "¿_____ todas las noches antes del examen?"
+        },
+        "line2": {
+          "en": "Yes, I study for at least two hours.",
+          "tr": "Evet, en az iki saat çalışıyorum.",
+          "es": "Sí, estudio al menos dos horas."
+        },
+        "answer": "study",
+        "distractors": [
+          "sleep",
+          "play",
+          "cook"
+        ]
+      }
+    },
+    {
+      "type": "vocab",
+      "template": "ConvoTemplate-1",
+      "questionData": {
+        "character1": "sarah",
+        "character2": "mike",
+        "line1": {
+          "en": "I want to _____ a new language this year.",
+          "tr": "Bu yıl yeni bir dil _____ istiyorum.",
+          "es": "Quiero _____ un nuevo idioma este año."
+        },
+        "line2": {
+          "en": "That's great! Practice every day and you will succeed.",
+          "tr": "Harika! Her gün pratik yap ve başarırsın.",
+          "es": "¡Qué bien! Practica todos los días y tendrás éxito."
+        },
+        "answer": "learn",
+        "distractors": [
+          "forget",
+          "avoid",
+          "skip"
+        ]
+      }
+    },
+    {
+      "type": "vocab",
+      "template": "ConvoTemplate-1",
+      "questionData": {
+        "character1": "mike",
+        "character2": "sarah",
+        "line1": {
+          "en": "This science project is really _____!",
+          "tr": "Bu fen projesi gerçekten _____!",
+          "es": "¡Este proyecto de ciencias es muy _____!"
+        },
+        "line2": {
+          "en": "I know! I learned so many new things today.",
+          "tr": "Biliyorum! Bugün çok şey öğrendim.",
+          "es": "¡Lo sé! Hoy aprendí muchas cosas nuevas."
+        },
+        "answer": "interesting",
+        "distractors": [
+          "boring",
+          "heavy",
+          "noisy"
+        ]
+      }
+    },
+    {
+      "type": "vocab",
+      "template": "ConvoTemplate-2",
+      "questionData": {
+        "imageName": "backpack",
+        "sentence": {
+          "en": "Every morning she packs her _____ before going to school.",
+          "tr": "Every morning she packs her _____ before going to school. (sırt çantasını)",
+          "es": "Every morning she packs her _____ before going to school. (mochila)"
+        },
+        "answer": "backpack",
+        "distractors": [
+          "binder",
+          "street-map",
+          "paper-clip"
+        ]
+      }
+    },
+    {
+      "type": "vocab",
+      "template": "ConvoTemplate-2",
+      "questionData": {
+        "imageName": "pen",
+        "sentence": {
+          "en": "He picked up his _____ and started writing the answer.",
+          "tr": "He picked up his _____ and started writing the answer. (kalemini)",
+          "es": "He picked up his _____ and started writing the answer. (bolígrafo)"
+        },
+        "answer": "pen",
+        "distractors": [
+          "paper-clip",
+          "binder",
+          "backpack"
+        ]
+      }
+    }
+  ]
+}

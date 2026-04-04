@@ -1,0 +1,232 @@
+{
+  "levelQuestions": [
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "art-gallery",
+        "wrongAnswers": [
+          "bookstore",
+          "cafe",
+          "bank"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "bakery",
+        "wrongAnswers": [
+          "fish-market",
+          "cafe",
+          "bookstore"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "bank",
+        "wrongAnswers": [
+          "bookstore",
+          "art-gallery",
+          "cafe"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "bench",
+        "wrongAnswers": [
+          "bridge",
+          "crosswalk",
+          "bus-stop"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "bookstore",
+        "wrongAnswers": [
+          "art-gallery",
+          "bank",
+          "cafe"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "bridge",
+        "wrongAnswers": [
+          "crosswalk",
+          "bench",
+          "bus-stop"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "bus-stop",
+        "wrongAnswers": [
+          "crosswalk",
+          "bench",
+          "bridge"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "cafe",
+        "wrongAnswers": [
+          "bakery",
+          "bakery",
+          "fish-market"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "crosswalk",
+        "wrongAnswers": [
+          "bridge",
+          "bus-stop",
+          "bench"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "fish-market",
+        "wrongAnswers": [
+          "bakery",
+          "cafe",
+          "bookstore"
+        ]
+      }
+    },
+    {
+      "type": "vocab",
+      "template": "ConvoTemplate-1",
+      "questionData": {
+        "character1": "mike",
+        "character2": "sarah",
+        "line1": {
+          "en": "Do you want to _____ to the park together?",
+          "tr": "Birlikte parka _____ ister misin?",
+          "es": "¿Quieres _____ al parque juntos?"
+        },
+        "line2": {
+          "en": "Sure, I love walking around the city.",
+          "tr": "Tabii, şehirde yürümeyi çok seviyorum.",
+          "es": "Claro, me encanta caminar por la ciudad."
+        },
+        "answer": "walk",
+        "distractors": [
+          "drive",
+          "swim",
+          "fly"
+        ]
+      }
+    },
+    {
+      "type": "vocab",
+      "template": "ConvoTemplate-1",
+      "questionData": {
+        "character1": "sarah",
+        "character2": "mike",
+        "line1": {
+          "en": "Can you help me _____ the nearest bank?",
+          "tr": "En yakın bankayı _____ me yardım edebilir misin?",
+          "es": "¿Puedes ayudarme a _____ el banco más cercano?"
+        },
+        "line2": {
+          "en": "Of course! It is just two blocks from here.",
+          "tr": "Tabii ki! Buradan sadece iki blok uzakta.",
+          "es": "¡Claro! Está a solo dos cuadras de aquí."
+        },
+        "answer": "find",
+        "distractors": [
+          "open",
+          "build",
+          "visit"
+        ]
+      }
+    },
+    {
+      "type": "grammar",
+      "template": "ConvoTemplate-1",
+      "questionData": {
+        "character1": "mike",
+        "character2": "sarah",
+        "line1": {
+          "en": "_____ we sit on that bench for a while?",
+          "tr": "Bir süre o bankta oturabilir _____?",
+          "es": "¿_____ sentarnos en ese banco un rato?"
+        },
+        "line2": {
+          "en": "Yes, I need to rest my feet.",
+          "tr": "Evet, ayaklarımı dinlendirmem gerekiyor.",
+          "es": "Sí, necesito descansar los pies."
+        },
+        "answer": "Can",
+        "distractors": [
+          "Should",
+          "Must",
+          "Do"
+        ]
+      }
+    },
+    {
+      "type": "vocab",
+      "template": "ConvoTemplate-2",
+      "questionData": {
+        "imageName": "bench",
+        "sentence": {
+          "en": "Let's sit on the _____ and rest for a moment.",
+          "tr": "Let's sit on the _____ and rest for a moment. (bank)",
+          "es": "Let's sit on the _____ and rest for a moment. (banco)"
+        },
+        "answer": "bench",
+        "distractors": [
+          "bridge",
+          "crosswalk",
+          "bus-stop"
+        ]
+      }
+    },
+    {
+      "type": "vocab",
+      "template": "ConvoTemplate-2",
+      "questionData": {
+        "imageName": "bus-stop",
+        "sentence": {
+          "en": "She is waiting at the _____ for the next bus.",
+          "tr": "She is waiting at the _____ for the next bus. (otobüs durağı)",
+          "es": "She is waiting at the _____ for the next bus. (parada de autobús)"
+        },
+        "answer": "bus-stop",
+        "distractors": [
+          "bench",
+          "crosswalk",
+          "bridge"
+        ]
+      }
+    }
+  ]
+}

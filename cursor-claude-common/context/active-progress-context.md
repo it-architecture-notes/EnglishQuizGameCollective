@@ -1,3 +1,4 @@
 # Active Progress Context
 
-_Add the next active issue here._
+Active Issue: None
+

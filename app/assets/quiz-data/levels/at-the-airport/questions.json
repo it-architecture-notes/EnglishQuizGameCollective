@@ -1,0 +1,232 @@
+{
+  "levelQuestions": [
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "airplane-ticket",
+        "wrongAnswers": [
+          "passport",
+          "luggage-tag",
+          "passport"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "baggage-carousel",
+        "wrongAnswers": [
+          "check-in-counter",
+          "onboarding-bridge",
+          "overhead-bin"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "call-button",
+        "wrongAnswers": [
+          "tray-table",
+          "overhead-bin",
+          "luggage-tag"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "check-in-counter",
+        "wrongAnswers": [
+          "baggage-carousel",
+          "onboarding-bridge",
+          "traveler"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "luggage-tag",
+        "wrongAnswers": [
+          "airplane-ticket",
+          "passport",
+          "tray-table"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "onboarding-bridge",
+        "wrongAnswers": [
+          "check-in-counter",
+          "baggage-carousel",
+          "traveler"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "overhead-bin",
+        "wrongAnswers": [
+          "tray-table",
+          "call-button",
+          "airplane-ticket"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "passport",
+        "wrongAnswers": [
+          "airplane-ticket",
+          "luggage-tag",
+          "traveler"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "traveler",
+        "wrongAnswers": [
+          "passport",
+          "check-in-counter",
+          "onboarding-bridge"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "tray-table",
+        "wrongAnswers": [
+          "overhead-bin",
+          "call-button",
+          "baggage-carousel"
+        ]
+      }
+    },
+    {
+      "type": "vocab",
+      "template": "ConvoTemplate-1",
+      "questionData": {
+        "character1": "mike",
+        "character2": "sarah",
+        "line1": {
+          "en": "Did you _____ your bag before coming to the airport?",
+          "tr": "Havalimanına gelmeden önce çantanı _____ mi?",
+          "es": "¿_____ tu maleta antes de venir al aeropuerto?"
+        },
+        "line2": {
+          "en": "Yes, I packed everything last night.",
+          "tr": "Evet, her şeyi dün gece hazırladım.",
+          "es": "Sí, lo preparé todo anoche."
+        },
+        "answer": "pack",
+        "distractors": [
+          "carry",
+          "check",
+          "send"
+        ]
+      }
+    },
+    {
+      "type": "vocab",
+      "template": "ConvoTemplate-1",
+      "questionData": {
+        "character1": "mike",
+        "character2": "sarah",
+        "line1": {
+          "en": "Can you _____ this bag for me? It's too heavy.",
+          "tr": "Bu çantayı benim için _____ misin? Çok ağır.",
+          "es": "¿Puedes _____ esta bolsa por mí? Está muy pesada."
+        },
+        "line2": {
+          "en": "Sure, no problem at all.",
+          "tr": "Tabii ki, hiç sorun değil.",
+          "es": "Claro, no hay ningún problema."
+        },
+        "answer": "carry",
+        "distractors": [
+          "pack",
+          "check",
+          "lift"
+        ]
+      }
+    },
+    {
+      "type": "grammar",
+      "template": "ConvoTemplate-1",
+      "questionData": {
+        "character1": "mike",
+        "character2": "sarah",
+        "line1": {
+          "en": "We _____ check in two hours before the flight.",
+          "tr": "Uçuştan iki saat önce check-in yapmamız _____.",
+          "es": "Nosotros _____ registrarnos dos horas antes del vuelo."
+        },
+        "line2": {
+          "en": "You're right. Let's go to the counter now.",
+          "tr": "Haklısın. Şimdi gişeye gidelim.",
+          "es": "Tienes razón. Vamos al mostrador ahora."
+        },
+        "answer": "should",
+        "distractors": [
+          "must not",
+          "cannot",
+          "will not"
+        ]
+      }
+    },
+    {
+      "type": "vocab",
+      "template": "ConvoTemplate-2",
+      "questionData": {
+        "imageName": "passport",
+        "sentence": {
+          "en": "You need your _____ to travel to another country.",
+          "tr": "You need your _____ to travel to another country. (pasaport)",
+          "es": "You need your _____ to travel to another country. (pasaporte)"
+        },
+        "answer": "passport",
+        "distractors": [
+          "airplane-ticket",
+          "luggage-tag",
+          "traveler"
+        ]
+      }
+    },
+    {
+      "type": "vocab",
+      "template": "ConvoTemplate-2",
+      "questionData": {
+        "imageName": "luggage-tag",
+        "sentence": {
+          "en": "Attach a _____ to your suitcase so it doesn't get lost.",
+          "tr": "Attach a _____ to your suitcase so it doesn't get lost. (bagaj etiketi)",
+          "es": "Attach a _____ to your suitcase so it doesn't get lost. (etiqueta de equipaje)"
+        },
+        "answer": "luggage-tag",
+        "distractors": [
+          "passport",
+          "tray-table",
+          "call-button"
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,212 @@
+{
+  "making-the-bed": [
+    "alarm-clock",
+    "bed-frame",
+    "bed",
+    "laundry-basket",
+    "mattress"
+  ],
+  "brushing-teeth": [
+    "scales",
+    "shaving-razor",
+    "shower-curtains",
+    "bath-mat",
+    "bathrobe"
+  ],
+  "preparing-breakfast": [
+    "spoon",
+    "stove",
+    "strainer",
+    "almond",
+    "beans"
+  ],
+  "going-to-sleep": [
+    "laundry-basket",
+    "mattress",
+    "nightstand",
+    "bed",
+    "blanket"
+  ],
+  "packing-school-bag": [
+    "backpack",
+    "binder",
+    "crayons",
+    "paper-clip",
+    "pen"
+  ],
+  "doing-laundry": [
+    "clothes-pin",
+    "nail",
+    "plunger",
+    "batteries",
+    "box-cutter"
+  ],
+  "vacuuming-the-house": [
+    "bolt-and-nuts",
+    "bucket",
+    "drill",
+    "screws",
+    "spatula"
+  ],
+  "washing-dishes": [
+    "coffee-mug",
+    "dish-rack",
+    "dish-soap",
+    "dishwasher",
+    "electric-kettle"
+  ],
+  "cleaning-the-bathroom": [
+    "scales",
+    "shaving-razor",
+    "shower-curtains",
+    "dust",
+    "extension-cord"
+  ],
+  "taking-out-the-trash": [
+    "dust",
+    "extension-cord",
+    "iron",
+    "ice-cream",
+    "milk"
+  ],
+  "baking-at-home": [
+    "apron",
+    "baking-tray",
+    "blender",
+    "almond",
+    "beans"
+  ],
+  "setting-the-table": [
+    "spoon",
+    "stove",
+    "strainer",
+    "apron",
+    "baking-tray"
+  ],
+  "making-coffee-or-tea": [
+    "hand-blender",
+    "jar",
+    "kitchen-scale",
+    "ice-cream",
+    "milk"
+  ],
+  "using-kitchen-appliances": [
+    "coffee-mug",
+    "dish-rack",
+    "dish-soap",
+    "hand-blender",
+    "jar"
+  ],
+  "at-the-dentist": [
+    "back",
+    "brain",
+    "chest",
+    "head",
+    "heart"
+  ],
+  "exercising": [
+    "head",
+    "heart",
+    "knee",
+    "alone",
+    "angry"
+  ],
+  "taking-medicine": [
+    "antacids",
+    "bandage",
+    "cotton-balls",
+    "ointment",
+    "pain-killer"
+  ],
+  "personal-hygiene": [
+    "bath-mat",
+    "bathrobe",
+    "bathtub",
+    "shower",
+    "sink"
+  ],
+  "reading-at-home": [
+    "armchair",
+    "bookshelf",
+    "chair",
+    "light-switch",
+    "mirror"
+  ],
+  "watching-tv": [
+    "light-switch",
+    "mirror",
+    "picture",
+    "armchair",
+    "bookshelf"
+  ],
+  "playing-with-pets": [
+    "alpaca",
+    "bee",
+    "bull",
+    "duck",
+    "goat"
+  ],
+  "checking-the-weather": [
+    "canyon",
+    "clouds",
+    "beach",
+    "lightning",
+    "snow"
+  ],
+  "hiking-outdoors": [
+    "beach",
+    "lightning",
+    "moon",
+    "snow",
+    "stars"
+  ],
+  "at-the-beach": [
+    "moon",
+    "mountain",
+    "ocean",
+    "desert",
+    "flowers"
+  ],
+  "bird-watching": [
+    "alligator",
+    "animal",
+    "bat",
+    "lion",
+    "monkey"
+  ],
+  "at-the-coffee-shop": [
+    "art-gallery",
+    "cafe",
+    "clothing-store",
+    "bakery",
+    "bookstore"
+  ],
+  "at-the-construction-site": [
+    "cashier",
+    "chef",
+    "cleaner-janitor",
+    "firefighter",
+    "gardener"
+  ],
+  "ocean-life": [
+    "dolphin",
+    "eagle",
+    "elephant",
+    "lion",
+    "monkey"
+  ],
+  "at-the-train-station": [
+    "limousine",
+    "plane",
+    "scooter",
+    "bus-stop",
+    "crosswalk"
+  ],
+  "at-the-zoo": [
+    "dolphin",
+    "eagle",
+    "mouse",
+    "owl",
+    "squirrel"
+  ]
+}

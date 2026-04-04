@@ -1,0 +1,232 @@
+{
+  "levelQuestions": [
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "bolt-and-nuts",
+        "wrongAnswers": [
+          "screws",
+          "drill",
+          "box-cutter"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "bucket",
+        "wrongAnswers": [
+          "broom",
+          "tissue",
+          "spatula"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "drill",
+        "wrongAnswers": [
+          "bolt-and-nuts",
+          "screws",
+          "box-cutter"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "batteries",
+        "wrongAnswers": [
+          "bolt-and-nuts",
+          "screws",
+          "drill"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "box-cutter",
+        "wrongAnswers": [
+          "drill",
+          "screws",
+          "bolt-and-nuts"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "broom",
+        "wrongAnswers": [
+          "bucket",
+          "tissue",
+          "spatula"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "screws",
+        "wrongAnswers": [
+          "bolt-and-nuts",
+          "drill",
+          "box-cutter"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "spatula",
+        "wrongAnswers": [
+          "broom",
+          "bucket",
+          "tissue"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "tissue",
+        "wrongAnswers": [
+          "broom",
+          "bucket",
+          "spatula"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "clothes-pin",
+        "wrongAnswers": [
+          "bolt-and-nuts",
+          "screws",
+          "tissue"
+        ]
+      }
+    },
+    {
+      "type": "vocab",
+      "template": "ConvoTemplate-1",
+      "questionData": {
+        "character1": "mike",
+        "character2": "sarah",
+        "line1": {
+          "en": "Can you _____ the broken shelf today?",
+          "tr": "Kırık rafı bugün tamir edebilir misin?",
+          "es": "¿Puedes _____ el estante roto hoy?"
+        },
+        "line2": {
+          "en": "Sure, I just need to find the right screws.",
+          "tr": "Tabii, sadece doğru vidaları bulmam gerek.",
+          "es": "Claro, solo necesito encontrar los tornillos correctos."
+        },
+        "answer": "fix",
+        "distractors": [
+          "paint",
+          "move",
+          "build"
+        ]
+      }
+    },
+    {
+      "type": "vocab",
+      "template": "ConvoTemplate-1",
+      "questionData": {
+        "character1": "mike",
+        "character2": "sarah",
+        "line1": {
+          "en": "I'll _____ the tools after we finish.",
+          "tr": "Bitirdikten sonra aletleri temizleyeceğim.",
+          "es": "Voy a _____ las herramientas cuando terminemos."
+        },
+        "line2": {
+          "en": "Good idea. Put them back in the box too.",
+          "tr": "İyi fikir. Onları da kutuya geri koy.",
+          "es": "Buena idea. También ponlas de vuelta en la caja."
+        },
+        "answer": "clean",
+        "distractors": [
+          "store",
+          "check",
+          "use"
+        ]
+      }
+    },
+    {
+      "type": "grammar",
+      "template": "ConvoTemplate-1",
+      "questionData": {
+        "character1": "mike",
+        "character2": "sarah",
+        "line1": {
+          "en": "I _____ replace the batteries in the drill.",
+          "tr": "Matkapın pillerini _____ değiştirmem lazım.",
+          "es": "_____ reemplazar las pilas del taladro."
+        },
+        "line2": {
+          "en": "There are spare batteries in the drawer.",
+          "tr": "Çekmecede yedek pil var.",
+          "es": "Hay pilas de repuesto en el cajón."
+        },
+        "answer": "need to",
+        "distractors": [
+          "must",
+          "should",
+          "want to"
+        ]
+      }
+    },
+    {
+      "type": "vocab",
+      "template": "ConvoTemplate-2",
+      "questionData": {
+        "imageName": "drill",
+        "sentence": {
+          "en": "He used the _____ to make holes in the wall.",
+          "tr": "He used the _____ (matkap) to make holes in the wall.",
+          "es": "He used the _____ (taladro) to make holes in the wall."
+        },
+        "answer": "drill",
+        "distractors": [
+          "box-cutter",
+          "bolt-and-nuts",
+          "screws"
+        ]
+      }
+    },
+    {
+      "type": "vocab",
+      "template": "ConvoTemplate-2",
+      "questionData": {
+        "imageName": "broom",
+        "sentence": {
+          "en": "She grabbed the _____ and swept the floor.",
+          "tr": "She grabbed the _____ (süpürge) and swept the floor.",
+          "es": "She grabbed the _____ (escoba) and swept the floor."
+        },
+        "answer": "broom",
+        "distractors": [
+          "bucket",
+          "tissue",
+          "spatula"
+        ]
+      }
+    }
+  ]
+}

@@ -1,3 +1,21 @@
+**Issue-19: Activity-Based Quiz Restructuring**
+
+Description: Transform to activity based quizzes and distribution of words.
+
+Use Case:
+- Currently in the images we have mostly location based and category based distribution, e.g hospital, jobs, household equipments. We need to distribute these images to an activity based grouping, since we will add other words to quizzes like verbs, adjectives etc.
+- First gather all images under a single folder from which we will distribute to activity folders.
+- Start creating the activity folders based on the lists provided in activities.txt. e.g. visiting-doctor, hiking-outdoors.
+- Keep in mind that we will distribute images to these folders so don't create completely irrelevant activity folders
+- Distribute images under the activities. Same image can appear under different activities but no more than thrice.
+- In every activity folder include a questions folder having all the questions in the activity quiz.
+- Questions will have 3 types: image, conversation and image with sentence templates.
+- We will try to distribute the words in references folder files (verbs, adjectives etc) to the activities in a meaningful manner so we have equal distribution of different types.
+- Some files in references folder have the words ordered with frequency. Try to repeat the higher frequency words in activities since the player needs to learn them more.
+- Make sure the questions with template image-sentence will have words that can be easily represented with an image.
+
+---
+
 **Issue-18: Content completion for quizzes**
 
 Description: The content will be completed for the game quizzes to be comlete.

@@ -1,0 +1,148 @@
+{
+  "levelQuestions": [
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "beanie",
+        "wrongAnswers": ["scarf", "hat", "hoodie"]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "belt",
+        "wrongAnswers": ["scarf", "watch", "school-bag"]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "blouse",
+        "wrongAnswers": ["hoodie", "scarf", "high-heels"]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "hat",
+        "wrongAnswers": ["beanie", "scarf", "hoodie"]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "high-heels",
+        "wrongAnswers": ["shoes", "belt", "watch"]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "hoodie",
+        "wrongAnswers": ["blouse", "scarf", "beanie"]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "scarf",
+        "wrongAnswers": ["belt", "beanie", "hat"]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "school-bag",
+        "wrongAnswers": ["watch", "belt", "shoes"]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "shoes",
+        "wrongAnswers": ["high-heels", "belt", "school-bag"]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "watch",
+        "wrongAnswers": ["belt", "school-bag", "scarf"]
+      }
+    },
+    {
+      "type": "vocab",
+      "template": "ConvoTemplate-1",
+      "questionData": {
+        "character1": "mike",
+        "character2": "sarah",
+        "line1": { "en": "Do you _____ a uniform to school?", "tr": "Okula üniforma _____ misin?", "es": "¿_____ uniforme a la escuela?" },
+        "line2": { "en": "Yes, I wear a uniform every day.", "tr": "Evet, her gün üniforma giyiyorum.", "es": "Sí, llevo uniforme todos los días." },
+        "answer": "wear",
+        "distractors": ["carry", "hold", "use"]
+      }
+    },
+    {
+      "type": "vocab",
+      "template": "ConvoTemplate-1",
+      "questionData": {
+        "character1": "sarah",
+        "character2": "mike",
+        "line1": { "en": "It's cold outside. _____ your coat!", "tr": "Dışarısı soğuk. Montunu _____!", "es": "Hace frío afuera. ¡_____ tu abrigo!" },
+        "line2": { "en": "You're right, I will put it on now.", "tr": "Haklısın, şimdi giyiyorum.", "es": "Tienes razón, me lo pondré ahora." },
+        "answer": "put on",
+        "distractors": ["take off", "leave on", "hand over"]
+      }
+    },
+    {
+      "type": "vocab",
+      "template": "ConvoTemplate-1",
+      "questionData": {
+        "character1": "mike",
+        "character2": "sarah",
+        "line1": { "en": "Wow, you look very _____ today!", "tr": "Vay be, bugün çok _____ görünüyorsun!", "es": "¡Vaya, hoy te ves muy _____!" },
+        "line2": { "en": "Thank you! I just bought this new blouse.", "tr": "Teşekkürler! Bu yeni bluzu daha yeni aldım.", "es": "¡Gracias! Acabo de comprar esta blusa nueva." },
+        "answer": "stylish",
+        "distractors": ["hungry", "tired", "quiet"]
+      }
+    },
+    {
+      "type": "vocab",
+      "template": "ConvoTemplate-2",
+      "questionData": {
+        "imageName": "shoes",
+        "sentence": {
+          "en": "She always wears her _____ before leaving the house.",
+          "tr": "She always wears her _____ before leaving the house. (ayakkabılarını)",
+          "es": "She always wears her _____ before leaving the house. (zapatos)"
+        },
+        "answer": "shoes",
+        "distractors": ["high-heels", "scarf", "belt"]
+      }
+    },
+    {
+      "type": "vocab",
+      "template": "ConvoTemplate-2",
+      "questionData": {
+        "imageName": "hat",
+        "sentence": {
+          "en": "He put on his _____ to protect himself from the sun.",
+          "tr": "He put on his _____ to protect himself from the sun. (şapkasını)",
+          "es": "He put on his _____ to protect himself from the sun. (sombrero)"
+        },
+        "answer": "hat",
+        "distractors": ["beanie", "hoodie", "scarf"]
+      }
+    }
+  ]
+}

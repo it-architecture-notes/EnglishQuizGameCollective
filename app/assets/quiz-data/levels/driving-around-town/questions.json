@@ -1,0 +1,148 @@
+{
+  "levelQuestions": [
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "boat",
+        "wrongAnswers": ["plane", "truck", "van"]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "bulldozer",
+        "wrongAnswers": ["truck", "van", "limousine"]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "limousine",
+        "wrongAnswers": ["van", "truck", "bus-stop"]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "plane",
+        "wrongAnswers": ["boat", "van", "truck"]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "truck",
+        "wrongAnswers": ["van", "bulldozer", "limousine"]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "van",
+        "wrongAnswers": ["truck", "limousine", "bulldozer"]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "bench",
+        "wrongAnswers": ["bus-stop", "crosswalk", "bridge"]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "bridge",
+        "wrongAnswers": ["crosswalk", "bench", "bus-stop"]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "bus-stop",
+        "wrongAnswers": ["bench", "crosswalk", "bridge"]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "crosswalk",
+        "wrongAnswers": ["bridge", "bench", "bus-stop"]
+      }
+    },
+    {
+      "type": "vocab",
+      "template": "ConvoTemplate-1",
+      "questionData": {
+        "character1": "mike",
+        "character2": "sarah",
+        "line1": { "en": "Do you know how to _____ a truck?", "tr": "Kamyon _____ biliyor musun?", "es": "¿Sabes _____ un camión?" },
+        "line2": { "en": "No, I only know how to drive a car.", "tr": "Hayır, sadece araba kullanmasını biliyorum.", "es": "No, solo sé conducir un coche." },
+        "answer": "drive",
+        "distractors": ["fix", "paint", "lift"]
+      }
+    },
+    {
+      "type": "vocab",
+      "template": "ConvoTemplate-1",
+      "questionData": {
+        "character1": "sarah",
+        "character2": "mike",
+        "line1": { "en": "Where did you _____ your car? I couldn't find it.", "tr": "Arabayı nereye _____? Bulamadım.", "es": "¿Dónde _____ tu coche? No lo encontré." },
+        "line2": { "en": "I parked it just around the corner, near the bridge.", "tr": "Köşeyi döner dönmez, köprünün yanına park ettim.", "es": "Lo aparqué justo a la vuelta de la esquina, cerca del puente." },
+        "answer": "park",
+        "distractors": ["leave", "sell", "borrow"]
+      }
+    },
+    {
+      "type": "vocab",
+      "template": "ConvoTemplate-1",
+      "questionData": {
+        "character1": "mike",
+        "character2": "sarah",
+        "line1": { "en": "The city centre is always so _____ on Monday mornings!", "tr": "Şehir merkezi Pazartesi sabahları her zaman çok _____!", "es": "¡El centro de la ciudad siempre está muy _____ los lunes por la mañana!" },
+        "line2": { "en": "I know, I try to leave earlier to avoid the traffic.", "tr": "Biliyorum, trafiği önlemek için daha erken çıkmaya çalışıyorum.", "es": "Lo sé, intento salir antes para evitar el tráfico." },
+        "answer": "busy",
+        "distractors": ["empty", "quiet", "clean"]
+      }
+    },
+    {
+      "type": "vocab",
+      "template": "ConvoTemplate-2",
+      "questionData": {
+        "imageName": "truck",
+        "sentence": {
+          "en": "The delivery _____ was parked outside the warehouse all morning.",
+          "tr": "The delivery _____ was parked outside the warehouse all morning. (kamyon)",
+          "es": "The delivery _____ was parked outside the warehouse all morning. (camión)"
+        },
+        "answer": "truck",
+        "distractors": ["van", "bulldozer", "limousine"]
+      }
+    },
+    {
+      "type": "vocab",
+      "template": "ConvoTemplate-2",
+      "questionData": {
+        "imageName": "bus-stop",
+        "sentence": {
+          "en": "She waited at the _____ for twenty minutes in the rain.",
+          "tr": "She waited at the _____ for twenty minutes in the rain. (otobüs durağında)",
+          "es": "She waited at the _____ for twenty minutes in the rain. (parada de autobús)"
+        },
+        "answer": "bus-stop",
+        "distractors": ["bench", "crosswalk", "bridge"]
+      }
+    }
+  ]
+}

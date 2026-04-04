@@ -15,9 +15,9 @@
 
 5) TO MAIN CLAUDE: review all the plans under commons from different AI models including consolidated plan by cursor and if you think necessary update the consolidated plan if anything missing. ask questions if something is not clear.
 
-7) TO MAIN CURSOR P-Mode: review claude's plan again and update consolidated plan if necessary.
+7) TO MAIN CURSOR P-Mode: review consolidated plan updated by claude and claude's plan again and update consolidated plan if necessary.
 
-6) TO MAIN CLAUDE: can you review and if necessary update the consolidated plan under plans.
+6) TO MAIN CLAUDE: can you compare the latest consolidated plan against requirements and let me know what you think.
 
 7) TO MAIN CURSOR Agent-Mode: review consolidated plan one last time, checkout to feature branch and build.
 
@@ -36,5 +36,3 @@
 11) TO MAIN CURSOR: do you think we can finalize Issue-18 (active issue) looking at the requirements in the context. 
 
 12) TO MAIN CURSOR: finalize and archive active issue, commit all, merge to main branch
-
-13) 
