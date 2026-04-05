@@ -14,6 +14,67 @@ class ImageQuestionData {
   final List<String> wrongAnswers;
 }
 
+/// Parsed `questionData` for [imageQuizTemplate-2] (noun prompt + pick image).
+class ImageQuizTemplate2Data {
+  const ImageQuizTemplate2Data({
+    required this.imageName,
+    required this.wrongAnswers,
+    this.autoNextDelay = 1.0,
+    this.showCorrectOnWrong = false,
+  });
+
+  final String imageName;
+  final List<String> wrongAnswers;
+  final double autoNextDelay;
+  final bool showCorrectOnWrong;
+}
+
+/// Parsed `questionData` for [ConvoTemplate-AppearDisappear].
+class AppearDisappearQuestionData {
+  const AppearDisappearQuestionData({
+    required this.words,
+    required this.distractors,
+    this.displayDuration = 1.0,
+    this.autoNextDelay = 1.0,
+  });
+
+  final List<String> words;
+  final List<String> distractors;
+  final double displayDuration;
+  final double autoNextDelay;
+}
+
+/// Parsed `questionData` for [ConvoTemplate-Simon].
+class SimonQuestionData {
+  const SimonQuestionData({
+    required this.words,
+    required this.distractors,
+    this.tileHighlightDuration = 0.5,
+    this.autoNextDelay = 1.0,
+  });
+
+  final List<String> words;
+  final List<String> distractors;
+  final double tileHighlightDuration;
+  final double autoNextDelay;
+}
+
+/// Parsed `questionData` for [ConvoTemplate-ClozeSequence].
+class ClozeSequenceQuestionData {
+  const ClozeSequenceQuestionData({
+    required this.sentence,
+    required this.answers,
+    required this.distractors,
+    this.autoNextDelay = 1.0,
+  });
+
+  /// Word tokens; use `"___"` for each blank in order.
+  final List<String> sentence;
+  final List<String> answers;
+  final List<String> distractors;
+  final double autoNextDelay;
+}
+
 /// Parsed `questionData` for [ConvoTemplate-1] (vocabulary or grammar).
 class ConvoQuestionData {
   const ConvoQuestionData({
@@ -56,17 +117,24 @@ class LevelQuestion {
     required this.type,
     required this.template,
     this.imageData,
+    this.imageQuiz2Data,
     this.convoData,
     this.convo2Data,
+    this.appearDisappearData,
+    this.simonData,
+    this.clozeSequenceData,
   });
 
   final String? questionId;
   final LevelQuestionType type;
   final String template;
   final ImageQuestionData? imageData;
+  final ImageQuizTemplate2Data? imageQuiz2Data;
   final ConvoQuestionData? convoData;
   final ConvoTemplate2QuestionData? convo2Data;
-
+  final AppearDisappearQuestionData? appearDisappearData;
+  final SimonQuestionData? simonData;
+  final ClozeSequenceQuestionData? clozeSequenceData;
 }
 
 /// Full level definition from `assets/quiz-data/levels/{iconImageName}.json`.
@@ -118,6 +186,103 @@ class LevelConfig {
     return ImageQuestionData(imageName: imageName, wrongAnswers: wrong);
   }
 
+  static ImageQuizTemplate2Data _parseImageQuiz2Data(Map<String, dynamic> data) {
+    final imageName = data['imageName'] as String? ?? '';
+    final wrong = (data['wrongAnswers'] as List<dynamic>? ?? [])
+        .map((e) => e.toString())
+        .toList();
+    if (wrong.length != 3) {
+      throw FormatException(
+        'imageQuizTemplate-2 must have exactly 3 wrongAnswers (got ${wrong.length})',
+      );
+    }
+    return ImageQuizTemplate2Data(
+      imageName: imageName,
+      wrongAnswers: wrong,
+      autoNextDelay: (data['auto_next_delay'] as num?)?.toDouble() ?? 1.0,
+      showCorrectOnWrong:
+          data['show_correct_on_wrong'] as bool? ?? false,
+    );
+  }
+
+  static List<String> _stringList(dynamic v) {
+    if (v is! List) return const [];
+    return v.map((e) => e.toString()).toList();
+  }
+
+  static AppearDisappearQuestionData _parseAppearDisappear(
+    Map<String, dynamic> data,
+  ) {
+    final words = _stringList(data['words']);
+    final distractors = _stringList(data['distractors']);
+    if (words.length + distractors.length != 9) {
+      throw FormatException(
+        'ConvoTemplate-AppearDisappear expects words.length + distractors.length == 9 (3×3), '
+        'got ${words.length} + ${distractors.length}',
+      );
+    }
+    return AppearDisappearQuestionData(
+      words: words,
+      distractors: distractors,
+      displayDuration: (data['display_duration'] as num?)?.toDouble() ?? 1.0,
+      autoNextDelay: (data['auto_next_delay'] as num?)?.toDouble() ?? 1.0,
+    );
+  }
+
+  static SimonQuestionData _parseSimon(Map<String, dynamic> data) {
+    final words = _stringList(data['words']);
+    final distractors = _stringList(data['distractors']);
+    if (words.length + distractors.length != 9) {
+      throw FormatException(
+        'ConvoTemplate-Simon expects words.length + distractors.length == 9 (3×3), '
+        'got ${words.length} + ${distractors.length}',
+      );
+    }
+    return SimonQuestionData(
+      words: words,
+      distractors: distractors,
+      tileHighlightDuration:
+          (data['tile_highlight_duration'] as num?)?.toDouble() ?? 0.5,
+      autoNextDelay: (data['auto_next_delay'] as num?)?.toDouble() ?? 1.0,
+    );
+  }
+
+  static bool _isBlankToken(String s) => s == '___' || s == '_____';
+
+  static ClozeSequenceQuestionData _parseClozeSequence(
+    Map<String, dynamic> data,
+  ) {
+    final sentence = _stringList(data['sentence']);
+    final answers = _stringList(data['answers']);
+    final distractors = _stringList(data['distractors']);
+    final blankCount = sentence.where(_isBlankToken).length;
+    if (blankCount != answers.length) {
+      throw FormatException(
+        'ConvoTemplate-ClozeSequence: ${answers.length} answers but $blankCount blanks in sentence',
+      );
+    }
+    final expectedTiles = answers.length + distractors.length;
+    if (answers.length == 1) {
+      if (expectedTiles != 4) {
+        throw FormatException(
+          'ConvoTemplate-ClozeSequence with 1 blank expects 4 grid tiles (answers + distractors), got $expectedTiles',
+        );
+      }
+    } else {
+      if (expectedTiles != 9) {
+        throw FormatException(
+          'ConvoTemplate-ClozeSequence with ${answers.length} blanks expects 9 grid tiles, got $expectedTiles',
+        );
+      }
+    }
+    return ClozeSequenceQuestionData(
+      sentence: sentence,
+      answers: answers,
+      distractors: distractors,
+      autoNextDelay: (data['auto_next_delay'] as num?)?.toDouble() ?? 1.0,
+    );
+  }
+
   static ConvoQuestionData _parseConvoData(Map<String, dynamic> data) {
     return ConvoQuestionData(
       character1: data['character1'] as String? ?? '',
@@ -157,17 +322,33 @@ class LevelConfig {
       throw const FormatException('questionData must be an object');
     }
     ImageQuestionData? imageData;
+    ImageQuizTemplate2Data? imageQuiz2Data;
     ConvoQuestionData? convoData;
     ConvoTemplate2QuestionData? convo2Data;
+    AppearDisappearQuestionData? appearDisappearData;
+    SimonQuestionData? simonData;
+    ClozeSequenceQuestionData? clozeSequenceData;
     switch (template) {
       case 'imageQuizTemplate-1':
         imageData = _parseImageData(qd);
+        break;
+      case 'imageQuizTemplate-2':
+        imageQuiz2Data = _parseImageQuiz2Data(qd);
         break;
       case 'ConvoTemplate-1':
         convoData = _parseConvoData(qd);
         break;
       case 'ConvoTemplate-2':
         convo2Data = _parseConvo2Data(qd);
+        break;
+      case 'ConvoTemplate-AppearDisappear':
+        appearDisappearData = _parseAppearDisappear(qd);
+        break;
+      case 'ConvoTemplate-Simon':
+        simonData = _parseSimon(qd);
+        break;
+      case 'ConvoTemplate-ClozeSequence':
+        clozeSequenceData = _parseClozeSequence(qd);
         break;
       default:
         throw FormatException('Unknown template: $template');
@@ -177,8 +358,12 @@ class LevelConfig {
       type: type,
       template: template,
       imageData: imageData,
+      imageQuiz2Data: imageQuiz2Data,
       convoData: convoData,
       convo2Data: convo2Data,
+      appearDisappearData: appearDisappearData,
+      simonData: simonData,
+      clozeSequenceData: clozeSequenceData,
     );
   }
 

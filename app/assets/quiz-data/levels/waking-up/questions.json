@@ -71,6 +71,46 @@
           "alarm-clock"
         ]
       }
+    },
+    {
+      "type": "vocab",
+      "template": "ConvoTemplate-AppearDisappear",
+      "questionData": {
+        "words": ["I", "love", "tea"],
+        "distractors": ["you", "coffee", "milk", "red", "big", "and"],
+        "display_duration": 0.8,
+        "auto_next_delay": 1.0
+      }
+    },
+    {
+      "type": "vocab",
+      "template": "ConvoTemplate-Simon",
+      "questionData": {
+        "words": ["wake", "up", "now"],
+        "distractors": ["sleep", "late", "run", "eat", "go", "yes"],
+        "tile_highlight_duration": 0.45,
+        "auto_next_delay": 1.0
+      }
+    },
+    {
+      "type": "vocab",
+      "template": "ConvoTemplate-ClozeSequence",
+      "questionData": {
+        "sentence": ["The", "___", "rings", "loudly"],
+        "answers": ["alarm-clock"],
+        "distractors": ["pillow", "bed", "blanket"],
+        "auto_next_delay": 1.0
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-2",
+      "questionData": {
+        "imageName": "mattress",
+        "wrongAnswers": ["bed", "blanket", "pillow"],
+        "auto_next_delay": 1.0,
+        "show_correct_on_wrong": false
+      }
     }
   ]
 }

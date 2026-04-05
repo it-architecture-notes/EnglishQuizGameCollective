@@ -36,7 +36,9 @@
     "story_continue": "Continue",
     "story_congratulations": "Congratulations!",
     "start_game": "Start Game",
-    "quiz_title_game": "Game"
+    "quiz_title_game": "Game",
+    "click_in_order": "Click in order",
+    "reviewing_mistakes": "Reviewing mistakes"
   },
   "fr": {
     "settings_title": "Paramètres",
@@ -75,7 +77,9 @@
     "story_continue": "Continuer",
     "story_congratulations": "Félicitations !",
     "start_game": "Commencer le jeu",
-    "quiz_title_game": "Jeu"
+    "quiz_title_game": "Jeu",
+    "click_in_order": "Cliquez dans l'ordre",
+    "reviewing_mistakes": "Révision des erreurs"
   },
   "es": {
     "settings_title": "Ajustes",
@@ -114,7 +118,9 @@
     "story_continue": "Continuar",
     "story_congratulations": "¡Felicitaciones!",
     "start_game": "Comenzar juego",
-    "quiz_title_game": "Juego"
+    "quiz_title_game": "Juego",
+    "click_in_order": "Haz clic en orden",
+    "reviewing_mistakes": "Repasando errores"
   },
   "tr": {
     "settings_title": "Ayarlar",
@@ -153,6 +159,8 @@
     "story_continue": "Devam Et",
     "story_congratulations": "Tebrikler!",
     "start_game": "Oyuna başla",
-    "quiz_title_game": "Oyun"
+    "quiz_title_game": "Oyun",
+    "click_in_order": "Doğru sırayla dokunun",
+    "reviewing_mistakes": "Hataları gözden geçirme"
   }
 }

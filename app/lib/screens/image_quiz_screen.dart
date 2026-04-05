@@ -22,6 +22,9 @@ import '../../services/profile_service.dart';
 import '../../services/quiz_progress_service.dart';
 import '../../services/reminder_progress_service.dart';
 import '../../services/test_data_service.dart';
+import 'quiz_templates/appear_disappear_quiz_body.dart';
+import 'quiz_templates/cloze_sequence_quiz_body.dart';
+import 'quiz_templates/simon_quiz_body.dart';
 
 /// Minimum images per level (spec).
 const int kMinImagesPerLevel = 4;
@@ -78,6 +81,13 @@ class _ImageQuizScreenState extends ConsumerState<ImageQuizScreen>
   List<String> _vocabulary = [];
   /// Per-question wrong answers when using [LevelConfig] (same order as [_questionAssetPaths]).
   List<List<String>>? _configWrongAnswers;
+  /// Unified image phase: `imageQuizTemplate-1` and/or `imageQuizTemplate-2` rows (null = legacy path-only mode).
+  List<LevelQuestion>? _configImageQuestions;
+  /// Per question index: four asset paths in order [correct, wrong1, wrong2, wrong3] for template-2.
+  List<List<String>> _configImageQuiz2Paths = [];
+  /// Reminder mode: four image paths per question for [imageQuizTemplate-2] (shuffled order built in UI).
+  final Map<String, List<String>> _reminderImageQuiz2PathsByQuestionId = {};
+  final Map<String, LevelQuestion> _reminderImageQuestionsById = {};
   GameConfig _config = const GameConfig();
   int _currentIndex = 0;
   int _correctCount = 0;
@@ -160,7 +170,9 @@ class _ImageQuizScreenState extends ConsumerState<ImageQuizScreen>
 
   int get _questionCount => _isConvoMode
       ? (_isReminder ? _currentQuestionIds.length : _convoQuestions.length)
-      : _questionAssetPaths.length;
+      : (_configImageQuestions != null
+          ? _configImageQuestions!.length
+          : _questionAssetPaths.length);
 
   @override
   void initState() {
@@ -262,6 +274,8 @@ class _ImageQuizScreenState extends ConsumerState<ImageQuizScreen>
         if (mounted) {
           setState(() {
             _configWrongAnswers = null;
+            _configImageQuestions = null;
+            _configImageQuiz2Paths = [];
             _config = config;
             _conversations = conversations;
             _questionAssetPaths = shuffled;
@@ -290,22 +304,45 @@ class _ImageQuizScreenState extends ConsumerState<ImageQuizScreen>
           .where(
             (q) =>
                 q.type == LevelQuestionType.image &&
-                q.template == 'imageQuizTemplate-1',
+                (q.template == 'imageQuizTemplate-1' ||
+                    q.template == 'imageQuizTemplate-2'),
           )
           .toList();
       if (imageRows.length == levelCfg.questions.length &&
           imageRows.isNotEmpty) {
         final paths = <String>[];
         final wrongLists = <List<String>>[];
+        final t2Paths = <List<String>>[];
         for (final row in imageRows) {
-          final d = row.imageData;
-          if (d == null) continue;
-          final path = await resolveQuizImageAsset(key, d.imageName);
-          if (path == null) {
-            throw Exception('Missing image asset for: ${d.imageName}');
+          if (row.template == 'imageQuizTemplate-1') {
+            final d = row.imageData;
+            if (d == null) continue;
+            final path = await resolveQuizImageAsset(key, d.imageName);
+            if (path == null) {
+              throw Exception('Missing image asset for: ${d.imageName}');
+            }
+            paths.add(path);
+            wrongLists.add(d.wrongAnswers);
+            t2Paths.add(const []);
+          } else if (row.template == 'imageQuizTemplate-2') {
+            final d = row.imageQuiz2Data;
+            if (d == null) continue;
+            final path = await resolveQuizImageAsset(key, d.imageName);
+            if (path == null) {
+              throw Exception('Missing image asset for: ${d.imageName}');
+            }
+            paths.add(path);
+            wrongLists.add(d.wrongAnswers);
+            final four = <String>[];
+            for (final stem in [d.imageName, ...d.wrongAnswers]) {
+              final p = await resolveQuizImageAsset(key, stem);
+              if (p == null) {
+                throw Exception('Missing image asset for: $stem');
+              }
+              four.add(p);
+            }
+            t2Paths.add(four);
           }
-          paths.add(path);
-          wrongLists.add(d.wrongAnswers);
         }
         if (paths.length < kMinImagesPerLevel) {
           throw Exception(
@@ -333,9 +370,16 @@ class _ImageQuizScreenState extends ConsumerState<ImageQuizScreen>
         final conversations = getForLanguage(conversationsConfig, language);
 
         if (mounted) {
-          for (final path in paths) {
+          for (var i = 0; i < imageRows.length; i++) {
             if (!mounted) break;
-            await precacheImage(AssetImage(path), context);
+            final row = imageRows[i];
+            if (row.template == 'imageQuizTemplate-2') {
+              for (final p in t2Paths[i]) {
+                await precacheImage(AssetImage(p), context);
+              }
+            } else {
+              await precacheImage(AssetImage(paths[i]), context);
+            }
           }
         }
 
@@ -343,6 +387,8 @@ class _ImageQuizScreenState extends ConsumerState<ImageQuizScreen>
           setState(() {
             _config = config;
             _conversations = conversations;
+            _configImageQuestions = imageRows;
+            _configImageQuiz2Paths = t2Paths;
             _questionAssetPaths = paths;
             _currentQuestionIds = questionIds;
             _configWrongAnswers = wrongLists;
@@ -376,6 +422,14 @@ class _ImageQuizScreenState extends ConsumerState<ImageQuizScreen>
           if (q.template == 'ConvoTemplate-1' && q.convoData != null) {
             convoList.add(q);
           } else if (q.template == 'ConvoTemplate-2' && q.convo2Data != null) {
+            convoList.add(q);
+          } else if (q.template == 'ConvoTemplate-AppearDisappear' &&
+              q.appearDisappearData != null) {
+            convoList.add(q);
+          } else if (q.template == 'ConvoTemplate-Simon' && q.simonData != null) {
+            convoList.add(q);
+          } else if (q.template == 'ConvoTemplate-ClozeSequence' &&
+              q.clozeSequenceData != null) {
             convoList.add(q);
           } else {
             throw Exception(
@@ -454,6 +508,8 @@ class _ImageQuizScreenState extends ConsumerState<ImageQuizScreen>
       final wrongThreeByQuestionId = <String, List<String>>{};
       final convoByQuestionId = <String, LevelQuestion>{};
       final convo2PathByQuestionId = <String, String>{};
+      final reminderImageQuestionById = <String, LevelQuestion>{};
+      final reminderImageQuiz2PathsById = <String, List<String>>{};
       final validQuestionIds = <String>[];
 
       for (final questionId in reminderQuestionIds) {
@@ -472,13 +528,16 @@ class _ImageQuizScreenState extends ConsumerState<ImageQuizScreen>
             questionIndex >= 0 &&
             questionIndex < lc.questions.length) {
           final q = lc.questions[questionIndex];
-          if (q.type == LevelQuestionType.image && q.imageData != null) {
+          if (q.type == LevelQuestionType.image &&
+              q.template == 'imageQuizTemplate-1' &&
+              q.imageData != null) {
             final path = await resolveQuizImageAsset(
               levelKey,
               q.imageData!.imageName,
             );
             if (path != null) {
               assetPathByQuestionId[questionId] = path;
+              reminderImageQuestionById[questionId] = q;
               final manifestPaths = loadedPaths[progressKey] ??=
                   await loadImageQuizLevelAssetPaths(levelKey);
               final vocabulary = loadedVocabulary[progressKey] ??=
@@ -488,8 +547,35 @@ class _ImageQuizScreenState extends ConsumerState<ImageQuizScreen>
               validQuestionIds.add(questionId);
               continue;
             }
+          } else if (q.type == LevelQuestionType.image &&
+              q.template == 'imageQuizTemplate-2' &&
+              q.imageQuiz2Data != null) {
+            final d = q.imageQuiz2Data!;
+            final fourPaths = <String>[];
+            for (final stem in [d.imageName, ...d.wrongAnswers]) {
+              final p = await resolveQuizImageAsset(levelKey, stem);
+              if (p == null) break;
+              fourPaths.add(p);
+            }
+            if (fourPaths.length == 4) {
+              assetPathByQuestionId[questionId] = fourPaths.first;
+              reminderImageQuiz2PathsById[questionId] = fourPaths;
+              reminderImageQuestionById[questionId] = q;
+              final manifestPaths = loadedPaths[progressKey] ??=
+                  await loadImageQuizLevelAssetPaths(levelKey);
+              final vocabulary = loadedVocabulary[progressKey] ??=
+                  manifestPaths.map(assetPathToBasename).toList(growable: false);
+              vocabularyByQuestionId[questionId] = vocabulary;
+              wrongThreeByQuestionId[questionId] = d.wrongAnswers;
+              validQuestionIds.add(questionId);
+              continue;
+            }
           } else if (q.type != LevelQuestionType.image &&
-              (q.convoData != null || q.convo2Data != null)) {
+              (q.convoData != null ||
+                  q.convo2Data != null ||
+                  q.appearDisappearData != null ||
+                  q.simonData != null ||
+                  q.clozeSequenceData != null)) {
             convoByQuestionId[questionId] = q;
             if (q.template == 'ConvoTemplate-2' && q.convo2Data != null) {
               final p = await resolveQuizImageAsset(
@@ -521,6 +607,13 @@ class _ImageQuizScreenState extends ConsumerState<ImageQuizScreen>
           final path = assetPathByQuestionId[questionId];
           if (path != null && mounted) {
             await precacheImage(AssetImage(path), context);
+          }
+          final four = reminderImageQuiz2PathsById[questionId];
+          if (four != null) {
+            for (final p in four) {
+              if (!mounted) break;
+              await precacheImage(AssetImage(p), context);
+            }
           }
           final c2 = convo2PathByQuestionId[questionId];
           if (c2 != null && mounted) {
@@ -556,6 +649,12 @@ class _ImageQuizScreenState extends ConsumerState<ImageQuizScreen>
         _convo2ImagePathByQuestionId
           ..clear()
           ..addAll(convo2PathByQuestionId);
+        _reminderImageQuestionsById
+          ..clear()
+          ..addAll(reminderImageQuestionById);
+        _reminderImageQuiz2PathsByQuestionId
+          ..clear()
+          ..addAll(reminderImageQuiz2PathsById);
         _assetPathByQuestionId
           ..clear()
           ..addAll(assetPathByQuestionId);
@@ -724,6 +823,18 @@ class _ImageQuizScreenState extends ConsumerState<ImageQuizScreen>
     if (_isConvoMode) {
       return _convoAnswer(_currentConvoLevelQuestion) ?? '';
     }
+    if (_isReminder && _currentQuestionId != null) {
+      final rq = _reminderImageQuestionsById[_currentQuestionId!];
+      if (rq?.template == 'imageQuizTemplate-2') {
+        return rq!.imageQuiz2Data!.imageName;
+      }
+    }
+    if (_configImageQuestions != null) {
+      final q = _configImageQuestions![_currentIndex];
+      if (q.template == 'imageQuizTemplate-2') {
+        return q.imageQuiz2Data!.imageName;
+      }
+    }
     return assetPathToBasename(_questionAssetPaths[_currentIndex]);
   }
 
@@ -738,7 +849,21 @@ class _ImageQuizScreenState extends ConsumerState<ImageQuizScreen>
       if (ans == null) return [];
       return ([ans, ...dist]..shuffle(Random()));
     }
+    if (_isReminder && _currentQuestionId != null) {
+      final rq = _reminderImageQuestionsById[_currentQuestionId!];
+      if (rq?.template == 'imageQuizTemplate-2' && rq!.imageQuiz2Data != null) {
+        final d = rq.imageQuiz2Data!;
+        return ([d.imageName, ...d.wrongAnswers]..shuffle(Random()));
+      }
+    }
     final correct = _correctAnswer();
+    if (_configImageQuestions != null) {
+      final q = _configImageQuestions![_currentIndex];
+      if (q.template == 'imageQuizTemplate-2' && q.imageQuiz2Data != null) {
+        final d = q.imageQuiz2Data!;
+        return ([d.imageName, ...d.wrongAnswers]..shuffle(Random()));
+      }
+    }
     if (_configWrongAnswers != null &&
         _currentIndex < _configWrongAnswers!.length) {
       final wrong = _configWrongAnswers![_currentIndex];
@@ -795,7 +920,8 @@ class _ImageQuizScreenState extends ConsumerState<ImageQuizScreen>
         // Auto-advance after delay
         Future.delayed(
           Duration(
-            milliseconds: (_config.autoAdvanceDelaySeconds * 1000).round(),
+            milliseconds:
+                (_autoAdvanceDelayForCurrentImageQuestion() * 1000).round(),
           ),
           () {
             if (!mounted) return;
@@ -1008,9 +1134,99 @@ class _ImageQuizScreenState extends ConsumerState<ImageQuizScreen>
     return const Center(child: CircularProgressIndicator());
   }
 
+  ImageQuizTemplate2Data? _currentImageQuiz2Data() {
+    if (_configImageQuestions != null) {
+      final q = _configImageQuestions![_currentIndex];
+      if (q.template == 'imageQuizTemplate-2') return q.imageQuiz2Data;
+    }
+    if (_isReminder && _currentQuestionId != null) {
+      final rq = _reminderImageQuestionsById[_currentQuestionId!];
+      if (rq?.template == 'imageQuizTemplate-2') return rq!.imageQuiz2Data;
+    }
+    return null;
+  }
+
+  List<String>? _fourOrderedPathsForCurrentImageQuiz2() {
+    if (_configImageQuestions != null &&
+        _currentIndex < _configImageQuiz2Paths.length) {
+      final p = _configImageQuiz2Paths[_currentIndex];
+      if (p.length == 4) return p;
+    }
+    if (_isReminder && _currentQuestionId != null) {
+      final p = _reminderImageQuiz2PathsByQuestionId[_currentQuestionId!];
+      if (p != null && p.length == 4) return p;
+    }
+    return null;
+  }
+
+  String _nounLabelFromImageStem(String stem) {
+    if (stem.isEmpty) return stem;
+    return stem
+        .split('-')
+        .map((w) => w.isEmpty
+            ? w
+            : '${w[0].toUpperCase()}${w.substring(1).toLowerCase()}')
+        .join(' ');
+  }
+
+  String? _assetPathForImageQuiz2Stem(
+    ImageQuizTemplate2Data d,
+    List<String> fourOrdered,
+    String stem,
+  ) {
+    final order = [d.imageName, ...d.wrongAnswers];
+    final i = order.indexOf(stem);
+    if (i < 0 || i >= fourOrdered.length) return null;
+    return fourOrdered[i];
+  }
+
+  double _autoAdvanceDelayForCurrentImageQuestion() {
+    final d2 = _currentImageQuiz2Data();
+    if (d2 != null) return d2.autoNextDelay;
+    return _config.autoAdvanceDelaySeconds;
+  }
+
+  void _handleInteractiveConvoOutcome(LevelQuestion q, bool correct) {
+    if (correct) {
+      AchievementService.instance.recordAnswer(true);
+      final delaySec = switch (q.template) {
+        'ConvoTemplate-AppearDisappear' =>
+          q.appearDisappearData!.autoNextDelay,
+        'ConvoTemplate-Simon' => q.simonData!.autoNextDelay,
+        'ConvoTemplate-ClozeSequence' => q.clozeSequenceData!.autoNextDelay,
+        _ => _config.autoAdvanceDelaySeconds,
+      };
+      setState(() => _correctCount++);
+      Future.delayed(
+        Duration(milliseconds: (delaySec * 1000).round()),
+        () {
+          if (!mounted) return;
+          _goNext();
+        },
+      );
+    } else {
+      AchievementService.instance.recordAnswer(false);
+      final questionId = _currentQuestionId;
+      if (_isReminder) {
+        if (questionId != null) _nextReviewQuestionIds.add(questionId);
+      } else if (questionId != null) {
+        ReminderProgressService.instance.recordWrongAnswer(questionId);
+      }
+      setState(() {
+        _answerLocked = true;
+        _showNext = true;
+      });
+    }
+  }
+
   Widget _buildImagePlaying(bool soundFxOn, Map<String, String> strings) {
     final path = _questionAssetPaths[_currentIndex];
-    final isLast = _currentIndex + 1 >= _questionAssetPaths.length;
+    final isLast = _currentIndex + 1 >= _questionCount;
+    final d2 = _currentImageQuiz2Data();
+    final four = _fourOrderedPathsForCurrentImageQuiz2();
+    final isTemplate2 = d2 != null && four != null;
+    final iq2 = d2;
+    final paths4 = four;
 
     return Column(
       children: [
@@ -1028,21 +1244,37 @@ class _ImageQuizScreenState extends ConsumerState<ImageQuizScreen>
                   ),
             ),
           ),
-        // Question image (smaller to give room for monster row)
-        Expanded(
-          flex: 1,
-          child: Padding(
-            padding: const EdgeInsets.all(16),
-            child: Image.asset(
-              path,
-              fit: BoxFit.contain,
-              errorBuilder: (_, __, ___) => Container(
-                color: Colors.grey.shade300,
-                child: const Icon(Icons.image_not_supported, size: 64),
+        if (isTemplate2 && iq2 != null)
+          Expanded(
+            flex: 1,
+            child: Padding(
+              padding: const EdgeInsets.all(16),
+              child: Center(
+                child: Text(
+                  _nounLabelFromImageStem(iq2.imageName),
+                  style: Theme.of(context).textTheme.headlineSmall?.copyWith(
+                        fontWeight: FontWeight.w800,
+                      ),
+                  textAlign: TextAlign.center,
+                ),
+              ),
+            ),
+          )
+        else
+          Expanded(
+            flex: 1,
+            child: Padding(
+              padding: const EdgeInsets.all(16),
+              child: Image.asset(
+                path,
+                fit: BoxFit.contain,
+                errorBuilder: (_, __, ___) => Container(
+                  color: Colors.grey.shade300,
+                  child: const Icon(Icons.image_not_supported, size: 64),
+                ),
               ),
             ),
           ),
-        ),
         // Speech bubbles — appear above animal/monster after slide completes
         if (_showNext && _bubbleConversation != null)
           Padding(
@@ -1196,68 +1428,118 @@ class _ImageQuizScreenState extends ConsumerState<ImageQuizScreen>
             },
           ),
         ),
-        // Answer buttons
-        Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 16),
-          child: Column(
-            children: List.generate(4, (i) {
-              final option = _currentOptions[i];
-              final isCorrect = option == _correctAnswer();
-              final isSelected = _selectedIndex == i;
-              Color? bgColor;
-              Color? fgColor;
-              if (_answerLocked) {
-                if (isCorrect) {
-                  bgColor = Colors.green.shade600;
-                  fgColor = Colors.white;
-                } else if (isSelected && !isCorrect) {
-                  bgColor = Colors.red.shade600;
-                  fgColor = Colors.white;
-                }
-              }
-              final buttonStyle = bgColor != null
-                  ? ElevatedButton.styleFrom(
-                      backgroundColor: bgColor,
-                      foregroundColor: fgColor,
-                      surfaceTintColor: Colors.transparent,
-                      disabledBackgroundColor: bgColor,
-                      disabledForegroundColor: fgColor,
-                      minimumSize: const Size(kMinTouchTarget, kMinTouchTarget),
-                    )
-                  : ElevatedButton.styleFrom(
-                      minimumSize: const Size(kMinTouchTarget, kMinTouchTarget),
-                      disabledBackgroundColor: Colors.grey.shade300,
-                      disabledForegroundColor: Colors.grey.shade800,
-                      surfaceTintColor: Colors.transparent,
-                    );
-              return Padding(
-                padding: const EdgeInsets.only(bottom: 12),
-                child: SizedBox(
-                  width: double.infinity,
-                  height: kMinTouchTarget + 8,
-                  child: ElevatedButton(
-                    onPressed: _answerLocked
+        if (isTemplate2 && iq2 != null && paths4 != null)
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 16),
+            child: GridView.count(
+              shrinkWrap: true,
+              physics: const NeverScrollableScrollPhysics(),
+              crossAxisCount: 2,
+              crossAxisSpacing: 12,
+              mainAxisSpacing: 12,
+              childAspectRatio: 1.1,
+              children: List.generate(4, (i) {
+                final option = _currentOptions[i];
+                final assetPath =
+                    _assetPathForImageQuiz2Stem(iq2, paths4, option);
+                final isCorrect = option == _correctAnswer();
+                final isSelected = _selectedIndex == i;
+                final showGreen = _answerLocked &&
+                    isCorrect &&
+                    (isSelected || iq2.showCorrectOnWrong);
+                final showRed = _answerLocked && isSelected && !isCorrect;
+                return Material(
+                  color: showGreen
+                      ? Colors.green.shade200
+                      : showRed
+                          ? Colors.red.shade200
+                          : Theme.of(context).colorScheme.surfaceContainerHighest,
+                  borderRadius: BorderRadius.circular(12),
+                  clipBehavior: Clip.antiAlias,
+                  child: InkWell(
+                    onTap: _answerLocked
                         ? null
                         : () {
                             audio.playClick(soundFxOn: soundFxOn);
                             _onAnswerTap(i);
                           },
-                    style: buttonStyle,
-                    child: Text(
-                      _capitalize(option),
-                      style: fgColor != null
-                          ? Theme.of(context).textTheme.titleMedium?.copyWith(
-                                color: fgColor,
-                                fontWeight: FontWeight.w600,
-                              )
-                          : Theme.of(context).textTheme.titleMedium,
+                    child: assetPath != null
+                        ? Image.asset(
+                            assetPath,
+                            fit: BoxFit.cover,
+                            errorBuilder: (_, __, ___) => const Icon(
+                              Icons.image_not_supported,
+                              size: 48,
+                            ),
+                          )
+                        : const Icon(Icons.image_not_supported),
+                  ),
+                );
+              }),
+            ),
+          )
+        else
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 16),
+            child: Column(
+              children: List.generate(4, (i) {
+                final option = _currentOptions[i];
+                final isCorrect = option == _correctAnswer();
+                final isSelected = _selectedIndex == i;
+                Color? bgColor;
+                Color? fgColor;
+                if (_answerLocked) {
+                  if (isCorrect) {
+                    bgColor = Colors.green.shade600;
+                    fgColor = Colors.white;
+                  } else if (isSelected && !isCorrect) {
+                    bgColor = Colors.red.shade600;
+                    fgColor = Colors.white;
+                  }
+                }
+                final buttonStyle = bgColor != null
+                    ? ElevatedButton.styleFrom(
+                        backgroundColor: bgColor,
+                        foregroundColor: fgColor,
+                        surfaceTintColor: Colors.transparent,
+                        disabledBackgroundColor: bgColor,
+                        disabledForegroundColor: fgColor,
+                        minimumSize: const Size(kMinTouchTarget, kMinTouchTarget),
+                      )
+                    : ElevatedButton.styleFrom(
+                        minimumSize: const Size(kMinTouchTarget, kMinTouchTarget),
+                        disabledBackgroundColor: Colors.grey.shade300,
+                        disabledForegroundColor: Colors.grey.shade800,
+                        surfaceTintColor: Colors.transparent,
+                      );
+                return Padding(
+                  padding: const EdgeInsets.only(bottom: 12),
+                  child: SizedBox(
+                    width: double.infinity,
+                    height: kMinTouchTarget + 8,
+                    child: ElevatedButton(
+                      onPressed: _answerLocked
+                          ? null
+                          : () {
+                              audio.playClick(soundFxOn: soundFxOn);
+                              _onAnswerTap(i);
+                            },
+                      style: buttonStyle,
+                      child: Text(
+                        _capitalize(option),
+                        style: fgColor != null
+                            ? Theme.of(context).textTheme.titleMedium?.copyWith(
+                                  color: fgColor,
+                                  fontWeight: FontWeight.w600,
+                                )
+                            : Theme.of(context).textTheme.titleMedium,
+                      ),
                     ),
                   ),
-                ),
-              );
-            }),
+                );
+              }),
+            ),
           ),
-        ),
         // Next / Finish — reserve space so layout doesn't jump when button appears
         Padding(
           padding: const EdgeInsets.all(16),
@@ -1596,18 +1878,17 @@ class _ImageQuizScreenState extends ConsumerState<ImageQuizScreen>
         Expanded(
           child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
-            child: q.template == 'ConvoTemplate-2'
-                ? _buildConvoTemplate2Content(q, userLanguage)
-                : _buildCharactersRow(q.convoData!, userLanguage),
+            child: _buildConvoQuestionBody(q, userLanguage, soundFxOn, strings),
           ),
         ),
-        Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 16),
-          child: Column(
-            children: List.generate(
-                4, (i) => _buildConvoAnswerButton(i, q, soundFxOn)),
+        if (q.template == 'ConvoTemplate-1' || q.template == 'ConvoTemplate-2')
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 16),
+            child: Column(
+              children: List.generate(
+                  4, (i) => _buildConvoAnswerButton(i, q, soundFxOn)),
+            ),
           ),
-        ),
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
           child: SizedBox(
@@ -1676,6 +1957,49 @@ class _ImageQuizScreenState extends ConsumerState<ImageQuizScreen>
           ),
       ],
     );
+  }
+
+  Widget _buildConvoQuestionBody(
+    LevelQuestion q,
+    String userLanguage,
+    bool soundFxOn,
+    Map<String, String> strings,
+  ) {
+    switch (q.template) {
+      case 'ConvoTemplate-AppearDisappear':
+        return AppearDisappearQuizBody(
+          key: ValueKey('ad-${_currentQuestionId ?? '$_currentIndex'}'),
+          data: q.appearDisappearData!,
+          strings: strings,
+          onPlayCorrect: () =>
+              audio.playCorrect(soundFxOn: soundFxOn),
+          onPlayWrong: () => audio.playWrong(soundFxOn: soundFxOn),
+          onOutcome: (correct) => _handleInteractiveConvoOutcome(q, correct),
+        );
+      case 'ConvoTemplate-Simon':
+        return SimonQuizBody(
+          key: ValueKey('simon-${_currentQuestionId ?? '$_currentIndex'}'),
+          data: q.simonData!,
+          soundFxOn: soundFxOn,
+          onPlayCorrect: () =>
+              audio.playCorrect(soundFxOn: soundFxOn),
+          onPlayWrong: () => audio.playWrong(soundFxOn: soundFxOn),
+          onOutcome: (correct) => _handleInteractiveConvoOutcome(q, correct),
+        );
+      case 'ConvoTemplate-ClozeSequence':
+        return ClozeSequenceQuizBody(
+          key: ValueKey('clz-${_currentQuestionId ?? '$_currentIndex'}'),
+          data: q.clozeSequenceData!,
+          onPlayCorrect: () =>
+              audio.playCorrect(soundFxOn: soundFxOn),
+          onPlayWrong: () => audio.playWrong(soundFxOn: soundFxOn),
+          onOutcome: (correct) => _handleInteractiveConvoOutcome(q, correct),
+        );
+      case 'ConvoTemplate-2':
+        return _buildConvoTemplate2Content(q, userLanguage);
+      default:
+        return _buildCharactersRow(q.convoData!, userLanguage);
+    }
   }
 
   Widget _buildConvoTemplate2Content(LevelQuestion q, String userLanguage) {
