@@ -5,7 +5,11 @@
       "template": "imageQuizTemplate-1",
       "questionData": {
         "imageName": "antacids",
-        "wrongAnswers": ["cough-syrup", "pain-killer", "sleep-aids"]
+        "wrongAnswers": [
+          "bandage",
+          "pharmacist",
+          "cough-syrup"
+        ]
       }
     },
     {
@@ -13,15 +17,11 @@
       "template": "imageQuizTemplate-1",
       "questionData": {
         "imageName": "bandage",
-        "wrongAnswers": ["cotton-balls", "ointment", "prescription"]
-      }
-    },
-    {
-      "type": "image",
-      "template": "imageQuizTemplate-1",
-      "questionData": {
-        "imageName": "cotton-balls",
-        "wrongAnswers": ["bandage", "ointment", "drugs"]
+        "wrongAnswers": [
+          "prescription",
+          "antacids",
+          "cough-syrup"
+        ]
       }
     },
     {
@@ -29,7 +29,11 @@
       "template": "imageQuizTemplate-1",
       "questionData": {
         "imageName": "cough-syrup",
-        "wrongAnswers": ["antacids", "pain-killer", "sleep-aids"]
+        "wrongAnswers": [
+          "prescription",
+          "bandage",
+          "antacids"
+        ]
       }
     },
     {
@@ -37,23 +41,11 @@
       "template": "imageQuizTemplate-1",
       "questionData": {
         "imageName": "drugs",
-        "wrongAnswers": ["antacids", "cough-syrup", "sleep-aids"]
-      }
-    },
-    {
-      "type": "image",
-      "template": "imageQuizTemplate-1",
-      "questionData": {
-        "imageName": "ointment",
-        "wrongAnswers": ["bandage", "cotton-balls", "prescription"]
-      }
-    },
-    {
-      "type": "image",
-      "template": "imageQuizTemplate-1",
-      "questionData": {
-        "imageName": "pain-killer",
-        "wrongAnswers": ["antacids", "cough-syrup", "drugs"]
+        "wrongAnswers": [
+          "bandage",
+          "prescription",
+          "antacids"
+        ]
       }
     },
     {
@@ -61,7 +53,11 @@
       "template": "imageQuizTemplate-1",
       "questionData": {
         "imageName": "pharmacist",
-        "wrongAnswers": ["prescription", "drugs", "pain-killer"]
+        "wrongAnswers": [
+          "drugs",
+          "cough-syrup",
+          "prescription"
+        ]
       }
     },
     {
@@ -69,103 +65,11 @@
       "template": "imageQuizTemplate-1",
       "questionData": {
         "imageName": "prescription",
-        "wrongAnswers": ["pharmacist", "bandage", "ointment"]
-      }
-    },
-    {
-      "type": "image",
-      "template": "imageQuizTemplate-1",
-      "questionData": {
-        "imageName": "sleep-aids",
-        "wrongAnswers": ["antacids", "cough-syrup", "pain-killer"]
-      }
-    },
-    {
-      "type": "vocab",
-      "template": "ConvoTemplate-1",
-      "questionData": {
-        "character1": "mike",
-        "character2": "sarah",
-        "line1": {
-          "en": "I need to _____ some medicine for my cold.",
-          "tr": "Soğuğum için ilaç _____ lazım.",
-          "es": "Necesito _____ medicina para mi resfriado."
-        },
-        "line2": {
-          "en": "There's a pharmacy just around the corner.",
-          "tr": "Köşede bir eczane var.",
-          "es": "Hay una farmacia justo a la vuelta de la esquina."
-        },
-        "answer": "buy",
-        "distractors": ["find", "carry", "sell"]
-      }
-    },
-    {
-      "type": "vocab",
-      "template": "ConvoTemplate-1",
-      "questionData": {
-        "character1": "mike",
-        "character2": "sarah",
-        "line1": {
-          "en": "Can you _____ my prescription at the pharmacy?",
-          "tr": "Reçetemi eczaneden _____ alabilir misin?",
-          "es": "¿Puedes _____ mi receta en la farmacia?"
-        },
-        "line2": {
-          "en": "Of course, I'll go after lunch.",
-          "tr": "Tabii ki, öğle yemeğinden sonra giderim.",
-          "es": "Por supuesto, iré después del almuerzo."
-        },
-        "answer": "pick up",
-        "distractors": ["buy", "find", "drop off"]
-      }
-    },
-    {
-      "type": "grammar",
-      "template": "ConvoTemplate-1",
-      "questionData": {
-        "character1": "mike",
-        "character2": "sarah",
-        "line1": {
-          "en": "_____ I get this medicine without a prescription?",
-          "tr": "Bu ilacı reçetesiz alabilir miyim?",
-          "es": "¿_____ conseguir este medicamento sin receta?"
-        },
-        "line2": {
-          "en": "Yes, that one is available over the counter.",
-          "tr": "Evet, o ilaç reçetesiz satılıyor.",
-          "es": "Sí, ese está disponible sin receta."
-        },
-        "answer": "Can",
-        "distractors": ["Should", "Must", "Will"]
-      }
-    },
-    {
-      "type": "vocab",
-      "template": "ConvoTemplate-2",
-      "questionData": {
-        "imageName": "pharmacist",
-        "sentence": {
-          "en": "The _____ explained how to take the medicine correctly.",
-          "tr": "The _____ explained how to take the medicine correctly. (eczacı)",
-          "es": "The _____ explained how to take the medicine correctly. (farmacéutico)"
-        },
-        "answer": "pharmacist",
-        "distractors": ["prescription", "drugs", "pain-killer"]
-      }
-    },
-    {
-      "type": "vocab",
-      "template": "ConvoTemplate-2",
-      "questionData": {
-        "imageName": "prescription",
-        "sentence": {
-          "en": "You need a _____ from the doctor to get this medication.",
-          "tr": "You need a _____ from the doctor to get this medication. (reçete)",
-          "es": "You need a _____ from the doctor to get this medication. (receta)"
-        },
-        "answer": "prescription",
-        "distractors": ["pharmacist", "bandage", "ointment"]
+        "wrongAnswers": [
+          "pharmacist",
+          "drugs",
+          "antacids"
+        ]
       }
     }
   ]

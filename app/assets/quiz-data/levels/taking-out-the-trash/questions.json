@@ -1,0 +1,64 @@
+{
+  "levelQuestions": [
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "broom",
+        "wrongAnswers": [
+          "trash",
+          "mop",
+          "bucket"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "bucket",
+        "wrongAnswers": [
+          "trash",
+          "mop",
+          "broom"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "garbage-bag",
+        "wrongAnswers": [
+          "mop",
+          "broom",
+          "trash"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "mop",
+        "wrongAnswers": [
+          "trash",
+          "broom",
+          "garbage-bag"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "trash",
+        "wrongAnswers": [
+          "mop",
+          "garbage-bag",
+          "bucket"
+        ]
+      }
+    }
+  ]
+}

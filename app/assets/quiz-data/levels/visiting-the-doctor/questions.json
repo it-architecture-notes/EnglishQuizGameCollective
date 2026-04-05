@@ -4,56 +4,24 @@
       "type": "image",
       "template": "imageQuizTemplate-1",
       "questionData": {
-        "imageName": "ambulance",
-        "wrongAnswers": ["mri-machine", "blood-pressure-monitor", "iv-drip"]
+        "imageName": "doctor",
+        "wrongAnswers": [
+          "patient-monitor",
+          "hospital-bed",
+          "patient"
+        ]
       }
     },
     {
       "type": "image",
       "template": "imageQuizTemplate-1",
       "questionData": {
-        "imageName": "blood-pressure-monitor",
-        "wrongAnswers": ["mri-machine", "iv-drip", "blood-sample"]
-      }
-    },
-    {
-      "type": "image",
-      "template": "imageQuizTemplate-1",
-      "questionData": {
-        "imageName": "blood-sample",
-        "wrongAnswers": ["blood-pressure-monitor", "iv-drip", "x-ray"]
-      }
-    },
-    {
-      "type": "image",
-      "template": "imageQuizTemplate-1",
-      "questionData": {
-        "imageName": "cane",
-        "wrongAnswers": ["caregiver", "nurse", "paramedic"]
-      }
-    },
-    {
-      "type": "image",
-      "template": "imageQuizTemplate-1",
-      "questionData": {
-        "imageName": "caregiver",
-        "wrongAnswers": ["nurse", "paramedic", "cane"]
-      }
-    },
-    {
-      "type": "image",
-      "template": "imageQuizTemplate-1",
-      "questionData": {
-        "imageName": "iv-drip",
-        "wrongAnswers": ["blood-sample", "blood-pressure-monitor", "mri-machine"]
-      }
-    },
-    {
-      "type": "image",
-      "template": "imageQuizTemplate-1",
-      "questionData": {
-        "imageName": "mri-machine",
-        "wrongAnswers": ["blood-pressure-monitor", "iv-drip", "ambulance"]
+        "imageName": "hospital-bed",
+        "wrongAnswers": [
+          "doctor",
+          "patient-monitor",
+          "nurse"
+        ]
       }
     },
     {
@@ -61,111 +29,47 @@
       "template": "imageQuizTemplate-1",
       "questionData": {
         "imageName": "nurse",
-        "wrongAnswers": ["caregiver", "paramedic", "cane"]
+        "wrongAnswers": [
+          "patient",
+          "hospital-bed",
+          "doctor"
+        ]
       }
     },
     {
       "type": "image",
       "template": "imageQuizTemplate-1",
       "questionData": {
-        "imageName": "paramedic",
-        "wrongAnswers": ["nurse", "caregiver", "ambulance"]
+        "imageName": "patient",
+        "wrongAnswers": [
+          "doctor",
+          "thermometer",
+          "nurse"
+        ]
       }
     },
     {
       "type": "image",
       "template": "imageQuizTemplate-1",
       "questionData": {
-        "imageName": "x-ray",
-        "wrongAnswers": ["mri-machine", "blood-sample", "blood-pressure-monitor"]
+        "imageName": "thermometer",
+        "wrongAnswers": [
+          "patient-monitor",
+          "patient",
+          "nurse"
+        ]
       }
     },
     {
-      "type": "vocab",
-      "template": "ConvoTemplate-1",
+      "type": "image",
+      "template": "imageQuizTemplate-1",
       "questionData": {
-        "character1": "mike",
-        "character2": "sarah",
-        "line1": {
-          "en": "How do you _____? You look pale.",
-          "tr": "Kendini nasıl _____? Solgun görünüyorsun.",
-          "es": "¿Cómo te _____? Pareces pálido."
-        },
-        "line2": {
-          "en": "Not great. I think I need to see a doctor.",
-          "tr": "Pek iyi değil. Sanırım doktora gitmeliyim.",
-          "es": "No muy bien. Creo que necesito ver a un médico."
-        },
-        "answer": "feel",
-        "distractors": ["look", "seem", "sound"]
-      }
-    },
-    {
-      "type": "vocab",
-      "template": "ConvoTemplate-1",
-      "questionData": {
-        "character1": "mike",
-        "character2": "sarah",
-        "line1": {
-          "en": "She stayed home because she felt _____.",
-          "tr": "Hasta hissettiği için evde kaldı.",
-          "es": "Ella se quedó en casa porque se sentía _____."
-        },
-        "line2": {
-          "en": "I hope she gets better soon.",
-          "tr": "Umarım çabuk iyileşir.",
-          "es": "Espero que se mejore pronto."
-        },
-        "answer": "sick",
-        "distractors": ["tired", "late", "busy"]
-      }
-    },
-    {
-      "type": "grammar",
-      "template": "ConvoTemplate-1",
-      "questionData": {
-        "character1": "mike",
-        "character2": "sarah",
-        "line1": {
-          "en": "You _____ see a doctor if your fever doesn't go down.",
-          "tr": "Ateşin düşmezse doktora gitmelisin.",
-          "es": "Tú _____ ver a un médico si la fiebre no baja."
-        },
-        "line2": {
-          "en": "You're right. I'll call the clinic today.",
-          "tr": "Haklısın. Bugün kliniği arayacağım.",
-          "es": "Tienes razón. Llamaré a la clínica hoy."
-        },
-        "answer": "should",
-        "distractors": ["must not", "cannot", "will not"]
-      }
-    },
-    {
-      "type": "vocab",
-      "template": "ConvoTemplate-2",
-      "questionData": {
-        "imageName": "nurse",
-        "sentence": {
-          "en": "The _____ checked my temperature and gave me medicine.",
-          "tr": "The _____ checked my temperature and gave me medicine. (hemşire)",
-          "es": "The _____ checked my temperature and gave me medicine. (enfermera)"
-        },
-        "answer": "nurse",
-        "distractors": ["caregiver", "paramedic", "cane"]
-      }
-    },
-    {
-      "type": "vocab",
-      "template": "ConvoTemplate-2",
-      "questionData": {
-        "imageName": "x-ray",
-        "sentence": {
-          "en": "The doctor took an _____ to see if my bone was broken.",
-          "tr": "The doctor took an _____ to see if my bone was broken. (röntgen)",
-          "es": "The doctor took an _____ to see if my bone was broken. (radiografía)"
-        },
-        "answer": "x-ray",
-        "distractors": ["mri-machine", "blood-sample", "iv-drip"]
+        "imageName": "patient-monitor",
+        "wrongAnswers": [
+          "nurse",
+          "hospital-bed",
+          "patient"
+        ]
       }
     }
   ]

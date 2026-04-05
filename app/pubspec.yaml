@@ -143,4 +143,39 @@ flutter:
     - assets/quiz-data/levels/at-the-gas-station/
     - assets/quiz-data/levels/insect-world/
     - assets/quiz-data/levels/home-decoration/
+    - assets/quiz-data/levels/waking-up/
+    - assets/quiz-data/levels/brushing-teeth/
+    - assets/quiz-data/levels/taking-a-shower/
+    - assets/quiz-data/levels/eating-breakfast/
+    - assets/quiz-data/levels/making-the-bed/
+    - assets/quiz-data/levels/packing-a-lunch/
+    - assets/quiz-data/levels/feeding-a-pet/
+    - assets/quiz-data/levels/walking-the-dog/
+    - assets/quiz-data/levels/getting-ready-for-bed/
+    - assets/quiz-data/levels/doing-laundry/
+    - assets/quiz-data/levels/washing-dishes/
+    - assets/quiz-data/levels/taking-out-the-trash/
+    - assets/quiz-data/levels/vacuuming-the-house/
+    - assets/quiz-data/levels/making-dinner/
+    - assets/quiz-data/levels/setting-the-table/
+    - assets/quiz-data/levels/clearing-the-table/
+    - assets/quiz-data/levels/watering-plants/
+    - assets/quiz-data/levels/making-coffee-or-tea/
+    - assets/quiz-data/levels/watching-tv/
+    - assets/quiz-data/levels/at-the-park/
+    - assets/quiz-data/levels/at-the-dentist/
+    - assets/quiz-data/levels/exercising/
+    - assets/quiz-data/levels/packing-school-bag/
+    - assets/quiz-data/levels/baking-at-home/
+    - assets/quiz-data/levels/reading-at-home/
+    - assets/quiz-data/levels/playing-with-pets/
+    - assets/quiz-data/levels/at-the-coffee-shop/
+    - assets/quiz-data/levels/at-the-zoo/
+    - assets/quiz-data/levels/bird-watching/
+    - assets/quiz-data/levels/at-the-beach/
+    - assets/quiz-data/levels/hiking-outdoors/
+    - assets/quiz-data/levels/at-the-train-station/
+    - assets/quiz-data/levels/checking-the-weather/
+    - assets/quiz-data/levels/going-to-sleep/
+    - assets/quiz-data/levels/personal-hygiene/
     - assets/audio/

@@ -1,0 +1,64 @@
+{
+  "levelQuestions": [
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "bakery",
+        "wrongAnswers": [
+          "cafe",
+          "bookstore",
+          "coffee-mug"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "bookstore",
+        "wrongAnswers": [
+          "electric-kettle",
+          "cafe",
+          "bakery"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "cafe",
+        "wrongAnswers": [
+          "coffee-mug",
+          "electric-kettle",
+          "bakery"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "coffee-mug",
+        "wrongAnswers": [
+          "bakery",
+          "cafe",
+          "bookstore"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "electric-kettle",
+        "wrongAnswers": [
+          "bakery",
+          "bookstore",
+          "cafe"
+        ]
+      }
+    }
+  ]
+}

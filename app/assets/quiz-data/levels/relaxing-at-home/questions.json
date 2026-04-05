@@ -5,7 +5,11 @@
       "template": "imageQuizTemplate-1",
       "questionData": {
         "imageName": "armchair",
-        "wrongAnswers": ["chair", "bookshelf", "mirror"]
+        "wrongAnswers": [
+          "bookshelf",
+          "sofa-couch",
+          "pillow"
+        ]
       }
     },
     {
@@ -13,135 +17,59 @@
       "template": "imageQuizTemplate-1",
       "questionData": {
         "imageName": "bookshelf",
-        "wrongAnswers": ["picture", "vase", "mirror"]
+        "wrongAnswers": [
+          "sofa-couch",
+          "fireplace",
+          "armchair"
+        ]
       }
     },
     {
       "type": "image",
       "template": "imageQuizTemplate-1",
       "questionData": {
-        "imageName": "chair",
-        "wrongAnswers": ["armchair", "laundry-basket", "mattress"]
+        "imageName": "fireplace",
+        "wrongAnswers": [
+          "sofa-couch",
+          "bookshelf",
+          "armchair"
+        ]
       }
     },
     {
       "type": "image",
       "template": "imageQuizTemplate-1",
       "questionData": {
-        "imageName": "light-switch",
-        "wrongAnswers": ["wall-clock", "mirror", "picture"]
+        "imageName": "pillow",
+        "wrongAnswers": [
+          "fireplace",
+          "bookshelf",
+          "remote-control"
+        ]
       }
     },
     {
       "type": "image",
       "template": "imageQuizTemplate-1",
       "questionData": {
-        "imageName": "mirror",
-        "wrongAnswers": ["picture", "vase", "bookshelf"]
+        "imageName": "remote-control",
+        "wrongAnswers": [
+          "pillow",
+          "sofa-couch",
+          "fireplace"
+        ]
       }
     },
     {
       "type": "image",
       "template": "imageQuizTemplate-1",
       "questionData": {
-        "imageName": "picture",
-        "wrongAnswers": ["mirror", "vase", "bookshelf"]
-      }
-    },
-    {
-      "type": "image",
-      "template": "imageQuizTemplate-1",
-      "questionData": {
-        "imageName": "vase",
-        "wrongAnswers": ["picture", "mirror", "wall-clock"]
-      }
-    },
-    {
-      "type": "image",
-      "template": "imageQuizTemplate-1",
-      "questionData": {
-        "imageName": "wall-clock",
-        "wrongAnswers": ["light-switch", "mirror", "vase"]
-      }
-    },
-    {
-      "type": "image",
-      "template": "imageQuizTemplate-1",
-      "questionData": {
-        "imageName": "laundry-basket",
-        "wrongAnswers": ["mattress", "chair", "armchair"]
-      }
-    },
-    {
-      "type": "image",
-      "template": "imageQuizTemplate-1",
-      "questionData": {
-        "imageName": "mattress",
-        "wrongAnswers": ["laundry-basket", "chair", "armchair"]
-      }
-    },
-    {
-      "type": "vocab",
-      "template": "ConvoTemplate-1",
-      "questionData": {
-        "character1": "mike",
-        "character2": "sarah",
-        "line1": { "en": "What do you do after work to _____?", "tr": "İşten sonra _____ için ne yapıyorsun?", "es": "¿Qué haces después del trabajo para _____?" },
-        "line2": { "en": "I usually sit in my armchair and read a book.", "tr": "Genellikle koltuğuma oturup kitap okurum.", "es": "Normalmente me siento en mi sillón y leo un libro." },
-        "answer": "relax",
-        "distractors": ["exercise", "complain", "rush"]
-      }
-    },
-    {
-      "type": "vocab",
-      "template": "ConvoTemplate-1",
-      "questionData": {
-        "character1": "sarah",
-        "character2": "mike",
-        "line1": { "en": "Do you _____ the house on weekends?", "tr": "Hafta sonları evi _____ misin?", "es": "¿_____ la casa los fines de semana?" },
-        "line2": { "en": "Yes, I vacuum the floors and dust the shelves.", "tr": "Evet, yerleri süpürür ve rafları silerim.", "es": "Sí, paso la aspiradora y limpio las estanterías." },
-        "answer": "clean",
-        "distractors": ["paint", "lock", "cook"]
-      }
-    },
-    {
-      "type": "vocab",
-      "template": "ConvoTemplate-1",
-      "questionData": {
-        "character1": "mike",
-        "character2": "sarah",
-        "line1": { "en": "This armchair is so _____!", "tr": "Bu koltuk çok _____!", "es": "¡Este sillón es muy _____!" },
-        "line2": { "en": "I know, I could sit here all day.", "tr": "Biliyorum, burada bütün gün oturabilirdim.", "es": "Lo sé, podría quedarme aquí todo el día." },
-        "answer": "comfortable",
-        "distractors": ["broken", "heavy", "noisy"]
-      }
-    },
-    {
-      "type": "vocab",
-      "template": "ConvoTemplate-2",
-      "questionData": {
-        "imageName": "armchair",
-        "sentence": {
-          "en": "After a long day, she loves to sit in her _____ and watch TV.",
-          "tr": "After a long day, she loves to sit in her _____ and watch TV. (koltuğuna)",
-          "es": "After a long day, she loves to sit in her _____ and watch TV. (sillón)"
-        },
-        "answer": "armchair",
-        "distractors": ["chair", "mattress", "bookshelf"]
-      }
-    },
-    {
-      "type": "vocab",
-      "template": "ConvoTemplate-2",
-      "questionData": {
-        "imageName": "wall-clock",
-        "sentence": {
-          "en": "He checked the _____ to see if it was time for dinner.",
-          "tr": "He checked the _____ to see if it was time for dinner. (duvar saatini)",
-          "es": "He checked the _____ to see if it was time for dinner. (reloj de pared)"
-        },
-        "answer": "wall-clock",
-        "distractors": ["mirror", "light-switch", "vase"]
+        "imageName": "sofa-couch",
+        "wrongAnswers": [
+          "pillow",
+          "armchair",
+          "fireplace"
+        ]
       }
     }
   ]

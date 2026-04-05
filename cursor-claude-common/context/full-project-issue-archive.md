@@ -1,3 +1,26 @@
+**Granular Activity Set Up with Algorithm**
+
+Active Issue: Granular Activity Set Up with Algorithm
+
+Description: Activity Level Quizziez Phase-1 will be completed using an algorithm.
+
+Use Case: Activities to be followed:
+    - Get the list of all the jpg, png images under the quiz-data/levels folder
+    - Start with the activity waking-up as the first activity and create the first level of the game, main level:1 quiz:1
+    - If not already there, create an activity folder under the quiz-data/levels with the activity name
+    - From the images list that is already created in the beginning, find the ones that are relevant to the activity, for example bed, mattress are relevant to waking-up.
+    - Copy 6 images of the list to the activity folder created for this activity
+    - If you cannot find 6 relevant images then copy whathever you have
+    - Under the same activity folder, create a question.json file if not already there.
+    - Make sure that 6 or less images we added are included as image questions with right template.
+    - When completed, from the activities.txt file find another activity that could come after the waking-up, like making-the-bed.
+    - Complete all the steps given above for wakint-up for this activity as well.
+    - In the same loop continue activity after activity until we have a full list of activities.
+    - Make sure activities are not to high level. For example instead of one high level morning-preparations we can divide it into many activities such as waking-up, making-the-bed, shower and cleaning, having-a-breakfast etc.
+
+
+---
+
 **Issue-19: Activity-Based Quiz Restructuring**
 
 Description: Transform to activity based quizzes and distribution of words.

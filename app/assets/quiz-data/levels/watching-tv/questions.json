@@ -1,0 +1,64 @@
+{
+  "levelQuestions": [
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "armchair",
+        "wrongAnswers": [
+          "tv-stand",
+          "remote-control",
+          "picture"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "picture",
+        "wrongAnswers": [
+          "sofa-couch",
+          "remote-control",
+          "tv-stand"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "remote-control",
+        "wrongAnswers": [
+          "armchair",
+          "picture",
+          "tv-stand"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "sofa-couch",
+        "wrongAnswers": [
+          "picture",
+          "armchair",
+          "remote-control"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "tv-stand",
+        "wrongAnswers": [
+          "picture",
+          "armchair",
+          "remote-control"
+        ]
+      }
+    }
+  ]
+}

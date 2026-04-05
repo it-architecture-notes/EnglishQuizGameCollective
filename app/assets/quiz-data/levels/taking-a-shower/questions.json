@@ -1,0 +1,76 @@
+{
+  "levelQuestions": [
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "bath-mat",
+        "wrongAnswers": [
+          "bathrobe",
+          "bathtub",
+          "shower-curtains"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "bathrobe",
+        "wrongAnswers": [
+          "shower-curtains",
+          "bath-mat",
+          "shower"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "bathtub",
+        "wrongAnswers": [
+          "shower",
+          "towel",
+          "shower-curtains"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "shower",
+        "wrongAnswers": [
+          "shower-curtains",
+          "bathtub",
+          "towel"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "shower-curtains",
+        "wrongAnswers": [
+          "towel",
+          "bathrobe",
+          "bath-mat"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "towel",
+        "wrongAnswers": [
+          "bath-mat",
+          "shower",
+          "shower-curtains"
+        ]
+      }
+    }
+  ]
+}

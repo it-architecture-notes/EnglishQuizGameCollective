@@ -1,0 +1,76 @@
+{
+  "levelQuestions": [
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "beach",
+        "wrongAnswers": [
+          "sand",
+          "crab",
+          "island"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "boat",
+        "wrongAnswers": [
+          "island",
+          "crab",
+          "sand"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "crab",
+        "wrongAnswers": [
+          "beach",
+          "island",
+          "sand"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "island",
+        "wrongAnswers": [
+          "boat",
+          "beach",
+          "ocean"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "ocean",
+        "wrongAnswers": [
+          "crab",
+          "beach",
+          "boat"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "sand",
+        "wrongAnswers": [
+          "island",
+          "boat",
+          "crab"
+        ]
+      }
+    }
+  ]
+}

@@ -5,167 +5,71 @@
       "template": "imageQuizTemplate-1",
       "questionData": {
         "imageName": "apple",
-        "wrongAnswers": ["apricot", "peach", "pear"]
+        "wrongAnswers": [
+          "strawberry",
+          "carrot",
+          "lettuce"
+        ]
       }
     },
     {
       "type": "image",
       "template": "imageQuizTemplate-1",
       "questionData": {
-        "imageName": "apricot",
-        "wrongAnswers": ["apple", "peach", "dates"]
+        "imageName": "carrot",
+        "wrongAnswers": [
+          "orange",
+          "apple",
+          "mango"
+        ]
       }
     },
     {
       "type": "image",
       "template": "imageQuizTemplate-1",
       "questionData": {
-        "imageName": "artichoke",
-        "wrongAnswers": ["arugula", "celery", "chili-pepper"]
+        "imageName": "lettuce",
+        "wrongAnswers": [
+          "orange",
+          "carrot",
+          "mango"
+        ]
       }
     },
     {
       "type": "image",
       "template": "imageQuizTemplate-1",
       "questionData": {
-        "imageName": "arugula",
-        "wrongAnswers": ["artichoke", "celery", "chili-pepper"]
+        "imageName": "mango",
+        "wrongAnswers": [
+          "lettuce",
+          "apple",
+          "strawberry"
+        ]
       }
     },
     {
       "type": "image",
       "template": "imageQuizTemplate-1",
       "questionData": {
-        "imageName": "celery",
-        "wrongAnswers": ["arugula", "artichoke", "chili-pepper"]
+        "imageName": "orange",
+        "wrongAnswers": [
+          "lettuce",
+          "carrot",
+          "apple"
+        ]
       }
     },
     {
       "type": "image",
       "template": "imageQuizTemplate-1",
       "questionData": {
-        "imageName": "chili-pepper",
-        "wrongAnswers": ["celery", "artichoke", "arugula"]
-      }
-    },
-    {
-      "type": "image",
-      "template": "imageQuizTemplate-1",
-      "questionData": {
-        "imageName": "dates",
-        "wrongAnswers": ["apricot", "dragon-fruit", "pear"]
-      }
-    },
-    {
-      "type": "image",
-      "template": "imageQuizTemplate-1",
-      "questionData": {
-        "imageName": "dragon-fruit",
-        "wrongAnswers": ["dates", "peach", "apple"]
-      }
-    },
-    {
-      "type": "image",
-      "template": "imageQuizTemplate-1",
-      "questionData": {
-        "imageName": "peach",
-        "wrongAnswers": ["apple", "apricot", "pear"]
-      }
-    },
-    {
-      "type": "image",
-      "template": "imageQuizTemplate-1",
-      "questionData": {
-        "imageName": "pear",
-        "wrongAnswers": ["apple", "peach", "apricot"]
-      }
-    },
-    {
-      "type": "vocab",
-      "template": "ConvoTemplate-1",
-      "questionData": {
-        "character1": "mike",
-        "character2": "sarah",
-        "line1": {
-          "en": "Can I _____ one of these peaches to try it?",
-          "tr": "Bu şeftalilerden birini denemek için _____ misin?",
-          "es": "¿Puedo _____ uno de estos duraznos para probarlo?"
-        },
-        "line2": {
-          "en": "Of course, please go ahead.",
-          "tr": "Tabii ki, buyurun.",
-          "es": "Por supuesto, adelante."
-        },
-        "answer": "pick",
-        "distractors": ["taste", "buy", "take"]
-      }
-    },
-    {
-      "type": "vocab",
-      "template": "ConvoTemplate-1",
-      "questionData": {
-        "character1": "mike",
-        "character2": "sarah",
-        "line1": {
-          "en": "Would you like to _____ this apple? It's very sweet.",
-          "tr": "Bu elmayı _____ ister misin? Çok tatlı.",
-          "es": "¿Te gustaría _____ esta manzana? Es muy dulce."
-        },
-        "line2": {
-          "en": "Yes please, it looks delicious!",
-          "tr": "Evet lütfen, çok lezzetli görünüyor!",
-          "es": "Sí por favor, ¡tiene muy buena pinta!"
-        },
-        "answer": "taste",
-        "distractors": ["pick", "buy", "smell"]
-      }
-    },
-    {
-      "type": "grammar",
-      "template": "ConvoTemplate-1",
-      "questionData": {
-        "character1": "mike",
-        "character2": "sarah",
-        "line1": {
-          "en": "Which fruits _____ we buy today?",
-          "tr": "Bugün hangi meyveleri almalıyız?",
-          "es": "¿Qué frutas _____ comprar hoy?"
-        },
-        "line2": {
-          "en": "We should get the ripe ones — they taste the best.",
-          "tr": "Olgun olanları almalıyız — en lezzetliler onlar.",
-          "es": "Deberíamos comprar los maduros — son los más sabrosos."
-        },
-        "answer": "should",
-        "distractors": ["must not", "cannot", "will not"]
-      }
-    },
-    {
-      "type": "vocab",
-      "template": "ConvoTemplate-2",
-      "questionData": {
-        "imageName": "apple",
-        "sentence": {
-          "en": "She picked a red _____ straight from the tree.",
-          "tr": "She picked a red _____ straight from the tree. (elma)",
-          "es": "She picked a red _____ straight from the tree. (manzana)"
-        },
-        "answer": "apple",
-        "distractors": ["apricot", "peach", "pear"]
-      }
-    },
-    {
-      "type": "vocab",
-      "template": "ConvoTemplate-2",
-      "questionData": {
-        "imageName": "chili-pepper",
-        "sentence": {
-          "en": "Add a _____ to the dish if you want it to be spicy.",
-          "tr": "Add a _____ to the dish if you want it to be spicy. (acı biber)",
-          "es": "Add a _____ to the dish if you want it to be spicy. (chile picante)"
-        },
-        "answer": "chili-pepper",
-        "distractors": ["celery", "artichoke", "arugula"]
+        "imageName": "strawberry",
+        "wrongAnswers": [
+          "orange",
+          "apple",
+          "mango"
+        ]
       }
     }
   ]

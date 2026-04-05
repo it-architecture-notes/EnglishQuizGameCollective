@@ -1,0 +1,76 @@
+{
+  "levelQuestions": [
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "coffee-mug",
+        "wrongAnswers": [
+          "sugar",
+          "toaster-oven",
+          "milk"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "electric-kettle",
+        "wrongAnswers": [
+          "coffee-mug",
+          "sugar",
+          "toaster-oven"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "milk",
+        "wrongAnswers": [
+          "toaster",
+          "sugar",
+          "coffee-mug"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "sugar",
+        "wrongAnswers": [
+          "toaster-oven",
+          "coffee-mug",
+          "electric-kettle"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "toaster",
+        "wrongAnswers": [
+          "coffee-mug",
+          "electric-kettle",
+          "sugar"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "toaster-oven",
+        "wrongAnswers": [
+          "electric-kettle",
+          "sugar",
+          "coffee-mug"
+        ]
+      }
+    }
+  ]
+}

@@ -6,57 +6,9 @@
       "questionData": {
         "imageName": "atm",
         "wrongAnswers": [
-          "credit-card",
-          "cash",
-          "coin"
-        ]
-      }
-    },
-    {
-      "type": "image",
-      "template": "imageQuizTemplate-1",
-      "questionData": {
-        "imageName": "bank-clerk",
-        "wrongAnswers": [
+          "money-bank__wallet",
           "bank",
-          "fish-market",
-          "restaurant"
-        ]
-      }
-    },
-    {
-      "type": "image",
-      "template": "imageQuizTemplate-1",
-      "questionData": {
-        "imageName": "cash",
-        "wrongAnswers": [
-          "coin",
-          "credit-card",
-          "atm"
-        ]
-      }
-    },
-    {
-      "type": "image",
-      "template": "imageQuizTemplate-1",
-      "questionData": {
-        "imageName": "coin",
-        "wrongAnswers": [
-          "cash",
-          "credit-card",
-          "atm"
-        ]
-      }
-    },
-    {
-      "type": "image",
-      "template": "imageQuizTemplate-1",
-      "questionData": {
-        "imageName": "credit-card",
-        "wrongAnswers": [
-          "cash",
-          "coin",
-          "atm"
+          "cash"
         ]
       }
     },
@@ -66,165 +18,45 @@
       "questionData": {
         "imageName": "bank",
         "wrongAnswers": [
-          "fish-market",
-          "restaurant",
-          "supermarket"
-        ]
-      }
-    },
-    {
-      "type": "image",
-      "template": "imageQuizTemplate-1",
-      "questionData": {
-        "imageName": "fish-market",
-        "wrongAnswers": [
-          "bank",
-          "restaurant",
-          "supermarket"
-        ]
-      }
-    },
-    {
-      "type": "image",
-      "template": "imageQuizTemplate-1",
-      "questionData": {
-        "imageName": "restaurant",
-        "wrongAnswers": [
-          "bank",
-          "fish-market",
-          "stationery-store"
-        ]
-      }
-    },
-    {
-      "type": "image",
-      "template": "imageQuizTemplate-1",
-      "questionData": {
-        "imageName": "stationery-store",
-        "wrongAnswers": [
-          "supermarket",
-          "restaurant",
-          "fish-market"
-        ]
-      }
-    },
-    {
-      "type": "image",
-      "template": "imageQuizTemplate-1",
-      "questionData": {
-        "imageName": "supermarket",
-        "wrongAnswers": [
-          "bank",
-          "restaurant",
-          "stationery-store"
-        ]
-      }
-    },
-    {
-      "type": "vocab",
-      "template": "ConvoTemplate-1",
-      "questionData": {
-        "character1": "mike",
-        "character2": "sarah",
-        "line1": {
-          "en": "I need to _____ some money from my account.",
-          "tr": "Hesabımdan para _____ gerekiyor.",
-          "es": "Necesito _____ dinero de mi cuenta."
-        },
-        "line2": {
-          "en": "You can use the ATM over there.",
-          "tr": "Oradaki ATM'yi kullanabilirsin.",
-          "es": "Puedes usar el cajero automático de allá."
-        },
-        "answer": "withdraw",
-        "distractors": [
-          "deposit",
-          "transfer",
-          "borrow"
-        ]
-      }
-    },
-    {
-      "type": "vocab",
-      "template": "ConvoTemplate-1",
-      "questionData": {
-        "character1": "mike",
-        "character2": "sarah",
-        "line1": {
-          "en": "It is a good idea to _____ a little money each month.",
-          "tr": "Her ay biraz para _____ iyi bir fikir.",
-          "es": "Es buena idea _____ un poco de dinero cada mes."
-        },
-        "line2": {
-          "en": "I agree. I opened a savings account last year.",
-          "tr": "Katılıyorum. Geçen yıl bir tasarruf hesabı açtım.",
-          "es": "De acuerdo. Abrí una cuenta de ahorros el año pasado."
-        },
-        "answer": "save",
-        "distractors": [
-          "spend",
-          "invest",
-          "keep"
-        ]
-      }
-    },
-    {
-      "type": "grammar",
-      "template": "ConvoTemplate-1",
-      "questionData": {
-        "character1": "mike",
-        "character2": "sarah",
-        "line1": {
-          "en": "_____ I pay with a credit card?",
-          "tr": "Kredi kartıyla ödeme _____ miyim?",
-          "es": "¿_____ pagar con tarjeta de crédito?"
-        },
-        "line2": {
-          "en": "Yes, we accept all major cards.",
-          "tr": "Evet, tüm büyük kartları kabul ediyoruz.",
-          "es": "Sí, aceptamos todas las tarjetas principales."
-        },
-        "answer": "Can",
-        "distractors": [
-          "Must",
-          "Should",
-          "Would"
-        ]
-      }
-    },
-    {
-      "type": "vocab",
-      "template": "ConvoTemplate-2",
-      "questionData": {
-        "imageName": "atm",
-        "sentence": {
-          "en": "She stopped at the _____ to take out some cash.",
-          "tr": "She stopped at the _____ (ATM) to take out some cash.",
-          "es": "She stopped at the _____ (cajero automático) to take out some cash."
-        },
-        "answer": "atm",
-        "distractors": [
-          "bank",
-          "credit-card",
-          "coin"
-        ]
-      }
-    },
-    {
-      "type": "vocab",
-      "template": "ConvoTemplate-2",
-      "questionData": {
-        "imageName": "credit-card",
-        "sentence": {
-          "en": "He paid for the groceries with his _____.",
-          "tr": "He paid for the groceries with his _____ (kredi kartı).",
-          "es": "He paid for the groceries with his _____ (tarjeta de crédito)."
-        },
-        "answer": "credit-card",
-        "distractors": [
-          "cash",
-          "coin",
+          "money-bank__wallet",
+          "bank-clerk",
           "atm"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "cash",
+        "wrongAnswers": [
+          "bank",
+          "bank-clerk",
+          "atm"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "bank-clerk",
+        "wrongAnswers": [
+          "cash",
+          "bank",
+          "atm"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "money-bank__wallet",
+        "wrongAnswers": [
+          "atm",
+          "bank-clerk",
+          "bank"
         ]
       }
     }

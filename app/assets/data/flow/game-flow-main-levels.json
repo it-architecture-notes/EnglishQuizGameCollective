@@ -22,5 +22,29 @@
   {
     "mainLevel": 6,
     "title": "Adventures in the Countryside"
+  },
+  {
+    "mainLevel": 7,
+    "title": "A Week at the Office"
+  },
+  {
+    "mainLevel": 8,
+    "title": "Farm Life and Wild Friends"
+  },
+  {
+    "mainLevel": 9,
+    "title": "Home Sweet Home"
+  },
+  {
+    "mainLevel": 10,
+    "title": "The City Explorer"
+  },
+  {
+    "mainLevel": 11,
+    "title": "Into the Great Outdoors"
+  },
+  {
+    "mainLevel": 12,
+    "title": "A Full Life"
   }
 ]

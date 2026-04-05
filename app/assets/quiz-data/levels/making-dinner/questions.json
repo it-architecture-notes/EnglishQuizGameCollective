@@ -1,0 +1,76 @@
+{
+  "levelQuestions": [
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "cooking-pot",
+        "wrongAnswers": [
+          "stove",
+          "spatula",
+          "saucepan"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "frying-pan",
+        "wrongAnswers": [
+          "stove",
+          "spatula",
+          "cooking-pot"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "ladle",
+        "wrongAnswers": [
+          "spatula",
+          "frying-pan",
+          "cooking-pot"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "saucepan",
+        "wrongAnswers": [
+          "frying-pan",
+          "cooking-pot",
+          "spatula"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "spatula",
+        "wrongAnswers": [
+          "frying-pan",
+          "cooking-pot",
+          "saucepan"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "stove",
+        "wrongAnswers": [
+          "spatula",
+          "saucepan",
+          "cooking-pot"
+        ]
+      }
+    }
+  ]
+}

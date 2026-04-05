@@ -1,0 +1,76 @@
+{
+  "levelQuestions": [
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "backpack",
+        "wrongAnswers": [
+          "school-bag",
+          "garbage-bag",
+          "bread"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "bread",
+        "wrongAnswers": [
+          "garbage-bag",
+          "school-bag",
+          "lunchbox"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "food",
+        "wrongAnswers": [
+          "lunchbox",
+          "bread",
+          "school-bag"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "lunchbox",
+        "wrongAnswers": [
+          "garbage-bag",
+          "school-bag",
+          "backpack"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "garbage-bag",
+        "wrongAnswers": [
+          "food",
+          "bread",
+          "lunchbox"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "school-bag",
+        "wrongAnswers": [
+          "food",
+          "lunchbox",
+          "garbage-bag"
+        ]
+      }
+    }
+  ]
+}

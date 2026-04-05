@@ -1,0 +1,64 @@
+{
+  "levelQuestions": [
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "armchair",
+        "wrongAnswers": [
+          "bookshelf",
+          "coffee-table",
+          "sofa-couch"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "bookshelf",
+        "wrongAnswers": [
+          "floor-lamp",
+          "coffee-table",
+          "armchair"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "coffee-table",
+        "wrongAnswers": [
+          "floor-lamp",
+          "sofa-couch",
+          "armchair"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "floor-lamp",
+        "wrongAnswers": [
+          "bookshelf",
+          "coffee-table",
+          "armchair"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "sofa-couch",
+        "wrongAnswers": [
+          "armchair",
+          "bookshelf",
+          "coffee-table"
+        ]
+      }
+    }
+  ]
+}

@@ -4,32 +4,36 @@
       "type": "image",
       "template": "imageQuizTemplate-1",
       "questionData": {
-        "imageName": "alligator",
-        "wrongAnswers": ["elephant", "lion", "monkey"]
+        "imageName": "bird",
+        "wrongAnswers": [
+          "eagle",
+          "deer",
+          "fox"
+        ]
       }
     },
     {
       "type": "image",
       "template": "imageQuizTemplate-1",
       "questionData": {
-        "imageName": "animal",
-        "wrongAnswers": ["squirrel", "mouse", "bat"]
+        "imageName": "butterfly",
+        "wrongAnswers": [
+          "bird",
+          "eagle",
+          "fox"
+        ]
       }
     },
     {
       "type": "image",
       "template": "imageQuizTemplate-1",
       "questionData": {
-        "imageName": "bat",
-        "wrongAnswers": ["mouse", "squirrel", "monkey"]
-      }
-    },
-    {
-      "type": "image",
-      "template": "imageQuizTemplate-1",
-      "questionData": {
-        "imageName": "dolphin",
-        "wrongAnswers": ["elephant", "alligator", "lion"]
+        "imageName": "deer",
+        "wrongAnswers": [
+          "butterfly",
+          "bird",
+          "eagle"
+        ]
       }
     },
     {
@@ -37,111 +41,35 @@
       "template": "imageQuizTemplate-1",
       "questionData": {
         "imageName": "eagle",
-        "wrongAnswers": ["bat", "squirrel", "monkey"]
+        "wrongAnswers": [
+          "owl",
+          "fox",
+          "butterfly"
+        ]
       }
     },
     {
       "type": "image",
       "template": "imageQuizTemplate-1",
       "questionData": {
-        "imageName": "elephant",
-        "wrongAnswers": ["lion", "alligator", "dolphin"]
+        "imageName": "fox",
+        "wrongAnswers": [
+          "butterfly",
+          "owl",
+          "bird"
+        ]
       }
     },
     {
       "type": "image",
       "template": "imageQuizTemplate-1",
       "questionData": {
-        "imageName": "lion",
-        "wrongAnswers": ["elephant", "alligator", "monkey"]
-      }
-    },
-    {
-      "type": "image",
-      "template": "imageQuizTemplate-1",
-      "questionData": {
-        "imageName": "monkey",
-        "wrongAnswers": ["squirrel", "bat", "mouse"]
-      }
-    },
-    {
-      "type": "image",
-      "template": "imageQuizTemplate-1",
-      "questionData": {
-        "imageName": "mouse",
-        "wrongAnswers": ["squirrel", "bat", "monkey"]
-      }
-    },
-    {
-      "type": "image",
-      "template": "imageQuizTemplate-1",
-      "questionData": {
-        "imageName": "squirrel",
-        "wrongAnswers": ["mouse", "bat", "monkey"]
-      }
-    },
-    {
-      "type": "vocab",
-      "template": "ConvoTemplate-1",
-      "questionData": {
-        "character1": "mike",
-        "character2": "sarah",
-        "line1": { "en": "Do you enjoy going out to _____ birds in the forest?", "tr": "Ormanda kuş _____ için dışarı çıkmayı seviyor musun?", "es": "¿Disfrutas salir a _____ pájaros en el bosque?" },
-        "line2": { "en": "Yes, it's one of my favourite hobbies.", "tr": "Evet, en sevdiğim hobilerden biri.", "es": "Sí, es uno de mis pasatiempos favoritos." },
-        "answer": "watch",
-        "distractors": ["catch", "feed", "chase"]
-      }
-    },
-    {
-      "type": "vocab",
-      "template": "ConvoTemplate-1",
-      "questionData": {
-        "character1": "sarah",
-        "character2": "mike",
-        "line1": { "en": "Did you _____ any rare animals on your trip?", "tr": "Gezinde nadir hayvanlar _____ mu?", "es": "¿_____ algún animal raro en tu viaje?" },
-        "line2": { "en": "Yes! We spotted an eagle near the river.", "tr": "Evet! Nehir kenarında bir kartal gördük.", "es": "¡Sí! Vimos un águila cerca del río." },
-        "answer": "spot",
-        "distractors": ["lose", "paint", "train"]
-      }
-    },
-    {
-      "type": "vocab",
-      "template": "ConvoTemplate-1",
-      "questionData": {
-        "character1": "mike",
-        "character2": "sarah",
-        "line1": { "en": "The lions looked so _____ running across the plain.", "tr": "Aslanlar ovada koşarken çok _____ görünüyordu.", "es": "Los leones parecían muy _____ corriendo por la llanura." },
-        "line2": { "en": "Yes, it was amazing to see them up close.", "tr": "Evet, onları yakından görmek harikaydı.", "es": "Sí, fue increíble verlos de cerca." },
-        "answer": "wild",
-        "distractors": ["tame", "quiet", "tiny"]
-      }
-    },
-    {
-      "type": "vocab",
-      "template": "ConvoTemplate-2",
-      "questionData": {
-        "imageName": "eagle",
-        "sentence": {
-          "en": "The tourists were amazed when they spotted an _____ flying over the valley.",
-          "tr": "The tourists were amazed when they spotted an _____ flying over the valley. (kartal)",
-          "es": "The tourists were amazed when they spotted an _____ flying over the valley. (águila)"
-        },
-        "answer": "eagle",
-        "distractors": ["bat", "monkey", "squirrel"]
-      }
-    },
-    {
-      "type": "vocab",
-      "template": "ConvoTemplate-2",
-      "questionData": {
-        "imageName": "elephant",
-        "sentence": {
-          "en": "The guide told us to stay quiet as an _____ approached the water hole.",
-          "tr": "The guide told us to stay quiet as an _____ approached the water hole. (fil)",
-          "es": "The guide told us to stay quiet as an _____ approached the water hole. (elefante)"
-        },
-        "answer": "elephant",
-        "distractors": ["alligator", "dolphin", "lion"]
+        "imageName": "owl",
+        "wrongAnswers": [
+          "bird",
+          "eagle",
+          "fox"
+        ]
       }
     }
   ]

@@ -1,0 +1,64 @@
+{
+  "levelQuestions": [
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "bucket",
+        "wrongAnswers": [
+          "vase",
+          "plant",
+          "flowers"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "flowers",
+        "wrongAnswers": [
+          "plant",
+          "bucket",
+          "vase"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "grass",
+        "wrongAnswers": [
+          "bucket",
+          "vase",
+          "plant"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "plant",
+        "wrongAnswers": [
+          "flowers",
+          "bucket",
+          "grass"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "vase",
+        "wrongAnswers": [
+          "flowers",
+          "plant",
+          "bucket"
+        ]
+      }
+    }
+  ]
+}

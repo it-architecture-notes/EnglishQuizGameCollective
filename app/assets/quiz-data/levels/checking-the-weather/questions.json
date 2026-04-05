@@ -1,0 +1,76 @@
+{
+  "levelQuestions": [
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "clouds",
+        "wrongAnswers": [
+          "rainbow",
+          "lightning",
+          "hail"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "hail",
+        "wrongAnswers": [
+          "rainbow",
+          "rain",
+          "clouds"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "lightning",
+        "wrongAnswers": [
+          "clouds",
+          "rain",
+          "rainbow"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "rain",
+        "wrongAnswers": [
+          "clouds",
+          "lightning",
+          "rainbow"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "rainbow",
+        "wrongAnswers": [
+          "snow",
+          "lightning",
+          "rain"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "snow",
+        "wrongAnswers": [
+          "rainbow",
+          "lightning",
+          "hail"
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,76 @@
+{
+  "levelQuestions": [
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "alarm-clock",
+        "wrongAnswers": [
+          "nightstand",
+          "blanket",
+          "mattress"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "bed",
+        "wrongAnswers": [
+          "nightstand",
+          "mattress",
+          "alarm-clock"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "blanket",
+        "wrongAnswers": [
+          "nightstand",
+          "bed",
+          "mattress"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "mattress",
+        "wrongAnswers": [
+          "bed",
+          "blanket",
+          "nightstand"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "nightstand",
+        "wrongAnswers": [
+          "pillow",
+          "mattress",
+          "blanket"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "pillow",
+        "wrongAnswers": [
+          "blanket",
+          "bed",
+          "alarm-clock"
+        ]
+      }
+    }
+  ]
+}

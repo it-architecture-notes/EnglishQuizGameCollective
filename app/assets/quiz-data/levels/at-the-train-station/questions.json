@@ -1,0 +1,76 @@
+{
+  "levelQuestions": [
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "bus",
+        "wrongAnswers": [
+          "train",
+          "subway",
+          "tram"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "bus-stop",
+        "wrongAnswers": [
+          "tram",
+          "bus-driver",
+          "train"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "subway",
+        "wrongAnswers": [
+          "bus-stop",
+          "train",
+          "bus"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "train",
+        "wrongAnswers": [
+          "bus-driver",
+          "tram",
+          "bus-stop"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "tram",
+        "wrongAnswers": [
+          "subway",
+          "bus-stop",
+          "bus-driver"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "bus-driver",
+        "wrongAnswers": [
+          "subway",
+          "bus-stop",
+          "train"
+        ]
+      }
+    }
+  ]
+}

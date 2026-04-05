@@ -1,0 +1,76 @@
+{
+  "levelQuestions": [
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "bathtub",
+        "wrongAnswers": [
+          "toothbrush",
+          "towel",
+          "shower"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "shower",
+        "wrongAnswers": [
+          "soap",
+          "towel",
+          "toothbrush"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "sink",
+        "wrongAnswers": [
+          "toothbrush",
+          "shower",
+          "bathtub"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "soap",
+        "wrongAnswers": [
+          "towel",
+          "bathtub",
+          "toothbrush"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "toothbrush",
+        "wrongAnswers": [
+          "towel",
+          "soap",
+          "shower"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "towel",
+        "wrongAnswers": [
+          "sink",
+          "soap",
+          "shower"
+        ]
+      }
+    }
+  ]
+}

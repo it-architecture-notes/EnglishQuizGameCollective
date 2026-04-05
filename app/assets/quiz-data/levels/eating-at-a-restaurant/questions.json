@@ -4,11 +4,23 @@
       "type": "image",
       "template": "imageQuizTemplate-1",
       "questionData": {
-        "imageName": "jug-pitcher",
+        "imageName": "chef",
         "wrongAnswers": [
           "menu",
-          "glass-of-water",
-          "soda-can"
+          "fork",
+          "plate"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "fork",
+        "wrongAnswers": [
+          "plate",
+          "chef",
+          "menu"
         ]
       }
     },
@@ -18,9 +30,9 @@
       "questionData": {
         "imageName": "menu",
         "wrongAnswers": [
-          "bill",
-          "napkin",
-          "salt-shaker"
+          "plate",
+          "waiter",
+          "restaurant"
         ]
       }
     },
@@ -28,11 +40,11 @@
       "type": "image",
       "template": "imageQuizTemplate-1",
       "questionData": {
-        "imageName": "pepper",
+        "imageName": "plate",
         "wrongAnswers": [
-          "salt-shaker",
-          "napkin",
-          "straw"
+          "chef",
+          "restaurant",
+          "menu"
         ]
       }
     },
@@ -40,35 +52,11 @@
       "type": "image",
       "template": "imageQuizTemplate-1",
       "questionData": {
-        "imageName": "soup-bowl",
-        "wrongAnswers": [
-          "jug-pitcher",
-          "glass-of-water",
-          "soda-can"
-        ]
-      }
-    },
-    {
-      "type": "image",
-      "template": "imageQuizTemplate-1",
-      "questionData": {
-        "imageName": "straw",
-        "wrongAnswers": [
-          "glass-of-water",
-          "soda-can",
-          "jug-pitcher"
-        ]
-      }
-    },
-    {
-      "type": "image",
-      "template": "imageQuizTemplate-1",
-      "questionData": {
-        "imageName": "bill",
+        "imageName": "restaurant",
         "wrongAnswers": [
           "menu",
-          "napkin",
-          "salt-shaker"
+          "plate",
+          "waiter"
         ]
       }
     },
@@ -76,155 +64,11 @@
       "type": "image",
       "template": "imageQuizTemplate-1",
       "questionData": {
-        "imageName": "glass-of-water",
+        "imageName": "waiter",
         "wrongAnswers": [
-          "soda-can",
-          "jug-pitcher",
-          "straw"
-        ]
-      }
-    },
-    {
-      "type": "image",
-      "template": "imageQuizTemplate-1",
-      "questionData": {
-        "imageName": "napkin",
-        "wrongAnswers": [
-          "salt-shaker",
-          "pepper",
-          "bill"
-        ]
-      }
-    },
-    {
-      "type": "image",
-      "template": "imageQuizTemplate-1",
-      "questionData": {
-        "imageName": "salt-shaker",
-        "wrongAnswers": [
-          "pepper",
-          "napkin",
-          "straw"
-        ]
-      }
-    },
-    {
-      "type": "image",
-      "template": "imageQuizTemplate-1",
-      "questionData": {
-        "imageName": "soda-can",
-        "wrongAnswers": [
-          "glass-of-water",
-          "jug-pitcher",
-          "straw"
-        ]
-      }
-    },
-    {
-      "type": "vocab",
-      "template": "ConvoTemplate-1",
-      "questionData": {
-        "character1": "mike",
-        "character2": "sarah",
-        "line1": {
-          "en": "Are you ready to _____?",
-          "tr": "Sipariş vermeye hazır mısın?",
-          "es": "¿Estás listo para _____?"
-        },
-        "line2": {
-          "en": "Yes, I'd like the soup and a salad please.",
-          "tr": "Evet, çorba ve salata istiyorum lütfen.",
-          "es": "Sí, quisiera la sopa y una ensalada por favor."
-        },
-        "answer": "order",
-        "distractors": [
-          "eat",
-          "leave",
-          "pay"
-        ]
-      }
-    },
-    {
-      "type": "vocab",
-      "template": "ConvoTemplate-1",
-      "questionData": {
-        "character1": "mike",
-        "character2": "sarah",
-        "line1": {
-          "en": "How long will it take to _____ our food?",
-          "tr": "Yemeğimizi getirmeniz ne kadar sürer?",
-          "es": "¿Cuánto tardarán en _____ nuestra comida?"
-        },
-        "line2": {
-          "en": "About ten minutes. Thank you for your patience.",
-          "tr": "Yaklaşık on dakika. Sabrınız için teşekkür ederiz.",
-          "es": "Unos diez minutos. Gracias por su paciencia."
-        },
-        "answer": "serve",
-        "distractors": [
-          "cook",
-          "bring",
-          "finish"
-        ]
-      }
-    },
-    {
-      "type": "grammar",
-      "template": "ConvoTemplate-1",
-      "questionData": {
-        "character1": "mike",
-        "character2": "sarah",
-        "line1": {
-          "en": "I _____ like the grilled chicken, please.",
-          "tr": "Izgara tavuk _____, lütfen.",
-          "es": "_____ el pollo a la parrilla, por favor."
-        },
-        "line2": {
-          "en": "Great choice! That comes with fries or salad.",
-          "tr": "Harika seçim! Yanında patates kızartması veya salata geliyor.",
-          "es": "¡Excelente elección! Viene con papas fritas o ensalada."
-        },
-        "answer": "would",
-        "distractors": [
-          "should",
-          "must",
-          "can"
-        ]
-      }
-    },
-    {
-      "type": "vocab",
-      "template": "ConvoTemplate-2",
-      "questionData": {
-        "imageName": "menu",
-        "sentence": {
-          "en": "The waiter handed us the _____ when we sat down.",
-          "tr": "The waiter handed us the _____ (menü) when we sat down.",
-          "es": "The waiter handed us the _____ (menú) when we sat down."
-        },
-        "answer": "menu",
-        "distractors": [
-          "bill",
-          "napkin",
-          "salt-shaker"
-        ]
-      }
-    },
-    {
-      "type": "vocab",
-      "template": "ConvoTemplate-2",
-      "questionData": {
-        "imageName": "bill",
-        "sentence": {
-          "en": "Could we have the _____ please? We are ready to leave.",
-          "tr": "Could we have the _____ (hesap) please? We are ready to leave.",
-          "es": "Could we have the _____ (cuenta) please? We are ready to leave."
-        },
-        "answer": "bill",
-        "distractors": [
-          "menu",
-          "napkin",
-          "pepper"
+          "chef",
+          "restaurant",
+          "menu"
         ]
       }
     }

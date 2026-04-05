@@ -4,21 +4,9 @@
       "type": "image",
       "template": "imageQuizTemplate-1",
       "questionData": {
-        "imageName": "boots",
+        "imageName": "dress",
         "wrongAnswers": [
-          "sneakers",
-          "slippers",
-          "socks"
-        ]
-      }
-    },
-    {
-      "type": "image",
-      "template": "imageQuizTemplate-1",
-      "questionData": {
-        "imageName": "bracelets",
-        "wrongAnswers": [
-          "coat",
+          "handbag",
           "jacket",
           "jeans"
         ]
@@ -28,11 +16,11 @@
       "type": "image",
       "template": "imageQuizTemplate-1",
       "questionData": {
-        "imageName": "coat",
+        "imageName": "handbag",
         "wrongAnswers": [
           "jacket",
-          "jeans",
-          "mittens"
+          "shoes",
+          "jeans"
         ]
       }
     },
@@ -42,9 +30,9 @@
       "questionData": {
         "imageName": "jacket",
         "wrongAnswers": [
-          "coat",
-          "jeans",
-          "mittens"
+          "shoes",
+          "dress",
+          "scarf"
         ]
       }
     },
@@ -54,9 +42,9 @@
       "questionData": {
         "imageName": "jeans",
         "wrongAnswers": [
-          "coat",
+          "handbag",
           "jacket",
-          "mittens"
+          "scarf"
         ]
       }
     },
@@ -64,167 +52,23 @@
       "type": "image",
       "template": "imageQuizTemplate-1",
       "questionData": {
-        "imageName": "mittens",
+        "imageName": "scarf",
         "wrongAnswers": [
-          "socks",
-          "coat",
-          "jacket"
-        ]
-      }
-    },
-    {
-      "type": "image",
-      "template": "imageQuizTemplate-1",
-      "questionData": {
-        "imageName": "slippers",
-        "wrongAnswers": [
-          "boots",
-          "sneakers",
-          "socks"
-        ]
-      }
-    },
-    {
-      "type": "image",
-      "template": "imageQuizTemplate-1",
-      "questionData": {
-        "imageName": "sneakers",
-        "wrongAnswers": [
-          "boots",
-          "slippers",
-          "socks"
-        ]
-      }
-    },
-    {
-      "type": "image",
-      "template": "imageQuizTemplate-1",
-      "questionData": {
-        "imageName": "socks",
-        "wrongAnswers": [
-          "boots",
-          "sneakers",
-          "mittens"
-        ]
-      }
-    },
-    {
-      "type": "image",
-      "template": "imageQuizTemplate-1",
-      "questionData": {
-        "imageName": "art-gallery",
-        "wrongAnswers": [
-          "coat",
+          "handbag",
           "jacket",
-          "bracelets"
-        ]
-      }
-    },
-    {
-      "type": "vocab",
-      "template": "ConvoTemplate-1",
-      "questionData": {
-        "character1": "mike",
-        "character2": "sarah",
-        "line1": {
-          "en": "Can I _____ these jeans before I buy them?",
-          "tr": "Bu kotları almadan önce _____ deneyebilir miyim?",
-          "es": "¿Puedo _____ estos jeans antes de comprarlos?"
-        },
-        "line2": {
-          "en": "Of course! The fitting rooms are on your left.",
-          "tr": "Tabii ki! Soyunma odaları solunuzda.",
-          "es": "¡Por supuesto! Los probadores están a su izquierda."
-        },
-        "answer": "try on",
-        "distractors": [
-          "wear",
-          "check",
-          "fold"
-        ]
-      }
-    },
-    {
-      "type": "vocab",
-      "template": "ConvoTemplate-1",
-      "questionData": {
-        "character1": "mike",
-        "character2": "sarah",
-        "line1": {
-          "en": "I want to _____ a new coat for the winter.",
-          "tr": "Kış için yeni bir palto _____ istiyorum.",
-          "es": "Quiero _____ un abrigo nuevo para el invierno."
-        },
-        "line2": {
-          "en": "We have some great ones on sale this week.",
-          "tr": "Bu hafta indirimde harika seçeneklerimiz var.",
-          "es": "Tenemos algunos muy buenos en oferta esta semana."
-        },
-        "answer": "buy",
-        "distractors": [
-          "find",
-          "rent",
-          "keep"
-        ]
-      }
-    },
-    {
-      "type": "grammar",
-      "template": "ConvoTemplate-1",
-      "questionData": {
-        "character1": "mike",
-        "character2": "sarah",
-        "line1": {
-          "en": "I think you _____ get the blue jacket — it suits you.",
-          "tr": "Bence mavi ceketi almalısın — sana çok yakışıyor.",
-          "es": "Creo que _____ comprar la chaqueta azul — te queda bien."
-        },
-        "line2": {
-          "en": "You're right, I'll take it!",
-          "tr": "Haklısın, alıyorum!",
-          "es": "Tienes razón, ¡me lo llevo!"
-        },
-        "answer": "should",
-        "distractors": [
-          "must",
-          "can",
-          "would"
-        ]
-      }
-    },
-    {
-      "type": "vocab",
-      "template": "ConvoTemplate-2",
-      "questionData": {
-        "imageName": "coat",
-        "sentence": {
-          "en": "She put on her _____ before going outside in the cold.",
-          "tr": "She put on her _____ (palto) before going outside in the cold.",
-          "es": "She put on her _____ (abrigo) before going outside in the cold."
-        },
-        "answer": "coat",
-        "distractors": [
-          "jacket",
-          "mittens",
           "jeans"
         ]
       }
     },
     {
-      "type": "vocab",
-      "template": "ConvoTemplate-2",
+      "type": "image",
+      "template": "imageQuizTemplate-1",
       "questionData": {
-        "imageName": "sneakers",
-        "sentence": {
-          "en": "He laced up his _____ and headed to the park.",
-          "tr": "He laced up his _____ (spor ayakkabı) and headed to the park.",
-          "es": "He laced up his _____ (tenis) and headed to the park."
-        },
-        "answer": "sneakers",
-        "distractors": [
-          "boots",
-          "slippers",
-          "socks"
+        "imageName": "shoes",
+        "wrongAnswers": [
+          "scarf",
+          "dress",
+          "handbag"
         ]
       }
     }

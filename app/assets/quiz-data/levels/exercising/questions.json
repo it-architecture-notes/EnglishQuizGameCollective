@@ -1,0 +1,64 @@
+{
+  "levelQuestions": [
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "gym",
+        "wrongAnswers": [
+          "muscle",
+          "leg",
+          "heart"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "heart",
+        "wrongAnswers": [
+          "muscle",
+          "leg",
+          "gym"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "knee",
+        "wrongAnswers": [
+          "gym",
+          "muscle",
+          "heart"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "leg",
+        "wrongAnswers": [
+          "knee",
+          "heart",
+          "gym"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "muscle",
+        "wrongAnswers": [
+          "knee",
+          "gym",
+          "heart"
+        ]
+      }
+    }
+  ]
+}

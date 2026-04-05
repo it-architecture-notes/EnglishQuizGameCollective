@@ -1,0 +1,52 @@
+{
+  "levelQuestions": [
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "bench",
+        "wrongAnswers": [
+          "german-shepherd",
+          "cat",
+          "sidewalk"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "cat",
+        "wrongAnswers": [
+          "german-shepherd",
+          "sidewalk",
+          "bench"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "german-shepherd",
+        "wrongAnswers": [
+          "sidewalk",
+          "cat",
+          "bench"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "sidewalk",
+        "wrongAnswers": [
+          "cat",
+          "german-shepherd",
+          "bench"
+        ]
+      }
+    }
+  ]
+}

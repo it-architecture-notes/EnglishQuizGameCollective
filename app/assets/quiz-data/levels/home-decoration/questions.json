@@ -4,56 +4,12 @@
       "type": "image",
       "template": "imageQuizTemplate-1",
       "questionData": {
-        "imageName": "alarm-clock",
-        "wrongAnswers": ["bed-frame", "blanket", "curtains"]
-      }
-    },
-    {
-      "type": "image",
-      "template": "imageQuizTemplate-1",
-      "questionData": {
-        "imageName": "balcony",
-        "wrongAnswers": ["fireplace", "chimney", "floor-lamp"]
-      }
-    },
-    {
-      "type": "image",
-      "template": "imageQuizTemplate-1",
-      "questionData": {
-        "imageName": "bed-frame",
-        "wrongAnswers": ["bed", "blanket", "cushion-pillows"]
-      }
-    },
-    {
-      "type": "image",
-      "template": "imageQuizTemplate-1",
-      "questionData": {
-        "imageName": "bed",
-        "wrongAnswers": ["bed-frame", "blanket", "cushion-pillows"]
-      }
-    },
-    {
-      "type": "image",
-      "template": "imageQuizTemplate-1",
-      "questionData": {
-        "imageName": "blanket",
-        "wrongAnswers": ["cushion-pillows", "bed", "curtains"]
-      }
-    },
-    {
-      "type": "image",
-      "template": "imageQuizTemplate-1",
-      "questionData": {
-        "imageName": "chimney",
-        "wrongAnswers": ["fireplace", "balcony", "floor-lamp"]
-      }
-    },
-    {
-      "type": "image",
-      "template": "imageQuizTemplate-1",
-      "questionData": {
         "imageName": "curtains",
-        "wrongAnswers": ["blanket", "bed-frame", "cushion-pillows"]
+        "wrongAnswers": [
+          "plant",
+          "vase",
+          "picture"
+        ]
       }
     },
     {
@@ -61,87 +17,59 @@
       "template": "imageQuizTemplate-1",
       "questionData": {
         "imageName": "cushion-pillows",
-        "wrongAnswers": ["blanket", "bed", "curtains"]
+        "wrongAnswers": [
+          "plant",
+          "vase",
+          "curtains"
+        ]
       }
     },
     {
       "type": "image",
       "template": "imageQuizTemplate-1",
       "questionData": {
-        "imageName": "fireplace",
-        "wrongAnswers": ["chimney", "balcony", "floor-lamp"]
+        "imageName": "mirror",
+        "wrongAnswers": [
+          "plant",
+          "cushion-pillows",
+          "curtains"
+        ]
       }
     },
     {
       "type": "image",
       "template": "imageQuizTemplate-1",
       "questionData": {
-        "imageName": "floor-lamp",
-        "wrongAnswers": ["fireplace", "alarm-clock", "balcony"]
+        "imageName": "picture",
+        "wrongAnswers": [
+          "cushion-pillows",
+          "mirror",
+          "plant"
+        ]
       }
     },
     {
-      "type": "vocab",
-      "template": "ConvoTemplate-1",
+      "type": "image",
+      "template": "imageQuizTemplate-1",
       "questionData": {
-        "character1": "mike",
-        "character2": "sarah",
-        "line1": { "en": "I want to _____ the living room with new curtains.", "tr": "Salonu yeni perdelerle _____ etmek istiyorum.", "es": "Quiero _____ la sala con cortinas nuevas." },
-        "line2": { "en": "Great idea! It will look so much warmer.", "tr": "Harika fikir! Çok daha sıcak görünecek.", "es": "¡Buena idea! Se verá mucho más acogedor." },
-        "answer": "decorate",
-        "distractors": ["paint", "clean", "measure"]
+        "imageName": "plant",
+        "wrongAnswers": [
+          "mirror",
+          "picture",
+          "cushion-pillows"
+        ]
       }
     },
     {
-      "type": "vocab",
-      "template": "ConvoTemplate-1",
+      "type": "image",
+      "template": "imageQuizTemplate-1",
       "questionData": {
-        "character1": "sarah",
-        "character2": "mike",
-        "line1": { "en": "Can you help me _____ the cushions on the sofa?", "tr": "Koltuk minderlerini _____ etmeme yardım edebilir misin?", "es": "¿Puedes ayudarme a _____ los cojines en el sofá?" },
-        "line2": { "en": "Sure, I will put them in the corners.", "tr": "Tabii, köşelere koyacağım.", "es": "Claro, los pondré en las esquinas." },
-        "answer": "arrange",
-        "distractors": ["remove", "wash", "count"]
-      }
-    },
-    {
-      "type": "grammar",
-      "template": "ConvoTemplate-1",
-      "questionData": {
-        "character1": "mike",
-        "character2": "sarah",
-        "line1": { "en": "The bedroom feels cold. What _____ we add to make it cozier?", "tr": "Yatak odası soğuk hissettiriyor. Daha sıcak hissettirmek için ne _____?", "es": "La habitación se siente fría. ¿Qué _____ agregar para que sea más acogedora?" },
-        "line2": { "en": "You should put a thick blanket and a floor lamp in the corner.", "tr": "Köşeye kalın bir battaniye ve bir ayaklı lamba koymalısın.", "es": "Deberías poner una manta gruesa y una lámpara de pie en el rincón." },
-        "answer": "should",
-        "distractors": ["must", "do", "can"]
-      }
-    },
-    {
-      "type": "vocab",
-      "template": "ConvoTemplate-2",
-      "questionData": {
-        "imageName": "floor-lamp",
-        "sentence": {
-          "en": "They placed a _____ in the corner to brighten the room.",
-          "tr": "They placed a _____ in the corner to brighten the room. (ayaklı lamba)",
-          "es": "They placed a _____ in the corner to brighten the room. (lámpara de pie)"
-        },
-        "answer": "floor-lamp",
-        "distractors": ["fireplace", "alarm-clock", "chimney"]
-      }
-    },
-    {
-      "type": "vocab",
-      "template": "ConvoTemplate-2",
-      "questionData": {
-        "imageName": "curtains",
-        "sentence": {
-          "en": "She hung new _____ on the windows to block the sunlight.",
-          "tr": "She hung new _____ on the windows to block the sunlight. (perdeler)",
-          "es": "She hung new _____ on the windows to block the sunlight. (cortinas)"
-        },
-        "answer": "curtains",
-        "distractors": ["blanket", "cushion-pillows", "bed-frame"]
+        "imageName": "vase",
+        "wrongAnswers": [
+          "curtains",
+          "plant",
+          "cushion-pillows"
+        ]
       }
     }
   ]

@@ -1,0 +1,76 @@
+{
+  "levelQuestions": [
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "fog",
+        "wrongAnswers": [
+          "mountain",
+          "lake",
+          "river"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "forest",
+        "wrongAnswers": [
+          "mountain",
+          "rocks",
+          "lake"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "lake",
+        "wrongAnswers": [
+          "river",
+          "rocks",
+          "fog"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "mountain",
+        "wrongAnswers": [
+          "river",
+          "rocks",
+          "forest"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "river",
+        "wrongAnswers": [
+          "rocks",
+          "mountain",
+          "fog"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "rocks",
+        "wrongAnswers": [
+          "river",
+          "fog",
+          "mountain"
+        ]
+      }
+    }
+  ]
+}

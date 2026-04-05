@@ -1,8 +1,18 @@
 [
   {
     "mainLevel": 1,
-    "iconImageName": "morning-routine",
-    "title": "Morning Routine"
+    "iconImageName": "waking-up",
+    "title": "Waking Up"
+  },
+  {
+    "mainLevel": 1,
+    "iconImageName": "brushing-teeth",
+    "title": "Brushing Teeth"
+  },
+  {
+    "mainLevel": 1,
+    "iconImageName": "taking-a-shower",
+    "title": "Taking a Shower"
   },
   {
     "mainLevel": 1,
@@ -11,103 +21,88 @@
   },
   {
     "mainLevel": 1,
-    "iconImageName": "body-and-health",
-    "title": "Body & Health"
-  },
-  {
-    "mainLevel": 1,
-    "iconImageName": "expressing-emotions",
-    "title": "Expressing Emotions"
-  },
-  {
-    "mainLevel": 1,
-    "iconImageName": "school-day",
-    "title": "School Day"
+    "iconImageName": "eating-breakfast",
+    "title": "Eating Breakfast"
   },
   {
     "mainLevel": 2,
+    "iconImageName": "making-the-bed",
+    "title": "Making the Bed"
+  },
+  {
+    "mainLevel": 2,
+    "iconImageName": "packing-a-lunch",
+    "title": "Packing a Lunch"
+  },
+  {
+    "mainLevel": 2,
+    "iconImageName": "feeding-a-pet",
+    "title": "Feeding a Pet"
+  },
+  {
+    "mainLevel": 2,
+    "iconImageName": "walking-the-dog",
+    "title": "Walking the Dog"
+  },
+  {
+    "mainLevel": 2,
+    "iconImageName": "getting-ready-for-bed",
+    "title": "Getting Ready for Bed"
+  },
+  {
+    "mainLevel": 3,
+    "iconImageName": "doing-laundry",
+    "title": "Doing Laundry"
+  },
+  {
+    "mainLevel": 3,
+    "iconImageName": "washing-dishes",
+    "title": "Washing Dishes"
+  },
+  {
+    "mainLevel": 3,
+    "iconImageName": "taking-out-the-trash",
+    "title": "Taking Out the Trash"
+  },
+  {
+    "mainLevel": 3,
+    "iconImageName": "vacuuming-the-house",
+    "title": "Vacuuming the House"
+  },
+  {
+    "mainLevel": 3,
+    "iconImageName": "making-dinner",
+    "title": "Making Dinner"
+  },
+  {
+    "mainLevel": 4,
+    "iconImageName": "setting-the-table",
+    "title": "Setting the Table"
+  },
+  {
+    "mainLevel": 4,
+    "iconImageName": "clearing-the-table",
+    "title": "Clearing the Table"
+  },
+  {
+    "mainLevel": 4,
+    "iconImageName": "watering-plants",
+    "title": "Watering Plants"
+  },
+  {
+    "mainLevel": 4,
+    "iconImageName": "making-coffee-or-tea",
+    "title": "Making Coffee or Tea"
+  },
+  {
+    "mainLevel": 4,
+    "iconImageName": "watching-tv",
+    "title": "Watching TV"
+  },
+  {
+    "mainLevel": 5,
     "iconImageName": "grocery-shopping",
     "title": "Grocery Shopping"
-  },
-  {
-    "mainLevel": 2,
-    "iconImageName": "at-the-farmers-market",
-    "title": "At the Farmer's Market"
-  },
-  {
-    "mainLevel": 2,
-    "iconImageName": "at-the-bank",
-    "title": "At the Bank"
-  },
-  {
-    "mainLevel": 2,
-    "iconImageName": "at-the-post-office",
-    "title": "At the Post Office"
-  },
-  {
-    "mainLevel": 2,
-    "iconImageName": "shopping-for-clothes",
-    "title": "Shopping for Clothes"
-  },
-  {
-    "mainLevel": 3,
-    "iconImageName": "visiting-the-doctor",
-    "title": "Visiting the Doctor"
-  },
-  {
-    "mainLevel": 3,
-    "iconImageName": "at-the-pharmacy",
-    "title": "At the Pharmacy"
-  },
-  {
-    "mainLevel": 3,
-    "iconImageName": "baby-care",
-    "title": "Baby Care"
-  },
-  {
-    "mainLevel": 3,
-    "iconImageName": "going-to-work",
-    "title": "Going to Work"
-  },
-  {
-    "mainLevel": 3,
-    "iconImageName": "on-the-farm",
-    "title": "On the Farm"
-  },
-  {
-    "mainLevel": 4,
-    "iconImageName": "cooking-at-home",
-    "title": "Cooking at Home"
-  },
-  {
-    "mainLevel": 4,
-    "iconImageName": "eating-at-a-restaurant",
-    "title": "Eating at a Restaurant"
-  },
-  {
-    "mainLevel": 4,
-    "iconImageName": "relaxing-at-home",
-    "title": "Relaxing at Home"
-  },
-  {
-    "mainLevel": 4,
-    "iconImageName": "home-decoration",
-    "title": "Home Decoration"
-  },
-  {
-    "mainLevel": 4,
-    "iconImageName": "home-repairs",
-    "title": "Home Repairs"
-  },
-  {
-    "mainLevel": 5,
-    "iconImageName": "city-walk",
-    "title": "City Walk"
-  },
-  {
-    "mainLevel": 5,
-    "iconImageName": "driving-around-town",
-    "title": "Driving Around Town"
   },
   {
     "mainLevel": 5,
@@ -116,27 +111,192 @@
   },
   {
     "mainLevel": 5,
+    "iconImageName": "at-the-park",
+    "title": "At the Park"
+  },
+  {
+    "mainLevel": 5,
+    "iconImageName": "eating-at-a-restaurant",
+    "title": "Eating at a Restaurant"
+  },
+  {
+    "mainLevel": 5,
+    "iconImageName": "at-the-post-office",
+    "title": "At the Post Office"
+  },
+  {
+    "mainLevel": 6,
+    "iconImageName": "at-the-bank",
+    "title": "At the Bank"
+  },
+  {
+    "mainLevel": 6,
+    "iconImageName": "at-the-pharmacy",
+    "title": "At the Pharmacy"
+  },
+  {
+    "mainLevel": 6,
+    "iconImageName": "visiting-the-doctor",
+    "title": "Visiting the Doctor"
+  },
+  {
+    "mainLevel": 6,
+    "iconImageName": "at-the-dentist",
+    "title": "At the Dentist"
+  },
+  {
+    "mainLevel": 6,
+    "iconImageName": "exercising",
+    "title": "Exercising"
+  },
+  {
+    "mainLevel": 7,
+    "iconImageName": "going-to-work",
+    "title": "Going to Work"
+  },
+  {
+    "mainLevel": 7,
+    "iconImageName": "school-day",
+    "title": "School Day"
+  },
+  {
+    "mainLevel": 7,
+    "iconImageName": "packing-school-bag",
+    "title": "Packing School Bag"
+  },
+  {
+    "mainLevel": 7,
     "iconImageName": "at-the-airport",
     "title": "At the Airport"
   },
   {
-    "mainLevel": 5,
+    "mainLevel": 7,
+    "iconImageName": "driving-around-town",
+    "title": "Driving Around Town"
+  },
+  {
+    "mainLevel": 8,
+    "iconImageName": "cooking-at-home",
+    "title": "Cooking at Home"
+  },
+  {
+    "mainLevel": 8,
+    "iconImageName": "baking-at-home",
+    "title": "Baking at Home"
+  },
+  {
+    "mainLevel": 8,
+    "iconImageName": "at-the-farmers-market",
+    "title": "At the Farmer's Market"
+  },
+  {
+    "mainLevel": 8,
+    "iconImageName": "on-the-farm",
+    "title": "On the Farm"
+  },
+  {
+    "mainLevel": 8,
     "iconImageName": "wildlife-watching",
     "title": "Wildlife Watching"
   },
   {
-    "mainLevel": 6,
+    "mainLevel": 9,
+    "iconImageName": "relaxing-at-home",
+    "title": "Relaxing at Home"
+  },
+  {
+    "mainLevel": 9,
+    "iconImageName": "reading-at-home",
+    "title": "Reading at Home"
+  },
+  {
+    "mainLevel": 9,
+    "iconImageName": "playing-with-pets",
+    "title": "Playing with Pets"
+  },
+  {
+    "mainLevel": 9,
+    "iconImageName": "home-repairs",
+    "title": "Home Repairs"
+  },
+  {
+    "mainLevel": 9,
     "iconImageName": "gardening-at-home",
     "title": "Gardening at Home"
   },
   {
-    "mainLevel": 6,
+    "mainLevel": 10,
+    "iconImageName": "at-the-coffee-shop",
+    "title": "At the Coffee Shop"
+  },
+  {
+    "mainLevel": 10,
+    "iconImageName": "city-walk",
+    "title": "City Walk"
+  },
+  {
+    "mainLevel": 10,
+    "iconImageName": "at-the-zoo",
+    "title": "At the Zoo"
+  },
+  {
+    "mainLevel": 10,
+    "iconImageName": "bird-watching",
+    "title": "Bird Watching"
+  },
+  {
+    "mainLevel": 10,
     "iconImageName": "exploring-nature",
     "title": "Exploring Nature"
   },
   {
-    "mainLevel": 6,
-    "iconImageName": "insect-world",
-    "title": "Insect World"
+    "mainLevel": 11,
+    "iconImageName": "at-the-beach",
+    "title": "At the Beach"
+  },
+  {
+    "mainLevel": 11,
+    "iconImageName": "hiking-outdoors",
+    "title": "Hiking Outdoors"
+  },
+  {
+    "mainLevel": 11,
+    "iconImageName": "at-the-train-station",
+    "title": "At the Train Station"
+  },
+  {
+    "mainLevel": 11,
+    "iconImageName": "checking-the-weather",
+    "title": "Checking the Weather"
+  },
+  {
+    "mainLevel": 11,
+    "iconImageName": "body-and-health",
+    "title": "Body and Health"
+  },
+  {
+    "mainLevel": 12,
+    "iconImageName": "expressing-emotions",
+    "title": "Expressing Emotions"
+  },
+  {
+    "mainLevel": 12,
+    "iconImageName": "going-to-sleep",
+    "title": "Going to Sleep"
+  },
+  {
+    "mainLevel": 12,
+    "iconImageName": "personal-hygiene",
+    "title": "Personal Hygiene"
+  },
+  {
+    "mainLevel": 12,
+    "iconImageName": "shopping-for-clothes",
+    "title": "Shopping for Clothes"
+  },
+  {
+    "mainLevel": 12,
+    "iconImageName": "home-decoration",
+    "title": "Home Decoration"
   }
 ]

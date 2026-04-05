@@ -1,0 +1,76 @@
+{
+  "levelQuestions": [
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "backpack",
+        "wrongAnswers": [
+          "crayons",
+          "pen",
+          "pencil"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "binder",
+        "wrongAnswers": [
+          "notebook",
+          "pencil",
+          "backpack"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "crayons",
+        "wrongAnswers": [
+          "notebook",
+          "backpack",
+          "binder"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "notebook",
+        "wrongAnswers": [
+          "pencil",
+          "backpack",
+          "binder"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "pen",
+        "wrongAnswers": [
+          "pencil",
+          "backpack",
+          "binder"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "pencil",
+        "wrongAnswers": [
+          "crayons",
+          "binder",
+          "backpack"
+        ]
+      }
+    }
+  ]
+}

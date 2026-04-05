@@ -1,0 +1,76 @@
+{
+  "levelQuestions": [
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "comb",
+        "wrongAnswers": [
+          "shaving-razor",
+          "toothbrush",
+          "face-mask"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "face-mask",
+        "wrongAnswers": [
+          "towel",
+          "comb",
+          "shaving-razor"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "shaving-razor",
+        "wrongAnswers": [
+          "towel",
+          "toothbrush",
+          "comb"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "sink",
+        "wrongAnswers": [
+          "towel",
+          "shaving-razor",
+          "face-mask"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "toothbrush",
+        "wrongAnswers": [
+          "sink",
+          "face-mask",
+          "comb"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "towel",
+        "wrongAnswers": [
+          "shaving-razor",
+          "sink",
+          "face-mask"
+        ]
+      }
+    }
+  ]
+}

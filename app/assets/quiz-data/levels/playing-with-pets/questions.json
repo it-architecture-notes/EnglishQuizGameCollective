@@ -1,0 +1,64 @@
+{
+  "levelQuestions": [
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "cat",
+        "wrongAnswers": [
+          "fish",
+          "german-shepherd",
+          "duck"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "duck",
+        "wrongAnswers": [
+          "german-shepherd",
+          "cat",
+          "rabbit"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "fish",
+        "wrongAnswers": [
+          "duck",
+          "rabbit",
+          "german-shepherd"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "german-shepherd",
+        "wrongAnswers": [
+          "rabbit",
+          "cat",
+          "duck"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "rabbit",
+        "wrongAnswers": [
+          "fish",
+          "duck",
+          "cat"
+        ]
+      }
+    }
+  ]
+}

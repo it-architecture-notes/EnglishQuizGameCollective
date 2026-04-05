@@ -1,0 +1,76 @@
+{
+  "levelQuestions": [
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "bowl",
+        "wrongAnswers": [
+          "eggs",
+          "butter",
+          "bread"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "bread",
+        "wrongAnswers": [
+          "bowl",
+          "fork",
+          "eggs"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "butter",
+        "wrongAnswers": [
+          "bowl",
+          "bread",
+          "eggs"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "eggs",
+        "wrongAnswers": [
+          "frying-pan",
+          "fork",
+          "bowl"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "fork",
+        "wrongAnswers": [
+          "bread",
+          "butter",
+          "eggs"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "frying-pan",
+        "wrongAnswers": [
+          "fork",
+          "bowl",
+          "butter"
+        ]
+      }
+    }
+  ]
+}

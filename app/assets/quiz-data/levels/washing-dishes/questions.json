@@ -1,0 +1,76 @@
+{
+  "levelQuestions": [
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "dish-rack",
+        "wrongAnswers": [
+          "sponge",
+          "fork",
+          "dish-soap"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "dish-soap",
+        "wrongAnswers": [
+          "sponge",
+          "fork",
+          "dishwasher"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "dishwasher",
+        "wrongAnswers": [
+          "dish-rack",
+          "sponge",
+          "dish-soap"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "fork",
+        "wrongAnswers": [
+          "dishwasher",
+          "dish-rack",
+          "plate"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "plate",
+        "wrongAnswers": [
+          "fork",
+          "dish-soap",
+          "dishwasher"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "sponge",
+        "wrongAnswers": [
+          "fork",
+          "dish-soap",
+          "dishwasher"
+        ]
+      }
+    }
+  ]
+}

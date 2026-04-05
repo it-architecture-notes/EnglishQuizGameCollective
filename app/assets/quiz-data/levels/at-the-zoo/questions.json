@@ -1,0 +1,76 @@
+{
+  "levelQuestions": [
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "elephant",
+        "wrongAnswers": [
+          "hippo",
+          "giraffe",
+          "lion"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "giraffe",
+        "wrongAnswers": [
+          "lion",
+          "rhinoceros",
+          "elephant"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "gorilla",
+        "wrongAnswers": [
+          "lion",
+          "giraffe",
+          "elephant"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "hippo",
+        "wrongAnswers": [
+          "gorilla",
+          "lion",
+          "rhinoceros"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "lion",
+        "wrongAnswers": [
+          "giraffe",
+          "gorilla",
+          "elephant"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "rhinoceros",
+        "wrongAnswers": [
+          "gorilla",
+          "hippo",
+          "elephant"
+        ]
+      }
+    }
+  ]
+}

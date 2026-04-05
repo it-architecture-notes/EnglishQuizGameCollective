@@ -1,0 +1,76 @@
+{
+  "levelQuestions": [
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "bench",
+        "wrongAnswers": [
+          "grass",
+          "flowers",
+          "fountain"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "flowers",
+        "wrongAnswers": [
+          "fountain",
+          "bench",
+          "grass"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "fountain",
+        "wrongAnswers": [
+          "swing",
+          "flowers",
+          "playground"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "grass",
+        "wrongAnswers": [
+          "swing",
+          "playground",
+          "fountain"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "playground",
+        "wrongAnswers": [
+          "grass",
+          "fountain",
+          "bench"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "swing",
+        "wrongAnswers": [
+          "fountain",
+          "playground",
+          "grass"
+        ]
+      }
+    }
+  ]
+}

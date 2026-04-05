@@ -4,11 +4,11 @@
       "type": "image",
       "template": "imageQuizTemplate-1",
       "questionData": {
-        "imageName": "canyon",
+        "imageName": "forest",
         "wrongAnswers": [
-          "desert",
-          "stones",
-          "beach"
+          "lake",
+          "mountain",
+          "rocks"
         ]
       }
     },
@@ -16,11 +16,11 @@
       "type": "image",
       "template": "imageQuizTemplate-1",
       "questionData": {
-        "imageName": "clouds",
+        "imageName": "lake",
         "wrongAnswers": [
-          "moon",
-          "stars",
-          "lightning"
+          "river",
+          "forest",
+          "mountain"
         ]
       }
     },
@@ -28,11 +28,11 @@
       "type": "image",
       "template": "imageQuizTemplate-1",
       "questionData": {
-        "imageName": "desert",
+        "imageName": "mountain",
         "wrongAnswers": [
-          "canyon",
-          "stones",
-          "snow"
+          "rocks",
+          "river",
+          "lake"
         ]
       }
     },
@@ -40,11 +40,11 @@
       "type": "image",
       "template": "imageQuizTemplate-1",
       "questionData": {
-        "imageName": "beach",
+        "imageName": "river",
         "wrongAnswers": [
-          "canyon",
-          "desert",
-          "stones"
+          "forest",
+          "rocks",
+          "lake"
         ]
       }
     },
@@ -52,179 +52,11 @@
       "type": "image",
       "template": "imageQuizTemplate-1",
       "questionData": {
-        "imageName": "lightning",
+        "imageName": "rocks",
         "wrongAnswers": [
-          "clouds",
-          "moon",
-          "stars"
-        ]
-      }
-    },
-    {
-      "type": "image",
-      "template": "imageQuizTemplate-1",
-      "questionData": {
-        "imageName": "moon",
-        "wrongAnswers": [
-          "stars",
-          "clouds",
-          "lightning"
-        ]
-      }
-    },
-    {
-      "type": "image",
-      "template": "imageQuizTemplate-1",
-      "questionData": {
-        "imageName": "snow",
-        "wrongAnswers": [
-          "desert",
-          "stones",
-          "beach"
-        ]
-      }
-    },
-    {
-      "type": "image",
-      "template": "imageQuizTemplate-1",
-      "questionData": {
-        "imageName": "stars",
-        "wrongAnswers": [
-          "moon",
-          "clouds",
-          "lightning"
-        ]
-      }
-    },
-    {
-      "type": "image",
-      "template": "imageQuizTemplate-1",
-      "questionData": {
-        "imageName": "stones",
-        "wrongAnswers": [
-          "canyon",
-          "desert",
-          "beach"
-        ]
-      }
-    },
-    {
-      "type": "image",
-      "template": "imageQuizTemplate-1",
-      "questionData": {
-        "imageName": "ant",
-        "wrongAnswers": [
-          "stones",
-          "clouds",
-          "snow"
-        ]
-      }
-    },
-    {
-      "type": "vocab",
-      "template": "ConvoTemplate-1",
-      "questionData": {
-        "character1": "mike",
-        "character2": "sarah",
-        "line1": {
-          "en": "I've always wanted to _____ the Amazon rainforest.",
-          "tr": "Amazon yağmur ormanlarını _____ hep istedim.",
-          "es": "Siempre he querido _____ la selva amazónica."
-        },
-        "line2": {
-          "en": "Me too! We should plan a trip there.",
-          "tr": "Ben de! Oraya bir gezi planlamamız gerek.",
-          "es": "¡Yo también! Deberíamos planear un viaje allí."
-        },
-        "answer": "explore",
-        "distractors": [
-          "visit",
-          "cross",
-          "climb"
-        ]
-      }
-    },
-    {
-      "type": "vocab",
-      "template": "ConvoTemplate-1",
-      "questionData": {
-        "character1": "mike",
-        "character2": "sarah",
-        "line1": {
-          "en": "Look! I think we're about to _____ a hidden waterfall.",
-          "tr": "Bak! Sanırım gizli bir şelale _____ üzereyiz.",
-          "es": "¡Mira! Creo que estamos a punto de _____ una cascada escondida."
-        },
-        "line2": {
-          "en": "Incredible! Let's get closer for a better look.",
-          "tr": "İnanılmaz! Daha iyi görmek için yaklaşalım.",
-          "es": "¡Increíble! Acerquémonos para verla mejor."
-        },
-        "answer": "discover",
-        "distractors": [
-          "find",
-          "cross",
-          "reach"
-        ]
-      }
-    },
-    {
-      "type": "grammar",
-      "template": "ConvoTemplate-1",
-      "questionData": {
-        "character1": "mike",
-        "character2": "sarah",
-        "line1": {
-          "en": "_____ you see the stars from here at night?",
-          "tr": "Geceleri buradan yıldızları _____ görebilir misin?",
-          "es": "¿_____ ver las estrellas desde aquí de noche?"
-        },
-        "line2": {
-          "en": "Yes, there is no light pollution out here at all.",
-          "tr": "Evet, burada hiç ışık kirliliği yok.",
-          "es": "Sí, aquí no hay contaminación lumínica para nada."
-        },
-        "answer": "Can",
-        "distractors": [
-          "Should",
-          "Must",
-          "Would"
-        ]
-      }
-    },
-    {
-      "type": "vocab",
-      "template": "ConvoTemplate-2",
-      "questionData": {
-        "imageName": "moon",
-        "sentence": {
-          "en": "The _____ was so bright last night that we could hike without a torch.",
-          "tr": "The _____ (ay) was so bright last night that we could hike without a torch.",
-          "es": "The _____ (luna) was so bright last night that we could hike without a torch."
-        },
-        "answer": "moon",
-        "distractors": [
-          "stars",
-          "clouds",
-          "lightning"
-        ]
-      }
-    },
-    {
-      "type": "vocab",
-      "template": "ConvoTemplate-2",
-      "questionData": {
-        "imageName": "snow",
-        "sentence": {
-          "en": "The mountains were covered in _____ after the storm.",
-          "tr": "The mountains were covered in _____ (kar) after the storm.",
-          "es": "The mountains were covered in _____ (nieve) after the storm."
-        },
-        "answer": "snow",
-        "distractors": [
-          "stones",
-          "desert",
-          "canyon"
+          "lake",
+          "forest",
+          "river"
         ]
       }
     }

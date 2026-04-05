@@ -1,0 +1,76 @@
+{
+  "levelQuestions": [
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "apron",
+        "wrongAnswers": [
+          "baking-tray",
+          "whisk-beater",
+          "bowl"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "baking-tray",
+        "wrongAnswers": [
+          "bowl",
+          "apron",
+          "whisk-beater"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "bowl",
+        "wrongAnswers": [
+          "baking-tray",
+          "apron",
+          "rolling-pin"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "oven-mitt",
+        "wrongAnswers": [
+          "whisk-beater",
+          "baking-tray",
+          "apron"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "rolling-pin",
+        "wrongAnswers": [
+          "apron",
+          "baking-tray",
+          "oven-mitt"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "whisk-beater",
+        "wrongAnswers": [
+          "apron",
+          "bowl",
+          "oven-mitt"
+        ]
+      }
+    }
+  ]
+}

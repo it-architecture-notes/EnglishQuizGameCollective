@@ -1,0 +1,76 @@
+{
+  "levelQuestions": [
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "fork",
+        "wrongAnswers": [
+          "plate",
+          "spoon",
+          "table-knife"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "plate",
+        "wrongAnswers": [
+          "fork",
+          "table-knife",
+          "spoon"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "salt-pepper-shaker",
+        "wrongAnswers": [
+          "fork",
+          "water-glass",
+          "table-knife"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "spoon",
+        "wrongAnswers": [
+          "water-glass",
+          "plate",
+          "table-knife"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "table-knife",
+        "wrongAnswers": [
+          "water-glass",
+          "plate",
+          "spoon"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "water-glass",
+        "wrongAnswers": [
+          "spoon",
+          "table-knife",
+          "fork"
+        ]
+      }
+    }
+  ]
+}

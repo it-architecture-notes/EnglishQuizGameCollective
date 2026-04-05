@@ -4,144 +4,60 @@
       "type": "image",
       "template": "imageQuizTemplate-1",
       "questionData": {
-        "imageName": "hose",
-        "wrongAnswers": ["lawnmower", "pruning-shears", "pot"]
+        "imageName": "bucket",
+        "wrongAnswers": [
+          "plant",
+          "flowers",
+          "grass"
+        ]
       }
     },
     {
       "type": "image",
       "template": "imageQuizTemplate-1",
       "questionData": {
-        "imageName": "lawnmower",
-        "wrongAnswers": ["hose", "pruning-shears", "fence"]
+        "imageName": "flowers",
+        "wrongAnswers": [
+          "plant",
+          "bucket",
+          "grass"
+        ]
       }
     },
     {
       "type": "image",
       "template": "imageQuizTemplate-1",
       "questionData": {
-        "imageName": "pot",
-        "wrongAnswers": ["hose", "lawnmower", "pruning-shears"]
+        "imageName": "grass",
+        "wrongAnswers": [
+          "flowers",
+          "bucket",
+          "plant"
+        ]
       }
     },
     {
       "type": "image",
       "template": "imageQuizTemplate-1",
       "questionData": {
-        "imageName": "pruning-shears",
-        "wrongAnswers": ["hose", "lawnmower", "pot"]
+        "imageName": "plant",
+        "wrongAnswers": [
+          "bucket",
+          "grass",
+          "rake"
+        ]
       }
     },
     {
       "type": "image",
       "template": "imageQuizTemplate-1",
       "questionData": {
-        "imageName": "balcony",
-        "wrongAnswers": ["chimney", "fence", "fireplace"]
-      }
-    },
-    {
-      "type": "image",
-      "template": "imageQuizTemplate-1",
-      "questionData": {
-        "imageName": "chimney",
-        "wrongAnswers": ["balcony", "fireplace", "fence"]
-      }
-    },
-    {
-      "type": "image",
-      "template": "imageQuizTemplate-1",
-      "questionData": {
-        "imageName": "fence",
-        "wrongAnswers": ["balcony", "chimney", "fireplace"]
-      }
-    },
-    {
-      "type": "image",
-      "template": "imageQuizTemplate-1",
-      "questionData": {
-        "imageName": "fireplace",
-        "wrongAnswers": ["chimney", "balcony", "fence"]
-      }
-    },
-    {
-      "type": "image",
-      "template": "imageQuizTemplate-1",
-      "questionData": {
-        "imageName": "canyon",
-        "wrongAnswers": ["clouds", "fence", "balcony"]
-      }
-    },
-    {
-      "type": "image",
-      "template": "imageQuizTemplate-1",
-      "questionData": {
-        "imageName": "clouds",
-        "wrongAnswers": ["canyon", "balcony", "chimney"]
-      }
-    },
-    {
-      "type": "vocab",
-      "template": "ConvoTemplate-1",
-      "questionData": {
-        "character1": "mike",
-        "character2": "sarah",
-        "line1": { "en": "Don't forget to _____ the plants before you leave.", "tr": "Gitmeden önce bitkileri _____ unutma.", "es": "No olvides _____ las plantas antes de irte." },
-        "line2": { "en": "I already did it this morning with the hose.", "tr": "Bu sabah hortumla çoktan yaptım.", "es": "Ya lo hice esta mañana con la manguera." },
-        "answer": "water",
-        "distractors": ["paint", "trim", "move"]
-      }
-    },
-    {
-      "type": "vocab",
-      "template": "ConvoTemplate-1",
-      "questionData": {
-        "character1": "sarah",
-        "character2": "mike",
-        "line1": { "en": "Would you like to _____ some tomatoes in the garden this spring?", "tr": "Bu ilkbaharda bahçeye domates _____ ister misin?", "es": "¿Te gustaría _____ tomates en el jardín esta primavera?" },
-        "line2": { "en": "That's a great idea! We can use that empty pot.", "tr": "Harika bir fikir! O boş saksıyı kullanabiliriz.", "es": "¡Qué buena idea! Podemos usar ese macetero vacío." },
-        "answer": "plant",
-        "distractors": ["buy", "cook", "dig"]
-      }
-    },
-    {
-      "type": "vocab",
-      "template": "ConvoTemplate-1",
-      "questionData": {
-        "character1": "mike",
-        "character2": "sarah",
-        "line1": { "en": "The balcony looks so _____ after you tidied it up!", "tr": "Balkon düzenledikten sonra çok _____ görünüyor!", "es": "¡El balcón se ve muy _____ después de que lo arreglaste!" },
-        "line2": { "en": "Thanks! I swept the floor and reorganised all the pots.", "tr": "Teşekkürler! Yeri süpürdüm ve bütün saksıları yeniden düzenledim.", "es": "¡Gracias! Barrí el suelo y reorganicé todas las macetas." },
-        "answer": "clean",
-        "distractors": ["dark", "heavy", "loud"]
-      }
-    },
-    {
-      "type": "vocab",
-      "template": "ConvoTemplate-2",
-      "questionData": {
-        "imageName": "hose",
-        "sentence": {
-          "en": "He used the garden _____ to water the flowers along the fence.",
-          "tr": "He used the garden _____ to water the flowers along the fence. (hortumu)",
-          "es": "He used the garden _____ to water the flowers along the fence. (manguera)"
-        },
-        "answer": "hose",
-        "distractors": ["lawnmower", "pruning-shears", "pot"]
-      }
-    },
-    {
-      "type": "vocab",
-      "template": "ConvoTemplate-2",
-      "questionData": {
-        "imageName": "pot",
-        "sentence": {
-          "en": "She placed a small herb plant in a clay _____ on the balcony.",
-          "tr": "She placed a small herb plant in a clay _____ on the balcony. (saksıya)",
-          "es": "She placed a small herb plant in a clay _____ on the balcony. (maceta)"
-        },
-        "answer": "pot",
-        "distractors": ["hose", "pruning-shears", "fence"]
+        "imageName": "rake",
+        "wrongAnswers": [
+          "grass",
+          "plant",
+          "bucket"
+        ]
       }
     }
   ]

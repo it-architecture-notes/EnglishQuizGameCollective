@@ -5,71 +5,59 @@
       "template": "imageQuizTemplate-1",
       "questionData": {
         "imageName": "apron",
-        "wrongAnswers": ["peeler", "spoon", "paper-towel"]
+        "wrongAnswers": [
+          "spatula",
+          "cooking-pot",
+          "frying-pan"
+        ]
       }
     },
     {
       "type": "image",
       "template": "imageQuizTemplate-1",
       "questionData": {
-        "imageName": "baking-tray",
-        "wrongAnswers": ["stove", "dish-rack", "jar"]
+        "imageName": "cooking-pot",
+        "wrongAnswers": [
+          "stove",
+          "ladle",
+          "spatula"
+        ]
       }
     },
     {
       "type": "image",
       "template": "imageQuizTemplate-1",
       "questionData": {
-        "imageName": "coffee-mug",
-        "wrongAnswers": ["jar", "spoon", "dish-rack"]
+        "imageName": "frying-pan",
+        "wrongAnswers": [
+          "stove",
+          "apron",
+          "cooking-pot"
+        ]
       }
     },
     {
       "type": "image",
       "template": "imageQuizTemplate-1",
       "questionData": {
-        "imageName": "dish-rack",
-        "wrongAnswers": ["baking-tray", "stove", "paper-towel"]
+        "imageName": "ladle",
+        "wrongAnswers": [
+          "spatula",
+          "cooking-pot",
+          "apron"
+        ]
       }
     },
     {
       "type": "image",
       "template": "imageQuizTemplate-1",
       "questionData": {
-        "imageName": "hand-blender",
-        "wrongAnswers": ["stove", "peeler", "spoon"]
-      }
-    },
-    {
-      "type": "image",
-      "template": "imageQuizTemplate-1",
-      "questionData": {
-        "imageName": "jar",
-        "wrongAnswers": ["coffee-mug", "dish-rack", "paper-towel"]
-      }
-    },
-    {
-      "type": "image",
-      "template": "imageQuizTemplate-1",
-      "questionData": {
-        "imageName": "paper-towel",
-        "wrongAnswers": ["apron", "dish-rack", "jar"]
-      }
-    },
-    {
-      "type": "image",
-      "template": "imageQuizTemplate-1",
-      "questionData": {
-        "imageName": "peeler",
-        "wrongAnswers": ["spoon", "apron", "hand-blender"]
-      }
-    },
-    {
-      "type": "image",
-      "template": "imageQuizTemplate-1",
-      "questionData": {
-        "imageName": "spoon",
-        "wrongAnswers": ["peeler", "apron", "coffee-mug"]
+        "imageName": "spatula",
+        "wrongAnswers": [
+          "frying-pan",
+          "apron",
+          "ladle"
+        ]
       }
     },
     {
@@ -77,95 +65,11 @@
       "template": "imageQuizTemplate-1",
       "questionData": {
         "imageName": "stove",
-        "wrongAnswers": ["baking-tray", "hand-blender", "dish-rack"]
-      }
-    },
-    {
-      "type": "vocab",
-      "template": "ConvoTemplate-1",
-      "questionData": {
-        "character1": "mike",
-        "character2": "sarah",
-        "line1": {
-          "en": "Don't forget to _____ the oven before you put the cake in.",
-          "tr": "Pastayı koymadan önce fırını _____ unutma.",
-          "es": "No olvides _____ el horno antes de meter el pastel."
-        },
-        "line2": {
-          "en": "Right, I'll set it to 180 degrees.",
-          "tr": "Tamam, 180 dereceye ayarlayacağım.",
-          "es": "Claro, lo pondré a 180 grados."
-        },
-        "answer": "preheat",
-        "distractors": ["mix", "cool", "clean"]
-      }
-    },
-    {
-      "type": "vocab",
-      "template": "ConvoTemplate-1",
-      "questionData": {
-        "character1": "mike",
-        "character2": "sarah",
-        "line1": {
-          "en": "Can you _____ the flour and butter together?",
-          "tr": "Un ve tereyağını birlikte _____ misin?",
-          "es": "¿Puedes _____ la harina y la mantequilla juntas?"
-        },
-        "line2": {
-          "en": "Sure, for how long should I stir?",
-          "tr": "Tabii, ne kadar süre karıştırayım?",
-          "es": "Claro, ¿cuánto tiempo debo revolver?"
-        },
-        "answer": "mix",
-        "distractors": ["preheat", "boil", "cool"]
-      }
-    },
-    {
-      "type": "grammar",
-      "template": "ConvoTemplate-1",
-      "questionData": {
-        "character1": "mike",
-        "character2": "sarah",
-        "line1": {
-          "en": "The soup is very _____. Be careful not to burn yourself.",
-          "tr": "Çorba çok _____. Kendini yakmamaya dikkat et.",
-          "es": "La sopa está muy _____. Ten cuidado de no quemarte."
-        },
-        "line2": {
-          "en": "You _____ wait a few minutes before eating it.",
-          "tr": "Yemeden önce birkaç dakika beklemelisin.",
-          "es": "Tú _____ esperar unos minutos antes de comerla."
-        },
-        "answer": "should",
-        "distractors": ["must not", "cannot", "will not"]
-      }
-    },
-    {
-      "type": "vocab",
-      "template": "ConvoTemplate-2",
-      "questionData": {
-        "imageName": "stove",
-        "sentence": {
-          "en": "She cooked the pasta on the _____ for ten minutes.",
-          "tr": "She cooked the pasta on the _____ for ten minutes. (ocak)",
-          "es": "She cooked the pasta on the _____ for ten minutes. (cocina)"
-        },
-        "answer": "stove",
-        "distractors": ["baking-tray", "dish-rack", "hand-blender"]
-      }
-    },
-    {
-      "type": "vocab",
-      "template": "ConvoTemplate-2",
-      "questionData": {
-        "imageName": "hand-blender",
-        "sentence": {
-          "en": "Use the _____ to make the soup smooth and creamy.",
-          "tr": "Use the _____ to make the soup smooth and creamy. (el blenderi)",
-          "es": "Use the _____ to make the soup smooth and creamy. (licuadora de mano)"
-        },
-        "answer": "hand-blender",
-        "distractors": ["spoon", "peeler", "stove"]
+        "wrongAnswers": [
+          "ladle",
+          "spatula",
+          "apron"
+        ]
       }
     }
   ]

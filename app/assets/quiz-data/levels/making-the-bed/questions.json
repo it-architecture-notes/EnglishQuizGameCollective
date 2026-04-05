@@ -1,0 +1,76 @@
+{
+  "levelQuestions": [
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "bed",
+        "wrongAnswers": [
+          "bed-frame",
+          "blanket",
+          "duvet-comforter"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "bed-frame",
+        "wrongAnswers": [
+          "blanket",
+          "bed",
+          "mattress"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "blanket",
+        "wrongAnswers": [
+          "pillow",
+          "bed-frame",
+          "mattress"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "duvet-comforter",
+        "wrongAnswers": [
+          "mattress",
+          "pillow",
+          "bed-frame"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "mattress",
+        "wrongAnswers": [
+          "pillow",
+          "bed-frame",
+          "blanket"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "pillow",
+        "wrongAnswers": [
+          "duvet-comforter",
+          "bed",
+          "blanket"
+        ]
+      }
+    }
+  ]
+}
