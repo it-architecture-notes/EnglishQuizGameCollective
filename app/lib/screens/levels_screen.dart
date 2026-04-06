@@ -24,7 +24,7 @@ import 'story/story_overlay_screen.dart';
 import 'transitions/custom_page_routes.dart';
 
 /// Builds the flattened list of items (banner + sub-level cells) from loaded flow data.
-/// Each banner counts as 1 item; each sub-level counts as 1 item (batch size applies to this list).
+/// Invoked after [loadGameFlow] so the scroll list can render main-level headers then each [SubLevelItem].
 List<LevelListItem> buildLevelItems(QuizFlowData data) {
   final metaByMain = {for (final m in data.mainLevels) m.mainLevel: m};
   final shownBanners = <int>{};
@@ -45,8 +45,8 @@ List<LevelListItem> buildLevelItems(QuizFlowData data) {
   return items;
 }
 
-/// Converts a slice of LevelListItems into row descriptors for layout.
-/// Each sub-level is one row so icons can follow a curvy path (one icon per step).
+/// Converts a slice of [LevelListItem]s into row descriptors for the curvy path layout pass.
+/// Called from [build] when mapping the windowed [_filtered] slice into visual rows.
 List<_LayoutRow> _itemsToLayoutRows(List<LevelListItem> items) {
   final rows = <_LayoutRow>[];
   for (final item in items) {
@@ -73,6 +73,7 @@ class _SubsLayoutRow extends _LayoutRow {
   final SubLevelItem subLevelItem;
 }
 
+/// Scrollable world map of main-level banners and tappable sub-level nodes (regular + reminders).
 class LevelsScreen extends ConsumerStatefulWidget {
   const LevelsScreen({super.key});
 
@@ -104,6 +105,7 @@ class _LevelsScreenState extends ConsumerState<LevelsScreen> {
   /// Curvy path: (sin+1)/2 drives position from left (0) to right (1).
   static const double _sinFrequency = 0.5;
 
+  /// Wires scroll listeners and kicks off the first [_loadData] for flow + progress + story state.
   @override
   void initState() {
     super.initState();
@@ -113,6 +115,7 @@ class _LevelsScreenState extends ConsumerState<LevelsScreen> {
     _loadData();
   }
 
+  /// Detaches scroll listener before the state object is torn down.
   @override
   void dispose() {
     _itemPositionsListener.itemPositions.removeListener(_onScroll);
@@ -123,8 +126,8 @@ class _LevelsScreenState extends ConsumerState<LevelsScreen> {
   // Scroll anchor helpers
   // ---------------------------------------------------------------------------
 
-/// Returns the ordinalLevelIndex of the sub-level immediately before [ordinalLevelIndex]
-  /// in [filtered], skipping banners. Returns null if [ordinalLevelIndex] is the first sub-level.
+/// Returns the ordinal of the sub-level immediately before [ordinalLevelIndex] in [filtered] (no banners).
+  /// Used when a failed quiz should anchor scroll to the prior step instead of the attempted one.
   int? _findPreviousSubLevelOrdinal(
       List<LevelListItem> filtered, int ordinalLevelIndex) {
     int? prevOrdinal;
@@ -145,8 +148,8 @@ class _LevelsScreenState extends ConsumerState<LevelsScreen> {
   /// If no completed sub-level exists (very first quiz), returns 0 so the
   /// Level 1 banner is at the top.
   ///
-  /// Call this only after the first setState in [_loadData] has run, so that
-  /// the state-based helpers (_isReminderUnlocked etc.) use fresh data.
+  /// Picks the first visible list index after load—either [anchorOrdinal] or the progression frontier heuristic.
+  /// Call only after [_loadData]’s first setState so unlock helpers read fresh progress.
   int _findScrollStartIndex(
     List<LevelListItem> filtered,
     QuizTypeProgress progress, {
@@ -187,6 +190,7 @@ class _LevelsScreenState extends ConsumerState<LevelsScreen> {
   // Unlock / completion helpers
   // ---------------------------------------------------------------------------
 
+  /// Extracts non-reminder sub-level items from any [LevelListItem] list (e.g. full flow or filtered).
   List<SubLevelItem> _regularSubLevelsFrom(List<LevelListItem> items) {
     return items
         .whereType<SubLevelItem>()
@@ -194,8 +198,10 @@ class _LevelsScreenState extends ConsumerState<LevelsScreen> {
         .toList(growable: false);
   }
 
+  /// Cached regular (non-reminder) sub-levels from the full loaded [_items] list.
   List<SubLevelItem> get _regularSubLevels => _regularSubLevelsFrom(_items);
 
+  /// Maps each `progressKey` in [mainLevel] to its [SubLevelItem] for reminder question resolution.
   Map<String, SubLevelItem> _regularSourceLevelsByMain(int mainLevel) {
     return {
       for (final item in _regularSubLevels.where(
@@ -205,6 +211,7 @@ class _LevelsScreenState extends ConsumerState<LevelsScreen> {
     };
   }
 
+  /// First regular sub-level row belonging to [mainLevel] in the given flow ordering.
   SubLevelItem? _firstRegularItemForMain(
     int mainLevel, {
     Iterable<SubLevelItem>? regularFlowSubLevels,
@@ -216,6 +223,7 @@ class _LevelsScreenState extends ConsumerState<LevelsScreen> {
     return null;
   }
 
+  /// Derives which `progressKey`s are reachable from the start given linear completion in [progress].
   Set<String> _computeUnlockedKeys(
     Iterable<SubLevelItem> regularItems,
     QuizTypeProgress progress,
@@ -237,6 +245,7 @@ class _LevelsScreenState extends ConsumerState<LevelsScreen> {
     return unlocked;
   }
 
+  /// True if [item] passes linear unlock rules plus reminder gating for the first node of a main level.
   bool _isRegularLevelUnlocked(
     SubLevelItem item,
     QuizTypeProgress progress, {
@@ -261,6 +270,7 @@ class _LevelsScreenState extends ConsumerState<LevelsScreen> {
     return reminders.isReminderCompleted(previousMainLevel, 2);
   }
 
+  /// Whether this reminder node was already cleared according to persisted reminder progress.
   bool _isReminderCompleted(SubLevelItem item) {
     return ReminderProgressService.instance.isReminderCompleted(
       data: _reminderProgress,
@@ -269,6 +279,7 @@ class _LevelsScreenState extends ConsumerState<LevelsScreen> {
     );
   }
 
+  /// Whether the player may open this reminder based on prior main-level and reminder completion rules.
   bool _isReminderUnlocked(SubLevelItem item) {
     return ReminderProgressService.instance.isReminderUnlocked(
       data: _reminderProgress,
@@ -279,10 +290,12 @@ class _LevelsScreenState extends ConsumerState<LevelsScreen> {
     );
   }
 
+  /// Counts how many regular sub-level rows exist for [mainLevelId] inside [regularFlow].
   int _lastRegularLocalLevel(int mainLevelId, Iterable<SubLevelItem> regularFlow) {
     return regularFlow.where((item) => item.sub.mainLevel == mainLevelId).length;
   }
 
+  /// Blocks auto-completing certain “after level” story pages until reminder 2 is done for that main level.
   bool _shouldGateAfterStoryPage({
     required StoryPageConfig page,
     required int mainLevelId,
@@ -304,6 +317,7 @@ class _LevelsScreenState extends ConsumerState<LevelsScreen> {
   // Data loading
   // ---------------------------------------------------------------------------
 
+  /// Fetches flow JSON, quiz/reminder/story progress, builds items, filters, window, and initial scroll state.
   Future<void> _loadData({int? anchorOrdinal}) async {
     try {
       final data = await loadGameFlow();
@@ -403,6 +417,7 @@ class _LevelsScreenState extends ConsumerState<LevelsScreen> {
     await _loadData(anchorOrdinal: anchorOrdinal);
   }
 
+  /// Marks story pages as completed when quiz progress satisfies triggers; persists when anything changed.
   Future<StoryProgressState> _syncCompletedStoryPages({
     required StoryConfigData storyConfig,
     required StoryProgressState storyProgress,
@@ -451,6 +466,7 @@ class _LevelsScreenState extends ConsumerState<LevelsScreen> {
   // Scroll windowing
   // ---------------------------------------------------------------------------
 
+  /// Expands [_windowStart]/[_windowEnd] as the user scrolls so only a slice of [_filtered] is built.
   void _onScroll() {
     final positions = _itemPositionsListener.itemPositions.value;
     if (positions.isEmpty) return;
@@ -493,6 +509,7 @@ class _LevelsScreenState extends ConsumerState<LevelsScreen> {
     }
   }
 
+  /// Maps the current scroll window of [_filtered] into layout rows for the list builder.
   List<_LayoutRow> get _visibleLayoutRows {
     final windowed = _filtered.sublist(_windowStart, _windowEnd);
     return _itemsToLayoutRows(windowed);
@@ -500,6 +517,7 @@ class _LevelsScreenState extends ConsumerState<LevelsScreen> {
 
   static const int _maxLockedPreview = 12;
 
+  /// Hides far-future locked nodes (except a preview budget) and drops banners with no visible sub-levels.
   List<LevelListItem> _applyFilter(
     List<LevelListItem> rawItems,
     QuizTypeProgress progress,
@@ -565,6 +583,7 @@ class _LevelsScreenState extends ConsumerState<LevelsScreen> {
   // UI helpers
   // ---------------------------------------------------------------------------
 
+  /// Localized AppBar title for this screen.
   String _titleFromStrings(Map<String, String> strings) {
     return strings['quiz_title_game'] ?? 'Levels';
   }
@@ -573,6 +592,7 @@ class _LevelsScreenState extends ConsumerState<LevelsScreen> {
   // Build
   // ---------------------------------------------------------------------------
 
+  /// Loading/error scaffold or the scrollable map with AppBar back to [HomeScreen].
   @override
   Widget build(BuildContext context) {
     final strings =
@@ -639,6 +659,7 @@ class _LevelsScreenState extends ConsumerState<LevelsScreen> {
     );
   }
 
+  /// Dispatches one visible layout row to either a main-level banner or a sub-level path row.
   Widget _buildRow(
       BuildContext context, _LayoutRow row, int globalSubRowIndex) {
     return switch (row) {
@@ -651,6 +672,7 @@ class _LevelsScreenState extends ConsumerState<LevelsScreen> {
     };
   }
 
+  /// Colored title strip for a main level plus optional story shortcut when the first sub-level is unlocked.
   Widget _buildBanner(BuildContext context, MainLevelMeta meta) {
     final firstItem = _firstRegularItemForMain(meta.mainLevel);
     final isStoryUnlocked = firstItem != null &&
@@ -692,6 +714,7 @@ class _LevelsScreenState extends ConsumerState<LevelsScreen> {
     );
   }
 
+  /// Small circular story affordance on a banner; locked shows “?” until the first regular level opens.
   Widget _buildStoryIcon(
     BuildContext context, {
     required bool isUnlocked,
@@ -734,6 +757,7 @@ class _LevelsScreenState extends ConsumerState<LevelsScreen> {
     );
   }
 
+  /// Positions one sub-level icon along the sinusoidal path and computes lock/star state for the cell.
   Widget _buildSubLevelRow(
     BuildContext context,
     int globalSubRowIndex,
@@ -782,6 +806,7 @@ class _LevelsScreenState extends ConsumerState<LevelsScreen> {
     );
   }
 
+  /// Tappable level icon with lock desaturation, star row for regular levels, and reminder completion styling.
   Widget _buildSubLevelCell(
     BuildContext context,
     SubLevelItem subLevelItem,
@@ -927,6 +952,7 @@ class _LevelsScreenState extends ConsumerState<LevelsScreen> {
   // Quiz navigation
   // ---------------------------------------------------------------------------
 
+  /// Loads each regular sub-level’s `questions.json` to count rows for reminder question generation.
   Future<Map<String, int>> _buildRegularQuestionCountsForMain(int mainLevel) async {
     final counts = <String, int>{};
     final regularItems = _regularSubLevels
@@ -943,6 +969,7 @@ class _LevelsScreenState extends ConsumerState<LevelsScreen> {
     return counts;
   }
 
+  /// Ensures reminder 1 has a non-empty ID list by sampling wrong answers across that main level’s quizzes.
   Future<void> _ensureReminderQuestionsGenerated(int mainLevel) async {
     final reminderState = _reminderProgress.reminderState(mainLevel, 1);
     if (reminderState.questionIds.isNotEmpty) return;
@@ -957,6 +984,7 @@ class _LevelsScreenState extends ConsumerState<LevelsScreen> {
     });
   }
 
+  /// Wraps [QuizRunnerScreen] in the standard fade route with progress/reminder parameters.
   Route<LevelCompletionResult> _buildQuizRoute(
     SubLevelItem subLevelItem, {
     bool reminderMode = false,
@@ -976,6 +1004,7 @@ class _LevelsScreenState extends ConsumerState<LevelsScreen> {
     );
   }
 
+  /// Story gating, reminder prep, pushes the quiz, then refreshes the map and may show post-level story.
   void _openQuiz(BuildContext context, SubLevelItem subLevelItem) async {
     final sub = subLevelItem.sub;
 
@@ -1058,6 +1087,7 @@ class _LevelsScreenState extends ConsumerState<LevelsScreen> {
     }
   }
 
+  /// Presents a “before level” story page when configured for this ordinal, skipping reminder rows.
   Future<void> _showBeforeStoryIfNeeded(SubLevelItem subLevelItem) async {
     if (subLevelItem.sub.isReminder) return;
     final regularFlowSubLevels = _regularSubLevels;
@@ -1078,6 +1108,7 @@ class _LevelsScreenState extends ConsumerState<LevelsScreen> {
     await _showStoryPage(page);
   }
 
+  /// Full-screen story overlay with localized labels; used for before/after level narrative beats.
   Future<void> _showStoryPage(StoryPageConfig page) async {
     final language = ref.read(settingsProvider).valueOrNull?.language ?? 'en';
     final strings =

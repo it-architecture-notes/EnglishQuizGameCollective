@@ -3,7 +3,8 @@ import 'dart:convert';
 import 'package:flutter/foundation.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-import '../quiz_game_constants.dart';
+/// Stable quiz-mode id for storage keys, story asset paths, and profile (`'game'` — do not rename without migration).
+const String kQuizGameType = 'game';
 
 /// Per-level progress.
 class LevelProgress {
@@ -19,12 +20,14 @@ class LevelProgress {
 
   bool get isCompleted => highestStars >= 1;
 
+  /// Serializes this row for persistence inside [QuizTypeProgress.toJson].
   Map<String, dynamic> toJson() => {
         'progressKey': progressKey,
         'highestStars': highestStars,
         'highestDiamonds': highestDiamonds,
       };
 
+  /// Rebuilds stored per-level progress from SharedPreferences JSON.
   static LevelProgress fromJson(Map<String, dynamic> json) {
     return LevelProgress(
       progressKey: json['progressKey'] as String,
@@ -44,9 +47,11 @@ class QuizTypeProgress {
   final Map<String, LevelProgress> levels;
   final int totalDiamonds;
 
+  /// Returns saved progress for [progressKey] or a fresh zeroed row if none exists yet.
   LevelProgress level(String progressKey) =>
       levels[progressKey] ?? LevelProgress(progressKey: progressKey);
 
+  /// Snapshot of all levels and total diamonds for [saveProgress].
   Map<String, dynamic> toJson() => {
         'levels': levels.map(
           (k, v) => MapEntry(k, v.toJson()),
@@ -54,6 +59,7 @@ class QuizTypeProgress {
         'totalDiamonds': totalDiamonds,
       };
 
+  /// Parses the full progress blob from disk after [loadProgress] reads the prefs string.
   static QuizTypeProgress fromJson(Map<String, dynamic> json) {
     final levelsMap = json['levels'] as Map<String, dynamic>? ?? {};
     final levels = <String, LevelProgress>{};
@@ -87,7 +93,8 @@ class QuizProgressService {
   Future<SharedPreferences> get _preferences async =>
       _prefs ??= await SharedPreferences.getInstance();
 
-  /// Loads progress. Returns default (empty) if missing or invalid.
+  /// Reads persisted stars/diamonds map for the level map and completion logic.
+  /// Returns an empty [QuizTypeProgress] if nothing valid is stored yet or JSON fails to parse.
   Future<QuizTypeProgress> loadProgress() async {
     try {
       final prefs = await _preferences;
@@ -101,7 +108,8 @@ class QuizProgressService {
     }
   }
 
-  /// Saves progress.
+  /// Writes the entire progress graph to SharedPreferences after any mutation.
+  /// Called by [recordLevelCompletion] and any future APIs that update level state.
   Future<void> saveProgress(QuizTypeProgress progress) async {
     try {
       final prefs = await _preferences;
@@ -114,7 +122,8 @@ class QuizProgressService {
     }
   }
 
-  /// Records level completion: updates stars (max), diamonds (delta on replay), and persists.
+  /// Merges a finished quiz’s star tier and diamond high-water mark, bumps global diamonds on improvement.
+  /// Invoked from [ImageQuizScreen._onEndOk] when the player passes (at least one star).
   Future<QuizTypeProgress> recordLevelCompletion({
     required String progressKey,
     required int stars,

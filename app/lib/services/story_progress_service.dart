@@ -4,7 +4,7 @@ import 'package:flutter/foundation.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../models/story_progress.dart';
-import '../quiz_game_constants.dart';
+import 'quiz_progress_service.dart';
 
 class StoryProgressService {
   StoryProgressService._();

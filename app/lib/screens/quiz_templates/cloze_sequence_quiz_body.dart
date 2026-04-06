@@ -33,6 +33,7 @@ class _ClozeSequenceQuizBodyState extends State<ClozeSequenceQuizBody> {
   bool _streamDone = false;
 
   final List<String?> _filledBlank = [];
+  final Map<int, int> _correctTileByIndex = {}; // tileIndex → cloze number (1-based)
   int _blankCount = 0;
   int _currentBlank = 0;
   bool _failed = false;
@@ -165,6 +166,7 @@ class _ClozeSequenceQuizBodyState extends State<ClozeSequenceQuizBody> {
     }
 
     setState(() {
+      _correctTileByIndex[tileIndex] = _currentBlank + 1;
       _filledBlank[_currentBlank] = word;
       _currentBlank++;
     });
@@ -173,6 +175,32 @@ class _ClozeSequenceQuizBodyState extends State<ClozeSequenceQuizBody> {
       widget.onPlayCorrect();
       widget.onOutcome(true);
     }
+  }
+
+  /// RichText spans for the fail state: player-filled blanks in green,
+  /// remaining correct answers in orange italic.
+  List<InlineSpan> _buildFailSpans(ThemeData theme) {
+    final spans = <InlineSpan>[];
+    var blankI = 0;
+    for (var i = 0; i < _sentence.length; i++) {
+      if (i > 0) spans.add(const TextSpan(text: ' '));
+      final t = _sentence[i];
+      if (_isBlank(t)) {
+        final filledByPlayer = _filledBlank[blankI] != null;
+        spans.add(TextSpan(
+          text: _answers[blankI],
+          style: TextStyle(
+            fontWeight: FontWeight.w700,
+            color: filledByPlayer ? Colors.green.shade700 : Colors.orange.shade700,
+            fontStyle: filledByPlayer ? null : FontStyle.italic,
+          ),
+        ));
+        blankI++;
+      } else {
+        spans.add(TextSpan(text: t));
+      }
+    }
+    return spans;
   }
 
   @override
@@ -195,13 +223,24 @@ class _ClozeSequenceQuizBodyState extends State<ClozeSequenceQuizBody> {
             color: cs.surfaceContainerHighest,
             borderRadius: BorderRadius.circular(12),
           ),
-          child: Text(
-            lineText,
-            style: theme.textTheme.titleMedium?.copyWith(
-              height: 1.35,
-              fontWeight: FontWeight.w600,
-            ),
-          ),
+          child: _failed
+              ? RichText(
+                  text: TextSpan(
+                    style: theme.textTheme.titleMedium?.copyWith(
+                      height: 1.35,
+                      fontWeight: FontWeight.w600,
+                      color: theme.colorScheme.onSurface,
+                    ),
+                    children: _buildFailSpans(theme),
+                  ),
+                )
+              : Text(
+                  lineText,
+                  style: theme.textTheme.titleMedium?.copyWith(
+                    height: 1.35,
+                    fontWeight: FontWeight.w600,
+                  ),
+                ),
         ),
         const SizedBox(height: 12),
         Expanded(
@@ -219,7 +258,9 @@ class _ClozeSequenceQuizBodyState extends State<ClozeSequenceQuizBody> {
               final disabled = !_streamDone || _failed || _completed;
               final wrong = _failed && _wrongTileIndex == i;
               final expect = _failed && _expectedTileIndex == i;
+              final doneStep = _correctTileByIndex[i];
               Color bg = cs.surfaceContainerHighest;
+              if (doneStep != null) bg = Colors.green.shade100;
               if (wrong) bg = Colors.red.shade200;
               if (expect) bg = Colors.green.shade200;
 
@@ -229,14 +270,37 @@ class _ClozeSequenceQuizBodyState extends State<ClozeSequenceQuizBody> {
                 child: InkWell(
                   onTap: disabled ? null : () => _onTileTap(i),
                   borderRadius: BorderRadius.circular(10),
-                  child: Center(
-                    child: Text(
-                      w,
-                      textAlign: TextAlign.center,
-                      style: theme.textTheme.titleSmall?.copyWith(
-                        fontWeight: FontWeight.w600,
+                  child: Stack(
+                    alignment: Alignment.center,
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 4),
+                        child: Text(
+                          w,
+                          textAlign: TextAlign.center,
+                          style: theme.textTheme.titleSmall?.copyWith(
+                            fontWeight: FontWeight.w600,
+                          ),
+                        ),
                       ),
-                    ),
+                      if (doneStep != null)
+                        Positioned(
+                          top: 2,
+                          right: 2,
+                          child: CircleAvatar(
+                            radius: 9,
+                            backgroundColor: Colors.green.shade700,
+                            child: Text(
+                              '$doneStep',
+                              style: const TextStyle(
+                                color: Colors.white,
+                                fontSize: 10,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                          ),
+                        ),
+                    ],
                   ),
                 ),
               );

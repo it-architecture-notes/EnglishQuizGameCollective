@@ -3,7 +3,7 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 
 import '../models/profile_state.dart';
-import '../quiz_game_constants.dart';
+import '../services/quiz_progress_service.dart';
 import '../services/profile_service.dart';
 
 /// Opens the profile as a centered overlay panel (not full screen).

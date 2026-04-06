@@ -3,7 +3,7 @@ import 'dart:convert';
 import 'package:flutter/services.dart';
 
 import '../models/story_config.dart';
-import '../quiz_game_constants.dart';
+import 'quiz_progress_service.dart';
 
 Future<StoryConfigData> loadStoryConfig() async {
   const storiesPath = 'assets/data/story/$kQuizGameType-main-level-stories.json';

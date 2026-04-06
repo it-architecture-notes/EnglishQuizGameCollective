@@ -26,6 +26,7 @@ class ImageQuizTemplate2Data {
   final String imageName;
   final List<String> wrongAnswers;
   final double autoNextDelay;
+  /// Parsed from `show_correct_on_wrong` in JSON; reserved — the grid always highlights the correct tile green when locked (same as template-1).
   final bool showCorrectOnWrong;
 }
 
@@ -143,6 +144,7 @@ class LevelConfig {
 
   final List<LevelQuestion> questions;
 
+  /// Maps JSON `type` string to [LevelQuestionType] or throws if unknown.
   static LevelQuestionType _parseType(String raw) {
     switch (raw) {
       case 'image':
@@ -156,6 +158,7 @@ class LevelConfig {
     }
   }
 
+  /// Coerces a JSON object into `Map<String,String>` for localized line maps.
   static Map<String, String> _stringMap(dynamic value) {
     if (value is! Map) {
       throw const FormatException('Expected object for localized lines');
@@ -165,6 +168,7 @@ class LevelConfig {
     );
   }
 
+  /// Validates and builds [ImageQuestionData] for `imageQuizTemplate-1` rows (exactly three wrong answers).
   static ImageQuestionData _parseImageData(Map<String, dynamic> data) {
     final imageName = data['imageName'] as String? ?? '';
     final wrong = (data['wrongAnswers'] as List<dynamic>? ?? [])
@@ -186,6 +190,7 @@ class LevelConfig {
     return ImageQuestionData(imageName: imageName, wrongAnswers: wrong);
   }
 
+  /// Parses noun + four-image grid settings including optional delays and wrong-answer highlight flag.
   static ImageQuizTemplate2Data _parseImageQuiz2Data(Map<String, dynamic> data) {
     final imageName = data['imageName'] as String? ?? '';
     final wrong = (data['wrongAnswers'] as List<dynamic>? ?? [])
@@ -205,11 +210,13 @@ class LevelConfig {
     );
   }
 
+  /// Safe coercion of JSON arrays to `List<String>` for word lists and similar fields.
   static List<String> _stringList(dynamic v) {
     if (v is! List) return const [];
     return v.map((e) => e.toString()).toList();
   }
 
+  /// Parses appear/disappear grid question; enforces nine total tiles for the 3×3 layout.
   static AppearDisappearQuestionData _parseAppearDisappear(
     Map<String, dynamic> data,
   ) {
@@ -229,6 +236,7 @@ class LevelConfig {
     );
   }
 
+  /// Parses Simon template data with the same nine-tile constraint as appear/disappear.
   static SimonQuestionData _parseSimon(Map<String, dynamic> data) {
     final words = _stringList(data['words']);
     final distractors = _stringList(data['distractors']);
@@ -247,8 +255,10 @@ class LevelConfig {
     );
   }
 
+  /// Recognizes blank markers in cloze sentence tokens independent of underscore count in JSON.
   static bool _isBlankToken(String s) => s == '___' || s == '_____';
 
+  /// Parses streaming cloze rows; checks blank count vs answers and grid tile totals (4 or 9).
   static ClozeSequenceQuestionData _parseClozeSequence(
     Map<String, dynamic> data,
   ) {
@@ -283,6 +293,7 @@ class LevelConfig {
     );
   }
 
+  /// Builds two-character dialogue data plus answer and distractors for ConvoTemplate-1.
   static ConvoQuestionData _parseConvoData(Map<String, dynamic> data) {
     return ConvoQuestionData(
       character1: data['character1'] as String? ?? '',
@@ -296,6 +307,7 @@ class LevelConfig {
     );
   }
 
+  /// Parses image-backed cloze (hero image name, localized sentence, three distractors).
   static ConvoTemplate2QuestionData _parseConvo2Data(Map<String, dynamic> data) {
     final imageName = data['imageName'] as String? ?? '';
     final distractors = (data['distractors'] as List<dynamic>? ?? [])
@@ -314,6 +326,7 @@ class LevelConfig {
     );
   }
 
+  /// Dispatches one `levelQuestions[]` element to the correct parser based on `template`.
   static LevelQuestion _parseQuestion(Map<String, dynamic> json) {
     final type = _parseType(json['type'] as String? ?? '');
     final template = json['template'] as String? ?? '';
@@ -367,6 +380,7 @@ class LevelConfig {
     );
   }
 
+  /// Entry point from [loadLevelConfig]: reads `levelQuestions` into ordered [LevelQuestion] list.
   factory LevelConfig.fromJson(Map<String, dynamic> json) {
     final list = json['levelQuestions'] as List<dynamic>? ?? [];
     final questions = <LevelQuestion>[];

@@ -29,6 +29,7 @@ class HomeScreen extends ConsumerStatefulWidget {
 }
 
 class _HomeScreenState extends ConsumerState<HomeScreen> {
+  /// Top-level hub: centered Start Game, resolution-aware layout, bottom nav panels.
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.sizeOf(context);
@@ -62,6 +63,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
     );
   }
 
+  /// Primary CTA column for phones; Start Game pushes [LevelsScreen] with click SFX.
   Widget _buildPhoneQuizButtons(bool soundFxOn, Map<String, String> strings) {
     void withClick(VoidCallback action) {
       audio.playClick(soundFxOn: soundFxOn);
@@ -85,6 +87,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
     );
   }
 
+  /// Wider Start Game layout for tablets; same navigation as phone variant.
   Widget _buildTabletQuizButtons(bool soundFxOn, Map<String, String> strings) {
     void withClick(VoidCallback action) {
       audio.playClick(soundFxOn: soundFxOn);
@@ -103,6 +106,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
     );
   }
 
+  /// Full-width elevated primary button used for Start Game.
   Widget _quizButton(String label, VoidCallback onTap) {
     return SizedBox(
       width: double.infinity,
@@ -123,6 +127,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
     );
   }
 
+  /// Bottom icon row opening profile, achievements, friends, and settings overlays.
   Widget _buildBottomNav(Map<String, String> strings, bool soundFxOn) {
     void withClick(VoidCallback action) {
       audio.playClick(soundFxOn: soundFxOn);
@@ -149,6 +154,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
     );
   }
 
+  /// One bottom-nav target: icon tile + caption with inkwell tap handling.
   Widget _navItem(IconData icon, String label, VoidCallback onTap) {
     return Material(
       color: Colors.transparent,
@@ -182,6 +188,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
     );
   }
 
+  /// Opens settings in a modal panel overlay.
   void _showSettingsPanel(Map<String, String> strings) {
     showPanelOverlay(
       context,
@@ -190,6 +197,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
     );
   }
 
+  /// Opens achievements list in a modal panel overlay.
   void _showAchievementsPanel(Map<String, String> strings) {
     showPanelOverlay(
       context,
@@ -198,6 +206,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
     );
   }
 
+  /// Opens friends panel overlay from home bottom nav.
   void _showFriendsPanel(Map<String, String> strings) {
     showPanelOverlay(
       context,

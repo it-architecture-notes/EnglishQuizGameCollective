@@ -14,6 +14,80 @@
     },
     {
       "type": "image",
+      "template": "imageQuizTemplate-2",
+      "questionData": {
+        "imageName": "mattress",
+        "wrongAnswers": ["bed", "blanket", "pillow"],
+        "auto_next_delay": 1.0,
+        "show_correct_on_wrong": false
+      }
+    },
+    {
+      "type": "vocab",
+      "template": "ConvoTemplate-1",
+      "questionData": {
+        "character1": "mike",
+        "character2": "sarah",
+        "line1": {
+          "en": "Did you hear my _____ this morning?",
+          "tr": "Bu sabah _____ duydun mu?",
+          "es": "¿Oíste mi _____ esta mañana?"
+        },
+        "line2": {
+          "en": "Yes, it was very loud!",
+          "tr": "Evet, çok yüksekti!",
+          "es": "¡Sí, sonaba muy fuerte!"
+        },
+        "answer": "alarm",
+        "distractors": ["pillow", "blanket", "mattress"]
+      }
+    },
+    {
+      "type": "vocab",
+      "template": "ConvoTemplate-2",
+      "questionData": {
+        "imageName": "alarm-clock",
+        "sentence": {
+          "en": "I set my _____ so I do not oversleep.",
+          "tr": "I set my _____ so I do not oversleep. (çalar saat)",
+          "es": "I set my _____ so I do not oversleep. (despertador)"
+        },
+        "answer": "alarm",
+        "distractors": ["bed", "pillow", "blanket"]
+      }
+    },
+    {
+      "type": "vocab",
+      "template": "ConvoTemplate-AppearDisappear",
+      "questionData": {
+        "words": ["I", "love", "tea"],
+        "distractors": ["you", "coffee", "milk", "red", "big", "and"],
+        "display_duration": 0.8,
+        "auto_next_delay": 1.0
+      }
+    },
+    {
+      "type": "vocab",
+      "template": "ConvoTemplate-Simon",
+      "questionData": {
+        "words": ["wake", "up", "now"],
+        "distractors": ["sleep", "late", "run", "eat", "go", "yes"],
+        "tile_highlight_duration": 0.45,
+        "auto_next_delay": 1.0
+      }
+    },
+    {
+      "type": "vocab",
+      "template": "ConvoTemplate-ClozeSequence",
+      "questionData": {
+        "sentence": ["The", "___", "rings", "loudly"],
+        "answers": ["alarm clock"],
+        "distractors": ["pillow", "bed", "blanket"],
+        "auto_next_delay": 1.0
+      }
+    },
+    {
+      "type": "image",
       "template": "imageQuizTemplate-1",
       "questionData": {
         "imageName": "bed",
@@ -73,43 +147,15 @@
       }
     },
     {
-      "type": "vocab",
-      "template": "ConvoTemplate-AppearDisappear",
-      "questionData": {
-        "words": ["I", "love", "tea"],
-        "distractors": ["you", "coffee", "milk", "red", "big", "and"],
-        "display_duration": 0.8,
-        "auto_next_delay": 1.0
-      }
-    },
-    {
-      "type": "vocab",
-      "template": "ConvoTemplate-Simon",
-      "questionData": {
-        "words": ["wake", "up", "now"],
-        "distractors": ["sleep", "late", "run", "eat", "go", "yes"],
-        "tile_highlight_duration": 0.45,
-        "auto_next_delay": 1.0
-      }
-    },
-    {
-      "type": "vocab",
-      "template": "ConvoTemplate-ClozeSequence",
-      "questionData": {
-        "sentence": ["The", "___", "rings", "loudly"],
-        "answers": ["alarm-clock"],
-        "distractors": ["pillow", "bed", "blanket"],
-        "auto_next_delay": 1.0
-      }
-    },
-    {
       "type": "image",
-      "template": "imageQuizTemplate-2",
+      "template": "imageQuizTemplate-1",
       "questionData": {
-        "imageName": "mattress",
-        "wrongAnswers": ["bed", "blanket", "pillow"],
-        "auto_next_delay": 1.0,
-        "show_correct_on_wrong": false
+        "imageName": "alarm-clock",
+        "wrongAnswers": [
+          "nightstand",
+          "blanket",
+          "mattress"
+        ]
       }
     }
   ]

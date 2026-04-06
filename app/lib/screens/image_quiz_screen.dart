@@ -17,7 +17,6 @@ import '../../services/guest_animal_conversations_loader.dart';
 import '../../services/image_asset_resolver.dart';
 import '../../services/image_quiz_level_loader.dart';
 import '../../services/level_config_loader.dart';
-import '../../quiz_game_constants.dart';
 import '../../services/profile_service.dart';
 import '../../services/quiz_progress_service.dart';
 import '../../services/reminder_progress_service.dart';
@@ -39,6 +38,7 @@ const double kMinTouchTarget = 48;
 
 enum _Phase { loading, playing, end, gameOver }
 
+/// In-quiz experience for one sub-level: image templates, convo templates, monster/timer, and completion UI.
 class ImageQuizScreen extends ConsumerStatefulWidget {
   const ImageQuizScreen({
     super.key,
@@ -64,6 +64,7 @@ class ImageQuizScreen extends ConsumerStatefulWidget {
   final List<String>? reminderQuestionIds;
   final Map<String, SubLevelItem>? reminderSourceLevelsByProgressKey;
 
+  /// Creates mutable state that loads questions and drives the quiz lifecycle.
   @override
   ConsumerState<ImageQuizScreen> createState() => _ImageQuizScreenState();
 }
@@ -130,19 +131,39 @@ class _ImageQuizScreenState extends ConsumerState<ImageQuizScreen>
   final Map<String, LevelQuestion> _convoByQuestionId = {};
   final Map<String, String> _convo2ImagePathByQuestionId = {};
   bool _showTranslation = false;
-  bool _conversationUnlocked = false;
 
+  // Unified mode (mixed question types in a single pass)
+  List<LevelQuestion> _allQuestions = [];
+  List<String?> _questionImagePaths = [];      // asset path per question (null for vocab)
+  List<List<String>> _questionQuiz2Paths = []; // 4 paths per template-2 question (empty otherwise)
+  List<String?> _questionConvo2HeroPaths = []; // hero image path for ConvoTemplate-2 (null otherwise)
+
+  /// Asset-bundle prefix key for resolving images under this sub-level’s folder.
   static String _levelKey(SubLevel sub) =>
       imageQuizLevelKey(sub.iconImageName);
 
+  /// True when this route is the reminder replay flow rather than a normal sub-level.
   bool get _isReminder => widget.reminderMode;
+  /// Stable ID for the active question (reminder + progress tracking).
   String? get _currentQuestionId =>
       _currentQuestionIds.isEmpty ? null : _currentQuestionIds[_currentIndex];
 
-  bool get _isConvoMode =>
-      _convoQuestions.isNotEmpty || _convoByQuestionId.isNotEmpty;
+  /// Whether the current index points at a non-image (vocab/grammar) template.
+  bool get _isConvoMode {
+    if (_allQuestions.isNotEmpty) {
+      final i = _currentIndex.clamp(0, _allQuestions.length - 1);
+      return _allQuestions[i].type != LevelQuestionType.image;
+    }
+    return _convoQuestions.isNotEmpty || _convoByQuestionId.isNotEmpty;
+  }
 
+  /// The structured row for the active convo question, or null during pure image prompts.
   LevelQuestion? get _currentConvoLevelQuestion {
+    if (_allQuestions.isNotEmpty) {
+      if (_currentIndex >= _allQuestions.length) return null;
+      final q = _allQuestions[_currentIndex];
+      return q.type != LevelQuestionType.image ? q : null;
+    }
     if (!_isConvoMode) return null;
     if (_isReminder) return _convoByQuestionId[_currentQuestionId ?? ''];
     return _currentIndex < _convoQuestions.length
@@ -150,17 +171,8 @@ class _ImageQuizScreenState extends ConsumerState<ImageQuizScreen>
         : null;
   }
 
-  bool get _hasConvoTemplate1InCurrentRun {
-    if (_isReminder) {
-      for (final id in _currentQuestionIds) {
-        final q = _convoByQuestionId[id];
-        if (q != null && q.template == 'ConvoTemplate-1') return true;
-      }
-      return false;
-    }
-    return _convoQuestions.any((q) => q.template == 'ConvoTemplate-1');
-  }
-
+  /// Used to offer “view full conversation” on the end card when any ConvoTemplate-1 appeared.
+/// Correct MCQ string for ConvoTemplate-1/2 only (other templates self-score).
   String? _convoAnswer(LevelQuestion? q) {
     if (q == null) return null;
     if (q.template == 'ConvoTemplate-1') return q.convoData?.answer;
@@ -168,12 +180,25 @@ class _ImageQuizScreenState extends ConsumerState<ImageQuizScreen>
     return null;
   }
 
-  int get _questionCount => _isConvoMode
-      ? (_isReminder ? _currentQuestionIds.length : _convoQuestions.length)
-      : (_configImageQuestions != null
-          ? _configImageQuestions!.length
-          : _questionAssetPaths.length);
+  /// Number of questions in this run (unified list, reminder IDs, legacy image-only, or convo-only).
+  int get _questionCount {
+    if (_allQuestions.isNotEmpty) return _allQuestions.length;
+    if (_isReminder) return _currentQuestionIds.length;
+    if (_convoQuestions.isNotEmpty || _convoByQuestionId.isNotEmpty) return _convoQuestions.length;
+    if (_configImageQuestions != null) return _configImageQuestions!.length;
+    return _questionAssetPaths.length;
+  }
 
+  /// 1-based index shown in the header (“Question N / M”).
+  int get _displayQuestionIndexOneBased => _currentIndex + 1;
+
+  /// Denominator for the header; in reminder mode uses the initial batch size.
+  int get _displayQuestionTotal {
+    if (_isReminder) return _initialQuestionCount;
+    return _questionCount;
+  }
+
+  /// Sets up animations and kicks off [_loadLevel] or [_loadReminderLevel] for this route.
   @override
   void initState() {
     super.initState();
@@ -199,6 +224,7 @@ class _ImageQuizScreenState extends ConsumerState<ImageQuizScreen>
     }
   }
 
+  /// Stops music and releases animation controllers when leaving the quiz.
   @override
   void dispose() {
     _timerController.dispose();
@@ -208,6 +234,7 @@ class _ImageQuizScreenState extends ConsumerState<ImageQuizScreen>
     super.dispose();
   }
 
+  /// Loads unified `questions.json` (or legacy image manifest), precaches assets, enters [_Phase.playing].
   Future<void> _loadLevel() async {
     final key = _levelKey(widget.subLevel);
     try {
@@ -300,189 +327,119 @@ class _ImageQuizScreenState extends ConsumerState<ImageQuizScreen>
         return;
       }
 
-      final imageRows = levelCfg.questions
-          .where(
-            (q) =>
-                q.type == LevelQuestionType.image &&
-                (q.template == 'imageQuizTemplate-1' ||
-                    q.template == 'imageQuizTemplate-2'),
-          )
-          .toList();
-      if (imageRows.length == levelCfg.questions.length &&
-          imageRows.isNotEmpty) {
-        final paths = <String>[];
-        final wrongLists = <List<String>>[];
-        final t2Paths = <List<String>>[];
-        for (final row in imageRows) {
-          if (row.template == 'imageQuizTemplate-1') {
-            final d = row.imageData;
-            if (d == null) continue;
+      // Unified: load all questions (image + vocab/grammar) in a single pass
+      final questions = levelCfg.questions.toList();
+      final imgPaths = <String?>[];
+      final q2Paths = <List<String>>[];
+      final convo2HeroPaths = <String?>[];
+
+      for (final q in questions) {
+        if (q.type == LevelQuestionType.image) {
+          if (q.template == 'imageQuizTemplate-1') {
+            final d = q.imageData!;
             final path = await resolveQuizImageAsset(key, d.imageName);
-            if (path == null) {
-              throw Exception('Missing image asset for: ${d.imageName}');
-            }
-            paths.add(path);
-            wrongLists.add(d.wrongAnswers);
-            t2Paths.add(const []);
-          } else if (row.template == 'imageQuizTemplate-2') {
-            final d = row.imageQuiz2Data;
-            if (d == null) continue;
+            if (path == null) throw Exception('Missing image asset for: ${d.imageName}');
+            imgPaths.add(path);
+            q2Paths.add(const []);
+            convo2HeroPaths.add(null);
+          } else if (q.template == 'imageQuizTemplate-2') {
+            final d = q.imageQuiz2Data!;
             final path = await resolveQuizImageAsset(key, d.imageName);
-            if (path == null) {
-              throw Exception('Missing image asset for: ${d.imageName}');
-            }
-            paths.add(path);
-            wrongLists.add(d.wrongAnswers);
+            if (path == null) throw Exception('Missing image asset for: ${d.imageName}');
+            imgPaths.add(path);
             final four = <String>[];
             for (final stem in [d.imageName, ...d.wrongAnswers]) {
               final p = await resolveQuizImageAsset(key, stem);
-              if (p == null) {
-                throw Exception('Missing image asset for: $stem');
-              }
+              if (p == null) throw Exception('Missing image asset for: $stem');
               four.add(p);
             }
-            t2Paths.add(four);
-          }
-        }
-        if (paths.length < kMinImagesPerLevel) {
-          throw Exception(
-            'This level needs at least $kMinImagesPerLevel images (found ${paths.length}).',
-          );
-        }
-        final questionIds = List.generate(
-          paths.length,
-          (i) => buildReminderQuestionId(widget.progressKey, i),
-        );
-        final totalQuestions = paths.length;
-        final threshold = max(1, min(4, (totalQuestions * 0.1).round()));
-        final animalNames = await discoverGuestAnimalNames();
-        final monsterNames = await discoverMonsterNames();
-        final guestAnimal = animalNames.isNotEmpty
-            ? animalNames[Random().nextInt(animalNames.length)]
-            : 'squirrel';
-        final selectedMonster = monsterNames.isNotEmpty
-            ? monsterNames[Random().nextInt(monsterNames.length)]
-            : 'monster';
-
-        final conversationsConfig = await loadGuestAnimalConversations();
-        final language =
-            ref.read(settingsProvider).valueOrNull?.language ?? 'en';
-        final conversations = getForLanguage(conversationsConfig, language);
-
-        if (mounted) {
-          for (var i = 0; i < imageRows.length; i++) {
-            if (!mounted) break;
-            final row = imageRows[i];
-            if (row.template == 'imageQuizTemplate-2') {
-              for (final p in t2Paths[i]) {
-                await precacheImage(AssetImage(p), context);
-              }
-            } else {
-              await precacheImage(AssetImage(paths[i]), context);
-            }
-          }
-        }
-
-        if (mounted) {
-          setState(() {
-            _config = config;
-            _conversations = conversations;
-            _configImageQuestions = imageRows;
-            _configImageQuiz2Paths = t2Paths;
-            _questionAssetPaths = paths;
-            _currentQuestionIds = questionIds;
-            _configWrongAnswers = wrongLists;
-            _vocabulary = paths.map(assetPathToBasename).toList();
-            _initialQuestionCount = paths.length;
-            _monsterStepThreshold = threshold;
-            _guestAnimal = guestAnimal;
-            _selectedMonster = selectedMonster;
-            _shortQuizDebug = shortQuizDebug;
-            _endedEarlyShortQuiz = false;
-            _phase = _Phase.playing;
-            _quizStartTime = DateTime.now();
-            _currentOptions = _buildOptions();
-          });
-          _timerController.duration =
-              Duration(seconds: _config.imageQuizTimerSeconds);
-          _startTimer();
-          final musicOn = ref.read(settingsProvider).valueOrNull?.musicOn ?? true;
-          audio.startQuizMusic(musicOn: musicOn);
-        }
-        return;
-      }
-
-      // Convo-only level
-      final convoRows = levelCfg.questions
-          .where((q) => q.type != LevelQuestionType.image)
-          .toList();
-      if (convoRows.isNotEmpty) {
-        final convoList = <LevelQuestion>[];
-        for (final q in convoRows) {
-          if (q.template == 'ConvoTemplate-1' && q.convoData != null) {
-            convoList.add(q);
-          } else if (q.template == 'ConvoTemplate-2' && q.convo2Data != null) {
-            convoList.add(q);
-          } else if (q.template == 'ConvoTemplate-AppearDisappear' &&
-              q.appearDisappearData != null) {
-            convoList.add(q);
-          } else if (q.template == 'ConvoTemplate-Simon' && q.simonData != null) {
-            convoList.add(q);
-          } else if (q.template == 'ConvoTemplate-ClozeSequence' &&
-              q.clozeSequenceData != null) {
-            convoList.add(q);
+            q2Paths.add(four);
+            convo2HeroPaths.add(null);
           } else {
-            throw Exception(
-              'Missing convo data for question (template ${q.template})',
-            );
+            imgPaths.add(null);
+            q2Paths.add(const []);
+            convo2HeroPaths.add(null);
           }
-        }
-        final heroPaths = <String?>[];
-        for (final q in convoList) {
+        } else {
+          // vocab / grammar
+          imgPaths.add(null);
+          q2Paths.add(const []);
           if (q.template == 'ConvoTemplate-2') {
             final d = q.convo2Data!;
             final path = await resolveQuizImageAsset(key, d.imageName);
-            if (path == null) {
-              throw Exception('Missing image asset for: ${d.imageName}');
-            }
-            heroPaths.add(path);
+            if (path == null) throw Exception('Missing image asset for: ${d.imageName}');
+            convo2HeroPaths.add(path);
           } else {
-            heroPaths.add(null);
+            convo2HeroPaths.add(null);
           }
         }
-        if (mounted) {
-          for (final path in heroPaths) {
-            if (path != null && mounted) {
-              await precacheImage(AssetImage(path), context);
-            }
-          }
-        }
-        final questionIds = List.generate(
-          convoList.length,
-          (i) => buildReminderQuestionId(widget.progressKey, i),
-        );
-        if (mounted) {
-          setState(() {
-            _config = config;
-            _convoQuestions = convoList;
-            _convo2HeroPaths = heroPaths;
-            _currentQuestionIds = questionIds;
-            _initialQuestionCount = convoList.length;
-            _shortQuizDebug = shortQuizDebug;
-            _endedEarlyShortQuiz = false;
-            _phase = _Phase.playing;
-            _quizStartTime = DateTime.now();
-            _currentOptions = _buildOptions();
-          });
-          final musicOn =
-              ref.read(settingsProvider).valueOrNull?.musicOn ?? true;
-          audio.startQuizMusic(musicOn: musicOn);
-        }
-        return;
       }
-      throw Exception(
-        'Unified level "${widget.subLevel.iconImageName}" has no recognized question types',
+
+      // Precache images
+      if (mounted) {
+        for (var i = 0; i < questions.length; i++) {
+          if (!mounted) break;
+          final q = questions[i];
+          if (q.type == LevelQuestionType.image) {
+            if (q.template == 'imageQuizTemplate-2') {
+              for (final p in q2Paths[i]) {
+                await precacheImage(AssetImage(p), context);
+              }
+            } else if (imgPaths[i] != null) {
+              await precacheImage(AssetImage(imgPaths[i]!), context);
+            }
+          } else if (convo2HeroPaths[i] != null) {
+            await precacheImage(AssetImage(convo2HeroPaths[i]!), context);
+          }
+        }
+      }
+
+      final questionIds = List.generate(
+        questions.length,
+        (i) => buildReminderQuestionId(widget.progressKey, i),
       );
+      final totalQuestions = questions.length;
+      final threshold = max(1, min(4, (totalQuestions * 0.1).round()));
+      final animalNames = await discoverGuestAnimalNames();
+      final monsterNames = await discoverMonsterNames();
+      final guestAnimal = animalNames.isNotEmpty
+          ? animalNames[Random().nextInt(animalNames.length)]
+          : 'squirrel';
+      final selectedMonster = monsterNames.isNotEmpty
+          ? monsterNames[Random().nextInt(monsterNames.length)]
+          : 'monster';
+      final conversationsConfig = await loadGuestAnimalConversations();
+      final language = ref.read(settingsProvider).valueOrNull?.language ?? 'en';
+      final conversations = getForLanguage(conversationsConfig, language);
+
+      if (mounted) {
+        setState(() {
+          _config = config;
+          _conversations = conversations;
+          _allQuestions = questions;
+          _questionImagePaths = imgPaths;
+          _questionQuiz2Paths = q2Paths;
+          _questionConvo2HeroPaths = convo2HeroPaths;
+          _currentQuestionIds = questionIds;
+          _initialQuestionCount = questions.length;
+          _monsterStepThreshold = threshold;
+          _guestAnimal = guestAnimal;
+          _selectedMonster = selectedMonster;
+          _shortQuizDebug = shortQuizDebug;
+          _endedEarlyShortQuiz = false;
+          _phase = _Phase.playing;
+          _quizStartTime = DateTime.now();
+          _currentOptions = _buildOptions();
+        });
+        // Start timer only for image questions (first question might be vocab)
+        if (questions.isNotEmpty && questions.first.type == LevelQuestionType.image) {
+          _timerController.duration = Duration(seconds: _config.imageQuizTimerSeconds);
+          _startTimer();
+        }
+        final musicOn = ref.read(settingsProvider).valueOrNull?.musicOn ?? true;
+        audio.startQuizMusic(musicOn: musicOn);
+      }
+      return;
     } catch (e, st) {
       debugPrint('ImageQuizScreen _loadLevel: $e\n$st');
       if (mounted) {
@@ -494,6 +451,7 @@ class _ImageQuizScreenState extends ConsumerState<ImageQuizScreen>
     }
   }
 
+  /// Resolves reminder IDs against source levels, builds per-id maps, then starts the review pass.
   Future<void> _loadReminderLevel() async {
     try {
       final shortQuizDebug =
@@ -702,6 +660,7 @@ class _ImageQuizScreenState extends ConsumerState<ImageQuizScreen>
 
   // ── Timer ─────────────────────────────────────────────────────────────────
 
+  /// Restarts the pie countdown and monster idle loop for the current image question.
   void _startTimer() {
     _timerController
       ..reset()
@@ -711,6 +670,7 @@ class _ImageQuizScreenState extends ConsumerState<ImageQuizScreen>
     }
   }
 
+  /// Fires when the image timer completes without an answer; counts as wrong and shows Next.
   void _onTimerExpired() {
     if (_answerLocked) return;
     _timerController.stop();
@@ -733,6 +693,7 @@ class _ImageQuizScreenState extends ConsumerState<ImageQuizScreen>
 
   // ── Monster ───────────────────────────────────────────────────────────────
 
+  /// Advances monster proximity, wind animation, and bubbles; step 4 triggers game over.
   void _recordWrongForMonster() {
     _wrongCount++;
     final newStep = min(4, _wrongCount ~/ _monsterStepThreshold);
@@ -774,7 +735,7 @@ class _ImageQuizScreenState extends ConsumerState<ImageQuizScreen>
     }
   }
 
-  // step 0=laughing(-1) … step 4=crying(-5)
+  /// Guest animal sprite for the current distress step (or fixed step for game-over layout).
   Widget _animalImage({int step = -1}) {
     final index = (step < 0 ? _monsterStep : step).clamp(0, 4) + 1;
     final path = 'assets/images/animals/$_guestAnimal/$_guestAnimal-$index.png';
@@ -796,6 +757,7 @@ class _ImageQuizScreenState extends ConsumerState<ImageQuizScreen>
     );
   }
 
+  /// Antagonist sprite beside the animal during image-quiz pressure segments.
   Widget _monsterImage() {
     final path = 'assets/images/monsters/$_selectedMonster.png';
     return Image.asset(
@@ -819,7 +781,18 @@ class _ImageQuizScreenState extends ConsumerState<ImageQuizScreen>
 
   // ── Answer logic ──────────────────────────────────────────────────────────
 
+  /// Canonical correct key for scoring: image basename, template-2 stem, or convo answer string.
   String _correctAnswer() {
+    if (_allQuestions.isNotEmpty) {
+      if (_currentIndex >= _allQuestions.length) return '';
+      final q = _allQuestions[_currentIndex];
+      if (q.type == LevelQuestionType.image) {
+        if (q.template == 'imageQuizTemplate-2') return q.imageQuiz2Data!.imageName;
+        final path = _currentIndex < _questionImagePaths.length ? _questionImagePaths[_currentIndex] : null;
+        return path != null ? assetPathToBasename(path) : '';
+      }
+      return _convoAnswer(q) ?? '';
+    }
     if (_isConvoMode) {
       return _convoAnswer(_currentConvoLevelQuestion) ?? '';
     }
@@ -838,10 +811,40 @@ class _ImageQuizScreenState extends ConsumerState<ImageQuizScreen>
     return assetPathToBasename(_questionAssetPaths[_currentIndex]);
   }
 
+  /// Shuffled four choices for MCQ templates; empty when the template renders its own grid.
   List<String> _buildOptions() {
+    if (_allQuestions.isNotEmpty) {
+      if (_currentIndex >= _allQuestions.length) return [];
+      final q = _allQuestions[_currentIndex];
+      if (q.type != LevelQuestionType.image) {
+        if (q.template != 'ConvoTemplate-1' && q.template != 'ConvoTemplate-2') return [];
+        final ans = _convoAnswer(q);
+        final dist = q.template == 'ConvoTemplate-1'
+            ? q.convoData!.distractors
+            : q.convo2Data!.distractors;
+        if (ans == null) return [];
+        return ([ans, ...dist]..shuffle(Random()));
+      }
+      // Image question
+      if (q.template == 'imageQuizTemplate-2' && q.imageQuiz2Data != null) {
+        final d = q.imageQuiz2Data!;
+        return ([d.imageName, ...d.wrongAnswers]..shuffle(Random()));
+      }
+      final correct = _correctAnswer();
+      if (q.imageData != null && q.imageData!.wrongAnswers.length == 3) {
+        return ([correct, ...q.imageData!.wrongAnswers]..shuffle(Random()));
+      }
+      final wrongPool = _vocabulary.where((s) => s != correct).toList()..shuffle(Random());
+      return ([correct, ...wrongPool.take(3)]..shuffle(Random()));
+    }
     if (_isConvoMode) {
       final q = _currentConvoLevelQuestion;
       if (q == null) return [];
+      // Interactive templates (AppearDisappear, Simon, ClozeSequence) manage
+      // their own options internally — no shared options list needed.
+      if (q.template != 'ConvoTemplate-1' && q.template != 'ConvoTemplate-2') {
+        return [];
+      }
       final ans = _convoAnswer(q);
       final dist = q.template == 'ConvoTemplate-1'
           ? q.convoData!.distractors
@@ -883,6 +886,7 @@ class _ImageQuizScreenState extends ConsumerState<ImageQuizScreen>
     return options;
   }
 
+  /// Handles ConvoTemplate-1/2 and image multiple-choice taps; schedules advance or Next on wrong.
   void _onAnswerTap(int optionIndex) {
     if (_answerLocked) return;
     if (_kTestAutoComplete) {
@@ -934,6 +938,7 @@ class _ImageQuizScreenState extends ConsumerState<ImageQuizScreen>
     });
   }
 
+  /// Advances index or ends the run; handles debug short-quiz, reminder review pass, and per-question timers.
   void _goNext() {
     if (_shortQuizDebug &&
         !_reviewingMistakes &&
@@ -949,7 +954,6 @@ class _ImageQuizScreenState extends ConsumerState<ImageQuizScreen>
       setState(() {
         _phase = _Phase.end;
         _bubbleConversation = null;
-        if (_isConvoMode && !_isReminder) _conversationUnlocked = true;
       });
       return;
     }
@@ -984,7 +988,6 @@ class _ImageQuizScreenState extends ConsumerState<ImageQuizScreen>
       setState(() {
         _phase = _Phase.end;
         _bubbleConversation = null;
-        if (_isConvoMode && !_isReminder) _conversationUnlocked = true;
       });
       return;
     }
@@ -996,9 +999,18 @@ class _ImageQuizScreenState extends ConsumerState<ImageQuizScreen>
       _bubbleConversation = null;
       _currentOptions = _buildOptions();
     });
-    if (!_isConvoMode) _startTimer();
+    if (_allQuestions.isNotEmpty) {
+      if (_currentIndex < _allQuestions.length &&
+          _allQuestions[_currentIndex].type == LevelQuestionType.image) {
+        _timerController.duration = Duration(seconds: _config.imageQuizTimerSeconds);
+        _startTimer();
+      }
+    } else if (!_isConvoMode) {
+      _startTimer();
+    }
   }
 
+  /// Maps accuracy percentage to 0–3 stars (fixed 2 stars when debug early-exit fired).
   int _stars() {
     if (_endedEarlyShortQuiz) return 2;
     if (_questionCount == 0) return 0;
@@ -1009,8 +1021,10 @@ class _ImageQuizScreenState extends ConsumerState<ImageQuizScreen>
     return 0;
   }
 
+  /// Diamonds shown on the end screen equal correct answers earned this session.
   int _diamondsEarned() => _correctCount;
 
+  /// Persists reminder completion or normal level progress, then pops [LevelCompletionResult] to the runner.
   Future<void> _onEndOk() async {
     if (_isReminder) {
       await ReminderProgressService.instance.markReminderCompleted(
@@ -1056,6 +1070,7 @@ class _ImageQuizScreenState extends ConsumerState<ImageQuizScreen>
 
   // ── Build ─────────────────────────────────────────────────────────────────
 
+  /// Quiz shell: listens for music setting changes, wires AppBar close, delegates body to [_buildBody].
   @override
   Widget build(BuildContext context) {
     ref.listen(settingsProvider, (prev, next) {
@@ -1089,6 +1104,7 @@ class _ImageQuizScreenState extends ConsumerState<ImageQuizScreen>
     );
   }
 
+  /// Central phase switch between loading spinner, playing layouts, summary, and game-over screen.
   Widget _buildBody(bool soundFxOn, Map<String, String> strings, String userLanguage) {
     switch (_phase) {
       case _Phase.loading:
@@ -1104,6 +1120,7 @@ class _ImageQuizScreenState extends ConsumerState<ImageQuizScreen>
     }
   }
 
+  /// Shown while assets load or when [_loadError] is set with a back affordance.
   Widget _buildLoading(bool soundFxOn, Map<String, String> strings) {
     if (_loadError != null) {
       return Padding(
@@ -1134,7 +1151,13 @@ class _ImageQuizScreenState extends ConsumerState<ImageQuizScreen>
     return const Center(child: CircularProgressIndicator());
   }
 
+  /// Template-2 payload for the active index if present (unified, legacy image-only, or reminder maps).
   ImageQuizTemplate2Data? _currentImageQuiz2Data() {
+    if (_allQuestions.isNotEmpty) {
+      if (_currentIndex >= _allQuestions.length) return null;
+      final q = _allQuestions[_currentIndex];
+      return q.template == 'imageQuizTemplate-2' ? q.imageQuiz2Data : null;
+    }
     if (_configImageQuestions != null) {
       final q = _configImageQuestions![_currentIndex];
       if (q.template == 'imageQuizTemplate-2') return q.imageQuiz2Data;
@@ -1146,7 +1169,13 @@ class _ImageQuizScreenState extends ConsumerState<ImageQuizScreen>
     return null;
   }
 
+  /// Ordered asset paths [correct, wrong…] for template-2 grid rendering at the current index.
   List<String>? _fourOrderedPathsForCurrentImageQuiz2() {
+    if (_allQuestions.isNotEmpty) {
+      if (_currentIndex >= _questionQuiz2Paths.length) return null;
+      final paths = _questionQuiz2Paths[_currentIndex];
+      return paths.isEmpty ? null : paths;
+    }
     if (_configImageQuestions != null &&
         _currentIndex < _configImageQuiz2Paths.length) {
       final p = _configImageQuiz2Paths[_currentIndex];
@@ -1159,6 +1188,7 @@ class _ImageQuizScreenState extends ConsumerState<ImageQuizScreen>
     return null;
   }
 
+  /// Turns `file-name` stems into Title Case for the template-2 noun prompt above the grid.
   String _nounLabelFromImageStem(String stem) {
     if (stem.isEmpty) return stem;
     return stem
@@ -1169,6 +1199,7 @@ class _ImageQuizScreenState extends ConsumerState<ImageQuizScreen>
         .join(' ');
   }
 
+  /// Maps a logical stem to its resolved asset path using the fixed template-2 ordering list.
   String? _assetPathForImageQuiz2Stem(
     ImageQuizTemplate2Data d,
     List<String> fourOrdered,
@@ -1180,12 +1211,14 @@ class _ImageQuizScreenState extends ConsumerState<ImageQuizScreen>
     return fourOrdered[i];
   }
 
+  /// Seconds to wait after a correct image answer before auto-calling [_goNext].
   double _autoAdvanceDelayForCurrentImageQuestion() {
     final d2 = _currentImageQuiz2Data();
     if (d2 != null) return d2.autoNextDelay;
     return _config.autoAdvanceDelaySeconds;
   }
 
+  /// Callback from interactive convo widgets; correct path scores and delays [_goNext], wrong shows Next.
   void _handleInteractiveConvoOutcome(LevelQuestion q, bool correct) {
     if (correct) {
       AchievementService.instance.recordAnswer(true);
@@ -1219,8 +1252,11 @@ class _ImageQuizScreenState extends ConsumerState<ImageQuizScreen>
     }
   }
 
+  /// Image phase layout: hero image or template-2 grid, monster lane, timer, and option buttons.
   Widget _buildImagePlaying(bool soundFxOn, Map<String, String> strings) {
-    final path = _questionAssetPaths[_currentIndex];
+    final path = _allQuestions.isNotEmpty
+        ? (_currentIndex < _questionImagePaths.length ? _questionImagePaths[_currentIndex] ?? '' : '')
+        : _questionAssetPaths[_currentIndex];
     final isLast = _currentIndex + 1 >= _questionCount;
     final d2 = _currentImageQuiz2Data();
     final four = _fourOrderedPathsForCurrentImageQuiz2();
@@ -1237,7 +1273,7 @@ class _ImageQuizScreenState extends ConsumerState<ImageQuizScreen>
             child: Text(
               _reviewingMistakes
                   ? (strings['reviewing_mistakes'] ?? 'Reviewing Mistakes')
-                  : '${_currentIndex + 1} / $_initialQuestionCount',
+                  : '$_displayQuestionIndexOneBased / $_displayQuestionTotal',
               style: Theme.of(context).textTheme.labelLarge?.copyWith(
                     color: Theme.of(context).colorScheme.primary,
                     fontWeight: FontWeight.w600,
@@ -1263,14 +1299,19 @@ class _ImageQuizScreenState extends ConsumerState<ImageQuizScreen>
         else
           Expanded(
             flex: 1,
-            child: Padding(
-              padding: const EdgeInsets.all(16),
-              child: Image.asset(
-                path,
-                fit: BoxFit.contain,
-                errorBuilder: (_, __, ___) => Container(
-                  color: Colors.grey.shade300,
-                  child: const Icon(Icons.image_not_supported, size: 64),
+            child: Center(
+              child: ConstrainedBox(
+                constraints: BoxConstraints(
+                  maxHeight: MediaQuery.sizeOf(context).height * 0.25,
+                  maxWidth: MediaQuery.sizeOf(context).width * 0.5,
+                ),
+                child: Image.asset(
+                  path,
+                  fit: BoxFit.contain,
+                  errorBuilder: (_, __, ___) => Container(
+                    color: Colors.grey.shade300,
+                    child: const Icon(Icons.image_not_supported, size: 64),
+                  ),
                 ),
               ),
             ),
@@ -1444,9 +1485,8 @@ class _ImageQuizScreenState extends ConsumerState<ImageQuizScreen>
                     _assetPathForImageQuiz2Stem(iq2, paths4, option);
                 final isCorrect = option == _correctAnswer();
                 final isSelected = _selectedIndex == i;
-                final showGreen = _answerLocked &&
-                    isCorrect &&
-                    (isSelected || iq2.showCorrectOnWrong);
+                // Same as imageQuizTemplate-1 MCQ: correct cell turns green when locked; wrong pick turns red.
+                final showGreen = _answerLocked && isCorrect;
                 final showRed = _answerLocked && isSelected && !isCorrect;
                 return Material(
                   color: showGreen
@@ -1567,6 +1607,7 @@ class _ImageQuizScreenState extends ConsumerState<ImageQuizScreen>
     );
   }
 
+  /// Pass/fail summary with stars and diamonds (or reminder-specific copy) and OK → [_onEndOk].
   Widget _buildEnd(bool soundFxOn, Map<String, String> strings) {
     if (_isReminder) {
       return Center(
@@ -1638,19 +1679,6 @@ class _ImageQuizScreenState extends ConsumerState<ImageQuizScreen>
                 ),
               ],
             ),
-            if (_isConvoMode && _hasConvoTemplate1InCurrentRun) ...[
-              const SizedBox(height: 16),
-              OutlinedButton.icon(
-                onPressed: () {
-                  audio.playClick(soundFxOn: soundFxOn);
-                  _showFullConversation(strings);
-                },
-                icon: const Icon(Icons.chat_bubble_outline, size: 18),
-                label: Text(
-                  strings['view_full_conversation'] ?? 'View Full Conversation',
-                ),
-              ),
-            ],
             const SizedBox(height: 32),
             SizedBox(
               width: double.infinity,
@@ -1669,6 +1697,7 @@ class _ImageQuizScreenState extends ConsumerState<ImageQuizScreen>
     );
   }
 
+  /// Monster caught the guest: final pose, narrative copy, and back to levels without saving pass.
   Widget _buildGameOver(bool soundFxOn, Map<String, String> strings) {
     const bubbleMaxWidth = 100.0;
     return Center(
@@ -1752,106 +1781,18 @@ class _ImageQuizScreenState extends ConsumerState<ImageQuizScreen>
 
   // ── Convo mode ────────────────────────────────────────────────────────────
 
-  void _showFullConversation(Map<String, String> strings) {
-    final title = strings['full_conversation'] ?? 'Full Conversation';
-    final questions = _isReminder
-        ? _currentQuestionIds
-            .map((id) => _convoByQuestionId[id])
-            .whereType<LevelQuestion>()
-            .where((q) => q.template == 'ConvoTemplate-1')
-            .toList()
-        : _convoQuestions
-            .where((q) => q.template == 'ConvoTemplate-1')
-            .toList();
-    showModalBottomSheet<void>(
-      context: context,
-      isScrollControlled: true,
-      shape: const RoundedRectangleBorder(
-        borderRadius: BorderRadius.vertical(top: Radius.circular(20)),
-      ),
-      builder: (ctx) {
-        return DraggableScrollableSheet(
-          expand: false,
-          initialChildSize: 0.75,
-          minChildSize: 0.4,
-          maxChildSize: 0.95,
-          builder: (_, scrollController) {
-            return Column(
-              children: [
-                const SizedBox(height: 8),
-                Container(
-                  width: 40,
-                  height: 4,
-                  decoration: BoxDecoration(
-                    color: Colors.grey.shade400,
-                    borderRadius: BorderRadius.circular(2),
-                  ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.symmetric(
-                      vertical: 12, horizontal: 16),
-                  child: Text(
-                    title,
-                    style: Theme.of(ctx).textTheme.titleMedium?.copyWith(
-                          fontWeight: FontWeight.w700,
-                        ),
-                  ),
-                ),
-                const Divider(height: 1),
-                Expanded(
-                  child: ListView.separated(
-                    controller: scrollController,
-                    padding: const EdgeInsets.symmetric(
-                        horizontal: 16, vertical: 12),
-                    itemCount: questions.length,
-                    separatorBuilder: (_, __) => const SizedBox(height: 12),
-                    itemBuilder: (_, i) {
-                      final q = questions[i];
-                      final conv = q.convoData!;
-                      final c1 = _capitalize(conv.character1);
-                      final c2 = _capitalize(conv.character2);
-                      final ans = conv.answer;
-                      final line1 = (conv.line1['en'] ?? '')
-                          .replaceAll(_kBlank, ans);
-                      final line2 = (conv.line2['en'] ?? '')
-                          .replaceAll(_kBlank, ans);
-                      return Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            '$c1: $line1',
-                            style: Theme.of(ctx)
-                                .textTheme
-                                .bodyMedium
-                                ?.copyWith(fontWeight: FontWeight.w600),
-                          ),
-                          const SizedBox(height: 4),
-                          Text(
-                            '$c2: $line2',
-                            style: Theme.of(ctx).textTheme.bodyMedium,
-                          ),
-                        ],
-                      );
-                    },
-                  ),
-                ),
-              ],
-            );
-          },
-        );
-      },
-    );
-  }
-
+/// Non-image question chrome: progress label, template body, MCQ buttons when applicable, Next/Finish row.
   Widget _buildConvoPlaying(
       bool soundFxOn, Map<String, String> strings, String userLanguage) {
     final q = _currentConvoLevelQuestion;
     if (q == null) return const Center(child: CircularProgressIndicator());
-    final total = _isReminder ? _initialQuestionCount : _questionCount;
+    final displayTotal = _displayQuestionTotal;
     final isLast = _currentIndex + 1 >= _questionCount;
     final reminderProgress = _reviewingMistakes
         ? 1.0
-        : (total <= 0 ? 0.0 : (_currentIndex + 1) / total);
+        : (_initialQuestionCount <= 0
+            ? 0.0
+            : (_currentIndex + 1) / _initialQuestionCount);
 
     return Column(
       children: [
@@ -1862,7 +1803,8 @@ class _ImageQuizScreenState extends ConsumerState<ImageQuizScreen>
               Text(
                 _isReminder && _reviewingMistakes
                     ? (strings['reviewing_mistakes'] ?? 'Reviewing Mistakes')
-                    : _questionLabel(strings, _currentIndex + 1, total),
+                    : _questionLabel(
+                        strings, _displayQuestionIndexOneBased, displayTotal),
                 style: Theme.of(context).textTheme.labelLarge?.copyWith(
                       color: Theme.of(context).colorScheme.primary,
                       fontWeight: FontWeight.w600,
@@ -1911,54 +1853,35 @@ class _ImageQuizScreenState extends ConsumerState<ImageQuizScreen>
                 : const SizedBox.shrink(),
           ),
         ),
-        if (!_isReminder)
+        if (!_isReminder && userLanguage != 'en')
           Padding(
             padding: const EdgeInsets.fromLTRB(16, 0, 16, 12),
-            child: Row(
-              children: [
-                if (userLanguage != 'en') ...[
-                  Expanded(
-                    child: OutlinedButton.icon(
-                      onPressed: () {
-                        audio.playClick(soundFxOn: soundFxOn);
-                        setState(() => _showTranslation = !_showTranslation);
-                      },
-                      icon: Icon(
-                        _showTranslation
-                            ? Icons.translate
-                            : Icons.g_translate_outlined,
-                        size: 18,
-                      ),
-                      label: Text(
-                        _showTranslation
-                            ? (strings['english'] ?? 'English')
-                            : (strings['translate'] ?? 'Translate'),
-                      ),
-                    ),
-                  ),
-                  if (_hasConvoTemplate1InCurrentRun) const SizedBox(width: 8),
-                ],
-                if (_hasConvoTemplate1InCurrentRun)
-                  Expanded(
-                    child: OutlinedButton.icon(
-                      onPressed: _conversationUnlocked
-                          ? () {
-                              audio.playClick(soundFxOn: soundFxOn);
-                              _showFullConversation(strings);
-                            }
-                          : null,
-                      icon: const Icon(Icons.chat_bubble_outline, size: 18),
-                      label: Text(
-                          strings['full_conversation'] ?? 'Full Conversation'),
-                    ),
-                  ),
-              ],
+            child: SizedBox(
+              width: double.infinity,
+              child: OutlinedButton.icon(
+                onPressed: () {
+                  audio.playClick(soundFxOn: soundFxOn);
+                  setState(() => _showTranslation = !_showTranslation);
+                },
+                icon: Icon(
+                  _showTranslation
+                      ? Icons.translate
+                      : Icons.g_translate_outlined,
+                  size: 18,
+                ),
+                label: Text(
+                  _showTranslation
+                      ? (strings['english'] ?? 'English')
+                      : (strings['translate'] ?? 'Translate'),
+                ),
+              ),
             ),
           ),
       ],
     );
   }
 
+  /// Picks the correct child widget for the active convo template (including interactive mini-games).
   Widget _buildConvoQuestionBody(
     LevelQuestion q,
     String userLanguage,
@@ -2002,13 +1925,14 @@ class _ImageQuizScreenState extends ConsumerState<ImageQuizScreen>
     }
   }
 
+  /// Sentence bubble plus small hero image for ConvoTemplate-2 cloze prompts.
   Widget _buildConvoTemplate2Content(LevelQuestion q, String userLanguage) {
     final d = q.convo2Data!;
     final path = _isReminder
         ? _convo2ImagePathByQuestionId[_currentQuestionId ?? '']
-        : (_currentIndex < _convo2HeroPaths.length
-            ? _convo2HeroPaths[_currentIndex]
-            : null);
+        : (_allQuestions.isNotEmpty
+            ? (_currentIndex < _questionConvo2HeroPaths.length ? _questionConvo2HeroPaths[_currentIndex] : null)
+            : (_currentIndex < _convo2HeroPaths.length ? _convo2HeroPaths[_currentIndex] : null));
     // Always show locale-aware sentence: English for 'en', English + (answer
     // translation) for other locales — no toggle needed.
     final line = d.sentence[userLanguage] ?? d.sentence['en'] ?? '';
@@ -2016,52 +1940,39 @@ class _ImageQuizScreenState extends ConsumerState<ImageQuizScreen>
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
-          if (path != null)
-            AspectRatio(
-              aspectRatio: 16 / 10,
+          Container(
+            padding: const EdgeInsets.all(12),
+            decoration: BoxDecoration(
+              color: Theme.of(context)
+                  .colorScheme
+                  .surfaceContainerHighest,
+              borderRadius: BorderRadius.circular(12),
+            ),
+            child: DefaultTextStyle(
+              style: Theme.of(context).textTheme.bodyMedium!,
+              child: _buildBubbleText(line, isActive: true),
+            ),
+          ),
+          if (path != null) ...[
+            const SizedBox(height: 12),
+            Center(
               child: ClipRRect(
-                borderRadius: BorderRadius.circular(12),
-                child: Image.asset(path, fit: BoxFit.cover),
+                borderRadius: BorderRadius.circular(8),
+                child: Image.asset(
+                  path,
+                  width: 72,
+                  height: 72,
+                  fit: BoxFit.cover,
+                ),
               ),
             ),
-          const SizedBox(height: 12),
-          Row(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Expanded(
-                child: Container(
-                  padding: const EdgeInsets.all(12),
-                  decoration: BoxDecoration(
-                    color: Theme.of(context)
-                        .colorScheme
-                        .surfaceContainerHighest,
-                    borderRadius: BorderRadius.circular(12),
-                  ),
-                  child: DefaultTextStyle(
-                    style: Theme.of(context).textTheme.bodyMedium!,
-                    child: _buildBubbleText(line, isActive: true),
-                  ),
-                ),
-              ),
-              if (path != null) ...[
-                const SizedBox(width: 8),
-                ClipRRect(
-                  borderRadius: BorderRadius.circular(8),
-                  child: Image.asset(
-                    path,
-                    width: 72,
-                    height: 72,
-                    fit: BoxFit.cover,
-                  ),
-                ),
-              ],
-            ],
-          ),
+          ],
         ],
       ),
     );
   }
 
+  /// Localized “Question X / Y” string for the convo header line.
   String _questionLabel(Map<String, String> strings, int current, int total) {
     final template = strings['question_x_of_y'] ?? 'Question %s / %s';
     return template
@@ -2069,6 +1980,7 @@ class _ImageQuizScreenState extends ConsumerState<ImageQuizScreen>
         .replaceFirst('%s', '$total');
   }
 
+  /// Side-by-side character columns for classic ConvoTemplate-1 presentation.
   Widget _buildCharactersRow(ConvoQuestionData q, String userLanguage) {
     final blankInLine1 = q.line1['en']?.contains(_kBlank) ?? false;
     final line1Text = _showTranslation
@@ -2102,6 +2014,7 @@ class _ImageQuizScreenState extends ConsumerState<ImageQuizScreen>
     );
   }
 
+  /// One speaker column: bubble, name label, and circular avatar asset.
   Widget _buildCharacterColumn({
     required String name,
     required String dialogueLine,
@@ -2130,6 +2043,7 @@ class _ImageQuizScreenState extends ConsumerState<ImageQuizScreen>
     );
   }
 
+  /// Loads `assets/images/characters/{name}.png` or falls back to an initial letter avatar.
   Widget _buildCharacterAvatar(String name, {required double size}) {
     final imagePath = 'assets/images/characters/$name.png';
     return SizedBox(
@@ -2161,6 +2075,7 @@ class _ImageQuizScreenState extends ConsumerState<ImageQuizScreen>
     );
   }
 
+  /// Rounded bubble around dialogue text with alignment for left/right speakers.
   Widget _buildDialogueBubble({
     required String text,
     required bool isActive,
@@ -2189,6 +2104,7 @@ class _ImageQuizScreenState extends ConsumerState<ImageQuizScreen>
     );
   }
 
+  /// Renders convo line text with blank highlighting when that side holds the missing word.
   Widget _buildBubbleText(String text, {required bool isActive}) {
     if (!text.contains(_kBlank)) {
       return Text(text, style: Theme.of(context).textTheme.bodySmall);
@@ -2235,6 +2151,7 @@ class _ImageQuizScreenState extends ConsumerState<ImageQuizScreen>
     );
   }
 
+  /// One shuffled MCQ row for ConvoTemplate-1/2 with locked-state coloring after answering.
   Widget _buildConvoAnswerButton(
       int optionIndex, LevelQuestion q, bool soundFxOn) {
     final option = _currentOptions[optionIndex];
@@ -2297,12 +2214,14 @@ class _ImageQuizScreenState extends ConsumerState<ImageQuizScreen>
     );
   }
 
+  /// Title-cases option labels shown on convo and image answer buttons.
   String _capitalize(String s) {
     if (s.isEmpty) return s;
     return s[0].toUpperCase() + s.substring(1).toLowerCase();
   }
 }
 
+/// Compact white bubble used above guest/monster sprites during banter steps.
 class _SpeechBubble extends StatelessWidget {
   const _SpeechBubble(this.text, {this.maxWidth = 120});
 
@@ -2336,6 +2255,7 @@ class _SpeechBubble extends StatelessWidget {
   }
 }
 
+/// Draws the circular countdown wedge for image-quiz time pressure (filled fraction = remaining time).
 class _PieTimerPainter extends CustomPainter {
   const _PieTimerPainter({required this.progress, required this.color});
 
@@ -2343,6 +2263,7 @@ class _PieTimerPainter extends CustomPainter {
   final double progress;
   final Color color;
 
+  /// Paints grey track, colored sweep from 12 o’clock, and outer ring stroke.
   @override
   void paint(Canvas canvas, Size size) {
     final center = Offset(size.width / 2, size.height / 2);
@@ -2378,11 +2299,13 @@ class _PieTimerPainter extends CustomPainter {
     );
   }
 
+  /// Repaints when the animation value or color changes between frames.
   @override
   bool shouldRepaint(covariant _PieTimerPainter old) =>
       old.progress != progress || old.color != color;
 }
 
+/// Streak lines trailing the monster during slide transitions after wrong answers.
 class _WindPainter extends CustomPainter {
   _WindPainter(this.value);
 
@@ -2391,6 +2314,7 @@ class _WindPainter extends CustomPainter {
   // Horizontal wind lines trailing to the RIGHT of the monster (behind it as it moves left).
   // Lines start just outside the right edge and extend further right.
   // Fade in fast, fade out slowly over the animation duration.
+  /// Draws fading horizontal strokes keyed by [value] for the wind gust effect.
   @override
   void paint(Canvas canvas, Size size) {
     if (value <= 0 || value >= 1) return;
@@ -2428,6 +2352,7 @@ class _WindPainter extends CustomPainter {
     }
   }
 
+  /// Repaints every tick of the wind animation controller.
   @override
   bool shouldRepaint(covariant _WindPainter oldDelegate) =>
       oldDelegate.value != value;

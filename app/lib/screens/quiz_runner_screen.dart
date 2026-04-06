@@ -11,9 +11,8 @@ import '../services/level_config_loader.dart';
 import 'image_quiz_screen.dart';
 import 'transitions/custom_page_routes.dart';
 
-/// Loads the level config, splits questions into type-homogeneous phases if needed,
-/// and sequences each phase as a separate navigator route. Supports mixed-type levels
-/// (e.g. image + vocab questions in the same sub-level).
+/// Thin orchestrator between the level map and [ImageQuizScreen]: loads JSON then pushes one quiz route.
+/// Reminder levels may push two sequential routes (image IDs then convo IDs) before popping back to the map.
 class QuizRunnerScreen extends ConsumerStatefulWidget {
   const QuizRunnerScreen({
     super.key,
@@ -39,6 +38,7 @@ class QuizRunnerScreen extends ConsumerStatefulWidget {
 class _QuizRunnerScreenState extends ConsumerState<QuizRunnerScreen> {
   String? _error;
 
+  /// Schedules [_run] after the first frame so [Navigator] and [context] are valid.
   @override
   void initState() {
     super.initState();
@@ -46,6 +46,7 @@ class _QuizRunnerScreenState extends ConsumerState<QuizRunnerScreen> {
     WidgetsBinding.instance.addPostFrameCallback((_) => _run());
   }
 
+  /// Chooses reminder vs regular pipeline; both eventually pop a [LevelCompletionResult] to the map.
   Future<void> _run() async {
     if (widget.subLevel.isReminder) {
       await _runReminder();
@@ -56,6 +57,7 @@ class _QuizRunnerScreenState extends ConsumerState<QuizRunnerScreen> {
 
   // ─── Regular level ───────────────────────────────────────────────────────
 
+  /// Loads `questions.json` for [subLevel], opens [ImageQuizScreen] with full [LevelConfig], forwards completion.
   Future<void> _runRegular() async {
     LevelConfig cfg;
     try {
@@ -66,25 +68,28 @@ class _QuizRunnerScreenState extends ConsumerState<QuizRunnerScreen> {
       return;
     }
 
-    // Split into consecutive type-homogeneous phases (preserves question order).
-    final phases = _splitIntoPhases(cfg);
-
-    bool allCompleted = true;
-    for (final phaseCfg in phases) {
-      if (!mounted) return;
-      final result = await _pushPhase(phaseCfg);
-      if (result == null || !result.completed) allCompleted = false;
-    }
+    if (!mounted) return;
+    final result = await Navigator.of(context).push<LevelCompletionResult>(
+      popFadeRoute<LevelCompletionResult>(
+        ImageQuizScreen(
+          subLevel: widget.subLevel,
+          ordinalLevelIndex: widget.ordinalLevelIndex,
+          progressKey: widget.progressKey,
+          preloadedLevelConfig: cfg,
+        ),
+      ),
+    );
 
     if (!mounted) return;
     Navigator.of(context).pop(LevelCompletionResult(
       ordinalLevelIndex: widget.ordinalLevelIndex,
-      completed: allCompleted,
+      completed: result?.completed ?? false,
     ));
   }
 
   // ─── Reminder level ──────────────────────────────────────────────────────
 
+  /// Resolves reminder IDs to source levels, buckets by question type, runs image then convo quiz passes.
   Future<void> _runReminder() async {
     final ids = widget.reminderQuestionIds ?? const <String>[];
     final sources = widget.reminderSourceLevelsByProgressKey ?? {};
@@ -164,53 +169,9 @@ class _QuizRunnerScreenState extends ConsumerState<QuizRunnerScreen> {
     }
   }
 
-  // ─── Helpers ─────────────────────────────────────────────────────────────
-
-  /// Splits [cfg] into consecutive type-homogeneous sub-configs.
-  /// E.g. [img, img, vocab, img] → [{img,img}, {vocab}, {img}]
-  List<LevelConfig> _splitIntoPhases(LevelConfig cfg) {
-    if (cfg.questions.isEmpty) return [cfg];
-
-    final phases = <LevelConfig>[];
-    final current = <LevelQuestion>[];
-    LevelQuestionType? currentType;
-
-    for (final q in cfg.questions) {
-      final bucket = q.type == LevelQuestionType.image
-          ? LevelQuestionType.image
-          : LevelQuestionType.vocab; // vocab and grammar share the same screen (ImageQuizScreen convo mode)
-      if (currentType == null || bucket == currentType) {
-        current.add(q);
-        currentType = bucket;
-      } else {
-        phases.add(LevelConfig(questions: List.unmodifiable(current)));
-        current.clear();
-        current.add(q);
-        currentType = bucket;
-      }
-    }
-    if (current.isNotEmpty) {
-      phases.add(LevelConfig(questions: List.unmodifiable(current)));
-    }
-    return phases;
-  }
-
-  /// Pushes the quiz screen for a type-homogeneous [phaseCfg].
-  Future<LevelCompletionResult?> _pushPhase(LevelConfig phaseCfg) {
-    return Navigator.of(context).push<LevelCompletionResult>(
-      popFadeRoute<LevelCompletionResult>(
-        ImageQuizScreen(
-          subLevel: widget.subLevel,
-          ordinalLevelIndex: widget.ordinalLevelIndex,
-          progressKey: widget.progressKey,
-          preloadedLevelConfig: phaseCfg,
-        ),
-      ),
-    );
-  }
-
   // ─── Build ────────────────────────────────────────────────────────────────
 
+  /// App bar close: aborts the runner with `completed: false` after playing click feedback.
   void _popToLevels(BuildContext context) {
     final soundFxOn = ref.read(settingsProvider).valueOrNull?.soundFxOn ?? true;
     audio.playClick(soundFxOn: soundFxOn);
@@ -220,6 +181,7 @@ class _QuizRunnerScreenState extends ConsumerState<QuizRunnerScreen> {
     ));
   }
 
+  /// Loading scaffold or error text while [_run] is in flight; same chrome as the quiz for consistent close behavior.
   @override
   Widget build(BuildContext context) {
     final closeLeading = IconButton(

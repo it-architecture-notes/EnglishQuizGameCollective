@@ -4,6 +4,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'screens/home_screen.dart';
 
+/// App entry: binds Flutter, locks portrait, and starts Riverpod + [MainApp].
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
   SystemChrome.setPreferredOrientations([
@@ -19,6 +20,7 @@ void main() {
 class MainApp extends StatelessWidget {
   const MainApp({super.key});
 
+  /// Root [MaterialApp] theme and initial route ([HomeScreen]).
   @override
   Widget build(BuildContext context) {
     return MaterialApp(

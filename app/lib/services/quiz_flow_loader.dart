@@ -4,7 +4,7 @@ import 'package:flutter/services.dart';
 
 import '../models/quiz_flow.dart';
 
-/// Result of loading flow data for the unified game.
+/// In-memory representation of `game-flow.json` plus main-level metadata for the map.
 class QuizFlowData {
   const QuizFlowData({
     required this.subLevels,
@@ -15,7 +15,8 @@ class QuizFlowData {
   final List<MainLevelMeta> mainLevels;
 }
 
-/// Loads `assets/data/flow/game-flow.json` and `game-flow-main-levels.json`.
+/// Loads sub-level ordering and main-level banner metadata for the level map UI.
+/// Called from [LevelsScreen._loadData] whenever the map needs fresh flow configuration.
 Future<QuizFlowData> loadGameFlow() async {
   const subLevelsPath = 'assets/data/flow/game-flow.json';
   const mainLevelsPath = 'assets/data/flow/game-flow-main-levels.json';

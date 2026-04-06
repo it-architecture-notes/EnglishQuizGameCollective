@@ -4,7 +4,8 @@ import 'package:flutter/services.dart';
 
 import '../models/level_config.dart';
 
-/// Loads `assets/quiz-data/levels/{iconImageName}/questions.json`.
+/// Reads one sub-level’s `questions.json` from the asset bundle into a [LevelConfig].
+/// Invoked by [QuizRunnerScreen._runRegular], reminder resolution, and [ImageQuizScreen._loadLevel] fallback.
 Future<LevelConfig> loadLevelConfig(String iconImageName) async {
   final path = 'assets/quiz-data/levels/$iconImageName/questions.json';
   final String raw;

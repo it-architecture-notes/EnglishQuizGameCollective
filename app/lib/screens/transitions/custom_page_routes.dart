@@ -2,7 +2,8 @@ import 'dart:math' as math;
 
 import 'package:flutter/material.dart';
 
-/// Scale + Elastic: page scales up with an elastic (overshoot) curve.
+/// Page transition used where a bouncy scale-in fits the UX better than a plain fade.
+/// Called when navigating to a screen that should feel like it “pops” into place with overshoot.
 Route<T> scaleElasticRoute<T>(Widget page) {
   return PageRouteBuilder<T>(
     pageBuilder: (_, __, ___) => page,
@@ -20,7 +21,8 @@ Route<T> scaleElasticRoute<T>(Widget page) {
   );
 }
 
-/// Flip + Scale: page flips on Y axis while scaling up.
+/// 3D Y-flip plus scale for a card-flip style entrance between major screens.
+/// Used when a route wants a more dramatic transition than fade or slide alone.
 Route<T> flipScaleRoute<T>(Widget page) {
   return PageRouteBuilder<T>(
     pageBuilder: (_, __, ___) => page,
@@ -51,7 +53,8 @@ Route<T> flipScaleRoute<T>(Widget page) {
   );
 }
 
-/// Pop + Fade: scale and fade in (pop-style entrance).
+/// Default “soft” push: simultaneous fade and slight scale-up from the home and level map flows.
+/// Used heavily for [LevelsScreen], [QuizRunnerScreen], and [ImageQuizScreen] so navigation feels consistent.
 Route<T> popFadeRoute<T>(Widget page) {
   return PageRouteBuilder<T>(
     pageBuilder: (_, __, ___) => page,
@@ -75,7 +78,8 @@ Route<T> popFadeRoute<T>(Widget page) {
   );
 }
 
-/// Slide up + Fade: page slides from bottom to top while fading in.
+/// Bottom sheet–like entrance: slide from below with fade for overlays or secondary flows.
+/// Chosen when the next screen should read as rising into view rather than replacing center stage.
 Route<T> slideUpFadeRoute<T>(Widget page) {
   return PageRouteBuilder<T>(
     pageBuilder: (_, __, ___) => page,
@@ -100,7 +104,8 @@ Route<T> slideUpFadeRoute<T>(Widget page) {
   );
 }
 
-/// Card Flip: page rotates in like a card (full 3D flip on Y axis).
+/// Full pi/2 Y rotation without the initial scale tweak of [flipScaleRoute], for a strict card flip.
+/// Available for routes that want a hinge-like transition between two full pages.
 Route<T> cardFlipRoute<T>(Widget page) {
   return PageRouteBuilder<T>(
     pageBuilder: (_, __, ___) => page,
