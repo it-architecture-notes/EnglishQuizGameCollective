@@ -8,10 +8,13 @@ class ImageQuestionData {
   const ImageQuestionData({
     required this.imageName,
     required this.wrongAnswers,
+    this.timerSeconds,
   });
 
   final String imageName;
   final List<String> wrongAnswers;
+  /// Per-question monster timer override in seconds. Null = use global config value.
+  final int? timerSeconds;
 }
 
 /// Parsed `questionData` for [imageQuizTemplate-2] (noun prompt + pick image).
@@ -21,6 +24,7 @@ class ImageQuizTemplate2Data {
     required this.wrongAnswers,
     this.autoNextDelay = 1.0,
     this.showCorrectOnWrong = false,
+    this.timerSeconds,
   });
 
   final String imageName;
@@ -28,6 +32,8 @@ class ImageQuizTemplate2Data {
   final double autoNextDelay;
   /// Parsed from `show_correct_on_wrong` in JSON; reserved — the grid always highlights the correct tile green when locked (same as template-1).
   final bool showCorrectOnWrong;
+  /// Per-question monster timer override in seconds. Null = use global config value.
+  final int? timerSeconds;
 }
 
 /// Parsed `questionData` for [ConvoTemplate-AppearDisappear].
@@ -60,19 +66,25 @@ class SimonQuestionData {
   final double autoNextDelay;
 }
 
-/// Parsed `questionData` for [ConvoTemplate-ClozeSequence].
+/// Parsed `questionData` for [ConvoTemplate-ClozeSequence] (and the adapter for ConvoTemplate-2).
 class ClozeSequenceQuestionData {
   const ClozeSequenceQuestionData({
     required this.sentence,
     required this.answers,
     required this.distractors,
+    this.imageName,
+    this.wordsAllTogether = false,
     this.autoNextDelay = 1.0,
   });
 
-  /// Word tokens; use `"___"` for each blank in order.
-  final List<String> sentence;
+  /// Localized sentence map. English value uses 2+ underscores as blank markers (e.g. `_____`).
+  final Map<String, String> sentence;
   final List<String> answers;
   final List<String> distractors;
+  /// Optional image basename under the level folder. Null = no image.
+  final String? imageName;
+  /// When true, all sentence words appear immediately; when false, words stream in left-to-right.
+  final bool wordsAllTogether;
   final double autoNextDelay;
 }
 
@@ -95,34 +107,31 @@ class ConvoQuestionData {
   final List<String> distractors;
 }
 
-/// Parsed `questionData` for [ConvoTemplate-2] (image + cloze sentence + cloze image).
+/// Parsed `questionData` for [ConvoTemplate-2] (optional hero image + cloze sentence).
 class ConvoTemplate2QuestionData {
   const ConvoTemplate2QuestionData({
-    required this.imageName,
+    this.imageName,
     required this.sentence,
     required this.answer,
     required this.distractors,
   });
 
-  /// Basename without extension; must exist under the level folder.
-  final String imageName;
+  /// Basename without extension under the level folder; omit or null = no image.
+  final String? imageName;
   final Map<String, String> sentence;
   final String answer;
   final List<String> distractors;
 }
 
-/// [ConvoTemplate-SentenceBuilder]: immediate grid; [correctOrder] is the target token sequence.
+/// [ConvoTemplate-SentenceBuilder]: tiles are only the sentence tokens, shuffled; player taps in [correctOrder].
 class SentenceBuilderQuestionData {
   const SentenceBuilderQuestionData({
     required this.correctOrder,
-    required this.words,
-    required this.distractors,
     this.autoNextDelay = 1.0,
   });
 
+  /// Target sentence token sequence (left-to-right).
   final List<String> correctOrder;
-  final List<String> words;
-  final List<String> distractors;
   final double autoNextDelay;
 }
 
@@ -152,6 +161,7 @@ class ImageQuizTemplate3Data {
     required this.answer,
     required this.distractors,
     this.distractorType,
+    this.timerSeconds,
   });
 
   final String imageName;
@@ -159,6 +169,8 @@ class ImageQuizTemplate3Data {
   final List<String> distractors;
   /// Optional: `grammar` | `meaning` | `tense` — reserved for future use.
   final String? distractorType;
+  /// Per-question monster timer override in seconds. Null = use global config value.
+  final int? timerSeconds;
 }
 
 /// [imageQuizTemplate-SpotDifference]: two images + localized prompt.
@@ -168,12 +180,15 @@ class SpotDifferenceQuestionData {
     required this.correctImage,
     required this.wrongImage,
     this.autoNextDelay = 1.0,
+    this.timerSeconds,
   });
 
   final Map<String, String> sentence;
   final String correctImage;
   final String wrongImage;
   final double autoNextDelay;
+  /// Per-question monster timer override in seconds. Null = use global config value.
+  final int? timerSeconds;
 }
 
 /// [ConvoTemplate-GrammarForm]: cloze sentence + lemma hint + four word options.
@@ -233,6 +248,13 @@ class LevelQuestion {
   final LevelQuestionType type;
   final String template;
   final ImageQuestionData? imageData;
+
+  /// Per-question monster timer override, or null to use the global config value.
+  int? get timerSecondsOverride =>
+      imageData?.timerSeconds ??
+      imageQuiz2Data?.timerSeconds ??
+      imageQuiz3Data?.timerSeconds ??
+      spotDiffData?.timerSeconds;
   final ImageQuizTemplate2Data? imageQuiz2Data;
   final ImageQuizTemplate3Data? imageQuiz3Data;
   final SpotDifferenceQuestionData? spotDiffData;
@@ -296,7 +318,11 @@ class LevelConfig {
         'image question must have exactly 3 wrongAnswers (got ${wrong.length})',
       );
     }
-    return ImageQuestionData(imageName: imageName, wrongAnswers: wrong);
+    return ImageQuestionData(
+      imageName: imageName,
+      wrongAnswers: wrong,
+      timerSeconds: (data['timer_seconds'] as num?)?.toInt(),
+    );
   }
 
   /// Parses noun + four-image grid settings including optional delays and wrong-answer highlight flag.
@@ -314,8 +340,8 @@ class LevelConfig {
       imageName: imageName,
       wrongAnswers: wrong,
       autoNextDelay: (data['auto_next_delay'] as num?)?.toDouble() ?? 1.0,
-      showCorrectOnWrong:
-          data['show_correct_on_wrong'] as bool? ?? false,
+      showCorrectOnWrong: data['show_correct_on_wrong'] as bool? ?? false,
+      timerSeconds: (data['timer_seconds'] as num?)?.toInt(),
     );
   }
 
@@ -364,41 +390,60 @@ class LevelConfig {
     );
   }
 
-  /// Recognizes blank markers in cloze sentence tokens independent of underscore count in JSON.
-  static bool _isBlankToken(String s) => s == '___' || s == '_____';
+  /// Returns true when a space-delimited token is a blank marker (2+ underscores, nothing else).
+  static bool _isBlankToken(String s) => RegExp(r'^_{2,}$').hasMatch(s);
 
-  /// Parses streaming cloze rows; checks blank count vs answers and grid tile totals (4 or 9).
+  /// Counts blanks in the English value of a localized sentence map.
+  static int _countBlanks(Map<String, String> sentence) =>
+      (sentence['en'] ?? '').split(' ').where(_isBlankToken).length;
+
+  /// Parses [ConvoTemplate-ClozeSequence]: localized sentence map, ordered answers, flexible distractors.
   static ClozeSequenceQuestionData _parseClozeSequence(
     Map<String, dynamic> data,
   ) {
-    final sentence = _stringList(data['sentence']);
-    final answers = _stringList(data['answers']);
+    final sentence = _stringMap(data['sentence']);
+    // Accept 'answer' (array or single string) or 'answers' (array)
+    final rawAnswer = data['answer'] ?? data['answers'];
+    final List<String> answers;
+    if (rawAnswer is List) {
+      answers = rawAnswer.map((e) => e.toString()).toList();
+    } else if (rawAnswer is String) {
+      answers = [rawAnswer];
+    } else {
+      answers = const [];
+    }
     final distractors = _stringList(data['distractors']);
-    final blankCount = sentence.where(_isBlankToken).length;
+    final blankCount = _countBlanks(sentence);
     if (blankCount != answers.length) {
       throw FormatException(
-        'ConvoTemplate-ClozeSequence: ${answers.length} answers but $blankCount blanks in sentence',
+        'ConvoTemplate-ClozeSequence: ${answers.length} answers but $blankCount blanks in sentence["en"]',
       );
     }
-    final expectedTiles = answers.length + distractors.length;
-    if (answers.length == 1) {
-      if (expectedTiles != 4) {
-        throw FormatException(
-          'ConvoTemplate-ClozeSequence with 1 blank expects 4 grid tiles (answers + distractors), got $expectedTiles',
-        );
-      }
-    } else {
-      if (expectedTiles != 9) {
-        throw FormatException(
-          'ConvoTemplate-ClozeSequence with ${answers.length} blanks expects 9 grid tiles, got $expectedTiles',
-        );
-      }
-    }
+    final rawName = data['imageName'];
+    final String? imageName =
+        rawName is String && rawName.trim().isNotEmpty ? rawName.trim() : null;
     return ClozeSequenceQuestionData(
       sentence: sentence,
       answers: answers,
       distractors: distractors,
+      imageName: imageName,
+      wordsAllTogether: data['words_all_together'] as bool? ?? false,
       autoNextDelay: (data['auto_next_delay'] as num?)?.toDouble() ?? 1.0,
+    );
+  }
+
+  /// Converts a [ConvoTemplate-2] payload into a [ClozeSequenceQuestionData] for the unified widget.
+  static ClozeSequenceQuestionData _parseConvo2AsCloze(
+    Map<String, dynamic> data,
+  ) {
+    final c2 = _parseConvo2Data(data);
+    return ClozeSequenceQuestionData(
+      sentence: c2.sentence,
+      answers: [c2.answer],
+      distractors: c2.distractors,
+      imageName: c2.imageName,
+      wordsAllTogether: true, // ConvoTemplate-2 never streamed
+      autoNextDelay: 1.0,
     );
   }
 
@@ -416,9 +461,12 @@ class LevelConfig {
     );
   }
 
-  /// Parses image-backed cloze (hero image name, localized sentence, three distractors).
+  /// Parses optional hero image + cloze (localized sentence, three distractors).
   static ConvoTemplate2QuestionData _parseConvo2Data(Map<String, dynamic> data) {
-    final imageName = data['imageName'] as String? ?? '';
+    final rawName = data['imageName'];
+    final String? imageName = rawName is String && rawName.trim().isNotEmpty
+        ? rawName.trim()
+        : null;
     final distractors = (data['distractors'] as List<dynamic>? ?? [])
         .map((e) => e.toString())
         .toList();
@@ -435,39 +483,18 @@ class LevelConfig {
     );
   }
 
-  /// True if [a] and [b] are identical multisets (same length, same sorted tokens).
-  static bool _sameMultiset(List<String> a, List<String> b) {
-    if (a.length != b.length) return false;
-    final sa = [...a]..sort();
-    final sb = [...b]..sort();
-    for (var i = 0; i < sa.length; i++) {
-      if (sa[i] != sb[i]) return false;
-    }
-    return true;
-  }
-
-  /// Parses [ConvoTemplate-SentenceBuilder]: [correct_order] and [words] must match as multisets.
+  /// Parses [ConvoTemplate-SentenceBuilder]: [correct_order] lists the sentence tokens in order (no distractors).
   static SentenceBuilderQuestionData _parseSentenceBuilder(
     Map<String, dynamic> data,
   ) {
     final correctOrder = _stringList(data['correct_order']);
-    final words = _stringList(data['words']);
-    final distractors = _stringList(data['distractors']);
-    if (correctOrder.isEmpty || !_sameMultiset(correctOrder, words)) {
+    if (correctOrder.length < 2) {
       throw FormatException(
-        'ConvoTemplate-SentenceBuilder: correct_order must match words as a multiset',
-      );
-    }
-    final total = words.length + distractors.length;
-    if (total != 9) {
-      throw FormatException(
-        'ConvoTemplate-SentenceBuilder expects words + distractors == 9 tiles (3×3), got $total',
+        'ConvoTemplate-SentenceBuilder: correct_order must have at least 2 tokens',
       );
     }
     return SentenceBuilderQuestionData(
       correctOrder: correctOrder,
-      words: words,
-      distractors: distractors,
       autoNextDelay: (data['auto_next_delay'] as num?)?.toDouble() ?? 1.0,
     );
   }
@@ -512,6 +539,7 @@ class LevelConfig {
       answer: data['answer'] as String? ?? '',
       distractors: distractors,
       distractorType: dt,
+      timerSeconds: (data['timer_seconds'] as num?)?.toInt(),
     );
   }
 
@@ -524,6 +552,7 @@ class LevelConfig {
       correctImage: data['correctImage'] as String? ?? '',
       wrongImage: data['wrongImage'] as String? ?? '',
       autoNextDelay: (data['auto_next_delay'] as num?)?.toDouble() ?? 1.0,
+      timerSeconds: (data['timer_seconds'] as num?)?.toInt(),
     );
   }
 
@@ -612,7 +641,8 @@ class LevelConfig {
         convoData = _parseConvoData(qd);
         break;
       case 'ConvoTemplate-2':
-        convo2Data = _parseConvo2Data(qd);
+        // Adapter: convert to the unified ClozeSequence model.
+        clozeSequenceData = _parseConvo2AsCloze(qd);
         break;
       case 'ConvoTemplate-AppearDisappear':
         appearDisappearData = _parseAppearDisappear(qd);
@@ -638,10 +668,11 @@ class LevelConfig {
       default:
         throw FormatException('Unknown template: $template');
     }
-    final normalizedTemplate =
-        template == 'imageQuizTemplate-SentenceChoice'
-            ? 'imageQuizTemplate-3'
-            : template;
+    final normalizedTemplate = switch (template) {
+      'imageQuizTemplate-SentenceChoice' => 'imageQuizTemplate-3',
+      'ConvoTemplate-2' => 'ConvoTemplate-ClozeSequence',
+      _ => template,
+    };
     return LevelQuestion(
       questionId: json['questionId'] as String?,
       type: type,

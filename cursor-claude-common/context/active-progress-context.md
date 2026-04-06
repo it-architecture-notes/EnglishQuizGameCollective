@@ -2,4 +2,4 @@
 
 ## Active Issue
 
-_No active issue. Add the next issue below when starting new work._
+_No active issue._

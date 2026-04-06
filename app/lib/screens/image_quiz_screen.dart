@@ -183,7 +183,6 @@ class _ImageQuizScreenState extends ConsumerState<ImageQuizScreen>
   String? _convoAnswer(LevelQuestion? q) {
     if (q == null) return null;
     if (q.template == 'ConvoTemplate-1') return q.convoData?.answer;
-    if (q.template == 'ConvoTemplate-2') return q.convo2Data?.answer;
     return null;
   }
 
@@ -326,7 +325,7 @@ class _ImageQuizScreenState extends ConsumerState<ImageQuizScreen>
             _currentOptions = _buildOptions();
           });
           _timerController.duration =
-              Duration(seconds: _config.imageQuizTimerSeconds);
+              Duration(seconds: _timerSecondsForCurrentQuestion());
           _startTimer();
           final musicOn = ref.read(settingsProvider).valueOrNull?.musicOn ?? true;
           audio.startQuizMusic(musicOn: musicOn);
@@ -399,10 +398,11 @@ class _ImageQuizScreenState extends ConsumerState<ImageQuizScreen>
           imgPaths.add(null);
           q2Paths.add(const []);
           spotDiffPaths.add(const []);
-          if (q.template == 'ConvoTemplate-2') {
-            final d = q.convo2Data!;
-            final path = await resolveQuizImageAsset(key, d.imageName);
-            if (path == null) throw Exception('Missing image asset for: ${d.imageName}');
+          if (q.template == 'ConvoTemplate-ClozeSequence' &&
+              q.clozeSequenceData?.imageName != null) {
+            final name = q.clozeSequenceData!.imageName!;
+            final path = await resolveQuizImageAsset(key, name);
+            if (path == null) throw Exception('Missing image asset for: $name');
             convo2HeroPaths.add(path);
           } else {
             convo2HeroPaths.add(null);
@@ -474,7 +474,7 @@ class _ImageQuizScreenState extends ConsumerState<ImageQuizScreen>
         });
         // Start timer only for image questions (first question might be vocab)
         if (questions.isNotEmpty && questions.first.type == LevelQuestionType.image) {
-          _timerController.duration = Duration(seconds: _config.imageQuizTimerSeconds);
+          _timerController.duration = Duration(seconds: _timerSecondsForCurrentQuestion());
           _startTimer();
         }
         final musicOn = ref.read(settingsProvider).valueOrNull?.musicOn ?? true;
@@ -576,11 +576,10 @@ class _ImageQuizScreenState extends ConsumerState<ImageQuizScreen>
                   q.simonData != null ||
                   q.clozeSequenceData != null)) {
             convoByQuestionId[questionId] = q;
-            if (q.template == 'ConvoTemplate-2' && q.convo2Data != null) {
-              final p = await resolveQuizImageAsset(
-                levelKey,
-                q.convo2Data!.imageName,
-              );
+            if (q.template == 'ConvoTemplate-ClozeSequence' &&
+                q.clozeSequenceData?.imageName != null) {
+              final name = q.clozeSequenceData!.imageName!;
+              final p = await resolveQuizImageAsset(levelKey, name);
               if (p != null) convo2PathByQuestionId[questionId] = p;
             }
             validQuestionIds.add(questionId);
@@ -683,7 +682,7 @@ class _ImageQuizScreenState extends ConsumerState<ImageQuizScreen>
       });
       if (!isConvoReminder) {
         _timerController.duration =
-            Duration(seconds: _config.imageQuizTimerSeconds);
+            Duration(seconds: _timerSecondsForCurrentQuestion());
         _startTimer();
       }
       final musicOn = ref.read(settingsProvider).valueOrNull?.musicOn ?? true;
@@ -700,6 +699,29 @@ class _ImageQuizScreenState extends ConsumerState<ImageQuizScreen>
   }
 
   // ── Timer ─────────────────────────────────────────────────────────────────
+
+  /// Returns the timer duration for the current question: per-question override
+  /// from `timer_seconds` in the question JSON, or the global config value.
+  int _timerSecondsForCurrentQuestion() {
+    // Unified mode
+    if (_allQuestions.isNotEmpty && _currentIndex < _allQuestions.length) {
+      final override = _allQuestions[_currentIndex].timerSecondsOverride;
+      if (override != null) return override;
+    }
+    // Legacy mode (image-only levels loaded via _configImageQuestions)
+    if (_configImageQuestions != null &&
+        _currentIndex < _configImageQuestions!.length) {
+      final override = _configImageQuestions![_currentIndex].timerSecondsOverride;
+      if (override != null) return override;
+    }
+    // Reminder mode
+    if (_isReminder && _currentQuestionId != null) {
+      final override =
+          _reminderImageQuestionsById[_currentQuestionId!]?.timerSecondsOverride;
+      if (override != null) return override;
+    }
+    return _config.imageQuizTimerSeconds;
+  }
 
   /// Restarts the pie countdown and monster idle loop for the current image question.
   void _startTimer() {
@@ -864,11 +886,9 @@ class _ImageQuizScreenState extends ConsumerState<ImageQuizScreen>
       if (_currentIndex >= _allQuestions.length) return [];
       final q = _allQuestions[_currentIndex];
       if (q.type != LevelQuestionType.image) {
-        if (q.template != 'ConvoTemplate-1' && q.template != 'ConvoTemplate-2') return [];
+        if (q.template != 'ConvoTemplate-1') return [];
         final ans = _convoAnswer(q);
-        final dist = q.template == 'ConvoTemplate-1'
-            ? q.convoData!.distractors
-            : q.convo2Data!.distractors;
+        final dist = q.convoData!.distractors;
         if (ans == null) return [];
         return ([ans, ...dist]..shuffle(Random()));
       }
@@ -894,15 +914,10 @@ class _ImageQuizScreenState extends ConsumerState<ImageQuizScreen>
     if (_isConvoMode) {
       final q = _currentConvoLevelQuestion;
       if (q == null) return [];
-      // Interactive templates (AppearDisappear, Simon, ClozeSequence) manage
-      // their own options internally — no shared options list needed.
-      if (q.template != 'ConvoTemplate-1' && q.template != 'ConvoTemplate-2') {
-        return [];
-      }
+      // Interactive templates manage their own tiles — no shared options list.
+      if (q.template != 'ConvoTemplate-1') return [];
       final ans = _convoAnswer(q);
-      final dist = q.template == 'ConvoTemplate-1'
-          ? q.convoData!.distractors
-          : q.convo2Data!.distractors;
+      final dist = q.convoData!.distractors;
       if (ans == null) return [];
       return ([ans, ...dist]..shuffle(Random()));
     }
@@ -1098,10 +1113,11 @@ class _ImageQuizScreenState extends ConsumerState<ImageQuizScreen>
     if (_allQuestions.isNotEmpty) {
       if (_currentIndex < _allQuestions.length &&
           _allQuestions[_currentIndex].type == LevelQuestionType.image) {
-        _timerController.duration = Duration(seconds: _config.imageQuizTimerSeconds);
+        _timerController.duration = Duration(seconds: _timerSecondsForCurrentQuestion());
         _startTimer();
       }
     } else if (!_isConvoMode) {
+      _timerController.duration = Duration(seconds: _timerSecondsForCurrentQuestion());
       _startTimer();
     }
   }
@@ -1828,6 +1844,24 @@ class _ImageQuizScreenState extends ConsumerState<ImageQuizScreen>
               }),
             ),
             const SizedBox(height: 16),
+            Column(
+              children: [
+                Text(
+                  strings['correct_answers'] ?? 'Correct answers',
+                  style: Theme.of(context).textTheme.labelLarge?.copyWith(
+                        color: Theme.of(context).colorScheme.onSurfaceVariant,
+                      ),
+                  textAlign: TextAlign.center,
+                ),
+                const SizedBox(height: 4),
+                Text(
+                  '$_correctCount / $_questionCount',
+                  style: Theme.of(context).textTheme.titleLarge,
+                  textAlign: TextAlign.center,
+                ),
+              ],
+            ),
+            const SizedBox(height: 16),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
@@ -1983,7 +2017,7 @@ class _ImageQuizScreenState extends ConsumerState<ImageQuizScreen>
             child: _buildConvoQuestionBody(q, userLanguage, soundFxOn, strings),
           ),
         ),
-        if (q.template == 'ConvoTemplate-1' || q.template == 'ConvoTemplate-2')
+        if (q.template == 'ConvoTemplate-1')
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 16),
             child: Column(
@@ -2073,6 +2107,8 @@ class _ImageQuizScreenState extends ConsumerState<ImageQuizScreen>
         return ClozeSequenceQuizBody(
           key: ValueKey('clz-${_currentQuestionId ?? '$_currentIndex'}'),
           data: q.clozeSequenceData!,
+          userLanguage: userLanguage,
+          resolvedImagePath: _resolvedClozeImagePath(),
           onPlayCorrect: () =>
               audio.playCorrect(soundFxOn: soundFxOn),
           onPlayWrong: () => audio.playWrong(soundFxOn: soundFxOn),
@@ -2117,8 +2153,6 @@ class _ImageQuizScreenState extends ConsumerState<ImageQuizScreen>
           onPlayWrong: () => audio.playWrong(soundFxOn: soundFxOn),
           onOutcome: (correct) => _handleInteractiveConvoOutcome(q, correct),
         );
-      case 'ConvoTemplate-2':
-        return _buildConvoTemplate2Content(q, userLanguage);
       case 'ConvoTemplate-1':
         return _buildCharactersRow(q.convoData!, userLanguage);
       default:
@@ -2126,51 +2160,19 @@ class _ImageQuizScreenState extends ConsumerState<ImageQuizScreen>
     }
   }
 
-  /// Sentence bubble plus small hero image for ConvoTemplate-2 cloze prompts.
-  Widget _buildConvoTemplate2Content(LevelQuestion q, String userLanguage) {
-    final d = q.convo2Data!;
-    final path = _isReminder
-        ? _convo2ImagePathByQuestionId[_currentQuestionId ?? '']
-        : (_allQuestions.isNotEmpty
-            ? (_currentIndex < _questionConvo2HeroPaths.length ? _questionConvo2HeroPaths[_currentIndex] : null)
-            : (_currentIndex < _convo2HeroPaths.length ? _convo2HeroPaths[_currentIndex] : null));
-    // Always show locale-aware sentence: English for 'en', English + (answer
-    // translation) for other locales — no toggle needed.
-    final line = d.sentence[userLanguage] ?? d.sentence['en'] ?? '';
-    return SingleChildScrollView(
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.stretch,
-        children: [
-          Container(
-            padding: const EdgeInsets.all(12),
-            decoration: BoxDecoration(
-              color: Theme.of(context)
-                  .colorScheme
-                  .surfaceContainerHighest,
-              borderRadius: BorderRadius.circular(12),
-            ),
-            child: DefaultTextStyle(
-              style: Theme.of(context).textTheme.bodyMedium!,
-              child: _buildBubbleText(line, isActive: true),
-            ),
-          ),
-          if (path != null) ...[
-            const SizedBox(height: 12),
-            Center(
-              child: ClipRRect(
-                borderRadius: BorderRadius.circular(8),
-                child: Image.asset(
-                  path,
-                  width: 72,
-                  height: 72,
-                  fit: BoxFit.cover,
-                ),
-              ),
-            ),
-          ],
-        ],
-      ),
-    );
+  /// Returns the pre-resolved image path for the current ClozeSequence question, or null.
+  String? _resolvedClozeImagePath() {
+    if (_isReminder) {
+      return _convo2ImagePathByQuestionId[_currentQuestionId ?? ''];
+    }
+    if (_allQuestions.isNotEmpty) {
+      return _currentIndex < _questionConvo2HeroPaths.length
+          ? _questionConvo2HeroPaths[_currentIndex]
+          : null;
+    }
+    return _currentIndex < _convo2HeroPaths.length
+        ? _convo2HeroPaths[_currentIndex]
+        : null;
   }
 
   /// Localized “Question X / Y” string for the convo header line.

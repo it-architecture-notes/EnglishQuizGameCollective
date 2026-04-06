@@ -1,3 +1,78 @@
+**Issue-21: Additional Quiz Templates, Bug Fixes, Timer Override & ClozeSequence Merge**
+
+# Active Progress Context
+
+## Active Issue
+
+Description: Additional templates for the quiz questions, plus bug fixes, a per-question timer parameter, and a refactor that merges ConvoTemplate-2 into ConvoTemplate-ClozeSequence.
+
+### New Templates (all implemented)
+
+- **ConvoTemplate-SentenceBuilder** (`sentence_builder_quiz_body.dart`): Words given → player taps in correct sentence order. Immediate grid (no streaming/flash). Wrong tap → red on wrong tile, remaining slots system-filled from correct order; correct tiles show numbered badges. Distinct styling for player-filled vs system-filled slots.
+
+- **ConvoTemplate-WordPairs** (`word_pairs_quiz_body.dart`): Left column (e.g. English) vs scrambled right column (e.g. L2). Tap right to select (blue), tap left to pair. Correct pair → both tiles move to a matched section at the bottom (green, separated by divider). All pairs matched → auto-advance after `auto_next_delay`. Wrong match → wrong left red, selected right red, **correct left for the selected right turns green** (nothing moves to bottom). `pair_count`: 3–4.
+
+- **imageQuizTemplate-3** (Choose the Correct Sentence, `image_quiz_screen.dart`): Hero image + 4 full-sentence ElevatedButtons (height 56). Same green/red/Next feedback as imageQuizTemplate-1. Parameter: `distractor_type` (grammar / meaning / tense, informational).
+
+- **imageQuizTemplate-SpotDifference** (`spot_difference_quiz_body.dart`): Localized sentence prompt + two side-by-side images; correct side randomised each load. Correct → green border; wrong → red border, other image green border; Next button via parent. Parameter: `auto_next_delay`.
+
+- **ConvoTemplate-GrammarForm** (`grammar_form_quiz_body.dart`): Localized cloze sentence + `(hintWord)` below + 4 shuffled word buttons. Correct → green button; wrong → red button + correct green. Parameters: `sentence` (localized map), `hintWord`, `answer`, `distractors` (exactly 3).
+
+- **ConvoTemplate-DialogueCompletion** (`dialogue_completion_quiz_body.dart`): Character labels + first speaker line + 4 full-sentence reply buttons. Same green/red feedback. Parameters: `character1`, `character2`, `line1` (localized map), `answer`, `distractors` (exactly 3).
+
+### Bug Fixes
+
+- **WordPairs green hint direction**: On wrong match the green hint now appears on the **left** column (the correct left word for the selected right word), not on the right. Built a `_reverseMatch` map at init to enable this.
+
+### New Feature: Per-question timer override (`timer_seconds`)
+
+- Added optional `"timer_seconds": N` to `questionData` for all four image templates (`imageQuizTemplate-1`, `-2`, `-3`, `imageQuizTemplate-SpotDifference`).
+- Field added to each data class (`ImageQuestionData`, `ImageQuizTemplate2Data`, `ImageQuizTemplate3Data`, `SpotDifferenceQuestionData`) and parsed from JSON.
+- `LevelQuestion.timerSecondsOverride` getter checks all four data classes.
+- `_timerSecondsForCurrentQuestion()` helper in `image_quiz_screen.dart` resolves the override (unified mode → legacy mode → reminder mode → global config fallback).
+- All 5 timer duration assignment sites updated to use the helper.
+
+### Refactor: ConvoTemplate-2 merged into ConvoTemplate-ClozeSequence
+
+**Motivation:** Both templates fill blank(s) in a sentence; merging removes duplicate UX paths.
+
+**New `ConvoTemplate-ClozeSequence` schema:**
+```json
+{
+  "template": "ConvoTemplate-ClozeSequence",
+  "questionData": {
+    "imageName": "alarm-clock",
+    "sentence": {
+      "en": "My alarm _____ ______",
+      "tr": "çaldı",
+      "es": "sonó"
+    },
+    "answer": ["went", "off"],
+    "distractors": ["bed", "asked", "out"],
+    "words_all_together": false,
+    "auto_next_delay": 1.0
+  }
+}
+```
+
+**Blank detection:** any space-delimited token matching `^_{2,}$` (2+ underscores). Displayed as `_____ (N)` at render time.
+
+**Translation hint:** if `userLanguage ≠ 'en'` and a locale key exists, `(value)` is appended at the end of the sentence automatically. Non-English locale values should be just the translated word/phrase.
+
+**Tile layout:** horizontal `Wrap` (train-style) — no more 2×2 / 3×3 grid constraint; any distractor count is valid.
+
+**Streaming:** `words_all_together: false` → splits `sentence['en']` on spaces, reveals one token per 450 ms; blanks shown at their position as they stream. `words_all_together: true` → all tokens appear immediately.
+
+**Image:** optional 72×72 thumbnail above the sentence.
+
+**ConvoTemplate-2 backward compat:** existing JSON with `"template": "ConvoTemplate-2"` is parsed via an adapter in `_parseConvo2AsCloze` → stored as `clozeSequenceData` with `wordsAllTogether: true`. Template name normalised to `ConvoTemplate-ClozeSequence` in `LevelQuestion`. No JSON migration required across existing level folders.
+
+**`waking-up/questions.json`:** ClozeSequence sample migrated from old token-array format to new localized-map format; former ConvoTemplate-2 sample converted to explicit `ConvoTemplate-ClozeSequence` entry.
+
+**`page-designs-and-templates.md`:** WordPairs and image-template sections updated to reflect new behaviour and `timer_seconds` parameter.
+
+---
+
 **Issue-20: New Image and Vocab Question Templates**
 
 # Active Progress Context

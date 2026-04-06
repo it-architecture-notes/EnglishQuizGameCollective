@@ -44,16 +44,17 @@
     },
     {
       "type": "vocab",
-      "template": "ConvoTemplate-2",
+      "template": "ConvoTemplate-ClozeSequence",
       "questionData": {
         "imageName": "alarm-clock",
         "sentence": {
           "en": "I set my _____ so I do not oversleep.",
-          "tr": "I set my _____ so I do not oversleep. (çalar saat)",
-          "es": "I set my _____ so I do not oversleep. (despertador)"
+          "tr": "çalar saat",
+          "es": "despertador"
         },
-        "answer": "alarm",
-        "distractors": ["bed", "pillow", "blanket"]
+        "answer": ["alarm"],
+        "distractors": ["bed", "pillow", "blanket"],
+        "words_all_together": true
       }
     },
     {
@@ -80,82 +81,16 @@
       "type": "vocab",
       "template": "ConvoTemplate-ClozeSequence",
       "questionData": {
-        "sentence": ["The", "___", "rings", "loudly"],
-        "answers": ["alarm clock"],
-        "distractors": ["pillow", "bed", "blanket"],
-        "auto_next_delay": 1.0
-      }
-    },
-    {
-      "type": "image",
-      "template": "imageQuizTemplate-1",
-      "questionData": {
-        "imageName": "bed",
-        "wrongAnswers": [
-          "nightstand",
-          "mattress",
-          "alarm-clock"
-        ]
-      }
-    },
-    {
-      "type": "image",
-      "template": "imageQuizTemplate-1",
-      "questionData": {
-        "imageName": "blanket",
-        "wrongAnswers": [
-          "nightstand",
-          "bed",
-          "mattress"
-        ]
-      }
-    },
-    {
-      "type": "image",
-      "template": "imageQuizTemplate-1",
-      "questionData": {
-        "imageName": "mattress",
-        "wrongAnswers": [
-          "bed",
-          "blanket",
-          "nightstand"
-        ]
-      }
-    },
-    {
-      "type": "image",
-      "template": "imageQuizTemplate-1",
-      "questionData": {
-        "imageName": "nightstand",
-        "wrongAnswers": [
-          "pillow",
-          "mattress",
-          "blanket"
-        ]
-      }
-    },
-    {
-      "type": "image",
-      "template": "imageQuizTemplate-1",
-      "questionData": {
-        "imageName": "pillow",
-        "wrongAnswers": [
-          "blanket",
-          "bed",
-          "alarm-clock"
-        ]
-      }
-    },
-    {
-      "type": "image",
-      "template": "imageQuizTemplate-1",
-      "questionData": {
         "imageName": "alarm-clock",
-        "wrongAnswers": [
-          "nightstand",
-          "blanket",
-          "mattress"
-        ]
+        "sentence": {
+          "en": "The _____ rings loudly.",
+          "tr": "çalar saat",
+          "es": "despertador"
+        },
+        "answer": ["alarm clock"],
+        "distractors": ["pillow", "bed", "blanket"],
+        "words_all_together": false,
+        "auto_next_delay": 1.0
       }
     },
     {
@@ -163,8 +98,6 @@
       "template": "ConvoTemplate-SentenceBuilder",
       "questionData": {
         "correct_order": ["I", "like", "mornings"],
-        "words": ["I", "like", "mornings"],
-        "distractors": ["hate", "sleep", "late", "tired", "dark", "noon"],
         "auto_next_delay": 1.0
       }
     },

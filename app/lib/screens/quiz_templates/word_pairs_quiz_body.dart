@@ -4,7 +4,10 @@ import 'package:flutter/material.dart';
 
 import '../../models/level_config.dart';
 
-/// Tap left column then matching right column (translations scrambled).
+/// Tap right column to select (blue), then tap left column to pair.
+/// Correct match → both tiles slide to the matched section at the bottom.
+/// Wrong match → wrong left turns red, selected right turns red, correct right
+/// turns green; nothing moves to the bottom section.
 class WordPairsQuizBody extends StatefulWidget {
   const WordPairsQuizBody({
     super.key,
@@ -24,54 +27,100 @@ class WordPairsQuizBody extends StatefulWidget {
 }
 
 class _WordPairsQuizBodyState extends State<WordPairsQuizBody> {
-  late List<String> _left;
-  late List<String> _right;
-  late Map<String, String> _match;
+  late Map<String, String> _match;        // leftWord → rightWord
+  late Map<String, String> _reverseMatch; // rightWord → leftWord
 
-  int? _selectedLeftIndex;
-  final Set<int> _matchedLeftIndices = {};
+  late List<String> _activeLeft;
+  late List<String> _activeRight;
+  final List<(String, String)> _matchedPairs = []; // (leftWord, rightWord)
+
+  String? _selectedRightWord;
+
   bool _failed = false;
-  int? _wrongRightIndex;
-  int? _highlightCorrectRightIndex;
+  String? _failedLeftWord;
+  String? _failedRightWord;
+  String? _correctLeftWord; // correct left for the selected right word → shown green
 
   @override
   void initState() {
     super.initState();
-    _left = widget.data.pairs.map((p) => p.left).toList();
     _match = {for (final p in widget.data.pairs) p.left: p.right};
-    _right = widget.data.pairs.map((p) => p.right).toList()..shuffle(Random());
+    _reverseMatch = {for (final p in widget.data.pairs) p.right: p.left};
+    _activeLeft = widget.data.pairs.map((p) => p.left).toList();
+    _activeRight = widget.data.pairs.map((p) => p.right).toList()
+      ..shuffle(Random());
   }
 
-  void _onLeftTap(int i) {
-    if (_failed || _matchedLeftIndices.contains(i)) return;
-    setState(() => _selectedLeftIndex = i);
+  void _onRightTap(String word) {
+    if (_failed) return;
+    setState(() {
+      _selectedRightWord = (_selectedRightWord == word) ? null : word;
+    });
   }
 
-  void _onRightTap(int rightIndex) {
-    if (_failed || _selectedLeftIndex == null) return;
-    final leftIndex = _selectedLeftIndex!;
-    final expected = _match[_left[leftIndex]]!;
-    final tapped = _right[rightIndex];
-    if (tapped == expected) {
+  void _onLeftTap(String leftWord) {
+    if (_failed) return;
+    final selected = _selectedRightWord;
+    if (selected == null) return;
+
+    final expectedRight = _match[leftWord]!;
+    if (selected == expectedRight) {
       setState(() {
-        _matchedLeftIndices.add(leftIndex);
-        _selectedLeftIndex = null;
+        _activeLeft.remove(leftWord);
+        _activeRight.remove(selected);
+        _matchedPairs.add((leftWord, selected));
+        _selectedRightWord = null;
       });
-      if (_matchedLeftIndices.length >= _left.length) {
-        widget.onPlayCorrect();
+      widget.onPlayCorrect();
+      if (_activeLeft.isEmpty) {
         widget.onOutcome(true);
       }
     } else {
-      final correctIdx =
-          _right.indexWhere((r) => r == expected);
       setState(() {
         _failed = true;
-        _wrongRightIndex = rightIndex;
-        _highlightCorrectRightIndex = correctIdx >= 0 ? correctIdx : null;
+        _failedLeftWord = leftWord;
+        _failedRightWord = selected;
+        _correctLeftWord = _reverseMatch[selected];
+        _selectedRightWord = null;
       });
       widget.onPlayWrong();
       widget.onOutcome(false);
     }
+  }
+
+  Widget _activeTile({
+    required String text,
+    Color? bgColor,
+    Color? textColor,
+    bool selected = false,
+    VoidCallback? onTap,
+  }) {
+    final theme = Theme.of(context);
+    final cs = theme.colorScheme;
+    return Padding(
+      padding: const EdgeInsets.only(bottom: 8),
+      child: Material(
+        color: bgColor ??
+            (selected ? Colors.blue.shade100 : cs.surfaceContainerHighest),
+        borderRadius: BorderRadius.circular(8),
+        child: InkWell(
+          onTap: onTap,
+          borderRadius: BorderRadius.circular(8),
+          child: Padding(
+            padding: const EdgeInsets.all(12),
+            child: Text(
+              text,
+              textAlign: TextAlign.center,
+              style: theme.textTheme.titleSmall?.copyWith(
+                fontWeight: FontWeight.w600,
+                color: textColor ??
+                    (selected ? Colors.blue.shade900 : null),
+              ),
+            ),
+          ),
+        ),
+      ),
+    );
   }
 
   @override
@@ -79,84 +128,109 @@ class _WordPairsQuizBodyState extends State<WordPairsQuizBody> {
     final theme = Theme.of(context);
     final cs = theme.colorScheme;
 
-    return Row(
-      crossAxisAlignment: CrossAxisAlignment.start,
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
-        Expanded(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: List.generate(_left.length, (i) {
-              final matched = _matchedLeftIndices.contains(i);
-              final sel = _selectedLeftIndex == i;
-              return Padding(
-                padding: const EdgeInsets.only(bottom: 8),
-                child: Material(
-                  color: matched
-                      ? Colors.green.shade100
-                      : sel
-                          ? cs.primaryContainer
-                          : cs.surfaceContainerHighest,
-                  borderRadius: BorderRadius.circular(8),
-                  child: InkWell(
-                    onTap: !_failed && !matched ? () => _onLeftTap(i) : null,
-                    borderRadius: BorderRadius.circular(8),
-                    child: Padding(
+        // ── Active (unmatched) area ──────────────────────────────────────────
+        Row(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            // Left column
+            Expanded(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                children: _activeLeft.map((word) {
+                  final isWrong = _failed && word == _failedLeftWord;
+                  final isCorrect = _failed && word == _correctLeftWord;
+                  return _activeTile(
+                    text: word,
+                    bgColor: isCorrect
+                        ? Colors.green.shade100
+                        : isWrong
+                            ? Colors.red.shade100
+                            : null,
+                    textColor: isCorrect
+                        ? Colors.green.shade900
+                        : isWrong
+                            ? Colors.red.shade900
+                            : null,
+                    onTap: !_failed ? () => _onLeftTap(word) : null,
+                  );
+                }).toList(),
+              ),
+            ),
+            const SizedBox(width: 12),
+            // Right column
+            Expanded(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                children: _activeRight.map((word) {
+                  final isSelected = !_failed && _selectedRightWord == word;
+                  final isWrong = _failed && word == _failedRightWord;
+                  return _activeTile(
+                    text: word,
+                    bgColor: isWrong ? Colors.red.shade100 : null,
+                    textColor: isWrong ? Colors.red.shade900 : null,
+                    selected: isSelected,
+                    onTap: !_failed ? () => _onRightTap(word) : null,
+                  );
+                }).toList(),
+              ),
+            ),
+          ],
+        ),
+
+        // ── Matched pairs section ────────────────────────────────────────────
+        if (_matchedPairs.isNotEmpty) ...[
+          Padding(
+            padding: const EdgeInsets.symmetric(vertical: 6),
+            child: Divider(color: cs.outlineVariant),
+          ),
+          ..._matchedPairs.map(
+            (pair) => Padding(
+              padding: const EdgeInsets.only(bottom: 8),
+              child: Row(
+                children: [
+                  Expanded(
+                    child: Container(
                       padding: const EdgeInsets.all(12),
+                      decoration: BoxDecoration(
+                        color: Colors.green.shade100,
+                        borderRadius: BorderRadius.circular(8),
+                      ),
                       child: Text(
-                        _left[i],
+                        pair.$1,
                         textAlign: TextAlign.center,
                         style: theme.textTheme.titleSmall?.copyWith(
                           fontWeight: FontWeight.w600,
+                          color: Colors.green.shade900,
                         ),
                       ),
                     ),
                   ),
-                ),
-              );
-            }),
-          ),
-        ),
-        const SizedBox(width: 12),
-        Expanded(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: List.generate(_right.length, (i) {
-              final isWrong = _failed && _wrongRightIndex == i;
-              final isCorrectHighlight =
-                  _failed && _highlightCorrectRightIndex == i;
-              return Padding(
-                padding: const EdgeInsets.only(bottom: 8),
-                child: Material(
-                  color: isWrong
-                      ? Colors.red.shade100
-                      : isCorrectHighlight
-                          ? Colors.green.shade100
-                          : cs.surfaceContainerHighest,
-                  borderRadius: BorderRadius.circular(8),
-                  child: InkWell(
-                    onTap: _failed ? null : () => _onRightTap(i),
-                    borderRadius: BorderRadius.circular(8),
-                    child: Padding(
+                  const SizedBox(width: 12),
+                  Expanded(
+                    child: Container(
                       padding: const EdgeInsets.all(12),
+                      decoration: BoxDecoration(
+                        color: Colors.green.shade100,
+                        borderRadius: BorderRadius.circular(8),
+                      ),
                       child: Text(
-                        _right[i],
+                        pair.$2,
                         textAlign: TextAlign.center,
                         style: theme.textTheme.titleSmall?.copyWith(
                           fontWeight: FontWeight.w600,
-                          color: isWrong
-                              ? Colors.red.shade900
-                              : isCorrectHighlight
-                                  ? Colors.green.shade900
-                                  : null,
+                          color: Colors.green.shade900,
                         ),
                       ),
                     ),
                   ),
-                ),
-              );
-            }),
+                ],
+              ),
+            ),
           ),
-        ),
+        ],
       ],
     );
   }
