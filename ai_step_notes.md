@@ -2,24 +2,24 @@
 
 1) TO WEB BROWSER AIs: Go and review this issue and ask questions if you see any gaps, also reword the sections for effective understading for an AI development agent.
 
-2) TO MAIN CURSOR P-Mode: Create a plan for the active issue, and place the plan in an md file following rules for naming and location, include cursor in the name. ask questions if something is not clear.
+2) TO MAIN CURSOR P-Mode: Create a plan for the active issue, and place the plan in an md (place or copy md file in workspace common plans folder) file following rules for naming and location, include cursor in the name. ask questions if something is not clear.
 
-3) TO MAIN CLAUDE: Create a plan for the active issue, and place the plan in an md file following rules for naming and location, include claude in the name. place the plan file under common plans. ask questions if something is not clear. 
+3) TO MAIN CLAUDE: Create a plan for the active issue, and place the plan in an md file following rules for naming and location, include claude in the name. place or copy the plan file under workspace common plans folder. ask questions if something is not clear. 
 
-4) TO NEW AGENTS CGPT AND GEMINI: Create a plan for the active issue, and place the plan in an md file following rules for naming and location, include <model name> in the name.
+4) TO NEW AGENTS CGPT AND GEMINI: Create a plan for the active issue in an md file, include <mode_name> in the filename. place or copy the plan file under workspace common plans folder. ask questions if something is not clear. 
 
 <Drag plans to commons plans if necessary>
 <Now we have 4 plan files under common folder>
 
-5) TO MAIN CURSOR: review all the plans under common plans folder from all models and update your plan if necessary and create a consolidated plan under commons plans.
+5) TO MAIN CURSOR: review all the plans under common plans folder from all models and create a consolidated plan under commons plans.
 
-5) TO MAIN CLAUDE: review all the plans under commons from different AI models including consolidated plan by cursor and if you think necessary update the consolidated plan if anything missing. ask questions if something is not clear.
+5) TO MAIN CLAUDE: review all the plans under common plans folder from different AI models including consolidated plan by cursor and if you think necessary update the consolidated plan if anything missing. ask questions if something is not clear.
 
 7) TO MAIN CURSOR P-Mode: review consolidated plan updated by claude and update consolidated plan again if you see mistakes. also compare the final plan against requirements.
 
 6) TO MAIN CLAUDE: can you compare the latest consolidated plan last time against requirements and let me know what you think.
 
-7) TO MAIN CURSOR Agent-Mode: are you ready to implement the consolidated plan.
+7) TO MAIN CURSOR Agent-Mode: are you ready to implement the consolidated plan, go ahead with a new branch checkout as feature branch.
 
 <Cursor Auto Builds>
 

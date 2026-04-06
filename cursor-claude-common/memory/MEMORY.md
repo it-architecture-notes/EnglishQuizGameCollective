@@ -5,8 +5,8 @@ Flutter mobile language learning quiz app (portrait-only, Android/iOS). Unified 
 
 ## Current State
 - **Active issue:** None
-- **Current branch:** main
-- **Last completed:** Issue-17 (Unified Level Map & Single Quiz Screen)
+- **Current branch:** main (merged from feature/additional-quiz-templates-batch2)
+- **Last completed:** Issue-21 (Additional Quiz Templates, Bug Fixes, Timer Override & ClozeSequence Merge)
 
 ## Tech Stack
 - Flutter (Dart), Riverpod, portrait-only
@@ -35,6 +35,9 @@ Flutter mobile language learning quiz app (portrait-only, Android/iOS). Unified 
 - Story images: `app/assets/images/story/`
 
 ## Completed Issues (summary)
+21 → Additional Quiz Templates batch2: SentenceBuilder, WordPairs (with matched-section layout), imageQuizTemplate-3, SpotDifference, GrammarForm, DialogueCompletion; WordPairs green-hint bug fix; per-question `timer_seconds` override for all image templates; ConvoTemplate-2 merged into ClozeSequence (localized map, train tiles, streaming, translation hint, backward-compat adapter)
+20 → New Image and Vocab Templates: AppearDisappear, Simon, ClozeSequence (old), imageQuizTemplate-2; localization keys; quiz session flow docs
+19 → Activity-Based Quiz Restructuring (58 activity folders, image pool, game-flow.json)
 17 → Unified Level Map & Quiz Screen (single flow JSON, single QuizScreen handling image/vocab/grammar phases; vocab Dart files deleted; StoryTemplateC bilingual layout)
 16 → progressKey refactor (removed levelNumber from flow JSON; progress keyed by "{mainLevel}_{iconImageName}"; vocab/grammar loaders simplified)
 15 → Speech Bubbles (monster/animal conversation bubbles on each step; step1–4 choices per language; game-over overlay bubbles)

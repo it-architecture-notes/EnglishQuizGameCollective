@@ -8,6 +8,10 @@ When the implementation of the active item is complete, and after it has been ve
 Also the issue in active-progress-context.md when completed, moved to full-project-issue-archive.md exactly as it is without summarizing it.
 Archived items should be listed in reverse chronological order (most recent first) to maintain a clear history of completed work.
 
+## Signtatures file
+
+Consult with codebase_signatures.md file first before pulling in full files, which is where the token savings actually accumulate. 
+
 ## Handling Ambiguity
 In planning or implementation mode do not assume — ask focused questions for the major decisions to be made. For the minor code level decisions AI can go ahead and make the decision.
 
