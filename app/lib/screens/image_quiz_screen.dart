@@ -23,7 +23,12 @@ import '../../services/reminder_progress_service.dart';
 import '../../services/test_data_service.dart';
 import 'quiz_templates/appear_disappear_quiz_body.dart';
 import 'quiz_templates/cloze_sequence_quiz_body.dart';
+import 'quiz_templates/dialogue_completion_quiz_body.dart';
+import 'quiz_templates/grammar_form_quiz_body.dart';
+import 'quiz_templates/sentence_builder_quiz_body.dart';
 import 'quiz_templates/simon_quiz_body.dart';
+import 'quiz_templates/spot_difference_quiz_body.dart';
+import 'quiz_templates/word_pairs_quiz_body.dart';
 
 /// Minimum images per level (spec).
 const int kMinImagesPerLevel = 4;
@@ -137,6 +142,8 @@ class _ImageQuizScreenState extends ConsumerState<ImageQuizScreen>
   List<String?> _questionImagePaths = [];      // asset path per question (null for vocab)
   List<List<String>> _questionQuiz2Paths = []; // 4 paths per template-2 question (empty otherwise)
   List<String?> _questionConvo2HeroPaths = []; // hero image path for ConvoTemplate-2 (null otherwise)
+  /// Per index: empty, or `[correctPath, wrongPath]` for [imageQuizTemplate-SpotDifference].
+  List<List<String>> _questionSpotDiffPaths = [];
 
   /// Asset-bundle prefix key for resolving images under this sub-level’s folder.
   static String _levelKey(SubLevel sub) =>
@@ -332,6 +339,7 @@ class _ImageQuizScreenState extends ConsumerState<ImageQuizScreen>
       final imgPaths = <String?>[];
       final q2Paths = <List<String>>[];
       final convo2HeroPaths = <String?>[];
+      final spotDiffPaths = <List<String>>[];
 
       for (final q in questions) {
         if (q.type == LevelQuestionType.image) {
@@ -342,6 +350,7 @@ class _ImageQuizScreenState extends ConsumerState<ImageQuizScreen>
             imgPaths.add(path);
             q2Paths.add(const []);
             convo2HeroPaths.add(null);
+            spotDiffPaths.add(const []);
           } else if (q.template == 'imageQuizTemplate-2') {
             final d = q.imageQuiz2Data!;
             final path = await resolveQuizImageAsset(key, d.imageName);
@@ -355,15 +364,41 @@ class _ImageQuizScreenState extends ConsumerState<ImageQuizScreen>
             }
             q2Paths.add(four);
             convo2HeroPaths.add(null);
+            spotDiffPaths.add(const []);
+          } else if (q.template == 'imageQuizTemplate-3' && q.imageQuiz3Data != null) {
+            final d = q.imageQuiz3Data!;
+            final path = await resolveQuizImageAsset(key, d.imageName);
+            if (path == null) throw Exception('Missing image asset for: ${d.imageName}');
+            imgPaths.add(path);
+            q2Paths.add(const []);
+            convo2HeroPaths.add(null);
+            spotDiffPaths.add(const []);
+          } else if (q.template == 'imageQuizTemplate-SpotDifference' &&
+              q.spotDiffData != null) {
+            final d = q.spotDiffData!;
+            final p1 = await resolveQuizImageAsset(key, d.correctImage);
+            final p2 = await resolveQuizImageAsset(key, d.wrongImage);
+            if (p1 == null) {
+              throw Exception('Missing image asset for: ${d.correctImage}');
+            }
+            if (p2 == null) {
+              throw Exception('Missing image asset for: ${d.wrongImage}');
+            }
+            imgPaths.add(null);
+            q2Paths.add(const []);
+            convo2HeroPaths.add(null);
+            spotDiffPaths.add([p1, p2]);
           } else {
             imgPaths.add(null);
             q2Paths.add(const []);
             convo2HeroPaths.add(null);
+            spotDiffPaths.add(const []);
           }
         } else {
           // vocab / grammar
           imgPaths.add(null);
           q2Paths.add(const []);
+          spotDiffPaths.add(const []);
           if (q.template == 'ConvoTemplate-2') {
             final d = q.convo2Data!;
             final path = await resolveQuizImageAsset(key, d.imageName);
@@ -383,6 +418,11 @@ class _ImageQuizScreenState extends ConsumerState<ImageQuizScreen>
           if (q.type == LevelQuestionType.image) {
             if (q.template == 'imageQuizTemplate-2') {
               for (final p in q2Paths[i]) {
+                await precacheImage(AssetImage(p), context);
+              }
+            } else if (q.template == 'imageQuizTemplate-SpotDifference' &&
+                i < spotDiffPaths.length) {
+              for (final p in spotDiffPaths[i]) {
                 await precacheImage(AssetImage(p), context);
               }
             } else if (imgPaths[i] != null) {
@@ -420,6 +460,7 @@ class _ImageQuizScreenState extends ConsumerState<ImageQuizScreen>
           _questionImagePaths = imgPaths;
           _questionQuiz2Paths = q2Paths;
           _questionConvo2HeroPaths = convo2HeroPaths;
+          _questionSpotDiffPaths = spotDiffPaths;
           _currentQuestionIds = questionIds;
           _initialQuestionCount = questions.length;
           _monsterStepThreshold = threshold;
@@ -788,6 +829,12 @@ class _ImageQuizScreenState extends ConsumerState<ImageQuizScreen>
       final q = _allQuestions[_currentIndex];
       if (q.type == LevelQuestionType.image) {
         if (q.template == 'imageQuizTemplate-2') return q.imageQuiz2Data!.imageName;
+        if (q.template == 'imageQuizTemplate-3' && q.imageQuiz3Data != null) {
+          return q.imageQuiz3Data!.answer;
+        }
+        if (q.template == 'imageQuizTemplate-SpotDifference') {
+          return '__spot__';
+        }
         final path = _currentIndex < _questionImagePaths.length ? _questionImagePaths[_currentIndex] : null;
         return path != null ? assetPathToBasename(path) : '';
       }
@@ -829,6 +876,13 @@ class _ImageQuizScreenState extends ConsumerState<ImageQuizScreen>
       if (q.template == 'imageQuizTemplate-2' && q.imageQuiz2Data != null) {
         final d = q.imageQuiz2Data!;
         return ([d.imageName, ...d.wrongAnswers]..shuffle(Random()));
+      }
+      if (q.template == 'imageQuizTemplate-3' && q.imageQuiz3Data != null) {
+        final d = q.imageQuiz3Data!;
+        return ([d.answer, ...d.distractors]..shuffle(Random()));
+      }
+      if (q.template == 'imageQuizTemplate-SpotDifference') {
+        return [];
       }
       final correct = _correctAnswer();
       if (q.imageData != null && q.imageData!.wrongAnswers.length == 3) {
@@ -922,6 +976,48 @@ class _ImageQuizScreenState extends ConsumerState<ImageQuizScreen>
         _showNext = false;
         _bubbleConversation = null;
         // Auto-advance after delay
+        Future.delayed(
+          Duration(
+            milliseconds:
+                (_autoAdvanceDelayForCurrentImageQuestion() * 1000).round(),
+          ),
+          () {
+            if (!mounted) return;
+            _goNext();
+          },
+        );
+      } else {
+        _showNext = true;
+      }
+    });
+  }
+
+  /// Callback from [SpotDifferenceQuizBody]; SFX already played in the widget.
+  void _handleSpotImageOutcome(bool correct) {
+    if (_answerLocked) return;
+    if (_kTestAutoComplete) {
+      _correctCount = 100;
+      setState(() => _phase = _Phase.end);
+      return;
+    }
+    if (!_isConvoMode) _timerController.stop();
+    if (!correct) {
+      final questionId = _currentQuestionId;
+      if (_isReminder) {
+        if (questionId != null) _nextReviewQuestionIds.add(questionId);
+      } else if (questionId != null) {
+        ReminderProgressService.instance.recordWrongAnswer(questionId);
+      }
+      _recordWrongForMonster();
+    }
+    AchievementService.instance.recordAnswer(correct);
+    setState(() {
+      _answerLocked = true;
+      _selectedIndex = 0;
+      if (correct) {
+        _correctCount++;
+        _showNext = false;
+        _bubbleConversation = null;
         Future.delayed(
           Duration(
             milliseconds:
@@ -1112,7 +1208,7 @@ class _ImageQuizScreenState extends ConsumerState<ImageQuizScreen>
       case _Phase.playing:
         return _isConvoMode
             ? _buildConvoPlaying(soundFxOn, strings, userLanguage)
-            : _buildImagePlaying(soundFxOn, strings);
+            : _buildImagePlaying(soundFxOn, strings, userLanguage);
       case _Phase.end:
         return _buildEnd(soundFxOn, strings);
       case _Phase.gameOver:
@@ -1215,6 +1311,14 @@ class _ImageQuizScreenState extends ConsumerState<ImageQuizScreen>
   double _autoAdvanceDelayForCurrentImageQuestion() {
     final d2 = _currentImageQuiz2Data();
     if (d2 != null) return d2.autoNextDelay;
+    if (_allQuestions.isNotEmpty &&
+        _currentIndex < _allQuestions.length) {
+      final q = _allQuestions[_currentIndex];
+      if (q.template == 'imageQuizTemplate-SpotDifference' &&
+          q.spotDiffData != null) {
+        return q.spotDiffData!.autoNextDelay;
+      }
+    }
     return _config.autoAdvanceDelaySeconds;
   }
 
@@ -1227,6 +1331,12 @@ class _ImageQuizScreenState extends ConsumerState<ImageQuizScreen>
           q.appearDisappearData!.autoNextDelay,
         'ConvoTemplate-Simon' => q.simonData!.autoNextDelay,
         'ConvoTemplate-ClozeSequence' => q.clozeSequenceData!.autoNextDelay,
+        'ConvoTemplate-SentenceBuilder' =>
+          q.sentenceBuilderData!.autoNextDelay,
+        'ConvoTemplate-WordPairs' => q.wordPairsData!.autoNextDelay,
+        'ConvoTemplate-GrammarForm' => _config.autoAdvanceDelaySeconds,
+        'ConvoTemplate-DialogueCompletion' =>
+          _config.autoAdvanceDelaySeconds,
         _ => _config.autoAdvanceDelaySeconds,
       };
       setState(() => _correctCount++);
@@ -1253,7 +1363,11 @@ class _ImageQuizScreenState extends ConsumerState<ImageQuizScreen>
   }
 
   /// Image phase layout: hero image or template-2 grid, monster lane, timer, and option buttons.
-  Widget _buildImagePlaying(bool soundFxOn, Map<String, String> strings) {
+  Widget _buildImagePlaying(
+    bool soundFxOn,
+    Map<String, String> strings,
+    String userLanguage,
+  ) {
     final path = _allQuestions.isNotEmpty
         ? (_currentIndex < _questionImagePaths.length ? _questionImagePaths[_currentIndex] ?? '' : '')
         : _questionAssetPaths[_currentIndex];
@@ -1263,6 +1377,19 @@ class _ImageQuizScreenState extends ConsumerState<ImageQuizScreen>
     final isTemplate2 = d2 != null && four != null;
     final iq2 = d2;
     final paths4 = four;
+    LevelQuestion? q;
+    if (_allQuestions.isNotEmpty && _currentIndex < _allQuestions.length) {
+      q = _allQuestions[_currentIndex];
+    }
+    final isT3 = q?.template == 'imageQuizTemplate-3' && q?.imageQuiz3Data != null;
+    final isSpot =
+        q?.template == 'imageQuizTemplate-SpotDifference' && q?.spotDiffData != null;
+    List<String>? spotPair;
+    if (isSpot == true &&
+        _currentIndex < _questionSpotDiffPaths.length) {
+      final pair = _questionSpotDiffPaths[_currentIndex];
+      if (pair.length == 2) spotPair = pair;
+    }
 
     return Column(
       children: [
@@ -1293,6 +1420,24 @@ class _ImageQuizScreenState extends ConsumerState<ImageQuizScreen>
                       ),
                   textAlign: TextAlign.center,
                 ),
+              ),
+            ),
+          )
+        else if (isSpot == true && spotPair != null && q != null)
+          Expanded(
+            flex: 1,
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+              child: SpotDifferenceQuizBody(
+                sentenceLine: q.spotDiffData!.sentence[userLanguage] ??
+                    q.spotDiffData!.sentence['en'] ??
+                    '',
+                correctPath: spotPair[0],
+                wrongPath: spotPair[1],
+                onPlayCorrect: () =>
+                    audio.playCorrect(soundFxOn: soundFxOn),
+                onPlayWrong: () => audio.playWrong(soundFxOn: soundFxOn),
+                onOutcome: _handleSpotImageOutcome,
               ),
             ),
           )
@@ -1518,6 +1663,8 @@ class _ImageQuizScreenState extends ConsumerState<ImageQuizScreen>
               }),
             ),
           )
+        else if (isSpot == true)
+          const SizedBox.shrink()
         else
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 16),
@@ -1544,10 +1691,16 @@ class _ImageQuizScreenState extends ConsumerState<ImageQuizScreen>
                         surfaceTintColor: Colors.transparent,
                         disabledBackgroundColor: bgColor,
                         disabledForegroundColor: fgColor,
-                        minimumSize: const Size(kMinTouchTarget, kMinTouchTarget),
+                        minimumSize: Size(
+                          kMinTouchTarget,
+                          isT3 ? 56 : kMinTouchTarget,
+                        ),
                       )
                     : ElevatedButton.styleFrom(
-                        minimumSize: const Size(kMinTouchTarget, kMinTouchTarget),
+                        minimumSize: Size(
+                          kMinTouchTarget,
+                          isT3 ? 56 : kMinTouchTarget,
+                        ),
                         disabledBackgroundColor: Colors.grey.shade300,
                         disabledForegroundColor: Colors.grey.shade800,
                         surfaceTintColor: Colors.transparent,
@@ -1556,7 +1709,6 @@ class _ImageQuizScreenState extends ConsumerState<ImageQuizScreen>
                   padding: const EdgeInsets.only(bottom: 12),
                   child: SizedBox(
                     width: double.infinity,
-                    height: kMinTouchTarget + 8,
                     child: ElevatedButton(
                       onPressed: _answerLocked
                           ? null
@@ -1565,14 +1717,22 @@ class _ImageQuizScreenState extends ConsumerState<ImageQuizScreen>
                               _onAnswerTap(i);
                             },
                       style: buttonStyle,
-                      child: Text(
-                        _capitalize(option),
-                        style: fgColor != null
-                            ? Theme.of(context).textTheme.titleMedium?.copyWith(
-                                  color: fgColor,
-                                  fontWeight: FontWeight.w600,
-                                )
-                            : Theme.of(context).textTheme.titleMedium,
+                      child: Padding(
+                        padding: EdgeInsets.symmetric(
+                          vertical: isT3 ? 10 : 0,
+                        ),
+                        child: Text(
+                          isT3 ? option : _capitalize(option),
+                          textAlign: TextAlign.center,
+                          maxLines: isT3 ? 5 : 2,
+                          overflow: TextOverflow.ellipsis,
+                          style: fgColor != null
+                              ? Theme.of(context).textTheme.titleMedium?.copyWith(
+                                    color: fgColor,
+                                    fontWeight: FontWeight.w600,
+                                  )
+                              : Theme.of(context).textTheme.titleMedium,
+                        ),
                       ),
                     ),
                   ),
@@ -1918,10 +2078,51 @@ class _ImageQuizScreenState extends ConsumerState<ImageQuizScreen>
           onPlayWrong: () => audio.playWrong(soundFxOn: soundFxOn),
           onOutcome: (correct) => _handleInteractiveConvoOutcome(q, correct),
         );
+      case 'ConvoTemplate-SentenceBuilder':
+        return SentenceBuilderQuizBody(
+          key: ValueKey('sb-${_currentQuestionId ?? '$_currentIndex'}'),
+          data: q.sentenceBuilderData!,
+          strings: strings,
+          onPlayCorrect: () =>
+              audio.playCorrect(soundFxOn: soundFxOn),
+          onPlayWrong: () => audio.playWrong(soundFxOn: soundFxOn),
+          onOutcome: (correct) => _handleInteractiveConvoOutcome(q, correct),
+        );
+      case 'ConvoTemplate-WordPairs':
+        return WordPairsQuizBody(
+          key: ValueKey('wp-${_currentQuestionId ?? '$_currentIndex'}'),
+          data: q.wordPairsData!,
+          onPlayCorrect: () =>
+              audio.playCorrect(soundFxOn: soundFxOn),
+          onPlayWrong: () => audio.playWrong(soundFxOn: soundFxOn),
+          onOutcome: (correct) => _handleInteractiveConvoOutcome(q, correct),
+        );
+      case 'ConvoTemplate-GrammarForm':
+        return GrammarFormQuizBody(
+          key: ValueKey('gf-${_currentQuestionId ?? '$_currentIndex'}'),
+          data: q.grammarFormData!,
+          userLanguage: userLanguage,
+          onPlayCorrect: () =>
+              audio.playCorrect(soundFxOn: soundFxOn),
+          onPlayWrong: () => audio.playWrong(soundFxOn: soundFxOn),
+          onOutcome: (correct) => _handleInteractiveConvoOutcome(q, correct),
+        );
+      case 'ConvoTemplate-DialogueCompletion':
+        return DialogueCompletionQuizBody(
+          key: ValueKey('dc-${_currentQuestionId ?? '$_currentIndex'}'),
+          data: q.dialogueCompletionData!,
+          userLanguage: userLanguage,
+          onPlayCorrect: () =>
+              audio.playCorrect(soundFxOn: soundFxOn),
+          onPlayWrong: () => audio.playWrong(soundFxOn: soundFxOn),
+          onOutcome: (correct) => _handleInteractiveConvoOutcome(q, correct),
+        );
       case 'ConvoTemplate-2':
         return _buildConvoTemplate2Content(q, userLanguage);
-      default:
+      case 'ConvoTemplate-1':
         return _buildCharactersRow(q.convoData!, userLanguage);
+      default:
+        throw StateError('Unexpected convo template: ${q.template}');
     }
   }
 

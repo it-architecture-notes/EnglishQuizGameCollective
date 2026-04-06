@@ -111,6 +111,103 @@ class ConvoTemplate2QuestionData {
   final List<String> distractors;
 }
 
+/// [ConvoTemplate-SentenceBuilder]: immediate grid; [correctOrder] is the target token sequence.
+class SentenceBuilderQuestionData {
+  const SentenceBuilderQuestionData({
+    required this.correctOrder,
+    required this.words,
+    required this.distractors,
+    this.autoNextDelay = 1.0,
+  });
+
+  final List<String> correctOrder;
+  final List<String> words;
+  final List<String> distractors;
+  final double autoNextDelay;
+}
+
+/// One left/right pair for [ConvoTemplate-WordPairs].
+class WordPairItem {
+  const WordPairItem({required this.left, required this.right});
+
+  final String left;
+  final String right;
+}
+
+/// [ConvoTemplate-WordPairs]: 3–4 pairs; UI scrambles the right column.
+class WordPairsQuestionData {
+  const WordPairsQuestionData({
+    required this.pairs,
+    this.autoNextDelay = 1.0,
+  });
+
+  final List<WordPairItem> pairs;
+  final double autoNextDelay;
+}
+
+/// [imageQuizTemplate-3]: hero image + four full-sentence options.
+class ImageQuizTemplate3Data {
+  const ImageQuizTemplate3Data({
+    required this.imageName,
+    required this.answer,
+    required this.distractors,
+    this.distractorType,
+  });
+
+  final String imageName;
+  final String answer;
+  final List<String> distractors;
+  /// Optional: `grammar` | `meaning` | `tense` — reserved for future use.
+  final String? distractorType;
+}
+
+/// [imageQuizTemplate-SpotDifference]: two images + localized prompt.
+class SpotDifferenceQuestionData {
+  const SpotDifferenceQuestionData({
+    required this.sentence,
+    required this.correctImage,
+    required this.wrongImage,
+    this.autoNextDelay = 1.0,
+  });
+
+  final Map<String, String> sentence;
+  final String correctImage;
+  final String wrongImage;
+  final double autoNextDelay;
+}
+
+/// [ConvoTemplate-GrammarForm]: cloze sentence + lemma hint + four word options.
+class GrammarFormQuestionData {
+  const GrammarFormQuestionData({
+    required this.sentence,
+    required this.hintWord,
+    required this.answer,
+    required this.distractors,
+  });
+
+  final Map<String, String> sentence;
+  final String hintWord;
+  final String answer;
+  final List<String> distractors;
+}
+
+/// [ConvoTemplate-DialogueCompletion]: first speaker line + four response options.
+class DialogueCompletionQuestionData {
+  const DialogueCompletionQuestionData({
+    required this.character1,
+    required this.character2,
+    required this.line1,
+    required this.answer,
+    required this.distractors,
+  });
+
+  final String character1;
+  final String character2;
+  final Map<String, String> line1;
+  final String answer;
+  final List<String> distractors;
+}
+
 /// One entry in `levelQuestions`.
 class LevelQuestion {
   const LevelQuestion({
@@ -119,11 +216,17 @@ class LevelQuestion {
     required this.template,
     this.imageData,
     this.imageQuiz2Data,
+    this.imageQuiz3Data,
+    this.spotDiffData,
     this.convoData,
     this.convo2Data,
     this.appearDisappearData,
     this.simonData,
     this.clozeSequenceData,
+    this.sentenceBuilderData,
+    this.wordPairsData,
+    this.grammarFormData,
+    this.dialogueCompletionData,
   });
 
   final String? questionId;
@@ -131,11 +234,17 @@ class LevelQuestion {
   final String template;
   final ImageQuestionData? imageData;
   final ImageQuizTemplate2Data? imageQuiz2Data;
+  final ImageQuizTemplate3Data? imageQuiz3Data;
+  final SpotDifferenceQuestionData? spotDiffData;
   final ConvoQuestionData? convoData;
   final ConvoTemplate2QuestionData? convo2Data;
   final AppearDisappearQuestionData? appearDisappearData;
   final SimonQuestionData? simonData;
   final ClozeSequenceQuestionData? clozeSequenceData;
+  final SentenceBuilderQuestionData? sentenceBuilderData;
+  final WordPairsQuestionData? wordPairsData;
+  final GrammarFormQuestionData? grammarFormData;
+  final DialogueCompletionQuestionData? dialogueCompletionData;
 }
 
 /// Full level definition from `assets/quiz-data/levels/{iconImageName}.json`.
@@ -326,6 +435,144 @@ class LevelConfig {
     );
   }
 
+  /// True if [a] and [b] are identical multisets (same length, same sorted tokens).
+  static bool _sameMultiset(List<String> a, List<String> b) {
+    if (a.length != b.length) return false;
+    final sa = [...a]..sort();
+    final sb = [...b]..sort();
+    for (var i = 0; i < sa.length; i++) {
+      if (sa[i] != sb[i]) return false;
+    }
+    return true;
+  }
+
+  /// Parses [ConvoTemplate-SentenceBuilder]: [correct_order] and [words] must match as multisets.
+  static SentenceBuilderQuestionData _parseSentenceBuilder(
+    Map<String, dynamic> data,
+  ) {
+    final correctOrder = _stringList(data['correct_order']);
+    final words = _stringList(data['words']);
+    final distractors = _stringList(data['distractors']);
+    if (correctOrder.isEmpty || !_sameMultiset(correctOrder, words)) {
+      throw FormatException(
+        'ConvoTemplate-SentenceBuilder: correct_order must match words as a multiset',
+      );
+    }
+    final total = words.length + distractors.length;
+    if (total != 9) {
+      throw FormatException(
+        'ConvoTemplate-SentenceBuilder expects words + distractors == 9 tiles (3×3), got $total',
+      );
+    }
+    return SentenceBuilderQuestionData(
+      correctOrder: correctOrder,
+      words: words,
+      distractors: distractors,
+      autoNextDelay: (data['auto_next_delay'] as num?)?.toDouble() ?? 1.0,
+    );
+  }
+
+  /// Parses [ConvoTemplate-WordPairs]: 3–4 pairs.
+  static WordPairsQuestionData _parseWordPairs(Map<String, dynamic> data) {
+    final raw = data['pairs'] as List<dynamic>? ?? [];
+    final pairs = <WordPairItem>[];
+    for (final e in raw) {
+      if (e is! Map<String, dynamic>) continue;
+      pairs.add(
+        WordPairItem(
+          left: e['left']?.toString() ?? '',
+          right: e['right']?.toString() ?? '',
+        ),
+      );
+    }
+    if (pairs.length < 3 || pairs.length > 4) {
+      throw FormatException(
+        'ConvoTemplate-WordPairs expects 3–4 pairs, got ${pairs.length}',
+      );
+    }
+    return WordPairsQuestionData(
+      pairs: pairs,
+      autoNextDelay: (data['auto_next_delay'] as num?)?.toDouble() ?? 1.0,
+    );
+  }
+
+  /// Parses [imageQuizTemplate-3]: one correct sentence + three distractors.
+  static ImageQuizTemplate3Data _parseImageQuiz3(Map<String, dynamic> data) {
+    final distractors = (data['distractors'] as List<dynamic>? ?? [])
+        .map((e) => e.toString())
+        .toList();
+    if (distractors.length != 3) {
+      throw FormatException(
+        'imageQuizTemplate-3 must have exactly 3 distractors (got ${distractors.length})',
+      );
+    }
+    final dt = data['distractor_type']?.toString();
+    return ImageQuizTemplate3Data(
+      imageName: data['imageName'] as String? ?? '',
+      answer: data['answer'] as String? ?? '',
+      distractors: distractors,
+      distractorType: dt,
+    );
+  }
+
+  /// Parses [imageQuizTemplate-SpotDifference].
+  static SpotDifferenceQuestionData _parseSpotDifference(
+    Map<String, dynamic> data,
+  ) {
+    return SpotDifferenceQuestionData(
+      sentence: _stringMap(data['sentence']),
+      correctImage: data['correctImage'] as String? ?? '',
+      wrongImage: data['wrongImage'] as String? ?? '',
+      autoNextDelay: (data['auto_next_delay'] as num?)?.toDouble() ?? 1.0,
+    );
+  }
+
+  /// Parses [ConvoTemplate-GrammarForm]: localized sentence with blank + hint + four options.
+  static GrammarFormQuestionData _parseGrammarForm(Map<String, dynamic> data) {
+    final sentence = _stringMap(data['sentence']);
+    final distractors = (data['distractors'] as List<dynamic>? ?? [])
+        .map((e) => e.toString())
+        .toList();
+    if (distractors.length != 3) {
+      throw FormatException(
+        'ConvoTemplate-GrammarForm must have exactly 3 distractors',
+      );
+    }
+    final en = sentence['en'] ?? '';
+    if (!en.contains('___') && !en.contains('_____')) {
+      throw FormatException(
+        'ConvoTemplate-GrammarForm: sentence should contain a blank (___ or _____)',
+      );
+    }
+    return GrammarFormQuestionData(
+      sentence: sentence,
+      hintWord: data['hintWord'] as String? ?? '',
+      answer: data['answer'] as String? ?? '',
+      distractors: distractors,
+    );
+  }
+
+  /// Parses [ConvoTemplate-DialogueCompletion].
+  static DialogueCompletionQuestionData _parseDialogueCompletion(
+    Map<String, dynamic> data,
+  ) {
+    final distractors = (data['distractors'] as List<dynamic>? ?? [])
+        .map((e) => e.toString())
+        .toList();
+    if (distractors.length != 3) {
+      throw FormatException(
+        'ConvoTemplate-DialogueCompletion must have exactly 3 distractors',
+      );
+    }
+    return DialogueCompletionQuestionData(
+      character1: data['character1'] as String? ?? '',
+      character2: data['character2'] as String? ?? '',
+      line1: _stringMap(data['line1']),
+      answer: data['answer'] as String? ?? '',
+      distractors: distractors,
+    );
+  }
+
   /// Dispatches one `levelQuestions[]` element to the correct parser based on `template`.
   static LevelQuestion _parseQuestion(Map<String, dynamic> json) {
     final type = _parseType(json['type'] as String? ?? '');
@@ -336,17 +583,30 @@ class LevelConfig {
     }
     ImageQuestionData? imageData;
     ImageQuizTemplate2Data? imageQuiz2Data;
+    ImageQuizTemplate3Data? imageQuiz3Data;
+    SpotDifferenceQuestionData? spotDiffData;
     ConvoQuestionData? convoData;
     ConvoTemplate2QuestionData? convo2Data;
     AppearDisappearQuestionData? appearDisappearData;
     SimonQuestionData? simonData;
     ClozeSequenceQuestionData? clozeSequenceData;
+    SentenceBuilderQuestionData? sentenceBuilderData;
+    WordPairsQuestionData? wordPairsData;
+    GrammarFormQuestionData? grammarFormData;
+    DialogueCompletionQuestionData? dialogueCompletionData;
     switch (template) {
       case 'imageQuizTemplate-1':
         imageData = _parseImageData(qd);
         break;
       case 'imageQuizTemplate-2':
         imageQuiz2Data = _parseImageQuiz2Data(qd);
+        break;
+      case 'imageQuizTemplate-3':
+      case 'imageQuizTemplate-SentenceChoice':
+        imageQuiz3Data = _parseImageQuiz3(qd);
+        break;
+      case 'imageQuizTemplate-SpotDifference':
+        spotDiffData = _parseSpotDifference(qd);
         break;
       case 'ConvoTemplate-1':
         convoData = _parseConvoData(qd);
@@ -363,20 +623,42 @@ class LevelConfig {
       case 'ConvoTemplate-ClozeSequence':
         clozeSequenceData = _parseClozeSequence(qd);
         break;
+      case 'ConvoTemplate-SentenceBuilder':
+        sentenceBuilderData = _parseSentenceBuilder(qd);
+        break;
+      case 'ConvoTemplate-WordPairs':
+        wordPairsData = _parseWordPairs(qd);
+        break;
+      case 'ConvoTemplate-GrammarForm':
+        grammarFormData = _parseGrammarForm(qd);
+        break;
+      case 'ConvoTemplate-DialogueCompletion':
+        dialogueCompletionData = _parseDialogueCompletion(qd);
+        break;
       default:
         throw FormatException('Unknown template: $template');
     }
+    final normalizedTemplate =
+        template == 'imageQuizTemplate-SentenceChoice'
+            ? 'imageQuizTemplate-3'
+            : template;
     return LevelQuestion(
       questionId: json['questionId'] as String?,
       type: type,
-      template: template,
+      template: normalizedTemplate,
       imageData: imageData,
       imageQuiz2Data: imageQuiz2Data,
+      imageQuiz3Data: imageQuiz3Data,
+      spotDiffData: spotDiffData,
       convoData: convoData,
       convo2Data: convo2Data,
       appearDisappearData: appearDisappearData,
       simonData: simonData,
       clozeSequenceData: clozeSequenceData,
+      sentenceBuilderData: sentenceBuilderData,
+      wordPairsData: wordPairsData,
+      grammarFormData: grammarFormData,
+      dialogueCompletionData: dialogueCompletionData,
     );
   }
 

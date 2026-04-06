@@ -157,6 +157,86 @@
           "mattress"
         ]
       }
+    },
+    {
+      "type": "vocab",
+      "template": "ConvoTemplate-SentenceBuilder",
+      "questionData": {
+        "correct_order": ["I", "like", "mornings"],
+        "words": ["I", "like", "mornings"],
+        "distractors": ["hate", "sleep", "late", "tired", "dark", "noon"],
+        "auto_next_delay": 1.0
+      }
+    },
+    {
+      "type": "vocab",
+      "template": "ConvoTemplate-WordPairs",
+      "questionData": {
+        "pairs": [
+          { "left": "bed", "right": "yatak" },
+          { "left": "pillow", "right": "yastık" },
+          { "left": "blanket", "right": "battaniye" }
+        ],
+        "auto_next_delay": 1.0
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-3",
+      "questionData": {
+        "imageName": "pillow",
+        "answer": "This is something soft to rest your head on.",
+        "distractors": [
+          "This is something you use to wake up.",
+          "This is furniture next to the bed.",
+          "This is a thick mattress layer."
+        ],
+        "distractor_type": "meaning"
+      }
+    },
+    {
+      "type": "image",
+      "template": "imageQuizTemplate-SpotDifference",
+      "questionData": {
+        "sentence": {
+          "en": "Tap the bed.",
+          "tr": "Yatağa dokun."
+        },
+        "correctImage": "bed",
+        "wrongImage": "mattress",
+        "auto_next_delay": 1.0
+      }
+    },
+    {
+      "type": "grammar",
+      "template": "ConvoTemplate-GrammarForm",
+      "questionData": {
+        "sentence": {
+          "en": "I _____ the blanket every morning.",
+          "tr": "Her sabah battaniyeyi _____."
+        },
+        "hintWord": "fold",
+        "answer": "fold",
+        "distractors": ["folds", "folding", "folded"]
+      }
+    },
+    {
+      "type": "vocab",
+      "template": "ConvoTemplate-DialogueCompletion",
+      "questionData": {
+        "character1": "mike",
+        "character2": "sarah",
+        "line1": {
+          "en": "Are you awake?",
+          "tr": "Uyandın mı?"
+        },
+        "answer": "Yes, I am up now.",
+        "distractors": [
+          "No, I am still asleep.",
+          "I am under the table.",
+          "The sky is blue."
+        ]
+      }
     }
   ]
 }
