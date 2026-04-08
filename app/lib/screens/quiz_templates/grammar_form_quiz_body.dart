@@ -10,6 +10,7 @@ class GrammarFormQuizBody extends StatefulWidget {
     super.key,
     required this.data,
     required this.userLanguage,
+    this.translation,
     required this.onPlayCorrect,
     required this.onPlayWrong,
     required this.onOutcome,
@@ -17,6 +18,7 @@ class GrammarFormQuizBody extends StatefulWidget {
 
   final GrammarFormQuestionData data;
   final String userLanguage;
+  final Map<String, String>? translation;
   final VoidCallback onPlayCorrect;
   final VoidCallback onPlayWrong;
   final void Function(bool correct) onOutcome;
@@ -59,9 +61,11 @@ class _GrammarFormQuizBodyState extends State<GrammarFormQuizBody> {
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
     final cs = theme.colorScheme;
-    final line = widget.data.sentence[widget.userLanguage] ??
-        widget.data.sentence['en'] ??
-        '';
+    final line = widget.data.sentence['en'] ?? '';
+    final tr = widget.translation;
+    final aux = widget.userLanguage != 'en' && tr != null
+        ? tr[widget.userLanguage]
+        : null;
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -89,6 +93,17 @@ class _GrammarFormQuizBodyState extends State<GrammarFormQuizBody> {
             fontStyle: FontStyle.italic,
           ),
         ),
+        if (aux != null && aux.isNotEmpty) ...[
+          const SizedBox(height: 12),
+          Text(
+            aux,
+            textAlign: TextAlign.center,
+            style: theme.textTheme.bodyMedium?.copyWith(
+              color: cs.onSurfaceVariant,
+              fontStyle: FontStyle.italic,
+            ),
+          ),
+        ],
         const SizedBox(height: 16),
         ...List.generate(_options.length, (i) {
           final opt = _options[i];

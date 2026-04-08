@@ -10,6 +10,8 @@ class DialogueCompletionQuizBody extends StatefulWidget {
     super.key,
     required this.data,
     required this.userLanguage,
+    this.line1Translation,
+    this.answerTranslation,
     required this.onPlayCorrect,
     required this.onPlayWrong,
     required this.onOutcome,
@@ -17,6 +19,8 @@ class DialogueCompletionQuizBody extends StatefulWidget {
 
   final DialogueCompletionQuestionData data;
   final String userLanguage;
+  final Map<String, String>? line1Translation;
+  final Map<String, String>? answerTranslation;
   final VoidCallback onPlayCorrect;
   final VoidCallback onPlayWrong;
   final void Function(bool correct) onOutcome;
@@ -60,8 +64,12 @@ class _DialogueCompletionQuizBodyState extends State<DialogueCompletionQuizBody>
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
     final cs = theme.colorScheme;
-    final line =
-        widget.data.line1[widget.userLanguage] ?? widget.data.line1['en'] ?? '';
+    final line = widget.data.line1['en'] ?? '';
+    final lang = widget.userLanguage;
+    final m1 = widget.line1Translation;
+    final ma = widget.answerTranslation;
+    final t1 = lang != 'en' && m1 != null ? m1[lang] : null;
+    final ta = lang != 'en' && ma != null ? ma[lang] : null;
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -86,6 +94,26 @@ class _DialogueCompletionQuizBodyState extends State<DialogueCompletionQuizBody>
             style: theme.textTheme.bodyLarge,
           ),
         ),
+        if (t1 != null && t1.isNotEmpty) ...[
+          const SizedBox(height: 8),
+          Text(
+            t1,
+            style: theme.textTheme.bodyMedium?.copyWith(
+              color: cs.onSurfaceVariant,
+              fontStyle: FontStyle.italic,
+            ),
+          ),
+        ],
+        if (ta != null && ta.isNotEmpty) ...[
+          const SizedBox(height: 6),
+          Text(
+            ta,
+            style: theme.textTheme.bodySmall?.copyWith(
+              color: cs.onSurfaceVariant,
+              fontStyle: FontStyle.italic,
+            ),
+          ),
+        ],
         const SizedBox(height: 8),
         Text(
           widget.data.character2,

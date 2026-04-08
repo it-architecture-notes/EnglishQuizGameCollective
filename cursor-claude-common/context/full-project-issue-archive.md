@@ -1,3 +1,168 @@
+**Issue-22: Template refactor, JSON-driven translations, titles, SpotDifference layout, Grammar/Dialogue EN fixes, monster eligibility**
+
+# Active Progress Context
+
+## Active Issue
+
+Description: Refactorings and fixes for tempalates.
+
+Use Cases:
+
+Considering the tests I made on the waking-up questions:
+
+- Translate button appears for all type of questions for vocab, we will change this. Translate will be an option selected in the question json object. It will be optional. If selected we will not replace the existing text anymore. The line 1 and line 2 for ConvoTemplate-1 or a string from "translation" object will be presented before the answering buttons of the screen. So the objects will be like:
+    - For ConvoTemplate-1:
+    {
+        "questionData": {
+            "answer": "alarm",
+            "character1": "mike",
+            "character2": "sarah",
+            "distractors": [
+            "pillow",
+            "blanket",
+            "mattress"
+            ],
+            "line1": {
+            "en": "Did you hear my _____ this morning?"
+            },
+            "line1_translation": {
+            "es": "¿Oíste mi <es of alarm> esta mañana?",
+            "tr": "Bu sabah calar saati duydun mu?"
+            },
+            "line2": {
+            "en": "Yes, it was very loud!"
+            },
+            "line2_translation": {
+            "es": "¡Sí, sonaba muy fuerte!",
+            "tr": "Evet, çok sesliydi!"
+            }
+        },
+        "template": "ConvoTemplate-1",
+        "type": "vocab"
+    }
+    when translate button is pressed line 1 and line 2 will be presented below the conversations above the answering questions. If these keys don't exist or selected language is "en" nothing will be shown.
+    For template ConvoTemplate-AppearDisappear:
+    {
+        "questionData": {
+            "auto_next_delay": 1,
+            "display_duration": 0.8,
+            "distractors": [
+            "you",
+            "coffee",
+            "milk",
+            "red",
+            "big",
+            "and"
+            ],
+            "words": [
+            "I",
+            "love",
+            "tea"
+            ]
+        },
+        "template": "ConvoTemplate-AppearDisappear",
+        "translation": {
+            "es": "<translation es>",
+            "tr": "<translation tr"
+        },
+        "type": "vocab"
+    }      
+    if exitsts translation will be presented below the question text and above the answering questions. If this key doesn't exist or selected language is "en" nothing will be shown.
+    For template ConvoTemplate-SentenceBuilder:
+    {
+        "questionData": {
+            "auto_next_delay": 1,
+            "correct_order": [
+            "I",
+            "like",
+            "mornings"
+            ],
+            "translation": {
+            "es": "<translation es>",
+            "tr": "<translation tr"
+            }
+        },
+        "template": "ConvoTemplate-SentenceBuilder", ConvoTemplate-WordPairs no change is needed.
+        "type": "vocab"
+    }
+    same rules as above.
+    For the template ConvoTemplate-DialogueCompletion:
+    {
+      "type": "vocab",
+      "template": "ConvoTemplate-DialogueCompletion",
+      "questionData": {
+        "character1": "mike",
+        "character2": "sarah",
+        "line1": {
+          "en": "Are you awake?",
+        },
+        "line1_translation": {
+            "es": "¿Oíste mi <es of alarm> esta mañana?",
+            "tr": "Bu sabah calar saati duydun mu?"
+            },
+        "answer": "Yes, I am up now.",
+        "answer_translation": {
+            "es": "<es translation>",
+            "tr": "Kalktim"
+            },
+        "distractors": [
+          "No, I am still asleep.",
+          "I am under the table.",
+          "The sky is blue."
+        ]
+      }
+    }
+    in this case if provided both translations will be above answering questions.
+    For template ConvoTemplate-GrammarForm:
+        {
+        "questionData": {
+            "answer": "fold",
+            "distractors": [
+            "folds",
+            "folding",
+            "folded"
+            ],
+            "hintWord": "fold",
+            "sentence": {
+            "en": "I _____ the blanket every morning."
+            },
+            "translation": {
+            "es": "<translation es>",
+            "tr": "<translation tr"
+            }
+        },
+        "template": "ConvoTemplate-GrammarForm",
+        "type": "grammar"
+        }
+    in this case if provided translation text will be above answering questions.
+    For templates: ConvoTemplate-ClozeSequence and ConvoTemplate-WordPairs and Simon don't add translation option.
+- Also for all the image quiz types 
+    - imageQuizTemplate-1: add a "translation" optional key and if it's provided show the translation string given in the question object under the image.
+    - imageQuizTemplate-2: add a "translation" optional key and if it's provided show the translation string given in the question object under the question string.
+    - imageQuizTemplate-3: add a "translation" optional key and if it's provided show the translation string given in the question object under the question image.
+    - imageQuizTemplate-SpotDifference: no translation is needed.
+- After these changes remove the translate button from all the page, we don't need it we will control translation by configuration.
+- Titles for questions:
+    - For all the quiz types (image or convo) a global json file will be used to identify the title of the question. For all question types at the top of th page there will be a title. e.g. currently appear disapper page has a click_in_order title. Similarly all templates will have it and also they will have a corresponding key in the localization table.
+- Some templates do not have question numbers <question>/<total question> make sure all templates have it before the title string at the top.
+- imageQuizTemplate-SpotDifference images should be square and centrally aligned. all these images are 256x256 but I see them covering a tall rectangle in the screen.
+- ConvoTemplate-GrammarForm 12/13 question shows the translation of the text as the question instead of the english original text.
+- ConvoTemplate-DialogueCompletion also shows the translation of the text as the question instead of the english original text.
+
+---
+
+ADDITIONAL REQUIREMENT:
+
+Only some templates are available for monster attack animation:
+
+- Image quiz 1
+- Image quiz 2
+- imageQuizTemplate-SpotDifference
+
+- only show monster animation for these type of questions. If the number of questions of this type is less than or equal to 6 in the level advance the monster every 1 wrong question. If this type of questions is more than 6 then advance in the way of 1 wrong answer (advance), 2 wrong answers advance, 1 wrong answer advance, meaning 1,2,1,2.
+
+---
+
 **Issue-21: Additional Quiz Templates, Bug Fixes, Timer Override & ClozeSequence Merge**
 
 # Active Progress Context

@@ -76,13 +76,12 @@ class _SpotDifferenceQuizBodyState extends State<SpotDifferenceQuizBody> {
         ),
         Expanded(
           child: Row(
-            crossAxisAlignment: CrossAxisAlignment.stretch,
+            crossAxisAlignment: CrossAxisAlignment.center,
             children: List.generate(2, (sideIndex) {
               final wrongHere = _locked && _wrongSide == sideIndex;
-              final correctHere =
-                  _locked && _correctOnLeft[sideIndex]; // always show both greens? spec: wrong red, other green
+              final correctHere = _locked && _correctOnLeft[sideIndex];
               final showGreen = _locked && _correctOnLeft[sideIndex];
-              final borderColor = ! _locked
+              final borderColor = !_locked
                   ? null
                   : wrongHere
                       ? Colors.red
@@ -96,31 +95,38 @@ class _SpotDifferenceQuizBodyState extends State<SpotDifferenceQuizBody> {
                     left: sideIndex == 0 ? 0 : 6,
                     right: sideIndex == 1 ? 0 : 6,
                   ),
-                  child: Material(
-                    borderRadius: BorderRadius.circular(12),
-                    clipBehavior: Clip.antiAlias,
-                    color: wrongHere
-                        ? Colors.red.shade50
-                        : correctHere && _locked
-                            ? Colors.green.shade50
-                            : null,
-                    child: InkWell(
-                      onTap: _locked ? null : () => _onTap(sideIndex),
-                      child: DecoratedBox(
-                        decoration: BoxDecoration(
-                          border: borderColor != null
-                              ? Border.all(color: borderColor, width: 3)
+                  child: AspectRatio(
+                    aspectRatio: 1,
+                    child: Material(
+                      borderRadius: BorderRadius.circular(12),
+                      clipBehavior: Clip.antiAlias,
+                      color: wrongHere
+                          ? Colors.red.shade50
+                          : correctHere && _locked
+                              ? Colors.green.shade50
                               : null,
-                          borderRadius: BorderRadius.circular(12),
-                        ),
-                        child: Image.asset(
-                          _pathAt(sideIndex),
-                          fit: BoxFit.contain,
-                          errorBuilder: (_, __, ___) => Container(
-                            color: Colors.grey.shade300,
-                            alignment: Alignment.center,
-                            child:
-                                const Icon(Icons.image_not_supported, size: 48),
+                      child: InkWell(
+                        onTap: _locked ? null : () => _onTap(sideIndex),
+                        child: DecoratedBox(
+                          decoration: BoxDecoration(
+                            border: borderColor != null
+                                ? Border.all(color: borderColor, width: 3)
+                                : null,
+                            borderRadius: BorderRadius.circular(12),
+                          ),
+                          child: Center(
+                            child: Image.asset(
+                              _pathAt(sideIndex),
+                              fit: BoxFit.contain,
+                              errorBuilder: (_, __, ___) => Container(
+                                color: Colors.grey.shade300,
+                                alignment: Alignment.center,
+                                child: const Icon(
+                                  Icons.image_not_supported,
+                                  size: 48,
+                                ),
+                              ),
+                            ),
                           ),
                         ),
                       ),

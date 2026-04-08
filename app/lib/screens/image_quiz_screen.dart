@@ -41,6 +41,46 @@ const String _kBlank = '_____';
 /// Minimum touch target size (accessibility).
 const double kMinTouchTarget = 48;
 
+/// Localization keys for per-template quiz titles ([localization.json]).
+const Map<String, String> _kTemplateTitleL10nKeys = {
+  'imageQuizTemplate-1': 'title_image_quiz',
+  'imageQuizTemplate-2': 'title_image_word',
+  'imageQuizTemplate-3': 'title_choose_sentence',
+  'imageQuizTemplate-SpotDifference': 'title_spot_difference',
+  'ConvoTemplate-1': 'title_fill_blank',
+  'ConvoTemplate-ClozeSequence': 'title_cloze',
+  'ConvoTemplate-AppearDisappear': 'click_in_order',
+  'ConvoTemplate-Simon': 'title_sequence',
+  'ConvoTemplate-SentenceBuilder': 'title_build_sentence',
+  'ConvoTemplate-WordPairs': 'title_word_pairs',
+  'ConvoTemplate-GrammarForm': 'title_grammar',
+  'ConvoTemplate-DialogueCompletion': 'title_dialogue',
+};
+
+/// Image templates that show the guest animal / monster lane and count toward monster pressure.
+bool _isMonsterEligibleImageTemplate(String template) =>
+    template == 'imageQuizTemplate-1' ||
+    template == 'imageQuizTemplate-2' ||
+    template == 'imageQuizTemplate-SpotDifference';
+
+/// Maps cumulative wrong answers on [monsterEligibleImageTemplate] questions to step 0..4.
+/// If the level has at most 6 such questions, advance every wrong. If more than 6, use a
+/// 1,2,1,2 wrong-answer pattern between advances (cumulative thresholds at 1, 3, 4, 6).
+int _monsterStepFromEligibleWrongs(
+  int eligibleWrongCount,
+  int eligibleQuestionCount,
+) {
+  if (eligibleQuestionCount <= 0) return 0;
+  if (eligibleQuestionCount <= 6) {
+    return min(4, eligibleWrongCount);
+  }
+  if (eligibleWrongCount < 1) return 0;
+  if (eligibleWrongCount < 3) return 1;
+  if (eligibleWrongCount < 4) return 2;
+  if (eligibleWrongCount < 6) return 3;
+  return 4;
+}
+
 enum _Phase { loading, playing, end, gameOver }
 
 /// In-quiz experience for one sub-level: image templates, convo templates, monster/timer, and completion UI.
@@ -111,10 +151,10 @@ class _ImageQuizScreenState extends ConsumerState<ImageQuizScreen>
   // Timer
   late AnimationController _timerController;
 
-  // Monster / guest animal
+  // Monster / guest animal (only [imageQuizTemplate-1], [-2], [-SpotDifference])
   int _monsterStep = 0;
-  int _wrongCount = 0;
-  int _monsterStepThreshold = 1;
+  int _monsterEligibleWrongCount = 0;
+  int _monsterEligibleQuestionCount = 0;
   String _guestAnimal = 'squirrel';
   String _selectedMonster = 'monster';
 
@@ -135,7 +175,6 @@ class _ImageQuizScreenState extends ConsumerState<ImageQuizScreen>
   List<String?> _convo2HeroPaths = [];
   final Map<String, LevelQuestion> _convoByQuestionId = {};
   final Map<String, String> _convo2ImagePathByQuestionId = {};
-  bool _showTranslation = false;
 
   // Unified mode (mixed question types in a single pass)
   List<LevelQuestion> _allQuestions = [];
@@ -281,8 +320,7 @@ class _ImageQuizScreenState extends ConsumerState<ImageQuizScreen>
                 ))
             .toList(growable: false);
 
-        final totalQuestions = shuffled.length;
-        final threshold = max(1, min(4, (totalQuestions * 0.1).round()));
+        final monsterEligibleCount = shuffled.length;
         final animalNames = await discoverGuestAnimalNames();
         final monsterNames = await discoverMonsterNames();
         final guestAnimal = animalNames.isNotEmpty
@@ -315,7 +353,7 @@ class _ImageQuizScreenState extends ConsumerState<ImageQuizScreen>
             _currentQuestionIds = questionIds;
             _vocabulary = vocabulary;
             _initialQuestionCount = shuffled.length;
-            _monsterStepThreshold = threshold;
+            _monsterEligibleQuestionCount = monsterEligibleCount;
             _guestAnimal = guestAnimal;
             _selectedMonster = selectedMonster;
             _shortQuizDebug = shortQuizDebug;
@@ -438,8 +476,13 @@ class _ImageQuizScreenState extends ConsumerState<ImageQuizScreen>
         questions.length,
         (i) => buildReminderQuestionId(widget.progressKey, i),
       );
-      final totalQuestions = questions.length;
-      final threshold = max(1, min(4, (totalQuestions * 0.1).round()));
+      final monsterEligibleCount = questions
+          .where(
+            (q) =>
+                q.type == LevelQuestionType.image &&
+                _isMonsterEligibleImageTemplate(q.template),
+          )
+          .length;
       final animalNames = await discoverGuestAnimalNames();
       final monsterNames = await discoverMonsterNames();
       final guestAnimal = animalNames.isNotEmpty
@@ -463,7 +506,7 @@ class _ImageQuizScreenState extends ConsumerState<ImageQuizScreen>
           _questionSpotDiffPaths = spotDiffPaths;
           _currentQuestionIds = questionIds;
           _initialQuestionCount = questions.length;
-          _monsterStepThreshold = threshold;
+          _monsterEligibleQuestionCount = monsterEligibleCount;
           _guestAnimal = guestAnimal;
           _selectedMonster = selectedMonster;
           _shortQuizDebug = shortQuizDebug;
@@ -620,8 +663,19 @@ class _ImageQuizScreenState extends ConsumerState<ImageQuizScreen>
         }
       }
 
-      final totalQuestions = validQuestionIds.length;
-      final threshold = max(1, min(4, (totalQuestions * 0.1).round()));
+      var monsterEligibleCount = 0;
+      for (final id in validQuestionIds) {
+        if (convoByQuestionId.containsKey(id)) continue;
+        final rq = reminderImageQuestionById[id];
+        if (rq != null) {
+          if (rq.type == LevelQuestionType.image &&
+              _isMonsterEligibleImageTemplate(rq.template)) {
+            monsterEligibleCount++;
+          }
+        } else if (assetPathByQuestionId[id] != null) {
+          monsterEligibleCount++;
+        }
+      }
       final animalNames = await discoverGuestAnimalNames();
       final monsterNames = await discoverMonsterNames();
       final guestAnimal = animalNames.isNotEmpty
@@ -670,7 +724,7 @@ class _ImageQuizScreenState extends ConsumerState<ImageQuizScreen>
               .toList(growable: false);
         }
         _initialQuestionCount = validQuestionIds.length;
-        _monsterStepThreshold = threshold;
+        _monsterEligibleQuestionCount = monsterEligibleCount;
         _guestAnimal = guestAnimal;
         _selectedMonster = selectedMonster;
         _shortQuizDebug = shortQuizDebug;
@@ -723,13 +777,48 @@ class _ImageQuizScreenState extends ConsumerState<ImageQuizScreen>
     return _config.imageQuizTimerSeconds;
   }
 
+  /// Whether the current question uses the monster lane and counts wrongs toward monster pressure.
+  bool _currentQuestionIsMonsterEligible() {
+    if (_monsterEligibleQuestionCount <= 0) return false;
+    if (_allQuestions.isNotEmpty && _currentIndex < _allQuestions.length) {
+      final q = _allQuestions[_currentIndex];
+      if (q.type != LevelQuestionType.image) return false;
+      return _isMonsterEligibleImageTemplate(q.template);
+    }
+    if (_isReminder && _currentQuestionId != null) {
+      final rq = _reminderImageQuestionsById[_currentQuestionId!];
+      if (rq != null) return _isMonsterEligibleImageTemplate(rq.template);
+      return true;
+    }
+    if (_configImageQuestions != null &&
+        _currentIndex < _configImageQuestions!.length) {
+      return _isMonsterEligibleImageTemplate(
+        _configImageQuestions![_currentIndex].template,
+      );
+    }
+    if (_questionAssetPaths.isNotEmpty &&
+        _currentIndex < _questionAssetPaths.length) {
+      return true;
+    }
+    return false;
+  }
+
+  bool get _showMonsterLaneForCurrentQuestion =>
+      _monsterEligibleQuestionCount > 0 && _currentQuestionIsMonsterEligible();
+
   /// Restarts the pie countdown and monster idle loop for the current image question.
   void _startTimer() {
     _timerController
       ..reset()
       ..forward();
-    if (!_monsterIdleController.isAnimating) {
-      _monsterIdleController.repeat(reverse: true);
+    if (_showMonsterLaneForCurrentQuestion) {
+      if (!_monsterIdleController.isAnimating) {
+        _monsterIdleController.repeat(reverse: true);
+      }
+    } else {
+      _monsterIdleController
+        ..stop()
+        ..reset();
     }
   }
 
@@ -758,8 +847,12 @@ class _ImageQuizScreenState extends ConsumerState<ImageQuizScreen>
 
   /// Advances monster proximity, wind animation, and bubbles; step 4 triggers game over.
   void _recordWrongForMonster() {
-    _wrongCount++;
-    final newStep = min(4, _wrongCount ~/ _monsterStepThreshold);
+    if (!_currentQuestionIsMonsterEligible()) return;
+    _monsterEligibleWrongCount++;
+    final newStep = _monsterStepFromEligibleWrongs(
+      _monsterEligibleWrongCount,
+      _monsterEligibleQuestionCount,
+    );
     if (newStep > _monsterStep) {
       _monsterStep = newStep;
       // Pause idle during the 500ms stone-movement transition, then resume
@@ -850,13 +943,16 @@ class _ImageQuizScreenState extends ConsumerState<ImageQuizScreen>
       if (_currentIndex >= _allQuestions.length) return '';
       final q = _allQuestions[_currentIndex];
       if (q.type == LevelQuestionType.image) {
-        if (q.template == 'imageQuizTemplate-2') return q.imageQuiz2Data!.imageName;
+        if (q.template == 'imageQuizTemplate-2') {
+          return q.imageQuiz2Data!.correctAnswerStem;
+        }
         if (q.template == 'imageQuizTemplate-3' && q.imageQuiz3Data != null) {
           return q.imageQuiz3Data!.answer;
         }
         if (q.template == 'imageQuizTemplate-SpotDifference') {
           return '__spot__';
         }
+        if (q.imageData?.answer != null) return q.imageData!.answer!;
         final path = _currentIndex < _questionImagePaths.length ? _questionImagePaths[_currentIndex] : null;
         return path != null ? assetPathToBasename(path) : '';
       }
@@ -868,13 +964,16 @@ class _ImageQuizScreenState extends ConsumerState<ImageQuizScreen>
     if (_isReminder && _currentQuestionId != null) {
       final rq = _reminderImageQuestionsById[_currentQuestionId!];
       if (rq?.template == 'imageQuizTemplate-2') {
-        return rq!.imageQuiz2Data!.imageName;
+        return rq!.imageQuiz2Data!.correctAnswerStem;
+      }
+      if (rq?.template == 'imageQuizTemplate-1' && rq!.imageData?.answer != null) {
+        return rq.imageData!.answer!;
       }
     }
     if (_configImageQuestions != null) {
       final q = _configImageQuestions![_currentIndex];
       if (q.template == 'imageQuizTemplate-2') {
-        return q.imageQuiz2Data!.imageName;
+        return q.imageQuiz2Data!.correctAnswerStem;
       }
     }
     return assetPathToBasename(_questionAssetPaths[_currentIndex]);
@@ -895,7 +994,7 @@ class _ImageQuizScreenState extends ConsumerState<ImageQuizScreen>
       // Image question
       if (q.template == 'imageQuizTemplate-2' && q.imageQuiz2Data != null) {
         final d = q.imageQuiz2Data!;
-        return ([d.imageName, ...d.wrongAnswers]..shuffle(Random()));
+        return ([d.correctAnswerStem, ...d.wrongAnswers]..shuffle(Random()));
       }
       if (q.template == 'imageQuizTemplate-3' && q.imageQuiz3Data != null) {
         final d = q.imageQuiz3Data!;
@@ -925,7 +1024,7 @@ class _ImageQuizScreenState extends ConsumerState<ImageQuizScreen>
       final rq = _reminderImageQuestionsById[_currentQuestionId!];
       if (rq?.template == 'imageQuizTemplate-2' && rq!.imageQuiz2Data != null) {
         final d = rq.imageQuiz2Data!;
-        return ([d.imageName, ...d.wrongAnswers]..shuffle(Random()));
+        return ([d.correctAnswerStem, ...d.wrongAnswers]..shuffle(Random()));
       }
     }
     final correct = _correctAnswer();
@@ -933,7 +1032,7 @@ class _ImageQuizScreenState extends ConsumerState<ImageQuizScreen>
       final q = _configImageQuestions![_currentIndex];
       if (q.template == 'imageQuizTemplate-2' && q.imageQuiz2Data != null) {
         final d = q.imageQuiz2Data!;
-        return ([d.imageName, ...d.wrongAnswers]..shuffle(Random()));
+        return ([d.correctAnswerStem, ...d.wrongAnswers]..shuffle(Random()));
       }
     }
     if (_configWrongAnswers != null &&
@@ -1317,10 +1416,15 @@ class _ImageQuizScreenState extends ConsumerState<ImageQuizScreen>
     List<String> fourOrdered,
     String stem,
   ) {
-    final order = [d.imageName, ...d.wrongAnswers];
-    final i = order.indexOf(stem);
-    if (i < 0 || i >= fourOrdered.length) return null;
-    return fourOrdered[i];
+    final correctStem = d.correctAnswerStem;
+    if (stem == correctStem || stem == d.imageName) {
+      return fourOrdered.isNotEmpty ? fourOrdered[0] : null;
+    }
+    final wi = d.wrongAnswers.indexOf(stem);
+    if (wi >= 0 && wi + 1 < fourOrdered.length) {
+      return fourOrdered[wi + 1];
+    }
+    return null;
   }
 
   /// Seconds to wait after a correct image answer before auto-calling [_goNext].
@@ -1409,28 +1513,45 @@ class _ImageQuizScreenState extends ConsumerState<ImageQuizScreen>
 
     return Column(
       children: [
-        // Reminder question counter (reminder mode only)
         if (_isReminder)
           Padding(
             padding: const EdgeInsets.fromLTRB(16, 8, 16, 0),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: [
+                Text(
+                  _reviewingMistakes
+                      ? (strings['reviewing_mistakes'] ?? 'Reviewing Mistakes')
+                      : (q != null
+                          ? '${_questionLabel(strings, _displayQuestionIndexOneBased, _displayQuestionTotal)} · ${_titleForTemplate(q.template, strings)}'
+                          : '$_displayQuestionIndexOneBased / $_displayQuestionTotal'),
+                  style: Theme.of(context).textTheme.labelLarge?.copyWith(
+                        color: Theme.of(context).colorScheme.primary,
+                        fontWeight: FontWeight.w600,
+                      ),
+                ),
+              ],
+            ),
+          )
+        else if (q != null)
+          Padding(
+            padding: const EdgeInsets.fromLTRB(16, 8, 16, 0),
             child: Text(
-              _reviewingMistakes
-                  ? (strings['reviewing_mistakes'] ?? 'Reviewing Mistakes')
-                  : '$_displayQuestionIndexOneBased / $_displayQuestionTotal',
+              '${_questionLabel(strings, _displayQuestionIndexOneBased, _questionCount)} · ${_titleForTemplate(q.template, strings)}',
               style: Theme.of(context).textTheme.labelLarge?.copyWith(
                     color: Theme.of(context).colorScheme.primary,
                     fontWeight: FontWeight.w600,
                   ),
             ),
           ),
-        if (isTemplate2 && iq2 != null)
+        if (isTemplate2 && iq2 != null) ...[
           Expanded(
             flex: 1,
             child: Padding(
               padding: const EdgeInsets.all(16),
               child: Center(
                 child: Text(
-                  _nounLabelFromImageStem(iq2.imageName),
+                  _nounLabelFromImageStem(iq2.correctAnswerStem),
                   style: Theme.of(context).textTheme.headlineSmall?.copyWith(
                         fontWeight: FontWeight.w800,
                       ),
@@ -1438,16 +1559,16 @@ class _ImageQuizScreenState extends ConsumerState<ImageQuizScreen>
                 ),
               ),
             ),
-          )
-        else if (isSpot == true && spotPair != null && q != null)
+          ),
+          _optionalTranslationLine(iq2.translation, userLanguage),
+        ] else if (isSpot == true && spotPair != null && q != null)
           Expanded(
             flex: 1,
             child: Padding(
               padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
               child: SpotDifferenceQuizBody(
-                sentenceLine: q.spotDiffData!.sentence[userLanguage] ??
-                    q.spotDiffData!.sentence['en'] ??
-                    '',
+                sentenceLine: strings['spot_difference_prompt'] ??
+                    'Tap the correct picture.',
                 correctPath: spotPair[0],
                 wrongPath: spotPair[1],
                 onPlayCorrect: () =>
@@ -1477,159 +1598,166 @@ class _ImageQuizScreenState extends ConsumerState<ImageQuizScreen>
               ),
             ),
           ),
-        // Speech bubbles — appear above animal/monster after slide completes
-        if (_showNext && _bubbleConversation != null)
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 16),
-            child: Row(
-              crossAxisAlignment: CrossAxisAlignment.end,
-              children: [
-                Expanded(
-                  child: _SpeechBubble(
-                    _bubbleConversation!.guest,
-                    maxWidth: 160,
-                  ),
-                ),
-                const SizedBox(width: 8),
-                Expanded(
-                  child: _SpeechBubble(
-                    _bubbleConversation!.attacker,
-                    maxWidth: 160,
-                  ),
-                ),
-              ],
-            ),
+        if (!isTemplate2 && !isSpot && q != null)
+          _optionalTranslationLine(
+            isT3 ? q.imageQuiz3Data?.translation : q.imageData?.translation,
+            userLanguage,
           ),
-        // Guest animal + monster (jumps stone to stone) + step stones below
-        Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 4),
-          child: LayoutBuilder(
-            builder: (context, constraints) {
-              const animalSize = 72.0;
-              const monsterSize = 72.0;
-              const stoneSize = 20.0;
-              const stoneRowHeight = 26.0;
-              const gap = 8.0;
-              final totalWidth = constraints.maxWidth;
-
-              // Monster center range: starts above rightmost stone, ends above leftmost stone
-              final maxMonsterCenter = totalWidth - monsterSize / 2;
-              final minMonsterCenter = animalSize + gap + monsterSize / 2;
-              final range = maxMonsterCenter - minMonsterCenter;
-
-              // Stone i=0 is rightmost (step-0 landing), i=3 is leftmost (step-3 landing)
-              // Monster center at step k aligns with stone k center
-              final step = _monsterStep.clamp(0, 3);
-              final monsterCenter = maxMonsterCenter - step * (range / 3);
-              final monsterLeft = monsterCenter - monsterSize / 2;
-
-              const pieTimerSize = 40.0;
-              const pieTimerGap = 6.0;
-              const monsterTop = pieTimerSize + pieTimerGap;
-
-              return SizedBox(
-                height: monsterTop + monsterSize + stoneRowHeight,
-                child: Stack(
-                  children: [
-                    // Animal — fixed at left, aligned with monster
-                    Positioned(
-                      left: 0,
-                      top: monsterTop,
-                      child: _animalImage(),
+        // Speech bubbles + monster lane — only for templates that use monster pressure
+        if (_showMonsterLaneForCurrentQuestion) ...[
+          if (_showNext && _bubbleConversation != null)
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 16),
+              child: Row(
+                crossAxisAlignment: CrossAxisAlignment.end,
+                children: [
+                  Expanded(
+                    child: _SpeechBubble(
+                      _bubbleConversation!.guest,
+                      maxWidth: 160,
                     ),
-                    // Monster — moves stone to stone with wind behind it
-                    AnimatedPositioned(
-                      duration: const Duration(milliseconds: 500),
-                      curve: Curves.easeInOut,
-                      left: monsterLeft,
-                      top: monsterTop,
-                      child: Stack(
-                        clipBehavior: Clip.none,
-                        children: [
-                          Positioned.fill(
-                            child: AnimatedBuilder(
-                              animation: _windController,
-                              builder: (context, _) => CustomPaint(
-                                painter: _WindPainter(_windController.value),
-                                size: const Size(72, 72),
+                  ),
+                  const SizedBox(width: 8),
+                  Expanded(
+                    child: _SpeechBubble(
+                      _bubbleConversation!.attacker,
+                      maxWidth: 160,
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          // Guest animal + monster (jumps stone to stone) + step stones below
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 4),
+            child: LayoutBuilder(
+              builder: (context, constraints) {
+                const animalSize = 72.0;
+                const monsterSize = 72.0;
+                const stoneSize = 20.0;
+                const stoneRowHeight = 26.0;
+                const gap = 8.0;
+                final totalWidth = constraints.maxWidth;
+
+                // Monster center range: starts above rightmost stone, ends above leftmost stone
+                final maxMonsterCenter = totalWidth - monsterSize / 2;
+                final minMonsterCenter = animalSize + gap + monsterSize / 2;
+                final range = maxMonsterCenter - minMonsterCenter;
+
+                // Stone i=0 is rightmost (step-0 landing), i=3 is leftmost (step-3 landing)
+                // Monster center at step k aligns with stone k center
+                final step = _monsterStep.clamp(0, 3);
+                final monsterCenter = maxMonsterCenter - step * (range / 3);
+                final monsterLeft = monsterCenter - monsterSize / 2;
+
+                const pieTimerSize = 40.0;
+                const pieTimerGap = 6.0;
+                const monsterTop = pieTimerSize + pieTimerGap;
+
+                return SizedBox(
+                  height: monsterTop + monsterSize + stoneRowHeight,
+                  child: Stack(
+                    children: [
+                      // Animal — fixed at left, aligned with monster
+                      Positioned(
+                        left: 0,
+                        top: monsterTop,
+                        child: _animalImage(),
+                      ),
+                      // Monster — moves stone to stone with wind behind it
+                      AnimatedPositioned(
+                        duration: const Duration(milliseconds: 500),
+                        curve: Curves.easeInOut,
+                        left: monsterLeft,
+                        top: monsterTop,
+                        child: Stack(
+                          clipBehavior: Clip.none,
+                          children: [
+                            Positioned.fill(
+                              child: AnimatedBuilder(
+                                animation: _windController,
+                                builder: (context, _) => CustomPaint(
+                                  painter: _WindPainter(_windController.value),
+                                  size: const Size(72, 72),
+                                ),
                               ),
                             ),
-                          ),
-                          // Pie countdown timer — centered above monster, moves with it
-                          Positioned(
-                            top: -(pieTimerSize + pieTimerGap),
-                            left: (monsterSize - pieTimerSize) / 2,
-                            child: AnimatedBuilder(
-                              animation: _timerController,
-                              builder: (context, _) {
-                                final remaining = 1.0 - _timerController.value;
-                                final color = Color.lerp(
-                                    Colors.red, Colors.green, remaining)!;
-                                return CustomPaint(
-                                  size: Size(pieTimerSize, pieTimerSize),
-                                  painter: _PieTimerPainter(
-                                    progress: remaining,
-                                    color: color,
+                            // Pie countdown timer — centered above monster, moves with it
+                            Positioned(
+                              top: -(pieTimerSize + pieTimerGap),
+                              left: (monsterSize - pieTimerSize) / 2,
+                              child: AnimatedBuilder(
+                                animation: _timerController,
+                                builder: (context, _) {
+                                  final remaining = 1.0 - _timerController.value;
+                                  final color = Color.lerp(
+                                      Colors.red, Colors.green, remaining)!;
+                                  return CustomPaint(
+                                    size: Size(pieTimerSize, pieTimerSize),
+                                    painter: _PieTimerPainter(
+                                      progress: remaining,
+                                      color: color,
+                                    ),
+                                  );
+                                },
+                              ),
+                            ),
+                            // Idle attack loop: scale up 10% + lunge left 10% of size
+                            AnimatedBuilder(
+                              animation: _monsterIdleController,
+                              builder: (context, child) {
+                                final t = CurvedAnimation(
+                                  parent: _monsterIdleController,
+                                  curve: Curves.easeInOut,
+                                ).value;
+                                return Transform.translate(
+                                  offset: Offset(-monsterSize * 0.10 * t, 0),
+                                  child: Transform.scale(
+                                    scale: 1.0 + 0.10 * t,
+                                    child: child,
                                   ),
                                 );
                               },
+                              child: _monsterImage(),
+                            ),
+                          ],
+                        ),
+                      ),
+                      // Step stones — individually positioned to align with monster landing spots
+                      // i=0 rightmost (green) → i=3 leftmost (red); grey when consumed
+                      ...List.generate(4, (i) {
+                        const stoneColors = [
+                          Colors.green,
+                          Colors.yellow,
+                          Colors.orange,
+                          Colors.red,
+                        ];
+                        final stoneCenter = maxMonsterCenter - i * (range / 3);
+                        final stoneLeft = stoneCenter - stoneSize / 2;
+                        final consumed = i < _monsterStep;
+                        return Positioned(
+                          bottom: 0,
+                          left: stoneLeft,
+                          child: AnimatedContainer(
+                            duration: const Duration(milliseconds: 300),
+                            width: stoneSize,
+                            height: stoneSize,
+                            decoration: BoxDecoration(
+                              color: consumed
+                                  ? Colors.grey.shade300
+                                  : stoneColors[i],
+                              borderRadius: BorderRadius.circular(4),
                             ),
                           ),
-                          // Idle attack loop: scale up 10% + lunge left 10% of size
-                          AnimatedBuilder(
-                            animation: _monsterIdleController,
-                            builder: (context, child) {
-                              final t = CurvedAnimation(
-                                parent: _monsterIdleController,
-                                curve: Curves.easeInOut,
-                              ).value;
-                              return Transform.translate(
-                                offset: Offset(-monsterSize * 0.10 * t, 0),
-                                child: Transform.scale(
-                                  scale: 1.0 + 0.10 * t,
-                                  child: child,
-                                ),
-                              );
-                            },
-                            child: _monsterImage(),
-                          ),
-                        ],
-                      ),
-                    ),
-                    // Step stones — individually positioned to align with monster landing spots
-                    // i=0 rightmost (green) → i=3 leftmost (red); grey when consumed
-                    ...List.generate(4, (i) {
-                      const stoneColors = [
-                        Colors.green,
-                        Colors.yellow,
-                        Colors.orange,
-                        Colors.red,
-                      ];
-                      final stoneCenter = maxMonsterCenter - i * (range / 3);
-                      final stoneLeft = stoneCenter - stoneSize / 2;
-                      final consumed = i < _monsterStep;
-                      return Positioned(
-                        bottom: 0,
-                        left: stoneLeft,
-                        child: AnimatedContainer(
-                          duration: const Duration(milliseconds: 300),
-                          width: stoneSize,
-                          height: stoneSize,
-                          decoration: BoxDecoration(
-                            color: consumed
-                                ? Colors.grey.shade300
-                                : stoneColors[i],
-                            borderRadius: BorderRadius.circular(4),
-                          ),
-                        ),
-                      );
-                    }),
-                  ],
-                ),
-              );
-            },
+                        );
+                      }),
+                    ],
+                  ),
+                );
+              },
+            ),
           ),
-        ),
+        ],
         if (isTemplate2 && iq2 != null && paths4 != null)
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 16),
@@ -1997,8 +2125,7 @@ class _ImageQuizScreenState extends ConsumerState<ImageQuizScreen>
               Text(
                 _isReminder && _reviewingMistakes
                     ? (strings['reviewing_mistakes'] ?? 'Reviewing Mistakes')
-                    : _questionLabel(
-                        strings, _displayQuestionIndexOneBased, displayTotal),
+                    : '${_questionLabel(strings, _displayQuestionIndexOneBased, displayTotal)} · ${_titleForTemplate(q.template, strings)}',
                 style: Theme.of(context).textTheme.labelLarge?.copyWith(
                       color: Theme.of(context).colorScheme.primary,
                       fontWeight: FontWeight.w600,
@@ -2014,7 +2141,22 @@ class _ImageQuizScreenState extends ConsumerState<ImageQuizScreen>
         Expanded(
           child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
-            child: _buildConvoQuestionBody(q, userLanguage, soundFxOn, strings),
+            child: q.template == 'ConvoTemplate-1'
+                ? Column(
+                    crossAxisAlignment: CrossAxisAlignment.stretch,
+                    children: [
+                      Expanded(
+                        child: _buildConvoQuestionBody(
+                          q,
+                          userLanguage,
+                          soundFxOn,
+                          strings,
+                        ),
+                      ),
+                      _convo1TranslationBlock(q.convoData!, userLanguage),
+                    ],
+                  )
+                : _buildConvoQuestionBody(q, userLanguage, soundFxOn, strings),
           ),
         ),
         if (q.template == 'ConvoTemplate-1')
@@ -2047,30 +2189,6 @@ class _ImageQuizScreenState extends ConsumerState<ImageQuizScreen>
                 : const SizedBox.shrink(),
           ),
         ),
-        if (!_isReminder && userLanguage != 'en')
-          Padding(
-            padding: const EdgeInsets.fromLTRB(16, 0, 16, 12),
-            child: SizedBox(
-              width: double.infinity,
-              child: OutlinedButton.icon(
-                onPressed: () {
-                  audio.playClick(soundFxOn: soundFxOn);
-                  setState(() => _showTranslation = !_showTranslation);
-                },
-                icon: Icon(
-                  _showTranslation
-                      ? Icons.translate
-                      : Icons.g_translate_outlined,
-                  size: 18,
-                ),
-                label: Text(
-                  _showTranslation
-                      ? (strings['english'] ?? 'English')
-                      : (strings['translate'] ?? 'Translate'),
-                ),
-              ),
-            ),
-          ),
       ],
     );
   }
@@ -2088,6 +2206,8 @@ class _ImageQuizScreenState extends ConsumerState<ImageQuizScreen>
           key: ValueKey('ad-${_currentQuestionId ?? '$_currentIndex'}'),
           data: q.appearDisappearData!,
           strings: strings,
+          userLanguage: userLanguage,
+          translation: q.appearDisappearTranslation,
           onPlayCorrect: () =>
               audio.playCorrect(soundFxOn: soundFxOn),
           onPlayWrong: () => audio.playWrong(soundFxOn: soundFxOn),
@@ -2119,6 +2239,8 @@ class _ImageQuizScreenState extends ConsumerState<ImageQuizScreen>
           key: ValueKey('sb-${_currentQuestionId ?? '$_currentIndex'}'),
           data: q.sentenceBuilderData!,
           strings: strings,
+          userLanguage: userLanguage,
+          translation: q.sentenceBuilderData!.translation,
           onPlayCorrect: () =>
               audio.playCorrect(soundFxOn: soundFxOn),
           onPlayWrong: () => audio.playWrong(soundFxOn: soundFxOn),
@@ -2138,6 +2260,7 @@ class _ImageQuizScreenState extends ConsumerState<ImageQuizScreen>
           key: ValueKey('gf-${_currentQuestionId ?? '$_currentIndex'}'),
           data: q.grammarFormData!,
           userLanguage: userLanguage,
+          translation: q.grammarFormData!.translation,
           onPlayCorrect: () =>
               audio.playCorrect(soundFxOn: soundFxOn),
           onPlayWrong: () => audio.playWrong(soundFxOn: soundFxOn),
@@ -2148,6 +2271,8 @@ class _ImageQuizScreenState extends ConsumerState<ImageQuizScreen>
           key: ValueKey('dc-${_currentQuestionId ?? '$_currentIndex'}'),
           data: q.dialogueCompletionData!,
           userLanguage: userLanguage,
+          line1Translation: q.dialogueCompletionData!.line1Translation,
+          answerTranslation: q.dialogueCompletionData!.answerTranslation,
           onPlayCorrect: () =>
               audio.playCorrect(soundFxOn: soundFxOn),
           onPlayWrong: () => audio.playWrong(soundFxOn: soundFxOn),
@@ -2183,15 +2308,74 @@ class _ImageQuizScreenState extends ConsumerState<ImageQuizScreen>
         .replaceFirst('%s', '$total');
   }
 
+  String _titleForTemplate(String template, Map<String, String> strings) {
+    final key = _kTemplateTitleL10nKeys[template];
+    if (key == null) return '';
+    return strings[key] ?? '';
+  }
+
+  Widget _optionalTranslationLine(Map<String, String>? map, String userLanguage) {
+    if (map == null || userLanguage == 'en') return const SizedBox.shrink();
+    final t = map[userLanguage];
+    if (t == null || t.isEmpty) return const SizedBox.shrink();
+    final theme = Theme.of(context);
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 4),
+      child: Text(
+        t,
+        textAlign: TextAlign.center,
+        style: theme.textTheme.bodyMedium?.copyWith(
+          fontStyle: FontStyle.italic,
+          color: theme.colorScheme.onSurfaceVariant,
+        ),
+      ),
+    );
+  }
+
+  Widget _convo1TranslationBlock(ConvoQuestionData q, String userLanguage) {
+    if (userLanguage == 'en') return const SizedBox.shrink();
+    final t1 = q.line1Translation?[userLanguage];
+    final t2 = q.line2Translation?[userLanguage];
+    if ((t1 == null || t1.isEmpty) && (t2 == null || t2.isEmpty)) {
+      return const SizedBox.shrink();
+    }
+    final theme = Theme.of(context);
+    final cs = theme.colorScheme;
+    return Padding(
+      padding: const EdgeInsets.only(bottom: 8),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: [
+          if (t1 != null && t1.isNotEmpty)
+            Text(
+              t1,
+              textAlign: TextAlign.center,
+              style: theme.textTheme.bodyMedium?.copyWith(
+                color: cs.onSurfaceVariant,
+                fontStyle: FontStyle.italic,
+              ),
+            ),
+          if (t2 != null && t2.isNotEmpty) ...[
+            if (t1 != null && t1.isNotEmpty) const SizedBox(height: 4),
+            Text(
+              t2,
+              textAlign: TextAlign.center,
+              style: theme.textTheme.bodyMedium?.copyWith(
+                color: cs.onSurfaceVariant,
+                fontStyle: FontStyle.italic,
+              ),
+            ),
+          ],
+        ],
+      ),
+    );
+  }
+
   /// Side-by-side character columns for classic ConvoTemplate-1 presentation.
   Widget _buildCharactersRow(ConvoQuestionData q, String userLanguage) {
     final blankInLine1 = q.line1['en']?.contains(_kBlank) ?? false;
-    final line1Text = _showTranslation
-        ? (q.line1[userLanguage] ?? q.line1['en'] ?? '')
-        : (q.line1['en'] ?? '');
-    final line2Text = _showTranslation
-        ? (q.line2[userLanguage] ?? q.line2['en'] ?? '')
-        : (q.line2['en'] ?? '');
+    final line1Text = q.line1['en'] ?? '';
+    final line2Text = q.line2['en'] ?? '';
 
     return Row(
       crossAxisAlignment: CrossAxisAlignment.start,

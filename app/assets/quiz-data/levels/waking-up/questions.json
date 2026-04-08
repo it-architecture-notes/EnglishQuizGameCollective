@@ -9,7 +9,12 @@
           "nightstand",
           "blanket",
           "mattress"
-        ]
+        ],
+        "timer_seconds": 10,
+        "translation": {
+          "tr": "Çalar saat",
+          "es": "Despertador"
+        }
       }
     },
     {
@@ -19,7 +24,11 @@
         "imageName": "mattress",
         "wrongAnswers": ["bed", "blanket", "pillow"],
         "auto_next_delay": 1.0,
-        "show_correct_on_wrong": false
+        "show_correct_on_wrong": false,
+        "translation": {
+          "tr": "Şilte",
+          "es": "Colchón"
+        }
       }
     },
     {
@@ -39,7 +48,15 @@
           "es": "¡Sí, sonaba muy fuerte!"
         },
         "answer": "alarm",
-        "distractors": ["pillow", "blanket", "mattress"]
+        "distractors": ["pillow", "blanket", "mattress"],
+        "line1_translation": {
+          "tr": "Bu sabah çalar saatımı duydun mu?",
+          "es": "¿Oíste mi despertador esta mañana?"
+        },
+        "line2_translation": {
+          "tr": "Evet, çok yüksekti!",
+          "es": "¡Sí, sonaba muy fuerte!"
+        }
       }
     },
     {
@@ -65,16 +82,10 @@
         "distractors": ["you", "coffee", "milk", "red", "big", "and"],
         "display_duration": 0.8,
         "auto_next_delay": 1.0
-      }
-    },
-    {
-      "type": "vocab",
-      "template": "ConvoTemplate-Simon",
-      "questionData": {
-        "words": ["wake", "up", "now"],
-        "distractors": ["sleep", "late", "run", "eat", "go", "yes"],
-        "tile_highlight_duration": 0.45,
-        "auto_next_delay": 1.0
+      },
+      "translation": {
+        "tr": "Kelimeleri sırayla seçin.",
+        "es": "Toca las palabras en orden."
       }
     },
     {
@@ -98,7 +109,11 @@
       "template": "ConvoTemplate-SentenceBuilder",
       "questionData": {
         "correct_order": ["I", "like", "mornings"],
-        "auto_next_delay": 1.0
+        "auto_next_delay": 1.0,
+        "translation": {
+          "tr": "Sabahları severim.",
+          "es": "Me gustan las mañanas."
+        }
       }
     },
     {
@@ -124,7 +139,11 @@
           "This is furniture next to the bed.",
           "This is a thick mattress layer."
         ],
-        "distractor_type": "meaning"
+        "distractor_type": "meaning",
+        "translation": {
+          "tr": "Başınızı dinlendirmek için kullandığınız yumuşak bir şey.",
+          "es": "Algo suave para descansar la cabeza."
+        }
       }
     },
     {
@@ -150,7 +169,11 @@
         },
         "hintWord": "fold",
         "answer": "fold",
-        "distractors": ["folds", "folding", "folded"]
+        "distractors": ["folds", "folding", "folded"],
+        "translation": {
+          "tr": "Her sabah battaniyeyi _____.",
+          "es": "_____ la manta cada mañana."
+        }
       }
     },
     {
@@ -163,7 +186,15 @@
           "en": "Are you awake?",
           "tr": "Uyandın mı?"
         },
+        "line1_translation": {
+          "tr": "Uyandın mı?",
+          "es": "¿Estás despierto?"
+        },
         "answer": "Yes, I am up now.",
+        "answer_translation": {
+          "tr": "Evet, kalktım.",
+          "es": "Sí, ya me levanté."
+        },
         "distractors": [
           "No, I am still asleep.",
           "I am under the table.",

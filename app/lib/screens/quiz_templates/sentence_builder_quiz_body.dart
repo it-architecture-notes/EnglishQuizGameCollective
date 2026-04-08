@@ -11,6 +11,8 @@ class SentenceBuilderQuizBody extends StatefulWidget {
     super.key,
     required this.data,
     required this.strings,
+    required this.userLanguage,
+    this.translation,
     required this.onPlayCorrect,
     required this.onPlayWrong,
     required this.onOutcome,
@@ -18,6 +20,8 @@ class SentenceBuilderQuizBody extends StatefulWidget {
 
   final SentenceBuilderQuestionData data;
   final Map<String, String> strings;
+  final String userLanguage;
+  final Map<String, String>? translation;
   final VoidCallback onPlayCorrect;
   final VoidCallback onPlayWrong;
   final void Function(bool correct) onOutcome;
@@ -109,18 +113,25 @@ class _SentenceBuilderQuizBodyState extends State<SentenceBuilderQuizBody> {
     final cs = theme.colorScheme;
     final n = _perm.length;
 
+    final tr = widget.translation;
+    final aux = widget.userLanguage != 'en' && tr != null
+        ? tr[widget.userLanguage]
+        : null;
+
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
-        Text(
-          widget.strings['click_in_order'] ?? 'Click in order',
-          style: theme.textTheme.titleMedium?.copyWith(
-            fontWeight: FontWeight.w600,
-            color: cs.primary,
+        if (aux != null && aux.isNotEmpty) ...[
+          Text(
+            aux,
+            textAlign: TextAlign.center,
+            style: theme.textTheme.bodyMedium?.copyWith(
+              color: cs.onSurfaceVariant,
+              fontStyle: FontStyle.italic,
+            ),
           ),
-          textAlign: TextAlign.center,
-        ),
-        const SizedBox(height: 8),
+          const SizedBox(height: 8),
+        ],
         Wrap(
           alignment: WrapAlignment.center,
           spacing: 6,

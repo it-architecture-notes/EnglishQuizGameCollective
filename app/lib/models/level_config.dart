@@ -8,11 +8,18 @@ class ImageQuestionData {
   const ImageQuestionData({
     required this.imageName,
     required this.wrongAnswers,
+    this.answer,
     this.timerSeconds,
+    this.translation,
   });
 
   final String imageName;
   final List<String> wrongAnswers;
+  /// Optional override for the correct answer label shown in MCQ buttons.
+  /// When null the image basename is used instead.
+  final String? answer;
+  /// Optional locale → auxiliary line under the image (non-English only in UI).
+  final Map<String, String>? translation;
   /// Per-question monster timer override in seconds. Null = use global config value.
   final int? timerSeconds;
 }
@@ -22,13 +29,23 @@ class ImageQuizTemplate2Data {
   const ImageQuizTemplate2Data({
     required this.imageName,
     required this.wrongAnswers,
+    this.answer,
     this.autoNextDelay = 1.0,
     this.showCorrectOnWrong = false,
     this.timerSeconds,
+    this.translation,
   });
 
   final String imageName;
   final List<String> wrongAnswers;
+  /// Optional override for the correct tile’s option key (same role as [ImageQuestionData.answer]).
+  /// When null or empty, [imageName] is used. The correct image file is always [imageName].
+  final String? answer;
+
+  /// Stem identifying the correct choice in the shuffled grid (for scoring and option keys).
+  String get correctAnswerStem =>
+      (answer != null && answer!.isNotEmpty) ? answer! : imageName;
+  final Map<String, String>? translation;
   final double autoNextDelay;
   /// Parsed from `show_correct_on_wrong` in JSON; reserved — the grid always highlights the correct tile green when locked (same as template-1).
   final bool showCorrectOnWrong;
@@ -97,6 +114,8 @@ class ConvoQuestionData {
     required this.line2,
     required this.answer,
     required this.distractors,
+    this.line1Translation,
+    this.line2Translation,
   });
 
   final String character1;
@@ -105,6 +124,8 @@ class ConvoQuestionData {
   final Map<String, String> line2;
   final String answer;
   final List<String> distractors;
+  final Map<String, String>? line1Translation;
+  final Map<String, String>? line2Translation;
 }
 
 /// Parsed `questionData` for [ConvoTemplate-2] (optional hero image + cloze sentence).
@@ -128,11 +149,13 @@ class SentenceBuilderQuestionData {
   const SentenceBuilderQuestionData({
     required this.correctOrder,
     this.autoNextDelay = 1.0,
+    this.translation,
   });
 
   /// Target sentence token sequence (left-to-right).
   final List<String> correctOrder;
   final double autoNextDelay;
+  final Map<String, String>? translation;
 }
 
 /// One left/right pair for [ConvoTemplate-WordPairs].
@@ -162,6 +185,7 @@ class ImageQuizTemplate3Data {
     required this.distractors,
     this.distractorType,
     this.timerSeconds,
+    this.translation,
   });
 
   final String imageName;
@@ -171,19 +195,19 @@ class ImageQuizTemplate3Data {
   final String? distractorType;
   /// Per-question monster timer override in seconds. Null = use global config value.
   final int? timerSeconds;
+  final Map<String, String>? translation;
 }
 
-/// [imageQuizTemplate-SpotDifference]: two images + localized prompt.
+/// [imageQuizTemplate-SpotDifference]: two images; instruction text comes from
+/// app localization key `spot_difference_prompt` (not repeated per question).
 class SpotDifferenceQuestionData {
   const SpotDifferenceQuestionData({
-    required this.sentence,
     required this.correctImage,
     required this.wrongImage,
     this.autoNextDelay = 1.0,
     this.timerSeconds,
   });
 
-  final Map<String, String> sentence;
   final String correctImage;
   final String wrongImage;
   final double autoNextDelay;
@@ -198,12 +222,14 @@ class GrammarFormQuestionData {
     required this.hintWord,
     required this.answer,
     required this.distractors,
+    this.translation,
   });
 
   final Map<String, String> sentence;
   final String hintWord;
   final String answer;
   final List<String> distractors;
+  final Map<String, String>? translation;
 }
 
 /// [ConvoTemplate-DialogueCompletion]: first speaker line + four response options.
@@ -214,6 +240,8 @@ class DialogueCompletionQuestionData {
     required this.line1,
     required this.answer,
     required this.distractors,
+    this.line1Translation,
+    this.answerTranslation,
   });
 
   final String character1;
@@ -221,6 +249,8 @@ class DialogueCompletionQuestionData {
   final Map<String, String> line1;
   final String answer;
   final List<String> distractors;
+  final Map<String, String>? line1Translation;
+  final Map<String, String>? answerTranslation;
 }
 
 /// One entry in `levelQuestions`.
@@ -242,6 +272,7 @@ class LevelQuestion {
     this.wordPairsData,
     this.grammarFormData,
     this.dialogueCompletionData,
+    this.appearDisappearTranslation,
   });
 
   final String? questionId;
@@ -267,6 +298,9 @@ class LevelQuestion {
   final WordPairsQuestionData? wordPairsData;
   final GrammarFormQuestionData? grammarFormData;
   final DialogueCompletionQuestionData? dialogueCompletionData;
+
+  /// Top-level `translation` map for [ConvoTemplate-AppearDisappear] only (sibling to `questionData` in JSON).
+  final Map<String, String>? appearDisappearTranslation;
 }
 
 /// Full level definition from `assets/quiz-data/levels/{iconImageName}.json`.
@@ -299,6 +333,13 @@ class LevelConfig {
     );
   }
 
+  static Map<String, String>? _stringMapOrNull(dynamic value) {
+    if (value == null || value is! Map) return null;
+    return value.map(
+      (k, v) => MapEntry(k.toString(), v?.toString() ?? ''),
+    );
+  }
+
   /// Validates and builds [ImageQuestionData] for `imageQuizTemplate-1` rows (exactly three wrong answers).
   static ImageQuestionData _parseImageData(Map<String, dynamic> data) {
     final imageName = data['imageName'] as String? ?? '';
@@ -321,7 +362,9 @@ class LevelConfig {
     return ImageQuestionData(
       imageName: imageName,
       wrongAnswers: wrong,
+      answer: data['answer'] as String?,
       timerSeconds: (data['timer_seconds'] as num?)?.toInt(),
+      translation: _stringMapOrNull(data['translation']),
     );
   }
 
@@ -339,9 +382,11 @@ class LevelConfig {
     return ImageQuizTemplate2Data(
       imageName: imageName,
       wrongAnswers: wrong,
+      answer: data['answer'] as String?,
       autoNextDelay: (data['auto_next_delay'] as num?)?.toDouble() ?? 1.0,
       showCorrectOnWrong: data['show_correct_on_wrong'] as bool? ?? false,
       timerSeconds: (data['timer_seconds'] as num?)?.toInt(),
+      translation: _stringMapOrNull(data['translation']),
     );
   }
 
@@ -458,6 +503,8 @@ class LevelConfig {
       distractors: (data['distractors'] as List<dynamic>? ?? [])
           .map((e) => e.toString())
           .toList(),
+      line1Translation: _stringMapOrNull(data['line1_translation']),
+      line2Translation: _stringMapOrNull(data['line2_translation']),
     );
   }
 
@@ -496,6 +543,7 @@ class LevelConfig {
     return SentenceBuilderQuestionData(
       correctOrder: correctOrder,
       autoNextDelay: (data['auto_next_delay'] as num?)?.toDouble() ?? 1.0,
+      translation: _stringMapOrNull(data['translation']),
     );
   }
 
@@ -540,6 +588,7 @@ class LevelConfig {
       distractors: distractors,
       distractorType: dt,
       timerSeconds: (data['timer_seconds'] as num?)?.toInt(),
+      translation: _stringMapOrNull(data['translation']),
     );
   }
 
@@ -548,7 +597,6 @@ class LevelConfig {
     Map<String, dynamic> data,
   ) {
     return SpotDifferenceQuestionData(
-      sentence: _stringMap(data['sentence']),
       correctImage: data['correctImage'] as String? ?? '',
       wrongImage: data['wrongImage'] as String? ?? '',
       autoNextDelay: (data['auto_next_delay'] as num?)?.toDouble() ?? 1.0,
@@ -578,6 +626,7 @@ class LevelConfig {
       hintWord: data['hintWord'] as String? ?? '',
       answer: data['answer'] as String? ?? '',
       distractors: distractors,
+      translation: _stringMapOrNull(data['translation']),
     );
   }
 
@@ -599,6 +648,8 @@ class LevelConfig {
       line1: _stringMap(data['line1']),
       answer: data['answer'] as String? ?? '',
       distractors: distractors,
+      line1Translation: _stringMapOrNull(data['line1_translation']),
+      answerTranslation: _stringMapOrNull(data['answer_translation']),
     );
   }
 
@@ -673,6 +724,9 @@ class LevelConfig {
       'ConvoTemplate-2' => 'ConvoTemplate-ClozeSequence',
       _ => template,
     };
+    final appearDisappearTranslation = template == 'ConvoTemplate-AppearDisappear'
+        ? _stringMapOrNull(json['translation'])
+        : null;
     return LevelQuestion(
       questionId: json['questionId'] as String?,
       type: type,
@@ -690,6 +744,7 @@ class LevelConfig {
       wordPairsData: wordPairsData,
       grammarFormData: grammarFormData,
       dialogueCompletionData: dialogueCompletionData,
+      appearDisappearTranslation: appearDisappearTranslation,
     );
   }
 

@@ -8,8 +8,9 @@
           "event_id": 1001,
           "page_template_id": 4,
           "story_text": {
-            "en": "Maya is walking through the park when she hears a sad whimper coming from behind a bush. She finds a tiny puppy with a hurt leg!.Let's help her to take him to the vet by completing the next two levels.",
-            "fr": "Maya marche dans le parc lorsqu'elle entend un petit cri de douleur derrière un buisson. Elle trouve un petit chiot avec une jambe blessée !.Aidez-la à l'emmener au vétérinaire en complétant les deux prochains niveaux."
+            "en": "Help Maya Heal the Dog",
+            "fr": "Aidez Maya à soigner le chien",
+            "tr": "Maya'ya kopegi iyilestirmesi icin yardim et"
           },
           "page_image_list_for_template": [
             "assets/images/story/puppy-1.png"

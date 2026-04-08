@@ -13,6 +13,8 @@ class AppearDisappearQuizBody extends StatefulWidget {
     super.key,
     required this.data,
     required this.strings,
+    required this.userLanguage,
+    this.translation,
     required this.onPlayCorrect,
     required this.onPlayWrong,
     required this.onOutcome,
@@ -20,6 +22,8 @@ class AppearDisappearQuizBody extends StatefulWidget {
 
   final AppearDisappearQuestionData data;
   final Map<String, String> strings;
+  final String userLanguage;
+  final Map<String, String>? translation;
   final VoidCallback onPlayCorrect;
   final VoidCallback onPlayWrong;
   /// Single call per question: `true` = full success (parent auto-advances); `false` = failed (parent shows Next).
@@ -244,19 +248,26 @@ class _AppearDisappearQuizBodyState extends State<AppearDisappearQuizBody> {
       return Center(child: _buildBoxRow(theme, cs));
     }
 
-    // Interaction: prompt + boxes + grid
+    // Interaction: optional translation + boxes + grid (shell shows title)
+    final tr = widget.translation;
+    final aux = widget.userLanguage != 'en' && tr != null
+        ? tr[widget.userLanguage]
+        : null;
+
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
-        Text(
-          widget.strings['click_in_order'] ?? 'Click in order',
-          style: theme.textTheme.titleMedium?.copyWith(
-            fontWeight: FontWeight.w600,
-            color: cs.primary,
+        if (aux != null && aux.isNotEmpty) ...[
+          Text(
+            aux,
+            textAlign: TextAlign.center,
+            style: theme.textTheme.bodyMedium?.copyWith(
+              color: cs.onSurfaceVariant,
+              fontStyle: FontStyle.italic,
+            ),
           ),
-          textAlign: TextAlign.center,
-        ),
-        const SizedBox(height: 8),
+          const SizedBox(height: 8),
+        ],
         _buildBoxRow(theme, cs),
         const SizedBox(height: 12),
         Expanded(

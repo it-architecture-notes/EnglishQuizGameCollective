@@ -39,7 +39,19 @@
     "quiz_title_game": "Game",
     "click_in_order": "Click in order",
     "reviewing_mistakes": "Reviewing mistakes",
-    "correct_answers": "Correct answers"
+    "correct_answers": "Correct answers",
+    "title_image_quiz": "Picture quiz",
+    "title_image_word": "Choose the picture",
+    "title_choose_sentence": "Choose the sentence",
+    "title_spot_difference": "Spot the difference",
+    "spot_difference_prompt": "Tap the correct picture.",
+    "title_fill_blank": "Fill in the blank",
+    "title_cloze": "Complete the sentence",
+    "title_sequence": "Repeat the sequence",
+    "title_build_sentence": "Build the sentence",
+    "title_word_pairs": "Match the pairs",
+    "title_grammar": "Grammar",
+    "title_dialogue": "Choose a reply"
   },
   "fr": {
     "settings_title": "Paramètres",
@@ -81,7 +93,19 @@
     "quiz_title_game": "Jeu",
     "click_in_order": "Cliquez dans l'ordre",
     "reviewing_mistakes": "Révision des erreurs",
-    "correct_answers": "Bonnes réponses"
+    "correct_answers": "Bonnes réponses",
+    "title_image_quiz": "Quiz image",
+    "title_image_word": "Choisissez l'image",
+    "title_choose_sentence": "Choisissez la phrase",
+    "title_spot_difference": "Trouvez la différence",
+    "spot_difference_prompt": "Appuyez sur la bonne image.",
+    "title_fill_blank": "Complétez la phrase",
+    "title_cloze": "Complétez la phrase",
+    "title_sequence": "Répétez la séquence",
+    "title_build_sentence": "Construisez la phrase",
+    "title_word_pairs": "Associez les paires",
+    "title_grammar": "Grammaire",
+    "title_dialogue": "Choisissez une réponse"
   },
   "es": {
     "settings_title": "Ajustes",
@@ -123,7 +147,19 @@
     "quiz_title_game": "Juego",
     "click_in_order": "Haz clic en orden",
     "reviewing_mistakes": "Repasando errores",
-    "correct_answers": "Respuestas correctas"
+    "correct_answers": "Respuestas correctas",
+    "title_image_quiz": "Quiz de imagen",
+    "title_image_word": "Elige la imagen",
+    "title_choose_sentence": "Elige la frase",
+    "title_spot_difference": "Encuentra la diferencia",
+    "spot_difference_prompt": "Toca la imagen correcta.",
+    "title_fill_blank": "Completa la frase",
+    "title_cloze": "Completa la frase",
+    "title_sequence": "Repite la secuencia",
+    "title_build_sentence": "Construye la frase",
+    "title_word_pairs": "Empareja",
+    "title_grammar": "Gramática",
+    "title_dialogue": "Elige una respuesta"
   },
   "tr": {
     "settings_title": "Ayarlar",
@@ -165,6 +201,18 @@
     "quiz_title_game": "Oyun",
     "click_in_order": "Doğru sırayla dokunun",
     "reviewing_mistakes": "Hataları gözden geçirme",
-    "correct_answers": "Doğru cevaplar"
+    "correct_answers": "Doğru cevaplar",
+    "title_image_quiz": "Resimli quiz",
+    "title_image_word": "Resmi seçin",
+    "title_choose_sentence": "Cümleyi seçin",
+    "title_spot_difference": "Farkı bulun",
+    "spot_difference_prompt": "Doğru resme dokunun.",
+    "title_fill_blank": "Boşluğu doldurun",
+    "title_cloze": "Cümleyi tamamlayın",
+    "title_sequence": "Sırayı tekrarlayın",
+    "title_build_sentence": "Cümleyi kurun",
+    "title_word_pairs": "Eşleştirin",
+    "title_grammar": "Dil bilgisi",
+    "title_dialogue": "Yanıt seçin"
   }
 }

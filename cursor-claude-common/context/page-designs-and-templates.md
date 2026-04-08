@@ -2,6 +2,8 @@
 
 High-level reference for **what each screen is for**, **how it is laid out**, and **what the player does**. Implementation lives mainly under `app/lib/screens/`; question payloads are defined in `app/lib/models/level_config.dart` and level JSON.
 
+**Template IDs vs runtime:** Some JSON `template` strings are **normalized** when parsed. For example, `ConvoTemplate-2` is converted into `ConvoTemplate-ClozeSequence` data and the stored `LevelQuestion.template` becomes `ConvoTemplate-ClozeSequence` (see `LevelConfig._parseQuestion` and `normalizedTemplate` in `level_config.dart`). `imageQuizTemplate-SentenceChoice` normalizes to `imageQuizTemplate-3`. Authoring can keep the legacy names; the app runs the unified branch.
+
 ---
 
 ## App shell and navigation
@@ -42,10 +44,12 @@ Single scaffold for **image rounds**, **conversation rounds**, loading, **level 
 |--------|---------|------------------|----------------|
 | **Loading** | Assets and questions resolving | Centered spinner; on error, message + **Back to Levels** | Wait, or exit on error |
 | **Playing** | Active questions | Split into **image mode** vs **convo mode** (see below) | Answer per template |
-| **End** | Run finished successfully | “Level complete!”, **stars**, **correct answers / total**, **diamonds**, **OK** (reminder variant: shorter copy) | Tap **OK** → progress save + pop |
+| **End** | Run finished successfully | “Level complete!”, **stars**, **correct answers / total** (label from localized `correct_answers`), **diamonds**, **OK** (reminder variant: shorter copy, no score row) | Tap **OK** → progress save + pop |
 | **Game over** | Failure condition (e.g. monster / timer narrative) | Illustrative layout, story copy, back without passing level | Exit per on-screen affordance |
 
-Header may show **Question N / M** (and reminder-specific copy). Optional **timer** and **monster lane** with speech bubbles appear in image-play flows where configured.
+Header shows **Question N / M · title** (localized title per template, keys in `localization.json` such as `title_image_quiz`, `click_in_order`, etc.). Optional **timer** and **monster lane** with speech bubbles appear in image-play flows where configured.
+
+**Translations:** The global Translate toggle is removed. Optional per-question `translation` / `line1_translation` / `line2_translation` maps in JSON show auxiliary text below the English prompt when the app language is not `en`. **ConvoTemplate-AppearDisappear** may use a top-level `translation` on the question object (sibling to `questionData`). **ClozeSequence**, **WordPairs**, **Simon**, and **SpotDifference** do not use this optional translation layer.
 
 ---
 
@@ -63,9 +67,10 @@ Rendered inside the **image playing** layout: hero or grid at top, then **four-t
 
 ### `imageQuizTemplate-2`
 
-- **Purpose:** **Definition-first** — read a **noun prompt** (from the image stem), then pick the matching **picture** from four thumbnails.
+- **Purpose:** **Definition-first** — read a **noun prompt** (from the correct stem), then pick the matching **picture** from four thumbnails.
 - **Design:** Large **prompt text** on top; **2×2 grid** of images below (order shuffled).
 - **Player action:** Tap the image that matches the prompt.
+- **JSON:** `imageName` is always the asset stem for the **correct** image file; `wrongAnswers` are three other stems. Optional `answer` (same idea as `imageQuizTemplate-1`) overrides the **correct option key** and prompt formatting when non-empty — the correct tile still loads `imageName`’s file; taps match on `answer` when set, otherwise `imageName`.
 
 ### `imageQuizTemplate-3` (and alias `imageQuizTemplate-SentenceChoice`)
 
@@ -76,8 +81,9 @@ Rendered inside the **image playing** layout: hero or grid at top, then **four-t
 ### `imageQuizTemplate-SpotDifference`
 
 - **Purpose:** **Visual discrimination** — two nearly identical images; choose the one that matches the prompt / is “correct.”
-- **Design:** Implemented by `SpotDifferenceQuizBody`: **localized sentence line** + **two large tappable images** side by side (which side is correct is randomized each time).
+- **Design:** Implemented by `SpotDifferenceQuizBody`: **instruction line** from global `localization.json` key `spot_difference_prompt` (same for every question of this template) + **two square (1:1) image tiles** side by side, centered with `BoxFit.contain` (which side is correct is randomized each time).
 - **Player action:** Tap the correct image; wrong side highlights error feedback.
+- **JSON:** `questionData` has `correctImage`, `wrongImage`, optional `auto_next_delay`, optional `timer_seconds` — no per-question `sentence` map.
 
 ---
 
@@ -91,11 +97,19 @@ Rendered in **convo playing** layout inside `ImageQuizScreen`: typically **dialo
 - **Design:** **Two columns** (characters / bubbles) with localized lines; **one shuffled row of four text options**; locked-state coloring after answer.
 - **Player action:** Read the exchange, tap the correct option.
 
-### `ConvoTemplate-2`
+### `ConvoTemplate-ClozeSequence`
 
-- **Purpose:** **Image + cloze** — hero image with a **sentence** containing a blank; pick the **word** that fills it (four choices), with optional cloze on a **second line** tied to the image.
-- **Design:** Hero asset + sentence bubble(s) + **four MCQ options** (same interaction family as template-1).
-- **Player action:** Choose the word that completes the sentence (and image context).
+- **Purpose:** **Cloze from context** — localized sentence with **numbered blanks** (`_____` markers in `sentence` maps, especially `en`); player fills blanks **in order** by tapping word tiles (answers + distractors).
+- **Design:** `ClozeSequenceQuizBody`: optional **72×72 thumbnail** when `imageName` is set in JSON (resolved per level folder); **sentence** in a rounded container with streaming or full text; answer tiles in a **horizontal “train”** (`Wrap`) with step badges on correct tiles; wrong tap highlights expected/correct tiles per rules.
+- **JSON:** `answers` (array) or single `answer`; `distractors`; optional `imageName` (omit = no image); `words_all_together` (default false) — when **true**, the full sentence shows immediately instead of streaming word-by-word.
+- **Player action:** After blanks are visible, tap tiles to fill blank 1, then 2, … in order.
+
+### `ConvoTemplate-2` (authoring alias only)
+
+- **Purpose:** Backward-compatible **JSON label** for the old “image + single-blank sentence + four word options” question.
+- **Runtime:** **Not** a separate widget. Parsed via adapter into **`ClozeSequenceQuestionData`**: one answer, three distractors, `wordsAllTogether: true`, optional `imageName`. `LevelQuestion.template` after parse is **`ConvoTemplate-ClozeSequence`**; UI is **`ClozeSequenceQuizBody`** like any other cloze row.
+- **Player action:** Same as `ConvoTemplate-ClozeSequence` for that shape (pick the word for the blank from the tile row).
+- **Note:** Prefer new content to use `ConvoTemplate-ClozeSequence` explicitly with `words_all_together: true` when you want the non-streaming cloze; the adapter exists so existing `questions.json` files keep working.
 
 ### `ConvoTemplate-AppearDisappear`
 
@@ -108,12 +122,6 @@ Rendered in **convo playing** layout inside `ImageQuizScreen`: typically **dialo
 - **Purpose:** **Simon-style** — watch tiles light in **sentence order**, then **repeat** the sequence.
 - **Design:** `SimonQuizBody`: **3×3 grid**; demo highlights cells in order; player taps to replay; clear wrong/correct tile feedback on failure.
 - **Player action:** Repeat the demonstrated order on the grid.
-
-### `ConvoTemplate-ClozeSequence`
-
-- **Purpose:** **Cloze from context** — sentence streams in with **numbered blanks**; fill blanks **in order** from a grid of answers + distractors.
-- **Design:** `ClozeSequenceQuizBody`: streaming text; **grid** sized to content rules (e.g. 2×2 or 3×3); tiles consumed as blanks fill.
-- **Player action:** Tap tiles to fill blank 1, then 2, … in order.
 
 ### `ConvoTemplate-SentenceBuilder`
 
@@ -163,4 +171,4 @@ Rendered in **convo playing** layout inside `ImageQuizScreen`: typically **dialo
 
 ## How to extend this doc
 
-When adding a **new template id**, append a subsection under the right category (image vs convo), name the **Dart widget file**, and describe **layout + user goal** in three lines (purpose / design / action). Link `level_config.dart` parsing if the JSON shape is non-obvious.
+When adding a **new template id**, append a subsection under the right category (image vs convo), name the **Dart widget file**, and describe **layout + user goal** in three lines (purpose / design / action). Link `level_config.dart` parsing if the JSON shape is non-obvious. If the parser **renames** the template string (normalization), document both the **JSON id** and the **runtime `LevelQuestion.template`** value so authors and implementers stay aligned.
