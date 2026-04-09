@@ -69,6 +69,7 @@ flutter:
     - assets/quiz-data/levels/emotions-4/
     - assets/quiz-data/levels/farm-animals/
     - assets/quiz-data/levels/farm-animals-2/
+    - assets/quiz-data/levels/greetings/
     - assets/quiz-data/levels/grocery/
     - assets/quiz-data/levels/grocery-2/
     - assets/quiz-data/levels/grocery-3/

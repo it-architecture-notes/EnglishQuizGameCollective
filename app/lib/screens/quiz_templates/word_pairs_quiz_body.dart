@@ -12,12 +12,14 @@ class WordPairsQuizBody extends StatefulWidget {
   const WordPairsQuizBody({
     super.key,
     required this.data,
+    required this.userLanguage,
     required this.onPlayCorrect,
     required this.onPlayWrong,
     required this.onOutcome,
   });
 
   final WordPairsQuestionData data;
+  final String userLanguage;
   final VoidCallback onPlayCorrect;
   final VoidCallback onPlayWrong;
   final void Function(bool correct) onOutcome;
@@ -44,10 +46,13 @@ class _WordPairsQuizBodyState extends State<WordPairsQuizBody> {
   @override
   void initState() {
     super.initState();
-    _match = {for (final p in widget.data.pairs) p.left: p.right};
-    _reverseMatch = {for (final p in widget.data.pairs) p.right: p.left};
+    _match = {
+      for (final p in widget.data.pairs)
+        p.left: p.rightForLanguage(widget.userLanguage),
+    };
+    _reverseMatch = {for (final e in _match.entries) e.value: e.key};
     _activeLeft = widget.data.pairs.map((p) => p.left).toList();
-    _activeRight = widget.data.pairs.map((p) => p.right).toList()
+    _activeRight = _match.values.toList()
       ..shuffle(Random());
   }
 

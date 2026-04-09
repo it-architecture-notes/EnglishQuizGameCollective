@@ -160,10 +160,41 @@ class SentenceBuilderQuestionData {
 
 /// One left/right pair for [ConvoTemplate-WordPairs].
 class WordPairItem {
-  const WordPairItem({required this.left, required this.right});
+  const WordPairItem({required this.left, required this.translations});
 
   final String left;
-  final String right;
+  /// Locale → translation (e.g. `tr`, `es`, `fr`).
+  final Map<String, String> translations;
+
+  String rightForLanguage(String userLanguage) {
+    String? normalized(String? value) {
+      final trimmed = value?.trim() ?? '';
+      return trimmed.isEmpty ? null : trimmed;
+    }
+
+    if (userLanguage != 'en') {
+      final direct = normalized(translations[userLanguage]);
+      if (direct != null) return direct;
+    }
+
+    // Prefer common non-English fallbacks before English.
+    final tr = normalized(translations['tr']);
+    if (tr != null) return tr;
+    final es = normalized(translations['es']);
+    if (es != null) return es;
+    final fr = normalized(translations['fr']);
+    if (fr != null) return fr;
+
+    final en = normalized(translations['en']);
+    if (en != null) return en;
+
+    for (final value in translations.values) {
+      final fallback = normalized(value);
+      if (fallback != null) return fallback;
+    }
+
+    return left;
+  }
 }
 
 /// [ConvoTemplate-WordPairs]: 3–4 pairs; UI scrambles the right column.
@@ -215,18 +246,16 @@ class SpotDifferenceQuestionData {
   final int? timerSeconds;
 }
 
-/// [ConvoTemplate-GrammarForm]: cloze sentence + lemma hint + four word options.
+/// [ConvoTemplate-GrammarForm]: English cloze sentence + four word options.
 class GrammarFormQuestionData {
   const GrammarFormQuestionData({
     required this.sentence,
-    required this.hintWord,
     required this.answer,
     required this.distractors,
     this.translation,
   });
 
-  final Map<String, String> sentence;
-  final String hintWord;
+  final String sentence;
   final String answer;
   final List<String> distractors;
   final Map<String, String>? translation;
@@ -257,6 +286,7 @@ class DialogueCompletionQuestionData {
 class LevelQuestion {
   const LevelQuestion({
     this.questionId,
+    this.audioFile,
     required this.type,
     required this.template,
     this.imageData,
@@ -276,6 +306,7 @@ class LevelQuestion {
   });
 
   final String? questionId;
+  final String? audioFile;
   final LevelQuestionType type;
   final String template;
   final ImageQuestionData? imageData;
@@ -396,16 +427,30 @@ class LevelConfig {
     return v.map((e) => e.toString()).toList();
   }
 
-  /// Parses appear/disappear grid question; enforces nine total tiles for the 3×3 layout.
+  /// Parses words from either:
+  /// - legacy array format: ["I", "love", "tea"]
+  /// - new sentence format: "I love tea"
+  static List<String> _wordsFromArrayOrSentence(dynamic v) {
+    if (v is List) {
+      return v.map((e) => e.toString()).toList();
+    }
+    if (v is String) {
+      final trimmed = v.trim();
+      if (trimmed.isEmpty) return const [];
+      return trimmed.split(RegExp(r'\s+'));
+    }
+    return const [];
+  }
+
+  /// Parses appear/disappear sequence question with flexible choice count.
   static AppearDisappearQuestionData _parseAppearDisappear(
     Map<String, dynamic> data,
   ) {
-    final words = _stringList(data['words']);
+    final words = _wordsFromArrayOrSentence(data['words']);
     final distractors = _stringList(data['distractors']);
-    if (words.length + distractors.length != 9) {
+    if (words.isEmpty) {
       throw FormatException(
-        'ConvoTemplate-AppearDisappear expects words.length + distractors.length == 9 (3×3), '
-        'got ${words.length} + ${distractors.length}',
+        'ConvoTemplate-AppearDisappear expects at least 1 target word',
       );
     }
     return AppearDisappearQuestionData(
@@ -534,7 +579,7 @@ class LevelConfig {
   static SentenceBuilderQuestionData _parseSentenceBuilder(
     Map<String, dynamic> data,
   ) {
-    final correctOrder = _stringList(data['correct_order']);
+    final correctOrder = _wordsFromArrayOrSentence(data['correct_order']);
     if (correctOrder.length < 2) {
       throw FormatException(
         'ConvoTemplate-SentenceBuilder: correct_order must have at least 2 tokens',
@@ -547,19 +592,29 @@ class LevelConfig {
     );
   }
 
-  /// Parses [ConvoTemplate-WordPairs]: 3–4 pairs.
+  /// Parses [ConvoTemplate-WordPairs] from:
+  /// - english_words: ["Good Morning", ...]
+  /// - translations: [{"tr":"Gunaydin","es":"..."}, ...]
   static WordPairsQuestionData _parseWordPairs(Map<String, dynamic> data) {
-    final raw = data['pairs'] as List<dynamic>? ?? [];
-    final pairs = <WordPairItem>[];
-    for (final e in raw) {
-      if (e is! Map<String, dynamic>) continue;
-      pairs.add(
-        WordPairItem(
-          left: e['left']?.toString() ?? '',
-          right: e['right']?.toString() ?? '',
-        ),
+    final englishWords = _stringList(data['english_words']);
+    final rawTranslations = data['translations'] as List<dynamic>? ?? const [];
+    if (englishWords.length != rawTranslations.length) {
+      throw FormatException(
+        'ConvoTemplate-WordPairs: english_words.length (${englishWords.length}) '
+        'must match translations.length (${rawTranslations.length})',
       );
     }
+    final pairs = <WordPairItem>[];
+    for (var i = 0; i < englishWords.length; i++) {
+      final translationMap = _stringMapOrNull(rawTranslations[i]);
+      if (translationMap == null || translationMap.isEmpty) {
+        throw FormatException(
+          'ConvoTemplate-WordPairs: translations[$i] must be a non-empty locale map',
+        );
+      }
+      pairs.add(WordPairItem(left: englishWords[i], translations: translationMap));
+    }
+
     if (pairs.length < 3 || pairs.length > 4) {
       throw FormatException(
         'ConvoTemplate-WordPairs expects 3–4 pairs, got ${pairs.length}',
@@ -604,9 +659,14 @@ class LevelConfig {
     );
   }
 
-  /// Parses [ConvoTemplate-GrammarForm]: localized sentence with blank + hint + four options.
+  /// Parses [ConvoTemplate-GrammarForm]: English sentence with blank + four options.
   static GrammarFormQuestionData _parseGrammarForm(Map<String, dynamic> data) {
-    final sentence = _stringMap(data['sentence']);
+    final rawSentence = data['sentence'];
+    final String sentence = switch (rawSentence) {
+      String s => s.trim(),
+      Map m => (m['en']?.toString() ?? '').trim(),
+      _ => '',
+    };
     final distractors = (data['distractors'] as List<dynamic>? ?? [])
         .map((e) => e.toString())
         .toList();
@@ -615,15 +675,13 @@ class LevelConfig {
         'ConvoTemplate-GrammarForm must have exactly 3 distractors',
       );
     }
-    final en = sentence['en'] ?? '';
-    if (!en.contains('___') && !en.contains('_____')) {
+    if (!sentence.contains('___') && !sentence.contains('_____')) {
       throw FormatException(
         'ConvoTemplate-GrammarForm: sentence should contain a blank (___ or _____)',
       );
     }
     return GrammarFormQuestionData(
       sentence: sentence,
-      hintWord: data['hintWord'] as String? ?? '',
       answer: data['answer'] as String? ?? '',
       distractors: distractors,
       translation: _stringMapOrNull(data['translation']),
@@ -729,6 +787,7 @@ class LevelConfig {
         : null;
     return LevelQuestion(
       questionId: json['questionId'] as String?,
+      audioFile: json['audio_file'] as String?,
       type: type,
       template: normalizedTemplate,
       imageData: imageData,

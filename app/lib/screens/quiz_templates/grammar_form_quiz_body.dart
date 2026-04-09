@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 
 import '../../models/level_config.dart';
 
-/// Cloze + lemma hint + four word buttons.
+/// Cloze + four word buttons.
 class GrammarFormQuizBody extends StatefulWidget {
   const GrammarFormQuizBody({
     super.key,
@@ -61,7 +61,7 @@ class _GrammarFormQuizBodyState extends State<GrammarFormQuizBody> {
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
     final cs = theme.colorScheme;
-    final line = widget.data.sentence['en'] ?? '';
+    final line = widget.data.sentence;
     final tr = widget.translation;
     final aux = widget.userLanguage != 'en' && tr != null
         ? tr[widget.userLanguage]
@@ -82,15 +82,6 @@ class _GrammarFormQuizBodyState extends State<GrammarFormQuizBody> {
               fontWeight: FontWeight.w600,
             ),
             textAlign: TextAlign.center,
-          ),
-        ),
-        const SizedBox(height: 8),
-        Text(
-          '(${widget.data.hintWord})',
-          textAlign: TextAlign.center,
-          style: theme.textTheme.bodyMedium?.copyWith(
-            color: cs.onSurfaceVariant,
-            fontStyle: FontStyle.italic,
           ),
         ),
         if (aux != null && aux.isNotEmpty) ...[

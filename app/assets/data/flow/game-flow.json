@@ -1,6 +1,11 @@
 [
   {
     "mainLevel": 1,
+    "iconImageName": "greetings",
+    "title": "Greetings"
+  },
+  {
+    "mainLevel": 1,
     "iconImageName": "waking-up",
     "title": "Waking Up"
   },

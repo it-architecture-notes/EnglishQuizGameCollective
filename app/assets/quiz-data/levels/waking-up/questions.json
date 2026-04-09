@@ -120,10 +120,24 @@
       "type": "vocab",
       "template": "ConvoTemplate-WordPairs",
       "questionData": {
-        "pairs": [
-          { "left": "bed", "right": "yatak" },
-          { "left": "pillow", "right": "yastık" },
-          { "left": "blanket", "right": "battaniye" }
+        "english_words": [
+          "bed",
+          "pillow",
+          "blanket"
+        ],
+        "translations": [
+          {
+            "tr": "yatak",
+            "es": "cama"
+          },
+          {
+            "tr": "yastık",
+            "es": "almohada"
+          },
+          {
+            "tr": "battaniye",
+            "es": "manta"
+          }
         ],
         "auto_next_delay": 1.0
       }
@@ -150,10 +164,6 @@
       "type": "image",
       "template": "imageQuizTemplate-SpotDifference",
       "questionData": {
-        "sentence": {
-          "en": "Tap the bed.",
-          "tr": "Yatağa dokun."
-        },
         "correctImage": "bed",
         "wrongImage": "mattress",
         "auto_next_delay": 1.0

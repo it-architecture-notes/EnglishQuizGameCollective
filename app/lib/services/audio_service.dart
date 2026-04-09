@@ -8,6 +8,7 @@ const String _wrongAsset = 'audio/wrong.mp3';
 
 AudioPlayer? _musicPlayer;
 AudioPlayer? _sfxPlayer;
+AudioPlayer? _ttsPlayer;
 
 AudioPlayer _musicPlayerInstance() {
   _musicPlayer ??= AudioPlayer();
@@ -17,6 +18,11 @@ AudioPlayer _musicPlayerInstance() {
 AudioPlayer _sfxPlayerInstance() {
   _sfxPlayer ??= AudioPlayer();
   return _sfxPlayer!;
+}
+
+AudioPlayer _ttsPlayerInstance() {
+  _ttsPlayer ??= AudioPlayer();
+  return _ttsPlayer!;
 }
 
 Future<void> startQuizMusic({required bool musicOn}) async {
@@ -85,5 +91,28 @@ Future<void> playWrong({required bool soundFxOn}) async {
   } catch (e, st) {
     if (e.toString().contains('AbortError')) return;
     debugPrint('AudioService.playWrong: $e\n$st');
+  }
+}
+
+Future<void> playQuestionAudio(String assetPath) async {
+  try {
+    final player = _ttsPlayerInstance();
+    try {
+      await player.stop();
+    } catch (_) {}
+
+    await player.setReleaseMode(ReleaseMode.release);
+    await player.play(AssetSource(assetPath));
+  } catch (e, st) {
+    if (e.toString().contains('AbortError')) return;
+    debugPrint('AudioService.playQuestionAudio: $e\n$st');
+  }
+}
+
+Future<void> stopQuestionAudio() async {
+  try {
+    await _ttsPlayer?.stop();
+  } catch (e, st) {
+    debugPrint('AudioService.stopQuestionAudio: $e\n$st');
   }
 }

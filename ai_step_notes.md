@@ -11,7 +11,7 @@
 <Drag plans to commons plans if necessary>
 <Now we have 4 plan files under common folder>
 
-5) TO MAIN CURSOR: review all the plans under common plans folder from all models and create a consolidated plan under commons plans. don't implement just create the consolidated plan and copy to common plans folder.
+5) TO MAIN CURSOR: review all the plans under common plans folder from all models and create a consolidated plan under common plans folder. don't implement just create the consolidated plan and copy to common plans folder.
 
 5) TO MAIN CLAUDE: review all the plans under common plans folder from different AI models including consolidated plan by cursor and if you think necessary update the consolidated plan if anything missing. ask questions if something is not clear. don't implement just update the consolidated plan.
 
@@ -19,7 +19,7 @@
 
 6) TO MAIN CLAUDE: can you compare the latest consolidated plan last time against requirements and let me know what you think. don't implement just review and compare.
 
-7) TO MAIN CURSOR Agent-Mode: are you ready to implement the consolidated plan, go ahead with a new branch checkout as feature branch.
+7) TO MAIN CURSOR Agent-Mode: are you ready to implement the consolidated plan, go ahead after you checkout a feature branch.
 
 <Cursor Auto Builds>
 

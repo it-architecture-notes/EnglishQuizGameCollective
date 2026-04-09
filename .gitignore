@@ -5,6 +5,8 @@
 /.cursor/plans/
 /.cursor/reference-docs/
 /cursor-claude-common/plans/
+/tools/gemini_tts/.env
+/tools/eleven_labs_tts/.env
 # -----------------------------------------------------------------------------
 # App (Flutter) – build, tools, IDE, OS
 # -----------------------------------------------------------------------------

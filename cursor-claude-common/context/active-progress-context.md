@@ -2,4 +2,4 @@
 
 ## Active Issue
 
-*(No active issue — add the next issue description here.)*
+No active issue. Add the next issue details here.

@@ -18,6 +18,7 @@ class AppearDisappearQuizBody extends StatefulWidget {
     required this.onPlayCorrect,
     required this.onPlayWrong,
     required this.onOutcome,
+    this.onReadyForAudio,
   });
 
   final AppearDisappearQuestionData data;
@@ -28,13 +29,14 @@ class AppearDisappearQuizBody extends StatefulWidget {
   final VoidCallback onPlayWrong;
   /// Single call per question: `true` = full success (parent auto-advances); `false` = failed (parent shows Next).
   final void Function(bool correct) onOutcome;
+  final VoidCallback? onReadyForAudio;
 
   @override
   State<AppearDisappearQuizBody> createState() => _AppearDisappearQuizBodyState();
 }
 
 class _AppearDisappearQuizBodyState extends State<AppearDisappearQuizBody> {
-  late List<String> _shuffledGrid;
+  late List<String> _shuffledChoices;
 
   _InternalPhase _internalPhase = _InternalPhase.intro;
   int _revealIndex = 0;      // number of boxes filled during reveal
@@ -49,6 +51,7 @@ class _AppearDisappearQuizBodyState extends State<AppearDisappearQuizBody> {
   final Set<int> _correctGridIndices = {};
   final Map<int, int> _gridIndexToStep = {};
   bool _completed = false;
+  bool _audioReadyNotified = false;
 
   Timer? _timer;
 
@@ -58,7 +61,7 @@ class _AppearDisappearQuizBodyState extends State<AppearDisappearQuizBody> {
   void initState() {
     super.initState();
     final combined = [...widget.data.words, ...widget.data.distractors]..shuffle(Random());
-    _shuffledGrid = combined;
+    _shuffledChoices = combined;
     for (var i = 0; i < _sentence.length; i++) {
       _interactionSlots.add(null);
       _slotFromPlayer.add(false);
@@ -119,13 +122,17 @@ class _AppearDisappearQuizBodyState extends State<AppearDisappearQuizBody> {
     if (!mounted) return;
     // Clear boxes and enter interaction phase
     setState(() => _internalPhase = _InternalPhase.interaction);
+    if (!_audioReadyNotified) {
+      _audioReadyNotified = true;
+      widget.onReadyForAudio?.call();
+    }
   }
 
   // ── Interaction ─────────────────────────────────────────────────────────────
 
   void _onGridTap(int gridIndex) {
     if (_completed || _failed || _internalPhase != _InternalPhase.interaction) return;
-    final word = _shuffledGrid[gridIndex];
+    final word = _shuffledChoices[gridIndex];
     final expected = _sentence[_tapProgress];
     if (word == expected) {
       setState(() {
@@ -248,7 +255,7 @@ class _AppearDisappearQuizBodyState extends State<AppearDisappearQuizBody> {
       return Center(child: _buildBoxRow(theme, cs));
     }
 
-    // Interaction: optional translation + boxes + grid (shell shows title)
+    // Interaction: optional translation + boxes + choice train (shell shows title)
     final tr = widget.translation;
     final aux = widget.userLanguage != 'en' && tr != null
         ? tr[widget.userLanguage]
@@ -271,72 +278,74 @@ class _AppearDisappearQuizBodyState extends State<AppearDisappearQuizBody> {
         _buildBoxRow(theme, cs),
         const SizedBox(height: 12),
         Expanded(
-          child: GridView.builder(
-            physics: const NeverScrollableScrollPhysics(),
-            gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-              crossAxisCount: 3,
-              crossAxisSpacing: 8,
-              mainAxisSpacing: 8,
-              childAspectRatio: 2.2,
-            ),
-            itemCount: _shuffledGrid.length,
-            itemBuilder: (context, i) {
-              final word = _shuffledGrid[i];
-              final disabled = _failed || _completed;
-              final isWrong = _failed && _wrongGridIndex == i;
-              final isCorrectTile = _correctGridIndices.contains(i);
-              final orderLabel = _gridIndexToStep[i];
+          child: SingleChildScrollView(
+            child: Wrap(
+              spacing: 8,
+              runSpacing: 8,
+              children: List.generate(_shuffledChoices.length, (i) {
+                final word = _shuffledChoices[i];
+                final disabled = _failed || _completed;
+                final isWrong = _failed && _wrongGridIndex == i;
+                final isCorrectTile = _correctGridIndices.contains(i);
+                final orderLabel = _gridIndexToStep[i];
 
-              return Material(
-                color: isWrong
-                    ? Colors.red.shade100
-                    : isCorrectTile
-                        ? Colors.green.shade100
-                        : cs.surfaceContainerHighest,
-                borderRadius: BorderRadius.circular(10),
-                child: InkWell(
-                  onTap: disabled ? null : () => _onGridTap(i),
-                  borderRadius: BorderRadius.circular(10),
-                  child: Stack(
-                    alignment: Alignment.center,
-                    children: [
-                      Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 4),
-                        child: Text(
-                          word,
-                          textAlign: TextAlign.center,
-                          style: theme.textTheme.bodyMedium?.copyWith(
-                            fontWeight: FontWeight.w600,
-                            color: isWrong
-                                ? Colors.red.shade900
-                                : isCorrectTile
-                                    ? Colors.green.shade900
-                                    : null,
-                          ),
-                        ),
-                      ),
-                      if (isCorrectTile && orderLabel != null)
-                        Positioned(
-                          top: 2,
-                          right: 2,
-                          child: CircleAvatar(
-                            radius: 10,
-                            backgroundColor: Colors.green.shade700,
+                return ConstrainedBox(
+                  constraints: const BoxConstraints(minWidth: 90, minHeight: 44),
+                  child: Material(
+                    color: isWrong
+                        ? Colors.red.shade100
+                        : isCorrectTile
+                            ? Colors.green.shade100
+                            : cs.surfaceContainerHighest,
+                    borderRadius: BorderRadius.circular(10),
+                    child: InkWell(
+                      onTap: disabled ? null : () => _onGridTap(i),
+                      borderRadius: BorderRadius.circular(10),
+                      child: Stack(
+                        alignment: Alignment.center,
+                        children: [
+                          Padding(
+                            padding: const EdgeInsets.symmetric(
+                              horizontal: 10,
+                              vertical: 10,
+                            ),
                             child: Text(
-                              '$orderLabel',
-                              style: const TextStyle(
-                                color: Colors.white,
-                                fontSize: 11,
-                                fontWeight: FontWeight.bold,
+                              word,
+                              textAlign: TextAlign.center,
+                              style: theme.textTheme.bodyMedium?.copyWith(
+                                fontWeight: FontWeight.w600,
+                                color: isWrong
+                                    ? Colors.red.shade900
+                                    : isCorrectTile
+                                        ? Colors.green.shade900
+                                        : null,
                               ),
                             ),
                           ),
-                        ),
-                    ],
+                          if (isCorrectTile && orderLabel != null)
+                            Positioned(
+                              top: 2,
+                              right: 2,
+                              child: CircleAvatar(
+                                radius: 10,
+                                backgroundColor: Colors.green.shade700,
+                                child: Text(
+                                  '$orderLabel',
+                                  style: const TextStyle(
+                                    color: Colors.white,
+                                    fontSize: 11,
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                ),
+                              ),
+                            ),
+                        ],
+                      ),
+                    ),
                   ),
-                ),
-              );
-            },
+                );
+              }),
+            ),
           ),
         ),
       ],

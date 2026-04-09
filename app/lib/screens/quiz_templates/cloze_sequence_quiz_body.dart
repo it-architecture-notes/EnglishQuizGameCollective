@@ -22,6 +22,7 @@ class ClozeSequenceQuizBody extends StatefulWidget {
     required this.onPlayCorrect,
     required this.onPlayWrong,
     required this.onOutcome,
+    this.onReadyForAudio,
   });
 
   final ClozeSequenceQuestionData data;
@@ -32,6 +33,7 @@ class ClozeSequenceQuizBody extends StatefulWidget {
   final VoidCallback onPlayCorrect;
   final VoidCallback onPlayWrong;
   final void Function(bool correct) onOutcome;
+  final VoidCallback? onReadyForAudio;
 
   @override
   State<ClozeSequenceQuizBody> createState() => _ClozeSequenceQuizBodyState();
@@ -49,6 +51,7 @@ class _ClozeSequenceQuizBodyState extends State<ClozeSequenceQuizBody> {
   int _streamIndex = 0;            // how many tokens have been revealed
   Timer? _streamTimer;
   bool _streamDone = false;
+  bool _audioReadyNotified = false;
 
   int _currentBlank = 0;
   bool _failed = false;
@@ -67,9 +70,18 @@ class _ClozeSequenceQuizBodyState extends State<ClozeSequenceQuizBody> {
     if (widget.data.wordsAllTogether) {
       _streamIndex = _tokens.length;
       _streamDone = true;
+      WidgetsBinding.instance.addPostFrameCallback((_) {
+        _notifyReadyForAudio();
+      });
     } else {
       _scheduleNextToken();
     }
+  }
+
+  void _notifyReadyForAudio() {
+    if (_audioReadyNotified) return;
+    _audioReadyNotified = true;
+    widget.onReadyForAudio?.call();
   }
 
   void _scheduleNextToken() {
@@ -77,7 +89,10 @@ class _ClozeSequenceQuizBodyState extends State<ClozeSequenceQuizBody> {
       if (!mounted) return;
       setState(() {
         _streamIndex++;
-        if (_streamIndex >= _tokens.length) _streamDone = true;
+        if (_streamIndex >= _tokens.length) {
+          _streamDone = true;
+          _notifyReadyForAudio();
+        }
       });
       if (!_streamDone) _scheduleNextToken();
     });

@@ -20,12 +20,19 @@ class SettingsNotifier extends StateNotifier
 class ImageQuestionData extends Object
   get imageName
   get wrongAnswers
+  get answer
+  get translation
+  get timerSeconds
 
 class ImageQuizTemplate2Data extends Object
   get imageName
   get wrongAnswers
+  get answer
+  get translation
   get autoNextDelay
   get showCorrectOnWrong
+  get timerSeconds
+  get correctAnswerStem
 
 class AppearDisappearQuestionData extends Object
   get words
@@ -43,6 +50,8 @@ class ClozeSequenceQuestionData extends Object
   get sentence
   get answers
   get distractors
+  get imageName
+  get wordsAllTogether
   get autoNextDelay
 
 class ConvoQuestionData extends Object
@@ -52,6 +61,8 @@ class ConvoQuestionData extends Object
   get line2
   get answer
   get distractors
+  get line1Translation
+  get line2Translation
 
 class ConvoTemplate2QuestionData extends Object
   get imageName
@@ -61,9 +72,8 @@ class ConvoTemplate2QuestionData extends Object
 
 class SentenceBuilderQuestionData extends Object
   get correctOrder
-  get words
-  get distractors
   get autoNextDelay
+  get translation
 
 class WordPairItem extends Object
   get left
@@ -78,18 +88,21 @@ class ImageQuizTemplate3Data extends Object
   get answer
   get distractors
   get distractorType
+  get timerSeconds
+  get translation
 
 class SpotDifferenceQuestionData extends Object
-  get sentence
   get correctImage
   get wrongImage
   get autoNextDelay
+  get timerSeconds
 
 class GrammarFormQuestionData extends Object
   get sentence
   get hintWord
   get answer
   get distractors
+  get translation
 
 class DialogueCompletionQuestionData extends Object
   get character1
@@ -97,6 +110,8 @@ class DialogueCompletionQuestionData extends Object
   get line1
   get answer
   get distractors
+  get line1Translation
+  get answerTranslation
 
 class LevelQuestion extends Object
   get questionId
@@ -115,20 +130,24 @@ class LevelQuestion extends Object
   get wordPairsData
   get grammarFormData
   get dialogueCompletionData
+  get appearDisappearTranslation
+  get timerSecondsOverride
 
 class LevelConfig extends Object
     LevelQuestionType _parseType(String raw)
     Map<String, String> _stringMap(dynamic value)
+    Map<String, String>? _stringMapOrNull(dynamic value)
     ImageQuestionData _parseImageData(Map<String, dynamic> data)
     ImageQuizTemplate2Data _parseImageQuiz2Data(Map<String, dynamic> data)
     List<String> _stringList(dynamic v)
     AppearDisappearQuestionData _parseAppearDisappear(Map<String, dynamic> data)
     SimonQuestionData _parseSimon(Map<String, dynamic> data)
     bool _isBlankToken(String s)
+    int _countBlanks(Map<String, String> sentence)
     ClozeSequenceQuestionData _parseClozeSequence(Map<String, dynamic> data)
+    ClozeSequenceQuestionData _parseConvo2AsCloze(Map<String, dynamic> data)
     ConvoQuestionData _parseConvoData(Map<String, dynamic> data)
     ConvoTemplate2QuestionData _parseConvo2Data(Map<String, dynamic> data)
-    bool _sameMultiset(List<String> a, List<String> b)
     SentenceBuilderQuestionData _parseSentenceBuilder(Map<String, dynamic> data)
     WordPairsQuestionData _parseWordPairs(Map<String, dynamic> data)
     ImageQuizTemplate3Data _parseImageQuiz3(Map<String, dynamic> data)
@@ -433,6 +452,8 @@ class _ImageQuizScreenState extends ConsumerState
     void dispose()
     Future<void> _loadLevel()
     Future<void> _loadReminderLevel()
+    int _timerSecondsForCurrentQuestion()
+    bool _currentQuestionIsMonsterEligible()
     void _startTimer()
     void _onTimerExpired()
     void _recordWrongForMonster()
@@ -460,8 +481,11 @@ class _ImageQuizScreenState extends ConsumerState
     Widget _buildGameOver(bool soundFxOn, Map<String, String> strings)
     Widget _buildConvoPlaying(bool soundFxOn, Map<String, String> strings, String userLanguage)
     Widget _buildConvoQuestionBody(LevelQuestion q, String userLanguage, bool soundFxOn, Map<String, String> strings)
-    Widget _buildConvoTemplate2Content(LevelQuestion q, String userLanguage)
+    String? _resolvedClozeImagePath()
     String _questionLabel(Map<String, String> strings, int current, int total)
+    String _titleForTemplate(String template, Map<String, String> strings)
+    Widget _optionalTranslationLine(Map<String, String>? map, String userLanguage)
+    Widget _convo1TranslationBlock(ConvoQuestionData q, String userLanguage)
     Widget _buildCharactersRow(ConvoQuestionData q, String userLanguage)
     Widget _buildCharacterColumn(String name, String dialogueLine, bool isActive, CrossAxisAlignment alignment)
     Widget _buildCharacterAvatar(String name, double size)
@@ -520,10 +544,10 @@ class _ImageQuizScreenState extends ConsumerState
   set _timerController=
   get _monsterStep
   set _monsterStep=
-  get _wrongCount
-  set _wrongCount=
-  get _monsterStepThreshold
-  set _monsterStepThreshold=
+  get _monsterEligibleWrongCount
+  set _monsterEligibleWrongCount=
+  get _monsterEligibleQuestionCount
+  set _monsterEligibleQuestionCount=
   get _guestAnimal
   set _guestAnimal=
   get _selectedMonster
@@ -544,8 +568,6 @@ class _ImageQuizScreenState extends ConsumerState
   set _convo2HeroPaths=
   get _convoByQuestionId
   get _convo2ImagePathByQuestionId
-  get _showTranslation
-  set _showTranslation=
   get _allQuestions
   set _allQuestions=
   get _questionImagePaths
@@ -563,6 +585,7 @@ class _ImageQuizScreenState extends ConsumerState
   get _questionCount
   get _displayQuestionIndexOneBased
   get _displayQuestionTotal
+  get _showMonsterLaneForCurrentQuestion
 
 class _SpeechBubble extends StatelessWidget
     Widget build(BuildContext context)
@@ -579,6 +602,8 @@ class _WindPainter extends CustomPainter
     void paint(Canvas canvas, Size size)
     bool shouldRepaint(_WindPainter oldDelegate)
   get value
+  bool _isMonsterEligibleImageTemplate(String template)
+  int _monsterStepFromEligibleWrongs(int eligibleWrongCount, int eligibleQuestionCount)
 
 ## /lib/screens/levels_screen.dart
 
@@ -709,6 +734,7 @@ class GrammarFormQuizBody extends StatefulWidget
     State<GrammarFormQuizBody> createState()
   get data
   get userLanguage
+  get translation
   get onPlayCorrect
   get onPlayWrong
   get onOutcome
@@ -768,16 +794,21 @@ class SentenceBuilderQuizBody extends StatefulWidget
     State<SentenceBuilderQuizBody> createState()
   get data
   get strings
+  get userLanguage
+  get translation
   get onPlayCorrect
   get onPlayWrong
   get onOutcome
 
 class _SentenceBuilderQuizBodyState extends State
     void initState()
-    void _onGridTap(int gridIndex)
+    bool _isIdentityPerm(List<int> p)
+    String _wordAtCell(int cellIndex)
+    void _onGridTap(int cellIndex)
     Widget build(BuildContext context)
-  get _shuffledGrid
-  set _shuffledGrid=
+  get _perm
+  set _perm=
+  get _usedCellIndices
   get _sentence
   set _sentence=
   get _tapProgress
@@ -788,8 +819,7 @@ class _SentenceBuilderQuizBodyState extends State
   set _failed=
   get _wrongGridIndex
   set _wrongGridIndex=
-  get _correctGridIndices
-  get _gridIndexToStep
+  get _cellToStep
   get _completed
   set _completed=
   get _target
@@ -805,69 +835,70 @@ class WordPairsQuizBody extends StatefulWidget
 
 class _WordPairsQuizBodyState extends State
     void initState()
-    void _onLeftTap(int i)
-    void _onRightTap(int rightIndex)
+    void _onRightTap(String word)
+    void _onLeftTap(String leftWord)
+    Widget _activeTile(String text, Color? bgColor, Color? textColor, bool selected, void Function()? onTap)
     Widget build(BuildContext context)
-  get _left
-  set _left=
-  get _right
-  set _right=
   get _match
   set _match=
-  get _selectedLeftIndex
-  set _selectedLeftIndex=
-  get _matchedLeftIndices
+  get _reverseMatch
+  set _reverseMatch=
+  get _activeLeft
+  set _activeLeft=
+  get _activeRight
+  set _activeRight=
+  get _matchedPairs
+  get _selectedRightWord
+  set _selectedRightWord=
   get _failed
   set _failed=
-  get _wrongRightIndex
-  set _wrongRightIndex=
-  get _highlightCorrectRightIndex
-  set _highlightCorrectRightIndex=
+  get _failedLeftWord
+  set _failedLeftWord=
+  get _failedRightWord
+  set _failedRightWord=
+  get _correctLeftWord
+  set _correctLeftWord=
 
 ## /lib/screens/quiz_templates/cloze_sequence_quiz_body.dart
 
 class ClozeSequenceQuizBody extends StatefulWidget
     State<ClozeSequenceQuizBody> createState()
   get data
+  get userLanguage
+  get resolvedImagePath
   get onPlayCorrect
   get onPlayWrong
   get onOutcome
 
 class _ClozeSequenceQuizBodyState extends State
     void initState()
-    void _startStream()
+    void _scheduleNextToken()
     void dispose()
-    String _buildFullSentenceDisplay()
-    String _buildStreamingLine()
-    String _buildFullCorrectLine()
     void _onTileTap(int tileIndex)
-    List<InlineSpan> _buildFailSpans(ThemeData theme)
+    List<InlineSpan> _buildSentenceSpans(ThemeData theme)
+    Widget _buildTile(int index, ThemeData theme)
     Widget build(BuildContext context)
-  get _shuffledTiles
-  set _shuffledTiles=
+  get _tokens
+  set _tokens=
+  get _blankIndices
+  set _blankIndices=
+  get _tiles
+  set _tiles=
+  get _filled
+  set _filled=
+  get _tileStates
+  set _tileStates=
   get _streamIndex
   set _streamIndex=
   get _streamTimer
   set _streamTimer=
   get _streamDone
   set _streamDone=
-  get _filledBlank
-  get _correctTileByIndex
-  get _blankCount
-  set _blankCount=
   get _currentBlank
   set _currentBlank=
   get _failed
   set _failed=
-  get _completed
-  set _completed=
-  get _wrongTileIndex
-  set _wrongTileIndex=
-  get _expectedTileIndex
-  set _expectedTileIndex=
-  get _sentence
-  get _answers
-  bool _isBlank(String s)
+  bool _isBlank(String token)
 
 ## /lib/screens/quiz_templates/appear_disappear_quiz_body.dart
 
@@ -875,6 +906,8 @@ class AppearDisappearQuizBody extends StatefulWidget
     State<AppearDisappearQuizBody> createState()
   get data
   get strings
+  get userLanguage
+  get translation
   get onPlayCorrect
   get onPlayWrong
   get onOutcome
@@ -918,6 +951,8 @@ class DialogueCompletionQuizBody extends StatefulWidget
     State<DialogueCompletionQuizBody> createState()
   get data
   get userLanguage
+  get line1Translation
+  get answerTranslation
   get onPlayCorrect
   get onPlayWrong
   get onOutcome
