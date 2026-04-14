@@ -4,9 +4,9 @@
 Flutter mobile language learning quiz app (portrait-only, Android/iOS). Unified quiz screen handles all question types (image, vocab, grammar).
 
 ## Current State
-- **Active issue:** None
-- **Current branch:** main (merged from feature/additional-quiz-templates-batch2)
-- **Last completed:** Issue-21 (Additional Quiz Templates, Bug Fixes, Timer Override & ClozeSequence Merge)
+- **Active issue:** Issue-24 — Audio/translation/monster refactoring across all templates + remove SimonTemplate
+- **Current branch:** feature/quiz-templates-audio-translation-refactor
+- **Last completed:** Issue-23 (Dev-time TTS generation, in-game playback wiring, AppearDisappear words as string/array, SentenceBuilder correct_order as string/array, WordPairs locale-map refactor, GrammarForm hintWord removal)
 
 ## Tech Stack
 - Flutter (Dart), Riverpod, portrait-only
@@ -35,6 +35,8 @@ Flutter mobile language learning quiz app (portrait-only, Android/iOS). Unified 
 - Story images: `app/assets/images/story/`
 
 ## Completed Issues (summary)
+23 → Dev-time TTS generation (Gemini + ElevenLabs scripts), in-game audio playback wiring via `audio_file` JSON tag, AppearDisappear words as string-or-array, SentenceBuilder correct_order as string-or-array, WordPairs locale-map refactor, GrammarForm hintWord removal, AudioService helpers
+22 → Template refactor: removed global Translate toggle; JSON translation maps drive auxiliary copy for non-en; unified question header; SpotDifference square layout; GrammarForm/DialogueCompletion EN-primary; monster eligibility limited to imageQuizTemplate-1/2/SpotDifference
 21 → Additional Quiz Templates batch2: SentenceBuilder, WordPairs (with matched-section layout), imageQuizTemplate-3, SpotDifference, GrammarForm, DialogueCompletion; WordPairs green-hint bug fix; per-question `timer_seconds` override for all image templates; ConvoTemplate-2 merged into ClozeSequence (localized map, train tiles, streaming, translation hint, backward-compat adapter)
 20 → New Image and Vocab Templates: AppearDisappear, Simon, ClozeSequence (old), imageQuizTemplate-2; localization keys; quiz session flow docs
 19 → Activity-Based Quiz Restructuring (58 activity folders, image pool, game-flow.json)

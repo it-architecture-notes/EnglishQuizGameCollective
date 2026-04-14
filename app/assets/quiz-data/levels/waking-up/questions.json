@@ -210,7 +210,9 @@
           "I am under the table.",
           "The sky is blue."
         ]
-      }
+      },
+      "audio_file1": "are-you-awake-convo",
+      "audio_file2": "yes-i-am-up-now-convo"
     }
   ]
 }

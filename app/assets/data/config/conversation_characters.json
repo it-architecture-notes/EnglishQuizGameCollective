@@ -1,0 +1,29 @@
+{
+  "version": 1,
+  "characterNamePools": {
+    "male": [
+      "Mike",
+      "Alex",
+      "Ben",
+      "Chris",
+      "Daniel",
+      "Ethan",
+      "James",
+      "Leo",
+      "Omar",
+      "Ryan"
+    ],
+    "female": [
+      "Sarah",
+      "Anna",
+      "Beth",
+      "Emma",
+      "Grace",
+      "Lily",
+      "Maya",
+      "Nora",
+      "Olivia",
+      "Sophie"
+    ]
+  }
+}

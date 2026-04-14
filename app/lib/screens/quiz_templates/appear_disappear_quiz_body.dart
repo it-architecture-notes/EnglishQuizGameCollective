@@ -4,45 +4,50 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 
 import '../../models/level_config.dart';
+import '../../widgets/translation_reveal_button.dart';
 
-enum _InternalPhase { intro, revealing, flashing, interaction }
+enum _Phase { waiting, revealing, clearing, interaction }
 
-/// Sequence memory: intro prompt → boxes fill word-by-word → flash → clear → player recalls.
+/// Sequence memory: pause → words in boxes → clear → recall (no intro / flash).
 class AppearDisappearQuizBody extends StatefulWidget {
   const AppearDisappearQuizBody({
     super.key,
     required this.data,
-    required this.strings,
     required this.userLanguage,
     this.translation,
+    this.audioAssetPath,
+    required this.resolveAudioExists,
+    required this.onPlayQuestionAudio,
     required this.onPlayCorrect,
     required this.onPlayWrong,
     required this.onOutcome,
-    this.onReadyForAudio,
   });
 
   final AppearDisappearQuestionData data;
-  final Map<String, String> strings;
   final String userLanguage;
   final Map<String, String>? translation;
+  final String? audioAssetPath;
+  final Future<bool> Function(String path) resolveAudioExists;
+  final Future<void> Function(String path) onPlayQuestionAudio;
   final VoidCallback onPlayCorrect;
   final VoidCallback onPlayWrong;
-  /// Single call per question: `true` = full success (parent auto-advances); `false` = failed (parent shows Next).
   final void Function(bool correct) onOutcome;
-  final VoidCallback? onReadyForAudio;
 
   @override
-  State<AppearDisappearQuizBody> createState() => _AppearDisappearQuizBodyState();
+  State<AppearDisappearQuizBody> createState() =>
+      _AppearDisappearQuizBodyState();
 }
 
 class _AppearDisappearQuizBodyState extends State<AppearDisappearQuizBody> {
   late List<String> _shuffledChoices;
 
-  _InternalPhase _internalPhase = _InternalPhase.intro;
-  int _revealIndex = 0;      // number of boxes filled during reveal
-  bool _flashVisible = true; // toggles word visibility during flash phase
+  _Phase _phase = _Phase.waiting;
+  int _revealIndex = 0;
 
-  // Interaction state
+  bool _revealCycleDone = false;
+  bool _audioDone = false;
+  bool _interactionEnabled = false;
+
   int _tapProgress = 0;
   final List<String?> _interactionSlots = [];
   final List<bool> _slotFromPlayer = [];
@@ -51,7 +56,6 @@ class _AppearDisappearQuizBodyState extends State<AppearDisappearQuizBody> {
   final Set<int> _correctGridIndices = {};
   final Map<int, int> _gridIndexToStep = {};
   bool _completed = false;
-  bool _audioReadyNotified = false;
 
   Timer? _timer;
 
@@ -60,38 +64,59 @@ class _AppearDisappearQuizBodyState extends State<AppearDisappearQuizBody> {
   @override
   void initState() {
     super.initState();
-    final combined = [...widget.data.words, ...widget.data.distractors]..shuffle(Random());
+    final combined = [...widget.data.words, ...widget.data.distractors]
+      ..shuffle(Random());
     _shuffledChoices = combined;
     for (var i = 0; i < _sentence.length; i++) {
       _interactionSlots.add(null);
       _slotFromPlayer.add(false);
     }
-    // Show intro message for 3 seconds, then start reveal
-    _timer = Timer(const Duration(seconds: 3), _startRevealPhase);
+    _startWaiting();
   }
 
-  @override
-  void dispose() {
-    _timer?.cancel();
-    super.dispose();
+  Future<void> _runAudio() async {
+    final p = widget.audioAssetPath;
+    if (p == null) {
+      _audioDone = true;
+      _tryEnableInteraction();
+      return;
+    }
+    final ok = await widget.resolveAudioExists(p);
+    if (!mounted) return;
+    if (!ok) {
+      _audioDone = true;
+      _tryEnableInteraction();
+      return;
+    }
+    await widget.onPlayQuestionAudio(p);
+    if (!mounted) return;
+    _audioDone = true;
+    _tryEnableInteraction();
   }
 
-  // ── Phases ─────────────────────────────────────────────────────────────────
+  void _startWaiting() {
+    _runAudio();
+    _timer = Timer(
+      Duration(
+        milliseconds: (widget.data.introPause * 1000).round(),
+      ),
+      _startReveal,
+    );
+  }
 
-  void _startRevealPhase() {
+  void _startReveal() {
     if (!mounted) return;
     setState(() {
-      _internalPhase = _InternalPhase.revealing;
+      _phase = _Phase.revealing;
       _revealIndex = 0;
     });
-    // Brief pause so the user sees empty boxes before words appear
     _timer = Timer(const Duration(milliseconds: 400), _revealNextWord);
   }
 
   void _revealNextWord() {
     if (!mounted) return;
     if (_revealIndex >= _sentence.length) {
-      _startFlashing();
+      _afterRevealHold();
       return;
     }
     setState(() => _revealIndex++);
@@ -101,37 +126,53 @@ class _AppearDisappearQuizBodyState extends State<AppearDisappearQuizBody> {
     );
   }
 
-  Future<void> _startFlashing() async {
+  Future<void> _afterRevealHold() async {
+    if (!mounted) return;
+    setState(() => _phase = _Phase.clearing);
+    await Future<void>.delayed(
+      Duration(
+        milliseconds: (widget.data.autoNextDelay * 1000).round(),
+      ),
+    );
     if (!mounted) return;
     setState(() {
-      _internalPhase = _InternalPhase.flashing;
-      _flashVisible = true;
+      _revealCycleDone = true;
     });
-    // Hold full sentence visible briefly before flashing
-    await Future<void>.delayed(const Duration(milliseconds: 400));
-    // Flash twice: off → on → off → on
-    for (var i = 0; i < 2; i++) {
-      if (!mounted) return;
-      setState(() => _flashVisible = false);
-      await Future<void>.delayed(const Duration(milliseconds: 250));
-      if (!mounted) return;
-      setState(() => _flashVisible = true);
-      await Future<void>.delayed(const Duration(milliseconds: 250));
-    }
-    await Future<void>.delayed(const Duration(milliseconds: 300));
-    if (!mounted) return;
-    // Clear boxes and enter interaction phase
-    setState(() => _internalPhase = _InternalPhase.interaction);
-    if (!_audioReadyNotified) {
-      _audioReadyNotified = true;
-      widget.onReadyForAudio?.call();
-    }
+    _tryEnableInteraction();
   }
 
-  // ── Interaction ─────────────────────────────────────────────────────────────
+  void _tryEnableInteraction() {
+    if (!mounted) return;
+    if (_interactionEnabled) return;
+    if (!_revealCycleDone) return;
+    if (!_audioDone) return;
+    setState(() {
+      _interactionEnabled = true;
+      _phase = _Phase.interaction;
+    });
+  }
+
+  @override
+  void dispose() {
+    _timer?.cancel();
+    super.dispose();
+  }
 
   void _onGridTap(int gridIndex) {
-    if (_completed || _failed || _internalPhase != _InternalPhase.interaction) return;
+    if (!_interactionEnabled || _completed || _failed) return;
+    if (_correctGridIndices.contains(gridIndex) && _tapProgress > 0) {
+      setState(() {
+        _tapProgress = 0;
+        for (var i = 0; i < _interactionSlots.length; i++) {
+          _interactionSlots[i] = null;
+          _slotFromPlayer[i] = false;
+        }
+        _correctGridIndices.clear();
+        _gridIndexToStep.clear();
+        _wrongGridIndex = null;
+      });
+      return;
+    }
     final word = _shuffledChoices[gridIndex];
     final expected = _sentence[_tapProgress];
     if (word == expected) {
@@ -162,8 +203,6 @@ class _AppearDisappearQuizBodyState extends State<AppearDisappearQuizBody> {
     }
   }
 
-  // ── Shared box row ──────────────────────────────────────────────────────────
-
   Widget _buildBoxRow(ThemeData theme, ColorScheme cs) {
     return Wrap(
       alignment: WrapAlignment.center,
@@ -173,20 +212,16 @@ class _AppearDisappearQuizBodyState extends State<AppearDisappearQuizBody> {
         String? word;
         bool fromPlayer = false;
 
-        switch (_internalPhase) {
-          case _InternalPhase.intro:
-            word = null;
-          case _InternalPhase.revealing:
-            word = i < _revealIndex ? _sentence[i] : null;
-          case _InternalPhase.flashing:
-            word = _flashVisible ? _sentence[i] : null;
-          case _InternalPhase.interaction:
-            word = _interactionSlots[i];
-            fromPlayer = i < _slotFromPlayer.length && _slotFromPlayer[i];
+        if (_phase == _Phase.waiting || _phase == _Phase.clearing) {
+          word = null;
+        } else if (_phase == _Phase.revealing) {
+          word = i < _revealIndex ? _sentence[i] : null;
+        } else {
+          word = _interactionSlots[i];
+          fromPlayer = i < _slotFromPlayer.length && _slotFromPlayer[i];
         }
 
-        final isRevealOrFlash = _internalPhase == _InternalPhase.revealing ||
-            _internalPhase == _InternalPhase.flashing;
+        final isReveal = _phase == _Phase.revealing;
 
         return AnimatedContainer(
           duration: const Duration(milliseconds: 180),
@@ -194,7 +229,7 @@ class _AppearDisappearQuizBodyState extends State<AppearDisappearQuizBody> {
           padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 6),
           decoration: BoxDecoration(
             color: word != null
-                ? (isRevealOrFlash
+                ? (isReveal
                     ? cs.primaryContainer.withValues(alpha: 0.65)
                     : fromPlayer
                         ? cs.primaryContainer
@@ -202,7 +237,7 @@ class _AppearDisappearQuizBodyState extends State<AppearDisappearQuizBody> {
                 : cs.surfaceContainerHighest.withValues(alpha: 0.35),
             borderRadius: BorderRadius.circular(8),
             border: Border.all(
-              color: isRevealOrFlash && word != null
+              color: isReveal && word != null
                   ? cs.primary.withValues(alpha: 0.5)
                   : fromPlayer
                       ? cs.primary
@@ -228,53 +263,39 @@ class _AppearDisappearQuizBodyState extends State<AppearDisappearQuizBody> {
     );
   }
 
-  // ── Build ───────────────────────────────────────────────────────────────────
-
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
     final cs = theme.colorScheme;
-
-    // Intro phase: centered instructional message only
-    if (_internalPhase == _InternalPhase.intro) {
-      return Center(
-        child: Text(
-          widget.strings['follow_the_words'] ?? 'Follow the words',
-          style: theme.textTheme.headlineSmall?.copyWith(
-            fontWeight: FontWeight.w700,
-            color: cs.primary,
-          ),
-          textAlign: TextAlign.center,
-        ),
-      );
-    }
-
-    // Revealing / flashing: centered box row, no grid
-    if (_internalPhase == _InternalPhase.revealing ||
-        _internalPhase == _InternalPhase.flashing) {
-      return Center(child: _buildBoxRow(theme, cs));
-    }
-
-    // Interaction: optional translation + boxes + choice train (shell shows title)
     final tr = widget.translation;
     final aux = widget.userLanguage != 'en' && tr != null
         ? tr[widget.userLanguage]
         : null;
 
+    if (_phase == _Phase.waiting ||
+        _phase == _Phase.revealing ||
+        _phase == _Phase.clearing) {
+      return Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: [
+          TranslationRevealButton(
+            translationText: aux,
+            userLanguage: widget.userLanguage,
+          ),
+          Expanded(
+            child: Center(child: _buildBoxRow(theme, cs)),
+          ),
+        ],
+      );
+    }
+
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
-        if (aux != null && aux.isNotEmpty) ...[
-          Text(
-            aux,
-            textAlign: TextAlign.center,
-            style: theme.textTheme.bodyMedium?.copyWith(
-              color: cs.onSurfaceVariant,
-              fontStyle: FontStyle.italic,
-            ),
-          ),
-          const SizedBox(height: 8),
-        ],
+        TranslationRevealButton(
+          translationText: aux,
+          userLanguage: widget.userLanguage,
+        ),
         _buildBoxRow(theme, cs),
         const SizedBox(height: 12),
         Expanded(
@@ -284,7 +305,8 @@ class _AppearDisappearQuizBodyState extends State<AppearDisappearQuizBody> {
               runSpacing: 8,
               children: List.generate(_shuffledChoices.length, (i) {
                 final word = _shuffledChoices[i];
-                final disabled = _failed || _completed;
+                final disabled =
+                    _failed || _completed || !_interactionEnabled;
                 final isWrong = _failed && _wrongGridIndex == i;
                 final isCorrectTile = _correctGridIndices.contains(i);
                 final orderLabel = _gridIndexToStep[i];

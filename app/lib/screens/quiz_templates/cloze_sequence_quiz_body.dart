@@ -4,6 +4,8 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 
 import '../../models/level_config.dart';
+import '../../widgets/audio_play_button.dart';
+import '../../widgets/translation_reveal_button.dart';
 
 /// Returns true when [token] is a blank marker (2+ underscores, nothing else).
 bool _isBlank(String token) => RegExp(r'^_{2,}$').hasMatch(token);
@@ -11,29 +13,29 @@ bool _isBlank(String token) => RegExp(r'^_{2,}$').hasMatch(token);
 /// Cloze-sequence quiz: streams (or shows at once) a localized sentence with
 /// numbered blank markers, then lets the player fill the blanks in order by
 /// tapping tiles laid out horizontally like a train.
-///
-/// Also used by the ConvoTemplate-2 adapter (wordsAllTogether = true, single blank).
 class ClozeSequenceQuizBody extends StatefulWidget {
   const ClozeSequenceQuizBody({
     super.key,
     required this.data,
     required this.userLanguage,
     this.resolvedImagePath,
+    this.audioAssetPath,
+    required this.resolveAudioExists,
+    required this.onPlayQuestionAudio,
     required this.onPlayCorrect,
     required this.onPlayWrong,
     required this.onOutcome,
-    this.onReadyForAudio,
   });
 
   final ClozeSequenceQuestionData data;
-  /// Active locale code (e.g. 'en', 'tr', 'es'). Used for the translation hint.
   final String userLanguage;
-  /// Pre-resolved asset path for [data.imageName], or null if no image.
   final String? resolvedImagePath;
+  final String? audioAssetPath;
+  final Future<bool> Function(String path) resolveAudioExists;
+  final Future<void> Function(String path) onPlayQuestionAudio;
   final VoidCallback onPlayCorrect;
   final VoidCallback onPlayWrong;
   final void Function(bool correct) onOutcome;
-  final VoidCallback? onReadyForAudio;
 
   @override
   State<ClozeSequenceQuizBody> createState() => _ClozeSequenceQuizBodyState();
@@ -42,19 +44,19 @@ class ClozeSequenceQuizBody extends StatefulWidget {
 enum _TileState { normal, correct, wrong, expected }
 
 class _ClozeSequenceQuizBodyState extends State<ClozeSequenceQuizBody> {
-  late List<String> _tokens;       // sentence['en'].split(' ')
-  late List<int> _blankIndices;    // positions of blank tokens in _tokens
-  late List<String> _tiles;        // shuffled [answers + distractors]
-  late List<String?> _filled;      // player-filled value per blank slot (null = unfilled)
+  late List<String> _tokens;
+  late List<int> _blankIndices;
+  late List<String> _tiles;
+  late List<String?> _filled;
   late List<_TileState> _tileStates;
 
-  int _streamIndex = 0;            // how many tokens have been revealed
+  int _streamIndex = 0;
   Timer? _streamTimer;
   bool _streamDone = false;
-  bool _audioReadyNotified = false;
 
   int _currentBlank = 0;
   bool _failed = false;
+  bool _audioPlaying = false;
 
   @override
   void initState() {
@@ -70,18 +72,9 @@ class _ClozeSequenceQuizBodyState extends State<ClozeSequenceQuizBody> {
     if (widget.data.wordsAllTogether) {
       _streamIndex = _tokens.length;
       _streamDone = true;
-      WidgetsBinding.instance.addPostFrameCallback((_) {
-        _notifyReadyForAudio();
-      });
     } else {
       _scheduleNextToken();
     }
-  }
-
-  void _notifyReadyForAudio() {
-    if (_audioReadyNotified) return;
-    _audioReadyNotified = true;
-    widget.onReadyForAudio?.call();
   }
 
   void _scheduleNextToken() {
@@ -91,7 +84,6 @@ class _ClozeSequenceQuizBodyState extends State<ClozeSequenceQuizBody> {
         _streamIndex++;
         if (_streamIndex >= _tokens.length) {
           _streamDone = true;
-          _notifyReadyForAudio();
         }
       });
       if (!_streamDone) _scheduleNextToken();
@@ -104,11 +96,34 @@ class _ClozeSequenceQuizBodyState extends State<ClozeSequenceQuizBody> {
     super.dispose();
   }
 
-  // ── Interaction ────────────────────────────────────────────────────────────
+  Future<void> _playAudio() async {
+    final p = widget.audioAssetPath;
+    if (p == null) return;
+    final ok = await widget.resolveAudioExists(p);
+    if (!ok || !mounted) return;
+    setState(() => _audioPlaying = true);
+    try {
+      await widget.onPlayQuestionAudio(p);
+    } finally {
+      if (mounted) setState(() => _audioPlaying = false);
+    }
+  }
 
   void _onTileTap(int tileIndex) {
     if (!_streamDone || _failed) return;
     final word = _tiles[tileIndex];
+    final state = _tileStates[tileIndex];
+    final multi = widget.data.answers.length > 1;
+
+    if (multi && state == _TileState.correct) {
+      setState(() {
+        _currentBlank = 0;
+        _filled = List.filled(_blankIndices.length, null);
+        _tileStates = List.filled(_tiles.length, _TileState.normal);
+      });
+      return;
+    }
+
     final expected = widget.data.answers[_currentBlank];
 
     if (word == expected) {
@@ -122,7 +137,6 @@ class _ClozeSequenceQuizBodyState extends State<ClozeSequenceQuizBody> {
         widget.onOutcome(true);
       }
     } else {
-      // Find first tile that holds the correct answer
       final expIdx = _tiles.indexOf(expected);
       setState(() {
         _failed = true;
@@ -133,8 +147,6 @@ class _ClozeSequenceQuizBodyState extends State<ClozeSequenceQuizBody> {
       widget.onOutcome(false);
     }
   }
-
-  // ── Sentence rendering ─────────────────────────────────────────────────────
 
   List<InlineSpan> _buildSentenceSpans(ThemeData theme) {
     final cs = theme.colorScheme;
@@ -148,7 +160,6 @@ class _ClozeSequenceQuizBodyState extends State<ClozeSequenceQuizBody> {
       if (_isBlank(t)) {
         final filled = _filled[blankI];
         if (filled != null) {
-          // Player filled correctly — green bold
           spans.add(TextSpan(
             text: filled,
             style: TextStyle(
@@ -157,7 +168,6 @@ class _ClozeSequenceQuizBodyState extends State<ClozeSequenceQuizBody> {
             ),
           ));
         } else if (_failed) {
-          // Failure state — show correct answer; orange if not yet reached, green if already filled
           final alreadyFilled = blankI < _currentBlank;
           spans.add(TextSpan(
             text: widget.data.answers[blankI],
@@ -170,7 +180,6 @@ class _ClozeSequenceQuizBodyState extends State<ClozeSequenceQuizBody> {
             ),
           ));
         } else {
-          // Unfilled blank placeholder
           spans.add(TextSpan(
             text: '_____ (${blankI + 1})',
             style: TextStyle(
@@ -189,24 +198,8 @@ class _ClozeSequenceQuizBodyState extends State<ClozeSequenceQuizBody> {
       spans.add(const TextSpan(text: ' …'));
     }
 
-    // Translation hint — appended at end, shown only when not English
-    if (_streamDone && widget.userLanguage != 'en') {
-      final hint = widget.data.sentence[widget.userLanguage];
-      if (hint != null && hint.isNotEmpty) {
-        spans.add(TextSpan(
-          text: ' ($hint)',
-          style: TextStyle(
-            color: cs.onSurfaceVariant,
-            fontStyle: FontStyle.italic,
-          ),
-        ));
-      }
-    }
-
     return spans;
   }
-
-  // ── Tile rendering ─────────────────────────────────────────────────────────
 
   Widget _buildTile(int index, ThemeData theme) {
     final cs = theme.colorScheme;
@@ -215,6 +208,7 @@ class _ClozeSequenceQuizBodyState extends State<ClozeSequenceQuizBody> {
     final isCorrect = state == _TileState.correct;
     final isWrong = state == _TileState.wrong;
     final isExpected = state == _TileState.expected;
+    final multi = widget.data.answers.length > 1;
 
     Color bg = cs.surfaceContainerHighest;
     Color? fg;
@@ -229,7 +223,7 @@ class _ClozeSequenceQuizBodyState extends State<ClozeSequenceQuizBody> {
       fg = Colors.green.shade900;
     }
 
-    final disabled = _failed || isCorrect;
+    final disabled = _failed || (isCorrect && !multi);
 
     return Stack(
       clipBehavior: Clip.none,
@@ -273,7 +267,10 @@ class _ClozeSequenceQuizBodyState extends State<ClozeSequenceQuizBody> {
     );
   }
 
-  // ── Build ──────────────────────────────────────────────────────────────────
+  String? _fullTranslationText() {
+    if (widget.userLanguage == 'en') return null;
+    return widget.data.sentence[widget.userLanguage];
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -283,7 +280,10 @@ class _ClozeSequenceQuizBodyState extends State<ClozeSequenceQuizBody> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
-        // Optional thumbnail image
+        TranslationRevealButton(
+          translationText: _fullTranslationText(),
+          userLanguage: widget.userLanguage,
+        ),
         if (widget.resolvedImagePath != null) ...[
           Center(
             child: ClipRRect(
@@ -293,14 +293,13 @@ class _ClozeSequenceQuizBodyState extends State<ClozeSequenceQuizBody> {
                 width: 72,
                 height: 72,
                 fit: BoxFit.cover,
-                errorBuilder: (_, __, ___) => const SizedBox(width: 72, height: 72),
+                errorBuilder: (_, __, ___) =>
+                    const SizedBox(width: 72, height: 72),
               ),
             ),
           ),
           const SizedBox(height: 8),
         ],
-
-        // Sentence with blanks
         Container(
           width: double.infinity,
           padding: const EdgeInsets.all(12),
@@ -319,10 +318,26 @@ class _ClozeSequenceQuizBodyState extends State<ClozeSequenceQuizBody> {
             ),
           ),
         ),
-
-        const SizedBox(height: 16),
-
-        // Tile train (horizontal wrap)
+        const SizedBox(height: 8),
+        FutureBuilder<bool>(
+          future: widget.audioAssetPath == null
+              ? Future.value(false)
+              : widget.resolveAudioExists(widget.audioAssetPath!),
+          builder: (context, snap) {
+            final ok = snap.data == true;
+            final p = widget.audioAssetPath;
+            return Row(
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: [
+                AudioPlayButton(
+                  isPlaying: _audioPlaying,
+                  onPressed: !ok || p == null ? null : () => _playAudio(),
+                ),
+              ],
+            );
+          },
+        ),
+        const SizedBox(height: 8),
         Wrap(
           spacing: 8,
           runSpacing: 8,

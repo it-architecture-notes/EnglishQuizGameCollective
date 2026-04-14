@@ -3,6 +3,7 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 
 import '../../models/level_config.dart';
+import '../../widgets/translation_reveal_button.dart';
 
 /// First line of dialogue + four full-sentence replies.
 class DialogueCompletionQuizBody extends StatefulWidget {
@@ -12,6 +13,10 @@ class DialogueCompletionQuizBody extends StatefulWidget {
     required this.userLanguage,
     this.line1Translation,
     this.answerTranslation,
+    this.audio1Path,
+    this.audio2Path,
+    required this.resolveAudioExists,
+    required this.onPlayQuestionAudio,
     required this.onPlayCorrect,
     required this.onPlayWrong,
     required this.onOutcome,
@@ -21,6 +26,10 @@ class DialogueCompletionQuizBody extends StatefulWidget {
   final String userLanguage;
   final Map<String, String>? line1Translation;
   final Map<String, String>? answerTranslation;
+  final String? audio1Path;
+  final String? audio2Path;
+  final Future<bool> Function(String path) resolveAudioExists;
+  final Future<void> Function(String path) onPlayQuestionAudio;
   final VoidCallback onPlayCorrect;
   final VoidCallback onPlayWrong;
   final void Function(bool correct) onOutcome;
@@ -35,6 +44,11 @@ class _DialogueCompletionQuizBodyState extends State<DialogueCompletionQuizBody>
   bool _locked = false;
   int? _selectedIndex;
   int? _correctIndex;
+  bool _audio1Playing = false;
+  bool _audio2Playing = false;
+  bool _audio1Scheduled = false;
+  bool? _audio1Ok;
+  bool? _audio2Ok;
 
   @override
   void initState() {
@@ -42,15 +56,90 @@ class _DialogueCompletionQuizBodyState extends State<DialogueCompletionQuizBody>
     final d = widget.data;
     _options = [d.answer, ...d.distractors]..shuffle(Random());
     _correctIndex = _options.indexOf(d.answer);
+    WidgetsBinding.instance.addPostFrameCallback((_) => _primeAudio());
   }
 
-  void _onTap(int i) {
+  @override
+  void didUpdateWidget(covariant DialogueCompletionQuizBody oldWidget) {
+    super.didUpdateWidget(oldWidget);
+    if (oldWidget.audio1Path != widget.audio1Path ||
+        oldWidget.audio2Path != widget.audio2Path) {
+      _audio1Scheduled = false;
+      _primeAudio();
+    }
+  }
+
+  Future<void> _primeAudio() async {
+    final p1 = widget.audio1Path;
+    final p2 = widget.audio2Path;
+    if (p1 != null) {
+      _audio1Ok = await widget.resolveAudioExists(p1);
+    } else {
+      _audio1Ok = false;
+    }
+    if (p2 != null) {
+      _audio2Ok = await widget.resolveAudioExists(p2);
+    } else {
+      _audio2Ok = false;
+    }
+    if (!mounted) return;
+    setState(() {});
+    if (_audio1Scheduled) return;
+    _audio1Scheduled = true;
+    if (_audio1Ok == true && p1 != null) {
+      await Future<void>.delayed(const Duration(seconds: 1));
+      if (!mounted) return;
+      setState(() => _audio1Playing = true);
+      try {
+        await widget.onPlayQuestionAudio(p1);
+      } finally {
+        if (mounted) setState(() => _audio1Playing = false);
+      }
+    }
+  }
+
+  Future<void> _playAudio1Manual() async {
+    final p = widget.audio1Path;
+    if (p == null || _audio1Ok != true) return;
+    setState(() => _audio1Playing = true);
+    try {
+      await widget.onPlayQuestionAudio(p);
+    } finally {
+      if (mounted) setState(() => _audio1Playing = false);
+    }
+  }
+
+  String? _combinedTranslation() {
+    final lang = widget.userLanguage;
+    if (lang == 'en') return null;
+    final m1 = widget.line1Translation;
+    final ma = widget.answerTranslation;
+    final t1 = m1?[lang];
+    final ta = ma?[lang];
+    final parts = <String>[];
+    if (t1 != null && t1.isNotEmpty) parts.add(t1);
+    if (ta != null && ta.isNotEmpty) parts.add(ta);
+    if (parts.isEmpty) return null;
+    return parts.join('\n');
+  }
+
+  Future<void> _onTap(int i) async {
     if (_locked) return;
     final ok = _options[i] == widget.data.answer;
     setState(() {
       _locked = true;
       _selectedIndex = i;
     });
+    final p2 = widget.audio2Path;
+    if (_audio2Ok == true && p2 != null) {
+      setState(() => _audio2Playing = true);
+      try {
+        await widget.onPlayQuestionAudio(p2);
+      } finally {
+        if (mounted) setState(() => _audio2Playing = false);
+      }
+    }
+    if (!mounted) return;
     if (ok) {
       widget.onPlayCorrect();
       widget.onOutcome(true);
@@ -66,14 +155,14 @@ class _DialogueCompletionQuizBodyState extends State<DialogueCompletionQuizBody>
     final cs = theme.colorScheme;
     final line = widget.data.line1['en'] ?? '';
     final lang = widget.userLanguage;
-    final m1 = widget.line1Translation;
-    final ma = widget.answerTranslation;
-    final t1 = lang != 'en' && m1 != null ? m1[lang] : null;
-    final ta = lang != 'en' && ma != null ? ma[lang] : null;
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
+        TranslationRevealButton(
+          translationText: _combinedTranslation(),
+          userLanguage: lang,
+        ),
         Text(
           widget.data.character1,
           style: theme.textTheme.labelLarge?.copyWith(
@@ -94,26 +183,23 @@ class _DialogueCompletionQuizBodyState extends State<DialogueCompletionQuizBody>
             style: theme.textTheme.bodyLarge,
           ),
         ),
-        if (t1 != null && t1.isNotEmpty) ...[
-          const SizedBox(height: 8),
-          Text(
-            t1,
-            style: theme.textTheme.bodyMedium?.copyWith(
-              color: cs.onSurfaceVariant,
-              fontStyle: FontStyle.italic,
-            ),
+        if (_audio1Ok == true && widget.audio1Path != null)
+          Row(
+            mainAxisAlignment: MainAxisAlignment.end,
+            children: [
+              IconButton(
+                onPressed: (_audio1Playing || _audio2Playing)
+                    ? null
+                    : _playAudio1Manual,
+                icon: Icon(
+                  _audio1Playing ? Icons.graphic_eq : Icons.volume_up,
+                  color: (_audio1Playing || _audio2Playing)
+                      ? cs.onSurface.withValues(alpha: 0.4)
+                      : cs.primary,
+                ),
+              ),
+            ],
           ),
-        ],
-        if (ta != null && ta.isNotEmpty) ...[
-          const SizedBox(height: 6),
-          Text(
-            ta,
-            style: theme.textTheme.bodySmall?.copyWith(
-              color: cs.onSurfaceVariant,
-              fontStyle: FontStyle.italic,
-            ),
-          ),
-        ],
         const SizedBox(height: 8),
         Text(
           widget.data.character2,
@@ -143,7 +229,7 @@ class _DialogueCompletionQuizBodyState extends State<DialogueCompletionQuizBody>
             child: SizedBox(
               width: double.infinity,
               child: ElevatedButton(
-                onPressed: _locked ? null : () => _onTap(i),
+                onPressed: (_locked || _audio2Playing) ? null : () => _onTap(i),
                 style: ElevatedButton.styleFrom(
                   backgroundColor: bg,
                   foregroundColor: fg,

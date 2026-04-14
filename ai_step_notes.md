@@ -31,8 +31,8 @@
 
 9) TO CLAUDE: Please fix the issues and gaps.
 
-10) TO CLAUDE: do you think we can finalize active issue looking at the requirements in the context. 
+10) TO CLAUDE: do you think we can finalize active issue looking at the requirements in the context. Don't take any action yet.
 
-11) TO MAIN CURSOR: do you think we can finalize active issue looking at the requirements in the context. 
+11) TO MAIN CURSOR: do you think we can finalize active issue looking at the requirements in the context. Don't take any action yet.
 
 12) TO MAIN CURSOR: finalize and archive active issue by summarizing the results into progress-context-archive, and archiving the full issue as-is to full-project-issue archive, use incremenatal issue number for both cases, then commit all, merge to main branch

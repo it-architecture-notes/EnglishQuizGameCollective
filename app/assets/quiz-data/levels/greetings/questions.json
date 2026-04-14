@@ -2,6 +2,16 @@
   "levelQuestions": [
     {
       "type": "image",
+      "template": "imageQuizTemplate-SpotDifference",
+      "questionData": {
+        "correctImage": "afternoon",
+        "wrongImage": "night",
+        "answer": "afternoon",
+        "auto_next_delay": 1.0
+      }
+    },
+    {
+      "type": "image",
       "template": "imageQuizTemplate-1",
       "questionData": {
         "imageName": "good-morning",
@@ -11,29 +21,15 @@
           "Nice to Meet You",
           "How Are You"
         ],
-        "timer_seconds": 10,
-        "translation": {
-          "tr": "Günaydın",
-          "es": "¡Buenos Días!",
-          "fr": "Bonjour",
-          "de": "Guten Morgen",
-          "it": "Buongiorno",
-          "pt": "Bom Dia",
-          "ru": "Доброе Утро",
-          "zh": "早上好",
-          "ja": "おはようございます",
-          "ko": "아침이에요",
-          "ar": "صباح النور",
-          "hi": "शहर है"
-        }
+        "timer_seconds": 10
       }
     },
     {
       "type": "vocab",
       "template": "ConvoTemplate-DialogueCompletion",
       "questionData": {
-        "character1": "mike",
-        "character2": "sarah",
+        "character1": "Sarah",
+        "character2": "Mike",
         "line1": {
           "en": "How are you?"
         },
@@ -72,7 +68,8 @@
           "Nice to see you"
         ]
       },
-      "audio_file": "how-are-you-convo"
+      "audio_file1": "how-are-you-convo",
+      "audio_file2": "i-am-fine-thank-you-convo"
     },
     {
       "type": "vocab",
@@ -118,20 +115,7 @@
           "good-morning"
         ],
         "auto_next_delay": 1.0,
-        "show_correct_on_wrong": false,
-        "translation": {
-          "tr": "Sabah",
-          "fr": "Matin",
-          "de": "Morgen",
-          "it": "Mattina",
-          "pt": "Manhã",
-          "ru": "Утро",
-          "zh": "早上",
-          "ja": "朝",
-          "ko": "아침",
-          "ar": "صباح النور",
-          "hi": "शहर है"
-        }
+        "show_correct_on_wrong": false
       },
       "audio_file": "good-night"
     },
@@ -139,8 +123,8 @@
       "type": "vocab",
       "template": "ConvoTemplate-1",
       "questionData": {
-        "character1": "mike",
-        "character2": "sarah",
+        "character1": "Alex",
+        "character2": "Anna",
         "line1": {
           "en": "How are you?"
         },
@@ -184,8 +168,8 @@
       "type": "vocab",
       "template": "ConvoTemplate-1",
       "questionData": {
-        "character1": "mike",
-        "character2": "sarah",
+        "character1": "Beth",
+        "character2": "Emma",
         "line1": {
           "en": "Hello, I am Mike"
         },
@@ -380,15 +364,14 @@
           "ar": "من السعد بمقابلتك, Sarah.",
           "hi": "मैं तुमसे मिलने को खुश हूं, Sarah।"
         }
-      },
-      "audio_file": "nice-to-meet-you-grammar"
+      }
     },
     {
       "type": "vocab",
       "template": "ConvoTemplate-DialogueCompletion",
       "questionData": {
-        "character1": "mike",
-        "character2": "sarah",
+        "character1": "Chris",
+        "character2": "Daniel",
         "line1": {
           "en": "What is your name?"
         },
@@ -427,7 +410,8 @@
           "Nice to see you"
         ]
       },
-      "audio_file": "what-is-your-name-convo"
+      "audio_file1": "what-is-your-name-convo",
+      "audio_file2": "my-name-is-convo"
     }
   ]
 }

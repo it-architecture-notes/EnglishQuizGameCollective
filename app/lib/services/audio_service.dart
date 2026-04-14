@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/foundation.dart';
 
@@ -95,14 +97,27 @@ Future<void> playWrong({required bool soundFxOn}) async {
 }
 
 Future<void> playQuestionAudio(String assetPath) async {
+  final player = _ttsPlayerInstance();
   try {
-    final player = _ttsPlayerInstance();
     try {
       await player.stop();
     } catch (_) {}
 
     await player.setReleaseMode(ReleaseMode.release);
-    await player.play(AssetSource(assetPath));
+    final completer = Completer<void>();
+    late final StreamSubscription<void> sub;
+    sub = player.onPlayerComplete.listen((_) {
+      sub.cancel();
+      if (!completer.isCompleted) completer.complete();
+    });
+    try {
+      await player.play(AssetSource(assetPath));
+    } catch (e, st) {
+      sub.cancel();
+      if (!completer.isCompleted) completer.completeError(e, st);
+      rethrow;
+    }
+    return completer.future;
   } catch (e, st) {
     if (e.toString().contains('AbortError')) return;
     debugPrint('AudioService.playQuestionAudio: $e\n$st');

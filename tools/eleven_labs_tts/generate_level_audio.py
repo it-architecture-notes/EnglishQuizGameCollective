@@ -3,7 +3,7 @@
 
 Development-time only utility:
 - Reads app/assets/quiz-data/levels/{level_id}/questions.json
-- Generates .m4a only for questions with top-level "audio_file"
+- Generates .m4a for top-level "audio_file" or DialogueCompletion "audio_file1"+"audio_file2"
 - Writes output files into the same level folder
 - Does NOT modify questions.json
 """
@@ -141,36 +141,159 @@ def _localized_en(value: Any) -> str | None:
 
 
 def _replace_blanks_with_blank(text: str) -> str:
-    # Use long-pause markers around cloze gaps.
-    # Example: "I _____ tea" -> "I [long pause] Blank [long pause] tea"
-    replaced = BLANK_RE.sub(" [long pause] Blank [long pause] ", text)
+    # TTS: spoken pause only (no literal "Blank"); use for ___ / _____ gaps.
+    replaced = BLANK_RE.sub(" [long pause] ", text)
     # Normalize whitespace and punctuation adjacency.
     replaced = re.sub(r"\s+([,.;!?])", r"\1", replaced)
     replaced = re.sub(r"\s+", " ", replaced).strip()
+    replaced = re.sub(r"\s*\[long pause\]\s*$", "", replaced).strip()
     return replaced
-
-
-def _replace_blanks_with_silence_blank(text: str) -> str:
-    # Keep ConvoTemplate-1 line2 aligned with ElevenLabs SSML break handling.
-    return _replace_blanks_with_blank(text)
 
 
 def _replace_blanks_with_answer(text: str, answer: str | None) -> str:
     if answer and answer.strip():
         return BLANK_RE.sub(answer.strip(), text)
-    return BLANK_RE.sub("blank", text)
+    return _replace_blanks_with_blank(text)
+
+
+def _normalize_spoken_line(text: str) -> str:
+    t = re.sub(r"\s+", " ", text).strip()
+    t = re.sub(r"\s+([,.;!?])", r"\1", t)
+    return t
+
+
+def _cloze_answers_list(qd: dict[str, Any]) -> list[str]:
+    raw = qd.get("answer") or qd.get("answers")
+    if isinstance(raw, list):
+        return [str(x).strip() for x in raw if str(x).strip()]
+    if isinstance(raw, str):
+        return [raw.strip()] if raw.strip() else []
+    return []
+
+
+def _replace_blanks_sequential(text: str, answers: list[str]) -> str:
+    out = text
+    for ans in answers:
+        if not BLANK_RE.search(out):
+            break
+        out = BLANK_RE.sub(ans, out, count=1)
+    return out
+
+
+def _cloze_sequence_tts_text(sentence_en: str, qd: dict[str, Any]) -> str:
+    answers = _cloze_answers_list(qd)
+    text = _replace_blanks_sequential(sentence_en, answers)
+    if BLANK_RE.search(text):
+        text = _replace_blanks_with_blank(text)
+    else:
+        text = re.sub(r"\s+", " ", text).strip()
+        text = re.sub(r"\s+([,.;!?])", r"\1", text)
+    return text
+
+
+def _words_list(value: Any) -> list[str]:
+    if isinstance(value, str):
+        return [x for x in value.strip().split() if x]
+    if not isinstance(value, list):
+        return []
+    return [str(x).strip() for x in value if str(x).strip()]
 
 
 def _join_words(value: Any) -> str | None:
-    if isinstance(value, str):
-        out = [x for x in value.strip().split() if x]
-        return " ".join(out) if out else None
-    if not isinstance(value, list):
-        return None
-    out = [str(x).strip() for x in value if str(x).strip()]
-    if not out:
-        return None
-    return " ".join(out)
+    out = _words_list(value)
+    return " ".join(out) if out else None
+
+
+def _job_for_stem(
+    idx: int,
+    template: str,
+    level_dir: Path,
+    stem: str,
+    output_suffix: str,
+    tts_text: str,
+    speaker_mode: str,
+    line_a: str | None = None,
+    line_b: str | None = None,
+) -> CandidateJob:
+    output_filename = f"{stem}{output_suffix}.m4a"
+    output_path = level_dir / output_filename
+    return CandidateJob(
+        question_index=idx,
+        template=template,
+        audio_file_value=stem,
+        output_filename=output_filename,
+        output_path=output_path,
+        tts_text=tts_text,
+        speaker_mode=speaker_mode,
+        line_a=line_a,
+        line_b=line_b,
+    )
+
+
+def build_jobs_for_question(
+    level_dir: Path,
+    q: dict[str, Any],
+    idx: int,
+    output_suffix: str,
+) -> list[CandidateJob]:
+    template = str(q.get("template", "")).strip()
+    af1 = _str_or_none(q.get("audio_file1"))
+    af2 = _str_or_none(q.get("audio_file2"))
+
+    if template == "ConvoTemplate-DialogueCompletion":
+        qd = q.get("questionData")
+        if not isinstance(qd, dict):
+            return [
+                CandidateJob(
+                    question_index=idx,
+                    template=template,
+                    audio_file_value="",
+                    output_filename=f"_invalid{output_suffix}.m4a",
+                    output_path=level_dir / f"_invalid{output_suffix}.m4a",
+                    tts_text=None,
+                    speaker_mode="skip",
+                    reason="missing_question_data",
+                )
+            ]
+        if not af1 or not af2:
+            return [
+                CandidateJob(
+                    question_index=idx,
+                    template=template,
+                    audio_file_value="",
+                    output_filename=f"_invalid{output_suffix}.m4a",
+                    output_path=level_dir / f"_invalid{output_suffix}.m4a",
+                    tts_text=None,
+                    speaker_mode="skip",
+                    reason="dialogue_completion_requires_audio_file1_and_audio_file2",
+                )
+            ]
+        line1 = _localized_en(qd.get("line1"))
+        answer = _str_or_none(qd.get("answer"))
+        if not line1 or not answer:
+            return [
+                CandidateJob(
+                    question_index=idx,
+                    template=template,
+                    audio_file_value="",
+                    output_filename=f"_invalid{output_suffix}.m4a",
+                    output_path=level_dir / f"_invalid{output_suffix}.m4a",
+                    tts_text=None,
+                    speaker_mode="skip",
+                    reason="dual_dialogue_missing_line1_or_answer",
+                )
+            ]
+        text_answer = _replace_blanks_with_blank(answer)
+        return [
+            _job_for_stem(
+                idx, template, level_dir, af1, output_suffix, line1, "single"
+            ),
+            _job_for_stem(
+                idx, template, level_dir, af2, output_suffix, text_answer, "single"
+            ),
+        ]
+
+    return [build_job(level_dir, q, idx, output_suffix)]
 
 
 def build_job(
@@ -224,8 +347,8 @@ def build_job(
                 reason="missing_line1_or_line2_en",
             )
         answer = _str_or_none(qd.get("answer"))
-        line1 = _replace_blanks_with_answer(line1, answer)
-        line2 = _replace_blanks_with_silence_blank(line2)
+        line1 = _normalize_spoken_line(_replace_blanks_with_answer(line1, answer))
+        line2 = _normalize_spoken_line(_replace_blanks_with_answer(line2, answer))
         return CandidateJob(
             question_index=idx,
             template=template,
@@ -239,25 +362,28 @@ def build_job(
         )
 
     if template == "ConvoTemplate-AppearDisappear":
-        text = _join_words(qd.get("words"))
-        if text:
+        words = _words_list(qd.get("words"))
+        if words:
+            text = " [long pause] ".join(words)
             return CandidateJob(idx, template, audio_file_value, output_filename, output_path, text, "single")
 
-    if template == "ConvoTemplate-Simon":
-        text = _join_words(qd.get("words"))
-        if text:
-            return CandidateJob(idx, template, audio_file_value, output_filename, output_path, text, "single")
+    if template == "ConvoTemplate-GrammarForm":
+        return CandidateJob(
+            question_index=idx,
+            template=template,
+            audio_file_value=audio_file_value,
+            output_filename=output_filename,
+            output_path=output_path,
+            tts_text=None,
+            speaker_mode="skip",
+            reason="grammar_no_audio",
+        )
 
-    if template in {"ConvoTemplate-ClozeSequence", "ConvoTemplate-GrammarForm"}:
+    if template == "ConvoTemplate-ClozeSequence":
         sentence_en = _localized_en(qd.get("sentence"))
         if sentence_en:
-            text = _replace_blanks_with_blank(sentence_en)
+            text = _cloze_sequence_tts_text(sentence_en, qd)
             return CandidateJob(idx, template, audio_file_value, output_filename, output_path, text, "single")
-
-    if template == "ConvoTemplate-DialogueCompletion":
-        line1 = _localized_en(qd.get("line1"))
-        if line1:
-            return CandidateJob(idx, template, audio_file_value, output_filename, output_path, line1, "single")
 
     if template == "ConvoTemplate-SentenceBuilder":
         text = _join_words(qd.get("correct_order"))
@@ -418,7 +544,7 @@ def main() -> None:
     for idx, q in enumerate(rows):
         if args.question is not None and idx != args.question:
             continue
-        jobs.append(build_job(level_dir, q, idx, args.output_suffix))
+        jobs.extend(build_jobs_for_question(level_dir, q, idx, args.output_suffix))
 
     print(f"Repo root: {repo_root}")
     print(f"Level: {args.level_id}")

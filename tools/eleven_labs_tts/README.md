@@ -63,17 +63,16 @@ Supported templates:
 
 - `ConvoTemplate-1` (two calls stitched with small pause):
   - `line1.en` + `line2.en`
-  - blanks in `line1` replaced by `answer` when available
-- `ConvoTemplate-AppearDisappear`: joined `words` (supports array or space-separated string)
-- `ConvoTemplate-Simon`: joined `words`
-- `ConvoTemplate-ClozeSequence`: `sentence.en` with blanks spoken as `Blank`, with a short pause before/after
-- `ConvoTemplate-GrammarForm`: same as cloze sequence
-- `ConvoTemplate-DialogueCompletion`: `line1.en` only
+  - blanks in `line1` and `line2` replaced by `answer` when available
+- `ConvoTemplate-AppearDisappear`: whitespace-split `words`, joined with `[long pause]` between tokens
+- `ConvoTemplate-ClozeSequence`: `sentence.en` with blanks filled from `answer` / `answers` in order
+- `ConvoTemplate-DialogueCompletion`: `audio_file1` + `audio_file2` (line1 + answer), same as Gemini script
 - `ConvoTemplate-SentenceBuilder`: joined `correct_order`
 - `imageQuizTemplate-2`: `answer` only (skipped if absent)
 
 Skipped templates:
 
+- `ConvoTemplate-GrammarForm` (no level audio)
 - `ConvoTemplate-WordPairs`
 - `imageQuizTemplate-1`
 - `imageQuizTemplate-3`

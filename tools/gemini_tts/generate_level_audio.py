@@ -3,7 +3,8 @@
 
 Development-time only utility:
 - Reads app/assets/quiz-data/levels/{level_id}/questions.json
-- Generates .m4a only for questions with top-level "audio_file"
+- Generates .m4a for questions with top-level "audio_file", or for
+  ConvoTemplate-DialogueCompletion with "audio_file1" (line1) + "audio_file2" (answer)
 - Writes output files into the same level folder
 - Does NOT modify questions.json
 """
@@ -14,13 +15,14 @@ import argparse
 import io
 import json
 import os
+import random
 import re
 import shutil
 import subprocess
 import tempfile
 import time
 import wave
-from dataclasses import dataclass
+from dataclasses import dataclass, replace
 from pathlib import Path
 from typing import Any
 
@@ -46,6 +48,123 @@ BLANK_RE = re.compile(r"_{2,}")
 
 
 @dataclass(frozen=True)
+class GenderVoiceContext:
+    """Character name pools from conversation_characters.json + Gemini voice lists from env."""
+
+    male_names: frozenset[str]
+    female_names: frozenset[str]
+    male_voices: tuple[str, ...]
+    female_voices: tuple[str, ...]
+
+
+def _gemini_voice_lists_from_env() -> tuple[list[str], list[str]]:
+    """Comma-separated Gemini prebuilt names from GEMINI_TTS_MALE_VOICES / FEMALE_VOICES."""
+    male = _parse_voice_list(os.getenv("GEMINI_TTS_MALE_VOICES", ""))
+    female = _parse_voice_list(os.getenv("GEMINI_TTS_FEMALE_VOICES", ""))
+    if not male:
+        male = ["Puck"]
+    if not female:
+        female = ["Leda"]
+    return male, female
+
+
+def load_gender_voice_context(repo_root: Path) -> GenderVoiceContext:
+    """Load character name pools and env male/female Gemini voice lists."""
+    path = (
+        repo_root
+        / "app"
+        / "assets"
+        / "data"
+        / "config"
+        / "conversation_characters.json"
+    )
+    male_set: set[str] = set()
+    female_set: set[str] = set()
+    if path.is_file():
+        try:
+            raw = json.loads(path.read_text(encoding="utf-8"))
+            pools = raw.get("characterNamePools") or {}
+            male_set = {
+                str(x).strip().lower()
+                for x in (pools.get("male") or [])
+                if str(x).strip()
+            }
+            female_set = {
+                str(x).strip().lower()
+                for x in (pools.get("female") or [])
+                if str(x).strip()
+            }
+        except (OSError, json.JSONDecodeError, TypeError, AttributeError):
+            pass
+    m_voices, f_voices = _gemini_voice_lists_from_env()
+    return GenderVoiceContext(
+        male_names=frozenset(male_set),
+        female_names=frozenset(female_set),
+        male_voices=tuple(m_voices),
+        female_voices=tuple(f_voices),
+    )
+
+
+def _gender_for_character(slug: str, ctx: GenderVoiceContext) -> str | None:
+    """Return 'male' / 'female' if the slug matches a pool name, else None."""
+    key = (slug or "").strip().lower()
+    if key in ctx.male_names:
+        return "male"
+    if key in ctx.female_names:
+        return "female"
+    return None
+
+
+def _random_gemini_voice_any_gender(ctx: GenderVoiceContext) -> str:
+    """Random prebuilt voice from combined male + female env lists."""
+    combined = list(ctx.male_voices) + list(ctx.female_voices)
+    return random.choice(combined)
+
+
+def _gemini_voice_for_character(slug: str, ctx: GenderVoiceContext) -> str:
+    """Random Gemini voice: gender lists if slug matches a pool name, else any gender."""
+    gender = _gender_for_character(slug, ctx)
+    if gender == "female":
+        return random.choice(ctx.female_voices)
+    if gender == "male":
+        return random.choice(ctx.male_voices)
+    return _random_gemini_voice_any_gender(ctx)
+
+
+def _parse_voice_list(env_val: str | None) -> list[str]:
+    """Comma-separated voice names or IDs (trimmed, empty segments dropped)."""
+    if not env_val or not str(env_val).strip():
+        return []
+    return [x.strip() for x in str(env_val).split(",") if x.strip()]
+
+
+def _env_truthy(name: str) -> bool:
+    v = os.getenv(name, "").strip().lower()
+    return v in ("1", "true", "yes", "on")
+
+
+def configure_tts_voices(args: argparse.Namespace) -> None:
+    """Resolve Gemini/ElevenLabs voice defaults from CLI and env (male/female voice lists)."""
+    mlist, flist = _gemini_voice_lists_from_env()
+
+    g_voice = args.voice if args.voice is not None else mlist[0]
+    g_a = args.voice_a if args.voice_a is not None else mlist[0]
+    g_b = args.voice_b if args.voice_b is not None else (flist[0] if flist else mlist[0])
+
+    args.voice = g_voice
+    args.voice_a = g_a
+    args.voice_b = g_b
+
+    pool = mlist + flist
+    args._gemini_single_voice_pool = pool
+    args._gemini_rotate_single = _env_truthy("GEMINI_TTS_VOICE_ROTATE")
+
+    el_list = _parse_voice_list(os.getenv("ELEVENLABS_VOICE_IDS", ""))
+    args._elevenlabs_voice_ids_pool = el_list
+    args._elevenlabs_rotate = _env_truthy("ELEVENLABS_VOICE_ROTATE")
+
+
+@dataclass(frozen=True)
 class CandidateJob:
     question_index: int
     template: str
@@ -57,6 +176,9 @@ class CandidateJob:
     speaker_a_name: str | None = None
     speaker_b_name: str | None = None
     reason: str | None = None
+    gemini_voice_override: str | None = None
+    gemini_multi_voice_a: str | None = None
+    gemini_multi_voice_b: str | None = None
 
 
 def parse_args() -> argparse.Namespace:
@@ -77,18 +199,27 @@ def parse_args() -> argparse.Namespace:
     )
     parser.add_argument(
         "--voice",
-        default=DEFAULT_SINGLE_VOICE,
-        help=f"Gemini single-speaker voice (default: {DEFAULT_SINGLE_VOICE})",
+        default=None,
+        metavar="NAME",
+        help=(
+            "Gemini single-speaker voice (default: first entry in GEMINI_TTS_MALE_VOICES)"
+        ),
     )
     parser.add_argument(
         "--voice-a",
-        default=DEFAULT_VOICE_A,
-        help=f"Gemini multi-speaker voice A for character1 (default: {DEFAULT_VOICE_A})",
+        default=None,
+        metavar="NAME",
+        help=(
+            "Gemini multi-speaker voice A (default: first GEMINI_TTS_MALE_VOICES)"
+        ),
     )
     parser.add_argument(
         "--voice-b",
-        default=DEFAULT_VOICE_B,
-        help=f"Gemini multi-speaker voice B for character2 (default: {DEFAULT_VOICE_B})",
+        default=None,
+        metavar="NAME",
+        help=(
+            "Gemini multi-speaker voice B (default: first GEMINI_TTS_FEMALE_VOICES)"
+        ),
     )
     parser.add_argument(
         "--elevenlabs-voice",
@@ -178,18 +309,16 @@ def _localized_en(value: Any) -> str | None:
 
 
 def _replace_blanks_with_blank(text: str) -> str:
-    # Gemini: use long-pause markers around cloze gaps.
-    # Example: "I _____ tea" -> "I [long pause] Blank [long pause] tea"
-    replaced = BLANK_RE.sub(" [long pause] Blank [long pause] ", text)
+    # TTS: spoken pause only (no literal "Blank"); use for ___ / _____ gaps.
+    # Example: "I _____ tea" -> "I [long pause] tea"
+    replaced = BLANK_RE.sub(" [long pause] ", text)
     # Normalize spacing around punctuation.
     replaced = re.sub(r"\s+([,.;!?])", r"\1", replaced)
     replaced = re.sub(r"\s+", " ", replaced).strip()
+    # Sentence-final gap only (e.g. "My name is _____"): TTS may speak "Blank" after a
+    # trailing "[long pause]" — end on the last word.
+    replaced = re.sub(r"\s*\[long pause\]\s*$", "", replaced).strip()
     return replaced
-
-
-def _replace_blanks_with_silence_blank(text: str) -> str:
-    # Keep ConvoTemplate-1 line2 aligned with generic Gemini blank handling.
-    return _replace_blanks_with_blank(text)
 
 
 def _replace_blanks_with_answer(text: str, answer: str | None) -> str:
@@ -198,16 +327,179 @@ def _replace_blanks_with_answer(text: str, answer: str | None) -> str:
     return _replace_blanks_with_blank(text)
 
 
-def _join_words(value: Any) -> str | None:
+def _normalize_spoken_line(text: str) -> str:
+    """Collapse whitespace; no space before punctuation."""
+    t = re.sub(r"\s+", " ", text).strip()
+    t = re.sub(r"\s+([,.;!?])", r"\1", t)
+    return t
+
+
+def _cloze_answers_list(qd: dict[str, Any]) -> list[str]:
+    raw = qd.get("answer") or qd.get("answers")
+    if isinstance(raw, list):
+        return [str(x).strip() for x in raw if str(x).strip()]
+    if isinstance(raw, str):
+        return [raw.strip()] if raw.strip() else []
+    return []
+
+
+def _replace_blanks_sequential(text: str, answers: list[str]) -> str:
+    out = text
+    for ans in answers:
+        if not BLANK_RE.search(out):
+            break
+        out = BLANK_RE.sub(ans, out, count=1)
+    return out
+
+
+def _cloze_sequence_tts_text(sentence_en: str, qd: dict[str, Any]) -> str:
+    """Fill `sentence.en` blanks with ClozeSequence `answer`/`answers` (in order)."""
+    answers = _cloze_answers_list(qd)
+    text = _replace_blanks_sequential(sentence_en, answers)
+    if BLANK_RE.search(text):
+        text = _replace_blanks_with_blank(text)
+    else:
+        text = re.sub(r"\s+", " ", text).strip()
+        text = re.sub(r"\s+([,.;!?])", r"\1", text)
+    return text
+
+
+def _words_list(value: Any) -> list[str]:
     if isinstance(value, str):
-        out = [x for x in value.strip().split() if x]
-        return " ".join(out) if out else None
+        return [x for x in value.strip().split() if x]
     if not isinstance(value, list):
-        return None
-    out = [str(x).strip() for x in value if str(x).strip()]
-    if not out:
-        return None
-    return " ".join(out)
+        return []
+    return [str(x).strip() for x in value if str(x).strip()]
+
+
+def _join_words(value: Any) -> str | None:
+    out = _words_list(value)
+    return " ".join(out) if out else None
+
+
+def _job_for_stem(
+    idx: int,
+    template: str,
+    level_dir: Path,
+    stem: str,
+    output_suffix: str,
+    tts_text: str,
+    speaker_mode: str,
+    speaker_a_name: str | None = None,
+    speaker_b_name: str | None = None,
+    gemini_voice_override: str | None = None,
+) -> CandidateJob:
+    output_filename = f"{stem}{output_suffix}.m4a"
+    output_path = level_dir / output_filename
+    return CandidateJob(
+        question_index=idx,
+        template=template,
+        audio_file_value=stem,
+        output_filename=output_filename,
+        output_path=output_path,
+        tts_text=tts_text,
+        speaker_mode=speaker_mode,
+        speaker_a_name=speaker_a_name,
+        speaker_b_name=speaker_b_name,
+        gemini_voice_override=gemini_voice_override,
+    )
+
+
+def build_jobs_for_question(
+    level_id: str,
+    level_dir: Path,
+    q: dict[str, Any],
+    idx: int,
+    output_suffix: str,
+    gender_ctx: GenderVoiceContext | None = None,
+) -> list[CandidateJob]:
+    """Returns one or more TTS jobs for a single levelQuestions row."""
+    template = str(q.get("template", "")).strip()
+    audio_file = _str_or_none(q.get("audio_file")) or ""
+    af1 = _str_or_none(q.get("audio_file1"))
+    af2 = _str_or_none(q.get("audio_file2"))
+
+    # ConvoTemplate-DialogueCompletion: always two clips — line1, then answer (with blanks filled).
+    if template == "ConvoTemplate-DialogueCompletion":
+        qd = q.get("questionData")
+        if not isinstance(qd, dict):
+            return [
+                CandidateJob(
+                    question_index=idx,
+                    template=template,
+                    audio_file_value="",
+                    output_filename=f"_invalid{output_suffix}.m4a",
+                    output_path=level_dir / f"_invalid{output_suffix}.m4a",
+                    tts_text=None,
+                    speaker_mode="skip",
+                    reason="missing_question_data",
+                )
+            ]
+        if not af1 or not af2:
+            return [
+                CandidateJob(
+                    question_index=idx,
+                    template=template,
+                    audio_file_value="",
+                    output_filename=f"_invalid{output_suffix}.m4a",
+                    output_path=level_dir / f"_invalid{output_suffix}.m4a",
+                    tts_text=None,
+                    speaker_mode="skip",
+                    reason="dialogue_completion_requires_audio_file1_and_audio_file2",
+                )
+            ]
+        line1 = _localized_en(qd.get("line1"))
+        answer = _str_or_none(qd.get("answer"))
+        if not line1 or not answer:
+            return [
+                CandidateJob(
+                    question_index=idx,
+                    template=template,
+                    audio_file_value="",
+                    output_filename=f"_invalid{output_suffix}.m4a",
+                    output_path=level_dir / f"_invalid{output_suffix}.m4a",
+                    tts_text=None,
+                    speaker_mode="skip",
+                    reason="dual_dialogue_missing_line1_or_answer",
+                )
+            ]
+        text_answer = _replace_blanks_with_blank(answer)
+        c1 = _str_or_none(qd.get("character1")) or "mike"
+        c2 = _str_or_none(qd.get("character2")) or "sarah"
+        v1 = (
+            _gemini_voice_for_character(c1, gender_ctx)
+            if gender_ctx is not None
+            else None
+        )
+        v2 = (
+            _gemini_voice_for_character(c2, gender_ctx)
+            if gender_ctx is not None
+            else None
+        )
+        return [
+            _job_for_stem(
+                idx,
+                template,
+                level_dir,
+                af1,
+                output_suffix,
+                line1,
+                "single",
+                gemini_voice_override=v1,
+            ),
+            _job_for_stem(
+                idx,
+                template,
+                level_dir,
+                af2,
+                output_suffix,
+                text_answer,
+                "single",
+                gemini_voice_override=v2,
+            ),
+        ]
+
+    return [build_job(level_id, level_dir, q, idx, output_suffix, gender_ctx)]
 
 
 def build_job(
@@ -216,6 +508,7 @@ def build_job(
     q: dict[str, Any],
     idx: int,
     output_suffix: str,
+    gender_ctx: GenderVoiceContext | None = None,
 ) -> CandidateJob:
     template = str(q.get("template", "")).strip()
     audio_file_value = _str_or_none(q.get("audio_file")) or ""
@@ -263,11 +556,25 @@ def build_job(
                 reason="missing_line1_or_line2_en",
             )
         answer = _str_or_none(qd.get("answer"))
-        line1_resolved = _replace_blanks_with_answer(line1, answer)
-        line2_resolved = _replace_blanks_with_silence_blank(line2)
+        line1_resolved = _normalize_spoken_line(
+            _replace_blanks_with_answer(line1, answer)
+        )
+        line2_resolved = _normalize_spoken_line(
+            _replace_blanks_with_answer(line2, answer)
+        )
         char1 = _str_or_none(qd.get("character1")) or "SpeakerA"
         char2 = _str_or_none(qd.get("character2")) or "SpeakerB"
         text = f"{char1}: {line1_resolved}\n{char2}: {line2_resolved}"
+        mva = (
+            _gemini_voice_for_character(char1, gender_ctx)
+            if gender_ctx is not None
+            else None
+        )
+        mvb = (
+            _gemini_voice_for_character(char2, gender_ctx)
+            if gender_ctx is not None
+            else None
+        )
         return CandidateJob(
             question_index=idx,
             template=template,
@@ -278,11 +585,14 @@ def build_job(
             speaker_mode="multi",
             speaker_a_name=char1,
             speaker_b_name=char2,
+            gemini_multi_voice_a=mva,
+            gemini_multi_voice_b=mvb,
         )
 
     if template == "ConvoTemplate-AppearDisappear":
-        text = _join_words(qd.get("words"))
-        if text:
+        words = _words_list(qd.get("words"))
+        if words:
+            text = " [long pause] ".join(words)
             return CandidateJob(
                 question_index=idx,
                 template=template,
@@ -293,23 +603,22 @@ def build_job(
                 speaker_mode="single",
             )
 
-    if template == "ConvoTemplate-Simon":
-        text = _join_words(qd.get("words"))
-        if text:
-            return CandidateJob(
-                question_index=idx,
-                template=template,
-                audio_file_value=audio_file_value,
-                output_filename=output_filename,
-                output_path=output_path,
-                tts_text=text,
-                speaker_mode="single",
-            )
+    if template == "ConvoTemplate-GrammarForm":
+        return CandidateJob(
+            question_index=idx,
+            template=template,
+            audio_file_value=audio_file_value,
+            output_filename=output_filename,
+            output_path=output_path,
+            tts_text=None,
+            speaker_mode="skip",
+            reason="grammar_no_audio",
+        )
 
-    if template in {"ConvoTemplate-ClozeSequence", "ConvoTemplate-GrammarForm"}:
+    if template == "ConvoTemplate-ClozeSequence":
         sentence_en = _localized_en(qd.get("sentence"))
         if sentence_en:
-            text = _replace_blanks_with_blank(sentence_en)
+            text = _cloze_sequence_tts_text(sentence_en, qd)
             return CandidateJob(
                 question_index=idx,
                 template=template,
@@ -317,19 +626,6 @@ def build_job(
                 output_filename=output_filename,
                 output_path=output_path,
                 tts_text=text,
-                speaker_mode="single",
-            )
-
-    if template == "ConvoTemplate-DialogueCompletion":
-        line1 = _localized_en(qd.get("line1"))
-        if line1:
-            return CandidateJob(
-                question_index=idx,
-                template=template,
-                audio_file_value=audio_file_value,
-                output_filename=output_filename,
-                output_path=output_path,
-                tts_text=line1,
                 speaker_mode="single",
             )
 
@@ -638,6 +934,9 @@ def main() -> None:
         raise SystemExit(f"questions.json not found: {questions_path}")
 
     load_dotenv()
+    explicit_gemini_voice = args.voice is not None
+    configure_tts_voices(args)
+
     google_api_key = os.getenv("GOOGLE_API_KEY", "").strip()
     elevenlabs_api_key = os.getenv("ELEVENLABS_API_KEY", "").strip()
     if not args.dry_run and args.provider == "gemini" and not google_api_key:
@@ -648,6 +947,9 @@ def main() -> None:
     elevenlabs_voice_single = (
         args.elevenlabs_voice or os.getenv("ELEVENLABS_VOICE_ID", "")
     ).strip()
+    el_pool = getattr(args, "_elevenlabs_voice_ids_pool", []) or []
+    if not elevenlabs_voice_single and el_pool:
+        elevenlabs_voice_single = el_pool[0]
     elevenlabs_voice_a = (
         args.elevenlabs_voice_a or os.getenv("ELEVENLABS_VOICE_ID_A", "")
     ).strip()
@@ -658,12 +960,17 @@ def main() -> None:
         if not elevenlabs_voice_single:
             raise SystemExit(
                 "ElevenLabs single voice ID missing. Use --elevenlabs-voice "
-                "or set ELEVENLABS_VOICE_ID."
+                "or set ELEVENLABS_VOICE_ID or ELEVENLABS_VOICE_IDS."
             )
         if not elevenlabs_voice_a:
             elevenlabs_voice_a = elevenlabs_voice_single
         if not elevenlabs_voice_b:
             elevenlabs_voice_b = elevenlabs_voice_single
+
+    el_single_pool = el_pool if el_pool else (
+        [elevenlabs_voice_single] if elevenlabs_voice_single else []
+    )
+    el_rotate = getattr(args, "_elevenlabs_rotate", False)
 
     output_suffix = args.output_suffix
     if output_suffix is None:
@@ -673,16 +980,63 @@ def main() -> None:
     level_dir = questions_path.parent
     ensure_ffmpeg_available()
 
+    gender_ctx = (
+        load_gender_voice_context(repo_root)
+        if args.provider == "gemini"
+        else None
+    )
+
     jobs: list[CandidateJob] = []
     for idx, q in enumerate(rows):
         if args.question is not None and idx != args.question:
             continue
-        jobs.append(build_job(args.level_id, level_dir, q, idx, output_suffix))
+        jobs.extend(
+            build_jobs_for_question(
+                args.level_id, level_dir, q, idx, output_suffix, gender_ctx
+            )
+        )
+
+    # Single-speaker clips without character-based routing: random voice from male+female pool.
+    # (Character-routed jobs already set gemini_voice_override; respect --voice and rotation.)
+    if (
+        args.provider == "gemini"
+        and not explicit_gemini_voice
+        and not getattr(args, "_gemini_rotate_single", False)
+    ):
+        pool = getattr(args, "_gemini_single_voice_pool", None) or []
+        if pool:
+            jobs = [
+                replace(job, gemini_voice_override=random.choice(pool))
+                if job.speaker_mode == "single" and job.gemini_voice_override is None
+                else job
+                for job in jobs
+            ]
 
     print(f"Repo root: {repo_root}")
     print(f"Level: {args.level_id}")
     print(f"Questions file: {questions_path}")
     print(f"Candidate rows considered: {len(jobs)}")
+    if args.provider == "gemini" and gender_ctx is not None:
+        print(
+            f"Gemini male voices: {list(gender_ctx.male_voices)}  "
+            f"female voices: {list(gender_ctx.female_voices)}"
+        )
+    if args.provider == "gemini":
+        print(
+            f"Gemini voices: single={args.voice}  A={args.voice_a}  B={args.voice_b}"
+        )
+        if getattr(args, "_gemini_rotate_single", False):
+            print(
+                f"  single-speaker rotation pool: "
+                f"{getattr(args, '_gemini_single_voice_pool', [])}"
+            )
+    if args.provider == "elevenlabs":
+        print(
+            f"ElevenLabs voices: single={elevenlabs_voice_single}  "
+            f"A={elevenlabs_voice_a}  B={elevenlabs_voice_b}"
+        )
+        if el_rotate and el_single_pool:
+            print(f"  single-speaker rotation pool: {el_single_pool}")
 
     generated = 0
     skipped_no_audio_file = 0
@@ -693,6 +1047,9 @@ def main() -> None:
     client = None
     if not args.dry_run and args.provider == "gemini":
         client = genai.Client(api_key=google_api_key)
+
+    gemini_single_ctr = 0
+    elevenlabs_single_ctr = 0
 
     for job in jobs:
         prefix = f"[q{job.question_index} {job.template}]"
@@ -716,6 +1073,16 @@ def main() -> None:
                 f"{prefix} DRY-RUN mode={job.speaker_mode} -> {job.output_filename}"
             )
             print(f"  text: {job.tts_text}")
+            if args.provider == "gemini":
+                if job.gemini_voice_override:
+                    print(f"  gemini_voice: {job.gemini_voice_override}")
+                elif job.speaker_mode == "multi" and (
+                    job.gemini_multi_voice_a or job.gemini_multi_voice_b
+                ):
+                    print(
+                        f"  gemini_voices: A={job.gemini_multi_voice_a or args.voice_a} "
+                        f"B={job.gemini_multi_voice_b or args.voice_b}"
+                    )
             generated += 1
             continue
 
@@ -723,13 +1090,15 @@ def main() -> None:
             assert client is not None
             if args.provider == "gemini" and job.speaker_mode == "multi":
                 assert client is not None
+                va = job.gemini_multi_voice_a or args.voice_a
+                vb = job.gemini_multi_voice_b or args.voice_b
                 pcm_bytes = generate_multi_speaker_pcm(
                     client=client,
                     text=job.tts_text,
                     speaker_a=job.speaker_a_name or "SpeakerA",
                     speaker_b=job.speaker_b_name or "SpeakerB",
-                    voice_a=args.voice_a,
-                    voice_b=args.voice_b,
+                    voice_a=va,
+                    voice_b=vb,
                 )
                 pcm_to_m4a_file(
                     pcm_bytes=pcm_bytes,
@@ -738,10 +1107,18 @@ def main() -> None:
                 )
             elif args.provider == "gemini":
                 assert client is not None
+                voice_use = job.gemini_voice_override
+                if voice_use is None:
+                    voice_use = args.voice
+                    if getattr(args, "_gemini_rotate_single", False):
+                        pool = getattr(args, "_gemini_single_voice_pool", None) or []
+                        if pool:
+                            voice_use = pool[gemini_single_ctr % len(pool)]
+                            gemini_single_ctr += 1
                 pcm_bytes = generate_single_speaker_pcm(
                     client=client,
                     text=job.tts_text,
-                    voice=args.voice,
+                    voice=voice_use,
                 )
                 pcm_to_m4a_file(
                     pcm_bytes=pcm_bytes,
@@ -768,17 +1145,23 @@ def main() -> None:
                     bitrate_kbps=args.bitrate,
                 )
             else:
+                voice_el = elevenlabs_voice_single
+                if el_rotate and el_single_pool:
+                    voice_el = el_single_pool[
+                        elevenlabs_single_ctr % len(el_single_pool)
+                    ]
+                    elevenlabs_single_ctr += 1
                 mp3_bytes = elevenlabs_single_speaker_mp3(
                     text=job.tts_text,
                     api_key=elevenlabs_api_key,
-                    voice_id=elevenlabs_voice_single,
+                    voice_id=voice_el,
                     model_id=args.elevenlabs_model,
                 )
                 mp3_to_m4a_file(
                     mp3_bytes=mp3_bytes,
-                output_path=job.output_path,
-                bitrate_kbps=args.bitrate,
-            )
+                    output_path=job.output_path,
+                    bitrate_kbps=args.bitrate,
+                )
             generated += 1
             print(f"{prefix} OK wrote {job.output_filename}")
         except Exception as exc:  # noqa: BLE001

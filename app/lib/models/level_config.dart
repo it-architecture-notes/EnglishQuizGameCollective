@@ -10,7 +10,6 @@ class ImageQuestionData {
     required this.wrongAnswers,
     this.answer,
     this.timerSeconds,
-    this.translation,
   });
 
   final String imageName;
@@ -18,8 +17,6 @@ class ImageQuestionData {
   /// Optional override for the correct answer label shown in MCQ buttons.
   /// When null the image basename is used instead.
   final String? answer;
-  /// Optional locale → auxiliary line under the image (non-English only in UI).
-  final Map<String, String>? translation;
   /// Per-question monster timer override in seconds. Null = use global config value.
   final int? timerSeconds;
 }
@@ -33,7 +30,6 @@ class ImageQuizTemplate2Data {
     this.autoNextDelay = 1.0,
     this.showCorrectOnWrong = false,
     this.timerSeconds,
-    this.translation,
   });
 
   final String imageName;
@@ -45,7 +41,6 @@ class ImageQuizTemplate2Data {
   /// Stem identifying the correct choice in the shuffled grid (for scoring and option keys).
   String get correctAnswerStem =>
       (answer != null && answer!.isNotEmpty) ? answer! : imageName;
-  final Map<String, String>? translation;
   final double autoNextDelay;
   /// Parsed from `show_correct_on_wrong` in JSON; reserved — the grid always highlights the correct tile green when locked (same as template-1).
   final bool showCorrectOnWrong;
@@ -60,27 +55,15 @@ class AppearDisappearQuestionData {
     required this.distractors,
     this.displayDuration = 1.0,
     this.autoNextDelay = 1.0,
+    this.introPause = 2.0,
   });
 
   final List<String> words;
   final List<String> distractors;
   final double displayDuration;
   final double autoNextDelay;
-}
-
-/// Parsed `questionData` for [ConvoTemplate-Simon].
-class SimonQuestionData {
-  const SimonQuestionData({
-    required this.words,
-    required this.distractors,
-    this.tileHighlightDuration = 0.5,
-    this.autoNextDelay = 1.0,
-  });
-
-  final List<String> words;
-  final List<String> distractors;
-  final double tileHighlightDuration;
-  final double autoNextDelay;
+  /// Pause (seconds) with empty boxes before word reveal starts.
+  final double introPause;
 }
 
 /// Parsed `questionData` for [ConvoTemplate-ClozeSequence] (and the adapter for ConvoTemplate-2).
@@ -216,7 +199,6 @@ class ImageQuizTemplate3Data {
     required this.distractors,
     this.distractorType,
     this.timerSeconds,
-    this.translation,
   });
 
   final String imageName;
@@ -226,21 +208,22 @@ class ImageQuizTemplate3Data {
   final String? distractorType;
   /// Per-question monster timer override in seconds. Null = use global config value.
   final int? timerSeconds;
-  final Map<String, String>? translation;
 }
 
-/// [imageQuizTemplate-SpotDifference]: two images; instruction text comes from
-/// app localization key `spot_difference_prompt` (not repeated per question).
+/// [imageQuizTemplate-SpotDifference]: two images; header uses `title_spot_difference` only.
 class SpotDifferenceQuestionData {
   const SpotDifferenceQuestionData({
     required this.correctImage,
     required this.wrongImage,
+    required this.answer,
     this.autoNextDelay = 1.0,
     this.timerSeconds,
   });
 
   final String correctImage;
   final String wrongImage;
+  /// Label shown at the top as "Tap the <answer>".
+  final String answer;
   final double autoNextDelay;
   /// Per-question monster timer override in seconds. Null = use global config value.
   final int? timerSeconds;
@@ -287,6 +270,8 @@ class LevelQuestion {
   const LevelQuestion({
     this.questionId,
     this.audioFile,
+    this.audioFile1,
+    this.audioFile2,
     required this.type,
     required this.template,
     this.imageData,
@@ -296,7 +281,6 @@ class LevelQuestion {
     this.convoData,
     this.convo2Data,
     this.appearDisappearData,
-    this.simonData,
     this.clozeSequenceData,
     this.sentenceBuilderData,
     this.wordPairsData,
@@ -307,6 +291,10 @@ class LevelQuestion {
 
   final String? questionId;
   final String? audioFile;
+  /// [ConvoTemplate-DialogueCompletion]: question line audio (top-level JSON).
+  final String? audioFile1;
+  /// [ConvoTemplate-DialogueCompletion]: correct-answer audio (top-level JSON).
+  final String? audioFile2;
   final LevelQuestionType type;
   final String template;
   final ImageQuestionData? imageData;
@@ -323,7 +311,6 @@ class LevelQuestion {
   final ConvoQuestionData? convoData;
   final ConvoTemplate2QuestionData? convo2Data;
   final AppearDisappearQuestionData? appearDisappearData;
-  final SimonQuestionData? simonData;
   final ClozeSequenceQuestionData? clozeSequenceData;
   final SentenceBuilderQuestionData? sentenceBuilderData;
   final WordPairsQuestionData? wordPairsData;
@@ -395,7 +382,6 @@ class LevelConfig {
       wrongAnswers: wrong,
       answer: data['answer'] as String?,
       timerSeconds: (data['timer_seconds'] as num?)?.toInt(),
-      translation: _stringMapOrNull(data['translation']),
     );
   }
 
@@ -417,7 +403,6 @@ class LevelConfig {
       autoNextDelay: (data['auto_next_delay'] as num?)?.toDouble() ?? 1.0,
       showCorrectOnWrong: data['show_correct_on_wrong'] as bool? ?? false,
       timerSeconds: (data['timer_seconds'] as num?)?.toInt(),
-      translation: _stringMapOrNull(data['translation']),
     );
   }
 
@@ -458,25 +443,7 @@ class LevelConfig {
       distractors: distractors,
       displayDuration: (data['display_duration'] as num?)?.toDouble() ?? 1.0,
       autoNextDelay: (data['auto_next_delay'] as num?)?.toDouble() ?? 1.0,
-    );
-  }
-
-  /// Parses Simon template data with the same nine-tile constraint as appear/disappear.
-  static SimonQuestionData _parseSimon(Map<String, dynamic> data) {
-    final words = _stringList(data['words']);
-    final distractors = _stringList(data['distractors']);
-    if (words.length + distractors.length != 9) {
-      throw FormatException(
-        'ConvoTemplate-Simon expects words.length + distractors.length == 9 (3×3), '
-        'got ${words.length} + ${distractors.length}',
-      );
-    }
-    return SimonQuestionData(
-      words: words,
-      distractors: distractors,
-      tileHighlightDuration:
-          (data['tile_highlight_duration'] as num?)?.toDouble() ?? 0.5,
-      autoNextDelay: (data['auto_next_delay'] as num?)?.toDouble() ?? 1.0,
+      introPause: (data['intro_pause'] as num?)?.toDouble() ?? 2.0,
     );
   }
 
@@ -643,7 +610,6 @@ class LevelConfig {
       distractors: distractors,
       distractorType: dt,
       timerSeconds: (data['timer_seconds'] as num?)?.toInt(),
-      translation: _stringMapOrNull(data['translation']),
     );
   }
 
@@ -654,6 +620,7 @@ class LevelConfig {
     return SpotDifferenceQuestionData(
       correctImage: data['correctImage'] as String? ?? '',
       wrongImage: data['wrongImage'] as String? ?? '',
+      answer: data['answer'] as String? ?? '',
       autoNextDelay: (data['auto_next_delay'] as num?)?.toDouble() ?? 1.0,
       timerSeconds: (data['timer_seconds'] as num?)?.toInt(),
     );
@@ -726,7 +693,6 @@ class LevelConfig {
     ConvoQuestionData? convoData;
     ConvoTemplate2QuestionData? convo2Data;
     AppearDisappearQuestionData? appearDisappearData;
-    SimonQuestionData? simonData;
     ClozeSequenceQuestionData? clozeSequenceData;
     SentenceBuilderQuestionData? sentenceBuilderData;
     WordPairsQuestionData? wordPairsData;
@@ -755,9 +721,6 @@ class LevelConfig {
         break;
       case 'ConvoTemplate-AppearDisappear':
         appearDisappearData = _parseAppearDisappear(qd);
-        break;
-      case 'ConvoTemplate-Simon':
-        simonData = _parseSimon(qd);
         break;
       case 'ConvoTemplate-ClozeSequence':
         clozeSequenceData = _parseClozeSequence(qd);
@@ -788,6 +751,8 @@ class LevelConfig {
     return LevelQuestion(
       questionId: json['questionId'] as String?,
       audioFile: json['audio_file'] as String?,
+      audioFile1: json['audio_file1'] as String?,
+      audioFile2: json['audio_file2'] as String?,
       type: type,
       template: normalizedTemplate,
       imageData: imageData,
@@ -797,7 +762,6 @@ class LevelConfig {
       convoData: convoData,
       convo2Data: convo2Data,
       appearDisappearData: appearDisappearData,
-      simonData: simonData,
       clozeSequenceData: clozeSequenceData,
       sentenceBuilderData: sentenceBuilderData,
       wordPairsData: wordPairsData,

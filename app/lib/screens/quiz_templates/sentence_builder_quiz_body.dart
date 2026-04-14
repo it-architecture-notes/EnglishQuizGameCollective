@@ -3,6 +3,8 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 
 import '../../models/level_config.dart';
+import '../../widgets/audio_play_button.dart';
+import '../../widgets/translation_reveal_button.dart';
 
 /// Sentence tokens only, shuffled on tiles; tap in [SentenceBuilderQuestionData.correctOrder].
 /// Uses a random permutation of sentence positions so duplicate words are unambiguous.
@@ -13,6 +15,9 @@ class SentenceBuilderQuizBody extends StatefulWidget {
     required this.strings,
     required this.userLanguage,
     this.translation,
+    this.audioAssetPath,
+    required this.resolveAudioExists,
+    required this.onPlayQuestionAudio,
     required this.onPlayCorrect,
     required this.onPlayWrong,
     required this.onOutcome,
@@ -22,6 +27,9 @@ class SentenceBuilderQuizBody extends StatefulWidget {
   final Map<String, String> strings;
   final String userLanguage;
   final Map<String, String>? translation;
+  final String? audioAssetPath;
+  final Future<bool> Function(String path) resolveAudioExists;
+  final Future<void> Function(String path) onPlayQuestionAudio;
   final VoidCallback onPlayCorrect;
   final VoidCallback onPlayWrong;
   final void Function(bool correct) onOutcome;
@@ -45,6 +53,7 @@ class _SentenceBuilderQuizBodyState extends State<SentenceBuilderQuizBody> {
   int? _wrongGridIndex;
   final Map<int, int> _cellToStep = {};
   bool _completed = false;
+  bool _audioPlaying = false;
 
   List<String> get _target => widget.data.correctOrder;
 
@@ -107,6 +116,19 @@ class _SentenceBuilderQuizBodyState extends State<SentenceBuilderQuizBody> {
     }
   }
 
+  Future<void> _playAudio() async {
+    final p = widget.audioAssetPath;
+    if (p == null) return;
+    final ok = await widget.resolveAudioExists(p);
+    if (!ok || !mounted) return;
+    setState(() => _audioPlaying = true);
+    try {
+      await widget.onPlayQuestionAudio(p);
+    } finally {
+      if (mounted) setState(() => _audioPlaying = false);
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
@@ -114,24 +136,34 @@ class _SentenceBuilderQuizBodyState extends State<SentenceBuilderQuizBody> {
     final n = _perm.length;
 
     final tr = widget.translation;
-    final aux = widget.userLanguage != 'en' && tr != null
-        ? tr[widget.userLanguage]
-        : null;
+    final aux = tr?[widget.userLanguage];
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
-        if (aux != null && aux.isNotEmpty) ...[
-          Text(
-            aux,
-            textAlign: TextAlign.center,
-            style: theme.textTheme.bodyMedium?.copyWith(
-              color: cs.onSurfaceVariant,
-              fontStyle: FontStyle.italic,
-            ),
-          ),
-          const SizedBox(height: 8),
-        ],
+        TranslationRevealButton(
+          translationText: aux,
+          userLanguage: widget.userLanguage,
+        ),
+        FutureBuilder<bool>(
+          future: widget.audioAssetPath == null
+              ? Future.value(false)
+              : widget.resolveAudioExists(widget.audioAssetPath!),
+          builder: (context, snap) {
+            final ok = snap.data == true;
+            final p = widget.audioAssetPath;
+            return Row(
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: [
+                AudioPlayButton(
+                  isPlaying: _audioPlaying,
+                  onPressed: !ok || p == null ? null : _playAudio,
+                ),
+              ],
+            );
+          },
+        ),
+        const SizedBox(height: 4),
         Wrap(
           alignment: WrapAlignment.center,
           spacing: 6,

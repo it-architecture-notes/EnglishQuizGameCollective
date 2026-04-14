@@ -3,6 +3,7 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 
 import '../../models/level_config.dart';
+import '../../widgets/translation_reveal_button.dart';
 
 /// Cloze + four word buttons.
 class GrammarFormQuizBody extends StatefulWidget {
@@ -63,13 +64,15 @@ class _GrammarFormQuizBodyState extends State<GrammarFormQuizBody> {
     final cs = theme.colorScheme;
     final line = widget.data.sentence;
     final tr = widget.translation;
-    final aux = widget.userLanguage != 'en' && tr != null
-        ? tr[widget.userLanguage]
-        : null;
+    final aux = tr?[widget.userLanguage];
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
+        TranslationRevealButton(
+          translationText: aux,
+          userLanguage: widget.userLanguage,
+        ),
         Container(
           padding: const EdgeInsets.all(12),
           decoration: BoxDecoration(
@@ -84,17 +87,6 @@ class _GrammarFormQuizBodyState extends State<GrammarFormQuizBody> {
             textAlign: TextAlign.center,
           ),
         ),
-        if (aux != null && aux.isNotEmpty) ...[
-          const SizedBox(height: 12),
-          Text(
-            aux,
-            textAlign: TextAlign.center,
-            style: theme.textTheme.bodyMedium?.copyWith(
-              color: cs.onSurfaceVariant,
-              fontStyle: FontStyle.italic,
-            ),
-          ),
-        ],
         const SizedBox(height: 16),
         ...List.generate(_options.length, (i) {
           final opt = _options[i];

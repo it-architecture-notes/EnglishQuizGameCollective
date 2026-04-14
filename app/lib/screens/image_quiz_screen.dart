@@ -2,6 +2,7 @@ import 'dart:async';
 import 'dart:math';
 
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../models/guest_animal_conversations.dart';
@@ -22,12 +23,14 @@ import '../../services/profile_service.dart';
 import '../../services/quiz_progress_service.dart';
 import '../../services/reminder_progress_service.dart';
 import '../../services/test_data_service.dart';
+import '../../widgets/audio_play_button.dart';
+import '../../widgets/image_quiz_template2_audio_controls.dart';
+import '../../widgets/translation_reveal_button.dart';
 import 'quiz_templates/appear_disappear_quiz_body.dart';
 import 'quiz_templates/cloze_sequence_quiz_body.dart';
 import 'quiz_templates/dialogue_completion_quiz_body.dart';
 import 'quiz_templates/grammar_form_quiz_body.dart';
 import 'quiz_templates/sentence_builder_quiz_body.dart';
-import 'quiz_templates/simon_quiz_body.dart';
 import 'quiz_templates/spot_difference_quiz_body.dart';
 import 'quiz_templates/word_pairs_quiz_body.dart';
 
@@ -51,7 +54,6 @@ const Map<String, String> _kTemplateTitleL10nKeys = {
   'ConvoTemplate-1': 'title_fill_blank',
   'ConvoTemplate-ClozeSequence': 'title_cloze',
   'ConvoTemplate-AppearDisappear': 'click_in_order',
-  'ConvoTemplate-Simon': 'title_sequence',
   'ConvoTemplate-SentenceBuilder': 'title_build_sentence',
   'ConvoTemplate-WordPairs': 'title_word_pairs',
   'ConvoTemplate-GrammarForm': 'title_grammar',
@@ -146,6 +148,7 @@ class _ImageQuizScreenState extends ConsumerState<ImageQuizScreen>
   bool _reviewingMistakes = false;
   int _initialQuestionCount = 0;
   int? _selectedIndex; // 0..3 index into current options
+  bool _convoTtsPlaying = false;
   List<String> _currentOptions = [];
   DateTime? _quizStartTime;
 
@@ -184,8 +187,7 @@ class _ImageQuizScreenState extends ConsumerState<ImageQuizScreen>
   List<String?> _questionConvo2HeroPaths = []; // hero image path for ConvoTemplate-2 (null otherwise)
   /// Per index: empty, or `[correctPath, wrongPath]` for [imageQuizTemplate-SpotDifference].
   List<List<String>> _questionSpotDiffPaths = [];
-  String? _lastTriggeredAudioToken;
-  Timer? _pendingQuestionAudioTimer;
+  final Map<String, bool> _audioExistsCache = {};
 
   /// Asset-bundle prefix key for resolving images under this sub-level’s folder.
   static String _levelKey(SubLevel sub) =>
@@ -275,7 +277,6 @@ class _ImageQuizScreenState extends ConsumerState<ImageQuizScreen>
   /// Stops music and releases animation controllers when leaving the quiz.
   @override
   void dispose() {
-    _pendingQuestionAudioTimer?.cancel();
     audio.stopQuestionAudio();
     _timerController.dispose();
     _windController.dispose();
@@ -621,7 +622,6 @@ class _ImageQuizScreenState extends ConsumerState<ImageQuizScreen>
               (q.convoData != null ||
                   q.convo2Data != null ||
                   q.appearDisappearData != null ||
-                  q.simonData != null ||
                   q.clozeSequenceData != null)) {
             convoByQuestionId[questionId] = q;
             if (q.template == 'ConvoTemplate-ClozeSequence' &&
@@ -1155,8 +1155,6 @@ class _ImageQuizScreenState extends ConsumerState<ImageQuizScreen>
 
   /// Advances index or ends the run; handles debug short-quiz, reminder review pass, and per-question timers.
   void _goNext() {
-    _pendingQuestionAudioTimer?.cancel();
-    _lastTriggeredAudioToken = null;
     audio.stopQuestionAudio();
     if (_shortQuizDebug &&
         !_reviewingMistakes &&
@@ -1216,6 +1214,7 @@ class _ImageQuizScreenState extends ConsumerState<ImageQuizScreen>
       _selectedIndex = null;
       _bubbleConversation = null;
       _currentOptions = _buildOptions();
+      _convoTtsPlaying = false;
     });
     if (_allQuestions.isNotEmpty) {
       if (_currentIndex < _allQuestions.length &&
@@ -1251,47 +1250,25 @@ class _ImageQuizScreenState extends ConsumerState<ImageQuizScreen>
     return null;
   }
 
-  String? _audioAssetPath(LevelQuestion q) {
-    final raw = q.audioFile?.trim();
-    if (raw == null || raw.isEmpty) return null;
-    final withExt = raw.toLowerCase().endsWith('.m4a') ? raw : '$raw.m4a';
+  String? _audioAssetPathForRaw(String? raw) {
+    final r = raw?.trim();
+    if (r == null || r.isEmpty) return null;
+    final withExt = r.toLowerCase().endsWith('.m4a') ? r : '$r.m4a';
     return 'quiz-data/levels/${_levelKey(widget.subLevel)}/$withExt';
   }
 
-  String? _audioTokenForQuestion(LevelQuestion q) {
-    final path = _audioAssetPath(q);
-    if (path == null) return null;
-    return '${_currentQuestionId ?? _currentIndex}|${q.template}|$path';
-  }
+  String? _audioAssetPath(LevelQuestion q) => _audioAssetPathForRaw(q.audioFile);
 
-  bool _isStillCurrentAudioToken(String token) {
-    final q = _currentLevelQuestion;
-    if (q == null) return false;
-    return _audioTokenForQuestion(q) == token;
-  }
-
-  void _scheduleQuestionAudio(LevelQuestion q, {Duration? delay}) {
-    final path = _audioAssetPath(q);
-    final token = _audioTokenForQuestion(q);
-    if (path == null || token == null) return;
-    if (_lastTriggeredAudioToken == token) return;
-
-    _lastTriggeredAudioToken = token;
-    _pendingQuestionAudioTimer?.cancel();
-
-    final fireDelay = delay ?? Duration.zero;
-    if (fireDelay > Duration.zero) {
-      _pendingQuestionAudioTimer = Timer(fireDelay, () {
-        if (!mounted || !_isStillCurrentAudioToken(token)) return;
-        audio.playQuestionAudio(path);
-      });
-      return;
+  Future<bool> _resolveAudioExists(String path) async {
+    if (_audioExistsCache.containsKey(path)) return _audioExistsCache[path]!;
+    try {
+      await rootBundle.load('assets/$path');
+      _audioExistsCache[path] = true;
+      return true;
+    } catch (_) {
+      _audioExistsCache[path] = false;
+      return false;
     }
-
-    WidgetsBinding.instance.addPostFrameCallback((_) {
-      if (!mounted || !_isStillCurrentAudioToken(token)) return;
-      audio.playQuestionAudio(path);
-    });
   }
 
   /// Maps accuracy percentage to 0–3 stars (fixed 2 stars when debug early-exit fired).
@@ -1522,14 +1499,12 @@ class _ImageQuizScreenState extends ConsumerState<ImageQuizScreen>
       final delaySec = switch (q.template) {
         'ConvoTemplate-AppearDisappear' =>
           q.appearDisappearData!.autoNextDelay,
-        'ConvoTemplate-Simon' => q.simonData!.autoNextDelay,
         'ConvoTemplate-ClozeSequence' => q.clozeSequenceData!.autoNextDelay,
         'ConvoTemplate-SentenceBuilder' =>
           q.sentenceBuilderData!.autoNextDelay,
         'ConvoTemplate-WordPairs' => q.wordPairsData!.autoNextDelay,
         'ConvoTemplate-GrammarForm' => _config.autoAdvanceDelaySeconds,
-        'ConvoTemplate-DialogueCompletion' =>
-          _config.autoAdvanceDelaySeconds,
+        'ConvoTemplate-DialogueCompletion' => 0.0,
         _ => _config.autoAdvanceDelaySeconds,
       };
       setState(() => _correctCount++);
@@ -1581,10 +1556,6 @@ class _ImageQuizScreenState extends ConsumerState<ImageQuizScreen>
       if (pair.length == 2) spotPair = pair;
     }
 
-    if (q?.template == 'imageQuizTemplate-2') {
-      _scheduleQuestionAudio(q!);
-    }
-
     return Column(
       children: [
         if (_isReminder)
@@ -1618,31 +1589,43 @@ class _ImageQuizScreenState extends ConsumerState<ImageQuizScreen>
                   ),
             ),
           ),
-        if (isTemplate2 && iq2 != null) ...[
+        if (isTemplate2 && iq2 != null && q != null) ...[
           Expanded(
             flex: 1,
             child: Padding(
               padding: const EdgeInsets.all(16),
               child: Center(
-                child: Text(
-                  _nounLabelFromImageStem(iq2.correctAnswerStem),
-                  style: Theme.of(context).textTheme.headlineSmall?.copyWith(
-                        fontWeight: FontWeight.w800,
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    Text(
+                      _nounLabelFromImageStem(iq2.correctAnswerStem),
+                      style: Theme.of(context).textTheme.headlineSmall?.copyWith(
+                            fontWeight: FontWeight.w800,
+                          ),
+                      textAlign: TextAlign.center,
+                    ),
+                    ImageQuizTemplate2AudioControls(
+                      key: ValueKey(
+                        'iq2-audio-${q.questionId ?? _currentIndex}',
                       ),
-                  textAlign: TextAlign.center,
+                      assetPath: _audioAssetPath(q),
+                      resolveExists: _resolveAudioExists,
+                    ),
+                  ],
                 ),
               ),
             ),
           ),
-          _optionalTranslationLine(iq2.translation, userLanguage),
         ] else if (isSpot == true && spotPair != null && q != null)
           Expanded(
             flex: 1,
             child: Padding(
               padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
               child: SpotDifferenceQuizBody(
-                sentenceLine: strings['spot_difference_prompt'] ??
-                    'Tap the correct picture.',
+                sentenceLine: q.spotDiffData!.answer.isNotEmpty
+                    ? 'Tap the ${q.spotDiffData!.answer} image'
+                    : '',
                 correctPath: spotPair[0],
                 wrongPath: spotPair[1],
                 onPlayCorrect: () =>
@@ -1671,11 +1654,6 @@ class _ImageQuizScreenState extends ConsumerState<ImageQuizScreen>
                 ),
               ),
             ),
-          ),
-        if (!isTemplate2 && !isSpot && q != null)
-          _optionalTranslationLine(
-            isT3 ? q.imageQuiz3Data?.translation : q.imageData?.translation,
-            userLanguage,
           ),
         // Speech bubbles + monster lane — only for templates that use monster pressure
         if (_showMonsterLaneForCurrentQuestion) ...[
@@ -2182,13 +2160,6 @@ class _ImageQuizScreenState extends ConsumerState<ImageQuizScreen>
       bool soundFxOn, Map<String, String> strings, String userLanguage) {
     final q = _currentConvoLevelQuestion;
     if (q == null) return const Center(child: CircularProgressIndicator());
-    if (q.template == 'ConvoTemplate-1' ||
-        q.template == 'ConvoTemplate-SentenceBuilder') {
-      _scheduleQuestionAudio(q);
-    } else if (q.template == 'ConvoTemplate-GrammarForm' ||
-        q.template == 'ConvoTemplate-DialogueCompletion') {
-      _scheduleQuestionAudio(q, delay: const Duration(seconds: 1));
-    }
     final displayTotal = _displayQuestionTotal;
     final isLast = _currentIndex + 1 >= _questionCount;
     final reminderProgress = _reviewingMistakes
@@ -2227,14 +2198,29 @@ class _ImageQuizScreenState extends ConsumerState<ImageQuizScreen>
                     crossAxisAlignment: CrossAxisAlignment.stretch,
                     children: [
                       Expanded(
-                        child: _buildConvoQuestionBody(
-                          q,
-                          userLanguage,
-                          soundFxOn,
-                          strings,
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.stretch,
+                          children: [
+                            Expanded(
+                              child: _buildCharactersRow(
+                                q.convoData!,
+                                userLanguage,
+                              ),
+                            ),
+                            TranslationRevealButton(
+                              key: ValueKey(
+                                'convo1-tr-${q.questionId ?? _currentIndex}',
+                              ),
+                              translationText: _convo1CombinedTranslation(
+                                q.convoData!,
+                                userLanguage,
+                              ),
+                              userLanguage: userLanguage,
+                            ),
+                            _convo1AudioControls(q),
+                          ],
                         ),
                       ),
-                      _convo1TranslationBlock(q.convoData!, userLanguage),
                     ],
                   )
                 : _buildConvoQuestionBody(q, userLanguage, soundFxOn, strings),
@@ -2286,20 +2272,11 @@ class _ImageQuizScreenState extends ConsumerState<ImageQuizScreen>
         return AppearDisappearQuizBody(
           key: ValueKey('ad-${_currentQuestionId ?? '$_currentIndex'}'),
           data: q.appearDisappearData!,
-          strings: strings,
           userLanguage: userLanguage,
           translation: q.appearDisappearTranslation,
-          onPlayCorrect: () =>
-              audio.playCorrect(soundFxOn: soundFxOn),
-          onPlayWrong: () => audio.playWrong(soundFxOn: soundFxOn),
-          onReadyForAudio: () => _scheduleQuestionAudio(q),
-          onOutcome: (correct) => _handleInteractiveConvoOutcome(q, correct),
-        );
-      case 'ConvoTemplate-Simon':
-        return SimonQuizBody(
-          key: ValueKey('simon-${_currentQuestionId ?? '$_currentIndex'}'),
-          data: q.simonData!,
-          soundFxOn: soundFxOn,
+          audioAssetPath: _audioAssetPath(q),
+          resolveAudioExists: _resolveAudioExists,
+          onPlayQuestionAudio: (path) => audio.playQuestionAudio(path),
           onPlayCorrect: () =>
               audio.playCorrect(soundFxOn: soundFxOn),
           onPlayWrong: () => audio.playWrong(soundFxOn: soundFxOn),
@@ -2311,16 +2288,12 @@ class _ImageQuizScreenState extends ConsumerState<ImageQuizScreen>
           data: q.clozeSequenceData!,
           userLanguage: userLanguage,
           resolvedImagePath: _resolvedClozeImagePath(),
+          audioAssetPath: _audioAssetPath(q),
+          resolveAudioExists: _resolveAudioExists,
+          onPlayQuestionAudio: (path) => audio.playQuestionAudio(path),
           onPlayCorrect: () =>
               audio.playCorrect(soundFxOn: soundFxOn),
           onPlayWrong: () => audio.playWrong(soundFxOn: soundFxOn),
-          onReadyForAudio: () {
-            if (q.clozeSequenceData?.wordsAllTogether == true) {
-              _scheduleQuestionAudio(q, delay: const Duration(seconds: 1));
-            } else {
-              _scheduleQuestionAudio(q);
-            }
-          },
           onOutcome: (correct) => _handleInteractiveConvoOutcome(q, correct),
         );
       case 'ConvoTemplate-SentenceBuilder':
@@ -2330,6 +2303,9 @@ class _ImageQuizScreenState extends ConsumerState<ImageQuizScreen>
           strings: strings,
           userLanguage: userLanguage,
           translation: q.sentenceBuilderData!.translation,
+          audioAssetPath: _audioAssetPath(q),
+          resolveAudioExists: _resolveAudioExists,
+          onPlayQuestionAudio: (path) => audio.playQuestionAudio(path),
           onPlayCorrect: () =>
               audio.playCorrect(soundFxOn: soundFxOn),
           onPlayWrong: () => audio.playWrong(soundFxOn: soundFxOn),
@@ -2363,13 +2339,15 @@ class _ImageQuizScreenState extends ConsumerState<ImageQuizScreen>
           userLanguage: userLanguage,
           line1Translation: q.dialogueCompletionData!.line1Translation,
           answerTranslation: q.dialogueCompletionData!.answerTranslation,
+          audio1Path: _audioAssetPathForRaw(q.audioFile1),
+          audio2Path: _audioAssetPathForRaw(q.audioFile2),
+          resolveAudioExists: _resolveAudioExists,
+          onPlayQuestionAudio: (path) => audio.playQuestionAudio(path),
           onPlayCorrect: () =>
               audio.playCorrect(soundFxOn: soundFxOn),
           onPlayWrong: () => audio.playWrong(soundFxOn: soundFxOn),
           onOutcome: (correct) => _handleInteractiveConvoOutcome(q, correct),
         );
-      case 'ConvoTemplate-1':
-        return _buildCharactersRow(q.convoData!, userLanguage);
       default:
         throw StateError('Unexpected convo template: ${q.template}');
     }
@@ -2404,60 +2382,49 @@ class _ImageQuizScreenState extends ConsumerState<ImageQuizScreen>
     return strings[key] ?? '';
   }
 
-  Widget _optionalTranslationLine(Map<String, String>? map, String userLanguage) {
-    if (map == null || userLanguage == 'en') return const SizedBox.shrink();
-    final t = map[userLanguage];
-    if (t == null || t.isEmpty) return const SizedBox.shrink();
-    final theme = Theme.of(context);
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 4),
-      child: Text(
-        t,
-        textAlign: TextAlign.center,
-        style: theme.textTheme.bodyMedium?.copyWith(
-          fontStyle: FontStyle.italic,
-          color: theme.colorScheme.onSurfaceVariant,
-        ),
-      ),
-    );
+  String? _convo1CombinedTranslation(ConvoQuestionData q, String lang) {
+    if (lang == 'en') return null;
+    final t1 = q.line1Translation?[lang];
+    final t2 = q.line2Translation?[lang];
+    final parts = <String>[];
+    if (t1 != null && t1.isNotEmpty) parts.add(t1);
+    if (t2 != null && t2.isNotEmpty) parts.add(t2);
+    if (parts.isEmpty) return null;
+    return parts.join('\n');
   }
 
-  Widget _convo1TranslationBlock(ConvoQuestionData q, String userLanguage) {
-    if (userLanguage == 'en') return const SizedBox.shrink();
-    final t1 = q.line1Translation?[userLanguage];
-    final t2 = q.line2Translation?[userLanguage];
-    if ((t1 == null || t1.isEmpty) && (t2 == null || t2.isEmpty)) {
-      return const SizedBox.shrink();
-    }
-    final theme = Theme.of(context);
-    final cs = theme.colorScheme;
-    return Padding(
-      padding: const EdgeInsets.only(bottom: 8),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.stretch,
-        children: [
-          if (t1 != null && t1.isNotEmpty)
-            Text(
-              t1,
-              textAlign: TextAlign.center,
-              style: theme.textTheme.bodyMedium?.copyWith(
-                color: cs.onSurfaceVariant,
-                fontStyle: FontStyle.italic,
+  Widget _convo1AudioControls(LevelQuestion q) {
+    final path = _audioAssetPath(q);
+    return FutureBuilder<bool>(
+      key: ValueKey('convo1-audio-${q.questionId ?? _currentIndex}'),
+      future: path == null ? Future.value(false) : _resolveAudioExists(path),
+      builder: (context, snap) {
+        final exists = snap.data == true;
+        final p = path;
+        return Padding(
+          padding: const EdgeInsets.symmetric(vertical: 4),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              AudioPlayButton(
+                isPlaying: _convoTtsPlaying,
+                onPressed: p == null || !exists
+                    ? null
+                    : () async {
+                        setState(() => _convoTtsPlaying = true);
+                        try {
+                          await audio.playQuestionAudio(p);
+                        } finally {
+                          if (mounted) {
+                            setState(() => _convoTtsPlaying = false);
+                          }
+                        }
+                      },
               ),
-            ),
-          if (t2 != null && t2.isNotEmpty) ...[
-            if (t1 != null && t1.isNotEmpty) const SizedBox(height: 4),
-            Text(
-              t2,
-              textAlign: TextAlign.center,
-              style: theme.textTheme.bodyMedium?.copyWith(
-                color: cs.onSurfaceVariant,
-                fontStyle: FontStyle.italic,
-              ),
-            ),
-          ],
-        ],
-      ),
+            ],
+          ),
+        );
+      },
     );
   }
 
