@@ -4,14 +4,14 @@
 
 2) TO MAIN CURSOR P-Mode: Create a plan for the active issue, and place the plan in an md file (place or copy md file in workspace common plans folder) following rules for naming and location, include cursor in the name. ask questions if something is not clear. don't implement just create the plan and copy to common plans folder.
 
-3) TO MAIN CLAUDE: Create a plan for the active issue, and place the plan in an md file following rules for naming and location, include claude in the name. place or copy the plan file under workspace common plans folder. ask questions if something is not clear. don't implement just create the plan and copy to common plans folder.
+3) TO MAIN CLAUDE: Create a plan for the active issue, and place the plan in an md file following rules for naming and location, include claude in the filename. place or copy the plan file under workspace common plans folder. ask questions if something is not clear. don't implement just create the plan and copy to common plans folder.
 
 4) TO NEW AGENTS CGPT AND GEMINI: Create a plan for the active issue in an md file, include <ai_agent_model_name> in the filename. place or copy the plan file under workspace common plans folder. ask questions if something is not clear. don't implement just create the plan and copy to common plans folder.
 
 <Drag plans to commons plans if necessary>
 <Now we have 4 plan files under common folder>
 
-5) TO MAIN CURSOR: review all the plans under common plans folder from all models and create a consolidated plan under common plans folder. don't implement just create the consolidated plan and copy to common plans folder.
+5) TO MAIN CURSOR: review all the plans under common plans folder from all models and create a consolidated plan from them under common plans folder. don't implement just create the consolidated plan and copy to common plans folder.
 
 5) TO MAIN CLAUDE: review all the plans under common plans folder from different AI models including consolidated plan by cursor and if you think necessary update the consolidated plan if anything missing. ask questions if something is not clear. don't implement just update the consolidated plan.
 

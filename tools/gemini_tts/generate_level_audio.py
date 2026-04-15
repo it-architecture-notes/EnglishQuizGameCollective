@@ -131,6 +131,37 @@ def _gemini_voice_for_character(slug: str, ctx: GenderVoiceContext) -> str:
     return _random_gemini_voice_any_gender(ctx)
 
 
+def _gemini_voice_excluding(pool: tuple[str, ...], exclude: str | None) -> str:
+    """Pick a random voice from pool, avoiding exclude when the pool has more than one option."""
+    if exclude and len(pool) > 1:
+        candidates = [v for v in pool if v != exclude]
+        return random.choice(candidates)
+    return random.choice(pool)
+
+
+def _gender_from_audio_filename(stem: str) -> str | None:
+    """Return 'male' or 'female' if those words appear as dash-separated tokens in the stem.
+
+    Checks 'female' before 'male' so that a stem containing 'female' is not
+    misidentified as 'male' (since 'female' contains the substring 'male').
+    """
+    tokens = {t.lower() for t in stem.replace("_", "-").split("-") if t}
+    if "female" in tokens:
+        return "female"
+    if "male" in tokens:
+        return "male"
+    return None
+
+
+def _gemini_voice_for_gender(gender: str | None, ctx: GenderVoiceContext) -> str | None:
+    """Return a random voice from the matching gender pool, or None if undetermined."""
+    if gender == "female" and ctx.female_voices:
+        return random.choice(ctx.female_voices)
+    if gender == "male" and ctx.male_voices:
+        return random.choice(ctx.male_voices)
+    return None
+
+
 def _parse_voice_list(env_val: str | None) -> list[str]:
     """Comma-separated voice names or IDs (trimmed, empty segments dropped)."""
     if not env_val or not str(env_val).strip():
@@ -471,11 +502,26 @@ def build_jobs_for_question(
             if gender_ctx is not None
             else None
         )
-        v2 = (
-            _gemini_voice_for_character(c2, gender_ctx)
-            if gender_ctx is not None
-            else None
-        )
+        # Pick v2 from the correct gender pool, excluding v1 to avoid same voice.
+        if gender_ctx is not None:
+            gender2 = _gender_for_character(c2, gender_ctx)
+            pool2 = (
+                gender_ctx.female_voices if gender2 == "female"
+                else gender_ctx.male_voices if gender2 == "male"
+                else tuple(list(gender_ctx.male_voices) + list(gender_ctx.female_voices))
+            )
+            v2 = _gemini_voice_excluding(pool2, v1)
+        else:
+            v2 = None
+        # Filename gender hint overrides character-based voice for each clip.
+        if gender_ctx is not None:
+            g1 = _gender_from_audio_filename(af1)
+            g2 = _gender_from_audio_filename(af2)
+            v1 = _gemini_voice_for_gender(g1, gender_ctx) or v1
+            v2 = _gemini_voice_for_gender(g2, gender_ctx) or v2
+        # Optional top-level text overrides for each clip.
+        text1 = _str_or_none(q.get("audio_file1_text")) or line1
+        text2 = _str_or_none(q.get("audio_file2_text")) or text_answer
         return [
             _job_for_stem(
                 idx,
@@ -483,7 +529,7 @@ def build_jobs_for_question(
                 level_dir,
                 af1,
                 output_suffix,
-                line1,
+                text1,
                 "single",
                 gemini_voice_override=v1,
             ),
@@ -493,13 +539,17 @@ def build_jobs_for_question(
                 level_dir,
                 af2,
                 output_suffix,
-                text_answer,
+                text2,
                 "single",
                 gemini_voice_override=v2,
             ),
         ]
 
-    return [build_job(level_id, level_dir, q, idx, output_suffix, gender_ctx)]
+    job = build_job(level_id, level_dir, q, idx, output_suffix, gender_ctx)
+    override_text = _str_or_none(q.get("audio_file_text"))
+    if override_text and job.speaker_mode != "skip":
+        job = replace(job, tts_text=override_text)
+    return [job]
 
 
 def build_job(
@@ -514,6 +564,15 @@ def build_job(
     audio_file_value = _str_or_none(q.get("audio_file")) or ""
     output_filename = f"{audio_file_value}{output_suffix}.m4a"
     output_path = level_dir / output_filename
+
+    # Derive a gender-specific voice override from the audio filename if the stem
+    # contains "male" or "female" as a dash-separated token (e.g. "...-male-..." ).
+    _filename_gender = _gender_from_audio_filename(audio_file_value)
+    _filename_voice: str | None = (
+        _gemini_voice_for_gender(_filename_gender, gender_ctx)
+        if gender_ctx is not None and _filename_gender is not None
+        else None
+    )
 
     if not audio_file_value:
         return CandidateJob(
@@ -570,11 +629,16 @@ def build_job(
             if gender_ctx is not None
             else None
         )
-        mvb = (
-            _gemini_voice_for_character(char2, gender_ctx)
-            if gender_ctx is not None
-            else None
-        )
+        if gender_ctx is not None:
+            gender2 = _gender_for_character(char2, gender_ctx)
+            pool2 = (
+                gender_ctx.female_voices if gender2 == "female"
+                else gender_ctx.male_voices if gender2 == "male"
+                else tuple(list(gender_ctx.male_voices) + list(gender_ctx.female_voices))
+            )
+            mvb = _gemini_voice_excluding(pool2, mva)
+        else:
+            mvb = None
         return CandidateJob(
             question_index=idx,
             template=template,
@@ -592,7 +656,7 @@ def build_job(
     if template == "ConvoTemplate-AppearDisappear":
         words = _words_list(qd.get("words"))
         if words:
-            text = " [long pause] ".join(words)
+            text = " ".join(words)
             return CandidateJob(
                 question_index=idx,
                 template=template,
@@ -601,6 +665,7 @@ def build_job(
                 output_path=output_path,
                 tts_text=text,
                 speaker_mode="single",
+                gemini_voice_override=_filename_voice,
             )
 
     if template == "ConvoTemplate-GrammarForm":
@@ -627,6 +692,7 @@ def build_job(
                 output_path=output_path,
                 tts_text=text,
                 speaker_mode="single",
+                gemini_voice_override=_filename_voice,
             )
 
     if template == "ConvoTemplate-SentenceBuilder":
@@ -640,6 +706,7 @@ def build_job(
                 output_path=output_path,
                 tts_text=text,
                 speaker_mode="single",
+                gemini_voice_override=_filename_voice,
             )
 
     if template == "imageQuizTemplate-2":
@@ -654,6 +721,7 @@ def build_job(
                 output_path=output_path,
                 tts_text=text,
                 speaker_mode="single",
+                gemini_voice_override=_filename_voice,
             )
 
     return CandidateJob(
@@ -726,6 +794,12 @@ def _retry_http(fn, attempts: int = 3, base_delay_s: float = 1.0) -> Any:
             time.sleep(base_delay_s * (2**i))
     assert last_exc is not None
     raise last_exc
+
+
+def _silence_pcm(duration_ms: int = 300) -> bytes:
+    """Return raw PCM bytes for silence at the script's standard sample rate."""
+    num_samples = int(PCM_SAMPLE_RATE * duration_ms / 1000)
+    return b"\x00\x00" * num_samples  # 16-bit mono silence
 
 
 def generate_single_speaker_pcm(
@@ -1074,15 +1148,12 @@ def main() -> None:
             )
             print(f"  text: {job.tts_text}")
             if args.provider == "gemini":
-                if job.gemini_voice_override:
+                if job.speaker_mode == "multi":
+                    va = job.gemini_multi_voice_a or args.voice_a
+                    vb = job.gemini_multi_voice_b or args.voice_b
+                    print(f"  gemini_voices: A={va} B={vb} (2x single-speaker + merge)")
+                elif job.gemini_voice_override:
                     print(f"  gemini_voice: {job.gemini_voice_override}")
-                elif job.speaker_mode == "multi" and (
-                    job.gemini_multi_voice_a or job.gemini_multi_voice_b
-                ):
-                    print(
-                        f"  gemini_voices: A={job.gemini_multi_voice_a or args.voice_a} "
-                        f"B={job.gemini_multi_voice_b or args.voice_b}"
-                    )
             generated += 1
             continue
 
@@ -1092,14 +1163,14 @@ def main() -> None:
                 assert client is not None
                 va = job.gemini_multi_voice_a or args.voice_a
                 vb = job.gemini_multi_voice_b or args.voice_b
-                pcm_bytes = generate_multi_speaker_pcm(
-                    client=client,
-                    text=job.tts_text,
-                    speaker_a=job.speaker_a_name or "SpeakerA",
-                    speaker_b=job.speaker_b_name or "SpeakerB",
-                    voice_a=va,
-                    voice_b=vb,
-                )
+                lines = job.tts_text.splitlines()
+                line_a = lines[0] if lines else job.tts_text
+                line_b = lines[1] if len(lines) > 1 else ""
+                line_a = line_a.split(":", 1)[-1].strip() if ":" in line_a else line_a
+                line_b = line_b.split(":", 1)[-1].strip() if ":" in line_b else line_b
+                pcm_a = generate_single_speaker_pcm(client=client, text=line_a, voice=va)
+                pcm_b = generate_single_speaker_pcm(client=client, text=line_b, voice=vb)
+                pcm_bytes = pcm_a + _silence_pcm(300) + pcm_b
                 pcm_to_m4a_file(
                     pcm_bytes=pcm_bytes,
                     output_path=job.output_path,

@@ -63,7 +63,7 @@
           "hi": "आपका स्वागत है"
         },
         "distractors": [
-          "My Name is Sarah",
+          "My Name is Mike",
           "I am from Spain",
           "Nice to see you"
         ]
@@ -171,7 +171,7 @@
         "character1": "Beth",
         "character2": "Emma",
         "line1": {
-          "en": "Hello, I am Mike"
+          "en": "Hello, I am Beth"
         },
         "line2": {
           "en": "___ you."
@@ -266,7 +266,8 @@
           "hi": "मेरा नाम जोन है"
         }
       },
-      "audio_file": "my-name-is-john-convo"
+      "audio_file": "my-name-is-john-male-convo",
+      "audio_file_text": "My name is John"
     },
     {
       "type": "vocab",
@@ -411,7 +412,8 @@
         ]
       },
       "audio_file1": "what-is-your-name-convo",
-      "audio_file2": "my-name-is-convo"
+      "audio_file2": "my-name-is-convo",
+      "audio_file2_text": "My name is"
     }
   ]
 }

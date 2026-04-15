@@ -10,7 +10,7 @@ class ImageQuizTemplate2AudioControls extends StatefulWidget {
     super.key,
     required this.assetPath,
     required this.resolveExists,
-    this.autoPlayDelay = const Duration(seconds: 1),
+    this.autoPlayDelay = Duration.zero,
   });
 
   /// e.g. `quiz-data/levels/greetings/foo.m4a`
