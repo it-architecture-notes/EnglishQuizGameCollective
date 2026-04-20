@@ -1,7 +1,6 @@
 {
   "levelQuestions": [
     {
-      "type": "image",
       "template": "imageQuizTemplate-1",
       "questionData": {
         "imageName": "alarm-clock",
@@ -13,7 +12,6 @@
       }
     },
     {
-      "type": "image",
       "template": "imageQuizTemplate-1",
       "questionData": {
         "imageName": "bed",
@@ -25,7 +23,6 @@
       }
     },
     {
-      "type": "image",
       "template": "imageQuizTemplate-1",
       "questionData": {
         "imageName": "bed-frame",
@@ -37,7 +34,6 @@
       }
     },
     {
-      "type": "image",
       "template": "imageQuizTemplate-1",
       "questionData": {
         "imageName": "blanket",
@@ -49,7 +45,6 @@
       }
     },
     {
-      "type": "image",
       "template": "imageQuizTemplate-1",
       "questionData": {
         "imageName": "device",
@@ -61,7 +56,6 @@
       }
     },
     {
-      "type": "image",
       "template": "imageQuizTemplate-1",
       "questionData": {
         "imageName": "door",
@@ -73,7 +67,6 @@
       }
     },
     {
-      "type": "image",
       "template": "imageQuizTemplate-1",
       "questionData": {
         "imageName": "drawers",
@@ -85,7 +78,6 @@
       }
     },
     {
-      "type": "image",
       "template": "imageQuizTemplate-1",
       "questionData": {
         "imageName": "dresser",
@@ -97,7 +89,6 @@
       }
     },
     {
-      "type": "image",
       "template": "imageQuizTemplate-1",
       "questionData": {
         "imageName": "duvet-comforter",
@@ -109,7 +100,6 @@
       }
     },
     {
-      "type": "image",
       "template": "imageQuizTemplate-1",
       "questionData": {
         "imageName": "hanger",

@@ -1,7 +1,6 @@
 {
   "levelQuestions": [
     {
-      "type": "image",
       "template": "imageQuizTemplate-1",
       "questionData": {
         "imageName": "apple",
@@ -13,7 +12,6 @@
       }
     },
     {
-      "type": "image",
       "template": "imageQuizTemplate-1",
       "questionData": {
         "imageName": "apricot",
@@ -25,7 +23,6 @@
       }
     },
     {
-      "type": "image",
       "template": "imageQuizTemplate-1",
       "questionData": {
         "imageName": "avocado",
@@ -37,7 +34,6 @@
       }
     },
     {
-      "type": "image",
       "template": "imageQuizTemplate-1",
       "questionData": {
         "imageName": "banana",
@@ -49,7 +45,6 @@
       }
     },
     {
-      "type": "image",
       "template": "imageQuizTemplate-1",
       "questionData": {
         "imageName": "blackberry",
@@ -61,7 +56,6 @@
       }
     },
     {
-      "type": "image",
       "template": "imageQuizTemplate-1",
       "questionData": {
         "imageName": "blueberry",
@@ -73,7 +67,6 @@
       }
     },
     {
-      "type": "image",
       "template": "imageQuizTemplate-1",
       "questionData": {
         "imageName": "cantaloupe",
@@ -85,7 +78,6 @@
       }
     },
     {
-      "type": "image",
       "template": "imageQuizTemplate-1",
       "questionData": {
         "imageName": "cherry",
@@ -97,7 +89,6 @@
       }
     },
     {
-      "type": "image",
       "template": "imageQuizTemplate-1",
       "questionData": {
         "imageName": "coconut",
@@ -109,7 +100,6 @@
       }
     },
     {
-      "type": "image",
       "template": "imageQuizTemplate-1",
       "questionData": {
         "imageName": "cranberry",

@@ -1,7 +1,6 @@
 {
   "levelQuestions": [
     {
-      "type": "image",
       "template": "imageQuizTemplate-1",
       "questionData": {
         "imageName": "lonely",
@@ -13,7 +12,6 @@
       }
     },
     {
-      "type": "image",
       "template": "imageQuizTemplate-1",
       "questionData": {
         "imageName": "nervous",
@@ -25,7 +23,6 @@
       }
     },
     {
-      "type": "image",
       "template": "imageQuizTemplate-1",
       "questionData": {
         "imageName": "proud",
@@ -37,7 +34,6 @@
       }
     },
     {
-      "type": "image",
       "template": "imageQuizTemplate-1",
       "questionData": {
         "imageName": "sad",
@@ -49,7 +45,6 @@
       }
     },
     {
-      "type": "image",
       "template": "imageQuizTemplate-1",
       "questionData": {
         "imageName": "scared",
@@ -61,7 +56,6 @@
       }
     },
     {
-      "type": "image",
       "template": "imageQuizTemplate-1",
       "questionData": {
         "imageName": "sorry",
@@ -73,7 +67,6 @@
       }
     },
     {
-      "type": "image",
       "template": "imageQuizTemplate-1",
       "questionData": {
         "imageName": "stressed",
@@ -85,7 +78,6 @@
       }
     },
     {
-      "type": "image",
       "template": "imageQuizTemplate-1",
       "questionData": {
         "imageName": "surprised",
@@ -97,7 +89,6 @@
       }
     },
     {
-      "type": "image",
       "template": "imageQuizTemplate-1",
       "questionData": {
         "imageName": "thankful",
@@ -109,7 +100,6 @@
       }
     },
     {
-      "type": "image",
       "template": "imageQuizTemplate-1",
       "questionData": {
         "imageName": "thirsty",

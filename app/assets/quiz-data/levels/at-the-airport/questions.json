@@ -1,7 +1,6 @@
 {
   "levelQuestions": [
     {
-      "type": "image",
       "template": "imageQuizTemplate-1",
       "questionData": {
         "imageName": "airplane-ticket",
@@ -13,7 +12,6 @@
       }
     },
     {
-      "type": "image",
       "template": "imageQuizTemplate-1",
       "questionData": {
         "imageName": "check-in-counter",
@@ -25,7 +23,6 @@
       }
     },
     {
-      "type": "image",
       "template": "imageQuizTemplate-1",
       "questionData": {
         "imageName": "luggage-trolley",
@@ -37,7 +34,6 @@
       }
     },
     {
-      "type": "image",
       "template": "imageQuizTemplate-1",
       "questionData": {
         "imageName": "passport",
@@ -49,7 +45,6 @@
       }
     },
     {
-      "type": "image",
       "template": "imageQuizTemplate-1",
       "questionData": {
         "imageName": "plane",
@@ -61,7 +56,6 @@
       }
     },
     {
-      "type": "image",
       "template": "imageQuizTemplate-1",
       "questionData": {
         "imageName": "security-check",

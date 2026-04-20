@@ -1,4 +1,3 @@
-import 'dart:async';
 import 'dart:math';
 
 import 'package:flutter/material.dart';
@@ -6,9 +5,9 @@ import 'package:flutter/material.dart';
 import '../../models/level_config.dart';
 import '../../widgets/translation_reveal_button.dart';
 
-enum _Phase { waiting, revealing, clearing, interaction }
+enum _Phase { revealing, clearing, interaction }
 
-/// Sequence memory: pause → words in boxes → clear → recall (no intro / flash).
+/// Words visible immediately → audio plays → 500 ms after audio → words clear → recall.
 class AppearDisappearQuizBody extends StatefulWidget {
   const AppearDisappearQuizBody({
     super.key,
@@ -41,11 +40,7 @@ class AppearDisappearQuizBody extends StatefulWidget {
 class _AppearDisappearQuizBodyState extends State<AppearDisappearQuizBody> {
   late List<String> _shuffledChoices;
 
-  _Phase _phase = _Phase.waiting;
-  int _revealIndex = 0;
-
-  bool _revealCycleDone = false;
-  bool _audioDone = false;
+  _Phase _phase = _Phase.revealing;
   bool _interactionEnabled = false;
 
   int _tapProgress = 0;
@@ -56,8 +51,6 @@ class _AppearDisappearQuizBodyState extends State<AppearDisappearQuizBody> {
   final Set<int> _correctGridIndices = {};
   final Map<int, int> _gridIndexToStep = {};
   bool _completed = false;
-
-  Timer? _timer;
 
   List<String> get _sentence => widget.data.words;
 
@@ -71,91 +64,27 @@ class _AppearDisappearQuizBodyState extends State<AppearDisappearQuizBody> {
       _interactionSlots.add(null);
       _slotFromPlayer.add(false);
     }
-    _startWaiting();
+    _runAudioThenDisappear();
   }
 
-  Future<void> _runAudio() async {
+  Future<void> _runAudioThenDisappear() async {
     final p = widget.audioAssetPath;
-    if (p == null) {
-      _audioDone = true;
-      _tryEnableInteraction();
-      return;
+    if (p != null) {
+      final ok = await widget.resolveAudioExists(p);
+      if (mounted && ok) {
+        await widget.onPlayQuestionAudio(p);
+      }
     }
-    final ok = await widget.resolveAudioExists(p);
     if (!mounted) return;
-    if (!ok) {
-      _audioDone = true;
-      _tryEnableInteraction();
-      return;
-    }
-    await widget.onPlayQuestionAudio(p);
-    if (!mounted) return;
-    _audioDone = true;
-    _tryEnableInteraction();
-  }
-
-  void _startWaiting() {
-    _runAudio();
-    _timer = Timer(
-      Duration(
-        milliseconds: (widget.data.introPause * 1000).round(),
-      ),
-      _startReveal,
-    );
-  }
-
-  void _startReveal() {
-    if (!mounted) return;
-    setState(() {
-      _phase = _Phase.revealing;
-      _revealIndex = 0;
-    });
-    _timer = Timer(const Duration(milliseconds: 400), _revealNextWord);
-  }
-
-  void _revealNextWord() {
-    if (!mounted) return;
-    if (_revealIndex >= _sentence.length) {
-      _afterRevealHold();
-      return;
-    }
-    setState(() => _revealIndex++);
-    _timer = Timer(
-      Duration(milliseconds: (widget.data.displayDuration * 1000).round()),
-      _revealNextWord,
-    );
-  }
-
-  Future<void> _afterRevealHold() async {
+    await Future<void>.delayed(const Duration(milliseconds: 500));
     if (!mounted) return;
     setState(() => _phase = _Phase.clearing);
-    await Future<void>.delayed(
-      Duration(
-        milliseconds: (widget.data.autoNextDelay * 1000).round(),
-      ),
-    );
+    await Future<void>.delayed(const Duration(milliseconds: 400));
     if (!mounted) return;
     setState(() {
-      _revealCycleDone = true;
-    });
-    _tryEnableInteraction();
-  }
-
-  void _tryEnableInteraction() {
-    if (!mounted) return;
-    if (_interactionEnabled) return;
-    if (!_revealCycleDone) return;
-    if (!_audioDone) return;
-    setState(() {
-      _interactionEnabled = true;
       _phase = _Phase.interaction;
+      _interactionEnabled = true;
     });
-  }
-
-  @override
-  void dispose() {
-    _timer?.cancel();
-    super.dispose();
   }
 
   void _onGridTap(int gridIndex) {
@@ -189,7 +118,6 @@ class _AppearDisappearQuizBodyState extends State<AppearDisappearQuizBody> {
         widget.onOutcome(true);
       }
     } else {
-      _timer?.cancel();
       setState(() {
         _failed = true;
         _wrongGridIndex = gridIndex;
@@ -212,10 +140,10 @@ class _AppearDisappearQuizBodyState extends State<AppearDisappearQuizBody> {
         String? word;
         bool fromPlayer = false;
 
-        if (_phase == _Phase.waiting || _phase == _Phase.clearing) {
+        if (_phase == _Phase.clearing) {
           word = null;
         } else if (_phase == _Phase.revealing) {
-          word = i < _revealIndex ? _sentence[i] : null;
+          word = _sentence[i];
         } else {
           word = _interactionSlots[i];
           fromPlayer = i < _slotFromPlayer.length && _slotFromPlayer[i];
@@ -271,23 +199,6 @@ class _AppearDisappearQuizBodyState extends State<AppearDisappearQuizBody> {
     final aux = widget.userLanguage != 'en' && tr != null
         ? tr[widget.userLanguage]
         : null;
-
-    if (_phase == _Phase.waiting ||
-        _phase == _Phase.revealing ||
-        _phase == _Phase.clearing) {
-      return Column(
-        crossAxisAlignment: CrossAxisAlignment.stretch,
-        children: [
-          TranslationRevealButton(
-            translationText: aux,
-            userLanguage: widget.userLanguage,
-          ),
-          Expanded(
-            child: Center(child: _buildBoxRow(theme, cs)),
-          ),
-        ],
-      );
-    }
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,

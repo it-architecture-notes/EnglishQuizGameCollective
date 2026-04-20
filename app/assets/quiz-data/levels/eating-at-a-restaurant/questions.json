@@ -1,7 +1,6 @@
 {
   "levelQuestions": [
     {
-      "type": "image",
       "template": "imageQuizTemplate-1",
       "questionData": {
         "imageName": "chef",
@@ -13,7 +12,6 @@
       }
     },
     {
-      "type": "image",
       "template": "imageQuizTemplate-1",
       "questionData": {
         "imageName": "fork",
@@ -25,7 +23,6 @@
       }
     },
     {
-      "type": "image",
       "template": "imageQuizTemplate-1",
       "questionData": {
         "imageName": "menu",
@@ -37,7 +34,6 @@
       }
     },
     {
-      "type": "image",
       "template": "imageQuizTemplate-1",
       "questionData": {
         "imageName": "plate",
@@ -49,7 +45,6 @@
       }
     },
     {
-      "type": "image",
       "template": "imageQuizTemplate-1",
       "questionData": {
         "imageName": "restaurant",
@@ -61,7 +56,6 @@
       }
     },
     {
-      "type": "image",
       "template": "imageQuizTemplate-1",
       "questionData": {
         "imageName": "waiter",

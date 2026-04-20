@@ -1,7 +1,6 @@
 {
   "levelQuestions": [
     {
-      "type": "image",
       "template": "imageQuizTemplate-1",
       "questionData": {
         "imageName": "apron",
@@ -13,7 +12,6 @@
       }
     },
     {
-      "type": "image",
       "template": "imageQuizTemplate-1",
       "questionData": {
         "imageName": "baking-tray",
@@ -25,7 +23,6 @@
       }
     },
     {
-      "type": "image",
       "template": "imageQuizTemplate-1",
       "questionData": {
         "imageName": "blender",
@@ -37,7 +34,6 @@
       }
     },
     {
-      "type": "image",
       "template": "imageQuizTemplate-1",
       "questionData": {
         "imageName": "bowl",
@@ -49,7 +45,6 @@
       }
     },
     {
-      "type": "image",
       "template": "imageQuizTemplate-1",
       "questionData": {
         "imageName": "can-opener",
@@ -61,7 +56,6 @@
       }
     },
     {
-      "type": "image",
       "template": "imageQuizTemplate-1",
       "questionData": {
         "imageName": "casserole-dish",
@@ -73,7 +67,6 @@
       }
     },
     {
-      "type": "image",
       "template": "imageQuizTemplate-1",
       "questionData": {
         "imageName": "chefs-knife",
@@ -85,7 +78,6 @@
       }
     },
     {
-      "type": "image",
       "template": "imageQuizTemplate-1",
       "questionData": {
         "imageName": "colander",
@@ -97,7 +89,6 @@
       }
     },
     {
-      "type": "image",
       "template": "imageQuizTemplate-1",
       "questionData": {
         "imageName": "cooking-pot",
@@ -109,7 +100,6 @@
       }
     },
     {
-      "type": "image",
       "template": "imageQuizTemplate-1",
       "questionData": {
         "imageName": "cutting-board",
@@ -121,11 +111,10 @@
       }
     },
     {
-      "type": "vocab",
       "template": "ConvoTemplate-1",
       "questionData": {
-        "character1": "mike",
-        "character2": "sarah",
+        "character1": "lily",
+        "character2": "james",
         "line1": {
           "en": "Should I _____ the oven first?",
           "tr": "Önce fırını _____ mı?",
@@ -145,11 +134,10 @@
       }
     },
     {
-      "type": "vocab",
       "template": "ConvoTemplate-1",
       "questionData": {
-        "character1": "mike",
-        "character2": "sarah",
+        "character1": "omar",
+        "character2": "maya",
         "line1": {
           "en": "How long should I let the soup _____?",
           "tr": "Çorbayı ne kadar _____ bırakmalıyım?",
@@ -169,11 +157,10 @@
       }
     },
     {
-      "type": "vocab",
       "template": "ConvoTemplate-1",
       "questionData": {
-        "character1": "mike",
-        "character2": "sarah",
+        "character1": "sophie",
+        "character2": "ethan",
         "line1": {
           "en": "Can you _____ the onions for me?",
           "tr": "Soğanları benim için _____ misin?",
@@ -193,11 +180,10 @@
       }
     },
     {
-      "type": "grammar",
       "template": "ConvoTemplate-1",
       "questionData": {
-        "character1": "mike",
-        "character2": "sarah",
+        "character1": "ryan",
+        "character2": "nora",
         "line1": {
           "en": "_____ you making enough food for everyone?",
           "tr": "Herkes için yeterince yemek yapıyor _____?",
@@ -217,11 +203,10 @@
       }
     },
     {
-      "type": "grammar",
       "template": "ConvoTemplate-1",
       "questionData": {
-        "character1": "mike",
-        "character2": "sarah",
+        "character1": "beth",
+        "character2": "leo",
         "line1": {
           "en": "You _____ wash your hands before cooking.",
           "tr": "Yemek yapmadan önce ellerini _____ yıkamalısın.",
@@ -241,7 +226,6 @@
       }
     },
     {
-      "type": "vocab",
       "template": "ConvoTemplate-2",
       "questionData": {
         "imageName": "blender",

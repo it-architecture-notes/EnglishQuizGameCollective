@@ -205,8 +205,7 @@ Asset path convention: `quiz-data/levels/{levelKey}/{audio_file_value}.m4a`
 | `ConvoTemplate-1` | Direct in screen | Immediately on question load |
 | `ConvoTemplate-SentenceBuilder` | Direct in screen | Immediately on question load |
 | `ConvoTemplate-AppearDisappear` | `onReadyForAudio` callback | When interaction phase starts (internally managed by widget) |
-| `ConvoTemplate-ClozeSequence` (`words_all_together: true`) | `onReadyForAudio` callback | 1 second after load |
-| `ConvoTemplate-ClozeSequence` (`words_all_together: false`) | `onReadyForAudio` callback | When streaming completes |
+| `ConvoTemplate-ClozeSequence` | (varies; see current `image_quiz_screen` / template widget) | Full sentence visible on load |
 | `ConvoTemplate-GrammarForm` | Direct in screen | 1 second after load |
 | `ConvoTemplate-DialogueCompletion` | Direct in screen | 1 second after load |
 | `imageQuizTemplate-2` | Direct in screen | Immediately on question load |
@@ -475,7 +474,6 @@ Description: Additional templates for the quiz questions, plus bug fixes, a per-
     },
     "answer": ["went", "off"],
     "distractors": ["bed", "asked", "out"],
-    "words_all_together": false,
     "auto_next_delay": 1.0
   }
 }
@@ -487,11 +485,11 @@ Description: Additional templates for the quiz questions, plus bug fixes, a per-
 
 **Tile layout:** horizontal `Wrap` (train-style) — no more 2×2 / 3×3 grid constraint; any distractor count is valid.
 
-**Streaming:** `words_all_together: false` → splits `sentence['en']` on spaces, reveals one token per 450 ms; blanks shown at their position as they stream. `words_all_together: true` → all tokens appear immediately.
+**Sentence display:** The full English sentence (space-split tokens with blank markers) is shown as soon as the question appears; there is no word-by-word streaming. (Historical `words_all_together` JSON field removed.)
 
 **Image:** optional 72×72 thumbnail above the sentence.
 
-**ConvoTemplate-2 backward compat:** existing JSON with `"template": "ConvoTemplate-2"` is parsed via an adapter in `_parseConvo2AsCloze` → stored as `clozeSequenceData` with `wordsAllTogether: true`. Template name normalised to `ConvoTemplate-ClozeSequence` in `LevelQuestion`. No JSON migration required across existing level folders.
+**ConvoTemplate-2 backward compat:** existing JSON with `"template": "ConvoTemplate-2"` is parsed via an adapter in `_parseConvo2AsCloze` → stored as `clozeSequenceData`. Template name normalised to `ConvoTemplate-ClozeSequence` in `LevelQuestion`. No JSON migration required across existing level folders.
 
 **`waking-up/questions.json`:** ClozeSequence sample migrated from old token-array format to new localized-map format; former ConvoTemplate-2 sample converted to explicit `ConvoTemplate-ClozeSequence` entry.
 

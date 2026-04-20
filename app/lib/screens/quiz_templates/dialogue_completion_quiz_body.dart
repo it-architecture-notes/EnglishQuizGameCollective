@@ -15,6 +15,7 @@ class DialogueCompletionQuizBody extends StatefulWidget {
     this.answerTranslation,
     this.audio1Path,
     this.audio2Path,
+    this.resolvedImagePath,
     required this.resolveAudioExists,
     required this.onPlayQuestionAudio,
     required this.onPlayCorrect,
@@ -28,6 +29,8 @@ class DialogueCompletionQuizBody extends StatefulWidget {
   final Map<String, String>? answerTranslation;
   final String? audio1Path;
   final String? audio2Path;
+  /// Pre-resolved asset path for the optional hero image (from `image_file_name` in JSON).
+  final String? resolvedImagePath;
   final Future<bool> Function(String path) resolveAudioExists;
   final Future<void> Function(String path) onPlayQuestionAudio;
   final VoidCallback onPlayCorrect;
@@ -87,7 +90,7 @@ class _DialogueCompletionQuizBodyState extends State<DialogueCompletionQuizBody>
     if (_audio1Scheduled) return;
     _audio1Scheduled = true;
     if (_audio1Ok == true && p1 != null) {
-      await Future<void>.delayed(const Duration(seconds: 1));
+      await Future<void>.delayed(const Duration(milliseconds: 500));
       if (!mounted) return;
       setState(() => _audio1Playing = true);
       try {
@@ -163,6 +166,22 @@ class _DialogueCompletionQuizBodyState extends State<DialogueCompletionQuizBody>
           translationText: _combinedTranslation(),
           userLanguage: lang,
         ),
+        if (widget.resolvedImagePath != null) ...[
+          Center(
+            child: ClipRRect(
+              borderRadius: BorderRadius.circular(8),
+              child: Image.asset(
+                widget.resolvedImagePath!,
+                width: 72,
+                height: 72,
+                fit: BoxFit.cover,
+                errorBuilder: (_, __, ___) =>
+                    const SizedBox(width: 72, height: 72),
+              ),
+            ),
+          ),
+          const SizedBox(height: 8),
+        ],
         Text(
           widget.data.character1,
           style: theme.textTheme.labelLarge?.copyWith(

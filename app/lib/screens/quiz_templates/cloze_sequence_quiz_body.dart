@@ -1,4 +1,3 @@
-import 'dart:async';
 import 'dart:math';
 
 import 'package:flutter/material.dart';
@@ -10,9 +9,9 @@ import '../../widgets/translation_reveal_button.dart';
 /// Returns true when [token] is a blank marker (2+ underscores, nothing else).
 bool _isBlank(String token) => RegExp(r'^_{2,}$').hasMatch(token);
 
-/// Cloze-sequence quiz: streams (or shows at once) a localized sentence with
-/// numbered blank markers, then lets the player fill the blanks in order by
-/// tapping tiles laid out horizontally like a train.
+/// Cloze-sequence quiz: shows the full localized sentence with numbered blank
+/// markers as soon as the question appears, then the player fills the blanks
+/// in order by tapping tiles laid out horizontally like a train.
 class ClozeSequenceQuizBody extends StatefulWidget {
   const ClozeSequenceQuizBody({
     super.key,
@@ -50,10 +49,6 @@ class _ClozeSequenceQuizBodyState extends State<ClozeSequenceQuizBody> {
   late List<String?> _filled;
   late List<_TileState> _tileStates;
 
-  int _streamIndex = 0;
-  Timer? _streamTimer;
-  bool _streamDone = false;
-
   int _currentBlank = 0;
   bool _failed = false;
   bool _audioPlaying = false;
@@ -68,32 +63,6 @@ class _ClozeSequenceQuizBodyState extends State<ClozeSequenceQuizBody> {
     _tiles = [...widget.data.answers, ...widget.data.distractors]
       ..shuffle(Random());
     _tileStates = List.filled(_tiles.length, _TileState.normal);
-
-    if (widget.data.wordsAllTogether) {
-      _streamIndex = _tokens.length;
-      _streamDone = true;
-    } else {
-      _scheduleNextToken();
-    }
-  }
-
-  void _scheduleNextToken() {
-    _streamTimer = Timer(const Duration(milliseconds: 450), () {
-      if (!mounted) return;
-      setState(() {
-        _streamIndex++;
-        if (_streamIndex >= _tokens.length) {
-          _streamDone = true;
-        }
-      });
-      if (!_streamDone) _scheduleNextToken();
-    });
-  }
-
-  @override
-  void dispose() {
-    _streamTimer?.cancel();
-    super.dispose();
   }
 
   Future<void> _playAudio() async {
@@ -110,7 +79,7 @@ class _ClozeSequenceQuizBodyState extends State<ClozeSequenceQuizBody> {
   }
 
   void _onTileTap(int tileIndex) {
-    if (!_streamDone || _failed) return;
+    if (_failed) return;
     final word = _tiles[tileIndex];
     final state = _tileStates[tileIndex];
     final multi = widget.data.answers.length > 1;
@@ -152,9 +121,8 @@ class _ClozeSequenceQuizBodyState extends State<ClozeSequenceQuizBody> {
     final cs = theme.colorScheme;
     final spans = <InlineSpan>[];
     var blankI = 0;
-    final limit = _streamDone ? _tokens.length : _streamIndex;
 
-    for (var i = 0; i < limit; i++) {
+    for (var i = 0; i < _tokens.length; i++) {
       if (spans.isNotEmpty) spans.add(const TextSpan(text: ' '));
       final t = _tokens[i];
       if (_isBlank(t)) {
@@ -192,10 +160,6 @@ class _ClozeSequenceQuizBodyState extends State<ClozeSequenceQuizBody> {
       } else {
         spans.add(TextSpan(text: t));
       }
-    }
-
-    if (!_streamDone) {
-      spans.add(const TextSpan(text: ' …'));
     }
 
     return spans;

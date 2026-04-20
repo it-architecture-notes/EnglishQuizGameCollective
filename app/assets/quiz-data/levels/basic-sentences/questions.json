@@ -1,0 +1,483 @@
+{
+  "timer_seconds": 10,
+  "levelQuestions": [
+    {
+      "template": "ConvoTemplate-DialogueCompletion",
+      "questionData": {
+        "character1": "Nora",
+        "character2": "Ethan",
+        "line1": {
+          "en": "How old are you?"
+        },
+        "line1_translation": {
+          "tr": "Kaç yaşındasın?",
+          "es": "¿Cuántos años tienes?",
+          "fr": "Quel âge as-tu?",
+          "de": "Wie alt bist du?",
+          "it": "Quanti anni hai?",
+          "pt": "Quantos anos você tem?",
+          "ru": "Сколько тебе лет?",
+          "zh": "你几岁？",
+          "ja": "あなたは何歳ですか？",
+          "ko": "몇 살이에요?",
+          "ar": "كم عمرك؟",
+          "hi": "आपकी उम्र कितनी है?"
+        },
+        "answer": "I am 10 years old.",
+        "answer_translation": {
+          "tr": "Ben 10 yaşındayım.",
+          "es": "Tengo 10 años.",
+          "fr": "J'ai 10 ans.",
+          "de": "Ich bin 10 Jahre alt.",
+          "it": "Ho 10 anni.",
+          "pt": "Eu tenho 10 anos.",
+          "ru": "Мне 10 лет.",
+          "zh": "我10岁。",
+          "ja": "私は10歳です。",
+          "ko": "나는 10살이에요.",
+          "ar": "أنا عمري 10 سنوات.",
+          "hi": "मैं 10 साल का हूँ।"
+        },
+        "distractors": [
+          "I have 10 years old.",
+          "I get 10 years.",
+          "I was born 10 years ago."
+        ]
+      },
+      "audio_file1": "how-old-are-you-convo",
+      "audio_file2": "i-am-10-years-old-convo"
+    },
+    {
+      "template": "ConvoTemplate-1",
+      "questionData": {
+        "character1": "Maya",
+        "character2": "Ryan",
+        "line1": {
+          "en": "What ___ you do?"
+        },
+        "line2": {
+          "en": "I am a student."
+        },
+        "answer": "do",
+        "distractors": [
+          "does",
+          "are",
+          "is"
+        ],
+        "line1_translation": {
+          "tr": "Ne iş yapıyorsun?",
+          "es": "¿Qué haces?",
+          "fr": "Que fais-tu?",
+          "de": "Was machst du?",
+          "it": "Cosa fai?",
+          "pt": "O que você faz?",
+          "ru": "Что ты делаешь?",
+          "zh": "你做什么？",
+          "ja": "あなたは何をしていますか？",
+          "ko": "너는 무엇을 하니?",
+          "ar": "ما الذي تفعله؟",
+          "hi": "आप क्या करते हैं?"
+        },
+        "line2_translation": {
+          "tr": "Ben bir öğrenciyim.",
+          "es": "Soy estudiante.",
+          "fr": "Je suis étudiant.",
+          "de": "Ich bin Student.",
+          "it": "Sono studente.",
+          "pt": "Sou estudante.",
+          "ru": "Я студент.",
+          "zh": "我是学生。",
+          "ja": "私は学生です。",
+          "ko": "나는 학생이에요.",
+          "ar": "أنا طالب.",
+          "hi": "मैं एक छात्र हूँ।"
+        }
+      },
+      "audio_file": "what-do-you-do-convo"
+    },
+    {
+      "template": "imageQuizTemplate-2",
+      "questionData": {
+        "answer": "I am a student",
+        "imageName": "student",
+        "wrongAnswers": [
+          "teacher",
+          "doctor",
+          "plumber"
+        ]
+      },
+      "audio_file": "i-am-a-student-convo"
+    },
+    {
+      "template": "ConvoTemplate-SentenceBuilder",
+      "questionData": {
+        "correct_order": "I go to school every day",
+        
+        "translation": {
+          "tr": "Her gün okula gidiyorum.",
+          "es": "Voy a la escuela todos los días.",
+          "fr": "Je vais à l'école tous les jours.",
+          "de": "Ich gehe jeden Tag zur Schule.",
+          "it": "Vado a scuola ogni giorno.",
+          "pt": "Eu vou à escola todos os dias.",
+          "ru": "Я хожу в школу каждый день.",
+          "zh": "我每天去上学。",
+          "ja": "私は毎日学校に行きます。",
+          "ko": "나는 매일 학교에 가요.",
+          "ar": "أذهب إلى المدرسة كل يوم.",
+          "hi": "मैं हर दिन स्कूल जाता हूँ।"
+        }
+      },
+      "audio_file": "basic-sentence-i-go-to-school-every-day"
+    },
+    {
+      "template": "ConvoTemplate-DialogueCompletion",
+      "questionData": {
+        "character1": "Lily",
+        "character2": "James",
+        "image_file_name": "apple",
+        "line1": {
+          "en": "Is this a book?"
+        },
+        "line1_translation": {
+          "tr": "Bu bir kitap mı?",
+          "es": "¿Es esto un libro?",
+          "fr": "Est-ce un livre?",
+          "de": "Ist das ein Buch?",
+          "it": "È un libro?",
+          "pt": "Isso é um livro?",
+          "ru": "Это книга?",
+          "zh": "这是一本书吗？",
+          "ja": "これは本ですか？",
+          "ko": "이것은 책인가요?",
+          "ar": "هل هذا كتاب؟",
+          "hi": "क्या यह एक किताब है?"
+        },
+        "answer": "No, it's not a book.",
+        "answer_translation": {
+          "tr": "Hayır, bu bir kitap değil.",
+          "es": "No, no es un libro.",
+          "fr": "Non, ce n'est pas un livre.",
+          "de": "Nein, das ist kein Buch.",
+          "it": "No, non è un libro.",
+          "pt": "Não, não é um livro.",
+          "ru": "Нет, это не книга.",
+          "zh": "不，这不是一本书。",
+          "ja": "いいえ、これは本ではありません。",
+          "ko": "아니요, 이것은 책이 아니에요.",
+          "ar": "لا، هذا ليس كتاباً.",
+          "hi": "नहीं, यह एक किताब नहीं है।"
+        },
+        "distractors": [
+          "Yes, it is a book.",
+          "Yes, it is an apple.",
+          "This is a book."
+        ]
+      },
+      "audio_file1": "is-this-a-book-convo",
+      "audio_file2": "no-its-not-a-book-convo"
+    },
+    {
+      "template": "ConvoTemplate-ClozeSequence",
+      "questionData": {
+        "imageName": "teacher",
+        "sentence": {
+          "en": "I ___ English every day.",
+          "tr": "Her gün İngilizce çalışıyorum.",
+          "es": "Estudio inglés todos los días.",
+          "fr": "J'étudie l'anglais tous les jours.",
+          "de": "Ich lerne jeden Tag Englisch.",
+          "it": "Studio inglese ogni giorno.",
+          "pt": "Estudo inglês todos os dias.",
+          "ru": "Я учу английский каждый день.",
+          "zh": "我每天学英语。",
+          "ja": "毎日英語を勉強します。",
+          "ko": "매일 영어를 공부해요.",
+          "ar": "أدرس الإنجليزية كل يوم.",
+          "hi": "मैं हर दिन अंग्रेज़ी पढ़ता हूँ।"
+        },
+        "answer": ["study"],
+        "distractors": [
+          "studies",
+          "studying",
+          "studied"
+        ]
+      },
+      "audio_file": "basic-cloze-i-study-english"
+    },
+    {
+      "template": "ConvoTemplate-GrammarForm",
+      "questionData": {
+        "sentence": "I ___ from Spain.",
+        "answer": "am",
+        "distractors": [
+          "is",
+          "are",
+          "be"
+        ],
+        "translation": {
+          "tr": "Ben İspanya'danım.",
+          "es": "Soy de España.",
+          "fr": "Je suis d'Espagne.",
+          "de": "Ich komme aus Spanien.",
+          "it": "Sono della Spagna.",
+          "pt": "Sou da Espanha.",
+          "ru": "Я из Испании.",
+          "zh": "我来自西班牙。",
+          "ja": "私はスペイン出身です。",
+          "ko": "저는 스페인 출신이에요.",
+          "ar": "أنا من إسبانيا.",
+          "hi": "मैं स्पेन से हूँ।"
+        }
+      }
+    },
+    {
+      "template": "ConvoTemplate-WordPairs",
+      "questionData": {
+        "english_words": [
+          "eat",
+          "drink",
+          "sleep",
+          "read"
+        ],
+        "translations": [
+          {
+            "tr": "yemek",
+            "es": "comer",
+            "fr": "manger",
+            "de": "essen",
+            "it": "mangiare",
+            "pt": "comer",
+            "ru": "есть",
+            "zh": "吃",
+            "ja": "食べる",
+            "ko": "먹다",
+            "ar": "يأكل",
+            "hi": "खाना"
+          },
+          {
+            "tr": "içmek",
+            "es": "beber",
+            "fr": "boire",
+            "de": "trinken",
+            "it": "bere",
+            "pt": "beber",
+            "ru": "пить",
+            "zh": "喝",
+            "ja": "飲む",
+            "ko": "마시다",
+            "ar": "يشرب",
+            "hi": "पीना"
+          },
+          {
+            "tr": "uyumak",
+            "es": "dormir",
+            "fr": "dormir",
+            "de": "schlafen",
+            "it": "dormire",
+            "pt": "dormir",
+            "ru": "спать",
+            "zh": "睡觉",
+            "ja": "寝る",
+            "ko": "자다",
+            "ar": "ينام",
+            "hi": "सोना"
+          },
+          {
+            "tr": "okumak",
+            "es": "leer",
+            "fr": "lire",
+            "de": "lesen",
+            "it": "leggere",
+            "pt": "ler",
+            "ru": "читать",
+            "zh": "读",
+            "ja": "読む",
+            "ko": "읽다",
+            "ar": "يقرأ",
+            "hi": "पढ़ना"
+          }
+        ]
+      }
+    },
+    {
+      "template": "ConvoTemplate-AppearDisappear",
+      "questionData": {
+        "words": [
+          "I",
+          "like",
+          "school"
+        ],
+        "distractors": [
+          "hate",
+          "big",
+          "small"
+        ],
+        "display_duration": 0.8,
+        "intro_pause": 2.0
+      },
+      "translation": {
+        "tr": "Okulu severim.",
+        "es": "Me gusta la escuela.",
+        "fr": "J'aime l'école.",
+        "de": "Ich mag die Schule.",
+        "it": "Mi piace la scuola.",
+        "pt": "Eu gosto da escola.",
+        "ru": "Мне нравится школа.",
+        "zh": "我喜欢学校。",
+        "ja": "学校が好きです。",
+        "ko": "학교가 좋아요.",
+        "ar": "أحب المدرسة.",
+        "hi": "मुझे स्कूल पसंद है।"
+      },
+      "audio_file": "basic-appear-i-like-school"
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "book",
+        "answer": "Book",
+        "wrongAnswers": [
+          "pen",
+          "pencil",
+          "eraser"
+        ]
+      },
+      "audio_file": "basic-image-book-word"
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "teacher",
+        "answer": "She is a teacher.",
+        "wrongAnswers": [
+          "She is a doctor.",
+          "She is a student.",
+          "She is a driver."
+        ]
+      }
+    },
+    {
+      "template": "ConvoTemplate-DialogueCompletion",
+      "questionData": {
+        "character1": "Sophie",
+        "character2": "Leo",
+        "line1": {
+          "en": "Where is the bathroom?"
+        },
+        "line1_translation": {
+          "tr": "Banyo nerede?",
+          "es": "¿Dónde está el baño?",
+          "fr": "Où sont les toilettes?",
+          "de": "Wo ist die Toilette?",
+          "it": "Dov'è il bagno?",
+          "pt": "Onde fica o banheiro?",
+          "ru": "Где туалет?",
+          "zh": "洗手间在哪里？",
+          "ja": "トイレはどこですか？",
+          "ko": "화장실이 어디예요?",
+          "ar": "أين الحمام؟",
+          "hi": "बाथरूम कहाँ है?"
+        },
+        "answer": "It is over there.",
+        "answer_translation": {
+          "tr": "Şurada.",
+          "es": "Está allá.",
+          "fr": "C'est là-bas.",
+          "de": "Es ist dort drüben.",
+          "it": "È laggiù.",
+          "pt": "Fica ali.",
+          "ru": "Вон там.",
+          "zh": "在那边。",
+          "ja": "あそこです。",
+          "ko": "저기 있어요.",
+          "ar": "هناك.",
+          "hi": "वहाँ है।"
+        },
+        "distractors": [
+          "It is on the left.",
+          "It is closed today.",
+          "I don't know."
+        ]
+      },
+      "audio_file1": "basic-where-is-bathroom",
+      "audio_file2": "basic-it-is-over-there"
+    },
+    {
+      "template": "ConvoTemplate-1",
+      "questionData": {
+        "character1": "Olivia",
+        "character2": "Daniel",
+        "line1": {
+          "en": "Can I ___ some water, please?"
+        },
+        "line2": {
+          "en": "Yes, here you are."
+        },
+        "answer": "have",
+        "distractors": [
+          "has",
+          "having",
+          "had"
+        ],
+        "line1_translation": {
+          "tr": "Biraz su alabilir miyim, lütfen?",
+          "es": "¿Puedo tomar un poco de agua, por favor?",
+          "fr": "Puis-je avoir de l'eau, s'il vous plaît?",
+          "de": "Kann ich bitte etwas Wasser haben?",
+          "it": "Posso avere un po' d'acqua, per favore?",
+          "pt": "Posso pegar um pouco de água, por favor?",
+          "ru": "Можно мне немного воды, пожалуйста?",
+          "zh": "请给我一些水好吗？",
+          "ja": "水をいただけますか？",
+          "ko": "물 좀 주시겠어요?",
+          "ar": "هل يمكنني الحصول على بعض الماء؟",
+          "hi": "कृपया, क्या मुझे थोड़ा पानी मिल सकता है?"
+        },
+        "line2_translation": {
+          "tr": "Evet, buyurun.",
+          "es": "Sí, aquí tienes.",
+          "fr": "Oui, voilà.",
+          "de": "Ja, bitte schön.",
+          "it": "Sì, eccolo.",
+          "pt": "Sim, aqui está.",
+          "ru": "Да, пожалуйста.",
+          "zh": "好的，给你。",
+          "ja": "はい、どうぞ。",
+          "ko": "네, 여기요.",
+          "ar": "نعم، تفضل.",
+          "hi": "हाँ, यह लीजिए।"
+        }
+      },
+      "audio_file": "basic-can-i-have-water"
+    },
+    {
+      "template": "ConvoTemplate-SentenceBuilder",
+      "questionData": {
+        "correct_order": [
+          "I",
+          "like",
+          "to",
+          "read",
+          "books"
+        ],
+        
+        "translation": {
+          "tr": "Kitap okumayı severim.",
+          "es": "Me gusta leer libros.",
+          "fr": "J'aime lire des livres.",
+          "de": "Ich lese gern Bücher.",
+          "it": "Mi piace leggere libri.",
+          "pt": "Eu gosto de ler livros.",
+          "ru": "Я люблю читать книги.",
+          "zh": "我喜欢读书。",
+          "ja": "私は本を読むのが好きです。",
+          "ko": "나는 책 읽는 것을 좋아해요.",
+          "ar": "أحب قراءة الكتب.",
+          "hi": "मुझे किताबें पढ़ना पसंद है।"
+        }
+      },
+      "audio_file": "basic-sentence-i-like-to-read-books"
+    }
+  ]
+}

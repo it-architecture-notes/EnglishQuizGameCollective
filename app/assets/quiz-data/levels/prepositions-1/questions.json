@@ -1,0 +1,189 @@
+{
+    "levelQuestions": [
+        {
+            "template": "ConvoTemplate-ClozeSequence",
+            "questionData": {
+              "image_file_name": "in",
+              "sentence": {
+                "en": "I am ____ the house",
+                "tr": "Eve giriyorum",
+                "es": "Estoy entrando a la casa",
+                "fr": "Je rentre dans la maison",
+                "de": "Ich gehe in die Haus",
+                "it": "Entro nella casa",
+                "pt": "Entro na casa",
+                "ru": "Я вхожу в дом",
+                "zh": "我进入房子",
+                "ja": "私は家に入っています",
+                "ko": "나는 집에 들어가고 있어요",
+                "ar": "أنا أدخل المنزل",
+                "hi": "मैं घर में जा रहा हूं"
+              },
+              "answer": [
+                "going into"
+              ],
+              "distractors": [
+                "coming out",
+                "going down",
+                "go into"
+              ]
+            }
+          },
+          {
+            "template": "ConvoTemplate-ClozeSequence",
+            "questionData": {
+              "image_file_name": "out",
+              "sentence": {
+                "en": "I am ____ the door",
+                "tr": "Eve giriyorum",
+                "es": "Estoy entrando a la casa",
+                "fr": "Je rentre dans la maison",
+                "de": "Ich gehe in die Haus",
+                "it": "Entro nella casa",
+                "pt": "Entro na casa",
+                "ru": "Я вхожу в дом",
+                "zh": "我进入房子",
+                "ja": "私は家に入っています",
+                "ko": "나는 집에 들어가고 있어요",
+                "ar": "أنا أدخل المنزل",
+                "hi": "मैं घर में जा रहा हूं"
+              },
+              "answer": [
+                "coming out of"
+              ],
+              "distractors": [
+                "coming out",
+                "going in",
+                "getting near"
+              ]
+            }
+          },
+          {
+            "template": "ConvoTemplate-ClozeSequence",
+            "questionData": {
+              "image_file_name": "down",
+              "sentence": {
+                "en": "I am ___ the stairs",
+                "tr": "Merdivenleri iniyorum",
+                "es": "Estoy entrando a la casa",
+                "fr": "Je descends les escaliers",
+                "de": "Ich gehe die Treppe hinunter",
+                "it": "Scendo le scale",
+                "pt": "Descendo as escadas",
+                "ru": "Я спускаюсь по лестнице",
+                "zh": "我下楼梯",
+                "ja": "私は階段を下りています",
+                "ko": "나는 계단을 내려가고 있어요",
+                "ar": "أنا أنزل السلم",
+                "hi": "मैं सीढ़ियों पर उतर रहा हूं"
+              },
+              "answer": [
+                "going down"
+              ],
+              "distractors": [
+                "coming up",
+                "going up",
+                "putting on"
+              ]
+            }
+          },
+          {
+            "template": "ConvoTemplate-ClozeSequence",
+            "questionData": {
+              "image_file_name": "up",
+              "sentence": {
+                "en": "I ___ the mountain",
+                "tr": "Dağı çıkıyorum",
+                "es": "Estoy subiendo la montaña",
+                "fr": "Je monte la montagne",
+                "de": "Ich gehe die Berg hinauf",
+                "it": "Salgo la montagna",
+                "pt": "Estou subindo a montanha",
+                "ru": "Я поднимаюсь на гору",
+                "zh": "我上山",
+                "ja": "私は山に登っています",
+                "ko": "나는 산을 올라가고 있어요",
+                "ar": "أنا أرتفع الجبل",
+                "hi": "मैं पहाड़ पर चढ़ रहा हूं"
+              },
+              "answer": [
+                "climbing up"
+              ],
+              "distractors": [
+                "seeing down",
+                "getting out",
+                "take off"
+              ]
+            }
+          },
+          {
+            "template": "ConvoTemplate-WordPairs",
+            "questionData": {
+              "english_words": [
+                "up",
+                "down",
+                "in",
+                "out"
+              ],
+              "translations": [
+                {
+                  "tr": "Yukarı",
+                  "es": "Arriba",
+                  "fr": "Haut",
+                  "de": "Oben",
+                  "it": "Alto",
+                  "pt": "Acima",
+                  "ru": "Выше",
+                  "zh": "上面",
+                  "ja": "上",
+                  "ko": "위",
+                  "ar": "أعلى",
+                  "hi": "ऊपर"
+                },
+                {
+                  "tr": "Aşağı",
+                  "es": "Abajo",
+                  "fr": "Bas",
+                  "de": "Unten",
+                  "it": "Inferiore",
+                  "pt": "Abaixo",
+                  "ru": "Ниже",
+                  "zh": "下面",
+                  "ja": "下",
+                  "ko": "아래",
+                  "ar": "أسفل",
+                  "hi": "नीचे"
+                },
+                {
+                  "tr": "Iceri",
+                  "es": "en",
+                  "fr": "dans",
+                  "de": "in",
+                  "it": "in",
+                  "pt": "in",
+                  "ru": "в",
+                  "zh": "在",
+                  "ja": "in",
+                  "ko": "in",
+                  "ar": "في",
+                  "hi": "in"
+                },
+                {
+                  "tr": "Dışarı",
+                  "es": "Afuera",
+                  "fr": "Hors",
+                  "de": "Außen",
+                  "it": "Fuori",
+                  "pt": "Fora",
+                  "ru": "Вне",
+                  "zh": "外面",
+                  "ja": "外",
+                  "ko": "밖",
+                  "ar": "خارج",
+                  "hi": "बाहर"
+                }
+              ]
+            }
+          }
+    ]
+}

@@ -31,7 +31,6 @@ import 'quiz_templates/cloze_sequence_quiz_body.dart';
 import 'quiz_templates/dialogue_completion_quiz_body.dart';
 import 'quiz_templates/grammar_form_quiz_body.dart';
 import 'quiz_templates/sentence_builder_quiz_body.dart';
-import 'quiz_templates/spot_difference_quiz_body.dart';
 import 'quiz_templates/word_pairs_quiz_body.dart';
 
 /// Minimum images per level (spec).
@@ -49,8 +48,6 @@ const double kMinTouchTarget = 48;
 const Map<String, String> _kTemplateTitleL10nKeys = {
   'imageQuizTemplate-1': 'title_image_quiz',
   'imageQuizTemplate-2': 'title_image_word',
-  'imageQuizTemplate-3': 'title_choose_sentence',
-  'imageQuizTemplate-SpotDifference': 'title_spot_difference',
   'ConvoTemplate-1': 'title_fill_blank',
   'ConvoTemplate-ClozeSequence': 'title_cloze',
   'ConvoTemplate-AppearDisappear': 'click_in_order',
@@ -60,11 +57,13 @@ const Map<String, String> _kTemplateTitleL10nKeys = {
   'ConvoTemplate-DialogueCompletion': 'title_dialogue',
 };
 
+/// Set to true to re-enable the monster lane (animal, monster, step stones, timer, bubbles).
+const bool _kMonsterLaneEnabled = false;
+
 /// Image templates that show the guest animal / monster lane and count toward monster pressure.
 bool _isMonsterEligibleImageTemplate(String template) =>
     template == 'imageQuizTemplate-1' ||
-    template == 'imageQuizTemplate-2' ||
-    template == 'imageQuizTemplate-SpotDifference';
+    template == 'imageQuizTemplate-2';
 
 /// Maps cumulative wrong answers on [monsterEligibleImageTemplate] questions to step 0..4.
 /// If the level has at most 6 such questions, advance every wrong. If more than 6, use a
@@ -140,6 +139,8 @@ class _ImageQuizScreenState extends ConsumerState<ImageQuizScreen>
   GameConfig _config = const GameConfig();
   int _currentIndex = 0;
   int _correctCount = 0;
+  /// Highest correct-answer count recorded for this level before this run; used to compute diamond delta.
+  int _previousHighestDiamonds = 0;
   /// When true, [_goNext] ends the run after the 3rd question (index 2) with 2 stars.
   bool _shortQuizDebug = false;
   bool _endedEarlyShortQuiz = false;
@@ -155,7 +156,7 @@ class _ImageQuizScreenState extends ConsumerState<ImageQuizScreen>
   // Timer
   late AnimationController _timerController;
 
-  // Monster / guest animal (only [imageQuizTemplate-1], [-2], [-SpotDifference])
+  // Monster / guest animal (only [imageQuizTemplate-1] and [-2])
   int _monsterStep = 0;
   int _monsterEligibleWrongCount = 0;
   int _monsterEligibleQuestionCount = 0;
@@ -185,9 +186,10 @@ class _ImageQuizScreenState extends ConsumerState<ImageQuizScreen>
   List<String?> _questionImagePaths = [];      // asset path per question (null for vocab)
   List<List<String>> _questionQuiz2Paths = []; // 4 paths per template-2 question (empty otherwise)
   List<String?> _questionConvo2HeroPaths = []; // hero image path for ConvoTemplate-2 (null otherwise)
-  /// Per index: empty, or `[correctPath, wrongPath]` for [imageQuizTemplate-SpotDifference].
-  List<List<String>> _questionSpotDiffPaths = [];
   final Map<String, bool> _audioExistsCache = {};
+
+  /// Level-wide timer override from `timer_seconds` in `questions.json` root. Null = use global config.
+  int? _levelTimerSeconds;
 
   /// Asset-bundle prefix key for resolving images under this sub-level’s folder.
   static String _levelKey(SubLevel sub) =>
@@ -203,7 +205,7 @@ class _ImageQuizScreenState extends ConsumerState<ImageQuizScreen>
   bool get _isConvoMode {
     if (_allQuestions.isNotEmpty) {
       final i = _currentIndex.clamp(0, _allQuestions.length - 1);
-      return _allQuestions[i].type != LevelQuestionType.image;
+      return !_allQuestions[i]!.isImageTemplate;
     }
     return _convoQuestions.isNotEmpty || _convoByQuestionId.isNotEmpty;
   }
@@ -213,7 +215,7 @@ class _ImageQuizScreenState extends ConsumerState<ImageQuizScreen>
     if (_allQuestions.isNotEmpty) {
       if (_currentIndex >= _allQuestions.length) return null;
       final q = _allQuestions[_currentIndex];
-      return q.type != LevelQuestionType.image ? q : null;
+      return !q!.isImageTemplate ? q : null;
     }
     if (!_isConvoMode) return null;
     if (_isReminder) return _convoByQuestionId[_currentQuestionId ?? ''];
@@ -348,6 +350,10 @@ class _ImageQuizScreenState extends ConsumerState<ImageQuizScreen>
           }
         }
 
+        final prevProgress = await QuizProgressService.instance.loadProgress();
+        final prevHighestDiamonds =
+            prevProgress.level(widget.progressKey).highestDiamonds;
+
         if (mounted) {
           setState(() {
             _configWrongAnswers = null;
@@ -364,6 +370,7 @@ class _ImageQuizScreenState extends ConsumerState<ImageQuizScreen>
             _selectedMonster = selectedMonster;
             _shortQuizDebug = shortQuizDebug;
             _endedEarlyShortQuiz = false;
+            _previousHighestDiamonds = prevHighestDiamonds;
             _phase = _Phase.playing;
             _quizStartTime = DateTime.now();
             _currentOptions = _buildOptions();
@@ -382,10 +389,9 @@ class _ImageQuizScreenState extends ConsumerState<ImageQuizScreen>
       final imgPaths = <String?>[];
       final q2Paths = <List<String>>[];
       final convo2HeroPaths = <String?>[];
-      final spotDiffPaths = <List<String>>[];
 
       for (final q in questions) {
-        if (q.type == LevelQuestionType.image) {
+        if (q.isImageTemplate) {
           if (q.template == 'imageQuizTemplate-1') {
             final d = q.imageData!;
             final path = await resolveQuizImageAsset(key, d.imageName);
@@ -393,7 +399,6 @@ class _ImageQuizScreenState extends ConsumerState<ImageQuizScreen>
             imgPaths.add(path);
             q2Paths.add(const []);
             convo2HeroPaths.add(null);
-            spotDiffPaths.add(const []);
           } else if (q.template == 'imageQuizTemplate-2') {
             final d = q.imageQuiz2Data!;
             final path = await resolveQuizImageAsset(key, d.imageName);
@@ -407,44 +412,30 @@ class _ImageQuizScreenState extends ConsumerState<ImageQuizScreen>
             }
             q2Paths.add(four);
             convo2HeroPaths.add(null);
-            spotDiffPaths.add(const []);
-          } else if (q.template == 'imageQuizTemplate-3' && q.imageQuiz3Data != null) {
-            final d = q.imageQuiz3Data!;
-            final path = await resolveQuizImageAsset(key, d.imageName);
-            if (path == null) throw Exception('Missing image asset for: ${d.imageName}');
-            imgPaths.add(path);
-            q2Paths.add(const []);
-            convo2HeroPaths.add(null);
-            spotDiffPaths.add(const []);
-          } else if (q.template == 'imageQuizTemplate-SpotDifference' &&
-              q.spotDiffData != null) {
-            final d = q.spotDiffData!;
-            final p1 = await resolveQuizImageAsset(key, d.correctImage);
-            final p2 = await resolveQuizImageAsset(key, d.wrongImage);
-            if (p1 == null) {
-              throw Exception('Missing image asset for: ${d.correctImage}');
-            }
-            if (p2 == null) {
-              throw Exception('Missing image asset for: ${d.wrongImage}');
-            }
-            imgPaths.add(null);
-            q2Paths.add(const []);
-            convo2HeroPaths.add(null);
-            spotDiffPaths.add([p1, p2]);
           } else {
             imgPaths.add(null);
             q2Paths.add(const []);
             convo2HeroPaths.add(null);
-            spotDiffPaths.add(const []);
           }
         } else {
           // vocab / grammar
           imgPaths.add(null);
           q2Paths.add(const []);
-          spotDiffPaths.add(const []);
-          if (q.template == 'ConvoTemplate-ClozeSequence' &&
+          if (q.template == 'ConvoTemplate-1' &&
+              q.convoData?.imageName != null) {
+            final name = q.convoData!.imageName!;
+            final path = await resolveQuizImageAsset(key, name);
+            if (path == null) throw Exception('Missing image asset for: $name');
+            convo2HeroPaths.add(path);
+          } else if (q.template == 'ConvoTemplate-ClozeSequence' &&
               q.clozeSequenceData?.imageName != null) {
             final name = q.clozeSequenceData!.imageName!;
+            final path = await resolveQuizImageAsset(key, name);
+            if (path == null) throw Exception('Missing image asset for: $name');
+            convo2HeroPaths.add(path);
+          } else if (q.template == 'ConvoTemplate-DialogueCompletion' &&
+              q.dialogueCompletionData?.imageName != null) {
+            final name = q.dialogueCompletionData!.imageName!;
             final path = await resolveQuizImageAsset(key, name);
             if (path == null) throw Exception('Missing image asset for: $name');
             convo2HeroPaths.add(path);
@@ -459,14 +450,9 @@ class _ImageQuizScreenState extends ConsumerState<ImageQuizScreen>
         for (var i = 0; i < questions.length; i++) {
           if (!mounted) break;
           final q = questions[i];
-          if (q.type == LevelQuestionType.image) {
+          if (q.isImageTemplate) {
             if (q.template == 'imageQuizTemplate-2') {
               for (final p in q2Paths[i]) {
-                await precacheImage(AssetImage(p), context);
-              }
-            } else if (q.template == 'imageQuizTemplate-SpotDifference' &&
-                i < spotDiffPaths.length) {
-              for (final p in spotDiffPaths[i]) {
                 await precacheImage(AssetImage(p), context);
               }
             } else if (imgPaths[i] != null) {
@@ -485,7 +471,7 @@ class _ImageQuizScreenState extends ConsumerState<ImageQuizScreen>
       final monsterEligibleCount = questions
           .where(
             (q) =>
-                q.type == LevelQuestionType.image &&
+                q.isImageTemplate &&
                 _isMonsterEligibleImageTemplate(q.template),
           )
           .length;
@@ -501,6 +487,10 @@ class _ImageQuizScreenState extends ConsumerState<ImageQuizScreen>
       final language = ref.read(settingsProvider).valueOrNull?.language ?? 'en';
       final conversations = getForLanguage(conversationsConfig, language);
 
+      final prevProgress = await QuizProgressService.instance.loadProgress();
+      final prevHighestDiamonds =
+          prevProgress.level(widget.progressKey).highestDiamonds;
+
       if (mounted) {
         setState(() {
           _config = config;
@@ -509,7 +499,6 @@ class _ImageQuizScreenState extends ConsumerState<ImageQuizScreen>
           _questionImagePaths = imgPaths;
           _questionQuiz2Paths = q2Paths;
           _questionConvo2HeroPaths = convo2HeroPaths;
-          _questionSpotDiffPaths = spotDiffPaths;
           _currentQuestionIds = questionIds;
           _initialQuestionCount = questions.length;
           _monsterEligibleQuestionCount = monsterEligibleCount;
@@ -517,12 +506,14 @@ class _ImageQuizScreenState extends ConsumerState<ImageQuizScreen>
           _selectedMonster = selectedMonster;
           _shortQuizDebug = shortQuizDebug;
           _endedEarlyShortQuiz = false;
+          _levelTimerSeconds = levelCfg?.timerSeconds;
+          _previousHighestDiamonds = prevHighestDiamonds;
           _phase = _Phase.playing;
           _quizStartTime = DateTime.now();
           _currentOptions = _buildOptions();
         });
         // Start timer only for image questions (first question might be vocab)
-        if (questions.isNotEmpty && questions.first.type == LevelQuestionType.image) {
+        if (questions.isNotEmpty && questions.first.isImageTemplate) {
           _timerController.duration = Duration(seconds: _timerSecondsForCurrentQuestion());
           _startTimer();
         }
@@ -576,7 +567,7 @@ class _ImageQuizScreenState extends ConsumerState<ImageQuizScreen>
             questionIndex >= 0 &&
             questionIndex < lc.questions.length) {
           final q = lc.questions[questionIndex];
-          if (q.type == LevelQuestionType.image &&
+          if (q.isImageTemplate &&
               q.template == 'imageQuizTemplate-1' &&
               q.imageData != null) {
             final path = await resolveQuizImageAsset(
@@ -595,7 +586,7 @@ class _ImageQuizScreenState extends ConsumerState<ImageQuizScreen>
               validQuestionIds.add(questionId);
               continue;
             }
-          } else if (q.type == LevelQuestionType.image &&
+          } else if (q.isImageTemplate &&
               q.template == 'imageQuizTemplate-2' &&
               q.imageQuiz2Data != null) {
             final d = q.imageQuiz2Data!;
@@ -618,7 +609,7 @@ class _ImageQuizScreenState extends ConsumerState<ImageQuizScreen>
               validQuestionIds.add(questionId);
               continue;
             }
-          } else if (q.type != LevelQuestionType.image &&
+          } else if (!q!.isImageTemplate &&
               (q.convoData != null ||
                   q.convo2Data != null ||
                   q.appearDisappearData != null ||
@@ -673,7 +664,7 @@ class _ImageQuizScreenState extends ConsumerState<ImageQuizScreen>
         if (convoByQuestionId.containsKey(id)) continue;
         final rq = reminderImageQuestionById[id];
         if (rq != null) {
-          if (rq.type == LevelQuestionType.image &&
+          if (rq.isImageTemplate &&
               _isMonsterEligibleImageTemplate(rq.template)) {
             monsterEligibleCount++;
           }
@@ -759,27 +750,10 @@ class _ImageQuizScreenState extends ConsumerState<ImageQuizScreen>
 
   // ── Timer ─────────────────────────────────────────────────────────────────
 
-  /// Returns the timer duration for the current question: per-question override
-  /// from `timer_seconds` in the question JSON, or the global config value.
+  /// Returns the timer duration for the current question: level-wide override
+  /// from `timer_seconds` at the root of `questions.json`, or the global config value.
   int _timerSecondsForCurrentQuestion() {
-    // Unified mode
-    if (_allQuestions.isNotEmpty && _currentIndex < _allQuestions.length) {
-      final override = _allQuestions[_currentIndex].timerSecondsOverride;
-      if (override != null) return override;
-    }
-    // Legacy mode (image-only levels loaded via _configImageQuestions)
-    if (_configImageQuestions != null &&
-        _currentIndex < _configImageQuestions!.length) {
-      final override = _configImageQuestions![_currentIndex].timerSecondsOverride;
-      if (override != null) return override;
-    }
-    // Reminder mode
-    if (_isReminder && _currentQuestionId != null) {
-      final override =
-          _reminderImageQuestionsById[_currentQuestionId!]?.timerSecondsOverride;
-      if (override != null) return override;
-    }
-    return _config.imageQuizTimerSeconds;
+    return _levelTimerSeconds ?? _config.imageQuizTimerSeconds;
   }
 
   /// Whether the current question uses the monster lane and counts wrongs toward monster pressure.
@@ -787,7 +761,7 @@ class _ImageQuizScreenState extends ConsumerState<ImageQuizScreen>
     if (_monsterEligibleQuestionCount <= 0) return false;
     if (_allQuestions.isNotEmpty && _currentIndex < _allQuestions.length) {
       final q = _allQuestions[_currentIndex];
-      if (q.type != LevelQuestionType.image) return false;
+      if (!q!.isImageTemplate) return false;
       return _isMonsterEligibleImageTemplate(q.template);
     }
     if (_isReminder && _currentQuestionId != null) {
@@ -809,10 +783,13 @@ class _ImageQuizScreenState extends ConsumerState<ImageQuizScreen>
   }
 
   bool get _showMonsterLaneForCurrentQuestion =>
-      _monsterEligibleQuestionCount > 0 && _currentQuestionIsMonsterEligible();
+      _kMonsterLaneEnabled &&
+      _monsterEligibleQuestionCount > 0 &&
+      _currentQuestionIsMonsterEligible();
 
   /// Restarts the pie countdown and monster idle loop for the current image question.
   void _startTimer() {
+    if (!_kMonsterLaneEnabled) return;
     _timerController
       ..reset()
       ..forward();
@@ -852,6 +829,7 @@ class _ImageQuizScreenState extends ConsumerState<ImageQuizScreen>
 
   /// Advances monster proximity, wind animation, and bubbles; step 4 triggers game over.
   void _recordWrongForMonster() {
+    if (!_kMonsterLaneEnabled) return;
     if (!_currentQuestionIsMonsterEligible()) return;
     _monsterEligibleWrongCount++;
     final newStep = _monsterStepFromEligibleWrongs(
@@ -947,15 +925,9 @@ class _ImageQuizScreenState extends ConsumerState<ImageQuizScreen>
     if (_allQuestions.isNotEmpty) {
       if (_currentIndex >= _allQuestions.length) return '';
       final q = _allQuestions[_currentIndex];
-      if (q.type == LevelQuestionType.image) {
+      if (q.isImageTemplate) {
         if (q.template == 'imageQuizTemplate-2') {
           return q.imageQuiz2Data!.correctAnswerStem;
-        }
-        if (q.template == 'imageQuizTemplate-3' && q.imageQuiz3Data != null) {
-          return q.imageQuiz3Data!.answer;
-        }
-        if (q.template == 'imageQuizTemplate-SpotDifference') {
-          return '__spot__';
         }
         if (q.imageData?.answer != null) return q.imageData!.answer!;
         final path = _currentIndex < _questionImagePaths.length ? _questionImagePaths[_currentIndex] : null;
@@ -989,7 +961,7 @@ class _ImageQuizScreenState extends ConsumerState<ImageQuizScreen>
     if (_allQuestions.isNotEmpty) {
       if (_currentIndex >= _allQuestions.length) return [];
       final q = _allQuestions[_currentIndex];
-      if (q.type != LevelQuestionType.image) {
+      if (!q!.isImageTemplate) {
         if (q.template != 'ConvoTemplate-1') return [];
         final ans = _convoAnswer(q);
         final dist = q.convoData!.distractors;
@@ -1000,13 +972,6 @@ class _ImageQuizScreenState extends ConsumerState<ImageQuizScreen>
       if (q.template == 'imageQuizTemplate-2' && q.imageQuiz2Data != null) {
         final d = q.imageQuiz2Data!;
         return ([d.correctAnswerStem, ...d.wrongAnswers]..shuffle(Random()));
-      }
-      if (q.template == 'imageQuizTemplate-3' && q.imageQuiz3Data != null) {
-        final d = q.imageQuiz3Data!;
-        return ([d.answer, ...d.distractors]..shuffle(Random()));
-      }
-      if (q.template == 'imageQuizTemplate-SpotDifference') {
-        return [];
       }
       final correct = _correctAnswer();
       if (q.imageData != null && q.imageData!.wrongAnswers.length == 3) {
@@ -1111,48 +1076,6 @@ class _ImageQuizScreenState extends ConsumerState<ImageQuizScreen>
     });
   }
 
-  /// Callback from [SpotDifferenceQuizBody]; SFX already played in the widget.
-  void _handleSpotImageOutcome(bool correct) {
-    if (_answerLocked) return;
-    if (_kTestAutoComplete) {
-      _correctCount = 100;
-      setState(() => _phase = _Phase.end);
-      return;
-    }
-    if (!_isConvoMode) _timerController.stop();
-    if (!correct) {
-      final questionId = _currentQuestionId;
-      if (_isReminder) {
-        if (questionId != null) _nextReviewQuestionIds.add(questionId);
-      } else if (questionId != null) {
-        ReminderProgressService.instance.recordWrongAnswer(questionId);
-      }
-      _recordWrongForMonster();
-    }
-    AchievementService.instance.recordAnswer(correct);
-    setState(() {
-      _answerLocked = true;
-      _selectedIndex = 0;
-      if (correct) {
-        _correctCount++;
-        _showNext = false;
-        _bubbleConversation = null;
-        Future.delayed(
-          Duration(
-            milliseconds:
-                (_autoAdvanceDelayForCurrentImageQuestion() * 1000).round(),
-          ),
-          () {
-            if (!mounted) return;
-            _goNext();
-          },
-        );
-      } else {
-        _showNext = true;
-      }
-    });
-  }
-
   /// Advances index or ends the run; handles debug short-quiz, reminder review pass, and per-question timers.
   void _goNext() {
     audio.stopQuestionAudio();
@@ -1218,7 +1141,7 @@ class _ImageQuizScreenState extends ConsumerState<ImageQuizScreen>
     });
     if (_allQuestions.isNotEmpty) {
       if (_currentIndex < _allQuestions.length &&
-          _allQuestions[_currentIndex].type == LevelQuestionType.image) {
+          _allQuestions[_currentIndex].isImageTemplate) {
         _timerController.duration = Duration(seconds: _timerSecondsForCurrentQuestion());
         _startTimer();
       }
@@ -1282,8 +1205,9 @@ class _ImageQuizScreenState extends ConsumerState<ImageQuizScreen>
     return 0;
   }
 
-  /// Diamonds shown on the end screen equal correct answers earned this session.
-  int _diamondsEarned() => _correctCount;
+  /// Diamonds shown on the end screen: only the improvement over the previous best (0 if no improvement).
+  int _diamondsEarned() =>
+      (_correctCount - _previousHighestDiamonds).clamp(0, _correctCount);
 
   /// Persists reminder completion or normal level progress, then pops [LevelCompletionResult] to the runner.
   Future<void> _onEndOk() async {
@@ -1479,16 +1403,6 @@ class _ImageQuizScreenState extends ConsumerState<ImageQuizScreen>
 
   /// Seconds to wait after a correct image answer before auto-calling [_goNext].
   double _autoAdvanceDelayForCurrentImageQuestion() {
-    final d2 = _currentImageQuiz2Data();
-    if (d2 != null) return d2.autoNextDelay;
-    if (_allQuestions.isNotEmpty &&
-        _currentIndex < _allQuestions.length) {
-      final q = _allQuestions[_currentIndex];
-      if (q.template == 'imageQuizTemplate-SpotDifference' &&
-          q.spotDiffData != null) {
-        return q.spotDiffData!.autoNextDelay;
-      }
-    }
     return _config.autoAdvanceDelaySeconds;
   }
 
@@ -1497,13 +1411,6 @@ class _ImageQuizScreenState extends ConsumerState<ImageQuizScreen>
     if (correct) {
       AchievementService.instance.recordAnswer(true);
       final delaySec = switch (q.template) {
-        'ConvoTemplate-AppearDisappear' =>
-          q.appearDisappearData!.autoNextDelay,
-        'ConvoTemplate-ClozeSequence' => q.clozeSequenceData!.autoNextDelay,
-        'ConvoTemplate-SentenceBuilder' =>
-          q.sentenceBuilderData!.autoNextDelay,
-        'ConvoTemplate-WordPairs' => q.wordPairsData!.autoNextDelay,
-        'ConvoTemplate-GrammarForm' => _config.autoAdvanceDelaySeconds,
         'ConvoTemplate-DialogueCompletion' => 0.0,
         _ => _config.autoAdvanceDelaySeconds,
       };
@@ -1546,15 +1453,6 @@ class _ImageQuizScreenState extends ConsumerState<ImageQuizScreen>
     final iq2 = d2;
     final paths4 = four;
     final q = _currentLevelQuestion;
-    final isT3 = q?.template == 'imageQuizTemplate-3' && q?.imageQuiz3Data != null;
-    final isSpot =
-        q?.template == 'imageQuizTemplate-SpotDifference' && q?.spotDiffData != null;
-    List<String>? spotPair;
-    if (isSpot == true &&
-        _currentIndex < _questionSpotDiffPaths.length) {
-      final pair = _questionSpotDiffPaths[_currentIndex];
-      if (pair.length == 2) spotPair = pair;
-    }
 
     return Column(
       children: [
@@ -1617,25 +1515,7 @@ class _ImageQuizScreenState extends ConsumerState<ImageQuizScreen>
               ),
             ),
           ),
-        ] else if (isSpot == true && spotPair != null && q != null)
-          Expanded(
-            flex: 1,
-            child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
-              child: SpotDifferenceQuizBody(
-                sentenceLine: q.spotDiffData!.answer.isNotEmpty
-                    ? 'Tap the ${q.spotDiffData!.answer} image'
-                    : '',
-                correctPath: spotPair[0],
-                wrongPath: spotPair[1],
-                onPlayCorrect: () =>
-                    audio.playCorrect(soundFxOn: soundFxOn),
-                onPlayWrong: () => audio.playWrong(soundFxOn: soundFxOn),
-                onOutcome: _handleSpotImageOutcome,
-              ),
-            ),
-          )
-        else
+        ] else
           Expanded(
             flex: 1,
             child: Center(
@@ -1859,8 +1739,6 @@ class _ImageQuizScreenState extends ConsumerState<ImageQuizScreen>
               }),
             ),
           )
-        else if (isSpot == true)
-          const SizedBox.shrink()
         else
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 16),
@@ -1889,13 +1767,13 @@ class _ImageQuizScreenState extends ConsumerState<ImageQuizScreen>
                         disabledForegroundColor: fgColor,
                         minimumSize: Size(
                           kMinTouchTarget,
-                          isT3 ? 56 : kMinTouchTarget,
+                          kMinTouchTarget,
                         ),
                       )
                     : ElevatedButton.styleFrom(
                         minimumSize: Size(
                           kMinTouchTarget,
-                          isT3 ? 56 : kMinTouchTarget,
+                          kMinTouchTarget,
                         ),
                         disabledBackgroundColor: Colors.grey.shade300,
                         disabledForegroundColor: Colors.grey.shade800,
@@ -1914,13 +1792,11 @@ class _ImageQuizScreenState extends ConsumerState<ImageQuizScreen>
                             },
                       style: buttonStyle,
                       child: Padding(
-                        padding: EdgeInsets.symmetric(
-                          vertical: isT3 ? 10 : 0,
-                        ),
+                        padding: const EdgeInsets.symmetric(vertical: 6),
                         child: Text(
-                          isT3 ? option : _capitalize(option),
+                          _capitalize(option),
                           textAlign: TextAlign.center,
-                          maxLines: isT3 ? 5 : 2,
+                          maxLines: 5,
                           overflow: TextOverflow.ellipsis,
                           style: fgColor != null
                               ? Theme.of(context).textTheme.titleMedium?.copyWith(
@@ -2201,6 +2077,22 @@ class _ImageQuizScreenState extends ConsumerState<ImageQuizScreen>
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.stretch,
                           children: [
+                            if (_resolvedClozeImagePath() != null) ...[
+                              Center(
+                                child: ClipRRect(
+                                  borderRadius: BorderRadius.circular(8),
+                                  child: Image.asset(
+                                    _resolvedClozeImagePath()!,
+                                    width: 72,
+                                    height: 72,
+                                    fit: BoxFit.cover,
+                                    errorBuilder: (_, __, ___) =>
+                                        const SizedBox(width: 72, height: 72),
+                                  ),
+                                ),
+                              ),
+                              const SizedBox(height: 8),
+                            ],
                             Expanded(
                               child: _buildCharactersRow(
                                 q.convoData!,
@@ -2341,6 +2233,7 @@ class _ImageQuizScreenState extends ConsumerState<ImageQuizScreen>
           answerTranslation: q.dialogueCompletionData!.answerTranslation,
           audio1Path: _audioAssetPathForRaw(q.audioFile1),
           audio2Path: _audioAssetPathForRaw(q.audioFile2),
+          resolvedImagePath: _resolvedClozeImagePath(),
           resolveAudioExists: _resolveAudioExists,
           onPlayQuestionAudio: (path) => audio.playQuestionAudio(path),
           onPlayCorrect: () =>

@@ -1,7 +1,5 @@
 import 'package:flutter/foundation.dart';
 
-/// Discriminator for a question row in unified level JSON.
-enum LevelQuestionType { image, vocab, grammar }
 
 /// Parsed `questionData` for [imageQuizTemplate-1].
 class ImageQuestionData {
@@ -9,7 +7,6 @@ class ImageQuestionData {
     required this.imageName,
     required this.wrongAnswers,
     this.answer,
-    this.timerSeconds,
   });
 
   final String imageName;
@@ -17,8 +14,6 @@ class ImageQuestionData {
   /// Optional override for the correct answer label shown in MCQ buttons.
   /// When null the image basename is used instead.
   final String? answer;
-  /// Per-question monster timer override in seconds. Null = use global config value.
-  final int? timerSeconds;
 }
 
 /// Parsed `questionData` for [imageQuizTemplate-2] (noun prompt + pick image).
@@ -27,9 +22,6 @@ class ImageQuizTemplate2Data {
     required this.imageName,
     required this.wrongAnswers,
     this.answer,
-    this.autoNextDelay = 1.0,
-    this.showCorrectOnWrong = false,
-    this.timerSeconds,
   });
 
   final String imageName;
@@ -41,11 +33,6 @@ class ImageQuizTemplate2Data {
   /// Stem identifying the correct choice in the shuffled grid (for scoring and option keys).
   String get correctAnswerStem =>
       (answer != null && answer!.isNotEmpty) ? answer! : imageName;
-  final double autoNextDelay;
-  /// Parsed from `show_correct_on_wrong` in JSON; reserved — the grid always highlights the correct tile green when locked (same as template-1).
-  final bool showCorrectOnWrong;
-  /// Per-question monster timer override in seconds. Null = use global config value.
-  final int? timerSeconds;
 }
 
 /// Parsed `questionData` for [ConvoTemplate-AppearDisappear].
@@ -54,14 +41,12 @@ class AppearDisappearQuestionData {
     required this.words,
     required this.distractors,
     this.displayDuration = 1.0,
-    this.autoNextDelay = 1.0,
     this.introPause = 2.0,
   });
 
   final List<String> words;
   final List<String> distractors;
   final double displayDuration;
-  final double autoNextDelay;
   /// Pause (seconds) with empty boxes before word reveal starts.
   final double introPause;
 }
@@ -73,8 +58,6 @@ class ClozeSequenceQuestionData {
     required this.answers,
     required this.distractors,
     this.imageName,
-    this.wordsAllTogether = false,
-    this.autoNextDelay = 1.0,
   });
 
   /// Localized sentence map. English value uses 2+ underscores as blank markers (e.g. `_____`).
@@ -83,9 +66,6 @@ class ClozeSequenceQuestionData {
   final List<String> distractors;
   /// Optional image basename under the level folder. Null = no image.
   final String? imageName;
-  /// When true, all sentence words appear immediately; when false, words stream in left-to-right.
-  final bool wordsAllTogether;
-  final double autoNextDelay;
 }
 
 /// Parsed `questionData` for [ConvoTemplate-1] (vocabulary or grammar).
@@ -99,6 +79,7 @@ class ConvoQuestionData {
     required this.distractors,
     this.line1Translation,
     this.line2Translation,
+    this.imageName,
   });
 
   final String character1;
@@ -109,6 +90,8 @@ class ConvoQuestionData {
   final List<String> distractors;
   final Map<String, String>? line1Translation;
   final Map<String, String>? line2Translation;
+  /// Optional image basename (no extension) under the level folder.
+  final String? imageName;
 }
 
 /// Parsed `questionData` for [ConvoTemplate-2] (optional hero image + cloze sentence).
@@ -131,13 +114,11 @@ class ConvoTemplate2QuestionData {
 class SentenceBuilderQuestionData {
   const SentenceBuilderQuestionData({
     required this.correctOrder,
-    this.autoNextDelay = 1.0,
     this.translation,
   });
 
   /// Target sentence token sequence (left-to-right).
   final List<String> correctOrder;
-  final double autoNextDelay;
   final Map<String, String>? translation;
 }
 
@@ -182,51 +163,9 @@ class WordPairItem {
 
 /// [ConvoTemplate-WordPairs]: 3–4 pairs; UI scrambles the right column.
 class WordPairsQuestionData {
-  const WordPairsQuestionData({
-    required this.pairs,
-    this.autoNextDelay = 1.0,
-  });
+  const WordPairsQuestionData({required this.pairs});
 
   final List<WordPairItem> pairs;
-  final double autoNextDelay;
-}
-
-/// [imageQuizTemplate-3]: hero image + four full-sentence options.
-class ImageQuizTemplate3Data {
-  const ImageQuizTemplate3Data({
-    required this.imageName,
-    required this.answer,
-    required this.distractors,
-    this.distractorType,
-    this.timerSeconds,
-  });
-
-  final String imageName;
-  final String answer;
-  final List<String> distractors;
-  /// Optional: `grammar` | `meaning` | `tense` — reserved for future use.
-  final String? distractorType;
-  /// Per-question monster timer override in seconds. Null = use global config value.
-  final int? timerSeconds;
-}
-
-/// [imageQuizTemplate-SpotDifference]: two images; header uses `title_spot_difference` only.
-class SpotDifferenceQuestionData {
-  const SpotDifferenceQuestionData({
-    required this.correctImage,
-    required this.wrongImage,
-    required this.answer,
-    this.autoNextDelay = 1.0,
-    this.timerSeconds,
-  });
-
-  final String correctImage;
-  final String wrongImage;
-  /// Label shown at the top as "Tap the <answer>".
-  final String answer;
-  final double autoNextDelay;
-  /// Per-question monster timer override in seconds. Null = use global config value.
-  final int? timerSeconds;
 }
 
 /// [ConvoTemplate-GrammarForm]: English cloze sentence + four word options.
@@ -254,6 +193,7 @@ class DialogueCompletionQuestionData {
     required this.distractors,
     this.line1Translation,
     this.answerTranslation,
+    this.imageName,
   });
 
   final String character1;
@@ -263,6 +203,8 @@ class DialogueCompletionQuestionData {
   final List<String> distractors;
   final Map<String, String>? line1Translation;
   final Map<String, String>? answerTranslation;
+  /// Optional image basename (no extension) under the level folder.
+  final String? imageName;
 }
 
 /// One entry in `levelQuestions`.
@@ -272,12 +214,9 @@ class LevelQuestion {
     this.audioFile,
     this.audioFile1,
     this.audioFile2,
-    required this.type,
     required this.template,
     this.imageData,
     this.imageQuiz2Data,
-    this.imageQuiz3Data,
-    this.spotDiffData,
     this.convoData,
     this.convo2Data,
     this.appearDisappearData,
@@ -295,19 +234,9 @@ class LevelQuestion {
   final String? audioFile1;
   /// [ConvoTemplate-DialogueCompletion]: correct-answer audio (top-level JSON).
   final String? audioFile2;
-  final LevelQuestionType type;
   final String template;
   final ImageQuestionData? imageData;
-
-  /// Per-question monster timer override, or null to use the global config value.
-  int? get timerSecondsOverride =>
-      imageData?.timerSeconds ??
-      imageQuiz2Data?.timerSeconds ??
-      imageQuiz3Data?.timerSeconds ??
-      spotDiffData?.timerSeconds;
   final ImageQuizTemplate2Data? imageQuiz2Data;
-  final ImageQuizTemplate3Data? imageQuiz3Data;
-  final SpotDifferenceQuestionData? spotDiffData;
   final ConvoQuestionData? convoData;
   final ConvoTemplate2QuestionData? convo2Data;
   final AppearDisappearQuestionData? appearDisappearData;
@@ -319,27 +248,19 @@ class LevelQuestion {
 
   /// Top-level `translation` map for [ConvoTemplate-AppearDisappear] only (sibling to `questionData` in JSON).
   final Map<String, String>? appearDisappearTranslation;
+
+  /// True when this question uses an image-mode template (imageQuizTemplate-*).
+  bool get isImageTemplate => template.startsWith('imageQuizTemplate');
 }
 
 /// Full level definition from `assets/quiz-data/levels/{iconImageName}.json`.
 class LevelConfig {
-  const LevelConfig({required this.questions});
+  const LevelConfig({required this.questions, this.timerSeconds});
 
   final List<LevelQuestion> questions;
+  /// Level-wide monster timer override (seconds). Null = use global `imageQuizTimerSeconds` from `game_config.json`.
+  final int? timerSeconds;
 
-  /// Maps JSON `type` string to [LevelQuestionType] or throws if unknown.
-  static LevelQuestionType _parseType(String raw) {
-    switch (raw) {
-      case 'image':
-        return LevelQuestionType.image;
-      case 'vocab':
-        return LevelQuestionType.vocab;
-      case 'grammar':
-        return LevelQuestionType.grammar;
-      default:
-        throw FormatException('Unknown question type: $raw');
-    }
-  }
 
   /// Coerces a JSON object into `Map<String,String>` for localized line maps.
   static Map<String, String> _stringMap(dynamic value) {
@@ -359,9 +280,11 @@ class LevelConfig {
   }
 
   /// Validates and builds [ImageQuestionData] for `imageQuizTemplate-1` rows (exactly three wrong answers).
+  /// Accepts `wrongAnswers` or `distractors` (the latter is used by the former imageQuizTemplate-3 JSON).
   static ImageQuestionData _parseImageData(Map<String, dynamic> data) {
     final imageName = data['imageName'] as String? ?? '';
-    final wrong = (data['wrongAnswers'] as List<dynamic>? ?? [])
+    final wrongRaw = data['wrongAnswers'] ?? data['distractors'];
+    final wrong = (wrongRaw as List<dynamic>? ?? [])
         .map((e) => e.toString())
         .toList();
     assert(() {
@@ -381,7 +304,6 @@ class LevelConfig {
       imageName: imageName,
       wrongAnswers: wrong,
       answer: data['answer'] as String?,
-      timerSeconds: (data['timer_seconds'] as num?)?.toInt(),
     );
   }
 
@@ -400,9 +322,6 @@ class LevelConfig {
       imageName: imageName,
       wrongAnswers: wrong,
       answer: data['answer'] as String?,
-      autoNextDelay: (data['auto_next_delay'] as num?)?.toDouble() ?? 1.0,
-      showCorrectOnWrong: data['show_correct_on_wrong'] as bool? ?? false,
-      timerSeconds: (data['timer_seconds'] as num?)?.toInt(),
     );
   }
 
@@ -442,7 +361,6 @@ class LevelConfig {
       words: words,
       distractors: distractors,
       displayDuration: (data['display_duration'] as num?)?.toDouble() ?? 1.0,
-      autoNextDelay: (data['auto_next_delay'] as num?)?.toDouble() ?? 1.0,
       introPause: (data['intro_pause'] as num?)?.toDouble() ?? 2.0,
     );
   }
@@ -484,8 +402,6 @@ class LevelConfig {
       answers: answers,
       distractors: distractors,
       imageName: imageName,
-      wordsAllTogether: data['words_all_together'] as bool? ?? false,
-      autoNextDelay: (data['auto_next_delay'] as num?)?.toDouble() ?? 1.0,
     );
   }
 
@@ -499,13 +415,15 @@ class LevelConfig {
       answers: [c2.answer],
       distractors: c2.distractors,
       imageName: c2.imageName,
-      wordsAllTogether: true, // ConvoTemplate-2 never streamed
-      autoNextDelay: 1.0,
     );
   }
 
   /// Builds two-character dialogue data plus answer and distractors for ConvoTemplate-1.
   static ConvoQuestionData _parseConvoData(Map<String, dynamic> data) {
+    final rawImageName = data['image_file_name'];
+    final String? imageName = rawImageName is String && rawImageName.trim().isNotEmpty
+        ? rawImageName.trim()
+        : null;
     return ConvoQuestionData(
       character1: data['character1'] as String? ?? '',
       character2: data['character2'] as String? ?? '',
@@ -517,6 +435,7 @@ class LevelConfig {
           .toList(),
       line1Translation: _stringMapOrNull(data['line1_translation']),
       line2Translation: _stringMapOrNull(data['line2_translation']),
+      imageName: imageName,
     );
   }
 
@@ -554,7 +473,6 @@ class LevelConfig {
     }
     return SentenceBuilderQuestionData(
       correctOrder: correctOrder,
-      autoNextDelay: (data['auto_next_delay'] as num?)?.toDouble() ?? 1.0,
       translation: _stringMapOrNull(data['translation']),
     );
   }
@@ -587,43 +505,7 @@ class LevelConfig {
         'ConvoTemplate-WordPairs expects 3–4 pairs, got ${pairs.length}',
       );
     }
-    return WordPairsQuestionData(
-      pairs: pairs,
-      autoNextDelay: (data['auto_next_delay'] as num?)?.toDouble() ?? 1.0,
-    );
-  }
-
-  /// Parses [imageQuizTemplate-3]: one correct sentence + three distractors.
-  static ImageQuizTemplate3Data _parseImageQuiz3(Map<String, dynamic> data) {
-    final distractors = (data['distractors'] as List<dynamic>? ?? [])
-        .map((e) => e.toString())
-        .toList();
-    if (distractors.length != 3) {
-      throw FormatException(
-        'imageQuizTemplate-3 must have exactly 3 distractors (got ${distractors.length})',
-      );
-    }
-    final dt = data['distractor_type']?.toString();
-    return ImageQuizTemplate3Data(
-      imageName: data['imageName'] as String? ?? '',
-      answer: data['answer'] as String? ?? '',
-      distractors: distractors,
-      distractorType: dt,
-      timerSeconds: (data['timer_seconds'] as num?)?.toInt(),
-    );
-  }
-
-  /// Parses [imageQuizTemplate-SpotDifference].
-  static SpotDifferenceQuestionData _parseSpotDifference(
-    Map<String, dynamic> data,
-  ) {
-    return SpotDifferenceQuestionData(
-      correctImage: data['correctImage'] as String? ?? '',
-      wrongImage: data['wrongImage'] as String? ?? '',
-      answer: data['answer'] as String? ?? '',
-      autoNextDelay: (data['auto_next_delay'] as num?)?.toDouble() ?? 1.0,
-      timerSeconds: (data['timer_seconds'] as num?)?.toInt(),
-    );
+    return WordPairsQuestionData(pairs: pairs);
   }
 
   /// Parses [ConvoTemplate-GrammarForm]: English sentence with blank + four options.
@@ -667,6 +549,10 @@ class LevelConfig {
         'ConvoTemplate-DialogueCompletion must have exactly 3 distractors',
       );
     }
+    final rawImageName = data['image_file_name'];
+    final String? imageName = rawImageName is String && rawImageName.trim().isNotEmpty
+        ? rawImageName.trim()
+        : null;
     return DialogueCompletionQuestionData(
       character1: data['character1'] as String? ?? '',
       character2: data['character2'] as String? ?? '',
@@ -675,12 +561,12 @@ class LevelConfig {
       distractors: distractors,
       line1Translation: _stringMapOrNull(data['line1_translation']),
       answerTranslation: _stringMapOrNull(data['answer_translation']),
+      imageName: imageName,
     );
   }
 
   /// Dispatches one `levelQuestions[]` element to the correct parser based on `template`.
   static LevelQuestion _parseQuestion(Map<String, dynamic> json) {
-    final type = _parseType(json['type'] as String? ?? '');
     final template = json['template'] as String? ?? '';
     final qd = json['questionData'];
     if (qd is! Map<String, dynamic>) {
@@ -688,8 +574,6 @@ class LevelConfig {
     }
     ImageQuestionData? imageData;
     ImageQuizTemplate2Data? imageQuiz2Data;
-    ImageQuizTemplate3Data? imageQuiz3Data;
-    SpotDifferenceQuestionData? spotDiffData;
     ConvoQuestionData? convoData;
     ConvoTemplate2QuestionData? convo2Data;
     AppearDisappearQuestionData? appearDisappearData;
@@ -707,10 +591,7 @@ class LevelConfig {
         break;
       case 'imageQuizTemplate-3':
       case 'imageQuizTemplate-SentenceChoice':
-        imageQuiz3Data = _parseImageQuiz3(qd);
-        break;
-      case 'imageQuizTemplate-SpotDifference':
-        spotDiffData = _parseSpotDifference(qd);
+        imageData = _parseImageData(qd);
         break;
       case 'ConvoTemplate-1':
         convoData = _parseConvoData(qd);
@@ -741,7 +622,8 @@ class LevelConfig {
         throw FormatException('Unknown template: $template');
     }
     final normalizedTemplate = switch (template) {
-      'imageQuizTemplate-SentenceChoice' => 'imageQuizTemplate-3',
+      'imageQuizTemplate-3' => 'imageQuizTemplate-1',
+      'imageQuizTemplate-SentenceChoice' => 'imageQuizTemplate-1',
       'ConvoTemplate-2' => 'ConvoTemplate-ClozeSequence',
       _ => template,
     };
@@ -753,12 +635,9 @@ class LevelConfig {
       audioFile: json['audio_file'] as String?,
       audioFile1: json['audio_file1'] as String?,
       audioFile2: json['audio_file2'] as String?,
-      type: type,
       template: normalizedTemplate,
       imageData: imageData,
       imageQuiz2Data: imageQuiz2Data,
-      imageQuiz3Data: imageQuiz3Data,
-      spotDiffData: spotDiffData,
       convoData: convoData,
       convo2Data: convo2Data,
       appearDisappearData: appearDisappearData,
@@ -779,6 +658,9 @@ class LevelConfig {
       if (e is! Map<String, dynamic>) continue;
       questions.add(_parseQuestion(e));
     }
-    return LevelConfig(questions: questions);
+    return LevelConfig(
+      questions: questions,
+      timerSeconds: (json['timer_seconds'] as num?)?.toInt(),
+    );
   }
 }

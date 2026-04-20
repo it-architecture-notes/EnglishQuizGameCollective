@@ -54,6 +54,8 @@ flutter:
     - assets/quiz-data/levels/travel-3/
     - assets/quiz-data/levels/in-the-bathroom/
     - assets/quiz-data/levels/bathroom-2/
+    - assets/quiz-data/levels/basic-sentences/
+    - assets/quiz-data/levels/colors-1/
     - assets/quiz-data/levels/bedroom/
     - assets/quiz-data/levels/bedroom-2/
     - assets/quiz-data/levels/body-parts/

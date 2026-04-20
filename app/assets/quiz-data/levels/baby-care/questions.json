@@ -1,7 +1,6 @@
 {
   "levelQuestions": [
     {
-      "type": "image",
       "template": "imageQuizTemplate-1",
       "questionData": {
         "imageName": "baby-crib",
@@ -13,7 +12,6 @@
       }
     },
     {
-      "type": "image",
       "template": "imageQuizTemplate-1",
       "questionData": {
         "imageName": "diaper",
@@ -25,7 +23,6 @@
       }
     },
     {
-      "type": "image",
       "template": "imageQuizTemplate-1",
       "questionData": {
         "imageName": "feeder",
@@ -37,7 +34,6 @@
       }
     },
     {
-      "type": "image",
       "template": "imageQuizTemplate-1",
       "questionData": {
         "imageName": "high-chair",
@@ -49,7 +45,6 @@
       }
     },
     {
-      "type": "image",
       "template": "imageQuizTemplate-1",
       "questionData": {
         "imageName": "onesie",
@@ -61,7 +56,6 @@
       }
     },
     {
-      "type": "image",
       "template": "imageQuizTemplate-1",
       "questionData": {
         "imageName": "bolt-and-nuts",
@@ -73,7 +67,6 @@
       }
     },
     {
-      "type": "image",
       "template": "imageQuizTemplate-1",
       "questionData": {
         "imageName": "bucket",
@@ -85,7 +78,6 @@
       }
     },
     {
-      "type": "image",
       "template": "imageQuizTemplate-1",
       "questionData": {
         "imageName": "drill",
@@ -97,7 +89,6 @@
       }
     },
     {
-      "type": "image",
       "template": "imageQuizTemplate-1",
       "questionData": {
         "imageName": "dust",
@@ -109,7 +100,6 @@
       }
     },
     {
-      "type": "image",
       "template": "imageQuizTemplate-1",
       "questionData": {
         "imageName": "extension-cord",
@@ -121,11 +111,11 @@
       }
     },
     {
-      "type": "vocab",
+      
       "template": "ConvoTemplate-1",
       "questionData": {
-        "character1": "mike",
-        "character2": "sarah",
+        "character1": "lily",
+        "character2": "james",
         "line1": {
           "en": "It's time to _____ the baby — she is hungry.",
           "tr": "Bebeği _____ vakti geldi — acıkmış.",
@@ -145,11 +135,11 @@
       }
     },
     {
-      "type": "vocab",
+      
       "template": "ConvoTemplate-1",
       "questionData": {
-        "character1": "mike",
-        "character2": "sarah",
+        "character1": "omar",
+        "character2": "maya",
         "line1": {
           "en": "Can you _____ the baby's room before the guests arrive?",
           "tr": "Misafirler gelmeden bebeğin odasını _____ edebilir misin?",
@@ -169,11 +159,10 @@
       }
     },
     {
-      "type": "grammar",
       "template": "ConvoTemplate-1",
       "questionData": {
-        "character1": "mike",
-        "character2": "sarah",
+        "character1": "sophie",
+        "character2": "ethan",
         "line1": {
           "en": "You _____ keep the extension cord away from the baby.",
           "tr": "Uzatma kablosunu bebekten uzak tutmalısın.",
@@ -193,7 +182,7 @@
       }
     },
     {
-      "type": "vocab",
+      
       "template": "ConvoTemplate-2",
       "questionData": {
         "imageName": "baby-crib",
@@ -211,7 +200,7 @@
       }
     },
     {
-      "type": "vocab",
+      
       "template": "ConvoTemplate-2",
       "questionData": {
         "imageName": "feeder",

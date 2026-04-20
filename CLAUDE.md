@@ -40,12 +40,9 @@ All templates are dispatched from `image_quiz_screen.dart`. Each question row in
 **Image templates** (rendered inline in `_buildImagePlaying`):
 | Template | Description |
 |----------|-------------|
-| `imageQuizTemplate-1` | Hero image + 4 word buttons. Optional `"answer"` overrides the correct label; optional `"timer_seconds"` overrides timer. |
+| `imageQuizTemplate-1` | Hero image + 4 text buttons (words or sentences). Optional `"answer"` overrides correct label; optional `"timer_seconds"` overrides timer. JSON may use `wrongAnswers` or `distractors` for the three wrong options. |
 | `imageQuizTemplate-2` | Noun label + 4 image tiles. |
-| `imageQuizTemplate-3` | Hero image + 4 full-sentence buttons. |
-| `imageQuizTemplate-SpotDifference` | Two side-by-side images; player taps the correct one. |
-
-Monster attack animation applies **only** to `imageQuizTemplate-1`, `imageQuizTemplate-2`, and `imageQuizTemplate-SpotDifference`. For levels with ≤6 such questions advance every wrong answer; >6 use a 1,2,1,2 wrong-answer pattern.
+Monster attack animation applies **only** to `imageQuizTemplate-1` and `imageQuizTemplate-2`. For levels with ≤6 such questions advance every wrong answer; >6 use a 1,2,1,2 wrong-answer pattern.
 
 **Convo/interactive templates** (each has a dedicated widget in `app/lib/screens/quiz_templates/`):
 | Template | Widget file |
@@ -59,7 +56,7 @@ Monster attack animation applies **only** to `imageQuizTemplate-1`, `imageQuizTe
 | `ConvoTemplate-GrammarForm` | `grammar_form_quiz_body.dart` |
 | `ConvoTemplate-DialogueCompletion` | `dialogue_completion_quiz_body.dart` |
 
-**Translation:** The global Translate toggle is removed. Per-question `translation` / `line1_translation` / `line2_translation` / `answer_translation` maps in JSON show auxiliary text automatically when `userLanguage != 'en'`. `ConvoTemplate-AppearDisappear` keeps its `translation` at the top level of the question object (sibling to `questionData`). ClozeSequence, WordPairs, Simon, and SpotDifference have no translation support.
+**Translation:** The global Translate toggle is removed. Per-question `translation` / `line1_translation` / `line2_translation` / `answer_translation` maps in JSON show auxiliary text automatically when `userLanguage != 'en'`. `ConvoTemplate-AppearDisappear` keeps its `translation` at the top level of the question object (sibling to `questionData`). ClozeSequence, WordPairs, and Simon have no translation support.
 
 ## Asset Layout (current)
 

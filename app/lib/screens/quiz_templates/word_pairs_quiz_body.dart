@@ -4,10 +4,9 @@ import 'package:flutter/material.dart';
 
 import '../../models/level_config.dart';
 
-/// Tap right column to select (blue), then tap left column to pair.
-/// Correct match → both tiles slide to the matched section at the bottom.
-/// Wrong match → wrong left turns red, selected right turns red, correct right
-/// turns green; nothing moves to the bottom section.
+/// Tap any tile to select it (blue), then tap its match on the other side.
+/// Correct → both move to the matched section. Wrong → both tapped tiles turn
+/// red, the correct partner turns green.
 class WordPairsQuizBody extends StatefulWidget {
   const WordPairsQuizBody({
     super.key,
@@ -34,14 +33,18 @@ class _WordPairsQuizBodyState extends State<WordPairsQuizBody> {
 
   late List<String> _activeLeft;
   late List<String> _activeRight;
-  final List<(String, String)> _matchedPairs = []; // (leftWord, rightWord)
+  final List<(String, String)> _matchedPairs = [];
 
-  String? _selectedRightWord;
+  /// Currently selected word, or null.
+  String? _selectedWord;
+  /// True when the selected word is from the left column.
+  bool _selectedIsLeft = false;
 
   bool _failed = false;
-  String? _failedLeftWord;
-  String? _failedRightWord;
-  String? _correctLeftWord; // correct left for the selected right word → shown green
+  String? _redLeft;
+  String? _redRight;
+  String? _greenLeft;
+  String? _greenRight;
 
   @override
   void initState() {
@@ -52,41 +55,68 @@ class _WordPairsQuizBodyState extends State<WordPairsQuizBody> {
     };
     _reverseMatch = {for (final e in _match.entries) e.value: e.key};
     _activeLeft = widget.data.pairs.map((p) => p.left).toList();
-    _activeRight = _match.values.toList()
-      ..shuffle(Random());
+    _activeRight = _match.values.toList()..shuffle(Random());
   }
 
-  void _onRightTap(String word) {
+  void _onTap(String word, bool isLeft) {
     if (_failed) return;
-    setState(() {
-      _selectedRightWord = (_selectedRightWord == word) ? null : word;
-    });
-  }
 
-  void _onLeftTap(String leftWord) {
-    if (_failed) return;
-    final selected = _selectedRightWord;
-    if (selected == null) return;
+    // Nothing selected yet → select this tile.
+    if (_selectedWord == null) {
+      setState(() {
+        _selectedWord = word;
+        _selectedIsLeft = isLeft;
+      });
+      return;
+    }
 
-    final expectedRight = _match[leftWord]!;
-    if (selected == expectedRight) {
+    // Same tile tapped again → deselect.
+    if (_selectedWord == word && _selectedIsLeft == isLeft) {
+      setState(() => _selectedWord = null);
+      return;
+    }
+
+    // Same side tapped → switch selection to new tile.
+    if (_selectedIsLeft == isLeft) {
+      setState(() => _selectedWord = word);
+      return;
+    }
+
+    // Other side tapped → attempt match.
+    final sel = _selectedWord!;
+    final selIsLeft = _selectedIsLeft;
+
+    final leftWord = selIsLeft ? sel : word;
+    final rightWord = selIsLeft ? word : sel;
+
+    if (_match[leftWord] == rightWord) {
+      // Correct pair.
       setState(() {
         _activeLeft.remove(leftWord);
-        _activeRight.remove(selected);
-        _matchedPairs.add((leftWord, selected));
-        _selectedRightWord = null;
+        _activeRight.remove(rightWord);
+        _matchedPairs.add((leftWord, rightWord));
+        _selectedWord = null;
       });
       widget.onPlayCorrect();
       if (_activeLeft.isEmpty) {
         widget.onOutcome(true);
       }
     } else {
+      // Wrong pair — both tapped tiles red, correct partner green.
       setState(() {
         _failed = true;
-        _failedLeftWord = leftWord;
-        _failedRightWord = selected;
-        _correctLeftWord = _reverseMatch[selected];
-        _selectedRightWord = null;
+        _selectedWord = null;
+        _redLeft = leftWord;
+        _redRight = rightWord;
+        if (selIsLeft) {
+          // Selected left, tapped wrong right → show correct right green.
+          _greenRight = _match[sel];
+          _greenLeft = null;
+        } else {
+          // Selected right, tapped wrong left → show correct left green.
+          _greenLeft = _reverseMatch[sel];
+          _greenRight = null;
+        }
       });
       widget.onPlayWrong();
       widget.onOutcome(false);
@@ -145,21 +175,24 @@ class _WordPairsQuizBodyState extends State<WordPairsQuizBody> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: _activeLeft.map((word) {
-                  final isWrong = _failed && word == _failedLeftWord;
-                  final isCorrect = _failed && word == _correctLeftWord;
+                  final isSelected =
+                      !_failed && _selectedWord == word && _selectedIsLeft;
+                  final isRed = _failed && word == _redLeft;
+                  final isGreen = _failed && word == _greenLeft;
                   return _activeTile(
                     text: word,
-                    bgColor: isCorrect
+                    bgColor: isGreen
                         ? Colors.green.shade100
-                        : isWrong
+                        : isRed
                             ? Colors.red.shade100
                             : null,
-                    textColor: isCorrect
+                    textColor: isGreen
                         ? Colors.green.shade900
-                        : isWrong
+                        : isRed
                             ? Colors.red.shade900
                             : null,
-                    onTap: !_failed ? () => _onLeftTap(word) : null,
+                    selected: isSelected,
+                    onTap: !_failed ? () => _onTap(word, true) : null,
                   );
                 }).toList(),
               ),
@@ -170,14 +203,24 @@ class _WordPairsQuizBodyState extends State<WordPairsQuizBody> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: _activeRight.map((word) {
-                  final isSelected = !_failed && _selectedRightWord == word;
-                  final isWrong = _failed && word == _failedRightWord;
+                  final isSelected =
+                      !_failed && _selectedWord == word && !_selectedIsLeft;
+                  final isRed = _failed && word == _redRight;
+                  final isGreen = _failed && word == _greenRight;
                   return _activeTile(
                     text: word,
-                    bgColor: isWrong ? Colors.red.shade100 : null,
-                    textColor: isWrong ? Colors.red.shade900 : null,
+                    bgColor: isGreen
+                        ? Colors.green.shade100
+                        : isRed
+                            ? Colors.red.shade100
+                            : null,
+                    textColor: isGreen
+                        ? Colors.green.shade900
+                        : isRed
+                            ? Colors.red.shade900
+                            : null,
                     selected: isSelected,
-                    onTap: !_failed ? () => _onRightTap(word) : null,
+                    onTap: !_failed ? () => _onTap(word, false) : null,
                   );
                 }).toList(),
               ),

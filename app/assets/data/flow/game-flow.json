@@ -6,6 +6,16 @@
   },
   {
     "mainLevel": 1,
+    "iconImageName": "basic-sentences",
+    "title": "Basic Sentences-1"
+  },
+  {
+    "mainLevel": 1,
+    "iconImageName": "colors-1",
+    "title": "Colors - Image only"
+  },
+  {
+    "mainLevel": 1,
     "iconImageName": "waking-up",
     "title": "Waking Up"
   },

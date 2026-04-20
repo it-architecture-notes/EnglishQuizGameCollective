@@ -27,33 +27,182 @@ Players progress through activity-based levels, earning stars and diamonds. The 
 
 ## Quiz Templates
 
-**Image templates** (rendered in `image_quiz_screen.dart`):
+### Global config (`app/assets/data/config/game_config.json`)
 
-| Template | Behaviour |
-|----------|-----------|
-| `imageQuizTemplate-1` | Hero image + 4 word buttons. Optional `"answer"` overrides the correct label. Monster-eligible. |
-| `imageQuizTemplate-2` | Noun label + 4 image tiles to pick from. Monster-eligible. |
-| `imageQuizTemplate-3` | Hero image + 4 full-sentence buttons. |
-| `imageQuizTemplate-SpotDifference` | Two side-by-side images; tap the correct one. Monster-eligible. |
+| Key | Default | Description |
+|-----|---------|-------------|
+| `imageQuizTimerSeconds` | `5` | Monster timer duration (seconds) for image-template questions. |
+| `autoAdvanceDelaySeconds` | `1.5` | Seconds to wait after a correct answer before auto-advancing to the next question. Applies to all templates. |
+| `showCorrectOnWrong` | `false` | Whether to highlight the correct tile when the player taps the wrong one (imageQuizTemplate-2). |
 
-**Convo/interactive templates** (each in `app/lib/screens/quiz_templates/`):
+### Level-wide fields (`questions.json` root)
 
-| Template | Description |
-|----------|-------------|
-| `ConvoTemplate-1` | Two-character dialogue with a blank; 4 MCQ buttons. |
-| `ConvoTemplate-ClozeSequence` | Localized sentence with blank(s); word tiles in a horizontal train; optional streaming and image thumbnail. |
-| `ConvoTemplate-AppearDisappear` | Words flash one-by-one, then player recalls order from a shuffled grid. |
-| `ConvoTemplate-Simon` | Simon-says sequence: demo highlight → player repeats. |
-| `ConvoTemplate-SentenceBuilder` | Tap shuffled word tiles in the correct sentence order. |
-| `ConvoTemplate-WordPairs` | Match left-column words to scrambled right-column; correct pairs move to a bottom section. |
-| `ConvoTemplate-GrammarForm` | Cloze sentence + lemma hint; 4 word-form buttons. |
-| `ConvoTemplate-DialogueCompletion` | First speaker line shown; player picks the correct reply from 4 options. |
+| Field | Description |
+|-------|-------------|
+| `"timer_seconds"` | Optional. Level-wide monster timer (seconds). Overrides `imageQuizTimerSeconds` from `game_config.json`. Omit to use the global default. |
+| `"levelQuestions"` | Array of question objects. |
+
+### Per-question top-level fields
+
+Every question object has these top-level fields:
+
+| Field | Required | Description |
+|-------|----------|-------------|
+| `"template"` | ✓ | Template ID (see below); image vs convo mode is inferred from the name (`imageQuizTemplate-*` vs others) |
+| `"questionData"` | ✓ | Template-specific fields (see per-template tables) |
+| `"audio_file"` | optional | Audio basename (no extension) played when the question appears. Used by most templates. |
+| `"audio_file1"` | optional | DialogueCompletion only — audio for the question line |
+| `"audio_file2"` | optional | DialogueCompletion only — audio for the correct answer |
+
+---
+
+### Image Templates (rendered in `image_quiz_screen.dart`)
+
+#### `imageQuizTemplate-1` — hero image + text buttons
+**Monster-eligible:** yes
+
+| questionData field | Required | Description |
+|--------------------|----------|-------------|
+| `imageName` | ✓ | Asset basename (no extension) for the hero image |
+| `wrongAnswers` or `distractors` | ✓ | Array of exactly 3 wrong text options |
+| `answer` | optional | Overrides the correct label (defaults to `imageName`) |
+
+Answer options: 4 shuffled text buttons. Supports words, phrases, or full sentences.  
+Translation: none.  
+Legacy aliases: `imageQuizTemplate-3` and `imageQuizTemplate-SentenceChoice` both normalize to this template at parse time.
+
+---
+
+#### `imageQuizTemplate-2` — noun prompt + image grid
+**Monster-eligible:** yes
+
+| questionData field | Required | Description |
+|--------------------|----------|-------------|
+| `imageName` | ✓ | Asset basename for the correct image tile |
+| `wrongAnswers` | ✓ | Array of exactly 3 wrong image basenames |
+| `answer` | optional | Overrides the text prompt shown (defaults to `imageName`) |
+
+Answer options: 2×2 shuffled image grid.  
+Translation: none.
+
+---
+
+### Convo/Interactive Templates (each in `app/lib/screens/quiz_templates/`)
+
+#### `ConvoTemplate-1` — two-character dialogue + 4 MCQ buttons
+**Monster-eligible:** no
+
+| questionData field | Required | Description |
+|--------------------|----------|-------------|
+| `character1` | ✓ | Name of speaker 1 |
+| `character2` | ✓ | Name of speaker 2 |
+| `line1` | ✓ | Locale map `{"en":"..."}` — speaker 1's line |
+| `line2` | ✓ | Locale map with `___` blank — speaker 2's line |
+| `answer` | ✓ | Correct option (English string) |
+| `distractors` | ✓ | Array of exactly 3 wrong options |
+| `line1_translation` | optional | Locale map shown below line 1 for non-en users |
+| `line2_translation` | optional | Locale map shown below line 2 for non-en users |
+| `image_file_name` | optional | Asset basename for a 72×72 thumbnail above the dialogue |
+
+Answer options: 4 shuffled text buttons.
+
+---
+
+#### `ConvoTemplate-ClozeSequence` — sentence with blanks, fill by tapping tiles
+**Monster-eligible:** no
+
+| questionData field | Required | Description |
+|--------------------|----------|-------------|
+| `sentence` | ✓ | Locale map; `en` value must contain `_____` for each blank |
+| `answer` or `answers` | ✓ | Single string or array; count must equal number of blanks |
+| `distractors` | ✓ | Array of extra wrong word tiles |
+| `imageName` | optional | Asset basename for a 72×72 thumbnail (omit = no image) |
+
+Answer options: horizontal tile row. The full sentence (with numbered blanks) is shown as soon as the question appears; player taps to fill blank 1, then 2, … in order.  
+Translation: the `sentence` locale map provides the translated sentence directly.
+
+---
+
+#### `ConvoTemplate-AppearDisappear` — memorise words, then recall order
+**Monster-eligible:** no
+
+| questionData field | Required | Description |
+|--------------------|----------|-------------|
+| `words` | ✓ | String (space-split) or array — the words to memorise |
+| `distractors` | optional | Extra tiles to fill the grid (up to 9 total with target words) |
+| `display_duration` | optional | Legacy timing param (default 1.0) |
+
+Answer options: 3×3 shuffled tile grid.  
+Audio: `audio_file` (top-level) — plays while words are visible; words disappear 500 ms after audio ends.  
+Translation: `"translation"` locale map at the **top level** of the question object (sibling to `questionData`, not inside it).
+
+---
+
+#### `ConvoTemplate-SentenceBuilder` — unscramble the sentence
+**Monster-eligible:** no
+
+| questionData field | Required | Description |
+|--------------------|----------|-------------|
+| `correct_order` | ✓ | Space-split string or array — sentence tokens in correct order |
+| `translation` | optional | Locale map shown below for non-en users |
+
+Answer options: all tokens from `correct_order` shuffled into a tile Wrap (no extra distractors).  
+Translation: `translation` inside `questionData`.
+
+---
+
+#### `ConvoTemplate-WordPairs` — match English words to their translations
+**Monster-eligible:** no
+
+| questionData field | Required | Description |
+|--------------------|----------|-------------|
+| `english_words` | ✓ | Array of 3–4 English words/phrases (left column) |
+| `translations` | ✓ | Array of locale maps — same length as `english_words` |
+
+Answer options: two columns; either side can be tapped first (selected = blue). Correct pairs move to a green matched section; wrong pairs show red/green feedback.  
+Audio: not supported.  
+Translation: embedded in `translations` per pair (no separate `translation` field).
+
+---
+
+#### `ConvoTemplate-GrammarForm` — cloze sentence, pick the correct word form
+**Monster-eligible:** no
+
+| questionData field | Required | Description |
+|--------------------|----------|-------------|
+| `sentence` | ✓ | English string (or locale map — `en` used) with `___` blank |
+| `answer` | ✓ | Correct word/form |
+| `distractors` | ✓ | Array of exactly 3 wrong forms |
+| `translation` | optional | Locale map for the full sentence (shown when non-en) |
+
+Answer options: 4 shuffled text buttons.  
+Translation: `translation` inside `questionData`.
+
+---
+
+#### `ConvoTemplate-DialogueCompletion` — read the question, pick the correct reply
+**Monster-eligible:** no
+
+| questionData field | Required | Description |
+|--------------------|----------|-------------|
+| `character1` | ✓ | Name of the asking speaker |
+| `character2` | ✓ | Name of the replying speaker |
+| `line1` | ✓ | Locale map `{"en":"..."}` — question line shown to player |
+| `answer` | ✓ | Correct reply (English string) |
+| `distractors` | ✓ | Array of exactly 3 wrong reply options |
+| `line1_translation` | optional | Locale map for line 1 (shown when non-en) |
+| `answer_translation` | optional | Locale map for the correct answer (shown after answering) |
+| `image_file_name` | optional | Asset basename for a 72×72 thumbnail above the dialogue |
+
+Answer options: 4 shuffled full-sentence buttons.  
+Audio: `audio_file1` (question line) and `audio_file2` (correct answer) — both top-level.  
+Translation: `line1_translation` / `answer_translation` inside `questionData`.
 
 ---
 
 ## Monster System
 
-Monster attack animation applies to `imageQuizTemplate-1`, `imageQuizTemplate-2`, and `imageQuizTemplate-SpotDifference` only. The monster advances through 4 proximity steps toward game-over:
+Monster attack animation applies to `imageQuizTemplate-1` and `imageQuizTemplate-2` only. The monster advances through 4 proximity steps toward game-over:
 - ≤6 eligible questions in the level → advance every wrong answer (1-per-wrong)
 - >6 eligible questions → 1,2,1,2 wrong-answer pattern (cumulative thresholds: 1, 3, 4, 6)
 
@@ -66,7 +215,7 @@ The global Translate toggle is removed. Translations are configured per-question
 - `ConvoTemplate-1`: `"line1_translation"` / `"line2_translation"` inside `questionData`
 - `ConvoTemplate-DialogueCompletion`: `"line1_translation"` / `"answer_translation"` inside `questionData`
 - `ConvoTemplate-AppearDisappear`: `"translation"` at the top level of the question object (sibling to `questionData`)
-- No translation support: ClozeSequence, WordPairs, Simon, SpotDifference
+- No translation support: ClozeSequence, WordPairs, Simon
 
 ---
 

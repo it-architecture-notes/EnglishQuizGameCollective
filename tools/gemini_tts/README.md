@@ -98,7 +98,6 @@ Skipped templates:
 - `ConvoTemplate-WordPairs`
 - `imageQuizTemplate-1`
 - `imageQuizTemplate-3`
-- `imageQuizTemplate-SpotDifference`
 
 ## Reporting
 

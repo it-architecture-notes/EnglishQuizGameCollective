@@ -2,7 +2,7 @@
 
 High-level reference for **what each screen is for**, **how it is laid out**, and **what the player does**. Implementation lives mainly under `app/lib/screens/`; question payloads are defined in `app/lib/models/level_config.dart` and level JSON.
 
-**Template IDs vs runtime:** Some JSON `template` strings are **normalized** when parsed. For example, `ConvoTemplate-2` is converted into `ConvoTemplate-ClozeSequence` data and the stored `LevelQuestion.template` becomes `ConvoTemplate-ClozeSequence` (see `LevelConfig._parseQuestion` and `normalizedTemplate` in `level_config.dart`). `imageQuizTemplate-SentenceChoice` normalizes to `imageQuizTemplate-3`. Authoring can keep the legacy names; the app runs the unified branch.
+**Template IDs vs runtime:** Some JSON `template` strings are **normalized** when parsed. For example, `ConvoTemplate-2` is converted into `ConvoTemplate-ClozeSequence` data and the stored `LevelQuestion.template` becomes `ConvoTemplate-ClozeSequence` (see `LevelConfig._parseQuestion` and `normalizedTemplate` in `level_config.dart`). `imageQuizTemplate-3` and `imageQuizTemplate-SentenceChoice` both normalize to `imageQuizTemplate-1` — they share the same data model (`ImageQuestionData`) and rendering path; the JSON difference is `distractors` instead of `wrongAnswers` (both accepted). Authoring can keep legacy names; the app runs the unified branch.
 
 ---
 
@@ -49,7 +49,36 @@ Single scaffold for **image rounds**, **conversation rounds**, loading, **level 
 
 Header shows **Question N / M · title** (localized title per template, keys in `localization.json` such as `title_image_quiz`, `click_in_order`, etc.). Optional **timer** and **monster lane** with speech bubbles appear in image-play flows where configured.
 
-**Translations:** The global Translate toggle is removed. Optional per-question `translation` / `line1_translation` / `line2_translation` maps in JSON show auxiliary text below the English prompt when the app language is not `en`. **ConvoTemplate-AppearDisappear** may use a top-level `translation` on the question object (sibling to `questionData`). **ClozeSequence**, **WordPairs**, **Simon**, and **SpotDifference** do not use this optional translation layer.
+**Translations:** The global Translate toggle is removed. Optional per-question `translation` / `line1_translation` / `line2_translation` maps in JSON show auxiliary text below the English prompt when the app language is not `en`. **ConvoTemplate-AppearDisappear** may use a top-level `translation` on the question object (sibling to `questionData`). **ClozeSequence**, **WordPairs**, and **Simon** do not use this optional translation layer.
+
+---
+
+## Global config (`app/assets/data/config/game_config.json`)
+
+| Key | Default | Description |
+|-----|---------|-------------|
+| `imageQuizTimerSeconds` | `5` | Monster timer duration (seconds) for image-template questions. |
+| `autoAdvanceDelaySeconds` | `1.5` | Seconds to wait after a correct answer before auto-advancing. Applies to all templates. |
+| `showCorrectOnWrong` | `false` | Whether to highlight the correct tile on a wrong tap (imageQuizTemplate-2). |
+
+## Level-wide fields (`questions.json` root)
+
+| Field | Description |
+|-------|-------------|
+| `timer_seconds` | Optional. Level-wide monster timer (seconds) applied to all image-template questions. Overrides `imageQuizTimerSeconds` from `game_config.json`. Omit to use the global default. |
+| `levelQuestions` | Array of question objects. |
+
+## Common top-level question fields
+
+The `"template"` field is the only required discriminator. Image vs convo mode is inferred from the template name: any template starting with `imageQuizTemplate` is rendered in image mode; all others use the convo/interactive path. There is no `"type"` field.
+
+Every question object (regardless of template) may carry these **top-level** audio fields:
+
+| Field | Description |
+|-------|-------------|
+| `audio_file` | Basename (no extension) of the audio asset played when the question appears. Used by most templates. |
+| `audio_file1` | **DialogueCompletion only** — audio for the question line (line 1). |
+| `audio_file2` | **DialogueCompletion only** — audio for the correct answer. |
 
 ---
 
@@ -57,33 +86,39 @@ Header shows **Question N / M · title** (localized title per template, keys in 
 
 Rendered inside the **image playing** layout: hero or grid at top, then **four-tile MCQ row** or dedicated widget where noted.
 
-> **Per-question timer override:** Any image template can include `"timer_seconds": N` in its `questionData` JSON to override the global monster timer for that question only. Omitting the field falls back to `imageQuizTimerSeconds` in `game_config.json`.
+> **Timer:** Set `”timer_seconds”: N` at the **root level** of `questions.json` (sibling to `levelQuestions`) to apply a level-wide monster timer to all image-template questions. Omitting the field falls back to `imageQuizTimerSeconds` in `game_config.json`.
 
 ### `imageQuizTemplate-1`
 
-- **Purpose:** Vocabulary from a **single image** — pick the correct **word/phrase** among four.
-- **Design:** Constrained hero **image**; single row of **four answer chips** (shuffled); after a wrong pick, UI can lock with **green on correct** / **red on wrong** per project rules.
+- **Purpose:** Vocabulary or comprehension from a **single image** — pick the correct **word, phrase, or full sentence** among four.
+- **Design:** Constrained hero **image**; single column of **four answer buttons** (shuffled); after a wrong pick, UI locks with **green on correct** / **red on wrong**. Buttons support multi-line text for sentence-length answers.
 - **Player action:** Tap the option that matches the image.
+- **Monster-eligible:** yes
+- **Audio:** `audio_file` (top-level).
+- **Translation:** none.
+
+| questionData field | Required | Description |
+|--------------------|----------|-------------|
+| `imageName` | ✓ | Asset basename (no extension) for the hero image |
+| `wrongAnswers` or `distractors` | ✓ | Array of exactly 3 wrong text options |
+| `answer` | optional | Overrides the correct label (defaults to `imageName`) |
+
+**Legacy aliases:** `imageQuizTemplate-3` and `imageQuizTemplate-SentenceChoice` both normalize to `imageQuizTemplate-1` at parse time. The only JSON difference is `distractors` instead of `wrongAnswers` — both are accepted.
 
 ### `imageQuizTemplate-2`
 
-- **Purpose:** **Definition-first** — read a **noun prompt** (from the correct stem), then pick the matching **picture** from four thumbnails.
+- **Purpose:** **Definition-first** — read a **noun prompt**, then pick the matching **picture** from four thumbnails.
 - **Design:** Large **prompt text** on top; **2×2 grid** of images below (order shuffled).
 - **Player action:** Tap the image that matches the prompt.
-- **JSON:** `imageName` is always the asset stem for the **correct** image file; `wrongAnswers` are three other stems. Optional `answer` (same idea as `imageQuizTemplate-1`) overrides the **correct option key** and prompt formatting when non-empty — the correct tile still loads `imageName`’s file; taps match on `answer` when set, otherwise `imageName`.
+- **Monster-eligible:** yes
+- **Audio:** `audio_file` (top-level).
+- **Translation:** none.
 
-### `imageQuizTemplate-3` (and alias `imageQuizTemplate-SentenceChoice`)
-
-- **Purpose:** **Comprehension** — one **hero image** plus four **full-sentence** answers (one correct, three distractors).
-- **Design:** Image area + **four sentence buttons** (same lock/feedback pattern as other MCQs when wrong).
-- **Player action:** Tap the sentence that best matches the image (meaning/grammar per content).
-
-### `imageQuizTemplate-SpotDifference`
-
-- **Purpose:** **Visual discrimination** — two nearly identical images; choose the one that matches the prompt / is “correct.”
-- **Design:** Implemented by `SpotDifferenceQuizBody`: **instruction line** from global `localization.json` key `spot_difference_prompt` (same for every question of this template) + **two square (1:1) image tiles** side by side, centered with `BoxFit.contain` (which side is correct is randomized each time).
-- **Player action:** Tap the correct image; wrong side highlights error feedback.
-- **JSON:** `questionData` has `correctImage`, `wrongImage`, optional `auto_next_delay`, optional `timer_seconds` — no per-question `sentence` map.
+| questionData field | Required | Description |
+|--------------------|----------|-------------|
+| `imageName` | ✓ | Asset basename for the correct image tile |
+| `wrongAnswers` | ✓ | Array of exactly 3 wrong image basenames |
+| `answer` | optional | Overrides the text prompt (defaults to `imageName`) |
 
 ---
 
@@ -93,59 +128,116 @@ Rendered in **convo playing** layout inside `ImageQuizScreen`: typically **dialo
 
 ### `ConvoTemplate-1`
 
-- **Purpose:** Classic **two-speaker line** + **one MCQ** (correct word/phrase among four distractors) for vocab or grammar.
-- **Design:** **Two columns** (characters / bubbles) with localized lines; **one shuffled row of four text options**; locked-state coloring after answer.
+- **Purpose:** Classic **two-speaker dialogue** + **4 MCQ buttons** for vocab or grammar.
+- **Design:** Two-column character layout with localized speech bubbles; one shuffled row of four text buttons below; locked-state coloring after answer.
 - **Player action:** Read the exchange, tap the correct option.
+- **Audio:** `audio_file` (top-level).
+- **Translation:** `line1_translation` / `line2_translation` inside `questionData`.
+
+| questionData field | Required | Description |
+|--------------------|----------|-------------|
+| `character1` | ✓ | Name of speaker 1 |
+| `character2` | ✓ | Name of speaker 2 |
+| `line1` | ✓ | Locale map `{“en”:”...”}` — speaker 1’s line |
+| `line2` | ✓ | Locale map with `___` blank — speaker 2’s line |
+| `answer` | ✓ | Correct option (English string) |
+| `distractors` | ✓ | Array of exactly 3 wrong options |
+| `line1_translation` | optional | Locale map shown below line 1 for non-en users |
+| `line2_translation` | optional | Locale map shown below line 2 for non-en users |
+| `image_file_name` | optional | Asset basename for a 72×72 thumbnail above the dialogue |
 
 ### `ConvoTemplate-ClozeSequence`
 
-- **Purpose:** **Cloze from context** — localized sentence with **numbered blanks** (`_____` markers in `sentence` maps, especially `en`); player fills blanks **in order** by tapping word tiles (answers + distractors).
-- **Design:** `ClozeSequenceQuizBody`: optional **72×72 thumbnail** when `imageName` is set in JSON (resolved per level folder); **sentence** in a rounded container with streaming or full text; answer tiles in a **horizontal “train”** (`Wrap`) with step badges on correct tiles; wrong tap highlights expected/correct tiles per rules.
-- **JSON:** `answers` (array) or single `answer`; `distractors`; optional `imageName` (omit = no image); `words_all_together` (default false) — when **true**, the full sentence shows immediately instead of streaming word-by-word.
-- **Player action:** After blanks are visible, tap tiles to fill blank 1, then 2, … in order.
+- **Purpose:** **Cloze from context** — localized sentence with `_____` blank(s); player fills them in order by tapping word tiles.
+- **Design:** `ClozeSequenceQuizBody`: optional 72×72 thumbnail; full sentence in a rounded container as soon as the question loads; horizontal tile “train” with step badges on correct tiles.
+- **Player action:** Tap tiles to fill blank 1, then 2, … in order.
+- **Audio:** `audio_file` (top-level).
+- **Translation:** none (the `sentence` locale map provides translations directly).
+
+| questionData field | Required | Description |
+|--------------------|----------|-------------|
+| `sentence` | ✓ | Locale map; `en` value must contain `_____` for each blank |
+| `answer` or `answers` | ✓ | Single string or array; count must equal number of blanks |
+| `distractors` | ✓ | Array of extra wrong word tiles |
+| `imageName` | optional | Asset basename for a 72×72 thumbnail (omit = no image) |
 
 ### `ConvoTemplate-2` (authoring alias only)
 
-- **Purpose:** Backward-compatible **JSON label** for the old “image + single-blank sentence + four word options” question.
-- **Runtime:** **Not** a separate widget. Parsed via adapter into **`ClozeSequenceQuestionData`**: one answer, three distractors, `wordsAllTogether: true`, optional `imageName`. `LevelQuestion.template` after parse is **`ConvoTemplate-ClozeSequence`**; UI is **`ClozeSequenceQuizBody`** like any other cloze row.
-- **Player action:** Same as `ConvoTemplate-ClozeSequence` for that shape (pick the word for the blank from the tile row).
-- **Note:** Prefer new content to use `ConvoTemplate-ClozeSequence` explicitly with `words_all_together: true` when you want the non-streaming cloze; the adapter exists so existing `questions.json` files keep working.
+- **Runtime:** Not a separate widget. Parsed via adapter into `ClozeSequenceQuestionData`. `LevelQuestion.template` becomes `ConvoTemplate-ClozeSequence`. Prefer writing new content as `ConvoTemplate-ClozeSequence`.
 
 ### `ConvoTemplate-AppearDisappear`
 
-- **Purpose:** **Memory + recall** — see the sentence built piece by piece, then reproduce order from a **3×3** grid (sentence words + distractors).
-- **Design:** `AppearDisappearQuizBody`: phases — **intro → word-by-word reveal → flash →** interaction: **slots** above, **nine tiles** below, step numbers on successful taps; failure fills remaining slots as feedback.
-- **Player action:** After the memorization sequence, tap grid tiles **in sentence order**.
+- **Purpose:** **Memory + recall** — words appear all at once in boxes, audio plays, words disappear 500 ms after audio ends, then player recalls the order from a shuffled grid.
+- **Design:** `AppearDisappearQuizBody`: slots above + 3×3 tile grid below (always visible layout); step badges on correct taps; failure fills remaining slots.
+- **Player action:** After words disappear, tap grid tiles in the original order.
+- **Audio:** `audio_file` (top-level) — played while words are visible; hide triggers 500 ms after audio finishes.
+- **Translation:** `”translation”` locale map at the **top level** of the question object (sibling to `questionData`, not inside it).
 
-### `ConvoTemplate-Simon`
-
-- **Purpose:** **Simon-style** — watch tiles light in **sentence order**, then **repeat** the sequence.
-- **Design:** `SimonQuizBody`: **3×3 grid**; demo highlights cells in order; player taps to replay; clear wrong/correct tile feedback on failure.
-- **Player action:** Repeat the demonstrated order on the grid.
+| questionData field | Required | Description |
+|--------------------|----------|-------------|
+| `words` | ✓ | String (space-split) or array — the words to memorise |
+| `distractors` | optional | Extra tiles added to fill the 3×3 grid |
+| `display_duration` | optional | Legacy timing param (default 1.0) |
 
 ### `ConvoTemplate-SentenceBuilder`
 
-- **Purpose:** **Unscramble** — only the **words of the target sentence** appear, shuffled; **no extra distractor words**.
-- **Design:** `SentenceBuilderQuizBody`: **target slots** on top; **Wrap** of word tiles; duplicate words distinguished by position via internal permutation.
-- **Player action:** Tap tiles **in the order given by `correct_order`** in data.
+- **Purpose:** **Unscramble** — only the words of the target sentence appear (no extra distractors); player taps them in the correct order.
+- **Design:** `SentenceBuilderQuizBody`: target slots on top; Wrap of shuffled word tiles; duplicate words distinguished internally.
+- **Player action:** Tap tiles in the order given by `correct_order`.
+- **Audio:** `audio_file` (top-level).
+- **Translation:** `translation` inside `questionData`.
+
+| questionData field | Required | Description |
+|--------------------|----------|-------------|
+| `correct_order` | ✓ | Space-split string or array — sentence tokens in correct order |
+| `translation` | optional | Locale map shown below for non-en users |
 
 ### `ConvoTemplate-WordPairs`
 
-- **Purpose:** **Translation matching** — left column (e.g. English) vs **scrambled** right column (e.g. L2).
-- **Design:** `WordPairsQuizBody`: **active area** (top) shows only unmatched pairs as two columns. **Right** = reference: tap to select (**blue**). **Left** = answer: tap to pair. On **correct match** both tiles move to a **matched section** at the bottom (green, separated by a divider). On **wrong match**: selected right → red, tapped left → red, **correct left for that right selection → green** (nothing moves to matched section). Remaining active pairs stay at top.
-- **Player action:** Select a word on the right (blue), then tap its match on the left; matched pairs accumulate at the bottom until all are paired.
+- **Purpose:** **Translation matching** — English words (left) vs their L2 translations (right, scrambled).
+- **Design:** `WordPairsQuizBody`: two-column active area; either side can be tapped first (selected = blue). Correct match → both tiles move to green matched section. Wrong match → both tapped tiles red, correct partner green.
+- **Player action:** Select a tile on either side, then tap its match; all pairs must be matched.
+- **Audio:** not supported.
+- **Translation:** embedded per pair via the `translations` field.
+
+| questionData field | Required | Description |
+|--------------------|----------|-------------|
+| `english_words` | ✓ | Array of 3–4 English words/phrases (left column) |
+| `translations` | ✓ | Array of locale maps — same length as `english_words` |
 
 ### `ConvoTemplate-GrammarForm`
 
-- **Purpose:** **Grammar form** — sentence with a blank, **lemma hint**, four **word** options.
-- **Design:** `GrammarFormQuizBody`: cloze line + hint + **four shuffled buttons**.
+- **Purpose:** **Grammar form selection** — cloze sentence with a blank; player picks the correct word form from 4 options.
+- **Design:** `GrammarFormQuizBody`: sentence with blank + 4 shuffled word buttons.
 - **Player action:** Tap the grammatically correct word.
+- **Audio:** `audio_file` (top-level).
+- **Translation:** `translation` inside `questionData`.
+
+| questionData field | Required | Description |
+|--------------------|----------|-------------|
+| `sentence` | ✓ | English string (or locale map — `en` used) containing `___` blank |
+| `answer` | ✓ | Correct word/form |
+| `distractors` | ✓ | Array of exactly 3 wrong forms |
+| `translation` | optional | Locale map for the full sentence (shown when non-en) |
 
 ### `ConvoTemplate-DialogueCompletion`
 
-- **Purpose:** **Choose the reply** — first speaker’s line + four **full-sentence** responses.
-- **Design:** `DialogueCompletionQuizBody`: dialogue header + **four options** (shuffled).
+- **Purpose:** **Choose the reply** — first speaker’s line is shown; player picks the correct response from 4 full-sentence options.
+- **Design:** `DialogueCompletionQuizBody`: character header + optional thumbnail + question line + 4 shuffled sentence buttons; auto-plays question-line audio after 500 ms.
 - **Player action:** Tap the best continuation.
+- **Audio:** `audio_file1` (question line) and `audio_file2` (correct answer) — both top-level on the question object.
+- **Translation:** `line1_translation` / `answer_translation` inside `questionData`.
+
+| questionData field | Required | Description |
+|--------------------|----------|-------------|
+| `character1` | ✓ | Name of the asking speaker |
+| `character2` | ✓ | Name of the replying speaker |
+| `line1` | ✓ | Locale map `{“en”:”...”}` — question line shown to player |
+| `answer` | ✓ | Correct reply (English string) |
+| `distractors` | ✓ | Array of exactly 3 wrong reply options |
+| `line1_translation` | optional | Locale map for line 1 (shown when non-en) |
+| `answer_translation` | optional | Locale map for the correct answer (shown after answering) |
+| `image_file_name` | optional | Asset basename for a 72×72 thumbnail above the dialogue |
 
 ---
 

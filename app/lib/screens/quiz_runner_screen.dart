@@ -110,7 +110,7 @@ class _QuizRunnerScreenState extends ConsumerState<QuizRunnerScreen> {
         final cfg = loadedConfigs[progressKey] ??=
             await loadLevelConfig(src.sub.iconImageName);
         if (questionIndex >= 0 && questionIndex < cfg.questions.length) {
-          if (cfg.questions[questionIndex].type == LevelQuestionType.image) {
+          if (cfg.questions[questionIndex].isImageTemplate) {
             imageReminderIds.add(id);
           } else {
             convoReminderIds.add(id);

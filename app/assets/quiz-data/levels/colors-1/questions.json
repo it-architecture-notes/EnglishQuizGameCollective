@@ -1,7 +1,6 @@
 {
   "levelQuestions": [
     {
-      "type": "image",
       "template": "imageQuizTemplate-1",
       "questionData": {
         "imageName": "black",
@@ -13,7 +12,6 @@
       }
     },
     {
-      "type": "image",
       "template": "imageQuizTemplate-1",
       "questionData": {
         "imageName": "blue",
@@ -25,7 +23,6 @@
       }
     },
     {
-      "type": "image",
       "template": "imageQuizTemplate-1",
       "questionData": {
         "imageName": "brown",
@@ -37,7 +34,6 @@
       }
     },
     {
-      "type": "image",
       "template": "imageQuizTemplate-1",
       "questionData": {
         "imageName": "olive",
@@ -49,74 +45,68 @@
       }
     },
     {
-      "type": "image",
       "template": "imageQuizTemplate-1",
       "questionData": {
         "imageName": "orange",
         "wrongAnswers": [
-          "black",
-          "blue",
-          "brown"
+          "pink",
+          "purple",
+          "red"
         ]
       }
     },
     {
-      "type": "image",
       "template": "imageQuizTemplate-1",
       "questionData": {
         "imageName": "pink",
         "wrongAnswers": [
-          "black",
-          "blue",
-          "brown"
+          "orange",
+          "purple",
+          "white"
         ]
       }
     },
     {
-      "type": "image",
       "template": "imageQuizTemplate-1",
       "questionData": {
         "imageName": "purple",
         "wrongAnswers": [
-          "black",
-          "blue",
-          "brown"
+          "pink",
+          "red",
+          "yellow"
         ]
       }
     },
     {
-      "type": "image",
       "template": "imageQuizTemplate-1",
       "questionData": {
         "imageName": "red",
         "wrongAnswers": [
-          "black",
-          "blue",
-          "brown"
+          "orange",
+          "pink",
+          "purple"
         ]
       }
     },
     {
-      "type": "image",
       "template": "imageQuizTemplate-1",
       "questionData": {
         "imageName": "white",
         "wrongAnswers": [
-          "black",
-          "blue",
-          "brown"
+          "brown",
+          "yellow",
+          "olive"
         ]
       }
     },
     {
-      "type": "image",
       "template": "imageQuizTemplate-1",
       "questionData": {
         "imageName": "yellow",
         "wrongAnswers": [
-          "black",
-          "blue",
-          "brown"
+          "orange",
+          "red",
+          "white"
         ]
       }
     }

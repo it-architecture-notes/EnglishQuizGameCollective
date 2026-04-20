@@ -74,12 +74,11 @@ Paths are relative to `app/lib/`.
 | File | Purpose |
 |------|---------|
 | `appear_disappear_quiz_body.dart` | `ConvoTemplate-AppearDisappear`: word sequence, ghost grid, ordered tap gameplay. |
-| `cloze_sequence_quiz_body.dart` | `ConvoTemplate-ClozeSequence`: streaming sentence, numbered blanks, grid fill. |
+| `cloze_sequence_quiz_body.dart` | `ConvoTemplate-ClozeSequence`: full sentence on load, numbered blanks, tile train fill. |
 | `dialogue_completion_quiz_body.dart` | `ConvoTemplate-DialogueCompletion`: first speaker line + four full-sentence replies. |
 | `grammar_form_quiz_body.dart` | `ConvoTemplate-GrammarForm`: cloze + lemma hint + four word options. |
 | `sentence_builder_quiz_body.dart` | `ConvoTemplate-SentenceBuilder`: sentence tokens shuffled on tiles (`Wrap`); tap in `correct_order`. |
 | `simon_quiz_body.dart` | `ConvoTemplate-Simon`: demo sequence on 3×3 grid, player repeat, audio highlights. |
-| `spot_difference_quiz_body.dart` | `imageQuizTemplate-SpotDifference`: localized prompt + two side-by-side tap images. |
 | `word_pairs_quiz_body.dart` | `ConvoTemplate-WordPairs`: scrambled right column; tap reference (blue) then matching left (both green or both red on mismatch). |
 
 ---

@@ -1,7 +1,6 @@
 {
   "levelQuestions": [
     {
-      "type": "image",
       "template": "imageQuizTemplate-1",
       "questionData": {
         "imageName": "airplane-ticket",
@@ -13,7 +12,6 @@
       }
     },
     {
-      "type": "image",
       "template": "imageQuizTemplate-1",
       "questionData": {
         "imageName": "baggage-carousel",
@@ -25,7 +23,6 @@
       }
     },
     {
-      "type": "image",
       "template": "imageQuizTemplate-1",
       "questionData": {
         "imageName": "call-button",
@@ -37,7 +34,6 @@
       }
     },
     {
-      "type": "image",
       "template": "imageQuizTemplate-1",
       "questionData": {
         "imageName": "check-in-counter",
@@ -49,7 +45,6 @@
       }
     },
     {
-      "type": "image",
       "template": "imageQuizTemplate-1",
       "questionData": {
         "imageName": "cockpit",
@@ -61,7 +56,6 @@
       }
     },
     {
-      "type": "image",
       "template": "imageQuizTemplate-1",
       "questionData": {
         "imageName": "control-tower",
@@ -73,7 +67,6 @@
       }
     },
     {
-      "type": "image",
       "template": "imageQuizTemplate-1",
       "questionData": {
         "imageName": "customs-officer",
@@ -85,7 +78,6 @@
       }
     },
     {
-      "type": "image",
       "template": "imageQuizTemplate-1",
       "questionData": {
         "imageName": "hostess",
@@ -97,7 +89,6 @@
       }
     },
     {
-      "type": "image",
       "template": "imageQuizTemplate-1",
       "questionData": {
         "imageName": "luggage-trolley",
@@ -109,11 +100,10 @@
       }
     },
     {
-      "type": "vocab",
       "template": "ConvoTemplate-1",
       "questionData": {
-        "character1": "mike",
-        "character2": "sarah",
+        "character1": "lily",
+        "character2": "james",
         "line1": {
           "en": "Excuse me, where is the _____?",
           "tr": "Affedersiniz, _____ nerede?",
@@ -133,11 +123,10 @@
       }
     },
     {
-      "type": "vocab",
       "template": "ConvoTemplate-1",
       "questionData": {
-        "character1": "mike",
-        "character2": "sarah",
+        "character1": "omar",
+        "character2": "maya",
         "line1": {
           "en": "Do you have your _____ ready?",
           "tr": "_____ hazır mı?",
@@ -157,11 +146,10 @@
       }
     },
     {
-      "type": "vocab",
       "template": "ConvoTemplate-1",
       "questionData": {
-        "character1": "mike",
-        "character2": "sarah",
+        "character1": "sophie",
+        "character2": "ethan",
         "line1": {
           "en": "I need to drop off my _____ at check-in.",
           "tr": "Check-in'de _____ bırakmam lazım.",
@@ -181,11 +169,10 @@
       }
     },
     {
-      "type": "vocab",
       "template": "ConvoTemplate-1",
       "questionData": {
-        "character1": "mike",
-        "character2": "sarah",
+        "character1": "ryan",
+        "character2": "nora",
         "line1": {
           "en": "Where can I get my boarding _____?",
           "tr": "Biniş _____ nereden alabilirim?",
@@ -205,11 +192,10 @@
       }
     },
     {
-      "type": "vocab",
       "template": "ConvoTemplate-1",
       "questionData": {
-        "character1": "mike",
-        "character2": "sarah",
+        "character1": "beth",
+        "character2": "leo",
         "line1": {
           "en": "We need to go through security and _____ control.",
           "tr": "Güvenlik ve _____ kontrolünden geçmemiz lazım.",
@@ -229,7 +215,6 @@
       }
     },
     {
-      "type": "vocab",
       "template": "ConvoTemplate-2",
       "questionData": {
         "imageName": "cockpit",
