@@ -84,7 +84,7 @@ This document lists **files** and **function / method names** (no bodies) for th
 | `app/lib/screens/image_quiz_screen.dart` | `build` | `Scaffold` / AppBar; `_buildBody`. |
 | `app/lib/screens/image_quiz_screen.dart` | `_buildBody` | Switches on `_Phase`: `_buildLoading`, `_buildImagePlaying` or `_buildConvoPlaying`, `_buildEnd`, `_buildGameOver`. |
 | `app/lib/screens/image_quiz_screen.dart` | `_buildConvoPlaying` | Question label/progress; `_buildConvoQuestionBody` for template widgets + answer row where applicable. |
-| `app/lib/screens/image_quiz_screen.dart` | `_buildConvoQuestionBody` | `switch (q.template)` → `AppearDisappearQuizBody`, `SimonQuizBody`, `ClozeSequenceQuizBody`, `_buildConvoTemplate2Content`, or `_buildCharactersRow` (ConvoTemplate-1). |
+| `app/lib/screens/image_quiz_screen.dart` | `_buildConvoPlaying` / `_buildConvoQuestionBody` | ConvoTemplate-1 uses `_buildCharactersRow` + answer buttons inline; other templates use `_buildConvoQuestionBody` → `AppearDisappearQuizBody`, `ClozeSequenceQuizBody`, `SentenceBuilderQuizBody`, `WordPairsQuizBody`, `GrammarFormQuizBody`, or `DialogueCompletionQuizBody`. |
 | `app/lib/screens/image_quiz_screen.dart` | `_buildImagePlaying` | Image or template-2 grid; monster/timer UI for image mode. |
 | `app/lib/screens/quiz_templates/*.dart` | (widget `build` / internal state) | Template-specific UX (not enumerated line-by-line here). |
 | `app/lib/screens/image_quiz_screen.dart` | `_goNext` | Advances `_currentIndex`; last question in phase either pops (intermediate phase) or `setState` → `_Phase.end`; reminder review branch when applicable. |
@@ -97,8 +97,8 @@ This document lists **files** and **function / method names** (no bodies) for th
 | File | Symbol | Role |
 |------|--------|------|
 | `app/lib/screens/image_quiz_screen.dart` | `_onAnswerTap` | Validates option vs `_correctAnswer`; `audio.playCorrect` / `playWrong`; `AchievementService.recordAnswer`; wrong → reminder tracking; schedules `_goNext` on correct after `_autoAdvanceDelayForCurrentImageQuestion`. |
-| `app/lib/screens/image_quiz_screen.dart` | `_handleInteractiveConvoOutcome` | Same idea for AppearDisappear / Simon / ClozeSequence: on success increments `_correctCount` and delayed `_goNext`; on fail sets locked + Next. |
-| `app/lib/screens/image_quiz_screen.dart` | `_buildConvoAnswerButton` | ConvoTemplate-1/2 multiple-choice taps → `_onAnswerTap`. |
+| `app/lib/screens/image_quiz_screen.dart` | `_handleInteractiveConvoOutcome` | Same idea for interactive convo templates (e.g. AppearDisappear, ClozeSequence): on success increments `_correctCount` and delayed `_goNext`; on fail sets locked + Next. |
+| `app/lib/screens/image_quiz_screen.dart` | `_buildConvoAnswerButton` | ConvoTemplate-1 multiple-choice taps → `_onAnswerTap`. |
 | `app/lib/services/audio_service.dart` | `playCorrect` / `playWrong` | Feedback SFX. |
 | `app/lib/services/achievement_service.dart` | `AchievementService.recordAnswer` | Per-answer achievement bookkeeping. |
 | `app/lib/services/reminder_progress_service.dart` | `ReminderProgressService.recordWrongAnswer` | Wrong answers on regular levels (non-reminder). |

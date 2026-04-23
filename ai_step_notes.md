@@ -25,7 +25,7 @@
 
 <Check the implementation>
 
-8) TO CLAUDE: can you check the implementation done by cursor for the active issue and compare to what is asked in the active issue to make sure there is no gap and report if any.
+8) TO CLAUDE: can you check the implementation done by cursor for the active issue and compare to what is asked in the active issue and the consolidated plan to make sure there is no gap and report if any.
 
 <if gaps found>
 

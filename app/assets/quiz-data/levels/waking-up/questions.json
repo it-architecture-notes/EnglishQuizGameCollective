@@ -30,36 +30,8 @@
       "questionData": {
         "character1": "lily",
         "character2": "james",
-        "line1": {
-          "en": "Did you hear my _____ this morning?",
-          "tr": "Bu sabah _____ duydun mu?",
-          "es": "¿Oíste mi _____ esta mañana?",
-          "fr": "As-tu entendu mon _____ ce matin ?",
-          "de": "Hast du meinen _____ heute Morgen gehört?",
-          "it": "Hai sentito il mio _____ questa mattina?",
-          "pt": "Você ouviu meu _____ esta manhã?",
-          "ru": "Ты слышал мой _____ сегодня утром?",
-          "zh": "你今天早上听到我的_____了吗？",
-          "ja": "今朝、私の_____が聞こえましたか？",
-          "ko": "오늘 아침 내 _____ 소리 들었어요?",
-          "ar": "هل سمعت _____ هذا الصباح؟",
-          "hi": "क्या तुमने आज सुबह मेरा _____ सुना?"
-        },
-        "line2": {
-          "en": "Yes, it was very loud!",
-          "tr": "Evet, çok yüksekti!",
-          "es": "¡Sí, sonaba muy fuerte!",
-          "fr": "Oui, c'était très fort !",
-          "de": "Ja, es war sehr laut!",
-          "it": "Sì, era molto forte!",
-          "pt": "Sim, era muito alto!",
-          "ru": "Да, он был очень громким!",
-          "zh": "是的，非常响！",
-          "ja": "ええ、とても大きな音でした！",
-          "ko": "네, 정말 시끄러웠어요!",
-          "ar": "نعم، كان صوته عالياً جداً!",
-          "hi": "हाँ, बहुत ज़ोर से बज रहा था!"
-        },
+        "line1": "Did you hear my _____ this morning?",
+        "line2": "Yes, it was very loud!",
         "answer": "alarm",
         "distractors": [
           "pillow",
@@ -100,21 +72,7 @@
       "template": "ConvoTemplate-ClozeSequence",
       "questionData": {
         "imageName": "alarm-clock",
-        "sentence": {
-          "en": "I set my _____ so I do not oversleep.",
-          "tr": "Uyumamak için çalar saatimi kurarım.",
-          "es": "Pongo el despertador para no dormir demasiado.",
-          "fr": "Je règle mon réveil pour ne pas trop dormir.",
-          "de": "Ich stelle den Wecker, damit ich nicht verschlafe.",
-          "it": "Imposto la sveglia per non dormire troppo.",
-          "pt": "Ajusto o despertador para não dormir demais.",
-          "ru": "Я ставлю будильник, чтобы не проспать.",
-          "zh": "我设好闹钟以免睡过头。",
-          "ja": "寝坊しないように目覚ましをセットします。",
-          "ko": "늦잠 자지 않도록 알람을 맞춰요.",
-          "ar": "أضبط المنبّه حتى لا أنام طويلاً.",
-          "hi": "ज़्यादा न सोऊँ, इसलिए मैं अलार्म लगाता हूँ।"
-        },
+        "sentence": "I set my _____ so I do not oversleep.",
         "answer": [
           "alarm"
         ],
@@ -163,21 +121,7 @@
       "template": "ConvoTemplate-ClozeSequence",
       "questionData": {
         "imageName": "alarm-clock",
-        "sentence": {
-          "en": "The _____ rings loudly.",
-          "tr": "_____ yüksek sesle çalar.",
-          "es": "El _____ suena muy fuerte.",
-          "fr": "Le _____ sonne très fort.",
-          "de": "Der _____ klingelt laut.",
-          "it": "Il _____ suona forte.",
-          "pt": "O _____ toca alto.",
-          "ru": "_____ громко звонит.",
-          "zh": "_____响得很响。",
-          "ja": "_____が大きく鳴ります。",
-          "ko": "_____가 크게 울려요.",
-          "ar": "يُصدِر _____ صوتاً عالياً.",
-          "hi": "_____ ज़ोर से बजता है।"
-        },
+        "sentence": "The _____ rings loudly.",
         "answer": [
           "alarm clock"
         ],
@@ -301,19 +245,7 @@
       "template": "ConvoTemplate-GrammarForm",
       "questionData": {
         "sentence": {
-          "en": "I _____ the blanket every morning.",
-          "tr": "Her sabah battaniyeyi _____.",
-          "es": "_____ la manta cada mañana.",
-          "fr": "Je _____ la couverture chaque matin.",
-          "de": "Ich _____ die Decke jeden Morgen.",
-          "it": "_____ la coperta ogni mattina.",
-          "pt": "Eu _____ o cobertor todas as manhãs.",
-          "ru": "Каждое утро я _____ одеяло.",
-          "zh": "我每天早上_____毯子。",
-          "ja": "毎朝、毛布を_____。",
-          "ko": "매일 아침 담요를 _____.",
-          "ar": "أنا _____ البطانية كل صباح.",
-          "hi": "मैं हर सुबह कंबल _____।"
+          "en": "I _____ the blanket every morning."
         },
         "answer": "fold",
         "distractors": [
@@ -342,21 +274,7 @@
       "questionData": {
         "character1": "omar",
         "character2": "maya",
-        "line1": {
-          "en": "Are you awake?",
-          "tr": "Uyandın mı?",
-          "es": "¿Estás despierto?",
-          "fr": "Tu es réveillé ?",
-          "de": "Bist du wach?",
-          "it": "Sei sveglio?",
-          "pt": "Você está acordado?",
-          "ru": "Ты не спишь?",
-          "zh": "你醒了吗？",
-          "ja": "起きていますか？",
-          "ko": "깨어 있어요?",
-          "ar": "هل أنت مستيقظ؟",
-          "hi": "क्या तुम जाग गए हो?"
-        },
+        "line1": "Are you awake?",
         "line1_translation": {
           "tr": "Uyandın mı?",
           "es": "¿Estás despierto?",
@@ -447,21 +365,7 @@
       "template": "ConvoTemplate-ClozeSequence",
       "questionData": {
         "imageName": "blanket",
-        "sentence": {
-          "en": "It is cold, so I pull up the _____.",
-          "tr": "Hava soğuk, o yüzden _____ çekiyorum.",
-          "es": "Hace frío, así que subo la _____.",
-          "fr": "Il fait froid, alors je tire la _____.",
-          "de": "Es ist kalt, also ziehe ich die _____ hoch.",
-          "it": "Fa freddo, quindi tiro su la _____.",
-          "pt": "Está frio, então puxo a _____.",
-          "ru": "Холодно, поэтому я натягиваю _____.",
-          "zh": "天冷，所以我拉起_____。",
-          "ja": "寒いので、_____をかぶります。",
-          "ko": "추워서 _____를 끌어올려요.",
-          "ar": "الجو بارد، لذا أسحب _____.",
-          "hi": "ठंड है, इसलिए मैं _____ ऊपर खींचता हूँ।"
-        },
+        "sentence": "It is cold, so I pull up the _____.",
         "answer": [
           "blanket"
         ],
@@ -477,21 +381,7 @@
       "template": "ConvoTemplate-ClozeSequence",
       "questionData": {
         "imageName": "nightstand",
-        "sentence": {
-          "en": "My book is on the _____.",
-          "tr": "Kitabım _____ üzerinde.",
-          "es": "Mi libro está en la _____.",
-          "fr": "Mon livre est sur la _____.",
-          "de": "Mein Buch liegt auf dem _____.",
-          "it": "Il mio libro è sul _____.",
-          "pt": "Meu livro está no _____.",
-          "ru": "Моя книга на _____.",
-          "zh": "我的书在_____上。",
-          "ja": "本は_____の上にあります。",
-          "ko": "책이 _____ 위에 있어요.",
-          "ar": "كتابي على _____.",
-          "hi": "मेरी किताब _____ पर है।"
-        },
+        "sentence": "My book is on the _____.",
         "answer": [
           "nightstand"
         ],
@@ -508,36 +398,8 @@
       "questionData": {
         "character1": "nora",
         "character2": "ryan",
-        "line1": {
-          "en": "Did you sleep _____ last night?",
-          "tr": "Dün gece iyi _____?",
-          "es": "¿Dormiste _____ anoche?",
-          "fr": "As-tu bien _____ la nuit dernière ?",
-          "de": "Hast du letzte Nacht gut _____?",
-          "it": "Hai dormito _____ la scorsa notte?",
-          "pt": "Você dormiu _____ ontem à noite?",
-          "ru": "Ты хорошо _____ прошлой ночью?",
-          "zh": "你昨晚睡得好_____？",
-          "ja": "昨夜はよく_____？",
-          "ko": "어젯밤 잘 _____?",
-          "ar": "هل نمت _____ الليلة الماضية؟",
-          "hi": "क्या तुमने कल रात अच्छी तरह _____?"
-        },
-        "line2": {
-          "en": "Yes, I slept very well.",
-          "tr": "Evet, çok iyi uyudum.",
-          "es": "Sí, dormí muy bien.",
-          "fr": "Oui, j'ai très bien dormi.",
-          "de": "Ja, ich habe sehr gut geschlafen.",
-          "it": "Sì, ho dormito molto bene.",
-          "pt": "Sim, dormi muito bem.",
-          "ru": "Да, я очень хорошо выспался.",
-          "zh": "是的，我睡得很好。",
-          "ja": "はい、よく眠れました。",
-          "ko": "네, 아주 잘 잤어요.",
-          "ar": "نعم، نمت جيداً جداً.",
-          "hi": "हाँ, मैं बहुत अच्छी नींद सोया।"
-        },
+        "line1": "Did you sleep _____ last night?",
+        "line2": "Yes, I slept very well.",
         "answer": "well",
         "distractors": [
           "late",
@@ -580,21 +442,7 @@
         "character1": "beth",
         "character2": "leo",
         "image_file_name": "bed",
-        "line1": {
-          "en": "Is your bed comfortable?",
-          "tr": "Yatağın rahat mı?",
-          "es": "¿Tu cama es cómoda?",
-          "fr": "Ton lit est-il confortable ?",
-          "de": "Ist dein Bett bequem?",
-          "it": "Il tuo letto è comodo?",
-          "pt": "Sua cama é confortável?",
-          "ru": "Твоя кровать удобная?",
-          "zh": "你的床舒服吗？",
-          "ja": "ベッドは快適ですか？",
-          "ko": "침대가 편해요?",
-          "ar": "هل سريرك مريح؟",
-          "hi": "क्या तुम्हारा बिस्तर आरामदायक है?"
-        },
+        "line1": "Is your bed comfortable?",
         "line1_translation": {
           "tr": "Yatağın rahat mı?",
           "es": "¿Tu cama es cómoda?",

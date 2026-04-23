@@ -42,6 +42,9 @@ class AppearDisappearQuestionData {
     required this.distractors,
     this.displayDuration = 1.0,
     this.introPause = 2.0,
+    this.englishToTranslate = const [],
+    this.localTranslation = const {},
+    this.trOk = false,
   });
 
   final List<String> words;
@@ -49,23 +52,34 @@ class AppearDisappearQuestionData {
   final double displayDuration;
   /// Pause (seconds) with empty boxes before word reveal starts.
   final double introPause;
+  final List<String> englishToTranslate;
+  final Map<String, List<String>> localTranslation;
+  /// When true, revealing translation does not count as a wrong answer.
+  final bool trOk;
 }
 
-/// Parsed `questionData` for [ConvoTemplate-ClozeSequence] (and the adapter for ConvoTemplate-2).
+/// Parsed `questionData` for [ConvoTemplate-ClozeSequence].
 class ClozeSequenceQuestionData {
   const ClozeSequenceQuestionData({
     required this.sentence,
     required this.answers,
     required this.distractors,
     this.imageName,
+    this.englishToTranslate = const [],
+    this.localTranslation = const {},
+    this.trOk = false,
   });
 
-  /// Localized sentence map. English value uses 2+ underscores as blank markers (e.g. `_____`).
-  final Map<String, String> sentence;
+  /// English sentence with 2+ underscore blank markers (e.g. `_____`).
+  final String sentence;
   final List<String> answers;
   final List<String> distractors;
   /// Optional image basename under the level folder. Null = no image.
   final String? imageName;
+  final List<String> englishToTranslate;
+  final Map<String, List<String>> localTranslation;
+  /// When true, revealing translation does not count as a wrong answer.
+  final bool trOk;
 }
 
 /// Parsed `questionData` for [ConvoTemplate-1] (vocabulary or grammar).
@@ -77,49 +91,43 @@ class ConvoQuestionData {
     required this.line2,
     required this.answer,
     required this.distractors,
-    this.line1Translation,
-    this.line2Translation,
     this.imageName,
+    this.englishToTranslate = const [],
+    this.localTranslation = const {},
+    this.trOk = false,
   });
 
   final String character1;
   final String character2;
-  final Map<String, String> line1;
-  final Map<String, String> line2;
+  /// English dialogue line for speaker 1 (blank may be in line1 or line2).
+  final String line1;
+  /// English dialogue line for speaker 2; use `___` / cloze-style blank where needed.
+  final String line2;
   final String answer;
   final List<String> distractors;
-  final Map<String, String>? line1Translation;
-  final Map<String, String>? line2Translation;
   /// Optional image basename (no extension) under the level folder.
   final String? imageName;
-}
-
-/// Parsed `questionData` for [ConvoTemplate-2] (optional hero image + cloze sentence).
-class ConvoTemplate2QuestionData {
-  const ConvoTemplate2QuestionData({
-    this.imageName,
-    required this.sentence,
-    required this.answer,
-    required this.distractors,
-  });
-
-  /// Basename without extension under the level folder; omit or null = no image.
-  final String? imageName;
-  final Map<String, String> sentence;
-  final String answer;
-  final List<String> distractors;
+  final List<String> englishToTranslate;
+  final Map<String, List<String>> localTranslation;
+  /// When true, revealing translation does not count as a wrong answer.
+  final bool trOk;
 }
 
 /// [ConvoTemplate-SentenceBuilder]: tiles are only the sentence tokens, shuffled; player taps in [correctOrder].
 class SentenceBuilderQuestionData {
   const SentenceBuilderQuestionData({
     required this.correctOrder,
-    this.translation,
+    this.englishToTranslate = const [],
+    this.localTranslation = const {},
+    this.trOk = false,
   });
 
   /// Target sentence token sequence (left-to-right).
   final List<String> correctOrder;
-  final Map<String, String>? translation;
+  final List<String> englishToTranslate;
+  final Map<String, List<String>> localTranslation;
+  /// When true, revealing translation does not count as a wrong answer.
+  final bool trOk;
 }
 
 /// One left/right pair for [ConvoTemplate-WordPairs].
@@ -174,13 +182,18 @@ class GrammarFormQuestionData {
     required this.sentence,
     required this.answer,
     required this.distractors,
-    this.translation,
+    this.englishToTranslate = const [],
+    this.localTranslation = const {},
+    this.trOk = false,
   });
 
   final String sentence;
   final String answer;
   final List<String> distractors;
-  final Map<String, String>? translation;
+  final List<String> englishToTranslate;
+  final Map<String, List<String>> localTranslation;
+  /// When true, revealing translation does not count as a wrong answer.
+  final bool trOk;
 }
 
 /// [ConvoTemplate-DialogueCompletion]: first speaker line + four response options.
@@ -191,20 +204,24 @@ class DialogueCompletionQuestionData {
     required this.line1,
     required this.answer,
     required this.distractors,
-    this.line1Translation,
-    this.answerTranslation,
     this.imageName,
+    this.englishToTranslate = const [],
+    this.localTranslation = const {},
+    this.trOk = false,
   });
 
   final String character1;
   final String character2;
-  final Map<String, String> line1;
+  /// English question line (speaker 1); legacy `{"en": "..."}` accepted at parse time.
+  final String line1;
   final String answer;
   final List<String> distractors;
-  final Map<String, String>? line1Translation;
-  final Map<String, String>? answerTranslation;
   /// Optional image basename (no extension) under the level folder.
   final String? imageName;
+  final List<String> englishToTranslate;
+  final Map<String, List<String>> localTranslation;
+  /// When true, revealing translation does not count as a wrong answer.
+  final bool trOk;
 }
 
 /// One entry in `levelQuestions`.
@@ -218,36 +235,32 @@ class LevelQuestion {
     this.imageData,
     this.imageQuiz2Data,
     this.convoData,
-    this.convo2Data,
     this.appearDisappearData,
     this.clozeSequenceData,
     this.sentenceBuilderData,
     this.wordPairsData,
     this.grammarFormData,
     this.dialogueCompletionData,
-    this.appearDisappearTranslation,
   });
 
   final String? questionId;
   final String? audioFile;
-  /// [ConvoTemplate-DialogueCompletion]: question line audio (top-level JSON).
+  /// Optional first clip (top-level JSON). [ConvoTemplate-DialogueCompletion]: question line.
+  /// [ConvoTemplate-1]: speaker 1 line, blanks filled with [ConvoQuestionData.answer] in the asset.
   final String? audioFile1;
-  /// [ConvoTemplate-DialogueCompletion]: correct-answer audio (top-level JSON).
+  /// Optional second clip (top-level JSON). [ConvoTemplate-DialogueCompletion]: correct reply.
+  /// [ConvoTemplate-1]: speaker 2 line, blanks filled the same way. Requires [audioFile1] when used.
   final String? audioFile2;
   final String template;
   final ImageQuestionData? imageData;
   final ImageQuizTemplate2Data? imageQuiz2Data;
   final ConvoQuestionData? convoData;
-  final ConvoTemplate2QuestionData? convo2Data;
   final AppearDisappearQuestionData? appearDisappearData;
   final ClozeSequenceQuestionData? clozeSequenceData;
   final SentenceBuilderQuestionData? sentenceBuilderData;
   final WordPairsQuestionData? wordPairsData;
   final GrammarFormQuestionData? grammarFormData;
   final DialogueCompletionQuestionData? dialogueCompletionData;
-
-  /// Top-level `translation` map for [ConvoTemplate-AppearDisappear] only (sibling to `questionData` in JSON).
-  final Map<String, String>? appearDisappearTranslation;
 
   /// True when this question uses an image-mode template (imageQuizTemplate-*).
   bool get isImageTemplate => template.startsWith('imageQuizTemplate');
@@ -262,21 +275,21 @@ class LevelConfig {
   final int? timerSeconds;
 
 
-  /// Coerces a JSON object into `Map<String,String>` for localized line maps.
-  static Map<String, String> _stringMap(dynamic value) {
-    if (value is! Map) {
-      throw const FormatException('Expected object for localized lines');
-    }
-    return value.map(
-      (k, v) => MapEntry(k.toString(), v?.toString() ?? ''),
-    );
-  }
-
   static Map<String, String>? _stringMapOrNull(dynamic value) {
     if (value == null || value is! Map) return null;
     return value.map(
       (k, v) => MapEntry(k.toString(), v?.toString() ?? ''),
     );
+  }
+
+  /// [ConvoTemplate-1] `line1` / `line2`: plain English string, or legacy `{"en": "..."}` map.
+  static String _englishLineField(dynamic raw) {
+    if (raw is String) return raw.trim();
+    if (raw is Map) {
+      final en = raw['en'];
+      return en?.toString().trim() ?? '';
+    }
+    return '';
   }
 
   /// Validates and builds [ImageQuestionData] for `imageQuizTemplate-1` rows (exactly three wrong answers).
@@ -331,6 +344,14 @@ class LevelConfig {
     return v.map((e) => e.toString()).toList();
   }
 
+  /// Parses `{"tr": ["...", "..."], "fr": ["..."]}` → `Map<String, List<String>>`.
+  static Map<String, List<String>> _stringListMap(dynamic v) {
+    if (v is! Map) return const {};
+    return Map.fromEntries(
+      v.entries.map((e) => MapEntry(e.key.toString(), _stringList(e.value))),
+    );
+  }
+
   /// Parses words from either:
   /// - legacy array format: ["I", "love", "tea"]
   /// - new sentence format: "I love tea"
@@ -362,21 +383,30 @@ class LevelConfig {
       distractors: distractors,
       displayDuration: (data['display_duration'] as num?)?.toDouble() ?? 1.0,
       introPause: (data['intro_pause'] as num?)?.toDouble() ?? 2.0,
+      englishToTranslate: _stringList(data['english_to_translate']),
+      localTranslation: _stringListMap(data['local_translation']),
+      trOk: (data['tr_ok'] as bool?) ?? false,
     );
   }
 
   /// Returns true when a space-delimited token is a blank marker (2+ underscores, nothing else).
   static bool _isBlankToken(String s) => RegExp(r'^_{2,}$').hasMatch(s);
 
-  /// Counts blanks in the English value of a localized sentence map.
-  static int _countBlanks(Map<String, String> sentence) =>
-      (sentence['en'] ?? '').split(' ').where(_isBlankToken).length;
+  /// Counts blanks in an English sentence string.
+  static int _countBlanks(String sentence) =>
+      sentence.split(' ').where(_isBlankToken).length;
 
-  /// Parses [ConvoTemplate-ClozeSequence]: localized sentence map, ordered answers, flexible distractors.
+  /// Parses [ConvoTemplate-ClozeSequence]: plain English sentence string, ordered answers, flexible distractors.
   static ClozeSequenceQuestionData _parseClozeSequence(
     Map<String, dynamic> data,
   ) {
-    final sentence = _stringMap(data['sentence']);
+    final rawSentence = data['sentence'];
+    if (rawSentence is! String) {
+      throw const FormatException(
+        'ConvoTemplate-ClozeSequence: sentence must be a plain English string',
+      );
+    }
+    final sentence = rawSentence.trim();
     // Accept 'answer' (array or single string) or 'answers' (array)
     final rawAnswer = data['answer'] ?? data['answers'];
     final List<String> answers;
@@ -391,7 +421,7 @@ class LevelConfig {
     final blankCount = _countBlanks(sentence);
     if (blankCount != answers.length) {
       throw FormatException(
-        'ConvoTemplate-ClozeSequence: ${answers.length} answers but $blankCount blanks in sentence["en"]',
+        'ConvoTemplate-ClozeSequence: ${answers.length} answers but $blankCount blanks in sentence',
       );
     }
     final rawName = data['imageName'];
@@ -402,19 +432,9 @@ class LevelConfig {
       answers: answers,
       distractors: distractors,
       imageName: imageName,
-    );
-  }
-
-  /// Converts a [ConvoTemplate-2] payload into a [ClozeSequenceQuestionData] for the unified widget.
-  static ClozeSequenceQuestionData _parseConvo2AsCloze(
-    Map<String, dynamic> data,
-  ) {
-    final c2 = _parseConvo2Data(data);
-    return ClozeSequenceQuestionData(
-      sentence: c2.sentence,
-      answers: [c2.answer],
-      distractors: c2.distractors,
-      imageName: c2.imageName,
+      englishToTranslate: _stringList(data['english_to_translate']),
+      localTranslation: _stringListMap(data['local_translation']),
+      trOk: (data['tr_ok'] as bool?) ?? false,
     );
   }
 
@@ -427,37 +447,16 @@ class LevelConfig {
     return ConvoQuestionData(
       character1: data['character1'] as String? ?? '',
       character2: data['character2'] as String? ?? '',
-      line1: _stringMap(data['line1']),
-      line2: _stringMap(data['line2']),
+      line1: _englishLineField(data['line1']),
+      line2: _englishLineField(data['line2']),
       answer: data['answer'] as String? ?? '',
       distractors: (data['distractors'] as List<dynamic>? ?? [])
           .map((e) => e.toString())
           .toList(),
-      line1Translation: _stringMapOrNull(data['line1_translation']),
-      line2Translation: _stringMapOrNull(data['line2_translation']),
       imageName: imageName,
-    );
-  }
-
-  /// Parses optional hero image + cloze (localized sentence, three distractors).
-  static ConvoTemplate2QuestionData _parseConvo2Data(Map<String, dynamic> data) {
-    final rawName = data['imageName'];
-    final String? imageName = rawName is String && rawName.trim().isNotEmpty
-        ? rawName.trim()
-        : null;
-    final distractors = (data['distractors'] as List<dynamic>? ?? [])
-        .map((e) => e.toString())
-        .toList();
-    if (distractors.length != 3) {
-      throw FormatException(
-        'ConvoTemplate-2 must have exactly 3 distractors (got ${distractors.length})',
-      );
-    }
-    return ConvoTemplate2QuestionData(
-      imageName: imageName,
-      sentence: _stringMap(data['sentence']),
-      answer: data['answer'] as String? ?? '',
-      distractors: distractors,
+      englishToTranslate: _stringList(data['english_to_translate']),
+      localTranslation: _stringListMap(data['local_translation']),
+      trOk: (data['tr_ok'] as bool?) ?? false,
     );
   }
 
@@ -473,7 +472,9 @@ class LevelConfig {
     }
     return SentenceBuilderQuestionData(
       correctOrder: correctOrder,
-      translation: _stringMapOrNull(data['translation']),
+      englishToTranslate: _stringList(data['english_to_translate']),
+      localTranslation: _stringListMap(data['local_translation']),
+      trOk: (data['tr_ok'] as bool?) ?? false,
     );
   }
 
@@ -533,7 +534,9 @@ class LevelConfig {
       sentence: sentence,
       answer: data['answer'] as String? ?? '',
       distractors: distractors,
-      translation: _stringMapOrNull(data['translation']),
+      englishToTranslate: _stringList(data['english_to_translate']),
+      localTranslation: _stringListMap(data['local_translation']),
+      trOk: (data['tr_ok'] as bool?) ?? false,
     );
   }
 
@@ -556,12 +559,13 @@ class LevelConfig {
     return DialogueCompletionQuestionData(
       character1: data['character1'] as String? ?? '',
       character2: data['character2'] as String? ?? '',
-      line1: _stringMap(data['line1']),
+      line1: _englishLineField(data['line1']),
       answer: data['answer'] as String? ?? '',
       distractors: distractors,
-      line1Translation: _stringMapOrNull(data['line1_translation']),
-      answerTranslation: _stringMapOrNull(data['answer_translation']),
       imageName: imageName,
+      englishToTranslate: _stringList(data['english_to_translate']),
+      localTranslation: _stringListMap(data['local_translation']),
+      trOk: (data['tr_ok'] as bool?) ?? false,
     );
   }
 
@@ -575,7 +579,6 @@ class LevelConfig {
     ImageQuestionData? imageData;
     ImageQuizTemplate2Data? imageQuiz2Data;
     ConvoQuestionData? convoData;
-    ConvoTemplate2QuestionData? convo2Data;
     AppearDisappearQuestionData? appearDisappearData;
     ClozeSequenceQuestionData? clozeSequenceData;
     SentenceBuilderQuestionData? sentenceBuilderData;
@@ -595,10 +598,6 @@ class LevelConfig {
         break;
       case 'ConvoTemplate-1':
         convoData = _parseConvoData(qd);
-        break;
-      case 'ConvoTemplate-2':
-        // Adapter: convert to the unified ClozeSequence model.
-        clozeSequenceData = _parseConvo2AsCloze(qd);
         break;
       case 'ConvoTemplate-AppearDisappear':
         appearDisappearData = _parseAppearDisappear(qd);
@@ -624,12 +623,8 @@ class LevelConfig {
     final normalizedTemplate = switch (template) {
       'imageQuizTemplate-3' => 'imageQuizTemplate-1',
       'imageQuizTemplate-SentenceChoice' => 'imageQuizTemplate-1',
-      'ConvoTemplate-2' => 'ConvoTemplate-ClozeSequence',
       _ => template,
     };
-    final appearDisappearTranslation = template == 'ConvoTemplate-AppearDisappear'
-        ? _stringMapOrNull(json['translation'])
-        : null;
     return LevelQuestion(
       questionId: json['questionId'] as String?,
       audioFile: json['audio_file'] as String?,
@@ -639,14 +634,12 @@ class LevelConfig {
       imageData: imageData,
       imageQuiz2Data: imageQuiz2Data,
       convoData: convoData,
-      convo2Data: convo2Data,
       appearDisappearData: appearDisappearData,
       clozeSequenceData: clozeSequenceData,
       sentenceBuilderData: sentenceBuilderData,
       wordPairsData: wordPairsData,
       grammarFormData: grammarFormData,
       dialogueCompletionData: dialogueCompletionData,
-      appearDisappearTranslation: appearDisappearTranslation,
     );
   }
 

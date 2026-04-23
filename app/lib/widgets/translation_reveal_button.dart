@@ -1,15 +1,23 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 
-/// Globe control: tap once to reveal [translationText]. Hidden for English or empty text.
+/// Globe control: tap once to reveal up to three `english : local` translation pairs.
+/// Hidden when [userLanguage] is `en`, or when either list is empty.
 class TranslationRevealButton extends StatefulWidget {
   const TranslationRevealButton({
     super.key,
-    required this.translationText,
+    required this.englishItems,
+    required this.localItems,
     required this.userLanguage,
+    this.onRevealed,
   });
 
-  final String? translationText;
+  final List<String> englishItems;
+  final Map<String, List<String>> localItems;
   final String userLanguage;
+  /// Called when the globe button is tapped. Use to apply a translation penalty.
+  final VoidCallback? onRevealed;
 
   @override
   State<TranslationRevealButton> createState() =>
@@ -19,14 +27,19 @@ class TranslationRevealButton extends StatefulWidget {
 class _TranslationRevealButtonState extends State<TranslationRevealButton> {
   bool _revealed = false;
 
+  String? _buildText() {
+    final local = widget.localItems[widget.userLanguage] ?? [];
+    final lineCount = min(3, min(widget.englishItems.length, local.length));
+    if (lineCount == 0) return null;
+    return List.generate(lineCount, (i) => '${widget.englishItems[i]} : ${local[i]}')
+        .join('\n');
+  }
+
   @override
   Widget build(BuildContext context) {
-    final t = widget.translationText?.trim();
-    if (t == null ||
-        t.isEmpty ||
-        widget.userLanguage == 'en') {
-      return const SizedBox.shrink();
-    }
+    if (widget.userLanguage == 'en') return const SizedBox.shrink();
+    final t = _buildText();
+    if (t == null) return const SizedBox.shrink();
     final theme = Theme.of(context);
     final cs = theme.colorScheme;
     return Column(
@@ -37,7 +50,10 @@ class _TranslationRevealButtonState extends State<TranslationRevealButton> {
           child: IconButton(
             onPressed: _revealed
                 ? null
-                : () => setState(() => _revealed = true),
+                : () {
+                    widget.onRevealed?.call();
+                    setState(() => _revealed = true);
+                  },
             icon: Icon(
               Icons.language,
               color: _revealed

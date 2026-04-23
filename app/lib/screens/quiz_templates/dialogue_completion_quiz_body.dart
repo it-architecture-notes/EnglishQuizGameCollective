@@ -11,8 +11,6 @@ class DialogueCompletionQuizBody extends StatefulWidget {
     super.key,
     required this.data,
     required this.userLanguage,
-    this.line1Translation,
-    this.answerTranslation,
     this.audio1Path,
     this.audio2Path,
     this.resolvedImagePath,
@@ -25,8 +23,6 @@ class DialogueCompletionQuizBody extends StatefulWidget {
 
   final DialogueCompletionQuestionData data;
   final String userLanguage;
-  final Map<String, String>? line1Translation;
-  final Map<String, String>? answerTranslation;
   final String? audio1Path;
   final String? audio2Path;
   /// Pre-resolved asset path for the optional hero image (from `image_file_name` in JSON).
@@ -45,6 +41,7 @@ class DialogueCompletionQuizBody extends StatefulWidget {
 class _DialogueCompletionQuizBodyState extends State<DialogueCompletionQuizBody> {
   late List<String> _options;
   bool _locked = false;
+  bool _translationPenalized = false;
   int? _selectedIndex;
   int? _correctIndex;
   bool _audio1Playing = false;
@@ -101,6 +98,16 @@ class _DialogueCompletionQuizBodyState extends State<DialogueCompletionQuizBody>
     }
   }
 
+  void _onTranslationRevealed() {
+    if (_locked || widget.data.trOk) return;
+    setState(() {
+      _locked = true;
+      _translationPenalized = true;
+    });
+    widget.onPlayWrong();
+    widget.onOutcome(false);
+  }
+
   Future<void> _playAudio1Manual() async {
     final p = widget.audio1Path;
     if (p == null || _audio1Ok != true) return;
@@ -110,20 +117,6 @@ class _DialogueCompletionQuizBodyState extends State<DialogueCompletionQuizBody>
     } finally {
       if (mounted) setState(() => _audio1Playing = false);
     }
-  }
-
-  String? _combinedTranslation() {
-    final lang = widget.userLanguage;
-    if (lang == 'en') return null;
-    final m1 = widget.line1Translation;
-    final ma = widget.answerTranslation;
-    final t1 = m1?[lang];
-    final ta = ma?[lang];
-    final parts = <String>[];
-    if (t1 != null && t1.isNotEmpty) parts.add(t1);
-    if (ta != null && ta.isNotEmpty) parts.add(ta);
-    if (parts.isEmpty) return null;
-    return parts.join('\n');
   }
 
   Future<void> _onTap(int i) async {
@@ -156,15 +149,17 @@ class _DialogueCompletionQuizBodyState extends State<DialogueCompletionQuizBody>
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
     final cs = theme.colorScheme;
-    final line = widget.data.line1['en'] ?? '';
+    final line = widget.data.line1;
     final lang = widget.userLanguage;
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
         TranslationRevealButton(
-          translationText: _combinedTranslation(),
+          englishItems: widget.data.englishToTranslate,
+          localItems: widget.data.localTranslation,
           userLanguage: lang,
+          onRevealed: _onTranslationRevealed,
         ),
         if (widget.resolvedImagePath != null) ...[
           Center(
@@ -236,7 +231,9 @@ class _DialogueCompletionQuizBodyState extends State<DialogueCompletionQuizBody>
           Color? fg;
           if (_locked) {
             if (isCor) {
-              bg = Colors.green.shade600;
+              bg = _translationPenalized
+                  ? Colors.blue.shade600
+                  : Colors.green.shade600;
               fg = Colors.white;
             } else if (isSel && !isCor) {
               bg = Colors.red.shade600;

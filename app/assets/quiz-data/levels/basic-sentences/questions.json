@@ -6,9 +6,7 @@
       "questionData": {
         "character1": "Nora",
         "character2": "Ethan",
-        "line1": {
-          "en": "How old are you?"
-        },
+        "line1": "How old are you?",
         "line1_translation": {
           "tr": "Kaç yaşındasın?",
           "es": "¿Cuántos años tienes?",
@@ -52,12 +50,8 @@
       "questionData": {
         "character1": "Maya",
         "character2": "Ryan",
-        "line1": {
-          "en": "What ___ you do?"
-        },
-        "line2": {
-          "en": "I am a student."
-        },
+        "line1": "What ___ you do?",
+        "line2": "I am a student.",
         "answer": "do",
         "distractors": [
           "does",
@@ -112,7 +106,6 @@
       "template": "ConvoTemplate-SentenceBuilder",
       "questionData": {
         "correct_order": "I go to school every day",
-        
         "translation": {
           "tr": "Her gün okula gidiyorum.",
           "es": "Voy a la escuela todos los días.",
@@ -136,9 +129,7 @@
         "character1": "Lily",
         "character2": "James",
         "image_file_name": "apple",
-        "line1": {
-          "en": "Is this a book?"
-        },
+        "line1": "Is this a book?",
         "line1_translation": {
           "tr": "Bu bir kitap mı?",
           "es": "¿Es esto un libro?",
@@ -181,22 +172,10 @@
       "template": "ConvoTemplate-ClozeSequence",
       "questionData": {
         "imageName": "teacher",
-        "sentence": {
-          "en": "I ___ English every day.",
-          "tr": "Her gün İngilizce çalışıyorum.",
-          "es": "Estudio inglés todos los días.",
-          "fr": "J'étudie l'anglais tous les jours.",
-          "de": "Ich lerne jeden Tag Englisch.",
-          "it": "Studio inglese ogni giorno.",
-          "pt": "Estudo inglês todos os dias.",
-          "ru": "Я учу английский каждый день.",
-          "zh": "我每天学英语。",
-          "ja": "毎日英語を勉強します。",
-          "ko": "매일 영어를 공부해요.",
-          "ar": "أدرس الإنجليزية كل يوم.",
-          "hi": "मैं हर दिन अंग्रेज़ी पढ़ता हूँ।"
-        },
-        "answer": ["study"],
+        "sentence": "I ___ English every day.",
+        "answer": [
+          "study"
+        ],
         "distractors": [
           "studies",
           "studying",
@@ -362,9 +341,7 @@
       "questionData": {
         "character1": "Sophie",
         "character2": "Leo",
-        "line1": {
-          "en": "Where is the bathroom?"
-        },
+        "line1": "Where is the bathroom?",
         "line1_translation": {
           "tr": "Banyo nerede?",
           "es": "¿Dónde está el baño?",
@@ -408,12 +385,8 @@
       "questionData": {
         "character1": "Olivia",
         "character2": "Daniel",
-        "line1": {
-          "en": "Can I ___ some water, please?"
-        },
-        "line2": {
-          "en": "Yes, here you are."
-        },
+        "line1": "Can I ___ some water, please?",
+        "line2": "Yes, here you are.",
         "answer": "have",
         "distractors": [
           "has",
@@ -461,7 +434,6 @@
           "read",
           "books"
         ],
-        
         "translation": {
           "tr": "Kitap okumayı severim.",
           "es": "Me gusta leer libros.",

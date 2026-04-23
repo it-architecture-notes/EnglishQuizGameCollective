@@ -11,7 +11,6 @@ class GrammarFormQuizBody extends StatefulWidget {
     super.key,
     required this.data,
     required this.userLanguage,
-    this.translation,
     required this.onPlayCorrect,
     required this.onPlayWrong,
     required this.onOutcome,
@@ -19,7 +18,6 @@ class GrammarFormQuizBody extends StatefulWidget {
 
   final GrammarFormQuestionData data;
   final String userLanguage;
-  final Map<String, String>? translation;
   final VoidCallback onPlayCorrect;
   final VoidCallback onPlayWrong;
   final void Function(bool correct) onOutcome;
@@ -31,6 +29,7 @@ class GrammarFormQuizBody extends StatefulWidget {
 class _GrammarFormQuizBodyState extends State<GrammarFormQuizBody> {
   late List<String> _options;
   bool _locked = false;
+  bool _translationPenalized = false;
   int? _selectedIndex;
   int? _correctIndex;
 
@@ -40,6 +39,16 @@ class _GrammarFormQuizBodyState extends State<GrammarFormQuizBody> {
     final d = widget.data;
     _options = [d.answer, ...d.distractors]..shuffle(Random());
     _correctIndex = _options.indexOf(d.answer);
+  }
+
+  void _onTranslationRevealed() {
+    if (_locked || widget.data.trOk) return;
+    setState(() {
+      _locked = true;
+      _translationPenalized = true;
+    });
+    widget.onPlayWrong();
+    widget.onOutcome(false);
   }
 
   void _onTap(int i) {
@@ -63,15 +72,15 @@ class _GrammarFormQuizBodyState extends State<GrammarFormQuizBody> {
     final theme = Theme.of(context);
     final cs = theme.colorScheme;
     final line = widget.data.sentence;
-    final tr = widget.translation;
-    final aux = tr?[widget.userLanguage];
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
         TranslationRevealButton(
-          translationText: aux,
+          englishItems: widget.data.englishToTranslate,
+          localItems: widget.data.localTranslation,
           userLanguage: widget.userLanguage,
+          onRevealed: _onTranslationRevealed,
         ),
         Container(
           padding: const EdgeInsets.all(12),
@@ -96,7 +105,9 @@ class _GrammarFormQuizBodyState extends State<GrammarFormQuizBody> {
           Color? fg;
           if (_locked) {
             if (isCor) {
-              bg = Colors.green.shade600;
+              bg = _translationPenalized
+                  ? Colors.blue.shade600
+                  : Colors.green.shade600;
               fg = Colors.white;
             } else if (isSel) {
               bg = Colors.red.shade600;

@@ -33,12 +33,18 @@ class AppearDisappearQuestionData extends Object
   get distractors
   get displayDuration
   get introPause
+  get englishToTranslate
+  get localTranslation
+  get trOk
 
 class ClozeSequenceQuestionData extends Object
   get sentence
   get answers
   get distractors
   get imageName
+  get englishToTranslate
+  get localTranslation
+  get trOk
 
 class ConvoQuestionData extends Object
   get character1
@@ -47,19 +53,16 @@ class ConvoQuestionData extends Object
   get line2
   get answer
   get distractors
-  get line1Translation
-  get line2Translation
   get imageName
-
-class ConvoTemplate2QuestionData extends Object
-  get imageName
-  get sentence
-  get answer
-  get distractors
+  get englishToTranslate
+  get localTranslation
+  get trOk
 
 class SentenceBuilderQuestionData extends Object
   get correctOrder
-  get translation
+  get englishToTranslate
+  get localTranslation
+  get trOk
 
 class WordPairItem extends Object
     String rightForLanguage(String userLanguage)
@@ -73,7 +76,9 @@ class GrammarFormQuestionData extends Object
   get sentence
   get answer
   get distractors
-  get translation
+  get englishToTranslate
+  get localTranslation
+  get trOk
 
 class DialogueCompletionQuestionData extends Object
   get character1
@@ -81,44 +86,41 @@ class DialogueCompletionQuestionData extends Object
   get line1
   get answer
   get distractors
-  get line1Translation
-  get answerTranslation
   get imageName
+  get englishToTranslate
+  get localTranslation
+  get trOk
 
 class LevelQuestion extends Object
   get questionId
   get audioFile
   get audioFile1
   get audioFile2
-  get type
   get template
   get imageData
   get imageQuiz2Data
   get convoData
-  get convo2Data
   get appearDisappearData
   get clozeSequenceData
   get sentenceBuilderData
   get wordPairsData
   get grammarFormData
   get dialogueCompletionData
-  get appearDisappearTranslation
+  get isImageTemplate
 
 class LevelConfig extends Object
-    LevelQuestionType _parseType(String raw)
-    Map<String, String> _stringMap(dynamic value)
     Map<String, String>? _stringMapOrNull(dynamic value)
+    String _englishLineField(dynamic raw)
     ImageQuestionData _parseImageData(Map<String, dynamic> data)
     ImageQuizTemplate2Data _parseImageQuiz2Data(Map<String, dynamic> data)
     List<String> _stringList(dynamic v)
+    Map<String, List<String>> _stringListMap(dynamic v)
     List<String> _wordsFromArrayOrSentence(dynamic v)
     AppearDisappearQuestionData _parseAppearDisappear(Map<String, dynamic> data)
     bool _isBlankToken(String s)
-    int _countBlanks(Map<String, String> sentence)
+    int _countBlanks(String sentence)
     ClozeSequenceQuestionData _parseClozeSequence(Map<String, dynamic> data)
-    ClozeSequenceQuestionData _parseConvo2AsCloze(Map<String, dynamic> data)
     ConvoQuestionData _parseConvoData(Map<String, dynamic> data)
-    ConvoTemplate2QuestionData _parseConvo2Data(Map<String, dynamic> data)
     SentenceBuilderQuestionData _parseSentenceBuilder(Map<String, dynamic> data)
     WordPairsQuestionData _parseWordPairs(Map<String, dynamic> data)
     GrammarFormQuestionData _parseGrammarForm(Map<String, dynamic> data)
@@ -431,10 +433,14 @@ class _ImageQuizScreenState extends ConsumerState
     Widget _monsterImage()
     String _correctAnswer()
     List<String> _buildOptions()
+    void _triggerConvo1TranslationPenalty(LevelQuestion q)
     void _onAnswerTap(int optionIndex)
     void _goNext()
     String? _audioAssetPathForRaw(String? raw)
     String? _audioAssetPath(LevelQuestion q)
+    bool _convo1UsesDualAudio(LevelQuestion q)
+    bool _convo1AnswerWasCorrect(LevelQuestion q)
+    void _scheduleConvo1DualLine1IfNeeded(LevelQuestion q)
     Future<bool> _resolveAudioExists(String path)
     int _stars()
     int _diamondsEarned()
@@ -456,7 +462,6 @@ class _ImageQuizScreenState extends ConsumerState
     String? _resolvedClozeImagePath()
     String _questionLabel(Map<String, String> strings, int current, int total)
     String _titleForTemplate(String template, Map<String, String> strings)
-    String? _convo1CombinedTranslation(ConvoQuestionData q, String lang)
     Widget _convo1AudioControls(LevelQuestion q)
     Widget _buildCharactersRow(ConvoQuestionData q, String userLanguage)
     Widget _buildCharacterColumn(String name, String dialogueLine, bool isActive, CrossAxisAlignment alignment)
@@ -502,6 +507,8 @@ class _ImageQuizScreenState extends ConsumerState
   set _endedEarlyShortQuiz=
   get _answerLocked
   set _answerLocked=
+  get _convo1TranslationPenalized
+  set _convo1TranslationPenalized=
   get _showNext
   set _showNext=
   get _reviewingMistakes
@@ -512,6 +519,12 @@ class _ImageQuizScreenState extends ConsumerState
   set _selectedIndex=
   get _convoTtsPlaying
   set _convoTtsPlaying=
+  get _convo1DualPrimedKey
+  set _convo1DualPrimedKey=
+  get _convo1DualA1Playing
+  set _convo1DualA1Playing=
+  get _convo1DualA2Playing
+  set _convo1DualA2Playing=
   get _currentOptions
   set _currentOptions=
   get _quizStartTime
@@ -540,18 +553,16 @@ class _ImageQuizScreenState extends ConsumerState
   set _gameOverBubble=
   get _convoQuestions
   set _convoQuestions=
-  get _convo2HeroPaths
-  set _convo2HeroPaths=
   get _convoByQuestionId
-  get _convo2ImagePathByQuestionId
+  get _convoThumbPathByQuestionId
   get _allQuestions
   set _allQuestions=
   get _questionImagePaths
   set _questionImagePaths=
   get _questionQuiz2Paths
   set _questionQuiz2Paths=
-  get _questionConvo2HeroPaths
-  set _questionConvo2HeroPaths=
+  get _questionConvoThumbPaths
+  set _questionConvoThumbPaths=
   get _audioExistsCache
   get _levelTimerSeconds
   set _levelTimerSeconds=
@@ -712,19 +723,21 @@ class GrammarFormQuizBody extends StatefulWidget
     State<GrammarFormQuizBody> createState()
   get data
   get userLanguage
-  get translation
   get onPlayCorrect
   get onPlayWrong
   get onOutcome
 
 class _GrammarFormQuizBodyState extends State
     void initState()
+    void _onTranslationRevealed()
     void _onTap(int i)
     Widget build(BuildContext context)
   get _options
   set _options=
   get _locked
   set _locked=
+  get _translationPenalized
+  set _translationPenalized=
   get _selectedIndex
   set _selectedIndex=
   get _correctIndex
@@ -737,7 +750,6 @@ class SentenceBuilderQuizBody extends StatefulWidget
   get data
   get strings
   get userLanguage
-  get translation
   get audioAssetPath
   get resolveAudioExists
   get onPlayQuestionAudio
@@ -749,6 +761,7 @@ class _SentenceBuilderQuizBodyState extends State
     void initState()
     bool _isIdentityPerm(List<int> p)
     String _wordAtCell(int cellIndex)
+    void _onTranslationRevealed()
     void _onGridTap(int cellIndex)
     Future<void> _playAudio()
     Widget build(BuildContext context)
@@ -763,6 +776,8 @@ class _SentenceBuilderQuizBodyState extends State
   get _slotFromPlayer
   get _failed
   set _failed=
+  get _translationPenalized
+  set _translationPenalized=
   get _wrongGridIndex
   set _wrongGridIndex=
   get _cellToStep
@@ -828,10 +843,10 @@ class ClozeSequenceQuizBody extends StatefulWidget
 class _ClozeSequenceQuizBodyState extends State
     void initState()
     Future<void> _playAudio()
+    void _onTranslationRevealed()
     void _onTileTap(int tileIndex)
     List<InlineSpan> _buildSentenceSpans(ThemeData theme)
     Widget _buildTile(int index, ThemeData theme)
-    String? _fullTranslationText()
     Widget build(BuildContext context)
   get _tokens
   set _tokens=
@@ -847,6 +862,8 @@ class _ClozeSequenceQuizBodyState extends State
   set _currentBlank=
   get _failed
   set _failed=
+  get _translationPenalized
+  set _translationPenalized=
   get _audioPlaying
   set _audioPlaying=
   bool _isBlank(String token)
@@ -857,7 +874,6 @@ class AppearDisappearQuizBody extends StatefulWidget
     State<AppearDisappearQuizBody> createState()
   get data
   get userLanguage
-  get translation
   get audioAssetPath
   get resolveAudioExists
   get onPlayQuestionAudio
@@ -868,6 +884,7 @@ class AppearDisappearQuizBody extends StatefulWidget
 class _AppearDisappearQuizBodyState extends State
     void initState()
     Future<void> _runAudioThenDisappear()
+    void _onTranslationRevealed()
     void _onGridTap(int gridIndex)
     Widget _buildBoxRow(ThemeData theme, ColorScheme cs)
     Widget build(BuildContext context)
@@ -883,6 +900,8 @@ class _AppearDisappearQuizBodyState extends State
   get _slotFromPlayer
   get _failed
   set _failed=
+  get _translationPenalized
+  set _translationPenalized=
   get _wrongGridIndex
   set _wrongGridIndex=
   get _correctGridIndices
@@ -897,8 +916,6 @@ class DialogueCompletionQuizBody extends StatefulWidget
     State<DialogueCompletionQuizBody> createState()
   get data
   get userLanguage
-  get line1Translation
-  get answerTranslation
   get audio1Path
   get audio2Path
   get resolvedImagePath
@@ -912,14 +929,16 @@ class _DialogueCompletionQuizBodyState extends State
     void initState()
     void didUpdateWidget(DialogueCompletionQuizBody oldWidget)
     Future<void> _primeAudio()
+    void _onTranslationRevealed()
     Future<void> _playAudio1Manual()
-    String? _combinedTranslation()
     Future<void> _onTap(int i)
     Widget build(BuildContext context)
   get _options
   set _options=
   get _locked
   set _locked=
+  get _translationPenalized
+  set _translationPenalized=
   get _selectedIndex
   set _selectedIndex=
   get _correctIndex
@@ -1371,10 +1390,13 @@ class _ImageQuizTemplate2AudioControlsState extends State
 
 class TranslationRevealButton extends StatefulWidget
     State<TranslationRevealButton> createState()
-  get translationText
+  get englishItems
+  get localItems
   get userLanguage
+  get onRevealed
 
 class _TranslationRevealButtonState extends State
+    String? _buildText()
     Widget build(BuildContext context)
   get _revealed
   set _revealed=

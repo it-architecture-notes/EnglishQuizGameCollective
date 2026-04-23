@@ -51,12 +51,13 @@ class _ClozeSequenceQuizBodyState extends State<ClozeSequenceQuizBody> {
 
   int _currentBlank = 0;
   bool _failed = false;
+  bool _translationPenalized = false;
   bool _audioPlaying = false;
 
   @override
   void initState() {
     super.initState();
-    _tokens = (widget.data.sentence['en'] ?? '').split(' ');
+    _tokens = widget.data.sentence.split(' ');
     _blankIndices =
         [for (var i = 0; i < _tokens.length; i++) if (_isBlank(_tokens[i])) i];
     _filled = List.filled(_blankIndices.length, null);
@@ -76,6 +77,32 @@ class _ClozeSequenceQuizBodyState extends State<ClozeSequenceQuizBody> {
     } finally {
       if (mounted) setState(() => _audioPlaying = false);
     }
+  }
+
+  void _onTranslationRevealed() {
+    if (_failed || widget.data.trOk) return;
+    if (_currentBlank >= widget.data.answers.length) return;
+    final newFilled = List<String?>.from(_filled);
+    final newTileStates = List<_TileState>.from(_tileStates);
+    for (var b = _currentBlank; b < widget.data.answers.length; b++) {
+      final answer = widget.data.answers[b];
+      for (var t = 0; t < _tiles.length; t++) {
+        if (_tiles[t] == answer && newTileStates[t] != _TileState.correct) {
+          newTileStates[t] = _TileState.correct;
+          newFilled[b] = answer;
+          break;
+        }
+      }
+    }
+    setState(() {
+      _failed = true;
+      _translationPenalized = true;
+      _filled = newFilled;
+      _tileStates = newTileStates;
+      _currentBlank = widget.data.answers.length;
+    });
+    widget.onPlayWrong();
+    widget.onOutcome(false);
   }
 
   void _onTileTap(int tileIndex) {
@@ -131,7 +158,9 @@ class _ClozeSequenceQuizBodyState extends State<ClozeSequenceQuizBody> {
           spans.add(TextSpan(
             text: filled,
             style: TextStyle(
-              color: Colors.green.shade700,
+              color: _translationPenalized
+                  ? Colors.blue.shade700
+                  : Colors.green.shade700,
               fontWeight: FontWeight.w700,
             ),
           ));
@@ -177,8 +206,8 @@ class _ClozeSequenceQuizBodyState extends State<ClozeSequenceQuizBody> {
     Color bg = cs.surfaceContainerHighest;
     Color? fg;
     if (isCorrect) {
-      bg = Colors.green.shade100;
-      fg = Colors.green.shade900;
+      bg = _translationPenalized ? Colors.blue.shade100 : Colors.green.shade100;
+      fg = _translationPenalized ? Colors.blue.shade900 : Colors.green.shade900;
     } else if (isWrong) {
       bg = Colors.red.shade100;
       fg = Colors.red.shade900;
@@ -216,7 +245,9 @@ class _ClozeSequenceQuizBodyState extends State<ClozeSequenceQuizBody> {
             right: -6,
             child: CircleAvatar(
               radius: 9,
-              backgroundColor: Colors.green.shade700,
+              backgroundColor: _translationPenalized
+                  ? Colors.blue.shade700
+                  : Colors.green.shade700,
               child: Text(
                 '${_tileStates.take(index + 1).where((s) => s == _TileState.correct).length}',
                 style: const TextStyle(
@@ -231,11 +262,6 @@ class _ClozeSequenceQuizBodyState extends State<ClozeSequenceQuizBody> {
     );
   }
 
-  String? _fullTranslationText() {
-    if (widget.userLanguage == 'en') return null;
-    return widget.data.sentence[widget.userLanguage];
-  }
-
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
@@ -245,8 +271,10 @@ class _ClozeSequenceQuizBodyState extends State<ClozeSequenceQuizBody> {
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
         TranslationRevealButton(
-          translationText: _fullTranslationText(),
+          englishItems: widget.data.englishToTranslate,
+          localItems: widget.data.localTranslation,
           userLanguage: widget.userLanguage,
+          onRevealed: _onTranslationRevealed,
         ),
         if (widget.resolvedImagePath != null) ...[
           Center(

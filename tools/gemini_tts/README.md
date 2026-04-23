@@ -84,13 +84,17 @@ Notes:
 
 Supported templates:
 
-- `ConvoTemplate-1` (multi-speaker): `line1.en` + `line2.en`
-  - blanks in `line1` and `line2` are replaced by `answer` when available
-- `ConvoTemplate-AppearDisappear`: whitespace-split `words` (array or string), joined with `[long pause]` between tokens (no instructional prefix)
-- `ConvoTemplate-ClozeSequence`: `sentence.en` with each gap filled from `answer` / `answers` in order (full sentence read aloud); if any gap is still empty, remaining gaps fall back to `[long pause]` handling
-- `ConvoTemplate-DialogueCompletion`: two files — `audio_file1` → `line1.en`; `audio_file2` → `answer` (blanks normalized like other templates). Both stems are required.
+- `ConvoTemplate-1` (multi-speaker): `questionData.line1` + `line2` as **plain English strings**
+  - Legacy `{"en": "..."}` objects are still accepted (same as the Flutter parser’s `_englishLineField`).
+  - Underscore blanks in either line are replaced by `answer` when available (`___` / `_____`, etc.).
+  - **Split clips (agentic TTS):** if the question has **both** top-level `audio_file1` and `audio_file2`, the script generates **two** single-speaker `.m4a` files (same voice routing as DialogueCompletion). Spoken text is each line **after** blanks are filled with `answer` (not the `SpeakerA: …` combined prompt). Optional overrides: `audio_file1_text`, `audio_file2_text`. Top-level `audio_file` is **not** used for that row when the pair is present.
+- `ConvoTemplate-AppearDisappear`: `words` as array or space-separated string; tokens joined with spaces for one clip
+- `ConvoTemplate-ClozeSequence`: `questionData.sentence` as a **plain English string** with gaps; each gap filled from `answer` / `answers` in order. Legacy `sentence` locale maps still work (`en` used). If gaps remain, they fall back to `[long pause]` handling.
+- `ConvoTemplate-DialogueCompletion`: two files — `audio_file1` → `questionData.line1` (plain English string; legacy `{"en": ...}` still accepted by the script); `audio_file2` → `answer` (blanks normalized). Both stems are required.
 - `ConvoTemplate-SentenceBuilder`: joined `correct_order`
 - `imageQuizTemplate-2`: `answer` only (skipped if absent)
+
+Per-question `english_to_translate` / `local_translation` (and old `line1_translation` keys) are **not** used for TTS; only English dialogue/sentence fields above are spoken.
 
 Skipped templates:
 

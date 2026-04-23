@@ -14,7 +14,6 @@ class SentenceBuilderQuizBody extends StatefulWidget {
     required this.data,
     required this.strings,
     required this.userLanguage,
-    this.translation,
     this.audioAssetPath,
     required this.resolveAudioExists,
     required this.onPlayQuestionAudio,
@@ -26,7 +25,6 @@ class SentenceBuilderQuizBody extends StatefulWidget {
   final SentenceBuilderQuestionData data;
   final Map<String, String> strings;
   final String userLanguage;
-  final Map<String, String>? translation;
   final String? audioAssetPath;
   final Future<bool> Function(String path) resolveAudioExists;
   final Future<void> Function(String path) onPlayQuestionAudio;
@@ -50,6 +48,7 @@ class _SentenceBuilderQuizBodyState extends State<SentenceBuilderQuizBody> {
   final List<String?> _slots = [];
   final List<bool> _slotFromPlayer = [];
   bool _failed = false;
+  bool _translationPenalized = false;
   int? _wrongGridIndex;
   final Map<int, int> _cellToStep = {};
   bool _completed = false;
@@ -84,6 +83,29 @@ class _SentenceBuilderQuizBodyState extends State<SentenceBuilderQuizBody> {
   }
 
   String _wordAtCell(int cellIndex) => _sentence[_perm[cellIndex]];
+
+  void _onTranslationRevealed() {
+    if (_failed || _completed || widget.data.trOk) return;
+    setState(() {
+      _failed = true;
+      _translationPenalized = true;
+      _wrongGridIndex = null;
+      for (var pos = _tapProgress; pos < _sentence.length; pos++) {
+        for (var cell = 0; cell < _perm.length; cell++) {
+          if (_perm[cell] == pos && !_usedCellIndices.contains(cell)) {
+            _usedCellIndices.add(cell);
+            _slots[pos] = _sentence[pos];
+            _slotFromPlayer[pos] = false;
+            _cellToStep[cell] = pos + 1;
+            break;
+          }
+        }
+      }
+      _tapProgress = _sentence.length;
+    });
+    widget.onPlayWrong();
+    widget.onOutcome(false);
+  }
 
   void _onGridTap(int cellIndex) {
     if (_completed || _failed || _usedCellIndices.contains(cellIndex)) return;
@@ -135,15 +157,14 @@ class _SentenceBuilderQuizBodyState extends State<SentenceBuilderQuizBody> {
     final cs = theme.colorScheme;
     final n = _perm.length;
 
-    final tr = widget.translation;
-    final aux = tr?[widget.userLanguage];
-
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
         TranslationRevealButton(
-          translationText: aux,
+          englishItems: widget.data.englishToTranslate,
+          localItems: widget.data.localTranslation,
           userLanguage: widget.userLanguage,
+          onRevealed: _onTranslationRevealed,
         ),
         FutureBuilder<bool>(
           future: widget.audioAssetPath == null
@@ -217,7 +238,9 @@ class _SentenceBuilderQuizBodyState extends State<SentenceBuilderQuizBody> {
                   color: isWrong
                       ? Colors.red.shade100
                       : tapped
-                          ? Colors.green.shade100
+                          ? (_translationPenalized
+                              ? Colors.blue.shade100
+                              : Colors.green.shade100)
                           : cs.surfaceContainerHighest,
                   borderRadius: BorderRadius.circular(10),
                   child: InkWell(
@@ -244,7 +267,9 @@ class _SentenceBuilderQuizBodyState extends State<SentenceBuilderQuizBody> {
                                 color: isWrong
                                     ? Colors.red.shade900
                                     : tapped
-                                        ? Colors.green.shade900
+                                        ? (_translationPenalized
+                                            ? Colors.blue.shade900
+                                            : Colors.green.shade900)
                                         : null,
                               ),
                             ),
@@ -255,7 +280,9 @@ class _SentenceBuilderQuizBodyState extends State<SentenceBuilderQuizBody> {
                               right: 2,
                               child: CircleAvatar(
                                 radius: 10,
-                                backgroundColor: Colors.green.shade700,
+                                backgroundColor: _translationPenalized
+                                    ? Colors.blue.shade700
+                                    : Colors.green.shade700,
                                 child: Text(
                                   '$step',
                                   style: const TextStyle(

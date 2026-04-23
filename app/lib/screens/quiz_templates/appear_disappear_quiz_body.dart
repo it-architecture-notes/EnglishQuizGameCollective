@@ -13,7 +13,6 @@ class AppearDisappearQuizBody extends StatefulWidget {
     super.key,
     required this.data,
     required this.userLanguage,
-    this.translation,
     this.audioAssetPath,
     required this.resolveAudioExists,
     required this.onPlayQuestionAudio,
@@ -24,7 +23,6 @@ class AppearDisappearQuizBody extends StatefulWidget {
 
   final AppearDisappearQuestionData data;
   final String userLanguage;
-  final Map<String, String>? translation;
   final String? audioAssetPath;
   final Future<bool> Function(String path) resolveAudioExists;
   final Future<void> Function(String path) onPlayQuestionAudio;
@@ -47,6 +45,7 @@ class _AppearDisappearQuizBodyState extends State<AppearDisappearQuizBody> {
   final List<String?> _interactionSlots = [];
   final List<bool> _slotFromPlayer = [];
   bool _failed = false;
+  bool _translationPenalized = false;
   int? _wrongGridIndex;
   final Set<int> _correctGridIndices = {};
   final Map<int, int> _gridIndexToStep = {};
@@ -85,6 +84,30 @@ class _AppearDisappearQuizBodyState extends State<AppearDisappearQuizBody> {
       _phase = _Phase.interaction;
       _interactionEnabled = true;
     });
+  }
+
+  void _onTranslationRevealed() {
+    if (_failed || _completed || !_interactionEnabled || widget.data.trOk) return;
+    setState(() {
+      _failed = true;
+      _translationPenalized = true;
+      _wrongGridIndex = null;
+      for (var pos = _tapProgress; pos < _sentence.length; pos++) {
+        final word = _sentence[pos];
+        for (var gi = 0; gi < _shuffledChoices.length; gi++) {
+          if (_shuffledChoices[gi] == word && !_correctGridIndices.contains(gi)) {
+            _correctGridIndices.add(gi);
+            _gridIndexToStep[gi] = pos + 1;
+            _interactionSlots[pos] = word;
+            _slotFromPlayer[pos] = false;
+            break;
+          }
+        }
+      }
+      _tapProgress = _sentence.length;
+    });
+    widget.onPlayWrong();
+    widget.onOutcome(false);
   }
 
   void _onGridTap(int gridIndex) {
@@ -195,17 +218,14 @@ class _AppearDisappearQuizBodyState extends State<AppearDisappearQuizBody> {
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
     final cs = theme.colorScheme;
-    final tr = widget.translation;
-    final aux = widget.userLanguage != 'en' && tr != null
-        ? tr[widget.userLanguage]
-        : null;
-
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
         TranslationRevealButton(
-          translationText: aux,
+          englishItems: widget.data.englishToTranslate,
+          localItems: widget.data.localTranslation,
           userLanguage: widget.userLanguage,
+          onRevealed: _onTranslationRevealed,
         ),
         _buildBoxRow(theme, cs),
         const SizedBox(height: 12),
@@ -228,7 +248,9 @@ class _AppearDisappearQuizBodyState extends State<AppearDisappearQuizBody> {
                     color: isWrong
                         ? Colors.red.shade100
                         : isCorrectTile
-                            ? Colors.green.shade100
+                            ? (_translationPenalized
+                                ? Colors.blue.shade100
+                                : Colors.green.shade100)
                             : cs.surfaceContainerHighest,
                     borderRadius: BorderRadius.circular(10),
                     child: InkWell(
@@ -250,7 +272,9 @@ class _AppearDisappearQuizBodyState extends State<AppearDisappearQuizBody> {
                                 color: isWrong
                                     ? Colors.red.shade900
                                     : isCorrectTile
-                                        ? Colors.green.shade900
+                                        ? (_translationPenalized
+                                            ? Colors.blue.shade900
+                                            : Colors.green.shade900)
                                         : null,
                               ),
                             ),
@@ -261,7 +285,9 @@ class _AppearDisappearQuizBodyState extends State<AppearDisappearQuizBody> {
                               right: 2,
                               child: CircleAvatar(
                                 radius: 10,
-                                backgroundColor: Colors.green.shade700,
+                                backgroundColor: _translationPenalized
+                                    ? Colors.blue.shade700
+                                    : Colors.green.shade700,
                                 child: Text(
                                   '$orderLabel',
                                   style: const TextStyle(

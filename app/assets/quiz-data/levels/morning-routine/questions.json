@@ -115,16 +115,8 @@
       "questionData": {
         "character1": "lily",
         "character2": "james",
-        "line1": {
-          "en": "What time do you usually _____ in the morning?",
-          "tr": "Sabahları genellikle saat kaçta _____?",
-          "es": "¿A qué hora sueles _____ por la mañana?"
-        },
-        "line2": {
-          "en": "I wake up at seven o'clock every day.",
-          "tr": "Her gün saat yedide kalkıyorum.",
-          "es": "Me despierto a las siete todos los días."
-        },
+        "line1": "What time do you usually _____ in the morning?",
+        "line2": "I wake up at seven o'clock every day.",
         "answer": "wake up",
         "distractors": [
           "get ready",
@@ -138,16 +130,8 @@
       "questionData": {
         "character1": "omar",
         "character2": "maya",
-        "line1": {
-          "en": "How long does it take you to _____?",
-          "tr": "Hazırlanman ne kadar sürer?",
-          "es": "¿Cuánto tiempo te lleva _____?"
-        },
-        "line2": {
-          "en": "About thirty minutes — I shower and get dressed.",
-          "tr": "Yaklaşık otuz dakika — duş alıyorum ve giyiniyorum.",
-          "es": "Unos treinta minutos — me ducho y me visto."
-        },
+        "line1": "How long does it take you to _____?",
+        "line2": "About thirty minutes — I shower and get dressed.",
         "answer": "get ready",
         "distractors": [
           "wake up",
@@ -161,16 +145,8 @@
       "questionData": {
         "character1": "sophie",
         "character2": "ethan",
-        "line1": {
-          "en": "Do you _____ take a shower every morning?",
-          "tr": "Her sabah duş almak zorunda mısın?",
-          "es": "¿_____ ducharte todas las mañanas?"
-        },
-        "line2": {
-          "en": "Yes, I have to. It helps me wake up properly.",
-          "tr": "Evet, zorundayım. Düzgün uyanmama yardımcı oluyor.",
-          "es": "Sí, tengo que hacerlo. Me ayuda a despertarme bien."
-        },
+        "line1": "Do you _____ take a shower every morning?",
+        "line2": "Yes, I have to. It helps me wake up properly.",
         "answer": "have to",
         "distractors": [
           "must not",
@@ -180,14 +156,10 @@
       }
     },
     {
-      "template": "ConvoTemplate-2",
+      "template": "ConvoTemplate-ClozeSequence",
       "questionData": {
         "imageName": "shower",
-        "sentence": {
-          "en": "He takes a warm _____ every morning before work.",
-          "tr": "He takes a warm _____ every morning before work. (duş)",
-          "es": "He takes a warm _____ every morning before work. (ducha)"
-        },
+        "sentence": "He takes a warm _____ every morning before work.",
         "answer": "shower",
         "distractors": [
           "bathtub",
@@ -197,14 +169,10 @@
       }
     },
     {
-      "template": "ConvoTemplate-2",
+      "template": "ConvoTemplate-ClozeSequence",
       "questionData": {
         "imageName": "alarm-clock",
-        "sentence": {
-          "en": "She set her _____ to ring at six in the morning.",
-          "tr": "She set her _____ to ring at six in the morning. (alarm saati)",
-          "es": "She set her _____ to ring at six in the morning. (despertador)"
-        },
+        "sentence": "She set her _____ to ring at six in the morning.",
         "answer": "alarm-clock",
         "distractors": [
           "bed-frame",

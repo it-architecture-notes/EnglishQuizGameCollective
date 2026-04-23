@@ -1,3 +1,71 @@
+**Issue-25: Translation field restructure, locale-keyed map, translation penalty (tr_ok), and greetings cleanup.**
+
+# Active Progress Context
+
+## Active Issue
+
+Description: Change in translation fields.
+
+Use Cases:
+    - The translation fields are too long and taking too much question space, we will replace it with a new structure.
+    - Generic for all the templates that has translation option:
+        - Translation will be provided as <english_word_or_sentence> : <local_translation> NL
+    Image templates:
+        - There is no translation option for these type of templates.
+    - Convo-1 template:
+        - line_1_translation and line_2_translation will be removed.
+        - two optional arrays will be added-> english_to_translate = [] and local_translation = []
+        - when translation is clicked in the screen english_to_translate = [X] : local_translation = [X] - new line, will be presented
+        - x will max of (english_to_translate array size or 3 ), no more than 3 lines will be shown
+        - if one of the arrays size is less than the oher smaller array size will be used.
+        - if one of the keys are not provided or array size is zero for one of them then translation button will not be shown.
+    - ConvoTemplate-ClozeSequence
+        - translations will be removed from the sentence fields, sentence will only show the english senetence with cloze
+        - same objects and rules as Convo-1 will be applicable.
+    - ConvoTemplate-AppearDisappear
+        - translation key will be removed from template
+        - same objects and rules as Convo-1 will be applicable.
+    - ConvoTemplate-SentenceBuilder
+        - translation key will be removed from template
+        - same objects and rules as Convo-1 will be applicable.
+    - ConvoTemplate-WordPairs
+        - no translation option is avaialble for this template
+    - ConvoTemplate-GrammarForm"
+        - translation key will be removed from template
+        - same objects and rules as Convo-1 will be applicable.
+    - ConvoTemplate-DialogueCompletion
+        - line_1_translation and answer_translation will be removed.
+        - same objects and rules as Convo-1 will be applicable.
+
+## Additional Features (implemented alongside translation refactor)
+
+### local_translation as locale-keyed map
+- `local_translation` is not a flat array but a map of locale → array:
+  `"local_translation": { "tr": ["..."], "fr": ["..."] }`
+- `TranslationRevealButton` receives `Map<String, List<String>>` and resolves the user's locale internally.
+- `english_to_translate` remains a plain `List<String>`.
+
+### Translation penalty (`tr_ok`)
+- New optional field inside `questionData` for all translatable templates: `"tr_ok": true/false` (default `false`).
+- When `tr_ok` is `false` (default) and the globe button is tapped:
+  - Any partial tile selections are cleared.
+  - All correct answers/tiles are revealed in **blue** (instead of green), with step badges where applicable.
+  - Answer buttons and tiles are disabled.
+  - `onOutcome(false)` is called — counts as a wrong answer.
+  - A Next button appears (same as wrong answer flow).
+- When `tr_ok` is `true`: translation reveals normally with no penalty.
+- If the question is already locked (user already answered wrong), globe tap only reveals translation — no additional penalty.
+- AppearDisappear: penalty is skipped if the reveal/clearing phase has not yet completed.
+- Supported templates: `ConvoTemplate-1`, `ConvoTemplate-ClozeSequence`, `ConvoTemplate-AppearDisappear`, `ConvoTemplate-SentenceBuilder`, `ConvoTemplate-GrammarForm`, `ConvoTemplate-DialogueCompletion`.
+
+### questions.json field placement rules
+- `audio_file`, `audio_file1`, `audio_file2` must be at the **question root** level (sibling to `template`), not inside `questionData`.
+- `audio_file_text` (Gemini TTS text override for `audio_file`) must be at the **question root** level.
+- `audio_file1_text` / `audio_file2_text` (Gemini TTS overrides for DialogueCompletion clips) must be at the **question root** level.
+- `english_to_translate` and `local_translation` must be inside `questionData`.
+
+---
+
 **Issue-24: Quiz template audio, translation, and TTS generation refactor.**
 
 # Active Progress Context

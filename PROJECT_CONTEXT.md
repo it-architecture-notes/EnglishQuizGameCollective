@@ -51,8 +51,8 @@ Every question object has these top-level fields:
 | `"template"` | ✓ | Template ID (see below); image vs convo mode is inferred from the name (`imageQuizTemplate-*` vs others) |
 | `"questionData"` | ✓ | Template-specific fields (see per-template tables) |
 | `"audio_file"` | optional | Audio basename (no extension) played when the question appears. Used by most templates. |
-| `"audio_file1"` | optional | DialogueCompletion only — audio for the question line |
-| `"audio_file2"` | optional | DialogueCompletion only — audio for the correct answer |
+| `"audio_file1"` | optional | DialogueCompletion — question line. ConvoTemplate-1 — first line clip (use with `audio_file2`; blanks filled in asset). |
+| `"audio_file2"` | optional | DialogueCompletion — correct answer. ConvoTemplate-1 — second line clip (requires `audio_file1`). |
 
 ---
 
@@ -96,13 +96,15 @@ Translation: none.
 |--------------------|----------|-------------|
 | `character1` | ✓ | Name of speaker 1 |
 | `character2` | ✓ | Name of speaker 2 |
-| `line1` | ✓ | Locale map `{"en":"..."}` — speaker 1's line |
-| `line2` | ✓ | Locale map with `___` blank — speaker 2's line |
+| `line1` | ✓ | English string — speaker 1's line |
+| `line2` | ✓ | English string — speaker 2's line (blank `___` in the active line) |
 | `answer` | ✓ | Correct option (English string) |
 | `distractors` | ✓ | Array of exactly 3 wrong options |
-| `line1_translation` | optional | Locale map shown below line 1 for non-en users |
-| `line2_translation` | optional | Locale map shown below line 2 for non-en users |
 | `image_file_name` | optional | Asset basename for a 72×72 thumbnail above the dialogue |
+| `english_to_translate` | optional | Array of English words/sentences to show in the translation panel |
+| `local_translation` | optional | Array of translated strings aligned by index with `english_to_translate` |
+
+**Top-level audio:** `audio_file` (single combined clip), or **`audio_file1` + `audio_file2`** together for split clips (see root field table).
 
 Answer options: 4 shuffled text buttons.
 
@@ -113,13 +115,14 @@ Answer options: 4 shuffled text buttons.
 
 | questionData field | Required | Description |
 |--------------------|----------|-------------|
-| `sentence` | ✓ | Locale map; `en` value must contain `_____` for each blank |
+| `sentence` | ✓ | Plain English string with `_____` blank markers (locale maps not accepted) |
 | `answer` or `answers` | ✓ | Single string or array; count must equal number of blanks |
 | `distractors` | ✓ | Array of extra wrong word tiles |
 | `imageName` | optional | Asset basename for a 72×72 thumbnail (omit = no image) |
+| `english_to_translate` | optional | Array of English words/sentences to show in the translation panel |
+| `local_translation` | optional | Array of translated strings aligned by index with `english_to_translate` |
 
-Answer options: horizontal tile row. The full sentence (with numbered blanks) is shown as soon as the question appears; player taps to fill blank 1, then 2, … in order.  
-Translation: the `sentence` locale map provides the translated sentence directly.
+Answer options: horizontal tile row. The full sentence (with numbered blanks) is shown as soon as the question appears; player taps to fill blank 1, then 2, … in order.
 
 ---
 
@@ -131,10 +134,11 @@ Translation: the `sentence` locale map provides the translated sentence directly
 | `words` | ✓ | String (space-split) or array — the words to memorise |
 | `distractors` | optional | Extra tiles to fill the grid (up to 9 total with target words) |
 | `display_duration` | optional | Legacy timing param (default 1.0) |
+| `english_to_translate` | optional | Array of English words/sentences to show in the translation panel |
+| `local_translation` | optional | Array of translated strings aligned by index with `english_to_translate` |
 
 Answer options: 3×3 shuffled tile grid.  
-Audio: `audio_file` (top-level) — plays while words are visible; words disappear 500 ms after audio ends.  
-Translation: `"translation"` locale map at the **top level** of the question object (sibling to `questionData`, not inside it).
+Audio: `audio_file` (top-level) — plays while words are visible; words disappear 500 ms after audio ends.
 
 ---
 
@@ -144,10 +148,10 @@ Translation: `"translation"` locale map at the **top level** of the question obj
 | questionData field | Required | Description |
 |--------------------|----------|-------------|
 | `correct_order` | ✓ | Space-split string or array — sentence tokens in correct order |
-| `translation` | optional | Locale map shown below for non-en users |
+| `english_to_translate` | optional | Array of English words/sentences to show in the translation panel |
+| `local_translation` | optional | Array of translated strings aligned by index with `english_to_translate` |
 
-Answer options: all tokens from `correct_order` shuffled into a tile Wrap (no extra distractors).  
-Translation: `translation` inside `questionData`.
+Answer options: all tokens from `correct_order` shuffled into a tile Wrap (no extra distractors).
 
 ---
 
@@ -173,10 +177,10 @@ Translation: embedded in `translations` per pair (no separate `translation` fiel
 | `sentence` | ✓ | English string (or locale map — `en` used) with `___` blank |
 | `answer` | ✓ | Correct word/form |
 | `distractors` | ✓ | Array of exactly 3 wrong forms |
-| `translation` | optional | Locale map for the full sentence (shown when non-en) |
+| `english_to_translate` | optional | Array of English words/sentences to show in the translation panel |
+| `local_translation` | optional | Array of translated strings aligned by index with `english_to_translate` |
 
-Answer options: 4 shuffled text buttons.  
-Translation: `translation` inside `questionData`.
+Answer options: 4 shuffled text buttons.
 
 ---
 
@@ -187,16 +191,15 @@ Translation: `translation` inside `questionData`.
 |--------------------|----------|-------------|
 | `character1` | ✓ | Name of the asking speaker |
 | `character2` | ✓ | Name of the replying speaker |
-| `line1` | ✓ | Locale map `{"en":"..."}` — question line shown to player |
+| `line1` | ✓ | English string — question line shown to player |
 | `answer` | ✓ | Correct reply (English string) |
 | `distractors` | ✓ | Array of exactly 3 wrong reply options |
-| `line1_translation` | optional | Locale map for line 1 (shown when non-en) |
-| `answer_translation` | optional | Locale map for the correct answer (shown after answering) |
 | `image_file_name` | optional | Asset basename for a 72×72 thumbnail above the dialogue |
+| `english_to_translate` | optional | Array of English words/sentences to show in the translation panel |
+| `local_translation` | optional | Array of translated strings aligned by index with `english_to_translate` |
 
 Answer options: 4 shuffled full-sentence buttons.  
-Audio: `audio_file1` (question line) and `audio_file2` (correct answer) — both top-level.  
-Translation: `line1_translation` / `answer_translation` inside `questionData`.
+Audio: `audio_file1` (question line) and `audio_file2` (correct answer) — both top-level.
 
 ---
 
@@ -210,12 +213,16 @@ Monster attack animation applies to `imageQuizTemplate-1` and `imageQuizTemplate
 
 ## Translation System
 
-The global Translate toggle is removed. Translations are configured per-question in JSON and shown automatically for non-English users:
-- Most templates: `"translation"` map inside `questionData`
-- `ConvoTemplate-1`: `"line1_translation"` / `"line2_translation"` inside `questionData`
-- `ConvoTemplate-DialogueCompletion`: `"line1_translation"` / `"answer_translation"` inside `questionData`
-- `ConvoTemplate-AppearDisappear`: `"translation"` at the top level of the question object (sibling to `questionData`)
-- No translation support: ClozeSequence, WordPairs, Simon
+Translations are shown via a globe button (tap to reveal) for non-English users. All translatable templates use the same two optional arrays inside `questionData`:
+
+- `"english_to_translate"`: array of English words/sentences
+- `"local_translation"`: array of translated strings (same length, aligned by index)
+
+Display: up to `min(3, min(english_to_translate.length, local_translation.length))` lines of `"english : local"`. Button is hidden when either array is absent or empty, or when the app language is `en`.
+
+**Supported templates:** `ConvoTemplate-1`, `ConvoTemplate-ClozeSequence`, `ConvoTemplate-AppearDisappear`, `ConvoTemplate-SentenceBuilder`, `ConvoTemplate-GrammarForm`, `ConvoTemplate-DialogueCompletion`.
+
+**No translation support:** `imageQuizTemplate-*`, `ConvoTemplate-WordPairs`.
 
 ---
 
