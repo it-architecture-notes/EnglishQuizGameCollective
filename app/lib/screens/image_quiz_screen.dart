@@ -41,6 +41,9 @@ const bool _kTestAutoComplete = false;
 
 const String _kBlank = '_____';
 
+/// Matches any run of 2+ underscores anywhere in a string (cloze detection).
+final RegExp _kBlankPattern = RegExp(r'_{2,}');
+
 /// Minimum touch target size (accessibility).
 const double kMinTouchTarget = 48;
 
@@ -62,8 +65,7 @@ const bool _kMonsterLaneEnabled = false;
 
 /// Image templates that show the guest animal / monster lane and count toward monster pressure.
 bool _isMonsterEligibleImageTemplate(String template) =>
-    template == 'imageQuizTemplate-1' ||
-    template == 'imageQuizTemplate-2';
+    template == 'imageQuizTemplate-1' || template == 'imageQuizTemplate-2';
 
 /// Maps cumulative wrong answers on [monsterEligibleImageTemplate] questions to step 0..4.
 /// If the level has at most 6 such questions, advance every wrong. If more than 6, use a
@@ -105,6 +107,7 @@ class ImageQuizScreen extends ConsumerStatefulWidget {
 
   /// 1-based position in subLevels list; used for scroll navigation only.
   final int ordinalLevelIndex;
+
   /// Stable progress key used for persisting completion state.
   final String progressKey;
   final bool reminderMode;
@@ -127,20 +130,26 @@ class _ImageQuizScreenState extends ConsumerState<ImageQuizScreen>
   final Map<String, String> _assetPathByQuestionId = {};
   final Map<String, List<String>> _vocabularyByQuestionId = {};
   List<String> _vocabulary = [];
+
   /// Per-question wrong answers when using [LevelConfig] (same order as [_questionAssetPaths]).
   List<List<String>>? _configWrongAnswers;
+
   /// Unified image phase: `imageQuizTemplate-1` and/or `imageQuizTemplate-2` rows (null = legacy path-only mode).
   List<LevelQuestion>? _configImageQuestions;
+
   /// Per question index: four asset paths in order [correct, wrong1, wrong2, wrong3] for template-2.
   List<List<String>> _configImageQuiz2Paths = [];
+
   /// Reminder mode: four image paths per question for [imageQuizTemplate-2] (shuffled order built in UI).
   final Map<String, List<String>> _reminderImageQuiz2PathsByQuestionId = {};
   final Map<String, LevelQuestion> _reminderImageQuestionsById = {};
   GameConfig _config = const GameConfig();
   int _currentIndex = 0;
   int _correctCount = 0;
+
   /// Highest correct-answer count recorded for this level before this run; used to compute diamond delta.
   int _previousHighestDiamonds = 0;
+
   /// When true, [_goNext] ends the run after the 3rd question (index 2) with 2 stars.
   bool _shortQuizDebug = false;
   bool _endedEarlyShortQuiz = false;
@@ -151,10 +160,12 @@ class _ImageQuizScreenState extends ConsumerState<ImageQuizScreen>
   int _initialQuestionCount = 0;
   int? _selectedIndex; // 0..3 index into current options
   bool _convoTtsPlaying = false;
+
   /// [ConvoTemplate-1] with `audio_file1` + `audio_file2`: auto-play line 1 once per question.
   String? _convo1DualPrimedKey;
   bool _convo1DualA1Playing = false;
   bool _convo1DualA2Playing = false;
+  bool _convo1PostAnswerAudioPlaying = false;
   List<String> _currentOptions = [];
   DateTime? _quizStartTime;
 
@@ -182,13 +193,16 @@ class _ImageQuizScreenState extends ConsumerState<ImageQuizScreen>
   // Convo mode
   List<LevelQuestion> _convoQuestions = [];
   final Map<String, LevelQuestion> _convoByQuestionId = {};
+
   /// Reminder mode: resolved asset path for optional convo thumbnail (ClozeSequence `imageName`, etc.).
   final Map<String, String> _convoThumbPathByQuestionId = {};
 
   // Unified mode (mixed question types in a single pass)
   List<LevelQuestion> _allQuestions = [];
-  List<String?> _questionImagePaths = [];      // asset path per question (null for vocab)
-  List<List<String>> _questionQuiz2Paths = []; // 4 paths per template-2 question (empty otherwise)
+  List<String?> _questionImagePaths =
+      []; // asset path per question (null for vocab)
+  List<List<String>> _questionQuiz2Paths =
+      []; // 4 paths per template-2 question (empty otherwise)
   /// Parallel to [_allQuestions]: optional 72×72 convo thumbnail per question (e.g. ClozeSequence `imageName`).
   List<String?> _questionConvoThumbPaths = [];
   final Map<String, bool> _audioExistsCache = {};
@@ -197,11 +211,11 @@ class _ImageQuizScreenState extends ConsumerState<ImageQuizScreen>
   int? _levelTimerSeconds;
 
   /// Asset-bundle prefix key for resolving images under this sub-level’s folder.
-  static String _levelKey(SubLevel sub) =>
-      imageQuizLevelKey(sub.iconImageName);
+  static String _levelKey(SubLevel sub) => imageQuizLevelKey(sub.iconImageName);
 
   /// True when this route is the reminder replay flow rather than a normal sub-level.
   bool get _isReminder => widget.reminderMode;
+
   /// Stable ID for the active question (reminder + progress tracking).
   String? get _currentQuestionId =>
       _currentQuestionIds.isEmpty ? null : _currentQuestionIds[_currentIndex];
@@ -230,7 +244,7 @@ class _ImageQuizScreenState extends ConsumerState<ImageQuizScreen>
   }
 
   /// Used to offer “view full conversation” on the end card when any ConvoTemplate-1 appeared.
-/// Correct MCQ string for ConvoTemplate-1 only (other templates self-score).
+  /// Correct MCQ string for ConvoTemplate-1 only (other templates self-score).
   String? _convoAnswer(LevelQuestion? q) {
     if (q == null) return null;
     if (q.template == 'ConvoTemplate-1') return q.convoData?.answer;
@@ -241,7 +255,8 @@ class _ImageQuizScreenState extends ConsumerState<ImageQuizScreen>
   int get _questionCount {
     if (_allQuestions.isNotEmpty) return _allQuestions.length;
     if (_isReminder) return _currentQuestionIds.length;
-    if (_convoQuestions.isNotEmpty || _convoByQuestionId.isNotEmpty) return _convoQuestions.length;
+    if (_convoQuestions.isNotEmpty || _convoByQuestionId.isNotEmpty)
+      return _convoQuestions.length;
     if (_configImageQuestions != null) return _configImageQuestions!.length;
     return _questionAssetPaths.length;
   }
@@ -383,88 +398,134 @@ class _ImageQuizScreenState extends ConsumerState<ImageQuizScreen>
           _timerController.duration =
               Duration(seconds: _timerSecondsForCurrentQuestion());
           _startTimer();
-          final musicOn = ref.read(settingsProvider).valueOrNull?.musicOn ?? true;
+          final musicOn =
+              ref.read(settingsProvider).valueOrNull?.musicOn ?? true;
           audio.startQuizMusic(musicOn: musicOn);
         }
         return;
       }
 
       // Unified: load all questions (image + vocab/grammar) in a single pass
-      final questions = levelCfg.questions.toList();
+      final questions = <LevelQuestion>[];
       final imgPaths = <String?>[];
       final q2Paths = <List<String>>[];
       final convoThumbPaths = <String?>[];
 
-      for (final q in questions) {
-        if (q.isImageTemplate) {
-          if (q.template == 'imageQuizTemplate-1') {
-            final d = q.imageData!;
-            final path = await resolveQuizImageAsset(key, d.imageName);
-            if (path == null) throw Exception('Missing image asset for: ${d.imageName}');
-            imgPaths.add(path);
-            q2Paths.add(const []);
-            convoThumbPaths.add(null);
-          } else if (q.template == 'imageQuizTemplate-2') {
-            final d = q.imageQuiz2Data!;
-            final path = await resolveQuizImageAsset(key, d.imageName);
-            if (path == null) throw Exception('Missing image asset for: ${d.imageName}');
-            imgPaths.add(path);
-            final four = <String>[];
-            for (final stem in [d.imageName, ...d.wrongAnswers]) {
-              final p = await resolveQuizImageAsset(key, stem);
-              if (p == null) throw Exception('Missing image asset for: $stem');
-              four.add(p);
-            }
-            q2Paths.add(four);
-            convoThumbPaths.add(null);
-          } else {
-            imgPaths.add(null);
-            q2Paths.add(const []);
-            convoThumbPaths.add(null);
-          }
-        } else {
-          // vocab / grammar
+      for (final q in levelCfg.questions) {
+        if (q.isSkipPlaceholder) {
+          questions.add(q);
           imgPaths.add(null);
           q2Paths.add(const []);
-          if (q.template == 'ConvoTemplate-1' &&
-              q.convoData?.imageName != null) {
-            final name = q.convoData!.imageName!;
-            final path = await resolveQuizImageAsset(key, name);
-            if (path == null) throw Exception('Missing image asset for: $name');
-            convoThumbPaths.add(path);
-          } else if (q.template == 'ConvoTemplate-ClozeSequence' &&
-              q.clozeSequenceData?.imageName != null) {
-            final name = q.clozeSequenceData!.imageName!;
-            final path = await resolveQuizImageAsset(key, name);
-            if (path == null) throw Exception('Missing image asset for: $name');
-            convoThumbPaths.add(path);
-          } else if (q.template == 'ConvoTemplate-DialogueCompletion' &&
-              q.dialogueCompletionData?.imageName != null) {
-            final name = q.dialogueCompletionData!.imageName!;
-            final path = await resolveQuizImageAsset(key, name);
-            if (path == null) throw Exception('Missing image asset for: $name');
-            convoThumbPaths.add(path);
+          convoThumbPaths.add(null);
+          continue;
+        }
+        try {
+          if (q.isImageTemplate) {
+            if (q.template == 'imageQuizTemplate-1') {
+              final d = q.imageData;
+              if (d == null) {
+                throw StateError('imageQuizTemplate-1 missing imageData');
+              }
+              final path = await resolveQuizImageAsset(key, d.imageName);
+              if (path == null) {
+                throw StateError('Missing image: ${d.imageName}');
+              }
+              questions.add(q);
+              imgPaths.add(path);
+              q2Paths.add(const []);
+              convoThumbPaths.add(null);
+            } else if (q.template == 'imageQuizTemplate-2') {
+              final d = q.imageQuiz2Data;
+              if (d == null) {
+                throw StateError('imageQuizTemplate-2 missing data');
+              }
+              final path = await resolveQuizImageAsset(key, d.imageName);
+              if (path == null) {
+                throw StateError('Missing image: ${d.imageName}');
+              }
+              final four = <String>[];
+              for (final stem in [d.imageName, ...d.wrongAnswers]) {
+                final p = await resolveQuizImageAsset(key, stem);
+                if (p == null) throw StateError('Missing image: $stem');
+                four.add(p);
+              }
+              questions.add(q);
+              imgPaths.add(path);
+              q2Paths.add(four);
+              convoThumbPaths.add(null);
+            } else {
+              questions.add(q);
+              imgPaths.add(null);
+              q2Paths.add(const []);
+              convoThumbPaths.add(null);
+            }
           } else {
-            convoThumbPaths.add(null);
+            String? thumb;
+            if (q.template == 'ConvoTemplate-1' &&
+                q.convoData?.imageName != null) {
+              thumb = await resolveQuizImageAsset(
+                key,
+                q.convoData!.imageName!,
+              );
+            } else if (q.template == 'ConvoTemplate-ClozeSequence' &&
+                q.clozeSequenceData?.imageName != null) {
+              thumb = await resolveQuizImageAsset(
+                key,
+                q.clozeSequenceData!.imageName!,
+              );
+            } else if (q.template == 'ConvoTemplate-DialogueCompletion' &&
+                q.dialogueCompletionData?.imageName != null) {
+              thumb = await resolveQuizImageAsset(
+                key,
+                q.dialogueCompletionData!.imageName!,
+              );
+            }
+            questions.add(q);
+            imgPaths.add(null);
+            q2Paths.add(const []);
+            convoThumbPaths.add(thumb);
           }
+        } catch (e, st) {
+          debugPrint(
+            'Question (${q.template}) asset resolution replaced with skip: $e\n$st',
+          );
+          questions.add(LevelQuestion.parseError(questionId: q.questionId));
+          imgPaths.add(null);
+          q2Paths.add(const []);
+          convoThumbPaths.add(null);
         }
       }
 
-      // Precache images
+      if (questions.isEmpty) {
+        if (mounted) {
+          setState(() {
+            _loadError = 'This level has no questions.';
+            _phase = _Phase.loading;
+          });
+        }
+        return;
+      }
+
+      // Precache images (swallow per-image errors — tiles still try AssetImage on demand)
       if (mounted) {
         for (var i = 0; i < questions.length; i++) {
           if (!mounted) break;
           final q = questions[i];
-          if (q.isImageTemplate) {
-            if (q.template == 'imageQuizTemplate-2') {
-              for (final p in q2Paths[i]) {
-                await precacheImage(AssetImage(p), context);
+          if (q.isSkipPlaceholder) continue;
+          try {
+            if (q.isImageTemplate) {
+              if (q.template == 'imageQuizTemplate-2') {
+                for (final p in q2Paths[i]) {
+                  await precacheImage(AssetImage(p), context);
+                }
+              } else if (imgPaths[i] != null) {
+                await precacheImage(AssetImage(imgPaths[i]!), context);
               }
-            } else if (imgPaths[i] != null) {
-              await precacheImage(AssetImage(imgPaths[i]!), context);
+            } else if (convoThumbPaths[i] != null) {
+              await precacheImage(AssetImage(convoThumbPaths[i]!), context);
             }
-          } else if (convoThumbPaths[i] != null) {
-            await precacheImage(AssetImage(convoThumbPaths[i]!), context);
+          } catch (e, st) {
+            debugPrint('Precache failed for question $i: $e\n$st');
           }
         }
       }
@@ -476,6 +537,7 @@ class _ImageQuizScreenState extends ConsumerState<ImageQuizScreen>
       final monsterEligibleCount = questions
           .where(
             (q) =>
+                !q.isSkipPlaceholder &&
                 q.isImageTemplate &&
                 _isMonsterEligibleImageTemplate(q.template),
           )
@@ -518,8 +580,11 @@ class _ImageQuizScreenState extends ConsumerState<ImageQuizScreen>
           _currentOptions = _buildOptions();
         });
         // Start timer only for image questions (first question might be vocab)
-        if (questions.isNotEmpty && questions.first.isImageTemplate) {
-          _timerController.duration = Duration(seconds: _timerSecondsForCurrentQuestion());
+        if (questions.isNotEmpty &&
+            !questions.first.isSkipPlaceholder &&
+            questions.first.isImageTemplate) {
+          _timerController.duration =
+              Duration(seconds: _timerSecondsForCurrentQuestion());
           _startTimer();
         }
         final musicOn = ref.read(settingsProvider).valueOrNull?.musicOn ?? true;
@@ -584,8 +649,9 @@ class _ImageQuizScreenState extends ConsumerState<ImageQuizScreen>
               reminderImageQuestionById[questionId] = q;
               final manifestPaths = loadedPaths[progressKey] ??=
                   await loadImageQuizLevelAssetPaths(levelKey);
-              final vocabulary = loadedVocabulary[progressKey] ??=
-                  manifestPaths.map(assetPathToBasename).toList(growable: false);
+              final vocabulary = loadedVocabulary[progressKey] ??= manifestPaths
+                  .map(assetPathToBasename)
+                  .toList(growable: false);
               vocabularyByQuestionId[questionId] = vocabulary;
               wrongThreeByQuestionId[questionId] = q.imageData!.wrongAnswers;
               validQuestionIds.add(questionId);
@@ -607,8 +673,9 @@ class _ImageQuizScreenState extends ConsumerState<ImageQuizScreen>
               reminderImageQuestionById[questionId] = q;
               final manifestPaths = loadedPaths[progressKey] ??=
                   await loadImageQuizLevelAssetPaths(levelKey);
-              final vocabulary = loadedVocabulary[progressKey] ??=
-                  manifestPaths.map(assetPathToBasename).toList(growable: false);
+              final vocabulary = loadedVocabulary[progressKey] ??= manifestPaths
+                  .map(assetPathToBasename)
+                  .toList(growable: false);
               vocabularyByQuestionId[questionId] = vocabulary;
               wrongThreeByQuestionId[questionId] = d.wrongAnswers;
               validQuestionIds.add(questionId);
@@ -853,8 +920,11 @@ class _ImageQuizScreenState extends ConsumerState<ImageQuizScreen>
         if (mounted && _phase == _Phase.playing) {
           _monsterIdleController.repeat(reverse: true);
           // Show speech bubbles after the slide completes (steps 1–3 only)
-          if (_monsterStep >= 1 && _monsterStep <= 3 && _conversations != null) {
-            final pair = pickRandomStepConversation(_conversations!, _monsterStep);
+          if (_monsterStep >= 1 &&
+              _monsterStep <= 3 &&
+              _conversations != null) {
+            final pair =
+                pickRandomStepConversation(_conversations!, _monsterStep);
             if (pair != null) setState(() => _bubbleConversation = pair);
           }
         }
@@ -934,7 +1004,9 @@ class _ImageQuizScreenState extends ConsumerState<ImageQuizScreen>
           return q.imageQuiz2Data!.correctAnswerStem;
         }
         if (q.imageData?.answer != null) return q.imageData!.answer!;
-        final path = _currentIndex < _questionImagePaths.length ? _questionImagePaths[_currentIndex] : null;
+        final path = _currentIndex < _questionImagePaths.length
+            ? _questionImagePaths[_currentIndex]
+            : null;
         return path != null ? assetPathToBasename(path) : '';
       }
       return _convoAnswer(q) ?? '';
@@ -947,7 +1019,8 @@ class _ImageQuizScreenState extends ConsumerState<ImageQuizScreen>
       if (rq?.template == 'imageQuizTemplate-2') {
         return rq!.imageQuiz2Data!.correctAnswerStem;
       }
-      if (rq?.template == 'imageQuizTemplate-1' && rq!.imageData?.answer != null) {
+      if (rq?.template == 'imageQuizTemplate-1' &&
+          rq!.imageData?.answer != null) {
         return rq.imageData!.answer!;
       }
     }
@@ -981,7 +1054,8 @@ class _ImageQuizScreenState extends ConsumerState<ImageQuizScreen>
       if (q.imageData != null && q.imageData!.wrongAnswers.length == 3) {
         return ([correct, ...q.imageData!.wrongAnswers]..shuffle(Random()));
       }
-      final wrongPool = _vocabulary.where((s) => s != correct).toList()..shuffle(Random());
+      final wrongPool = _vocabulary.where((s) => s != correct).toList()
+        ..shuffle(Random());
       return ([correct, ...wrongPool.take(3)]..shuffle(Random()));
     }
     if (_isConvoMode) {
@@ -1029,7 +1103,7 @@ class _ImageQuizScreenState extends ConsumerState<ImageQuizScreen>
   }
 
   /// Fires when translation is revealed on a ConvoTemplate-1 question with [trOk] == false.
-  void _triggerConvo1TranslationPenalty(LevelQuestion q) {
+  Future<void> _triggerConvo1TranslationPenalty(LevelQuestion q) async {
     if (_answerLocked) return;
     if (q.convoData?.trOk ?? false) return;
     final soundFxOn = ref.read(settingsProvider).valueOrNull?.soundFxOn ?? true;
@@ -1045,12 +1119,49 @@ class _ImageQuizScreenState extends ConsumerState<ImageQuizScreen>
     setState(() {
       _answerLocked = true;
       _convo1TranslationPenalized = true;
-      _showNext = true;
+      _showNext = false;
     });
+    if (_convo1UsesDualAudio(q)) {
+      final p1 = _audioAssetPathForRaw(q.audioFile1);
+      final p2 = _audioAssetPathForRaw(q.audioFile2);
+      if (p1 != null && p2 != null) {
+        final ok1 = await _resolveAudioExists(p1);
+        final ok2 = await _resolveAudioExists(p2);
+        if (ok1 && ok2) {
+          final startIndex = _currentIndex;
+          final startQuestionId = _currentQuestionId;
+          bool sameQuestion() =>
+              mounted &&
+              _currentIndex == startIndex &&
+              _currentQuestionId == startQuestionId;
+          final caseA = !_convo1Line1HasCloze(q) && _convo1Line2HasCloze(q);
+          setState(() => _convo1PostAnswerAudioPlaying = true);
+          if (!caseA) {
+            setState(() => _convo1DualA1Playing = true);
+            try {
+              await audio.playQuestionAudio(p1);
+            } finally {
+              if (mounted) setState(() => _convo1DualA1Playing = false);
+            }
+            if (!sameQuestion()) return;
+          }
+          setState(() => _convo1DualA2Playing = true);
+          try {
+            await audio.playQuestionAudio(p2);
+          } finally {
+            if (mounted) setState(() => _convo1DualA2Playing = false);
+          }
+          if (!sameQuestion()) return;
+          setState(() => _convo1PostAnswerAudioPlaying = false);
+        }
+      }
+    }
+    if (!mounted) return;
+    setState(() => _showNext = true);
   }
 
   /// Handles ConvoTemplate-1/2 and image multiple-choice taps; schedules advance or Next on wrong.
-  void _onAnswerTap(int optionIndex) {
+  Future<void> _onAnswerTap(int optionIndex) async {
     if (_answerLocked) return;
     if (_kTestAutoComplete) {
       _correctCount = 100;
@@ -1062,25 +1173,52 @@ class _ImageQuizScreenState extends ConsumerState<ImageQuizScreen>
     final correct = _correctAnswer();
     final isCorrect = option == correct;
     final soundFxOn = ref.read(settingsProvider).valueOrNull?.soundFxOn ?? true;
-    if (isCorrect) {
-      final cq = _currentConvoLevelQuestion;
-      if (cq != null && _convo1UsesDualAudio(cq)) {
-        final p2 = _audioAssetPathForRaw(cq.audioFile2);
-        Future<void> line2 = Future.value();
-        if (p2 != null) {
-          line2 = (() async {
-            if (!await _resolveAudioExists(p2)) return;
-            if (!mounted) return;
-            setState(() => _convo1DualA2Playing = true);
-            try {
-              await audio.playQuestionAudio(p2);
-            } finally {
-              if (mounted) setState(() => _convo1DualA2Playing = false);
-            }
-          })();
+    final cq = _currentConvoLevelQuestion;
+    if (cq != null && _convo1UsesDualAudio(cq)) {
+      final p1 = _audioAssetPathForRaw(cq.audioFile1);
+      final p2 = _audioAssetPathForRaw(cq.audioFile2);
+      final dualReady = p1 != null &&
+          p2 != null &&
+          await _resolveAudioExists(p1) &&
+          await _resolveAudioExists(p2);
+      final line1HasCloze = _convo1Line1HasCloze(cq);
+      final line2HasCloze = _convo1Line2HasCloze(cq);
+      final caseA = !line1HasCloze && line2HasCloze;
+      final playBoth = !caseA;
+
+      Future<void> playClip(String path, {required bool line1}) async {
+        if (!mounted) return;
+        setState(() {
+          if (line1) {
+            _convo1DualA1Playing = true;
+          } else {
+            _convo1DualA2Playing = true;
+          }
+        });
+        try {
+          await audio.playQuestionAudio(path);
+        } finally {
+          if (mounted) {
+            setState(() {
+              if (line1) {
+                _convo1DualA1Playing = false;
+              } else {
+                _convo1DualA2Playing = false;
+              }
+            });
+          }
         }
-        line2.whenComplete(() {
-          if (!mounted) return;
+      }
+
+      if (dualReady) {
+        final startIndex = _currentIndex;
+        final startQuestionId = _currentQuestionId;
+        bool sameQuestion() =>
+            mounted &&
+            _currentIndex == startIndex &&
+            _currentQuestionId == startQuestionId;
+
+        if (isCorrect) {
           audio.playCorrect(soundFxOn: soundFxOn);
           AchievementService.instance.recordAnswer(true);
           setState(() {
@@ -1089,20 +1227,60 @@ class _ImageQuizScreenState extends ConsumerState<ImageQuizScreen>
             _correctCount++;
             _showNext = false;
             _bubbleConversation = null;
+            _convo1PostAnswerAudioPlaying = true;
           });
+          if (playBoth) {
+            await playClip(p1, line1: true);
+            if (!sameQuestion()) return;
+          }
+          await playClip(p2, line1: false);
+          if (!sameQuestion()) return;
+          setState(() => _convo1PostAnswerAudioPlaying = false);
           Future.delayed(
             Duration(
               milliseconds:
                   (_autoAdvanceDelayForCurrentImageQuestion() * 1000).round(),
             ),
             () {
-              if (!mounted) return;
+              if (!sameQuestion()) return;
               _goNext();
             },
           );
+          return;
+        }
+
+        audio.playWrong(soundFxOn: soundFxOn);
+        final questionId = _currentQuestionId;
+        if (_isReminder) {
+          if (questionId != null) {
+            _nextReviewQuestionIds.add(questionId);
+          }
+        } else if (questionId != null) {
+          ReminderProgressService.instance.recordWrongAnswer(questionId);
+        }
+        _recordWrongForMonster();
+        AchievementService.instance.recordAnswer(false);
+        setState(() {
+          _answerLocked = true;
+          _selectedIndex = optionIndex;
+          _showNext = false;
+          _convo1PostAnswerAudioPlaying = true;
+        });
+        if (playBoth) {
+          await playClip(p1, line1: true);
+          if (!sameQuestion()) return;
+        }
+        await playClip(p2, line1: false);
+        if (!sameQuestion()) return;
+        setState(() {
+          _convo1PostAnswerAudioPlaying = false;
+          _showNext = true;
         });
         return;
       }
+    }
+
+    if (isCorrect) {
       audio.playCorrect(soundFxOn: soundFxOn);
     } else {
       audio.playWrong(soundFxOn: soundFxOn);
@@ -1178,7 +1356,10 @@ class _ImageQuizScreenState extends ConsumerState<ImageQuizScreen>
           _showNext = false;
           _selectedIndex = null;
           _convo1TranslationPenalized = false;
+          _convo1PostAnswerAudioPlaying = false;
           _convo1DualPrimedKey = null;
+          _convo1DualA1Playing = false;
+          _convo1DualA2Playing = false;
           _bubbleConversation = null;
           _currentOptions = _buildOptions();
           _reviewingMistakes = true;
@@ -1203,26 +1384,35 @@ class _ImageQuizScreenState extends ConsumerState<ImageQuizScreen>
       _showNext = false;
       _selectedIndex = null;
       _convo1TranslationPenalized = false;
+      _convo1PostAnswerAudioPlaying = false;
       _convo1DualPrimedKey = null;
+      _convo1DualA1Playing = false;
+      _convo1DualA2Playing = false;
       _bubbleConversation = null;
       _currentOptions = _buildOptions();
       _convoTtsPlaying = false;
     });
     if (_allQuestions.isNotEmpty) {
-      if (_currentIndex < _allQuestions.length &&
-          _allQuestions[_currentIndex].isImageTemplate) {
-        _timerController.duration = Duration(seconds: _timerSecondsForCurrentQuestion());
-        _startTimer();
+      if (_currentIndex < _allQuestions.length) {
+        final nq = _allQuestions[_currentIndex];
+        if (nq.isImageTemplate && !nq.isSkipPlaceholder) {
+          _timerController.duration = Duration(
+            seconds: _timerSecondsForCurrentQuestion(),
+          );
+          _startTimer();
+        }
       }
     } else if (!_isConvoMode) {
-      _timerController.duration = Duration(seconds: _timerSecondsForCurrentQuestion());
+      _timerController.duration =
+          Duration(seconds: _timerSecondsForCurrentQuestion());
       _startTimer();
     }
   }
 
   LevelQuestion? get _currentLevelQuestion {
     if (_allQuestions.isNotEmpty) {
-      if (_currentIndex < 0 || _currentIndex >= _allQuestions.length) return null;
+      if (_currentIndex < 0 || _currentIndex >= _allQuestions.length)
+        return null;
       return _allQuestions[_currentIndex];
     }
     if (_isReminder && _currentQuestionId != null) {
@@ -1249,7 +1439,8 @@ class _ImageQuizScreenState extends ConsumerState<ImageQuizScreen>
     return 'quiz-data/levels/${_levelKey(widget.subLevel)}/$withExt';
   }
 
-  String? _audioAssetPath(LevelQuestion q) => _audioAssetPathForRaw(q.audioFile);
+  String? _audioAssetPath(LevelQuestion q) =>
+      _audioAssetPathForRaw(q.audioFile);
 
   bool _convo1UsesDualAudio(LevelQuestion q) {
     if (q.template != 'ConvoTemplate-1') return false;
@@ -1266,8 +1457,15 @@ class _ImageQuizScreenState extends ConsumerState<ImageQuizScreen>
     return ans != null && _currentOptions[idx] == ans;
   }
 
+  bool _convo1Line1HasCloze(LevelQuestion q) =>
+      q.convoData?.line1.contains(_kBlankPattern) ?? false;
+
+  bool _convo1Line2HasCloze(LevelQuestion q) =>
+      q.convoData?.line2.contains(_kBlankPattern) ?? false;
+
   void _scheduleConvo1DualLine1IfNeeded(LevelQuestion q) {
     if (!_convo1UsesDualAudio(q)) return;
+    if (_convo1Line1HasCloze(q)) return;
     final key = '${_currentQuestionId ?? ''}#$_currentIndex';
     WidgetsBinding.instance.addPostFrameCallback((_) {
       if (!mounted) return;
@@ -1278,7 +1476,11 @@ class _ImageQuizScreenState extends ConsumerState<ImageQuizScreen>
         final cur = _currentConvoLevelQuestion;
         if (cur == null || !_convo1UsesDualAudio(cur)) return;
         final p1 = _audioAssetPathForRaw(cur.audioFile1);
-        if (p1 == null || !await _resolveAudioExists(p1)) return;
+        final p2 = _audioAssetPathForRaw(cur.audioFile2);
+        if (p1 == null || p2 == null) return;
+        if (!await _resolveAudioExists(p1) || !await _resolveAudioExists(p2)) {
+          return;
+        }
         if (!mounted) return;
         setState(() => _convo1DualA1Playing = true);
         try {
@@ -1398,7 +1600,8 @@ class _ImageQuizScreenState extends ConsumerState<ImageQuizScreen>
   }
 
   /// Central phase switch between loading spinner, playing layouts, summary, and game-over screen.
-  Widget _buildBody(bool soundFxOn, Map<String, String> strings, String userLanguage) {
+  Widget _buildBody(
+      bool soundFxOn, Map<String, String> strings, String userLanguage) {
     switch (_phase) {
       case _Phase.loading:
         return _buildLoading(soundFxOn, strings);
@@ -1552,7 +1755,9 @@ class _ImageQuizScreenState extends ConsumerState<ImageQuizScreen>
     String userLanguage,
   ) {
     final path = _allQuestions.isNotEmpty
-        ? (_currentIndex < _questionImagePaths.length ? _questionImagePaths[_currentIndex] ?? '' : '')
+        ? (_currentIndex < _questionImagePaths.length
+            ? _questionImagePaths[_currentIndex] ?? ''
+            : '')
         : _questionAssetPaths[_currentIndex];
     final isLast = _currentIndex + 1 >= _questionCount;
     final d2 = _currentImageQuiz2Data();
@@ -1606,9 +1811,10 @@ class _ImageQuizScreenState extends ConsumerState<ImageQuizScreen>
                   children: [
                     Text(
                       _nounLabelFromImageStem(iq2.correctAnswerStem),
-                      style: Theme.of(context).textTheme.headlineSmall?.copyWith(
-                            fontWeight: FontWeight.w800,
-                          ),
+                      style:
+                          Theme.of(context).textTheme.headlineSmall?.copyWith(
+                                fontWeight: FontWeight.w800,
+                              ),
                       textAlign: TextAlign.center,
                     ),
                     ImageQuizTemplate2AudioControls(
@@ -1729,7 +1935,8 @@ class _ImageQuizScreenState extends ConsumerState<ImageQuizScreen>
                               child: AnimatedBuilder(
                                 animation: _timerController,
                                 builder: (context, _) {
-                                  final remaining = 1.0 - _timerController.value;
+                                  final remaining =
+                                      1.0 - _timerController.value;
                                   final color = Color.lerp(
                                       Colors.red, Colors.green, remaining)!;
                                   return CustomPaint(
@@ -1822,7 +2029,9 @@ class _ImageQuizScreenState extends ConsumerState<ImageQuizScreen>
                       ? Colors.green.shade200
                       : showRed
                           ? Colors.red.shade200
-                          : Theme.of(context).colorScheme.surfaceContainerHighest,
+                          : Theme.of(context)
+                              .colorScheme
+                              .surfaceContainerHighest,
                   borderRadius: BorderRadius.circular(12),
                   clipBehavior: Clip.antiAlias,
                   child: InkWell(
@@ -1907,7 +2116,10 @@ class _ImageQuizScreenState extends ConsumerState<ImageQuizScreen>
                           maxLines: 5,
                           overflow: TextOverflow.ellipsis,
                           style: fgColor != null
-                              ? Theme.of(context).textTheme.titleMedium?.copyWith(
+                              ? Theme.of(context)
+                                  .textTheme
+                                  .titleMedium
+                                  ?.copyWith(
                                     color: fgColor,
                                     fontWeight: FontWeight.w600,
                                   )
@@ -2139,11 +2351,20 @@ class _ImageQuizScreenState extends ConsumerState<ImageQuizScreen>
 
   // ── Convo mode ────────────────────────────────────────────────────────────
 
-/// Non-image question chrome: progress label, template body, MCQ buttons when applicable, Next/Finish row.
+  /// Non-image question chrome: progress label, template body, MCQ buttons when applicable, Next/Finish row.
   Widget _buildConvoPlaying(
       bool soundFxOn, Map<String, String> strings, String userLanguage) {
     final q = _currentConvoLevelQuestion;
     if (q == null) return const Center(child: CircularProgressIndicator());
+    if (q.isSkipPlaceholder) {
+      WidgetsBinding.instance.addPostFrameCallback((_) {
+        if (!mounted) return;
+        if (_currentIndex >= _allQuestions.length) return;
+        if (!_allQuestions[_currentIndex].isSkipPlaceholder) return;
+        _goNext();
+      });
+      return const Center(child: SizedBox.shrink());
+    }
     final displayTotal = _displayQuestionTotal;
     final isLast = _currentIndex + 1 >= _questionCount;
     final reminderProgress = _reviewingMistakes
@@ -2198,7 +2419,8 @@ class _ImageQuizScreenState extends ConsumerState<ImageQuizScreen>
                                         height: 72,
                                         fit: BoxFit.cover,
                                         errorBuilder: (_, __, ___) =>
-                                            const SizedBox(width: 72, height: 72),
+                                            const SizedBox(
+                                                width: 72, height: 72),
                                       ),
                                     ),
                                   ),
@@ -2219,6 +2441,9 @@ class _ImageQuizScreenState extends ConsumerState<ImageQuizScreen>
                                   userLanguage: userLanguage,
                                   onRevealed: () =>
                                       _triggerConvo1TranslationPenalty(q),
+                                  enabled: !(_convo1DualA1Playing ||
+                                      _convo1DualA2Playing ||
+                                      _convo1PostAnswerAudioPlaying),
                                 ),
                                 _convo1AudioControls(q),
                               ],
@@ -2281,8 +2506,7 @@ class _ImageQuizScreenState extends ConsumerState<ImageQuizScreen>
           audioAssetPath: _audioAssetPath(q),
           resolveAudioExists: _resolveAudioExists,
           onPlayQuestionAudio: (path) => audio.playQuestionAudio(path),
-          onPlayCorrect: () =>
-              audio.playCorrect(soundFxOn: soundFxOn),
+          onPlayCorrect: () => audio.playCorrect(soundFxOn: soundFxOn),
           onPlayWrong: () => audio.playWrong(soundFxOn: soundFxOn),
           onOutcome: (correct) => _handleInteractiveConvoOutcome(q, correct),
         );
@@ -2295,8 +2519,7 @@ class _ImageQuizScreenState extends ConsumerState<ImageQuizScreen>
           audioAssetPath: _audioAssetPath(q),
           resolveAudioExists: _resolveAudioExists,
           onPlayQuestionAudio: (path) => audio.playQuestionAudio(path),
-          onPlayCorrect: () =>
-              audio.playCorrect(soundFxOn: soundFxOn),
+          onPlayCorrect: () => audio.playCorrect(soundFxOn: soundFxOn),
           onPlayWrong: () => audio.playWrong(soundFxOn: soundFxOn),
           onOutcome: (correct) => _handleInteractiveConvoOutcome(q, correct),
         );
@@ -2309,8 +2532,7 @@ class _ImageQuizScreenState extends ConsumerState<ImageQuizScreen>
           audioAssetPath: _audioAssetPath(q),
           resolveAudioExists: _resolveAudioExists,
           onPlayQuestionAudio: (path) => audio.playQuestionAudio(path),
-          onPlayCorrect: () =>
-              audio.playCorrect(soundFxOn: soundFxOn),
+          onPlayCorrect: () => audio.playCorrect(soundFxOn: soundFxOn),
           onPlayWrong: () => audio.playWrong(soundFxOn: soundFxOn),
           onOutcome: (correct) => _handleInteractiveConvoOutcome(q, correct),
         );
@@ -2319,8 +2541,7 @@ class _ImageQuizScreenState extends ConsumerState<ImageQuizScreen>
           key: ValueKey('wp-${_currentQuestionId ?? '$_currentIndex'}'),
           data: q.wordPairsData!,
           userLanguage: userLanguage,
-          onPlayCorrect: () =>
-              audio.playCorrect(soundFxOn: soundFxOn),
+          onPlayCorrect: () => audio.playCorrect(soundFxOn: soundFxOn),
           onPlayWrong: () => audio.playWrong(soundFxOn: soundFxOn),
           onOutcome: (correct) => _handleInteractiveConvoOutcome(q, correct),
         );
@@ -2329,8 +2550,7 @@ class _ImageQuizScreenState extends ConsumerState<ImageQuizScreen>
           key: ValueKey('gf-${_currentQuestionId ?? '$_currentIndex'}'),
           data: q.grammarFormData!,
           userLanguage: userLanguage,
-          onPlayCorrect: () =>
-              audio.playCorrect(soundFxOn: soundFxOn),
+          onPlayCorrect: () => audio.playCorrect(soundFxOn: soundFxOn),
           onPlayWrong: () => audio.playWrong(soundFxOn: soundFxOn),
           onOutcome: (correct) => _handleInteractiveConvoOutcome(q, correct),
         );
@@ -2344,12 +2564,14 @@ class _ImageQuizScreenState extends ConsumerState<ImageQuizScreen>
           resolvedImagePath: _resolvedClozeImagePath(),
           resolveAudioExists: _resolveAudioExists,
           onPlayQuestionAudio: (path) => audio.playQuestionAudio(path),
-          onPlayCorrect: () =>
-              audio.playCorrect(soundFxOn: soundFxOn),
+          onPlayCorrect: () => audio.playCorrect(soundFxOn: soundFxOn),
           onPlayWrong: () => audio.playWrong(soundFxOn: soundFxOn),
           onOutcome: (correct) => _handleInteractiveConvoOutcome(q, correct),
         );
       default:
+        if (q.isSkipPlaceholder) {
+          return const SizedBox.shrink();
+        }
         throw StateError('Unexpected convo template: ${q.template}');
     }
   }
@@ -2370,9 +2592,7 @@ class _ImageQuizScreenState extends ConsumerState<ImageQuizScreen>
   /// Localized “Question X / Y” string for the convo header line.
   String _questionLabel(Map<String, String> strings, int current, int total) {
     final template = strings['question_x_of_y'] ?? 'Question %s / %s';
-    return template
-        .replaceFirst('%s', '$current')
-        .replaceFirst('%s', '$total');
+    return template.replaceFirst('%s', '$current').replaceFirst('%s', '$total');
   }
 
   String _titleForTemplate(String template, Map<String, String> strings) {
@@ -2385,7 +2605,6 @@ class _ImageQuizScreenState extends ConsumerState<ImageQuizScreen>
     if (_convo1UsesDualAudio(q)) {
       final p1 = _audioAssetPathForRaw(q.audioFile1);
       final p2 = _audioAssetPathForRaw(q.audioFile2);
-      final showLine2Replay = _convo1AnswerWasCorrect(q);
       final dualBusy = _convo1DualA1Playing || _convo1DualA2Playing;
       return FutureBuilder<List<bool>>(
         key: ValueKey('convo1-dual-audio-${q.questionId ?? _currentIndex}'),
@@ -2396,56 +2615,74 @@ class _ImageQuizScreenState extends ConsumerState<ImageQuizScreen>
         builder: (context, snap) {
           final ok1 = snap.data != null && snap.data![0];
           final ok2 = snap.data != null && snap.data![1];
-          final cs = Theme.of(context).colorScheme;
+          if (p1 == null || p2 == null) return const SizedBox.shrink();
+          final line1HasCloze = _convo1Line1HasCloze(q);
+          final line2HasCloze = _convo1Line2HasCloze(q);
+          final caseA = !line1HasCloze && line2HasCloze;
+          final isCorrect = _convo1AnswerWasCorrect(q);
+          final isWrongAnswered = _answerLocked && !isCorrect;
+          final beforeAnswer = !_answerLocked;
+
+          Future<void> playClip(String path, {required bool line1}) async {
+            if (!mounted) return;
+            setState(() {
+              if (line1) {
+                _convo1DualA1Playing = true;
+              } else {
+                _convo1DualA2Playing = true;
+              }
+            });
+            try {
+              await audio.playQuestionAudio(path);
+            } finally {
+              if (mounted) {
+                setState(() {
+                  if (line1) {
+                    _convo1DualA1Playing = false;
+                  } else {
+                    _convo1DualA2Playing = false;
+                  }
+                });
+              }
+            }
+          }
+
+          final allowPress = beforeAnswer ? caseA : isWrongAnswered;
+
           return Padding(
             padding: const EdgeInsets.symmetric(vertical: 4),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                if (ok1 && p1 != null)
-                  IconButton(
-                    tooltip: 'Play line 1',
-                    onPressed: dualBusy
-                        ? null
-                        : () async {
-                            setState(() => _convo1DualA1Playing = true);
-                            try {
-                              await audio.playQuestionAudio(p1);
-                            } finally {
-                              if (mounted) {
-                                setState(() => _convo1DualA1Playing = false);
-                              }
+                AudioPlayButton(
+                  isPlaying: dualBusy || _convo1PostAnswerAudioPlaying,
+                  onPressed: (!ok1 || !ok2 || !allowPress)
+                      ? null
+                      : () async {
+                          if (beforeAnswer) {
+                            await playClip(p1, line1: true);
+                            return;
+                          }
+                          final startIndex = _currentIndex;
+                          final startQuestionId = _currentQuestionId;
+                          bool sameQuestion() =>
+                              mounted &&
+                              _currentIndex == startIndex &&
+                              _currentQuestionId == startQuestionId;
+                          setState(() => _convo1PostAnswerAudioPlaying = true);
+                          try {
+                            await playClip(p1, line1: true);
+                            if (!sameQuestion()) return;
+                            await playClip(p2, line1: false);
+                          } finally {
+                            if (sameQuestion()) {
+                              setState(() {
+                                _convo1PostAnswerAudioPlaying = false;
+                              });
                             }
-                          },
-                    icon: Icon(
-                      _convo1DualA1Playing ? Icons.graphic_eq : Icons.volume_up,
-                      color: dualBusy && !_convo1DualA1Playing
-                          ? cs.onSurface.withValues(alpha: 0.4)
-                          : cs.primary,
-                    ),
-                  ),
-                if (ok2 && p2 != null && showLine2Replay)
-                  IconButton(
-                    tooltip: 'Play line 2',
-                    onPressed: dualBusy
-                        ? null
-                        : () async {
-                            setState(() => _convo1DualA2Playing = true);
-                            try {
-                              await audio.playQuestionAudio(p2);
-                            } finally {
-                              if (mounted) {
-                                setState(() => _convo1DualA2Playing = false);
-                              }
-                            }
-                          },
-                    icon: Icon(
-                      _convo1DualA2Playing ? Icons.graphic_eq : Icons.volume_up,
-                      color: dualBusy && !_convo1DualA2Playing
-                          ? cs.onSurface.withValues(alpha: 0.4)
-                          : cs.tertiary,
-                    ),
-                  ),
+                          }
+                        },
+                ),
               ],
             ),
           );
@@ -2453,12 +2690,12 @@ class _ImageQuizScreenState extends ConsumerState<ImageQuizScreen>
       );
     }
     final path = _audioAssetPath(q);
+    if (path == null) return const SizedBox.shrink();
     return FutureBuilder<bool>(
       key: ValueKey('convo1-audio-${q.questionId ?? _currentIndex}'),
-      future: path == null ? Future.value(false) : _resolveAudioExists(path),
+      future: _resolveAudioExists(path),
       builder: (context, snap) {
         final exists = snap.data == true;
-        final p = path;
         return Padding(
           padding: const EdgeInsets.symmetric(vertical: 4),
           child: Row(
@@ -2466,12 +2703,12 @@ class _ImageQuizScreenState extends ConsumerState<ImageQuizScreen>
             children: [
               AudioPlayButton(
                 isPlaying: _convoTtsPlaying,
-                onPressed: p == null || !exists
+                onPressed: !exists
                     ? null
                     : () async {
                         setState(() => _convoTtsPlaying = true);
                         try {
-                          await audio.playQuestionAudio(p);
+                          await audio.playQuestionAudio(path);
                         } finally {
                           if (mounted) {
                             setState(() => _convoTtsPlaying = false);
@@ -2488,7 +2725,7 @@ class _ImageQuizScreenState extends ConsumerState<ImageQuizScreen>
 
   /// Side-by-side character columns for classic ConvoTemplate-1 presentation.
   Widget _buildCharactersRow(ConvoQuestionData q, String userLanguage) {
-    final blankInLine1 = q.line1.contains(_kBlank);
+    final blankInLine1 = q.line1.contains(_kBlankPattern);
     final line1Text = q.line1;
     final line2Text = q.line2;
 
@@ -2560,8 +2797,7 @@ class _ImageQuizScreenState extends ConsumerState<ImageQuizScreen>
             final initial = name.isNotEmpty ? name[0].toUpperCase() : '?';
             return CircleAvatar(
               radius: size / 2,
-              backgroundColor:
-                  Theme.of(context).colorScheme.primaryContainer,
+              backgroundColor: Theme.of(context).colorScheme.primaryContainer,
               child: Text(
                 initial,
                 style: TextStyle(

@@ -2,4 +2,4 @@
 
 ## Active Issue
 
-_No active issue. Add the next issue here._
+_Add the next issue here when work begins._

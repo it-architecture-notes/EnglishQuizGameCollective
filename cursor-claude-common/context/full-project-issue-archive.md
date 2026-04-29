@@ -1,3 +1,68 @@
+**Issue-26: Template audio playback and answer gating (Convo-1, ClozeSequence, SentenceBuilder, DialogueCompletion), translation-reveal audio, and AudioPlayButton visibility.**
+
+# Active Progress Context
+
+## Active Issue
+
+Description: Refactor Audio Playing rules for some templates. All these rules are to hide the audios that have the answer in them before the questions is answered. We will play these audios after the user answers the question.
+
+Use Cases:
+    - General rules for all templates below:
+    - These use cases are written with references to audio files that exist, if reference audio file does not exist just ignore the rule and skip to next step. e.g. if audio file does not exist don't wait to go to next question.
+    - If the user goes to next question by pressing the next button when audio is played, interrupt audio playing.
+    - This refactoring will not change the way user goes from one question to another. If correct user will go to next question automatically (if applicable after listeing the audio) or if wrong by pressing the next button.
+    - When audio is already playing audio button will be disabled always.
+    - For wrong answers if user presses next button wneh audio is played stop the audio immediately. If first audio was played and there is a second audio don't play the second audio since next question will start when next button is pressed.
+    - For Convo Template - 1
+        - If line1 does not have a cloze but line2 has a cloze, play the first audio file when question is presented. Don't play the second audio. When audio button is pressed play only the first audio until question is answered. When the question is answered, right or wrong play the second audio and don't let user go to next question until the audio play is completed. If wrong only enable the next button when audio finished. When audio button pressed again in the wrong case (since right case will directly go to next question) play both audio files again.
+        - If only line1 has a cloze, or both lines have cloze  don't play any audio when question is presented. Audio button is disabled until question is answered. When the question is answered, right or wrong play both audios sequentially and don't let user go to next question until the audio play is completed. If wrong only enable the next button when audio finished.
+    - For ConvoTemplate-ClozeSequence
+        - Don't enable the audio button at first and don't play audio when question presented.
+        - After the user selects the tiles correctly or make a mistake, play the audio, enable the audio button and don't let user go to the next question until audio play is completed. If answer wrong only enable the next button when first audio finished.
+    - For ConvoTemplate-SentenceBuilder
+        - Don't play audio when question is presented. Also, Audio button is disabled until question concludes as right or wrong. When question is right or wrong play the audio and only after audio is played user goes to next question automatically or by pressing next button.
+        - After the answer is wrong and next button is enabled because audio is played, enable audio button and when pressed play the audio. that will enable the user to hear it multiple times.
+    - For ConvoTemplate-DialogueCompletion
+        - Similar to Convo-1, only play the line1 audio only when question is presented. until there is an answer only play first audio when audio button is pressed. When the question is answered, play second audio only automatically. After the question is wrong and user is in the screen if audio button is pressed play both audio files. Unless both of audio plays are finished disable audio button. If user plays next button when audio is played stop the audio and go to the next question.
+
+Question Answers:
+    - Made changes to ConvoTemplate-ClozeSequence, read again.
+    - Convo-1 will have always two audio files, if not skip the audios. For existing items that have one audio I will fix them.
+    - Dialog completion or Convo-1 if one of or both audios missing in the object or in the folder, disable the audio feature, don't play anything and don't show the button. Don't wait for audios to go to next question.
+    - Correct + auto-advance — always wait for all required post-answer audio, or audios except the exception case above.
+    - I fixes that to -> When audio is already playing audio button will be disabled always.
+    - I'm using line1.contains('_____') to distinguish Case A from B. This is valid for cloze questions. If anything is wrong in the existing samples it will be fixed.
+    - Both lines with blanks can be implemented same as line1 has cloze.
+
+## Additional Changes Made (Post-Plan)
+
+### Audio Button Visibility Behaviour (all templates)
+- `AudioPlayButton` no longer hides when `onPressed == null`. New rule:
+  - `isPlaying = true` → button visible, full color (`cs.primary`), not pressable.
+  - `onPressed == null, !isPlaying` → button visible, greyed (`cs.onSurface` 38% alpha), not pressable.
+  - Button only absent from the tree when no audio is configured for the question at all (e.g. `audioAssetPath == null`).
+- Callers updated: `_audioPlaying` removed from `onPressed` null-gate in ClozeSequence and SentenceBuilder (redundant now that `isPlaying` handles non-pressability). ConvoTemplate-1 dual-audio button uses `isPlaying: dualBusy || _convo1PostAnswerAudioPlaying` so button stays visible between sequential clips.
+
+### Translation Button — Audio Behaviour on Reveal (all templates)
+- Pressing the translation globe button now triggers the same post-answer audio as a wrong answer, then calls `onOutcome(false)`:
+  - **ClozeSequence / SentenceBuilder**: `_onTranslationRevealed` is now `async`; plays question audio via `_playAudio()` before `onOutcome(false)`.
+  - **DialogueCompletion**: plays `audio2` (the answer line) before `onOutcome(false)`; sets `_answeredWrong = true` so the replay button afterwards plays both audios.
+  - **ConvoTemplate-1**: `_triggerConvo1TranslationPenalty` is now `async`; plays audio (Case A: audio2 only, Case B: audio1 → audio2) before setting `_showNext = true`.
+- `_showNext = true` (ConvoTemplate-1) and `onOutcome(false)` (standalone templates) are deferred until post-reveal audio completes.
+
+### Translation Button — Disabled During Audio
+- `TranslationRevealButton` gains an `enabled` param (default `true`). When `false`, the globe icon stays visible but is greyed and non-pressable (same visual as after it has already been tapped). Revealed translation text is unaffected.
+- All templates pass `enabled: !audioPlaying` during audio so the globe can't be tapped mid-playback.
+- Separate `visible` param (default `true`) retained for cases where the button should truly be absent.
+
+### Cloze Detection — Regex Instead of Exact Match
+- `_convo1Line1HasCloze` and `_convo1Line2HasCloze` in `image_quiz_screen.dart` now use `RegExp(r'_{2,}')` (any run of 2+ underscores) instead of exact `_kBlank` (`_____`) match.
+- `blankInLine1` in `_buildCharactersRow` updated the same way.
+- Canonical blank marker for **rendering** (styled blank-box in `_buildBubbleText`) remains `_____`; the JSON should use 5 underscores for correct visual output.
+- Question 13 in `greetings/questions.json` fixed: `___` → `_____` in `line1` so both detection and styled rendering work correctly.
+
+---
+
 **Issue-25: Translation field restructure, locale-keyed map, translation penalty (tr_ok), and greetings cleanup.**
 
 # Active Progress Context

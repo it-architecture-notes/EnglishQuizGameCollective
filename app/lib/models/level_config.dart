@@ -243,6 +243,19 @@ class LevelQuestion {
     this.dialogueCompletionData,
   });
 
+  /// Injected when JSON parse or asset load fails; [ImageQuizScreen] auto-advances with no score.
+  static const String kParseErrorTemplate = '_ParseError';
+
+  /// True for rows that were skipped at parse/load and should not be shown.
+  bool get isSkipPlaceholder => template == kParseErrorTemplate;
+
+  factory LevelQuestion.parseError({String? questionId}) {
+    return LevelQuestion(
+      questionId: questionId,
+      template: kParseErrorTemplate,
+    );
+  }
+
   final String? questionId;
   final String? audioFile;
   /// Optional first clip (top-level JSON). [ConvoTemplate-DialogueCompletion]: question line.
@@ -647,9 +660,20 @@ class LevelConfig {
   factory LevelConfig.fromJson(Map<String, dynamic> json) {
     final list = json['levelQuestions'] as List<dynamic>? ?? [];
     final questions = <LevelQuestion>[];
-    for (final e in list) {
-      if (e is! Map<String, dynamic>) continue;
-      questions.add(_parseQuestion(e));
+    for (var i = 0; i < list.length; i++) {
+      final e = list[i];
+      if (e is! Map<String, dynamic>) {
+        debugPrint('levelQuestions[$i] skipped: not an object');
+        questions.add(LevelQuestion.parseError());
+        continue;
+      }
+      try {
+        questions.add(_parseQuestion(e));
+      } catch (ex, st) {
+        debugPrint('levelQuestions[$i] skipped: $ex\n$st');
+        final id = e['questionId'] is String ? e['questionId'] as String : null;
+        questions.add(LevelQuestion.parseError(questionId: id));
+      }
     }
     return LevelConfig(
       questions: questions,

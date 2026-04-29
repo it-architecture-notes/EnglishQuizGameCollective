@@ -21,6 +21,11 @@
   },
   {
     "mainLevel": 1,
+    "iconImageName": "numbers",
+    "title": "Numbers - Image only"
+  },
+  {
+    "mainLevel": 1,
     "iconImageName": "brushing-teeth",
     "title": "Brushing Teeth"
   },

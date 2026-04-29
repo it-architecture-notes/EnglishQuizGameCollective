@@ -84,7 +84,7 @@ class _SentenceBuilderQuizBodyState extends State<SentenceBuilderQuizBody> {
 
   String _wordAtCell(int cellIndex) => _sentence[_perm[cellIndex]];
 
-  void _onTranslationRevealed() {
+  Future<void> _onTranslationRevealed() async {
     if (_failed || _completed || widget.data.trOk) return;
     setState(() {
       _failed = true;
@@ -104,10 +104,12 @@ class _SentenceBuilderQuizBodyState extends State<SentenceBuilderQuizBody> {
       _tapProgress = _sentence.length;
     });
     widget.onPlayWrong();
+    await _playAudio();
+    if (!mounted) return;
     widget.onOutcome(false);
   }
 
-  void _onGridTap(int cellIndex) {
+  Future<void> _onGridTap(int cellIndex) async {
     if (_completed || _failed || _usedCellIndices.contains(cellIndex)) return;
     final sentencePos = _perm[cellIndex];
     final expectedPos = _tapProgress;
@@ -118,10 +120,14 @@ class _SentenceBuilderQuizBodyState extends State<SentenceBuilderQuizBody> {
         _usedCellIndices.add(cellIndex);
         _cellToStep[cellIndex] = _tapProgress + 1;
         _tapProgress++;
+        if (_tapProgress >= _sentence.length) {
+          _completed = true;
+        }
       });
       if (_tapProgress >= _sentence.length) {
-        _completed = true;
         widget.onPlayCorrect();
+        await _playAudio();
+        if (!mounted) return;
         widget.onOutcome(true);
       }
     } else {
@@ -134,6 +140,8 @@ class _SentenceBuilderQuizBodyState extends State<SentenceBuilderQuizBody> {
         }
       });
       widget.onPlayWrong();
+      await _playAudio();
+      if (!mounted) return;
       widget.onOutcome(false);
     }
   }
@@ -165,25 +173,26 @@ class _SentenceBuilderQuizBodyState extends State<SentenceBuilderQuizBody> {
           localItems: widget.data.localTranslation,
           userLanguage: widget.userLanguage,
           onRevealed: _onTranslationRevealed,
+          enabled: !_audioPlaying,
         ),
-        FutureBuilder<bool>(
-          future: widget.audioAssetPath == null
-              ? Future.value(false)
-              : widget.resolveAudioExists(widget.audioAssetPath!),
-          builder: (context, snap) {
-            final ok = snap.data == true;
-            final p = widget.audioAssetPath;
-            return Row(
-              mainAxisAlignment: MainAxisAlignment.end,
-              children: [
-                AudioPlayButton(
-                  isPlaying: _audioPlaying,
-                  onPressed: !ok || p == null ? null : _playAudio,
-                ),
-              ],
-            );
-          },
-        ),
+        if (widget.audioAssetPath != null)
+          FutureBuilder<bool>(
+            future: widget.resolveAudioExists(widget.audioAssetPath!),
+            builder: (context, snap) {
+              final ok = snap.data == true;
+              return Row(
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: [
+                  AudioPlayButton(
+                    isPlaying: _audioPlaying,
+                    onPressed: (!ok || (!_completed && !_failed))
+                        ? null
+                        : _playAudio,
+                  ),
+                ],
+              );
+            },
+          ),
         const SizedBox(height: 4),
         Wrap(
           alignment: WrapAlignment.center,
@@ -204,7 +213,9 @@ class _SentenceBuilderQuizBodyState extends State<SentenceBuilderQuizBody> {
                     : cs.surfaceContainerHighest.withValues(alpha: 0.35),
                 borderRadius: BorderRadius.circular(8),
                 border: Border.all(
-                  color: fromPlayer ? cs.primary : cs.outline.withValues(alpha: 0.7),
+                  color: fromPlayer
+                      ? cs.primary
+                      : cs.outline.withValues(alpha: 0.7),
                   width: fromPlayer ? 2 : 1,
                 ),
               ),
@@ -229,7 +240,8 @@ class _SentenceBuilderQuizBodyState extends State<SentenceBuilderQuizBody> {
               runSpacing: 8,
               children: List.generate(n, (i) {
                 final word = _wordAtCell(i);
-                final disabled = _failed || _completed || _usedCellIndices.contains(i);
+                final disabled =
+                    _failed || _completed || _usedCellIndices.contains(i);
                 final isWrong = _failed && _wrongGridIndex == i;
                 final step = _cellToStep[i];
                 final tapped = _usedCellIndices.contains(i);

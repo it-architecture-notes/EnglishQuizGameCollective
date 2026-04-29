@@ -4,6 +4,9 @@ import 'package:flutter/material.dart';
 
 /// Globe control: tap once to reveal up to three `english : local` translation pairs.
 /// Hidden when [userLanguage] is `en`, or when either list is empty.
+/// Set [visible] to false to hide the globe button; revealed text (if any) stays shown.
+/// Set [enabled] to false to keep the globe button visible but non-pressable and greyed
+/// (e.g. while audio is playing).
 class TranslationRevealButton extends StatefulWidget {
   const TranslationRevealButton({
     super.key,
@@ -11,6 +14,8 @@ class TranslationRevealButton extends StatefulWidget {
     required this.localItems,
     required this.userLanguage,
     this.onRevealed,
+    this.visible = true,
+    this.enabled = true,
   });
 
   final List<String> englishItems;
@@ -18,6 +23,10 @@ class TranslationRevealButton extends StatefulWidget {
   final String userLanguage;
   /// Called when the globe button is tapped. Use to apply a translation penalty.
   final VoidCallback? onRevealed;
+  /// When false the globe button is hidden; revealed text (if any) stays visible.
+  final bool visible;
+  /// When false the globe button is visible but non-pressable and greyed.
+  final bool enabled;
 
   @override
   State<TranslationRevealButton> createState() =>
@@ -45,24 +54,25 @@ class _TranslationRevealButtonState extends State<TranslationRevealButton> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
-        Align(
-          alignment: Alignment.centerRight,
-          child: IconButton(
-            onPressed: _revealed
-                ? null
-                : () {
-                    widget.onRevealed?.call();
-                    setState(() => _revealed = true);
-                  },
-            icon: Icon(
-              Icons.language,
-              color: _revealed
-                  ? cs.onSurface.withValues(alpha: 0.4)
-                  : cs.tertiary,
+        if (widget.visible)
+          Align(
+            alignment: Alignment.centerRight,
+            child: IconButton(
+              onPressed: (_revealed || !widget.enabled)
+                  ? null
+                  : () {
+                      widget.onRevealed?.call();
+                      setState(() => _revealed = true);
+                    },
+              icon: Icon(
+                Icons.language,
+                color: (_revealed || !widget.enabled)
+                    ? cs.onSurface.withValues(alpha: 0.4)
+                    : cs.tertiary,
+              ),
+              tooltip: 'Show translation',
             ),
-            tooltip: 'Show translation',
           ),
-        ),
         if (_revealed)
           Padding(
             padding: const EdgeInsets.only(bottom: 8),

@@ -3,6 +3,7 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 
 import '../../models/level_config.dart';
+import '../../widgets/audio_play_button.dart';
 import '../../widgets/translation_reveal_button.dart';
 
 /// First line of dialogue + four full-sentence replies.
@@ -25,6 +26,7 @@ class DialogueCompletionQuizBody extends StatefulWidget {
   final String userLanguage;
   final String? audio1Path;
   final String? audio2Path;
+
   /// Pre-resolved asset path for the optional hero image (from `image_file_name` in JSON).
   final String? resolvedImagePath;
   final Future<bool> Function(String path) resolveAudioExists;
@@ -38,7 +40,8 @@ class DialogueCompletionQuizBody extends StatefulWidget {
       _DialogueCompletionQuizBodyState();
 }
 
-class _DialogueCompletionQuizBodyState extends State<DialogueCompletionQuizBody> {
+class _DialogueCompletionQuizBodyState
+    extends State<DialogueCompletionQuizBody> {
   late List<String> _options;
   bool _locked = false;
   bool _translationPenalized = false;
@@ -47,8 +50,8 @@ class _DialogueCompletionQuizBodyState extends State<DialogueCompletionQuizBody>
   bool _audio1Playing = false;
   bool _audio2Playing = false;
   bool _audio1Scheduled = false;
-  bool? _audio1Ok;
-  bool? _audio2Ok;
+  bool? _bothAudiosOk;
+  bool _answeredWrong = false;
 
   @override
   void initState() {
@@ -64,7 +67,15 @@ class _DialogueCompletionQuizBodyState extends State<DialogueCompletionQuizBody>
     super.didUpdateWidget(oldWidget);
     if (oldWidget.audio1Path != widget.audio1Path ||
         oldWidget.audio2Path != widget.audio2Path) {
-      _audio1Scheduled = false;
+      setState(() {
+        _audio1Scheduled = false;
+        _locked = false;
+        _selectedIndex = null;
+        _answeredWrong = false;
+        _bothAudiosOk = null;
+        _audio1Playing = false;
+        _audio2Playing = false;
+      });
       _primeAudio();
     }
   }
@@ -72,21 +83,14 @@ class _DialogueCompletionQuizBodyState extends State<DialogueCompletionQuizBody>
   Future<void> _primeAudio() async {
     final p1 = widget.audio1Path;
     final p2 = widget.audio2Path;
-    if (p1 != null) {
-      _audio1Ok = await widget.resolveAudioExists(p1);
-    } else {
-      _audio1Ok = false;
-    }
-    if (p2 != null) {
-      _audio2Ok = await widget.resolveAudioExists(p2);
-    } else {
-      _audio2Ok = false;
-    }
+    final ok1 = p1 != null && await widget.resolveAudioExists(p1);
+    final ok2 = p2 != null && await widget.resolveAudioExists(p2);
+    final bothOk = ok1 && ok2;
     if (!mounted) return;
-    setState(() {});
+    setState(() => _bothAudiosOk = bothOk);
     if (_audio1Scheduled) return;
     _audio1Scheduled = true;
-    if (_audio1Ok == true && p1 != null) {
+    if (bothOk) {
       await Future<void>.delayed(const Duration(milliseconds: 500));
       if (!mounted) return;
       setState(() => _audio1Playing = true);
@@ -98,24 +102,47 @@ class _DialogueCompletionQuizBodyState extends State<DialogueCompletionQuizBody>
     }
   }
 
-  void _onTranslationRevealed() {
+  Future<void> _onTranslationRevealed() async {
     if (_locked || widget.data.trOk) return;
     setState(() {
       _locked = true;
       _translationPenalized = true;
+      _answeredWrong = true;
     });
     widget.onPlayWrong();
+    if (_bothAudiosOk == true) {
+      final p2 = widget.audio2Path;
+      if (p2 != null) {
+        setState(() => _audio2Playing = true);
+        try {
+          await widget.onPlayQuestionAudio(p2);
+        } finally {
+          if (mounted) setState(() => _audio2Playing = false);
+        }
+      }
+    }
+    if (!mounted) return;
     widget.onOutcome(false);
   }
 
-  Future<void> _playAudio1Manual() async {
-    final p = widget.audio1Path;
-    if (p == null || _audio1Ok != true) return;
+  Future<void> _playAudioManual() async {
+    if (_bothAudiosOk != true) return;
+    final p1 = widget.audio1Path;
+    final p2 = widget.audio2Path;
+    if (p1 == null || p2 == null) return;
     setState(() => _audio1Playing = true);
     try {
-      await widget.onPlayQuestionAudio(p);
+      await widget.onPlayQuestionAudio(p1);
     } finally {
       if (mounted) setState(() => _audio1Playing = false);
+    }
+    if (!mounted) return;
+    if (!_answeredWrong) return;
+    setState(() => _audio2Playing = true);
+    try {
+      await widget.onPlayQuestionAudio(p2);
+    } finally {
+      if (mounted) setState(() => _audio2Playing = false);
     }
   }
 
@@ -125,9 +152,10 @@ class _DialogueCompletionQuizBodyState extends State<DialogueCompletionQuizBody>
     setState(() {
       _locked = true;
       _selectedIndex = i;
+      _answeredWrong = !ok;
     });
     final p2 = widget.audio2Path;
-    if (_audio2Ok == true && p2 != null) {
+    if (_bothAudiosOk == true && p2 != null) {
       setState(() => _audio2Playing = true);
       try {
         await widget.onPlayQuestionAudio(p2);
@@ -160,6 +188,7 @@ class _DialogueCompletionQuizBodyState extends State<DialogueCompletionQuizBody>
           localItems: widget.data.localTranslation,
           userLanguage: lang,
           onRevealed: _onTranslationRevealed,
+          enabled: !(_audio1Playing || _audio2Playing),
         ),
         if (widget.resolvedImagePath != null) ...[
           Center(
@@ -197,20 +226,15 @@ class _DialogueCompletionQuizBodyState extends State<DialogueCompletionQuizBody>
             style: theme.textTheme.bodyLarge,
           ),
         ),
-        if (_audio1Ok == true && widget.audio1Path != null)
+        if (widget.audio1Path != null)
           Row(
             mainAxisAlignment: MainAxisAlignment.end,
             children: [
-              IconButton(
-                onPressed: (_audio1Playing || _audio2Playing)
-                    ? null
-                    : _playAudio1Manual,
-                icon: Icon(
-                  _audio1Playing ? Icons.graphic_eq : Icons.volume_up,
-                  color: (_audio1Playing || _audio2Playing)
-                      ? cs.onSurface.withValues(alpha: 0.4)
-                      : cs.primary,
-                ),
+              AudioPlayButton(
+                isPlaying: _audio1Playing || _audio2Playing,
+                onPressed: (_bothAudiosOk == true && !(_locked && !_answeredWrong))
+                    ? _playAudioManual
+                    : null,
               ),
             ],
           ),

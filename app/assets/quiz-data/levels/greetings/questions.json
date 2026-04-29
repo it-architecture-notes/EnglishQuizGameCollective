@@ -14,56 +14,21 @@
       }
     },
     {
-      "template": "ConvoTemplate-1",
+      "template": "ConvoTemplate-DialogueCompletion",
+      "audio_file1": "what-is-your-name-convo",
+      "audio_file2": "my-name-is-convo",
+      "audio_file2_text": "My name is",
       "questionData": {
-        "character1": "James",
-        "character2": "Anna",
-        "line1": "How are you?",
-        "line2": "___ , thank you.",
-        "answer": "I am fine",
+        "character1": "Emma",
+        "character2": "Daniel",
+        "line1": "What is your name?",
+        "answer": "My name is _____",
         "distractors": [
-          "I am good",
-          "Nice to see you",
-          "Good morning"
-        ],
-        "english_to_translate": [
-          "I am fine"
-        ],
-        "local_translation": {
-          "tr": [
-            "iyiyim"
-          ],
-          "es": [
-            "estoy bien"
-          ],
-          "fr": [
-            "je vais bien"
-          ],
-          "de": [
-            "ich bin gut"
-          ],
-          "it": [
-            "sono bene"
-          ],
-          "pt": [
-            "estou bem"
-          ],
-          "ru": [
-            "я хорошо"
-          ],
-          "zh": [
-            "我很好"
-          ],
-          "ja": [
-            "元気ですか？"
-          ],
-          "ko": [
-            "안녕하세요？"
-          ]
-        }
-      },
-      "audio_file1": "how-are-you-convo",
-      "audio_file2": "i-am-fine-convo"
+          "I am fine, thank you",
+          "I am from Spain",
+          "Nice to see you"
+        ]
+      }
     },
     {
       "template": "ConvoTemplate-1",
@@ -71,57 +36,33 @@
         "character1": "Beth",
         "character2": "Leo",
         "line1": "Hello, I am Beth",
-        "line2": "___ you.",
+        "line2": "_____ you.",
         "answer": "Nice to meet",
         "distractors": [
           "Good morning",
           "I am great",
           "See you later"
-        ],
-        "english_to_translate": [
-          "Nice to meet you"
-        ],
-        "local_translation": {
-          "tr": [
-            "tanistigimiza memnun oldum"
-          ],
-          "es": [
-            "me alegra conocerte"
-          ],
-          "fr": [
-            "je suis ravi de te rencontrer"
-          ],
-          "de": [
-            "ich bin froh, dich kennenzulernen"
-          ],
-          "it": [
-            "mi piace conoscerti"
-          ],
-          "pt": [
-            "me alegro de te conhecer"
-          ],
-          "ru": [
-            "я рад познакомиться с тобой"
-          ],
-          "zh": [
-            "很高兴认识你"
-          ],
-          "ja": [
-            "お会いできて嬉しいです"
-          ],
-          "ko": [
-            "너무 반가워요"
-          ],
-          "ar": [
-            "من السعد بمقابتك"
-          ],
-          "hi": [
-            "मैं तुमसे मिलने को खुश हूं"
-          ]
-        }
+        ]
       },
       "audio_file1": "hello-i-am-beth-convo",
       "audio_file2": "nice-to-meet-you-convo"
+    },
+    {
+      "template": "ConvoTemplate-1",
+      "questionData": {
+        "character1": "James",
+        "character2": "Anna",
+        "line1": "How are you?",
+        "line2": "_____ , thank you.",
+        "answer": "I am fine",
+        "distractors": [
+          "I am good",
+          "Nice to see you",
+          "Good morning"
+        ]
+      },
+      "audio_file1": "how-are-you-convo",
+      "audio_file2": "i-am-fine-convo"
     },
     {
       "template": "ConvoTemplate-AppearDisappear",
@@ -135,48 +76,7 @@
           "thank",
           "you"
         ],
-        "display_duration": 0.8,
-        "english_to_translate": [
-          "Hi! What is your name?"
-        ],
-        "local_translation": {
-          "tr": [
-            "Merhaba! Adınız nedir?"
-          ],
-          "es": [
-            "Hola! ¿Cómo se llama?"
-          ],
-          "fr": [
-            "Bonjour! Comment vous appelez-vous?"
-          ],
-          "de": [
-            "Hallo! Wie heißen Sie?"
-          ],
-          "it": [
-            "Ciao! Come ti chiami?"
-          ],
-          "pt": [
-            "Olá! Como se chama?"
-          ],
-          "ru": [
-            "Привет! Как вас зовут?"
-          ],
-          "zh": [
-            "你好！你的名字是什么？"
-          ],
-          "ja": [
-            "こんにちは！あなたの名前は何ですか？"
-          ],
-          "ko": [
-            "안녕하세요！이름이 뭐에요？"
-          ],
-          "ar": [
-            "مرحبا！كيف يمكنك ان تسمينا؟"
-          ],
-          "hi": [
-            "नमस्ते！आपका नाम क्या है？"
-          ]
-        }
+        "display_duration": 0.8
       },
       "audio_file": "hi-what-is-your-name-convo"
     },
@@ -186,7 +86,7 @@
         "character1": "Grace",
         "character2": "Mike",
         "line1": "Where are you from?",
-        "answer": "I am from United States",
+        "answer": "I am from the United States",
         "distractors": [
           "My Name is Mike",
           "I am fine, thank you.",
@@ -199,103 +99,57 @@
     {
       "template": "ConvoTemplate-DialogueCompletion",
       "questionData": {
-        "character1": "Sophie",
-        "character2": "Chris",
-        "image_file_name": "pencil",
-        "line1": "What is this?",
-        "answer": "This is a pencil",
+        "character1": "Nora",
+        "character2": "Ethan",
+        "line1": "How old are you?",
+        "answer": "I am 10 years old.",
         "distractors": [
-          "I am from United States",
-          "This is too long",
-          "This are the pencil"
-        ],
-        "english_to_translate": [
-          "What is this?",
-          "This is a pencil"
-        ],
-        "local_translation": {
-          "tr": ["Bu nedir?", "Bu bir kalemdir"],
-          "es": ["¿Qué es esto?", "Esto es un lápiz"],
-          "fr": ["Qu'est-ce que c'est?", "C'est un crayon"],
-          "de": ["Was ist das?", "Das ist ein Bleistift"],
-          "it": ["Che cos'è?", "Questo è un matita"],
-          "pt": ["O que é isso?", "Isso é um lápis"],
-          "ru": ["Что это?", "Это карандаш"],
-          "zh": ["这是什么？", "这是一支铅笔"],
-          "ja": ["これは何ですか？", "これは鉛筆です"],
-          "ko": ["이게 뭐에요？", "이게 연필이에요"],
-          "ar": ["ما هذا؟", "هذا قلم رصاص"],
-          "hi": ["यह क्या है？", "यह एक पेंसिल है"]
-        }
+          "I have 10 years old.",
+          "I get 10 years.",
+          "I was born 10 years ago."
+        ]
       },
-      "audio_file1": "what-is-this-convo",
-      "audio_file2": "this-is-a-pencil-convo"
+      "audio_file1": "how-old-are-you-convo",
+      "audio_file2": "i-am-10-years-old-convo"
+    },
+    {
+      "template": "ConvoTemplate-SentenceBuilder",
+      "questionData": {
+        "correct_order": "My name is John"
+      },
+      "audio_file": "my-name-is-john-male-convo",
+      "audio_file_text": "My name is John"
+    },
+    {
+      "template": "ConvoTemplate-DialogueCompletion",
+      "questionData": {
+        "character1": "Alex",
+        "character2": "Sarah",
+        "line1": "What do you do?",
+        "answer": "I am a student",
+        "distractors": [
+          "I have a student",
+          "I was the teacher",
+          "I see an engineer"
+        ]
+      },
+      "audio_file1": "what-do-you-do-convo",
+      "audio_file2": "i-am-a-student-convo"
     },
     {
       "template": "ConvoTemplate-ClozeSequence",
       "questionData": {
-        "sentence": "___ you later",
+        "sentence": "_____ you _____",
         "answer": [
-          "see"
+          "see",
+          "later"
         ],
         "distractors": [
           "get",
           "go",
-          "how"
-        ],
-        "english_to_translate": [
-          "to see",
-          "later"
-        ],
-        "local_translation": {
-          "tr": [
-            "görmek",
-            "sonra"
-          ],
-          "es": [
-            "ver",
-            "más tarde"
-          ],
-          "fr": [
-            "voir",
-            "plus tard"
-          ],
-          "de": [
-            "sehen",
-            "später"
-          ],
-          "it": [
-            "vedere",
-            "più tardi"
-          ],
-          "pt": [
-            "ver",
-            "mais tarde"
-          ],
-          "ru": [
-            "увидеть"
-          ],
-          "zh": [
-            "看到",
-            "稍后"
-          ],
-          "ja": [
-            "見て",
-            "後で"
-          ],
-          "ko": [
-            "보기",
-            "나중에"
-          ],
-          "ar": [
-            "رؤية",
-            "بعد"
-          ],
-          "hi": [
-            "देखें",
-            "बाद में"
-          ]
-        }
+          "how",
+          "after"
+        ]
       },
       "audio_file": "see-you-later"
     },
@@ -311,55 +165,6 @@
         ]
       },
       "audio_file": "good-night"
-    },
-    {
-      "template": "ConvoTemplate-SentenceBuilder",
-      "questionData": {
-        "correct_order": "My name is John",
-        "english_to_translate": [
-          "My name is John"
-        ],
-        "local_translation": {
-          "tr": [
-            "Benim adım John"
-          ],
-          "es": [
-            "Mi nombre es John"
-          ],
-          "fr": [
-            "Mon nom est John"
-          ],
-          "de": [
-            "Mein Name ist John"
-          ],
-          "it": [
-            "Il mio nome è John"
-          ],
-          "pt": [
-            "Meu nome é John"
-          ],
-          "ru": [
-            "Мое имя John"
-          ],
-          "zh": [
-            "我的名字是约翰"
-          ],
-          "ja": [
-            "私の名前はジョンです"
-          ],
-          "ko": [
-            "내 이름은 존입니다"
-          ],
-          "ar": [
-            "اسمي جون"
-          ],
-          "hi": [
-            "मेरा नाम जॉन है"
-          ]
-        }
-      },
-      "audio_file": "my-name-is-john-male-convo",
-      "audio_file_text": "My name is John"
     },
     {
       "template": "ConvoTemplate-WordPairs",
@@ -439,102 +244,7 @@
           "met",
           "meets",
           "meeting"
-        ],
-        "english_to_translate": ["to meet"],
-        "local_translation": {
-          "tr": ["tanışmak"],
-          "es": ["conocer"],
-          "fr": ["rencontrer"],
-          "de": ["kennenlernen"],
-          "it": ["conoscere"],
-          "pt": ["conhecer"],
-          "ru": ["встретиться"],
-          "zh": ["遇见"],
-          "ja": ["会う"],
-          "ko": ["만나기"],
-          "ar": ["مقابلة"],
-          "hi": ["मिलने"]
-        }
-      }
-    },
-    {
-      "template": "ConvoTemplate-DialogueCompletion",
-      "audio_file1": "what-is-your-name-convo",
-      "audio_file2": "my-name-is-convo",
-      "audio_file2_text": "My name is",
-      "questionData": {
-        "character1": "Emma",
-        "character2": "Daniel",
-        "line1": "What is your name?",
-        "answer": "My name is _____",
-        "distractors": [
-          "I am fine, thank you",
-          "I am from Spain",
-          "Nice to see you"
-        ],
-        "english_to_translate": ["What is your name?", "My name is"],
-        "local_translation": {
-          "tr": ["Adınız nedir?", "Benim adım"],
-          "es": ["¿Cómo se llama?", "Mi nombre es"],
-          "fr": ["Comment vous appelez-vous?", "Mon nom est"],
-          "de": ["Wie heißen Sie?", "Mein Name ist"],
-          "it": ["Come ti chiami?", "Il mio nome è"],
-          "pt": ["Como se chama?", "Meu nome é"],
-          "ru": ["Как вас зовут?", "Мое имя"],
-          "zh": ["你的名字是什么？", "我的名字是"],
-          "ja": ["あなたの名前は何ですか？", "私の名前は"],
-          "ko": ["이름이 뭐에요？", "내 이름은"],
-          "ar": ["كيف يمكنك ان تسمينا؟", "اسمي"],
-          "hi": ["आपका नाम क्या है？", "मेरा नाम है"]
-        }
-      }
-    },
-    {
-      "template": "ConvoTemplate-1",
-      "questionData": {
-        "character1": "Omar",
-        "character2": "Lily",
-        "line1": "___, what time is it??",
-        "line2": "It is 10 o'clock.",
-        "answer": "Excuse me",
-        "distractors": [
-          "I am not sure",
-          "Nice to see you",
-          "It comes with 10 o'clock"
         ]
-      },
-      "audio_file1": "excuse-me-what-time-is-it-convo",
-      "audio_file2": "it-is-10-o-clock-convo"
-    },
-    {
-      "template": "ConvoTemplate-AppearDisappear",
-      "audio_file": "excuse-me-where-is-the-bathroom-convo",
-      "questionData": {
-        "words": "Excuse me. Where is the bathroom?",
-        "distractors": [
-          "how",
-          "What",
-          "time",
-          "kitchen",
-          "thank",
-          "you"
-        ],
-        "display_duration": 0.8,
-        "english_to_translate": ["Excuse me. Where is the bathroom?"],
-        "local_translation": {
-          "tr": ["Özür dilerim, banyo nerede?"],
-          "es": ["Perdón, ¿dónde está el baño?"],
-          "fr": ["Excusez-moi, où est-ce le bain?"],
-          "de": ["Entschuldigung, wo ist der Badezimmer?"],
-          "it": ["Scusa, dove è il bagno?"],
-          "pt": ["Desculpe, onde está o banheiro?"],
-          "ru": ["Извините, где находится туалет?"],
-          "zh": ["对不起，卫生间在哪里？"],
-          "ja": ["すみません，トイレはどこですか？"],
-          "ko": ["죄송합니다, 화장실은 어디에요?"],
-          "ar": ["آسف, حيث الحمام؟"],
-          "hi": ["क्षमा करें, दवाई कहां है?"]
-        }
       }
     },
     {
@@ -546,6 +256,19 @@
           "I am sorry",
           "I am tired",
           "I am hungry"
+        ]
+      }
+    },
+    {
+      "template": "ConvoTemplate-AppearDisappear",
+      "questionData": {
+        "words": "Have a great day, Alex",
+        "distractors": [
+          "Get",
+          "What",
+          "time",
+          "morning",
+          "everyday"
         ]
       }
     }

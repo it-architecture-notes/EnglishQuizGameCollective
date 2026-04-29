@@ -4,9 +4,10 @@
 Flutter mobile language learning quiz app (portrait-only, Android/iOS). Unified quiz screen handles all question types (image, vocab, grammar).
 
 ## Current State
-- **Active issue:** Issue-24 — Audio/translation/monster refactoring across all templates + remove SimonTemplate
-- **Current branch:** feature/quiz-templates-audio-translation-refactor
-- **Last completed:** Issue-23 (Dev-time TTS generation, in-game playback wiring, AppearDisappear words as string/array, SentenceBuilder correct_order as string/array, WordPairs locale-map refactor, GrammarForm hintWord removal)
+- **Active issue:** Issue-26 — Audio play rules refactor (hide answer audio until after answer; template-specific sequencing for Convo-1, ClozeSequence, SentenceBuilder, DialogueCompletion)
+- **Current branch:** feature/issue-26-audio-play-rules
+- **Last completed:** Issue-25 (translation field restructure, locale-keyed local_translation map, tr_ok penalty, greetings cleanup)
+- **Issue-26 status:** Implementation in progress — AudioPlayButton visibility rules, TranslationRevealButton disabled-during-audio, post-answer audio sequencing, regex cloze detection all done per active-progress-context.md
 
 ## Tech Stack
 - Flutter (Dart), Riverpod, portrait-only
@@ -35,6 +36,8 @@ Flutter mobile language learning quiz app (portrait-only, Android/iOS). Unified 
 - Story images: `app/assets/images/story/`
 
 ## Completed Issues (summary)
+25 → Translation field restructure: english_to_translate/local_translation arrays, locale-keyed map {"tr":[...]}, tr_ok penalty (globe tap = wrong, reveals in blue), TranslationRevealButton onRevealed callback, greetings questions.json cleanup
+24 → Audio/translation/monster refactoring: per-template audio wiring, TranslationRevealButton, Simon template removed, Gemini TTS dual single-speaker calls, gender voice tokens
 23 → Dev-time TTS generation (Gemini + ElevenLabs scripts), in-game audio playback wiring via `audio_file` JSON tag, AppearDisappear words as string-or-array, SentenceBuilder correct_order as string-or-array, WordPairs locale-map refactor, GrammarForm hintWord removal, AudioService helpers
 22 → Template refactor: removed global Translate toggle; JSON translation maps drive auxiliary copy for non-en; unified question header; GrammarForm/DialogueCompletion EN-primary; monster eligibility limited to imageQuizTemplate-1/2 (SpotDifference later removed)
 21 → Additional Quiz Templates batch2: SentenceBuilder, WordPairs (with matched-section layout), imageQuizTemplate-3, GrammarForm, DialogueCompletion; WordPairs green-hint bug fix; per-question `timer_seconds` override for all image templates; ConvoTemplate-2 merged into ClozeSequence (localized map, train tiles, streaming, translation hint, backward-compat adapter)

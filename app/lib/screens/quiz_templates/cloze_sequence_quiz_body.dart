@@ -53,13 +53,16 @@ class _ClozeSequenceQuizBodyState extends State<ClozeSequenceQuizBody> {
   bool _failed = false;
   bool _translationPenalized = false;
   bool _audioPlaying = false;
+  bool get _concluded => _failed || _currentBlank >= widget.data.answers.length;
 
   @override
   void initState() {
     super.initState();
     _tokens = widget.data.sentence.split(' ');
-    _blankIndices =
-        [for (var i = 0; i < _tokens.length; i++) if (_isBlank(_tokens[i])) i];
+    _blankIndices = [
+      for (var i = 0; i < _tokens.length; i++)
+        if (_isBlank(_tokens[i])) i
+    ];
     _filled = List.filled(_blankIndices.length, null);
     _tiles = [...widget.data.answers, ...widget.data.distractors]
       ..shuffle(Random());
@@ -79,7 +82,7 @@ class _ClozeSequenceQuizBodyState extends State<ClozeSequenceQuizBody> {
     }
   }
 
-  void _onTranslationRevealed() {
+  Future<void> _onTranslationRevealed() async {
     if (_failed || widget.data.trOk) return;
     if (_currentBlank >= widget.data.answers.length) return;
     final newFilled = List<String?>.from(_filled);
@@ -102,10 +105,12 @@ class _ClozeSequenceQuizBodyState extends State<ClozeSequenceQuizBody> {
       _currentBlank = widget.data.answers.length;
     });
     widget.onPlayWrong();
+    await _playAudio();
+    if (!mounted) return;
     widget.onOutcome(false);
   }
 
-  void _onTileTap(int tileIndex) {
+  Future<void> _onTileTap(int tileIndex) async {
     if (_failed) return;
     final word = _tiles[tileIndex];
     final state = _tileStates[tileIndex];
@@ -130,6 +135,8 @@ class _ClozeSequenceQuizBodyState extends State<ClozeSequenceQuizBody> {
       });
       widget.onPlayCorrect();
       if (_currentBlank >= widget.data.answers.length) {
+        await _playAudio();
+        if (!mounted) return;
         widget.onOutcome(true);
       }
     } else {
@@ -140,6 +147,8 @@ class _ClozeSequenceQuizBodyState extends State<ClozeSequenceQuizBody> {
         if (expIdx >= 0) _tileStates[expIdx] = _TileState.expected;
       });
       widget.onPlayWrong();
+      await _playAudio();
+      if (!mounted) return;
       widget.onOutcome(false);
     }
   }
@@ -275,6 +284,7 @@ class _ClozeSequenceQuizBodyState extends State<ClozeSequenceQuizBody> {
           localItems: widget.data.localTranslation,
           userLanguage: widget.userLanguage,
           onRevealed: _onTranslationRevealed,
+          enabled: !_audioPlaying,
         ),
         if (widget.resolvedImagePath != null) ...[
           Center(
@@ -311,24 +321,24 @@ class _ClozeSequenceQuizBodyState extends State<ClozeSequenceQuizBody> {
           ),
         ),
         const SizedBox(height: 8),
-        FutureBuilder<bool>(
-          future: widget.audioAssetPath == null
-              ? Future.value(false)
-              : widget.resolveAudioExists(widget.audioAssetPath!),
-          builder: (context, snap) {
-            final ok = snap.data == true;
-            final p = widget.audioAssetPath;
-            return Row(
-              mainAxisAlignment: MainAxisAlignment.end,
-              children: [
-                AudioPlayButton(
-                  isPlaying: _audioPlaying,
-                  onPressed: !ok || p == null ? null : () => _playAudio(),
-                ),
-              ],
-            );
-          },
-        ),
+        if (widget.audioAssetPath != null)
+          FutureBuilder<bool>(
+            future: widget.resolveAudioExists(widget.audioAssetPath!),
+            builder: (context, snap) {
+              final ok = snap.data == true;
+              return Row(
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: [
+                  AudioPlayButton(
+                    isPlaying: _audioPlaying,
+                    onPressed: (!ok || !_concluded)
+                        ? null
+                        : () => _playAudio(),
+                  ),
+                ],
+              );
+            },
+          ),
         const SizedBox(height: 8),
         Wrap(
           spacing: 8,

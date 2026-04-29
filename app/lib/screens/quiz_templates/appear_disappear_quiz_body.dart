@@ -75,7 +75,8 @@ class _AppearDisappearQuizBodyState extends State<AppearDisappearQuizBody> {
       }
     }
     if (!mounted) return;
-    await Future<void>.delayed(const Duration(milliseconds: 500));
+    await Future<void>.delayed(
+        Duration(milliseconds: (_sentence.length * 400).round()));
     if (!mounted) return;
     setState(() => _phase = _Phase.clearing);
     await Future<void>.delayed(const Duration(milliseconds: 400));

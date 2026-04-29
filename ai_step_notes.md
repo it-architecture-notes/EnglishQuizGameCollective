@@ -2,7 +2,10 @@
 
 1) TO WEB BROWSER AIs: Go and review this issue and ask questions if you see any gaps, also reword the sections for effective understading for an AI development agent.
 
-2) TO MAIN CURSOR P-Mode: Create a plan for the active issue, and place the plan in an md file (place or copy md file in workspace common plans folder) following rules for naming and location, include cursor in the name. ask questions if something is not clear. don't implement just create the plan and copy to common plans folder.
+<Clean plans folder>
+<Summarize and compact if agents are high in token usage>
+
+2) TO MAIN CURSOR: Create a plan for the active issue, and place the plan in an md file (place or copy md file in workspace common plans folder) following rules for naming and location, include cursor in the name. ask questions if something is not clear. don't implement just create the plan and copy to common plans folder.
 
 3) TO MAIN CLAUDE: Create a plan for the active issue, and place the plan in an md file following rules for naming and location, include claude in the filename. place or copy the plan file under workspace common plans folder. ask questions if something is not clear. don't implement just create the plan and copy to common plans folder.
 

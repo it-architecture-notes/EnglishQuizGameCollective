@@ -28,7 +28,7 @@ class WordPairsQuizBody extends StatefulWidget {
 }
 
 class _WordPairsQuizBodyState extends State<WordPairsQuizBody> {
-  late Map<String, String> _match;        // leftWord → rightWord
+  late Map<String, String> _match; // leftWord → rightWord
   late Map<String, String> _reverseMatch; // rightWord → leftWord
 
   late List<String> _activeLeft;
@@ -37,6 +37,7 @@ class _WordPairsQuizBodyState extends State<WordPairsQuizBody> {
 
   /// Currently selected word, or null.
   String? _selectedWord;
+
   /// True when the selected word is from the left column.
   bool _selectedIsLeft = false;
 
@@ -141,6 +142,10 @@ class _WordPairsQuizBodyState extends State<WordPairsQuizBody> {
         child: InkWell(
           onTap: onTap,
           borderRadius: BorderRadius.circular(8),
+          splashFactory: NoSplash.splashFactory,
+          splashColor: Colors.transparent,
+          highlightColor: Colors.transparent,
+          overlayColor: WidgetStateProperty.all(Colors.transparent),
           child: Padding(
             padding: const EdgeInsets.all(12),
             child: Text(
@@ -148,8 +153,7 @@ class _WordPairsQuizBodyState extends State<WordPairsQuizBody> {
               textAlign: TextAlign.center,
               style: theme.textTheme.titleSmall?.copyWith(
                 fontWeight: FontWeight.w600,
-                color: textColor ??
-                    (selected ? Colors.blue.shade900 : null),
+                color: textColor ?? (selected ? Colors.blue.shade900 : null),
               ),
             ),
           ),
