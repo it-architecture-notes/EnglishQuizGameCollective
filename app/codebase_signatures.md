@@ -178,11 +178,8 @@ class StoryPageConfig extends Object
   get eventId
   get pageTemplateId
   get trigger
-  get coveredLevelsNumber
-  get pageTextListForTemplate
-  get pageImageListForTemplate
-  get pageAnimationListForTemplate
   get storyText
+  get characterImage
 
 class MainLevelStoryConfig extends Object
     MainLevelStoryConfig fromJson(Map<String, dynamic> json)
@@ -1023,7 +1020,6 @@ class _StoryOverlayScreenState extends State
     void dispose()
     Widget build(BuildContext context)
     Widget _buildTemplate(BuildContext context, double? scrollViewportHeight)
-    Widget _buildAnimationOnly(BuildContext context)
   get _celebrationController
   set _celebrationController=
   get _celebrationScale
@@ -1035,7 +1031,6 @@ class StoryTemplateA extends StatelessWidget
     Widget build(BuildContext context)
     Widget _scenePlaceholder(BuildContext context)
     Widget _characterPlaceholder(BuildContext context, double size)
-    String _localizedText(StoryPageConfig page, String languageCode)
   get page
   get languageCode
   get scrollViewportHeight
@@ -1058,14 +1053,6 @@ class StoryTemplateC extends StatelessWidget
   get kSectionGap
   get kEdgeInset
   get kMaxImageHeightFraction
-
-## /lib/screens/story/story_templates/story_template_b.dart
-
-class StoryTemplateB extends StatelessWidget
-    Widget build(BuildContext context)
-    String _localizedText(StoryPageConfig page, String languageCode)
-  get page
-  get languageCode
 
 ## /lib/screens/panel_overlay.dart
 

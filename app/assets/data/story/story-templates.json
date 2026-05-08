@@ -4,28 +4,14 @@
       "template_id": 1,
       "layout": "character_dialog_scene",
       "requires_text": true,
-      "requires_images": true,
+      "requires_images": false,
       "requires_animation": false
-    },
-    {
-      "template_id": 2,
-      "layout": "scene_animation_dialogues",
-      "requires_text": true,
-      "requires_images": false,
-      "requires_animation": true
-    },
-    {
-      "template_id": 3,
-      "layout": "animation_only",
-      "requires_text": false,
-      "requires_images": false,
-      "requires_animation": true
     },
     {
       "template_id": 4,
       "layout": "scene_story_text",
       "requires_text": true,
-      "requires_images": true,
+      "requires_images": false,
       "requires_animation": false
     }
   ]

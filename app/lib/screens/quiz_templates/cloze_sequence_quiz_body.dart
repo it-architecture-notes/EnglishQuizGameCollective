@@ -53,6 +53,7 @@ class _ClozeSequenceQuizBodyState extends State<ClozeSequenceQuizBody> {
   bool _failed = false;
   bool _translationPenalized = false;
   bool _audioPlaying = false;
+  Map<int, int> _expectedTileBlankIndex = {};
   bool get _concluded => _failed || _currentBlank >= widget.data.answers.length;
 
   @override
@@ -140,11 +141,25 @@ class _ClozeSequenceQuizBodyState extends State<ClozeSequenceQuizBody> {
         widget.onOutcome(true);
       }
     } else {
-      final expIdx = _tiles.indexOf(expected);
+      final newTileStates = List<_TileState>.from(_tileStates);
+      newTileStates[tileIndex] = _TileState.wrong;
+      final newExpectedMap = <int, int>{};
+      for (var b = _currentBlank; b < widget.data.answers.length; b++) {
+        final ans = widget.data.answers[b];
+        for (var t = 0; t < _tiles.length; t++) {
+          if (_tiles[t] == ans &&
+              newTileStates[t] != _TileState.correct &&
+              newTileStates[t] != _TileState.wrong) {
+            newTileStates[t] = _TileState.expected;
+            newExpectedMap[t] = b;
+            break;
+          }
+        }
+      }
       setState(() {
         _failed = true;
-        _tileStates[tileIndex] = _TileState.wrong;
-        if (expIdx >= 0) _tileStates[expIdx] = _TileState.expected;
+        _tileStates = newTileStates;
+        _expectedTileBlankIndex = newExpectedMap;
       });
       widget.onPlayWrong();
       await _playAudio();
@@ -248,7 +263,7 @@ class _ClozeSequenceQuizBodyState extends State<ClozeSequenceQuizBody> {
             ),
           ),
         ),
-        if (isCorrect)
+        if (isCorrect || isExpected)
           Positioned(
             top: -6,
             right: -6,
@@ -258,7 +273,9 @@ class _ClozeSequenceQuizBodyState extends State<ClozeSequenceQuizBody> {
                   ? Colors.blue.shade700
                   : Colors.green.shade700,
               child: Text(
-                '${_tileStates.take(index + 1).where((s) => s == _TileState.correct).length}',
+                isCorrect
+                    ? '${_tileStates.take(index + 1).where((s) => s == _TileState.correct).length}'
+                    : '${(_expectedTileBlankIndex[index] ?? 0) + 1}',
                 style: const TextStyle(
                   color: Colors.white,
                   fontSize: 10,

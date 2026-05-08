@@ -10,18 +10,13 @@ void main() {
       eventId: 1,
       pageTemplateId: 1,
       trigger: const StoryTrigger(type: StoryTriggerType.beforeLevel, level: 1),
-      coveredLevelsNumber: 1,
-      pageTextListForTemplate: const [
-        {'en': 'Help the character reach the next place.'},
-      ],
-      pageImageListForTemplate: const [],
-      pageAnimationListForTemplate: const [],
+      storyText: const {'en': 'Help the character reach the next place.'},
     );
     const template = StoryTemplateConfig(
       templateId: 1,
       layout: 'character_dialog_scene',
       requiresText: true,
-      requiresImages: true,
+      requiresImages: false,
       requiresAnimation: false,
     );
 
@@ -44,22 +39,19 @@ void main() {
     expect(find.text('Continue'), findsOneWidget);
   });
 
-  testWidgets('renders animation_only template', (tester) async {
+  testWidgets('renders scene_story_text template', (tester) async {
     final page = StoryPageConfig(
       eventId: 2,
-      pageTemplateId: 3,
+      pageTemplateId: 4,
       trigger: const StoryTrigger(type: StoryTriggerType.afterLevel, level: 1),
-      coveredLevelsNumber: 1,
-      pageTextListForTemplate: const [],
-      pageImageListForTemplate: const [],
-      pageAnimationListForTemplate: const ['confetti_celebration'],
+      storyText: const {'en': 'Great job!'},
     );
     const template = StoryTemplateConfig(
-      templateId: 3,
-      layout: 'animation_only',
-      requiresText: false,
+      templateId: 4,
+      layout: 'scene_story_text',
+      requiresText: true,
       requiresImages: false,
-      requiresAnimation: true,
+      requiresAnimation: false,
     );
 
     await tester.pumpWidget(
@@ -77,6 +69,6 @@ void main() {
     );
 
     expect(find.text('Great job!'), findsOneWidget);
-    expect(find.text('confetti_celebration'), findsOneWidget);
+    expect(find.text('Continue'), findsOneWidget);
   });
 }

@@ -8,6 +8,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../models/guest_animal_conversations.dart';
 import '../../models/level_completion_result.dart';
 import '../../models/level_config.dart';
+import '../../models/level_translations.dart';
 import '../../models/quiz_flow.dart';
 import '../../models/reminder_progress.dart';
 import '../../providers/localization_provider.dart';
@@ -24,6 +25,7 @@ import '../../services/quiz_progress_service.dart';
 import '../../services/reminder_progress_service.dart';
 import '../../services/test_data_service.dart';
 import '../../widgets/audio_play_button.dart';
+import '../../widgets/level_translations_view.dart';
 import '../../widgets/image_quiz_template2_audio_controls.dart';
 import '../../widgets/translation_reveal_button.dart';
 import 'quiz_templates/appear_disappear_quiz_body.dart';
@@ -52,12 +54,12 @@ const Map<String, String> _kTemplateTitleL10nKeys = {
   'imageQuizTemplate-1': 'title_image_quiz',
   'imageQuizTemplate-2': 'title_image_word',
   'ConvoTemplate-1': 'title_fill_blank',
-  'ConvoTemplate-ClozeSequence': 'title_cloze',
-  'ConvoTemplate-AppearDisappear': 'click_in_order',
-  'ConvoTemplate-SentenceBuilder': 'title_build_sentence',
-  'ConvoTemplate-WordPairs': 'title_word_pairs',
-  'ConvoTemplate-GrammarForm': 'title_grammar',
-  'ConvoTemplate-DialogueCompletion': 'title_dialogue',
+  'ClozeSequence': 'title_cloze',
+  'AppearDisappear': 'click_in_order',
+  'SentenceBuilder': 'title_build_sentence',
+  'WordPairs': 'title_word_pairs',
+  'GrammarForm': 'title_grammar',
+  'DialogueCompletion': 'title_dialogue',
 };
 
 /// Set to true to re-enable the monster lane (animal, monster, step stones, timer, bubbles).
@@ -85,7 +87,7 @@ int _monsterStepFromEligibleWrongs(
   return 4;
 }
 
-enum _Phase { loading, playing, end, gameOver }
+enum _Phase { loading, playing, translations, end, gameOver }
 
 /// In-quiz experience for one sub-level: image templates, convo templates, monster/timer, and completion UI.
 class ImageQuizScreen extends ConsumerStatefulWidget {
@@ -209,6 +211,9 @@ class _ImageQuizScreenState extends ConsumerState<ImageQuizScreen>
 
   /// Level-wide timer override from `timer_seconds` in `questions.json` root. Null = use global config.
   int? _levelTimerSeconds;
+
+  /// Optional `translations.json` for end-of-level table (non-reminder only).
+  TranslationsPageData? _translationsData;
 
   /// Asset-bundle prefix key for resolving images under this sub-level’s folder.
   static String _levelKey(SubLevel sub) => imageQuizLevelKey(sub.iconImageName);
@@ -373,6 +378,8 @@ class _ImageQuizScreenState extends ConsumerState<ImageQuizScreen>
         final prevProgress = await QuizProgressService.instance.loadProgress();
         final prevHighestDiamonds =
             prevProgress.level(widget.progressKey).highestDiamonds;
+        final translationsPageData =
+            await loadLevelTranslations(widget.subLevel.iconImageName);
 
         if (mounted) {
           setState(() {
@@ -390,6 +397,7 @@ class _ImageQuizScreenState extends ConsumerState<ImageQuizScreen>
             _selectedMonster = selectedMonster;
             _shortQuizDebug = shortQuizDebug;
             _endedEarlyShortQuiz = false;
+            _translationsData = translationsPageData;
             _previousHighestDiamonds = prevHighestDiamonds;
             _phase = _Phase.playing;
             _quizStartTime = DateTime.now();
@@ -467,13 +475,13 @@ class _ImageQuizScreenState extends ConsumerState<ImageQuizScreen>
                 key,
                 q.convoData!.imageName!,
               );
-            } else if (q.template == 'ConvoTemplate-ClozeSequence' &&
+            } else if (q.template == 'ClozeSequence' &&
                 q.clozeSequenceData?.imageName != null) {
               thumb = await resolveQuizImageAsset(
                 key,
                 q.clozeSequenceData!.imageName!,
               );
-            } else if (q.template == 'ConvoTemplate-DialogueCompletion' &&
+            } else if (q.template == 'DialogueCompletion' &&
                 q.dialogueCompletionData?.imageName != null) {
               thumb = await resolveQuizImageAsset(
                 key,
@@ -557,6 +565,8 @@ class _ImageQuizScreenState extends ConsumerState<ImageQuizScreen>
       final prevProgress = await QuizProgressService.instance.loadProgress();
       final prevHighestDiamonds =
           prevProgress.level(widget.progressKey).highestDiamonds;
+      final translationsPageData =
+          await loadLevelTranslations(widget.subLevel.iconImageName);
 
       if (mounted) {
         setState(() {
@@ -574,6 +584,7 @@ class _ImageQuizScreenState extends ConsumerState<ImageQuizScreen>
           _shortQuizDebug = shortQuizDebug;
           _endedEarlyShortQuiz = false;
           _levelTimerSeconds = levelCfg?.timerSeconds;
+          _translationsData = translationsPageData;
           _previousHighestDiamonds = prevHighestDiamonds;
           _phase = _Phase.playing;
           _quizStartTime = DateTime.now();
@@ -686,7 +697,7 @@ class _ImageQuizScreenState extends ConsumerState<ImageQuizScreen>
                   q.appearDisappearData != null ||
                   q.clozeSequenceData != null)) {
             convoByQuestionId[questionId] = q;
-            if (q.template == 'ConvoTemplate-ClozeSequence' &&
+            if (q.template == 'ClozeSequence' &&
                 q.clozeSequenceData?.imageName != null) {
               final name = q.clozeSequenceData!.imageName!;
               final p = await resolveQuizImageAsset(levelKey, name);
@@ -1319,6 +1330,16 @@ class _ImageQuizScreenState extends ConsumerState<ImageQuizScreen>
     });
   }
 
+  /// End-of-level translations interstitial (non-reminder, non-English, `translations.json` present).
+  bool _shouldShowTranslations() {
+    final lang = ref.read(settingsProvider).valueOrNull?.language ?? 'en';
+    final data = _translationsData;
+    return data != null &&
+        data.entries.isNotEmpty &&
+        !_isReminder &&
+        lang != 'en';
+  }
+
   /// Advances index or ends the run; handles debug short-quiz, reminder review pass, and per-question timers.
   void _goNext() {
     audio.stopQuestionAudio();
@@ -1373,7 +1394,8 @@ class _ImageQuizScreenState extends ConsumerState<ImageQuizScreen>
           ..reset();
       }
       setState(() {
-        _phase = _Phase.end;
+        _phase =
+            _shouldShowTranslations() ? _Phase.translations : _Phase.end;
         _bubbleConversation = null;
       });
       return;
@@ -1599,6 +1621,31 @@ class _ImageQuizScreenState extends ConsumerState<ImageQuizScreen>
     );
   }
 
+  Widget _buildTranslationsPhase(
+    bool soundFxOn,
+    Map<String, String> strings,
+    String userLanguage,
+  ) {
+    final data = _translationsData!;
+    final h = MediaQuery.sizeOf(context).height;
+    final listH = (h - 220).clamp(200.0, 560.0);
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+      child: LevelTranslationsView(
+        entries: data.entries,
+        userLanguage: userLanguage,
+        title:
+            strings['translations_page_title'] ?? 'Words Used In This Level',
+        primaryLabel: strings['next'] ?? 'Next',
+        listViewportHeight: listH,
+        onPrimary: () {
+          audio.playClick(soundFxOn: soundFxOn);
+          setState(() => _phase = _Phase.end);
+        },
+      ),
+    );
+  }
+
   /// Central phase switch between loading spinner, playing layouts, summary, and game-over screen.
   Widget _buildBody(
       bool soundFxOn, Map<String, String> strings, String userLanguage) {
@@ -1609,6 +1656,8 @@ class _ImageQuizScreenState extends ConsumerState<ImageQuizScreen>
         return _isConvoMode
             ? _buildConvoPlaying(soundFxOn, strings, userLanguage)
             : _buildImagePlaying(soundFxOn, strings, userLanguage);
+      case _Phase.translations:
+        return _buildTranslationsPhase(soundFxOn, strings, userLanguage);
       case _Phase.end:
         return _buildEnd(soundFxOn, strings);
       case _Phase.gameOver:
@@ -1722,7 +1771,7 @@ class _ImageQuizScreenState extends ConsumerState<ImageQuizScreen>
     if (correct) {
       AchievementService.instance.recordAnswer(true);
       final delaySec = switch (q.template) {
-        'ConvoTemplate-DialogueCompletion' => 0.0,
+        'DialogueCompletion' => 0.0,
         _ => _config.autoAdvanceDelaySeconds,
       };
       setState(() => _correctCount++);
@@ -2111,7 +2160,7 @@ class _ImageQuizScreenState extends ConsumerState<ImageQuizScreen>
                       child: Padding(
                         padding: const EdgeInsets.symmetric(vertical: 6),
                         child: Text(
-                          _capitalize(option),
+                          option,
                           textAlign: TextAlign.center,
                           maxLines: 5,
                           overflow: TextOverflow.ellipsis,
@@ -2498,7 +2547,7 @@ class _ImageQuizScreenState extends ConsumerState<ImageQuizScreen>
     Map<String, String> strings,
   ) {
     switch (q.template) {
-      case 'ConvoTemplate-AppearDisappear':
+      case 'AppearDisappear':
         return AppearDisappearQuizBody(
           key: ValueKey('ad-${_currentQuestionId ?? '$_currentIndex'}'),
           data: q.appearDisappearData!,
@@ -2510,7 +2559,7 @@ class _ImageQuizScreenState extends ConsumerState<ImageQuizScreen>
           onPlayWrong: () => audio.playWrong(soundFxOn: soundFxOn),
           onOutcome: (correct) => _handleInteractiveConvoOutcome(q, correct),
         );
-      case 'ConvoTemplate-ClozeSequence':
+      case 'ClozeSequence':
         return ClozeSequenceQuizBody(
           key: ValueKey('clz-${_currentQuestionId ?? '$_currentIndex'}'),
           data: q.clozeSequenceData!,
@@ -2523,7 +2572,7 @@ class _ImageQuizScreenState extends ConsumerState<ImageQuizScreen>
           onPlayWrong: () => audio.playWrong(soundFxOn: soundFxOn),
           onOutcome: (correct) => _handleInteractiveConvoOutcome(q, correct),
         );
-      case 'ConvoTemplate-SentenceBuilder':
+      case 'SentenceBuilder':
         return SentenceBuilderQuizBody(
           key: ValueKey('sb-${_currentQuestionId ?? '$_currentIndex'}'),
           data: q.sentenceBuilderData!,
@@ -2536,7 +2585,7 @@ class _ImageQuizScreenState extends ConsumerState<ImageQuizScreen>
           onPlayWrong: () => audio.playWrong(soundFxOn: soundFxOn),
           onOutcome: (correct) => _handleInteractiveConvoOutcome(q, correct),
         );
-      case 'ConvoTemplate-WordPairs':
+      case 'WordPairs':
         return WordPairsQuizBody(
           key: ValueKey('wp-${_currentQuestionId ?? '$_currentIndex'}'),
           data: q.wordPairsData!,
@@ -2545,7 +2594,7 @@ class _ImageQuizScreenState extends ConsumerState<ImageQuizScreen>
           onPlayWrong: () => audio.playWrong(soundFxOn: soundFxOn),
           onOutcome: (correct) => _handleInteractiveConvoOutcome(q, correct),
         );
-      case 'ConvoTemplate-GrammarForm':
+      case 'GrammarForm':
         return GrammarFormQuizBody(
           key: ValueKey('gf-${_currentQuestionId ?? '$_currentIndex'}'),
           data: q.grammarFormData!,
@@ -2554,7 +2603,7 @@ class _ImageQuizScreenState extends ConsumerState<ImageQuizScreen>
           onPlayWrong: () => audio.playWrong(soundFxOn: soundFxOn),
           onOutcome: (correct) => _handleInteractiveConvoOutcome(q, correct),
         );
-      case 'ConvoTemplate-DialogueCompletion':
+      case 'DialogueCompletion':
         return DialogueCompletionQuizBody(
           key: ValueKey('dc-${_currentQuestionId ?? '$_currentIndex'}'),
           data: q.dialogueCompletionData!,
@@ -2933,7 +2982,11 @@ class _ImageQuizScreenState extends ConsumerState<ImageQuizScreen>
         width: double.infinity,
         height: kMinTouchTarget + 8,
         child: ElevatedButton(
-          onPressed: _answerLocked
+          onPressed: (_answerLocked ||
+                  _convoTtsPlaying ||
+                  _convo1DualA1Playing ||
+                  _convo1DualA2Playing ||
+                  _convo1PostAnswerAudioPlaying)
               ? null
               : () {
                   audio.playClick(soundFxOn: soundFxOn);
@@ -2941,7 +2994,7 @@ class _ImageQuizScreenState extends ConsumerState<ImageQuizScreen>
                 },
           style: buttonStyle,
           child: Text(
-            _capitalize(option),
+            option,
             style: fgColor != null
                 ? Theme.of(context).textTheme.titleMedium?.copyWith(
                       color: fgColor,

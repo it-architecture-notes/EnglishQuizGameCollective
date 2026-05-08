@@ -7,7 +7,6 @@
 /cursor-claude-common/plans/
 /tools/gemini_tts/.env
 /tools/gemini_tts/.venv/
-/tools/eleven_labs_tts/.env
 # -----------------------------------------------------------------------------
 # App (Flutter) – build, tools, IDE, OS
 # -----------------------------------------------------------------------------

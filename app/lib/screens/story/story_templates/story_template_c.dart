@@ -2,17 +2,13 @@ import 'package:flutter/material.dart';
 
 import '../../../models/story_config.dart';
 
-/// Template C — "scene_story_text" layout (page_template_id: 4)
+/// Template C — "scene_story_text" layout (`page_template_id` 4)
 ///
-/// Image slots (page_image_list_for_template):
-///   [0] scene image — fills the frame
+/// Scene area uses a placeholder. [StoryPageConfig.storyText]: `en` as primary line;
+/// when [languageCode] is not `en`, that locale’s string as italic secondary.
 ///
-/// Text: read from [StoryPageConfig.storyText] (localised map).
-/// English plus optional local line when [languageCode] is not `en`.
-///
-/// Layout: one [kSectionGap] between image and primary text, the same gap
-/// between primary and secondary text when both exist. The block is vertically
-/// centered in the viewport when it fits; otherwise it scrolls.
+/// Layout: one [kSectionGap] between placeholder and primary text, the same gap
+/// between primary and secondary text when both exist.
 class StoryTemplateC extends StatelessWidget {
   const StoryTemplateC({
     super.key,
@@ -39,9 +35,6 @@ class StoryTemplateC extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final sceneImage = page.pageImageListForTemplate.isNotEmpty
-        ? page.pageImageListForTemplate[0]
-        : null;
     final englishText = page.storyText['en'] ?? '';
     final localText = languageCode != 'en'
         ? (page.storyText[languageCode] ?? '')
@@ -49,10 +42,10 @@ class StoryTemplateC extends StatelessWidget {
 
     final imageBlock = ClipRRect(
       borderRadius: BorderRadius.circular(16),
-      child: sceneImage != null
+      child: page.sceneImage != null
           ? Image.asset(
-              sceneImage,
-              fit: BoxFit.contain,
+              page.sceneImage!,
+              fit: BoxFit.cover,
               errorBuilder: (_, __, ___) => _placeholder(context),
             )
           : _placeholder(context),

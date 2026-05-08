@@ -246,8 +246,10 @@ Rendered in **convo playing** layout inside `ImageQuizScreen`: typically **dialo
 ## Story overlays (`story_overlay_screen.dart` + `story_templates/`)
 
 - **Purpose:** **Narrative beats** between or after levels (congratulations, instructions), driven by story config.
-- **Design:** Warm paper-like background; optional **celebration** animation on final page; body from template **A / B / C** (illustration + text blocks + **Continue**).
+- **Design:** Warm paper-like background; optional **celebration** animation on final page; body from template **A or C** (placeholders + **`story_text`** + **Continue**).
 - **Player action:** Read, tap **Continue** to proceed/dismiss.
+
+For **template ids**, **`layout` strings**, JSON file paths, and per-template image/text slots, see **`story-templates-and-design.md`**.
 
 ---
 

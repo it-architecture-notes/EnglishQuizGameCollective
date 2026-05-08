@@ -269,7 +269,7 @@ class _DialogueCompletionQuizBodyState
             child: SizedBox(
               width: double.infinity,
               child: ElevatedButton(
-                onPressed: (_locked || _audio2Playing) ? null : () => _onTap(i),
+                onPressed: (_locked || _audio1Playing || _audio2Playing) ? null : () => _onTap(i),
                 style: ElevatedButton.styleFrom(
                   backgroundColor: bg,
                   foregroundColor: fg,

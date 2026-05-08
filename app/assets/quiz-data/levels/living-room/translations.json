@@ -1,0 +1,38 @@
+{
+    "translations_list": [
+        {
+            "english_word": "to sit",
+            "translations": {
+                "tr": "oturmak",
+                "es": "sentarse",
+                "fr": "s'asseoir",
+                "de": "sitzen",
+                "it": "sedersi",
+                "pt": "sentar-se",
+                "ru": "сидеть",
+                "zh": "坐",
+                "ja": "座る",
+                "ko": "앉다",
+                "ar": "يجلس",
+                "hi": "बैठना"
+            }
+        },
+        {
+            "english_word": "together",
+            "translations": {
+                "tr": "birlikte",
+                "es": "juntos",
+                "fr": "ensemble",
+                "de": "zusammen",
+                "it": "insieme",
+                "pt": "juntos",
+                "ru": "вместе",
+                "zh": "一起",
+                "ja": "一緒に",
+                "ko": "함께",
+                "ar": "معا",
+                "hi": "साथ में"
+            }
+        }
+    ]
+}

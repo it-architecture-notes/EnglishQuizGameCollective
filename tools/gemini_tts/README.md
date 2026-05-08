@@ -46,8 +46,6 @@ Gemini TTS uses **prebuilt voice names** (see Google’s Gemini TTS docs). Confi
 
 Gender-routed jobs ignore `--voice` / `--voice-a` / `--voice-b` for those clips; other behavior follows the rules above.
 
-**ElevenLabs** (`--provider elevenlabs`): `ELEVENLABS_VOICE_IDS` is a comma-separated list of voice IDs; the first is used when `ELEVENLABS_VOICE_ID` is unset. `ELEVENLABS_VOICE_ROTATE=1` rotates IDs for each single-speaker clip.
-
 ## Usage
 
 From repo root:
@@ -60,6 +58,7 @@ python3 tools/gemini_tts/generate_level_audio.py --level-id waking-up
 Optional flags:
 
 - `--workspace-root /absolute/path/to/repo`
+- `--output-suffix TEXT` (inserted before `.m4a`; default empty)
 - `--voice NAME` / `--voice-a NAME` / `--voice-b NAME` (defaults from male/female voice lists — see above)
 - `--bitrate 64` or `--bitrate 96`
 - `--overwrite` (regenerate existing files)
@@ -69,7 +68,7 @@ Optional flags:
 
 Generated files follow:
 
-`{audio_file_value}.m4a`
+`{audio_file_value}{output_suffix}.m4a` (suffix is empty unless you pass `--output-suffix`)
 
 Example:
 

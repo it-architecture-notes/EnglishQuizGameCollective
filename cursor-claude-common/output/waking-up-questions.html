@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>waking-up — level tables</title>
+  <style>
+    body { font-family: system-ui, -apple-system, Segoe UI, Roboto, sans-serif; margin: 16px; background: #f5f5f5; }
+    h1 { font-size: 1.25rem; margin-bottom: 12px; }
+    h2 { font-size: 1.1rem; margin-top: 24px; margin-bottom: 8px; }
+    .wrap { overflow-x: auto; background: #fff; padding: 12px; border-radius: 8px; box-shadow: 0 1px 3px rgba(0,0,0,.08); margin-bottom: 16px; }
+    table { border-collapse: collapse; width: 100%; font-size: 13px; table-layout: fixed; }
+    th, td { border: 1px solid #c8c8c8; padding: 8px 10px; vertical-align: top; text-align: left; word-wrap: break-word; }
+    th { background: #e8e8e8; font-weight: 600; white-space: nowrap; }
+    tr:nth-child(even) td { background: #fafafa; }
+    </style>
+</head>
+<body>
+  <h1>waking-up — questions</h1>
+  <div class="wrap">
+    <table>
+<thead><tr><th>#</th><th>Template</th><th>Line 1 / Prompt</th><th>Line 2</th><th>Answer</th><th>English (translate)</th><th>Audio</th></tr></thead>
+<tbody><tr><td>1</td><td>imageQuizTemplate-1</td><td>image: alarm-clock</td><td></td><td>alarm clock</td><td></td><td></td></tr><tr><td>2</td><td>imageQuizTemplate-2</td><td>image: mattress</td><td></td><td>mattress</td><td></td><td></td></tr><tr><td>3</td><td>ClozeSequence</td><td>Time to _____ ! You’ll _____ the bus.</td><td></td><td>get up, miss</td><td></td><td>audio_file: time-to-get-up-convo</td></tr><tr><td>4</td><td>ClozeSequence</td><td>I ___ my eyes when I ____ in the morning</td><td></td><td>open, wake up</td><td></td><td>audio_file: i-open-my-eyes-when-i-wake-up-in-the-morning-convo</td></tr><tr><td>5</td><td>GrammarForm</td><td>Before I get up, I _______ my arms and legs.</td><td></td><td>stretch</td><td></td><td></td></tr><tr><td>6</td><td>SentenceBuilder</td><td>You sleep on a pillow.</td><td></td><td>You sleep on a pillow.</td><td></td><td></td></tr><tr><td>7</td><td>WordPairs</td><td>wash my face; turn off the alarm clock; open the curtains; get out of bed</td><td>word pairs</td><td>match all pairs</td><td></td><td></td></tr><tr><td>8</td><td>DialogueCompletion</td><td>What do you do after getting out of bed?</td><td></td><td>I make my bed.</td><td></td><td>audio_file1: what-do-you-do-after-getting-out-of-bed-convo · audio_file2: i-make-my-bed-convo</td></tr><tr><td>9</td><td>imageQuizTemplate-1</td><td>image: blanket</td><td></td><td>blanket</td><td></td><td></td></tr><tr><td>10</td><td>imageQuizTemplate-1</td><td>image: nightstand</td><td></td><td>nightstand</td><td></td><td></td></tr><tr><td>11</td><td>imageQuizTemplate-1</td><td>image: bed</td><td></td><td>bed</td><td></td><td></td></tr><tr><td>12</td><td>WordPairs</td><td>bed; pillow; blanket; nightstand</td><td>word pairs</td><td>match all pairs</td><td></td><td></td></tr><tr><td>13</td><td>imageQuizTemplate-1</td><td>image: pillow</td><td></td><td>pillow</td><td></td><td></td></tr><tr><td>14</td><td>ConvoTemplate-1</td><td>Did you sleep _____ last night?</td><td>Yes, I slept very ____.</td><td>well</td><td></td><td>audio_file1: did-you-sleep-well-last-night-convo · audio_file2: yes-i-slept-very-well-convo</td></tr><tr><td>15</td><td>AppearDisappear</td><td>Wake up early to see the sunrise.</td><td></td><td>-</td><td></td><td>audio_file: wake-up-early-to-see-the-sunrise-convo</td></tr></tbody>
+</table>
+  </div>
+
+  <h2>waking-up — translations</h2>
+  <div class="wrap">
+    <table>
+<thead><tr><th>#</th><th>English word</th><th>ar</th><th>de</th><th>es</th><th>fr</th><th>hi</th><th>it</th><th>ja</th><th>ko</th><th>pt</th><th>ru</th><th>tr</th><th>zh</th></tr></thead>
+<tbody><tr><td>1</td><td>to get up</td><td>يستيقظ</td><td>aufstehen</td><td>levantarse</td><td>se lever</td><td>उठाना</td><td>alzarsi</td><td>起きる</td><td>일어나</td><td>acordar</td><td>встать</td><td>kalkmak</td><td>起床</td></tr><tr><td>2</td><td>to wake up</td><td>يستيقظ</td><td>aufstehen</td><td>despertar</td><td>se réveiller</td><td>उठना</td><td>svegliarsi</td><td>起きる</td><td>일어나</td><td>acordar</td><td>встать</td><td>uyanmak</td><td>起床</td></tr><tr><td>3</td><td>to open eyes</td><td>فتح العين</td><td>Augen öffnen</td><td>abrir los ojos</td><td>ouvrir les yeux</td><td>आँखें खोलना</td><td>aprire gli occhi</td><td>目を開ける</td><td>눈을 뜨다</td><td>abrir os olhos</td><td>открыть глаза</td><td>gözlerimi açmak</td><td>打开眼睛</td></tr><tr><td>4</td><td> early</td><td>أولا</td><td>früh</td><td>temprano</td><td>tôt</td><td>जल्दी</td><td>presto</td><td>早く</td><td>일찍</td><td>cedo</td><td>раньше</td><td>erken</td><td>早</td></tr><tr><td>5</td><td>to make bed</td><td>يجعل السرير</td><td>Bett machen</td><td>hacer la cama</td><td>faire la couche</td><td>बिस्तर बनाना</td><td>fare la cama</td><td>ベッドを作る</td><td>침대를 만드다</td><td>fazer a cama</td><td>сделать кровать</td><td>yatak yapmak</td><td>做床</td></tr></tbody>
+</table>
+  </div>
+
+</body>
+</html>

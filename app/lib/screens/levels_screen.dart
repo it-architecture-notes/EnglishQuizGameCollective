@@ -19,6 +19,7 @@ import '../services/reminder_progress_service.dart';
 import '../services/story_config_loader.dart';
 import '../services/story_progress_service.dart';
 import '../services/story_trigger_service.dart';
+import '../widgets/level_translations_view.dart';
 import 'quiz_runner_screen.dart';
 import 'story/story_overlay_screen.dart';
 import 'transitions/custom_page_routes.dart';
@@ -91,6 +92,9 @@ class _LevelsScreenState extends ConsumerState<LevelsScreen> {
     templatesById: {},
   );
   StoryProgressState _storyProgress = const StoryProgressState();
+
+  /// Levels with `translations.json` (for Words button on map when completed + stars).
+  Set<String> _levelsWithTranslations = {};
 
   /// Window into _filtered: only _filtered[_windowStart.._windowEnd-1] are shown.
   int _windowStart = 0;
@@ -368,6 +372,22 @@ class _LevelsScreenState extends ConsumerState<LevelsScreen> {
       );
       final end = (startAt + _batchSize).clamp(0, filtered.length);
 
+      var levelsWithTranslations = <String>{};
+      final uiLang = ref.read(settingsProvider).valueOrNull?.language ?? 'en';
+      if (uiLang != 'en') {
+        for (final item in allItems) {
+          if (item is SubLevelItem && !item.sub.isReminder) {
+            final stars = progress.levels[item.progressKey]?.highestStars ?? 0;
+            if (stars >= 1) {
+              final d = await loadLevelTranslations(item.sub.iconImageName);
+              if (d != null) {
+                levelsWithTranslations.add(item.sub.iconImageName);
+              }
+            }
+          }
+        }
+      }
+
       if (mounted) {
         setState(() {
           _items = allItems;
@@ -379,6 +399,7 @@ class _LevelsScreenState extends ConsumerState<LevelsScreen> {
           _windowStart = startAt;
           _windowEnd = end;
           _loading = false;
+          _levelsWithTranslations = levelsWithTranslations;
         });
         // The ItemScrollController retains its previous scroll offset even after
         // the widget is rebuilt via the loading spinner. If the user had scrolled
@@ -785,6 +806,18 @@ class _LevelsScreenState extends ConsumerState<LevelsScreen> {
         ? 0
         : _progress.levels[subLevelItem.progressKey]?.highestStars ?? 0;
 
+    // Words: gap from icon to screen left vs right; larger left gap → button on right.
+    final iconLeftScreen = 16 + leftOffset + 4;
+    final iconRightScreen = iconLeftScreen + iconSize;
+    final leftGap = iconLeftScreen;
+    final rightGap = width - iconRightScreen;
+    final wordsOnRight = leftGap > rightGap;
+    final showWords = !isReminder &&
+        !isLocked &&
+        stars >= 1 &&
+        (ref.read(settingsProvider).valueOrNull?.language ?? 'en') != 'en' &&
+        _levelsWithTranslations.contains(subLevelItem.sub.iconImageName);
+
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 4),
       child: Row(
@@ -799,10 +832,59 @@ class _LevelsScreenState extends ConsumerState<LevelsScreen> {
               isLocked: isLocked,
               stars: stars,
               isCompletedReminder: isCompletedReminder,
+              showWordsButton: showWords,
+              wordsOnRight: wordsOnRight,
             ),
           ),
         ],
       ),
+    );
+  }
+
+  /// Fade popup with the same translations table as end-of-level sheet.
+  Future<void> _showLevelWordsDialog(SubLevelItem item) async {
+    final data = await loadLevelTranslations(item.sub.iconImageName);
+    if (!mounted || data == null) return;
+    final strings = ref.read(currentLocalizedStringsProvider).valueOrNull ?? {};
+    final lang = ref.read(settingsProvider).valueOrNull?.language ?? 'en';
+    final soundFxOn = ref.read(settingsProvider).valueOrNull?.soundFxOn ?? true;
+    final mq = MediaQuery.of(context);
+    final listH = (mq.size.height * 0.5).clamp(200.0, 420.0);
+
+    if (!mounted) return;
+    await showGeneralDialog<void>(
+      context: context,
+      barrierDismissible: true,
+      transitionDuration: const Duration(milliseconds: 220),
+      transitionBuilder: (ctx, animation, secChild, child) {
+        return FadeTransition(
+          opacity: CurvedAnimation(
+            parent: animation,
+            curve: Curves.easeOut,
+          ),
+          child: child,
+        );
+      },
+      pageBuilder: (ctx, anim, sec) {
+        return AlertDialog(
+          contentPadding: const EdgeInsets.all(20),
+          content: SizedBox(
+            width: math.min(360, mq.size.width - 48),
+            child: LevelTranslationsView(
+              entries: data.entries,
+              userLanguage: lang,
+              title: strings['translations_page_title'] ??
+                  'Words Used In This Level',
+              primaryLabel: strings['ok'] ?? 'OK',
+              listViewportHeight: listH,
+              onPrimary: () {
+                audio.playClick(soundFxOn: soundFxOn);
+                Navigator.of(ctx).pop();
+              },
+            ),
+          ),
+        );
+      },
     );
   }
 
@@ -814,6 +896,8 @@ class _LevelsScreenState extends ConsumerState<LevelsScreen> {
     required bool isLocked,
     required int stars,
     required bool isCompletedReminder,
+    required bool showWordsButton,
+    required bool wordsOnRight,
   }) {
     final sub = subLevelItem.sub;
     final iconPath = 'assets/images/level-icons/${sub.iconImageName}.png';
@@ -871,79 +955,111 @@ class _LevelsScreenState extends ConsumerState<LevelsScreen> {
 
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 4, vertical: 8),
-      child: Material(
-        color: Colors.transparent,
-        child: InkWell(
-          onTap: isLocked
-              || isCompletedReminder
-              ? null
-              : () {
+      child: Stack(
+        clipBehavior: Clip.none,
+        children: [
+          Material(
+            color: Colors.transparent,
+            child: InkWell(
+              onTap: isLocked
+                  || isCompletedReminder
+                  ? null
+                  : () {
+                      final soundFxOn =
+                          ref.read(settingsProvider).valueOrNull?.soundFxOn ??
+                              true;
+                      audio.playClick(soundFxOn: soundFxOn);
+                      _openQuiz(context, subLevelItem);
+                    },
+              borderRadius: BorderRadius.circular(12),
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  SizedBox(
+                    width: iconSize,
+                    height: iconSize,
+                    child: iconWidget,
+                  ),
+                  const SizedBox(height: 6),
+                  SizedBox(
+                    width: iconSize + 8,
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.stretch,
+                      children: [
+                        Text(
+                          sub.title,
+                          textAlign: TextAlign.center,
+                          maxLines: 2,
+                          overflow: TextOverflow.ellipsis,
+                          style:
+                              Theme.of(context).textTheme.bodySmall?.copyWith(
+                                    color: isLocked ? Colors.grey.shade400 : null,
+                                  ),
+                        ),
+                        if (sub.isReminder)
+                          Align(
+                            alignment: Alignment.centerRight,
+                            child: Icon(
+                              isCompletedReminder
+                                  ? Icons.check_circle_rounded
+                                  : isLocked
+                                      ? Icons.lock_rounded
+                                      : Icons.quiz_rounded,
+                              size: 16,
+                              color: isCompletedReminder
+                                  ? Colors.green
+                                  : isLocked
+                                      ? Colors.grey.shade400
+                                      : Theme.of(context).colorScheme.primary,
+                            ),
+                          )
+                        else
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.end,
+                            children: List.generate(
+                              3,
+                              (i) => Icon(
+                                i < stars
+                                    ? Icons.star_rounded
+                                    : Icons.star_border_rounded,
+                                size: 12,
+                                color: isLocked
+                                    ? Colors.grey.shade300
+                                    : Colors.amber,
+                              ),
+                            ),
+                          ),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ),
+          // Gap-based placement: more space on left of icon → Words on the right of cell.
+          if (showWordsButton)
+            Positioned(
+              top: 0,
+              left: wordsOnRight ? null : 0,
+              right: wordsOnRight ? 0 : null,
+              child: TextButton(
+                style: TextButton.styleFrom(
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 4, vertical: 0),
+                  minimumSize: Size.zero,
+                  tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+                  visualDensity: VisualDensity.compact,
+                ),
+                onPressed: () {
                   final soundFxOn =
                       ref.read(settingsProvider).valueOrNull?.soundFxOn ?? true;
                   audio.playClick(soundFxOn: soundFxOn);
-                  _openQuiz(context, subLevelItem);
+                  _showLevelWordsDialog(subLevelItem);
                 },
-          borderRadius: BorderRadius.circular(12),
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              SizedBox(
-                width: iconSize,
-                height: iconSize,
-                child: iconWidget,
+                child: const Text('Words', style: TextStyle(fontSize: 11)),
               ),
-              const SizedBox(height: 6),
-              SizedBox(
-                width: iconSize + 8,
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.stretch,
-                  children: [
-                    Text(
-                      sub.title,
-                      textAlign: TextAlign.center,
-                      maxLines: 2,
-                      overflow: TextOverflow.ellipsis,
-                      style: Theme.of(context).textTheme.bodySmall?.copyWith(
-                            color: isLocked ? Colors.grey.shade400 : null,
-                          ),
-                    ),
-                    if (sub.isReminder)
-                      Align(
-                        alignment: Alignment.centerRight,
-                        child: Icon(
-                          isCompletedReminder
-                              ? Icons.check_circle_rounded
-                              : isLocked
-                                  ? Icons.lock_rounded
-                                  : Icons.quiz_rounded,
-                          size: 16,
-                          color: isCompletedReminder
-                              ? Colors.green
-                              : isLocked
-                                  ? Colors.grey.shade400
-                                  : Theme.of(context).colorScheme.primary,
-                        ),
-                      )
-                    else
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.end,
-                        children: List.generate(
-                          3,
-                          (i) => Icon(
-                            i < stars
-                                ? Icons.star_rounded
-                                : Icons.star_border_rounded,
-                            size: 12,
-                            color: isLocked ? Colors.grey.shade300 : Colors.amber,
-                          ),
-                        ),
-                      ),
-                  ],
-                ),
-              ),
-            ],
-          ),
-        ),
+            ),
+        ],
       ),
     );
   }
@@ -1050,6 +1166,24 @@ class _LevelsScreenState extends ConsumerState<LevelsScreen> {
           ? _lastRegularLocalLevel(sub.mainLevel, regularFlowSubLevels)
           : localByOrdinal[subLevelItem.ordinalLevelIndex] ?? 1;
       final mainLevelId = sub.mainLevel;
+
+      if (!sub.isReminder) {
+        final mainStory = _storyConfig.storyForMainLevel(mainLevelId);
+        final beforePage = StoryTriggerService.findBeforeLevelPage(
+          mainStory: mainStory,
+          storyProgress: _storyProgress,
+          mainLevelId: mainLevelId,
+          currentLocalLevel: completedLocalLevel,
+          flowSubLevels: regularFlowSubLevels,
+        );
+        if (beforePage != null) {
+          _storyProgress = await StoryProgressService.instance.markCompleted(
+            current: _storyProgress,
+            mainLevelId: mainLevelId,
+            eventId: beforePage.eventId,
+          );
+        }
+      }
       final mainStory = _storyConfig.storyForMainLevel(mainLevelId);
       StoryPageConfig? afterPage;
       if (sub.isReminder) {

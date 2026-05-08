@@ -9,178 +9,49 @@
           "page_template_id": 4,
           "story_text": {
             "en": "Help Maya Heal the Dog",
-            "fr": "Aidez Maya à soigner le chien",
-            "tr": "Maya'ya kopegi iyilestirmesi icin yardim et"
+            "fr": "Aide Maya à soigner le chien",
+            "tr": "Maya’nın köpeği iyileştirmesine yardım et",
+            "es": "Ayuda a Maya a curar al perro",
+            "de": "Hilf Maya, den Hund zu heilen",
+            "it": "Aiuta Maya a curare il cane",
+            "pt": "Ajude Maya a curar o cão",
+            "ru": "Помоги Майе вылечить собаку",
+            "zh": "帮助玛雅治疗小狗",
+            "ja": "マヤが犬を治すのを手伝おう",
+            "ko": "마야가 개를 치료하도록 도와주세요",
+            "ar": "ساعد مايا في علاج الكلب",
+            "hi": "माया को कुत्ते का इलाज करने में मदद करें"
           },
-          "page_image_list_for_template": [
-            "assets/images/story/puppy-1.png"
-          ],
-          "page_text_list_for_template": [],
-          "page_animation_list_for_template": [],
           "trigger": {
             "type": "before_level",
             "level": 1
           },
-          "covered_levels_number": 1
+          "scene_image": "puppy-1.png"
         },
         {
           "event_id": 1002,
-          "page_template_id": 2,
-          "page_text_list_for_template": [
-            {
-              "en": "Great start! Complete the next two levels so the traveler can continue."
-            },
-            {
-              "en": "Watch for key objects and answer carefully."
-            }
-          ],
-          "page_image_list_for_template": [],
-          "page_animation_list_for_template": [
-            "map_path_glow"
-          ],
-          "trigger": {
-            "type": "before_level",
-            "level": 3
-          },
-          "covered_levels_number": 2
-        },
-        {
-          "event_id": 1003,
-          "page_template_id": 3,
-          "page_text_list_for_template": [],
-          "page_image_list_for_template": [],
-          "page_animation_list_for_template": [
-            "confetti_celebration"
-          ],
-          "trigger": {
-            "type": "after_level",
-            "level": 0
-          },
-          "covered_levels_number": 1
-        }
-      ]
-    },
-    {
-      "main_level_id": 2,
-      "story_icon_asset_path": "assets/images/story/story-book.png",
-      "story_sequences": []
-    },
-    {
-      "main_level_id": 3,
-      "story_icon_asset_path": "assets/images/story/story-book.png",
-      "story_sequences": []
-    },
-    {
-      "main_level_id": 4,
-      "story_icon_asset_path": "assets/images/story/story-chat.png",
-      "story_sequences": [
-        {
-          "event_id": 2001,
           "page_template_id": 1,
-          "page_text_list_for_template": [
-            {
-              "en": "Two friends are preparing for a trip. Help them with key words."
-            }
-          ],
-          "page_image_list_for_template": [
-            "assets/images/story/friend-a.png",
-            "assets/images/story/friend-b.png"
-          ],
-          "page_animation_list_for_template": [],
-          "trigger": {
-            "type": "before_level",
-            "level": 1
+          "story_text": {
+            "en": "Thanks for helping Maya. Now we need some medicine for the puppy. Complete two levels to get the medicine.",
+            "fr": "Merci d’avoir aidé Maya. Maintenant, nous avons besoin de médicaments pour le chiot. Termine deux niveaux pour obtenir les médicaments.",
+            "tr": "Maya’ya yardım ettiğin için teşekkürler. Şimdi yavru köpek için ilaca ihtiyacımız var. İlacı almak için iki seviyeyi tamamla.",
+            "es": "Gracias por ayudar a Maya. Ahora necesitamos medicina para el cachorro. Completa dos niveles para conseguir la medicina.",
+            "de": "Danke, dass du Maya geholfen hast. Jetzt brauchen wir Medizin für den Welpen. Schließe zwei Level ab, um die Medizin zu bekommen.",
+            "it": "Grazie per aver aiutato Maya. Ora abbiamo bisogno di medicine per il cucciolo. Completa due livelli per ottenere le medicine.",
+            "pt": "Obrigado por ajudar a Maya. Agora precisamos de remédio para o cachorrinho. Complete dois níveis para obter o remédio.",
+            "ru": "Спасибо за помощь Майе. Теперь нам нужно лекарство для щенка. Пройди два уровня, чтобы получить лекарство.",
+            "zh": "谢谢你帮助玛雅。现在我们需要给小狗一些药。完成两个关卡以获得药物。",
+            "ja": "マヤを手伝ってくれてありがとう。今、子犬のために薬が必要です。薬を手に入れるために2つのレベルをクリアしてください。",
+            "ko": "마야를 도와줘서 고마워요. 이제 강아지를 위한 약이 필요해요. 약을 얻으려면 두 레벨을 완료하세요.",
+            "ar": "شكرًا لمساعدتك مايا. الآن نحتاج إلى دواء للجرو. أكمل مستويين للحصول على الدواء.",
+            "hi": "माया की मदद करने के लिए धन्यवाद। अब हमें पिल्ले के लिए दवा चाहिए। दवा पाने के लिए दो स्तर पूरे करें।"
           },
-          "covered_levels_number": 1
-        },
-        {
-          "event_id": 2002,
-          "page_template_id": 2,
-          "page_text_list_for_template": [
-            {
-              "en": "Now complete the next two conversations to unlock the destination."
-            }
-          ],
-          "page_image_list_for_template": [],
-          "page_animation_list_for_template": [
-            "speech_bubble_pulse"
-          ],
+          "character_image": "mainlevel1-story-icon-puppy.png",
+          "scene_image": "puppy-2.png",
           "trigger": {
             "type": "before_level",
             "level": 2
-          },
-          "covered_levels_number": 2
-        },
-        {
-          "event_id": 2003,
-          "page_template_id": 3,
-          "page_text_list_for_template": [],
-          "page_image_list_for_template": [],
-          "page_animation_list_for_template": [
-            "star_burst"
-          ],
-          "trigger": {
-            "type": "after_level",
-            "level": 0
-          },
-          "covered_levels_number": 1
-        }
-      ]
-    },
-    {
-      "main_level_id": 5,
-      "story_icon_asset_path": "assets/images/story/story-grammar.png",
-      "story_sequences": [
-        {
-          "event_id": 3001,
-          "page_template_id": 1,
-          "page_text_list_for_template": [
-            {
-              "en": "A student needs grammar help to pass an important test."
-            }
-          ],
-          "page_image_list_for_template": [
-            "assets/images/story/teacher.png",
-            "assets/images/story/classroom.png"
-          ],
-          "page_animation_list_for_template": [],
-          "trigger": {
-            "type": "before_level",
-            "level": 1
-          },
-          "covered_levels_number": 1
-        },
-        {
-          "event_id": 3002,
-          "page_template_id": 2,
-          "page_text_list_for_template": [
-            {
-              "en": "Keep going. Complete the next two levels to rebuild confidence."
-            }
-          ],
-          "page_image_list_for_template": [],
-          "page_animation_list_for_template": [
-            "grammar_checkmarks"
-          ],
-          "trigger": {
-            "type": "before_level",
-            "level": 2
-          },
-          "covered_levels_number": 2
-        },
-        {
-          "event_id": 3003,
-          "page_template_id": 3,
-          "page_text_list_for_template": [],
-          "page_image_list_for_template": [],
-          "page_animation_list_for_template": [
-            "finale_ribbon"
-          ],
-          "trigger": {
-            "type": "after_level",
-            "level": 0
-          },
-          "covered_levels_number": 1
+          }
         }
       ]
     }

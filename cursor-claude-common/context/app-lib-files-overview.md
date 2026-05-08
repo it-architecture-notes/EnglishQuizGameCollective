@@ -87,15 +87,14 @@ Paths are relative to `app/lib/`.
 
 | File | Purpose |
 |------|---------|
-| `story_overlay_screen.dart` | Full-screen story page host: picks template A/B/C, continue flow, static `show` entry. |
+| `story_overlay_screen.dart` | Full-screen story host: template **A** or **C**, Continue, static `show` entry. |
 
 ### `screens/story/story_templates/`
 
 | File | Purpose |
 |------|---------|
-| `story_template_a.dart` | Layout variant “A” for story pages (illustration + text composition). |
-| `story_template_b.dart` | Layout variant “B” for story pages. |
-| `story_template_c.dart` | Layout variant “C” for story pages (e.g. different visual hierarchy or assets). |
+| `story_template_a.dart` | **Character dialog scene**: placeholders + speech bubble; copy from `story_text` (localized line). |
+| `story_template_c.dart` | **Scene + text**: placeholder frame + `story_text` (`en` + optional italic locale line). |
 
 ---
 

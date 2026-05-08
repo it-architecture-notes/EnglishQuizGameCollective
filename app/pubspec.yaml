@@ -52,13 +52,13 @@ flutter:
     - assets/quiz-data/levels/travel-1/
     - assets/quiz-data/levels/travel-2/
     - assets/quiz-data/levels/travel-3/
-    - assets/quiz-data/levels/in-the-bathroom/
     - assets/quiz-data/levels/bathroom-2/
     - assets/quiz-data/levels/basic-sentences/
     - assets/quiz-data/levels/colors-1/
     - assets/quiz-data/levels/bedroom/
-    - assets/quiz-data/levels/bedroom-2/
     - assets/quiz-data/levels/body-parts/
+    - assets/quiz-data/levels/verb-to-be/
+    - assets/quiz-data/levels/numbers/
     - assets/quiz-data/levels/body-parts-2/
     - assets/quiz-data/levels/body-parts-3/
     - assets/quiz-data/levels/dressing-1/
@@ -87,12 +87,12 @@ flutter:
     - assets/quiz-data/levels/jobs-3/
     - assets/quiz-data/levels/jobs-4/
     - assets/quiz-data/levels/jobs-5/
-    - assets/quiz-data/levels/kitchen-1/
-    - assets/quiz-data/levels/kitchen-2/
     - assets/quiz-data/levels/kitchen-3/
     - assets/quiz-data/levels/kitchen-4/
     - assets/quiz-data/levels/kitchen-5/
+    - assets/quiz-data/levels/kitchen-items-2/
     - assets/quiz-data/levels/living-room/
+    - assets/quiz-data/levels/living-room-items/
     - assets/quiz-data/levels/living-room-2/
     - assets/quiz-data/levels/living-room-3/
     - assets/quiz-data/levels/market-fruits-1/
@@ -151,7 +151,6 @@ flutter:
     - assets/quiz-data/levels/brushing-teeth/
     - assets/quiz-data/levels/taking-a-shower/
     - assets/quiz-data/levels/eating-breakfast/
-    - assets/quiz-data/levels/making-the-bed/
     - assets/quiz-data/levels/packing-a-lunch/
     - assets/quiz-data/levels/feeding-a-pet/
     - assets/quiz-data/levels/walking-the-dog/

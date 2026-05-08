@@ -35,7 +35,7 @@ class ImageQuizTemplate2Data {
       (answer != null && answer!.isNotEmpty) ? answer! : imageName;
 }
 
-/// Parsed `questionData` for [ConvoTemplate-AppearDisappear].
+/// Parsed `questionData` for template [AppearDisappear].
 class AppearDisappearQuestionData {
   const AppearDisappearQuestionData({
     required this.words,
@@ -58,7 +58,7 @@ class AppearDisappearQuestionData {
   final bool trOk;
 }
 
-/// Parsed `questionData` for [ConvoTemplate-ClozeSequence].
+/// Parsed `questionData` for template [ClozeSequence].
 class ClozeSequenceQuestionData {
   const ClozeSequenceQuestionData({
     required this.sentence,
@@ -113,7 +113,7 @@ class ConvoQuestionData {
   final bool trOk;
 }
 
-/// [ConvoTemplate-SentenceBuilder]: tiles are only the sentence tokens, shuffled; player taps in [correctOrder].
+/// [SentenceBuilder]: tiles are only the sentence tokens, shuffled; player taps in [correctOrder].
 class SentenceBuilderQuestionData {
   const SentenceBuilderQuestionData({
     required this.correctOrder,
@@ -130,7 +130,7 @@ class SentenceBuilderQuestionData {
   final bool trOk;
 }
 
-/// One left/right pair for [ConvoTemplate-WordPairs].
+/// One left/right pair for [WordPairs].
 class WordPairItem {
   const WordPairItem({required this.left, required this.translations});
 
@@ -169,14 +169,14 @@ class WordPairItem {
   }
 }
 
-/// [ConvoTemplate-WordPairs]: 3–4 pairs; UI scrambles the right column.
+/// [WordPairs]: 3–4 pairs; UI scrambles the right column.
 class WordPairsQuestionData {
   const WordPairsQuestionData({required this.pairs});
 
   final List<WordPairItem> pairs;
 }
 
-/// [ConvoTemplate-GrammarForm]: English cloze sentence + four word options.
+/// [GrammarForm]: English cloze sentence + four word options.
 class GrammarFormQuestionData {
   const GrammarFormQuestionData({
     required this.sentence,
@@ -196,7 +196,7 @@ class GrammarFormQuestionData {
   final bool trOk;
 }
 
-/// [ConvoTemplate-DialogueCompletion]: first speaker line + four response options.
+/// [DialogueCompletion]: first speaker line + four response options.
 class DialogueCompletionQuestionData {
   const DialogueCompletionQuestionData({
     required this.character1,
@@ -258,10 +258,10 @@ class LevelQuestion {
 
   final String? questionId;
   final String? audioFile;
-  /// Optional first clip (top-level JSON). [ConvoTemplate-DialogueCompletion]: question line.
+  /// Optional first clip (top-level JSON). [DialogueCompletion]: question line.
   /// [ConvoTemplate-1]: speaker 1 line, blanks filled with [ConvoQuestionData.answer] in the asset.
   final String? audioFile1;
-  /// Optional second clip (top-level JSON). [ConvoTemplate-DialogueCompletion]: correct reply.
+  /// Optional second clip (top-level JSON). [DialogueCompletion]: correct reply.
   /// [ConvoTemplate-1]: speaker 2 line, blanks filled the same way. Requires [audioFile1] when used.
   final String? audioFile2;
   final String template;
@@ -388,7 +388,7 @@ class LevelConfig {
     final distractors = _stringList(data['distractors']);
     if (words.isEmpty) {
       throw FormatException(
-        'ConvoTemplate-AppearDisappear expects at least 1 target word',
+        'AppearDisappear expects at least 1 target word',
       );
     }
     return AppearDisappearQuestionData(
@@ -402,21 +402,36 @@ class LevelConfig {
     );
   }
 
-  /// Returns true when a space-delimited token is a blank marker (2+ underscores, nothing else).
-  static bool _isBlankToken(String s) => RegExp(r'^_{2,}$').hasMatch(s);
+  /// Strips light wrapping punctuation so `_____.` / `____?` count as blanks.
+  static String _stripClozeBlankAffixes(String raw) {
+    var t = raw.trim();
+    const leading = ' "\'([{«';
+    const trailing = '.,!?;:\'" )]}»\u2026';
+    while (t.isNotEmpty && leading.contains(t[0])) {
+      t = t.substring(1);
+    }
+    while (t.isNotEmpty && trailing.contains(t[t.length - 1])) {
+      t = t.substring(0, t.length - 1);
+    }
+    return t;
+  }
+
+  /// True when a space-delimited token is a blank marker (2+ underscores, optional affixes).
+  static bool _isBlankToken(String s) =>
+      RegExp(r'^_{2,}$').hasMatch(_stripClozeBlankAffixes(s));
 
   /// Counts blanks in an English sentence string.
   static int _countBlanks(String sentence) =>
       sentence.split(' ').where(_isBlankToken).length;
 
-  /// Parses [ConvoTemplate-ClozeSequence]: plain English sentence string, ordered answers, flexible distractors.
+  /// Parses [ClozeSequence]: plain English sentence string, ordered answers, flexible distractors.
   static ClozeSequenceQuestionData _parseClozeSequence(
     Map<String, dynamic> data,
   ) {
     final rawSentence = data['sentence'];
     if (rawSentence is! String) {
       throw const FormatException(
-        'ConvoTemplate-ClozeSequence: sentence must be a plain English string',
+        'ClozeSequence: sentence must be a plain English string',
       );
     }
     final sentence = rawSentence.trim();
@@ -434,7 +449,7 @@ class LevelConfig {
     final blankCount = _countBlanks(sentence);
     if (blankCount != answers.length) {
       throw FormatException(
-        'ConvoTemplate-ClozeSequence: ${answers.length} answers but $blankCount blanks in sentence',
+        'ClozeSequence: ${answers.length} answers but $blankCount blanks in sentence',
       );
     }
     final rawName = data['imageName'];
@@ -473,14 +488,14 @@ class LevelConfig {
     );
   }
 
-  /// Parses [ConvoTemplate-SentenceBuilder]: [correct_order] lists the sentence tokens in order (no distractors).
+  /// Parses [SentenceBuilder]: [correct_order] lists the sentence tokens in order (no distractors).
   static SentenceBuilderQuestionData _parseSentenceBuilder(
     Map<String, dynamic> data,
   ) {
     final correctOrder = _wordsFromArrayOrSentence(data['correct_order']);
     if (correctOrder.length < 2) {
       throw FormatException(
-        'ConvoTemplate-SentenceBuilder: correct_order must have at least 2 tokens',
+        'SentenceBuilder: correct_order must have at least 2 tokens',
       );
     }
     return SentenceBuilderQuestionData(
@@ -491,7 +506,7 @@ class LevelConfig {
     );
   }
 
-  /// Parses [ConvoTemplate-WordPairs] from:
+  /// Parses [WordPairs] from:
   /// - english_words: ["Good Morning", ...]
   /// - translations: [{"tr":"Gunaydin","es":"..."}, ...]
   static WordPairsQuestionData _parseWordPairs(Map<String, dynamic> data) {
@@ -499,7 +514,7 @@ class LevelConfig {
     final rawTranslations = data['translations'] as List<dynamic>? ?? const [];
     if (englishWords.length != rawTranslations.length) {
       throw FormatException(
-        'ConvoTemplate-WordPairs: english_words.length (${englishWords.length}) '
+        'WordPairs: english_words.length (${englishWords.length}) '
         'must match translations.length (${rawTranslations.length})',
       );
     }
@@ -508,7 +523,7 @@ class LevelConfig {
       final translationMap = _stringMapOrNull(rawTranslations[i]);
       if (translationMap == null || translationMap.isEmpty) {
         throw FormatException(
-          'ConvoTemplate-WordPairs: translations[$i] must be a non-empty locale map',
+          'WordPairs: translations[$i] must be a non-empty locale map',
         );
       }
       pairs.add(WordPairItem(left: englishWords[i], translations: translationMap));
@@ -516,13 +531,13 @@ class LevelConfig {
 
     if (pairs.length < 3 || pairs.length > 4) {
       throw FormatException(
-        'ConvoTemplate-WordPairs expects 3–4 pairs, got ${pairs.length}',
+        'WordPairs expects 3–4 pairs, got ${pairs.length}',
       );
     }
     return WordPairsQuestionData(pairs: pairs);
   }
 
-  /// Parses [ConvoTemplate-GrammarForm]: English sentence with blank + four options.
+  /// Parses [GrammarForm]: English sentence with blank + four options.
   static GrammarFormQuestionData _parseGrammarForm(Map<String, dynamic> data) {
     final rawSentence = data['sentence'];
     final String sentence = switch (rawSentence) {
@@ -535,12 +550,12 @@ class LevelConfig {
         .toList();
     if (distractors.length != 3) {
       throw FormatException(
-        'ConvoTemplate-GrammarForm must have exactly 3 distractors',
+        'GrammarForm must have exactly 3 distractors',
       );
     }
     if (!sentence.contains('___') && !sentence.contains('_____')) {
       throw FormatException(
-        'ConvoTemplate-GrammarForm: sentence should contain a blank (___ or _____)',
+        'GrammarForm: sentence should contain a blank (___ or _____)',
       );
     }
     return GrammarFormQuestionData(
@@ -553,7 +568,7 @@ class LevelConfig {
     );
   }
 
-  /// Parses [ConvoTemplate-DialogueCompletion].
+  /// Parses [DialogueCompletion].
   static DialogueCompletionQuestionData _parseDialogueCompletion(
     Map<String, dynamic> data,
   ) {
@@ -562,7 +577,7 @@ class LevelConfig {
         .toList();
     if (distractors.length != 3) {
       throw FormatException(
-        'ConvoTemplate-DialogueCompletion must have exactly 3 distractors',
+        'DialogueCompletion must have exactly 3 distractors',
       );
     }
     final rawImageName = data['image_file_name'];
@@ -612,22 +627,22 @@ class LevelConfig {
       case 'ConvoTemplate-1':
         convoData = _parseConvoData(qd);
         break;
-      case 'ConvoTemplate-AppearDisappear':
+      case 'AppearDisappear':
         appearDisappearData = _parseAppearDisappear(qd);
         break;
-      case 'ConvoTemplate-ClozeSequence':
+      case 'ClozeSequence':
         clozeSequenceData = _parseClozeSequence(qd);
         break;
-      case 'ConvoTemplate-SentenceBuilder':
+      case 'SentenceBuilder':
         sentenceBuilderData = _parseSentenceBuilder(qd);
         break;
-      case 'ConvoTemplate-WordPairs':
+      case 'WordPairs':
         wordPairsData = _parseWordPairs(qd);
         break;
-      case 'ConvoTemplate-GrammarForm':
+      case 'GrammarForm':
         grammarFormData = _parseGrammarForm(qd);
         break;
-      case 'ConvoTemplate-DialogueCompletion':
+      case 'DialogueCompletion':
         dialogueCompletionData = _parseDialogueCompletion(qd);
         break;
       default:

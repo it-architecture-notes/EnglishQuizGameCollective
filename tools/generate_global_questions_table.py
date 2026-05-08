@@ -70,15 +70,15 @@ def summarize_row(template: str, qd: dict) -> tuple[str, str, str]:
             str(qd.get("answer", "") or ""),
         )
 
-    if tpl == "ConvoTemplate-DialogueCompletion":
+    if tpl == "DialogueCompletion":
         return str(qd.get("line1", "") or ""), "", str(qd.get("answer", "") or "")
 
-    if tpl == "ConvoTemplate-AppearDisappear":
+    if tpl == "AppearDisappear":
         w = words_from_array_or_sentence(qd.get("words"))
         line1 = " ".join(w) if w else str(qd.get("words") or "")
         return line1, "", "-"
 
-    if tpl == "ConvoTemplate-ClozeSequence":
+    if tpl == "ClozeSequence":
         sent = str(qd.get("sentence", "") or "")
         raw = qd.get("answer")
         if raw is None:
@@ -89,7 +89,7 @@ def summarize_row(template: str, qd: dict) -> tuple[str, str, str]:
             ans = str(raw or "")
         return sent, "", ans
 
-    if tpl == "ConvoTemplate-SentenceBuilder":
+    if tpl == "SentenceBuilder":
         co = qd.get("correct_order")
         if isinstance(co, list):
             sentence = " ".join(str(x) for x in co)
@@ -97,7 +97,7 @@ def summarize_row(template: str, qd: dict) -> tuple[str, str, str]:
             sentence = str(co or "").strip()
         return sentence, "", sentence
 
-    if tpl == "ConvoTemplate-WordPairs":
+    if tpl == "WordPairs":
         words = qd.get("english_words")
         if isinstance(words, list):
             line1 = "; ".join(str(x) for x in words)
@@ -105,7 +105,7 @@ def summarize_row(template: str, qd: dict) -> tuple[str, str, str]:
             line1 = str(words or "")
         return line1, "word pairs", "match all pairs"
 
-    if tpl == "ConvoTemplate-GrammarForm":
+    if tpl == "GrammarForm":
         sent = str(qd.get("sentence", "") or "")
         a = qd.get("answer")
         if isinstance(a, list):

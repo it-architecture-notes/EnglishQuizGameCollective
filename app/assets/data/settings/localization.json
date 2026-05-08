@@ -49,7 +49,8 @@
     "title_build_sentence": "Build the sentence",
     "title_word_pairs": "Match the pairs",
     "title_grammar": "Grammar",
-    "title_dialogue": "Choose a reply"
+    "title_dialogue": "Choose a reply",
+    "translations_page_title": "Words Used In This Level"
   },
   "fr": {
     "settings_title": "Paramètres",
@@ -101,7 +102,8 @@
     "title_build_sentence": "Construisez la phrase",
     "title_word_pairs": "Associez les paires",
     "title_grammar": "Grammaire",
-    "title_dialogue": "Choisissez une réponse"
+    "title_dialogue": "Choisissez une réponse",
+    "translations_page_title": "Mots utilisés dans ce niveau"
   },
   "es": {
     "settings_title": "Ajustes",
@@ -153,7 +155,8 @@
     "title_build_sentence": "Construye la frase",
     "title_word_pairs": "Empareja",
     "title_grammar": "Gramática",
-    "title_dialogue": "Elige una respuesta"
+    "title_dialogue": "Elige una respuesta",
+    "translations_page_title": "Palabras usadas en este nivel"
   },
   "tr": {
     "settings_title": "Ayarlar",
@@ -205,6 +208,7 @@
     "title_build_sentence": "Cümleyi kurun",
     "title_word_pairs": "Eşleştirin",
     "title_grammar": "Dil bilgisi",
-    "title_dialogue": "Yanıt seçin"
+    "title_dialogue": "Yanıt seçin",
+    "translations_page_title": "Bu Seviyede Kullanılan Kelimeler"
   }
 }

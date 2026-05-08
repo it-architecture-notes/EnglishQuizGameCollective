@@ -57,10 +57,7 @@ void main() {
             type: StoryTriggerType.beforeLevel,
             level: 1,
           ),
-          coveredLevelsNumber: 1,
-          pageTextListForTemplate: const [],
-          pageImageListForTemplate: const [],
-          pageAnimationListForTemplate: const [],
+          storyText: const {'en': 'x'},
         ),
         StoryPageConfig(
           eventId: 102,
@@ -69,22 +66,16 @@ void main() {
             type: StoryTriggerType.beforeLevel,
             level: 2,
           ),
-          coveredLevelsNumber: 2,
-          pageTextListForTemplate: const [],
-          pageImageListForTemplate: const [],
-          pageAnimationListForTemplate: const [],
+          storyText: const {'en': 'y'},
         ),
         StoryPageConfig(
           eventId: 103,
-          pageTemplateId: 3,
+          pageTemplateId: 4,
           trigger: const StoryTrigger(
             type: StoryTriggerType.afterLevel,
             level: 0,
           ),
-          coveredLevelsNumber: 1,
-          pageTextListForTemplate: const [],
-          pageImageListForTemplate: const [],
-          pageAnimationListForTemplate: const [],
+          storyText: const {'en': 'z'},
         ),
       ],
     );
@@ -126,33 +117,16 @@ void main() {
       expect(page?.eventId, 103);
     });
 
-    test('pagesReadyToMarkCompleted requires all covered levels passed', () {
-      final quizProgress = QuizTypeProgress(
-        levels: const {
-          '1_a': LevelProgress(progressKey: '1_a', highestStars: 2, highestDiamonds: 2),
-          '1_b': LevelProgress(progressKey: '1_b', highestStars: 3, highestDiamonds: 3),
-          '1_c': LevelProgress(progressKey: '1_c', highestStars: 0, highestDiamonds: 1),
-        },
-      );
-
-      final ready = StoryTriggerService.pagesReadyToMarkCompleted(
-        mainStory: mainStory,
-        storyProgress: const StoryProgressState(),
-        quizProgress: quizProgress,
-        mainLevelId: 1,
-        flowSubLevels: flowItems,
-      );
-
-      expect(ready.map((p) => p.eventId), [101]);
-    });
-
-    test(
-        'replay rule: page covering levels 2-3 is not complete when level 3 fails',
+    test('pagesReadyToMarkCompleted requires trigger local level to have a star',
         () {
       final quizProgress = QuizTypeProgress(
         levels: const {
-          '1_b': LevelProgress(progressKey: '1_b', highestStars: 3, highestDiamonds: 3),
-          '1_c': LevelProgress(progressKey: '1_c', highestStars: 0, highestDiamonds: 0),
+          '1_a': LevelProgress(
+              progressKey: '1_a', highestStars: 2, highestDiamonds: 2),
+          '1_b': LevelProgress(
+              progressKey: '1_b', highestStars: 3, highestDiamonds: 3),
+          '1_c': LevelProgress(
+              progressKey: '1_c', highestStars: 0, highestDiamonds: 1),
         },
       );
 
@@ -164,7 +138,29 @@ void main() {
         flowSubLevels: flowItems,
       );
 
-      // Event 102 (trigger 2, coverage 2 => levels 2-3) must stay incomplete.
+      expect(ready.map((p) => p.eventId), [101, 102]);
+    });
+
+    test(
+        'pagesReadyToMarkCompleted skips page when its trigger level has no star',
+        () {
+      final quizProgress = QuizTypeProgress(
+        levels: const {
+          '1_b': LevelProgress(
+              progressKey: '1_b', highestStars: 0, highestDiamonds: 0),
+          '1_c': LevelProgress(
+              progressKey: '1_c', highestStars: 3, highestDiamonds: 3),
+        },
+      );
+
+      final ready = StoryTriggerService.pagesReadyToMarkCompleted(
+        mainStory: mainStory,
+        storyProgress: const StoryProgressState(),
+        quizProgress: quizProgress,
+        mainLevelId: 1,
+        flowSubLevels: flowItems,
+      );
+
       expect(ready.map((p) => p.eventId).contains(102), isFalse);
     });
 
@@ -177,7 +173,6 @@ void main() {
         flowSubLevels: flowItems,
       );
 
-      // Trigger is at level 2; level 3 retry should not re-show the page.
       expect(page, isNull);
     });
 

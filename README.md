@@ -18,6 +18,20 @@ flutter run
 
 Use a connected device or an Android/iOS emulator. Orientation is locked to portrait.
 
+### Run in Chrome as iPhone 12 Pro size
+
+From the `app/` directory, run Flutter web with a fixed Chrome window size that matches iPhone 12 Pro CSS resolution (`390x844`) and open DevTools automatically:
+
+```bash
+flutter run -d chrome \
+  --web-port=8080 \
+  --web-browser-flag="--window-size=390,844" \
+  --web-browser-flag="--auto-open-devtools-for-tabs"
+```
+
+- Change `--web-port=8080` to any port you want.
+- If you prefer a custom port, for example `9010`, use `--web-port=9010`.
+
 If the iOS or Android project is incomplete (e.g. you cloned without running Flutter yet), run from `app/`:
 
 ```bash

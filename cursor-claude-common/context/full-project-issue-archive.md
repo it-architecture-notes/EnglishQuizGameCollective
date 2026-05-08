@@ -195,7 +195,7 @@ Use Cases:
         - line1 uses the voice resolved for character1 (gender pool or filename token).
         - line2 uses the voice resolved for character2 (gender pool or filename token).
         - The two PCM clips are concatenated with a short silence (300ms default) between them, then converted to m4a as usual.
-        - This matches how ElevenLabs already handles multi-speaker clips and eliminates hallucination risk.
+        - This matches a two-call stitch pattern and eliminates hallucination risk.
 
 ---
 
@@ -213,7 +213,7 @@ Use Cases:
 
 ### Overview
 
-Two development-time Python TTS generators (Gemini and ElevenLabs) that produce `.m4a` audio files for quiz questions, plus Flutter in-game playback wiring. No API calls happen at runtime — generated files are shipped as assets.
+One development-time Python TTS generator (`tools/gemini_tts/`, Gemini) that produces `.m4a` audio files for quiz questions, plus Flutter in-game playback wiring. No API calls happen at runtime — generated files are shipped as assets.
 
 ---
 
@@ -258,7 +258,7 @@ python3 tools/gemini_tts/generate_level_audio.py \
   [--bitrate 96] [--dry-run] [--overwrite] [--question N]
 ```
 
-**Audio pipeline:** Gemini PCM (24 kHz, 16-bit, mono) → WAV → M4A (AAC) via pydub/ffmpeg.
+**Audio pipeline:** Gemini PCM (24 kHz, 16-bit, mono) → WAV → M4A (AAC) via ffmpeg.
 
 **`questions.json`:** read-only — never modified.
 
@@ -266,30 +266,7 @@ python3 tools/gemini_tts/generate_level_audio.py \
 
 ---
 
-### 3. ElevenLabs TTS Generator — `tools/eleven_labs_tts/`
-
-**Files:** `generate_level_audio.py`, `requirements.txt`, `.env.example`, `README.md`
-
-**Output filename:** `{audio_file_value}_elevenlabs.m4a` — same label with `_elevenlabs` suffix (configurable via `--output-suffix`).
-
-**API:** ElevenLabs HTTP API. ConvoTemplate-1 uses two sequential calls (one per speaker) stitched with a short pause.
-
-**CLI:**
-```
-python3 tools/eleven_labs_tts/generate_level_audio.py \
-  --level-id greetings \
-  [--voice-id <id>] [--voice-a-id <id>] [--voice-b-id <id>] \
-  [--model-id eleven_flash_v2_5] [--bitrate 96] \
-  [--output-suffix _elevenlabs] [--dry-run] [--overwrite] [--question N]
-```
-
-**`questions.json`:** read-only — never modified.
-
-**`.gitignore`:** `tools/eleven_labs_tts/.env`
-
----
-
-### 4. Template-to-Text Mapping (both generators)
+### 3. Template-to-Text Mapping (generator)
 
 | Template | Text extracted | Speaker mode |
 |----------|---------------|--------------|
@@ -310,7 +287,7 @@ python3 tools/eleven_labs_tts/generate_level_audio.py \
 
 ---
 
-### 5. Schema Changes — `level_config.dart`
+### 4. Schema Changes — `level_config.dart`
 
 - `LevelQuestion.audioFile` (`String?`) — parses `"audio_file"` from JSON
 - `AppearDisappearQuestionData.words`: accepts both `["I", "love", "tea"]` (array) and `"I love tea"` (string, split on whitespace) — backward-compatible
@@ -318,7 +295,7 @@ python3 tools/eleven_labs_tts/generate_level_audio.py \
 
 ---
 
-### 6. Flutter Playback — `audio_service.dart`
+### 5. Flutter Playback — `audio_service.dart`
 
 New functions added following the existing player pattern:
 
@@ -329,7 +306,7 @@ Asset path convention: `quiz-data/levels/{levelKey}/{audio_file_value}.m4a`
 
 ---
 
-### 7. Flutter Playback Triggers — `image_quiz_screen.dart`
+### 6. Flutter Playback Triggers — `image_quiz_screen.dart`
 
 `_scheduleQuestionAudio(q, {delay})` — central dispatcher with token-based dedup guard (prevents double-trigger on rebuilds).
 
@@ -351,20 +328,11 @@ Callbacks added:
 
 ---
 
-### 8. Test Data
+### 7. Test Data
 
 **`app/assets/quiz-data/levels/greetings/`** — new level with 9 questions that have `audio_file` entries, covering: `ConvoTemplate-1`, `ConvoTemplate-DialogueCompletion`, `ConvoTemplate-ClozeSequence`, `ConvoTemplate-AppearDisappear`, `ConvoTemplate-SentenceBuilder`, `ConvoTemplate-GrammarForm`, `imageQuizTemplate-2`.
 
 Sample audio files generated and stored in `cursor-claude-common/output/` for reference.
-
----
-
-### 9. Comparing Gemini vs ElevenLabs
-
-To compare providers on the same question:
-1. Generate Gemini: produces `audio_file.m4a`
-2. Generate ElevenLabs: produces `audio_file_elevenlabs.m4a`
-3. To test ElevenLabs in-game temporarily, change the question's `audio_file` value to `"audio_file_elevenlabs"` so Flutter resolves `audio_file_elevenlabs.m4a`.
 
 ---
 
@@ -376,10 +344,6 @@ To compare providers on the same question:
 | `tools/gemini_tts/requirements.txt` | New |
 | `tools/gemini_tts/.env.example` | New |
 | `tools/gemini_tts/README.md` | New |
-| `tools/eleven_labs_tts/generate_level_audio.py` | New — ElevenLabs TTS generator |
-| `tools/eleven_labs_tts/requirements.txt` | New |
-| `tools/eleven_labs_tts/.env.example` | New |
-| `tools/eleven_labs_tts/README.md` | New |
 | `app/lib/models/level_config.dart` | `audioFile` on `LevelQuestion`; dual-format `words` and `correct_order` parsers |
 | `app/lib/services/audio_service.dart` | `playQuestionAudio`, `stopQuestionAudio` |
 | `app/lib/screens/image_quiz_screen.dart` | `_audioAssetPath`, `_scheduleQuestionAudio`, per-template triggers, stop on advance/dispose |
@@ -387,7 +351,7 @@ To compare providers on the same question:
 | `app/lib/screens/quiz_templates/appear_disappear_quiz_body.dart` | `onReadyForAudio` callback |
 | `app/assets/quiz-data/levels/greetings/` | New level with images and questions.json with `audio_file` entries |
 | `app/pubspec.yaml` | greetings level registered as asset directory |
-| `.gitignore` | `.env` entries for both TTS tool directories |
+| `.gitignore` | `.env` entry for Gemini TTS tool directory |
 
 ---
 

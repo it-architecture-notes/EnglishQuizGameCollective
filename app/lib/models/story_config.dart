@@ -27,48 +27,43 @@ class StoryPageConfig {
     required this.eventId,
     required this.pageTemplateId,
     required this.trigger,
-    required this.coveredLevelsNumber,
-    required this.pageTextListForTemplate,
-    required this.pageImageListForTemplate,
-    required this.pageAnimationListForTemplate,
     this.storyText = const {},
+    this.characterImage,
+    this.sceneImage,
   });
 
   final int eventId;
   final int pageTemplateId;
   final StoryTrigger trigger;
-  final int coveredLevelsNumber;
-  final List<Map<String, String>> pageTextListForTemplate;
-  final List<String> pageImageListForTemplate;
-  final List<String> pageAnimationListForTemplate;
 
-  /// Localised narrative text used by templates that show a standalone caption
-  /// (e.g. template_id 4 / scene_story_text). JSON key: "story_text".
-  /// Shape: { "en": "...", "tr": "..." }
+  /// Localised copy for all story layouts. JSON key: `story_text`.
+  /// Shape: { "en": "...", "fr": "..." }
   final Map<String, String> storyText;
+
+  /// Optional Flutter asset path for template 1 — bottom-left character sprite.
+  /// JSON key: `character_image`.
+  final String? characterImage;
+
+  /// Optional Flutter asset path for template 1 — full-bleed background scene
+  /// behind the character. JSON key: `scene_image`.
+  final String? sceneImage;
 
   /// Returns the localised value of [storyText], falling back to English.
   String localizedStoryText(String languageCode) =>
       storyText[languageCode] ?? storyText['en'] ?? '';
 
   static StoryPageConfig fromJson(Map<String, dynamic> json) {
-    final textListRaw =
-        (json['page_text_list_for_template'] as List<dynamic>? ?? const []);
-    final textList = textListRaw.map((entry) {
-      final map = <String, String>{};
-      if (entry is Map<String, dynamic>) {
-        for (final e in entry.entries) {
-          map[e.key] = e.value.toString();
-        }
-      }
-      return map;
-    }).toList();
-
     final storyTextRaw =
         json['story_text'] as Map<String, dynamic>? ?? const {};
     final storyText = storyTextRaw.map(
       (k, v) => MapEntry(k, v.toString()),
     );
+    const storyImagesPrefix = 'assets/images/story/';
+    String? _storyImagePath(dynamic raw) {
+      final v = raw?.toString().trim();
+      if (v == null || v.isEmpty) return null;
+      return v.startsWith('assets/') ? v : '$storyImagesPrefix$v';
+    }
 
     return StoryPageConfig(
       eventId: (json['event_id'] as num?)?.toInt() ?? 0,
@@ -76,19 +71,9 @@ class StoryPageConfig {
       trigger: StoryTrigger.fromJson(
         (json['trigger'] as Map<String, dynamic>? ?? const {}),
       ),
-      coveredLevelsNumber:
-          (json['covered_levels_number'] as num?)?.toInt() ?? 1,
-      pageTextListForTemplate: textList,
-      pageImageListForTemplate:
-          (json['page_image_list_for_template'] as List<dynamic>? ?? const [])
-              .map((e) => e.toString())
-              .toList(),
-      pageAnimationListForTemplate:
-          (json['page_animation_list_for_template'] as List<dynamic>? ??
-                  const [])
-              .map((e) => e.toString())
-              .toList(),
       storyText: storyText,
+      characterImage: _storyImagePath(json['character_image']),
+      sceneImage: _storyImagePath(json['scene_image']),
     );
   }
 }

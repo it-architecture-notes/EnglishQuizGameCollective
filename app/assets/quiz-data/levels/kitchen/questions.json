@@ -1,0 +1,258 @@
+{
+  "levelQuestions": [
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "plate",
+        "wrongAnswers": [
+          "bowl",
+          "cup",
+          "glass"
+        ]
+      }
+    },
+    {
+      "template": "ConvoTemplate-1",
+      "questionData": {
+        "character1": "Mike",
+        "character2": "Sophie",
+        "line1": "Is the coffee ____?",
+        "line2": "Yes, don't drink it yet. It's very ____.",
+        "answer": "hot",
+        "distractors": [
+          "cold",
+          "warm",
+          "cool"
+        ]
+      },
+      "audio_file1": "is-the-coffee-hot-convo",
+      "audio_file2": "yes-dont-drink-it-yet-its-very-hot-convo"
+    },
+    
+    {
+      "template": "ConvoTemplate-1",
+      "questionData": {
+        "character1": "Emma",
+        "character2": "Anna",
+        "line1": "Do you want me ___ you breakfast?",
+        "line2": "Yes please. I'd love some scrambled eggs.",
+        "answer": "to cook",
+        "distractors": [
+          "to have",
+          "to take out",
+          "to bake"
+        ]
+      },
+      "audio_file1": "want-me-to-cook-you-breakfast-convo",
+      "audio_file2": "yes-please-i-would-love-some-scrambled-eggs-convo"
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "dish-soap",
+        "wrongAnswers": [
+          "hand-soap",
+          "dish-rack",
+          "hand-blender"
+        ]
+      }
+    },
+    {
+      "template": "WordPairs",
+      "questionData": {
+        "english_words": [
+          "to boil",
+          "to mix",
+          "sweet",
+          "to heat"
+        ],
+        "translations": [
+          {
+            "tr": "kaynatmak",
+            "es": "hervir",
+            "fr": "bouillir",
+            "de": "kochen",
+            "it": "bollire",
+            "pt": "cozer",
+            "ru": "варка",
+            "zh": "煮",
+            "ja": "煮る",
+            "ko": "끓이다",
+            "ar": "غلي",
+            "hi": "उबलना"
+          },
+          {
+            "tr": "karıştırmak",
+            "es": "mezclar",
+            "fr": "mélanger",
+            "de": "rühren",
+            "it": "mescolare",
+            "pt": "misturar",
+            "ru": "перемешать",
+            "zh": "搅拌",
+            "ja": "混ぜる",
+            "ko": "섞다",
+            "ar": "مزج",
+            "hi": "मिलाना"
+          },
+          {
+            "tr": "tatlı",
+            "es": "dulce",
+            "fr": "sucre",
+            "de": "süß",
+            "it": "dolce",
+            "pt": "doce",
+            "ru": "сладкий",
+            "zh": "甜的",
+            "ja": "甘い",
+            "ko": "달다",
+            "ar": "حلو",
+            "hi": "स्वादिष्ट"
+          },
+          {
+            "tr": "ısıtmak",
+            "es": "calentar",
+            "fr": "chauffer",
+            "de": "erwärmen",
+            "it": "riscaldare",
+            "pt": "aquecer",
+            "ru": "нагреть",
+            "zh": "加热",
+            "ja": "加熱する",
+            "ko": "데우다",
+            "ar": "تسخين",
+            "hi": "गर्म करना"
+          }
+        ]
+      }
+    },
+    {
+      "template": "DialogueCompletion",
+      "questionData": {
+        "character1": "Emma",
+        "character2": "Anna",
+        "line1": "The table is dirty.",
+        "answer": "I wipe it.",
+        "distractors": [
+          "I dry it.",
+          "I turn it on.",
+          "I pour it."
+        ]
+      },
+      "audio_file1": "the-table-is-dirty-convo",
+      "audio_file2": "i-wipe-it-convo"
+    },
+    {
+      "template": "AppearDisappear",
+      "questionData": {
+        "words": "We bake fresh blueberry muffins",
+        "distractors": [
+          "cook",
+          "I",
+          "are",
+          "pot"
+        ]
+      },
+      "audio_file": "we-bake-fresh-blueberry-muffins-convo"
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "frying-pan",
+        "wrongAnswers": [
+          "coffee-mug",
+          "dish-rack",
+          "dish-soap"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "funnel",
+        "wrongAnswers": [
+          "spoon",
+          "colander",
+          "strainer"
+        ]
+      }
+    },
+    {
+      "template": "SentenceBuilder",
+      "questionData": {
+        "correct_order": "Can you peel the banana?",
+        "distractors": [
+          "would you",
+          "grate",
+          "apple",
+          "they"
+        ]
+      },
+      "audio_file": "can-you-peel-the-banana-convo"
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "grater",
+        "wrongAnswers": [
+          "strainer",
+          "cutter",
+          "table-knife"
+        ]
+      }
+    },
+    {
+      "template": "AppearDisappear",
+      "questionData": {
+        "words": "The popcorn is too salty for me.",
+        "distractors": [
+          "sweet",
+          "cornflakes",
+          "you"
+        ]
+      },
+      "audio_file": "the-popcorn-is-too-salty-for-me-convo"
+    },
+    {
+      "template": "GrammarForm",
+      "questionData": {
+        "sentence": "Let’s ____ dinner at the table",
+        "answer": "eat",
+        "distractors": [
+          "eats",
+          "eating",
+          "are eating"
+        ]
+      }
+    },
+    {
+      "template": "DialogueCompletion",
+      "questionData": {
+        "character1": "Emma",
+        "character2": "Anna",
+        "line1": "Can I pour the hot tea now?",
+        "answer": "Yes. Do it carefully.",
+        "distractors": [
+          "Do it slightly",
+          "Yes, usually pour it",
+          "Yes, pour it quiet"
+        ]
+      },
+      "audio_file1": "can-i-pour-the-hot-tea-now-convo",
+      "audio_file2": "do-it-carefully-convo"
+    },
+    {
+      "template": "AppearDisappear",
+      "questionData": {
+        "words": "Who wants to do the dishes?",
+        "distractors": [
+          "there",
+          "Which",
+          "plates",
+          "to clean"
+        ]
+      },
+      "audio_file": "who-wants-to-do-the-dishes-convo"
+    }
+  ]
+}

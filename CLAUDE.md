@@ -48,15 +48,14 @@ Monster attack animation applies **only** to `imageQuizTemplate-1` and `imageQui
 | Template | Widget file |
 |----------|-------------|
 | `ConvoTemplate-1` | Built inline in `image_quiz_screen.dart` (`_buildCharactersRow`) |
-| `ConvoTemplate-ClozeSequence` | `cloze_sequence_quiz_body.dart` |
-| `ConvoTemplate-AppearDisappear` | `appear_disappear_quiz_body.dart` |
-| `ConvoTemplate-Simon` | `simon_quiz_body.dart` |
-| `ConvoTemplate-SentenceBuilder` | `sentence_builder_quiz_body.dart` |
-| `ConvoTemplate-WordPairs` | `word_pairs_quiz_body.dart` |
-| `ConvoTemplate-GrammarForm` | `grammar_form_quiz_body.dart` |
-| `ConvoTemplate-DialogueCompletion` | `dialogue_completion_quiz_body.dart` |
+| `ClozeSequence` | `cloze_sequence_quiz_body.dart` |
+| `AppearDisappear` | `appear_disappear_quiz_body.dart` |
+| `SentenceBuilder` | `sentence_builder_quiz_body.dart` |
+| `WordPairs` | `word_pairs_quiz_body.dart` |
+| `GrammarForm` | `grammar_form_quiz_body.dart` |
+| `DialogueCompletion` | `dialogue_completion_quiz_body.dart` |
 
-**Translation:** The global Translate toggle is removed. Per-question `translation` / `line1_translation` / `line2_translation` / `answer_translation` maps in JSON show auxiliary text automatically when `userLanguage != 'en'`. `ConvoTemplate-AppearDisappear` keeps its `translation` at the top level of the question object (sibling to `questionData`). ClozeSequence, WordPairs, and Simon have no translation support.
+**Translation:** The global Translate toggle is removed. Per-question `translation` / `line1_translation` / `line2_translation` / `answer_translation` maps in JSON show auxiliary text automatically when `userLanguage != 'en'`. `AppearDisappear` keeps its `translation` at the top level of the question object (sibling to `questionData`). ClozeSequence and WordPairs have no translation support.
 
 ## Asset Layout (current)
 
@@ -89,6 +88,7 @@ Development progress is tracked in `cursor-claude-common/context/` (shared with 
 - `full-project-issue-archive.md` — verbatim copy of each completed issue (most recent first)
 - `architecture-technical-context.md` — tech stack and asset layout decisions
 - `page-designs-and-templates.md` — per-template UX and JSON schema reference
+- `story-templates-and-design.md` — story overlay templates (`page_template_id`, layouts A/B/C, story JSON)
 
 Plans live in `cursor-claude-common/plans/`. Rules live in `cursor-claude-common/rules/rules.md`.
 

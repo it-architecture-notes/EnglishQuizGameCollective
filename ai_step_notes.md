@@ -14,7 +14,7 @@
 <Drag plans to commons plans if necessary>
 <Now we have 4 plan files under common folder>
 
-5) TO MAIN CURSOR: review all the plans under common plans folder from all models and create a consolidated plan from them under common plans folder. don't implement just create the consolidated plan and copy to common plans folder.
+5) TO MAIN CURSOR: review all the plans under common plans folder from all ai models and create a consolidated plan from them under common plans folder. don't implement just create the consolidated plan and copy to common plans folder.
 
 5) TO MAIN CLAUDE: review all the plans under common plans folder from different AI models including consolidated plan by cursor and if you think necessary update the consolidated plan if anything missing. ask questions if something is not clear. don't implement just update the consolidated plan.
 

@@ -67,6 +67,8 @@ class StoryTriggerService {
 
     final ready = <StoryPageConfig>[];
     for (final page in mainStory.storySequences) {
+      // before_level pages must be shown to the user — never auto-complete them.
+      if (page.trigger.type == StoryTriggerType.beforeLevel) continue;
       if (storyProgress.isCompleted(
           mainLevelId: mainLevelId, eventId: page.eventId)) {
         continue;
@@ -76,25 +78,11 @@ class StoryTriggerService {
         mainLevelId: mainLevelId,
         flowSubLevels: flowSubLevels,
       );
-      final coverage =
-          page.coveredLevelsNumber < 1 ? 1 : page.coveredLevelsNumber;
-      final start = triggerLevel;
-      final end = triggerLevel + coverage - 1;
-
-      var allCoveredPassed = true;
-      for (var localLevel = start; localLevel <= end; localLevel++) {
-        final progressKey = byLocal[localLevel];
-        if (progressKey == null) {
-          allCoveredPassed = false;
-          break;
-        }
-        final stars = quizProgress.levels[progressKey]?.highestStars ?? 0;
-        if (stars < 1) {
-          allCoveredPassed = false;
-          break;
-        }
-      }
-      if (allCoveredPassed) {
+      final progressKey = byLocal[triggerLevel];
+      final stars = progressKey == null
+          ? 0
+          : quizProgress.levels[progressKey]?.highestStars ?? 0;
+      if (stars >= 1) {
         ready.add(page);
       }
     }
