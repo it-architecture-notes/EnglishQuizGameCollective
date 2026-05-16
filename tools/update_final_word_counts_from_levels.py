@@ -5,9 +5,14 @@ Scan quiz level JSON and refresh `count` + `levels` columns in the CSV files und
 
 Counted sources (per level folder — each word/phrase contributes at most once per level):
   questions.json
-    - Skip questions whose `template` starts with `imageQuizTemplate`.
+    - Skip questions whose `template` (leading/trailing whitespace stripped) starts
+      with `imageQuizTemplate`.
     - For other templates, only `questionData` keys: `words`, `answers`, `answer`,
       `english_words` (strings, arrays of strings, or scalar coerced to string).
+      For `GrammarForm`, `answer` is omitted (not vocabulary text).
+      For `AppearDisappear`, `words` is omitted.
+    - `WordPairs` / legacy `ConvoTemplate-WordPairs`: `english_words` is always
+      harvested again explicitly so left-column English is never missed.
 
   translations.json
     - Only `english_word` in each `translations_list` entry.
@@ -37,6 +42,13 @@ TOKEN_RE = re.compile(r"[a-z0-9]+(?:[-'][a-z0-9]+)*", re.IGNORECASE)
 
 # Fields to read inside questionData (non-image templates only).
 _QD_COUNTED_KEYS = frozenset({"words", "answers", "answer", "english_words"})
+
+# Left-column English for WordPairs (also accept legacy template id from docs).
+_WORD_PAIRS_TEMPLATE_IDS = frozenset({"WordPairs", "ConvoTemplate-WordPairs"})
+
+
+def _template_str(raw) -> str:
+    return raw.strip() if isinstance(raw, str) else ""
 
 
 def repo_root() -> Path:
@@ -81,15 +93,21 @@ def vocabulary_from_questions(path: Path) -> set[str]:
     for item in rows:
         if not isinstance(item, dict):
             continue
-        tpl = item.get("template")
-        if isinstance(tpl, str) and tpl.startswith("imageQuizTemplate"):
+        tpl = _template_str(item.get("template"))
+        if tpl.startswith("imageQuizTemplate"):
             continue
         qd = item.get("questionData")
         if not isinstance(qd, dict):
             continue
         for key in _QD_COUNTED_KEYS:
+            if key == "answer" and tpl == "GrammarForm":
+                continue
+            if key == "words" and tpl == "AppearDisappear":
+                continue
             if key in qd:
                 add_value_to_bucket(qd[key], bucket)
+        if tpl in _WORD_PAIRS_TEMPLATE_IDS:
+            add_value_to_bucket(qd.get("english_words"), bucket)
     return bucket
 
 

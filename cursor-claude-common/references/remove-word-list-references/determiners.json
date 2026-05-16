@@ -1,0 +1,128 @@
+[
+  {
+    "determiner": "the",
+    "type": "definite article",
+    "level": "A1",
+    "categories": ["specifics", "grammar"]
+  },
+  {
+    "determiner": "a",
+    "type": "indefinite article",
+    "level": "A1",
+    "categories": ["general", "counting"]
+  },
+  {
+    "determiner": "an",
+    "type": "indefinite article",
+    "level": "A1",
+    "categories": ["general", "counting"]
+  },
+  {
+    "determiner": "this",
+    "type": "demonstrative",
+    "level": "A1",
+    "categories": ["pointing", "proximity"]
+  },
+  {
+    "determiner": "that",
+    "type": "demonstrative",
+    "level": "A1",
+    "categories": ["pointing", "distance"]
+  },
+  {
+    "determiner": "these",
+    "type": "demonstrative",
+    "level": "A1",
+    "categories": ["pointing", "proximity"]
+  },
+  {
+    "determiner": "those",
+    "type": "demonstrative",
+    "level": "A1",
+    "categories": ["pointing", "distance"]
+  },
+  {
+    "determiner": "my",
+    "type": "possessive",
+    "level": "A1",
+    "categories": ["ownership", "personal"]
+  },
+  {
+    "determiner": "your",
+    "type": "possessive",
+    "level": "A1",
+    "categories": ["ownership", "personal"]
+  },
+  {
+    "determiner": "his",
+    "type": "possessive",
+    "level": "A1",
+    "categories": ["ownership", "people"]
+  },
+  {
+    "determiner": "her",
+    "type": "possessive",
+    "level": "A1",
+    "categories": ["ownership", "people"]
+  },
+  {
+    "determiner": "its",
+    "type": "possessive",
+    "level": "A1",
+    "categories": ["ownership", "things"]
+  },
+  {
+    "determiner": "our",
+    "type": "possessive",
+    "level": "A1",
+    "categories": ["ownership", "groups"]
+  },
+  {
+    "determiner": "their",
+    "type": "possessive",
+    "level": "A1",
+    "categories": ["ownership", "groups"]
+  },
+  {
+    "determiner": "some",
+    "type": "quantifier",
+    "level": "A1",
+    "categories": ["quantity", "unknown"]
+  },
+  {
+    "determiner": "any",
+    "type": "quantifier",
+    "level": "A1",
+    "categories": ["quantity", "questions"]
+  },
+  {
+    "determiner": "no",
+    "type": "quantifier",
+    "level": "A1",
+    "categories": ["absence", "quantity"]
+  },
+  {
+    "determiner": "each",
+    "type": "distributive",
+    "level": "A2",
+    "categories": ["groups", "individuals"]
+  },
+  {
+    "determiner": "every",
+    "type": "distributive",
+    "level": "A1",
+    "categories": ["groups", "frequency"]
+  },
+  {
+    "determiner": "all",
+    "type": "quantifier",
+    "level": "A1",
+    "categories": ["groups", "quantity"]
+  },
+  {
+    "determiner": "both",
+    "type": "quantifier",
+    "level": "A2",
+    "categories": ["pairs", "quantity"]
+  }
+]

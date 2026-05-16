@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>at-the-pharmacy — level tables</title>
+  <style>
+    body { font-family: system-ui, -apple-system, Segoe UI, Roboto, sans-serif; margin: 16px; background: #f5f5f5; }
+    h1 { font-size: 1.25rem; margin-bottom: 12px; }
+    h2 { font-size: 1.1rem; margin-top: 24px; margin-bottom: 8px; }
+    .wrap { overflow-x: auto; background: #fff; padding: 12px; border-radius: 8px; box-shadow: 0 1px 3px rgba(0,0,0,.08); margin-bottom: 16px; }
+    table { border-collapse: collapse; width: 100%; font-size: 13px; table-layout: fixed; }
+    th, td { border: 1px solid #c8c8c8; padding: 8px 10px; vertical-align: top; text-align: left; word-wrap: break-word; }
+    th { background: #e8e8e8; font-weight: 600; white-space: nowrap; }
+    tr:nth-child(even) td { background: #fafafa; }
+    .wrap.template-counts { max-width: 28rem; }
+    .wrap.word-frequency { max-width: 40rem; }
+    </style>
+</head>
+<body>
+  <h1>at-the-pharmacy — questions</h1>
+  <h2>Questions</h2>
+  <div class="wrap">
+    <table>
+<thead><tr><th>#</th><th>Template</th><th>Line 1 / Prompt</th><th>Line 2</th><th>Answer</th><th>English (translate)</th><th>Audio</th></tr></thead>
+<tbody><tr><td>1</td><td>imageQuizTemplate-1</td><td>image: adhesive-bandage</td><td></td><td>adhesive-bandage</td><td></td><td></td></tr><tr><td>2</td><td>ConvoTemplate-1</td><td>How often should I _____ this??</td><td>____ it twice a day.</td><td>take</td><td></td><td>audio_file1: how-often-should-i-take-this-convo · audio_file2: take-it-twice-a-day-convo</td></tr><tr><td>3</td><td>ConvoTemplate-1</td><td>Can you _____ me where the pain reliever is?</td><td>Yes I can _____ you. It is on aisle three.</td><td>tell</td><td></td><td>audio_file1: can-you-tell-me-where-the-cough-medicine-is-convo · audio_file2: yes-i-can-tell-you-it-is-on-aisle-three-convo</td></tr><tr><td>4</td><td>imageQuizTemplate-1</td><td>image: cotton-balls</td><td></td><td>cotton-balls</td><td></td><td></td></tr><tr><td>5</td><td>WordPairs</td><td>quiet; ready; better; patient</td><td>word pairs</td><td>match all pairs</td><td></td><td></td></tr><tr><td>6</td><td>DialogueCompletion</td><td>Is it safe for children?</td><td></td><td>Yes, but read the label carefully.</td><td></td><td>audio_file1: is-it-safe-for-children-convo · audio_file2: yes-but-read-the-label-carefully-convo</td></tr><tr><td>7</td><td>AppearDisappear</td><td>This cream is for external use only.</td><td></td><td>-</td><td></td><td>audio_file: this-cream-is-for-external-use-only-convo</td></tr><tr><td>8</td><td>imageQuizTemplate-1</td><td>image: cough-syrup</td><td></td><td>cough-syrup</td><td></td><td></td></tr><tr><td>9</td><td>imageQuizTemplate-1</td><td>image: first-aid-kit</td><td></td><td>first-aid-kit</td><td></td><td></td></tr><tr><td>10</td><td>SentenceBuilder</td><td>Can you fill this prescription?</td><td></td><td>Can you fill this prescription?</td><td></td><td>audio_file: can-you-fill-this-prescription-convo</td></tr><tr><td>11</td><td>imageQuizTemplate-1</td><td>image: elastic-bandage</td><td></td><td>elastic-bandage</td><td></td><td></td></tr><tr><td>12</td><td>ClozeSequence</td><td>I cannot _____ you buy this drug ______ a prescription.</td><td></td><td>help, without</td><td></td><td>audio_file: i-cannot-help-you-buy-this-drug-without-a-prescription-convo</td></tr><tr><td>13</td><td>GrammarForm</td><td>We ____ the tunnel.</td><td></td><td>are entering</td><td></td><td></td></tr><tr><td>14</td><td>imageQuizTemplate-1</td><td>image: drugs</td><td></td><td>drugs</td><td></td><td></td></tr><tr><td>15</td><td>ClozeSequence</td><td>If you ____ take this syrup, what will _____?</td><td></td><td>also, happen</td><td></td><td>audio_file: if-you-also-take-this-syrup-what-will-happen-convo</td></tr><tr><td>16</td><td>ClozeSequence</td><td>_____ is this medicine so expensive??</td><td></td><td>why</td><td></td><td>audio_file: why-is-this-medicine-so-expensive-convo</td></tr></tbody>
+</table>
+  </div>
+
+  <h2>at-the-pharmacy — translations</h2>
+  <div class="wrap">
+    <table>
+<thead><tr><th>#</th><th>English word</th><th>ar</th><th>de</th><th>es</th><th>fr</th><th>hi</th><th>it</th><th>ja</th><th>ko</th><th>pt</th><th>ru</th><th>tr</th><th>zh</th></tr></thead>
+<tbody><tr><td>1</td><td>to take</td><td>أخذ</td><td>nehmen</td><td>tomar</td><td>prendre</td><td>ग्रहण करना</td><td>prendere</td><td>服用する</td><td>먹다</td><td>tomar</td><td>принимать</td><td>almak</td><td>服用</td></tr><tr><td>2</td><td>to tell</td><td>قول</td><td>sagen</td><td>decir</td><td>dire</td><td>बात करना</td><td>dire</td><td>言う</td><td>말하다</td><td>dizer</td><td>сказать</td><td>söylemek</td><td>说</td></tr><tr><td>3</td><td>external</td><td>خارجي</td><td>extern</td><td>externo</td><td>extérieur</td><td>बाहरी</td><td>esterno</td><td>外部の</td><td>외부의</td><td>externo</td><td>внешний</td><td>dış</td><td>外部的</td></tr><tr><td>4</td><td>safe</td><td>آمن</td><td>sicher</td><td>seguro</td><td>sûr</td><td>सुरक्षित</td><td>sicuro</td><td>安全な</td><td>안전한</td><td>seguro</td><td>безопасный</td><td>güvenli</td><td>安全的</td></tr><tr><td>5</td><td>children</td><td>أطفال</td><td>Kinder</td><td>niños</td><td>enfants</td><td>बच्चे</td><td>bambini</td><td>子供</td><td>어린이</td><td>crianças</td><td>дети</td><td>çocuklar</td><td>儿童</td></tr><tr><td>6</td><td>adult</td><td>كبير</td><td>Erwachsener</td><td>adulto</td><td>adulte</td><td>वयस्क</td><td>adulto</td><td>成人</td><td>성인</td><td>adulto</td><td>взрослый</td><td>yetişkin</td><td>成人</td></tr><tr><td>7</td><td>to help</td><td>مساعدة</td><td>helfen</td><td>ayudar</td><td>aider</td><td>मदद करना</td><td>aiutare</td><td>助ける</td><td>도와주다</td><td>ajudar</td><td>помочь</td><td>yardım etmek</td><td>帮助</td></tr><tr><td>8</td><td>without</td><td>بدون</td><td>ohne</td><td>sin</td><td>sans</td><td>बिना</td><td>senza</td><td>なし</td><td>없는</td><td>sem</td><td>без</td><td>olmadan</td><td>没有</td></tr><tr><td>9</td><td>also</td><td>أيضا</td><td>auch</td><td>además</td><td>aussi</td><td>भी</td><td>anche</td><td>も</td><td>도</td><td>também</td><td>также</td><td>ayrıca</td><td>另外</td></tr><tr><td>10</td><td>to happen</td><td>يحدث</td><td>passieren</td><td>ocurrir</td><td>se produire</td><td>होना</td><td>accadere</td><td>起こる</td><td>일어나다</td><td>acontecer</td><td>произойти</td><td>olmak</td><td>发生</td></tr><tr><td>11</td><td>pain reliever</td><td>تخفيف الألم</td><td>Schmerzlinderung</td><td>alivio de dolor</td><td>relèvement de la douleur</td><td>दर्द कम करना</td><td>rimedio per il dolore</td><td>痛みを和らげる</td><td>아픔 완화</td><td>alívio de dor</td><td>уменьшение боли</td><td>ağrı kesici</td><td>止痛药</td></tr></tbody>
+</table>
+  </div>
+
+  <h2>Template counts</h2>
+  <div class="wrap template-counts">
+    <table>
+<thead><tr><th>Template</th><th>Count in level</th></tr></thead>
+<tbody><tr><td>AppearDisappear</td><td>1</td></tr><tr><td>ClozeSequence</td><td>3</td></tr><tr><td>ConvoTemplate-1</td><td>2</td></tr><tr><td>DialogueCompletion</td><td>1</td></tr><tr><td>GrammarForm</td><td>1</td></tr><tr><td>imageQuizTemplate-1</td><td>6</td></tr><tr><td>imageQuizTemplate-2</td><td>0</td></tr><tr><td>imageQuizTemplate-3</td><td>0</td></tr><tr><td>imageQuizTemplate-SentenceChoice</td><td>0</td></tr><tr><td>SentenceBuilder</td><td>1</td></tr><tr><td>WordPairs</td><td>1</td></tr></tbody>
+</table>
+  </div>
+
+  <h2>Word frequency (questions.json; excludes template, audio_file*, WordPairs translations, distractors, wrongAnswers)</h2>
+  <div class="wrap word-frequency">
+    <table>
+<thead><tr><th>word</th><th>count</th></tr></thead>
+<tbody><tr><td>this</td><td>6</td></tr><tr><td>is</td><td>5</td></tr><tr><td>you</td><td>5</td></tr><tr><td>can</td><td>3</td></tr><tr><td>i</td><td>3</td></tr><tr><td>it</td><td>3</td></tr><tr><td>the</td><td>3</td></tr><tr><td>a</td><td>2</td></tr><tr><td>for</td><td>2</td></tr><tr><td>prescription</td><td>2</td></tr><tr><td>take</td><td>2</td></tr><tr><td>yes</td><td>2</td></tr><tr><td>adhesive-bandage</td><td>1</td></tr><tr><td>aisle</td><td>1</td></tr><tr><td>also</td><td>1</td></tr><tr><td>are</td><td>1</td></tr><tr><td>better</td><td>1</td></tr><tr><td>but</td><td>1</td></tr><tr><td>buy</td><td>1</td></tr><tr><td>cannot</td><td>1</td></tr><tr><td>carefully</td><td>1</td></tr><tr><td>children</td><td>1</td></tr><tr><td>cotton-balls</td><td>1</td></tr><tr><td>cough-syrup</td><td>1</td></tr><tr><td>cream</td><td>1</td></tr><tr><td>day</td><td>1</td></tr><tr><td>drug</td><td>1</td></tr><tr><td>drugs</td><td>1</td></tr><tr><td>elastic-bandage</td><td>1</td></tr><tr><td>entering</td><td>1</td></tr><tr><td>ethan</td><td>1</td></tr><tr><td>expensive</td><td>1</td></tr><tr><td>external</td><td>1</td></tr><tr><td>fill</td><td>1</td></tr><tr><td>first-aid-kit</td><td>1</td></tr><tr><td>happen</td><td>1</td></tr><tr><td>help</td><td>1</td></tr><tr><td>how</td><td>1</td></tr><tr><td>if</td><td>1</td></tr><tr><td>label</td><td>1</td></tr><tr><td>lily</td><td>1</td></tr><tr><td>maya</td><td>1</td></tr><tr><td>me</td><td>1</td></tr><tr><td>medicine</td><td>1</td></tr><tr><td>mike</td><td>1</td></tr><tr><td>often</td><td>1</td></tr><tr><td>omar</td><td>1</td></tr><tr><td>on</td><td>1</td></tr><tr><td>only</td><td>1</td></tr><tr><td>pain</td><td>1</td></tr><tr><td>patient</td><td>1</td></tr><tr><td>quiet</td><td>1</td></tr><tr><td>read</td><td>1</td></tr><tr><td>ready</td><td>1</td></tr><tr><td>reliever</td><td>1</td></tr><tr><td>safe</td><td>1</td></tr><tr><td>should</td><td>1</td></tr><tr><td>so</td><td>1</td></tr><tr><td>sophie</td><td>1</td></tr><tr><td>syrup</td><td>1</td></tr><tr><td>tell</td><td>1</td></tr><tr><td>three</td><td>1</td></tr><tr><td>tunnel</td><td>1</td></tr><tr><td>twice</td><td>1</td></tr><tr><td>use</td><td>1</td></tr><tr><td>we</td><td>1</td></tr><tr><td>what</td><td>1</td></tr><tr><td>where</td><td>1</td></tr><tr><td>why</td><td>1</td></tr><tr><td>will</td><td>1</td></tr><tr><td>without</td><td>1</td></tr></tbody>
+</table>
+  </div>
+
+</body>
+</html>

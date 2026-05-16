@@ -1,0 +1,256 @@
+{
+  "levelQuestions": [
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "kiosk",
+        "wrongAnswers": [
+          "table",
+          "bench",
+          "tent"
+        ]
+      }
+    },
+    {
+      "template": "ConvoTemplate-1",
+      "questionData": {
+        "character1": "Sarah",
+        "character2": "Daniel",
+        "line1": "Do you ____ at the farmers market now?",
+        "line2": "Yes, I ____ here.",
+        "answer": "work",
+        "distractors": [
+          "walk",
+          "go",
+          "see"
+        ]
+      },
+      "audio_file1": "do-you-work-at-the-farmers-market-now-convo",
+      "audio_file2": "yes-i-work-here-convo"
+    },
+    {
+      "template": "ConvoTemplate-1",
+      "questionData": {
+        "character1": "Beth",
+        "character2": "Alex",
+        "line1": "Is this market always the same?",
+        "line2": "No, it is ____ every week.",
+        "answer": "different",
+        "distractors": [
+          "similar",
+          "looks",
+          "fresh"
+        ]
+      },
+      "audio_file1": "is-this-market-always-the-same-convo",
+      "audio_file2": "no-it-is-different-every-week-convo"
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "chalkboard",
+        "wrongAnswers": [
+          "wooden-board",
+          "wall",
+          "price-tag"
+        ]
+      }
+    },
+    {
+      "template": "WordPairs",
+      "questionData": {
+        "english_words": [
+          "to choose",
+          "to carry",
+          "to smell",
+          "to sell"
+        ],
+        "translations": [
+          {
+            "tr": "seçmek",
+            "es": "elegir",
+            "fr": "choisir",
+            "de": "wählen",
+            "it": "scegliere",
+            "pt": "escolher",
+            "ru": "выбрать",
+            "zh": "选择",
+            "ja": "選ぶ",
+            "ko": "선택하다",
+            "ar": "اختيار",
+            "hi": "चुनना"
+          },
+          {
+            "tr": "taşımak",
+            "es": "llevar",
+            "fr": "porter",
+            "de": "tragen",
+            "it": "portare",
+            "pt": "levar",
+            "ru": "переносить",
+            "zh": "携带",
+            "ja": "持つ",
+            "ko": "가지고 다니다",
+            "ar": "حمل",
+            "hi": "आयात करना"
+          },
+          {
+            "tr": "koklamak",
+            "es": "oler",
+            "fr": "sentir",
+            "de": "riechen",
+            "it": "sentire",
+            "pt": "sentir",
+            "ru": "ощущать",
+            "zh": "嗅觉",
+            "ja": "嗅ぐ",
+            "ko": "향기를 맡다",
+            "ar": "رغبة",
+            "hi": "ख़ुशी करना"
+          },
+          {
+            "tr": "satmak",
+            "es": "vender",
+            "fr": "vendre",
+            "de": "verkaufen",
+            "it": "vendere",
+            "pt": "vender",
+            "ru": "продавать",
+            "zh": "卖",
+            "ja": "売る",
+            "ko": "팔다",
+            "ar": "بيع",
+            "hi": "बेचना"
+          }
+        ]
+      }
+    },
+    {
+      "template": "DialogueCompletion",
+      "questionData": {
+        "character1": "Ben",
+        "character2": "Nora",
+        "line1": "What does plums taste like?",
+        "answer": "Sweet and sour.",
+        "distractors": [
+          "Salty and bad.",
+          "Sour and little",
+          "Strong and whole."
+        ]
+      },
+      "audio_file1": "what-does-plums-taste-like-convo",
+      "audio_file2": "sweet-and-sour-convo"
+    },
+    {
+      "template": "AppearDisappear",
+      "questionData": {
+        "words": "She asks the seller a question.",
+        "distractors": [
+          "talks",
+          "buyer",
+          "He",
+          "answer"
+        ]
+      },
+      "audio_file": "she-asks-the-seller-a-question-convo"
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "scale",
+        "wrongAnswers": [
+          "basket",
+          "cart",
+          "weight"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "seller",
+        "wrongAnswers": [
+          "giver",
+          "talker",
+          "helper"
+        ]
+      }
+    },
+    {
+      "template": "SentenceBuilder",
+      "questionData": {
+        "correct_order": "He grows organic and fresh fruits",
+        "distractors": [
+          "looks",
+          "ripe",
+          "trees"
+        ]
+      },
+      "audio_file":"he-grows-organic-and-fresh-fruits-convo"
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "tent",
+        "wrongAnswers": [
+          "store",
+          "kiosk",
+          "chalkboard"
+        ]
+      }
+    },
+    {
+      "template": "ClozeSequence",
+      "questionData": {
+        "sentence": "Please ____ a bag because the apples are ____ today",
+        "answer": ["bring", "cheap"],
+        "distractors": [
+          "give",
+          "taller",
+          "heavy"
+        ]
+      },
+      "audio_file": "please-bring-a-bag-because-the-apples-are-cheap-today-convo"
+    },
+    {
+      "template": "GrammarForm",
+      "questionData": {
+        "sentence": "We are ______ some apples from the cart.",
+        "answer": "picking",
+        "distractors": [
+          "pick",
+          "picks",
+          "does picking"
+        ]
+      }
+    },
+    {
+      "template": "ClozeSequence",
+      "questionData": {
+        "sentence": "Please _____ and look at these ______ apples",
+        "answer": ["come", "beautiful"],
+        "distractors": [
+          "check",
+          "run",
+          "wait",
+          "ugly"
+        ]
+      },
+      "audio_file": "please-come-and-look-at-these-beautiful-apples-convo"
+    },
+    {
+      "template": "ClozeSequence",
+      "questionData": {
+        "sentence": "I saved this bread _____ for you.",
+        "answer": [
+          "only"
+        ],
+        "distractors": [
+          "another",
+          "other",
+          "similar"
+        ]
+      }
+    }
+  ]
+}

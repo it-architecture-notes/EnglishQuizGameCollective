@@ -33,6 +33,7 @@ import subprocess
 import tempfile
 import time
 import wave
+from collections import deque
 from dataclasses import dataclass, replace
 from pathlib import Path
 from typing import Any
@@ -822,6 +823,28 @@ def extract_pcm_bytes(response: Any) -> bytes:
     raise RuntimeError("No inline audio data found in Gemini response")
 
 
+class _RateLimiter:
+    """Sliding-window rate limiter: at most max_calls API requests per period_seconds."""
+
+    def __init__(self, max_calls: int = 10, period_seconds: float = 60.0) -> None:
+        self._max = max_calls
+        self._period = period_seconds
+        self._timestamps: deque[float] = deque()
+
+    def wait(self) -> None:
+        """Block until a request slot is available, then claim it."""
+        while True:
+            now = time.time()
+            while self._timestamps and now - self._timestamps[0] >= self._period:
+                self._timestamps.popleft()
+            if len(self._timestamps) < self._max:
+                self._timestamps.append(now)
+                return
+            wait_s = self._period - (now - self._timestamps[0]) + 0.5
+            print(f"  [rate limit] {len(self._timestamps)}/{self._max} calls in window — waiting {wait_s:.1f}s")
+            time.sleep(wait_s)
+
+
 def _retry_call(fn, attempts: int = 3, base_delay_s: float = 1.0) -> Any:
     last_exc: Exception | None = None
     for i in range(attempts):
@@ -846,8 +869,11 @@ def generate_single_speaker_pcm(
     client: genai.Client,
     text: str,
     voice: str,
+    rate_limiter: _RateLimiter | None = None,
 ) -> bytes:
     def _call() -> Any:
+        if rate_limiter is not None:
+            rate_limiter.wait()
         return client.models.generate_content(
             model=MODEL_NAME,
             contents=f'Say in a clear, friendly tone for a young learner: "{text}"',
@@ -978,8 +1004,10 @@ def main() -> None:
     failed = 0
 
     client = None
+    rate_limiter: _RateLimiter | None = None
     if not args.dry_run:
         client = genai.Client(api_key=google_api_key)
+        rate_limiter = _RateLimiter(max_calls=10, period_seconds=60.0)
 
     gemini_single_ctr = 0
 
@@ -1024,8 +1052,8 @@ def main() -> None:
                 line_b = lines[1] if len(lines) > 1 else ""
                 line_a = line_a.split(":", 1)[-1].strip() if ":" in line_a else line_a
                 line_b = line_b.split(":", 1)[-1].strip() if ":" in line_b else line_b
-                pcm_a = generate_single_speaker_pcm(client=client, text=line_a, voice=va)
-                pcm_b = generate_single_speaker_pcm(client=client, text=line_b, voice=vb)
+                pcm_a = generate_single_speaker_pcm(client=client, text=line_a, voice=va, rate_limiter=rate_limiter)
+                pcm_b = generate_single_speaker_pcm(client=client, text=line_b, voice=vb, rate_limiter=rate_limiter)
                 pcm_bytes = pcm_a + _silence_pcm(300) + pcm_b
                 pcm_to_m4a_file(
                     pcm_bytes=pcm_bytes,
@@ -1045,6 +1073,7 @@ def main() -> None:
                     client=client,
                     text=job.tts_text,
                     voice=voice_use,
+                    rate_limiter=rate_limiter,
                 )
                 pcm_to_m4a_file(
                     pcm_bytes=pcm_bytes,

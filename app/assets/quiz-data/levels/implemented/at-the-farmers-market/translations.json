@@ -1,0 +1,157 @@
+{
+    "translations_list": [
+        {
+            "english_word": "to work",
+            "translations": {
+                "tr": "çalışmak",
+                "es": "trabajar",
+                "fr": "travailler",
+                "de": "arbeiten",
+                "it": "lavorare",
+                "pt": "trabalhar",
+                "ru": "работать",
+                "zh": "工作",
+                "ja": "働く",
+                "ko": "일하다",
+                "ar": "يعمل",
+                "hi": "काम करना"
+            }
+        },
+        {
+            "english_word": "different",
+            "translations": {
+                "tr": "farklı",
+                "es": "diferente",
+                "fr": "différent",
+                "de": "verschieden",
+                "it": "diverso",
+                "pt": "diferente",
+                "ru": "различный",
+                "zh": "不同的",
+                "ja": "違う",
+                "ko": "다른",
+                "ar": "مختلف",
+                "hi": "भिन्न"
+            }
+        },
+        {
+            "english_word": "to ask",
+            "translations": {
+                "tr": "sormak",
+                "es": "preguntar",
+                "fr": "pelar",
+                "de": "fragen",
+                "it": "chiedere",
+                "pt": "perguntar",
+                "ru": "спросить",
+                "zh": "问",
+                "ja": "尋ねる",
+                "ko": "물어보다",
+                "ar": "اسأل",
+                "hi": "पूछना"
+            }
+        },
+        {
+            "english_word": "to grow",
+            "translations": {
+                "tr": "yetiştirmek",
+                "es": "cultivar",
+                "fr": "cultiver",
+                "de": "pflegen",
+                "it": "cultivare",
+                "pt": "cultivar",
+                "ru": "выращивать",
+                "zh": "种植",
+                "ja": "育てる",
+                "ko": "재배하다",
+                "ar": "زرع",
+                "hi": "बढ़ाना"
+            }
+        },
+        {
+            "english_word": "to bring",
+            "translations": {
+                "tr": "getirmek",
+                "es": "llevar",
+                "fr": "porter",
+                "de": "tragen",
+                "it": "portare",
+                "pt": "levar",
+                "ru": "переносить",
+                "zh": "携带",
+                "ja": "持つ",
+                "ko": "가지고 다니다",
+                "ar": "حمل",
+                "hi": "आयात करना"
+            }
+        },
+        {
+            "english_word": "cheap",
+            "translations": {
+                "tr": "ucuz",
+                "es": "barato",
+                "fr": "bon marché",
+                "de": "billig",
+                "it": "economico",
+                "pt": "barato",
+                "ru": "дешевый",
+                "zh": "便宜",
+                "ja": "安い",
+                "ko": "싸다",
+                "ar": "أرخص",
+                "hi": "अमनी"
+            }
+        },
+        {
+            "english_word": "to come",
+            "translations": {
+                "tr": "gelmek",
+                "es": "venir",
+                "fr": "venir",
+                "de": "kommen",
+                "it": "venire",
+                "pt": "vir",
+                "ru": "прийти",
+                "zh": "来",
+                "ja": "来る",
+                "ko": "오다",
+                "ar": "أتي",
+                "hi": "आए"
+            }
+        },
+        {
+            "english_word": "beautiful",
+            "translations": {
+                "tr": "güzel",
+                "es": "hermoso",
+                "fr": "beau",
+                "de": "schön",
+                "it": "bello",
+                "pt": "bonito",
+                "ru": "красивый",
+                "zh": "漂亮",
+                "ja": "美しい",
+                "ko": "아름다운",
+                "ar": "جميل",
+                "hi": "अच्छा"
+            }
+        },
+        {
+            "english_word": "only",
+            "translations": {
+                "tr": "sadece",
+                "es": "sólo",
+                "fr": "seulement",
+                "de": "nur",
+                "it": "solo",
+                "pt": "só",
+                "ru": "только",
+                "zh": "只有",
+                "ja": "だけ",
+                "ko": "오직",
+                "ar": "فقط",
+                "hi": "केवल"
+            }
+        }
+    ]
+}

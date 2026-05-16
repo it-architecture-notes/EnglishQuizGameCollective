@@ -1,0 +1,109 @@
+{
+  "levelQuestions": [
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "backpack",
+        "wrongAnswers": ["pencil-case", "lunchbox", "sponge"]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "bulletin-board",
+        "wrongAnswers": ["whiteboard", "pin", "soap"]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-2",
+      "questionData": {
+        "imageName": "crayons",
+        "wrongAnswers": ["glue", "eraser", "pencil-case"]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "desk-chair",
+        "wrongAnswers": ["ruler", "stapler", "pillow"]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "eraser",
+        "wrongAnswers": ["crayons", "glue", "dish-towel"]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-2",
+      "questionData": {
+        "imageName": "glue",
+        "wrongAnswers": ["crayons", "paper-clip", "eraser"]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "fountain",
+        "wrongAnswers": ["swing", "lunchbox", "sponge"]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "lunchbox",
+        "wrongAnswers": ["backpack", "pencil-case", "soap"]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-2",
+      "questionData": {
+        "imageName": "paper-clip",
+        "wrongAnswers": ["stapler", "glue", "ruler"]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "pencil-case",
+        "wrongAnswers": ["ruler", "eraser", "sponge"]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "pin",
+        "wrongAnswers": ["bulletin-board", "whiteboard", "spoon"]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-2",
+      "questionData": {
+        "imageName": "ruler",
+        "wrongAnswers": ["pencil-case", "stapler", "paper-clip"]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "swing",
+        "wrongAnswers": ["fountain", "desk-chair", "spoon"]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "whiteboard",
+        "wrongAnswers": ["bulletin-board", "pin", "sponge"]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-2",
+      "questionData": {
+        "imageName": "stapler",
+        "wrongAnswers": ["paper-clip", "ruler", "glue"]
+      }
+    }
+  ]
+}

@@ -1,0 +1,128 @@
+[
+    {
+      "auxiliary": "be",
+      "type": "primary",
+      "level": "A1",
+      "categories": ["states", "continuous tenses"]
+    },
+    {
+      "auxiliary": "am",
+      "type": "primary",
+      "level": "A1",
+      "categories": ["states", "present continuous"]
+    },
+    {
+      "auxiliary": "are",
+      "type": "primary",
+      "level": "A1",
+      "categories": ["states", "present continuous"]
+    },
+    {
+      "auxiliary": "is",
+      "type": "primary",
+      "level": "A1",
+      "categories": ["states", "present continuous"]
+    },
+    {
+      "auxiliary": "was",
+      "type": "primary",
+      "level": "A1",
+      "categories": ["past states", "past continuous"]
+    },
+    {
+      "auxiliary": "were",
+      "type": "primary",
+      "level": "A1",
+      "categories": ["past states", "past continuous"]
+    },
+    {
+      "auxiliary": "have",
+      "type": "primary",
+      "level": "A1",
+      "categories": ["possession", "perfect tenses"]
+    },
+    {
+      "auxiliary": "has",
+      "type": "primary",
+      "level": "A1",
+      "categories": ["possession", "perfect tenses"]
+    },
+    {
+      "auxiliary": "had",
+      "type": "primary",
+      "level": "A2",
+      "categories": ["past possession", "past perfect"]
+    },
+    {
+      "auxiliary": "do",
+      "type": "primary",
+      "level": "A1",
+      "categories": ["questions", "negations"]
+    },
+    {
+      "auxiliary": "does",
+      "type": "primary",
+      "level": "A1",
+      "categories": ["questions", "negations"]
+    },
+    {
+      "auxiliary": "did",
+      "type": "primary",
+      "level": "A1",
+      "categories": ["past questions", "past negations"]
+    },
+    {
+      "auxiliary": "can",
+      "type": "modal",
+      "level": "A1",
+      "categories": ["ability", "permission"]
+    },
+    {
+      "auxiliary": "could",
+      "type": "modal",
+      "level": "A2",
+      "categories": ["past ability", "polite requests"]
+    },
+    {
+      "auxiliary": "will",
+      "type": "modal",
+      "level": "A1",
+      "categories": ["future plans", "promises"]
+    },
+    {
+      "auxiliary": "would",
+      "type": "modal",
+      "level": "A2",
+      "categories": ["hypothetical", "polite requests"]
+    },
+    {
+      "auxiliary": "shall",
+      "type": "modal",
+      "level": "B1",
+      "categories": ["suggestions", "formal future"]
+    },
+    {
+      "auxiliary": "should",
+      "type": "modal",
+      "level": "A2",
+      "categories": ["advice", "obligation"]
+    },
+    {
+      "auxiliary": "may",
+      "type": "modal",
+      "level": "A2",
+      "categories": ["possibility", "formal permission"]
+    },
+    {
+      "auxiliary": "might",
+      "type": "modal",
+      "level": "A2",
+      "categories": ["possibility", "uncertainty"]
+    },
+    {
+      "auxiliary": "must",
+      "type": "modal",
+      "level": "A1",
+      "categories": ["strong obligation", "deduction"]
+    }
+  ]

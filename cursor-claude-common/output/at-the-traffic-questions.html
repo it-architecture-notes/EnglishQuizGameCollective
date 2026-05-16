@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>at-the-traffic — level tables</title>
+  <style>
+    body { font-family: system-ui, -apple-system, Segoe UI, Roboto, sans-serif; margin: 16px; background: #f5f5f5; }
+    h1 { font-size: 1.25rem; margin-bottom: 12px; }
+    h2 { font-size: 1.1rem; margin-top: 24px; margin-bottom: 8px; }
+    .wrap { overflow-x: auto; background: #fff; padding: 12px; border-radius: 8px; box-shadow: 0 1px 3px rgba(0,0,0,.08); margin-bottom: 16px; }
+    table { border-collapse: collapse; width: 100%; font-size: 13px; table-layout: fixed; }
+    th, td { border: 1px solid #c8c8c8; padding: 8px 10px; vertical-align: top; text-align: left; word-wrap: break-word; }
+    th { background: #e8e8e8; font-weight: 600; white-space: nowrap; }
+    tr:nth-child(even) td { background: #fafafa; }
+    .wrap.template-counts { max-width: 28rem; }
+    .wrap.word-frequency { max-width: 40rem; }
+    </style>
+</head>
+<body>
+  <h1>at-the-traffic — questions</h1>
+  <h2>Questions</h2>
+  <div class="wrap">
+    <table>
+<thead><tr><th>#</th><th>Template</th><th>Line 1 / Prompt</th><th>Line 2</th><th>Answer</th><th>English (translate)</th><th>Audio</th></tr></thead>
+<tbody><tr><td>1</td><td>imageQuizTemplate-1</td><td>image: crosswalk</td><td></td><td>crosswalk</td><td></td><td></td></tr><tr><td>2</td><td>ConvoTemplate-1</td><td>Do you know how to _____ a car?</td><td>Yes, I can _____ safely.</td><td>drive</td><td></td><td>audio_file1: do-you-know-how-to-drive-a-car-convo · audio_file2: yes-i-can-drive-safely-convo</td></tr><tr><td>3</td><td>ConvoTemplate-1</td><td>Don&#x27;t cross the road when the traffic light is red.</td><td>I know it&#x27;s ______.</td><td>dangerous</td><td></td><td>audio_file1: don-t-cross-the-road-when-the-traffic-light-is-red-convo · audio_file2: i-know-it-s-dangerous-convo</td></tr><tr><td>4</td><td>imageQuizTemplate-1</td><td>image: road</td><td></td><td>road</td><td></td><td></td></tr><tr><td>5</td><td>WordPairs</td><td>but; before; or; because</td><td>word pairs</td><td>match all pairs</td><td></td><td></td></tr><tr><td>6</td><td>DialogueCompletion</td><td>What do you do before crossing the road?</td><td></td><td>look left and right</td><td></td><td>audio_file1: what-do-you-do-before-crossing-the-road-convo · audio_file2: look-left-and-right-convo</td></tr><tr><td>7</td><td>AppearDisappear</td><td>Let&#x27;s walk green is safe.</td><td></td><td>-</td><td></td><td>audio_file: let-s-walk-green-is-safe-convo</td></tr><tr><td>8</td><td>imageQuizTemplate-1</td><td>image: sidewalk</td><td></td><td>sidewalk</td><td></td><td></td></tr><tr><td>9</td><td>imageQuizTemplate-1</td><td>image: traffic-light</td><td></td><td>traffic-light</td><td></td><td></td></tr><tr><td>10</td><td>SentenceBuilder</td><td>This intersection is very busy</td><td></td><td>This intersection is very busy</td><td></td><td>audio_file: this-intersection-is-very-busy-convo</td></tr><tr><td>11</td><td>imageQuizTemplate-1</td><td>image: tunnel</td><td></td><td>tunnel</td><td></td><td></td></tr><tr><td>12</td><td>ClozeSequence</td><td>_____, it&#x27;s a school zone.</td><td></td><td>slow down</td><td></td><td>audio_file: slow-down-it-s-a-school-zone-convo</td></tr><tr><td>13</td><td>GrammarForm</td><td>We ____ the tunnel.</td><td></td><td>are entering</td><td></td><td></td></tr><tr><td>14</td><td>ClozeSequence</td><td>Please _____ the car _____ us.</td><td></td><td>follow, in front of</td><td></td><td>audio_file: please-follow-the-car-in-front-of-us-convo</td></tr><tr><td>15</td><td>ClozeSequence</td><td>It&#x27;s a _____ and ______ road.</td><td></td><td>long, narrow</td><td></td><td>audio_file: it-s-a-long-and-narrow-road-convo</td></tr></tbody>
+</table>
+  </div>
+
+  <h2>at-the-traffic — translations</h2>
+  <div class="wrap">
+    <table>
+<thead><tr><th>#</th><th>English word</th><th>ar</th><th>de</th><th>es</th><th>fr</th><th>hi</th><th>it</th><th>ja</th><th>ko</th><th>pt</th><th>ru</th><th>tr</th><th>zh</th></tr></thead>
+<tbody><tr><td>1</td><td>to drive</td><td>القيادة</td><td>fahren</td><td>conducir</td><td>conduire</td><td>चालक बनाना</td><td>guidare</td><td>運転する</td><td>운전하다</td><td>dirigir</td><td>водить</td><td>sürmek</td><td>驾驶</td></tr><tr><td>2</td><td>dangerous</td><td>خطير</td><td>gefährlich</td><td>peligroso</td><td>dangereux</td><td>खतरनाक</td><td>pericoloso</td><td>危険な</td><td>위험한</td><td>perigoso</td><td>опасный</td><td>tehlikeli</td><td>危险的</td></tr><tr><td>3</td><td>slow down</td><td>تقليل</td><td>langsamer fahren</td><td>pausar</td><td>ralentir</td><td>धीमा करना</td><td>rallentare</td><td>減速する</td><td>감속하다</td><td>pausar</td><td>замедлить</td><td>yavaşlamak   </td><td>减速</td></tr><tr><td>4</td><td>busy</td><td>مشغول</td><td>beschäftigt</td><td>ocupado</td><td>occupé</td><td>व्यस्त</td><td>occupato</td><td>忙しい</td><td>바쁜</td><td>ocupado</td><td>занят</td><td>meşgul</td><td>忙碌的</td></tr><tr><td>5</td><td>to follow</td><td>تتبع</td><td>folgen</td><td>seguir</td><td>suivre</td><td>अनुसरण करना</td><td>seguire</td><td>追う</td><td>따라가다</td><td>seguir</td><td>следовать</td><td>takip etmek</td><td>跟随</td></tr><tr><td>6</td><td>in front of</td><td>أرخص</td><td>billig</td><td>barato</td><td>bon marché</td><td>अमनी</td><td>economico</td><td>安い</td><td>싸다</td><td>barato</td><td>дешевый</td><td>önünde</td><td>便宜</td></tr><tr><td>7</td><td>long</td><td>طويل</td><td>kommen</td><td>largo</td><td>long</td><td>दूर</td><td>lungo</td><td>長い</td><td>길다</td><td>longo</td><td>длинный</td><td>uzun</td><td>长的</td></tr><tr><td>8</td><td>narrow</td><td>ضيق</td><td>eng</td><td>estrecho</td><td>étroit</td><td>छोटा</td><td>stretto</td><td>狭い</td><td>좁다</td><td>estreito</td><td>узкий</td><td>dar</td><td>狭窄的</td></tr><tr><td>9</td><td>only</td><td>فقط</td><td>nur</td><td>sólo</td><td>seulement</td><td>केवल</td><td>solo</td><td>だけ</td><td>오직</td><td>só</td><td>только</td><td>sadece</td><td>只有</td></tr><tr><td>10</td><td>to cross</td><td>تخطى</td><td>überqueren</td><td>cruzar</td><td>croiser</td><td>पार करना</td><td>attraversare</td><td>渡る</td><td>건너다</td><td>atravessar</td><td>пересекать</td><td>geçmek</td><td>穿过</td></tr><tr><td>11</td><td>to enter</td><td>دخول</td><td>eintreten</td><td>entrar</td><td>entrer</td><td>चले जाना</td><td>entrare</td><td>入る</td><td>들어가다</td><td>entrar</td><td>входить</td><td>girmek</td><td>进入</td></tr></tbody>
+</table>
+  </div>
+
+  <h2>Template counts</h2>
+  <div class="wrap template-counts">
+    <table>
+<thead><tr><th>Template</th><th>Count in level</th></tr></thead>
+<tbody><tr><td>AppearDisappear</td><td>1</td></tr><tr><td>ClozeSequence</td><td>3</td></tr><tr><td>ConvoTemplate-1</td><td>2</td></tr><tr><td>DialogueCompletion</td><td>1</td></tr><tr><td>GrammarForm</td><td>1</td></tr><tr><td>imageQuizTemplate-1</td><td>5</td></tr><tr><td>imageQuizTemplate-2</td><td>0</td></tr><tr><td>imageQuizTemplate-3</td><td>0</td></tr><tr><td>imageQuizTemplate-SentenceChoice</td><td>0</td></tr><tr><td>SentenceBuilder</td><td>1</td></tr><tr><td>WordPairs</td><td>1</td></tr></tbody>
+</table>
+  </div>
+
+  <h2>Word frequency (questions.json; excludes template, audio_file*, WordPairs translations, distractors, wrongAnswers)</h2>
+  <div class="wrap word-frequency">
+    <table>
+<thead><tr><th>word</th><th>count</th></tr></thead>
+<tbody><tr><td>the</td><td>5</td></tr><tr><td>road</td><td>4</td></tr><tr><td>a</td><td>3</td></tr><tr><td>do</td><td>3</td></tr><tr><td>is</td><td>3</td></tr><tr><td>it&#x27;s</td><td>3</td></tr><tr><td>and</td><td>2</td></tr><tr><td>before</td><td>2</td></tr><tr><td>car</td><td>2</td></tr><tr><td>i</td><td>2</td></tr><tr><td>know</td><td>2</td></tr><tr><td>tunnel</td><td>2</td></tr><tr><td>you</td><td>2</td></tr><tr><td>alex</td><td>1</td></tr><tr><td>are</td><td>1</td></tr><tr><td>because</td><td>1</td></tr><tr><td>beth</td><td>1</td></tr><tr><td>busy</td><td>1</td></tr><tr><td>but</td><td>1</td></tr><tr><td>can</td><td>1</td></tr><tr><td>cross</td><td>1</td></tr><tr><td>crossing</td><td>1</td></tr><tr><td>crosswalk</td><td>1</td></tr><tr><td>dangerous</td><td>1</td></tr><tr><td>daniel</td><td>1</td></tr><tr><td>don&#x27;t</td><td>1</td></tr><tr><td>down</td><td>1</td></tr><tr><td>drive</td><td>1</td></tr><tr><td>entering</td><td>1</td></tr><tr><td>follow</td><td>1</td></tr><tr><td>front</td><td>1</td></tr><tr><td>green</td><td>1</td></tr><tr><td>how</td><td>1</td></tr><tr><td>in</td><td>1</td></tr><tr><td>intersection</td><td>1</td></tr><tr><td>left</td><td>1</td></tr><tr><td>let&#x27;s</td><td>1</td></tr><tr><td>light</td><td>1</td></tr><tr><td>lily</td><td>1</td></tr><tr><td>long</td><td>1</td></tr><tr><td>look</td><td>1</td></tr><tr><td>narrow</td><td>1</td></tr><tr><td>of</td><td>1</td></tr><tr><td>omar</td><td>1</td></tr><tr><td>or</td><td>1</td></tr><tr><td>please</td><td>1</td></tr><tr><td>red</td><td>1</td></tr><tr><td>right</td><td>1</td></tr><tr><td>safe</td><td>1</td></tr><tr><td>safely</td><td>1</td></tr><tr><td>sarah</td><td>1</td></tr><tr><td>school</td><td>1</td></tr><tr><td>sidewalk</td><td>1</td></tr><tr><td>slow</td><td>1</td></tr><tr><td>this</td><td>1</td></tr><tr><td>to</td><td>1</td></tr><tr><td>traffic</td><td>1</td></tr><tr><td>traffic-light</td><td>1</td></tr><tr><td>us</td><td>1</td></tr><tr><td>very</td><td>1</td></tr><tr><td>walk</td><td>1</td></tr><tr><td>we</td><td>1</td></tr><tr><td>what</td><td>1</td></tr><tr><td>when</td><td>1</td></tr><tr><td>yes</td><td>1</td></tr><tr><td>zone</td><td>1</td></tr></tbody>
+</table>
+  </div>
+
+</body>
+</html>

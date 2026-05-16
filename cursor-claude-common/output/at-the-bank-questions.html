@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>at-the-bank — level tables</title>
+  <style>
+    body { font-family: system-ui, -apple-system, Segoe UI, Roboto, sans-serif; margin: 16px; background: #f5f5f5; }
+    h1 { font-size: 1.25rem; margin-bottom: 12px; }
+    h2 { font-size: 1.1rem; margin-top: 24px; margin-bottom: 8px; }
+    .wrap { overflow-x: auto; background: #fff; padding: 12px; border-radius: 8px; box-shadow: 0 1px 3px rgba(0,0,0,.08); margin-bottom: 16px; }
+    table { border-collapse: collapse; width: 100%; font-size: 13px; table-layout: fixed; }
+    th, td { border: 1px solid #c8c8c8; padding: 8px 10px; vertical-align: top; text-align: left; word-wrap: break-word; }
+    th { background: #e8e8e8; font-weight: 600; white-space: nowrap; }
+    tr:nth-child(even) td { background: #fafafa; }
+    .wrap.template-counts { max-width: 28rem; }
+    .wrap.word-frequency { max-width: 40rem; }
+    </style>
+</head>
+<body>
+  <h1>at-the-bank — questions</h1>
+  <h2>Questions</h2>
+  <div class="wrap">
+    <table>
+<thead><tr><th>#</th><th>Template</th><th>Line 1 / Prompt</th><th>Line 2</th><th>Answer</th><th>English (translate)</th><th>Audio</th></tr></thead>
+<tbody><tr><td>1</td><td>imageQuizTemplate-1</td><td>image: atm</td><td></td><td>atm</td><td></td><td></td></tr><tr><td>2</td><td>ConvoTemplate-1</td><td>What does she do in the bank?</td><td>She _____ money.</td><td>deposits</td><td></td><td>audio_file1: what-does-she-do-in-the-bank-convo · audio_file2: she-deposits-money-convo</td></tr><tr><td>3</td><td>ConvoTemplate-1</td><td>I need to ______ some cash.</td><td>How much do you need?</td><td>withdraw</td><td></td><td>audio_file1: i-need-to-withdraw-some-cash-convo · audio_file2: how-much-do-you-need-convo</td></tr><tr><td>4</td><td>imageQuizTemplate-1</td><td>image: cheque</td><td></td><td>cheque</td><td></td><td></td></tr><tr><td>5</td><td>WordPairs</td><td>if; though; after; never</td><td>word pairs</td><td>match all pairs</td><td></td><td></td></tr><tr><td>6</td><td>DialogueCompletion</td><td>What do you want to do with your $10?</td><td></td><td>I want to save it</td><td></td><td>audio_file1: what-do-you-want-to-do-with-your-10-convo · audio_file2: i-want-to-save-it-convo</td></tr><tr><td>7</td><td>AppearDisappear</td><td>After work, I will visit the bank.</td><td></td><td>-</td><td></td><td>audio_file: after-work-i-will-visit-the-bank-convo</td></tr><tr><td>8</td><td>imageQuizTemplate-1</td><td>image: teller-clerk</td><td></td><td>teller-clerk</td><td></td><td></td></tr><tr><td>9</td><td>imageQuizTemplate-1</td><td>image: wallet</td><td></td><td>wallet</td><td></td><td></td></tr><tr><td>10</td><td>SentenceBuilder</td><td>Are you sure to leave?</td><td></td><td>Are you sure to leave?</td><td></td><td>audio_file: are-you-sure-to-leave-convo</td></tr><tr><td>11</td><td>imageQuizTemplate-1</td><td>image: tunnel</td><td></td><td>tunnel</td><td></td><td></td></tr><tr><td>12</td><td>ClozeSequence</td><td>Please _____ this form</td><td></td><td>fill out</td><td></td><td>audio_file: please-fill-out-this-form-convo</td></tr><tr><td>13</td><td>GrammarForm</td><td>I _____ my money carefully tomorrow.</td><td></td><td>will count</td><td></td><td></td></tr><tr><td>14</td><td>ClozeSequence</td><td>Please ____ here; it is the ____ way to keep your money safe.</td><td></td><td>sign, best</td><td></td><td>audio_file: please-sign-here-it-is-the-best-way-to-keep-your-money-safe-convo</td></tr><tr><td>15</td><td>ClozeSequence</td><td>I want to _____ a new _____ please</td><td></td><td>open, account</td><td></td><td>audio_file: i-want-to-open-a-new-account-please-convo</td></tr></tbody>
+</table>
+  </div>
+
+  <h2>at-the-bank — translations</h2>
+  <div class="wrap">
+    <table>
+<thead><tr><th>#</th><th>English word</th><th>ar</th><th>de</th><th>es</th><th>fr</th><th>hi</th><th>it</th><th>ja</th><th>ko</th><th>pt</th><th>ru</th><th>tr</th><th>zh</th></tr></thead>
+<tbody><tr><td>1</td><td>to deposit</td><td>توديع</td><td>einzahlen</td><td>depositar</td><td>déposer</td><td>जमा करना</td><td>deposito</td><td>預金する</td><td>예금하다</td><td>depositar</td><td>вкладывать</td><td>yatırmak</td><td>存款</td></tr><tr><td>2</td><td>to withdraw money</td><td>سحب المال</td><td>Geld auszahlen</td><td>sacar dinero</td><td>retirer de l&#x27;argent</td><td>धन निकास करना</td><td>prelevare denaro</td><td>お金を引き出す</td><td>출금하다</td><td>retirar dinheiro</td><td>снять деньги</td><td>paranı çekmek</td><td>提取现金</td></tr><tr><td>3</td><td>to pay</td><td>دفع</td><td>bezahlen</td><td>pagar</td><td>payer</td><td>भुगतान करना</td><td>pagare</td><td>支払う</td><td>지불하다</td><td>pagar</td><td>платить</td><td>ödemek</td><td>支付</td></tr><tr><td>4</td><td>to visit</td><td>زيارة</td><td>besuchen</td><td>visitar</td><td>visiter</td><td>दृष्टि देखना</td><td>visitare</td><td>訪問する</td><td>방문하다</td><td>visitar</td><td>посетить</td><td>ziyaret etmek</td><td>访问</td></tr><tr><td>5</td><td>sure</td><td>متأكد</td><td>sicher</td><td>seguro</td><td>sûr</td><td>आश्वासन</td><td>sicuro</td><td>確か</td><td>확실</td><td>seguro</td><td>уверен</td><td>emin</td><td>确定</td></tr><tr><td>6</td><td>to count</td><td>حساب</td><td>zählen</td><td>contar</td><td>compter</td><td>गिनना</td><td>contare</td><td>数える</td><td>세다</td><td>contar</td><td>считать</td><td>saymak</td><td>计算</td></tr><tr><td>7</td><td>account</td><td>حساب</td><td>Konto</td><td>cuenta</td><td>compte</td><td>खाता</td><td>conto</td><td>口座</td><td>계좌</td><td>conta</td><td>счет</td><td>hesap</td><td>账户</td></tr><tr><td>8</td><td>to sign</td><td>توقيع</td><td>signieren</td><td>firmar</td><td>signer</td><td>हस्ताक्षर करना</td><td>firmare</td><td>署名する</td><td>서명하다</td><td>assinar</td><td>подписывать</td><td>imzalamak</td><td>签名</td></tr><tr><td>9</td><td>best</td><td>الأفضل</td><td>das Beste</td><td>el mejor</td><td>le meilleur</td><td>सबसे अच्छा</td><td>il migliore</td><td>最良</td><td>최고</td><td>o melhor</td><td>лучший</td><td>en iyi</td><td>最好的</td></tr></tbody>
+</table>
+  </div>
+
+  <h2>Template counts</h2>
+  <div class="wrap template-counts">
+    <table>
+<thead><tr><th>Template</th><th>Count in level</th></tr></thead>
+<tbody><tr><td>AppearDisappear</td><td>1</td></tr><tr><td>ClozeSequence</td><td>3</td></tr><tr><td>ConvoTemplate-1</td><td>2</td></tr><tr><td>DialogueCompletion</td><td>1</td></tr><tr><td>GrammarForm</td><td>1</td></tr><tr><td>imageQuizTemplate-1</td><td>5</td></tr><tr><td>imageQuizTemplate-2</td><td>0</td></tr><tr><td>imageQuizTemplate-3</td><td>0</td></tr><tr><td>imageQuizTemplate-SentenceChoice</td><td>0</td></tr><tr><td>SentenceBuilder</td><td>1</td></tr><tr><td>WordPairs</td><td>1</td></tr></tbody>
+</table>
+  </div>
+
+  <h2>Word frequency (questions.json; excludes template, audio_file*, WordPairs translations, distractors, wrongAnswers)</h2>
+  <div class="wrap word-frequency">
+    <table>
+<thead><tr><th>word</th><th>count</th></tr></thead>
+<tbody><tr><td>to</td><td>6</td></tr><tr><td>i</td><td>5</td></tr><tr><td>do</td><td>4</td></tr><tr><td>money</td><td>3</td></tr><tr><td>please</td><td>3</td></tr><tr><td>the</td><td>3</td></tr><tr><td>want</td><td>3</td></tr><tr><td>you</td><td>3</td></tr><tr><td>after</td><td>2</td></tr><tr><td>bank</td><td>2</td></tr><tr><td>it</td><td>2</td></tr><tr><td>need</td><td>2</td></tr><tr><td>she</td><td>2</td></tr><tr><td>what</td><td>2</td></tr><tr><td>will</td><td>2</td></tr><tr><td>your</td><td>2</td></tr><tr><td>10</td><td>1</td></tr><tr><td>a</td><td>1</td></tr><tr><td>account</td><td>1</td></tr><tr><td>alex</td><td>1</td></tr><tr><td>are</td><td>1</td></tr><tr><td>atm</td><td>1</td></tr><tr><td>best</td><td>1</td></tr><tr><td>beth</td><td>1</td></tr><tr><td>carefully</td><td>1</td></tr><tr><td>cash</td><td>1</td></tr><tr><td>cheque</td><td>1</td></tr><tr><td>count</td><td>1</td></tr><tr><td>daniel</td><td>1</td></tr><tr><td>deposits</td><td>1</td></tr><tr><td>does</td><td>1</td></tr><tr><td>fill</td><td>1</td></tr><tr><td>form</td><td>1</td></tr><tr><td>here</td><td>1</td></tr><tr><td>how</td><td>1</td></tr><tr><td>if</td><td>1</td></tr><tr><td>in</td><td>1</td></tr><tr><td>is</td><td>1</td></tr><tr><td>keep</td><td>1</td></tr><tr><td>leave</td><td>1</td></tr><tr><td>lily</td><td>1</td></tr><tr><td>much</td><td>1</td></tr><tr><td>my</td><td>1</td></tr><tr><td>never</td><td>1</td></tr><tr><td>new</td><td>1</td></tr><tr><td>omar</td><td>1</td></tr><tr><td>open</td><td>1</td></tr><tr><td>out</td><td>1</td></tr><tr><td>safe</td><td>1</td></tr><tr><td>sarah</td><td>1</td></tr><tr><td>save</td><td>1</td></tr><tr><td>sign</td><td>1</td></tr><tr><td>some</td><td>1</td></tr><tr><td>sure</td><td>1</td></tr><tr><td>teller-clerk</td><td>1</td></tr><tr><td>this</td><td>1</td></tr><tr><td>though</td><td>1</td></tr><tr><td>tomorrow</td><td>1</td></tr><tr><td>tunnel</td><td>1</td></tr><tr><td>visit</td><td>1</td></tr><tr><td>wallet</td><td>1</td></tr><tr><td>way</td><td>1</td></tr><tr><td>with</td><td>1</td></tr><tr><td>withdraw</td><td>1</td></tr><tr><td>work</td><td>1</td></tr></tbody>
+</table>
+  </div>
+
+</body>
+</html>

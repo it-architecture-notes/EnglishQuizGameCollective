@@ -1,0 +1,244 @@
+{
+  "levelQuestions": [
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "scales",
+        "wrongAnswers": [
+          "shaving-razor",
+          "shower",
+          "shower-curtains"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "bathrobe",
+        "wrongAnswers": [
+          "scales",
+          "shower",
+          "skirts"
+        ]
+      }
+    },
+    {
+      "template": "AppearDisappear",
+      "questionData": {
+        "words": "I brush my teeth twice daily",
+        "distractors": [
+          "once",
+          "comb",
+          "hair",
+          "tooth"
+        ]
+      },
+      "audio_file": "i-brush-my-teeth-twice-daily-convo"
+    },
+    
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "shower-curtains",
+        "wrongAnswers": [
+          "scales",
+          "bathrobe",
+          "bath-mat"
+        ]
+      }
+    },
+    {
+      "template":"ClozeSequence",
+      "questionData": {
+        "sentence": "The bathroom floor is wet, so please walk _____.",
+        "answers": [
+          "carefully"
+        ],
+        "distractors": [
+          "gently",
+          "soft",
+          "fast"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "shaving-razor",
+        "wrongAnswers": [
+          "bathrobe",
+          "scales",
+          "toothbrush"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "sink",
+        "wrongAnswers": [
+          "scales",
+          "shaving-razor",
+          "shower"
+        ]
+      }
+    },
+    {
+      "template": "WordPairs",
+      "questionData": {
+        "english_words": [
+          "take a shower",
+          "clean",
+          "to wash",
+          "comb hair"
+        ],
+        "translations": [
+          {
+            "tr":"duş almak",
+            "es":"ducharse",
+            "fr":"se laver",
+            "de":"duschen gehen",
+            "it":"lavarsi",
+            "pt":"lavar-se",
+            "ru":"мыться",
+            "zh":"洗澡",
+            "ja":"洗う",
+            "ko":"씻다",
+            "ar":"غسل",
+            "hi":"साफ़ करना"
+          },
+          {
+            "tr":"temiz",
+              "es":"limpio",
+            "fr":"propre",
+            "de":"sauber",
+            "it":"pulito",
+            "pt":"limpo",
+            "ru":"чистый",
+            "zh":"干净的",
+            "ja":"綺麗",
+            "ko":"깨끗",
+            "ar":"نظيف",
+            "hi":"साफ़ करना"
+          },
+          {
+            "tr":"yıkamak",
+            "es":"lavar",
+            "fr":"laver",
+            "de":"waschen",
+            "it":"lavare",
+            "pt":"lavar",
+            "ru":"мойка",
+            "zh":"清洗",
+            "ja":"洗う",
+            "ko":"씻다",
+            "ar":"غسل",
+            "hi":"साफ़ करना"
+          },
+          {
+            "tr":"saçını taramak",
+            "es":"peinarse",
+            "fr":"se peigner",
+            "de":"sich kämmen",
+            "it":"tagliare i capelli",
+            "pt":"pentear",
+            "ru":"пытать волосы",
+            "zh":"梳头发",
+            "ja":"髪を梳く",
+            "ko":"머리를 빗다",
+            "ar":"شطف الشعر",
+            "hi":"शाखा को साफ़ करना"
+          }
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-2",
+      "questionData": {
+        "imageName": "shower",
+        "wrongAnswers": [
+          "towel",
+          "scales",
+          "bathtub"
+        ]
+      },
+      "answer": "shower"
+    },
+    {
+      "template": "ClozeSequence",
+      "questionData": {
+        "sentence": "She ____ her hands to maintain good _____.",
+        "answers": [
+          "washes",
+          "hygiene"
+        ],
+        "distractors": [
+          "clean",
+          "health",
+          "brush",
+          "mops"
+        ]
+      },
+      "audio_file": "she-washes-her-hands-to-maintain-good-hygiene-convo"
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "comb",
+        "wrongAnswers": [
+          "hair-dryer",
+          "shaving-razor",
+          "fork"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-2",
+      "questionData": {
+        "imageName": "towel",
+        "wrongAnswers": [
+          "bathrobe",
+          "scales",
+          "bathtub"
+        ]
+      },
+      "answer": "towel"
+    },
+    {
+      "template": "DialogueCompletion",
+      "questionData": {
+        "character1": "Grace",
+        "character2": "Nora",
+        "line1": "I’m going to take a shower.",
+        "answer": "Okay, don’t forget your towel.",
+        "distractors": [
+          "Bursh your teeth carefully",
+          "The soap is next to the sink.",
+          "It smells very fresh in here."
+        ]
+      },
+      "audio_file1": "im-going-to-take-a-shower-convo",
+      "audio_file2": "okay-dont-forget-your-towel-convo"
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "toothbrush",
+        "wrongAnswers": [
+          "scales",
+          "shaving-razor",
+          "shower"
+        ]
+      }
+    },
+    {
+      "template":"AppearDisappear",
+      "questionData": {
+        "words": "I use a towel to dry my hands.",
+        "distractors": ["brush","clean","take","make","bathtub"
+        ]
+      },
+      "audio_file": "i-use-a-towel-to-dry-my-hands-convo"
+    }
+  ]
+}

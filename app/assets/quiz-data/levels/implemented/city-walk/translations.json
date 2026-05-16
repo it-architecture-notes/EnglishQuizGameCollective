@@ -1,0 +1,174 @@
+{
+    "translations_list": [
+        {
+            "english_word": "to look",
+            "translations": {
+                "tr": "bakmak",
+                "es": "mirar",
+                "fr": "regarder",
+                "de": "schauen",
+                "it": "guardare",
+                "pt": "olhar",
+                "ru": "смотреть",
+                "zh": "看",
+                "ja": "見る",
+                "ko": "보다",
+                "ar": "نظر",
+                "hi": "देखना"
+            }
+        },
+        {
+            "english_word": "tall",
+            "translations": {
+                "tr": "yüksek",
+                "es": "alto",
+                "fr": "haut",
+                "de": "hoch",
+                "it": "alto",
+                "pt": "alto",
+                "ru": "высокий",
+                "zh": "高的",
+                "ja": "高い",
+                "ko": "높다",
+                "ar": "طويل",
+                "hi": "ऊंचा"
+            }
+        },
+        {
+            "english_word": "to walk",
+            "translations": {
+                "tr": "yürümek",
+                "es": "caminar",
+                "fr": "marcher",
+                "de": "laufen",
+                "it": "camminare",
+                "pt": "caminhar",
+                "ru": "ходить",
+                "zh": "走",
+                "ja": "歩く",
+                "ko": "걷다",
+                "ar": "أمضي",
+                "hi": "चलना"
+            }
+        },
+        {
+            "english_word": "quietly",
+            "translations": {
+                "tr": "sessizce",
+                "es": "silenciosamente",
+                "fr": "silencieusement",
+                "de": "leise",
+                "it": "silenziosamente",
+                "pt": "silenciosamente",
+                "ru": "тихо",
+                "zh": "安静地",
+                "ja": "静かに",
+                "ko": "조용히",
+                "ar": "بصوت ضعيف",
+                "hi": "शांतिपूर्ण"
+            }
+        },
+        {
+            "english_word": "to turn right",
+            "translations": {
+                "tr": "sağa dönmek",
+                "es": "girar a la derecha",
+                "fr": "tourner à droite",
+                "de": "rechts drehen",
+                "it": "girare a destra",
+                "pt": "virar à direita",
+                "ru": "повернуть направо",
+                "zh": "向右转",
+                "ja": "右に曲がる",
+                "ko": "오른쪽으로 회전",
+                "ar": "التحول إلى اليمين",
+                "hi": "दाईं ओर मुड़ना"
+            }
+        },
+        {
+            "english_word": "to follow",
+            "translations": {
+                "tr": "takip etmek",
+                "es": "seguir",
+                "fr": "suivre",
+                "de": "folgen",
+                "it": "seguire",
+                "pt": "seguir",
+                "ru": "следовать",
+                "zh": "跟随",
+                "ja": "従う",
+                "ko": "따라가다",
+                "ar": "اتبع",
+                "hi": "अनुसरण करना"
+            }
+        },
+        {
+            "english_word": "to let",
+            "translations": {
+                "tr": "izin vermek",
+                "es": "dejar",
+                "fr": "laisser",
+                "de": "lassen",
+                "it": "lasciare",
+                "pt": "deixar",
+                "ru": "позволить",
+                "zh": "让",
+                "ja": "許可する",
+                "ko": "허락하다",
+                "ar": "السماح",
+                "hi": "अनुमति देना"
+            }
+        },
+        {
+            "english_word": "to run",
+            "translations": {
+                "tr": "koşmak",
+                "es": "correr",
+                "fr": "courir",
+                "de": "laufen",
+                "it": "correre",
+                "pt": "correr",
+                "ru": "бежать",
+                "zh": "跑",
+                "ja": "走る",
+                "ko": "달리다",
+                "ar": "الجري",
+                "hi": "दौड़ना"
+            }
+        },
+        {
+            "english_word": "to leave the house",
+            "translations": {
+                "tr": "evden çıkmak",
+                "es": "salir de la casa",
+                "fr": "sortir de la maison",
+                "de": "Haus verlassen",
+                "it": "uscire dalla casa",
+                "pt": "sair da casa",
+                "ru": "выйти из дома",
+                "zh": "离开房子",
+                "ja": "家を出る",
+                "ko": "집에서 나가다",
+                "ar": "الخروج من المنزل",
+                "hi": "घर से बाहर निकलना"
+            }
+        },
+        {
+            "english_word": "always",
+            "translations": {
+                "tr": "her zaman",
+                "es": "siempre",
+                "fr": "toujours",
+                "de": "immer",
+                "it": "sempre",
+                "pt": "sempre",
+                "ru": "всегда",
+                "zh": "总是",
+                "ja": "常に",
+                "ko": "항상",
+                "ar": "دائما",
+                "hi": "हमेशा"
+            }
+        }
+    ]
+}

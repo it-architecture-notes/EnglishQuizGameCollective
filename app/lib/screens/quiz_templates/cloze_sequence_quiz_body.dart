@@ -9,9 +9,10 @@ import '../../widgets/translation_reveal_button.dart';
 /// Returns true when [token] is a blank marker (2+ underscores, nothing else).
 bool _isBlank(String token) => RegExp(r'^_{2,}$').hasMatch(token);
 
-/// Cloze-sequence quiz: shows the full localized sentence with numbered blank
-/// markers as soon as the question appears, then the player fills the blanks
-/// in order by tapping tiles laid out horizontally like a train.
+/// Cloze-sequence quiz: shows the sentence with blank(s) as soon as the
+/// question appears. **Multiple blanks:** fill in order by tapping word tiles
+/// in a horizontal wrap. **Single blank:** full-width [ElevatedButton] choices
+/// like [GrammarFormQuizBody].
 class ClozeSequenceQuizBody extends StatefulWidget {
   const ClozeSequenceQuizBody({
     super.key,
@@ -49,12 +50,24 @@ class _ClozeSequenceQuizBodyState extends State<ClozeSequenceQuizBody> {
   late List<String?> _filled;
   late List<_TileState> _tileStates;
 
+  /// Single-blank mode: MCQ buttons (see [GrammarFormQuizBody]).
+  late List<String> _buttonOptions;
+  late int _buttonCorrectIndex;
+  bool _buttonLocked = false;
+  int? _buttonSelectedIndex;
+
   int _currentBlank = 0;
   bool _failed = false;
   bool _translationPenalized = false;
   bool _audioPlaying = false;
   Map<int, int> _expectedTileBlankIndex = {};
-  bool get _concluded => _failed || _currentBlank >= widget.data.answers.length;
+
+  bool get _singleBlank => widget.data.answers.length == 1;
+
+  bool get _concluded =>
+      _singleBlank
+          ? _buttonLocked
+          : _failed || _currentBlank >= widget.data.answers.length;
 
   @override
   void initState() {
@@ -65,9 +78,20 @@ class _ClozeSequenceQuizBodyState extends State<ClozeSequenceQuizBody> {
         if (_isBlank(_tokens[i])) i
     ];
     _filled = List.filled(_blankIndices.length, null);
-    _tiles = [...widget.data.answers, ...widget.data.distractors]
-      ..shuffle(Random());
-    _tileStates = List.filled(_tiles.length, _TileState.normal);
+
+    if (_singleBlank) {
+      final a = widget.data.answers.first;
+      _buttonOptions = [a, ...widget.data.distractors]..shuffle(Random());
+      _buttonCorrectIndex = _buttonOptions.indexOf(a);
+      _tiles = [];
+      _tileStates = [];
+    } else {
+      _tiles = [...widget.data.answers, ...widget.data.distractors]
+        ..shuffle(Random());
+      _tileStates = List.filled(_tiles.length, _TileState.normal);
+      _buttonOptions = [];
+      _buttonCorrectIndex = 0;
+    }
   }
 
   Future<void> _playAudio() async {
@@ -83,7 +107,23 @@ class _ClozeSequenceQuizBodyState extends State<ClozeSequenceQuizBody> {
     }
   }
 
+  Future<void> _onTranslationRevealedSingle() async {
+    if (_buttonLocked || widget.data.trOk) return;
+    setState(() {
+      _buttonLocked = true;
+      _translationPenalized = true;
+    });
+    widget.onPlayWrong();
+    await _playAudio();
+    if (!mounted) return;
+    widget.onOutcome(false);
+  }
+
   Future<void> _onTranslationRevealed() async {
+    if (_singleBlank) {
+      await _onTranslationRevealedSingle();
+      return;
+    }
     if (_failed || widget.data.trOk) return;
     if (_currentBlank >= widget.data.answers.length) return;
     final newFilled = List<String?>.from(_filled);
@@ -109,6 +149,26 @@ class _ClozeSequenceQuizBodyState extends State<ClozeSequenceQuizBody> {
     await _playAudio();
     if (!mounted) return;
     widget.onOutcome(false);
+  }
+
+  Future<void> _onSingleButtonTap(int i) async {
+    if (_buttonLocked) return;
+    final ok = _buttonOptions[i] == widget.data.answers.first;
+    setState(() {
+      _buttonLocked = true;
+      _buttonSelectedIndex = i;
+    });
+    if (ok) {
+      widget.onPlayCorrect();
+      await _playAudio();
+      if (!mounted) return;
+      widget.onOutcome(true);
+    } else {
+      widget.onPlayWrong();
+      await _playAudio();
+      if (!mounted) return;
+      widget.onOutcome(false);
+    }
   }
 
   Future<void> _onTileTap(int tileIndex) async {
@@ -288,10 +348,115 @@ class _ClozeSequenceQuizBodyState extends State<ClozeSequenceQuizBody> {
     );
   }
 
+  Widget _buildSingleBlankBody(ThemeData theme, ColorScheme cs) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.stretch,
+      children: [
+        TranslationRevealButton(
+          englishItems: widget.data.englishToTranslate,
+          localItems: widget.data.localTranslation,
+          userLanguage: widget.userLanguage,
+          onRevealed: _onTranslationRevealedSingle,
+          enabled: !_audioPlaying,
+        ),
+        if (widget.resolvedImagePath != null) ...[
+          Center(
+            child: ClipRRect(
+              borderRadius: BorderRadius.circular(8),
+              child: Image.asset(
+                widget.resolvedImagePath!,
+                width: 72,
+                height: 72,
+                fit: BoxFit.cover,
+                errorBuilder: (_, __, ___) =>
+                    const SizedBox(width: 72, height: 72),
+              ),
+            ),
+          ),
+          const SizedBox(height: 8),
+        ],
+        Container(
+          padding: const EdgeInsets.all(12),
+          decoration: BoxDecoration(
+            color: cs.surfaceContainerHighest,
+            borderRadius: BorderRadius.circular(12),
+          ),
+          child: Text(
+            widget.data.sentence,
+            style: theme.textTheme.bodyLarge?.copyWith(
+              fontWeight: FontWeight.w600,
+            ),
+            textAlign: TextAlign.center,
+          ),
+        ),
+        const SizedBox(height: 8),
+        if (widget.audioAssetPath != null)
+          FutureBuilder<bool>(
+            future: widget.resolveAudioExists(widget.audioAssetPath!),
+            builder: (context, snap) {
+              final ok = snap.data == true;
+              return Row(
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: [
+                  AudioPlayButton(
+                    isPlaying: _audioPlaying,
+                    onPressed: (!ok || !_concluded)
+                        ? null
+                        : () => _playAudio(),
+                  ),
+                ],
+              );
+            },
+          ),
+        const SizedBox(height: 8),
+        ...List.generate(_buttonOptions.length, (i) {
+          final opt = _buttonOptions[i];
+          final isSel = _buttonSelectedIndex == i;
+          final isCor = _buttonLocked && i == _buttonCorrectIndex;
+          Color? bg;
+          Color? fg;
+          if (_buttonLocked) {
+            if (isCor) {
+              bg = _translationPenalized
+                  ? Colors.blue.shade600
+                  : Colors.green.shade600;
+              fg = Colors.white;
+            } else if (isSel) {
+              bg = Colors.red.shade600;
+              fg = Colors.white;
+            }
+          }
+          return Padding(
+            padding: const EdgeInsets.only(bottom: 10),
+            child: SizedBox(
+              width: double.infinity,
+              height: 48,
+              child: ElevatedButton(
+                onPressed: _buttonLocked ? null : () => _onSingleButtonTap(i),
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: bg,
+                  foregroundColor: fg,
+                  disabledBackgroundColor: bg,
+                  disabledForegroundColor: fg,
+                  minimumSize: const Size(48, 48),
+                ),
+                child: Text(opt, textAlign: TextAlign.center),
+              ),
+            ),
+          );
+        }),
+      ],
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
     final cs = theme.colorScheme;
+
+    if (_singleBlank) {
+      return _buildSingleBlankBody(theme, cs);
+    }
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,

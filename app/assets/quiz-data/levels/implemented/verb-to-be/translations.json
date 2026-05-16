@@ -1,0 +1,72 @@
+{
+    "translations_list": [
+        {
+            "english_word": " who are you?",
+            "translations": {
+                "tr": "sen kimsin?",
+                "es": "¿quién eres?",
+                "fr": "qui es-tu?",
+                "de": "wer bist du?",
+                "it": "chi sei?",
+                "pt": "quem é você?",
+                "ru": "кто ты?",
+                "zh": "你是谁？",
+                "ja": "あなたは誰ですか？",
+                "ko": "너는 누구야?",
+                "ar": "من أنت؟",
+                "hi": "आप कौन हैं?"
+            }
+        },
+        {
+            "english_word": "I am a teacher",
+            "translations": {
+                "tr": "ben bir öğretmenim",
+                "es": "yo soy un profesor",
+                "fr": "je suis un professeur",
+                "de": "ich bin ein Lehrer",
+                "it": "sono un insegnante",
+                "pt": "eu sou um professor",
+                "ru": "я учитель",
+                "zh": "我是老师",
+                "ja": "私は教師です",
+                "ko": "나는 선생님입니다",
+                "ar": "أنا معلم",
+                "hi": "मैं एक शिक्षक हूं"
+            }
+        },
+        {
+            "english_word": "These are my keys",
+            "translations": {
+                "tr": "bunlar benim anahtarlarım",
+                "es": "estas son mis llaves",
+                "fr": "ces sont mes clés",
+                "de": "das sind meine Schlüssel",
+                "it": "queste sono le mie chiavi",
+                "pt": "estes são meus chaves",
+                "ru": "это мои ключи",
+                "zh": "这些是我的钥匙",
+                "ja": "これらは私の鍵です",
+                "ko": "이것들은 내 열쇠들입니다",
+                "ar": "هذه هي كلمات المرور الخاصة بي",
+                "hi": "ये मेरे कुंजिकल हैं"
+            }
+        },
+        {
+            "english_word": "My name is Mike",
+            "translations": {
+                "tr": "benim adım Mike",
+                "es": "mi nombre es Mike",
+                "fr": "mon nom est Mike",
+                "de": "mein name ist Mike",
+                "it": "il mio nome è Mike",
+                "pt": "meu nome é Mike",
+                "ru": "мое имя Mike",
+                "zh": "我的名字是Mike",
+                "ja": "私の名前はMikeです",
+                "ko": "내 이름은 Mike입니다",
+                "ar": "اسمي Mike",
+                "hi": "मेरा नाम Mike है"
+            }
+        }
+    ]
+}

@@ -102,6 +102,10 @@ flutter:
     - assets/quiz-data/levels/market-vegetables-2/
     - assets/quiz-data/levels/market-vegetables-3/
     - assets/quiz-data/levels/market-vegetables-4/
+    - assets/quiz-data/levels/fruits-1/
+    - assets/quiz-data/levels/fruits-2/
+    - assets/quiz-data/levels/vegetables-1/
+    - assets/quiz-data/levels/vegetables-2/
     - assets/quiz-data/levels/nature-1/
     - assets/quiz-data/levels/nature-2/
     - assets/quiz-data/levels/nature-3/
@@ -112,6 +116,8 @@ flutter:
     - assets/quiz-data/levels/school-1/
     - assets/quiz-data/levels/school-2/
     - assets/quiz-data/levels/school-3/
+    - assets/quiz-data/levels/school-items-1/
+    - assets/quiz-data/levels/school-items-2/
     - assets/quiz-data/levels/vehicles/
     - assets/quiz-data/levels/vehicles-2/
     - assets/quiz-data/levels/vehicles-3/
@@ -143,6 +149,8 @@ flutter:
     - assets/quiz-data/levels/expressing-emotions/
     - assets/quiz-data/levels/body-and-health/
     - assets/quiz-data/levels/city-walk/
+    - assets/quiz-data/levels/city-buildings-1/
+    - assets/quiz-data/levels/city-buildings-2/
     - assets/quiz-data/levels/going-to-work/
     - assets/quiz-data/levels/at-the-gas-station/
     - assets/quiz-data/levels/insect-world/

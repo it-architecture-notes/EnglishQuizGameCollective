@@ -35,10 +35,24 @@ Questions table columns:
   - English (translate): questionData.english_to_translate (English strings only)
   - Audio: top-level audio_file, audio_file1, audio_file2 when present
 
+Template summary: a small table with one row per template supported by the game
+(`_KNOWN_TEMPLATES` / `level_config.dart`), and how many questions in this level
+use that exact `template` string (0 if unused). In HTML output this table appears
+after questions and translations; in Markdown / TSV / CSV it appears before the
+questions table.
+
 Translations table (only if translations.json exists and has translations_list):
   - #: row index
   - English word: english_word
   - One column per locale code found across all rows (sorted), values from translations[locale]
+
+HTML only: after template counts, a **Word frequency** table for strings in
+`questions.json` except: each question’s `template` and `audio_file` /
+`audio_file1` / `audio_file2` fields, `questionData.translations` (**WordPairs**
+only), `questionData.distractors`, and `questionData.wrongAnswers`. Other strings
+use the same token rule as
+`tools/update_final_word_counts_from_levels.py` (`[a-z0-9]+(?:[-'][a-z0-9]+)*`,
+case-insensitive, lowercased). Sorted by count descending, then word.
 """
 
 from __future__ import annotations
@@ -49,6 +63,7 @@ import html
 import json
 import re
 import sys
+from collections import Counter
 from pathlib import Path
 
 TABLE_HEADERS = [
@@ -78,6 +93,22 @@ _KNOWN_TEMPLATES = frozenset(
     }
 )
 
+TEMPLATE_COUNT_HEADERS = ["Template", "Count in level"]
+
+WORD_FREQ_HEADERS = ["word", "count"]
+
+# Per-question keys omitted from HTML word-frequency (metadata / assets).
+_QUESTION_ITEM_WORD_FREQ_SKIP_KEYS = frozenset(
+    {"template", "audio_file", "audio_file1", "audio_file2"}
+)
+
+# questionData keys omitted from HTML word-frequency (wrong options).
+_QD_WORD_FREQ_SKIP_KEYS = frozenset({"distractors", "wrongAnswers"})
+
+# Same token pattern as tools/update_final_word_counts_from_levels.py
+_WORD_FREQ_TOKEN_RE = re.compile(r"[a-z0-9]+(?:[-'][a-z0-9]+)*", re.IGNORECASE)
+
+
 _BLANK_CORE_RE = re.compile(r"^_{2,}$")
 
 # Strip before checking blank core so `_____.` / `____?` / `_____!` count as blanks.
@@ -100,6 +131,66 @@ def _is_cloze_blank_token(token: str) -> bool:
 
 def _count_blanks(sentence: str) -> int:
     return sum(1 for t in sentence.split(" ") if _is_cloze_blank_token(t))
+
+
+def collect_word_frequency_rows(questions_json_root: dict) -> list[list[str]]:
+    """
+    String values under questions.json, tokenized (lowercased), except each
+    question’s `template`, `audio_file` / `audio_file1` / `audio_file2`, and in
+    questionData: translations (WordPairs only), distractors, wrongAnswers.
+    Rows sorted by count descending, then word.
+    """
+    counts: Counter[str] = Counter()
+
+    def feed_string(s: str) -> None:
+        s = (s or "").strip()
+        if not s:
+            return
+        for m in _WORD_FREQ_TOKEN_RE.finditer(s):
+            counts[m.group(0).lower()] += 1
+
+    def walk(obj) -> None:
+        if isinstance(obj, str):
+            feed_string(obj)
+        elif isinstance(obj, dict):
+            for v in obj.values():
+                walk(v)
+        elif isinstance(obj, list):
+            for x in obj:
+                walk(x)
+
+    def walk_question_data(qd: dict, template: str) -> None:
+        for k, v in qd.items():
+            if k in _QD_WORD_FREQ_SKIP_KEYS:
+                continue
+            if template == "WordPairs" and k == "translations":
+                continue
+            walk(v)
+
+    root = questions_json_root
+    if not isinstance(root, dict):
+        return []
+
+    for top_k, top_v in root.items():
+        if top_k == "levelQuestions" and isinstance(top_v, list):
+            for item in top_v:
+                if not isinstance(item, dict):
+                    walk(item)
+                    continue
+                tpl = item.get("template")
+                tpl_s = tpl if isinstance(tpl, str) else ""
+                for ik, iv in item.items():
+                    if ik in _QUESTION_ITEM_WORD_FREQ_SKIP_KEYS:
+                        continue
+                    if ik == "questionData" and isinstance(iv, dict):
+                        walk_question_data(iv, tpl_s)
+                    else:
+                        walk(iv)
+        else:
+            walk(top_v)
+
+    order = sorted(counts.items(), key=lambda kv: (-kv[1], kv[0]))
+    return [[w, str(n)] for w, n in order]
 
 
 def repo_root() -> Path:
@@ -507,6 +598,22 @@ def audio_files_cell(item: dict) -> str:
     return " · ".join(segments)
 
 
+def collect_template_count_rows(questions: list) -> list[list[str]]:
+    """
+    One row per template in _KNOWN_TEMPLATES (sorted), value = occurrences of that
+    exact template string in levelQuestions (after validation, only known templates appear).
+    """
+    counts: dict[str, int] = {t: 0 for t in _KNOWN_TEMPLATES}
+    for item in questions:
+        if not isinstance(item, dict):
+            continue
+        t = str(item.get("template", "")).strip()
+        if t in counts:
+            counts[t] += 1
+    order = sorted(counts.keys(), key=str.lower)
+    return [[tpl, str(counts[tpl])] for tpl in order]
+
+
 def collect_rows(questions: list) -> list[list[str]]:
     """One data row = seven plain strings (no format-specific escaping)."""
     rows: list[list[str]] = []
@@ -598,17 +705,30 @@ def collect_translation_rows(translations_path: Path) -> tuple[list[str], list[l
 
 def build_markdown(
     level_name: str,
+    template_count_rows: list[list[str]],
     rows: list[list[str]],
     trans: tuple[list[str], list[list[str]]] | None,
 ) -> str:
     lines = [
         f"# {level_name} questions",
         "",
-        f"## {level_name} — questions",
+        f"## {level_name} — template counts",
         "",
-        "| " + " | ".join(TABLE_HEADERS) + " |",
-        "|" + "|".join(["---:"] + ["---"] * (len(TABLE_HEADERS) - 1)) + "|",
+        "| " + " | ".join(TEMPLATE_COUNT_HEADERS) + " |",
+        "|" + "|".join(["---"] * len(TEMPLATE_COUNT_HEADERS)) + "|",
     ]
+    for r in template_count_rows:
+        esc = [escape_md_cell(c) for c in r]
+        lines.append("| " + " | ".join(esc) + " |")
+    lines.extend(
+        [
+            "",
+            f"## {level_name} — questions",
+            "",
+            "| " + " | ".join(TABLE_HEADERS) + " |",
+            "|" + "|".join(["---:"] + ["---"] * (len(TABLE_HEADERS) - 1)) + "|",
+        ]
+    )
     for r in rows:
         esc = [escape_md_cell(c) for c in r]
         lines.append("| " + " | ".join(esc) + " |")
@@ -637,10 +757,17 @@ def tsv_cell(value: str) -> str:
 
 
 def build_tsv(
+    template_count_rows: list[list[str]],
     rows: list[list[str]],
     trans: tuple[list[str], list[list[str]]] | None,
 ) -> str:
-    out_lines = ["\t".join(tsv_cell(h) for h in TABLE_HEADERS)]
+    out_lines = [
+        "\t".join(tsv_cell(h) for h in TEMPLATE_COUNT_HEADERS),
+    ]
+    for r in template_count_rows:
+        out_lines.append("\t".join(tsv_cell(c) for c in r))
+    out_lines.append("")
+    out_lines.append("\t".join(tsv_cell(h) for h in TABLE_HEADERS))
     for r in rows:
         out_lines.append("\t".join(tsv_cell(c) for c in r))
     if trans:
@@ -653,6 +780,7 @@ def build_tsv(
 
 
 def build_csv(
+    template_count_rows: list[list[str]],
     rows: list[list[str]],
     trans: tuple[list[str], list[list[str]]] | None,
 ) -> str:
@@ -660,6 +788,10 @@ def build_csv(
 
     buf = io.StringIO(newline="")
     w = csv.writer(buf)
+    w.writerow(TEMPLATE_COUNT_HEADERS)
+    for r in template_count_rows:
+        w.writerow(r)
+    w.writerow([])
     w.writerow(TABLE_HEADERS)
     for r in rows:
         w.writerow(r)
@@ -684,8 +816,10 @@ def _html_table(headers: list[str], data_rows: list[list[str]]) -> str:
 
 def build_html(
     level_name: str,
+    template_count_rows: list[list[str]],
     rows: list[list[str]],
     trans: tuple[list[str], list[list[str]]] | None,
+    word_freq_rows: list[list[str]],
 ) -> str:
     style = """
     body { font-family: system-ui, -apple-system, Segoe UI, Roboto, sans-serif; margin: 16px; background: #f5f5f5; }
@@ -696,7 +830,10 @@ def build_html(
     th, td { border: 1px solid #c8c8c8; padding: 8px 10px; vertical-align: top; text-align: left; word-wrap: break-word; }
     th { background: #e8e8e8; font-weight: 600; white-space: nowrap; }
     tr:nth-child(even) td { background: #fafafa; }
+    .wrap.template-counts { max-width: 28rem; }
+    .wrap.word-frequency { max-width: 40rem; }
     """
+    tpl_table = _html_table(TEMPLATE_COUNT_HEADERS, template_count_rows)
     q_table = _html_table(TABLE_HEADERS, rows)
     trans_block = ""
     if trans:
@@ -706,6 +843,19 @@ def build_html(
   <h2>{html.escape(level_name)} — translations</h2>
   <div class="wrap">
     {trans_table}
+  </div>
+"""
+    template_counts_block = f"""
+  <h2>Template counts</h2>
+  <div class="wrap template-counts">
+    {tpl_table}
+  </div>
+"""
+    word_freq_table = _html_table(WORD_FREQ_HEADERS, word_freq_rows)
+    word_freq_block = f"""
+  <h2>Word frequency (questions.json; excludes template, audio_file*, WordPairs translations, distractors, wrongAnswers)</h2>
+  <div class="wrap word-frequency">
+    {word_freq_table}
   </div>
 """
     return f"""<!DOCTYPE html>
@@ -718,10 +868,11 @@ def build_html(
 </head>
 <body>
   <h1>{html.escape(level_name)} — questions</h1>
+  <h2>Questions</h2>
   <div class="wrap">
     {q_table}
   </div>
-{trans_block}
+{trans_block}{template_counts_block}{word_freq_block}
 </body>
 </html>
 """
@@ -734,17 +885,19 @@ def extension_for_format(fmt: str) -> str:
 def render(
     fmt: str,
     level_name: str,
+    template_count_rows: list[list[str]],
     rows: list[list[str]],
     trans: tuple[list[str], list[list[str]]] | None,
+    word_freq_rows: list[list[str]],
 ) -> str:
     if fmt == "md":
-        return build_markdown(level_name, rows, trans)
+        return build_markdown(level_name, template_count_rows, rows, trans)
     if fmt == "tsv":
-        return build_tsv(rows, trans)
+        return build_tsv(template_count_rows, rows, trans)
     if fmt == "csv":
-        return build_csv(rows, trans)
+        return build_csv(template_count_rows, rows, trans)
     if fmt == "html":
-        return build_html(level_name, rows, trans)
+        return build_html(level_name, template_count_rows, rows, trans, word_freq_rows)
     raise ValueError(fmt)
 
 
@@ -803,9 +956,18 @@ def main() -> int:
             print(f"  {line}", file=sys.stderr)
         return 1
 
+    template_count_rows = collect_template_count_rows(questions)
     rows = collect_rows(questions)
     trans = collect_translation_rows(translations_path)
-    body = render(args.format, level_name, rows, trans)
+    word_freq_rows = collect_word_frequency_rows(data)
+    body = render(
+        args.format,
+        level_name,
+        template_count_rows,
+        rows,
+        trans,
+        word_freq_rows,
+    )
 
     output_dir = args.output_dir if args.output_dir.is_absolute() else (root / args.output_dir)
     output_dir.mkdir(parents=True, exist_ok=True)

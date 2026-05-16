@@ -1,0 +1,302 @@
+[
+    {
+      "adverb": "always",
+      "type": "frequency",
+      "level": "A1",
+      "categories": ["routine", "time"]
+    },
+    {
+      "adverb": "never",
+      "type": "frequency",
+      "level": "A1",
+      "categories": ["routine", "time"]
+    },
+    {
+      "adverb": "sometimes",
+      "type": "frequency",
+      "level": "A1",
+      "categories": ["routine", "time"]
+    },
+    {
+      "adverb": "often",
+      "type": "frequency",
+      "level": "A1",
+      "categories": ["routine", "time"]
+    },
+    {
+      "adverb": "usually",
+      "type": "frequency",
+      "level": "A1",
+      "categories": ["routine", "time"]
+    },
+    {
+      "adverb": "quickly",
+      "type": "manner",
+      "level": "A2",
+      "categories": ["movement", "actions"]
+    },
+    {
+      "adverb": "slowly",
+      "type": "manner",
+      "level": "A2",
+      "categories": ["movement", "actions"]
+    },
+    {
+      "adverb": "carefully",
+      "type": "manner",
+      "level": "A2",
+      "categories": ["safety", "work"]
+    },
+    {
+      "adverb": "well",
+      "type": "manner",
+      "level": "A1",
+      "categories": ["health", "work"]
+    },
+    {
+      "adverb": "badly",
+      "type": "manner",
+      "level": "A2",
+      "categories": ["actions", "feelings"]
+    },
+    {
+      "adverb": "loudly",
+      "type": "manner",
+      "level": "A2",
+      "categories": ["communication", "events"]
+    },
+    {
+      "adverb": "quietly",
+      "type": "manner",
+      "level": "A2",
+      "categories": ["communication", "events"]
+    },
+    {
+      "adverb": "early",
+      "type": "time",
+      "level": "A1",
+      "categories": ["routine", "travel"]
+    },
+    {
+      "adverb": "late",
+      "type": "time",
+      "level": "A1",
+      "categories": ["routine", "travel"]
+    },
+    {
+      "adverb": "now",
+      "type": "time",
+      "level": "A1",
+      "categories": ["routine", "time"]
+    },
+    {
+      "adverb": "then",
+      "type": "time",
+      "level": "A2",
+      "categories": ["storytelling", "past events"]
+    },
+    {
+      "adverb": "today",
+      "type": "time",
+      "level": "A1",
+      "categories": ["routine", "plans"]
+    },
+    {
+      "adverb": "tomorrow",
+      "type": "time",
+      "level": "A1",
+      "categories": ["plans", "future"]
+    },
+    {
+      "adverb": "yesterday",
+      "type": "time",
+      "level": "A1",
+      "categories": ["past events", "memory"]
+    },
+    {
+      "adverb": "soon",
+      "type": "time",
+      "level": "A2",
+      "categories": ["plans", "future"]
+    },
+    {
+      "adverb": "here",
+      "type": "place",
+      "level": "A1",
+      "categories": ["city", "directions"]
+    },
+    {
+      "adverb": "there",
+      "type": "place",
+      "level": "A1",
+      "categories": ["city", "directions"]
+    },
+    {
+      "adverb": "everywhere",
+      "type": "place",
+      "level": "A2",
+      "categories": ["travel", "city"]
+    },
+    {
+      "adverb": "somewhere",
+      "type": "place",
+      "level": "A2",
+      "categories": ["travel", "city"]
+    },
+    {
+      "adverb": "nowhere",
+      "type": "place",
+      "level": "B1",
+      "categories": ["travel", "feelings"]
+    },
+    {
+      "adverb": "very",
+      "type": "degree",
+      "level": "A1",
+      "categories": ["descriptions", "feelings"]
+    },
+    {
+      "adverb": "really",
+      "type": "degree",
+      "level": "A1",
+      "categories": ["descriptions", "feelings"]
+    },
+    {
+      "adverb": "quite",
+      "type": "degree",
+      "level": "A2",
+      "categories": ["descriptions", "opinions"]
+    },
+    {
+      "adverb": "almost",
+      "type": "degree",
+      "level": "A2",
+      "categories": ["progress", "shopping"]
+    },
+    {
+      "adverb": "totally",
+      "type": "degree",
+      "level": "B1",
+      "categories": ["opinions", "conversations"]
+    },
+    {
+      "adverb": "completely",
+      "type": "degree",
+      "level": "B1",
+      "categories": ["progress", "descriptions"]
+    },
+    {
+      "adverb": "exactly",
+      "type": "degree",
+      "level": "A2",
+      "categories": ["directions", "shopping"]
+    },
+    {
+      "adverb": "easily",
+      "type": "manner",
+      "level": "A2",
+      "categories": ["actions", "work"]
+    },
+    {
+      "adverb": "hard",
+      "type": "manner",
+      "level": "A1",
+      "categories": ["work", "education"]
+    },
+    {
+      "adverb": "naturally",
+      "type": "manner",
+      "level": "B1",
+      "categories": ["science", "nature"]
+    },
+    {
+      "adverb": "perfectly",
+      "type": "manner",
+      "level": "B1",
+      "categories": ["descriptions", "work"]
+    },
+    {
+      "adverb": "beautifully",
+      "type": "manner",
+      "level": "A2",
+      "categories": ["arts", "descriptions"]
+    },
+    {
+      "adverb": "suddenly",
+      "type": "manner",
+      "level": "B1",
+      "categories": ["storytelling", "events"]
+    },
+    {
+      "adverb": "recently",
+      "type": "time",
+      "level": "B1",
+      "categories": ["news", "conversations"]
+    },
+    {
+      "adverb": "currently",
+      "type": "time",
+      "level": "B1",
+      "categories": ["news", "work"]
+    },
+    {
+      "adverb": "already",
+      "type": "time",
+      "level": "A2",
+      "categories": ["progress", "routine"]
+    },
+    {
+      "adverb": "yet",
+      "type": "time",
+      "level": "A2",
+      "categories": ["progress", "routine"]
+    },
+    {
+      "adverb": "still",
+      "type": "time",
+      "level": "A2",
+      "categories": ["routine", "feelings"]
+    },
+    {
+      "adverb": "finally",
+      "type": "time",
+      "level": "B1",
+      "categories": ["storytelling", "progress"]
+    },
+    {
+      "adverb": "actually",
+      "type": "opinion",
+      "level": "B1",
+      "categories": ["conversations", "opinions"]
+    },
+    {
+      "adverb": "certainly",
+      "type": "opinion",
+      "level": "B1",
+      "categories": ["conversations", "agreements"]
+    },
+    {
+      "adverb": "probably",
+      "type": "opinion",
+      "level": "A2",
+      "categories": ["future", "plans"]
+    },
+    {
+      "adverb": "maybe",
+      "type": "opinion",
+      "level": "A1",
+      "categories": ["future", "plans"]
+    },
+    {
+      "adverb": "especially",
+      "type": "degree",
+      "level": "B1",
+      "categories": ["opinions", "descriptions"]
+    },
+    {
+      "adverb": "unfortunately",
+      "type": "opinion",
+      "level": "B1",
+      "categories": ["news", "events"]
+    }
+  ]

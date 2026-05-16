@@ -1,0 +1,86 @@
+[
+    {
+      "conjunction": "and",
+      "type": "coordinating",
+      "level": "A1",
+      "categories": ["addition", "connections"]
+    },
+    {
+      "conjunction": "but",
+      "type": "coordinating",
+      "level": "A1",
+      "categories": ["contrast", "opinions"]
+    },
+    {
+      "conjunction": "or",
+      "type": "coordinating",
+      "level": "A1",
+      "categories": ["choices", "alternatives"]
+    },
+    {
+      "conjunction": "so",
+      "type": "coordinating",
+      "level": "A1",
+      "categories": ["results", "reasons"]
+    },
+    {
+      "conjunction": "for",
+      "type": "coordinating",
+      "level": "A2",
+      "categories": ["reasons", "formal"]
+    },
+    {
+      "conjunction": "nor",
+      "type": "coordinating",
+      "level": "B1",
+      "categories": ["negative", "alternatives"]
+    },
+    {
+      "conjunction": "yet",
+      "type": "coordinating",
+      "level": "B1",
+      "categories": ["contrast", "surprise"]
+    },
+    {
+      "conjunction": "because",
+      "type": "subordinating",
+      "level": "A1",
+      "categories": ["reasons", "explanations"]
+    },
+    {
+      "conjunction": "if",
+      "type": "subordinating",
+      "level": "A1",
+      "categories": ["conditions", "possibilities"]
+    },
+    {
+      "conjunction": "when",
+      "type": "subordinating",
+      "level": "A1",
+      "categories": ["time", "events"]
+    },
+    {
+      "conjunction": "although",
+      "type": "subordinating",
+      "level": "B1",
+      "categories": ["contrast", "conditions"]
+    },
+    {
+      "conjunction": "since",
+      "type": "subordinating",
+      "level": "A2",
+      "categories": ["reasons", "time"]
+    },
+    {
+      "conjunction": "while",
+      "type": "subordinating",
+      "level": "A2",
+      "categories": ["time", "contrast"]
+    },
+    {
+      "conjunction": "unless",
+      "type": "subordinating",
+      "level": "B1",
+      "categories": ["conditions", "exceptions"]
+    }
+  ]

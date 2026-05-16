@@ -1,0 +1,207 @@
+{
+  "timer_seconds": 10,
+  "levelQuestions": [
+   {
+      "template": "ConvoTemplate-1",
+      "questionData": {
+        "character1": "Emma",
+        "character2": "Alex",
+        "line1": "Who are you?",
+        "line2": "I ___ Alex",
+        "answer": "am",
+        "distractors": [
+          "are",
+          "is",
+          "am a"
+        ]
+      },  
+      "audio_file1": "who-are-you-convo",
+      "audio_file2": "i-am-alex-convo"
+    },
+    {
+      "template": "ConvoTemplate-1",
+      "questionData": {
+        "character1": "Omar",
+        "character2": "John",
+        "line1": "Who ____ your best friend?",
+        "line2": "My best friend ____ Omar",
+        "answer": "is",
+        "distractors": [
+          "are",
+          "this",
+          "is the"
+        ]
+      },
+      "audio_file1": "who-is-your-best-friend-convo",
+      "audio_file2": "my-best-friend-is-john-convo"
+    },
+    {
+      "template": "GrammarForm",
+      "questionData": {
+        "sentence": "I ___ a teacher",
+        "answer": "am",
+        "distractors": [
+          "are",
+          "is",
+          "are  ot"
+        ]
+      }
+    },
+    {
+      "template": "AppearDisappear",
+      "questionData": {
+        "words": "Where am I now?",
+        "distractors": [
+          "are",
+          "is",
+          "who","how","what"
+        ]
+      },
+      "audio_file": "where-am-i-now-convo"
+    },
+    {
+      "template": "DialogueCompletion",
+      "questionData": {
+        "character1": "Grace",
+        "character2": "Mike",
+        "line1": "Are these your keys?",
+        "answer": "No, they are not",
+        "distractors": [
+          "No, those are not",
+          "Yes, they are not",
+          "Yes, these is my keys"
+        ]
+      },
+      "audio_file1": "are-these-your-keys-convo",
+      "audio_file2": "no-they-are-not-convo"
+    },
+    {
+      "template": "ClozeSequence",
+      "questionData": {
+        "sentence": "_____ you ____ Scotland?",
+        "answer": [
+          "Aren't",
+          "from"
+        ],
+        "distractors": [
+          "Isn't",
+          "Am",
+          "Don't",
+          "go to"
+        ]
+      }
+    },
+    
+    {
+      "template": "DialogueCompletion",
+      "questionData": {
+        "character1": "Olivia",
+        "character2": "Ryan",
+        "line1": "Are you ready?",
+        "answer": "Yes, I am",
+        "distractors": [
+          "Yes, I am not",
+          "Yes, I are",
+          "No, I am"
+        ]
+      },
+      "audio_file1": "are-you-ready-convo",
+      "audio_file2": "yes-i-am-convo"
+    },
+    {
+      "template": "ClozeSequence",
+      "questionData": {
+        "sentence": "I _____ John (we) ____ friends",
+        "answer": [
+          "and",
+          "are"
+        ],
+        "distractors": [
+          "is",
+          "am",
+          "are not",
+          "isn't"
+        ]
+      },
+      "audio_file": "i-and-john-are-friends-convo"
+    },
+    {
+      "template": "ClozeSequence",
+      "questionData": {
+        "sentence": "I ____ ____ your teacher",
+        "answer": [
+          "am",
+          "not"
+        ],
+        "distractors": [
+          "a",
+          "the",
+          "is",
+          "are",
+          "isn't"
+        ]
+      },
+      "audio_file": "i-am-not-your-teacher-convo"
+    },
+    {
+      "template": "AppearDisappear",
+      "questionData": {
+        "words": "You are not too old",
+        "distractors": [
+          "is",
+          "very",
+          "who",
+          "young"
+        ]
+      },
+      "audio_file": "you-are-not-too-old-convo"
+    },
+    {
+      "template": "SentenceBuilder",
+      "questionData": {
+        "correct_order": "They are good people"
+      },
+      "audio_file": "they-are-good-people-convo"
+    },
+    {
+      "template": "ClozeSequence",
+      "questionData": {
+        "sentence": "he ____ a doctor, but I ___ ___",
+        "answer": [
+          "is",
+          "am",
+          "not"
+        ],
+        "distractors": [
+          "are",
+          "isn't",
+          "are not",
+          "are"
+        ]
+      },
+      "audio_file": "he-is-a-doctor-but-i-am-not-convo"
+    },
+    {
+      "template": "DialogueCompletion",
+      "questionData": {
+        "character1": "Lily",
+        "character2": "Leo",
+        "line1": "Is Mrs Brown your teacher?",
+        "answer": "No, she is not",
+        "distractors": [
+          "No, she is",
+          "Yes, she is not",
+          "No, this is not my teacher"
+        ]
+      },
+      "audio_file1": "is-mrs-brown-your-teacher-convo",
+      "audio_file2": "no-she-is-not-convo"
+    },
+    {
+      "template": "SentenceBuilder",
+      "questionData": {
+        "correct_order": "Aren't we stronger together?"
+      }
+    }    
+  ]
+}

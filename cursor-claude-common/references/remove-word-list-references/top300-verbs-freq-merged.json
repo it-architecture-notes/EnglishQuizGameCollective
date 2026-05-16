@@ -1,0 +1,7444 @@
+{
+  "description": "Oxford 3000 verb lemmas scored by Borda-style points from: high-freq-2000 rank, unigram_freq.csv rank (by count), 1 lemmas-Table 1.csv rank (best rank per lemma); small bonus if lookup_key appears in efdotcom-mostcommon-3000.txt. Lookup uses normalize_lookup_key(lemma) for matching corpora.",
+  "sources": {
+    "oxford_verbs_json": "cursor-claude-common/references/3000 words oxford verbs.json",
+    "high_freq_2000": "cursor-claude-common/references/high-freq-2000.txt",
+    "efdotcom_3000": "cursor-claude-common/references/efdotcom-mostcommon-3000.txt",
+    "unigram_freq": "cursor-claude-common/references/unigram_freq.csv",
+    "lemmas_table": "cursor-claude-common/references/1 lemmas-Table 1.csv"
+  },
+  "oxford_verb_count": 826,
+  "oxford_verbs": [
+    "abandon",
+    "accept",
+    "access",
+    "accompany",
+    "account",
+    "accuse",
+    "achieve",
+    "acknowledge",
+    "acquire",
+    "act",
+    "adapt",
+    "add",
+    "address",
+    "admire",
+    "admit",
+    "adopt",
+    "advance",
+    "advertise",
+    "advise",
+    "affect",
+    "afford",
+    "age",
+    "agree",
+    "aid",
+    "aim",
+    "alarm",
+    "allow",
+    "alter",
+    "amount",
+    "analyze",
+    "announce",
+    "annoy",
+    "answer",
+    "apologize",
+    "appeal",
+    "appear",
+    "apply",
+    "appreciate",
+    "approach",
+    "approve",
+    "argue",
+    "arise",
+    "arrange",
+    "arrest",
+    "arrive",
+    "ask",
+    "assess",
+    "assist",
+    "associate",
+    "assume",
+    "attach",
+    "attack",
+    "attempt",
+    "attend",
+    "attract",
+    "average",
+    "avoid",
+    "award",
+    "back",
+    "bake",
+    "balance",
+    "ban",
+    "bar",
+    "base",
+    "battle",
+    "be",
+    "bear (deal with)",
+    "beat",
+    "become",
+    "beg",
+    "begin",
+    "behave",
+    "believe",
+    "belong",
+    "bend",
+    "benefit",
+    "bet",
+    "bill",
+    "bite",
+    "blame",
+    "block",
+    "blow",
+    "board",
+    "boil",
+    "bomb",
+    "book",
+    "border",
+    "born",
+    "borrow",
+    "bother",
+    "brand",
+    "break",
+    "breathe",
+    "bring",
+    "broadcast",
+    "brush",
+    "build",
+    "burn",
+    "bury",
+    "buy",
+    "calculate",
+    "call",
+    "calm",
+    "camp",
+    "campaign",
+    "can1",
+    "cancel",
+    "cannot",
+    "capture",
+    "care",
+    "carry",
+    "cast",
+    "catch",
+    "cause",
+    "celebrate",
+    "center",
+    "chain",
+    "chair",
+    "challenge",
+    "change",
+    "charge",
+    "chart",
+    "chat",
+    "cheat",
+    "check",
+    "choose",
+    "circle",
+    "cite",
+    "claim",
+    "clean",
+    "clear",
+    "click",
+    "climb",
+    "close1",
+    "coach",
+    "collapse",
+    "collect",
+    "combine",
+    "come",
+    "comfort",
+    "command",
+    "comment",
+    "commission",
+    "commit",
+    "communicate",
+    "compare",
+    "compete",
+    "complain",
+    "complete",
+    "concentrate",
+    "concern",
+    "conclude",
+    "conduct",
+    "confirm",
+    "conflict",
+    "confuse",
+    "connect",
+    "consider",
+    "consist",
+    "construct",
+    "consume",
+    "contact",
+    "contain",
+    "contest",
+    "continue",
+    "contract",
+    "contrast",
+    "contribute",
+    "control",
+    "convert",
+    "convince",
+    "cook",
+    "cool",
+    "copy",
+    "correct",
+    "cost",
+    "could",
+    "count",
+    "cover",
+    "crash",
+    "create",
+    "credit",
+    "criticize",
+    "cross",
+    "cry",
+    "cure",
+    "curve",
+    "cut",
+    "cycle",
+    "damage",
+    "dance",
+    "date",
+    "deal",
+    "debate",
+    "decide",
+    "declare",
+    "decline",
+    "decorate",
+    "decrease",
+    "defeat",
+    "defend",
+    "define",
+    "delay",
+    "deliver",
+    "demand",
+    "demonstrate",
+    "deny",
+    "depend",
+    "describe",
+    "desert",
+    "deserve",
+    "design",
+    "desire",
+    "destroy",
+    "detail",
+    "detect",
+    "determine",
+    "develop",
+    "die",
+    "dig",
+    "direct",
+    "disagree",
+    "disappear",
+    "discount",
+    "discover",
+    "discuss",
+    "dislike",
+    "dismiss",
+    "display",
+    "distribute",
+    "divide",
+    "do1",
+    "document",
+    "dominate",
+    "donate",
+    "double",
+    "doubt",
+    "download",
+    "draft",
+    "drag",
+    "draw",
+    "dream",
+    "dress",
+    "drink",
+    "drive",
+    "drop",
+    "dry",
+    "earn",
+    "eat",
+    "edit",
+    "educate",
+    "elect",
+    "email",
+    "emerge",
+    "emphasize",
+    "employ",
+    "empty",
+    "enable",
+    "encounter",
+    "encourage",
+    "end",
+    "engage",
+    "enhance",
+    "enjoy",
+    "ensure",
+    "enter",
+    "entertain",
+    "equal",
+    "escape",
+    "establish",
+    "estimate",
+    "evaluate",
+    "examine",
+    "exchange",
+    "excuse",
+    "exercise",
+    "exhibit",
+    "exist",
+    "exit",
+    "expand",
+    "expect",
+    "experience",
+    "experiment",
+    "explain",
+    "explode",
+    "explore",
+    "export",
+    "expose",
+    "express",
+    "extend",
+    "face",
+    "fail",
+    "fall",
+    "farm",
+    "fasten",
+    "favor",
+    "fear",
+    "feature",
+    "feed",
+    "feel",
+    "fight",
+    "figure",
+    "file",
+    "fill",
+    "film",
+    "finance",
+    "find",
+    "finish",
+    "fire",
+    "fish",
+    "fit",
+    "fix",
+    "flash",
+    "float",
+    "flood",
+    "flow",
+    "fly",
+    "focus",
+    "fold",
+    "follow",
+    "force",
+    "forget",
+    "forgive",
+    "form",
+    "found",
+    "frame",
+    "free",
+    "freeze",
+    "frighten",
+    "fry",
+    "fuel",
+    "function",
+    "fund",
+    "gain",
+    "gather",
+    "generate",
+    "get",
+    "give",
+    "go",
+    "govern",
+    "grab",
+    "grade",
+    "graduate",
+    "grant",
+    "greet",
+    "grow",
+    "guarantee",
+    "guard",
+    "guess",
+    "guide",
+    "hand",
+    "handle",
+    "hang",
+    "happen",
+    "harm",
+    "hate",
+    "have",
+    "have to",
+    "head",
+    "hear",
+    "heat",
+    "help",
+    "hesitate",
+    "hide",
+    "highlight",
+    "hire",
+    "hit",
+    "hold",
+    "honor",
+    "hope",
+    "host",
+    "house",
+    "hunt",
+    "hurry",
+    "hurt",
+    "identify",
+    "ignore",
+    "illustrate",
+    "imagine",
+    "impact",
+    "imply",
+    "import",
+    "impose",
+    "impress",
+    "improve",
+    "include",
+    "increase",
+    "indicate",
+    "influence",
+    "inform",
+    "injure",
+    "insist",
+    "inspire",
+    "install",
+    "intend",
+    "interest",
+    "interpret",
+    "interrupt",
+    "interview",
+    "introduce",
+    "invent",
+    "invest",
+    "investigate",
+    "invite",
+    "involve",
+    "iron",
+    "issue",
+    "join",
+    "joke",
+    "judge",
+    "jump",
+    "justify",
+    "keep",
+    "key",
+    "kick",
+    "kill",
+    "kiss",
+    "knock",
+    "know",
+    "label",
+    "lack",
+    "land",
+    "last1 (taking time)",
+    "laugh",
+    "launch",
+    "lay",
+    "lead1",
+    "lean",
+    "learn",
+    "leave",
+    "lecture",
+    "lend",
+    "let",
+    "level",
+    "lie1",
+    "lie2 (tell a lie)",
+    "lift",
+    "light",
+    "like (find sb/sth pleasant)",
+    "limit",
+    "line",
+    "link",
+    "list",
+    "listen",
+    "live1",
+    "load",
+    "locate",
+    "lock",
+    "look",
+    "lose",
+    "love",
+    "lower",
+    "mail",
+    "maintain",
+    "make",
+    "manage",
+    "map",
+    "mark",
+    "market",
+    "marry",
+    "master",
+    "match (contest/correspond)",
+    "matter",
+    "may",
+    "mean",
+    "measure",
+    "meet",
+    "melt",
+    "mention",
+    "mess",
+    "might",
+    "mind",
+    "miss",
+    "mistake",
+    "mix",
+    "model",
+    "modify",
+    "monitor",
+    "mount",
+    "move",
+    "multiply",
+    "murder",
+    "must",
+    "name",
+    "narrow",
+    "need",
+    "note",
+    "notice",
+    "number",
+    "obey",
+    "object",
+    "observe",
+    "obtain",
+    "occur",
+    "offend",
+    "offer",
+    "open",
+    "operate",
+    "oppose",
+    "order",
+    "organize",
+    "ought",
+    "outline",
+    "owe",
+    "own",
+    "pace",
+    "pack",
+    "package",
+    "paint",
+    "park",
+    "participate",
+    "pass",
+    "pay",
+    "perform",
+    "permit",
+    "persuade",
+    "phone",
+    "photograph",
+    "pick",
+    "picture",
+    "pile",
+    "pin",
+    "place",
+    "plan",
+    "plant",
+    "play",
+    "please",
+    "plot",
+    "point",
+    "poison",
+    "pose",
+    "position",
+    "possess",
+    "post",
+    "pour",
+    "power",
+    "practice",
+    "praise",
+    "pray",
+    "predict",
+    "prefer",
+    "prepare",
+    "present",
+    "preserve",
+    "press",
+    "pretend",
+    "prevent",
+    "price",
+    "print",
+    "process",
+    "produce",
+    "program",
+    "progress",
+    "project",
+    "promise",
+    "promote",
+    "pronounce",
+    "propose",
+    "protect",
+    "protest",
+    "prove",
+    "provide",
+    "publish",
+    "pull",
+    "punish",
+    "purchase",
+    "pursue",
+    "push",
+    "put",
+    "qualify",
+    "question",
+    "quit",
+    "quote",
+    "race (competition)",
+    "rain",
+    "raise",
+    "range",
+    "rank",
+    "rate",
+    "reach",
+    "react",
+    "read",
+    "realize",
+    "recall",
+    "receive",
+    "recognize",
+    "recommend",
+    "record",
+    "recover",
+    "recycle",
+    "reduce",
+    "refer",
+    "reflect",
+    "refuse1",
+    "regard",
+    "register",
+    "regret",
+    "reject",
+    "relate",
+    "relax",
+    "release",
+    "rely",
+    "remain",
+    "remark",
+    "remember",
+    "remind",
+    "remove",
+    "rent",
+    "repair",
+    "repeat",
+    "replace",
+    "reply",
+    "report",
+    "represent",
+    "request",
+    "require",
+    "rescue",
+    "research",
+    "reserve",
+    "resist",
+    "resolve",
+    "respect",
+    "respond",
+    "rest (sleep/relax)",
+    "result",
+    "retain",
+    "retire",
+    "return",
+    "reveal",
+    "review",
+    "revise",
+    "reward",
+    "rid",
+    "ride",
+    "ring2",
+    "rise",
+    "risk",
+    "roll",
+    "rub",
+    "rule",
+    "run",
+    "rush",
+    "sail",
+    "sample",
+    "satisfy",
+    "save",
+    "say",
+    "scan",
+    "schedule",
+    "score",
+    "scream",
+    "screen",
+    "search",
+    "seat",
+    "secure",
+    "see",
+    "seek",
+    "seem",
+    "select",
+    "sell",
+    "send",
+    "sense",
+    "sentence",
+    "separate",
+    "serve",
+    "set (put)",
+    "settle",
+    "shake",
+    "shall",
+    "shape",
+    "share",
+    "shelter",
+    "shift",
+    "shine",
+    "ship",
+    "shock",
+    "shoot",
+    "shop",
+    "should",
+    "shout",
+    "show",
+    "shut",
+    "sign",
+    "signal",
+    "sing",
+    "sink",
+    "sit",
+    "ski",
+    "sleep",
+    "slice",
+    "slide",
+    "slip",
+    "slope",
+    "slow",
+    "smell",
+    "smile",
+    "smoke",
+    "snow",
+    "solve",
+    "sort",
+    "sound",
+    "speak",
+    "speed",
+    "spell",
+    "spend",
+    "split",
+    "sponsor",
+    "spot",
+    "spread",
+    "spring",
+    "stage",
+    "stand",
+    "star",
+    "stare",
+    "start",
+    "state",
+    "stay",
+    "steal",
+    "step",
+    "stick (push into/attach)",
+    "stop",
+    "store",
+    "stress",
+    "stretch",
+    "strike",
+    "structure",
+    "struggle",
+    "study",
+    "stuff",
+    "submit",
+    "succeed",
+    "suffer",
+    "suggest",
+    "suit",
+    "sum",
+    "summarize",
+    "supply",
+    "support",
+    "suppose",
+    "surprise",
+    "surround",
+    "survey",
+    "survive",
+    "suspect",
+    "swear",
+    "sweep",
+    "swim",
+    "switch",
+    "take",
+    "talk",
+    "target",
+    "taste",
+    "tax",
+    "teach",
+    "tear1",
+    "telephone",
+    "tell",
+    "tend",
+    "term",
+    "test",
+    "text",
+    "thank",
+    "think",
+    "threaten",
+    "throw",
+    "tie",
+    "time",
+    "tip",
+    "title",
+    "touch",
+    "tour",
+    "track",
+    "trade",
+    "train",
+    "transfer",
+    "transform",
+    "translate",
+    "transport",
+    "travel",
+    "treat",
+    "trick",
+    "trip",
+    "trouble",
+    "trust",
+    "try",
+    "turn",
+    "type",
+    "understand",
+    "update",
+    "upset",
+    "urge",
+    "use",
+    "used to",
+    "value",
+    "vary",
+    "view",
+    "visit",
+    "volunteer",
+    "vote",
+    "wait",
+    "wake",
+    "walk",
+    "want",
+    "warm",
+    "warn",
+    "wash",
+    "waste",
+    "watch",
+    "water",
+    "wave",
+    "wear",
+    "weigh",
+    "welcome",
+    "whisper",
+    "will",
+    "win",
+    "wind2",
+    "wish",
+    "witness",
+    "wonder",
+    "work",
+    "worry",
+    "would",
+    "wound",
+    "wrap",
+    "write"
+  ],
+  "top_300_verbs_by_frequency": [
+    "be",
+    "have",
+    "have to",
+    "do1",
+    "will",
+    "can1",
+    "get",
+    "time",
+    "see",
+    "would",
+    "go",
+    "like (find sb/sth pleasant)",
+    "use",
+    "make",
+    "know",
+    "find",
+    "work",
+    "could",
+    "take",
+    "want",
+    "think",
+    "say",
+    "look",
+    "come",
+    "give",
+    "may",
+    "back",
+    "help",
+    "should",
+    "state",
+    "last1 (taking time)",
+    "need",
+    "number",
+    "name",
+    "book",
+    "read",
+    "free",
+    "show",
+    "must",
+    "program",
+    "own",
+    "text",
+    "house",
+    "call",
+    "place",
+    "add",
+    "buy",
+    "set (put)",
+    "line",
+    "please",
+    "research",
+    "power",
+    "center",
+    "love",
+    "view",
+    "send",
+    "title",
+    "end",
+    "water",
+    "price",
+    "point",
+    "support",
+    "start",
+    "change",
+    "let",
+    "live1",
+    "open",
+    "provide",
+    "report",
+    "play",
+    "care",
+    "level",
+    "post",
+    "include",
+    "learn",
+    "phone",
+    "list",
+    "study",
+    "type",
+    "question",
+    "try",
+    "keep",
+    "control",
+    "tell",
+    "might",
+    "become",
+    "write",
+    "rate",
+    "project",
+    "put",
+    "hand",
+    "process",
+    "pay",
+    "order",
+    "issue",
+    "run",
+    "create",
+    "ask",
+    "check",
+    "value",
+    "plan",
+    "return",
+    "market",
+    "form",
+    "talk",
+    "head",
+    "tax",
+    "store",
+    "model",
+    "experience",
+    "result",
+    "save",
+    "join",
+    "age",
+    "feel",
+    "offer",
+    "sell",
+    "map",
+    "cost",
+    "welcome",
+    "date",
+    "board",
+    "design",
+    "interest",
+    "comment",
+    "test",
+    "light",
+    "mean",
+    "sign",
+    "note",
+    "meet",
+    "watch",
+    "review",
+    "turn",
+    "compare",
+    "picture",
+    "star",
+    "film",
+    "share",
+    "drive",
+    "press",
+    "act",
+    "believe",
+    "park",
+    "address",
+    "leave",
+    "term",
+    "stop",
+    "record",
+    "account",
+    "remember",
+    "screen",
+    "access",
+    "face",
+    "travel",
+    "visit",
+    "stay",
+    "move",
+    "receive",
+    "select",
+    "continue",
+    "search",
+    "close1",
+    "credit",
+    "choose",
+    "cover",
+    "land",
+    "position",
+    "build",
+    "enter",
+    "shall",
+    "force",
+    "base",
+    "clear",
+    "follow",
+    "hope",
+    "sound",
+    "hold",
+    "mind",
+    "practice",
+    "lead1",
+    "risk",
+    "allow",
+    "step",
+    "release",
+    "bill",
+    "thank",
+    "win",
+    "understand",
+    "guide",
+    "figure",
+    "speed",
+    "amount",
+    "fire",
+    "bring",
+    "cross",
+    "file",
+    "stuff",
+    "notice",
+    "fall",
+    "remove",
+    "present",
+    "contact",
+    "cool",
+    "increase",
+    "range",
+    "ship",
+    "key",
+    "survey",
+    "trade",
+    "sort",
+    "feed",
+    "cause",
+    "matter",
+    "reply",
+    "cut",
+    "link",
+    "spring",
+    "print",
+    "complete",
+    "trust",
+    "shop",
+    "focus",
+    "tour",
+    "wish",
+    "hear",
+    "consider",
+    "track",
+    "apply",
+    "deal",
+    "copy",
+    "pass",
+    "used to",
+    "answer",
+    "require",
+    "sense",
+    "email",
+    "rule",
+    "begin",
+    "develop",
+    "hit",
+    "block",
+    "bar",
+    "break",
+    "display",
+    "ensure",
+    "approach",
+    "stand",
+    "die",
+    "fund",
+    "wind2",
+    "commission",
+    "award",
+    "rest (sleep/relax)",
+    "average",
+    "agree",
+    "vote",
+    "quote",
+    "impact",
+    "document",
+    "function",
+    "chair",
+    "structure",
+    "race (competition)",
+    "score",
+    "master",
+    "appear",
+    "improve",
+    "listen",
+    "wait",
+    "plant",
+    "seem",
+    "farm",
+    "direct",
+    "package",
+    "prevent",
+    "count",
+    "enjoy",
+    "feature",
+    "click",
+    "heat",
+    "walk",
+    "charge",
+    "object",
+    "mail",
+    "sample",
+    "stage",
+    "contract",
+    "request",
+    "benefit",
+    "progress",
+    "double",
+    "pick",
+    "correct",
+    "recommend",
+    "jump",
+    "miss",
+    "serve",
+    "express",
+    "connect"
+  ],
+  "top_300_detail": [
+    {
+      "lemma": "be",
+      "lookup_key": "be",
+      "ranks": {
+        "high_freq_2000": 2,
+        "unigram": 19,
+        "lemmas_table": 2
+      },
+      "counts": {
+        "unigram": 2398724162,
+        "lemmas_table_freq": 32394756
+      },
+      "in_efdotcom_3000": true,
+      "borda": {
+        "high_freq": 1999.0,
+        "unigram": 14996.0,
+        "lemmas_table": 5049.0,
+        "ef_membership_bonus": 150.0
+      },
+      "composite_score": 22194.0
+    },
+    {
+      "lemma": "have",
+      "lookup_key": "have",
+      "ranks": {
+        "high_freq_2000": 8,
+        "unigram": 26,
+        "lemmas_table": 11
+      },
+      "counts": {
+        "unigram": 1564202750,
+        "lemmas_table_freq": 10514314
+      },
+      "in_efdotcom_3000": true,
+      "borda": {
+        "high_freq": 1993.0,
+        "unigram": 14989.0,
+        "lemmas_table": 5040.0,
+        "ef_membership_bonus": 150.0
+      },
+      "composite_score": 22172.0
+    },
+    {
+      "lemma": "have to",
+      "lookup_key": "have",
+      "ranks": {
+        "high_freq_2000": 8,
+        "unigram": 26,
+        "lemmas_table": 11
+      },
+      "counts": {
+        "unigram": 1564202750,
+        "lemmas_table_freq": 10514314
+      },
+      "in_efdotcom_3000": true,
+      "borda": {
+        "high_freq": 1993.0,
+        "unigram": 14989.0,
+        "lemmas_table": 5040.0,
+        "ef_membership_bonus": 150.0
+      },
+      "composite_score": 22172.0
+    },
+    {
+      "lemma": "do1",
+      "lookup_key": "do",
+      "ranks": {
+        "high_freq_2000": 16,
+        "unigram": 47,
+        "lemmas_table": 15
+      },
+      "counts": {
+        "unigram": 950751722,
+        "lemmas_table_freq": 8186412
+      },
+      "in_efdotcom_3000": true,
+      "borda": {
+        "high_freq": 1985.0,
+        "unigram": 14968.0,
+        "lemmas_table": 5036.0,
+        "ef_membership_bonus": 150.0
+      },
+      "composite_score": 22139.0
+    },
+    {
+      "lemma": "will",
+      "lookup_key": "will",
+      "ranks": {
+        "high_freq_2000": 26,
+        "unigram": 32,
+        "lemmas_table": 47
+      },
+      "counts": {
+        "unigram": 1356293641,
+        "lemmas_table_freq": 2372215
+      },
+      "in_efdotcom_3000": true,
+      "borda": {
+        "high_freq": 1975.0,
+        "unigram": 14983.0,
+        "lemmas_table": 5004.0,
+        "ef_membership_bonus": 150.0
+      },
+      "composite_score": 22112.0
+    },
+    {
+      "lemma": "can1",
+      "lookup_key": "can",
+      "ranks": {
+        "high_freq_2000": 41,
+        "unigram": 34,
+        "lemmas_table": 37
+      },
+      "counts": {
+        "unigram": 1242323499,
+        "lemmas_table_freq": 3091046
+      },
+      "in_efdotcom_3000": true,
+      "borda": {
+        "high_freq": 1960.0,
+        "unigram": 14981.0,
+        "lemmas_table": 5014.0,
+        "ef_membership_bonus": 150.0
+      },
+      "composite_score": 22105.0
+    },
+    {
+      "lemma": "get",
+      "lookup_key": "get",
+      "ranks": {
+        "high_freq_2000": 42,
+        "unigram": 77,
+        "lemmas_table": 34
+      },
+      "counts": {
+        "unigram": 605984508,
+        "lemmas_table_freq": 3347615
+      },
+      "in_efdotcom_3000": true,
+      "borda": {
+        "high_freq": 1959.0,
+        "unigram": 14938.0,
+        "lemmas_table": 5017.0,
+        "ef_membership_bonus": 150.0
+      },
+      "composite_score": 22064.0
+    },
+    {
+      "lemma": "time",
+      "lookup_key": "time",
+      "ranks": {
+        "high_freq_2000": 53,
+        "unigram": 50,
+        "lemmas_table": 54
+      },
+      "counts": {
+        "unigram": 908705570,
+        "lemmas_table_freq": 2018725
+      },
+      "in_efdotcom_3000": true,
+      "borda": {
+        "high_freq": 1948.0,
+        "unigram": 14965.0,
+        "lemmas_table": 4997.0,
+        "ef_membership_bonus": 150.0
+      },
+      "composite_score": 22060.0
+    },
+    {
+      "lemma": "see",
+      "lookup_key": "see",
+      "ranks": {
+        "high_freq_2000": 55,
+        "unigram": 64,
+        "lemmas_table": 56
+      },
+      "counts": {
+        "unigram": 681410380,
+        "lemmas_table_freq": 1958700
+      },
+      "in_efdotcom_3000": true,
+      "borda": {
+        "high_freq": 1946.0,
+        "unigram": 14951.0,
+        "lemmas_table": 4995.0,
+        "ef_membership_bonus": 150.0
+      },
+      "composite_score": 22042.0
+    },
+    {
+      "lemma": "would",
+      "lookup_key": "would",
+      "ranks": {
+        "high_freq_2000": 44,
+        "unigram": 86,
+        "lemmas_table": 49
+      },
+      "counts": {
+        "unigram": 572644147,
+        "lemmas_table_freq": 2349400
+      },
+      "in_efdotcom_3000": true,
+      "borda": {
+        "high_freq": 1957.0,
+        "unigram": 14929.0,
+        "lemmas_table": 5002.0,
+        "ef_membership_bonus": 150.0
+      },
+      "composite_score": 22038.0
+    },
+    {
+      "lemma": "go",
+      "lookup_key": "go",
+      "ranks": {
+        "high_freq_2000": 30,
+        "unigram": 123,
+        "lemmas_table": 31
+      },
+      "counts": {
+        "unigram": 421086358,
+        "lemmas_table_freq": 3546732
+      },
+      "in_efdotcom_3000": true,
+      "borda": {
+        "high_freq": 1971.0,
+        "unigram": 14892.0,
+        "lemmas_table": 5020.0,
+        "ef_membership_bonus": 150.0
+      },
+      "composite_score": 22033.0
+    },
+    {
+      "lemma": "like (find sb/sth pleasant)",
+      "lookup_key": "like",
+      "ranks": {
+        "high_freq_2000": 46,
+        "unigram": 96,
+        "lemmas_table": 73
+      },
+      "counts": {
+        "unigram": 520585287,
+        "lemmas_table_freq": 1583444
+      },
+      "in_efdotcom_3000": true,
+      "borda": {
+        "high_freq": 1955.0,
+        "unigram": 14919.0,
+        "lemmas_table": 4978.0,
+        "ef_membership_bonus": 150.0
+      },
+      "composite_score": 22002.0
+    },
+    {
+      "lemma": "use",
+      "lookup_key": "use",
+      "ranks": {
+        "high_freq_2000": 74,
+        "unigram": 61,
+        "lemmas_table": 91
+      },
+      "counts": {
+        "unigram": 719980257,
+        "lemmas_table_freq": 1126042
+      },
+      "in_efdotcom_3000": true,
+      "borda": {
+        "high_freq": 1927.0,
+        "unigram": 14954.0,
+        "lemmas_table": 4960.0,
+        "ef_membership_bonus": 150.0
+      },
+      "composite_score": 21991.0
+    },
+    {
+      "lemma": "make",
+      "lookup_key": "make",
+      "ranks": {
+        "high_freq_2000": 52,
+        "unigram": 132,
+        "lemmas_table": 50
+      },
+      "counts": {
+        "unigram": 405084642,
+        "lemmas_table_freq": 2290830
+      },
+      "in_efdotcom_3000": true,
+      "borda": {
+        "high_freq": 1949.0,
+        "unigram": 14883.0,
+        "lemmas_table": 5001.0,
+        "ef_membership_bonus": 150.0
+      },
+      "composite_score": 21983.0
+    },
+    {
+      "lemma": "know",
+      "lookup_key": "know",
+      "ranks": {
+        "high_freq_2000": 38,
+        "unigram": 201,
+        "lemmas_table": 39
+      },
+      "counts": {
+        "unigram": 306100813,
+        "lemmas_table_freq": 2761628
+      },
+      "in_efdotcom_3000": true,
+      "borda": {
+        "high_freq": 1963.0,
+        "unigram": 14814.0,
+        "lemmas_table": 5012.0,
+        "ef_membership_bonus": 150.0
+      },
+      "composite_score": 21939.0
+    },
+    {
+      "lemma": "find",
+      "lookup_key": "find",
+      "ranks": {
+        "high_freq_2000": 96,
+        "unigram": 100,
+        "lemmas_table": 97
+      },
+      "counts": {
+        "unigram": 502043038,
+        "lemmas_table_freq": 1051936
+      },
+      "in_efdotcom_3000": true,
+      "borda": {
+        "high_freq": 1905.0,
+        "unigram": 14915.0,
+        "lemmas_table": 4954.0,
+        "ef_membership_bonus": 150.0
+      },
+      "composite_score": 21924.0
+    },
+    {
+      "lemma": "work",
+      "lookup_key": "work",
+      "ranks": {
+        "high_freq_2000": 75,
+        "unigram": 125,
+        "lemmas_table": 115
+      },
+      "counts": {
+        "unigram": 419483948,
+        "lemmas_table_freq": 854095
+      },
+      "in_efdotcom_3000": true,
+      "borda": {
+        "high_freq": 1926.0,
+        "unigram": 14890.0,
+        "lemmas_table": 4936.0,
+        "ef_membership_bonus": 150.0
+      },
+      "composite_score": 21902.0
+    },
+    {
+      "lemma": "could",
+      "lookup_key": "could",
+      "ranks": {
+        "high_freq_2000": 73,
+        "unigram": 208,
+        "lemmas_table": 75
+      },
+      "counts": {
+        "unigram": 302311431,
+        "lemmas_table_freq": 1529795
+      },
+      "in_efdotcom_3000": true,
+      "borda": {
+        "high_freq": 1928.0,
+        "unigram": 14807.0,
+        "lemmas_table": 4976.0,
+        "ef_membership_bonus": 150.0
+      },
+      "composite_score": 21861.0
+    },
+    {
+      "lemma": "take",
+      "lookup_key": "take",
+      "ranks": {
+        "high_freq_2000": 70,
+        "unigram": 246,
+        "lemmas_table": 63
+      },
+      "counts": {
+        "unigram": 264349801,
+        "lemmas_table_freq": 1768822
+      },
+      "in_efdotcom_3000": true,
+      "borda": {
+        "high_freq": 1931.0,
+        "unigram": 14769.0,
+        "lemmas_table": 4988.0,
+        "ef_membership_bonus": 150.0
+      },
+      "composite_score": 21838.0
+    },
+    {
+      "lemma": "want",
+      "lookup_key": "want",
+      "ranks": {
+        "high_freq_2000": 83,
+        "unigram": 254,
+        "lemmas_table": 68
+      },
+      "counts": {
+        "unigram": 258690345,
+        "lemmas_table_freq": 1671524
+      },
+      "in_efdotcom_3000": true,
+      "borda": {
+        "high_freq": 1918.0,
+        "unigram": 14761.0,
+        "lemmas_table": 4983.0,
+        "ef_membership_bonus": 150.0
+      },
+      "composite_score": 21812.0
+    },
+    {
+      "lemma": "think",
+      "lookup_key": "think",
+      "ranks": {
+        "high_freq_2000": 45,
+        "unigram": 325,
+        "lemmas_table": 53
+      },
+      "counts": {
+        "unigram": 217856550,
+        "lemmas_table_freq": 2077762
+      },
+      "in_efdotcom_3000": true,
+      "borda": {
+        "high_freq": 1956.0,
+        "unigram": 14690.0,
+        "lemmas_table": 4998.0,
+        "ef_membership_bonus": 150.0
+      },
+      "composite_score": 21794.0
+    },
+    {
+      "lemma": "say",
+      "lookup_key": "say",
+      "ranks": {
+        "high_freq_2000": 29,
+        "unigram": 496,
+        "lemmas_table": 26
+      },
+      "counts": {
+        "unigram": 156845267,
+        "lemmas_table_freq": 4096416
+      },
+      "in_efdotcom_3000": true,
+      "borda": {
+        "high_freq": 1972.0,
+        "unigram": 14519.0,
+        "lemmas_table": 5025.0,
+        "ef_membership_bonus": 150.0
+      },
+      "composite_score": 21666.0
+    },
+    {
+      "lemma": "look",
+      "lookup_key": "look",
+      "ranks": {
+        "high_freq_2000": 84,
+        "unigram": 446,
+        "lemmas_table": 81
+      },
+      "counts": {
+        "unigram": 173043002,
+        "lemmas_table_freq": 1338475
+      },
+      "in_efdotcom_3000": true,
+      "borda": {
+        "high_freq": 1917.0,
+        "unigram": 14569.0,
+        "lemmas_table": 4970.0,
+        "ef_membership_bonus": 150.0
+      },
+      "composite_score": 21606.0
+    },
+    {
+      "lemma": "come",
+      "lookup_key": "come",
+      "ranks": {
+        "high_freq_2000": 72,
+        "unigram": 504,
+        "lemmas_table": 61
+      },
+      "counts": {
+        "unigram": 154326119,
+        "lemmas_table_freq": 1802158
+      },
+      "in_efdotcom_3000": true,
+      "borda": {
+        "high_freq": 1929.0,
+        "unigram": 14511.0,
+        "lemmas_table": 4990.0,
+        "ef_membership_bonus": 150.0
+      },
+      "composite_score": 21580.0
+    },
+    {
+      "lemma": "give",
+      "lookup_key": "give",
+      "ranks": {
+        "high_freq_2000": 88,
+        "unigram": 555,
+        "lemmas_table": 98
+      },
+      "counts": {
+        "unigram": 140688602,
+        "lemmas_table_freq": 1048189
+      },
+      "in_efdotcom_3000": true,
+      "borda": {
+        "high_freq": 1913.0,
+        "unigram": 14460.0,
+        "lemmas_table": 4953.0,
+        "ef_membership_bonus": 150.0
+      },
+      "composite_score": 21476.0
+    },
+    {
+      "lemma": "may",
+      "lookup_key": "may",
+      "ranks": {
+        "high_freq_2000": null,
+        "unigram": 55,
+        "lemmas_table": 127
+      },
+      "counts": {
+        "unigram": 827822032,
+        "lemmas_table_freq": 757742
+      },
+      "in_efdotcom_3000": true,
+      "borda": {
+        "high_freq": 0.0,
+        "unigram": 14960.0,
+        "lemmas_table": 4924.0,
+        "ef_membership_bonus": 150.0
+      },
+      "composite_score": 20034.0
+    },
+    {
+      "lemma": "back",
+      "lookup_key": "back",
+      "ranks": {
+        "high_freq_2000": null,
+        "unigram": 103,
+        "lemmas_table": 108
+      },
+      "counts": {
+        "unigram": 488024109,
+        "lemmas_table_freq": 938649
+      },
+      "in_efdotcom_3000": true,
+      "borda": {
+        "high_freq": 0.0,
+        "unigram": 14912.0,
+        "lemmas_table": 4943.0,
+        "ef_membership_bonus": 150.0
+      },
+      "composite_score": 20005.0
+    },
+    {
+      "lemma": "help",
+      "lookup_key": "help",
+      "ranks": {
+        "high_freq_2000": null,
+        "unigram": 76,
+        "lemmas_table": 155
+      },
+      "counts": {
+        "unigram": 611054034,
+        "lemmas_table_freq": 606887
+      },
+      "in_efdotcom_3000": true,
+      "borda": {
+        "high_freq": 0.0,
+        "unigram": 14939.0,
+        "lemmas_table": 4896.0,
+        "ef_membership_bonus": 150.0
+      },
+      "composite_score": 19985.0
+    },
+    {
+      "lemma": "should",
+      "lookup_key": "should",
+      "ranks": {
+        "high_freq_2000": null,
+        "unigram": 134,
+        "lemmas_table": 110
+      },
+      "counts": {
+        "unigram": 402028056,
+        "lemmas_table_freq": 920908
+      },
+      "in_efdotcom_3000": true,
+      "borda": {
+        "high_freq": 0.0,
+        "unigram": 14881.0,
+        "lemmas_table": 4941.0,
+        "ef_membership_bonus": 150.0
+      },
+      "composite_score": 19972.0
+    },
+    {
+      "lemma": "state",
+      "lookup_key": "state",
+      "ranks": {
+        "high_freq_2000": null,
+        "unigram": 111,
+        "lemmas_table": 147
+      },
+      "counts": {
+        "unigram": 453104133,
+        "lemmas_table_freq": 638012
+      },
+      "in_efdotcom_3000": true,
+      "borda": {
+        "high_freq": 0.0,
+        "unigram": 14904.0,
+        "lemmas_table": 4904.0,
+        "ef_membership_bonus": 150.0
+      },
+      "composite_score": 19958.0
+    },
+    {
+      "lemma": "last1 (taking time)",
+      "lookup_key": "last",
+      "ranks": {
+        "high_freq_2000": null,
+        "unigram": 126,
+        "lemmas_table": 139
+      },
+      "counts": {
+        "unigram": 417601616,
+        "lemmas_table_freq": 692989
+      },
+      "in_efdotcom_3000": true,
+      "borda": {
+        "high_freq": 0.0,
+        "unigram": 14889.0,
+        "lemmas_table": 4912.0,
+        "ef_membership_bonus": 150.0
+      },
+      "composite_score": 19951.0
+    },
+    {
+      "lemma": "need",
+      "lookup_key": "need",
+      "ranks": {
+        "high_freq_2000": null,
+        "unigram": 183,
+        "lemmas_table": 107
+      },
+      "counts": {
+        "unigram": 319376932,
+        "lemmas_table_freq": 945498
+      },
+      "in_efdotcom_3000": true,
+      "borda": {
+        "high_freq": 0.0,
+        "unigram": 14832.0,
+        "lemmas_table": 4944.0,
+        "ef_membership_bonus": 150.0
+      },
+      "composite_score": 19926.0
+    },
+    {
+      "lemma": "number",
+      "lookup_key": "number",
+      "ranks": {
+        "high_freq_2000": null,
+        "unigram": 143,
+        "lemmas_table": 211
+      },
+      "counts": {
+        "unigram": 383787805,
+        "lemmas_table_freq": 444412
+      },
+      "in_efdotcom_3000": true,
+      "borda": {
+        "high_freq": 0.0,
+        "unigram": 14872.0,
+        "lemmas_table": 4840.0,
+        "ef_membership_bonus": 150.0
+      },
+      "composite_score": 19862.0
+    },
+    {
+      "lemma": "name",
+      "lookup_key": "name",
+      "ranks": {
+        "high_freq_2000": null,
+        "unigram": 108,
+        "lemmas_table": 262
+      },
+      "counts": {
+        "unigram": 464532702,
+        "lemmas_table_freq": 361916
+      },
+      "in_efdotcom_3000": true,
+      "borda": {
+        "high_freq": 0.0,
+        "unigram": 14907.0,
+        "lemmas_table": 4789.0,
+        "ef_membership_bonus": 150.0
+      },
+      "composite_score": 19846.0
+    },
+    {
+      "lemma": "book",
+      "lookup_key": "book",
+      "ranks": {
+        "high_freq_2000": null,
+        "unigram": 176,
+        "lemmas_table": 218
+      },
+      "counts": {
+        "unigram": 330959949,
+        "lemmas_table_freq": 435387
+      },
+      "in_efdotcom_3000": true,
+      "borda": {
+        "high_freq": 0.0,
+        "unigram": 14839.0,
+        "lemmas_table": 4833.0,
+        "ef_membership_bonus": 150.0
+      },
+      "composite_score": 19822.0
+    },
+    {
+      "lemma": "read",
+      "lookup_key": "read",
+      "ranks": {
+        "high_freq_2000": null,
+        "unigram": 180,
+        "lemmas_table": 244
+      },
+      "counts": {
+        "unigram": 322331766,
+        "lemmas_table_freq": 386137
+      },
+      "in_efdotcom_3000": true,
+      "borda": {
+        "high_freq": 0.0,
+        "unigram": 14835.0,
+        "lemmas_table": 4807.0,
+        "ef_membership_bonus": 150.0
+      },
+      "composite_score": 19792.0
+    },
+    {
+      "lemma": "free",
+      "lookup_key": "free",
+      "ranks": {
+        "high_freq_2000": null,
+        "unigram": 42,
+        "lemmas_table": 403
+      },
+      "counts": {
+        "unigram": 1014107316,
+        "lemmas_table_freq": 242338
+      },
+      "in_efdotcom_3000": true,
+      "borda": {
+        "high_freq": 0.0,
+        "unigram": 14973.0,
+        "lemmas_table": 4648.0,
+        "ef_membership_bonus": 150.0
+      },
+      "composite_score": 19771.0
+    },
+    {
+      "lemma": "show",
+      "lookup_key": "show",
+      "ranks": {
+        "high_freq_2000": null,
+        "unigram": 268,
+        "lemmas_table": 177
+      },
+      "counts": {
+        "unigram": 247541986,
+        "lemmas_table_freq": 536889
+      },
+      "in_efdotcom_3000": true,
+      "borda": {
+        "high_freq": 0.0,
+        "unigram": 14747.0,
+        "lemmas_table": 4874.0,
+        "ef_membership_bonus": 150.0
+      },
+      "composite_score": 19771.0
+    },
+    {
+      "lemma": "must",
+      "lookup_key": "must",
+      "ranks": {
+        "high_freq_2000": null,
+        "unigram": 218,
+        "lemmas_table": 228
+      },
+      "counts": {
+        "unigram": 292774716,
+        "lemmas_table_freq": 427796
+      },
+      "in_efdotcom_3000": true,
+      "borda": {
+        "high_freq": 0.0,
+        "unigram": 14797.0,
+        "lemmas_table": 4823.0,
+        "ef_membership_bonus": 150.0
+      },
+      "composite_score": 19770.0
+    },
+    {
+      "lemma": "program",
+      "lookup_key": "program",
+      "ranks": {
+        "high_freq_2000": null,
+        "unigram": 199,
+        "lemmas_table": 250
+      },
+      "counts": {
+        "unigram": 306686983,
+        "lemmas_table_freq": 375708
+      },
+      "in_efdotcom_3000": true,
+      "borda": {
+        "high_freq": 0.0,
+        "unigram": 14816.0,
+        "lemmas_table": 4801.0,
+        "ef_membership_bonus": 150.0
+      },
+      "composite_score": 19767.0
+    },
+    {
+      "lemma": "own",
+      "lookup_key": "own",
+      "ranks": {
+        "high_freq_2000": null,
+        "unigram": 294,
+        "lemmas_table": 160
+      },
+      "counts": {
+        "unigram": 232011723,
+        "lemmas_table_freq": 579172
+      },
+      "in_efdotcom_3000": true,
+      "borda": {
+        "high_freq": 0.0,
+        "unigram": 14721.0,
+        "lemmas_table": 4891.0,
+        "ef_membership_bonus": 150.0
+      },
+      "composite_score": 19762.0
+    },
+    {
+      "lemma": "text",
+      "lookup_key": "text",
+      "ranks": {
+        "high_freq_2000": 1006,
+        "unigram": 349,
+        "lemmas_table": 1109
+      },
+      "counts": {
+        "unigram": 208780080,
+        "lemmas_table_freq": 87811
+      },
+      "in_efdotcom_3000": true,
+      "borda": {
+        "high_freq": 995.0,
+        "unigram": 14666.0,
+        "lemmas_table": 3942.0,
+        "ef_membership_bonus": 150.0
+      },
+      "composite_score": 19753.0
+    },
+    {
+      "lemma": "house",
+      "lookup_key": "house",
+      "ranks": {
+        "high_freq_2000": null,
+        "unigram": 297,
+        "lemmas_table": 176
+      },
+      "counts": {
+        "unigram": 231310420,
+        "lemmas_table_freq": 537037
+      },
+      "in_efdotcom_3000": true,
+      "borda": {
+        "high_freq": 0.0,
+        "unigram": 14718.0,
+        "lemmas_table": 4875.0,
+        "ef_membership_bonus": 150.0
+      },
+      "composite_score": 19743.0
+    },
+    {
+      "lemma": "call",
+      "lookup_key": "call",
+      "ranks": {
+        "high_freq_2000": null,
+        "unigram": 374,
+        "lemmas_table": 125
+      },
+      "counts": {
+        "unigram": 199608869,
+        "lemmas_table_freq": 768117
+      },
+      "in_efdotcom_3000": true,
+      "borda": {
+        "high_freq": 0.0,
+        "unigram": 14641.0,
+        "lemmas_table": 4926.0,
+        "ef_membership_bonus": 150.0
+      },
+      "composite_score": 19717.0
+    },
+    {
+      "lemma": "place",
+      "lookup_key": "place",
+      "ranks": {
+        "high_freq_2000": null,
+        "unigram": 316,
+        "lemmas_table": 186
+      },
+      "counts": {
+        "unigram": 220970235,
+        "lemmas_table_freq": 508803
+      },
+      "in_efdotcom_3000": true,
+      "borda": {
+        "high_freq": 0.0,
+        "unigram": 14699.0,
+        "lemmas_table": 4865.0,
+        "ef_membership_bonus": 150.0
+      },
+      "composite_score": 19714.0
+    },
+    {
+      "lemma": "add",
+      "lookup_key": "add",
+      "ranks": {
+        "high_freq_2000": null,
+        "unigram": 141,
+        "lemmas_table": 362
+      },
+      "counts": {
+        "unigram": 387231739,
+        "lemmas_table_freq": 275233
+      },
+      "in_efdotcom_3000": true,
+      "borda": {
+        "high_freq": 0.0,
+        "unigram": 14874.0,
+        "lemmas_table": 4689.0,
+        "ef_membership_bonus": 150.0
+      },
+      "composite_score": 19713.0
+    },
+    {
+      "lemma": "buy",
+      "lookup_key": "buy",
+      "ranks": {
+        "high_freq_2000": null,
+        "unigram": 130,
+        "lemmas_table": 375
+      },
+      "counts": {
+        "unigram": 410780176,
+        "lemmas_table_freq": 260201
+      },
+      "in_efdotcom_3000": true,
+      "borda": {
+        "high_freq": 0.0,
+        "unigram": 14885.0,
+        "lemmas_table": 4676.0,
+        "ef_membership_bonus": 150.0
+      },
+      "composite_score": 19711.0
+    },
+    {
+      "lemma": "set (put)",
+      "lookup_key": "set",
+      "ranks": {
+        "high_freq_2000": null,
+        "unigram": 189,
+        "lemmas_table": 339
+      },
+      "counts": {
+        "unigram": 313469591,
+        "lemmas_table_freq": 293144
+      },
+      "in_efdotcom_3000": true,
+      "borda": {
+        "high_freq": 0.0,
+        "unigram": 14826.0,
+        "lemmas_table": 4712.0,
+        "ef_membership_bonus": 150.0
+      },
+      "composite_score": 19688.0
+    },
+    {
+      "lemma": "line",
+      "lookup_key": "line",
+      "ranks": {
+        "high_freq_2000": null,
+        "unigram": 228,
+        "lemmas_table": 312
+      },
+      "counts": {
+        "unigram": 280009597,
+        "lemmas_table_freq": 319492
+      },
+      "in_efdotcom_3000": true,
+      "borda": {
+        "high_freq": 0.0,
+        "unigram": 14787.0,
+        "lemmas_table": 4739.0,
+        "ef_membership_bonus": 150.0
+      },
+      "composite_score": 19676.0
+    },
+    {
+      "lemma": "please",
+      "lookup_key": "please",
+      "ranks": {
+        "high_freq_2000": null,
+        "unigram": 145,
+        "lemmas_table": 412
+      },
+      "counts": {
+        "unigram": 380046348,
+        "lemmas_table_freq": 236175
+      },
+      "in_efdotcom_3000": true,
+      "borda": {
+        "high_freq": 0.0,
+        "unigram": 14870.0,
+        "lemmas_table": 4639.0,
+        "ef_membership_bonus": 150.0
+      },
+      "composite_score": 19659.0
+    },
+    {
+      "lemma": "research",
+      "lookup_key": "research",
+      "ranks": {
+        "high_freq_2000": null,
+        "unigram": 192,
+        "lemmas_table": 383
+      },
+      "counts": {
+        "unigram": 311538382,
+        "lemmas_table_freq": 255123
+      },
+      "in_efdotcom_3000": true,
+      "borda": {
+        "high_freq": 0.0,
+        "unigram": 14823.0,
+        "lemmas_table": 4668.0,
+        "ef_membership_bonus": 150.0
+      },
+      "composite_score": 19641.0
+    },
+    {
+      "lemma": "power",
+      "lookup_key": "power",
+      "ranks": {
+        "high_freq_2000": null,
+        "unigram": 307,
+        "lemmas_table": 274
+      },
+      "counts": {
+        "unigram": 226596368,
+        "lemmas_table_freq": 351483
+      },
+      "in_efdotcom_3000": true,
+      "borda": {
+        "high_freq": 0.0,
+        "unigram": 14708.0,
+        "lemmas_table": 4777.0,
+        "ef_membership_bonus": 150.0
+      },
+      "composite_score": 19635.0
+    },
+    {
+      "lemma": "center",
+      "lookup_key": "center",
+      "ranks": {
+        "high_freq_2000": null,
+        "unigram": 216,
+        "lemmas_table": 367
+      },
+      "counts": {
+        "unigram": 294319118,
+        "lemmas_table_freq": 268821
+      },
+      "in_efdotcom_3000": true,
+      "borda": {
+        "high_freq": 0.0,
+        "unigram": 14799.0,
+        "lemmas_table": 4684.0,
+        "ef_membership_bonus": 150.0
+      },
+      "composite_score": 19633.0
+    },
+    {
+      "lemma": "love",
+      "lookup_key": "love",
+      "ranks": {
+        "high_freq_2000": null,
+        "unigram": 370,
+        "lemmas_table": 233
+      },
+      "counts": {
+        "unigram": 201063526,
+        "lemmas_table_freq": 417532
+      },
+      "in_efdotcom_3000": true,
+      "borda": {
+        "high_freq": 0.0,
+        "unigram": 14645.0,
+        "lemmas_table": 4818.0,
+        "ef_membership_bonus": 150.0
+      },
+      "composite_score": 19613.0
+    },
+    {
+      "lemma": "view",
+      "lookup_key": "view",
+      "ranks": {
+        "high_freq_2000": null,
+        "unigram": 79,
+        "lemmas_table": 528
+      },
+      "counts": {
+        "unigram": 602279334,
+        "lemmas_table_freq": 182417
+      },
+      "in_efdotcom_3000": true,
+      "borda": {
+        "high_freq": 0.0,
+        "unigram": 14936.0,
+        "lemmas_table": 4523.0,
+        "ef_membership_bonus": 150.0
+      },
+      "composite_score": 19609.0
+    },
+    {
+      "lemma": "send",
+      "lookup_key": "send",
+      "ranks": {
+        "high_freq_2000": null,
+        "unigram": 233,
+        "lemmas_table": 382
+      },
+      "counts": {
+        "unigram": 274103587,
+        "lemmas_table_freq": 256309
+      },
+      "in_efdotcom_3000": true,
+      "borda": {
+        "high_freq": 0.0,
+        "unigram": 14782.0,
+        "lemmas_table": 4669.0,
+        "ef_membership_bonus": 150.0
+      },
+      "composite_score": 19601.0
+    },
+    {
+      "lemma": "title",
+      "lookup_key": "title",
+      "ranks": {
+        "high_freq_2000": 1064,
+        "unigram": 378,
+        "lemmas_table": 1176
+      },
+      "counts": {
+        "unigram": 196676017,
+        "lemmas_table_freq": 82165
+      },
+      "in_efdotcom_3000": true,
+      "borda": {
+        "high_freq": 937.0,
+        "unigram": 14637.0,
+        "lemmas_table": 3875.0,
+        "ef_membership_bonus": 150.0
+      },
+      "composite_score": 19599.0
+    },
+    {
+      "lemma": "end",
+      "lookup_key": "end",
+      "ranks": {
+        "high_freq_2000": null,
+        "unigram": 317,
+        "lemmas_table": 303
+      },
+      "counts": {
+        "unigram": 220812328,
+        "lemmas_table_freq": 328699
+      },
+      "in_efdotcom_3000": true,
+      "borda": {
+        "high_freq": 0.0,
+        "unigram": 14698.0,
+        "lemmas_table": 4748.0,
+        "ef_membership_bonus": 150.0
+      },
+      "composite_score": 19596.0
+    },
+    {
+      "lemma": "water",
+      "lookup_key": "water",
+      "ranks": {
+        "high_freq_2000": null,
+        "unigram": 334,
+        "lemmas_table": 287
+      },
+      "counts": {
+        "unigram": 215178488,
+        "lemmas_table_freq": 342574
+      },
+      "in_efdotcom_3000": true,
+      "borda": {
+        "high_freq": 0.0,
+        "unigram": 14681.0,
+        "lemmas_table": 4764.0,
+        "ef_membership_bonus": 150.0
+      },
+      "composite_score": 19595.0
+    },
+    {
+      "lemma": "price",
+      "lookup_key": "price",
+      "ranks": {
+        "high_freq_2000": null,
+        "unigram": 101,
+        "lemmas_table": 529
+      },
+      "counts": {
+        "unigram": 501651226,
+        "lemmas_table_freq": 181918
+      },
+      "in_efdotcom_3000": true,
+      "borda": {
+        "high_freq": 0.0,
+        "unigram": 14914.0,
+        "lemmas_table": 4522.0,
+        "ef_membership_bonus": 150.0
+      },
+      "composite_score": 19586.0
+    },
+    {
+      "lemma": "point",
+      "lookup_key": "point",
+      "ranks": {
+        "high_freq_2000": null,
+        "unigram": 438,
+        "lemmas_table": 193
+      },
+      "counts": {
+        "unigram": 175527859,
+        "lemmas_table_freq": 484094
+      },
+      "in_efdotcom_3000": true,
+      "borda": {
+        "high_freq": 0.0,
+        "unigram": 14577.0,
+        "lemmas_table": 4858.0,
+        "ef_membership_bonus": 150.0
+      },
+      "composite_score": 19585.0
+    },
+    {
+      "lemma": "support",
+      "lookup_key": "support",
+      "ranks": {
+        "high_freq_2000": null,
+        "unigram": 148,
+        "lemmas_table": 486
+      },
+      "counts": {
+        "unigram": 373512569,
+        "lemmas_table_freq": 198185
+      },
+      "in_efdotcom_3000": true,
+      "borda": {
+        "high_freq": 0.0,
+        "unigram": 14867.0,
+        "lemmas_table": 4565.0,
+        "ef_membership_bonus": 150.0
+      },
+      "composite_score": 19582.0
+    },
+    {
+      "lemma": "start",
+      "lookup_key": "start",
+      "ranks": {
+        "high_freq_2000": null,
+        "unigram": 474,
+        "lemmas_table": 162
+      },
+      "counts": {
+        "unigram": 161913408,
+        "lemmas_table_freq": 578246
+      },
+      "in_efdotcom_3000": true,
+      "borda": {
+        "high_freq": 0.0,
+        "unigram": 14541.0,
+        "lemmas_table": 4889.0,
+        "ef_membership_bonus": 150.0
+      },
+      "composite_score": 19580.0
+    },
+    {
+      "lemma": "change",
+      "lookup_key": "change",
+      "ranks": {
+        "high_freq_2000": null,
+        "unigram": 347,
+        "lemmas_table": 304
+      },
+      "counts": {
+        "unigram": 210601244,
+        "lemmas_table_freq": 327637
+      },
+      "in_efdotcom_3000": true,
+      "borda": {
+        "high_freq": 0.0,
+        "unigram": 14668.0,
+        "lemmas_table": 4747.0,
+        "ef_membership_bonus": 150.0
+      },
+      "composite_score": 19565.0
+    },
+    {
+      "lemma": "let",
+      "lookup_key": "let",
+      "ranks": {
+        "high_freq_2000": null,
+        "unigram": 543,
+        "lemmas_table": 122
+      },
+      "counts": {
+        "unigram": 143062438,
+        "lemmas_table_freq": 780929
+      },
+      "in_efdotcom_3000": true,
+      "borda": {
+        "high_freq": 0.0,
+        "unigram": 14472.0,
+        "lemmas_table": 4929.0,
+        "ef_membership_bonus": 150.0
+      },
+      "composite_score": 19551.0
+    },
+    {
+      "lemma": "live1",
+      "lookup_key": "live",
+      "ranks": {
+        "high_freq_2000": null,
+        "unigram": 461,
+        "lemmas_table": 209
+      },
+      "counts": {
+        "unigram": 166005029,
+        "lemmas_table_freq": 450380
+      },
+      "in_efdotcom_3000": true,
+      "borda": {
+        "high_freq": 0.0,
+        "unigram": 14554.0,
+        "lemmas_table": 4842.0,
+        "ef_membership_bonus": 150.0
+      },
+      "composite_score": 19546.0
+    },
+    {
+      "lemma": "open",
+      "lookup_key": "open",
+      "ranks": {
+        "high_freq_2000": null,
+        "unigram": 283,
+        "lemmas_table": 392
+      },
+      "counts": {
+        "unigram": 239670331,
+        "lemmas_table_freq": 247043
+      },
+      "in_efdotcom_3000": true,
+      "borda": {
+        "high_freq": 0.0,
+        "unigram": 14732.0,
+        "lemmas_table": 4659.0,
+        "ef_membership_bonus": 150.0
+      },
+      "composite_score": 19541.0
+    },
+    {
+      "lemma": "provide",
+      "lookup_key": "provide",
+      "ranks": {
+        "high_freq_2000": null,
+        "unigram": 416,
+        "lemmas_table": 272
+      },
+      "counts": {
+        "unigram": 181040994,
+        "lemmas_table_freq": 351941
+      },
+      "in_efdotcom_3000": true,
+      "borda": {
+        "high_freq": 0.0,
+        "unigram": 14599.0,
+        "lemmas_table": 4779.0,
+        "ef_membership_bonus": 150.0
+      },
+      "composite_score": 19528.0
+    },
+    {
+      "lemma": "report",
+      "lookup_key": "report",
+      "ranks": {
+        "high_freq_2000": null,
+        "unigram": 224,
+        "lemmas_table": 477
+      },
+      "counts": {
+        "unigram": 286237372,
+        "lemmas_table_freq": 201020
+      },
+      "in_efdotcom_3000": true,
+      "borda": {
+        "high_freq": 0.0,
+        "unigram": 14791.0,
+        "lemmas_table": 4574.0,
+        "ef_membership_bonus": 150.0
+      },
+      "composite_score": 19515.0
+    },
+    {
+      "lemma": "play",
+      "lookup_key": "play",
+      "ranks": {
+        "high_freq_2000": null,
+        "unigram": 516,
+        "lemmas_table": 196
+      },
+      "counts": {
+        "unigram": 150748333,
+        "lemmas_table_freq": 478740
+      },
+      "in_efdotcom_3000": true,
+      "borda": {
+        "high_freq": 0.0,
+        "unigram": 14499.0,
+        "lemmas_table": 4855.0,
+        "ef_membership_bonus": 150.0
+      },
+      "composite_score": 19504.0
+    },
+    {
+      "lemma": "care",
+      "lookup_key": "care",
+      "ranks": {
+        "high_freq_2000": null,
+        "unigram": 309,
+        "lemmas_table": 409
+      },
+      "counts": {
+        "unigram": 225326739,
+        "lemmas_table_freq": 237259
+      },
+      "in_efdotcom_3000": true,
+      "borda": {
+        "high_freq": 0.0,
+        "unigram": 14706.0,
+        "lemmas_table": 4642.0,
+        "ef_membership_bonus": 150.0
+      },
+      "composite_score": 19498.0
+    },
+    {
+      "lemma": "level",
+      "lookup_key": "level",
+      "ranks": {
+        "high_freq_2000": null,
+        "unigram": 364,
+        "lemmas_table": 354
+      },
+      "counts": {
+        "unigram": 202563642,
+        "lemmas_table_freq": 279770
+      },
+      "in_efdotcom_3000": true,
+      "borda": {
+        "high_freq": 0.0,
+        "unigram": 14651.0,
+        "lemmas_table": 4697.0,
+        "ef_membership_bonus": 150.0
+      },
+      "composite_score": 19498.0
+    },
+    {
+      "lemma": "post",
+      "lookup_key": "post",
+      "ranks": {
+        "high_freq_2000": null,
+        "unigram": 137,
+        "lemmas_table": 581
+      },
+      "counts": {
+        "unigram": 392956436,
+        "lemmas_table_freq": 166265
+      },
+      "in_efdotcom_3000": true,
+      "borda": {
+        "high_freq": 0.0,
+        "unigram": 14878.0,
+        "lemmas_table": 4470.0,
+        "ef_membership_bonus": 150.0
+      },
+      "composite_score": 19498.0
+    },
+    {
+      "lemma": "include",
+      "lookup_key": "include",
+      "ranks": {
+        "high_freq_2000": null,
+        "unigram": 408,
+        "lemmas_table": 328
+      },
+      "counts": {
+        "unigram": 182579275,
+        "lemmas_table_freq": 304197
+      },
+      "in_efdotcom_3000": true,
+      "borda": {
+        "high_freq": 0.0,
+        "unigram": 14607.0,
+        "lemmas_table": 4723.0,
+        "ef_membership_bonus": 150.0
+      },
+      "composite_score": 19480.0
+    },
+    {
+      "lemma": "learn",
+      "lookup_key": "learn",
+      "ranks": {
+        "high_freq_2000": null,
+        "unigram": 424,
+        "lemmas_table": 322
+      },
+      "counts": {
+        "unigram": 179428286,
+        "lemmas_table_freq": 312649
+      },
+      "in_efdotcom_3000": true,
+      "borda": {
+        "high_freq": 0.0,
+        "unigram": 14591.0,
+        "lemmas_table": 4729.0,
+        "ef_membership_bonus": 150.0
+      },
+      "composite_score": 19470.0
+    },
+    {
+      "lemma": "phone",
+      "lookup_key": "phone",
+      "ranks": {
+        "high_freq_2000": null,
+        "unigram": 255,
+        "lemmas_table": 493
+      },
+      "counts": {
+        "unigram": 256643812,
+        "lemmas_table_freq": 194941
+      },
+      "in_efdotcom_3000": true,
+      "borda": {
+        "high_freq": 0.0,
+        "unigram": 14760.0,
+        "lemmas_table": 4558.0,
+        "ef_membership_bonus": 150.0
+      },
+      "composite_score": 19468.0
+    },
+    {
+      "lemma": "list",
+      "lookup_key": "list",
+      "ranks": {
+        "high_freq_2000": null,
+        "unigram": 107,
+        "lemmas_table": 660
+      },
+      "counts": {
+        "unigram": 472590641,
+        "lemmas_table_freq": 146495
+      },
+      "in_efdotcom_3000": true,
+      "borda": {
+        "high_freq": 0.0,
+        "unigram": 14908.0,
+        "lemmas_table": 4391.0,
+        "ef_membership_bonus": 150.0
+      },
+      "composite_score": 19449.0
+    },
+    {
+      "lemma": "study",
+      "lookup_key": "study",
+      "ranks": {
+        "high_freq_2000": null,
+        "unigram": 508,
+        "lemmas_table": 259
+      },
+      "counts": {
+        "unigram": 152978354,
+        "lemmas_table_freq": 364915
+      },
+      "in_efdotcom_3000": true,
+      "borda": {
+        "high_freq": 0.0,
+        "unigram": 14507.0,
+        "lemmas_table": 4792.0,
+        "ef_membership_bonus": 150.0
+      },
+      "composite_score": 19449.0
+    },
+    {
+      "lemma": "type",
+      "lookup_key": "type",
+      "ranks": {
+        "high_freq_2000": null,
+        "unigram": 235,
+        "lemmas_table": 552
+      },
+      "counts": {
+        "unigram": 272336859,
+        "lemmas_table_freq": 173975
+      },
+      "in_efdotcom_3000": true,
+      "borda": {
+        "high_freq": 0.0,
+        "unigram": 14780.0,
+        "lemmas_table": 4499.0,
+        "ef_membership_bonus": 150.0
+      },
+      "composite_score": 19429.0
+    },
+    {
+      "lemma": "question",
+      "lookup_key": "question",
+      "ranks": {
+        "high_freq_2000": null,
+        "unigram": 592,
+        "lemmas_table": 206
+      },
+      "counts": {
+        "unigram": 130644510,
+        "lemmas_table_freq": 457301
+      },
+      "in_efdotcom_3000": true,
+      "borda": {
+        "high_freq": 0.0,
+        "unigram": 14423.0,
+        "lemmas_table": 4845.0,
+        "ef_membership_bonus": 150.0
+      },
+      "composite_score": 19418.0
+    },
+    {
+      "lemma": "try",
+      "lookup_key": "try",
+      "ranks": {
+        "high_freq_2000": null,
+        "unigram": 684,
+        "lemmas_table": 121
+      },
+      "counts": {
+        "unigram": 114384208,
+        "lemmas_table_freq": 795248
+      },
+      "in_efdotcom_3000": true,
+      "borda": {
+        "high_freq": 0.0,
+        "unigram": 14331.0,
+        "lemmas_table": 4930.0,
+        "ef_membership_bonus": 150.0
+      },
+      "composite_score": 19411.0
+    },
+    {
+      "lemma": "keep",
+      "lookup_key": "keep",
+      "ranks": {
+        "high_freq_2000": null,
+        "unigram": 656,
+        "lemmas_table": 151
+      },
+      "counts": {
+        "unigram": 119602514,
+        "lemmas_table_freq": 626487
+      },
+      "in_efdotcom_3000": true,
+      "borda": {
+        "high_freq": 0.0,
+        "unigram": 14359.0,
+        "lemmas_table": 4900.0,
+        "ef_membership_bonus": 150.0
+      },
+      "composite_score": 19409.0
+    },
+    {
+      "lemma": "control",
+      "lookup_key": "control",
+      "ranks": {
+        "high_freq_2000": null,
+        "unigram": 333,
+        "lemmas_table": 478
+      },
+      "counts": {
+        "unigram": 215560453,
+        "lemmas_table_freq": 200879
+      },
+      "in_efdotcom_3000": true,
+      "borda": {
+        "high_freq": 0.0,
+        "unigram": 14682.0,
+        "lemmas_table": 4573.0,
+        "ef_membership_bonus": 150.0
+      },
+      "composite_score": 19405.0
+    },
+    {
+      "lemma": "tell",
+      "lookup_key": "tell",
+      "ranks": {
+        "high_freq_2000": null,
+        "unigram": 723,
+        "lemmas_table": 92
+      },
+      "counts": {
+        "unigram": 109553730,
+        "lemmas_table_freq": 1119692
+      },
+      "in_efdotcom_3000": true,
+      "borda": {
+        "high_freq": 0.0,
+        "unigram": 14292.0,
+        "lemmas_table": 4959.0,
+        "ef_membership_bonus": 150.0
+      },
+      "composite_score": 19401.0
+    },
+    {
+      "lemma": "might",
+      "lookup_key": "might",
+      "ranks": {
+        "high_freq_2000": null,
+        "unigram": 634,
+        "lemmas_table": 182
+      },
+      "counts": {
+        "unigram": 123196001,
+        "lemmas_table_freq": 521992
+      },
+      "in_efdotcom_3000": true,
+      "borda": {
+        "high_freq": 0.0,
+        "unigram": 14381.0,
+        "lemmas_table": 4869.0,
+        "ef_membership_bonus": 150.0
+      },
+      "composite_score": 19400.0
+    },
+    {
+      "lemma": "become",
+      "lookup_key": "become",
+      "ranks": {
+        "high_freq_2000": null,
+        "unigram": 652,
+        "lemmas_table": 167
+      },
+      "counts": {
+        "unigram": 120495036,
+        "lemmas_table_freq": 561963
+      },
+      "in_efdotcom_3000": true,
+      "borda": {
+        "high_freq": 0.0,
+        "unigram": 14363.0,
+        "lemmas_table": 4884.0,
+        "ef_membership_bonus": 150.0
+      },
+      "composite_score": 19397.0
+    },
+    {
+      "lemma": "write",
+      "lookup_key": "write",
+      "ranks": {
+        "high_freq_2000": null,
+        "unigram": 614,
+        "lemmas_table": 212
+      },
+      "counts": {
+        "unigram": 126645151,
+        "lemmas_table_freq": 439865
+      },
+      "in_efdotcom_3000": true,
+      "borda": {
+        "high_freq": 0.0,
+        "unigram": 14401.0,
+        "lemmas_table": 4839.0,
+        "ef_membership_bonus": 150.0
+      },
+      "composite_score": 19390.0
+    },
+    {
+      "lemma": "rate",
+      "lookup_key": "rate",
+      "ranks": {
+        "high_freq_2000": null,
+        "unigram": 352,
+        "lemmas_table": 479
+      },
+      "counts": {
+        "unigram": 207634179,
+        "lemmas_table_freq": 200828
+      },
+      "in_efdotcom_3000": true,
+      "borda": {
+        "high_freq": 0.0,
+        "unigram": 14663.0,
+        "lemmas_table": 4572.0,
+        "ef_membership_bonus": 150.0
+      },
+      "composite_score": 19385.0
+    },
+    {
+      "lemma": "project",
+      "lookup_key": "project",
+      "ranks": {
+        "high_freq_2000": null,
+        "unigram": 288,
+        "lemmas_table": 544
+      },
+      "counts": {
+        "unigram": 235262594,
+        "lemmas_table_freq": 177076
+      },
+      "in_efdotcom_3000": true,
+      "borda": {
+        "high_freq": 0.0,
+        "unigram": 14727.0,
+        "lemmas_table": 4507.0,
+        "ef_membership_bonus": 150.0
+      },
+      "composite_score": 19384.0
+    },
+    {
+      "lemma": "put",
+      "lookup_key": "put",
+      "ranks": {
+        "high_freq_2000": null,
+        "unigram": 679,
+        "lemmas_table": 153
+      },
+      "counts": {
+        "unigram": 115205090,
+        "lemmas_table_freq": 616952
+      },
+      "in_efdotcom_3000": true,
+      "borda": {
+        "high_freq": 0.0,
+        "unigram": 14336.0,
+        "lemmas_table": 4898.0,
+        "ef_membership_bonus": 150.0
+      },
+      "composite_score": 19384.0
+    },
+    {
+      "lemma": "hand",
+      "lookup_key": "hand",
+      "ranks": {
+        "high_freq_2000": null,
+        "unigram": 644,
+        "lemmas_table": 194
+      },
+      "counts": {
+        "unigram": 121296661,
+        "lemmas_table_freq": 481332
+      },
+      "in_efdotcom_3000": true,
+      "borda": {
+        "high_freq": 0.0,
+        "unigram": 14371.0,
+        "lemmas_table": 4857.0,
+        "ef_membership_bonus": 150.0
+      },
+      "composite_score": 19378.0
+    },
+    {
+      "lemma": "process",
+      "lookup_key": "process",
+      "ranks": {
+        "high_freq_2000": null,
+        "unigram": 431,
+        "lemmas_table": 415
+      },
+      "counts": {
+        "unigram": 176829177,
+        "lemmas_table_freq": 235304
+      },
+      "in_efdotcom_3000": true,
+      "borda": {
+        "high_freq": 0.0,
+        "unigram": 14584.0,
+        "lemmas_table": 4636.0,
+        "ef_membership_bonus": 150.0
+      },
+      "composite_score": 19370.0
+    },
+    {
+      "lemma": "pay",
+      "lookup_key": "pay",
+      "ranks": {
+        "high_freq_2000": null,
+        "unigram": 599,
+        "lemmas_table": 258
+      },
+      "counts": {
+        "unigram": 129198530,
+        "lemmas_table_freq": 365255
+      },
+      "in_efdotcom_3000": true,
+      "borda": {
+        "high_freq": 0.0,
+        "unigram": 14416.0,
+        "lemmas_table": 4793.0,
+        "ef_membership_bonus": 150.0
+      },
+      "composite_score": 19359.0
+    },
+    {
+      "lemma": "order",
+      "lookup_key": "order",
+      "ranks": {
+        "high_freq_2000": null,
+        "unigram": 173,
+        "lemmas_table": 686
+      },
+      "counts": {
+        "unigram": 336631187,
+        "lemmas_table_freq": 140025
+      },
+      "in_efdotcom_3000": true,
+      "borda": {
+        "high_freq": 0.0,
+        "unigram": 14842.0,
+        "lemmas_table": 4365.0,
+        "ef_membership_bonus": 150.0
+      },
+      "composite_score": 19357.0
+    },
+    {
+      "lemma": "issue",
+      "lookup_key": "issue",
+      "ranks": {
+        "high_freq_2000": null,
+        "unigram": 604,
+        "lemmas_table": 261
+      },
+      "counts": {
+        "unigram": 128427156,
+        "lemmas_table_freq": 362137
+      },
+      "in_efdotcom_3000": true,
+      "borda": {
+        "high_freq": 0.0,
+        "unigram": 14411.0,
+        "lemmas_table": 4790.0,
+        "ef_membership_bonus": 150.0
+      },
+      "composite_score": 19351.0
+    },
+    {
+      "lemma": "run",
+      "lookup_key": "run",
+      "ranks": {
+        "high_freq_2000": null,
+        "unigram": 672,
+        "lemmas_table": 202
+      },
+      "counts": {
+        "unigram": 117213565,
+        "lemmas_table_freq": 465066
+      },
+      "in_efdotcom_3000": true,
+      "borda": {
+        "high_freq": 0.0,
+        "unigram": 14343.0,
+        "lemmas_table": 4849.0,
+        "ef_membership_bonus": 150.0
+      },
+      "composite_score": 19342.0
+    },
+    {
+      "lemma": "create",
+      "lookup_key": "create",
+      "ranks": {
+        "high_freq_2000": null,
+        "unigram": 568,
+        "lemmas_table": 319
+      },
+      "counts": {
+        "unigram": 137071122,
+        "lemmas_table_freq": 314631
+      },
+      "in_efdotcom_3000": true,
+      "borda": {
+        "high_freq": 0.0,
+        "unigram": 14447.0,
+        "lemmas_table": 4732.0,
+        "ef_membership_bonus": 150.0
+      },
+      "composite_score": 19329.0
+    },
+    {
+      "lemma": "ask",
+      "lookup_key": "ask",
+      "ranks": {
+        "high_freq_2000": null,
+        "unigram": 749,
+        "lemmas_table": 143
+      },
+      "counts": {
+        "unigram": 106400213,
+        "lemmas_table_freq": 676596
+      },
+      "in_efdotcom_3000": true,
+      "borda": {
+        "high_freq": 0.0,
+        "unigram": 14266.0,
+        "lemmas_table": 4908.0,
+        "ef_membership_bonus": 150.0
+      },
+      "composite_score": 19324.0
+    },
+    {
+      "lemma": "check",
+      "lookup_key": "check",
+      "ranks": {
+        "high_freq_2000": null,
+        "unigram": 272,
+        "lemmas_table": 623
+      },
+      "counts": {
+        "unigram": 244491090,
+        "lemmas_table_freq": 155591
+      },
+      "in_efdotcom_3000": true,
+      "borda": {
+        "high_freq": 0.0,
+        "unigram": 14743.0,
+        "lemmas_table": 4428.0,
+        "ef_membership_bonus": 150.0
+      },
+      "composite_score": 19321.0
+    },
+    {
+      "lemma": "value",
+      "lookup_key": "value",
+      "ranks": {
+        "high_freq_2000": null,
+        "unigram": 410,
+        "lemmas_table": 490
+      },
+      "counts": {
+        "unigram": 182061247,
+        "lemmas_table_freq": 195639
+      },
+      "in_efdotcom_3000": true,
+      "borda": {
+        "high_freq": 0.0,
+        "unigram": 14605.0,
+        "lemmas_table": 4561.0,
+        "ef_membership_bonus": 150.0
+      },
+      "composite_score": 19316.0
+    },
+    {
+      "lemma": "plan",
+      "lookup_key": "plan",
+      "ranks": {
+        "high_freq_2000": null,
+        "unigram": 480,
+        "lemmas_table": 422
+      },
+      "counts": {
+        "unigram": 160746244,
+        "lemmas_table_freq": 231629
+      },
+      "in_efdotcom_3000": true,
+      "borda": {
+        "high_freq": 0.0,
+        "unigram": 14535.0,
+        "lemmas_table": 4629.0,
+        "ef_membership_bonus": 150.0
+      },
+      "composite_score": 19314.0
+    },
+    {
+      "lemma": "return",
+      "lookup_key": "return",
+      "ranks": {
+        "high_freq_2000": null,
+        "unigram": 357,
+        "lemmas_table": 545
+      },
+      "counts": {
+        "unigram": 205629763,
+        "lemmas_table_freq": 176787
+      },
+      "in_efdotcom_3000": true,
+      "borda": {
+        "high_freq": 0.0,
+        "unigram": 14658.0,
+        "lemmas_table": 4506.0,
+        "ef_membership_bonus": 150.0
+      },
+      "composite_score": 19314.0
+    },
+    {
+      "lemma": "market",
+      "lookup_key": "market",
+      "ranks": {
+        "high_freq_2000": null,
+        "unigram": 470,
+        "lemmas_table": 453
+      },
+      "counts": {
+        "unigram": 162390150,
+        "lemmas_table_freq": 210848
+      },
+      "in_efdotcom_3000": true,
+      "borda": {
+        "high_freq": 0.0,
+        "unigram": 14545.0,
+        "lemmas_table": 4598.0,
+        "ef_membership_bonus": 150.0
+      },
+      "composite_score": 19293.0
+    },
+    {
+      "lemma": "form",
+      "lookup_key": "form",
+      "ranks": {
+        "high_freq_2000": null,
+        "unigram": 368,
+        "lemmas_table": 556
+      },
+      "counts": {
+        "unigram": 201395192,
+        "lemmas_table_freq": 173161
+      },
+      "in_efdotcom_3000": true,
+      "borda": {
+        "high_freq": 0.0,
+        "unigram": 14647.0,
+        "lemmas_table": 4495.0,
+        "ef_membership_bonus": 150.0
+      },
+      "composite_score": 19292.0
+    },
+    {
+      "lemma": "talk",
+      "lookup_key": "talk",
+      "ranks": {
+        "high_freq_2000": null,
+        "unigram": 816,
+        "lemmas_table": 149
+      },
+      "counts": {
+        "unigram": 97850837,
+        "lemmas_table_freq": 635614
+      },
+      "in_efdotcom_3000": true,
+      "borda": {
+        "high_freq": 0.0,
+        "unigram": 14199.0,
+        "lemmas_table": 4902.0,
+        "ef_membership_bonus": 150.0
+      },
+      "composite_score": 19251.0
+    },
+    {
+      "lemma": "head",
+      "lookup_key": "head",
+      "ranks": {
+        "high_freq_2000": null,
+        "unigram": 692,
+        "lemmas_table": 278
+      },
+      "counts": {
+        "unigram": 113316224,
+        "lemmas_table_freq": 348664
+      },
+      "in_efdotcom_3000": true,
+      "borda": {
+        "high_freq": 0.0,
+        "unigram": 14323.0,
+        "lemmas_table": 4773.0,
+        "ef_membership_bonus": 150.0
+      },
+      "composite_score": 19246.0
+    },
+    {
+      "lemma": "tax",
+      "lookup_key": "tax",
+      "ranks": {
+        "high_freq_2000": null,
+        "unigram": 531,
+        "lemmas_table": 444
+      },
+      "counts": {
+        "unigram": 146906651,
+        "lemmas_table_freq": 217131
+      },
+      "in_efdotcom_3000": true,
+      "borda": {
+        "high_freq": 0.0,
+        "unigram": 14484.0,
+        "lemmas_table": 4607.0,
+        "ef_membership_bonus": 150.0
+      },
+      "composite_score": 19241.0
+    },
+    {
+      "lemma": "store",
+      "lookup_key": "store",
+      "ranks": {
+        "high_freq_2000": null,
+        "unigram": 219,
+        "lemmas_table": 759
+      },
+      "counts": {
+        "unigram": 291308910,
+        "lemmas_table_freq": 127984
+      },
+      "in_efdotcom_3000": true,
+      "borda": {
+        "high_freq": 0.0,
+        "unigram": 14796.0,
+        "lemmas_table": 4292.0,
+        "ef_membership_bonus": 150.0
+      },
+      "composite_score": 19238.0
+    },
+    {
+      "lemma": "model",
+      "lookup_key": "model",
+      "ranks": {
+        "high_freq_2000": null,
+        "unigram": 476,
+        "lemmas_table": 505
+      },
+      "counts": {
+        "unigram": 161205740,
+        "lemmas_table_freq": 191448
+      },
+      "in_efdotcom_3000": true,
+      "borda": {
+        "high_freq": 0.0,
+        "unigram": 14539.0,
+        "lemmas_table": 4546.0,
+        "ef_membership_bonus": 150.0
+      },
+      "composite_score": 19235.0
+    },
+    {
+      "lemma": "experience",
+      "lookup_key": "experience",
+      "ranks": {
+        "high_freq_2000": null,
+        "unigram": 566,
+        "lemmas_table": 421
+      },
+      "counts": {
+        "unigram": 137134662,
+        "lemmas_table_freq": 232376
+      },
+      "in_efdotcom_3000": true,
+      "borda": {
+        "high_freq": 0.0,
+        "unigram": 14449.0,
+        "lemmas_table": 4630.0,
+        "ef_membership_bonus": 150.0
+      },
+      "composite_score": 19229.0
+    },
+    {
+      "lemma": "result",
+      "lookup_key": "result",
+      "ranks": {
+        "high_freq_2000": null,
+        "unigram": 611,
+        "lemmas_table": 376
+      },
+      "counts": {
+        "unigram": 127425045,
+        "lemmas_table_freq": 259961
+      },
+      "in_efdotcom_3000": true,
+      "borda": {
+        "high_freq": 0.0,
+        "unigram": 14404.0,
+        "lemmas_table": 4675.0,
+        "ef_membership_bonus": 150.0
+      },
+      "composite_score": 19229.0
+    },
+    {
+      "lemma": "save",
+      "lookup_key": "save",
+      "ranks": {
+        "high_freq_2000": null,
+        "unigram": 400,
+        "lemmas_table": 600
+      },
+      "counts": {
+        "unigram": 186091095,
+        "lemmas_table_freq": 161469
+      },
+      "in_efdotcom_3000": true,
+      "borda": {
+        "high_freq": 0.0,
+        "unigram": 14615.0,
+        "lemmas_table": 4451.0,
+        "ef_membership_bonus": 150.0
+      },
+      "composite_score": 19216.0
+    },
+    {
+      "lemma": "join",
+      "lookup_key": "join",
+      "ranks": {
+        "high_freq_2000": null,
+        "unigram": 439,
+        "lemmas_table": 566
+      },
+      "counts": {
+        "unigram": 174297802,
+        "lemmas_table_freq": 170302
+      },
+      "in_efdotcom_3000": true,
+      "borda": {
+        "high_freq": 0.0,
+        "unigram": 14576.0,
+        "lemmas_table": 4485.0,
+        "ef_membership_bonus": 150.0
+      },
+      "composite_score": 19211.0
+    },
+    {
+      "lemma": "age",
+      "lookup_key": "age",
+      "ranks": {
+        "high_freq_2000": null,
+        "unigram": 580,
+        "lemmas_table": 429
+      },
+      "counts": {
+        "unigram": 132725767,
+        "lemmas_table_freq": 228610
+      },
+      "in_efdotcom_3000": true,
+      "borda": {
+        "high_freq": 0.0,
+        "unigram": 14435.0,
+        "lemmas_table": 4622.0,
+        "ef_membership_bonus": 150.0
+      },
+      "composite_score": 19207.0
+    },
+    {
+      "lemma": "feel",
+      "lookup_key": "feel",
+      "ranks": {
+        "high_freq_2000": null,
+        "unigram": 873,
+        "lemmas_table": 136
+      },
+      "counts": {
+        "unigram": 91924001,
+        "lemmas_table_freq": 722826
+      },
+      "in_efdotcom_3000": true,
+      "borda": {
+        "high_freq": 0.0,
+        "unigram": 14142.0,
+        "lemmas_table": 4915.0,
+        "ef_membership_bonus": 150.0
+      },
+      "composite_score": 19207.0
+    },
+    {
+      "lemma": "offer",
+      "lookup_key": "offer",
+      "ranks": {
+        "high_freq_2000": null,
+        "unigram": 617,
+        "lemmas_table": 418
+      },
+      "counts": {
+        "unigram": 126228968,
+        "lemmas_table_freq": 234189
+      },
+      "in_efdotcom_3000": true,
+      "borda": {
+        "high_freq": 0.0,
+        "unigram": 14398.0,
+        "lemmas_table": 4633.0,
+        "ef_membership_bonus": 150.0
+      },
+      "composite_score": 19181.0
+    },
+    {
+      "lemma": "sell",
+      "lookup_key": "sell",
+      "ranks": {
+        "high_freq_2000": null,
+        "unigram": 564,
+        "lemmas_table": 484
+      },
+      "counts": {
+        "unigram": 137696613,
+        "lemmas_table_freq": 198982
+      },
+      "in_efdotcom_3000": true,
+      "borda": {
+        "high_freq": 0.0,
+        "unigram": 14451.0,
+        "lemmas_table": 4567.0,
+        "ef_membership_bonus": 150.0
+      },
+      "composite_score": 19168.0
+    },
+    {
+      "lemma": "map",
+      "lookup_key": "map",
+      "ranks": {
+        "high_freq_2000": 1249,
+        "unigram": 197,
+        "lemmas_table": 1614
+      },
+      "counts": {
+        "unigram": 309676581,
+        "lemmas_table_freq": 58218
+      },
+      "in_efdotcom_3000": true,
+      "borda": {
+        "high_freq": 752.0,
+        "unigram": 14818.0,
+        "lemmas_table": 3437.0,
+        "ef_membership_bonus": 150.0
+      },
+      "composite_score": 19157.0
+    },
+    {
+      "lemma": "cost",
+      "lookup_key": "cost",
+      "ranks": {
+        "high_freq_2000": null,
+        "unigram": 489,
+        "lemmas_table": 579
+      },
+      "counts": {
+        "unigram": 158887256,
+        "lemmas_table_freq": 166775
+      },
+      "in_efdotcom_3000": true,
+      "borda": {
+        "high_freq": 0.0,
+        "unigram": 14526.0,
+        "lemmas_table": 4472.0,
+        "ef_membership_bonus": 150.0
+      },
+      "composite_score": 19148.0
+    },
+    {
+      "lemma": "welcome",
+      "lookup_key": "welcome",
+      "ranks": {
+        "high_freq_2000": 1037,
+        "unigram": 685,
+        "lemmas_table": 1363
+      },
+      "counts": {
+        "unigram": 114025350,
+        "lemmas_table_freq": 69914
+      },
+      "in_efdotcom_3000": true,
+      "borda": {
+        "high_freq": 964.0,
+        "unigram": 14330.0,
+        "lemmas_table": 3688.0,
+        "ef_membership_bonus": 150.0
+      },
+      "composite_score": 19132.0
+    },
+    {
+      "lemma": "date",
+      "lookup_key": "date",
+      "ranks": {
+        "high_freq_2000": null,
+        "unigram": 102,
+        "lemmas_table": 994
+      },
+      "counts": {
+        "unigram": 488967374,
+        "lemmas_table_freq": 97094
+      },
+      "in_efdotcom_3000": true,
+      "borda": {
+        "high_freq": 0.0,
+        "unigram": 14913.0,
+        "lemmas_table": 4057.0,
+        "ef_membership_bonus": 150.0
+      },
+      "composite_score": 19120.0
+    },
+    {
+      "lemma": "board",
+      "lookup_key": "board",
+      "ranks": {
+        "high_freq_2000": null,
+        "unigram": 345,
+        "lemmas_table": 768
+      },
+      "counts": {
+        "unigram": 212361059,
+        "lemmas_table_freq": 127202
+      },
+      "in_efdotcom_3000": true,
+      "borda": {
+        "high_freq": 0.0,
+        "unigram": 14670.0,
+        "lemmas_table": 4283.0,
+        "ef_membership_bonus": 150.0
+      },
+      "composite_score": 19103.0
+    },
+    {
+      "lemma": "design",
+      "lookup_key": "design",
+      "ranks": {
+        "high_freq_2000": null,
+        "unigram": 245,
+        "lemmas_table": 875
+      },
+      "counts": {
+        "unigram": 264448339,
+        "lemmas_table_freq": 111026
+      },
+      "in_efdotcom_3000": true,
+      "borda": {
+        "high_freq": 0.0,
+        "unigram": 14770.0,
+        "lemmas_table": 4176.0,
+        "ef_membership_bonus": 150.0
+      },
+      "composite_score": 19096.0
+    },
+    {
+      "lemma": "interest",
+      "lookup_key": "interest",
+      "ranks": {
+        "high_freq_2000": null,
+        "unigram": 653,
+        "lemmas_table": 473
+      },
+      "counts": {
+        "unigram": 120272948,
+        "lemmas_table_freq": 202642
+      },
+      "in_efdotcom_3000": true,
+      "borda": {
+        "high_freq": 0.0,
+        "unigram": 14362.0,
+        "lemmas_table": 4578.0,
+        "ef_membership_bonus": 150.0
+      },
+      "composite_score": 19090.0
+    },
+    {
+      "lemma": "comment",
+      "lookup_key": "comment",
+      "ranks": {
+        "high_freq_2000": null,
+        "unigram": 525,
+        "lemmas_table": 604
+      },
+      "counts": {
+        "unigram": 148628729,
+        "lemmas_table_freq": 160451
+      },
+      "in_efdotcom_3000": true,
+      "borda": {
+        "high_freq": 0.0,
+        "unigram": 14490.0,
+        "lemmas_table": 4447.0,
+        "ef_membership_bonus": 150.0
+      },
+      "composite_score": 19087.0
+    },
+    {
+      "lemma": "test",
+      "lookup_key": "test",
+      "ranks": {
+        "high_freq_2000": null,
+        "unigram": 502,
+        "lemmas_table": 627
+      },
+      "counts": {
+        "unigram": 154999587,
+        "lemmas_table_freq": 154189
+      },
+      "in_efdotcom_3000": true,
+      "borda": {
+        "high_freq": 0.0,
+        "unigram": 14513.0,
+        "lemmas_table": 4424.0,
+        "ef_membership_bonus": 150.0
+      },
+      "composite_score": 19087.0
+    },
+    {
+      "lemma": "light",
+      "lookup_key": "light",
+      "ranks": {
+        "high_freq_2000": null,
+        "unigram": 613,
+        "lemmas_table": 521
+      },
+      "counts": {
+        "unigram": 126699632,
+        "lemmas_table_freq": 185287
+      },
+      "in_efdotcom_3000": true,
+      "borda": {
+        "high_freq": 0.0,
+        "unigram": 14402.0,
+        "lemmas_table": 4530.0,
+        "ef_membership_bonus": 150.0
+      },
+      "composite_score": 19082.0
+    },
+    {
+      "lemma": "mean",
+      "lookup_key": "mean",
+      "ranks": {
+        "high_freq_2000": null,
+        "unigram": 1008,
+        "lemmas_table": 130
+      },
+      "counts": {
+        "unigram": 80312172,
+        "lemmas_table_freq": 748840
+      },
+      "in_efdotcom_3000": true,
+      "borda": {
+        "high_freq": 0.0,
+        "unigram": 14007.0,
+        "lemmas_table": 4921.0,
+        "ef_membership_bonus": 150.0
+      },
+      "composite_score": 19078.0
+    },
+    {
+      "lemma": "sign",
+      "lookup_key": "sign",
+      "ranks": {
+        "high_freq_2000": null,
+        "unigram": 280,
+        "lemmas_table": 858
+      },
+      "counts": {
+        "unigram": 242290578,
+        "lemmas_table_freq": 112603
+      },
+      "in_efdotcom_3000": true,
+      "borda": {
+        "high_freq": 0.0,
+        "unigram": 14735.0,
+        "lemmas_table": 4193.0,
+        "ef_membership_bonus": 150.0
+      },
+      "composite_score": 19078.0
+    },
+    {
+      "lemma": "note",
+      "lookup_key": "note",
+      "ranks": {
+        "high_freq_2000": null,
+        "unigram": 460,
+        "lemmas_table": 690
+      },
+      "counts": {
+        "unigram": 166657334,
+        "lemmas_table_freq": 139111
+      },
+      "in_efdotcom_3000": true,
+      "borda": {
+        "high_freq": 0.0,
+        "unigram": 14555.0,
+        "lemmas_table": 4361.0,
+        "ef_membership_bonus": 150.0
+      },
+      "composite_score": 19066.0
+    },
+    {
+      "lemma": "meet",
+      "lookup_key": "meet",
+      "ranks": {
+        "high_freq_2000": null,
+        "unigram": 859,
+        "lemmas_table": 294
+      },
+      "counts": {
+        "unigram": 93275872,
+        "lemmas_table_freq": 333954
+      },
+      "in_efdotcom_3000": true,
+      "borda": {
+        "high_freq": 0.0,
+        "unigram": 14156.0,
+        "lemmas_table": 4757.0,
+        "ef_membership_bonus": 150.0
+      },
+      "composite_score": 19063.0
+    },
+    {
+      "lemma": "watch",
+      "lookup_key": "watch",
+      "ranks": {
+        "high_freq_2000": null,
+        "unigram": 871,
+        "lemmas_table": 315
+      },
+      "counts": {
+        "unigram": 92006970,
+        "lemmas_table_freq": 318772
+      },
+      "in_efdotcom_3000": true,
+      "borda": {
+        "high_freq": 0.0,
+        "unigram": 14144.0,
+        "lemmas_table": 4736.0,
+        "ef_membership_bonus": 150.0
+      },
+      "composite_score": 19030.0
+    },
+    {
+      "lemma": "review",
+      "lookup_key": "review",
+      "ranks": {
+        "high_freq_2000": null,
+        "unigram": 171,
+        "lemmas_table": 1028
+      },
+      "counts": {
+        "unigram": 339067778,
+        "lemmas_table_freq": 94364
+      },
+      "in_efdotcom_3000": true,
+      "borda": {
+        "high_freq": 0.0,
+        "unigram": 14844.0,
+        "lemmas_table": 4023.0,
+        "ef_membership_bonus": 150.0
+      },
+      "composite_score": 19017.0
+    },
+    {
+      "lemma": "turn",
+      "lookup_key": "turn",
+      "ranks": {
+        "high_freq_2000": null,
+        "unigram": 1007,
+        "lemmas_table": 197
+      },
+      "counts": {
+        "unigram": 80328029,
+        "lemmas_table_freq": 477668
+      },
+      "in_efdotcom_3000": true,
+      "borda": {
+        "high_freq": 0.0,
+        "unigram": 14008.0,
+        "lemmas_table": 4854.0,
+        "ef_membership_bonus": 150.0
+      },
+      "composite_score": 19012.0
+    },
+    {
+      "lemma": "compare",
+      "lookup_key": "compare",
+      "ranks": {
+        "high_freq_2000": null,
+        "unigram": 406,
+        "lemmas_table": 800
+      },
+      "counts": {
+        "unigram": 183202885,
+        "lemmas_table_freq": 120978
+      },
+      "in_efdotcom_3000": true,
+      "borda": {
+        "high_freq": 0.0,
+        "unigram": 14609.0,
+        "lemmas_table": 4251.0,
+        "ef_membership_bonus": 150.0
+      },
+      "composite_score": 19010.0
+    },
+    {
+      "lemma": "picture",
+      "lookup_key": "picture",
+      "ranks": {
+        "high_freq_2000": null,
+        "unigram": 631,
+        "lemmas_table": 583
+      },
+      "counts": {
+        "unigram": 124116581,
+        "lemmas_table_freq": 165703
+      },
+      "in_efdotcom_3000": true,
+      "borda": {
+        "high_freq": 0.0,
+        "unigram": 14384.0,
+        "lemmas_table": 4468.0,
+        "ef_membership_bonus": 150.0
+      },
+      "composite_score": 19002.0
+    },
+    {
+      "lemma": "star",
+      "lookup_key": "star",
+      "ranks": {
+        "high_freq_2000": null,
+        "unigram": 639,
+        "lemmas_table": 578
+      },
+      "counts": {
+        "unigram": 122498186,
+        "lemmas_table_freq": 167036
+      },
+      "in_efdotcom_3000": true,
+      "borda": {
+        "high_freq": 0.0,
+        "unigram": 14376.0,
+        "lemmas_table": 4473.0,
+        "ef_membership_bonus": 150.0
+      },
+      "composite_score": 18999.0
+    },
+    {
+      "lemma": "film",
+      "lookup_key": "film",
+      "ranks": {
+        "high_freq_2000": null,
+        "unigram": 677,
+        "lemmas_table": 549
+      },
+      "counts": {
+        "unigram": 116097842,
+        "lemmas_table_freq": 175442
+      },
+      "in_efdotcom_3000": true,
+      "borda": {
+        "high_freq": 0.0,
+        "unigram": 14338.0,
+        "lemmas_table": 4502.0,
+        "ef_membership_bonus": 150.0
+      },
+      "composite_score": 18990.0
+    },
+    {
+      "lemma": "share",
+      "lookup_key": "share",
+      "ranks": {
+        "high_freq_2000": null,
+        "unigram": 660,
+        "lemmas_table": 570
+      },
+      "counts": {
+        "unigram": 119294241,
+        "lemmas_table_freq": 168892
+      },
+      "in_efdotcom_3000": true,
+      "borda": {
+        "high_freq": 0.0,
+        "unigram": 14355.0,
+        "lemmas_table": 4481.0,
+        "ef_membership_bonus": 150.0
+      },
+      "composite_score": 18986.0
+    },
+    {
+      "lemma": "drive",
+      "lookup_key": "drive",
+      "ranks": {
+        "high_freq_2000": null,
+        "unigram": 737,
+        "lemmas_table": 496
+      },
+      "counts": {
+        "unigram": 107799371,
+        "lemmas_table_freq": 194360
+      },
+      "in_efdotcom_3000": true,
+      "borda": {
+        "high_freq": 0.0,
+        "unigram": 14278.0,
+        "lemmas_table": 4555.0,
+        "ef_membership_bonus": 150.0
+      },
+      "composite_score": 18983.0
+    },
+    {
+      "lemma": "press",
+      "lookup_key": "press",
+      "ranks": {
+        "high_freq_2000": null,
+        "unigram": 422,
+        "lemmas_table": 814
+      },
+      "counts": {
+        "unigram": 179652730,
+        "lemmas_table_freq": 119485
+      },
+      "in_efdotcom_3000": true,
+      "borda": {
+        "high_freq": 0.0,
+        "unigram": 14593.0,
+        "lemmas_table": 4237.0,
+        "ef_membership_bonus": 150.0
+      },
+      "composite_score": 18980.0
+    },
+    {
+      "lemma": "act",
+      "lookup_key": "act",
+      "ranks": {
+        "high_freq_2000": null,
+        "unigram": 552,
+        "lemmas_table": 702
+      },
+      "counts": {
+        "unigram": 141076205,
+        "lemmas_table_freq": 137668
+      },
+      "in_efdotcom_3000": true,
+      "borda": {
+        "high_freq": 0.0,
+        "unigram": 14463.0,
+        "lemmas_table": 4349.0,
+        "ef_membership_bonus": 150.0
+      },
+      "composite_score": 18962.0
+    },
+    {
+      "lemma": "believe",
+      "lookup_key": "believe",
+      "ranks": {
+        "high_freq_2000": null,
+        "unigram": 1069,
+        "lemmas_table": 189
+      },
+      "counts": {
+        "unigram": 75918053,
+        "lemmas_table_freq": 500511
+      },
+      "in_efdotcom_3000": true,
+      "borda": {
+        "high_freq": 0.0,
+        "unigram": 13946.0,
+        "lemmas_table": 4862.0,
+        "ef_membership_bonus": 150.0
+      },
+      "composite_score": 18958.0
+    },
+    {
+      "lemma": "park",
+      "lookup_key": "park",
+      "ranks": {
+        "high_freq_2000": null,
+        "unigram": 549,
+        "lemmas_table": 719
+      },
+      "counts": {
+        "unigram": 141548802,
+        "lemmas_table_freq": 135440
+      },
+      "in_efdotcom_3000": true,
+      "borda": {
+        "high_freq": 0.0,
+        "unigram": 14466.0,
+        "lemmas_table": 4332.0,
+        "ef_membership_bonus": 150.0
+      },
+      "composite_score": 18948.0
+    },
+    {
+      "lemma": "address",
+      "lookup_key": "address",
+      "ranks": {
+        "high_freq_2000": null,
+        "unigram": 249,
+        "lemmas_table": 1030
+      },
+      "counts": {
+        "unigram": 261872866,
+        "lemmas_table_freq": 94155
+      },
+      "in_efdotcom_3000": true,
+      "borda": {
+        "high_freq": 0.0,
+        "unigram": 14766.0,
+        "lemmas_table": 4021.0,
+        "ef_membership_bonus": 150.0
+      },
+      "composite_score": 18937.0
+    },
+    {
+      "lemma": "leave",
+      "lookup_key": "leave",
+      "ranks": {
+        "high_freq_2000": null,
+        "unigram": 1129,
+        "lemmas_table": 152
+      },
+      "counts": {
+        "unigram": 70957750,
+        "lemmas_table_freq": 622651
+      },
+      "in_efdotcom_3000": true,
+      "borda": {
+        "high_freq": 0.0,
+        "unigram": 13886.0,
+        "lemmas_table": 4899.0,
+        "ef_membership_bonus": 150.0
+      },
+      "composite_score": 18935.0
+    },
+    {
+      "lemma": "term",
+      "lookup_key": "term",
+      "ranks": {
+        "high_freq_2000": null,
+        "unigram": 676,
+        "lemmas_table": 606
+      },
+      "counts": {
+        "unigram": 116282824,
+        "lemmas_table_freq": 160014
+      },
+      "in_efdotcom_3000": true,
+      "borda": {
+        "high_freq": 0.0,
+        "unigram": 14339.0,
+        "lemmas_table": 4445.0,
+        "ef_membership_bonus": 150.0
+      },
+      "composite_score": 18934.0
+    },
+    {
+      "lemma": "stop",
+      "lookup_key": "stop",
+      "ranks": {
+        "high_freq_2000": null,
+        "unigram": 1038,
+        "lemmas_table": 257
+      },
+      "counts": {
+        "unigram": 77749471,
+        "lemmas_table_freq": 366567
+      },
+      "in_efdotcom_3000": true,
+      "borda": {
+        "high_freq": 0.0,
+        "unigram": 13977.0,
+        "lemmas_table": 4794.0,
+        "ef_membership_bonus": 150.0
+      },
+      "composite_score": 18921.0
+    },
+    {
+      "lemma": "record",
+      "lookup_key": "record",
+      "ranks": {
+        "high_freq_2000": null,
+        "unigram": 782,
+        "lemmas_table": 518
+      },
+      "counts": {
+        "unigram": 102234743,
+        "lemmas_table_freq": 187057
+      },
+      "in_efdotcom_3000": true,
+      "borda": {
+        "high_freq": 0.0,
+        "unigram": 14233.0,
+        "lemmas_table": 4533.0,
+        "ef_membership_bonus": 150.0
+      },
+      "composite_score": 18916.0
+    },
+    {
+      "lemma": "account",
+      "lookup_key": "account",
+      "ranks": {
+        "high_freq_2000": null,
+        "unigram": 361,
+        "lemmas_table": 947
+      },
+      "counts": {
+        "unigram": 203611349,
+        "lemmas_table_freq": 101683
+      },
+      "in_efdotcom_3000": true,
+      "borda": {
+        "high_freq": 0.0,
+        "unigram": 14654.0,
+        "lemmas_table": 4104.0,
+        "ef_membership_bonus": 150.0
+      },
+      "composite_score": 18908.0
+    },
+    {
+      "lemma": "remember",
+      "lookup_key": "remember",
+      "ranks": {
+        "high_freq_2000": null,
+        "unigram": 979,
+        "lemmas_table": 334
+      },
+      "counts": {
+        "unigram": 82222044,
+        "lemmas_table_freq": 298221
+      },
+      "in_efdotcom_3000": true,
+      "borda": {
+        "high_freq": 0.0,
+        "unigram": 14036.0,
+        "lemmas_table": 4717.0,
+        "ef_membership_bonus": 150.0
+      },
+      "composite_score": 18903.0
+    },
+    {
+      "lemma": "screen",
+      "lookup_key": "screen",
+      "ranks": {
+        "high_freq_2000": 1000,
+        "unigram": 1049,
+        "lemmas_table": 1281
+      },
+      "counts": {
+        "unigram": 77183863,
+        "lemmas_table_freq": 74705
+      },
+      "in_efdotcom_3000": true,
+      "borda": {
+        "high_freq": 1001.0,
+        "unigram": 13966.0,
+        "lemmas_table": 3770.0,
+        "ef_membership_bonus": 150.0
+      },
+      "composite_score": 18887.0
+    },
+    {
+      "lemma": "access",
+      "lookup_key": "access",
+      "ranks": {
+        "high_freq_2000": null,
+        "unigram": 324,
+        "lemmas_table": 1013
+      },
+      "counts": {
+        "unigram": 217986984,
+        "lemmas_table_freq": 95371
+      },
+      "in_efdotcom_3000": true,
+      "borda": {
+        "high_freq": 0.0,
+        "unigram": 14691.0,
+        "lemmas_table": 4038.0,
+        "ef_membership_bonus": 150.0
+      },
+      "composite_score": 18879.0
+    },
+    {
+      "lemma": "face",
+      "lookup_key": "face",
+      "ranks": {
+        "high_freq_2000": null,
+        "unigram": 973,
+        "lemmas_table": 369
+      },
+      "counts": {
+        "unigram": 82807978,
+        "lemmas_table_freq": 266458
+      },
+      "in_efdotcom_3000": true,
+      "borda": {
+        "high_freq": 0.0,
+        "unigram": 14042.0,
+        "lemmas_table": 4682.0,
+        "ef_membership_bonus": 150.0
+      },
+      "composite_score": 18874.0
+    },
+    {
+      "lemma": "travel",
+      "lookup_key": "travel",
+      "ranks": {
+        "high_freq_2000": null,
+        "unigram": 220,
+        "lemmas_table": 1136
+      },
+      "counts": {
+        "unigram": 287719294,
+        "lemmas_table_freq": 85441
+      },
+      "in_efdotcom_3000": true,
+      "borda": {
+        "high_freq": 0.0,
+        "unigram": 14795.0,
+        "lemmas_table": 3915.0,
+        "ef_membership_bonus": 150.0
+      },
+      "composite_score": 18860.0
+    },
+    {
+      "lemma": "visit",
+      "lookup_key": "visit",
+      "ranks": {
+        "high_freq_2000": null,
+        "unigram": 399,
+        "lemmas_table": 957
+      },
+      "counts": {
+        "unigram": 187062316,
+        "lemmas_table_freq": 100463
+      },
+      "in_efdotcom_3000": true,
+      "borda": {
+        "high_freq": 0.0,
+        "unigram": 14616.0,
+        "lemmas_table": 4094.0,
+        "ef_membership_bonus": 150.0
+      },
+      "composite_score": 18860.0
+    },
+    {
+      "lemma": "stay",
+      "lookup_key": "stay",
+      "ranks": {
+        "high_freq_2000": null,
+        "unigram": 1001,
+        "lemmas_table": 361
+      },
+      "counts": {
+        "unigram": 80694073,
+        "lemmas_table_freq": 275504
+      },
+      "in_efdotcom_3000": true,
+      "borda": {
+        "high_freq": 0.0,
+        "unigram": 14014.0,
+        "lemmas_table": 4690.0,
+        "ef_membership_bonus": 150.0
+      },
+      "composite_score": 18854.0
+    },
+    {
+      "lemma": "move",
+      "lookup_key": "move",
+      "ranks": {
+        "high_freq_2000": null,
+        "unigram": 1142,
+        "lemmas_table": 227
+      },
+      "counts": {
+        "unigram": 70113140,
+        "lemmas_table_freq": 430324
+      },
+      "in_efdotcom_3000": true,
+      "borda": {
+        "high_freq": 0.0,
+        "unigram": 13873.0,
+        "lemmas_table": 4824.0,
+        "ef_membership_bonus": 150.0
+      },
+      "composite_score": 18847.0
+    },
+    {
+      "lemma": "receive",
+      "lookup_key": "receive",
+      "ranks": {
+        "high_freq_2000": null,
+        "unigram": 909,
+        "lemmas_table": 489
+      },
+      "counts": {
+        "unigram": 88328938,
+        "lemmas_table_freq": 196239
+      },
+      "in_efdotcom_3000": true,
+      "borda": {
+        "high_freq": 0.0,
+        "unigram": 14106.0,
+        "lemmas_table": 4562.0,
+        "ef_membership_bonus": 150.0
+      },
+      "composite_score": 18818.0
+    },
+    {
+      "lemma": "select",
+      "lookup_key": "select",
+      "ranks": {
+        "high_freq_2000": 1155,
+        "unigram": 453,
+        "lemmas_table": 1791
+      },
+      "counts": {
+        "unigram": 168673045,
+        "lemmas_table_freq": 50804
+      },
+      "in_efdotcom_3000": true,
+      "borda": {
+        "high_freq": 846.0,
+        "unigram": 14562.0,
+        "lemmas_table": 3260.0,
+        "ef_membership_bonus": 150.0
+      },
+      "composite_score": 18818.0
+    },
+    {
+      "lemma": "continue",
+      "lookup_key": "continue",
+      "ranks": {
+        "high_freq_2000": null,
+        "unigram": 1056,
+        "lemmas_table": 350
+      },
+      "counts": {
+        "unigram": 76659163,
+        "lemmas_table_freq": 282352
+      },
+      "in_efdotcom_3000": true,
+      "borda": {
+        "high_freq": 0.0,
+        "unigram": 13959.0,
+        "lemmas_table": 4701.0,
+        "ef_membership_bonus": 150.0
+      },
+      "composite_score": 18810.0
+    },
+    {
+      "lemma": "search",
+      "lookup_key": "search",
+      "ranks": {
+        "high_freq_2000": null,
+        "unigram": 41,
+        "lemmas_table": 1372
+      },
+      "counts": {
+        "unigram": 1024093118,
+        "lemmas_table_freq": 69392
+      },
+      "in_efdotcom_3000": true,
+      "borda": {
+        "high_freq": 0.0,
+        "unigram": 14974.0,
+        "lemmas_table": 3679.0,
+        "ef_membership_bonus": 150.0
+      },
+      "composite_score": 18803.0
+    },
+    {
+      "lemma": "close1",
+      "lookup_key": "close",
+      "ranks": {
+        "high_freq_2000": null,
+        "unigram": 735,
+        "lemmas_table": 688
+      },
+      "counts": {
+        "unigram": 107853068,
+        "lemmas_table_freq": 139704
+      },
+      "in_efdotcom_3000": true,
+      "borda": {
+        "high_freq": 0.0,
+        "unigram": 14280.0,
+        "lemmas_table": 4363.0,
+        "ef_membership_bonus": 150.0
+      },
+      "composite_score": 18793.0
+    },
+    {
+      "lemma": "credit",
+      "lookup_key": "credit",
+      "ranks": {
+        "high_freq_2000": null,
+        "unigram": 437,
+        "lemmas_table": 1004
+      },
+      "counts": {
+        "unigram": 175916536,
+        "lemmas_table_freq": 95981
+      },
+      "in_efdotcom_3000": true,
+      "borda": {
+        "high_freq": 0.0,
+        "unigram": 14578.0,
+        "lemmas_table": 4047.0,
+        "ef_membership_bonus": 150.0
+      },
+      "composite_score": 18775.0
+    },
+    {
+      "lemma": "choose",
+      "lookup_key": "choose",
+      "ranks": {
+        "high_freq_2000": null,
+        "unigram": 892,
+        "lemmas_table": 561
+      },
+      "counts": {
+        "unigram": 90010174,
+        "lemmas_table_freq": 170716
+      },
+      "in_efdotcom_3000": true,
+      "borda": {
+        "high_freq": 0.0,
+        "unigram": 14123.0,
+        "lemmas_table": 4490.0,
+        "ef_membership_bonus": 150.0
+      },
+      "composite_score": 18763.0
+    },
+    {
+      "lemma": "cover",
+      "lookup_key": "cover",
+      "ranks": {
+        "high_freq_2000": null,
+        "unigram": 846,
+        "lemmas_table": 608
+      },
+      "counts": {
+        "unigram": 94501729,
+        "lemmas_table_freq": 159606
+      },
+      "in_efdotcom_3000": true,
+      "borda": {
+        "high_freq": 0.0,
+        "unigram": 14169.0,
+        "lemmas_table": 4443.0,
+        "ef_membership_bonus": 150.0
+      },
+      "composite_score": 18762.0
+    },
+    {
+      "lemma": "land",
+      "lookup_key": "land",
+      "ranks": {
+        "high_freq_2000": null,
+        "unigram": 773,
+        "lemmas_table": 689
+      },
+      "counts": {
+        "unigram": 103132933,
+        "lemmas_table_freq": 139579
+      },
+      "in_efdotcom_3000": true,
+      "borda": {
+        "high_freq": 0.0,
+        "unigram": 14242.0,
+        "lemmas_table": 4362.0,
+        "ef_membership_bonus": 150.0
+      },
+      "composite_score": 18754.0
+    },
+    {
+      "lemma": "position",
+      "lookup_key": "position",
+      "ranks": {
+        "high_freq_2000": null,
+        "unigram": 921,
+        "lemmas_table": 546
+      },
+      "counts": {
+        "unigram": 87139187,
+        "lemmas_table_freq": 176578
+      },
+      "in_efdotcom_3000": true,
+      "borda": {
+        "high_freq": 0.0,
+        "unigram": 14094.0,
+        "lemmas_table": 4505.0,
+        "ef_membership_bonus": 150.0
+      },
+      "composite_score": 18749.0
+    },
+    {
+      "lemma": "build",
+      "lookup_key": "build",
+      "ranks": {
+        "high_freq_2000": null,
+        "unigram": 1048,
+        "lemmas_table": 425
+      },
+      "counts": {
+        "unigram": 77203075,
+        "lemmas_table_freq": 230071
+      },
+      "in_efdotcom_3000": true,
+      "borda": {
+        "high_freq": 0.0,
+        "unigram": 13967.0,
+        "lemmas_table": 4626.0,
+        "ef_membership_bonus": 150.0
+      },
+      "composite_score": 18743.0
+    },
+    {
+      "lemma": "enter",
+      "lookup_key": "enter",
+      "ranks": {
+        "high_freq_2000": null,
+        "unigram": 657,
+        "lemmas_table": 817
+      },
+      "counts": {
+        "unigram": 119394206,
+        "lemmas_table_freq": 119119
+      },
+      "in_efdotcom_3000": true,
+      "borda": {
+        "high_freq": 0.0,
+        "unigram": 14358.0,
+        "lemmas_table": 4234.0,
+        "ef_membership_bonus": 150.0
+      },
+      "composite_score": 18742.0
+    },
+    {
+      "lemma": "shall",
+      "lookup_key": "shall",
+      "ranks": {
+        "high_freq_2000": null,
+        "unigram": 386,
+        "lemmas_table": 1090
+      },
+      "counts": {
+        "unigram": 191963867,
+        "lemmas_table_freq": 89582
+      },
+      "in_efdotcom_3000": true,
+      "borda": {
+        "high_freq": 0.0,
+        "unigram": 14629.0,
+        "lemmas_table": 3961.0,
+        "ef_membership_bonus": 150.0
+      },
+      "composite_score": 18740.0
+    },
+    {
+      "lemma": "force",
+      "lookup_key": "force",
+      "ranks": {
+        "high_freq_2000": null,
+        "unigram": 1022,
+        "lemmas_table": 456
+      },
+      "counts": {
+        "unigram": 79199815,
+        "lemmas_table_freq": 210010
+      },
+      "in_efdotcom_3000": true,
+      "borda": {
+        "high_freq": 0.0,
+        "unigram": 13993.0,
+        "lemmas_table": 4595.0,
+        "ef_membership_bonus": 150.0
+      },
+      "composite_score": 18738.0
+    },
+    {
+      "lemma": "base",
+      "lookup_key": "base",
+      "ranks": {
+        "high_freq_2000": null,
+        "unigram": 988,
+        "lemmas_table": 491
+      },
+      "counts": {
+        "unigram": 81894680,
+        "lemmas_table_freq": 195474
+      },
+      "in_efdotcom_3000": true,
+      "borda": {
+        "high_freq": 0.0,
+        "unigram": 14027.0,
+        "lemmas_table": 4560.0,
+        "ef_membership_bonus": 150.0
+      },
+      "composite_score": 18737.0
+    },
+    {
+      "lemma": "clear",
+      "lookup_key": "clear",
+      "ranks": {
+        "high_freq_2000": null,
+        "unigram": 907,
+        "lemmas_table": 573
+      },
+      "counts": {
+        "unigram": 88447610,
+        "lemmas_table_freq": 168587
+      },
+      "in_efdotcom_3000": true,
+      "borda": {
+        "high_freq": 0.0,
+        "unigram": 14108.0,
+        "lemmas_table": 4478.0,
+        "ef_membership_bonus": 150.0
+      },
+      "composite_score": 18736.0
+    },
+    {
+      "lemma": "follow",
+      "lookup_key": "follow",
+      "ranks": {
+        "high_freq_2000": null,
+        "unigram": 1164,
+        "lemmas_table": 332
+      },
+      "counts": {
+        "unigram": 68982994,
+        "lemmas_table_freq": 300266
+      },
+      "in_efdotcom_3000": true,
+      "borda": {
+        "high_freq": 0.0,
+        "unigram": 13851.0,
+        "lemmas_table": 4719.0,
+        "ef_membership_bonus": 150.0
+      },
+      "composite_score": 18720.0
+    },
+    {
+      "lemma": "hope",
+      "lookup_key": "hope",
+      "ranks": {
+        "high_freq_2000": null,
+        "unigram": 1086,
+        "lemmas_table": 413
+      },
+      "counts": {
+        "unigram": 74145758,
+        "lemmas_table_freq": 235945
+      },
+      "in_efdotcom_3000": true,
+      "borda": {
+        "high_freq": 0.0,
+        "unigram": 13929.0,
+        "lemmas_table": 4638.0,
+        "ef_membership_bonus": 150.0
+      },
+      "composite_score": 18717.0
+    },
+    {
+      "lemma": "sound",
+      "lookup_key": "sound",
+      "ranks": {
+        "high_freq_2000": null,
+        "unigram": 803,
+        "lemmas_table": 697
+      },
+      "counts": {
+        "unigram": 100010833,
+        "lemmas_table_freq": 138386
+      },
+      "in_efdotcom_3000": true,
+      "borda": {
+        "high_freq": 0.0,
+        "unigram": 14212.0,
+        "lemmas_table": 4354.0,
+        "ef_membership_bonus": 150.0
+      },
+      "composite_score": 18716.0
+    },
+    {
+      "lemma": "hold",
+      "lookup_key": "hold",
+      "ranks": {
+        "high_freq_2000": null,
+        "unigram": 1275,
+        "lemmas_table": 235
+      },
+      "counts": {
+        "unigram": 63777575,
+        "lemmas_table_freq": 413837
+      },
+      "in_efdotcom_3000": true,
+      "borda": {
+        "high_freq": 0.0,
+        "unigram": 13740.0,
+        "lemmas_table": 4816.0,
+        "ef_membership_bonus": 150.0
+      },
+      "composite_score": 18706.0
+    },
+    {
+      "lemma": "mind",
+      "lookup_key": "mind",
+      "ranks": {
+        "high_freq_2000": null,
+        "unigram": 1074,
+        "lemmas_table": 438
+      },
+      "counts": {
+        "unigram": 75393868,
+        "lemmas_table_freq": 220441
+      },
+      "in_efdotcom_3000": true,
+      "borda": {
+        "high_freq": 0.0,
+        "unigram": 13941.0,
+        "lemmas_table": 4613.0,
+        "ef_membership_bonus": 150.0
+      },
+      "composite_score": 18704.0
+    },
+    {
+      "lemma": "practice",
+      "lookup_key": "practice",
+      "ranks": {
+        "high_freq_2000": null,
+        "unigram": 956,
+        "lemmas_table": 562
+      },
+      "counts": {
+        "unigram": 84037810,
+        "lemmas_table_freq": 170654
+      },
+      "in_efdotcom_3000": true,
+      "borda": {
+        "high_freq": 0.0,
+        "unigram": 14059.0,
+        "lemmas_table": 4489.0,
+        "ef_membership_bonus": 150.0
+      },
+      "composite_score": 18698.0
+    },
+    {
+      "lemma": "lead1",
+      "lookup_key": "lead",
+      "ranks": {
+        "high_freq_2000": null,
+        "unigram": 1176,
+        "lemmas_table": 349
+      },
+      "counts": {
+        "unigram": 68325439,
+        "lemmas_table_freq": 285740
+      },
+      "in_efdotcom_3000": true,
+      "borda": {
+        "high_freq": 0.0,
+        "unigram": 13839.0,
+        "lemmas_table": 4702.0,
+        "ef_membership_bonus": 150.0
+      },
+      "composite_score": 18691.0
+    },
+    {
+      "lemma": "risk",
+      "lookup_key": "risk",
+      "ranks": {
+        "high_freq_2000": null,
+        "unigram": 876,
+        "lemmas_table": 666
+      },
+      "counts": {
+        "unigram": 91486135,
+        "lemmas_table_freq": 145334
+      },
+      "in_efdotcom_3000": true,
+      "borda": {
+        "high_freq": 0.0,
+        "unigram": 14139.0,
+        "lemmas_table": 4385.0,
+        "ef_membership_bonus": 150.0
+      },
+      "composite_score": 18674.0
+    },
+    {
+      "lemma": "allow",
+      "lookup_key": "allow",
+      "ranks": {
+        "high_freq_2000": null,
+        "unigram": 1202,
+        "lemmas_table": 346
+      },
+      "counts": {
+        "unigram": 67052567,
+        "lemmas_table_freq": 288559
+      },
+      "in_efdotcom_3000": true,
+      "borda": {
+        "high_freq": 0.0,
+        "unigram": 13813.0,
+        "lemmas_table": 4705.0,
+        "ef_membership_bonus": 150.0
+      },
+      "composite_score": 18668.0
+    },
+    {
+      "lemma": "step",
+      "lookup_key": "step",
+      "ranks": {
+        "high_freq_2000": null,
+        "unigram": 930,
+        "lemmas_table": 641
+      },
+      "counts": {
+        "unigram": 86147277,
+        "lemmas_table_freq": 151394
+      },
+      "in_efdotcom_3000": true,
+      "borda": {
+        "high_freq": 0.0,
+        "unigram": 14085.0,
+        "lemmas_table": 4410.0,
+        "ef_membership_bonus": 150.0
+      },
+      "composite_score": 18645.0
+    },
+    {
+      "lemma": "release",
+      "lookup_key": "release",
+      "ranks": {
+        "high_freq_2000": null,
+        "unigram": 625,
+        "lemmas_table": 948
+      },
+      "counts": {
+        "unigram": 125340846,
+        "lemmas_table_freq": 101668
+      },
+      "in_efdotcom_3000": true,
+      "borda": {
+        "high_freq": 0.0,
+        "unigram": 14390.0,
+        "lemmas_table": 4103.0,
+        "ef_membership_bonus": 150.0
+      },
+      "composite_score": 18643.0
+    },
+    {
+      "lemma": "bill",
+      "lookup_key": "bill",
+      "ranks": {
+        "high_freq_2000": null,
+        "unigram": 813,
+        "lemmas_table": 761
+      },
+      "counts": {
+        "unigram": 98494166,
+        "lemmas_table_freq": 127919
+      },
+      "in_efdotcom_3000": true,
+      "borda": {
+        "high_freq": 0.0,
+        "unigram": 14202.0,
+        "lemmas_table": 4290.0,
+        "ef_membership_bonus": 150.0
+      },
+      "composite_score": 18642.0
+    },
+    {
+      "lemma": "thank",
+      "lookup_key": "thank",
+      "ranks": {
+        "high_freq_2000": null,
+        "unigram": 1285,
+        "lemmas_table": 300
+      },
+      "counts": {
+        "unigram": 63234550,
+        "lemmas_table_freq": 330129
+      },
+      "in_efdotcom_3000": true,
+      "borda": {
+        "high_freq": 0.0,
+        "unigram": 13730.0,
+        "lemmas_table": 4751.0,
+        "ef_membership_bonus": 150.0
+      },
+      "composite_score": 18631.0
+    },
+    {
+      "lemma": "win",
+      "lookup_key": "win",
+      "ranks": {
+        "high_freq_2000": null,
+        "unigram": 1240,
+        "lemmas_table": 347
+      },
+      "counts": {
+        "unigram": 65264239,
+        "lemmas_table_freq": 288308
+      },
+      "in_efdotcom_3000": true,
+      "borda": {
+        "high_freq": 0.0,
+        "unigram": 13775.0,
+        "lemmas_table": 4704.0,
+        "ef_membership_bonus": 150.0
+      },
+      "composite_score": 18629.0
+    },
+    {
+      "lemma": "understand",
+      "lookup_key": "understand",
+      "ranks": {
+        "high_freq_2000": null,
+        "unigram": 1312,
+        "lemmas_table": 277
+      },
+      "counts": {
+        "unigram": 61719969,
+        "lemmas_table_freq": 349141
+      },
+      "in_efdotcom_3000": true,
+      "borda": {
+        "high_freq": 0.0,
+        "unigram": 13703.0,
+        "lemmas_table": 4774.0,
+        "ef_membership_bonus": 150.0
+      },
+      "composite_score": 18627.0
+    },
+    {
+      "lemma": "guide",
+      "lookup_key": "guide",
+      "ranks": {
+        "high_freq_2000": 1195,
+        "unigram": 342,
+        "lemmas_table": 2064
+      },
+      "counts": {
+        "unigram": 213378807,
+        "lemmas_table_freq": 42871
+      },
+      "in_efdotcom_3000": true,
+      "borda": {
+        "high_freq": 806.0,
+        "unigram": 14673.0,
+        "lemmas_table": 2987.0,
+        "ef_membership_bonus": 150.0
+      },
+      "composite_score": 18616.0
+    },
+    {
+      "lemma": "figure",
+      "lookup_key": "figure",
+      "ranks": {
+        "high_freq_2000": null,
+        "unigram": 958,
+        "lemmas_table": 663
+      },
+      "counts": {
+        "unigram": 83949754,
+        "lemmas_table_freq": 145812
+      },
+      "in_efdotcom_3000": true,
+      "borda": {
+        "high_freq": 0.0,
+        "unigram": 14057.0,
+        "lemmas_table": 4388.0,
+        "ef_membership_bonus": 150.0
+      },
+      "composite_score": 18595.0
+    },
+    {
+      "lemma": "speed",
+      "lookup_key": "speed",
+      "ranks": {
+        "high_freq_2000": 1153,
+        "unigram": 969,
+        "lemmas_table": 1505
+      },
+      "counts": {
+        "unigram": 83135749,
+        "lemmas_table_freq": 63502
+      },
+      "in_efdotcom_3000": true,
+      "borda": {
+        "high_freq": 848.0,
+        "unigram": 14046.0,
+        "lemmas_table": 3546.0,
+        "ef_membership_bonus": 150.0
+      },
+      "composite_score": 18590.0
+    },
+    {
+      "lemma": "amount",
+      "lookup_key": "amount",
+      "ranks": {
+        "high_freq_2000": null,
+        "unigram": 870,
+        "lemmas_table": 757
+      },
+      "counts": {
+        "unigram": 92039679,
+        "lemmas_table_freq": 128075
+      },
+      "in_efdotcom_3000": true,
+      "borda": {
+        "high_freq": 0.0,
+        "unigram": 14145.0,
+        "lemmas_table": 4294.0,
+        "ef_membership_bonus": 150.0
+      },
+      "composite_score": 18589.0
+    },
+    {
+      "lemma": "fire",
+      "lookup_key": "fire",
+      "ranks": {
+        "high_freq_2000": null,
+        "unigram": 960,
+        "lemmas_table": 670
+      },
+      "counts": {
+        "unigram": 83845349,
+        "lemmas_table_freq": 144750
+      },
+      "in_efdotcom_3000": true,
+      "borda": {
+        "high_freq": 0.0,
+        "unigram": 14055.0,
+        "lemmas_table": 4381.0,
+        "ef_membership_bonus": 150.0
+      },
+      "composite_score": 18586.0
+    },
+    {
+      "lemma": "bring",
+      "lookup_key": "bring",
+      "ranks": {
+        "high_freq_2000": null,
+        "unigram": 1425,
+        "lemmas_table": 213
+      },
+      "counts": {
+        "unigram": 57608074,
+        "lemmas_table_freq": 439445
+      },
+      "in_efdotcom_3000": true,
+      "borda": {
+        "high_freq": 0.0,
+        "unigram": 13590.0,
+        "lemmas_table": 4838.0,
+        "ef_membership_bonus": 150.0
+      },
+      "composite_score": 18578.0
+    },
+    {
+      "lemma": "cross",
+      "lookup_key": "cross",
+      "ranks": {
+        "high_freq_2000": 1021,
+        "unigram": 1083,
+        "lemmas_table": 1537
+      },
+      "counts": {
+        "unigram": 74230978,
+        "lemmas_table_freq": 61522
+      },
+      "in_efdotcom_3000": true,
+      "borda": {
+        "high_freq": 980.0,
+        "unigram": 13932.0,
+        "lemmas_table": 3514.0,
+        "ef_membership_bonus": 150.0
+      },
+      "composite_score": 18576.0
+    },
+    {
+      "lemma": "file",
+      "lookup_key": "file",
+      "ranks": {
+        "high_freq_2000": null,
+        "unigram": 281,
+        "lemmas_table": 1359
+      },
+      "counts": {
+        "unigram": 241864251,
+        "lemmas_table_freq": 70059
+      },
+      "in_efdotcom_3000": true,
+      "borda": {
+        "high_freq": 0.0,
+        "unigram": 14734.0,
+        "lemmas_table": 3692.0,
+        "ef_membership_bonus": 150.0
+      },
+      "composite_score": 18576.0
+    },
+    {
+      "lemma": "stuff",
+      "lookup_key": "stuff",
+      "ranks": {
+        "high_freq_2000": null,
+        "unigram": 992,
+        "lemmas_table": 662
+      },
+      "counts": {
+        "unigram": 81444510,
+        "lemmas_table_freq": 145992
+      },
+      "in_efdotcom_3000": true,
+      "borda": {
+        "high_freq": 0.0,
+        "unigram": 14023.0,
+        "lemmas_table": 4389.0,
+        "ef_membership_bonus": 150.0
+      },
+      "composite_score": 18562.0
+    },
+    {
+      "lemma": "notice",
+      "lookup_key": "notice",
+      "ranks": {
+        "high_freq_2000": null,
+        "unigram": 689,
+        "lemmas_table": 969
+      },
+      "counts": {
+        "unigram": 113691786,
+        "lemmas_table_freq": 99709
+      },
+      "in_efdotcom_3000": true,
+      "borda": {
+        "high_freq": 0.0,
+        "unigram": 14326.0,
+        "lemmas_table": 4082.0,
+        "ef_membership_bonus": 150.0
+      },
+      "composite_score": 18558.0
+    },
+    {
+      "lemma": "fall",
+      "lookup_key": "fall",
+      "ranks": {
+        "high_freq_2000": null,
+        "unigram": 1232,
+        "lemmas_table": 427
+      },
+      "counts": {
+        "unigram": 65501110,
+        "lemmas_table_freq": 229161
+      },
+      "in_efdotcom_3000": true,
+      "borda": {
+        "high_freq": 0.0,
+        "unigram": 13783.0,
+        "lemmas_table": 4624.0,
+        "ef_membership_bonus": 150.0
+      },
+      "composite_score": 18557.0
+    },
+    {
+      "lemma": "remove",
+      "lookup_key": "remove",
+      "ranks": {
+        "high_freq_2000": 1087,
+        "unigram": 1651,
+        "lemmas_table": 932
+      },
+      "counts": {
+        "unigram": 50036200,
+        "lemmas_table_freq": 103480
+      },
+      "in_efdotcom_3000": true,
+      "borda": {
+        "high_freq": 914.0,
+        "unigram": 13364.0,
+        "lemmas_table": 4119.0,
+        "ef_membership_bonus": 150.0
+      },
+      "composite_score": 18547.0
+    },
+    {
+      "lemma": "present",
+      "lookup_key": "present",
+      "ranks": {
+        "high_freq_2000": null,
+        "unigram": 805,
+        "lemmas_table": 865
+      },
+      "counts": {
+        "unigram": 99420744,
+        "lemmas_table_freq": 111731
+      },
+      "in_efdotcom_3000": true,
+      "borda": {
+        "high_freq": 0.0,
+        "unigram": 14210.0,
+        "lemmas_table": 4186.0,
+        "ef_membership_bonus": 150.0
+      },
+      "composite_score": 18546.0
+    },
+    {
+      "lemma": "contact",
+      "lookup_key": "contact",
+      "ranks": {
+        "high_freq_2000": null,
+        "unigram": 69,
+        "lemmas_table": 1608
+      },
+      "counts": {
+        "unigram": 645824184,
+        "lemmas_table_freq": 58518
+      },
+      "in_efdotcom_3000": true,
+      "borda": {
+        "high_freq": 0.0,
+        "unigram": 14946.0,
+        "lemmas_table": 3443.0,
+        "ef_membership_bonus": 150.0
+      },
+      "composite_score": 18539.0
+    },
+    {
+      "lemma": "cool",
+      "lookup_key": "cool",
+      "ranks": {
+        "high_freq_2000": 1207,
+        "unigram": 1457,
+        "lemmas_table": 1019
+      },
+      "counts": {
+        "unigram": 56471180,
+        "lemmas_table_freq": 94920
+      },
+      "in_efdotcom_3000": true,
+      "borda": {
+        "high_freq": 794.0,
+        "unigram": 13558.0,
+        "lemmas_table": 4032.0,
+        "ef_membership_bonus": 150.0
+      },
+      "composite_score": 18534.0
+    },
+    {
+      "lemma": "increase",
+      "lookup_key": "increase",
+      "ranks": {
+        "high_freq_2000": null,
+        "unigram": 985,
+        "lemmas_table": 701
+      },
+      "counts": {
+        "unigram": 81983061,
+        "lemmas_table_freq": 137709
+      },
+      "in_efdotcom_3000": true,
+      "borda": {
+        "high_freq": 0.0,
+        "unigram": 14030.0,
+        "lemmas_table": 4350.0,
+        "ef_membership_bonus": 150.0
+      },
+      "composite_score": 18530.0
+    },
+    {
+      "lemma": "range",
+      "lookup_key": "range",
+      "ranks": {
+        "high_freq_2000": null,
+        "unigram": 605,
+        "lemmas_table": 1098
+      },
+      "counts": {
+        "unigram": 128314924,
+        "lemmas_table_freq": 88892
+      },
+      "in_efdotcom_3000": true,
+      "borda": {
+        "high_freq": 0.0,
+        "unigram": 14410.0,
+        "lemmas_table": 3953.0,
+        "ef_membership_bonus": 150.0
+      },
+      "composite_score": 18513.0
+    },
+    {
+      "lemma": "ship",
+      "lookup_key": "ship",
+      "ranks": {
+        "high_freq_2000": 1152,
+        "unigram": 1348,
+        "lemmas_table": 1212
+      },
+      "counts": {
+        "unigram": 60649546,
+        "lemmas_table_freq": 79715
+      },
+      "in_efdotcom_3000": true,
+      "borda": {
+        "high_freq": 849.0,
+        "unigram": 13667.0,
+        "lemmas_table": 3839.0,
+        "ef_membership_bonus": 150.0
+      },
+      "composite_score": 18505.0
+    },
+    {
+      "lemma": "key",
+      "lookup_key": "key",
+      "ranks": {
+        "high_freq_2000": null,
+        "unigram": 569,
+        "lemmas_table": 1149
+      },
+      "counts": {
+        "unigram": 136862835,
+        "lemmas_table_freq": 84228
+      },
+      "in_efdotcom_3000": true,
+      "borda": {
+        "high_freq": 0.0,
+        "unigram": 14446.0,
+        "lemmas_table": 3902.0,
+        "ef_membership_bonus": 150.0
+      },
+      "composite_score": 18498.0
+    },
+    {
+      "lemma": "survey",
+      "lookup_key": "survey",
+      "ranks": {
+        "high_freq_2000": 1046,
+        "unigram": 1288,
+        "lemmas_table": 1395
+      },
+      "counts": {
+        "unigram": 62994830,
+        "lemmas_table_freq": 68301
+      },
+      "in_efdotcom_3000": true,
+      "borda": {
+        "high_freq": 955.0,
+        "unigram": 13727.0,
+        "lemmas_table": 3656.0,
+        "ef_membership_bonus": 150.0
+      },
+      "composite_score": 18488.0
+    },
+    {
+      "lemma": "trade",
+      "lookup_key": "trade",
+      "ranks": {
+        "high_freq_2000": null,
+        "unigram": 718,
+        "lemmas_table": 1025
+      },
+      "counts": {
+        "unigram": 110086585,
+        "lemmas_table_freq": 94509
+      },
+      "in_efdotcom_3000": true,
+      "borda": {
+        "high_freq": 0.0,
+        "unigram": 14297.0,
+        "lemmas_table": 4026.0,
+        "ef_membership_bonus": 150.0
+      },
+      "composite_score": 18473.0
+    },
+    {
+      "lemma": "sort",
+      "lookup_key": "sort",
+      "ranks": {
+        "high_freq_2000": null,
+        "unigram": 923,
+        "lemmas_table": 837
+      },
+      "counts": {
+        "unigram": 86985936,
+        "lemmas_table_freq": 115486
+      },
+      "in_efdotcom_3000": true,
+      "borda": {
+        "high_freq": 0.0,
+        "unigram": 14092.0,
+        "lemmas_table": 4214.0,
+        "ef_membership_bonus": 150.0
+      },
+      "composite_score": 18456.0
+    },
+    {
+      "lemma": "feed",
+      "lookup_key": "feed",
+      "ranks": {
+        "high_freq_2000": 1238,
+        "unigram": 1293,
+        "lemmas_table": 1234
+      },
+      "counts": {
+        "unigram": 62663785,
+        "lemmas_table_freq": 78280
+      },
+      "in_efdotcom_3000": true,
+      "borda": {
+        "high_freq": 763.0,
+        "unigram": 13722.0,
+        "lemmas_table": 3817.0,
+        "ef_membership_bonus": 150.0
+      },
+      "composite_score": 18452.0
+    },
+    {
+      "lemma": "cause",
+      "lookup_key": "cause",
+      "ranks": {
+        "high_freq_2000": null,
+        "unigram": 1223,
+        "lemmas_table": 563
+      },
+      "counts": {
+        "unigram": 65904680,
+        "lemmas_table_freq": 170629
+      },
+      "in_efdotcom_3000": true,
+      "borda": {
+        "high_freq": 0.0,
+        "unigram": 13792.0,
+        "lemmas_table": 4488.0,
+        "ef_membership_bonus": 150.0
+      },
+      "composite_score": 18430.0
+    },
+    {
+      "lemma": "matter",
+      "lookup_key": "matter",
+      "ranks": {
+        "high_freq_2000": null,
+        "unigram": 1211,
+        "lemmas_table": 575
+      },
+      "counts": {
+        "unigram": 66632805,
+        "lemmas_table_freq": 167351
+      },
+      "in_efdotcom_3000": true,
+      "borda": {
+        "high_freq": 0.0,
+        "unigram": 13804.0,
+        "lemmas_table": 4476.0,
+        "ef_membership_bonus": 150.0
+      },
+      "composite_score": 18430.0
+    },
+    {
+      "lemma": "reply",
+      "lookup_key": "reply",
+      "ranks": {
+        "high_freq_2000": 1024,
+        "unigram": 403,
+        "lemmas_table": 2361
+      },
+      "counts": {
+        "unigram": 184777992,
+        "lemmas_table_freq": 35489
+      },
+      "in_efdotcom_3000": true,
+      "borda": {
+        "high_freq": 977.0,
+        "unigram": 14612.0,
+        "lemmas_table": 2690.0,
+        "ef_membership_bonus": 150.0
+      },
+      "composite_score": 18429.0
+    },
+    {
+      "lemma": "cut",
+      "lookup_key": "cut",
+      "ranks": {
+        "high_freq_2000": null,
+        "unigram": 1324,
+        "lemmas_table": 467
+      },
+      "counts": {
+        "unigram": 61337417,
+        "lemmas_table_freq": 205886
+      },
+      "in_efdotcom_3000": true,
+      "borda": {
+        "high_freq": 0.0,
+        "unigram": 13691.0,
+        "lemmas_table": 4584.0,
+        "ef_membership_bonus": 150.0
+      },
+      "composite_score": 18425.0
+    },
+    {
+      "lemma": "link",
+      "lookup_key": "link",
+      "ranks": {
+        "high_freq_2000": null,
+        "unigram": 282,
+        "lemmas_table": 1523
+      },
+      "counts": {
+        "unigram": 240402653,
+        "lemmas_table_freq": 62629
+      },
+      "in_efdotcom_3000": true,
+      "borda": {
+        "high_freq": 0.0,
+        "unigram": 14733.0,
+        "lemmas_table": 3528.0,
+        "ef_membership_bonus": 150.0
+      },
+      "composite_score": 18411.0
+    },
+    {
+      "lemma": "spring",
+      "lookup_key": "spring",
+      "ranks": {
+        "high_freq_2000": 1396,
+        "unigram": 1249,
+        "lemmas_table": 1169
+      },
+      "counts": {
+        "unigram": 64814116,
+        "lemmas_table_freq": 82557
+      },
+      "in_efdotcom_3000": true,
+      "borda": {
+        "high_freq": 605.0,
+        "unigram": 13766.0,
+        "lemmas_table": 3882.0,
+        "ef_membership_bonus": 150.0
+      },
+      "composite_score": 18403.0
+    },
+    {
+      "lemma": "print",
+      "lookup_key": "print",
+      "ranks": {
+        "high_freq_2000": 1146,
+        "unigram": 427,
+        "lemmas_table": 2272
+      },
+      "counts": {
+        "unigram": 178250872,
+        "lemmas_table_freq": 37504
+      },
+      "in_efdotcom_3000": true,
+      "borda": {
+        "high_freq": 855.0,
+        "unigram": 14588.0,
+        "lemmas_table": 2779.0,
+        "ef_membership_bonus": 150.0
+      },
+      "composite_score": 18372.0
+    },
+    {
+      "lemma": "complete",
+      "lookup_key": "complete",
+      "ranks": {
+        "high_freq_2000": null,
+        "unigram": 522,
+        "lemmas_table": 1335
+      },
+      "counts": {
+        "unigram": 149312237,
+        "lemmas_table_freq": 71752
+      },
+      "in_efdotcom_3000": true,
+      "borda": {
+        "high_freq": 0.0,
+        "unigram": 14493.0,
+        "lemmas_table": 3716.0,
+        "ef_membership_bonus": 150.0
+      },
+      "composite_score": 18359.0
+    },
+    {
+      "lemma": "trust",
+      "lookup_key": "trust",
+      "ranks": {
+        "high_freq_2000": 1151,
+        "unigram": 1495,
+        "lemmas_table": 1243
+      },
+      "counts": {
+        "unigram": 55157142,
+        "lemmas_table_freq": 77728
+      },
+      "in_efdotcom_3000": true,
+      "borda": {
+        "high_freq": 850.0,
+        "unigram": 13520.0,
+        "lemmas_table": 3808.0,
+        "ef_membership_bonus": 150.0
+      },
+      "composite_score": 18328.0
+    },
+    {
+      "lemma": "shop",
+      "lookup_key": "shop",
+      "ranks": {
+        "high_freq_2000": null,
+        "unigram": 343,
+        "lemmas_table": 1547
+      },
+      "counts": {
+        "unigram": 212793848,
+        "lemmas_table_freq": 61038
+      },
+      "in_efdotcom_3000": true,
+      "borda": {
+        "high_freq": 0.0,
+        "unigram": 14672.0,
+        "lemmas_table": 3504.0,
+        "ef_membership_bonus": 150.0
+      },
+      "composite_score": 18326.0
+    },
+    {
+      "lemma": "focus",
+      "lookup_key": "focus",
+      "ranks": {
+        "high_freq_2000": null,
+        "unigram": 1230,
+        "lemmas_table": 668
+      },
+      "counts": {
+        "unigram": 65626732,
+        "lemmas_table_freq": 144896
+      },
+      "in_efdotcom_3000": true,
+      "borda": {
+        "high_freq": 0.0,
+        "unigram": 13785.0,
+        "lemmas_table": 4383.0,
+        "ef_membership_bonus": 150.0
+      },
+      "composite_score": 18318.0
+    },
+    {
+      "lemma": "tour",
+      "lookup_key": "tour",
+      "ranks": {
+        "high_freq_2000": 1131,
+        "unigram": 1080,
+        "lemmas_table": 1705
+      },
+      "counts": {
+        "unigram": 74702459,
+        "lemmas_table_freq": 54157
+      },
+      "in_efdotcom_3000": true,
+      "borda": {
+        "high_freq": 870.0,
+        "unigram": 13935.0,
+        "lemmas_table": 3346.0,
+        "ef_membership_bonus": 150.0
+      },
+      "composite_score": 18301.0
+    },
+    {
+      "lemma": "wish",
+      "lookup_key": "wish",
+      "ranks": {
+        "high_freq_2000": null,
+        "unigram": 1089,
+        "lemmas_table": 826
+      },
+      "counts": {
+        "unigram": 74043644,
+        "lemmas_table_freq": 116884
+      },
+      "in_efdotcom_3000": true,
+      "borda": {
+        "high_freq": 0.0,
+        "unigram": 13926.0,
+        "lemmas_table": 4225.0,
+        "ef_membership_bonus": 150.0
+      },
+      "composite_score": 18301.0
+    },
+    {
+      "lemma": "hear",
+      "lookup_key": "hear",
+      "ranks": {
+        "high_freq_2000": null,
+        "unigram": 1736,
+        "lemmas_table": 184
+      },
+      "counts": {
+        "unigram": 47426506,
+        "lemmas_table_freq": 516483
+      },
+      "in_efdotcom_3000": true,
+      "borda": {
+        "high_freq": 0.0,
+        "unigram": 13279.0,
+        "lemmas_table": 4867.0,
+        "ef_membership_bonus": 150.0
+      },
+      "composite_score": 18296.0
+    },
+    {
+      "lemma": "consider",
+      "lookup_key": "consider",
+      "ranks": {
+        "high_freq_2000": null,
+        "unigram": 1528,
+        "lemmas_table": 395
+      },
+      "counts": {
+        "unigram": 54062139,
+        "lemmas_table_freq": 244644
+      },
+      "in_efdotcom_3000": true,
+      "borda": {
+        "high_freq": 0.0,
+        "unigram": 13487.0,
+        "lemmas_table": 4656.0,
+        "ef_membership_bonus": 150.0
+      },
+      "composite_score": 18293.0
+    },
+    {
+      "lemma": "track",
+      "lookup_key": "track",
+      "ranks": {
+        "high_freq_2000": null,
+        "unigram": 701,
+        "lemmas_table": 1224
+      },
+      "counts": {
+        "unigram": 112385243,
+        "lemmas_table_freq": 78828
+      },
+      "in_efdotcom_3000": true,
+      "borda": {
+        "high_freq": 0.0,
+        "unigram": 14314.0,
+        "lemmas_table": 3827.0,
+        "ef_membership_bonus": 150.0
+      },
+      "composite_score": 18291.0
+    },
+    {
+      "lemma": "apply",
+      "lookup_key": "apply",
+      "ranks": {
+        "high_freq_2000": null,
+        "unigram": 1061,
+        "lemmas_table": 880
+      },
+      "counts": {
+        "unigram": 76341478,
+        "lemmas_table_freq": 110328
+      },
+      "in_efdotcom_3000": true,
+      "borda": {
+        "high_freq": 0.0,
+        "unigram": 13954.0,
+        "lemmas_table": 4171.0,
+        "ef_membership_bonus": 150.0
+      },
+      "composite_score": 18275.0
+    },
+    {
+      "lemma": "deal",
+      "lookup_key": "deal",
+      "ranks": {
+        "high_freq_2000": null,
+        "unigram": 1274,
+        "lemmas_table": 679
+      },
+      "counts": {
+        "unigram": 63828244,
+        "lemmas_table_freq": 142589
+      },
+      "in_efdotcom_3000": true,
+      "borda": {
+        "high_freq": 0.0,
+        "unigram": 13741.0,
+        "lemmas_table": 4372.0,
+        "ef_membership_bonus": 150.0
+      },
+      "composite_score": 18263.0
+    },
+    {
+      "lemma": "copy",
+      "lookup_key": "copy",
+      "ranks": {
+        "high_freq_2000": 1077,
+        "unigram": 1016,
+        "lemmas_table": 1865
+      },
+      "counts": {
+        "unigram": 79615682,
+        "lemmas_table_freq": 48365
+      },
+      "in_efdotcom_3000": true,
+      "borda": {
+        "high_freq": 924.0,
+        "unigram": 13999.0,
+        "lemmas_table": 3186.0,
+        "ef_membership_bonus": 150.0
+      },
+      "composite_score": 18259.0
+    },
+    {
+      "lemma": "pass",
+      "lookup_key": "pass",
+      "ranks": {
+        "high_freq_2000": null,
+        "unigram": 1493,
+        "lemmas_table": 472
+      },
+      "counts": {
+        "unigram": 55189682,
+        "lemmas_table_freq": 203033
+      },
+      "in_efdotcom_3000": true,
+      "borda": {
+        "high_freq": 0.0,
+        "unigram": 13522.0,
+        "lemmas_table": 4579.0,
+        "ef_membership_bonus": 150.0
+      },
+      "composite_score": 18251.0
+    },
+    {
+      "lemma": "used to",
+      "lookup_key": "used",
+      "ranks": {
+        "high_freq_2000": null,
+        "unigram": 122,
+        "lemmas_table": 1868
+      },
+      "counts": {
+        "unigram": 421438139,
+        "lemmas_table_freq": 48287
+      },
+      "in_efdotcom_3000": true,
+      "borda": {
+        "high_freq": 0.0,
+        "unigram": 14893.0,
+        "lemmas_table": 3183.0,
+        "ef_membership_bonus": 150.0
+      },
+      "composite_score": 18226.0
+    },
+    {
+      "lemma": "answer",
+      "lookup_key": "answer",
+      "ranks": {
+        "high_freq_2000": null,
+        "unigram": 1251,
+        "lemmas_table": 742
+      },
+      "counts": {
+        "unigram": 64649558,
+        "lemmas_table_freq": 130534
+      },
+      "in_efdotcom_3000": true,
+      "borda": {
+        "high_freq": 0.0,
+        "unigram": 13764.0,
+        "lemmas_table": 4309.0,
+        "ef_membership_bonus": 150.0
+      },
+      "composite_score": 18223.0
+    },
+    {
+      "lemma": "require",
+      "lookup_key": "require",
+      "ranks": {
+        "high_freq_2000": null,
+        "unigram": 1539,
+        "lemmas_table": 457
+      },
+      "counts": {
+        "unigram": 53495303,
+        "lemmas_table_freq": 209616
+      },
+      "in_efdotcom_3000": true,
+      "borda": {
+        "high_freq": 0.0,
+        "unigram": 13476.0,
+        "lemmas_table": 4594.0,
+        "ef_membership_bonus": 150.0
+      },
+      "composite_score": 18220.0
+    },
+    {
+      "lemma": "sense",
+      "lookup_key": "sense",
+      "ranks": {
+        "high_freq_2000": null,
+        "unigram": 1568,
+        "lemmas_table": 431
+      },
+      "counts": {
+        "unigram": 52629633,
+        "lemmas_table_freq": 226539
+      },
+      "in_efdotcom_3000": true,
+      "borda": {
+        "high_freq": 0.0,
+        "unigram": 13447.0,
+        "lemmas_table": 4620.0,
+        "ef_membership_bonus": 150.0
+      },
+      "composite_score": 18217.0
+    },
+    {
+      "lemma": "email",
+      "lookup_key": "email",
+      "ranks": {
+        "high_freq_2000": null,
+        "unigram": 115,
+        "lemmas_table": 1738
+      },
+      "counts": {
+        "unigram": 443949646,
+        "lemmas_table_freq": 52826
+      },
+      "in_efdotcom_3000": false,
+      "borda": {
+        "high_freq": 0.0,
+        "unigram": 14900.0,
+        "lemmas_table": 3313.0,
+        "ef_membership_bonus": 0.0
+      },
+      "composite_score": 18213.0
+    },
+    {
+      "lemma": "rule",
+      "lookup_key": "rule",
+      "ranks": {
+        "high_freq_2000": null,
+        "unigram": 1419,
+        "lemmas_table": 617
+      },
+      "counts": {
+        "unigram": 57912422,
+        "lemmas_table_freq": 157468
+      },
+      "in_efdotcom_3000": true,
+      "borda": {
+        "high_freq": 0.0,
+        "unigram": 13596.0,
+        "lemmas_table": 4434.0,
+        "ef_membership_bonus": 150.0
+      },
+      "composite_score": 18180.0
+    },
+    {
+      "lemma": "begin",
+      "lookup_key": "begin",
+      "ranks": {
+        "high_freq_2000": null,
+        "unigram": 1805,
+        "lemmas_table": 232
+      },
+      "counts": {
+        "unigram": 45434902,
+        "lemmas_table_freq": 421878
+      },
+      "in_efdotcom_3000": true,
+      "borda": {
+        "high_freq": 0.0,
+        "unigram": 13210.0,
+        "lemmas_table": 4819.0,
+        "ef_membership_bonus": 150.0
+      },
+      "composite_score": 18179.0
+    },
+    {
+      "lemma": "develop",
+      "lookup_key": "develop",
+      "ranks": {
+        "high_freq_2000": null,
+        "unigram": 1482,
+        "lemmas_table": 569
+      },
+      "counts": {
+        "unigram": 55611036,
+        "lemmas_table_freq": 168894
+      },
+      "in_efdotcom_3000": true,
+      "borda": {
+        "high_freq": 0.0,
+        "unigram": 13533.0,
+        "lemmas_table": 4482.0,
+        "ef_membership_bonus": 150.0
+      },
+      "composite_score": 18165.0
+    },
+    {
+      "lemma": "hit",
+      "lookup_key": "hit",
+      "ranks": {
+        "high_freq_2000": null,
+        "unigram": 1551,
+        "lemmas_table": 502
+      },
+      "counts": {
+        "unigram": 53171478,
+        "lemmas_table_freq": 192969
+      },
+      "in_efdotcom_3000": true,
+      "borda": {
+        "high_freq": 0.0,
+        "unigram": 13464.0,
+        "lemmas_table": 4549.0,
+        "ef_membership_bonus": 150.0
+      },
+      "composite_score": 18163.0
+    },
+    {
+      "lemma": "block",
+      "lookup_key": "block",
+      "ranks": {
+        "high_freq_2000": 1083,
+        "unigram": 1662,
+        "lemmas_table": 1311
+      },
+      "counts": {
+        "unigram": 49694725,
+        "lemmas_table_freq": 73065
+      },
+      "in_efdotcom_3000": true,
+      "borda": {
+        "high_freq": 918.0,
+        "unigram": 13353.0,
+        "lemmas_table": 3740.0,
+        "ef_membership_bonus": 150.0
+      },
+      "composite_score": 18161.0
+    },
+    {
+      "lemma": "bar",
+      "lookup_key": "bar",
+      "ranks": {
+        "high_freq_2000": null,
+        "unigram": 1042,
+        "lemmas_table": 1014
+      },
+      "counts": {
+        "unigram": 77375075,
+        "lemmas_table_freq": 95305
+      },
+      "in_efdotcom_3000": true,
+      "borda": {
+        "high_freq": 0.0,
+        "unigram": 13973.0,
+        "lemmas_table": 4037.0,
+        "ef_membership_bonus": 150.0
+      },
+      "composite_score": 18160.0
+    },
+    {
+      "lemma": "break",
+      "lookup_key": "break",
+      "ranks": {
+        "high_freq_2000": null,
+        "unigram": 1618,
+        "lemmas_table": 450
+      },
+      "counts": {
+        "unigram": 51242970,
+        "lemmas_table_freq": 213364
+      },
+      "in_efdotcom_3000": true,
+      "borda": {
+        "high_freq": 0.0,
+        "unigram": 13397.0,
+        "lemmas_table": 4601.0,
+        "ef_membership_bonus": 150.0
+      },
+      "composite_score": 18148.0
+    },
+    {
+      "lemma": "display",
+      "lookup_key": "display",
+      "ranks": {
+        "high_freq_2000": 1099,
+        "unigram": 750,
+        "lemmas_table": 2226
+      },
+      "counts": {
+        "unigram": 106342539,
+        "lemmas_table_freq": 38757
+      },
+      "in_efdotcom_3000": true,
+      "borda": {
+        "high_freq": 902.0,
+        "unigram": 14265.0,
+        "lemmas_table": 2825.0,
+        "ef_membership_bonus": 150.0
+      },
+      "composite_score": 18142.0
+    },
+    {
+      "lemma": "ensure",
+      "lookup_key": "ensure",
+      "ranks": {
+        "high_freq_2000": 1088,
+        "unigram": 1372,
+        "lemmas_table": 1616
+      },
+      "counts": {
+        "unigram": 59507606,
+        "lemmas_table_freq": 58156
+      },
+      "in_efdotcom_3000": true,
+      "borda": {
+        "high_freq": 913.0,
+        "unigram": 13643.0,
+        "lemmas_table": 3435.0,
+        "ef_membership_bonus": 150.0
+      },
+      "composite_score": 18141.0
+    },
+    {
+      "lemma": "approach",
+      "lookup_key": "approach",
+      "ranks": {
+        "high_freq_2000": null,
+        "unigram": 1266,
+        "lemmas_table": 831
+      },
+      "counts": {
+        "unigram": 64158347,
+        "lemmas_table_freq": 116173
+      },
+      "in_efdotcom_3000": true,
+      "borda": {
+        "high_freq": 0.0,
+        "unigram": 13749.0,
+        "lemmas_table": 4220.0,
+        "ef_membership_bonus": 150.0
+      },
+      "composite_score": 18119.0
+    },
+    {
+      "lemma": "stand",
+      "lookup_key": "stand",
+      "ranks": {
+        "high_freq_2000": null,
+        "unigram": 1778,
+        "lemmas_table": 329
+      },
+      "counts": {
+        "unigram": 46292709,
+        "lemmas_table_freq": 303462
+      },
+      "in_efdotcom_3000": true,
+      "borda": {
+        "high_freq": 0.0,
+        "unigram": 13237.0,
+        "lemmas_table": 4722.0,
+        "ef_membership_bonus": 150.0
+      },
+      "composite_score": 18109.0
+    },
+    {
+      "lemma": "die",
+      "lookup_key": "die",
+      "ranks": {
+        "high_freq_2000": null,
+        "unigram": 1763,
+        "lemmas_table": 371
+      },
+      "counts": {
+        "unigram": 46745446,
+        "lemmas_table_freq": 264537
+      },
+      "in_efdotcom_3000": true,
+      "borda": {
+        "high_freq": 0.0,
+        "unigram": 13252.0,
+        "lemmas_table": 4680.0,
+        "ef_membership_bonus": 150.0
+      },
+      "composite_score": 18082.0
+    },
+    {
+      "lemma": "fund",
+      "lookup_key": "fund",
+      "ranks": {
+        "high_freq_2000": null,
+        "unigram": 1200,
+        "lemmas_table": 949
+      },
+      "counts": {
+        "unigram": 67128807,
+        "lemmas_table_freq": 101503
+      },
+      "in_efdotcom_3000": true,
+      "borda": {
+        "high_freq": 0.0,
+        "unigram": 13815.0,
+        "lemmas_table": 4102.0,
+        "ef_membership_bonus": 150.0
+      },
+      "composite_score": 18067.0
+    },
+    {
+      "lemma": "wind2",
+      "lookup_key": "wind",
+      "ranks": {
+        "high_freq_2000": 1052,
+        "unigram": 1899,
+        "lemmas_table": 1226
+      },
+      "counts": {
+        "unigram": 42974876,
+        "lemmas_table_freq": 78623
+      },
+      "in_efdotcom_3000": true,
+      "borda": {
+        "high_freq": 949.0,
+        "unigram": 13116.0,
+        "lemmas_table": 3825.0,
+        "ef_membership_bonus": 150.0
+      },
+      "composite_score": 18040.0
+    },
+    {
+      "lemma": "commission",
+      "lookup_key": "commission",
+      "ranks": {
+        "high_freq_2000": 1583,
+        "unigram": 1028,
+        "lemmas_table": 1567
+      },
+      "counts": {
+        "unigram": 78817488,
+        "lemmas_table_freq": 60218
+      },
+      "in_efdotcom_3000": true,
+      "borda": {
+        "high_freq": 418.0,
+        "unigram": 13987.0,
+        "lemmas_table": 3484.0,
+        "ef_membership_bonus": 150.0
+      },
+      "composite_score": 18039.0
+    },
+    {
+      "lemma": "award",
+      "lookup_key": "award",
+      "ranks": {
+        "high_freq_2000": 1123,
+        "unigram": 1367,
+        "lemmas_table": 1689
+      },
+      "counts": {
+        "unigram": 59652161,
+        "lemmas_table_freq": 54712
+      },
+      "in_efdotcom_3000": true,
+      "borda": {
+        "high_freq": 878.0,
+        "unigram": 13648.0,
+        "lemmas_table": 3362.0,
+        "ef_membership_bonus": 150.0
+      },
+      "composite_score": 18038.0
+    },
+    {
+      "lemma": "rest (sleep/relax)",
+      "lookup_key": "rest",
+      "ranks": {
+        "high_freq_2000": null,
+        "unigram": 1547,
+        "lemmas_table": 638
+      },
+      "counts": {
+        "unigram": 53312008,
+        "lemmas_table_freq": 151864
+      },
+      "in_efdotcom_3000": true,
+      "borda": {
+        "high_freq": 0.0,
+        "unigram": 13468.0,
+        "lemmas_table": 4413.0,
+        "ef_membership_bonus": 150.0
+      },
+      "composite_score": 18031.0
+    },
+    {
+      "lemma": "average",
+      "lookup_key": "average",
+      "ranks": {
+        "high_freq_2000": null,
+        "unigram": 774,
+        "lemmas_table": 1413
+      },
+      "counts": {
+        "unigram": 102837602,
+        "lemmas_table_freq": 67618
+      },
+      "in_efdotcom_3000": true,
+      "borda": {
+        "high_freq": 0.0,
+        "unigram": 14241.0,
+        "lemmas_table": 3638.0,
+        "ef_membership_bonus": 150.0
+      },
+      "composite_score": 18029.0
+    },
+    {
+      "lemma": "agree",
+      "lookup_key": "agree",
+      "ranks": {
+        "high_freq_2000": null,
+        "unigram": 1734,
+        "lemmas_table": 461
+      },
+      "counts": {
+        "unigram": 47500911,
+        "lemmas_table_freq": 208506
+      },
+      "in_efdotcom_3000": true,
+      "borda": {
+        "high_freq": 0.0,
+        "unigram": 13281.0,
+        "lemmas_table": 4590.0,
+        "ef_membership_bonus": 150.0
+      },
+      "composite_score": 18021.0
+    },
+    {
+      "lemma": "vote",
+      "lookup_key": "vote",
+      "ranks": {
+        "high_freq_2000": null,
+        "unigram": 1402,
+        "lemmas_table": 798
+      },
+      "counts": {
+        "unigram": 58387028,
+        "lemmas_table_freq": 121578
+      },
+      "in_efdotcom_3000": true,
+      "borda": {
+        "high_freq": 0.0,
+        "unigram": 13613.0,
+        "lemmas_table": 4253.0,
+        "ef_membership_bonus": 150.0
+      },
+      "composite_score": 18016.0
+    },
+    {
+      "lemma": "quote",
+      "lookup_key": "quote",
+      "ranks": {
+        "high_freq_2000": 1492,
+        "unigram": 561,
+        "lemmas_table": 2184
+      },
+      "counts": {
+        "unigram": 139242226,
+        "lemmas_table_freq": 39780
+      },
+      "in_efdotcom_3000": true,
+      "borda": {
+        "high_freq": 509.0,
+        "unigram": 14454.0,
+        "lemmas_table": 2867.0,
+        "ef_membership_bonus": 150.0
+      },
+      "composite_score": 17980.0
+    },
+    {
+      "lemma": "impact",
+      "lookup_key": "impact",
+      "ranks": {
+        "high_freq_2000": null,
+        "unigram": 1336,
+        "lemmas_table": 914
+      },
+      "counts": {
+        "unigram": 61017528,
+        "lemmas_table_freq": 105330
+      },
+      "in_efdotcom_3000": true,
+      "borda": {
+        "high_freq": 0.0,
+        "unigram": 13679.0,
+        "lemmas_table": 4137.0,
+        "ef_membership_bonus": 150.0
+      },
+      "composite_score": 17966.0
+    },
+    {
+      "lemma": "document",
+      "lookup_key": "document",
+      "ranks": {
+        "high_freq_2000": null,
+        "unigram": 809,
+        "lemmas_table": 1447
+      },
+      "counts": {
+        "unigram": 98703772,
+        "lemmas_table_freq": 66467
+      },
+      "in_efdotcom_3000": true,
+      "borda": {
+        "high_freq": 0.0,
+        "unigram": 14206.0,
+        "lemmas_table": 3604.0,
+        "ef_membership_bonus": 150.0
+      },
+      "composite_score": 17960.0
+    },
+    {
+      "lemma": "function",
+      "lookup_key": "function",
+      "ranks": {
+        "high_freq_2000": null,
+        "unigram": 853,
+        "lemmas_table": 1410
+      },
+      "counts": {
+        "unigram": 93878887,
+        "lemmas_table_freq": 67710
+      },
+      "in_efdotcom_3000": true,
+      "borda": {
+        "high_freq": 0.0,
+        "unigram": 14162.0,
+        "lemmas_table": 3641.0,
+        "ef_membership_bonus": 150.0
+      },
+      "composite_score": 17953.0
+    },
+    {
+      "lemma": "chair",
+      "lookup_key": "chair",
+      "ranks": {
+        "high_freq_2000": 1070,
+        "unigram": 1990,
+        "lemmas_table": 1205
+      },
+      "counts": {
+        "unigram": 40764005,
+        "lemmas_table_freq": 80186
+      },
+      "in_efdotcom_3000": true,
+      "borda": {
+        "high_freq": 931.0,
+        "unigram": 13025.0,
+        "lemmas_table": 3846.0,
+        "ef_membership_bonus": 150.0
+      },
+      "composite_score": 17952.0
+    },
+    {
+      "lemma": "structure",
+      "lookup_key": "structure",
+      "ranks": {
+        "high_freq_2000": null,
+        "unigram": 1199,
+        "lemmas_table": 1106
+      },
+      "counts": {
+        "unigram": 67191517,
+        "lemmas_table_freq": 88114
+      },
+      "in_efdotcom_3000": true,
+      "borda": {
+        "high_freq": 0.0,
+        "unigram": 13816.0,
+        "lemmas_table": 3945.0,
+        "ef_membership_bonus": 150.0
+      },
+      "composite_score": 17911.0
+    },
+    {
+      "lemma": "race (competition)",
+      "lookup_key": "race",
+      "ranks": {
+        "high_freq_2000": null,
+        "unigram": 1581,
+        "lemmas_table": 730
+      },
+      "counts": {
+        "unigram": 52297214,
+        "lemmas_table_freq": 133182
+      },
+      "in_efdotcom_3000": true,
+      "borda": {
+        "high_freq": 0.0,
+        "unigram": 13434.0,
+        "lemmas_table": 4321.0,
+        "ef_membership_bonus": 150.0
+      },
+      "composite_score": 17905.0
+    },
+    {
+      "lemma": "score",
+      "lookup_key": "score",
+      "ranks": {
+        "high_freq_2000": null,
+        "unigram": 1158,
+        "lemmas_table": 1165
+      },
+      "counts": {
+        "unigram": 69315004,
+        "lemmas_table_freq": 82738
+      },
+      "in_efdotcom_3000": true,
+      "borda": {
+        "high_freq": 0.0,
+        "unigram": 13857.0,
+        "lemmas_table": 3886.0,
+        "ef_membership_bonus": 150.0
+      },
+      "composite_score": 17893.0
+    },
+    {
+      "lemma": "master",
+      "lookup_key": "master",
+      "ranks": {
+        "high_freq_2000": 1634,
+        "unigram": 1314,
+        "lemmas_table": 1397
+      },
+      "counts": {
+        "unigram": 61704297,
+        "lemmas_table_freq": 68182
+      },
+      "in_efdotcom_3000": true,
+      "borda": {
+        "high_freq": 367.0,
+        "unigram": 13701.0,
+        "lemmas_table": 3654.0,
+        "ef_membership_bonus": 150.0
+      },
+      "composite_score": 17872.0
+    },
+    {
+      "lemma": "appear",
+      "lookup_key": "appear",
+      "ranks": {
+        "high_freq_2000": null,
+        "unigram": 1908,
+        "lemmas_table": 437
+      },
+      "counts": {
+        "unigram": 42801104,
+        "lemmas_table_freq": 221287
+      },
+      "in_efdotcom_3000": true,
+      "borda": {
+        "high_freq": 0.0,
+        "unigram": 13107.0,
+        "lemmas_table": 4614.0,
+        "ef_membership_bonus": 150.0
+      },
+      "composite_score": 17871.0
+    },
+    {
+      "lemma": "improve",
+      "lookup_key": "improve",
+      "ranks": {
+        "high_freq_2000": null,
+        "unigram": 1326,
+        "lemmas_table": 1023
+      },
+      "counts": {
+        "unigram": 61305614,
+        "lemmas_table_freq": 94764
+      },
+      "in_efdotcom_3000": true,
+      "borda": {
+        "high_freq": 0.0,
+        "unigram": 13689.0,
+        "lemmas_table": 4028.0,
+        "ef_membership_bonus": 150.0
+      },
+      "composite_score": 17867.0
+    },
+    {
+      "lemma": "listen",
+      "lookup_key": "listen",
+      "ranks": {
+        "high_freq_2000": null,
+        "unigram": 1891,
+        "lemmas_table": 460
+      },
+      "counts": {
+        "unigram": 43252527,
+        "lemmas_table_freq": 208819
+      },
+      "in_efdotcom_3000": true,
+      "borda": {
+        "high_freq": 0.0,
+        "unigram": 13124.0,
+        "lemmas_table": 4591.0,
+        "ef_membership_bonus": 150.0
+      },
+      "composite_score": 17865.0
+    },
+    {
+      "lemma": "wait",
+      "lookup_key": "wait",
+      "ranks": {
+        "high_freq_2000": null,
+        "unigram": 2071,
+        "lemmas_table": 289
+      },
+      "counts": {
+        "unigram": 39001376,
+        "lemmas_table_freq": 339926
+      },
+      "in_efdotcom_3000": true,
+      "borda": {
+        "high_freq": 0.0,
+        "unigram": 12944.0,
+        "lemmas_table": 4762.0,
+        "ef_membership_bonus": 150.0
+      },
+      "composite_score": 17856.0
+    },
+    {
+      "lemma": "plant",
+      "lookup_key": "plant",
+      "ranks": {
+        "high_freq_2000": null,
+        "unigram": 1549,
+        "lemmas_table": 821
+      },
+      "counts": {
+        "unigram": 53247607,
+        "lemmas_table_freq": 118323
+      },
+      "in_efdotcom_3000": true,
+      "borda": {
+        "high_freq": 0.0,
+        "unigram": 13466.0,
+        "lemmas_table": 4230.0,
+        "ef_membership_bonus": 150.0
+      },
+      "composite_score": 17846.0
+    },
+    {
+      "lemma": "seem",
+      "lookup_key": "seem",
+      "ranks": {
+        "high_freq_2000": null,
+        "unigram": 2190,
+        "lemmas_table": 181
+      },
+      "counts": {
+        "unigram": 36852843,
+        "lemmas_table_freq": 522940
+      },
+      "in_efdotcom_3000": true,
+      "borda": {
+        "high_freq": 0.0,
+        "unigram": 12825.0,
+        "lemmas_table": 4870.0,
+        "ef_membership_bonus": 150.0
+      },
+      "composite_score": 17845.0
+    },
+    {
+      "lemma": "farm",
+      "lookup_key": "farm",
+      "ranks": {
+        "high_freq_2000": 1140,
+        "unigram": 1717,
+        "lemmas_table": 1516
+      },
+      "counts": {
+        "unigram": 47934860,
+        "lemmas_table_freq": 62942
+      },
+      "in_efdotcom_3000": true,
+      "borda": {
+        "high_freq": 861.0,
+        "unigram": 13298.0,
+        "lemmas_table": 3535.0,
+        "ef_membership_bonus": 150.0
+      },
+      "composite_score": 17844.0
+    },
+    {
+      "lemma": "direct",
+      "lookup_key": "direct",
+      "ranks": {
+        "high_freq_2000": null,
+        "unigram": 783,
+        "lemmas_table": 1612
+      },
+      "counts": {
+        "unigram": 102234090,
+        "lemmas_table_freq": 58289
+      },
+      "in_efdotcom_3000": true,
+      "borda": {
+        "high_freq": 0.0,
+        "unigram": 14232.0,
+        "lemmas_table": 3439.0,
+        "ef_membership_bonus": 150.0
+      },
+      "composite_score": 17821.0
+    },
+    {
+      "lemma": "package",
+      "lookup_key": "package",
+      "ranks": {
+        "high_freq_2000": 1333,
+        "unigram": 1030,
+        "lemmas_table": 2037
+      },
+      "counts": {
+        "unigram": 78421168,
+        "lemmas_table_freq": 43448
+      },
+      "in_efdotcom_3000": true,
+      "borda": {
+        "high_freq": 668.0,
+        "unigram": 13985.0,
+        "lemmas_table": 3014.0,
+        "ef_membership_bonus": 150.0
+      },
+      "composite_score": 17817.0
+    },
+    {
+      "lemma": "prevent",
+      "lookup_key": "prevent",
+      "ranks": {
+        "high_freq_2000": 1081,
+        "unigram": 2167,
+        "lemmas_table": 1152
+      },
+      "counts": {
+        "unigram": 37247684,
+        "lemmas_table_freq": 84179
+      },
+      "in_efdotcom_3000": true,
+      "borda": {
+        "high_freq": 920.0,
+        "unigram": 12848.0,
+        "lemmas_table": 3899.0,
+        "ef_membership_bonus": 150.0
+      },
+      "composite_score": 17817.0
+    },
+    {
+      "lemma": "count",
+      "lookup_key": "count",
+      "ranks": {
+        "high_freq_2000": 1094,
+        "unigram": 2011,
+        "lemmas_table": 1296
+      },
+      "counts": {
+        "unigram": 40345803,
+        "lemmas_table_freq": 73650
+      },
+      "in_efdotcom_3000": true,
+      "borda": {
+        "high_freq": 907.0,
+        "unigram": 13004.0,
+        "lemmas_table": 3755.0,
+        "ef_membership_bonus": 150.0
+      },
+      "composite_score": 17816.0
+    },
+    {
+      "lemma": "enjoy",
+      "lookup_key": "enjoy",
+      "ranks": {
+        "high_freq_2000": null,
+        "unigram": 1650,
+        "lemmas_table": 750
+      },
+      "counts": {
+        "unigram": 50141455,
+        "lemmas_table_freq": 129575
+      },
+      "in_efdotcom_3000": true,
+      "borda": {
+        "high_freq": 0.0,
+        "unigram": 13365.0,
+        "lemmas_table": 4301.0,
+        "ef_membership_bonus": 150.0
+      },
+      "composite_score": 17816.0
+    },
+    {
+      "lemma": "feature",
+      "lookup_key": "feature",
+      "ranks": {
+        "high_freq_2000": null,
+        "unigram": 1259,
+        "lemmas_table": 1158
+      },
+      "counts": {
+        "unigram": 64288914,
+        "lemmas_table_freq": 83853
+      },
+      "in_efdotcom_3000": true,
+      "borda": {
+        "high_freq": 0.0,
+        "unigram": 13756.0,
+        "lemmas_table": 3893.0,
+        "ef_membership_bonus": 150.0
+      },
+      "composite_score": 17799.0
+    },
+    {
+      "lemma": "click",
+      "lookup_key": "click",
+      "ranks": {
+        "high_freq_2000": null,
+        "unigram": 94,
+        "lemmas_table": 2177
+      },
+      "counts": {
+        "unigram": 536746424,
+        "lemmas_table_freq": 39951
+      },
+      "in_efdotcom_3000": false,
+      "borda": {
+        "high_freq": 0.0,
+        "unigram": 14921.0,
+        "lemmas_table": 2874.0,
+        "ef_membership_bonus": 0.0
+      },
+      "composite_score": 17795.0
+    },
+    {
+      "lemma": "heat",
+      "lookup_key": "heat",
+      "ranks": {
+        "high_freq_2000": 1221,
+        "unigram": 2027,
+        "lemmas_table": 1177
+      },
+      "counts": {
+        "unigram": 39971542,
+        "lemmas_table_freq": 82112
+      },
+      "in_efdotcom_3000": true,
+      "borda": {
+        "high_freq": 780.0,
+        "unigram": 12988.0,
+        "lemmas_table": 3874.0,
+        "ef_membership_bonus": 150.0
+      },
+      "composite_score": 17792.0
+    },
+    {
+      "lemma": "walk",
+      "lookup_key": "walk",
+      "ranks": {
+        "high_freq_2000": null,
+        "unigram": 2065,
+        "lemmas_table": 384
+      },
+      "counts": {
+        "unigram": 39129365,
+        "lemmas_table_freq": 253671
+      },
+      "in_efdotcom_3000": true,
+      "borda": {
+        "high_freq": 0.0,
+        "unigram": 12950.0,
+        "lemmas_table": 4667.0,
+        "ef_membership_bonus": 150.0
+      },
+      "composite_score": 17767.0
+    },
+    {
+      "lemma": "charge",
+      "lookup_key": "charge",
+      "ranks": {
+        "high_freq_2000": null,
+        "unigram": 1453,
+        "lemmas_table": 999
+      },
+      "counts": {
+        "unigram": 56542418,
+        "lemmas_table_freq": 96872
+      },
+      "in_efdotcom_3000": true,
+      "borda": {
+        "high_freq": 0.0,
+        "unigram": 13562.0,
+        "lemmas_table": 4052.0,
+        "ef_membership_bonus": 150.0
+      },
+      "composite_score": 17764.0
+    },
+    {
+      "lemma": "object",
+      "lookup_key": "object",
+      "ranks": {
+        "high_freq_2000": null,
+        "unigram": 1150,
+        "lemmas_table": 1302
+      },
+      "counts": {
+        "unigram": 69819261,
+        "lemmas_table_freq": 73304
+      },
+      "in_efdotcom_3000": true,
+      "borda": {
+        "high_freq": 0.0,
+        "unigram": 13865.0,
+        "lemmas_table": 3749.0,
+        "ef_membership_bonus": 150.0
+      },
+      "composite_score": 17764.0
+    },
+    {
+      "lemma": "mail",
+      "lookup_key": "mail",
+      "ranks": {
+        "high_freq_2000": 1679,
+        "unigram": 195,
+        "lemmas_table": 2587
+      },
+      "counts": {
+        "unigram": 310337185,
+        "lemmas_table_freq": 31141
+      },
+      "in_efdotcom_3000": true,
+      "borda": {
+        "high_freq": 322.0,
+        "unigram": 14820.0,
+        "lemmas_table": 2464.0,
+        "ef_membership_bonus": 150.0
+      },
+      "composite_score": 17756.0
+    },
+    {
+      "lemma": "sample",
+      "lookup_key": "sample",
+      "ranks": {
+        "high_freq_2000": null,
+        "unigram": 1165,
+        "lemmas_table": 1321
+      },
+      "counts": {
+        "unigram": 68957421,
+        "lemmas_table_freq": 72489
+      },
+      "in_efdotcom_3000": true,
+      "borda": {
+        "high_freq": 0.0,
+        "unigram": 13850.0,
+        "lemmas_table": 3730.0,
+        "ef_membership_bonus": 150.0
+      },
+      "composite_score": 17730.0
+    },
+    {
+      "lemma": "stage",
+      "lookup_key": "stage",
+      "ranks": {
+        "high_freq_2000": null,
+        "unigram": 1572,
+        "lemmas_table": 939
+      },
+      "counts": {
+        "unigram": 52518330,
+        "lemmas_table_freq": 102611
+      },
+      "in_efdotcom_3000": true,
+      "borda": {
+        "high_freq": 0.0,
+        "unigram": 13443.0,
+        "lemmas_table": 4112.0,
+        "ef_membership_bonus": 150.0
+      },
+      "composite_score": 17705.0
+    },
+    {
+      "lemma": "contract",
+      "lookup_key": "contract",
+      "ranks": {
+        "high_freq_2000": null,
+        "unigram": 1204,
+        "lemmas_table": 1317
+      },
+      "counts": {
+        "unigram": 66895933,
+        "lemmas_table_freq": 72568
+      },
+      "in_efdotcom_3000": true,
+      "borda": {
+        "high_freq": 0.0,
+        "unigram": 13811.0,
+        "lemmas_table": 3734.0,
+        "ef_membership_bonus": 150.0
+      },
+      "composite_score": 17695.0
+    },
+    {
+      "lemma": "request",
+      "lookup_key": "request",
+      "ranks": {
+        "high_freq_2000": null,
+        "unigram": 627,
+        "lemmas_table": 1913
+      },
+      "counts": {
+        "unigram": 124620318,
+        "lemmas_table_freq": 46865
+      },
+      "in_efdotcom_3000": true,
+      "borda": {
+        "high_freq": 0.0,
+        "unigram": 14388.0,
+        "lemmas_table": 3138.0,
+        "ef_membership_bonus": 150.0
+      },
+      "composite_score": 17676.0
+    },
+    {
+      "lemma": "benefit",
+      "lookup_key": "benefit",
+      "ranks": {
+        "high_freq_2000": null,
+        "unigram": 1727,
+        "lemmas_table": 827
+      },
+      "counts": {
+        "unigram": 47703520,
+        "lemmas_table_freq": 116806
+      },
+      "in_efdotcom_3000": true,
+      "borda": {
+        "high_freq": 0.0,
+        "unigram": 13288.0,
+        "lemmas_table": 4224.0,
+        "ef_membership_bonus": 150.0
+      },
+      "composite_score": 17662.0
+    },
+    {
+      "lemma": "progress",
+      "lookup_key": "progress",
+      "ranks": {
+        "high_freq_2000": 1170,
+        "unigram": 1728,
+        "lemmas_table": 1660
+      },
+      "counts": {
+        "unigram": 47674782,
+        "lemmas_table_freq": 56162
+      },
+      "in_efdotcom_3000": true,
+      "borda": {
+        "high_freq": 831.0,
+        "unigram": 13287.0,
+        "lemmas_table": 3391.0,
+        "ef_membership_bonus": 150.0
+      },
+      "composite_score": 17659.0
+    },
+    {
+      "lemma": "double",
+      "lookup_key": "double",
+      "ranks": {
+        "high_freq_2000": 1176,
+        "unigram": 1046,
+        "lemmas_table": 2356
+      },
+      "counts": {
+        "unigram": 77287578,
+        "lemmas_table_freq": 35592
+      },
+      "in_efdotcom_3000": true,
+      "borda": {
+        "high_freq": 825.0,
+        "unigram": 13969.0,
+        "lemmas_table": 2695.0,
+        "ef_membership_bonus": 150.0
+      },
+      "composite_score": 17639.0
+    },
+    {
+      "lemma": "pick",
+      "lookup_key": "pick",
+      "ranks": {
+        "high_freq_2000": null,
+        "unigram": 2096,
+        "lemmas_table": 492
+      },
+      "counts": {
+        "unigram": 38542153,
+        "lemmas_table_freq": 195443
+      },
+      "in_efdotcom_3000": true,
+      "borda": {
+        "high_freq": 0.0,
+        "unigram": 12919.0,
+        "lemmas_table": 4559.0,
+        "ef_membership_bonus": 150.0
+      },
+      "composite_score": 17628.0
+    },
+    {
+      "lemma": "correct",
+      "lookup_key": "correct",
+      "ranks": {
+        "high_freq_2000": 1108,
+        "unigram": 1847,
+        "lemmas_table": 1668
+      },
+      "counts": {
+        "unigram": 44467948,
+        "lemmas_table_freq": 55632
+      },
+      "in_efdotcom_3000": true,
+      "borda": {
+        "high_freq": 893.0,
+        "unigram": 13168.0,
+        "lemmas_table": 3383.0,
+        "ef_membership_bonus": 150.0
+      },
+      "composite_score": 17594.0
+    },
+    {
+      "lemma": "recommend",
+      "lookup_key": "recommend",
+      "ranks": {
+        "high_freq_2000": 1004,
+        "unigram": 1976,
+        "lemmas_table": 1644
+      },
+      "counts": {
+        "unigram": 41146831,
+        "lemmas_table_freq": 56938
+      },
+      "in_efdotcom_3000": true,
+      "borda": {
+        "high_freq": 997.0,
+        "unigram": 13039.0,
+        "lemmas_table": 3407.0,
+        "ef_membership_bonus": 150.0
+      },
+      "composite_score": 17593.0
+    },
+    {
+      "lemma": "jump",
+      "lookup_key": "jump",
+      "ranks": {
+        "high_freq_2000": 1400,
+        "unigram": 1861,
+        "lemmas_table": 1365
+      },
+      "counts": {
+        "unigram": 44137441,
+        "lemmas_table_freq": 69861
+      },
+      "in_efdotcom_3000": true,
+      "borda": {
+        "high_freq": 601.0,
+        "unigram": 13154.0,
+        "lemmas_table": 3686.0,
+        "ef_membership_bonus": 150.0
+      },
+      "composite_score": 17591.0
+    },
+    {
+      "lemma": "miss",
+      "lookup_key": "miss",
+      "ranks": {
+        "high_freq_2000": null,
+        "unigram": 2032,
+        "lemmas_table": 596
+      },
+      "counts": {
+        "unigram": 39897915,
+        "lemmas_table_freq": 162066
+      },
+      "in_efdotcom_3000": true,
+      "borda": {
+        "high_freq": 0.0,
+        "unigram": 12983.0,
+        "lemmas_table": 4455.0,
+        "ef_membership_bonus": 150.0
+      },
+      "composite_score": 17588.0
+    },
+    {
+      "lemma": "serve",
+      "lookup_key": "serve",
+      "ranks": {
+        "high_freq_2000": null,
+        "unigram": 2202,
+        "lemmas_table": 449
+      },
+      "counts": {
+        "unigram": 36697856,
+        "lemmas_table_freq": 213511
+      },
+      "in_efdotcom_3000": true,
+      "borda": {
+        "high_freq": 0.0,
+        "unigram": 12813.0,
+        "lemmas_table": 4602.0,
+        "ef_membership_bonus": 150.0
+      },
+      "composite_score": 17565.0
+    },
+    {
+      "lemma": "express",
+      "lookup_key": "express",
+      "ranks": {
+        "high_freq_2000": null,
+        "unigram": 1365,
+        "lemmas_table": 1303
+      },
+      "counts": {
+        "unigram": 59797675,
+        "lemmas_table_freq": 73274
+      },
+      "in_efdotcom_3000": true,
+      "borda": {
+        "high_freq": 0.0,
+        "unigram": 13650.0,
+        "lemmas_table": 3748.0,
+        "ef_membership_bonus": 150.0
+      },
+      "composite_score": 17548.0
+    },
+    {
+      "lemma": "connect",
+      "lookup_key": "connect",
+      "ranks": {
+        "high_freq_2000": 1368,
+        "unigram": 1819,
+        "lemmas_table": 1484
+      },
+      "counts": {
+        "unigram": 45133501,
+        "lemmas_table_freq": 64462
+      },
+      "in_efdotcom_3000": true,
+      "borda": {
+        "high_freq": 633.0,
+        "unigram": 13196.0,
+        "lemmas_table": 3567.0,
+        "ef_membership_bonus": 150.0
+      },
+      "composite_score": 17546.0
+    }
+  ],
+  "note": "top_300_verbs_by_frequency is a subset of oxford_verbs (Oxford lemma set ∩ frequency ranking)."
+}

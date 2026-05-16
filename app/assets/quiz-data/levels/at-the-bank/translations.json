@@ -1,0 +1,157 @@
+{
+    "translations_list": [
+        {
+            "english_word": "to deposit",
+            "translations": {
+                "tr": "yatırmak",
+                "es": "depositar",
+                "fr": "déposer",
+                "de": "einzahlen",
+                "it": "deposito",
+                "pt": "depositar",
+                "ru": "вкладывать",
+                "zh": "存款",
+                "ja": "預金する",
+                "ko": "예금하다",
+                "ar": "توديع",
+                "hi": "जमा करना"
+            }
+        },
+        {
+            "english_word": "to withdraw money",
+            "translations": {
+                "tr": "paranı çekmek",
+                "es": "sacar dinero",
+                "fr": "retirer de l'argent",
+                "de": "Geld auszahlen",
+                "it": "prelevare denaro",
+                "pt": "retirar dinheiro",
+                "ru": "снять деньги",
+                "zh": "提取现金",
+                "ja": "お金を引き出す",
+                "ko": "출금하다",
+                "ar": "سحب المال",
+                "hi": "धन निकास करना"
+            }
+        },
+        {
+            "english_word": "to pay",
+            "translations": {
+                "tr": "ödemek",
+                "es": "pagar",
+                "fr": "payer",
+                "de": "bezahlen",
+                "it": "pagare",
+                "pt": "pagar",
+                "ru": "платить",
+                "zh": "支付",
+                "ja": "支払う",
+                "ko": "지불하다",
+                "ar": "دفع",
+                "hi": "भुगतान करना"
+            }
+        },
+        {
+            "english_word": "to visit",
+            "translations": {
+                "tr": "ziyaret etmek",
+                "es": "visitar",
+                "fr": "visiter",
+                "de": "besuchen",
+                "it": "visitare",
+                "pt": "visitar",
+                "ru": "посетить",
+                "zh": "访问",
+                "ja": "訪問する",
+                "ko": "방문하다",
+                "ar": "زيارة",
+                "hi": "दृष्टि देखना"
+            }
+        },
+        {
+            "english_word": "sure",
+            "translations": {
+                "tr": "emin",
+                "es": "seguro",
+                "fr": "sûr",
+                "de": "sicher",
+                "it": "sicuro",
+                "pt": "seguro",
+                "ru": "уверен",
+                "zh": "确定",
+                "ja": "確か",
+                "ko": "확실",
+                "ar": "متأكد",
+                "hi": "आश्वासन"
+            }
+        },
+        {
+            "english_word": "to count",
+            "translations": {
+                "tr": "saymak",
+                "es": "contar",
+                "fr": "compter",
+                "de": "zählen",
+                "it": "contare",
+                "pt": "contar",
+                "ru": "считать",
+                "zh": "计算",
+                "ja": "数える",
+                "ko": "세다",
+                "ar": "حساب",
+                "hi": "गिनना"
+            }
+        },
+        {
+            "english_word": "account",
+            "translations": {
+                "tr": "hesap",
+                "es": "cuenta",
+                "fr": "compte",
+                "de": "Konto",
+                "it": "conto",
+                "pt": "conta",
+                "ru": "счет",
+                "zh": "账户",
+                "ja": "口座",
+                "ko": "계좌",
+                "ar": "حساب",
+                "hi": "खाता"
+            }
+        },
+        {
+            "english_word": "to sign",
+            "translations": {
+                "tr": "imzalamak",
+                "es": "firmar",
+                "fr": "signer",
+                "de": "signieren",
+                "it": "firmare",
+                "pt": "assinar",
+                "ru": "подписывать",
+                "zh": "签名",
+                "ja": "署名する",
+                "ko": "서명하다",
+                "ar": "توقيع",
+                "hi": "हस्ताक्षर करना"
+            }
+        },
+        {
+            "english_word": "best",
+            "translations": {
+                "tr": "en iyi",
+                "es": "el mejor",
+                "fr": "le meilleur",
+                "de": "das Beste",
+                "it": "il migliore",
+                "pt": "o melhor",
+                "ru": "лучший",
+                "zh": "最好的",
+                "ja": "最良",
+                "ko": "최고",
+                "ar": "الأفضل",
+                "hi": "सबसे अच्छा"
+            }
+        }
+    ]
+}

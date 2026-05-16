@@ -1,0 +1,188 @@
+{
+  "levelQuestions": [
+    
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "drawer",
+        "wrongAnswers": [
+          "wardrobe",
+          "cradle",
+          "nightstand"
+        ]
+      }
+    },
+    {
+      "template": "AppearDisappear",
+      "questionData": {
+        "words": "I was having a good dream!",
+        "distractors": [
+          "getting",
+          "night",
+          "bad",
+          "were"
+        ]
+      },
+      "audio_file": "i-was-having-a-good-dream-convo"
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "pillow-case",
+        "wrongAnswers": [
+          "laundry-basket",
+          "mattress",
+          "wardrobe"
+        ]
+      }
+    },
+    {
+      "template": "ClozeSequence",
+      "questionData": {
+        "sentence": "Put your ____ pajamas in the ___",
+        "answers": [
+          "dirty",
+          "laundry-basket"
+        ],
+        "distractors": [
+          "drawer",
+          "pillow-case",
+          "nightstand",
+          "clean",
+          "dry"
+        ]
+      },
+      "audio_file": "put-your-dirty-pajamas-in-the-laundry-basket-convo"
+    },
+    
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "slippers",
+        "wrongAnswers": [
+          "shoes",
+          "mattress",
+          "robe"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "duvet-comforter",
+        "wrongAnswers": [
+          "pillow-case",
+          "mattress",
+          "blanket"
+        ]
+      }
+    },
+    {
+      "template": "ConvoTemplate-1",
+      "questionData": {
+        "character1": "Sarah",
+        "character2": "Emma",
+        "line1": "It's time for bed",
+        "line2": "But I'm not ____",
+        "answer": "sleepy",
+        "distractors": [
+          "awake",
+          "sleeping",
+          "hungry"
+        ]
+      },
+      "audio_file1": "its-time-for-bed-convo",
+      "audio_file2": "but-im-not-sleepy-convo"
+    },
+    {
+      "template": "ClozeSequence",
+      "questionData": {
+        "sentence": "I ____ the lamp when it's dark. I _____ the light before I sleep.",
+        "answers": [
+          "turn on",
+          "turn off"
+        ],
+        "distractors": [
+          "take out",
+          "make in",
+          "turn in"
+        ]
+      },
+      "audio_file": "turn-on-the-lamp-female-convo"
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "cradle",
+        "wrongAnswers": [
+          "mattress",
+          "nightstand",
+          "drawe"
+        ]
+      }
+    },
+    {
+      "template": "SentenceBuilder",
+      "questionData": {
+        "correct_order": "This bed is really comfortable"
+      }
+    },
+    {
+      "template": "WordPairs",
+      "questionData": {
+        "english_words": ["sleepy", "close eyes", "dream", "tired"],
+        "translations": [
+          {"tr": "uyku dolu", "es": "dormido", "fr": "endormi", "de": "schläfrig", "it": "addormentato", "pt": "adormecido", "ru": "засыпающий", "zh": "困倦的", "ja": "眠っている", "ko": "잠든", "ar": "مست", "hi": "सुनस्सा"},
+          {"tr": "gozlerini kapatmak", "es": "cerrar los ojos", "fr": "fermer les yeux", "de": "schließen die Augen", "it": "chiudere gli occhi", "pt": "fechar os olhos", "ru": "закрыть глаза", "zh": "闭上眼睛", "ja": "目を閉じる", "ko": "눈을 감다", "ar": "غلق العين", "hi": "आँखें बंद करना"},
+          {"tr": "ruya", "es": "sueño", "fr": "rêve", "de": "traum", "it": "sogno", "pt": "sonho", "ru": "сон", "zh": "梦", "ja": "夢", "ko": "꿈", "ar": "حلم", "hi": "सपना"},
+          {"tr": "yorgun", "es": "cansado", "fr": "fatigué", "de": "müde", "it": "stanco", "pt": "cansado", "ru": "усталый", "zh": "疲倦的", "ja": "疲れた", "ko": "피곤한", "ar": "متعب", "hi": "थका हुआ"}
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "pajamas",
+        "wrongAnswers": [
+          "robe",
+          "slippers",
+          "towel"
+        ]
+      }
+    },
+    {
+      "template": "ConvoTemplate-1",
+      "questionData": {
+        "character1": "Olivia",
+        "character2": "Ben",
+        "line1": "When do you usually ____ your room?",
+        "line2": "I _____ my room on Saturday.",
+        "answer": "clean",
+        "distractors": [
+          "take",
+          "make",
+          "think"
+        ]
+      },
+      "audio_file1": "when-do-you-usually-clean-your-room-convo",
+      "audio_file2": "i-clean-my-room-on-saturday-convo"
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "wardrobe-or-closet",
+        "wrongAnswers": [
+          "drawer",
+          "cardboard",
+          "desk"
+        ]
+      }
+    },
+    {
+      "template":"SentenceBuilder",
+      "questionData": {
+        "correct_order": "Please keep your room tidy"
+      }
+    }
+  ]
+}

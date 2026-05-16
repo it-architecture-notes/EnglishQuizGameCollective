@@ -1,0 +1,106 @@
+{
+    "translations_list": [
+        {
+            "english_word": "dream",
+            "translations": {
+                "tr": "rüya",
+                "es": "sueño",
+                "fr": "rêve",
+                "de": "träume",
+                "it": "sogno",
+                "pt": "sonho",
+                "ru": "сон",
+                "zh": "梦",
+                "ja": "夢",
+                "ko": "꿈",
+                "ar": "رؤية",
+                "hi": "सपना"
+            }
+        },
+        {
+            "english_word": "turn on the light",
+            "translations": {
+                "tr": "ışıgi açmak",
+                "es": "encender la luz",
+                "fr": "allumer la lumière",
+                "de": "Licht anmachen",
+                "it": "accendere la luce",
+                "pt": "acender a luz",
+                "ru": "включить свет",
+                "zh": "打开灯",
+                "ja": "電気をつける",
+                "ko": "전구 켜기",
+                "ar": "اضغط على الكومبيوتر",
+                "hi": "चुप्पी बंद करना"  
+            }
+        },
+        {
+            "english_word": "turn off the light",
+            "translations": {
+                "tr": "ışıgi kapatmak",
+                "es": "apagar la luz",
+                "fr": "éteindre la lumière",
+                "de": "Licht ausmachen",
+                "it": "spegnere la luce",
+                "pt": "apagar a luz",
+                "ru": "выключить свет",
+                "zh": "关灯",
+                "ja": "電気を消す",
+                "ko": "전구 끄기",
+                "ar": "اضغط على الكومبيوتر",
+                "hi": "चुप्पी बंद करना"
+            }
+        },
+        {
+            "english_word": "dark",
+            "translations": {
+                "tr": "karanlık",
+                "es": "oscuro",
+                "fr": "sombre",
+                "de": "dunkel",
+                "it": "scuro",  
+                "pt": "escuro",
+                "ru": "тёмный",
+                "zh": "黑暗",
+                "ja": "暗い",
+                "ko": "어두운",
+                "ar": "غامض",
+                "hi": "अंधा"
+            }
+        },
+        {
+            "english_word": "comfortable",
+            "translations": {
+                "tr": "rahat",
+                "es": "cómodo",
+                "fr": "confortable",
+                "de": "komfortabel",
+                "it": "comodo",
+                "pt": "confortável",
+                "ru": "комфортный",
+                "zh": "舒适的",
+                "ja": "快適な",
+                "ko": "편안한",
+                "ar": "مريح",
+                "hi": "सुखद"
+            }
+        },
+        {
+            "english_word": "tidy",
+            "translations": {
+                "tr": "düzenli",
+                "es": "limpio",
+                "fr": "propre et ordonné",
+                "de": "ordentlich",
+                "it": "ordinato",
+                "pt": "organizado",
+                "ru": "упорядоченный",
+                "zh": "整洁的",
+                "ja": "整然な",
+                "ko": "정돈된",
+                "ar": "منظم",
+                "hi": "सुखद"
+            }
+        }
+    ]
+}

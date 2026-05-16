@@ -1,0 +1,257 @@
+{
+  "levelQuestions": [
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "classroom",
+        "wrongAnswers": [
+          "library",
+          "theater",
+          "cafeteria"
+        ]
+      }
+    },
+    {
+      "template": "ConvoTemplate-1",
+      "questionData": {
+        "character1": "Omar",
+        "character2": "Oliver",
+        "line1": "What do you want _____ today?",
+        "line2": "I want _____ new English words.",
+        "answer": "to learn",
+        "distractors": [
+          "to do",
+          "to read",
+          "to speak"
+        ]
+      },
+      "audio_file1": "what-do-you-want-to-learn-today-convo",
+      "audio_file2": "i-want-to-learn-new-english-words-convo"
+    },
+    {
+      "template": "AppearDisappear",
+      "questionData": {
+        "words": "We write in our notebooks.",
+        "distractors": [
+          "read",
+          "listen",
+          "speak",
+          "books"
+        ]
+      },
+      "audio_file": "we-write-in-our-notebooks-convo"
+    },
+    {
+      "template": "imageQuizTemplate-2",
+      "questionData": {
+        "imageName": "library",
+        "wrongAnswers": [
+          "classroom",
+          "playground",
+          "gym"
+        ]
+      }
+    },
+    {
+      "template": "ConvoTemplate-1",
+      "questionData": {
+        "character1": "Beth",
+        "character2": "Ethan",
+        "line1": "Is the test _____?",
+        "line2": "Yes, it is ______.",
+        "answer": "difficult",
+        "distractors": [
+          "quiet",
+          "loud",
+          "comfortable"
+        ]
+      },
+      "audio_file1": "is-the-test-difficult-convo",
+      "audio_file2": "yes-it-is-difficult-convo"
+    },
+    {
+      "template": "WordPairs",
+      "questionData": {
+        "english_words": [
+          "smart",
+          "easy",
+          "fun",
+          "late"
+        ],
+        "translations": [
+          {
+            "tr": "zeki",
+            "es": "inteligente",
+            "fr": "intelligent",
+            "de": "intelligent",
+            "it": "intelligente",
+            "pt": "inteligente",
+            "ru": "умный",
+            "zh": "聪明",
+            "ja": "賢い",
+            "ko": "똑똑한",
+            "ar": "ذكي",
+            "hi": "चतुर"
+          },
+          {
+            "tr": "kolay",
+            "es": "fácil",
+            "fr": "facile",
+            "de": "leicht",
+            "it": "facile",
+            "pt": "fácil",
+            "ru": "легкий",
+            "zh": "容易",
+            "ja": "簡単",
+            "ko": "쉬운",
+            "ar": "سهل",
+            "hi": "आसान"
+          },
+          {
+            "tr": "eğlenceli",
+            "es": "divertido",
+            "fr": "amusant",
+            "de": "lustig",
+            "it": " divertente",
+            "pt": "tôt",
+            "ru": "веселый",
+            "zh": "有趣的",
+            "ja": "面白い",
+            "ko": "재미있는",
+            "ar": "مثير",
+            "hi": "खेलदार"
+          },
+          {
+            "tr": "geç",
+            "es": "tarde",
+            "fr": "tard",
+            "de": "spät",
+            "it": "tard",
+            "pt": "tard",
+            "ru": "поздний",
+            "zh": "晚",
+            "ja": "遅い",
+            "ko": "늦다",
+            "ar": "آخر",
+            "hi": "देर"
+          }
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "cafeteria",
+        "wrongAnswers": [
+          "library",
+          "gym",
+          "restaurant"
+        ]
+      }
+    },
+    {
+      "template": "ClozeSequence",
+      "questionData": {
+        "sentence": "You made a mistake. _____ _____!",
+        "answers": [
+          "think",
+          "again"
+        ],
+        "distractors": [
+          "really",
+          "very",
+          "learn",
+          "wrong"
+        ]
+      },
+      "audio_file": "you-made-a-mistake-think-again-convo"
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "science-lab",
+        "wrongAnswers": [
+          "hall",
+          "chemistry",
+          "mathematics"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "playground",
+        "wrongAnswers": [
+          "skater-area",
+          "arena",
+          "kids-area"
+        ]
+      }
+    },
+    {
+      "template": "SentenceBuilder",
+      "questionData": {
+        "correct_order": "This lesson is interesting.",
+        "distractors": [
+          "class",
+          "teacher",
+          "boring",
+          "are"
+        ]
+      },
+      "audio_file": "this-lesson-is-interesting-convo"
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "fire-alarm",
+        "wrongAnswers": [
+          "fire-extinguisher",
+          "fire-exit",
+          "fire-station"
+        ]
+      }
+    },
+    {
+      "template": "AppearDisappear",
+      "questionData": {
+        "words": "We need more time to study.",
+        "distractors": [
+          "less",
+          "know",
+          "see",
+          "they"
+        ]
+      },
+      "audio_file": "we-need-more-time-to-study-convo"
+    },
+    {
+      "template": "GrammarForm",
+      "questionData": {
+        "sentence": "When do you ____ your homework?",
+        "answer": "do",
+        "distractors": [
+          "was",
+          "doing",
+          "are doing"
+        ]
+      }
+    },
+    {
+      "template": "DialogueCompletion",
+      "questionData": {
+        "character1": "Grace",
+        "character2": "Mike",
+        "line1": "Who can answer this question?",
+        "answer": "I can! I know the answer!",
+        "distractors": [
+          "He can't answer it.",
+          "I do see the answer.",
+          "Look at the dictionary."
+        ]
+      },
+      "audio_file1": "who-can-answer-this-question-convo",
+      "audio_file2": "i-can-answer-it-convo"
+    }
+  ]
+}

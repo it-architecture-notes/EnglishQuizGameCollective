@@ -1,0 +1,259 @@
+{
+  "levelQuestions": [
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "crosswalk",
+        "wrongAnswers": [
+          "crossrun",
+          "person-passing",
+          "road-sign"
+        ]
+      }
+    },
+    {
+      "template": "ConvoTemplate-1",
+      "questionData": {
+        "character1": "Sarah",
+        "character2": "Daniel",
+        "line1": "Do you know how to _____ a car?",
+        "line2": "Yes, I can _____ safely.",
+        "answer": "drive",
+        "distractors": [
+          "carry",
+          "go",
+          "take"
+        ]
+      },
+      "audio_file1": "do-you-know-how-to-drive-a-car-convo",
+      "audio_file2": "yes-i-can-drive-safely-convo"
+    },
+    {
+      "template": "ConvoTemplate-1",
+      "questionData": {
+        "character1": "Beth",
+        "character2": "Alex",
+        "line1": "Don't cross the road when the traffic light is red.",
+        "line2": "I know it's ______.",
+        "answer": "dangerous",
+        "distractors": [
+          "safe",
+          "good",
+          "available"
+        ]
+      },
+      "audio_file1": "don-t-cross-the-road-when-the-traffic-light-is-red-convo",
+      "audio_file2": "i-know-it-s-dangerous-convo"
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "road",
+        "wrongAnswers": [
+          "traffic",
+          "river",
+          "highway"
+        ]
+      }
+    },
+    {
+      "template": "WordPairs",
+      "questionData": {
+        "english_words": [
+          "but",
+          "before",
+          "or",
+          "because"
+        ],
+        "translations": [
+          {
+            "tr": "ama",
+            "es": "pero",
+            "fr": "mais",
+            "de": "aber",
+            "it": "ma",
+            "pt": "mas",
+            "ru": "но",
+            "zh": "但是",
+            "ja": "しかし",
+            "ko": "하지만",
+            "ar": "لكن",
+            "hi": "लेकिन"
+          },
+          {
+            "tr": "önce",
+            "es": "antes",
+            "fr": "avant",
+            "de": "vor",
+            "it": "prima",
+            "pt": "antes",
+            "ru": "раньше",
+            "zh": "之前",
+            "ja": "前",
+            "ko": "전",
+            "ar": "قبل",
+            "hi": "पहले"
+          },
+          {
+            "tr": "veya",
+            "es": "o",
+            "fr": "ou",
+            "de": "oder",
+            "it": "o",
+            "pt": "ou",
+            "ru": "или",
+            "zh": "或者",
+            "ja": "または",
+            "ko": "또는",
+            "ar": "أو",
+            "hi": "या"
+          },
+          {
+            "tr": "çünkü",
+            "es": "porque",
+            "fr": "parce que",
+            "de": "weil",
+            "it": "perché",
+            "pt": "porque",
+            "ru": "потому что",
+            "zh": "因为",
+            "ja": "なぜなら",
+            "ko": "왜라고",
+            "ar": "لأن",
+            "hi": "क्योंकि"
+          }
+        ]
+      }
+    },
+    {
+      "template": "DialogueCompletion",
+      "questionData": {
+        "character1": "Omar",
+        "character2": "Lily",
+        "line1": "What do you do before crossing the road?",
+        "answer": "look left and right",
+        "distractors": [
+          "look left",
+          "look right",
+          "see the cars"
+        ]
+      },
+      "audio_file1": "what-do-you-do-before-crossing-the-road-convo",
+      "audio_file2": "look-left-and-right-convo"
+    },
+    {
+      "template": "AppearDisappear",
+      "questionData": {
+        "words": "Let's walk green is safe.",
+        "distractors": [
+          "red",
+          "yellow",
+          "run",
+          "wait"
+        ]
+      },
+      "audio_file": "let-s-walk-green-is-safe-convo"
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "sidewalk",
+        "wrongAnswers": [
+          "road",
+          "street",
+          "driveway"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "traffic-light",
+        "wrongAnswers": [
+          "traffic-sign",
+          "pass-car",
+          "stop-sign"
+        ]
+      }
+    },
+    {
+      "template": "SentenceBuilder",
+      "questionData": {
+        "correct_order": "This intersection is very busy",
+        "distractors": [
+          "green",
+          "These",
+          "are",
+          "full"
+        ]
+      },
+      "audio_file":"this-intersection-is-very-busy-convo"
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "tunnel",
+        "wrongAnswers": [
+          "bridge",
+          "cave",
+          "road"
+        ]
+      }
+    },
+    {
+      "template": "ClozeSequence",
+      "questionData": {
+        "sentence": "_____, it's a school zone.",
+        "answer": ["slow down"],
+        "distractors": [
+          "speed up",
+          "slow up",
+          "slowly pass"
+        ]
+      },
+      "audio_file": "slow-down-it-s-a-school-zone-convo"
+    },
+    {
+      "template": "GrammarForm",
+      "questionData": {
+        "sentence": "We ____ the tunnel.",
+        "answer": "are entering",
+        "distractors": [
+          "do entering",
+          "does entering",
+          "entering"
+        ]
+      }
+    },
+    {
+      "template": "ClozeSequence",
+      "questionData": {
+        "sentence": "Please _____ the car _____ us.",
+        "answer": ["follow", "in front of"],
+        "distractors": [
+          "behind",
+          "them",
+          "take",
+          "check"
+        ]
+      },
+      "audio_file": "please-follow-the-car-in-front-of-us-convo"
+    },
+    {
+      "template": "ClozeSequence",
+      "questionData": {
+        "sentence": "It's a _____ and ______ road.",
+        "answer": [
+          "long","narrow"
+        ],
+        "distractors": [
+          "close",
+          "wide",
+          "tall",
+          "full"
+        ]
+      },
+      "audio_file": "it-s-a-long-and-narrow-road-convo"
+    }
+  ]
+}

@@ -1,0 +1,116 @@
+{
+  "levelQuestions": [
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "binder",
+        "wrongAnswers": ["notebook", "tape", "spoon"]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "clock",
+        "wrongAnswers": ["globe", "projector", "toothbrush"]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-2",
+      "questionData": {
+        "imageName": "globe",
+        "wrongAnswers": ["street-map", "flag", "cross-guard"]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "cross-guard",
+        "wrongAnswers": ["flag", "street-map", "toothbrush"]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "drawing-compass",
+        "wrongAnswers": ["scissors", "highlighter", "pillow"]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-2",
+      "questionData": {
+        "imageName": "highlighter",
+        "wrongAnswers": ["pen", "whiteboard-marker", "pencil-sharpener"]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "flag",
+        "wrongAnswers": ["globe", "street-map", "sponge"]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "lockers",
+        "wrongAnswers": ["binder", "notebook", "dish-towel"]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-2",
+      "questionData": {
+        "imageName": "notebook",
+        "wrongAnswers": ["binder", "pen", "tape"]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "pencil-sharpener",
+        "wrongAnswers": ["scissors", "pen", "comb"]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "projector",
+        "wrongAnswers": ["clock", "whiteboard-marker", "fork"]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-2",
+      "questionData": {
+        "imageName": "pen",
+        "wrongAnswers": ["pencil-sharpener", "highlighter", "whiteboard-marker"]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "street-map",
+        "wrongAnswers": ["globe", "flag", "pillow"]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "tape",
+        "wrongAnswers": ["binder", "scissors", "towel"]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-2",
+      "questionData": {
+        "imageName": "scissors",
+        "wrongAnswers": ["tape", "drawing-compass", "pencil-sharpener"]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "whiteboard-marker",
+        "wrongAnswers": ["highlighter", "pen", "toothbrush"]
+      }
+    }
+  ]
+}

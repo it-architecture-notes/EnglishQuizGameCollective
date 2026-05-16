@@ -1,0 +1,191 @@
+{
+    "translations_list": [
+        {
+            "english_word": "to take",
+            "translations": {
+                "tr": "almak",
+                "es": "tomar",
+                "fr": "prendre",
+                "de": "nehmen",
+                "it": "prendere",
+                "pt": "tomar",
+                "ru": "принимать",
+                "zh": "服用",
+                "ja": "服用する",
+                "ko": "먹다",
+                "ar": "أخذ",
+                "hi": "ग्रहण करना"
+            }
+        },
+        {
+            "english_word": "to tell",
+            "translations": {
+                "tr": "söylemek",
+                "es": "decir",
+                "fr": "dire",
+                "de": "sagen",
+                "it": "dire",
+                "pt": "dizer",
+                "ru": "сказать",
+                "zh": "说",
+                "ja": "言う",
+                "ko": "말하다",
+                "ar": "قول",
+                "hi": "बात करना"
+            }
+        },
+        {
+            "english_word": "external",
+            "translations": {
+                "tr": "dış",
+                "es": "externo",
+                "fr": "extérieur",
+                "de": "extern",
+                "it": "esterno",
+                "pt": "externo",
+                "ru": "внешний",
+                "zh": "外部的",
+                "ja": "外部の",
+                "ko": "외부의",
+                "ar": "خارجي",
+                "hi": "बाहरी"
+            }
+        },
+        {
+            "english_word": "safe",
+            "translations": {
+                "tr": "güvenli",
+                "es": "seguro",
+                "fr": "sûr",
+                "de": "sicher",
+                "it": "sicuro",
+                "pt": "seguro",
+                "ru": "безопасный",
+                "zh": "安全的",
+                "ja": "安全な",
+                "ko": "안전한",
+                "ar": "آمن",
+                "hi": "सुरक्षित"
+            }
+        },
+        {
+            "english_word": "children",
+            "translations": {
+                "tr": "çocuklar",
+                "es": "niños",
+                "fr": "enfants",
+                "de": "Kinder",
+                "it": "bambini",
+                "pt": "crianças",
+                "ru": "дети",
+                "zh": "儿童",
+                "ja": "子供",
+                "ko": "어린이",
+                "ar": "أطفال",
+                "hi": "बच्चे"
+            }
+        },
+        {
+            "english_word": "adult",
+            "translations": {
+                "tr": "yetişkin",
+                "es": "adulto",
+                "fr": "adulte",
+                "de": "Erwachsener",
+                "it": "adulto",
+                "pt": "adulto",
+                "ru": "взрослый",
+                "zh": "成人",
+                "ja": "成人",
+                "ko": "성인",
+                "ar": "كبير",
+                "hi": "वयस्क"
+            }
+        },
+        {
+            "english_word": "to help",
+            "translations": {
+                "tr": "yardım etmek",
+                "es": "ayudar",
+                "fr": "aider",
+                "de": "helfen",
+                "it": "aiutare",
+                "pt": "ajudar",
+                "ru": "помочь",
+                "zh": "帮助",
+                "ja": "助ける",
+                "ko": "도와주다",
+                "ar": "مساعدة",
+                "hi": "मदद करना"
+            }
+        },
+        {
+            "english_word": "without",
+            "translations": {
+                "tr": "olmadan",
+                "es": "sin",
+                "fr": "sans",
+                "de": "ohne",
+                "it": "senza",
+                "pt": "sem",
+                "ru": "без",
+                "zh": "没有",
+                "ja": "なし",
+                "ko": "없는",
+                "ar": "بدون",
+                "hi": "बिना"
+            }
+        },
+        {
+            "english_word": "also",
+            "translations": {
+                "tr": "ayrıca",
+                "es": "además",
+                "fr": "aussi",
+                "de": "auch",
+                "it": "anche",
+                "pt": "também",
+                "ru": "также",
+                "zh": "另外",
+                "ja": "も",
+                "ko": "도",
+                "ar": "أيضا",
+                "hi": "भी"
+            }
+        },
+        {
+            "english_word": "to happen",
+            "translations": {
+                "tr": "olmak",
+                "es": "ocurrir",
+                "fr": "se produire",
+                "de": "passieren",
+                "it": "accadere",
+                "pt": "acontecer",
+                "ru": "произойти",
+                "zh": "发生",
+                "ja": "起こる",
+                "ko": "일어나다",
+                "ar": "يحدث",
+                "hi": "होना"
+            }
+        },
+        {
+            "english_word": "medicine",
+            "translations": {
+                "tr": "ilaç",
+                "es": "medicamento",
+                "fr": "médicament",
+                "de": "Medizin",
+                "it": "medicinale",
+                "pt": "medicamento",
+                "ru": "лекарство",
+                "zh": "药物",
+                "ja": "薬",
+                "ko": "약",
+                "ar": "أدوية",
+                "hi": "दवा"
+            }
+        }
+    ]
+}
