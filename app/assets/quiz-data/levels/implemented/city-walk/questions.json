@@ -179,13 +179,7 @@
     {
       "template": "SentenceBuilder",
       "questionData": {
-        "correct_order": "He left the house quietly.",
-        "distractors": [
-          "are",
-          "tree",
-          "turned",
-          "lonely"
-        ]
+        "correct_order": "He left the house quietly."
       },
       "audio_file": "he-left-the-house-quietly-convo"
     },

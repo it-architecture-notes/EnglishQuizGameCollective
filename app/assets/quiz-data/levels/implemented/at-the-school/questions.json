@@ -191,13 +191,7 @@
     {
       "template": "SentenceBuilder",
       "questionData": {
-        "correct_order": "This lesson is interesting.",
-        "distractors": [
-          "class",
-          "teacher",
-          "boring",
-          "are"
-        ]
+        "correct_order": "This lesson is interesting."
       },
       "audio_file": "this-lesson-is-interesting-convo"
     },

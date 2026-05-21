@@ -1,0 +1,250 @@
+{
+  "levelQuestions": [
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "ambulance",
+        "wrongAnswers": [
+          "fire-truck",
+          "bus",
+          "emergency-bus"
+        ]
+      }
+    },
+    {
+      "template": "ConvoTemplate-1",
+      "questionData": {
+        "character1": "Sarah",
+        "character2": "Daniel",
+        "line1": "Hello, how do you ____ today?",
+        "line2": "I don't ____ well.",
+        "answer": "feel",
+        "distractors": [
+          "have",
+          "sense",
+          "taste"
+        ]
+      },
+      "audio_file1": "hello-how-do-you-feel-today-convo",
+      "audio_file2": "i-don-t-feel-well-convo"
+    },
+    {
+      "template": "ConvoTemplate-1",
+      "questionData": {
+        "character1": "Beth",
+        "character2": "Alex",
+        "line1": "Hello. You look sick. Let me _____ your temperature.",
+        "line2": "Okay. Is my temperature high?",
+        "answer": "check",
+        "distractors": [
+          "feel",
+          "test",
+          "take"
+        ]
+      },
+      "audio_file1": "hello-you-look-sick-let-me-check-your-temperature-convo",
+      "audio_file2": "okay-is-my-temperature-high-convo"
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "caregiver",
+        "wrongAnswers": [
+          "helper",
+          "taker",
+          "checker-person"
+        ]
+      }
+    },
+    {
+      "template": "WordPairs",
+      "questionData": {
+        "english_words": [
+          "sick",
+          "injured",
+          "weak",
+          "helpful"
+        ],
+        "translations": [
+          {
+            "tr": "sick",
+            "es": "enfermo",
+            "fr": "malade",
+            "de": "krank",
+            "it": "malato",
+            "pt": "doente",
+            "ru": "больной",
+            "zh": "生病的",
+            "ja": "病気",
+            "ko": "병든",
+            "ar": "مريض",
+            "hi": "बीमार"
+          },
+          {
+            "tr": "sakat",
+            "es": "lesionado",
+            "fr": "blessé",
+            "de": "verletzt",
+            "it": "leso",
+            "pt": "lesado",
+            "ru": "поврежденный",
+            "zh": "受伤的",
+            "ja": "怪我した",
+            "ko": "부상된",
+            "ar": "إصابة",
+            "hi": "चोट से"
+          },
+          {
+            "tr": "zayıf",
+            "es": "debil",
+            "fr": "faible",
+            "de": "schwach",
+            "it": "debole",
+            "pt": "fraco",
+            "ru": "слабый",
+            "zh": "虚弱的",
+            "ja": "弱い",
+            "ko": "약한",
+            "ar": "ضعيف",
+            "hi": "दुर्बल"
+          },
+          {
+            "tr": "yardımsever",
+            "es": "servicial",
+            "fr": "serviable",
+            "de": "hilfsbereit",
+            "it": "servizio",
+            "pt": "serviço",
+            "ru": "помощь",
+            "zh": "帮助",
+            "ja": "助ける",
+            "ko": "도와주다",
+            "ar": "مساعد",
+            "hi": "मदद करना"
+          }
+        ]
+      }
+    },
+    {
+      "template": "ClozeSequence",
+      "questionData": {
+        "sentence": "The boy _____, so his mom took him to the ______.",
+        "answer": ["fell", "emergency"],
+        "distractors": [
+          "jump",
+          "dentist",
+          "ran",
+          "veterinarian"
+        ]
+      },
+      "audio_file": "the-boy-fell-so-his-mom-took-him-to-the-emergency-convo"
+    },
+    {
+      "template": "AppearDisappear",
+      "questionData": {
+        "words": "She examines my arm.",
+        "distractors": [
+          "leg",
+          "checks",
+          "He",
+          "is"
+        ]
+      },
+      "audio_file": "she-examines-my-arm-convo"
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "crutches",
+        "wrongAnswers": [
+          "walker",
+          "wheelchair",
+          "cane"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "gurney",
+        "wrongAnswers": [
+          "bed",
+          "carry-on",
+          "hospital-bed"
+        ]
+      }
+    },
+    {
+      "template": "SentenceBuilder",
+      "questionData": {
+        "correct_order": "I go to the Hospital."
+      },
+      "audio_file":"i-go-to-the-hospital-convo"
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "patient",
+        "wrongAnswers": [
+          "weak",
+          "customer",
+          "visitor"
+        ]
+      }
+    },
+    {
+      "template": "ClozeSequence",
+      "questionData": {
+        "sentence": "Please _____ the hospital if you have a _____ emergency.",
+        "answer": ["call", "real"],
+        "distractors": [
+          "check",
+          "no",
+          "problem",
+          "help"
+        ]
+      },
+      "audio_file": "please-call-the-hospital-if-you-have-a-real-emergency-convo"
+    },
+    {
+      "template": "GrammarForm",
+      "questionData": {
+        "sentence": "I _____ my mother in the hospital.",
+        "answer": "visited",
+        "distractors": [
+          "visited",
+          "are visited",
+          "visited her"
+        ]
+      }
+    },
+    {
+      "template": "ClozeSequence",
+      "questionData": {
+        "sentence": "The doctor has _____ information now.",
+        "answer": ["enough"],
+        "distractors": [
+          "too many",
+          "sorry",
+          "quiet"
+        ]
+      },
+      "audio_file": "the-doctor-has-enough-information-now-convo"
+    },
+    {
+      "template": "ClozeSequence",
+      "questionData": {
+        "sentence": "The treatment will _____ this afternoon.",
+        "answer": [
+          "begin"
+        ],
+        "distractors": [
+          "take",
+          "long",
+          "check"
+        ]
+      },
+      "audio_file": "the-treatment-will-begin-this-afternoon-convo"
+    }
+  ]
+}

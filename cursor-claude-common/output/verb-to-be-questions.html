@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>verb-to-be — level tables</title>
+  <style>
+    body { font-family: system-ui, -apple-system, Segoe UI, Roboto, sans-serif; margin: 16px; background: #f5f5f5; }
+    h1 { font-size: 1.25rem; margin-bottom: 12px; }
+    h2 { font-size: 1.1rem; margin-top: 24px; margin-bottom: 8px; }
+    .wrap { overflow-x: auto; background: #fff; padding: 12px; border-radius: 8px; box-shadow: 0 1px 3px rgba(0,0,0,.08); margin-bottom: 16px; }
+    table { border-collapse: collapse; width: 100%; font-size: 13px; table-layout: fixed; }
+    th, td { border: 1px solid #c8c8c8; padding: 8px 10px; vertical-align: top; text-align: left; word-wrap: break-word; }
+    th { background: #e8e8e8; font-weight: 600; white-space: nowrap; }
+    tr:nth-child(even) td { background: #fafafa; }
+    .wrap.template-counts { max-width: 28rem; }
+    .wrap.word-frequency { max-width: 40rem; }
+    </style>
+</head>
+<body>
+  <h1>verb-to-be — questions</h1>
+  <h2>Questions</h2>
+  <div class="wrap">
+    <table>
+<thead><tr><th>#</th><th>Template</th><th>Line 1 / Prompt</th><th>Line 2</th><th>Answer</th><th>English (translate)</th><th>Audio</th></tr></thead>
+<tbody><tr><td>1</td><td>ConvoTemplate-1</td><td>Who are you?</td><td>I ___ Alex</td><td>am</td><td></td><td>audio_file1: who-are-you-convo · audio_file2: i-am-alex-convo</td></tr><tr><td>2</td><td>ConvoTemplate-1</td><td>Who ____ your best friend?</td><td>My best friend ____ Omar</td><td>is</td><td></td><td>audio_file1: who-is-your-best-friend-convo · audio_file2: my-best-friend-is-john-convo</td></tr><tr><td>3</td><td>GrammarForm</td><td>I ___ a teacher</td><td></td><td>am</td><td></td><td></td></tr><tr><td>4</td><td>AppearDisappear</td><td>Where am I now?</td><td></td><td>-</td><td></td><td>audio_file: where-am-i-now-convo</td></tr><tr><td>5</td><td>DialogueCompletion</td><td>Are these your keys?</td><td></td><td>No, they are not</td><td></td><td>audio_file1: are-these-your-keys-convo · audio_file2: no-they-are-not-convo</td></tr><tr><td>6</td><td>ClozeSequence</td><td>_____ you ____ Scotland?</td><td></td><td>Aren&#x27;t, from</td><td></td><td></td></tr><tr><td>7</td><td>DialogueCompletion</td><td>Are you ready?</td><td></td><td>Yes, I am</td><td></td><td>audio_file1: are-you-ready-convo · audio_file2: yes-i-am-convo</td></tr><tr><td>8</td><td>WordPairs</td><td>my; your; his/her; their; our</td><td>word pairs</td><td>match all pairs</td><td></td><td></td></tr><tr><td>9</td><td>ClozeSequence</td><td>I ____ ____ your teacher</td><td></td><td>am, not</td><td></td><td>audio_file: i-am-not-your-teacher-convo</td></tr><tr><td>10</td><td>AppearDisappear</td><td>You are not too old</td><td></td><td>-</td><td></td><td>audio_file: you-are-not-too-old-convo</td></tr><tr><td>11</td><td>SentenceBuilder</td><td>They are good people</td><td></td><td>They are good people</td><td></td><td>audio_file: they-are-good-people-convo</td></tr><tr><td>12</td><td>ClozeSequence</td><td>Here ___ ____ present for you</td><td></td><td>is, a</td><td></td><td>audio_file: here-is-a-present-for-you-convo</td></tr><tr><td>13</td><td>DialogueCompletion</td><td>Is Mrs Brown your teacher?</td><td></td><td>No, she is not</td><td></td><td>audio_file1: is-mrs-brown-your-teacher-convo · audio_file2: no-she-is-not-convo</td></tr><tr><td>14</td><td>SentenceBuilder</td><td>Aren&#x27;t we stronger together?</td><td></td><td>Aren&#x27;t we stronger together?</td><td></td><td></td></tr></tbody>
+</table>
+  </div>
+
+  <h2>verb-to-be — translations</h2>
+  <div class="wrap">
+    <table>
+<thead><tr><th>#</th><th>English word</th><th>ar</th><th>de</th><th>es</th><th>fr</th><th>hi</th><th>it</th><th>ja</th><th>ko</th><th>pt</th><th>ru</th><th>tr</th><th>zh</th></tr></thead>
+<tbody><tr><td>1</td><td>yes</td><td>نعم</td><td>ja</td><td>sí</td><td>oui</td><td>हाँ</td><td>si</td><td>はい</td><td>네</td><td>sim</td><td>да</td><td>evet</td><td>是的</td></tr><tr><td>2</td><td>no</td><td>لا</td><td>nein</td><td>no</td><td>non</td><td>नहीं</td><td>no</td><td>いいえ</td><td>아니오</td><td>não</td><td>нет</td><td>hayır</td><td>不是</td></tr><tr><td>3</td><td> who are you?</td><td>من أنت؟</td><td>wer bist du?</td><td>¿quién eres?</td><td>qui es-tu?</td><td>आप कौन हैं?</td><td>chi sei?</td><td>あなたは誰ですか？</td><td>너는 누구야?</td><td>quem é você?</td><td>кто ты?</td><td>sen kimsin?</td><td>你是谁？</td></tr><tr><td>4</td><td>I am a teacher</td><td>أنا معلم</td><td>ich bin ein Lehrer</td><td>yo soy un profesor</td><td>je suis un professeur</td><td>मैं एक शिक्षक हूं</td><td>sono un insegnante</td><td>私は教師です</td><td>나는 선생님입니다</td><td>eu sou um professor</td><td>я учитель</td><td>ben bir öğretmenim</td><td>我是老师</td></tr><tr><td>5</td><td>These are my keys</td><td>هذه هي كلمات المرور الخاصة بي</td><td>das sind meine Schlüssel</td><td>estas son mis llaves</td><td>ces sont mes clés</td><td>ये मेरे कुंजिकल हैं</td><td>queste sono le mie chiavi</td><td>これらは私の鍵です</td><td>이것들은 내 열쇠들입니다</td><td>estes são meus chaves</td><td>это мои ключи</td><td>bunlar benim anahtarlarım</td><td>这些是我的钥匙</td></tr><tr><td>6</td><td>ready</td><td>جاهز</td><td>bereit</td><td>listo</td><td>prêt</td><td>準備ができています</td><td>pronto</td><td>準備ができています</td><td>준비되었습니다</td><td>pronto</td><td>готов</td><td>hazır</td><td>准备好</td></tr><tr><td>7</td><td>good</td><td>جيد</td><td>gut</td><td>bueno</td><td>bon</td><td>अच्छा</td><td>buono</td><td>良い</td><td>좋다</td><td>bom</td><td>хорошо</td><td>iyi</td><td>好</td></tr><tr><td>8</td><td>best</td><td>الأفضل</td><td>der beste</td><td>el mejor</td><td>le meilleur</td><td>सबसे अच्छा</td><td>il migliore</td><td>最良</td><td>최고</td><td>o melhor</td><td>лучший</td><td>en iyi</td><td>最好的</td></tr><tr><td>9</td><td>here</td><td>هنا</td><td>hier</td><td>aquí</td><td>ici</td><td>यहां</td><td>qui</td><td>ここ</td><td>여기</td><td>aqui</td><td>здесь</td><td>burada</td><td>这里</td></tr></tbody>
+</table>
+  </div>
+
+  <h2>Template counts</h2>
+  <div class="wrap template-counts">
+    <table>
+<thead><tr><th>Template</th><th>Count in level</th></tr></thead>
+<tbody><tr><td>AppearDisappear</td><td>2</td></tr><tr><td>ClozeSequence</td><td>3</td></tr><tr><td>ConvoTemplate-1</td><td>2</td></tr><tr><td>DialogueCompletion</td><td>3</td></tr><tr><td>GrammarForm</td><td>1</td></tr><tr><td>imageQuizTemplate-1</td><td>0</td></tr><tr><td>imageQuizTemplate-2</td><td>0</td></tr><tr><td>imageQuizTemplate-3</td><td>0</td></tr><tr><td>imageQuizTemplate-SentenceChoice</td><td>0</td></tr><tr><td>SentenceBuilder</td><td>2</td></tr><tr><td>WordPairs</td><td>1</td></tr></tbody>
+</table>
+  </div>
+
+  <h2>Word frequency (questions.json; excludes template, audio_file*, WordPairs translations, distractors, wrongAnswers)</h2>
+  <div class="wrap word-frequency">
+    <table>
+<thead><tr><th>word</th><th>count</th></tr></thead>
+<tbody><tr><td>are</td><td>6</td></tr><tr><td>am</td><td>5</td></tr><tr><td>i</td><td>5</td></tr><tr><td>you</td><td>5</td></tr><tr><td>your</td><td>5</td></tr><tr><td>is</td><td>4</td></tr><tr><td>not</td><td>4</td></tr><tr><td>teacher</td><td>3</td></tr><tr><td>a</td><td>2</td></tr><tr><td>alex</td><td>2</td></tr><tr><td>aren&#x27;t</td><td>2</td></tr><tr><td>best</td><td>2</td></tr><tr><td>friend</td><td>2</td></tr><tr><td>my</td><td>2</td></tr><tr><td>no</td><td>2</td></tr><tr><td>omar</td><td>2</td></tr><tr><td>they</td><td>2</td></tr><tr><td>who</td><td>2</td></tr><tr><td>brown</td><td>1</td></tr><tr><td>emma</td><td>1</td></tr><tr><td>for</td><td>1</td></tr><tr><td>from</td><td>1</td></tr><tr><td>good</td><td>1</td></tr><tr><td>grace</td><td>1</td></tr><tr><td>her</td><td>1</td></tr><tr><td>here</td><td>1</td></tr><tr><td>his</td><td>1</td></tr><tr><td>john</td><td>1</td></tr><tr><td>keys</td><td>1</td></tr><tr><td>leo</td><td>1</td></tr><tr><td>lily</td><td>1</td></tr><tr><td>mike</td><td>1</td></tr><tr><td>mrs</td><td>1</td></tr><tr><td>now</td><td>1</td></tr><tr><td>old</td><td>1</td></tr><tr><td>olivia</td><td>1</td></tr><tr><td>our</td><td>1</td></tr><tr><td>people</td><td>1</td></tr><tr><td>present</td><td>1</td></tr><tr><td>ready</td><td>1</td></tr><tr><td>ryan</td><td>1</td></tr><tr><td>scotland</td><td>1</td></tr><tr><td>she</td><td>1</td></tr><tr><td>stronger</td><td>1</td></tr><tr><td>their</td><td>1</td></tr><tr><td>these</td><td>1</td></tr><tr><td>together</td><td>1</td></tr><tr><td>too</td><td>1</td></tr><tr><td>we</td><td>1</td></tr><tr><td>where</td><td>1</td></tr><tr><td>yes</td><td>1</td></tr></tbody>
+</table>
+  </div>
+
+</body>
+</html>

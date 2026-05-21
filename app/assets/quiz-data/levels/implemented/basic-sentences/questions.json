@@ -1,6 +1,5 @@
 {
-  "timer_seconds": 10,
-  "levelQuestions": [
+    "levelQuestions": [
     {
       "template": "DialogueCompletion",
       "questionData": {
@@ -18,14 +17,83 @@
       "audio_file2": "you-are-welcome-convo"
     },
     {
-      "template": "SentenceBuilder",
+      "template": "WordPairs",
       "questionData": {
-        "correct_order": "I go to school"
-      },
-      "audio_file": "i-go-to-school-convo"
+        "english_words": [
+          "this",
+          "that",
+          "these",
+          "those"
+        ],
+        "translations": [
+          {
+            "tr": "bu",
+            "es": "esto",
+            "fr": "ceci",
+            "de": "dies",
+            "it": "questo",
+            "pt": "isto",
+            "ru": "это",
+            "zh": "这个",
+            "ja": "これ",
+            "ko": "이것",
+            "ar": "هذا",
+            "hi": "यह"
+          },
+          {
+            "tr": "şu",
+            "es": "ese",
+            "fr": "cela",
+            "de": "das",
+            "it": "quello",
+            "pt": "isso",
+            "ru": "то",
+            "zh": "那个",
+            "ja": "それ",
+            "ko": "그것",
+            "ar": "ذلك",
+            "hi": "वह"
+          },
+          {
+            "tr": "bunlar",
+            "es": "estos",
+            "fr": "ceux-ci",
+            "de": "diese",
+            "it": "questi",
+            "pt": "estes",
+            "ru": "эти",
+            "zh": "这些",
+            "ja": "これら",
+            "ko": "이것들",
+            "ar": "هؤلاء",
+            "hi": "ये"
+          },
+          {
+            "tr": "şunlar",
+            "es": "esos",
+            "fr": "ceux-là",
+            "de": "jene",
+            "it": "quelli",
+            "pt": "esses",
+            "ru": "те",
+            "zh": "那些",
+            "ja": "それら",
+            "ko": "그것들",
+            "ar": "أولئك",
+            "hi": "वे"
+          }
+        ]
+      }
     },
     {
-      "template":"imageQuizTemplate-1",
+      "template": "SentenceBuilder",
+      "questionData": {
+        "correct_order": "I go to school with my friend."
+      },
+      "audio_file": "i-go-to-school-with-my-friend-convo"
+    },
+    {
+      "template": "imageQuizTemplate-1",
       "questionData": {
         "imageName": "dont-know",
         "answer": "I don't know",
@@ -36,7 +104,6 @@
         ]
       }
     },
-    
     {
       "template": "AppearDisappear",
       "questionData": {
@@ -55,17 +122,17 @@
       "questionData": {
         "character1": "Emma",
         "character2": "Alex",
-        "line1": "_____ another tea?",
-        "line2": "Yes, please.",
-        "answer": "Would you like",
+        "line1": "_____ do we meet?",
+        "line2": "Let's meet at 2 o'clock.",
+        "answer": "When",
         "distractors": [
-          "Get you",
-          "Do you have",
-          "Where is the"
+          "Where",
+          "There",
+          "How"
         ]
       },
-      "audio_file1": "would-you-like-another-tea-convo",
-      "audio_file2": "yes-please-convo"
+      "audio_file1": "when-do-we-meet-convo",
+      "audio_file2": "let-s-meet-at-2-o-clock-convo"
     },
     {
       "template": "imageQuizTemplate-1",
@@ -87,20 +154,18 @@
       "audio_file": "i-have-a-question-convo"
     },
     {
-      "template": "DialogueCompletion",
+      "template": "ClozeSequence",
       "questionData": {
-        "character1": "Emma",
-        "character2": "Oliver",
-        "line1": "Do you have a pet?",
-        "answer": "Yes, I have a dog.",
+        "sentence": "She _____ the weather is _____.",
+        "answer": ["says", "bad"],
         "distractors": [
-          "No, I don't see a pet.",
-          "Yes, I get a cat.",
-          "No, I don't have the bird."
+          "has",
+          "tall",
+          "likes",
+          "who"
         ]
       },
-      "audio_file1": "do-you-have-a-pet-convo",
-      "audio_file2": "yes-i-have-a-dog-convo"
+      "audio_file": "she-says-the-weather-is-bad-convo"
     },
     {
       "template": "DialogueCompletion",
@@ -147,7 +212,7 @@
           "saw",
           "having see",
           "seeing"
-        ]        
+        ]
       }
     },
     {
@@ -180,13 +245,15 @@
       "audio_file1": "excuse-me-what-time-is-it-convo",
       "audio_file2": "it-is-10-o-clock-convo"
     },
-    
     {
       "template": "AppearDisappear",
       "questionData": {
         "words": "There are many books in the library",
         "distractors": [
-          "bookstore","is","too","small"
+          "bookstore",
+          "is",
+          "too",
+          "small"
         ]
       },
       "audio_file": "there-are-many-books-in-the-library-convo"

@@ -179,12 +179,7 @@
     {
       "template": "SentenceBuilder",
       "questionData": {
-        "correct_order": "He grows organic and fresh fruits",
-        "distractors": [
-          "looks",
-          "ripe",
-          "trees"
-        ]
+        "correct_order": "He grows organic and fresh fruits"
       },
       "audio_file":"he-grows-organic-and-fresh-fruits-convo"
     },

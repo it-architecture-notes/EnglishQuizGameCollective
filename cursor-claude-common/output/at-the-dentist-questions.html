@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>at-the-dentist — level tables</title>
+  <style>
+    body { font-family: system-ui, -apple-system, Segoe UI, Roboto, sans-serif; margin: 16px; background: #f5f5f5; }
+    h1 { font-size: 1.25rem; margin-bottom: 12px; }
+    h2 { font-size: 1.1rem; margin-top: 24px; margin-bottom: 8px; }
+    .wrap { overflow-x: auto; background: #fff; padding: 12px; border-radius: 8px; box-shadow: 0 1px 3px rgba(0,0,0,.08); margin-bottom: 16px; }
+    table { border-collapse: collapse; width: 100%; font-size: 13px; table-layout: fixed; }
+    th, td { border: 1px solid #c8c8c8; padding: 8px 10px; vertical-align: top; text-align: left; word-wrap: break-word; }
+    th { background: #e8e8e8; font-weight: 600; white-space: nowrap; }
+    tr:nth-child(even) td { background: #fafafa; }
+    .wrap.template-counts { max-width: 28rem; }
+    .wrap.word-frequency { max-width: 40rem; }
+    </style>
+</head>
+<body>
+  <h1>at-the-dentist — questions</h1>
+  <h2>Questions</h2>
+  <div class="wrap">
+    <table>
+<thead><tr><th>#</th><th>Template</th><th>Line 1 / Prompt</th><th>Line 2</th><th>Answer</th><th>English (translate)</th><th>Audio</th></tr></thead>
+<tbody><tr><td>1</td><td>imageQuizTemplate-1</td><td>image: tooth</td><td></td><td>tooth</td><td></td><td></td></tr><tr><td>2</td><td>ClozeSequence</td><td>Please _____ your mouth with _____ water.</td><td></td><td>rinse, warm</td><td></td><td>audio_file: please-rinse-your-mouth-with-warm-water-convo</td></tr><tr><td>3</td><td>ClozeSequence</td><td>The dentist did a ____ job _____ my cavity.</td><td></td><td>great, fixing</td><td></td><td>audio_file: the-dentist-did-a-great-job-fixing-my-cavity-convo</td></tr><tr><td>4</td><td>ClozeSequence</td><td>My dentist is _____ and _______.</td><td></td><td>kind, friendly</td><td></td><td>audio_file: my-dentist-is-kind-and-friendly-convo</td></tr><tr><td>5</td><td>imageQuizTemplate-1</td><td>image: gauze</td><td></td><td>gauze</td><td></td><td></td></tr><tr><td>6</td><td>ConvoTemplate-1</td><td>Does it ____ when I press here?</td><td>Yes, it ______.</td><td>hurt</td><td></td><td>audio_file1: does-it-hurt-when-i-press-here-convo · audio_file2: yes-it-hurts-convo</td></tr><tr><td>7</td><td>ConvoTemplate-1</td><td>Hello, Dr. Lee&#x27;s dental office. How can I help you?</td><td>Hi. I need to make an _____.</td><td>appointment</td><td></td><td>audio_file1: hello-dr-lee-s-dental-office-how-can-i-help-you-convo · audio_file2: hi-i-need-to-make-an-appointment-convo</td></tr><tr><td>8</td><td>imageQuizTemplate-1</td><td>image: filling</td><td></td><td>filling</td><td></td><td></td></tr><tr><td>9</td><td>WordPairs</td><td>often - frequently; sometimes; rarely; everyday</td><td>word pairs</td><td>match all pairs</td><td></td><td></td></tr><tr><td>10</td><td>DialogueCompletion</td><td>How often do you visit the dentist?</td><td></td><td>I visit the dentist every 6 months</td><td></td><td>audio_file1: how-often-do-you-visit-the-dentist-convo · audio_file2: i-visit-the-dentist-every-6-months-convo</td></tr><tr><td>11</td><td>AppearDisappear</td><td>Please rest until the evening.</td><td></td><td>-</td><td></td><td>audio_file: please-rest-until-the-evening-convo</td></tr><tr><td>12</td><td>imageQuizTemplate-1</td><td>image: braces</td><td></td><td>braces</td><td></td><td></td></tr><tr><td>13</td><td>imageQuizTemplate-1</td><td>image: extraction</td><td></td><td>extraction</td><td></td><td></td></tr><tr><td>14</td><td>SentenceBuilder</td><td>I am not afraid of the dentist</td><td></td><td>I am not afraid of the dentist</td><td></td><td>audio_file: i-am-not-afraid-of-the-dentist-convo</td></tr><tr><td>15</td><td>imageQuizTemplate-1</td><td>image: root-canal</td><td></td><td>root-canal</td><td></td><td></td></tr></tbody>
+</table>
+  </div>
+
+  <h2>at-the-dentist — translations</h2>
+  <div class="wrap">
+    <table>
+<thead><tr><th>#</th><th>English word</th><th>ar</th><th>de</th><th>es</th><th>fr</th><th>hi</th><th>it</th><th>ja</th><th>ko</th><th>pt</th><th>ru</th><th>tr</th><th>zh</th></tr></thead>
+<tbody><tr><td>1</td><td>to hurt</td><td>ألم يسبب</td><td>weh tun</td><td>doler</td><td>faire mal</td><td>दर्द उत्पन्न करना</td><td>far dor</td><td>痛みを引き起こす</td><td>아픔을 일으키다</td><td>doer dor</td><td>вызвать боль</td><td>acımak</td><td>引起疼痛</td></tr><tr><td>2</td><td>how often</td><td>كم المرات</td><td>wie oft</td><td>qué tan frecuentemente</td><td>quelle fréquence</td><td>कितनी बार</td><td>quanto spesso</td><td>どのくらいの頻度で</td><td>얼마나 자주</td><td>quantas vezes</td><td>как часто</td><td>ne kadar sık</td><td>多久一次</td></tr><tr><td>3</td><td>to be afraid of</td><td>خوف</td><td>fürchten</td><td>tener miedo</td><td>avoir peur</td><td>डर होना</td><td>avere paura</td><td>怖い</td><td>무서워하다</td><td>ter medo</td><td>бояться</td><td>korkmak</td><td>害怕</td></tr><tr><td>4</td><td>appointment</td><td>حجز</td><td>termin</td><td>cita</td><td>rendez-vous</td><td>बुकिंग</td><td>appuntamento</td><td>予約</td><td>예약</td><td>agendamento</td><td>назначение</td><td>randevu</td><td>预约</td></tr><tr><td>5</td><td>to fix</td><td>إصلاح</td><td>reparieren</td><td>reparar</td><td>réparer</td><td>बचाना</td><td>riparare</td><td>修理</td><td>수리</td><td>reparar</td><td>ремонтировать</td><td>düzeltmek</td><td>修复</td></tr><tr><td>6</td><td>great</td><td>عظيم</td><td>großartig</td><td>genial</td><td>excellent</td><td>अच्छा</td><td>eccellente</td><td>すばらしい</td><td>좋은</td><td>excelente</td><td>отличный</td><td>iyi</td><td>出色</td></tr><tr><td>7</td><td>cavity</td><td>فراغ</td><td>Lücke</td><td>cavidad</td><td>cavité</td><td>छेद</td><td>cavità</td><td>穴</td><td>구멍</td><td>cavidade</td><td>дефект</td><td>çürük</td><td>洞</td></tr><tr><td>8</td><td>to rinse</td><td>غسل المؤلم</td><td>entleeren</td><td>enjuagar</td><td>égoutter</td><td>गले साफ़ करना</td><td>lavare</td><td>口を洗う</td><td>입을 씻다</td><td>lavar a boca</td><td>очистить рот</td><td>yıkamak</td><td>清洗嘴巴</td></tr><tr><td>9</td><td>kind</td><td>لطيف</td><td>freundlich</td><td>amable</td><td>gentil</td><td>दुआ करना</td><td>gentile</td><td>優しい</td><td>친절한</td><td>gentil</td><td>добрый</td><td>kibar</td><td>友好的</td></tr><tr><td>10</td><td>until evening</td><td>حتى المساء</td><td>bis zum Abend</td><td>hasta la noche</td><td>jusqu&#x27;au soir</td><td>रात तक</td><td>fino al sera</td><td>夕方まで</td><td>저녁까지</td><td>até a noite</td><td>до вечера</td><td>akşama kadar</td><td>直到晚上</td></tr></tbody>
+</table>
+  </div>
+
+  <h2>Template counts</h2>
+  <div class="wrap template-counts">
+    <table>
+<thead><tr><th>Template</th><th>Count in level</th></tr></thead>
+<tbody><tr><td>AppearDisappear</td><td>1</td></tr><tr><td>ClozeSequence</td><td>3</td></tr><tr><td>ConvoTemplate-1</td><td>2</td></tr><tr><td>DialogueCompletion</td><td>1</td></tr><tr><td>GrammarForm</td><td>0</td></tr><tr><td>imageQuizTemplate-1</td><td>6</td></tr><tr><td>imageQuizTemplate-2</td><td>0</td></tr><tr><td>imageQuizTemplate-3</td><td>0</td></tr><tr><td>imageQuizTemplate-SentenceChoice</td><td>0</td></tr><tr><td>SentenceBuilder</td><td>1</td></tr><tr><td>WordPairs</td><td>1</td></tr></tbody>
+</table>
+  </div>
+
+  <h2>Word frequency (questions.json; excludes template, audio_file*, WordPairs translations, distractors, wrongAnswers)</h2>
+  <div class="wrap word-frequency">
+    <table>
+<thead><tr><th>word</th><th>count</th></tr></thead>
+<tbody><tr><td>dentist</td><td>5</td></tr><tr><td>i</td><td>5</td></tr><tr><td>the</td><td>5</td></tr><tr><td>how</td><td>2</td></tr><tr><td>it</td><td>2</td></tr><tr><td>my</td><td>2</td></tr><tr><td>often</td><td>2</td></tr><tr><td>please</td><td>2</td></tr><tr><td>visit</td><td>2</td></tr><tr><td>you</td><td>2</td></tr><tr><td>6</td><td>1</td></tr><tr><td>a</td><td>1</td></tr><tr><td>afraid</td><td>1</td></tr><tr><td>alex</td><td>1</td></tr><tr><td>am</td><td>1</td></tr><tr><td>an</td><td>1</td></tr><tr><td>and</td><td>1</td></tr><tr><td>appointment</td><td>1</td></tr><tr><td>beth</td><td>1</td></tr><tr><td>braces</td><td>1</td></tr><tr><td>can</td><td>1</td></tr><tr><td>cavity</td><td>1</td></tr><tr><td>chris</td><td>1</td></tr><tr><td>dental</td><td>1</td></tr><tr><td>did</td><td>1</td></tr><tr><td>do</td><td>1</td></tr><tr><td>does</td><td>1</td></tr><tr><td>dr</td><td>1</td></tr><tr><td>emma</td><td>1</td></tr><tr><td>evening</td><td>1</td></tr><tr><td>every</td><td>1</td></tr><tr><td>everyday</td><td>1</td></tr><tr><td>extraction</td><td>1</td></tr><tr><td>filling</td><td>1</td></tr><tr><td>fixing</td><td>1</td></tr><tr><td>frequently</td><td>1</td></tr><tr><td>friendly</td><td>1</td></tr><tr><td>gauze</td><td>1</td></tr><tr><td>great</td><td>1</td></tr><tr><td>hello</td><td>1</td></tr><tr><td>help</td><td>1</td></tr><tr><td>here</td><td>1</td></tr><tr><td>hi</td><td>1</td></tr><tr><td>hurt</td><td>1</td></tr><tr><td>is</td><td>1</td></tr><tr><td>job</td><td>1</td></tr><tr><td>kind</td><td>1</td></tr><tr><td>lee&#x27;s</td><td>1</td></tr><tr><td>lily</td><td>1</td></tr><tr><td>make</td><td>1</td></tr><tr><td>months</td><td>1</td></tr><tr><td>mouth</td><td>1</td></tr><tr><td>need</td><td>1</td></tr><tr><td>not</td><td>1</td></tr><tr><td>of</td><td>1</td></tr><tr><td>office</td><td>1</td></tr><tr><td>omar</td><td>1</td></tr><tr><td>press</td><td>1</td></tr><tr><td>rarely</td><td>1</td></tr><tr><td>rest</td><td>1</td></tr><tr><td>rinse</td><td>1</td></tr><tr><td>root-canal</td><td>1</td></tr><tr><td>sometimes</td><td>1</td></tr><tr><td>to</td><td>1</td></tr><tr><td>tooth</td><td>1</td></tr><tr><td>until</td><td>1</td></tr><tr><td>warm</td><td>1</td></tr><tr><td>water</td><td>1</td></tr><tr><td>when</td><td>1</td></tr><tr><td>with</td><td>1</td></tr><tr><td>yes</td><td>1</td></tr><tr><td>your</td><td>1</td></tr></tbody>
+</table>
+  </div>
+
+</body>
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>at-the-hospital — level tables</title>
+  <style>
+    body { font-family: system-ui, -apple-system, Segoe UI, Roboto, sans-serif; margin: 16px; background: #f5f5f5; }
+    h1 { font-size: 1.25rem; margin-bottom: 12px; }
+    h2 { font-size: 1.1rem; margin-top: 24px; margin-bottom: 8px; }
+    .wrap { overflow-x: auto; background: #fff; padding: 12px; border-radius: 8px; box-shadow: 0 1px 3px rgba(0,0,0,.08); margin-bottom: 16px; }
+    table { border-collapse: collapse; width: 100%; font-size: 13px; table-layout: fixed; }
+    th, td { border: 1px solid #c8c8c8; padding: 8px 10px; vertical-align: top; text-align: left; word-wrap: break-word; }
+    th { background: #e8e8e8; font-weight: 600; white-space: nowrap; }
+    tr:nth-child(even) td { background: #fafafa; }
+    .wrap.template-counts { max-width: 28rem; }
+    .wrap.word-frequency { max-width: 40rem; }
+    </style>
+</head>
+<body>
+  <h1>at-the-hospital — questions</h1>
+  <h2>Questions</h2>
+  <div class="wrap">
+    <table>
+<thead><tr><th>#</th><th>Template</th><th>Line 1 / Prompt</th><th>Line 2</th><th>Answer</th><th>English (translate)</th><th>Audio</th></tr></thead>
+<tbody><tr><td>1</td><td>imageQuizTemplate-1</td><td>image: ambulance</td><td></td><td>ambulance</td><td></td><td></td></tr><tr><td>2</td><td>ConvoTemplate-1</td><td>Hello, how do you ____ today?</td><td>I don&#x27;t ____ well.</td><td>feel</td><td></td><td>audio_file1: hello-how-do-you-feel-today-convo · audio_file2: i-don-t-feel-well-convo</td></tr><tr><td>3</td><td>ConvoTemplate-1</td><td>Hello. You look sick. Let me _____ your temperature.</td><td>Okay. Is my temperature high?</td><td>check</td><td></td><td>audio_file1: hello-you-look-sick-let-me-check-your-temperature-convo · audio_file2: okay-is-my-temperature-high-convo</td></tr><tr><td>4</td><td>imageQuizTemplate-1</td><td>image: caregiver</td><td></td><td>caregiver</td><td></td><td></td></tr><tr><td>5</td><td>WordPairs</td><td>sick; injured; weak; helpful</td><td>word pairs</td><td>match all pairs</td><td></td><td></td></tr><tr><td>6</td><td>ClozeSequence</td><td>The boy _____, so his mom took him to the ______.</td><td></td><td>fell, emergency</td><td></td><td>audio_file: the-boy-fell-so-his-mom-took-him-to-the-emergency-convo</td></tr><tr><td>7</td><td>AppearDisappear</td><td>She examines my arm.</td><td></td><td>-</td><td></td><td>audio_file: she-examines-my-arm-convo</td></tr><tr><td>8</td><td>imageQuizTemplate-1</td><td>image: crutches</td><td></td><td>crutches</td><td></td><td></td></tr><tr><td>9</td><td>imageQuizTemplate-1</td><td>image: gurney</td><td></td><td>gurney</td><td></td><td></td></tr><tr><td>10</td><td>SentenceBuilder</td><td>I go to the Hospital.</td><td></td><td>I go to the Hospital.</td><td></td><td>audio_file: i-go-to-the-hospital-convo</td></tr><tr><td>11</td><td>imageQuizTemplate-1</td><td>image: patient</td><td></td><td>patient</td><td></td><td></td></tr><tr><td>12</td><td>ClozeSequence</td><td>Please _____ the hospital if you have a _____ emergency.</td><td></td><td>call, real</td><td></td><td>audio_file: please-call-the-hospital-if-you-have-a-real-emergency-convo</td></tr><tr><td>13</td><td>GrammarForm</td><td>I _____ my mother in the hospital.</td><td></td><td>visited</td><td></td><td></td></tr><tr><td>14</td><td>ClozeSequence</td><td>The doctor has _____ information now.</td><td></td><td>enough</td><td></td><td>audio_file: the-doctor-has-enough-information-now-convo</td></tr><tr><td>15</td><td>ClozeSequence</td><td>The treatment will _____ this afternoon.</td><td></td><td>begin</td><td></td><td>audio_file: the-treatment-will-begin-this-afternoon-convo</td></tr></tbody>
+</table>
+  </div>
+
+  <h2>at-the-hospital — translations</h2>
+  <div class="wrap">
+    <table>
+<thead><tr><th>#</th><th>English word</th><th>ar</th><th>de</th><th>es</th><th>fr</th><th>hi</th><th>it</th><th>ja</th><th>ko</th><th>pt</th><th>ru</th><th>tr</th><th>zh</th></tr></thead>
+<tbody><tr><td>1</td><td>to feel</td><td>شعر</td><td>fühlen</td><td>sentir</td><td>sentir</td><td>महसूस करना</td><td>sentire</td><td>感じる</td><td>느끼다</td><td>sentir</td><td>чувствовать</td><td>hissetmek</td><td>感觉</td></tr><tr><td>2</td><td>to check</td><td>تحقق</td><td>prüfen</td><td>verificar</td><td>vérifier</td><td>जांचना</td><td>controllare</td><td>確認する</td><td>확인하다</td><td>verificar</td><td>проверить</td><td>kontrol etmek</td><td>检查</td></tr><tr><td>3</td><td>high</td><td>عالي</td><td>hoch</td><td>alto</td><td>haut</td><td>ऊंचा</td><td>alto</td><td>高い</td><td>높다</td><td>alto</td><td>высокий</td><td>yüksek</td><td>高的</td></tr><tr><td>4</td><td>to examine</td><td>تحقق</td><td>prüfen</td><td>examinar</td><td>examiner</td><td>जांचना</td><td>controllare</td><td>確認する</td><td>확인하다</td><td>examinar</td><td>проверить</td><td>kontrol etmek</td><td>检查</td></tr><tr><td>5</td><td>to call</td><td>اتصل</td><td>telefonieren</td><td>llamar</td><td>appeler</td><td>बात करना</td><td>chiamare</td><td>電話をかける</td><td>전화하다</td><td>chamar</td><td>позвонить</td><td>telefon etmek</td><td>打电话</td></tr><tr><td>6</td><td>real</td><td>حقيقي</td><td>real</td><td>real</td><td>réel</td><td>वास्तविक</td><td>reale</td><td>本当</td><td>진짜</td><td>real</td><td>реальный</td><td>gerçek</td><td>真实的</td></tr><tr><td>7</td><td>long</td><td>طويل</td><td>kommen</td><td>largo</td><td>long</td><td>दूर</td><td>lungo</td><td>長い</td><td>길다</td><td>longo</td><td>длинный</td><td>uzun</td><td>长的</td></tr><tr><td>8</td><td>narrow</td><td>ضيق</td><td>eng</td><td>estrecho</td><td>étroit</td><td>छोटा</td><td>stretto</td><td>狭い</td><td>좁다</td><td>estreito</td><td>узкий</td><td>dar</td><td>狭窄的</td></tr><tr><td>9</td><td>only</td><td>فقط</td><td>nur</td><td>sólo</td><td>seulement</td><td>केवल</td><td>solo</td><td>だけ</td><td>오직</td><td>só</td><td>только</td><td>sadece</td><td>只有</td></tr><tr><td>10</td><td>to cross</td><td>تخطى</td><td>überqueren</td><td>cruzar</td><td>croiser</td><td>पार करना</td><td>attraversare</td><td>渡る</td><td>건너다</td><td>atravessar</td><td>пересекать</td><td>geçmek</td><td>穿过</td></tr><tr><td>11</td><td>to enter</td><td>دخول</td><td>eintreten</td><td>entrar</td><td>entrer</td><td>चले जाना</td><td>entrare</td><td>入る</td><td>들어가다</td><td>entrar</td><td>входить</td><td>girmek</td><td>进入</td></tr><tr><td>12</td><td>to fall</td><td>سقط</td><td>fallen</td><td>caerse</td><td>tomber</td><td>गिरना</td><td>cadere</td><td>落ちる</td><td>넘어지다</td><td>cair</td><td>упасть</td><td>düşmek</td><td>跌倒</td></tr><tr><td>13</td><td>emergency</td><td>عاجل</td><td>Notfall</td><td>emergencia sala</td><td>urgence</td><td>緊急</td><td>emergenza</td><td>緊急</td><td>급한</td><td>emergência</td><td>экстренный</td><td>acil</td><td>紧急的</td></tr></tbody>
+</table>
+  </div>
+
+  <h2>Template counts</h2>
+  <div class="wrap template-counts">
+    <table>
+<thead><tr><th>Template</th><th>Count in level</th></tr></thead>
+<tbody><tr><td>AppearDisappear</td><td>1</td></tr><tr><td>ClozeSequence</td><td>4</td></tr><tr><td>ConvoTemplate-1</td><td>2</td></tr><tr><td>DialogueCompletion</td><td>0</td></tr><tr><td>GrammarForm</td><td>1</td></tr><tr><td>imageQuizTemplate-1</td><td>5</td></tr><tr><td>imageQuizTemplate-2</td><td>0</td></tr><tr><td>imageQuizTemplate-3</td><td>0</td></tr><tr><td>imageQuizTemplate-SentenceChoice</td><td>0</td></tr><tr><td>SentenceBuilder</td><td>1</td></tr><tr><td>WordPairs</td><td>1</td></tr></tbody>
+</table>
+  </div>
+
+  <h2>Word frequency (questions.json; excludes template, audio_file*, WordPairs translations, distractors, wrongAnswers)</h2>
+  <div class="wrap word-frequency">
+    <table>
+<thead><tr><th>word</th><th>count</th></tr></thead>
+<tbody><tr><td>the</td><td>7</td></tr><tr><td>hospital</td><td>3</td></tr><tr><td>i</td><td>3</td></tr><tr><td>my</td><td>3</td></tr><tr><td>you</td><td>3</td></tr><tr><td>emergency</td><td>2</td></tr><tr><td>hello</td><td>2</td></tr><tr><td>sick</td><td>2</td></tr><tr><td>temperature</td><td>2</td></tr><tr><td>to</td><td>2</td></tr><tr><td>a</td><td>1</td></tr><tr><td>afternoon</td><td>1</td></tr><tr><td>alex</td><td>1</td></tr><tr><td>ambulance</td><td>1</td></tr><tr><td>arm</td><td>1</td></tr><tr><td>begin</td><td>1</td></tr><tr><td>beth</td><td>1</td></tr><tr><td>boy</td><td>1</td></tr><tr><td>call</td><td>1</td></tr><tr><td>caregiver</td><td>1</td></tr><tr><td>check</td><td>1</td></tr><tr><td>crutches</td><td>1</td></tr><tr><td>daniel</td><td>1</td></tr><tr><td>do</td><td>1</td></tr><tr><td>doctor</td><td>1</td></tr><tr><td>don&#x27;t</td><td>1</td></tr><tr><td>enough</td><td>1</td></tr><tr><td>examines</td><td>1</td></tr><tr><td>feel</td><td>1</td></tr><tr><td>fell</td><td>1</td></tr><tr><td>go</td><td>1</td></tr><tr><td>gurney</td><td>1</td></tr><tr><td>has</td><td>1</td></tr><tr><td>have</td><td>1</td></tr><tr><td>helpful</td><td>1</td></tr><tr><td>high</td><td>1</td></tr><tr><td>him</td><td>1</td></tr><tr><td>his</td><td>1</td></tr><tr><td>how</td><td>1</td></tr><tr><td>if</td><td>1</td></tr><tr><td>in</td><td>1</td></tr><tr><td>information</td><td>1</td></tr><tr><td>injured</td><td>1</td></tr><tr><td>is</td><td>1</td></tr><tr><td>let</td><td>1</td></tr><tr><td>look</td><td>1</td></tr><tr><td>me</td><td>1</td></tr><tr><td>mom</td><td>1</td></tr><tr><td>mother</td><td>1</td></tr><tr><td>now</td><td>1</td></tr><tr><td>okay</td><td>1</td></tr><tr><td>patient</td><td>1</td></tr><tr><td>please</td><td>1</td></tr><tr><td>real</td><td>1</td></tr><tr><td>sarah</td><td>1</td></tr><tr><td>she</td><td>1</td></tr><tr><td>so</td><td>1</td></tr><tr><td>this</td><td>1</td></tr><tr><td>today</td><td>1</td></tr><tr><td>took</td><td>1</td></tr><tr><td>treatment</td><td>1</td></tr><tr><td>visited</td><td>1</td></tr><tr><td>weak</td><td>1</td></tr><tr><td>well</td><td>1</td></tr><tr><td>will</td><td>1</td></tr><tr><td>your</td><td>1</td></tr></tbody>
+</table>
+  </div>
+
+</body>
+</html>

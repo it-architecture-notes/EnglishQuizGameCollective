@@ -179,13 +179,7 @@
     {
       "template": "SentenceBuilder",
       "questionData": {
-        "correct_order": "Are you sure to leave?",
-        "distractors": [
-          "Is",
-          "she",
-          "cannot",
-          "coming"
-        ]
+        "correct_order": "Are you sure to leave?"
       },
       "audio_file":"are-you-sure-to-leave-convo"
     },

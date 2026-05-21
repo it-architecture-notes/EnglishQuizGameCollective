@@ -180,13 +180,7 @@
     {
       "template": "SentenceBuilder",
       "questionData": {
-        "correct_order": "Can you peel the banana?",
-        "distractors": [
-          "would you",
-          "grate",
-          "apple",
-          "they"
-        ]
+        "correct_order": "Can you peel the banana?"
       },
       "audio_file": "can-you-peel-the-banana-convo"
     },

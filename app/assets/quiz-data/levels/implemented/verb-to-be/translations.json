@@ -1,6 +1,40 @@
 {
     "translations_list": [
         {
+            "english_word": "yes",
+            "translations": {
+                "tr": "evet",
+                "es": "sí",
+                "fr": "oui",
+                "de": "ja",
+                "it": "si",
+                "pt": "sim",
+                "ru": "да",
+                "zh": "是的",
+                "ja": "はい",
+                "ko": "네",
+                "ar": "نعم",
+                "hi": "हाँ"
+            }
+        },
+        {
+            "english_word": "no",
+            "translations": {
+                "tr": "hayır",
+                "es": "no",
+                "fr": "non",
+                "de": "nein",
+                "it": "no",
+                "pt": "não",
+                "ru": "нет",
+                "zh": "不是",
+                "ja": "いいえ",
+                "ko": "아니오",
+                "ar": "لا",
+                "hi": "नहीं"
+            }
+        },
+        {
             "english_word": " who are you?",
             "translations": {
                 "tr": "sen kimsin?",
@@ -52,20 +86,71 @@
             }
         },
         {
-            "english_word": "My name is Mike",
+            "english_word": "ready",
             "translations": {
-                "tr": "benim adım Mike",
-                "es": "mi nombre es Mike",
-                "fr": "mon nom est Mike",
-                "de": "mein name ist Mike",
-                "it": "il mio nome è Mike",
-                "pt": "meu nome é Mike",
-                "ru": "мое имя Mike",
-                "zh": "我的名字是Mike",
-                "ja": "私の名前はMikeです",
-                "ko": "내 이름은 Mike입니다",
-                "ar": "اسمي Mike",
-                "hi": "मेरा नाम Mike है"
+                "tr": "hazır",
+                "es": "listo",
+                "fr": "prêt",
+                "de": "bereit",
+                "it": "pronto",
+                "pt": "pronto",
+                "ru": "готов",
+                "zh": "准备好",
+                "ja": "準備ができています",
+                "ko": "준비되었습니다",
+                "ar": "جاهز",
+                "hi": "準備ができています"
+            }
+        },
+        {
+            "english_word": "good",
+            "translations": {
+                "tr": "iyi",
+                "es": "bueno",
+                "fr": "bon",
+                "de": "gut",
+                "it": "buono",
+                "pt": "bom",
+                "ru": "хорошо",
+                "zh": "好",
+                "ja": "良い",
+                "ko": "좋다",
+                "ar": "جيد",
+                "hi": "अच्छा"
+            }
+        },
+        {
+            "english_word": "best",
+            "translations": {
+                "tr": "en iyi",
+                "es": "el mejor",
+                "fr": "le meilleur",
+                "de": "der beste",
+                "it": "il migliore",
+                "pt": "o melhor",
+                "ru": "лучший",
+                "zh": "最好的",
+                "ja": "最良",
+                "ko": "최고",
+                "ar": "الأفضل",
+                "hi": "सबसे अच्छा"
+            }
+        },
+        {
+            "english_word": "here",
+            "translations": {
+                "tr": "burada",
+                "es": "aquí",
+                "fr": "ici",
+                "de": "hier",
+                "it": "qui",
+                "pt": "aqui",
+                "ru": "здесь",
+                "zh": "这里",
+                "ja": "ここ",
+                "ko": "여기",
+                "ar": "هنا",
+                "hi": "यहां"
             }
         }
     ]

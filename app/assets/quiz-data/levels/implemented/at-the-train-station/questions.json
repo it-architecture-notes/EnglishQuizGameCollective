@@ -1,0 +1,258 @@
+{
+  "levelQuestions": [
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "conductor",
+        "wrongAnswers": [
+          "ticket-seller",
+          "check-in-counter",
+          "train-driver"
+        ]
+      }
+    },
+    {
+      "template": "ConvoTemplate-1",
+      "questionData": {
+        "character1": "Daniel",
+        "character2": "Sarah",
+        "line1": "Do you know this couple?",
+        "line2": "Yes, they always _____ together to see the world.",
+        "answer": "travel",
+        "distractors": [
+          "run",
+          "hike",
+          "drive a car"
+        ]
+      },
+      "audio_file1": "do-you-know-this-couple-convo",
+      "audio_file2": "yes-they-always-travel-together-to-see-the-world-convo"
+    },
+    {
+      "template": "ConvoTemplate-1",
+      "questionData": {
+        "character1": "Beth",
+        "character2": "Omar",
+        "line1": "How do you go to Europe?",
+        "line2": "I go ______.",
+        "answer": "by train",
+        "distractors": [
+          "at bike",
+          "on walking",
+          "railroad"
+        ]
+      },
+      "audio_file1": "how-do-you-go-to-europe-convo",
+      "audio_file2": "i-go-by-train-convo"
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "railroad",
+        "wrongAnswers": [
+          "train",
+          "road",
+          "river"
+        ]
+      }
+    },
+    {
+      "template": "WordPairs",
+      "questionData": {
+        "english_words": [
+          "against",
+          "despite",
+          "except",
+          "about"
+        ],
+        "translations": [
+          {
+            "tr": "karşı",
+            "es": "contra",
+            "fr": "contre",
+            "de": "gegen",
+            "it": "contro",
+            "pt": "contra",
+            "ru": "против",
+            "zh": "反对",
+            "ja": "反対",
+            "ko": "반대",
+            "ar": "ضد",
+            "hi": "विरोध"
+          },
+          {
+            "tr": "rağmen",
+            "es": "a pesar de",
+            "fr": "malgré",
+            "de": "trotz",
+            "it": "nonostante",
+            "pt": "apesar de",
+            "ru": "несмотря на",
+            "zh": "尽管",
+            "ja": "ただし",
+            "ko": "그럼에도",
+            "ar": "على الرغم من",
+            "hi": "यहां भी"
+          },
+          {
+            "tr": "hariç",
+            "es": "excepto",
+            "fr": "excepté",
+            "de": "außer",
+            "it": "eccezione",
+            "pt": "exceto",
+            "ru": "кроме",
+            "zh": "除外",
+            "ja": "例外",
+            "ko": "예외",
+            "ar": "إلا",
+            "hi": "अपरिहार्य"
+          },
+          {
+            "tr": "hakkında",
+            "es": "sobre",
+            "fr": "sur",
+            "de": "über",
+            "it": "sopra",
+            "pt": "sobre",
+            "ru": "о",
+            "zh": "关于",
+            "ja": "について",
+            "ko": "에 대하여",
+            "ar": "عن",
+            "hi": "बारे में"
+          }
+        ]
+      }
+    },
+    {
+      "template": "DialogueCompletion",
+      "questionData": {
+        "character1": "Alex",
+        "character2": "Ethan",
+        "line1": "Who packed your luggage?",
+        "answer": "I packed it myself",
+        "distractors": [
+          "I packed her own luggage",
+          "She packed a luggage",
+          "Myself packed my luggage"
+        ]
+      },
+      "audio_file1": "who-packed-your-luggage-convo",
+      "audio_file2": "i-packed-it-myself-convo"
+    },
+    {
+      "template": "AppearDisappear",
+      "questionData": {
+        "words": "The train returns in the evening.",
+        "distractors": [
+          "morning",
+          "turns",
+          "plane",
+          "at"
+        ]
+      },
+      "audio_file": "the-train-returns-in-the-evening-convo"
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "wagon",
+        "wrongAnswers": [
+          "trailer",
+          "bus",
+          "platform"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "railroad-crossing",
+        "wrongAnswers": [
+          "barrier",
+          "traffic-light",
+          "guard"
+        ]
+      }
+    },
+    {
+      "template": "SentenceBuilder",
+      "questionData": {
+        "correct_order": "The announcement is very loud."
+      },
+      "audio_file": "the-announcement-is-very-loud-convo"
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "high-speed-train",
+        "wrongAnswers": [
+          "rocket-train",
+          "runner-train",
+          "train-on-wheels"
+        ]
+      }
+    },
+    {
+      "template": "ClozeSequence",
+      "questionData": {
+        "sentence": "We ______ our suitcases near the _____ window in the waiting room.",
+        "answer": ["put", "big"],
+        "distractors": [
+          "bring",
+          "train",
+          "heavy",
+          "take"
+        ]
+      },
+      "audio_file": "we-put-our-suitcases-near-the-big-window-in-the-waiting-room-convo"
+    },
+    {
+      "template": "GrammarForm",
+      "questionData": {
+        "sentence": "____ I need to show my ticket?",
+        "answer": "do",
+        "distractors": [
+          "am",
+          "are",
+          "will be"
+        ]
+      }
+    },
+    {
+      "template": "ClozeSequence",
+      "questionData": {
+        "sentence": "This is a _____ train. We will arrive ____ just 2 hours.",
+        "answer": [
+          "fast",
+          "in"
+        ],
+        "distractors": [
+          "at",
+          "slow",
+          "out",
+          "cargo"
+        ]
+      },
+      "audio_file": "this-is-a-fast-train-we-will-arrive-in-just-2-hours-convo"
+    },
+    {
+      "template": "ClozeSequence",
+      "questionData": {
+        "sentence": "It is _____ to find a seat when the train is _____.",
+        "answer": [
+          "hard",
+          "full"
+        ],
+        "distractors": [
+          "easy",
+          "clear",
+          "strong",
+          "light"
+        ]
+      },
+      "audio_file": "it-is-hard-to-find-a-seat-when-the-train-is-full-convo"
+    }
+  ]
+}

@@ -1,0 +1,174 @@
+{
+    "translations_list": [
+        {
+            "english_word": "to hurt",
+            "translations": {
+                "tr": "acımak",
+                "es": "doler",
+                "fr": "faire mal",
+                "de": "weh tun",
+                "it": "far dor",
+                "pt": "doer dor",
+                "ru": "вызвать боль",
+                "zh": "引起疼痛",
+                "ja": "痛みを引き起こす", 
+                "ko": "아픔을 일으키다",
+                "ar": "ألم يسبب",
+                "hi": "दर्द उत्पन्न करना"
+            }
+        },
+        {
+            "english_word": "how often",
+            "translations": {
+                "tr": "ne kadar sık",
+                "es": "qué tan frecuentemente",
+                "fr": "quelle fréquence",
+                "de": "wie oft",
+                "it": "quanto spesso",
+                "pt": "quantas vezes",
+                "ru": "как часто",
+                "zh": "多久一次",
+                "ja": "どのくらいの頻度で",
+                "ko": "얼마나 자주",
+                "ar": "كم المرات",
+                "hi": "कितनी बार"
+            }
+        },
+        {
+            "english_word": "to be afraid of",
+            "translations": {
+                "tr": "korkmak",
+                "es": "tener miedo",
+                "fr": "avoir peur",
+                "de": "fürchten",
+                "it": "avere paura",
+                "pt": "ter medo",
+                "ru": "бояться",
+                "zh": "害怕",
+                "ja": "怖い",
+                "ko": "무서워하다",
+                "ar": "خوف",
+                "hi": "डर होना"
+            }
+        },
+        {
+            "english_word": "appointment",
+            "translations": {
+                "tr": "randevu",
+                "es": "cita",
+                "fr": "rendez-vous",
+                "de": "termin",
+                "it": "appuntamento",
+                "pt": "agendamento",
+                "ru": "назначение",
+                "zh": "预约",
+                "ja": "予約",
+                "ko": "예약",
+                "ar": "حجز",
+                "hi": "बुकिंग"
+            }
+        },
+        {
+            "english_word": "to fix",
+            "translations": {
+                "tr": "düzeltmek",
+                "es": "reparar",
+                "fr": "réparer",
+                "de": "reparieren",
+                "it": "riparare",
+                "pt": "reparar",
+                "ru": "ремонтировать",
+                "zh": "修复",
+                "ja": "修理",
+                "ko": "수리",
+                "ar": "إصلاح",
+                "hi": "बचाना"
+            }
+        },
+        {
+            "english_word": "great",
+            "translations": {
+                "tr": "iyi",
+                "es": "genial",
+                "fr": "excellent",
+                "de": "großartig",
+                "it": "eccellente",
+                "pt": "excelente",
+                "ru": "отличный",
+                "zh": "出色",
+                "ja": "すばらしい",
+                "ko": "좋은",
+                "ar": "عظيم",
+                "hi": "अच्छा"
+            }
+        },
+        {
+            "english_word": "cavity",
+            "translations": {
+                "tr": "çürük",
+                "es": "cavidad",
+                "fr": "cavité",
+                "de": "Lücke",
+                "it": "cavità",
+                "pt": "cavidade",
+                "ru": "дефект",
+                "zh": "洞",
+                "ja": "穴",
+                "ko": "구멍",
+                "ar": "فراغ",
+                "hi": "छेद"
+            }
+        },
+        {
+            "english_word": "to rinse",
+            "translations": {
+                "tr": "yıkamak",
+                "es": "enjuagar",
+                "fr": "égoutter",
+                "de": "entleeren",
+                "it": "lavare",
+                "pt": "lavar a boca",
+                "ru": "очистить рот",
+                "zh": "清洗嘴巴",
+                "ja": "口を洗う",
+                "ko": "입을 씻다",
+                "ar": "غسل المؤلم",
+                "hi": "गले साफ़ करना"
+            }
+        },
+        {
+            "english_word": "kind",
+            "translations": {
+                "tr": "kibar",
+                "es": "amable",
+                "fr": "gentil",
+                "de": "freundlich",
+                "it": "gentile",
+                "pt": "gentil",
+                "ru": "добрый",
+                "zh": "友好的",
+                "ja": "優しい",
+                "ko": "친절한",
+                "ar": "لطيف",
+                "hi": "दुआ करना"
+            }
+        },
+        {
+            "english_word": "until evening",
+            "translations": {
+                "tr": "akşama kadar",
+                "es": "hasta la noche",
+                "fr": "jusqu'au soir",
+                "de": "bis zum Abend",
+                "it": "fino al sera",
+                "pt": "até a noite",
+                "ru": "до вечера",
+                "zh": "直到晚上",
+                "ja": "夕方まで",
+                "ko": "저녁까지",
+                "ar": "حتى المساء",
+                "hi": "रात तक"
+            }
+        }
+    ]
+}

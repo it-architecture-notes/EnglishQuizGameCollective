@@ -1,39 +1,38 @@
 word,level,count,levels
-be,A1,0,
 have,A1,1,implemented/basic-sentences
 do,A1,2,"implemented/at-the-school,implemented/kitchen"
-say,A1,1,implemented/living-room
-go,A1,1,implemented/city-walk
+say,A1,2,"implemented/basic-sentences,implemented/living-room"
+go,A1,1,implemented/basic-sentences
 get,A1,2,"implemented/grocery-shopping,implemented/waking-up"
 make,A1,1,implemented/waking-up
 know,A1,2,"implemented/at-the-school,implemented/basic-sentences"
 think,A1,1,implemented/at-the-school
-take,A1,2,"at-the-pharmacy,implemented/bathroom"
+take,A1,2,"implemented/at-the-pharmacy,implemented/bathroom"
 see,A1,1,implemented/greetings
 come,A1,1,implemented/at-the-farmers-market
-want,A1,1,at-the-bank
-look,A1,2,"at-the-traffic,implemented/city-walk"
+want,A1,0,
+look,A1,1,implemented/city-walk
 use,A1,1,implemented/kitchen
 find,A1,1,implemented/grocery-shopping
 give,A1,1,implemented/grocery-shopping
-tell,A1,1,at-the-pharmacy
+tell,A1,1,implemented/at-the-pharmacy
 work,A1,1,implemented/at-the-farmers-market
-call,A1,0,
-try,A1,0,
+call,A1,1,implemented/at-the-hospital
+try,A1,1,implemented/waking-up
 ask,A1,1,implemented/at-the-farmers-market
 need,A1,1,implemented/grocery-shopping
-feel,A1,0,
+feel,A1,1,implemented/at-the-hospital
 become,A1,0,
 leave,A1,1,implemented/city-walk
-put,A1,0,
+put,A1,1,implemented/at-the-train-station
 mean,A1,0,
 keep,A1,0,
 let,A1,1,implemented/city-walk
 begin,A1,0,
 seem,A1,0,
-help,A1,1,at-the-pharmacy
+help,A1,1,implemented/at-the-pharmacy
 talk,A1,0,
-turn,A1,3,"implemented/bedroom,implemented/city-walk,implemented/waking-up"
+turn,A1,2,"implemented/bedroom,implemented/city-walk"
 start,A1,0,
 show,A1,0,
 hear,A1,0,
@@ -43,13 +42,13 @@ move,A1,1,implemented/city-walk
 live,A1,0,
 believe,A1,0,
 bring,A1,1,implemented/at-the-farmers-market
-happen,A1,1,at-the-pharmacy
+happen,A1,1,implemented/at-the-pharmacy
 write,A1,1,implemented/at-the-school
 provide,A2,0,
 sit,A1,1,implemented/living-room
-stand,A1,0,
+stand,A1,1,implemented/waking-up
 lose,A1,0,
-pay,A1,1,at-the-bank
+pay,A1,1,implemented/at-the-bank
 meet,A1,1,implemented/greetings
 include,A1,0,
 continue,A2,0,
@@ -63,12 +62,12 @@ follow,A1,2,"at-the-traffic,implemented/city-walk"
 stop,A1,1,implemented/city-walk
 create,A1,0,
 speak,A1,0,
-read,A1,2,"at-the-pharmacy,implemented/living-room"
+read,A1,1,implemented/living-room
 allow,A2,0,
 add,A1,0,
 spend,A1,0,
 grow,A1,1,implemented/at-the-farmers-market
-open,A1,2,"at-the-bank,implemented/waking-up"
+open,A1,1,implemented/waking-up
 walk,A1,1,implemented/city-walk
 win,A1,0,
 offer,A2,0,
@@ -84,7 +83,7 @@ send,A1,0,
 expect,A2,0,
 build,A1,0,
 stay,A1,0,
-fall,A1,0,
+fall,A1,1,implemented/at-the-hospital
 cut,A1,0,
 reach,A2,0,
 kill,A2,0,
@@ -97,11 +96,11 @@ require,B1,0,
 report,A2,0,
 decide,A2,0,
 pull,A2,0,
-return,A1,0,
+return,A1,1,implemented/at-the-train-station
 explain,A1,0,
 hope,A1,0,
 develop,A2,0,
-carry,A1,2,"implemented/at-the-farmers-market,implemented/grocery-shopping"
+carry,A1,1,implemented/at-the-farmers-market
 break,A1,0,
 receive,A2,0,
 agree,A1,0,
@@ -121,29 +120,29 @@ pick,A2,0,
 wear,A1,0,
 fight,A2,0,
 throw,A2,0,
-enter,A2,2,"at-the-pharmacy,at-the-traffic"
+enter,A2,2,"at-the-traffic,implemented/at-the-hospital"
 plan,A1,0,
 finish,A1,0,
 close,A1,2,"implemented/bedroom,implemented/living-room"
 push,A2,1,implemented/grocery-shopping
 share,A1,0,
-fill,A1,1,at-the-bank
+fill,A1,0,
 drop,A2,0,
-check,A1,0,
+check,A1,2,"implemented/at-the-airport,implemented/at-the-hospital"
 join,A1,0,
-clean,A1,2,"implemented/bathroom,implemented/bedroom"
+clean,A1,1,implemented/bathroom
 drink,A1,0,
 cook,A1,1,implemented/kitchen
-wash,A1,2,"implemented/bathroom,implemented/waking-up"
+wash,A1,1,implemented/bathroom
 answer,A1,1,implemented/at-the-school
-visit,A1,1,at-the-bank
-travel,A1,0,
+visit,A1,1,implemented/at-the-bank
+travel,A1,1,implemented/at-the-train-station
 shop,A1,1,implemented/grocery-shopping
 study,A1,1,implemented/at-the-school
 practice,A1,0,
 teach,A1,0,
 rest,A2,1,implemented/living-room
-sleep,A1,0,
+sleep,A1,1,implemented/waking-up
 wake,A1,1,implemented/waking-up
 smile,A2,0,
 laugh,A2,0,
@@ -153,10 +152,10 @@ climb,A2,0,
 dance,A1,0,
 sing,A1,0,
 swim,A1,0,
-fly,A2,0,
+fly,A2,1,implemented/at-the-airport
 ride,A1,0,
 park,A1,0,
-fix,A2,0,
+fix,A2,1,implemented/at-the-dentist
 repair,A2,0,
 plant,A2,0,
 feed,A2,0,
@@ -173,7 +172,7 @@ test,A1,0,
 control,A2,0,
 manage,A2,0,
 deliver,A2,0,
-save,A2,1,at-the-bank
+save,A2,0,
 earn,A2,0,
 order,A1,0,
 book,A2,0,
@@ -192,12 +191,12 @@ chat,A1,0,
 search,A2,0,
 compare,A1,0,
 measure,B1,0,
-count,A2,1,at-the-bank
+count,A2,1,implemented/at-the-bank
 calculate,B1,0,
 record,A2,0,
 describe,A1,0,
-train,A2,0,
-forget,A1,1,implemented/bathroom
+train,A2,1,implemented/at-the-train-station
+forget,A1,0,
 guess,A1,0,
 wish,A2,0,
 prefer,A2,0,
@@ -205,44 +204,44 @@ like,A1,1,implemented/basic-sentences
 hate,A1,0,
 enjoy,A1,0,
 disappear,A2,0,
-arrive,A1,0,
+arrive,A1,1,implemented/at-the-airport
 exit,A2,0,
 end,A1,0,
-place,A2,0,
+place,A2,1,implemented/basic-sentences
 remove,A2,0,
 kick,A2,0,
 lie,A2,1,implemented/living-room
 wake up,A1,1,implemented/waking-up
 get up,A1,2,"implemented/grocery-shopping,implemented/waking-up"
-go out,A1,3,"at-the-bank,implemented/city-walk,implemented/waking-up"
+go out,A1,1,implemented/basic-sentences
 come back,A1,1,implemented/at-the-farmers-market
 sit down,A1,2,"at-the-traffic,implemented/living-room"
 stand up,A1,1,implemented/waking-up
-turn on,A1,4,"implemented/bedroom,implemented/city-walk,implemented/living-room,implemented/waking-up"
-turn off,A1,3,"implemented/bedroom,implemented/city-walk,implemented/waking-up"
+turn on,A1,3,"implemented/at-the-airport,implemented/bedroom,implemented/city-walk"
+turn off,A1,2,"implemented/bedroom,implemented/city-walk"
 pick up,A1,1,implemented/waking-up
-put down,A1,2,"at-the-traffic,implemented/living-room"
-take off,A1,4,"at-the-pharmacy,implemented/bathroom,implemented/bedroom,implemented/waking-up"
-put on,A1,2,"implemented/bedroom,implemented/living-room"
-look for,A1,2,"at-the-traffic,implemented/city-walk"
-find out,A2,3,"at-the-bank,implemented/grocery-shopping,implemented/waking-up"
+put down,A1,3,"at-the-traffic,implemented/at-the-train-station,implemented/living-room"
+take off,A1,3,"implemented/at-the-pharmacy,implemented/bathroom,implemented/bedroom"
+put on,A1,3,"implemented/at-the-airport,implemented/at-the-train-station,implemented/bedroom"
+look for,A1,2,"implemented/basic-sentences,implemented/city-walk"
+find out,A2,1,implemented/grocery-shopping
 give up,A2,2,"implemented/grocery-shopping,implemented/waking-up"
-come in,A1,2,"at-the-traffic,implemented/at-the-farmers-market"
-go back,A1,1,implemented/city-walk
+come in,A1,3,"at-the-traffic,implemented/at-the-airport,implemented/at-the-farmers-market"
+go back,A1,1,implemented/basic-sentences
 run away,A2,1,implemented/city-walk
-come out,A1,3,"at-the-bank,implemented/at-the-farmers-market,implemented/waking-up"
-get in,A1,3,"at-the-traffic,implemented/grocery-shopping,implemented/waking-up"
-get out,A1,3,"at-the-bank,implemented/grocery-shopping,implemented/waking-up"
-go up,A1,2,"implemented/city-walk,implemented/waking-up"
-go down,A1,3,"at-the-traffic,implemented/city-walk,implemented/living-room"
-take away,A2,2,"at-the-pharmacy,implemented/bathroom"
+come out,A1,1,implemented/at-the-farmers-market
+get in,A1,4,"at-the-traffic,implemented/at-the-airport,implemented/grocery-shopping,implemented/waking-up"
+get out,A1,2,"implemented/grocery-shopping,implemented/waking-up"
+go up,A1,2,"implemented/basic-sentences,implemented/waking-up"
+go down,A1,3,"at-the-traffic,implemented/basic-sentences,implemented/living-room"
+take away,A2,2,"implemented/at-the-pharmacy,implemented/bathroom"
 bring back,A2,1,implemented/at-the-farmers-market
 come along,A2,1,implemented/at-the-farmers-market
 borrow,A2,0,
 lend,A2,0,
 owe,B1,0,
 collect,A2,0,
-pack,A2,0,
+pack,A2,1,implemented/at-the-train-station
 unpack,A2,0,
 load,B1,0,
 unload,B1,0,
@@ -254,11 +253,11 @@ upload,B1,0,
 download,B1,0,
 install,B1,0,
 admit,B1,0,
-log in,A1,1,at-the-traffic
-log out,A1,2,"at-the-bank,implemented/waking-up"
-sign up,A1,2,"at-the-bank,implemented/waking-up"
-sign in,A1,2,"at-the-bank,at-the-traffic"
-sign out,A1,2,"at-the-bank,implemented/waking-up"
+log in,A1,2,"at-the-traffic,implemented/at-the-airport"
+log out,A1,0,
+sign up,A1,2,"implemented/at-the-bank,implemented/waking-up"
+sign in,A1,3,"at-the-traffic,implemented/at-the-airport,implemented/at-the-bank"
+sign out,A1,1,implemented/at-the-bank
 print,A2,0,
 scan,B1,0,
 attach,B1,0,
@@ -373,11 +372,11 @@ translate,B1,0,
 transport,B1,0,
 approach,B2,0,
 chase,B2,0,
-cross,A2,1,at-the-traffic
-depart,B1,0,
+cross,A2,2,"at-the-traffic,implemented/at-the-hospital"
+depart,B1,1,implemented/at-the-airport
 head,A2,0,
 steer,A2,0,
-land,A2,0,
+land,A2,1,implemented/at-the-airport
 realize,A2,0,
 notice,A2,0,
 progress,B2,0,
@@ -400,16 +399,16 @@ avoid,A2,0,
 deserve,B2,0,
 renew,B2,0,
 will,A1,0,
-would,A1,1,implemented/basic-sentences
+would,A1,0,
 could,A1,0,
 should,A1,0,
 may,A2,0,
 might,A2,0,
 must,A1,0,
-thank,A1,0,
+thank,A1,1,implemented/greetings
 base,B1,0,
-miss,A1,1,implemented/waking-up
-face,B1,1,implemented/waking-up
+miss,A1,1,implemented/at-the-airport
+face,B1,0,
 care,A2,0,
 shoot,B1,0,
 note,B1,0,
@@ -427,10 +426,10 @@ prove,B1,0,
 imagine,A1,0,
 present,A2,0,
 figure,B2,0,
-name,A1,2,"implemented/greetings,implemented/verb-to-be"
+name,A1,1,implemented/greetings
 rise,A2,0,
 force,B1,0,
-sign,A2,1,at-the-bank
+sign,A2,1,implemented/at-the-bank
 lay,B1,0,
 exist,A2,0,
 treat,B1,0,
@@ -471,7 +470,7 @@ blow,A2,0,
 matter,A2,0,
 fire,A2,0,
 complete,A1,0,
-examine,B1,0,
+examine,B1,1,implemented/at-the-hospital
 result,B1,0,
 promote,B1,0,
 steal,A2,0,
@@ -534,7 +533,7 @@ rely,B2,0,
 suppose,A2,0,
 bother,B1,0,
 shift,B2,0,
-can,A1,1,implemented/at-the-school
+can,A1,0,
 focus,A2,0,
 claim,B1,0,
 release,B1,0,
@@ -556,5 +555,5 @@ score,A2,0,
 grant,B2,0,
 mark,A2,0,
 arrest,B1,0,
-hurt,A2,0,
-welcome,A1,1,implemented/basic-sentences
+hurt,A2,1,implemented/at-the-dentist
+welcome,A1,0,

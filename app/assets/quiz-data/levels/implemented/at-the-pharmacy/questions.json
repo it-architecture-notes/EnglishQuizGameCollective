@@ -179,13 +179,7 @@
     {
       "template": "SentenceBuilder",
       "questionData": {
-        "correct_order": "Can you fill this prescription?",
-        "distractors": [
-          "Are",
-          "These",
-          "get",
-          "help"
-        ]
+        "correct_order": "Can you fill this prescription?"
       },
       "audio_file":"can-you-fill-this-prescription-convo"
     },

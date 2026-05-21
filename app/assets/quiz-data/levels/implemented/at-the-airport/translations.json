@@ -1,0 +1,174 @@
+{
+    "translations_list": [
+        {
+            "english_word": "to fly",
+            "translations": {
+                "tr": "uçmak",
+                "es": "volar",
+                "fr": "voler",
+                "de": "fliegen",
+                "it": "volare",
+                "pt": "voar",
+                "ru": "летать",
+                "zh": "飞行",
+                "ja": "飛ぶ",
+                "ko": "날다",
+                "ar": "طيران",
+                "hi": "उड़ना"
+            }
+        },
+        {
+            "english_word": "high",
+            "translations": {
+                "tr": "yüksek",
+                "es": "alto",
+                "fr": "haut",
+                "de": "hoch",
+                "it": "alto",
+                "pt": "alto",
+                "ru": "высокий",
+                "zh": "高的",
+                "ja": "高い",
+                "ko": "높다",
+                "ar": "عالي",
+                "hi": "ऊंचा"
+            }
+        },
+        {
+            "english_word": "to miss the flight",
+            "translations": {
+                "tr": "uçağı kaçırmak",
+                "es": "perder el vuelo",
+                "fr": "manquer le vol",
+                "de": "Flug verpassen",
+                "it": "perdere il volo",
+                "pt": "perder o voo",
+                "ru": "пропустить рейс",
+                "zh": "错过航班",
+                "ja": "飛行機を逃した",
+                "ko": "비행기를 놓치다",
+                "ar": "فقد الرحلة",
+                "hi": "फ्लाई खो गया"
+            }
+        },
+        {
+            "english_word": "to depart",
+            "translations": {
+                "tr": "çıkış yapmak",
+                "es": "despegar",
+                "fr": "décoller",
+                "de": "abfliegen",  
+                "it": "decollare",
+                "pt": "decolar",
+                "ru": "вылет",
+                "zh": "起飞",
+                "ja": "出発",
+                "ko": "출발",
+                "ar": "إقلاع",
+                "hi": "उड़ान उठाना"
+            }
+        },
+        {
+            "english_word": "to arrive",
+            "translations": {
+                "tr": "gelmek",
+                "es": "llegar",
+                "fr": "arriver",
+                "de": "ankommen",
+                "it": "arrivare",
+                "pt": "chegar",
+                "ru": "прибыть",
+                "zh": "到达",
+                "ja": "到着",
+                "ko": "도착",
+                "ar": "وصول",
+                "hi": "आना"
+            }
+        },
+        {
+            "english_word": "on time",
+            "translations": {
+                "tr": "zamanında",
+                "es": "a tiempo",
+                "fr": "à temps",
+                "de": "pünktlich",
+                "it": "puntuale",
+                "pt": "a tempo",
+                "ru": "вовремя",
+                "zh": "准时",
+                "ja": "時間通り",
+                "ko": "정시",
+                "ar": "على الوقت",
+                "hi": "समय पर"
+            }
+        },
+        {
+            "english_word": "soon",
+            "translations": {
+                "tr": "az sonra",
+                "es": "pronto",
+                "fr": "bientôt",
+                "de": "bald",
+                "it": "presto",
+                "pt": "em breve",
+                "ru": "скоро",
+                "zh": "很快",
+                "ja": "すぐに",
+                "ko": "곧",
+                "ar": "قريبا",
+                "hi": "जल्द"
+            }
+        },
+        {
+            "english_word": "to land",
+            "translations": {
+                "tr": "inmek",
+                "es": "aterrizar",
+                "fr": "atterrir",
+                "de": "landen",
+                "it": "aterrare",
+                "pt": "pousar",
+                "ru": "приземлиться",
+                "zh": "降落",
+                "ja": "着陸",
+                "ko": "착륙",
+                "ar": "وصول",
+                "hi": "उतरना"
+            }
+        },
+        {
+            "english_word": "how many",
+            "translations": {
+                "tr": "kaç tane",
+                "es": "cuántos",
+                "fr": "combien",
+                "de": "wie viele",
+                "it": "quanti",
+                "pt": "quantos",
+                "ru": "сколько",
+                "zh": "多少",
+                "ja": "何個",
+                "ko": "몇 개",
+                "ar": "كم",
+                "hi": "कितने"
+            }
+        },
+        {
+            "english_word": "to check in",
+            "translations": {
+                "tr": "kayıt olmak",
+                "es": "registrarse",
+                "fr": "s'enregistrer",
+                "de": "einreichen",
+                "it": "registrare",
+                "pt": "registrar",
+                "ru": "зарегистрироваться",
+                "zh": "登记",
+                "ja": "チェックインする",
+                "ko": "체크인 하다",
+                "ar": "تسجيل الدخول الدخول",
+                "hi": "चेक इन करना"
+            }
+        }
+    ]
+}

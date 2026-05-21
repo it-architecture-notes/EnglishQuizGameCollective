@@ -1,0 +1,255 @@
+{
+  "levelQuestions": [
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "plane",
+        "wrongAnswers": [
+          "car",
+          "airship",
+          "plain"
+        ]
+      }
+    },
+    {
+      "template": "ClozeSequence",
+      "questionData": {
+        "sentence": "The plane  ____ ____ in the sky.",
+        "answer": ["flies", "high"],
+        "distractors": [
+          "stays",
+          "stands",
+          "low",
+          "jet",
+          "world"
+        ]
+      },
+      "audio_file": "the-plane-flies-high-in-the-sky-convo"
+    },
+
+    {
+      "template": "ClozeSequence",
+      "questionData": {
+        "sentence": "Please _____ me your passport.",
+        "answer": ["show"],
+        "distractors": [
+          "hold",
+          "tall",
+          "take back"
+        ]
+      },
+      "audio_file": "please-show-me-your-passport-convo"
+    },
+    {
+      "template": "ClozeSequence",
+      "questionData": {
+        "sentence": "But your _____ is a little ______.",
+        "answer": [
+          "flight",
+          "delayed"
+        ],
+        "distractors": [
+          "shipment",
+          "plane",
+          "sooner",
+          "earlier"
+        ]
+      },
+      "audio_file": "but-your-flight-is-a-little-delayed-convo"
+    },  
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "customs-officer",
+        "wrongAnswers": [
+          "security-guard",
+          "airport-attendant",
+          "pilot"
+        ]
+      }
+    },
+    {
+      "template": "ConvoTemplate-1",
+      "questionData": {
+        "character1": "Emma",
+        "character2": "Chris",
+        "line1": "I missed my flight. What do I do now?",
+        "line2": "I put you on the next flight. It _____ in three hours.",
+        "answer": "departs",
+        "distractors": [
+          "delayed",
+          "comes",
+          "on time"
+        ]
+      },
+      "audio_file1": "i-missed-my-flight-what-do-i-do-now-convo",
+      "audio_file2": "i-put-you-on-the-next-flight-it-departs-in-three-hours-convo"
+    },
+    {
+      "template": "ConvoTemplate-1",
+      "questionData": {
+        "character1": "Beth",
+        "character2": "Alex",
+        "line1": "When will the flight from Paris ______?",
+        "line2": "The flight from Paris will _____ in 20 minutes.",
+        "answer": "arrives",
+        "distractors": [
+          "starts",
+          "departs",
+          "be late"
+        ]
+      },
+      "audio_file1": "when-will-the-flight-from-paris-arrives-convo",
+      "audio_file2": "the-flight-from-paris-will-arrives-in-20-minutes-convo"
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "check-in-counter",
+        "wrongAnswers": [
+          "security-check",
+          "baggage-claim",
+          "boarding-pass"
+        ]
+      }
+    },
+    {
+      "template": "WordPairs",
+      "questionData": {
+        "english_words": [
+          "excited",
+          "sad",
+          "angry",
+          "hungry"
+        ],
+        "translations": [
+          {
+            "tr": "heyecanlı",
+            "es": "entusiasmado",
+            "fr": "excité tout",
+            "de": "aufgeregt",
+            "it": "emozionato",
+            "pt": "emocionado",
+            "ru": "возбужденный",
+            "zh": "兴奋的",
+            "ja": "興奮している",
+            "ko": "흥분된",
+            "ar": "متحمس",
+            "hi": "उत्साहित"
+          },
+          {
+            "tr": "üzgün",
+            "es": "triste",
+            "fr": "triste",
+            "de": "traurig",
+            "it": "triste",
+            "pt": "triste",
+            "ru": "печальный",
+            "zh": "悲伤的",
+            "ja": "悲しい",
+            "ko": "슬픈",
+            "ar": "مغرور",
+            "hi": "दुखी"
+          },
+          {
+            "tr": "kızgın",
+            "es": "enojado",
+            "fr": "en colère",
+            "de": "wütend",
+            "it": "arrabbiato",
+            "pt": "ira",
+            "ru": "злой",
+            "zh": "生气的",
+            "ja": "怒っている",
+            "ko": "분노한",
+            "ar": "غاضب",
+            "hi": "गुजरा हुआ"
+          },
+          {
+            "tr": "aç",
+            "es": "hambriento",
+            "fr": "faim",
+            "de": "hungrig",
+            "it": "fame",
+            "pt": "fome",
+            "ru": "голодный",
+            "zh": "饥饿的",
+            "ja": "うっそう",
+            "ko": "배고픈",
+            "ar": "جائع",
+            "hi": "भूखा"
+          }
+        ]
+      }
+    },
+    {
+      "template": "DialogueCompletion",
+      "questionData": {
+        "character1": "Omar",
+        "character2": "Lily",
+        "line1": "Is the flight on time?",
+        "answer": "Yes it leaves soon, hurry up!",
+        "distractors": [
+          "No it's on time but late",
+          "Yes I missed it",
+          "Yes it's cancelled"
+        ]
+      },
+      "audio_file1": "is-the-flight-on-time-convo",
+      "audio_file2": "yes-it-leaves-soon-hurry-up-convo"
+    },
+    {
+      "template": "AppearDisappear",
+      "questionData": {
+        "words": "How many bags do you check in?",
+        "distractors": [
+          "why",
+          "much",
+          "take back",
+          "she"
+        ]
+      },
+      "audio_file": "how-many-bags-do-you-check-in-convo"
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "security-check",
+        "wrongAnswers": [
+          "baggage-claim",
+          "boarding-pass",
+          "customs-officer"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "traveler",
+        "wrongAnswers": [
+          "visitor",
+          "goer",
+          "driver"
+        ]
+      }
+    },
+    {
+      "template": "SentenceBuilder",
+      "questionData": {
+        "correct_order": "The plane lands safely."
+      },
+      "audio_file":"the-plane-lands-safely-convo"
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "baggage-carousel",
+        "wrongAnswers": [
+          "baggage-claiming",
+          "boarding-pass",
+          "customs-officer"
+        ]
+      }
+    }
+  ]
+}

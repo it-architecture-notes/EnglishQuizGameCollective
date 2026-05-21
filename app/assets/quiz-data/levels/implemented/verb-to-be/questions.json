@@ -67,7 +67,7 @@
         "line1": "Are these your keys?",
         "answer": "No, they are not",
         "distractors": [
-          "No, those are not",
+          "No, this are not",
           "Yes, they are not",
           "Yes, these is my keys"
         ]
@@ -109,21 +109,88 @@
       "audio_file2": "yes-i-am-convo"
     },
     {
-      "template": "ClozeSequence",
+      "template": "WordPairs",
       "questionData": {
-        "sentence": "I _____ John (we) ____ friends",
-        "answer": [
-          "and",
-          "are"
+        "english_words": [
+          "my",
+          "your",
+          "his/her",
+          "their",
+          "our"
         ],
-        "distractors": [
-          "is",
-          "am",
-          "are not",
-          "isn't"
+        "translations": [
+          {
+            "tr": "benim",
+            "es": "mi",
+            "fr": "mon",
+            "de": "mein",
+            "it": "mio",
+            "pt": "meu",
+            "ru": "мой",
+            "zh": "我的",
+            "ja": "私の",
+            "ko": "내 것",
+            "ar": "لي",
+            "hi": "मेरा"
+          },
+          {
+            "tr": "senin",
+            "es": "tu",
+            "fr": "ton",
+            "de": "dein",
+            "it": "tuo",
+            "pt": "seu",
+            "ru": "твой",
+            "zh": "你的",
+            "ja": "あなたの",
+            "ko": "너의",
+            "ar": "لك",
+            "hi": "आपका"
+          },
+          {
+            "tr": "onun",
+            "es": "su",
+            "fr": "son",
+            "de": "sein",
+            "it": "suo",
+            "pt": "seu",
+            "ru": "его",
+            "zh": "他的",
+            "ja": "彼の",
+            "ko": "그의",
+            "ar": "له",
+            "hi": "उसका"
+          },
+          {
+            "tr": "onların",
+            "es": "sus",
+            "fr": "leurs",
+            "de": "ihre",
+            "it": "loro",
+            "pt": "seus",
+            "ru": "их",
+            "zh": "他们的",
+            "ja": "彼らの",
+            "ko": "그들의",
+            "ar": "لهم",
+            "hi": "उनका"
+          },
+          {
+            "tr": "bizim",
+            "es": "nuestro",
+            "fr": "notre",
+            "de": "unser",
+            "it": "nostro",
+            "pt": "nosso",
+            "ru": "наш",
+            "zh": "我们的",
+            "ja": "私たちの",
+            "ko": "우리의",
+            "ar": "لنا",
+            "hi": "हमारा"
+          }
         ]
-      },
-      "audio_file": "i-and-john-are-friends-convo"
+      }
     },
     {
       "template": "ClozeSequence",
@@ -166,20 +233,19 @@
     {
       "template": "ClozeSequence",
       "questionData": {
-        "sentence": "he ____ a doctor, but I ___ ___",
+        "sentence": "Here ___ ____ present for you",
         "answer": [
           "is",
-          "am",
-          "not"
+          "a"
         ],
         "distractors": [
           "are",
-          "isn't",
-          "are not",
-          "are"
+          "is not",
+          "the",
+          "am"
         ]
       },
-      "audio_file": "he-is-a-doctor-but-i-am-not-convo"
+      "audio_file": "here-is-a-present-for-you-convo"
     },
     {
       "template": "DialogueCompletion",

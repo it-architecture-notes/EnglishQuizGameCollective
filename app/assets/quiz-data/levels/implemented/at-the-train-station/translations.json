@@ -1,0 +1,174 @@
+{
+  "translations_list": [
+    {
+      "english_word": "to travel",
+      "translations": {
+        "tr": "yolculuk yapmak",
+        "es": "viajar",
+        "fr": "voyager",
+        "de": "reisen",
+        "it": "viaggiare",
+        "pt": "viajar",
+        "ru": "путешествовать",
+        "zh": "旅行的",
+        "ja": "旅行をする",
+        "ko": "여행을 하다",
+        "ar": "سفر",
+        "hi": "यात्रा करना करना"
+      }
+    },
+    {
+      "english_word": "by train",
+      "translations": {
+        "tr": "trenle",
+        "es": "por tren",
+        "fr": "par train",
+        "de": "mit dem Zug",
+        "it": "con il treno",
+        "pt": "por tremo",
+        "ru": "по поезду",
+        "zh": "用列车",
+        "ja": "列車で",
+        "ko": "기차로",
+        "ar": "بالقطار",
+        "hi": "द्वारा ट्रेन से"
+      }
+    },
+    {
+      "english_word": "to pack luggage",
+      "translations": {
+        "tr": "valizleri hazırlamak",
+        "es": "empaquetar la maleta",
+        "fr": "empaqueter la valise",
+        "de": "die Tasche packen",
+        "it": "impacchettare la valigia",
+        "pt": "empacotar a mala",
+        "ru": "упаковать багаж",
+        "zh": "打包行李",
+        "ja": "荷物を詰める",
+        "ko": "짐을 싸다",
+        "ar": "تعبئة الحقيبة",
+        "hi": "टियर के साथ जाना"
+      }
+    },
+    {
+      "english_word": "to return",
+      "translations": {
+        "tr": "dönmek",
+        "es": "regresar",
+        "fr": "revenir",
+        "de": "zurückkommen",
+        "it": "rientrare",
+        "pt": "retornar",
+        "ru": "вернуться",
+        "zh": "返回",
+        "ja": "戻る",
+        "ko": "돌아오다",
+        "ar": "العودة",
+        "hi": "वापस आना"
+      }
+    },
+    {
+      "english_word": "hard",
+      "translations": {
+        "tr": "zor",
+        "es": "difícil",
+        "fr": "difficile",
+        "de": "schwer",
+        "it": "difficile",
+        "pt": "difícil",
+        "ru": "трудный",
+        "zh": "困难的",
+        "ja": "難しい",
+        "ko": "어렵다",
+        "ar": "صعب",
+        "hi": "कठिन"
+      }
+    },
+    {
+      "english_word": "full",
+      "translations": {
+        "tr": "dolu",
+        "es": "lleno",
+        "fr": "plein",
+        "de": "voll",
+        "it": "pieno",
+        "pt": "cheio",
+        "ru": "полный",
+        "zh": "满的",
+        "ja": "満杯",
+        "ko": "가득 차다",
+        "ar": "ممتلئ",
+        "hi": "भरा हुआ"
+      }
+    },
+    {
+      "english_word": "fast",
+      "translations": {
+        "tr": "hızlı",
+        "es": "rápido",
+        "fr": "rapide",
+        "de": "schnell",
+        "it": "veloce",
+        "pt": "rápido",
+        "ru": "быстрый",
+        "zh": "快速的",
+        "ja": "速い",
+        "ko": "빠르다",
+        "ar": "سريع",
+        "hi": "जल्दी"
+      }
+    },
+    {
+      "english_word": "loud",
+      "translations": {
+        "tr": "yüksek sesli",
+        "es": "fuerte",
+        "fr": "fort",
+        "de": "laut",
+        "it": "forte",
+        "pt": "forte",
+        "ru": "громкий",
+        "zh": "大声的",
+        "ja": "大声",
+        "ko": "목소리가 크다",
+        "ar": "صوتي",
+        "hi": "शोर"
+      }
+    },
+    {
+      "english_word": "to put",
+      "translations": {
+        "tr": "koymak",
+        "es": "poner",
+        "fr": "mettre",
+        "de": "setzen",
+        "it": "mettere",
+        "pt": "colocar",
+        "ru": "положить",
+        "zh": "放置",
+        "ja": "置く",
+        "ko": "넣다",
+        "ar": "وضع",
+        "hi": "डालना"
+      }
+    },
+    {
+      "english_word": "big",
+      "translations": {
+        "tr": "büyük",
+        "es": "grande",
+        "fr": "grand",
+        "de": "groß",
+        "it": "grande",
+        "pt": "grande",
+        "ru": "большой",
+        "zh": "大的",
+        "ja": "大きい",
+        "ko": "크다",
+        "ar": "كبير",
+        "hi": "बड़ा"
+      }
+    }
+  ]
+}

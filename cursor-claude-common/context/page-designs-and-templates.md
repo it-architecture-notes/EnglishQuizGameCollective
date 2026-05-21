@@ -203,7 +203,7 @@ Rendered in **convo playing** layout inside `ImageQuizScreen`: typically **dialo
 
 | questionData field | Required | Description |
 |--------------------|----------|-------------|
-| `english_words` | ✓ | Array of 3–4 English words/phrases (left column) |
+| `english_words` | ✓ | Array of 3–5 English words/phrases (left column) |
 | `translations` | ✓ | Array of locale maps — same length as `english_words` |
 
 ### `ConvoTemplate-GrammarForm`

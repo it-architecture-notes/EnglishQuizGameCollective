@@ -5,17 +5,12 @@ Scan quiz level JSON and refresh `count` + `levels` columns in the CSV files und
 
 Counted sources (per level folder — each word/phrase contributes at most once per level):
   questions.json
-    - Skip questions whose `template` (leading/trailing whitespace stripped) starts
-      with `imageQuizTemplate`.
-    - For other templates, only `questionData` keys: `words`, `answers`, `answer`,
-      `english_words` (strings, arrays of strings, or scalar coerced to string).
-      For `GrammarForm`, `answer` is omitted (not vocabulary text).
-      For `AppearDisappear`, `words` is omitted.
-    - `WordPairs` / legacy `ConvoTemplate-WordPairs`: `english_words` is always
-      harvested again explicitly so left-column English is never missed.
+    - Only `WordPairs` / legacy `ConvoTemplate-WordPairs`: `questionData.english_words`.
 
   translations.json
     - Only `english_word` in each `translations_list` entry.
+
+Ignored tokens: ``to`` is never indexed (standalone or when split from phrases).
 
 Matching: CSV `word` matches if its lowercase form equals any token extracted from
 the counted text, or equals the whole normalized phrase (for multi-word `word` rows).
@@ -23,6 +18,11 @@ the counted text, or equals the whole normalized phrase (for multi-word `word` r
 Output CSV header: word,level,count,levels
   - count: number of distinct level folders where the word matched.
   - levels: comma-separated relative paths from the levels root (sorted).
+
+Also prunes rows/lines from reference word lists when the **first word** of each row
+matches level vocabulary (same matching as final-word CSVs):
+  - ``remove-word-list-references/1 lemmas-Table 1.csv`` (``lemma`` column, else first token)
+  - ``remove-word-list-references/google-10000-no-swears-usa.txt`` (one word per line)
 
 Usage:
   python3 tools/update_final_word_counts_from_levels.py
@@ -40,11 +40,11 @@ from pathlib import Path
 
 TOKEN_RE = re.compile(r"[a-z0-9]+(?:[-'][a-z0-9]+)*", re.IGNORECASE)
 
-# Fields to read inside questionData (non-image templates only).
-_QD_COUNTED_KEYS = frozenset({"words", "answers", "answer", "english_words"})
-
 # Left-column English for WordPairs (also accept legacy template id from docs).
 _WORD_PAIRS_TEMPLATE_IDS = frozenset({"WordPairs", "ConvoTemplate-WordPairs"})
+
+# Tokens omitted from the vocabulary index (still part of multi-word phrases).
+_IGNORED_TOKENS = frozenset({"to"})
 
 
 def _template_str(raw) -> str:
@@ -63,6 +63,12 @@ def normalize_phrase(text: str) -> str:
     return " ".join((text or "").strip().split()).lower()
 
 
+def first_word(text: str) -> str:
+    """First token in ``text`` (for reference-list row headwords)."""
+    tokens = tokenize(text)
+    return tokens[0] if tokens else ""
+
+
 def add_value_to_bucket(raw, bucket: set[str]) -> None:
     """Add full phrase + tokens from a string or list of strings."""
     if raw is None:
@@ -75,10 +81,11 @@ def add_value_to_bucket(raw, bucket: set[str]) -> None:
     if not s:
         return
     phrase = normalize_phrase(s)
-    if phrase:
+    if phrase and phrase not in _IGNORED_TOKENS:
         bucket.add(phrase)
     for t in tokenize(s):
-        bucket.add(t)
+        if t not in _IGNORED_TOKENS:
+            bucket.add(t)
 
 
 def vocabulary_from_questions(path: Path) -> set[str]:
@@ -94,19 +101,10 @@ def vocabulary_from_questions(path: Path) -> set[str]:
         if not isinstance(item, dict):
             continue
         tpl = _template_str(item.get("template"))
-        if tpl.startswith("imageQuizTemplate"):
+        if tpl not in _WORD_PAIRS_TEMPLATE_IDS:
             continue
         qd = item.get("questionData")
-        if not isinstance(qd, dict):
-            continue
-        for key in _QD_COUNTED_KEYS:
-            if key == "answer" and tpl == "GrammarForm":
-                continue
-            if key == "words" and tpl == "AppearDisappear":
-                continue
-            if key in qd:
-                add_value_to_bucket(qd[key], bucket)
-        if tpl in _WORD_PAIRS_TEMPLATE_IDS:
+        if isinstance(qd, dict):
             add_value_to_bucket(qd.get("english_words"), bucket)
     return bucket
 
@@ -170,11 +168,15 @@ def match_csv_word(csv_word: str, word_levels: dict[str, set[str]]) -> tuple[int
     key = (csv_word or "").strip()
     if not key:
         return 0, ""
-    seen_levels: set[str] = set()
     phrase = normalize_phrase(key)
+    if phrase in _IGNORED_TOKENS:
+        return 0, ""
+    seen_levels: set[str] = set()
     if phrase in word_levels:
         seen_levels |= word_levels[phrase]
     for tok in tokenize(key):
+        if tok in _IGNORED_TOKENS:
+            continue
         if tok in word_levels:
             seen_levels |= word_levels[tok]
     levels_str = ",".join(sorted(seen_levels))
@@ -244,6 +246,89 @@ def update_csv(path: Path, word_levels: dict[str, set[str]], dry_run: bool) -> i
     return n
 
 
+def reference_row_matches_vocab(row_headword: str, word_levels: dict[str, set[str]]) -> bool:
+    """True when the row's first word hits indexed level vocabulary."""
+    head = (row_headword or "").strip()
+    if not head:
+        return False
+    return match_csv_word(head, word_levels)[0] > 0
+
+
+def prune_lemmas_csv(
+    path: Path, word_levels: dict[str, set[str]], dry_run: bool
+) -> tuple[int, int]:
+    """Drop rows whose lemma (or first token) appears in level vocabulary. Returns kept, removed."""
+    try:
+        text = path.read_text(encoding="utf-8")
+    except OSError as e:
+        print(f"Skip {path}: {e}", file=sys.stderr)
+        return 0, 0
+    if text.startswith("\ufeff"):
+        text = text.lstrip("\ufeff")
+    reader = csv.DictReader(text.splitlines())
+    fieldnames = list(reader.fieldnames or [])
+    if not fieldnames:
+        print(f"Skip {path}: empty or missing header", file=sys.stderr)
+        return 0, 0
+    lemma_key = next((f for f in fieldnames if f.lower() == "lemma"), None)
+    rows_in = list(reader)
+    rows_out: list[dict[str, str]] = []
+    removed = 0
+    for row in rows_in:
+        if lemma_key and row.get(lemma_key):
+            head = str(row[lemma_key]).strip()
+        else:
+            head = first_word(" ".join(str(row.get(f) or "") for f in fieldnames))
+        if reference_row_matches_vocab(head, word_levels):
+            removed += 1
+            continue
+        rows_out.append({k: str(row.get(k) or "") for k in fieldnames})
+    kept = len(rows_out)
+    if dry_run:
+        print(f"[dry-run] Would prune {path}: remove {removed}, keep {kept} rows")
+        return kept, removed
+    with path.open("w", encoding="utf-8", newline="") as f:
+        w = csv.DictWriter(f, fieldnames=fieldnames)
+        w.writeheader()
+        w.writerows(rows_out)
+    print(f"Pruned {path}: removed {removed}, kept {kept} rows")
+    return kept, removed
+
+
+def prune_word_lines_file(
+    path: Path, word_levels: dict[str, set[str]], dry_run: bool
+) -> tuple[int, int]:
+    """Drop lines whose first word appears in level vocabulary. Returns kept, removed."""
+    try:
+        text = path.read_text(encoding="utf-8")
+    except OSError as e:
+        print(f"Skip {path}: {e}", file=sys.stderr)
+        return 0, 0
+    if text.startswith("\ufeff"):
+        text = text.lstrip("\ufeff")
+    lines_out: list[str] = []
+    removed = 0
+    for line in text.splitlines():
+        core = line.strip("\r\n")
+        if not core:
+            continue
+        head = first_word(core) or core.strip()
+        if reference_row_matches_vocab(head, word_levels):
+            removed += 1
+            continue
+        lines_out.append(core)
+    kept = len(lines_out)
+    if dry_run:
+        print(f"[dry-run] Would prune {path}: remove {removed}, keep {kept} lines")
+        return kept, removed
+    body = "\n".join(lines_out)
+    if body:
+        body += "\n"
+    path.write_text(body, encoding="utf-8")
+    print(f"Pruned {path}: removed {removed}, kept {kept} lines")
+    return kept, removed
+
+
 def main() -> int:
     root = repo_root()
     parser = argparse.ArgumentParser(description=__doc__)
@@ -262,7 +347,25 @@ def main() -> int:
     parser.add_argument(
         "--dry-run",
         action="store_true",
-        help="Print actions without writing CSV files",
+        help="Print actions without writing files",
+    )
+    ref_default = root / "cursor-claude-common/references/remove-word-list-references"
+    parser.add_argument(
+        "--lemmas-csv",
+        type=Path,
+        default=ref_default / "1 lemmas-Table 1.csv",
+        help="Lemma frequency CSV to prune (first word / lemma column)",
+    )
+    parser.add_argument(
+        "--google-words-txt",
+        type=Path,
+        default=ref_default / "google-10000-no-swears-usa.txt",
+        help="One-word-per-line list to prune by first word",
+    )
+    parser.add_argument(
+        "--skip-reference-prune",
+        action="store_true",
+        help="Do not prune lemmas CSV or google words txt",
     )
     args = parser.parse_args()
 
@@ -283,7 +386,19 @@ def main() -> int:
     for csv_path in sorted(csv_dir.glob("*.csv")):
         total_rows += update_csv(csv_path, word_levels, args.dry_run)
 
-    print(f"Done. Processed rows across files: {total_rows}.")
+    if not args.skip_reference_prune:
+        lemmas_path = args.lemmas_csv.resolve()
+        google_path = args.google_words_txt.resolve()
+        if lemmas_path.is_file():
+            prune_lemmas_csv(lemmas_path, word_levels, args.dry_run)
+        else:
+            print(f"Skip lemmas CSV (not found): {lemmas_path}", file=sys.stderr)
+        if google_path.is_file():
+            prune_word_lines_file(google_path, word_levels, args.dry_run)
+        else:
+            print(f"Skip google words txt (not found): {google_path}", file=sys.stderr)
+
+    print(f"Done. Processed rows across final-word CSVs: {total_rows}.")
     return 0
 
 

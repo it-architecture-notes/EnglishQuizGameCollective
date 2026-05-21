@@ -1,0 +1,225 @@
+{
+    "translations_list": [
+        {
+            "english_word": "to feel",
+            "translations": {
+                "tr": "hissetmek",
+                "es": "sentir",
+                "fr": "sentir",
+                "de": "fühlen",
+                "it": "sentire",
+                "pt": "sentir",
+                "ru": "чувствовать",
+                "zh": "感觉",
+                "ja": "感じる",
+                "ko": "느끼다",
+                "ar": "شعر",
+                "hi": "महसूस करना"
+            }
+        },
+        {
+            "english_word": "to check",
+            "translations": {
+                "tr": "kontrol etmek",
+                "es": "verificar",
+                "fr": "vérifier",
+                "de": "prüfen",
+                "it": "controllare",
+                "pt": "verificar",
+                "ru": "проверить",
+                "zh": "检查",
+                "ja": "確認する",
+                "ko": "확인하다",
+                "ar": "تحقق",
+                "hi": "जांचना"
+            }
+        },
+        {
+            "english_word": "high",
+            "translations": {
+                "tr": "yüksek",
+                "es": "alto",
+                "fr": "haut",
+                "de": "hoch",
+                "it": "alto",
+                "pt": "alto",
+                "ru": "высокий",
+                "zh": "高的",
+                "ja": "高い",
+                "ko": "높다",
+                "ar": "عالي",
+                "hi": "ऊंचा"
+            }
+        },
+        {
+            "english_word": "to examine",
+            "translations": {
+                "tr": "kontrol etmek",
+                "es": "examinar",
+                "fr": "examiner",
+                "de": "prüfen",
+                "it": "controllare",
+                "pt": "examinar",
+                "ru": "проверить",
+                "zh": "检查",
+                "ja": "確認する",
+                "ko": "확인하다",
+                "ar": "تحقق",
+                "hi": "जांचना"
+            }
+        },
+        {
+            "english_word": "to call",
+            "translations": {
+                "tr": "telefon etmek",
+                "es": "llamar",
+                "fr": "appeler",
+                "de": "telefonieren",
+                "it": "chiamare",
+                "pt": "chamar",
+                "ru": "позвонить",
+                "zh": "打电话",
+                "ja": "電話をかける",
+                "ko": "전화하다",
+                "ar": "اتصل",
+                "hi": "बात करना"
+            }
+        },
+        {
+            "english_word": "real",
+            "translations": {
+                "tr": "gerçek",
+                "es": "real",
+                "fr": "réel",
+                "de": "real",
+                "it": "reale",
+                "pt": "real",
+                "ru": "реальный",
+                "zh": "真实的",
+                "ja": "本当",
+                "ko": "진짜",
+                "ar": "حقيقي",
+                "hi": "वास्तविक"
+            }
+        },
+        {
+            "english_word": "long",
+            "translations": {
+                "tr": "uzun",
+                "es": "largo",
+                "fr": "long",
+                "de": "kommen",
+                "it": "lungo",
+                "pt": "longo",
+                "ru": "длинный",
+                "zh": "长的",
+                "ja": "長い",
+                "ko": "길다",
+                "ar": "طويل",
+                "hi": "दूर"
+            }
+        },
+        {
+            "english_word": "narrow",
+            "translations": {
+                "tr": "dar",
+                "es": "estrecho",
+                "fr": "étroit",
+                "de": "eng",
+                "it": "stretto",
+                "pt": "estreito",
+                "ru": "узкий",
+                "zh": "狭窄的",
+                "ja": "狭い",
+                "ko": "좁다",
+                "ar": "ضيق",
+                "hi": "छोटा"
+            }
+        },
+        {
+            "english_word": "only",
+            "translations": {
+                "tr": "sadece",
+                "es": "sólo",
+                "fr": "seulement",
+                "de": "nur",
+                "it": "solo",
+                "pt": "só",
+                "ru": "только",
+                "zh": "只有",
+                "ja": "だけ",
+                "ko": "오직",
+                "ar": "فقط",
+                "hi": "केवल"
+            }
+        },
+        {
+            "english_word": "to cross",
+            "translations": {
+                "tr": "geçmek",
+                "es": "cruzar",
+                "fr": "croiser",
+                "de": "überqueren",
+                "it": "attraversare",
+                "pt": "atravessar",
+                "ru": "пересекать",
+                "zh": "穿过",
+                "ja": "渡る",
+                "ko": "건너다",
+                "ar": "تخطى",
+                "hi": "पार करना"
+            }
+        },
+        {
+            "english_word": "to enter",
+            "translations": {
+                "tr": "girmek",
+                "es": "entrar",
+                "fr": "entrer",
+                "de": "eintreten",
+                "it": "entrare",
+                "pt": "entrar",
+                "ru": "входить",
+                "zh": "进入",
+                "ja": "入る",
+                "ko": "들어가다",
+                "ar": "دخول",
+                "hi": "चले जाना"
+            }
+        },
+        {
+            "english_word": "to fall",
+            "translations": {
+                "tr": "düşmek",
+                "es": "caerse",
+                "fr": "tomber",
+                "de": "fallen",
+                "it": "cadere",
+                "pt": "cair",
+                "ru": "упасть",
+                "zh": "跌倒",
+                "ja": "落ちる",
+                "ko": "넘어지다",
+                "ar": "سقط",
+                "hi": "गिरना"
+            }
+        },
+        {
+            "english_word": "emergency",
+            "translations": {
+                "tr": "acil",
+                "es": "emergencia sala",
+                "fr": "urgence",
+                "de": "Notfall",
+                "it": "emergenza",
+                "pt": "emergência",
+                "ru": "экстренный",
+                "zh": "紧急的",
+                "ja": "緊急",
+                "ko": "급한",
+                "ar": "عاجل",
+                "hi": "緊急"
+            }
+        }
+    ]
+}

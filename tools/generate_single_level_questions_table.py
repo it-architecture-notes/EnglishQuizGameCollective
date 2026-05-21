@@ -452,9 +452,9 @@ def validate_question_shape(index: int, item: dict) -> list[str]:
                     f"{prefix} (WordPairs): `translations[{i}]` must be a non-empty locale map"
                 )
         n = len(ew)
-        if n < 3 or n > 4:
+        if n < 3 or n > 5:
             errs.append(
-                f"{prefix} (WordPairs): expect 3–4 pairs, got {n}"
+                f"{prefix} (WordPairs): expect 3–5 pairs, got {n}"
             )
 
     elif template == "GrammarForm":

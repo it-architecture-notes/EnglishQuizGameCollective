@@ -18,6 +18,23 @@
             }
         },
         {
+            "english_word": "for",
+            "translations": {
+                "tr": "için",
+                "es": "para",
+                "fr": "pour",
+                "de": "für",
+                "it": "per",
+                "pt": "para",
+                "ru": "для",
+                "zh": "为",
+                "ja": "に",
+                "ko": "에",
+                "ar": "ل",
+                "hi": "के लिए"
+            }
+        },
+        {
             "english_word": "who?",
             "translations": {
                 "tr": "kim?",
@@ -35,20 +52,37 @@
             }
         },
         {
-            "english_word": "where?",
+            "english_word": "with",
             "translations": {
-                "tr": "nerede?",
-                "es": "donde?",
-                "fr": "où?",
-                "de": "wo?",
-                "it": "dove?",
-                "pt": "onde?",
-                "ru": "где?",
-                "zh": "哪里？",
-                "ja": "どこ？",
-                "ko": "어디?",
-                "ar": "أين?",
-                "hi": "कहां?"
+                "tr": "ile",
+                "es": "con",
+                "fr": "avec",
+                "de": "mit",
+                "it": "con",
+                "pt": "com",
+                "ru": "с",
+                "zh": "与",
+                "ja": "と",
+                "ko": "과",
+                "ar": "مع",
+                "hi": "के साथ"
+            }
+        },
+        {
+            "english_word": "at 2 o'clock",
+            "translations": {
+                "tr": "saat 2'de",
+                "es": "a las 2 de la tarde",
+                "fr": "à 2 heures",
+                "de": "um 2 Uhr",
+                "it": "alle 2 ore",
+                "pt": "às 2 horas",
+                "ru": "в 2 часа",
+                "zh": "2点钟",
+                "ja": "2時",
+                "ko": "2시",
+                "ar": "2 على الساعة",
+                "hi": "2 बजे"
             }
         },
         {
@@ -100,6 +134,40 @@
                 "ko": "좋아하다",
                 "ar": "يحب",
                 "hi": "पसंद करना"
+            }
+        },
+        {
+            "english_word": "to go to a place",
+            "translations": {
+                "tr": "bir yere gitmek",
+                "es": "ir a un lugar",
+                "fr": "aller à un endroit",
+                "de": "ir zu einem Ort",
+                "it": "andare a un posto",
+                "pt": "ir para um lugar",
+                "ru": "идти в какое-то место",
+                "zh": "去某个地方",
+                "ja": "ある場所に行く",
+                "ko": "어딘가에 가십니다",
+                "ar": "الذهاب إلى مكان ما",
+                "hi": "कहीं जाना होगा"
+            }
+        },
+        {
+            "english_word": "to say",
+            "translations": {
+                "tr": "söylemek",
+                "es": "decir",
+                "fr": "dire",
+                "de": "sagen",
+                "it": "dire",
+                "pt": "dizer",
+                "ru": "сказать",
+                "zh": "说",
+                "ja": "言う",
+                "ko": "말하다",
+                "ar": "قول",
+                "hi": "बात करना"
             }
         }
     ]

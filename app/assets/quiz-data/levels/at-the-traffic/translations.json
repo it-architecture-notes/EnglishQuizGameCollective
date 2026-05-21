@@ -1,191 +1,191 @@
 {
-    "translations_list": [
-        {
-            "english_word": "to drive",
-            "translations": {
-                "tr": "sürmek",
-                "es": "conducir",
-                "fr": "conduire",
-                "de": "fahren",
-                "it": "guidare",
-                "pt": "dirigir",
-                "ru": "водить",
-                "zh": "驾驶",
-                "ja": "運転する",
-                "ko": "운전하다",
-                "ar": "القيادة",
-                "hi": "चालक बनाना"
-            }
-        },
-        {
-            "english_word": "dangerous",
-            "translations": {
-                "tr": "tehlikeli",
-                "es": "peligroso",
-                "fr": "dangereux",
-                "de": "gefährlich",
-                "it": "pericoloso",
-                "pt": "perigoso",
-                "ru": "опасный",
-                "zh": "危险的",
-                "ja": "危険な",
-                "ko": "위험한",
-                "ar": "خطير",
-                "hi": "खतरनाक"
-            }
-        },
-        {
-            "english_word": "slow down",
-            "translations": {
-                "tr": "yavaşlamak   ",
-                "es": "pausar",
-                "fr": "ralentir",
-                "de": "langsamer fahren",
-                "it": "rallentare",
-                "pt": "pausar",
-                "ru": "замедлить",
-                "zh": "减速",
-                "ja": "減速する",
-                "ko": "감속하다",
-                "ar": "تقليل",
-                "hi": "धीमा करना"
-            }
-        },
-        {
-            "english_word": "busy",
-            "translations": {
-                "tr": "meşgul",
-                "es": "ocupado",
-                "fr": "occupé",
-                "de": "beschäftigt",
-                "it": "occupato",
-                "pt": "ocupado",
-                "ru": "занят",
-                "zh": "忙碌的",
-                "ja": "忙しい",
-                "ko": "바쁜",
-                "ar": "مشغول",
-                "hi": "व्यस्त"
-            }
-        },
-        {
-            "english_word": "to follow",
-            "translations": {
-                "tr": "takip etmek",
-                "es": "seguir",
-                "fr": "suivre",
-                "de": "folgen",
-                "it": "seguire",
-                "pt": "seguir",
-                "ru": "следовать",
-                "zh": "跟随",
-                "ja": "追う",
-                "ko": "따라가다",
-                "ar": "تتبع",
-                "hi": "अनुसरण करना"
-            }
-        },
-        {
-            "english_word": "in front of",
-            "translations": {
-                "tr": "önünde",
-                "es": "barato",
-                "fr": "bon marché",
-                "de": "billig",
-                "it": "economico",
-                "pt": "barato",
-                "ru": "дешевый",
-                "zh": "便宜",
-                "ja": "安い",
-                "ko": "싸다",
-                "ar": "أرخص",
-                "hi": "अमनी"
-            }
-        },
-        {
-            "english_word": "long",
-            "translations": {
-                "tr": "uzun",
-                "es": "largo",
-                "fr": "long",
-                "de": "kommen",
-                "it": "lungo",
-                "pt": "longo",
-                "ru": "длинный",
-                "zh": "长的",
-                "ja": "長い",
-                "ko": "길다",
-                "ar": "طويل",
-                "hi": "दूर"
-            }
-        },
-        {
-            "english_word": "narrow",
-            "translations": {
-                "tr": "dar",
-                "es": "estrecho",
-                "fr": "étroit",
-                "de": "eng",
-                "it": "stretto",
-                "pt": "estreito",
-                "ru": "узкий",
-                "zh": "狭窄的",
-                "ja": "狭い",
-                "ko": "좁다",
-                "ar": "ضيق",
-                "hi": "छोटा"
-            }
-        },
-        {
-            "english_word": "only",
-            "translations": {
-                "tr": "sadece",
-                "es": "sólo",
-                "fr": "seulement",
-                "de": "nur",
-                "it": "solo",
-                "pt": "só",
-                "ru": "только",
-                "zh": "只有",
-                "ja": "だけ",
-                "ko": "오직",
-                "ar": "فقط",
-                "hi": "केवल"
-            }
-        },
-        {
-            "english_word": "to cross",
-            "translations": {
-                "tr": "geçmek",
-                "es": "cruzar",
-                "fr": "croiser",
-                "de": "überqueren",
-                "it": "attraversare",
-                "pt": "atravessar",
-                "ru": "пересекать",
-                "zh": "穿过",
-                "ja": "渡る",
-                "ko": "건너다",
-                "ar": "تخطى",
-                "hi": "पार करना"
-            }
-        },
-        {
-            "english_word": "to enter",
-            "translations": {
-                "tr": "girmek",
-                "es": "entrar",
-                "fr": "entrer",
-                "de": "eintreten",
-                "it": "entrare",
-                "pt": "entrar",
-                "ru": "входить",
-                "zh": "进入",
-                "ja": "入る",
-                "ko": "들어가다",
-                "ar": "دخول",
-                "hi": "चले जाना"
-            }
-        }
-    ]
+  "translations_list": [
+    {
+      "english_word": "to drive",
+      "translations": {
+        "tr": "sürmek",
+        "es": "conducir",
+        "fr": "conduire",
+        "de": "fahren",
+        "it": "guidare",
+        "pt": "dirigir",
+        "ru": "водить",
+        "zh": "驾驶",
+        "ja": "運転する",
+        "ko": "운전하다",
+        "ar": "القيادة",
+        "hi": "चालक बनाना"
+      }
+    },
+    {
+      "english_word": "dangerous",
+      "translations": {
+        "tr": "tehlikeli",
+        "es": "peligroso",
+        "fr": "dangereux",
+        "de": "gefährlich",
+        "it": "pericoloso",
+        "pt": "perigoso",
+        "ru": "опасный",
+        "zh": "危险的",
+        "ja": "危険な",
+        "ko": "위험한",
+        "ar": "خطير",
+        "hi": "खतरनाक"
+      }
+    },
+    {
+      "english_word": "slow down",
+      "translations": {
+        "tr": "yavaşlamak",
+        "es": "reducir la velocidad",
+        "fr": "ralentir",
+        "de": "langsamer fahren",
+        "it": "rallentare",
+        "pt": "desacelerar",
+        "ru": "замедлить",
+        "zh": "减速",
+        "ja": "減速する",
+        "ko": "감속하다",
+        "ar": "تقليل السرعة",
+        "hi": "धीमा करना"
+      }
+    },
+    {
+      "english_word": "busy",
+      "translations": {
+        "tr": "meşgul",
+        "es": "ocupado",
+        "fr": "occupé",
+        "de": "beschäftigt",
+        "it": "occupato",
+        "pt": "ocupado",
+        "ru": "занят",
+        "zh": "忙碌的",
+        "ja": "忙しい",
+        "ko": "바쁜",
+        "ar": "مشغول",
+        "hi": "व्यस्त"
+      }
+    },
+    {
+      "english_word": "to follow",
+      "translations": {
+        "tr": "takip etmek",
+        "es": "seguir",
+        "fr": "suivre",
+        "de": "folgen",
+        "it": "seguire",
+        "pt": "seguir",
+        "ru": "следовать",
+        "zh": "跟随",
+        "ja": "追う",
+        "ko": "따라가다",
+        "ar": "تتبع",
+        "hi": "अनुसरण करना"
+      }
+    },
+    {
+      "english_word": "in front of",
+      "translations": {
+        "tr": "önünde",
+        "es": "delante de",
+        "fr": "devant",
+        "de": "vor",
+        "it": "davanti a",
+        "pt": "na frente de",
+        "ru": "впереди",
+        "zh": "在……前面",
+        "ja": "前に",
+        "ko": "앞에",
+        "ar": "أمام",
+        "hi": "सामने"
+      }
+    },
+    {
+      "english_word": "long",
+      "translations": {
+        "tr": "uzun",
+        "es": "largo",
+        "fr": "long",
+        "de": "lang",
+        "it": "lungo",
+        "pt": "longo",
+        "ru": "длинный",
+        "zh": "长的",
+        "ja": "長い",
+        "ko": "길다",
+        "ar": "طويل",
+        "hi": "लंबा"
+      }
+    },
+    {
+      "english_word": "narrow",
+      "translations": {
+        "tr": "dar",
+        "es": "estrecho",
+        "fr": "étroit",
+        "de": "eng",
+        "it": "stretto",
+        "pt": "estreito",
+        "ru": "узкий",
+        "zh": "狭窄的",
+        "ja": "狭い",
+        "ko": "좁다",
+        "ar": "ضيق",
+        "hi": "संकीर्ण"
+      }
+    },
+    {
+      "english_word": "only",
+      "translations": {
+        "tr": "sadece",
+        "es": "solo",
+        "fr": "seulement",
+        "de": "nur",
+        "it": "solo",
+        "pt": "só",
+        "ru": "только",
+        "zh": "只有",
+        "ja": "だけ",
+        "ko": "오직",
+        "ar": "فقط",
+        "hi": "केवल"
+      }
+    },
+    {
+      "english_word": "to cross",
+      "translations": {
+        "tr": "geçmek",
+        "es": "cruzar",
+        "fr": "traverser",
+        "de": "überqueren",
+        "it": "attraversare",
+        "pt": "atravessar",
+        "ru": "пересекать",
+        "zh": "穿过",
+        "ja": "渡る",
+        "ko": "건너다",
+        "ar": "تخطى",
+        "hi": "पार करना"
+      }
+    },
+    {
+      "english_word": "to enter",
+      "translations": {
+        "tr": "girmek",
+        "es": "entrar",
+        "fr": "entrer",
+        "de": "eintreten",
+        "it": "entrare",
+        "pt": "entrar",
+        "ru": "входить",
+        "zh": "进入",
+        "ja": "入る",
+        "ko": "들어가다",
+        "ar": "دخول",
+        "hi": "चले जाना"
+      }
+    }
+  ]
 }
