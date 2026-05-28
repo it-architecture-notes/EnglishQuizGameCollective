@@ -12,33 +12,35 @@
       }
     },
     {
-      "template": "ClozeSequence",
+      "template": "DialogueCompletion",
       "questionData": {
-        "sentence": "Please _____ your mouth with _____ water.",
-        "answer": ["rinse", "warm"],
+        "character1": "Emma",
+        "character2": "Chris",
+        "line1": "You need to brush more often.",
+        "answer": "Yes. I agree.",
         "distractors": [
-          "wash",
-          "pull",
-          "dirty",
-          "very cold"
+          "No. I don't agree.",
+          "Maybe. I don't know.",
+          "Yes. I can't brush more often."
         ]
       },
-      "audio_file": "please-rinse-your-mouth-with-warm-water-convo"
+      "audio_file1": "you-need-to-brush-more-often-convo",
+      "audio_file2": "yes-i-agree-convo"
     },
 
     {
       "template": "ClozeSequence",
       "questionData": {
-        "sentence": "The dentist did a ____ job _____ my cavity.",
-        "answer": ["great", "fixing"],
+        "sentence": "____ your mouth open, please. ____ me your teeth.",
+        "answer": ["keep", "show"],
         "distractors": [
-          "bad",
-          "pulling",
-          "asking",
-          "cleaning"
+          "close",
+          "pull",
+          "take",
+          "watch"
         ]
       },
-      "audio_file": "the-dentist-did-a-great-job-fixing-my-cavity-convo"
+      "audio_file": "keep-your-mouth-open-please-show-me-your-teeth-convo"
     },
     {
       "template": "ClozeSequence",
@@ -90,17 +92,17 @@
       "questionData": {
         "character1": "Beth",
         "character2": "Alex",
-        "line1": "Hello, Dr. Lee's dental office. How can I help you?",
-        "line2": "Hi. I need to make an _____.",
-        "answer": "appointment",
+        "line1": "Do you ______ how to brush your teeth?",
+        "line2": "Yes. I _____.",
+        "answer": "understand",
         "distractors": [
-          "checkup",
-          "cleaning",
-          "call"
+          "learn",
+          "clean",
+          "seeing"
         ]
       },
-      "audio_file1": "hello-dr-lee-s-dental-office-how-can-i-help-you-convo",
-      "audio_file2": "hi-i-need-to-make-an-appointment-convo"
+      "audio_file1": "do-you-understand-how-to-brush-your-teeth-convo",
+      "audio_file2": "yes-i-understand-convo"
     },
     {
       "template": "imageQuizTemplate-1",
@@ -117,67 +119,67 @@
       "template": "WordPairs",
       "questionData": {
         "english_words": [
-          "often - frequently",
-          "sometimes",
-          "rarely",
-          "everyday"
+          "true",
+          "false",
+          "happy",
+          "sad"
         ],
         "translations": [
           {
-            "tr": "sık sık",
-            "es": "a menudo",
-            "fr": "souvent",
-            "de": "oft",
-            "it": "spesso",
-            "pt": "frequentemente",
-            "ru": "часто",
-            "zh": "经常",
-            "ja": "よく",
-            "ko": "자주",
-            "ar": "أغلب الوقت",
-            "hi": "अक्सर"
+            "tr": "doğru",
+            "es": "verdadero",   
+            "fr": "vrai",
+            "de": "richtig",
+            "it": "vero",
+            "pt": "verdadeiro",
+            "ru": "правильный",
+            "zh": "正确的",
+            "ja": "正しい",
+            "ko": "옳은",
+            "ar": "صحيح",
+            "hi": "सही"
           },
           {
-            "tr": "bazen",
-            "es": "a veces",
-            "fr": "parfois",
-            "de": "manchmal",
-            "it": "spesso",
-            "pt": "às vezes",
-            "ru": "иногда",
-            "zh": "有时候",
-            "ja": "時々",
-            "ko": "때때로",
-            "ar": "أحيانا",
-            "hi": "कभी-कभी"
+            "tr": "yanlış",
+            "es": "incorrecto",
+            "fr": "incorrect",
+            "de": "falsch",
+            "it": "errato",
+            "pt": "incorreto",
+            "ru": "неправильный",
+            "zh": "错误的",
+            "ja": "間違い",
+            "ko": "틀린",
+            "ar": "خطأ",
+            "hi": "गलत"
           },
           {
-            "tr": "nadiren",
-            "es": "rara vez",
-            "fr": "rarement",
-            "de": "selten",
-            "it": "raramente",
-            "pt": "raramente",
-            "ru": "редко",
-            "zh": "很少",
-            "ja": "まれに",
-            "ko": "드물게",
-            "ar": "أحيانا",
-            "hi": "कभी-कभी"
+            "tr": "mutlu",
+            "es": "feliz",
+            "fr": "heureux",
+            "de": "glücklich",
+            "it": "felice",
+            "pt": "feliz",
+            "ru": "счастливый",
+            "zh": "高兴的",
+            "ja": "幸せ",
+            "ko": "행복한",
+            "ar": "سعيد",
+            "hi": "खुश"
           },
           {
-            "tr": "hergün",
-            "es": "todos los días",
-            "fr": "tous les jours",
-            "de": "täglich",
-            "it": "ogni giorno",
-            "pt": "todos os dias",
-            "ru": "каждый день",
-            "zh": "每天",
-            "ja": "毎日",
-            "ko": "매일",
-            "ar": "كل يوم",
-            "hi": "हर दिन"
+            "tr": "üzgün",
+            "es": "triste",
+            "fr": "triste",
+            "de": "traurig",
+            "it": "triste",
+            "pt": "triste",
+            "ru": "печальный",
+            "zh": "悲伤的",
+            "ja": "悲しい",
+            "ko": "슬픈",
+            "ar": "مغرور",
+            "hi": "दुखी"
           }
         ]
       }
@@ -201,14 +203,14 @@
     {
       "template": "AppearDisappear",
       "questionData": {
-        "words": "Please rest until the evening.",
+        "words": "The dentist explains everything in detail.",
         "distractors": [
-          "run",
-          "morning",
-          "since"
+          "quickly",
+          "shows",
+          "slowly"
         ]
       },
-      "audio_file": "please-rest-until-the-evening-convo"
+      "audio_file": "the-dentist-explains-everything-in-detail-convo"
     },
     {
       "template": "imageQuizTemplate-1",

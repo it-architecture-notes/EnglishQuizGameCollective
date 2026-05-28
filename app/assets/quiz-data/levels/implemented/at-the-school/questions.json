@@ -73,25 +73,25 @@
       "template": "WordPairs",
       "questionData": {
         "english_words": [
-          "smart",
+          "difficult",
           "easy",
-          "fun",
-          "late"
+          "right",
+          "wrong"
         ],
         "translations": [
           {
-            "tr": "zeki",
-            "es": "inteligente",
-            "fr": "intelligent",
-            "de": "intelligent",
-            "it": "intelligente",
-            "pt": "inteligente",
-            "ru": "умный",
-            "zh": "聪明",
-            "ja": "賢い",
-            "ko": "똑똑한",
-            "ar": "ذكي",
-            "hi": "चतुर"
+            "tr": "zor",
+            "es": "difícil",
+            "fr": "difficile",
+            "de": "schwer",
+            "it": "difficile",
+            "pt": "difícil",
+            "ru": "сложный",
+            "zh": "困难的",
+            "ja": "難しい",
+            "ko": "어려운",
+            "ar": "صعب",
+            "hi": "कठिन"
           },
           {
             "tr": "kolay",
@@ -108,32 +108,32 @@
             "hi": "आसान"
           },
           {
-            "tr": "eğlenceli",
-            "es": "divertido",
-            "fr": "amusant",
-            "de": "lustig",
-            "it": " divertente",
-            "pt": "tôt",
-            "ru": "веселый",
-            "zh": "有趣的",
-            "ja": "面白い",
-            "ko": "재미있는",
-            "ar": "مثير",
-            "hi": "खेलदार"
+            "tr": "doğru",
+            "es": "correcto",
+            "fr": "correct",
+            "de": "richtig",
+            "it": "corretto",
+            "pt": "correto",
+            "ru": "правильный",
+            "zh": "正确的",
+            "ja": "正しい",
+            "ko": "옳은",
+            "ar": "صحيح",
+            "hi": "सही"
           },
           {
-            "tr": "geç",
-            "es": "tarde",
-            "fr": "tard",
-            "de": "spät",
-            "it": "tard",
-            "pt": "tard",
-            "ru": "поздний",
-            "zh": "晚",
-            "ja": "遅い",
-            "ko": "늦다",
-            "ar": "آخر",
-            "hi": "देर"
+            "tr": "yanlış",
+            "es": "incorrecto",
+            "fr": "incorrect",
+            "de": "falsch",
+            "it": "errato",
+            "pt": "incorreto",
+            "ru": "неправильный",
+            "zh": "错误的",
+            "ja": "間違い",
+            "ko": "틀린",
+            "ar": "خطأ",
+            "hi": "गलत"
           }
         ]
       }
@@ -152,19 +152,19 @@
     {
       "template": "ClozeSequence",
       "questionData": {
-        "sentence": "You made a mistake. _____ _____!",
+        "sentence": "You made a mistake. Please _____ _____!",
         "answers": [
-          "think",
+          "read",
           "again"
         ],
         "distractors": [
-          "really",
+          "correct",
           "very",
           "learn",
           "wrong"
         ]
       },
-      "audio_file": "you-made-a-mistake-think-again-convo"
+      "audio_file": "you-made-a-mistake-please-read-again-convo"
     },
     {
       "template": "imageQuizTemplate-1",
@@ -209,15 +209,15 @@
     {
       "template": "AppearDisappear",
       "questionData": {
-        "words": "We need more time to study.",
+        "words": "Teacher asks an easy question.",
         "distractors": [
-          "less",
+          "difficult",
           "know",
           "see",
-          "they"
+          "answer"
         ]
       },
-      "audio_file": "we-need-more-time-to-study-convo"
+      "audio_file": "teacher-asks-an-easy-question-convo"
     },
     {
       "template": "GrammarForm",

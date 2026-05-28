@@ -1,0 +1,102 @@
+{
+  "levelQuestions": [
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "bank",
+        "wrongAnswers": ["post-office", "pharmacy", "spoon"]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "bridge",
+        "wrongAnswers": ["skyscraper", "museum", "pillow"]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-2",
+      "questionData": {
+        "imageName": "cafe",
+        "wrongAnswers": ["fish-market", "dry-cleaner", "toy-store"]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "dry-cleaner",
+        "wrongAnswers": ["hair-salon", "furniture-store", "sponge"]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "fish-market",
+        "wrongAnswers": ["cafe", "toy-store", "fork"]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-2",
+      "questionData": {
+        "imageName": "pharmacy",
+        "wrongAnswers": ["bank", "post-office", "hair-salon"]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "furniture-store",
+        "wrongAnswers": ["toy-store", "stationery-store", "napkin"]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "hair-salon",
+        "wrongAnswers": ["dry-cleaner", "pharmacy", "comb"]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-2",
+      "questionData": {
+        "imageName": "museum",
+        "wrongAnswers": ["school", "skyscraper", "furniture-store"]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "post-office",
+        "wrongAnswers": ["bank", "pharmacy", "toothbrush"]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "school",
+        "wrongAnswers": ["museum", "skyscraper", "pillow"]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-2",
+      "questionData": {
+        "imageName": "skyscraper",
+        "wrongAnswers": ["museum", "school", "bridge"]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "stationery-store",
+        "wrongAnswers": ["toy-store", "furniture-store", "sponge"]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-2",
+      "questionData": {
+        "imageName": "toy-store",
+        "wrongAnswers": ["stationery-store", "furniture-store", "fish-market"]
+      }
+    }
+  ]
+}

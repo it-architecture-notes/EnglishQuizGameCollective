@@ -60,67 +60,97 @@
       "template": "WordPairs",
       "questionData": {
         "english_words": [
-          "against",
-          "despite",
-          "except",
-          "about"
+          "after tomorrow",
+          "since yesterday",
+          "as soon as possible",
+          "until next week",
+          "while",
+          "days ago"
         ],
         "translations": [
           {
-            "tr": "karşı",
-            "es": "contra",
-            "fr": "contre",
-            "de": "gegen",
-            "it": "contro",
-            "pt": "contra",
-            "ru": "против",
-            "zh": "反对",
-            "ja": "反対",
-            "ko": "반대",
-            "ar": "ضد",
-            "hi": "विरोध"
+            "tr": "yarından sonra",
+            "es": "pasado mañana",
+            "fr": "après-demain",
+            "de": "übermorgen",
+            "it": "dopodomani",
+            "pt": "depois de amanhã",
+            "ru": "послезавтра",
+            "zh": "后天",
+            "ja": "明後日",
+            "ko": "모레",
+            "ar": "بعد غد",
+            "hi": "परसों"
           },
           {
-            "tr": "rağmen",
-            "es": "a pesar de",
-            "fr": "malgré",
-            "de": "trotz",
-            "it": "nonostante",
-            "pt": "apesar de",
-            "ru": "несмотря на",
-            "zh": "尽管",
-            "ja": "ただし",
-            "ko": "그럼에도",
-            "ar": "على الرغم من",
-            "hi": "यहां भी"
+            "tr": "dünden beri",
+            "es": "desde ayer",
+            "fr": "depuis hier",
+            "de": "seit gestern",
+            "it": "da ieri",
+            "pt": "desde ontem",
+            "ru": "со вчерашнего дня",
+            "zh": "从昨天开始",
+            "ja": "昨日から",
+            "ko": "어제부터",
+            "ar": "منذ الأمس",
+            "hi": "कल से"
           },
           {
-            "tr": "hariç",
-            "es": "excepto",
-            "fr": "excepté",
-            "de": "außer",
-            "it": "eccezione",
-            "pt": "exceto",
-            "ru": "кроме",
-            "zh": "除外",
-            "ja": "例外",
-            "ko": "예외",
-            "ar": "إلا",
-            "hi": "अपरिहार्य"
+            "tr": "mümkün olan en kısa sürede",
+            "es": "lo antes posible",
+            "fr": "dès que possible",
+            "de": "so schnell wie möglich",
+            "it": "il prima possibile",
+            "pt": "o mais rápido possível",
+            "ru": "как можно скорее",
+            "zh": "尽快",
+            "ja": "できるだけ早く",
+            "ko": "가능한 한 빨리",
+            "ar": "في أقرب وقت ممكن",
+            "hi": "जितनी जल्दी हो सके"
           },
           {
-            "tr": "hakkında",
-            "es": "sobre",
-            "fr": "sur",
-            "de": "über",
-            "it": "sopra",
-            "pt": "sobre",
-            "ru": "о",
-            "zh": "关于",
-            "ja": "について",
-            "ko": "에 대하여",
-            "ar": "عن",
-            "hi": "बारे में"
+            "tr": "gelecek haftaya kadar",
+            "es": "hasta la próxima semana",
+            "fr": "jusqu'à la semaine prochaine",
+            "de": "bis nächste Woche",
+            "it": "fino alla prossima settimana",
+            "pt": "até a próxima semana",
+            "ru": "до следующей недели",
+            "zh": "直到下周",
+            "ja": "来週まで",
+            "ko": "다음 주까지",
+            "ar": "حتى الأسبوع المقبل",
+            "hi": "अगले सप्ताह तक"
+          },
+          {
+            "tr": "iken / sırasında",
+            "es": "mientras",
+            "fr": "pendant que",
+            "de": "während",
+            "it": "mentre",
+            "pt": "enquanto",
+            "ru": "пока",
+            "zh": "当……的时候",
+            "ja": "〜している間",
+            "ko": "동안 / ~하는 동안",
+            "ar": "بينما",
+            "hi": "जबकि"
+          },
+          {
+            "tr": "günler önce",
+            "es": "días antes",
+            "fr": "jours avant",
+            "de": "Tage zuvor",
+            "it": "giorni prima",
+            "pt": "dias antes",
+            "ru": "дней назад",
+            "zh": "前几天",
+            "ja": "前の日",
+            "ko": "전 날",
+            "ar": "أيام سابقة",
+            "hi": "पिछले दिन"
           }
         ]
       }
@@ -130,29 +160,29 @@
       "questionData": {
         "character1": "Alex",
         "character2": "Ethan",
-        "line1": "Who packed your luggage?",
-        "answer": "I packed it myself",
+        "line1": "Why do you run?",
+        "answer": "We run to catch the train.",
         "distractors": [
-          "I packed her own luggage",
-          "She packed a luggage",
-          "Myself packed my luggage"
+          "We run to wait for the train",
+          "We run to the station",
+          "We run at the last moment"
         ]
       },
-      "audio_file1": "who-packed-your-luggage-convo",
-      "audio_file2": "i-packed-it-myself-convo"
+      "audio_file1": "why-do-you-run-convo",
+      "audio_file2": "we-run-to-catch-the-train-convo"
     },
     {
       "template": "AppearDisappear",
       "questionData": {
-        "words": "The train returns in the evening.",
+        "words": "I always miss the early train.",
         "distractors": [
           "morning",
-          "turns",
-          "plane",
-          "at"
+          "never",
+          "catch",
+          "He"
         ]
       },
-      "audio_file": "the-train-returns-in-the-evening-convo"
+      "audio_file": "i-always-miss-the-early-train-convo"
     },
     {
       "template": "imageQuizTemplate-1",
@@ -197,16 +227,17 @@
     {
       "template": "ClozeSequence",
       "questionData": {
-        "sentence": "We ______ our suitcases near the _____ window in the waiting room.",
-        "answer": ["put", "big"],
+        "sentence": "We ______ our suitcases near the window in the waiting room.",
+        "answer": [
+          "put"
+        ],
         "distractors": [
-          "bring",
-          "train",
-          "heavy",
+          "check",
+          "carry",
           "take"
         ]
       },
-      "audio_file": "we-put-our-suitcases-near-the-big-window-in-the-waiting-room-convo"
+      "audio_file": "we-put-our-suitcases-near-the-window-in-the-waiting-room-convo"
     },
     {
       "template": "GrammarForm",
@@ -223,36 +254,36 @@
     {
       "template": "ClozeSequence",
       "questionData": {
-        "sentence": "This is a _____ train. We will arrive ____ just 2 hours.",
+        "sentence": "Passengers _____ to the platform before _____ trains arrive.",
         "answer": [
-          "fast",
-          "in"
+          "hurry",
+          "other"
         ],
         "distractors": [
-          "at",
-          "slow",
-          "out",
-          "cargo"
+          "another",
+          "wait",
+          "leave",
+          "some"
         ]
       },
-      "audio_file": "this-is-a-fast-train-we-will-arrive-in-just-2-hours-convo"
+      "audio_file": "passengers-hurry-to-the-platform-before-other-trains-arrive-convo"
     },
     {
       "template": "ClozeSequence",
       "questionData": {
-        "sentence": "It is _____ to find a seat when the train is _____.",
+        "sentence": "____ trains _____ at the station at noon.",
         "answer": [
-          "hard",
-          "full"
+          "both",
+          "arrive"
         ],
         "distractors": [
-          "easy",
-          "clear",
-          "strong",
-          "light"
+          "none",
+          "every",
+          "depart",
+          "always"
         ]
       },
-      "audio_file": "it-is-hard-to-find-a-seat-when-the-train-is-full-convo"
+      "audio_file": "both-trains-arrive-at-the-station-at-noon-convo"
     }
   ]
 }

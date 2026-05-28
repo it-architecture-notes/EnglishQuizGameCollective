@@ -33,7 +33,7 @@
       "questionData": {
         "character1": "Beth",
         "character2": "Alex",
-        "line1": "Hello. You look sick. Let me _____ your temperature.",
+        "line1": "You look sick. Let me _____ your temperature.",
         "line2": "Okay. Is my temperature high?",
         "answer": "check",
         "distractors": [
@@ -42,7 +42,7 @@
           "take"
         ]
       },
-      "audio_file1": "hello-you-look-sick-let-me-check-your-temperature-convo",
+      "audio_file1": "you-look-sick-let-me-check-your-temperature-convo",
       "audio_file2": "okay-is-my-temperature-high-convo"
     },
     {
@@ -60,43 +60,57 @@
       "template": "WordPairs",
       "questionData": {
         "english_words": [
-          "sick",
-          "injured",
+          "high",
+          "low",
           "weak",
-          "helpful"
+          "strong"
         ],
         "translations": [
           {
-            "tr": "sick",
-            "es": "enfermo",
-            "fr": "malade",
-            "de": "krank",
-            "it": "malato",
-            "pt": "doente",
-            "ru": "больной",
-            "zh": "生病的",
-            "ja": "病気",
-            "ko": "병든",
-            "ar": "مريض",
-            "hi": "बीमार"
+            "tr": "yüksek",
+            "es": "alto",
+            "fr": "haut",
+            "de": "hoch",
+            "it": "alto",
+            "pt": "alto",
+            "ru": "высокий",
+            "zh": "高的",
+            "ja": "高い",
+            "ko": "높다",
+            "ar": "عالي",
+            "hi": "ऊंचा"
           },
           {
-            "tr": "sakat",
-            "es": "lesionado",
-            "fr": "blessé",
-            "de": "verletzt",
-            "it": "leso",
-            "pt": "lesado",
-            "ru": "поврежденный",
-            "zh": "受伤的",
-            "ja": "怪我した",
-            "ko": "부상된",
-            "ar": "إصابة",
-            "hi": "चोट से"
+            "tr": "düşük",
+            "es": "bajo",
+            "fr": "bas",
+            "de": "niedrig",
+            "it": "basso",
+            "pt": "baixo",
+            "ru": "низкий",
+            "zh": "低的",
+            "ja": "低い",
+            "ko": "낮다",
+            "ar": "منخفض",
+            "hi": "निम्न"
           },
           {
-            "tr": "zayıf",
-            "es": "debil",
+            "tr": "güçlü",
+            "es": "fuerte",
+            "fr": "fort",
+            "de": "stark",
+            "it": "forte",
+            "pt": "forte",
+            "ru": "сильный",
+            "zh": "强壮的",
+            "ja": "強い",
+            "ko": "강하다",
+            "ar": "قوي",
+            "hi": "शक्तिशाली"
+          },
+          {
+            "tr": "güçsüz",
+            "es": "débil",
             "fr": "faible",
             "de": "schwach",
             "it": "debole",
@@ -107,20 +121,6 @@
             "ko": "약한",
             "ar": "ضعيف",
             "hi": "दुर्बल"
-          },
-          {
-            "tr": "yardımsever",
-            "es": "servicial",
-            "fr": "serviable",
-            "de": "hilfsbereit",
-            "it": "servizio",
-            "pt": "serviço",
-            "ru": "помощь",
-            "zh": "帮助",
-            "ja": "助ける",
-            "ko": "도와주다",
-            "ar": "مساعد",
-            "hi": "मदद करना"
           }
         ]
       }
@@ -128,29 +128,29 @@
     {
       "template": "ClozeSequence",
       "questionData": {
-        "sentence": "The boy _____, so his mom took him to the ______.",
-        "answer": ["fell", "emergency"],
+        "sentence": "Doctors often have _____ hours to _____ at the Hospital.",
+        "answer": ["long", "work"],
         "distractors": [
-          "jump",
-          "dentist",
-          "ran",
-          "veterinarian"
+          "short",
+          "rest",
+          "check",
+          "help"
         ]
       },
-      "audio_file": "the-boy-fell-so-his-mom-took-him-to-the-emergency-convo"
+      "audio_file": "doctors-often-have-long-hours-to-work-at-the-hospital-convo"
     },
     {
       "template": "AppearDisappear",
       "questionData": {
-        "words": "She examines my arm.",
+        "words": "The doctor said I need to rest in bed.",
         "distractors": [
-          "leg",
-          "checks",
-          "He",
-          "is"
+          "asked",
+          "have",
+          "nurse",
+          "stay"
         ]
       },
-      "audio_file": "she-examines-my-arm-convo"
+      "audio_file": "the-doctor-said-i-need-to-rest-in-bed-convo"
     },
     {
       "template": "imageQuizTemplate-1",
@@ -177,9 +177,9 @@
     {
       "template": "SentenceBuilder",
       "questionData": {
-        "correct_order": "I go to the Hospital."
+        "correct_order": "Do you think I can go home today?"
       },
-      "audio_file":"i-go-to-the-hospital-convo"
+      "audio_file":"do-you-think-i-can-go-home-today-convo"
     },
     {
       "template": "imageQuizTemplate-1",
@@ -195,8 +195,8 @@
     {
       "template": "ClozeSequence",
       "questionData": {
-        "sentence": "Please _____ the hospital if you have a _____ emergency.",
-        "answer": ["call", "real"],
+        "sentence": "Please _____ the hospital if you have an emergency.",
+        "answer": ["call"],
         "distractors": [
           "check",
           "no",
@@ -204,17 +204,17 @@
           "help"
         ]
       },
-      "audio_file": "please-call-the-hospital-if-you-have-a-real-emergency-convo"
+      "audio_file": "please-call-the-hospital-if-you-have-an-emergency-convo"
     },
     {
       "template": "GrammarForm",
       "questionData": {
-        "sentence": "I _____ my mother in the hospital.",
-        "answer": "visited",
+        "sentence": "The nurse _____ the patients every day.",
+        "answer": "helps",
         "distractors": [
-          "visited",
-          "are visited",
-          "visited her"
+          "helping",
+          "are helping",
+          "may helping"
         ]
       }
     },

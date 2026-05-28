@@ -1,54 +1,88 @@
 {
     "translations_list": [
         {
-            "english_word": "to work",
+            "english_word": "to sell",
             "translations": {
-                "tr": "çalışmak",
-                "es": "trabajar",
-                "fr": "travailler",
-                "de": "arbeiten",
-                "it": "lavorare",
-                "pt": "trabalhar",
-                "ru": "работать",
-                "zh": "工作",
-                "ja": "働く",
-                "ko": "일하다",
-                "ar": "يعمل",
-                "hi": "काम करना"
+                "tr": "satmak",
+                "es": "vender",
+                "fr": "vendre",
+                "de": "verkaufen",
+                "it": "vendere",
+                "pt": "vender",
+                "ru": "продавать",
+                "zh": "卖",
+                "ja": "売る",
+                "ko": "팔다",
+                "ar": "بيع",
+                "hi": "बेचना"
             }
         },
         {
-            "english_word": "different",
+            "english_word": "today",
             "translations": {
-                "tr": "farklı",
-                "es": "diferente",
-                "fr": "différent",
-                "de": "verschieden",
-                "it": "diverso",
-                "pt": "diferente",
-                "ru": "различный",
-                "zh": "不同的",
-                "ja": "違う",
-                "ko": "다른",
-                "ar": "مختلف",
-                "hi": "भिन्न"
+                "tr": "bugün",
+                "es": "hacer",
+                "fr": "aujourd'hui",
+                "de": "heute",
+                "it": "oggi",
+                "pt": "hoje",
+                "ru": "сегодня",
+                "zh": "今天",
+                "ja": "今日",
+                "ko": "오늘",
+                "ar": "اليوم",
+                "hi": "आज"
             }
         },
         {
-            "english_word": "to ask",
+            "english_word": "yesterday",
             "translations": {
-                "tr": "sormak",
-                "es": "preguntar",
-                "fr": "pelar",
-                "de": "fragen",
-                "it": "chiedere",
-                "pt": "perguntar",
-                "ru": "спросить",
-                "zh": "问",
-                "ja": "尋ねる",
-                "ko": "물어보다",
-                "ar": "اسأل",
-                "hi": "पूछना"
+                "tr": "dün",
+                "es": "ayer",
+                "fr": "hier",
+                "de": "gestern",
+                "it": "ieri",
+                "pt": "ontem",
+                "ru": "вчера",
+                "zh": "昨天",
+                "ja": "昨日",
+                "ko": "어제",
+                "ar": "الأمس",
+                "hi": "काल दिन"
+            }
+        },
+        {
+            "english_word": "tomorrow",
+            "translations": {
+                "tr": "yarın",
+                "es": "mañana",
+                "fr": "demain",
+                "de": "morgen",
+                "it": "domani",
+                "pt": "amanhã",
+                "ru": "завтра",
+                "zh": "明天",
+                "ja": "明日",
+                "ko": "내일",
+                "ar": "غدا",
+                "hi": "कल"
+            }
+        },
+        {
+            "english_word": "to need",
+            "translations": {
+                "tr": "ihtiyaç duymak",
+                "es": "necesitar",
+                "fr": "avoir besoin",
+                "de": "brauchen",
+                "it": "avere bisogno",
+                "pt": "precisar",
+                "ru": "нуждаться",
+                "zh": "需要",
+                "ja": "必要",
+                "ko": "필요",
+                "ar": "يحتاج",
+                "hi": "जरूरत होना"
             }
         },
         {
@@ -69,71 +103,54 @@
             }
         },
         {
-            "english_word": "to bring",
+            "english_word": "to compare",
             "translations": {
-                "tr": "getirmek",
-                "es": "llevar",
-                "fr": "porter",
-                "de": "tragen",
-                "it": "portare",
-                "pt": "levar",
-                "ru": "переносить",
-                "zh": "携带",
-                "ja": "持つ",
-                "ko": "가지고 다니다",
-                "ar": "حمل",
-                "hi": "आयात करना"
+                "tr": "karşılaştırmak",
+                "es": "comparar",
+                "fr": "comparer",
+                "de": "vergleichen",
+                "it": "confrontare",
+                "pt": "comparar",
+                "ru": "сравнить",
+                "zh": "比较",
+                "ja": "比較する",
+                "ko": "비교하다",
+                "ar": "مقارنة",
+                "hi": "तुलना करना"
             }
         },
         {
-            "english_word": "cheap",
+            "english_word": "price",
             "translations": {
-                "tr": "ucuz",
-                "es": "barato",
-                "fr": "bon marché",
-                "de": "billig",
-                "it": "economico",
-                "pt": "barato",
-                "ru": "дешевый",
-                "zh": "便宜",
-                "ja": "安い",
-                "ko": "싸다",
-                "ar": "أرخص",
-                "hi": "अमनी"
+                "tr": "fiyat",
+                "es": "precio",
+                "fr": "prix",
+                "de": "preis",
+                "it": "prezzo",
+                "pt": "preço",
+                "ru": "цена",
+                "zh": "价格",
+                "ja": "価格",
+                "ko": "가격",
+                "ar": "السعر",
+                "hi": "कीमत"
             }
         },
         {
-            "english_word": "to come",
+            "english_word": "to choose",
             "translations": {
-                "tr": "gelmek",
-                "es": "venir",
-                "fr": "venir",
-                "de": "kommen",
-                "it": "venire",
-                "pt": "vir",
-                "ru": "прийти",
-                "zh": "来",
-                "ja": "来る",
-                "ko": "오다",
-                "ar": "أتي",
-                "hi": "आए"
-            }
-        },
-        {
-            "english_word": "beautiful",
-            "translations": {
-                "tr": "güzel",
-                "es": "hermoso",
-                "fr": "beau",
-                "de": "schön",
-                "it": "bello",
-                "pt": "bonito",
-                "ru": "красивый",
-                "zh": "漂亮",
-                "ja": "美しい",
-                "ko": "아름다운",
-                "ar": "جميل",
-                "hi": "अच्छा"
+                "tr": "seçmek",
+                "es": "elegir",
+                "fr": "choisir",
+                "de": "wählen",
+                "it": "scegliere",
+                "pt": "escolher",
+                "ru": "выбрать",
+                "zh": "选择",
+                "ja": "選ぶ",
+                "ko": "선택하다",
+                "ar": "اختيار",
+                "hi": "चुनना"
             }
         },
         {

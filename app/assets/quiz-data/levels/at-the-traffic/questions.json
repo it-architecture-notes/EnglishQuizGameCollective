@@ -130,29 +130,29 @@
       "questionData": {
         "character1": "Lily",
         "character2": "Alex",
-        "line1": "What do you do before crossing the road?",
-        "answer": "look left and right",
+        "line1": "When can we go?",
+        "answer": "When the light is green",
         "distractors": [
-          "run across quickly",
-          "wait at the corner",
-          "turn right now"
+          "When the light is red",
+          "When there is no light",
+          "When we are not ready"
         ]
       },
-      "audio_file1": "what-do-you-do-before-crossing-the-road-convo",
-      "audio_file2": "look-left-and-right-convo"
+      "audio_file1": "when-can-we-go-convo",
+      "audio_file2": "when-the-light-is-green-convo"
     },
     {
       "template": "AppearDisappear",
       "questionData": {
-        "words": "Let's walk when the light is green. It is safe.",
+        "words": "Let the pedestrians cross the street.",
         "distractors": [
-          "red",
+          "don't",
           "stop",
           "run",
-          "cross"
+          "go"
         ]
       },
-      "audio_file": "let-s-walk-green-is-safe-convo"
+      "audio_file": "let-the-pedestrians-cross-the-street-convo"
     },
     {
       "template": "imageQuizTemplate-1",
@@ -222,19 +222,19 @@
     {
       "template": "ClozeSequence",
       "questionData": {
-        "sentence": "Please _____ the car _____ us.",
+        "sentence": "Can you _____ the car please. I would like to _____.",
         "answer": [
-          "follow",
-          "in front of"
+          "stop",
+          "get out"
         ],
         "distractors": [
-          "pass",
-          "behind",
-          "leave",
-          "next to"
+          "follow",
+          "get in",
+          "cross",
+          "drive"
         ]
       },
-      "audio_file": "please-follow-the-car-in-front-of-us-convo"
+      "audio_file": "can-you-stop-the-car-please-i-will-get-out-convo"
     },
     {
       "template": "ClozeSequence",

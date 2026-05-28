@@ -35,6 +35,23 @@
       }
     },
     {
+      "english_word": "to let",
+      "translations": {
+        "tr": "izin vermek",
+        "es": "permitir",
+        "fr": "permettre",
+        "de": "lassen",
+        "it": "lasciare",
+        "pt": "permitir",
+        "ru": "позволить",
+        "zh": "允许",
+        "ja": "許可",
+        "ko": "허용",
+        "ar": "السماح",
+        "hi": "अनुमति देना"
+      }
+    },
+    {
       "english_word": "slow down",
       "translations": {
         "tr": "yavaşlamak",
@@ -69,90 +86,57 @@
       }
     },
     {
-      "english_word": "to follow",
+      "english_word": "to stop",
       "translations": {
-        "tr": "takip etmek",
-        "es": "seguir",
-        "fr": "suivre",
-        "de": "folgen",
-        "it": "seguire",
-        "pt": "seguir",
-        "ru": "следовать",
-        "zh": "跟随",
-        "ja": "追う",
-        "ko": "따라가다",
-        "ar": "تتبع",
-        "hi": "अनुसरण करना"
+        "tr": "durdurmak",
+        "es": "detener",
+        "fr": "arrêter",
+        "de": "bremsen",
+        "it": "fermare",
+        "pt": "parar",
+        "ru": "остановить",
+        "zh": "停止",
+        "ja": "止まる",
+        "ko": "멈추다",
+        "ar": "توقف",
+        "hi": "रोकना"
       }
     },
     {
-      "english_word": "in front of",
+      "english_word": "to get out",
       "translations": {
-        "tr": "önünde",
-        "es": "delante de",
-        "fr": "devant",
-        "de": "vor",
-        "it": "davanti a",
-        "pt": "na frente de",
-        "ru": "впереди",
-        "zh": "在……前面",
-        "ja": "前に",
-        "ko": "앞에",
-        "ar": "أمام",
-        "hi": "सामने"
+        "tr": "çıkmak",
+        "es": "salir",
+        "fr": "sortir",
+        "de": "aussteigen",
+        "it": "scendere",
+        "pt": "sair",
+        "ru": "выйти",
+        "zh": "下车",
+        "ja": "降りる",
+        "ko": "내리다",
+        "ar": "صعود",
+        "hi": "उतरना"
       }
     },
     {
-      "english_word": "long",
+      "english_word": "fast",
       "translations": {
-        "tr": "uzun",
-        "es": "largo",
-        "fr": "long",
-        "de": "lang",
-        "it": "lungo",
-        "pt": "longo",
-        "ru": "длинный",
-        "zh": "长的",
-        "ja": "長い",
-        "ko": "길다",
-        "ar": "طويل",
-        "hi": "लंबा"
+        "tr": "hızlı",
+        "es": "rápido",
+        "fr": "vite",
+        "de": "schnell",
+        "it": "veloce",
+        "pt": "rápido",
+        "ru": "быстрый",
+        "zh": "快速的",
+        "ja": "速い",
+        "ko": "빠르다",
+        "ar": "سريع",
+        "hi": "जल्दी"
       }
     },
-    {
-      "english_word": "narrow",
-      "translations": {
-        "tr": "dar",
-        "es": "estrecho",
-        "fr": "étroit",
-        "de": "eng",
-        "it": "stretto",
-        "pt": "estreito",
-        "ru": "узкий",
-        "zh": "狭窄的",
-        "ja": "狭い",
-        "ko": "좁다",
-        "ar": "ضيق",
-        "hi": "संकीर्ण"
-      }
-    },
-    {
-      "english_word": "only",
-      "translations": {
-        "tr": "sadece",
-        "es": "solo",
-        "fr": "seulement",
-        "de": "nur",
-        "it": "solo",
-        "pt": "só",
-        "ru": "только",
-        "zh": "只有",
-        "ja": "だけ",
-        "ko": "오직",
-        "ar": "فقط",
-        "hi": "केवल"
-      }
-    },
+    
     {
       "english_word": "to cross",
       "translations": {

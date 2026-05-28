@@ -52,88 +52,71 @@
             }
         },
         {
-            "english_word": "appointment",
+            "english_word": "to understand",
             "translations": {
-                "tr": "randevu",
-                "es": "cita",
-                "fr": "rendez-vous",
-                "de": "termin",
-                "it": "appuntamento",
-                "pt": "agendamento",
-                "ru": "назначение",
-                "zh": "预约",
-                "ja": "予約",
-                "ko": "예약",
-                "ar": "حجز",
-                "hi": "बुकिंग"
+                "tr": "anlamak",
+                "es": "entender",
+                "fr": "comprendre",
+                "de": "verstehen",
+                "it": "comprendere",
+                "pt": "compreender",
+                "ru": "понимать",
+                "zh": "理解",
+                "ja": "理解する",
+                "ko": "이해하다",
+                "ar": "فهم",
+                "hi": "समझना"
             }
         },
         {
-            "english_word": "to fix",
+            "english_word": "to keep",
             "translations": {
-                "tr": "düzeltmek",
-                "es": "reparar",
-                "fr": "réparer",
-                "de": "reparieren",
-                "it": "riparare",
-                "pt": "reparar",
-                "ru": "ремонтировать",
-                "zh": "修复",
-                "ja": "修理",
-                "ko": "수리",
-                "ar": "إصلاح",
-                "hi": "बचाना"
+                "tr": "tutmak",
+                "es": "mantener",
+                "fr": "garder",
+                "de": "halten",
+                "it": "tenere",
+                "pt": "manter",
+                "ru": "сохранять",
+                "zh": "保持",
+                "ja": "保持",
+                "ko": "유지하다",
+                "ar": "الحفاظ على",
+                "hi": "बनाए रखना"
             }
         },
         {
-            "english_word": "great",
+            "english_word": "to show",
             "translations": {
-                "tr": "iyi",
-                "es": "genial",
-                "fr": "excellent",
-                "de": "großartig",
-                "it": "eccellente",
-                "pt": "excelente",
-                "ru": "отличный",
-                "zh": "出色",
-                "ja": "すばらしい",
-                "ko": "좋은",
-                "ar": "عظيم",
-                "hi": "अच्छा"
+                "tr": "göstermek",
+                "es": "mostrar",
+                "fr": "montrer",
+                "de": "zeigen",
+                "it": "mostrare",
+                "pt": "mostrar",
+                "ru": "показать",
+                "zh": "展示",
+                "ja": "表示",
+                "ko": "보여주다",
+                "ar": "اعرض",
+                "hi": "दिखाना"
             }
         },
         {
-            "english_word": "cavity",
+            "english_word": "to agree",
             "translations": {
-                "tr": "çürük",
-                "es": "cavidad",
-                "fr": "cavité",
-                "de": "Lücke",
-                "it": "cavità",
-                "pt": "cavidade",
-                "ru": "дефект",
-                "zh": "洞",
-                "ja": "穴",
-                "ko": "구멍",
-                "ar": "فراغ",
-                "hi": "छेद"
-            }
-        },
-        {
-            "english_word": "to rinse",
-            "translations": {
-                "tr": "yıkamak",
-                "es": "enjuagar",
-                "fr": "égoutter",
-                "de": "entleeren",
-                "it": "lavare",
-                "pt": "lavar a boca",
-                "ru": "очистить рот",
-                "zh": "清洗嘴巴",
-                "ja": "口を洗う",
-                "ko": "입을 씻다",
-                "ar": "غسل المؤلم",
-                "hi": "गले साफ़ करना"
+                "tr": "kabul etmek",
+                "es": "estar de acuerdo",
+                "fr": "être d'accord",
+                "de": "einverstanden sein",
+                "it": "essere d'accordo",
+                "pt": "estar de acordo",
+                "ru": "согласиться",
+                "zh": "同意",
+                "ja": "同意する",
+                "ko": "동의하다",   
+                "ar": "موافقة",
+                "hi": "सहमत होना"
             }
         },
         {
@@ -154,20 +137,37 @@
             }
         },
         {
-            "english_word": "until evening",
+            "english_word": "to explain",
             "translations": {
-                "tr": "akşama kadar",
-                "es": "hasta la noche",
-                "fr": "jusqu'au soir",
-                "de": "bis zum Abend",
-                "it": "fino al sera",
-                "pt": "até a noite",
-                "ru": "до вечера",
-                "zh": "直到晚上",
-                "ja": "夕方まで",
-                "ko": "저녁까지",
-                "ar": "حتى المساء",
-                "hi": "रात तक"
+                "tr": "açıklamak",
+                "es": "explicar",
+                "fr": "expliquer",
+                "de": "erklären",
+                "it": "spiegare",
+                "pt": "explicar",
+                "ru": "объяснять",
+                "zh": "解释",
+                "ja": "説明する",
+                "ko": "설명하다",
+                "ar": "شرح",
+                "hi": "समझाना"
+            }
+        },
+        {
+            "english_word": "in detail",
+            "translations": {
+                "tr": "detaylı olarak",
+                "es": "en detalle",
+                "fr": "en détail",
+                "de": "in allen Einzelheiten",
+                "it": "in dettaglio",
+                "pt": "em detalhes",
+                "ru": "подробно",
+                "zh": "详细",
+                "ja": "詳細に",
+                "ko": "자세히",
+                "ar": "بالتفصيل",
+                "hi": "विस्तृत रूप से"
             }
         }
     ]

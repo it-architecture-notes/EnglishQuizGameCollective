@@ -66,6 +66,11 @@
   },
   {
     "mainLevel": 3,
+    "iconImageName": "living-room-items",
+    "title": "Living Room Items - Image only"
+  },
+  {
+    "mainLevel": 3,
     "iconImageName": "grocery-list-1",
     "title": "Grocery List 1 - Image only"
   },
@@ -164,16 +169,26 @@
     "iconImageName": "at-the-airport",
     "title": "At the Airport"
   },
-{
-  "mainLevel": 3,
-  "iconImageName": "at-the-train-station",
-  "title": "At the Train Station"
-},
-{
-  "mainLevel": 3,
-  "iconImageName": "travel-items",
-  "title": "Travel Items - Image only"
-}
+  {
+    "mainLevel": 3,
+    "iconImageName": "at-the-train-station",
+    "title": "At the Train Station"
+  },
+  {
+    "mainLevel": 3,
+    "iconImageName": "travel-items",
+    "title": "Travel Items - Image only"
+  },
+  {
+    "mainLevel": 3,
+    "iconImageName": "at-the-post-office",
+    "title": "At the Post Office"
+  },
+  {
+    "mainLevel": 3,
+    "iconImageName": "at-the-bank",
+    "title": "At the Bank"
+  }
 
 
 

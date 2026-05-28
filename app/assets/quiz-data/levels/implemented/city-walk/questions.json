@@ -16,17 +16,17 @@
       "questionData": {
         "character1": "Emma",
         "character2": "Leo",
-        "line1": "Where are you ______ to?",
-        "line2": "I am _____ the park.",
-        "answer": "walking",
+        "line1": "Do you want to _____ to the park?",
+        "line2": "Yes! Is it far?",
+        "answer": "walk",
         "distractors": [
-          "seeing",
-          "looking",
-          "calling"
+          "come",
+          "call",
+          "follow"
         ]
       },
-      "audio_file1": "where-are-you-walking-to-convo",
-      "audio_file2": "i-am-walking-to-the-park-convo"
+      "audio_file1": "do-you-want-to-walk-to-the-park-convo",
+      "audio_file2": "yes-is-it-far-convo"
     },
     {
       "template": "ConvoTemplate-1",
@@ -34,7 +34,7 @@
         "character1": "Alex",
         "character2": "Nora",
         "line1": "_____ at the buildings?",
-        "line2": "Yes they are very tall.",
+        "line2": "Yes, they are very tall.",
         "answer": "look",
         "distractors": [
           "see",
@@ -60,67 +60,67 @@
       "template": "WordPairs",
       "questionData": {
         "english_words": [
-          "to stop",
-          "to turn",
-          "to move",
-          ""
+          "far",
+          "near",
+          "inside",
+          "outside"
         ],
         "translations": [
           {
-            "tr": "kaynatmak",
-            "es": "hervir",
-            "fr": "bouillir",
-            "de": "kochen",
-            "it": "bollire",
-            "pt": "cozer",
-            "ru": "варка",
-            "zh": "煮",
-            "ja": "煮る",
-            "ko": "끓이다",
-            "ar": "غلي",
-            "hi": "उबलना"
+            "tr": "uzak",
+            "es": "lejano",
+            "fr": "loin",
+            "de": "fern",
+            "it": "lontano",
+            "pt": "longe",
+            "ru": "дальний",
+            "zh": "远的",
+            "ja": "遠い",
+            "ko": "먼",
+            "ar": "طويل",
+            "hi": "दूर"
           },
           {
-            "tr": "karıştırmak",
-            "es": "mezclar",
-            "fr": "mélanger",
-            "de": "rühren",
-            "it": "mescolare",
-            "pt": "misturar",
-            "ru": "перемешать",
-            "zh": "搅拌",
-            "ja": "混ぜる",
-            "ko": "섞다",
-            "ar": "مزج",
-            "hi": "मिलाना"
+            "tr": "yakın",
+            "es": "cercano",
+            "fr": "proche",
+            "de": "nah",
+            "it": "vicino",
+            "pt": "próximo",
+            "ru": "близкий",
+            "zh": "近的",
+            "ja": "近い",
+            "ko": "가까운",
+            "ar": "قريب",
+            "hi": "निकट"
           },
           {
-            "tr": "tatlı",
-            "es": "dulce",
-            "fr": "sucre",
-            "de": "süß",
-            "it": "dolce",
-            "pt": "doce",
-            "ru": "сладкий",
-            "zh": "甜的",
-            "ja": "甘い",
-            "ko": "달다",
-            "ar": "حلو",
-            "hi": "स्वादिष्ट"
+            "tr": "içinde",
+            "es": "dentro",
+            "fr": "dans",
+            "de": "innerhalb",
+            "it": "dentro",
+            "pt": "dentro",
+            "ru": "внутри",
+            "zh": "在内部",
+            "ja": "内部",
+            "ko": "안에",
+            "ar": "داخل",
+            "hi": "अंदर"
           },
           {
-            "tr": "kullanmak",
-            "es": "usar",
-            "fr": "utiliser",
-            "de": "verwenden",
-            "it": "usare",
-            "pt": "usar",
-            "ru": "использовать",
-            "zh": "使用",
-            "ja": "使う",
-            "ko": "사용하다",
-            "ar": "استخدام",
-            "hi": "उपयोग करना"
+            "tr": "dışında",
+            "es": "fuera",
+            "fr": "à l'extérieur",
+            "de": "außerhalb",
+            "it": "fuori",
+            "pt": "fora",
+            "ru": "снаружи",
+            "zh": "在外部",
+            "ja": "外部",
+            "ko": "밖에",
+            "ar": "خارج",
+            "hi": "बाहर"
           }
         ]
       }
@@ -130,16 +130,16 @@
       "questionData": {
         "character1": "Emma",
         "character2": "Anna",
-        "line1": "How do you walk on the wet ground?",
-        "answer": "Always slowly.",
+        "line1": "Be careful, the ground is wet.",
+        "answer": "I will walk carefully.",
         "distractors": [
-          "Sometimes slowly.",
-          "Always quickly.",
-          "Noisy and careless."
+          "Sometimes walking slowly.",
+          "I always walk quickly.",
+          "I am not careful."
         ]
       },
-      "audio_file1": "how-do-you-walk-on-the-wet-ground-convo",
-      "audio_file2": "always-slowly-convo"
+      "audio_file1": "be-careful-the-ground-is-wet-convo",
+      "audio_file2": "i-will-walk-carefully-convo"
     },
     {
       "template": "AppearDisappear",
@@ -161,7 +161,7 @@
         "wrongAnswers": [
           "bus-station",
           "bus-lane",
-          "bus-come"
+          "bus-shelter"
         ]
       }
     },
@@ -170,18 +170,18 @@
       "questionData": {
         "imageName": "parking-meter",
         "wrongAnswers": [
-          "parking-measure",
-          "parking-assistant",
-          "parking-payment"
+          "parking-lot",
+          "parking-sign",
+          "parking-space"
         ]
       }
     },
     {
       "template": "SentenceBuilder",
       "questionData": {
-        "correct_order": "He left the house quietly."
+        "correct_order": "He leaves the house quietly."
       },
-      "audio_file": "he-left-the-house-quietly-convo"
+      "audio_file": "he-leaves-the-house-quietly-convo"
     },
     {
       "template": "imageQuizTemplate-1",
@@ -190,32 +190,32 @@
         "wrongAnswers": [
           "trash-can",
           "garbage-bag",
-          "station"
+          "mailbox"
         ]
       }
     },
     {
       "template": "ClozeSequence",
       "questionData": {
-        "sentence": "_____ for two blocks.",
-        "answer": "go straight",
+        "sentence": "She _____ here every weekend to walk around.",
+        "answer": "comes",
         "distractors": [
-          "stop here",
-          "turn right",
-          "follow straight"
+          "stops",
+          "goes",
+          "runs"
         ]
       },
-      "audio_file": "go-straight-for-two-blocks-convo"
+      "audio_file": "she-comes-here-every-weekend-to-walk-around-convo"
     },
     {
       "template": "GrammarForm",
       "questionData": {
-        "sentence": "He ____ quietly to the park.",
-        "answer": "walks",
+        "sentence": "Do you ____ far from here?",
+        "answer": "live",
         "distractors": [
-          "is walk",
-          "does walking",
-          "walking"
+          "are living",
+          "do live",
+          "living"
         ]
       }
     },
@@ -229,7 +229,7 @@
         "distractors": [
           "Ok, leave me here",
           "Look at the building",
-          "Ther trees are very tall"
+          "See you later"
         ]
       },
       "audio_file1": "lets-go-this-way-convo",
@@ -238,18 +238,19 @@
     {
       "template": "ClozeSequence",
       "questionData": {
-        "sentence": "I cannot ____ you _____ on the streets.",
+        "sentence": "I am _____ so I will go _____",
         "answer": [
-          "let",
-          "run"
+          "tired",
+          "back"
         ],
         "distractors": [
-          "look",
-          "become",
-          "come",
-          "stop"
+          "forward",
+          "check",
+          "hungry",
+          "very well"
         ]
-      }
+      },
+      "audio_file": "i-am-tired-so-i-will-go-back-convo"
     }
   ]
 }

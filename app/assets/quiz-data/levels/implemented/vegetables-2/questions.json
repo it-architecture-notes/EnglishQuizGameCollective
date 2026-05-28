@@ -1,0 +1,169 @@
+{
+  "levelQuestions": [
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "artichoke",
+        "wrongAnswers": [
+          "cauliflower",
+          "corn",
+          "napkin"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "asparagus",
+        "wrongAnswers": [
+          "garlic",
+          "okra",
+          "towel"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-2",
+      "questionData": {
+        "imageName": "bell-pepper",
+        "wrongAnswers": [
+          "green-bean",
+          "okra",
+          "radish"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "brussels-sprouts",
+        "wrongAnswers": [
+          "squash",
+          "eggplant",
+          "soap"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "cauliflower",
+        "wrongAnswers": [
+          "asparagus",
+          "peas",
+          "pillow"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-2",
+      "questionData": {
+        "imageName": "corn",
+        "wrongAnswers": [
+          "turnip",
+          "asparagus",
+          "brussels-sprouts"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "eggplant",
+        "wrongAnswers": [
+          "green-bean",
+          "garlic",
+          "dish-towel"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "garlic",
+        "wrongAnswers": [
+          "peas",
+          "radish",
+          "umbrella"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-2",
+      "questionData": {
+        "imageName": "green-bean",
+        "wrongAnswers": [
+          "corn",
+          "garlic",
+          "okra"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "leek",
+        "wrongAnswers": [
+          "bell-pepper",
+          "garlic",
+          "key-chain"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "okra",
+        "wrongAnswers": [
+          "corn",
+          "squash",
+          "spoon"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-2",
+      "questionData": {
+        "imageName": "peas",
+        "wrongAnswers": [
+          "radish",
+          "turnip",
+          "asparagus"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "radish",
+        "wrongAnswers": [
+          "peas",
+          "green-bean",
+          "fork"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "squash",
+        "wrongAnswers": [
+          "artichoke",
+          "turnip",
+          "napkin"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-2",
+      "questionData": {
+        "imageName": "turnip",
+        "wrongAnswers": [
+          "brussels-sprouts",
+          "corn",
+          "garlic"
+        ]
+      }
+    }
+  ]
+}

@@ -16,19 +16,18 @@
       "questionData": {
         "character1": "Mike",
         "character2": "Sophie",
-        "line1": "Is the coffee ____?",
-        "line2": "Yes, don't drink it yet. It's very ____.",
-        "answer": "hot",
+        "line1": "Is _____ any juice?",
+        "line2": "Yes, _____ is orange juice in the fridge.",
+        "answer": "there",
         "distractors": [
-          "cold",
-          "warm",
-          "cool"
+          "here",
+          "these",
+          "those"
         ]
       },
-      "audio_file1": "is-the-coffee-hot-convo",
-      "audio_file2": "yes-dont-drink-it-yet-its-very-hot-convo"
+      "audio_file1": "is-there-any-juice-convo",
+      "audio_file2": "yes-there-is-orange-juice-in-the-fridge-convo"
     },
-    
     {
       "template": "ConvoTemplate-1",
       "questionData": {
@@ -61,86 +60,86 @@
       "template": "WordPairs",
       "questionData": {
         "english_words": [
-          "to boil",
-          "to mix",
-          "sweet",
-          "to use"
+          "I do it",
+          "I can do it",
+          "I will do it",
+          "I must do it"
         ],
         "translations": [
           {
-            "tr": "kaynatmak",
-            "es": "hervir",
-            "fr": "bouillir",
-            "de": "kochen",
-            "it": "bollire",
-            "pt": "cozer",
-            "ru": "варка",
-            "zh": "煮",
-            "ja": "煮る",
-            "ko": "끓이다",
-            "ar": "غلي",
-            "hi": "उबलना"
+            "tr": "yaparım",
+            "es": "lo hago",
+            "fr": "je le fais",
+            "de": "ich mache es",
+            "it": "io lo faccio",
+            "pt": "eu faço isso",
+            "ru": "я делаю это",
+            "zh": "我做这个",
+            "ja": "私はそれをします",
+            "ko": "나는 그것을 한다",
+            "ar": "أنا أفعله",
+            "hi": "मैं यह करता हूँ"
           },
           {
-            "tr": "karıştırmak",
-            "es": "mezclar",
-            "fr": "mélanger",
-            "de": "rühren",
-            "it": "mescolare",
-            "pt": "misturar",
-            "ru": "перемешать",
-            "zh": "搅拌",
-            "ja": "混ぜる",
-            "ko": "섞다",
-            "ar": "مزج",
-            "hi": "मिलाना"
+            "tr": "yapabilirim",
+            "es": "puedo hacerlo",
+            "fr": "je peux le faire",
+            "de": "ich kann es machen",
+            "it": "io posso farlo",
+            "pt": "eu posso fazer isso",
+            "ru": "я могу это сделать",
+            "zh": "我可以做这个",
+            "ja": "私はそれができます",
+            "ko": "나는 그것을 할 수 있다",
+            "ar": "أستطيع أن أفعله",
+            "hi": "मैं यह कर सकता हूँ"
           },
           {
-            "tr": "tatlı",
-            "es": "dulce",
-            "fr": "sucre",
-            "de": "süß",
-            "it": "dolce",
-            "pt": "doce",
-            "ru": "сладкий",
-            "zh": "甜的",
-            "ja": "甘い",
-            "ko": "달다",
-            "ar": "حلو",
-            "hi": "स्वादिष्ट"
+            "tr": "yapacağım",
+            "es": "lo haré",
+            "fr": "je le ferai",
+            "de": "ich werde es machen",
+            "it": "io lo farò",
+            "pt": "eu farei isso",
+            "ru": "я сделаю это",
+            "zh": "我会做这个",
+            "ja": "私はそれをします",
+            "ko": "나는 그것을 할 것이다",
+            "ar": "سأفعله",
+            "hi": "मैं यह करूँगा"
           },
           {
-            "tr": "kullanmak",
-            "es": "usar",
-            "fr": "utiliser",
-            "de": "verwenden",
-            "it": "usare",
-            "pt": "usar",
-            "ru": "использовать",
-            "zh": "使用",
-            "ja": "使う",
-            "ko": "사용하다",
-            "ar": "استخدام",
-            "hi": "उपयोग करना"
+            "tr": "yapmalıyım",
+            "es": "debo hacerlo",
+            "fr": "je dois le faire",
+            "de": "ich muss es machen",
+            "it": "io devo farlo",
+            "pt": "eu devo fazer isso",
+            "ru": "я должен это сделать",
+            "zh": "我必须做这个",
+            "ja": "私はそれをしなければなりません",
+            "ko": "나는 그것을 해야 한다",
+            "ar": "يجب أن أفعله",
+            "hi": "मुझे यह करना चाहिए"
           }
         ]
       }
     },
     {
-      "template": "DialogueCompletion",
+      "template": "ClozeSequence",
       "questionData": {
-        "character1": "Emma",
-        "character2": "Anna",
-        "line1": "The table is dirty.",
-        "answer": "I wipe it.",
+        "sentence": "He _____ the red apple with a small knife.",
+        "answer": [
+          "cuts"
+        ],
         "distractors": [
-          "I dry it.",
-          "I turn it on.",
-          "I pour it."
+          "puts",
+          "does",
+          "gets",
+          "to"
         ]
       },
-      "audio_file1": "the-table-is-dirty-convo",
-      "audio_file2": "i-wipe-it-convo"
+      "audio_file": "he-cuts-the-red-apple-with-a-small-knife-convo"
     },
     {
       "template": "AppearDisappear",
@@ -178,11 +177,19 @@
       }
     },
     {
-      "template": "SentenceBuilder",
+      "template": "ClozeSequence",
       "questionData": {
-        "correct_order": "Can you peel the banana?"
+        "sentence": "She is _____ and she has no water.",
+        "answer": [
+          "thirsty"
+        ],
+        "distractors": [
+          "careful",
+          "early",
+          "quiet"
+        ]
       },
-      "audio_file": "can-you-peel-the-banana-convo"
+      "audio_file": "she-is-thirsty-so-she-will-drink-some-water-convo"
     },
     {
       "template": "imageQuizTemplate-1",
@@ -198,11 +205,12 @@
     {
       "template": "AppearDisappear",
       "questionData": {
-        "words": "The popcorn is too salty for me.",
+        "words": "I am very hungry today.",
         "distractors": [
-          "sweet",
-          "cornflakes",
-          "you"
+          "very",
+          "thirsty",
+          "you",
+          "are"
         ]
       },
       "audio_file": "the-popcorn-is-too-salty-for-me-convo"
@@ -224,16 +232,16 @@
       "questionData": {
         "character1": "Emma",
         "character2": "Anna",
-        "line1": "Can I pour the hot tea now?",
-        "answer": "Yes. Do it carefully.",
+        "line1": "Can I drink the tea now?",
+        "answer": "Yes, do it slowly.",
         "distractors": [
-          "Do it slightly",
-          "Yes, usually pour it",
-          "Yes, pour it quiet"
+          "Yes do it slightly",
+          "Yes, usually drink it",
+          "Yes, drink it quiet"
         ]
       },
-      "audio_file1": "can-i-pour-the-hot-tea-now-convo",
-      "audio_file2": "do-it-carefully-convo"
+      "audio_file1": "can-i-drink-the-tea-now-convo",
+      "audio_file2": "yes-do-it-slowly-convo"
     },
     {
       "template": "AppearDisappear",

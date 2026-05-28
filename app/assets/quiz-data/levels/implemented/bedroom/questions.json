@@ -1,6 +1,5 @@
 {
   "levelQuestions": [
-    
     {
       "template": "imageQuizTemplate-1",
       "questionData": {
@@ -15,46 +14,49 @@
     {
       "template": "AppearDisappear",
       "questionData": {
-        "words": "I was having a good dream!",
+        "words": "She dreams all night.",
         "distractors": [
-          "getting",
-          "night",
-          "bad",
-          "were"
+          "sleeps",
+          "day",
+          "well",
+          "morning"
         ]
       },
-      "audio_file": "i-was-having-a-good-dream-convo"
-    },
-    {
-      "template": "imageQuizTemplate-1",
-      "questionData": {
-        "imageName": "pillow-case",
-        "wrongAnswers": [
-          "laundry-basket",
-          "mattress",
-          "wardrobe"
-        ]
-      }
+      "audio_file": "she-dreams-all-night-convo"
     },
     {
       "template": "ClozeSequence",
       "questionData": {
-        "sentence": "Put your ____ pajamas in the ___",
+        "sentence": "____ get up and wash your face!",
         "answers": [
-          "dirty",
-          "laundry-basket"
+          "just"
         ],
         "distractors": [
-          "drawer",
-          "pillow-case",
-          "nightstand",
-          "clean",
-          "dry"
+          "only",
+          "other",
+          "then"
         ]
       },
-      "audio_file": "put-your-dirty-pajamas-in-the-laundry-basket-convo"
+      "audio_file": "get-up-and-wash-your-face-convo"
+    }
+    ,
+    {
+      "template": "ClozeSequence",
+      "questionData": {
+        "sentence": "She has one ____ ____ to do before she sleeps.",
+        "answers": [
+          "more",
+          "thing"
+        ],
+        "distractors": [
+          "job",
+          "less",
+          "is",
+          "good"
+        ]
+      },
+      "audio_file": "she-has-one-more-thing-to-do-before-she-sleeps-convo"
     },
-    
     {
       "template": "imageQuizTemplate-1",
       "questionData": {
@@ -82,17 +84,17 @@
       "questionData": {
         "character1": "Sarah",
         "character2": "Emma",
-        "line1": "It's time for bed",
-        "line2": "But I'm not ____",
-        "answer": "sleepy",
+        "line1": "I am ____ sleepy!",
+        "line2": "It is ____ late! You just have five minutes!",
+        "answer": "very",
         "distractors": [
-          "awake",
-          "sleeping",
-          "hungry"
+          "lot",
+          "good",
+          "more"
         ]
       },
-      "audio_file1": "its-time-for-bed-convo",
-      "audio_file2": "but-im-not-sleepy-convo"
+      "audio_file1": "i-am-very-sleepy-convo",
+      "audio_file2": "it-is-very-late-you-just-have-five-minutes-convo"
     },
     {
       "template": "ClozeSequence",
@@ -130,12 +132,84 @@
     {
       "template": "WordPairs",
       "questionData": {
-        "english_words": ["sleepy", "close eyes", "dream", "tired"],
+        "english_words": [
+          "to me",
+          "to you",
+          "to him/her",
+          "to us",
+          "to them"
+        ],
         "translations": [
-          {"tr": "uyku dolu", "es": "dormido", "fr": "endormi", "de": "schläfrig", "it": "addormentato", "pt": "adormecido", "ru": "засыпающий", "zh": "困倦的", "ja": "眠っている", "ko": "잠든", "ar": "مست", "hi": "सुनस्सा"},
-          {"tr": "gozlerini kapatmak", "es": "cerrar los ojos", "fr": "fermer les yeux", "de": "schließen die Augen", "it": "chiudere gli occhi", "pt": "fechar os olhos", "ru": "закрыть глаза", "zh": "闭上眼睛", "ja": "目を閉じる", "ko": "눈을 감다", "ar": "غلق العين", "hi": "आँखें बंद करना"},
-          {"tr": "ruya", "es": "sueño", "fr": "rêve", "de": "traum", "it": "sogno", "pt": "sonho", "ru": "сон", "zh": "梦", "ja": "夢", "ko": "꿈", "ar": "حلم", "hi": "सपना"},
-          {"tr": "yorgun", "es": "cansado", "fr": "fatigué", "de": "müde", "it": "stanco", "pt": "cansado", "ru": "усталый", "zh": "疲倦的", "ja": "疲れた", "ko": "피곤한", "ar": "متعب", "hi": "थका हुआ"}
+          {
+            "tr": "bana",
+            "es": "a mí",
+            "fr": "à moi",
+            "de": "mir",
+            "it": "a me",
+            "pt": "a mim",
+            "ru": "мне",
+            "zh": "给我",
+            "ja": "私に",
+            "ko": "나에게",
+            "ar": "لي",
+            "hi": "मुझे"
+          },
+          {
+            "tr": "sana",
+            "es": "a ti",
+            "fr": "à toi",
+            "de": "dir",
+            "it": "a te",
+            "pt": "a ti",
+            "ru": "тебе",
+            "zh": "给你",
+            "ja": "あなたに",
+            "ko": "너에게",
+            "ar": "لك",
+            "hi": "तुम्हें"
+          },
+          {
+            "tr": "ona",
+            "es": "a él/ella",
+            "fr": "à lui/elle",
+            "de": "ihm/ihr",
+            "it": "a lui/lei",
+            "pt": "a ele/ela",
+            "ru": "ему/ей",
+            "zh": "给他/她",
+            "ja": "彼に/彼女に",
+            "ko": "그에게/그녀에게",
+            "ar": "له/لها",
+            "hi": "उसे"
+          },
+          {
+            "tr": "bize",
+            "es": "a nosotros",
+            "fr": "à nous",
+            "de": "uns",
+            "it": "a noi",
+            "pt": "a nós",
+            "ru": "нам",
+            "zh": "给我们",
+            "ja": "私たちに",
+            "ko": "우리에게",
+            "ar": "لنا",
+            "hi": "हमें"
+          },
+          {
+            "tr": "onlara",
+            "es": "a ellos/ellas",
+            "fr": "à eux/elles",
+            "de": "ihnen",
+            "it": "a loro",
+            "pt": "a eles/elas",
+            "ru": "им",
+            "zh": "给他们/她们",
+            "ja": "彼らに/彼女たちに",
+            "ko": "그들에게/그녀들에게",
+            "ar": "لهم/لهن",
+            "hi": "उन्हें"
+          }
         ]
       }
     },
@@ -179,9 +253,15 @@
       }
     },
     {
-      "template":"SentenceBuilder",
+      "template": "GrammarForm",
       "questionData": {
-        "correct_order": "Please keep your room tidy"
+        "sentence": "Do you _____ a lot?",
+        "answer": "dream",
+        "distractors": [
+          "dreams",
+          "dreaming",
+          "have dreaming"
+        ]
       }
     }
   ]

@@ -14,48 +14,48 @@
     {
       "template": "ClozeSequence",
       "questionData": {
-        "sentence": "The plane  ____ ____ in the sky.",
-        "answer": ["flies", "high"],
+        "sentence": "Tomorrow, I will ____ to see my grandma. I _____ she is well.",
+        "answer": ["fly", "hope"],
         "distractors": [
-          "stays",
-          "stands",
-          "low",
-          "jet",
+          "be go",
+          "want",
+          "understand",
+          "coming",
           "world"
         ]
       },
-      "audio_file": "the-plane-flies-high-in-the-sky-convo"
+      "audio_file": "tomorrow-i-will-fly-to-see-my-grandma-i-hope-she-is-well-convo"
     },
 
     {
       "template": "ClozeSequence",
       "questionData": {
-        "sentence": "Please _____ me your passport.",
-        "answer": ["show"],
+        "sentence": "The plane _______ from gate C4 and ______ in London in 2 hours.",
+        "answer": ["departs", "lands"],
         "distractors": [
-          "hold",
-          "tall",
-          "take back"
+          "flies",
+          "shows",
+          "comes"
         ]
       },
-      "audio_file": "please-show-me-your-passport-convo"
+      "audio_file": "the-plane-departs-from-gate-c4-and-arrives-in-2-hours-convo"
     },
     {
       "template": "ClozeSequence",
       "questionData": {
-        "sentence": "But your _____ is a little ______.",
+        "sentence": "If we _____ too many things, we will be ____ for the plane.",
         "answer": [
-          "flight",
-          "delayed"
+          "carry",
+          "late"
         ],
         "distractors": [
-          "shipment",
-          "plane",
+          "check",
+          "early",
           "sooner",
-          "earlier"
+          "tired"
         ]
       },
-      "audio_file": "but-your-flight-is-a-little-delayed-convo"
+      "audio_file": "if-we-carry-too-many-things-we-will-be-late-for-the-plane-convo"
     },  
     {
       "template": "imageQuizTemplate-1",
@@ -73,34 +73,34 @@
       "questionData": {
         "character1": "Emma",
         "character2": "Chris",
-        "line1": "I missed my flight. What do I do now?",
-        "line2": "I put you on the next flight. It _____ in three hours.",
-        "answer": "departs",
+        "line1": "_____ will we wait?",
+        "line2": "One hour. I hope we can play a game.",
+        "answer": "how long",
         "distractors": [
-          "delayed",
-          "comes",
-          "on time"
+          "how much",
+          "how many",
+          "how many hour"
         ]
       },
-      "audio_file1": "i-missed-my-flight-what-do-i-do-now-convo",
-      "audio_file2": "i-put-you-on-the-next-flight-it-departs-in-three-hours-convo"
+      "audio_file1": "how-long-will-we-wait-convo",
+      "audio_file2": "one-hour-i-hope-we-can-play-a-game-convo"
     },
     {
       "template": "ConvoTemplate-1",
       "questionData": {
         "character1": "Beth",
         "character2": "Alex",
-        "line1": "When will the flight from Paris ______?",
-        "line2": "The flight from Paris will _____ in 20 minutes.",
-        "answer": "arrives",
+        "line1": "What if they _____ the flight?",
+        "line2": "Then we will take the next flight.",
+        "answer": "cancel",
         "distractors": [
-          "starts",
-          "departs",
-          "be late"
+          "start",
+          "depart",
+          "late"
         ]
       },
-      "audio_file1": "when-will-the-flight-from-paris-arrives-convo",
-      "audio_file2": "the-flight-from-paris-will-arrives-in-20-minutes-convo"
+      "audio_file1": "what-if-they-cancel-the-flight-convo",
+      "audio_file2": "then-we-will-take-the-next-flight-convo"
     },
     {
       "template": "imageQuizTemplate-1",
@@ -188,7 +188,7 @@
         "character1": "Omar",
         "character2": "Lily",
         "line1": "Is the flight on time?",
-        "answer": "Yes it leaves soon, hurry up!",
+        "answer": "Yes it leaves now, hurry up!",
         "distractors": [
           "No it's on time but late",
           "Yes I missed it",
@@ -196,7 +196,7 @@
         ]
       },
       "audio_file1": "is-the-flight-on-time-convo",
-      "audio_file2": "yes-it-leaves-soon-hurry-up-convo"
+      "audio_file2": "yes-it-leaves-now-hurry-up-convo"
     },
     {
       "template": "AppearDisappear",

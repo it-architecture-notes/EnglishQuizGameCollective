@@ -12,11 +12,37 @@
       }
     },
     {
+      "template": "ClozeSequence",
+      "questionData": {
+        "sentence": "Please read the label before you ____ it.",
+        "answer": ["use"],
+        "distractors": [
+          "run",
+          "take in",
+          "put"
+        ]
+      },
+      "audio_file": "please-read-the-label-before-you-use-it-convo"
+    },
+    
+    {
+      "template": "GrammarForm",
+      "questionData": {
+        "sentence": "My cold ____ bad, but the medicine helped.",
+        "answer": "was",
+        "distractors": [
+          "is",
+          "are",
+          "will be"
+        ]
+      }
+    },
+    {
       "template": "ConvoTemplate-1",
       "questionData": {
         "character1": "Mike",
         "character2": "Ethan",
-        "line1": "How often should I _____ this??",
+        "line1": "How often should I _____ this?",
         "line2": "____ it twice a day.",
         "answer": "take",
         "distractors": [
@@ -60,39 +86,53 @@
       "template": "WordPairs",
       "questionData": {
         "english_words": [
-          "quiet",
-          "ready",
-          "better",
-          "patient"
+          "same",
+          "different",
+          "similar",
+          "better"
         ],
         "translations": [
           {
-            "tr": "sessiz",
-            "es": "silencioso",
-            "fr": "silencieux",
-            "de": "leise",
-            "it": "silenzioso",
-            "pt": "silencioso",
-            "ru": "тихий",
-            "zh": "安静的",
-            "ja": "静かな",
-            "ko": "조용한",
-            "ar": "ساكت",
-            "hi": "शांत"
+            "tr": "aynı",
+            "es": "igual",
+            "fr": "même",
+            "de": "gleich",
+            "it": "lo stesso",
+            "pt": "igual",
+            "ru": "тот же",
+            "zh": "相同的",
+            "ja": "同じ",
+            "ko": "같은",
+            "ar": "متطابق",
+            "hi": "समान"
           },
           {
-            "tr": "hazır",
-            "es": "listo",
-            "fr": "prêt",
-            "de": "bereit",
-            "it": "pronto",
-            "pt": "pronto",
-            "ru": "готовый",
-            "zh": "准备好的",
-            "ja": "準備完了",
-            "ko": "준비된",
-            "ar": "جاهز",
-            "hi": "तैयार"
+            "tr": "farklı",
+            "es": "diferente",
+            "fr": "différent",
+            "de": "anderes",
+            "it": "diverso",
+            "pt": "diferente",
+            "ru": "другой",
+            "zh": "不同的",
+            "ja": "違う",
+            "ko": "다른",
+            "ar": "مختلف",
+            "hi": "अलग"
+          },
+          {
+            "tr": "benzer",
+            "es": "similar",
+            "fr": "similaire",
+            "de": "ähnlich",
+            "it": "simile",
+            "pt": "similar",
+            "ru": "похожий",
+            "zh": "相似的",
+            "ja": "似ている",
+            "ko": "비슷한",
+            "ar": "متشابه",
+            "hi": "समान"
           },
           {
             "tr": "daha iyi",
@@ -107,20 +147,6 @@
             "ko": "더 좋은",
             "ar": "أفضل",
             "hi": "बेहतर"
-          },
-          {
-            "tr": "sabırlı",
-            "es": "paciente",
-            "fr": "patient",
-            "de": "geduldig",
-            "it": "paziente",
-            "pt": "paciente",
-            "ru": "терпеливый",
-            "zh": "耐心的",
-            "ja": "忍耐強い忍耐強い",
-            "ko": "단념하는",
-            "ar": "صبور",
-            "hi": "धूर्तधूर्तधूर्त"
           }
         ]
       }
@@ -131,7 +157,7 @@
         "character1": "Omar",
         "character2": "Lily",
         "line1": "Is it safe for children?",
-        "answer": "Yes, but read the label carefully.",
+        "answer": "Yes, give a little water with it.",
         "distractors": [
           "Yes, but only for adults",
           "Yes, but don't read the label",
@@ -139,20 +165,20 @@
         ]
       },
       "audio_file1": "is-it-safe-for-children-convo",
-      "audio_file2": "yes-but-read-the-label-carefully-convo"
+      "audio_file2": "yes-give-a-little-water-with-it-convo"
     },
     {
       "template": "AppearDisappear",
       "questionData": {
-        "words": "This cream is for external use only.",
+        "words": "Maybe you should talk to the pharmacist.",
         "distractors": [
-          "internal",
-          "bandage",
+          "So",
+          "ask",
           "was",
-          "dream"
+          "doctor"
         ]
       },
-      "audio_file": "this-cream-is-for-external-use-only-convo"
+      "audio_file": "maybe-you-should-talk-to-the-pharmacist-convo"
     },
     {
       "template": "imageQuizTemplate-1",
@@ -177,53 +203,28 @@
       }
     },
     {
+      "template": "imageQuizTemplate-2",
+      "questionData": {
+        "imageName": "adhesive-bandage",
+        "wrongAnswers": [
+          "cotton-balls",
+          "cough-syrup",
+          "elastic-bandage"
+        ]
+      },
+      "answer": "adhesive bandage"
+    },
+    {
       "template": "SentenceBuilder",
       "questionData": {
-        "correct_order": "Can you fill this prescription?"
+        "correct_order": "I believe this medicine will help you."
       },
-      "audio_file":"can-you-fill-this-prescription-convo"
+      "audio_file":"i-believe-this-medicine-will-help-you-convo"
     },
     {
       "template": "imageQuizTemplate-1",
       "questionData": {
-        "imageName": "elastic-bandage",
-        "wrongAnswers": [
-          "adhesive-bandage",
-          "gauze",
-          "cotton-balls"
-        ]
-      }
-    },
-    {
-      "template": "ClozeSequence",
-      "questionData": {
-        "sentence": "I cannot _____ you buy this drug ______ a prescription.",
-        "answer": ["help", "without"],
-        "distractors": [
-          "give",
-          "with",
-          "for",
-          "same"
-        ]
-      },
-      "audio_file": "i-cannot-help-you-buy-this-drug-without-a-prescription-convo"
-    },
-    {
-      "template": "GrammarForm",
-      "questionData": {
-        "sentence": "We ____ the tunnel.",
-        "answer": "are entering",
-        "distractors": [
-          "do entering",
-          "does entering",
-          "entering"
-        ]
-      }
-    },
-    {
-      "template": "imageQuizTemplate-1",
-      "questionData": {
-        "imageName": "drugs",
+        "imageName": "drugs-medicine",
         "wrongAnswers": [
           "ointment",
           "cream",
@@ -234,8 +235,8 @@
     {
       "template": "ClozeSequence",
       "questionData": {
-        "sentence": "If you ____ take this syrup, what will _____?",
-        "answer": ["also", "happen"],
+        "sentence": "What will _____ if I ____ take this syrup?",
+        "answer": ["happen", "also"],
         "distractors": [
           "have",
           "go away",
@@ -244,21 +245,6 @@
         ]
       },
       "audio_file": "if-you-also-take-this-syrup-what-will-happen-convo"
-    },
-    {
-      "template": "ClozeSequence",
-      "questionData": {
-        "sentence": "_____ is this medicine so expensive??",
-        "answer": [
-          "why"
-        ],
-        "distractors": [
-          "what",
-          "which",
-          "where"
-        ]
-      },
-      "audio_file": "why-is-this-medicine-so-expensive-convo"
     }
   ]
 }

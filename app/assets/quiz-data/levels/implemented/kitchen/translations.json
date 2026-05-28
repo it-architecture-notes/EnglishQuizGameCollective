@@ -1,56 +1,22 @@
 {
     "translations_list": [
         {
-            "english_word": "hot",
+            "english_word": "there is, there are",
             "translations": {
-                "tr": "sıcak",
-                "es": "caliente",
-                "fr": "chaud",
-                "de": "heiß",
-                "it": "caldo",
-                "pt": "quente",
-                "ru": "горячий",
-                "zh": "热的",
-                "ja": "熱い",
-                "ko": "더운",
-                "ar": "حار",
-                "hi": "गर्म"
+                "tr": "var",
+                "es": "hay",
+                "fr": "il y a",
+                "de": "es gibt",
+                "it": "c'è",
+                "pt": "há",
+                "ru": "есть",
+                "zh": "有",
+                "ja": "ある",
+                "ko": "있는",
+                "ar": "يوجد",
+                "hi": "है"
             }
-        },
-        {
-            "english_word": "cold",
-            "translations": {
-                "tr": "soğuk",
-                "es": "frío",
-                "fr": "froid",
-                "de": "kalt",
-                "it": "freddo",
-                "pt": "frio",
-                "ru": "холодный",
-                "zh": "冷的",
-                "ja": "冷たい",
-                "ko": "차가운",
-                "ar": "بارد",
-                "hi": "ठंडा"
-            }
-        },
-        {
-            "english_word": "to peel",
-            "translations": {
-                "tr": "soymak",
-                "es": "pelar",
-                "fr": "pelar",
-                "de": "schälen",
-                "it": "strappare",
-                "pt": "pelar",
-                "ru": "очистить",
-                "zh": "去皮",
-                "ja": "皮をむく",
-                "ko": "껍질을 벗기다",
-                "ar": "إزالة الجلد",
-                "hi": "चाँस हटाना"
-            }
-        },
+        },               
         {
             "english_word": "to cook",
             "translations": {
@@ -66,6 +32,23 @@
                 "ko": "요리하다",
                 "ar": "طبخ",
                 "hi": "खाना पकाना"
+            }
+        },
+        {
+            "english_word": "to cut",
+            "translations": {
+                "tr": "kesmek",
+                "es": "cortar",
+                "fr": "couper",
+                "de": "schneiden",
+                "it": "tagliare",
+                "pt": "cortar",
+                "ru": "резать",
+                "zh": "切",
+                "ja": "切る",
+                "ko": "자르다",
+                "ar": "قص",
+                "hi": "काटना"
             }
         },
         {
@@ -103,24 +86,75 @@
             }
         },
         {
-            "english_word": "to pour",
+            "english_word": "hungry",
             "translations": {
-                "tr": "dökmek",
-                "es": "vertir",
-                "fr": "verser",
-                "de": "umgießen",
-                "it": "versare",
-                "pt": "ver",
-                "ru": "лить",
-                "zh": "倒",
-                "ja": "注ぐ",
-                "ko": "부다",
-                "ar": "صب",
-                "hi": "डालना"
+                "tr": "aç",
+                "es": "ahorro",
+                "fr": "économiser",
+                "de": "sparen",
+                "it": "risparmiare",
+                "pt": "economizar",
+                "ru": "сберегать",
+                "zh": "节省",
+                "ja": "節約",
+                "ko": "절약",
+                "ar": "توفير",
+                "hi": "बचाना"
             }
         },
         {
-            "english_word": "do the dishes",
+            "english_word": "thirsty",
+            "translations": {
+                "tr": "susuz",
+                "es": "sediento",
+                "fr": "soif",
+                "de": "durstig",
+                "it": "sete",
+                "pt": "sede",
+                "ru": "соленый",
+                "zh": "咸的",
+                "ja": "塩分が多い",
+                "ko": "짠",
+                "ar": "مالح",
+                "hi": "सुखा"
+            }
+        },
+        {
+            "english_word": "to eat",
+            "translations": {
+                "tr": "yemek",
+                "es": "comer",
+                "fr": "manger",
+                "de": "essen",
+                "it": "mangiare",
+                "pt": "comer",
+                "ru": "есть",
+                "zh": "吃",
+                "ja": "食べる",
+                "ko": "먹다",
+                "ar": "يأكل",
+                "hi": "खाना खाना"
+            }
+        },
+        {
+            "english_word": "to drink",
+            "translations": {
+                "tr": "içmek",
+                "es": "beber",
+                "fr": "boire",
+                "de": "trinken",
+                "it": "bere",
+                "pt": "beber",
+                "ru": "пить",
+                "zh": "喝",
+                "ja": "飲む",
+                "ko": "마시다",
+                "ar": "شرب",
+                "hi": "पीना"
+            }
+        },
+        {
+            "english_word": "to do the dishes",
             "translations": {
                 "tr": "bulaşıkları yıkama",
                 "es": "lavar los platos",
@@ -134,23 +168,6 @@
                 "ko": "밥그릇을 씻다",
                 "ar": "غسل الأطباق",
                 "hi": "बाजार धोना"
-            }
-        },
-        {
-            "english_word": "to use",
-            "translations": {
-                "tr": "kullanmak",
-                "es": "usar",
-                "fr": "utiliser",
-                "de": "verwenden",
-                "it": "usare",
-                "pt": "usar",
-                "ru": "использовать",
-                "zh": "使用",
-                "ja": "使う",
-                "ko": "사용하다",
-                "ar": "استخدام",
-                "hi": "उपयोग करना"
             }
         }
     ]

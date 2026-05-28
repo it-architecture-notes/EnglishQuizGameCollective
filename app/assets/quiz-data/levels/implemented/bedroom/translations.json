@@ -1,26 +1,77 @@
 {
     "translations_list": [
         {
-            "english_word": "dream",
+            "english_word": "to dream",
             "translations": {
-                "tr": "rüya",
-                "es": "sueño",
-                "fr": "rêve",
-                "de": "träume",
-                "it": "sogno",
-                "pt": "sonho",
+                "tr": "rüya görmek",
+                "es": "soñar",
+                "fr": "rêver",
+                "de": "traum",
+                "it": "sognare",
+                "pt": "sonhar",
                 "ru": "сон",
-                "zh": "梦",
-                "ja": "夢",
-                "ko": "꿈",
-                "ar": "رؤية",
-                "hi": "सपना"
+                "zh": "做梦",
+                "ja": "夢を見る",
+                "ko": "꿈을 꿀 수 있습니다",
+                "ar": "يحلم",
+                "hi": "सपना देखना"
+            }
+        },
+        {
+            "english_word": "all",
+            "translations": {
+                "tr": "tüm/bütün",
+                "es": "todo/todos",
+                "fr": "tout/tous",
+                "de": "alles/alle",
+                "it": "tutto/tutti",
+                "pt": "todo/todos",
+                "ru": "все/все",
+                "zh": "全部",
+                "ja": "全部",
+                "ko": "모두",
+                "ar": "كل/كل",
+                "hi": "सभी"
+            }
+        },
+        {
+            "english_word": "thing",
+            "translations": {
+                "tr": "şey",
+                "es": "cosa",
+                "fr": "chose",
+                "de": "Sache",
+                "it": "cosa",
+                "pt": "coisa",
+                "ru": "вещь",
+                "zh": "东西",
+                "ja": "もの",
+                "ko": "물건",
+                "ar": "شيء",
+                "hi": "चीज़"
+            }
+        },
+        {
+            "english_word": "very",
+            "translations": {
+                "tr": "çok",
+                "es": "muy",
+                "fr": "très",
+                "de": "sehr",
+                "it": "molto",
+                "pt": "muito",
+                "ru": "очень",
+                "zh": "非常",
+                "ja": "非常",
+                "ko": "매우",
+                "ar": "أثري",
+                "hi": "बहुत"
             }
         },
         {
             "english_word": "turn on the light",
             "translations": {
-                "tr": "ışıgi açmak",
+                "tr": "ışıgı açmak",
                 "es": "encender la luz",
                 "fr": "allumer la lumière",
                 "de": "Licht anmachen",
@@ -37,7 +88,7 @@
         {
             "english_word": "turn off the light",
             "translations": {
-                "tr": "ışıgi kapatmak",
+                "tr": "ışıgı kapatmak",
                 "es": "apagar la luz",
                 "fr": "éteindre la lumière",
                 "de": "Licht ausmachen",
@@ -49,6 +100,23 @@
                 "ko": "전구 끄기",
                 "ar": "اضغط على الكومبيوتر",
                 "hi": "चुप्पी बंद करना"
+            }
+        },
+        {
+            "english_word": "just",
+            "translations": {
+                "tr": "sadece",
+                "es": "sólo",
+                "fr": "juste",
+                "de": "nur",
+                "it": "solo",
+                "pt": "só",
+                "ru": "только",
+                "zh": "只是",
+                "ja": "ただ",
+                "ko": "그냥",
+                "ar": "فقط",
+                "hi": "बस"
             }
         },
         {
@@ -82,23 +150,6 @@
                 "ja": "快適な",
                 "ko": "편안한",
                 "ar": "مريح",
-                "hi": "सुखद"
-            }
-        },
-        {
-            "english_word": "tidy",
-            "translations": {
-                "tr": "düzenli",
-                "es": "limpio",
-                "fr": "propre et ordonné",
-                "de": "ordentlich",
-                "it": "ordinato",
-                "pt": "organizado",
-                "ru": "упорядоченный",
-                "zh": "整洁的",
-                "ja": "整然な",
-                "ko": "정돈된",
-                "ar": "منظم",
                 "hi": "सुखद"
             }
         }

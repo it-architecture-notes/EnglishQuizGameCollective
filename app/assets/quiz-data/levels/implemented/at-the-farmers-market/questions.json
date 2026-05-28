@@ -16,34 +16,28 @@
       "questionData": {
         "character1": "Sarah",
         "character2": "Daniel",
-        "line1": "Do you ____ at the farmers market now?",
-        "line2": "Yes, I ____ here.",
-        "answer": "work",
+        "line1": "What does she do at the farmers market?",
+        "line2": "She _____ vegetables.",
+        "answer": "sells",
         "distractors": [
-          "walk",
-          "go",
-          "see"
+          "goes",
+          "eats",
+          "will buy"
         ]
       },
-      "audio_file1": "do-you-work-at-the-farmers-market-now-convo",
-      "audio_file2": "yes-i-work-here-convo"
+      "audio_file1": "what-does-she-do-at-the-farmers-market-convo",
+      "audio_file2": "she-sells-vegetables-convo"
     },
     {
-      "template": "ConvoTemplate-1",
+      "template": "imageQuizTemplate-2",
       "questionData": {
-        "character1": "Beth",
-        "character2": "Alex",
-        "line1": "Is this market always the same?",
-        "line2": "No, it is ____ every week.",
-        "answer": "different",
-        "distractors": [
-          "similar",
-          "looks",
-          "fresh"
+        "imageName": "basket",
+        "wrongAnswers": [
+          "scale",
+          "chalkboard",
+          "tent"
         ]
-      },
-      "audio_file1": "is-this-market-always-the-same-convo",
-      "audio_file2": "no-it-is-different-every-week-convo"
+      }
     },
     {
       "template": "imageQuizTemplate-1",
@@ -60,67 +54,67 @@
       "template": "WordPairs",
       "questionData": {
         "english_words": [
-          "to choose",
-          "to carry",
-          "to smell",
-          "to sell"
+          "free",
+          "expensive",
+          "cheap",
+          "on sale"
         ],
         "translations": [
           {
-            "tr": "seçmek",
-            "es": "elegir",
-            "fr": "choisir",
-            "de": "wählen",
-            "it": "scegliere",
-            "pt": "escolher",
-            "ru": "выбрать",
-            "zh": "选择",
-            "ja": "選ぶ",
-            "ko": "선택하다",
-            "ar": "اختيار",
-            "hi": "चुनना"
+            "tr": "ücretsiz",
+            "es": "gratis",
+            "fr": "gratuit",
+            "de": "kostenlos",
+            "it": "gratis",
+            "pt": "gratuito",
+            "ru": "бесплатный",
+            "zh": "免费的",
+            "ja": "無料",
+            "ko": "무료",
+            "ar": "مجاني",
+            "hi": "मुफ्त"
           },
           {
-            "tr": "taşımak",
-            "es": "llevar",
-            "fr": "porter",
-            "de": "tragen",
-            "it": "portare",
-            "pt": "levar",
-            "ru": "переносить",
-            "zh": "携带",
-            "ja": "持つ",
-            "ko": "가지고 다니다",
-            "ar": "حمل",
-            "hi": "आयात करना"
+            "tr": "pahalı",
+            "es": "caro",
+            "fr": "cher",
+            "de": "teuer",
+            "it": "caro",
+            "pt": "caro",
+            "ru": "дорогой",
+            "zh": "贵的",
+            "ja": "高い",
+            "ko": "비싸다",
+            "ar": "غالي",
+            "hi": "महंगा"
           },
           {
-            "tr": "koklamak",
-            "es": "oler",
-            "fr": "sentir",
-            "de": "riechen",
-            "it": "sentire",
-            "pt": "sentir",
-            "ru": "ощущать",
-            "zh": "嗅觉",
-            "ja": "嗅ぐ",
-            "ko": "향기를 맡다",
-            "ar": "رغبة",
-            "hi": "ख़ुशी करना"
+            "tr": "ucuz",
+            "es": "barato",
+            "fr": "bon marché",
+            "de": "billig",
+            "it": "economico",
+            "pt": "barato",
+            "ru": "дешевый",
+            "zh": "便宜",
+            "ja": "安い",
+            "ko": "싸다",
+            "ar": "أرخص",
+            "hi": "अमनी"
           },
           {
-            "tr": "satmak",
-            "es": "vender",
-            "fr": "vendre",
-            "de": "verkaufen",
-            "it": "vendere",
-            "pt": "vender",
-            "ru": "продавать",
-            "zh": "卖",
-            "ja": "売る",
-            "ko": "팔다",
-            "ar": "بيع",
-            "hi": "बेचना"
+            "tr": "indirimli",
+            "es": "en oferta",
+            "fr": "en solde",
+            "de": "in Verkauf",
+            "it": "in offerta",
+            "pt": "em oferta",
+            "ru": "в продаже",
+            "zh": "打折的",
+            "ja": "オフの",
+            "ko": "할인 된",
+            "ar": "خصم",
+            "hi": "छूट का"
           }
         ]
       }
@@ -130,29 +124,29 @@
       "questionData": {
         "character1": "Ben",
         "character2": "Nora",
-        "line1": "What does plums taste like?",
-        "answer": "Sweet and sour.",
+        "line1": "Is this bread made today?",
+        "answer": "Yes, it is made today.",
         "distractors": [
-          "Salty and bad.",
-          "Sour and little",
-          "Strong and whole."
+          "Yes, it is made yesterday.",
+          "It will be made tomorrow.",
+          "These are made today."
         ]
       },
-      "audio_file1": "what-does-plums-taste-like-convo",
-      "audio_file2": "sweet-and-sour-convo"
+      "audio_file1": "is-this-bread-made-today-convo",
+      "audio_file2": "yes-it-is-made-today-convo"
     },
     {
       "template": "AppearDisappear",
       "questionData": {
-        "words": "She asks the seller a question.",
+        "words": "I need some apples for tomorrow.",
         "distractors": [
-          "talks",
-          "buyer",
+          "any",
+          "yesterday",
           "He",
-          "answer"
+          "help"
         ]
       },
-      "audio_file": "she-asks-the-seller-a-question-convo"
+      "audio_file": "i-need-some-apples-for-tomorrow-convo"
     },
     {
       "template": "imageQuizTemplate-1",
@@ -197,46 +191,46 @@
     {
       "template": "ClozeSequence",
       "questionData": {
-        "sentence": "Please ____ a bag because the apples are ____ today",
-        "answer": ["bring", "cheap"],
+        "sentence": "I _____ the ______ before I buy honey.",
+        "answer": ["compare", "prices"],
         "distractors": [
-          "give",
-          "taller",
-          "heavy"
+          "check",
+          "look",
+          "find"
         ]
       },
-      "audio_file": "please-bring-a-bag-because-the-apples-are-cheap-today-convo"
+      "audio_file": "i-compare-the-prices-before-i-buy-honey-convo"
     },
     {
       "template": "GrammarForm",
       "questionData": {
         "sentence": "We are ______ some apples from the cart.",
-        "answer": "picking",
+        "answer": "choosing",
         "distractors": [
-          "pick",
-          "picks",
-          "does picking"
+          "choose",
+          "chose",
+          "does choosing"
         ]
       }
     },
     {
       "template": "ClozeSequence",
       "questionData": {
-        "sentence": "Please _____ and look at these ______ apples",
-        "answer": ["come", "beautiful"],
+        "sentence": "I have some ____ _____ for you.",
+        "answer": ["free", "samples"],
         "distractors": [
-          "check",
-          "run",
-          "wait",
-          "ugly"
+          "expensive",
+          "tries",
+          "today",
+          "warm"
         ]
       },
-      "audio_file": "please-come-and-look-at-these-beautiful-apples-convo"
+      "audio_file": "i-have-some-free-samples-for-you-convo"
     },
     {
       "template": "ClozeSequence",
       "questionData": {
-        "sentence": "I saved this bread _____ for you.",
+        "sentence": "I saved this pie _____ for you.",
         "answer": [
           "only"
         ],

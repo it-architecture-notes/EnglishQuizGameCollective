@@ -39,36 +39,39 @@
     {
       "template": "imageQuizTemplate-1",
       "questionData": {
-        "imageName": "shower-curtains",
+        "imageName": "shower",
         "wrongAnswers": [
           "scales",
-          "bathrobe",
-          "bath-mat"
+          "bathtub",
+          "shovel"
         ]
       }
     },
     {
-      "template":"ClozeSequence",
+      "template":"ConvoTemplate-1",
       "questionData": {
-        "sentence": "The bathroom floor is wet, so please walk _____.",
-        "answers": [
-          "carefully"
-        ],
+        "character1": "Beth",
+        "character2": "Chris",
+        "line1": "When do you usually _____ the bathroom?",
+        "line2": "We _____ the bathroom on Saturday.",
+        "answer": "clean",
         "distractors": [
-          "gently",
-          "soft",
-          "fast"
+          "brush",
+          "take",
+          "washing"
         ]
-      }
+      },
+      "audio_file1": "when-do-you-usually-clean-the-bathroom-convo",
+      "audio_file2": "we-clean-the-bathroom-on-saturday-convo"
     },
     {
       "template": "imageQuizTemplate-1",
       "questionData": {
-        "imageName": "shaving-razor",
+        "imageName": "bathtub",
         "wrongAnswers": [
-          "bathrobe",
-          "scales",
-          "toothbrush"
+          "sink",
+          "towel",
+          "shower"
         ]
       }
     },
@@ -87,82 +90,70 @@
       "template": "WordPairs",
       "questionData": {
         "english_words": [
-          "take a shower",
-          "clean",
-          "to wash",
-          "comb hair"
+          "wet",
+          "dry",
+          "hot",
+          "cold"
         ],
         "translations": [
           {
-            "tr":"duş almak",
-            "es":"ducharse",
-            "fr":"se laver",
-            "de":"duschen gehen",
-            "it":"lavarsi",
-            "pt":"lavar-se",
-            "ru":"мыться",
-            "zh":"洗澡",
-            "ja":"洗う",
-            "ko":"씻다",
-            "ar":"غسل",
-            "hi":"साफ़ करना"
+            "tr":"ıslak",
+            "es":"mojado",
+            "fr":"mouillé",
+            "de":"nass",
+            "it":"umido",
+            "pt":"molhado",
+            "ru":"мокрый",
+            "zh":"湿的",
+            "ja":"濡れた",
+            "ko":"젖은",
+            "ar":"مبلل",
+            "hi":"गाढ़ा"
           },
           {
-            "tr":"temiz",
-              "es":"limpio",
-            "fr":"propre",
-            "de":"sauber",
-            "it":"pulito",
-            "pt":"limpo",
-            "ru":"чистый",
-            "zh":"干净的",
-            "ja":"綺麗",
-            "ko":"깨끗",
-            "ar":"نظيف",
-            "hi":"साफ़ करना"
+            "tr":"kuru",
+            "es":"seco",
+            "fr":"sec",
+            "de":"trocken",
+            "it":"asciutto",
+            "pt":"seco",
+            "ru":"сухой",
+            "zh":"干的",
+            "ja":"乾いた",
+            "ko":"말랑말랑",
+            "ar":"جاف",
+            "hi":"सुखा"
           },
           {
-            "tr":"yıkamak",
-            "es":"lavar",
-            "fr":"laver",
-            "de":"waschen",
-            "it":"lavare",
-            "pt":"lavar",
-            "ru":"мойка",
-            "zh":"清洗",
-            "ja":"洗う",
-            "ko":"씻다",
-            "ar":"غسل",
-            "hi":"साफ़ करना"
+            "tr":"sıcak",
+            "es":"caliente",
+            "fr":"chaud",
+            "de":"heiß",
+            "it":"caldo",
+            "pt":"quente",
+            "ru":"горячий",
+            "zh":"热的",
+            "ja":"熱い",
+            "ko":"더운",
+            "ar":"حار",
+            "hi":"गर्म"
           },
           {
-            "tr":"saçını taramak",
-            "es":"peinarse",
-            "fr":"se peigner",
-            "de":"sich kämmen",
-            "it":"tagliare i capelli",
-            "pt":"pentear",
-            "ru":"пытать волосы",
-            "zh":"梳头发",
-            "ja":"髪を梳く",
-            "ko":"머리를 빗다",
-            "ar":"شطف الشعر",
-            "hi":"शाखा को साफ़ करना"
+            "tr":"soğuk",
+            "es":"frío",
+            "fr":"froid",
+            "de":"kalt",
+            "it":"freddo",
+            "pt":"frio",
+            "ru":"холодный",
+            "zh":"冷的",
+            "ja":"冷たい",
+            "ko":"차가운",
+            "ar":"بارد",
+            "hi":"ठंडा"
           }
         ]
       }
-    },
-    {
-      "template": "imageQuizTemplate-2",
-      "questionData": {
-        "imageName": "shower",
-        "wrongAnswers": [
-          "towel",
-          "scales",
-          "bathtub"
-        ]
-      },
-      "answer": "shower"
     },
     {
       "template": "ClozeSequence",
@@ -232,13 +223,26 @@
       }
     },
     {
-      "template":"AppearDisappear",
+      "template":"ClozeSequence",
       "questionData": {
-        "words": "I use a towel to dry my hands.",
-        "distractors": ["brush","clean","take","make","bathtub"
+        "sentence": "She combs her hair, _____ she brushes her teeth.",
+        "answers": [
+          "then"
+        ],
+        "distractors": [
+          "than",
+          "so",
+          "while"
         ]
       },
-      "audio_file": "i-use-a-towel-to-dry-my-hands-convo"
+      "audio_file": "she-combs-her-hair-then-she-brushes-her-teeth-convo"
+    },
+    {
+      "template": "SentenceBuilder",
+      "questionData": {
+        "correct_order": "His hands are very dirty."
+      },
+      "audio_file":"his-hands-are-very-dirty-convo"
     }
   ]
 }

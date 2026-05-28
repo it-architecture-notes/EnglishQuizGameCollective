@@ -70,54 +70,71 @@
             }
         },
         {
-            "english_word": "to dry",
+            "english_word": "to forget",
             "translations": {
-                "tr": "kurutmak",
-                "es": "secar",
-                "fr": "sécher",
-                "de": "trocknen",
-                "it": "asciugare",
-                "pt": "secar",
-                "ru": "высушить",
-                "zh": "干燥",
-                "ja": "乾かす",
-                "ko": "말리다",
-                "ar": "تجفيف",
-                "hi": "सुखाना"
+                "tr": "unutmak",
+                "es": "olvidar",
+                "fr": "oublier",
+                "de": "vergessen",
+                "it": "dimenticare",
+                "pt": "esquecer",
+                "ru": "забыть",
+                "zh": "忘记",
+                "ja": "忘れる",
+                "ko": "잊다",
+                "ar": "نسيان",
+                "hi": "भूलना"
             }
         },
         {
-            "english_word": "wet",
+            "english_word": "to clean",
             "translations": {
-                "tr": "ıslak",
-                "es": "mojado",
-                "fr": "mouillé",
-                "de": "nass",
-                "it": "umido",
-                "pt": "molhado",
-                "ru": "мокрый",
-                "zh": "湿的",
-                "ja": "濡れた",
-                "ko": "젖은",
-                "ar": "مبلل",
-                "hi": "गाढ़ा"
+                "tr": "temizlemek",
+                "es": "limpiar",
+                "fr": "nettoyer",
+                "de": "reinigen",
+                "it": "pulire",
+                "pt": "limpar",
+                "ru": "убирать",
+                "zh": "打扫",
+                "ja": "掃除",
+                "ko": "청소",
+                "ar": "تنظيف",
+                "hi": "साफ़ करना"
             }
         },
         {
-            "english_word": "carefully",
+            "english_word": "then",
             "translations": {
-                "tr": "dikkatli",
-                "es": "cuidadosamente",
-                "fr": "avec attention",
-                "de": "vorsichtig",
-                "it": "cuidatamente",
-                "pt": "cuidadosamente",
-                "ru": "осторожно",
-                "zh": "小心",
-                "ja": "注意して",
-                "ko": "조심스럽게",
-                "ar": "بحذر",
-                "hi": "ध्यान से"
+                "tr": "sonra",
+                "es": "luego",
+                "fr": "ensuite",
+                "de": "dann",
+                "it": "poi",
+                "pt": "depois",
+                "ru": "после",
+                "zh": "之后",
+                "ja": "その後",
+                "ko": "그 후",
+                "ar": "بعد",
+                "hi": "बाद में"
+            }
+        },
+        {
+            "english_word": "dirty",
+            "translations": {
+                "tr": "kirli",
+                "es": "sucio",
+                "fr": "sale",
+                "de": "schmutzig",
+                "it": "sporco",
+                "pt": "sujo",
+                "ru": "грязный",
+                "zh": "脏的",
+                "ja": "きたない",
+                "ko": "더러운",
+                "ar": "متسخ",
+                "hi": "गंदा"
             }
         }
     ]

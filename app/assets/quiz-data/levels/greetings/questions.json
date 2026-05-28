@@ -13,24 +13,7 @@
         ]
       }
     },
-    {
-      "template": "ConvoTemplate-DialogueCompletion",
-      "audio_file1": "what-is-your-name-convo",
-      "audio_file2": "my-name-is-convo",
-      "audio_file2_text": "My name is",
-      "questionData": {
-        "character1": "Emma",
-        "character2": "Daniel",
-        "line1": "What is your name?",
-        "answer": "My name is _____",
-        "distractors": [
-          "I am fine, thank you",
-          "I am from Spain",
-          "Nice to see you"
-        ]
-      }
-    },
-    {
+   {
       "template": "ConvoTemplate-1",
       "questionData": {
         "character1": "Beth",
@@ -48,12 +31,29 @@
       "audio_file2": "nice-to-meet-you-convo"
     },
     {
+      "template": "DialogueCompletion",
+      "audio_file1": "what-is-your-name-convo",
+      "audio_file2": "my-name-is-john-male-convo",
+      "audio_file2_text": "My name is",
+      "questionData": {
+        "character1": "Emma",
+        "character2": "John",
+        "line1": "What is your name?",
+        "answer": "My name is John",
+        "distractors": [
+          "I am fine, thank you",
+          "I am from Spain",
+          "Nice to see you"
+        ]
+      }
+    },
+    {
       "template": "ConvoTemplate-1",
       "questionData": {
         "character1": "James",
         "character2": "Anna",
         "line1": "How are you?",
-        "line2": "_____ , thank you.",
+        "line2": "_____ , and you?",
         "answer": "I am fine",
         "distractors": [
           "I am good",
@@ -62,26 +62,11 @@
         ]
       },
       "audio_file1": "how-are-you-convo",
-      "audio_file2": "i-am-fine-convo"
+      "audio_file2": "i-am-fine-and-you-convo"
     },
+    
     {
-      "template": "ConvoTemplate-AppearDisappear",
-      "questionData": {
-        "words": "Hi! What is your name?",
-        "distractors": [
-          "good",
-          "nice",
-          "morning",
-          "well",
-          "thank",
-          "you"
-        ],
-        "display_duration": 0.8
-      },
-      "audio_file": "hi-what-is-your-name-convo"
-    },
-    {
-      "template": "ConvoTemplate-DialogueCompletion",
+      "template": "DialogueCompletion",
       "questionData": {
         "character1": "Grace",
         "character2": "Mike",
@@ -97,7 +82,7 @@
       "audio_file2": "i-am-from-united-states-convo"
     },
     {
-      "template": "ConvoTemplate-DialogueCompletion",
+      "template": "DialogueCompletion",
       "questionData": {
         "character1": "Nora",
         "character2": "Ethan",
@@ -113,15 +98,28 @@
       "audio_file2": "i-am-10-years-old-convo"
     },
     {
-      "template": "ConvoTemplate-SentenceBuilder",
+      "template": "AppearDisappear",
       "questionData": {
-        "correct_order": "My name is John"
+        "words": "I am very well, thank you",
+        "distractors": [
+          "good",
+          "nice",
+          "morning",
+          "welcome"
+        ]
       },
-      "audio_file": "my-name-is-john-male-convo",
-      "audio_file_text": "My name is John"
+      "audio_file": "i-am-very-well-thank-you-convo"
     },
     {
-      "template": "ConvoTemplate-DialogueCompletion",
+      "template": "SentenceBuilder",
+      "questionData": {
+        "correct_order": "This is my brother, John"
+      },
+      "audio_file": "this-is-my-brother-john-convo",
+      "audio_file_text": "This is my brother, John"
+    },
+    {
+      "template": "DialogueCompletion",
       "questionData": {
         "character1": "Alex",
         "character2": "Sarah",
@@ -137,7 +135,31 @@
       "audio_file2": "i-am-a-student-convo"
     },
     {
-      "template": "ConvoTemplate-ClozeSequence",
+      "template": "GrammarForm",
+      "questionData": {
+        "sentence": "I ___ John.",
+        "answer": "am",
+        "distractors": [
+          "was",
+          "are",
+          "our"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "smile",
+        "answer": "I am fine",
+        "wrongAnswers": [
+          "I am sorry",
+          "I am tired",
+          "I am hungry"
+        ]
+      }
+    },
+    {
+      "template": "ClozeSequence",
       "questionData": {
         "sentence": "_____ you _____",
         "answer": [
@@ -167,100 +189,91 @@
       "audio_file": "good-night"
     },
     {
-      "template": "ConvoTemplate-WordPairs",
+      "template": "WordPairs",
       "questionData": {
         "english_words": [
-          "Good Morning",
-          "Good Afternoon / Evening",
-          "Good Night",
-          "How are you?"
+          "I",
+          "you",
+          "he-she",
+          "they",
+          "we"
         ],
         "translations": [
           {
-            "tr": "Günaydın",
-            "es": "¡Buenos Días!",
-            "fr": "Bonjour",
-            "de": "Guten Morgen",
-            "it": "Buongiorno",
-            "pt": "Bom Dia",
-            "ru": "Доброе Утро",
-            "zh": "早上好",
-            "ja": "おはようございます",
-            "ko": "아침이에요",
-            "ar": "صباح النور",
-            "hi": "शहर है"
+            "tr": "ben",
+            "es": "yo",
+            "fr": "je",
+            "de": "ich",
+            "it": "io",
+            "pt": "eu",
+            "ru": "я",
+            "zh": "我",
+            "ja": "私",
+            "ko": "나",
+            "ar": "أنا",
+            "hi": "मैं"
           },
           {
-            "tr": "İyi Akşamlar",
-            "es": "¡Buenas Tardes!",
-            "fr": "Bonsoir",
-            "de": "Guten Abend",
-            "it": "Buona Notte",
-            "pt": "Boa Noite",
-            "ru": "Доброй Ночи",
-            "zh": "晚上好",
-            "ja": "こんばんは",
-            "ko": "안녕히 주무세요",
-            "ar": "مساء النور",
-            "hi": "रात्रि है"
+            "tr": "sen",
+            "es": "tú",
+            "fr": "tu",
+            "de": "du",
+            "it": "tu",
+            "pt": "tu",
+            "ru": "ты",
+            "zh": "你",
+            "ja": "あなた",
+            "ko": "너",
+            "ar": "أنت",
+            "hi": "आप"
           },
           {
-            "tr": "Iyi geceler",
-            "es": "Buenas noches",
-            "fr": "Bonne nuit",
-            "de": "Guten Abend",
-            "it": "Buona Notte",
-            "pt": "Boa Noite",
-            "ru": "Доброй Ночи",
-            "zh": "晚上好",
-            "ja": "こんばんは",
-            "ko": "안녕히 주무세요",
-            "ar": "مساء النور",
-            "hi": "रात्रि है"
+            "tr": "o",
+            "es": "él-ella",
+            "fr": "il-elle",
+            "de": "er-sie",
+            "it": "lui-lei",
+            "pt": "ele-ela",
+            "ru": "он-она",
+            "zh": "他-她",
+            "ja": "彼-彼女",
+            "ko": "그-그녀",
+            "ar": "هو-هي",
+            "hi": "वह-वही"
           },
           {
-            "tr": "Nasılsın?",
-            "es": "¿Cómo estás?",
-            "fr": "Comment ça va?",
-            "de": "Wie geht es dir?",
-            "it": "Come stai?",
-            "pt": "Como você está?",
-            "ru": "Как дела?",
-            "zh": "你好吗？",
-            "ja": "お元気ですか？",
-            "ko": "안녕하세요?",
-            "ar": "كيف حالك؟",
-            "hi": "आपका स्वागत है"
+            "tr": "onlar",
+            "es": "ellos-ellas",
+            "fr": "ils-elles",
+            "de": "sie",
+            "it": "loro-loro",
+            "pt": "eles-elas",
+            "ru": "они-они",
+            "zh": "他们-她们",
+            "ja": "彼ら-彼女たち",
+            "ko": "그들-그녀들",
+            "ar": "هم-هن",
+            "hi": "वे-वही"
+          },
+          {
+            "tr": "biz",
+            "es": "nosotros",
+            "fr": "nous",
+            "de": "wir",
+            "it": "noi",
+            "pt": "nós",
+            "ru": "мы",
+            "zh": "我们",
+            "ja": "私たち",
+            "ko": "우리",
+            "ar": "نحن",
+            "hi": "हम"
           }
         ]
       }
     },
     {
-      "template": "ConvoTemplate-GrammarForm",
-      "questionData": {
-        "sentence": "Nice to ___ you, Olivia.",
-        "answer": "meet",
-        "distractors": [
-          "met",
-          "meets",
-          "meeting"
-        ]
-      }
-    },
-    {
-      "template": "imageQuizTemplate-1",
-      "questionData": {
-        "imageName": "smile",
-        "answer": "I am fine",
-        "wrongAnswers": [
-          "I am sorry",
-          "I am tired",
-          "I am hungry"
-        ]
-      }
-    },
-    {
-      "template": "ConvoTemplate-AppearDisappear",
+      "template": "AppearDisappear",
       "questionData": {
         "words": "Have a great day, Alex",
         "distractors": [
@@ -270,7 +283,8 @@
           "morning",
           "everyday"
         ]
-      }
+      },
+      "audio_file": "have-a-great-day-alex-convo"
     }
   ]
 }

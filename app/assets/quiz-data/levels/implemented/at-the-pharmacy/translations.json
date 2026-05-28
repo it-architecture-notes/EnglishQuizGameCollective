@@ -1,6 +1,40 @@
 {
     "translations_list": [
         {
+            "english_word": "to use",
+            "translations": {
+                "tr": "kullanmak",
+                "es": "usar",
+                "fr": "utiliser",
+                "de": "verwenden",
+                "it": "usare",
+                "pt": "usar",
+                "ru": "использовать",
+                "zh": "使用",
+                "ja": "使用する",
+                "ko": "사용하다",
+                "ar": "استخدام",
+                "hi": "उपयोग करना"
+            }
+        },
+        {
+            "english_word": "bad",
+            "translations": {
+                "tr": "kötü",
+                "es": "malo",
+                "fr": "mauvais",
+                "de": "schlecht",
+                "it": "cattivo",
+                "pt": "ruim",
+                "ru": "плохой",
+                "zh": "坏的",
+                "ja": "悪い",
+                "ko": "나쁜",
+                "ar": "سيئ",
+                "hi": "बुरा"
+            }
+        },
+        {
             "english_word": "to take",
             "translations": {
                 "tr": "almak",
@@ -35,23 +69,6 @@
             }
         },
         {
-            "english_word": "external",
-            "translations": {
-                "tr": "dış",
-                "es": "externo",
-                "fr": "extérieur",
-                "de": "extern",
-                "it": "esterno",
-                "pt": "externo",
-                "ru": "внешний",
-                "zh": "外部的",
-                "ja": "外部の",
-                "ko": "외부의",
-                "ar": "خارجي",
-                "hi": "बाहरी"
-            }
-        },
-        {
             "english_word": "safe",
             "translations": {
                 "tr": "güvenli",
@@ -69,54 +86,37 @@
             }
         },
         {
-            "english_word": "children",
+            "english_word": "a little water",
             "translations": {
-                "tr": "çocuklar",
-                "es": "niños",
-                "fr": "enfants",
-                "de": "Kinder",
-                "it": "bambini",
-                "pt": "crianças",
-                "ru": "дети",
-                "zh": "儿童",
-                "ja": "子供",
-                "ko": "어린이",
-                "ar": "أطفال",
-                "hi": "बच्चे"
+                "tr": "az su ile",
+                "es": "un poco de agua",
+                "fr": "un peu d'eau",
+                "de": "ein bisschen Wasser",
+                "it": "un po' d'acqua",
+                "pt": "um pouco de água",
+                "ru": "немного воды",
+                "zh": "一点水",
+                "ja": "少し水",
+                "ko": "조금 물",
+                "ar": "قليل من الماء",
+                "hi": "थोड़ा पानी"
             }
         },
         {
-            "english_word": "adult",
+            "english_word": "maybe",
             "translations": {
-                "tr": "yetişkin",
-                "es": "adulto",
-                "fr": "adulte",
-                "de": "Erwachsener",
-                "it": "adulto",
-                "pt": "adulto",
-                "ru": "взрослый",
-                "zh": "成人",
-                "ja": "成人",
-                "ko": "성인",
-                "ar": "كبير",
-                "hi": "वयस्क"
-            }
-        },
-        {
-            "english_word": "to help",
-            "translations": {
-                "tr": "yardım etmek",
-                "es": "ayudar",
-                "fr": "aider",
-                "de": "helfen",
-                "it": "aiutare",
-                "pt": "ajudar",
-                "ru": "помочь",
-                "zh": "帮助",
-                "ja": "助ける",
-                "ko": "도와주다",
-                "ar": "مساعدة",
-                "hi": "मदद करना"
+                "tr": "belki",
+                "es": "tal vez",
+                "fr": "peut-être",
+                "de": "vielleicht",
+                "it": "forse",
+                "pt": "talvez",
+                "ru": "возможно",
+                "zh": "可能",
+                "ja": "おそらく",
+                "ko": "아마도",
+                "ar": "ربما",
+                "hi": "शायद"
             }
         },
         {
@@ -134,6 +134,23 @@
                 "ko": "없는",
                 "ar": "بدون",
                 "hi": "बिना"
+            }
+        },
+        {
+            "english_word": "to believe",
+            "translations": {
+                "tr": "inanmak",
+                "es": "creer",
+                "fr": "croire",
+                "de": "glauben",
+                "it": "credere",
+                "pt": "acreditar",
+                "ru": "верить",
+                "zh": "相信",
+                "ja": "信じる",
+                "ko": "믿다",
+                "ar": "يؤمن",
+                "hi": "विश्वास करना"
             }
         },
         {
@@ -168,23 +185,6 @@
                 "ko": "일어나다",
                 "ar": "يحدث",
                 "hi": "होना"
-            }
-        },
-        {
-            "english_word": "medicine",
-            "translations": {
-                "tr": "ilaç",
-                "es": "medicamento",
-                "fr": "médicament",
-                "de": "Medizin",
-                "it": "medicinale",
-                "pt": "medicamento",
-                "ru": "лекарство",
-                "zh": "药物",
-                "ja": "薬",
-                "ko": "약",
-                "ar": "أدوية",
-                "hi": "दवा"
             }
         }
     ]

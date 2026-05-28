@@ -1,0 +1,102 @@
+{
+  "levelQuestions": [
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "bakery",
+        "wrongAnswers": ["bookstore", "flower-shop", "sponge"]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "bookstore",
+        "wrongAnswers": ["clothing-store", "shoe-store", "umbrella"]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-2",
+      "questionData": {
+        "imageName": "gas-station",
+        "wrongAnswers": ["bus-station", "railway-station", "fire-station"]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "bus-station",
+        "wrongAnswers": ["railway-station", "gas-station", "spoon"]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "clothing-store",
+        "wrongAnswers": ["shoe-store", "flower-shop", "towel"]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-2",
+      "questionData": {
+        "imageName": "hospital",
+        "wrongAnswers": ["pet-shop", "flower-shop", "clothing-store"]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "fire-station",
+        "wrongAnswers": ["police-station", "hospital", "sponge"]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "flower-shop",
+        "wrongAnswers": ["bakery", "pet-shop", "toothbrush"]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-2",
+      "questionData": {
+        "imageName": "police-station",
+        "wrongAnswers": ["fire-station", "railway-station", "bus-station"]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "pet-shop",
+        "wrongAnswers": ["flower-shop", "clothing-store", "comb"]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "railway-station",
+        "wrongAnswers": ["bus-station", "gas-station", "toothbrush"]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-2",
+      "questionData": {
+        "imageName": "shoe-store",
+        "wrongAnswers": ["clothing-store", "bookstore", "flower-shop"]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "stadium",
+        "wrongAnswers": ["theatre", "bookstore", "pillow"]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-2",
+      "questionData": {
+        "imageName": "theatre",
+        "wrongAnswers": ["stadium", "bookstore", "flower-shop"]
+      }
+    }
+  ]
+}
