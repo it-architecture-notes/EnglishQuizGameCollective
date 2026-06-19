@@ -1,0 +1,191 @@
+{
+  "translations_list": [
+    {
+      "english_word": "to renew",
+      "translations": {
+        "tr": "yenilemek",
+        "es": "renovar",
+        "fr": "renouveler",
+        "de": "verlängern",
+        "it": "rinnovare",
+        "pt": "renovar",
+        "ru": "продлевать",
+        "zh": "续借",
+        "ja": "延長する",
+        "ko": "연장하다",
+        "ar": "التجديد",
+        "hi": "नवीनीकरण करना"
+      }
+    },
+    {
+      "english_word": "to help",
+      "translations": {
+        "tr": "yardım etmek",
+        "es": "ayudar",
+        "fr": "aider",
+        "de": "helfen",
+        "it": "aiutare",
+        "pt": "ajudar",
+        "ru": "помогать",
+        "zh": "帮助",
+        "ja": "手伝う",
+        "ko": "돕다",
+        "ar": "المساعدة",
+        "hi": "मदद करना"
+      }
+    },
+    {
+      "english_word": "to find",
+      "translations": {
+        "tr": "bulmak",
+        "es": "encontrar",
+        "fr": "trouver",
+        "de": "finden",
+        "it": "trovare",
+        "pt": "encontrar",
+        "ru": "находить",
+        "zh": "找",
+        "ja": "見つける",
+        "ko": "찾다",
+        "ar": "الإيجاد",
+        "hi": "ढूँढना"
+      }
+    },
+    {
+      "english_word": "to borrow",
+      "translations": {
+        "tr": "ödünç almak",
+        "es": "pedir prestado",
+        "fr": "emprunter",
+        "de": "ausleihen",
+        "it": "prendere in prestito",
+        "pt": "pegar emprestado",
+        "ru": "брать на дом",
+        "zh": "借阅",
+        "ja": "借りる",
+        "ko": "빌리다",
+        "ar": "الاستعارة",
+        "hi": "उधार लेना"
+      }
+    },
+    {
+      "english_word": "closed",
+      "translations": {
+        "tr": "kapalı",
+        "es": "cerrado",
+        "fr": "fermé",
+        "de": "geschlossen",
+        "it": "chiuso",
+        "pt": "fechado",
+        "ru": "закрытый",
+        "zh": "闭馆的",
+        "ja": "閉まっている",
+        "ko": "닫힌",
+        "ar": "مغلق",
+        "hi": "बंद"
+      }
+    },
+    {
+      "english_word": "to search",
+      "translations": {
+        "tr": "aramak",
+        "es": "buscar",
+        "fr": "rechercher",
+        "de": "suchen",
+        "it": "cercare",
+        "pt": "pesquisar",
+        "ru": "искать",
+        "zh": "搜索",
+        "ja": "検索する",
+        "ko": "검색하다",
+        "ar": "البحث",
+        "hi": "खोजना"
+      }
+    },
+    {
+      "english_word": "impossible",
+      "translations": {
+        "tr": "imkansız",
+        "es": "imposible",
+        "fr": "impossible",
+        "de": "unmöglich",
+        "it": "impossibile",
+        "pt": "impossível",
+        "ru": "невозможный",
+        "zh": "不可能的",
+        "ja": "不可能な",
+        "ko": "불가능한",
+        "ar": "مستحيل",
+        "hi": "असंभव"
+      }
+    },
+    {
+      "english_word": "to take",
+      "translations": {
+        "tr": "almak",
+        "es": "tomar",
+        "fr": "prendre",
+        "de": "nehmen",
+        "it": "prendere",
+        "pt": "pegar",
+        "ru": "брать",
+        "zh": "拿",
+        "ja": "取る",
+        "ko": "가져가다",
+        "ar": "الأخذ",
+        "hi": "लेना"
+      }
+    },
+    {
+      "english_word": "to show",
+      "translations": {
+        "tr": "göstermek",
+        "es": "mostrar",
+        "fr": "montrer",
+        "de": "zeigen",
+        "it": "mostrare",
+        "pt": "mostrar",
+        "ru": "показывать",
+        "zh": "出示",
+        "ja": "見せる",
+        "ko": "보여주다",
+        "ar": "الإظهار",
+        "hi": "दिखाना"
+      }
+    },
+    {
+      "english_word": "to get",
+      "translations": {
+        "tr": "edinmek",
+        "es": "obtener",
+        "fr": "obtenir",
+        "de": "bekommen",
+        "it": "ottenere",
+        "pt": "obter",
+        "ru": "получить",
+        "zh": "领取",
+        "ja": "取得する",
+        "ko": "얻다",
+        "ar": "الحصول على",
+        "hi": "प्राप्त करना"
+      }
+    },
+    {
+      "english_word": "silent",
+      "translations": {
+        "tr": "sessiz",
+        "es": "silencioso",
+        "fr": "silencieux",
+        "de": "still",
+        "it": "silenzioso",
+        "pt": "silencioso",
+        "ru": "тихий",
+        "zh": "安静的",
+        "ja": "静かな",
+        "ko": "조용한",
+        "ar": "هادئ",
+        "hi": "शांत"
+      }
+    }
+  ]
+}

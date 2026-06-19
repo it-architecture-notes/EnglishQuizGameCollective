@@ -1,0 +1,255 @@
+{
+  "levelQuestions": [
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "sun",
+        "wrongAnswers": [
+          "cloud",
+          "moon",
+          "star"
+        ]
+      }
+    },
+    {
+      "template": "ConvoTemplate-1",
+      "questionData": {
+        "character1": "Sarah",
+        "character2": "Daniel",
+        "line1": "How does the park look today?",
+        "line2": "I am so happy! It looks _____.",
+        "answer": "beautiful",
+        "distractors": [
+          "dirty",
+          "bad",
+          "ugly"
+        ]
+      },
+      "audio_file1": "how-does-the-park-look-today-convo",
+      "audio_file2": "it-looks-beautiful-convo"
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "tree",
+        "wrongAnswers": [
+          "plant",
+          "flower",
+          "cactus"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "fountain",
+        "wrongAnswers": [
+          "tree",
+          "bench",
+          "waterfall"
+        ]
+      }
+    },
+    {
+      "template": "WordPairs",
+      "questionData": {
+        "english_words": [
+          "everyday",
+          "once a day",
+          "twice a week",
+          "once in a while"
+        ],
+        "translations": [
+          {
+            "tr": "Her gün",
+            "es": "cada día",
+            "fr": "tous les jours",
+            "de": "täglich",
+            "it": "ogni giorno",
+            "pt": "diariamente",
+            "ru": "каждый день",
+            "zh": "每天",
+            "ja": "日常",
+            "ko": "매일",
+            "ar": "كل يوم",
+            "hi": "रोज रोज"
+          },
+          {
+            "tr": "günde bir kez",
+            "es": "una vez al dia",
+            "fr": "une fois par jour",
+            "de": "einmal am Tag",
+            "it": "una volta al giorno",
+            "pt": "uma vez por dia",
+            "ru": "один раз в день",
+            "zh": "每天一次",
+            "ja": "1日1回",
+            "ko": "하루에 한 번",
+            "ar": "مرة واحدة في اليوم",
+            "hi": "दिन में एक बार"
+          },
+          {
+            "tr": "haftada iki kez",
+            "es": "dos veces por semana",
+            "fr": "deux fois par semaine",
+            "de": "zweimal pro Woche",
+            "it": "due volte a settimana",
+            "pt": "duas vezes por semana",
+            "ru": "два раза в неделю",
+            "zh": "每周两次",
+            "ja": "週に2回",
+            "ko": "일주일에 두 번",
+            "ar": "مرتين في الأسبوع",
+            "hi": "सप्ताह में दो बार"
+          },
+          {
+            "tr": "arada bir",
+            "es": "de vez en cuando",
+            "fr": "de temps à autre",
+            "de": "ab und zu",
+            "it": "una volta ogni tanto",
+            "pt": "de vez em quando",
+            "ru": "время от времени",
+            "zh": "偶尔",
+            "ja": "時々",
+            "ko": "가끔씩",
+            "ar": "من حين لآخر",
+            "hi": "एक समय में एक बार"
+          }
+        ]
+      }
+    },
+    {
+      "template": "DialogueCompletion",
+      "questionData": {
+        "character1": "Omar",
+        "character2": "Lily",
+        "line1": "Can you reach that branch?",
+        "answer": "yes, only if I jump",
+        "distractors": [
+          "yes, if I comb",
+          "no, I can't see it",
+          "yes, if I can arrive"
+        ]
+      },
+      "audio_file1": "can-you-reach-that-branch-convo",
+      "audio_file2": "yes-only-if-i-jump-convo"
+    },
+    {
+      "template": "AppearDisappear",
+      "questionData": {
+        "words": "They enjoy having a picnic under the trees.",
+        "distractors": [
+          "joy",
+          "playing",
+          "fun",
+          "sign"
+        ]
+      },
+      "audio_file": "they-enjoy-having-a-picnic-under-the-trees-convo"
+    },
+    {
+      "template": "imageQuizTemplate-2",
+      "questionData": {
+        "imageName": "flowers",
+        "wrongAnswers": [
+          "sun",
+          "swing",
+          "grass"
+        ],
+        "answer": "flowers"
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "swing",
+        "wrongAnswers": [
+          "desk",
+          "tree",
+          "bench"
+        ]
+      }
+    },
+    {
+      "template": "SentenceBuilder",
+      "questionData": {
+        "correct_order": "The squirrel ran away from me."
+      },
+      "audio_file": "the-squirrel-ran-away-from-me-convo"
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "grass",
+        "wrongAnswers": [
+          "flower",
+          "tree",
+          "fountain"
+        ]
+      }
+    },
+    {
+      "template": "ClozeSequence",
+      "questionData": {
+        "sentence": "Don't _____ too high or you might _____!",
+        "answer": [
+          "climb",
+          "fall"
+        ],
+        "distractors": [
+          "jump",
+          "run",
+          "walk"
+        ]
+      },
+      "audio_file": "don-t-climb-too-high-or-you-might-fall-convo"
+    },
+    {
+      "template": "GrammarForm",
+      "questionData": {
+        "sentence": "You ________ the ball far so the dog gets some exercise.",
+        "answer": "should throw",
+        "distractors": [
+          "could be thrown",
+          "throws",
+          "might throw"
+        ]
+      }
+    },
+    {
+      "template": "ClozeSequence",
+      "questionData": {
+        "sentence": "The children ____ and ______ near the fountain in the park.",
+        "answer": [
+          "play",
+          "have fun"
+        ],
+        "distractors": [
+          "bored",
+          "climb",
+          "have enjoy",
+          "picniking"
+        ]
+      },
+      "audio_file": "the-children-play-and-have-fun-near-the-fountain-in-the-park-convo"
+    },
+    {
+      "template": "ConvoTemplate-1",
+      "questionData": {
+        "character1": "Omar",
+        "character2": "Lily",
+        "line1": "_____ dog is that?",
+        "line2": "He is a golden retriever. ",
+        "answer": "what kind of",
+        "distractors": [
+          "how many",
+          "which type of",
+          "where of"
+        ]
+      },
+      "audio_file1": "what-kind-of-dog-is-that-convo",
+      "audio_file2": "he-is-a-golden-retriever-convo"
+    }
+  ]
+}

@@ -1,0 +1,260 @@
+{
+  "levelQuestions": [
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "bill",
+        "wrongAnswers": [
+          "credit-card",
+          "menu",
+          "letter"
+        ]
+      }
+    },
+    {
+      "template": "ConvoTemplate-1",
+      "questionData": {
+        "character1": "Sarah",
+        "character2": "Daniel",
+        "line1": "What do you want to _____?",
+        "line2": "I want to _____ the fish, but I don't know which one",
+        "answer": "order",
+        "distractors": [
+          "think",
+          "drink",
+          "serve"
+        ]
+      },
+      "audio_file1": "what-do-you-want-to-order-convo",
+      "audio_file2": "i-want-to-order-the-fish-but-i-don-t-know-which-one-convo"
+    },
+    {
+      "template": "ConvoTemplate-1",
+      "questionData": {
+        "character1": "Beth",
+        "character2": "Alex",
+        "line1": "Would you like to see the dessert menu?",
+        "line2": "Yes, please. Can we ______ one dessert between two people?",
+        "answer": "share",
+        "distractors": [
+          "order",
+          "take",
+          "ask"
+        ]
+      },
+      "audio_file1": "would-you-like-to-see-the-dessert-menu-convo",
+      "audio_file2": "yes-please-can-we-share-one-dessert-between-two-people-convo"
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "waiter",
+        "wrongAnswers": [
+          "chef",
+          "customer",
+          "manager"
+        ]
+      }
+    },
+    {
+      "template": "WordPairs",
+      "questionData": {
+        "english_words": [
+          "sweet",
+          "salty",
+          "sour",
+          "spicy"
+        ],
+        "translations": [
+          {
+            "tr": "tatlı",
+            "es": "dulce",
+            "fr": "doux",
+            "de": "süß",
+            "it": "dolce",
+            "pt": "doce",
+            "ru": "сладкий",
+            "zh": "甜的",
+            "ja": "甘い",
+            "ko": "달콤한",
+            "ar": "حلو",
+            "hi": "मीठा"
+          },
+          {
+            "tr": "tuzlu",
+            "es": "salado",
+            "fr": "salé",
+            "de": "salzig",
+            "it": "salato",
+            "pt": "salgado",
+            "ru": "соленый",
+            "zh": "咸",
+            "ja": "塩辛い",
+            "ko": "짠",
+            "ar": "مالح",
+            "hi": "नमकीन"
+          },
+          {
+            "tr": "ekşi",
+            "es": "agrio",
+            "fr": "aigre",
+            "de": "sauer",
+            "it": "acido",
+            "pt": "azedo",
+            "ru": "кислый",
+            "zh": "酸的",
+            "ja": "酸っぱい",
+            "ko": "시큼한",
+            "ar": "حامِض",
+            "hi": "खट्टा"
+          },
+          {
+            "tr": "baharatlı",
+            "es": "picante",
+            "fr": "épicé",
+            "de": "scharf",
+            "it": "speziato",
+            "pt": "apimentado",
+            "ru": "пряный",
+            "zh": "辛辣的",
+            "ja": "辛い",
+            "ko": "매운",
+            "ar": "حار",
+            "hi": "मसालेदार"
+          }
+        ]
+      }
+    },
+    {
+      "template": "DialogueCompletion",
+      "questionData": {
+        "character1": "Omar",
+        "character2": "Lily",
+        "line1": "Can we take the bill?",
+        "answer": "Sure, how do you want to pay?",
+        "distractors": [
+          "Yes, do you want cash?",
+          "No, we will pay later",
+          "Yes, we will pay now"
+        ]
+      },
+      "audio_file1": "can-we-take-the-bill-convo",
+      "audio_file2": "sure-how-do-you-want-to-pay-convo"
+    },
+    {
+      "template": "AppearDisappear",
+      "questionData": {
+        "words": "I am full and I can't eat any more.",
+        "distractors": [
+          "are",
+          "empty",
+          "most",
+          "so"
+        ]
+      },
+      "audio_file": "i-am-full-and-i-can-t-eat-any-more-convo"
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "meal",
+        "wrongAnswers": [
+          "drink",
+          "dessert",
+          "plate"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-2",
+      "questionData": {
+        "imageName": "menu",
+        "wrongAnswers": [
+          "meal",
+          "tray",
+          "bill"
+        ]
+      },
+      "answer": "menu"
+    },
+    {
+      "template": "SentenceBuilder",
+      "questionData": {
+        "correct_order": "He reserved a table for us."
+      },
+      "audio_file": "he-reserved-a-table-for-us-convo"
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "tray",
+        "wrongAnswers": [
+          "bowl",
+          "plate",
+          "cardboard"
+        ]
+      }
+    },
+    {
+      "template": "ClozeSequence",
+      "questionData": {
+        "sentence": "_____ dish is the most _____ on the menu?",
+        "answer": [
+          "which",
+          "delicious"
+        ],
+        "distractors": [
+          "what",
+          "where",
+          "tastless",
+          "saltier"
+        ]
+      },
+      "audio_file": "which-dish-is-the-most-delicious-on-the-menu-convo"
+    },
+    {
+      "template": "GrammarForm",
+      "questionData": {
+        "sentence": "_____ a dish that is not too salty?",
+        "answer": "can you recommend",
+        "distractors": [
+          "could you recommends",
+          "will recommend you",
+          "are you recommending"
+        ]
+      }
+    },
+    {
+      "template": "ClozeSequence",
+      "questionData": {
+        "sentence": "_____ the soup _____ until it's warm",
+        "answer": [
+          "heat",
+          "slowly"
+        ],
+        "distractors": [
+          "bake",
+          "cooler",
+          "quicker"
+        ]
+      },
+      "audio_file": "heat-the-soup-slowly-until-it-s-warm-convo"
+    },
+    {
+      "template": "ClozeSequence",
+      "questionData": {
+        "sentence": "Can I _____ the ____ dish before I order?",
+        "answer": [
+          "taste",
+          "main"
+        ],
+        "distractors": [
+          "eat",
+          "sense",
+          "minor"
+        ]
+      },
+      "audio_file": "can-i-taste-the-main-dish-before-i-order-convo"
+    }
+  ]
+}

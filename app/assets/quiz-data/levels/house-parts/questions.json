@@ -1,0 +1,147 @@
+{
+  "levelQuestions": [
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "balcony",
+        "wrongAnswers": [
+          "roof",
+          "sprinkler",
+          "chimney"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "chimney",
+        "wrongAnswers": [
+          "tool-shed",
+          "fence",
+          "balcony"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-2",
+      "questionData": {
+        "imageName": "fence",
+        "wrongAnswers": [
+          "window",
+          "chimney",
+          "grill-barbecue"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "gate",
+        "wrongAnswers": [
+          "hammock",
+          "window",
+          "balcony"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "grill-barbecue",
+        "wrongAnswers": [
+          "roof",
+          "hammock",
+          "balcony"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-2",
+      "questionData": {
+        "imageName": "hammock",
+        "wrongAnswers": [
+          "patio",
+          "roof",
+          "stairs"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "patio",
+        "wrongAnswers": [
+          "chimney",
+          "fence",
+          "balcony"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "porch",
+        "wrongAnswers": [
+          "grill-barbecue",
+          "roof",
+          "balcony"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-2",
+      "questionData": {
+        "imageName": "roof",
+        "wrongAnswers": [
+          "window",
+          "chimney",
+          "gate"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "sprinkler",
+        "wrongAnswers": [
+          "tool-shed",
+          "hammock",
+          "balcony"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "stairs",
+        "wrongAnswers": [
+          "chimney",
+          "tool-shed",
+          "balcony"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-2",
+      "questionData": {
+        "imageName": "tool-shed",
+        "wrongAnswers": [
+          "hammock",
+          "porch",
+          "sprinkler"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "window",
+        "wrongAnswers": [
+          "porch",
+          "balcony",
+          "chimney"
+        ]
+      }
+    }
+  ]
+}

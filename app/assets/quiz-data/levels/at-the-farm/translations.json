@@ -1,0 +1,208 @@
+{
+  "translations_list": [
+    {
+      "english_word": "to become a farmer",
+      "translations": {
+        "tr": "çiftçi olmak",
+        "es": "convertirse en granjero",
+        "fr": "devenir agriculteur",
+        "de": "Bauer werden",
+        "it": "diventare agricoltore",
+        "pt": "tornar-se agricultor",
+        "ru": "стать фермером",
+        "zh": "成为农民",
+        "ja": "農家になる",
+        "ko": "농부가 되다",
+        "ar": "أن تصبح مزارعًا",
+        "hi": "किसान बनना"
+      }
+    },
+    {
+      "english_word": "to pick apples",
+      "translations": {
+        "tr": "elma toplamak",
+        "es": "recoger manzanas",
+        "fr": "cueillir des pommes",
+        "de": "Äpfel pflücken",
+        "it": "raccogliere mele",
+        "pt": "colher maçãs",
+        "ru": "собирать яблоки",
+        "zh": "摘苹果",
+        "ja": "リンゴを摘む",
+        "ko": "사과를 따다",
+        "ar": "قطف التفاح",
+        "hi": "सेब तोड़ना"
+      }
+    },
+    {
+      "english_word": "to ride a horse",
+      "translations": {
+        "tr": "ata binmek",
+        "es": "montar a caballo",
+        "fr": "monter à cheval",
+        "de": "Pferd reiten",
+        "it": "andare a cavallo",
+        "pt": "andar a cavalo",
+        "ru": "ездить верхом",
+        "zh": "骑马",
+        "ja": "馬に乗る",
+        "ko": "말을 타다",
+        "ar": "ركوب الخيل",
+        "hi": "घुड़सवारी करना"
+      }
+    },
+    {
+      "english_word": "to push",
+      "translations": {
+        "tr": "itmek",
+        "es": "empujar",
+        "fr": "pousser",
+        "de": "schieben",
+        "it": "spingere",
+        "pt": "empurrar",
+        "ru": "толкать",
+        "zh": "推动",
+        "ja": "押す",
+        "ko": "밀다",
+        "ar": "لدفع",
+        "hi": "धक्का देना"
+      }
+    },
+    {
+      "english_word": "finally",
+      "translations": {
+        "tr": "nihayet",
+        "es": "finalmente",
+        "fr": "enfin",
+        "de": "endlich",
+        "it": "finalmente",
+        "pt": "finalmente",
+        "ru": "наконец",
+        "zh": "最后",
+        "ja": "ついに",
+        "ko": "마침내",
+        "ar": "أخيرا",
+        "hi": "अंततः"
+      }
+    },
+    {
+      "english_word": "to move something",
+      "translations": {
+        "tr": "bir şeyi taşımak",
+        "es": "mover algo",
+        "fr": "déplacer quelque chose",
+        "de": "etwas bewegen",
+        "it": "spostare qualcosa",
+        "pt": "mover algo",
+        "ru": "переместить что-то",
+        "zh": "移动某物",
+        "ja": "何かを動かす",
+        "ko": "무언가를 옮기다",
+        "ar": "تحريك شيء ما",
+        "hi": "कुछ स्थानांतरित करना"
+      }
+    },
+    {
+      "english_word": "daily",
+      "translations": {
+        "tr": "günlük",
+        "es": "diariamente",
+        "fr": "quotidiennement",
+        "de": "täglich",
+        "it": "quotidiano",
+        "pt": "diariamente",
+        "ru": "ежедневно",
+        "zh": "每日",
+        "ja": "毎日",
+        "ko": "매일",
+        "ar": "يوميا",
+        "hi": "दैनिक"
+      }
+    },
+    {
+      "english_word": "to add",
+      "translations": {
+        "tr": "eklemek",
+        "es": "agregar",
+        "fr": "ajouter",
+        "de": "hinzufügen",
+        "it": "aggiungere",
+        "pt": "adicionar",
+        "ru": "добавить",
+        "zh": "添加",
+        "ja": "追加する",
+        "ko": "추가하다",
+        "ar": "لإضافة",
+        "hi": "जोड़ने के लिए"
+      }
+    },
+    {
+      "english_word": "to pull",
+      "translations": {
+        "tr": "çekmek",
+        "es": "tirar",
+        "fr": "tirer",
+        "de": "ziehen",
+        "it": "tirare",
+        "pt": "puxar",
+        "ru": "тянуть",
+        "zh": "拉",
+        "ja": "引っ張る",
+        "ko": "당기다",
+        "ar": "لسحب",
+        "hi": "खींचना"
+      }
+    },
+    {
+      "english_word": "raise something",
+      "translations": {
+        "tr": "bir şeyi yetiştirmek",
+        "es": "criar algo",
+        "fr": "élever quelque chose",
+        "de": "etwas aufziehen",
+        "it": "allevare qualcosa",
+        "pt": "criar algo",
+        "ru": "выращивать что-то",
+        "zh": "饲养某物",
+        "ja": "何かを育てる",
+        "ko": "무언가를 키우다",
+        "ar": "تربية شيء ما",
+        "hi": "कुछ पालना"
+      }
+    },
+    {
+      "english_word": "to plant something",
+      "translations": {
+        "tr": "bir şey dikmek",
+        "es": "plantar algo",
+        "fr": "planter quelque chose",
+        "de": "etwas pflanzen",
+        "it": "piantare qualcosa",
+        "pt": "plantar algo",
+        "ru": "посадить что-то",
+        "zh": "种植某物",
+        "ja": "何かを植える",
+        "ko": "무언가를 심다",
+        "ar": "زرع شيء ما",
+        "hi": "कुछ लगाना"
+      }
+    },
+    {
+      "english_word": "especially",
+      "translations": {
+        "tr": "özellikle",
+        "es": "especialmente",
+        "fr": "surtout",
+        "de": "besonders",
+        "it": "soprattutto",
+        "pt": "especialmente",
+        "ru": "особенно",
+        "zh": "尤其是",
+        "ja": "特に",
+        "ko": "특히",
+        "ar": "خصوصا",
+        "hi": "विशेषकर"
+      }
+    }
+  ]
+}

@@ -1,0 +1,208 @@
+{
+  "translations_list": [
+    {
+      "english_word": "happy",
+      "translations": {
+        "tr": "mutlu",
+        "es": "feliz",
+        "fr": "heureux",
+        "de": "glücklich",
+        "it": "felice",
+        "pt": "feliz",
+        "ru": "счастливый",
+        "zh": "快乐的",
+        "ja": "嬉しい",
+        "ko": "행복한",
+        "ar": "سعيد",
+        "hi": "खुश"
+      }
+    },
+    {
+      "english_word": "to invite",
+      "translations": {
+        "tr": "davet etmek",
+        "es": "invitar",
+        "fr": "inviter",
+        "de": "einladen",
+        "it": "invitare",
+        "pt": "convidar",
+        "ru": "приглашать",
+        "zh": "邀请",
+        "ja": "招待する",
+        "ko": "초대하다",
+        "ar": "يدعو",
+        "hi": "आमंत्रित करना"
+      }
+    },
+    {
+      "english_word": "to enjoy",
+      "translations": {
+        "tr": "keyif almak",
+        "es": "disfrutar",
+        "fr": "profiter de",
+        "de": "genießen",
+        "it": "godersi",
+        "pt": "desfrutar",
+        "ru": "наслаждаться",
+        "zh": "享受",
+        "ja": "楽しむ",
+        "ko": "즐기다",
+        "ar": "يستمتع",
+        "hi": "आनंद लेना"
+      }
+    },
+    {
+      "english_word": "together",
+      "translations": {
+        "tr": "birlikte",
+        "es": "juntos",
+        "fr": "ensemble",
+        "de": "zusammen",
+        "it": "insieme",
+        "pt": "juntos",
+        "ru": "вместе",
+        "zh": "一起",
+        "ja": "一緒に",
+        "ko": "함께",
+        "ar": "معاً",
+        "hi": "एक साथ"
+      }
+    },
+    {
+      "english_word": "to blow",
+      "translations": {
+        "tr": "üflemek",
+        "es": "soplar",
+        "fr": "souffler",
+        "de": "pusten",
+        "it": "soffiare",
+        "pt": "soprar",
+        "ru": "дуть",
+        "zh": "吹",
+        "ja": "吹く",
+        "ko": "불다",
+        "ar": "نفخ",
+        "hi": "फूंकना"
+      }
+    },
+    {
+      "english_word": "to make",
+      "translations": {
+        "tr": "yapmak",
+        "es": "hacer",
+        "fr": "faire",
+        "de": "machen",
+        "it": "fare",
+        "pt": "fazer",
+        "ru": "делать",
+        "zh": "做",
+        "ja": "作る",
+        "ko": "만들다",
+        "ar": "صنع",
+        "hi": "बनाना"
+      }
+    },
+    {
+      "english_word": "to give",
+      "translations": {
+        "tr": "vermek",
+        "es": "dar",
+        "fr": "donner",
+        "de": "geben",
+        "it": "dare",
+        "pt": "dar",
+        "ru": "давать",
+        "zh": "给",
+        "ja": "あげる",
+        "ko": "주다",
+        "ar": "إعطاء",
+        "hi": "देना"
+      }
+    },
+    {
+      "english_word": "to celebrate",
+      "translations": {
+        "tr": "kutlamak",
+        "es": "celebrar",
+        "fr": "fêter",
+        "de": "feiern",
+        "it": "festeggiare",
+        "pt": "celebrar",
+        "ru": "отмечать",
+        "zh": "庆祝",
+        "ja": "お祝いする",
+        "ko": "기념하다",
+        "ar": "يحتفل",
+        "hi": "मनाना"
+      }
+    },
+    {
+      "english_word": "to want",
+      "translations": {
+        "tr": "istemek",
+        "es": "querer",
+        "fr": "vouloir",
+        "de": "wollen",
+        "it": "volere",
+        "pt": "querer",
+        "ru": "хотеть",
+        "zh": "想要",
+        "ja": "望む",
+        "ko": "원하다",
+        "ar": "يريد",
+        "hi": "चाहना"
+      }
+    },
+    {
+      "english_word": "to sing",
+      "translations": {
+        "tr": "şarkı söylemek",
+        "es": "cantar",
+        "fr": "chanter",
+        "de": "singen",
+        "it": "cantare",
+        "pt": "cantar",
+        "ru": "петь",
+        "zh": "唱歌",
+        "ja": "歌う",
+        "ko": "노래하다",
+        "ar": "يغني",
+        "hi": "गाना"
+      }
+    },
+    {
+      "english_word": "surprise",
+      "translations": {
+        "tr": "sürpriz",
+        "es": "sorpresa",
+        "fr": "surprise",
+        "de": "Überraschung",
+        "it": "sorpresa",
+        "pt": "surpresa",
+        "ru": "сюрприз",
+        "zh": "惊喜",
+        "ja": "サプライズ",
+        "ko": "놀라움",
+        "ar": "مفاجأة",
+        "hi": "आश्चर्य"
+      }
+    },
+    {
+      "english_word": "to start",
+      "translations": {
+        "tr": "başlamak",
+        "es": "empezar",
+        "fr": "commencer",
+        "de": "anfangen",
+        "it": "iniziare",
+        "pt": "começar",
+        "ru": "начинать",
+        "zh": "开始",
+        "ja": "始める",
+        "ko": "시작하다",
+        "ar": "يبدأ",
+        "hi": "शुरू करना"
+      }
+    }
+  ]
+}

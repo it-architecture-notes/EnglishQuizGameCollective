@@ -1,0 +1,261 @@
+{
+  "levelQuestions": [
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "briefcase",
+        "wrongAnswers": [
+          "bag",
+          "backpack",
+          "luggage"
+        ]
+      }
+    },
+    {
+      "template": "ConvoTemplate-1",
+      "questionData": {
+        "character1": "Sarah",
+        "character2": "Daniel",
+        "line1": "Is the presentation ready for the client?",
+        "line2": "It's _____ done. I just need five more minutes.",
+        "answer": "almost",
+        "distractors": [
+          "already",
+          "completely",
+          "soon"
+        ]
+      },
+      "audio_file1": "is-the-presentation-ready-for-the-client-convo",
+      "audio_file2": "it-s-almost-done-i-just-need-five-more-minutes-convo"
+    },
+    {
+      "template": "ConvoTemplate-1",
+      "questionData": {
+        "character1": "Beth",
+        "character2": "Alex",
+        "line1": "Can you close the door?",
+        "line2": "Yes, the hallway is very ____",
+        "answer": "noisy",
+        "distractors": [
+          "quiet",
+          "cool",
+          "noise"
+        ]
+      },
+      "audio_file1": "can-you-close-the-door-convo",
+      "audio_file2": "yes-the-hallway-is-very-noisy-convo"
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "file",
+        "wrongAnswers": [
+          "paper",
+          "binder",
+          "letter"
+        ]
+      }
+    },
+    {
+      "template": "WordPairs",
+      "questionData": {
+        "english_words": [
+          "year",
+          "month",
+          "week",
+          "day"
+        ],
+        "translations": [
+          {
+            "tr": "yıl",
+            "es": "año",
+            "fr": "année",
+            "de": "Jahr",
+            "it": "anno",
+            "pt": "ano",
+            "ru": "год",
+            "zh": "年",
+            "ja": "年",
+            "ko": "년도",
+            "ar": "سنة",
+            "hi": "वर्ष"
+          },
+          {
+            "tr": "ay",
+            "es": "mes",
+            "fr": "mois",
+            "de": "Monat",
+            "it": "mese",
+            "pt": "mês",
+            "ru": "месяц",
+            "zh": "月",
+            "ja": "月",
+            "ko": "월",
+            "ar": "شهر",
+            "hi": "महीना"
+          },
+          {
+            "tr": "hafta",
+            "es": "semana",
+            "fr": "semaine",
+            "de": "Woche",
+            "it": "settimana",
+            "pt": "semana",
+            "ru": "неделя",
+            "zh": "星期",
+            "ja": "週",
+            "ko": "주",
+            "ar": "أسبوع",
+            "hi": "सप्ताह"
+          },
+          {
+            "tr": "gün",
+            "es": "día",
+            "fr": "jour",
+            "de": "Tag",
+            "it": "giorno",
+            "pt": "dia",
+            "ru": "день",
+            "zh": "天",
+            "ja": "日",
+            "ko": "낮",
+            "ar": "يوم",
+            "hi": "दिन"
+          }
+        ]
+      }
+    },
+    {
+      "template": "DialogueCompletion",
+      "questionData": {
+        "character1": "Omar",
+        "character2": "Lily",
+        "line1": "Is Sarah in the office today?",
+        "answer": "No, she is away on business.",
+        "distractors": [
+          "Yes, she will come later",
+          "No, but she is in the office",
+          "Yes, she is in the other office"
+        ]
+      },
+      "audio_file1": "is-sarah-in-the-office-today-convo",
+      "audio_file2": "no-she-is-away-on-business-convo"
+    },
+    {
+      "template": "AppearDisappear",
+      "questionData": {
+        "words": "It is hard to decide, both are good.",
+        "distractors": [
+          "was",
+          "bad",
+          "most",
+          "difficult"
+        ]
+      },
+      "audio_file": "it-is-hard-to-decide-both-are-good-convo"
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "meeting",
+        "wrongAnswers": [
+          "lunch",
+          "conference",
+          "talking"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-2",
+      "questionData": {
+        "imageName": "cabinet",
+        "wrongAnswers": [
+          "file",
+          "briefcase",
+          "computer"
+        ]
+      },
+      "answer": "cabinet"
+    },
+    {
+      "template": "SentenceBuilder",
+      "questionData": {
+        "correct_order": "She sent him a quick message "
+      },
+      "audio_file": "she-sent-him-a-quick-message-convo"
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "computer",
+        "wrongAnswers": [
+          "phone",
+          "tablet",
+          "keyboard"
+        ]
+      }
+    },
+    {
+      "template": "ClozeSequence",
+      "questionData": {
+        "sentence": "Are you _____ it's a good idea _____ that old printer?",
+        "answer": [
+          "sure",
+          "to own"
+        ],
+        "distractors": [
+          "to decide",
+          "to look",
+          "quickly",
+          "worried"
+        ]
+      },
+      "audio_file": "are-you-sure-it-s-a-good-idea-to-own-that-old-printer-convo"
+    },
+    {
+      "template": "GrammarForm",
+      "questionData": {
+        "sentence": "Our team usually ____ a great job?",
+        "answer": "does",
+        "distractors": [
+          "do",
+          "will do",
+          "are doing"
+        ]
+      }
+    },
+    {
+      "template": "ClozeSequence",
+      "questionData": {
+        "sentence": "I will _____ you to the manager as soon as she is _____.",
+        "answer": [
+          "connect",
+          "available"
+        ],
+        "distractors": [
+          "put to",
+          "take",
+          "busy",
+          "there"
+        ]
+      },
+      "audio_file": "i-will-connect-you-to-the-manager-as-soon-as-she-is-available-convo"
+    },
+    {
+      "template": "ClozeSequence",
+      "questionData": {
+        "sentence": "I _____ we use the _____ calendar system to book all our meetings.",
+        "answer": [
+          "suggest",
+          "smart"
+        ],
+        "distractors": [
+          "say",
+          "think",
+          "dull"
+        ]
+      },
+      "audio_file": "i-suggest-we-use-the-smart-calendar-system-to-book-all-our-meetings-convo"
+    }
+  ]
+}

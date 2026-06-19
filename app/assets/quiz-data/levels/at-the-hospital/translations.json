@@ -1,0 +1,191 @@
+{
+  "translations_list": [
+    {
+      "english_word": "to feel",
+      "translations": {
+        "tr": "hissetmek",
+        "es": "sentir",
+        "fr": "ressentir",
+        "de": "zu fühlen",
+        "it": "sentire",
+        "pt": "sentir",
+        "ru": "чувствовать",
+        "zh": "去感觉",
+        "ja": "感じる",
+        "ko": "느끼다",
+        "ar": "ليشعر",
+        "hi": "महसूस करना"
+      }
+    },
+    {
+      "english_word": "sick",
+      "translations": {
+        "tr": "hasta",
+        "es": "enfermo",
+        "fr": "malade",
+        "de": "krank",
+        "it": "malato",
+        "pt": "doente",
+        "ru": "больной",
+        "zh": "生病了",
+        "ja": "病気",
+        "ko": "아프다",
+        "ar": "مريض",
+        "hi": "बीमार"
+      }
+    },
+    {
+      "english_word": "to check",
+      "translations": {
+        "tr": "kontrol etmek",
+        "es": "comprobar",
+        "fr": "vérifier",
+        "de": "zu überprüfen",
+        "it": "per controllare",
+        "pt": "verificar",
+        "ru": "проверить",
+        "zh": "检查",
+        "ja": "確認する",
+        "ko": "확인하다",
+        "ar": "للتحقق",
+        "hi": "जाँच करना"
+      }
+    },
+    {
+      "english_word": "to work",
+      "translations": {
+        "tr": "çalışmak",
+        "es": "trabajar",
+        "fr": "travailler",
+        "de": "arbeiten",
+        "it": "lavorare",
+        "pt": "trabalhar",
+        "ru": "работать",
+        "zh": "去工作",
+        "ja": "働く",
+        "ko": "일하다",
+        "ar": "للعمل",
+        "hi": "काम करने के लिए"
+      }
+    },
+    {
+      "english_word": "careful",
+      "translations": {
+        "tr": "dikkatli",
+        "es": "cuidado",
+        "fr": "prudent",
+        "de": "vorsichtig",
+        "it": "attento",
+        "pt": "cuidado",
+        "ru": "осторожный",
+        "zh": "小心",
+        "ja": "注意深い",
+        "ko": "조심하다",
+        "ar": "حذرا",
+        "hi": "सावधान"
+      }
+    },
+    {
+      "english_word": "to rest",
+      "translations": {
+        "tr": "dinlenmek",
+        "es": "descansar",
+        "fr": "se reposer",
+        "de": "sich ausruhen",
+        "it": "riposare",
+        "pt": "descansar",
+        "ru": "отдыхать",
+        "zh": "休息",
+        "ja": "休む",
+        "ko": "쉬다",
+        "ar": "للراحة",
+        "hi": "आराम करने के लिए"
+      }
+    },
+    {
+      "english_word": "to think",
+      "translations": {
+        "tr": "düşünmek",
+        "es": "pensar",
+        "fr": "penser",
+        "de": "zu denken",
+        "it": "pensare",
+        "pt": "pensar",
+        "ru": "думать",
+        "zh": "思考",
+        "ja": "考える",
+        "ko": "생각하다",
+        "ar": "للتفكير",
+        "hi": "सोचना"
+      }
+    },
+    {
+      "english_word": "to call",
+      "translations": {
+        "tr": "aramak",
+        "es": "llamar",
+        "fr": "appeler",
+        "de": "anrufen",
+        "it": "chiamare",
+        "pt": "ligar",
+        "ru": "позвонить",
+        "zh": "打电话",
+        "ja": "電話する",
+        "ko": "전화하다",
+        "ar": "للاتصال",
+        "hi": "कॉल करने के लिए"
+      }
+    },
+    {
+      "english_word": "to help",
+      "translations": {
+        "tr": "yardım etmek",
+        "es": "para ayudar",
+        "fr": "pour aider",
+        "de": "helfen",
+        "it": "per aiutare",
+        "pt": "para ajudar",
+        "ru": "помочь",
+        "zh": "帮助",
+        "ja": "助けるために",
+        "ko": "돕기 위해",
+        "ar": "للمساعدة",
+        "hi": "मदद करने के लिए"
+      }
+    },
+    {
+      "english_word": "enough",
+      "translations": {
+        "tr": "yeterli",
+        "es": "suficiente",
+        "fr": "assez",
+        "de": "genug",
+        "it": "abbastanza",
+        "pt": "o suficiente",
+        "ru": "достаточно",
+        "zh": "够了",
+        "ja": "十分な",
+        "ko": "충분히",
+        "ar": "بما فيه الكفاية",
+        "hi": "पर्याप्त"
+      }
+    },
+    {
+      "english_word": "to begin",
+      "translations": {
+        "tr": "başlamak",
+        "es": "para empezar",
+        "fr": "pour commencer",
+        "de": "beginnen",
+        "it": "per iniziare",
+        "pt": "para começar",
+        "ru": "начать",
+        "zh": "开始",
+        "ja": "始める",
+        "ko": "시작하다",
+        "ar": "للبدء",
+        "hi": "शुरू करने के लिए"
+      }
+    }
+  ]
+}

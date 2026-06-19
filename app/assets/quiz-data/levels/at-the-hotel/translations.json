@@ -1,0 +1,208 @@
+{
+  "translations_list": [
+    {
+      "english_word": "unfortunately",
+      "translations": {
+        "tr": "maalesef",
+        "es": "desafortunadamente",
+        "fr": "malheureusement",
+        "de": "leider",
+        "it": "sfortunatamente",
+        "pt": "desafortunadamente",
+        "ru": "неудачно",
+        "zh": "不幸的是",
+        "ja": "残念ながら",
+        "ko": "불행히도",
+        "ar": "عذراً",
+        "hi": "दुर्भाग्य से"
+      }
+    },
+    {
+      "english_word": "check in",
+      "translations": {
+        "tr": "giriş yapmak",
+        "es": "registrarse",
+        "fr": "s'enregistrer",
+        "de": "einzuchecken",
+        "it": "per effettuare il check-in",
+        "pt": "fazer check-in",
+        "ru": "чтобы зарегистрироваться",
+        "zh": "办理登机手续",
+        "ja": "チェックインする",
+        "ko": "체크인하다",
+        "ar": "لتسجيل الوصول",
+        "hi": "चेक इन करने के लिए"
+      }
+    },
+    {
+      "english_word": "another",
+      "translations": {
+        "tr": "başka bir",
+        "es": "otro",
+        "fr": "un autre",
+        "de": "ein anderes",
+        "it": "un altro",
+        "pt": "outro",
+        "ru": "другой",
+        "zh": "另一个",
+        "ja": "別の",
+        "ko": "다른",
+        "ar": "آخر",
+        "hi": "अन्य"
+      }
+    },
+    {
+      "english_word": "to confirm",
+      "translations": {
+        "tr": "onaylamak",
+        "es": "confirmar",
+        "fr": "confirmer",
+        "de": "bestätigen",
+        "it": "confermare",
+        "pt": "confirmar",
+        "ru": "подтвердить",
+        "zh": "确认",
+        "ja": "確認する",
+        "ko": "확인하다",
+        "ar": "تأكيد",
+        "hi": "सत्यापित करना"
+      }
+    },
+    {
+      "english_word": "to complain",
+      "translations": {
+        "tr": "şikayet etmek",
+        "es": "quejarse",
+        "fr": "plaindre",
+        "de": "beschweren",
+        "it": "denunciare",
+        "pt": "denunciar",
+        "ru": "жаловаться",
+        "zh": "抱怨",
+        "ja": "申し立てる",
+        "ko": "불평하다",
+        "ar": "يشكو",
+        "hi": "निरादर करना"
+      }
+    },
+    {
+      "english_word": "to join",
+      "translations": {
+        "tr": "katılmak",
+        "es": "unirse",
+        "fr": "joindre",
+        "de": "beitreten",
+        "it": "unirsi",
+        "pt": "juntar-se",
+        "ru": "присоединиться",
+        "zh": "加入",
+        "ja": "参加する",
+        "ko": "참여하다",
+        "ar": "للانضمام",
+        "hi": "शामिल होना"
+      }
+    },
+    {
+      "english_word": "to speak",
+      "translations": {
+        "tr": "konuşmak",
+        "es": "hablar",
+        "fr": "parler",
+        "de": "sprechen",
+        "it": "parlare",
+        "pt": "falar",
+        "ru": "говорить",
+        "zh": "说话",
+        "ja": "話す",
+        "ko": "말하다",
+        "ar": "يتحدث",
+        "hi": "बात करना"
+      }
+    },
+    {
+      "english_word": "to borrow",
+      "translations": {
+        "tr": "ödünç almak",
+        "es": "prestar",
+        "fr": "prêter",
+        "de": "ausleihen",
+        "it": "prestare",
+        "pt": "emprestar",
+        "ru": "одолжить",
+        "zh": "借",
+        "ja": "貸す",
+        "ko": "빌리다",
+        "ar": "لقرض",
+        "hi": "उधार लेना"
+      }
+    },
+    {
+      "english_word": "to check out",
+      "translations": {
+        "tr": "çıkış yapmak",
+        "es": "salir",
+        "fr": "sortir",
+        "de": "auschecken",
+        "it": "uscire",
+        "pt": "sair",
+        "ru": "выйти",
+        "zh": "退房",
+        "ja": "チェックアウトする",
+        "ko": "체크아웃하다",
+        "ar": "للخروج",
+        "hi": "चेक आउट करने के लिए"
+      }
+    },
+    {
+      "english_word": "to continue",
+      "translations": {
+        "tr": "devam etmek",
+        "es": "continuar",
+        "fr": "continuer",
+        "de": "weitermachen",
+        "it": "continuare",
+        "pt": "continuar",
+        "ru": "продолжить",
+        "zh": "继续",
+        "ja": "続ける",
+        "ko": "계속하다",
+        "ar": "للتواصل",
+        "hi": "जारी रखना"
+      }
+    },
+    {
+      "english_word": "helpful",
+      "translations": {
+        "tr": "yardımcı",
+        "es": "útil",
+        "fr": "utile",
+        "de": "hilfreich",
+        "it": "utile",
+        "pt": "útil",
+        "ru": "полезный",
+        "zh": "有用的",
+        "ja": "役立つ",
+        "ko": "유용한",
+        "ar": "مفيد",
+        "hi": "सहायक"
+      }
+    },
+    {
+      "english_word": "to stay",
+      "translations": {
+        "tr": "kalmak",
+        "es": "quedarse",
+        "fr": "rester",
+        "de": "bleiben",
+        "it": "rimanere",
+        "pt": "ficar",
+        "ru": "остаться",
+        "zh": "留下",
+        "ja": "滞在する",
+        "ko": "머무르다",
+        "ar": "البقاء",
+        "hi": "रहना"
+      }
+    }
+  ]
+}

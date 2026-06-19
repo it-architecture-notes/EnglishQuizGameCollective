@@ -1,0 +1,225 @@
+{
+  "translations_list": [
+    {
+      "english_word": "to fly",
+      "translations": {
+        "tr": "uçmak",
+        "es": "volar",
+        "fr": "voler",
+        "de": "fliegen",
+        "it": "volare",
+        "pt": "voar",
+        "ru": "летать",
+        "zh": "飞翔",
+        "ja": "飛ぶ",
+        "ko": "날다",
+        "ar": "للطيران",
+        "hi": "उड़ना"
+      }
+    },
+    {
+      "english_word": "to hope",
+      "translations": {
+        "tr": "umut etmek",
+        "es": "tener esperanza",
+        "fr": "espérer",
+        "de": "hoffen",
+        "it": "sperare",
+        "pt": "ter esperança",
+        "ru": "надеяться",
+        "zh": "希望",
+        "ja": "希望する",
+        "ko": "희망하다",
+        "ar": "للأمل",
+        "hi": "आशा करना"
+      }
+    },
+    {
+      "english_word": "to depart",
+      "translations": {
+        "tr": "ayrılmak",
+        "es": "partir",
+        "fr": "partir",
+        "de": "abreisen",
+        "it": "partire",
+        "pt": "partir",
+        "ru": "уйти",
+        "zh": "离开",
+        "ja": "出発する",
+        "ko": "출발하다",
+        "ar": "للمغادرة",
+        "hi": "प्रस्थान करना"
+      }
+    },
+    {
+      "english_word": "to land",
+      "translations": {
+        "tr": "inmek",
+        "es": "aterrizar",
+        "fr": "atterrir",
+        "de": "landen",
+        "it": "atterrare",
+        "pt": "pousar",
+        "ru": "приземлиться",
+        "zh": "着陆",
+        "ja": "着陸する",
+        "ko": "착륙하다",
+        "ar": "للهبوط",
+        "hi": "उतरना"
+      }
+    },
+    {
+      "english_word": "to carry",
+      "translations": {
+        "tr": "taşımak",
+        "es": "llevar",
+        "fr": "porter",
+        "de": "tragen",
+        "it": "portare",
+        "pt": "carregar",
+        "ru": "нести",
+        "zh": "携带",
+        "ja": "運ぶ",
+        "ko": "운반하다",
+        "ar": "للحمل",
+        "hi": "ले जाना"
+      }
+    },
+    {
+      "english_word": "to be late",
+      "translations": {
+        "tr": "geç kalmak",
+        "es": "llegar tarde",
+        "fr": "être en retard",
+        "de": "zu spät kommen",
+        "it": "essere in ritardo",
+        "pt": "estar atrasado",
+        "ru": "опаздывать",
+        "zh": "迟到",
+        "ja": "遅刻する",
+        "ko": "늦다",
+        "ar": "أن تتأخر",
+        "hi": "देर होना"
+      }
+    },
+    {
+      "english_word": "how long",
+      "translations": {
+        "tr": "ne kadar",
+        "es": "cuanto tiempo",
+        "fr": "combien de temps",
+        "de": "wie lange",
+        "it": "quanto tempo",
+        "pt": "quanto tempo",
+        "ru": "как долго",
+        "zh": "多长时间",
+        "ja": "どのくらいの間",
+        "ko": "얼마나 오래?",
+        "ar": "كم من الوقت",
+        "hi": "कब तक"
+      }
+    },
+    {
+      "english_word": "to depart",
+      "translations": {
+        "tr": "ayrılmak",
+        "es": "partir",
+        "fr": "partir",
+        "de": "abreisen",
+        "it": "partire",
+        "pt": "partir",
+        "ru": "уйти",
+        "zh": "离开",
+        "ja": "出発する",
+        "ko": "출발하다",
+        "ar": "للمغادرة",
+        "hi": "प्रस्थान करना"
+      }
+    },
+    {
+      "english_word": "to cancel",
+      "translations": {
+        "tr": "iptal etmek",
+        "es": "cancelar",
+        "fr": "annuler",
+        "de": "abzubrechen",
+        "it": "per annullare",
+        "pt": "cancelar",
+        "ru": "отменить",
+        "zh": "取消",
+        "ja": "キャンセルする",
+        "ko": "취소하다",
+        "ar": "للإلغاء",
+        "hi": "रद्द करना"
+      }
+    },
+    {
+      "english_word": "Then",
+      "translations": {
+        "tr": "sonra",
+        "es": "entonces",
+        "fr": "Puis",
+        "de": "Dann",
+        "it": "Poi",
+        "pt": "Então",
+        "ru": "Тогда",
+        "zh": "然后",
+        "ja": "それから",
+        "ko": "그런 다음",
+        "ar": "ثم",
+        "hi": "फिर"
+      }
+    },
+    {
+      "english_word": "on time",
+      "translations": {
+        "tr": "zamanında",
+        "es": "a tiempo",
+        "fr": "à l'heure",
+        "de": "pünktlich",
+        "it": "in tempo",
+        "pt": "na hora certa",
+        "ru": "вовремя",
+        "zh": "准时",
+        "ja": "時間通りに",
+        "ko": "정시에",
+        "ar": "في الوقت المحدد",
+        "hi": "समय पर"
+      }
+    },
+    {
+      "english_word": "to check in",
+      "translations": {
+        "tr": "check-in yapmak",
+        "es": "para registrarse",
+        "fr": "s'enregistrer",
+        "de": "einzuchecken",
+        "it": "per effettuare il check-in",
+        "pt": "fazer check-in",
+        "ru": "чтобы зарегистрироваться",
+        "zh": "办理登机手续",
+        "ja": "チェックインする",
+        "ko": "체크인하다",
+        "ar": "لتسجيل الوصول",
+        "hi": "चेक इन करने के लिए"
+      }
+    },
+    {
+      "english_word": "how many",
+      "translations": {
+        "tr": "kaç tane",
+        "es": "cuantos",
+        "fr": "combien",
+        "de": "wie viele",
+        "it": "quanti",
+        "pt": "quantos",
+        "ru": "сколько",
+        "zh": "有多少",
+        "ja": "何個",
+        "ko": "얼마나 많은",
+        "ar": "كم",
+        "hi": "कितने"
+      }
+    }
+  ]
+}

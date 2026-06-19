@@ -1,0 +1,191 @@
+{
+  "translations_list": [
+    {
+      "english_word": "to wash",
+      "translations": {
+        "tr": "yıkamak",
+        "es": "lavar",
+        "fr": "se laver",
+        "de": "waschen",
+        "it": "lavare",
+        "pt": "lavar",
+        "ru": "мыть",
+        "zh": "洗",
+        "ja": "洗う",
+        "ko": "씻다",
+        "ar": "غسل",
+        "hi": "धोना"
+      }
+    },
+    {
+      "english_word": "to feel",
+      "translations": {
+        "tr": "hissetmek",
+        "es": "sentir",
+        "fr": "sentir",
+        "de": "fühlen",
+        "it": "sentire",
+        "pt": "sentir",
+        "ru": "чувствовать",
+        "zh": "感觉",
+        "ja": "感じる",
+        "ko": "느끼다",
+        "ar": "الشعور",
+        "hi": "महसूस करना"
+      }
+    },
+    {
+      "english_word": "to comb hair",
+      "translations": {
+        "tr": "saç taramak",
+        "es": "peinarse",
+        "fr": "se peigner",
+        "de": "Haare kämmen",
+        "it": "pettinare i capelli",
+        "pt": "pentear o cabelo",
+        "ru": "расчесывать волосы",
+        "zh": "梳头发",
+        "ja": "髪をとかす",
+        "ko": "머리를 빗다",
+        "ar": "تمشيط الشعر",
+        "hi": "बालों में कंघी करना"
+      }
+    },
+    {
+      "english_word": "to brush teeth",
+      "translations": {
+        "tr": "diş fırçalamak",
+        "es": "cepillarse los dientes",
+        "fr": "se brosser les dents",
+        "de": "Zähne putzen",
+        "it": "spazzolarsi i denti",
+        "pt": "escovar os dentes",
+        "ru": "чистить зубы",
+        "zh": "刷牙",
+        "ja": "歯を磨く",
+        "ko": "이를 닦다",
+        "ar": "تنظيف الأسنان",
+        "hi": "दाँत साफ करना"
+      }
+    },
+    {
+      "english_word": "to take a shower",
+      "translations": {
+        "tr": "duş almak",
+        "es": "tomar una ducha",
+        "fr": "prendre une douche",
+        "de": "duschen",
+        "it": "fare una doccia",
+        "pt": "tomar banho",
+        "ru": "принять душ",
+        "zh": "洗澡",
+        "ja": "シャワーを浴びる",
+        "ko": "샤워하다",
+        "ar": "الاستحمام",
+        "hi": "स्नान करना"
+      }
+    },
+    {
+      "english_word": "always",
+      "translations": {
+        "tr": "her zaman",
+        "es": "siempre",
+        "fr": "toujours",
+        "de": "immer",
+        "it": "sempre",
+        "pt": "sempre",
+        "ru": "всегда",
+        "zh": "总是",
+        "ja": "いつも",
+        "ko": "항상",
+        "ar": "دائماً",
+        "hi": "हमेशा"
+      }
+    },
+    {
+      "english_word": "then",
+      "translations": {
+        "tr": "sonra",
+        "es": "luego",
+        "fr": "puis",
+        "de": "dann",
+        "it": "poi",
+        "pt": "em seguida",
+        "ru": "затем",
+        "zh": "然后",
+        "ja": "それから",
+        "ko": "그런 다음",
+        "ar": "ثم",
+        "hi": "फिर"
+      }
+    },
+    {
+      "english_word": "to use",
+      "translations": {
+        "tr": "kullanmak",
+        "es": "usar",
+        "fr": "utiliser",
+        "de": "verwenden",
+        "it": "usare",
+        "pt": "usar",
+        "ru": "использовать",
+        "zh": "使用",
+        "ja": "使う",
+        "ko": "사용하다",
+        "ar": "استخدام",
+        "hi": "उपयोग करना"
+      }
+    },
+    {
+      "english_word": "before",
+      "translations": {
+        "tr": "önce",
+        "es": "antes",
+        "fr": "avant",
+        "de": "vor",
+        "it": "prima",
+        "pt": "antes",
+        "ru": "раньше",
+        "zh": "之前",
+        "ja": "前に",
+        "ko": "전에",
+        "ar": "قبل",
+        "hi": "पहले"
+      }
+    },
+    {
+      "english_word": "after",
+      "translations": {
+        "tr": "sonrasında",
+        "es": "después",
+        "fr": "après",
+        "de": "nach",
+        "it": "dopo",
+        "pt": "após",
+        "ru": "после",
+        "zh": "之后",
+        "ja": "後に",
+        "ko": "후에",
+        "ar": "بعد",
+        "hi": "बाद में"
+      }
+    },
+    {
+      "english_word": "dirty",
+      "translations": {
+        "tr": "kirli",
+        "es": "sucio",
+        "fr": "sale",
+        "de": "schmutzig",
+        "it": "sporco",
+        "pt": "sujo",
+        "ru": "грязный",
+        "zh": "脏",
+        "ja": "汚い",
+        "ko": "더럽다",
+        "ar": "قذر",
+        "hi": "गंदा"
+      }
+    }
+  ]
+}

@@ -13,7 +13,7 @@
         ]
       }
     },
-   {
+    {
       "template": "ConvoTemplate-1",
       "questionData": {
         "character1": "Beth",
@@ -56,15 +56,14 @@
         "line2": "_____ , and you?",
         "answer": "I am fine",
         "distractors": [
-          "I am good",
-          "Nice to see you",
+          "I am John",
+          "Nice to meet you",
           "Good morning"
         ]
       },
       "audio_file1": "how-are-you-convo",
       "audio_file2": "i-am-fine-and-you-convo"
     },
-    
     {
       "template": "DialogueCompletion",
       "questionData": {
@@ -73,7 +72,7 @@
         "line1": "Where are you from?",
         "answer": "I am from the United States",
         "distractors": [
-          "My Name is Mike",
+          "My name is Mike",
           "I am fine, thank you.",
           "Nice to see you"
         ]
@@ -113,10 +112,10 @@
     {
       "template": "SentenceBuilder",
       "questionData": {
-        "correct_order": "This is my brother, John"
+        "correct_order": "Can you help me, please?"
       },
-      "audio_file": "this-is-my-brother-john-convo",
-      "audio_file_text": "This is my brother, John"
+      "audio_file": "can-you-help-me-please-convo",
+      "audio_file_text": "Can you help me, please?"
     },
     {
       "template": "DialogueCompletion",
@@ -137,24 +136,24 @@
     {
       "template": "GrammarForm",
       "questionData": {
-        "sentence": "I ___ John.",
-        "answer": "am",
+        "sentence": "Where ____ she from?",
+        "answer": "is",
         "distractors": [
-          "was",
           "are",
-          "our"
+          "can",
+          "does"
         ]
       }
     },
     {
       "template": "imageQuizTemplate-1",
       "questionData": {
-        "imageName": "smile",
-        "answer": "I am fine",
+        "imageName": "afternoon",
+        "answer": "Good Afternoon",
         "wrongAnswers": [
-          "I am sorry",
-          "I am tired",
-          "I am hungry"
+          "Good Morning",
+          "Good Night",
+          "How Are You"
         ]
       }
     },
@@ -181,9 +180,9 @@
         "answer": "Good Night",
         "imageName": "night",
         "wrongAnswers": [
+          "good-morning",
           "afternoon",
-          "noon",
-          "good-morning"
+          "noon"
         ]
       },
       "audio_file": "good-night"
@@ -217,9 +216,9 @@
             "tr": "sen",
             "es": "tú",
             "fr": "tu",
-            "de": "du",
+            "de": "Du",
             "it": "tu",
-            "pt": "tu",
+            "pt": "você",
             "ru": "ты",
             "zh": "你",
             "ja": "あなた",
@@ -239,21 +238,21 @@
             "ja": "彼-彼女",
             "ko": "그-그녀",
             "ar": "هو-هي",
-            "hi": "वह-वही"
+            "hi": "वह-वह"
           },
           {
             "tr": "onlar",
-            "es": "ellos-ellas",
-            "fr": "ils-elles",
+            "es": "ellos",
+            "fr": "ils",
             "de": "sie",
-            "it": "loro-loro",
-            "pt": "eles-elas",
-            "ru": "они-они",
-            "zh": "他们-她们",
-            "ja": "彼ら-彼女たち",
-            "ko": "그들-그녀들",
-            "ar": "هم-هن",
-            "hi": "वे-वही"
+            "it": "loro",
+            "pt": "eles",
+            "ru": "они",
+            "zh": "他们",
+            "ja": "彼ら",
+            "ko": "그들",
+            "ar": "هم",
+            "hi": "वे"
           },
           {
             "tr": "biz",
@@ -264,7 +263,7 @@
             "pt": "nós",
             "ru": "мы",
             "zh": "我们",
-            "ja": "私たち",
+            "ja": "私たちは",
             "ko": "우리",
             "ar": "نحن",
             "hi": "हम"

@@ -1,0 +1,208 @@
+{
+  "translations_list": [
+    {
+      "english_word": "to learn",
+      "translations": {
+        "tr": "öğrenmek",
+        "es": "aprender",
+        "fr": "apprendre",
+        "de": "lernen",
+        "it": "imparare",
+        "pt": "aprender",
+        "ru": "учиться",
+        "zh": "学",
+        "ja": "学ぶ",
+        "ko": "배우다",
+        "ar": "التعلم",
+        "hi": "सीखना"
+      }
+    },
+    {
+      "english_word": "to write",
+      "translations": {
+        "tr": "yazmak",
+        "es": "escribir",
+        "fr": "écrire",
+        "de": "schreiben",
+        "it": "scrivere",
+        "pt": "escrever",
+        "ru": "писать",
+        "zh": "写",
+        "ja": "書く",
+        "ko": "쓰다",
+        "ar": "الكتابة",
+        "hi": "लिखना"
+      }
+    },
+    {
+      "english_word": "to know",
+      "translations": {
+        "tr": "bilmek",
+        "es": "saber",
+        "fr": "savoir",
+        "de": "wissen",
+        "it": "sapere",
+        "pt": "saber",
+        "ru": "знать",
+        "zh": "知道",
+        "ja": "知る",
+        "ko": "알다",
+        "ar": "معرفة",
+        "hi": "जानना"
+      }
+    },
+    {
+      "english_word": "to answer",
+      "translations": {
+        "tr": "cevaplamak",
+        "es": "responder",
+        "fr": "répondre",
+        "de": "antworten",
+        "it": "rispondere",
+        "pt": "responder",
+        "ru": "отвечать",
+        "zh": "回答",
+        "ja": "答える",
+        "ko": "대답하다",
+        "ar": "الإجابة",
+        "hi": "उत्तर देना"
+      }
+    },
+    {
+      "english_word": "today",
+      "translations": {
+        "tr": "bugün",
+        "es": "hoy",
+        "fr": "aujourd'hui",
+        "de": "heute",
+        "it": "oggi",
+        "pt": "hoje",
+        "ru": "сегодня",
+        "zh": "今天",
+        "ja": "今日",
+        "ko": "오늘",
+        "ar": "اليوم",
+        "hi": "आज"
+      }
+    },
+    {
+      "english_word": "to read",
+      "translations": {
+        "tr": "okumak",
+        "es": "leer",
+        "fr": "lire",
+        "de": "lesen",
+        "it": "leggere",
+        "pt": "ler",
+        "ru": "читать",
+        "zh": "阅读",
+        "ja": "読む",
+        "ko": "읽다",
+        "ar": "القراءة",
+        "hi": "पढ़ना"
+      }
+    },
+    {
+      "english_word": "again",
+      "translations": {
+        "tr": "tekrar",
+        "es": "otra vez",
+        "fr": "encore une fois",
+        "de": "wieder",
+        "it": "di nuovo",
+        "pt": "de novo",
+        "ru": "снова",
+        "zh": "再次",
+        "ja": "また",
+        "ko": "다시",
+        "ar": "مرة أخرى",
+        "hi": "पुनः"
+      }
+    },
+    {
+      "english_word": "interesting",
+      "translations": {
+        "tr": "ilginç",
+        "es": "interesante",
+        "fr": "intéressant",
+        "de": "interessant",
+        "it": "interessante",
+        "pt": "interessante",
+        "ru": "интересный",
+        "zh": "有趣的",
+        "ja": "面白い",
+        "ko": "흥미로운",
+        "ar": "مثير للاهتمام",
+        "hi": "दिलचस्प"
+      }
+    },
+    {
+      "english_word": "to study",
+      "translations": {
+        "tr": "çalışmak",
+        "es": "estudiar",
+        "fr": "étudier",
+        "de": "lernen",
+        "it": "studiare",
+        "pt": "estudar",
+        "ru": "изучать",
+        "zh": "学习",
+        "ja": "勉強する",
+        "ko": "공부하다",
+        "ar": "الدراسة",
+        "hi": "पढ़ाई करना"
+      }
+    },
+    {
+      "english_word": "to ask a question",
+      "translations": {
+        "tr": "soru sormak",
+        "es": "hacer una pregunta",
+        "fr": "poser une question",
+        "de": "eine Frage stellen",
+        "it": "fare una domanda",
+        "pt": "fazer uma pergunta",
+        "ru": "задать вопрос",
+        "zh": "问一个问题",
+        "ja": "質問する",
+        "ko": "질문하다",
+        "ar": "طرح سؤال",
+        "hi": "प्रश्न पूछना"
+      }
+    },
+    {
+      "english_word": "to understand",
+      "translations": {
+        "tr": "anlamak",
+        "es": "entender",
+        "fr": "comprendre",
+        "de": "verstehen",
+        "it": "capire",
+        "pt": "entender",
+        "ru": "понимать",
+        "zh": "理解",
+        "ja": "理解する",
+        "ko": "이해하다",
+        "ar": "الفهم",
+        "hi": "समझना"
+      }
+    },
+    {
+      "english_word": "to do homework",
+      "translations": {
+        "tr": "ödev yapmak",
+        "es": "hacer la tarea",
+        "fr": "faire ses devoirs",
+        "de": "Hausaufgaben machen",
+        "it": "fare i compiti",
+        "pt": "fazer a lição de casa",
+        "ru": "делать домашнее задание",
+        "zh": "做作业",
+        "ja": "宿題をする",
+        "ko": "숙제를 하다",
+        "ar": "القيام بالواجبات المنزلية",
+        "hi": "होमवर्क करना"
+      }
+    }
+  ]
+}

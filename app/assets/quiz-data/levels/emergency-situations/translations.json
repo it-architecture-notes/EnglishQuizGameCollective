@@ -1,0 +1,191 @@
+{
+  "translations_list": [
+    {
+      "english_word": "to burn",
+      "translations": {
+        "tr": "yakmak",
+        "es": "quemar",
+        "fr": "brûler",
+        "de": "brennen",
+        "it": "bruciare",
+        "pt": "queimar",
+        "ru": "гореть",
+        "zh": "燃烧",
+        "ja": "燃える",
+        "ko": "불타다",
+        "ar": "للاشتعال",
+        "hi": "जलना"
+      }
+    },
+    {
+      "english_word": "injured",
+      "translations": {
+        "tr": "yaralanmış",
+        "es": "herido",
+        "fr": "blessé",
+        "de": "verletzt",
+        "it": "lesionato",
+        "pt": "lesado",
+        "ru": "поранен",
+        "zh": "受伤",
+        "ja": "怪我をした",
+        "ko": "부상",
+        "ar": "إصابة",
+        "hi": "चोट पहुंचा"
+      }
+    },
+    {
+      "english_word": "to warn",
+      "translations": {
+        "tr": "uyarmak",
+        "es": "advertir",
+        "fr": "avertir",
+        "de": "warnen",
+        "it": "avvertire",
+        "pt": "avisar",
+        "ru": "предупреждать",
+        "zh": "警告",
+        "ja": "警告する",
+        "ko": "경보하다",
+        "ar": "تحذير",
+        "hi": "चेतावनी देना"
+      }
+    },
+    {
+      "english_word": "to save",
+      "translations": {
+        "tr": "kurtarmak",
+        "es": "salvar",
+        "fr": "sauver",
+        "de": "retten",
+        "it": "salvare",
+        "pt": "salvar",
+        "ru": "спасти",
+        "zh": "拯救",
+        "ja": "救う",
+        "ko": "구하다",
+        "ar": "إنقاذ",
+        "hi": "बचाना"
+      }
+    },
+    {
+      "english_word": "to cough",
+      "translations": {
+        "tr": "öksürmek",
+        "es": "toser",
+        "fr": "tousser",
+        "de": "husten",
+        "it": "tossire",
+        "pt": "tossir",
+        "ru": "кашлять",
+        "zh": "咳嗽",
+        "ja": "咳く",
+        "ko": "기침하다",
+        "ar": "يقيظ",
+        "hi": "खाँसना"
+      }
+    },
+    {
+      "english_word": "to attack",
+      "translations": {
+        "tr": "saldırmak",
+        "es": "atacar",
+        "fr": "attaquer",
+        "de": "angreifen",
+        "it": "attaccare",
+        "pt": "atacar",
+        "ru": "атаковать",
+        "zh": "攻击",
+        "ja": "攻撃する",
+        "ko": "공격하다",
+        "ar": "القتال",
+        "hi": "हमला करना"
+      }
+    },
+    {
+      "english_word": "terrible",
+      "translations": {
+        "tr": "korkunc",
+        "es": "horrible",
+        "fr": "terrible",
+        "de": "schlimm",
+        "it": "orribile",
+        "pt": "horrível",
+        "ru": "ужасный",
+        "zh": "可怕的",
+        "ja": "恐ろしいです",
+        "ko": "무서운",
+        "ar": "قاتل",
+        "hi": "भयानक है"
+      }
+    },
+    {
+      "english_word": "to visit",
+      "translations": {
+        "tr": "ziyaret etmek",
+        "es": "visitar",
+        "fr": "visiter",
+        "de": "besuchen",
+        "it": "visitare",
+        "pt": "visitar",
+        "ru": "посетить",
+        "zh": "访问",
+        "ja": "訪問する",
+        "ko": "방문하다",
+        "ar": "زيارة",
+        "hi": "भेजना"
+      }
+    },
+    {
+      "english_word": "to rescue",
+      "translations": {
+        "tr": "kurtarmak",
+        "es": "salvar",
+        "fr": "sauver",
+        "de": "retten",
+        "it": "salvare",
+        "pt": "salvar",
+        "ru": "спасти",
+        "zh": "拯救",
+        "ja": "救う",
+        "ko": "구하다",
+        "ar": "إنقاذ",
+        "hi": "बचाना"
+      }
+    },
+    {
+      "english_word": "to create",
+      "translations": {
+        "tr": "oluşturmak",
+        "es": "crear",
+        "fr": "créer",
+        "de": "erstellen",
+        "it": "creare",
+        "pt": "criar",
+        "ru": "создать",
+        "zh": "创建",
+        "ja": "作成する",
+        "ko": "만들다",
+        "ar": "إنشاء",
+        "hi": "बनाना"
+      }
+    },
+    {
+      "english_word": "to prevent",
+      "translations": {
+        "tr": "önlemek",
+        "es": "prevenir",
+        "fr": "prévenir",
+        "de": "verhindern",
+        "it": "prevenire",
+        "pt": "prevenir",
+        "ru": "предотвратить",
+        "zh": "预防",
+        "ja": "防止する",
+        "ko": "방지하다",
+        "ar": "منع",
+        "hi": "रोकना"
+      }
+    }
+  ]
+}

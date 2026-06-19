@@ -1,0 +1,260 @@
+{
+  "levelQuestions": [
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "desert",
+        "wrongAnswers": [
+          "forest",
+          "dessert",
+          "sand"
+        ]
+      }
+    },
+    {
+      "template": "ConvoTemplate-1",
+      "questionData": {
+        "character1": "Sarah",
+        "character2": "Daniel",
+        "line1": "We must move slowly so we do not scare the birds.",
+        "line2": "I will tell the others to be _____ too.",
+        "answer": "quiet",
+        "distractors": [
+          "loud",
+          "fast",
+          "noisy"
+        ]
+      },
+      "audio_file1": "we-must-move-slowly-so-we-do-not-scare-the-birds-convo",
+      "audio_file2": "i-will-tell-the-others-to-be-quiet-too-convo"
+    },
+    {
+      "template": "ConvoTemplate-1",
+      "questionData": {
+        "character1": "Beth",
+        "character2": "Alex",
+        "line1": "What are you putting in your bag?",
+        "line2": "I am ______ leaves! ",
+        "answer": "collecting",
+        "distractors": [
+          "bringing",
+          "picking",
+          "collecting"
+        ]
+      },
+      "audio_file1": "what-are-you-putting-in-your-bag-convo",
+      "audio_file2": "i-am-collecting-leaves-convo"
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "forest",
+        "wrongAnswers": [
+          "lake",
+          "river",
+          "sea"
+        ]
+      }
+    },
+    {
+      "template": "WordPairs",
+      "questionData": {
+        "english_words": [
+          "east",
+          "west",
+          "north",
+          "south"
+        ],
+        "translations": [
+          {
+            "tr": "doğu",
+            "es": "este",
+            "fr": "est",
+            "de": "Ost",
+            "it": "est",
+            "pt": "leste",
+            "ru": "восток",
+            "zh": "东方",
+            "ja": "東",
+            "ko": "동쪽",
+            "ar": "شرق",
+            "hi": "पूर्व"
+          },
+          {
+            "tr": "batı",
+            "es": "Oeste",
+            "fr": "Ouest",
+            "de": "Westen",
+            "it": "ovest",
+            "pt": "oeste",
+            "ru": "запад",
+            "zh": "西方",
+            "ja": "西",
+            "ko": "서쪽",
+            "ar": "الغرب",
+            "hi": "पश्चिम"
+          },
+          {
+            "tr": "kuzey",
+            "es": "norte",
+            "fr": "nord",
+            "de": "Norden",
+            "it": "nord",
+            "pt": "norte",
+            "ru": "север",
+            "zh": "北",
+            "ja": "北",
+            "ko": "북쪽",
+            "ar": "شمال",
+            "hi": "उत्तर"
+          },
+          {
+            "tr": "güney",
+            "es": "sur",
+            "fr": "sud",
+            "de": "Süden",
+            "it": "sud",
+            "pt": "sul",
+            "ru": "юг",
+            "zh": "南",
+            "ja": "南",
+            "ko": "남쪽",
+            "ar": "جنوب",
+            "hi": "दक्षिण"
+          }
+        ]
+      }
+    },
+    {
+      "template": "DialogueCompletion",
+      "questionData": {
+        "character1": "Omar",
+        "character2": "Lily",
+        "line1": "Wow, that is a really big tree! How old do you think it is?",
+        "answer": "It could be hundreds of years old",
+        "distractors": [
+          "It could be too many years",
+          "It is too tall to see the top",
+          "I cannot tell you"
+        ]
+      },
+      "audio_file1": "wow-that-is-a-really-big-tree-how-old-do-you-think-it-is-convo",
+      "audio_file2": "it-could-be-hundreds-of-years-old-convo"
+    },
+    {
+      "template": "AppearDisappear",
+      "questionData": {
+        "words": "Do not touch the wild plants",
+        "distractors": [
+          "taste",
+          "smell",
+          "free",
+          "quiet"
+        ]
+      },
+      "audio_file": "do-not-touch-the-wild-plants-convo"
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "sea",
+        "wrongAnswers": [
+          "lake",
+          "river",
+          "valley"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-2",
+      "questionData": {
+        "imageName": "river",
+        "wrongAnswers": [
+          "sea",
+          "forest",
+          "desert"
+        ]
+      },
+      "answer": "river"
+    },
+    {
+      "template": "SentenceBuilder",
+      "questionData": {
+        "correct_order": "We could notice the wide river."
+      },
+      "audio_file": "we-could-notice-the-wide-river-convo"
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "stones",
+        "wrongAnswers": [
+          "tree",
+          "river",
+          "rock"
+        ]
+      }
+    },
+    {
+      "template": "ClozeSequence",
+      "questionData": {
+        "sentence": "Please do not _____ — stay ____ when you see an animal.",
+        "answer": [
+          "shout",
+          "calm"
+        ],
+        "distractors": [
+          "noisy",
+          "walk",
+          "scared",
+          "stand"
+        ]
+      },
+      "audio_file": "please-do-not-shout-—-stay-calm-when-you-see-an-animal-convo"
+    },
+    {
+      "template": "GrammarForm",
+      "questionData": {
+        "sentence": "Who _____ acorns?",
+        "answer": "collects",
+        "distractors": [
+          "can collects",
+          "will be collect",
+          "collect"
+        ]
+      }
+    },
+    {
+      "template": "ClozeSequence",
+      "questionData": {
+        "sentence": "Small ants _____ _____ hills in the dry, sandy ground.",
+        "answer": [
+          "build",
+          "deep"
+        ],
+        "distractors": [
+          "quiet",
+          "take",
+          "heavy",
+          "bring"
+        ]
+      },
+      "audio_file": "small-ants-build-deep-hills-in-the-dry-sandy-ground-convo"
+    },
+    {
+      "template": "ClozeSequence",
+      "questionData": {
+        "sentence": "_______, a rabbit came out from the bushes.",
+        "answer": [
+          "suddenly"
+        ],
+        "distractors": [
+          "slowly",
+          "carefully",
+          "loudly"
+        ]
+      },
+      "audio_file": "a-rabbit-came-out-from-the-bushes-convo"
+    }
+  ]
+}

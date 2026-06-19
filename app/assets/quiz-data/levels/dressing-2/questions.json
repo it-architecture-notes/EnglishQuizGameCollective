@@ -1,0 +1,170 @@
+{
+  "levelQuestions": [
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "beanie",
+        "wrongAnswers": [
+          "bracelets",
+          "cap",
+          "blouse"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "blouse",
+        "wrongAnswers": [
+          "hat",
+          "necklace",
+          "beanie"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-2",
+      "questionData": {
+        "imageName": "bracelets",
+        "wrongAnswers": [
+          "dress",
+          "hoodie",
+          "raincoat"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "cap",
+        "wrongAnswers": [
+          "tie",
+          "hoodie",
+          "beanie"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "dress",
+        "wrongAnswers": [
+          "cap",
+          "sunglasses",
+          "beanie"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "gloves",
+        "wrongAnswers": [
+          "jeans",
+          "dress",
+          "beanie"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-2",
+      "questionData": {
+        "imageName": "hat",
+        "wrongAnswers": [
+          "jeans",
+          "scarf",
+          "tie"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "hoodie",
+        "wrongAnswers": [
+          "blouse",
+          "bracelets",
+          "beanie"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "jeans",
+        "wrongAnswers": [
+          "gloves",
+          "necklace",
+          "beanie"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "necklace",
+        "wrongAnswers": [
+          "raincoat",
+          "beanie",
+          "blouse"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-2",
+      "questionData": {
+        "imageName": "raincoat",
+        "wrongAnswers": [
+          "snow-boots",
+          "beanie",
+          "cap"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "scarf",
+        "wrongAnswers": [
+          "cap",
+          "sunglasses",
+          "beanie"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "snow-boots",
+        "wrongAnswers": [
+          "hoodie",
+          "dress",
+          "beanie"
+        ],
+        "answer": "snow boots"
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "sunglasses",
+        "wrongAnswers": [
+          "scarf",
+          "raincoat",
+          "beanie"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-2",
+      "questionData": {
+        "imageName": "tie",
+        "wrongAnswers": [
+          "blouse",
+          "dress",
+          "hoodie"
+        ]
+      }
+    }
+  ]
+}

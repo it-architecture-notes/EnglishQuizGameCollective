@@ -1,0 +1,260 @@
+{
+  "levelQuestions": [
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "atm",
+        "wrongAnswers": [
+          "teller",
+          "kiosk",
+          "bank-vault"
+        ]
+      }
+    },
+    {
+      "template": "ConvoTemplate-1",
+      "questionData": {
+        "character1": "Sarah",
+        "character2": "Daniel",
+        "line1": "Why will she go to the bank?",
+        "line2": "She will _____ money.",
+        "answer": "deposit",
+        "distractors": [
+          "check",
+          "balance",
+          "call"
+        ]
+      },
+      "audio_file1": "why-will-she-go-to-the-bank-convo",
+      "audio_file2": "she-will-deposit-money-convo"
+    },
+    {
+      "template": "ConvoTemplate-1",
+      "questionData": {
+        "character1": "Beth",
+        "character2": "Alex",
+        "line1": "I need to ______ some cash.",
+        "line2": "How much do you need?",
+        "answer": "withdraw",
+        "distractors": [
+          "deposit",
+          "transfer",
+          "balance"
+        ]
+      },
+      "audio_file1": "i-need-to-withdraw-some-cash-convo",
+      "audio_file2": "how-much-do-you-need-convo"
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "cheque",
+        "wrongAnswers": [
+          "credit-card",
+          "wallet",
+          "bank-note"
+        ]
+      }
+    },
+    {
+      "template": "WordPairs",
+      "questionData": {
+        "english_words": [
+          "if",
+          "though",
+          "after",
+          "never"
+        ],
+        "translations": [
+          {
+            "tr": "eğer",
+            "es": "si",
+            "fr": "si",
+            "de": "Wenn",
+            "it": "Se",
+            "pt": "se",
+            "ru": "если",
+            "zh": "如果",
+            "ja": "もし",
+            "ko": "만약에",
+            "ar": "لو",
+            "hi": "अगर"
+          },
+          {
+            "tr": "Yine de",
+            "es": "aunque",
+            "fr": "bien que",
+            "de": "obwohl",
+            "it": "Anche se",
+            "pt": "embora",
+            "ru": "хотя",
+            "zh": "尽管",
+            "ja": "けれど",
+            "ko": "그렇지만",
+            "ar": "رغم ذلك",
+            "hi": "यद्यपि"
+          },
+          {
+            "tr": "sonrasında",
+            "es": "después",
+            "fr": "après",
+            "de": "nach",
+            "it": "Dopo",
+            "pt": "depois",
+            "ru": "после",
+            "zh": "后",
+            "ja": "後",
+            "ko": "~ 후에",
+            "ar": "بعد",
+            "hi": "बाद"
+          },
+          {
+            "tr": "Asla",
+            "es": "nunca",
+            "fr": "jamais",
+            "de": "niemals",
+            "it": "Mai",
+            "pt": "nunca",
+            "ru": "никогда",
+            "zh": "绝不",
+            "ja": "一度もない",
+            "ko": "절대",
+            "ar": "أبداً",
+            "hi": "कभी नहीं"
+          }
+        ]
+      }
+    },
+    {
+      "template": "DialogueCompletion",
+      "questionData": {
+        "character1": "Omar",
+        "character2": "Lily",
+        "line1": "What do you want to do with your $10?",
+        "answer": "I want to save it",
+        "distractors": [
+          "I want to carry it",
+          "How much can I take?",
+          "I already spent it"
+        ]
+      },
+      "audio_file1": "what-do-you-want-to-do-with-your-10-convo",
+      "audio_file2": "i-want-to-save-it-convo"
+    },
+    {
+      "template": "AppearDisappear",
+      "questionData": {
+        "words": "Just sign at the bottom of this page",
+        "distractors": [
+          "only",
+          "leave",
+          "top",
+          "letter"
+        ]
+      },
+      "audio_file": "just-sign-at-the-bottom-of-this-page-convo"
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "teller-clerk",
+        "wrongAnswers": [
+          "person",
+          "customer",
+          "guard"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "wallet",
+        "wrongAnswers": [
+          "cash",
+          "cheque",
+          "credit-card"
+        ]
+      }
+    },
+    {
+      "template": "SentenceBuilder",
+      "questionData": {
+        "correct_order": "Fill in this form please."
+      },
+      "audio_file": "fill-in-this-form-please-convo"
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "money",
+        "wrongAnswers": [
+          "credit-card",
+          "wallet",
+          "bank-note"
+        ]
+      }
+    },
+    {
+      "template": "ClozeSequence",
+      "questionData": {
+        "sentence": "I'd like to ______ my mortgage options _____.",
+        "answer": [
+          "discuss",
+          "too"
+        ],
+        "distractors": [
+          "ask",
+          "never",
+          "always"
+        ]
+      },
+      "audio_file": "i-d-like-to-discuss-my-mortgage-options-too-convo"
+    },
+    {
+      "template": "GrammarForm",
+      "questionData": {
+        "sentence": "I _____ my money carefully tomorrow.",
+        "answer": "will count",
+        "distractors": [
+          "counting",
+          "count",
+          "have counted"
+        ]
+      }
+    },
+    {
+      "template": "ClozeSequence",
+      "questionData": {
+        "sentence": "______ that _____ cash withdrawals must be reported.",
+        "answer": [
+          "remember",
+          "large"
+        ],
+        "distractors": [
+          "ask",
+          "look",
+          "small",
+          "high"
+        ]
+      },
+      "audio_file": "remember-that-large-cash-withdrawals-must-be-reported-convo"
+    },
+    {
+      "template": "ClozeSequence",
+      "questionData": {
+        "sentence": "I want to _____ a new _____ please",
+        "answer": [
+          "open",
+          "account"
+        ],
+        "distractors": [
+          "close",
+          "deposit",
+          "cash",
+          "card"
+        ]
+      },
+      "audio_file": "i-want-to-open-a-new-account-please-convo"
+    }
+  ]
+}

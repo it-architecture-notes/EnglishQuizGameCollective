@@ -1,0 +1,264 @@
+{
+  "levelQuestions": [
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "diaper",
+        "wrongAnswers": [
+          "bottle",
+          "dress",
+          "food"
+        ]
+      }
+    },
+    {
+      "template": "ConvoTemplate-1",
+      "questionData": {
+        "character1": "Sarah",
+        "character2": "Daniel",
+        "line1": "Is it time to ____ the baby again?",
+        "line2": "Yes, it's been almost three hours.",
+        "answer": "feed",
+        "distractors": [
+          "eat",
+          "drink",
+          "kiss"
+        ]
+      },
+      "audio_file1": "is-it-time-to-feed-the-baby-again-convo",
+      "audio_file2": "yes-its-been-almost-three-hours-convo"
+    },
+    {
+      "template": "ConvoTemplate-1",
+      "questionData": {
+        "character1": "Beth",
+        "character2": "Alex",
+        "line1": "I always _____ to her at bedtime.",
+        "line2": "Does she like it? ",
+        "answer": "sing",
+        "distractors": [
+          "reading",
+          "tell",
+          "ask"
+        ]
+      },
+      "audio_file1": "i-always-sing-to-her-at-bedtime-convo",
+      "audio_file2": "does-she-like-it-convo"
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "baby-crib",
+        "wrongAnswers": [
+          "diaper",
+          "baby-mattress",
+          "baby-blanket"
+        ]
+      }
+    },
+    {
+      "template": "WordPairs",
+      "questionData": {
+        "english_words": [
+          "soft",
+          "hard",
+          "silent",
+          "loud"
+        ],
+        "translations": [
+          {
+            "tr": "yumuşak",
+            "es": "suave",
+            "fr": "doux",
+            "de": "weich",
+            "it": "morbido",
+            "pt": "macio",
+            "ru": "мягкий",
+            "zh": "柔软的",
+            "ja": "柔らかい",
+            "ko": "부드러운",
+            "ar": "ناعم",
+            "hi": "कोमल"
+          },
+          {
+            "tr": "sert",
+            "es": "duro",
+            "fr": "dur",
+            "de": "hart",
+            "it": "duro",
+            "pt": "duro",
+            "ru": "жесткий",
+            "zh": "硬的",
+            "ja": "硬い",
+            "ko": "딱딱한",
+            "ar": "صلب",
+            "hi": "कठोर"
+          },
+          {
+            "tr": "sessiz",
+            "es": "silencioso",
+            "fr": "silencieux",
+            "de": "still",
+            "it": "silenzioso",
+            "pt": "silencioso",
+            "ru": "тихий",
+            "zh": "沉默的",
+            "ja": "静かな",
+            "ko": "조용한",
+            "ar": "صامت",
+            "hi": "शांत"
+          },
+          {
+            "tr": "yüksek sesli",
+            "es": "alto",
+            "fr": "fort",
+            "de": "laut",
+            "it": "forte",
+            "pt": "alto",
+            "ru": "громкий",
+            "zh": "大声",
+            "ja": "うるさい",
+            "ko": "시끄러운",
+            "ar": "عالي",
+            "hi": "ऊँचा स्वर"
+          }
+        ]
+      }
+    },
+    {
+      "template": "DialogueCompletion",
+      "questionData": {
+        "character1": "Omar",
+        "character2": "Lily",
+        "line1": "The baby is crying. Is she hungry?",
+        "answer": "No, I just fed her.",
+        "distractors": [
+          "Yes, I just fed her",
+          "I just fed she",
+          "She will not be hungry"
+        ]
+      },
+      "audio_file1": "the-baby-is-crying-is-she-hungry-convo",
+      "audio_file2": "no-i-just-fed-her-convo"
+    },
+    {
+      "template": "AppearDisappear",
+      "questionData": {
+        "words": "The newborn baby began to cry",
+        "distractors": [
+          "starts",
+          "smile",
+          "big",
+          "old",
+          "This"
+        ]
+      },
+      "audio_file": "the-newborn-baby-began-to-cry-convo"
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "feeder",
+        "wrongAnswers": [
+          "bottle",
+          "diaper",
+          "baby-blanket"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-2",
+      "questionData": {
+        "imageName": "pacifier",
+        "wrongAnswers": [
+          "stroller",
+          "diaper",
+          "feeder"
+        ]
+      },
+      "answer": "pacifier"
+    },
+    {
+      "template": "SentenceBuilder",
+      "questionData": {
+        "correct_order": "The baby smiles at her mother."
+      },
+      "audio_file": "the-baby-smiles-at-her-mother-convo"
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "stroller",
+        "wrongAnswers": [
+          "cart",
+          "baby-carry",
+          "puller"
+        ]
+      }
+    },
+    {
+      "template": "ClozeSequence",
+      "questionData": {
+        "sentence": "Dad _____ the baby up and she starts to happily _____.",
+        "answer": [
+          "holds",
+          "laugh"
+        ],
+        "distractors": [
+          "cry",
+          "brings",
+          "gets",
+          "sleeping"
+        ]
+      },
+      "audio_file": "dad-holds-the-baby-up-and-she-starts-to-happily-laugh-convo"
+    },
+    {
+      "template": "GrammarForm",
+      "questionData": {
+        "sentence": "She ______ the song until the baby fell asleep.",
+        "answer": "repeated",
+        "distractors": [
+          "were repeated",
+          "will be repeated",
+          "repeat"
+        ]
+      }
+    },
+    {
+      "template": "ClozeSequence",
+      "questionData": {
+        "sentence": "It is important to _____ the baby's diaper ______.",
+        "answer": [
+          "change",
+          "regularly"
+        ],
+        "distractors": [
+          "clean",
+          "wear",
+          "put",
+          "careful"
+        ]
+      },
+      "audio_file": "it-is-important-to-change-the-baby-s-diaper-regularly-convo"
+    },
+    {
+      "template": "ClozeSequence",
+      "questionData": {
+        "sentence": "Grandma _____ the baby's _____ little cheeks.",
+        "answer": [
+          "kisses",
+          "pretty"
+        ],
+        "distractors": [
+          "holds",
+          "changes",
+          "wipes",
+          "wide",
+          "hard"
+        ]
+      },
+      "audio_file": "grandma-kisses-the-baby-s-pretty-little-cheeks-convo"
+    }
+  ]
+}

@@ -1,0 +1,191 @@
+{
+  "translations_list": [
+    {
+      "english_word": "to use",
+      "translations": {
+        "tr": "kullanmak",
+        "es": "usar",
+        "fr": "utiliser",
+        "de": "zu verwenden",
+        "it": "da usare",
+        "pt": "usar",
+        "ru": "использовать",
+        "zh": "使用",
+        "ja": "使用する",
+        "ko": "사용하다",
+        "ar": "للاستخدام",
+        "hi": "उपयोग करना"
+      }
+    },
+    {
+      "english_word": "bad",
+      "translations": {
+        "tr": "kötü",
+        "es": "malo",
+        "fr": "mauvais",
+        "de": "schlecht",
+        "it": "cattivo",
+        "pt": "ruim",
+        "ru": "плохой",
+        "zh": "坏",
+        "ja": "悪い",
+        "ko": "나쁜",
+        "ar": "سيئة",
+        "hi": "ख़राब"
+      }
+    },
+    {
+      "english_word": "to take",
+      "translations": {
+        "tr": "almak",
+        "es": "tomar",
+        "fr": "prendre",
+        "de": "nehmen",
+        "it": "prendere",
+        "pt": "tomar",
+        "ru": "принимать",
+        "zh": "服用",
+        "ja": "服用する",
+        "ko": "복용하다",
+        "ar": "لتناول",
+        "hi": "लेना"
+      }
+    },
+    {
+      "english_word": "to tell",
+      "translations": {
+        "tr": "anlatmak",
+        "es": "decir",
+        "fr": "dire",
+        "de": "erzählen",
+        "it": "raccontare",
+        "pt": "contar",
+        "ru": "рассказать",
+        "zh": "告诉",
+        "ja": "伝える",
+        "ko": "말하다",
+        "ar": "ليقول",
+        "hi": "बताना"
+      }
+    },
+    {
+      "english_word": "safe",
+      "translations": {
+        "tr": "güvenli",
+        "es": "seguro",
+        "fr": "sans danger",
+        "de": "sicher",
+        "it": "sicuro",
+        "pt": "seguro",
+        "ru": "безопасный",
+        "zh": "安全",
+        "ja": "安全な",
+        "ko": "안전하다",
+        "ar": "آمنة",
+        "hi": "सुरक्षित"
+      }
+    },
+    {
+      "english_word": "a little water",
+      "translations": {
+        "tr": "biraz su",
+        "es": "un poco de agua",
+        "fr": "un peu d'eau",
+        "de": "etwas Wasser",
+        "it": "un po' d'acqua",
+        "pt": "um pouco de água",
+        "ru": "немного воды",
+        "zh": "一点水",
+        "ja": "少量の水",
+        "ko": "약간의 물",
+        "ar": "القليل من الماء",
+        "hi": "थोड़ा सा पानी"
+      }
+    },
+    {
+      "english_word": "maybe",
+      "translations": {
+        "tr": "belki",
+        "es": "tal vez",
+        "fr": "peut-être",
+        "de": "vielleicht",
+        "it": "forse",
+        "pt": "talvez",
+        "ru": "может быть",
+        "zh": "也许",
+        "ja": "たぶん",
+        "ko": "아마도",
+        "ar": "ربما",
+        "hi": "शायद"
+      }
+    },
+    {
+      "english_word": "without",
+      "translations": {
+        "tr": "olmadan",
+        "es": "sin",
+        "fr": "sans",
+        "de": "ohne",
+        "it": "senza",
+        "pt": "sem",
+        "ru": "без",
+        "zh": "没有",
+        "ja": "なしで",
+        "ko": "없이",
+        "ar": "بدون",
+        "hi": "बिना"
+      }
+    },
+    {
+      "english_word": "to believe",
+      "translations": {
+        "tr": "inanmak",
+        "es": "creer",
+        "fr": "croire",
+        "de": "zu glauben",
+        "it": "credere",
+        "pt": "acreditar",
+        "ru": "верить",
+        "zh": "相信",
+        "ja": "信じること",
+        "ko": "믿다",
+        "ar": "للاعتقاد",
+        "hi": "विश्वास करना"
+      }
+    },
+    {
+      "english_word": "also",
+      "translations": {
+        "tr": "ayrıca",
+        "es": "también",
+        "fr": "aussi",
+        "de": "auch",
+        "it": "anche",
+        "pt": "também",
+        "ru": "также",
+        "zh": "还有",
+        "ja": "また",
+        "ko": "또한",
+        "ar": "ايضا",
+        "hi": "भी"
+      }
+    },
+    {
+      "english_word": "to happen",
+      "translations": {
+        "tr": "olmak",
+        "es": "suceder",
+        "fr": "arriver",
+        "de": "passieren",
+        "it": "accadere",
+        "pt": "acontecer",
+        "ru": "случиться",
+        "zh": "发生",
+        "ja": "起こる",
+        "ko": "일어나다",
+        "ar": "أن يحدث",
+        "hi": "घटित होना"
+      }
+    }
+  ]
+}

@@ -1,0 +1,136 @@
+{
+  "levelQuestions": [
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "clothes-pin",
+        "wrongAnswers": [
+          "hand-saw",
+          "iron",
+          "duct-tape"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "duct-tape",
+        "wrongAnswers": [
+          "light-bulb",
+          "tumble-dryer",
+          "clothes-pin"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-2",
+      "questionData": {
+        "imageName": "hand-saw",
+        "wrongAnswers": [
+          "measure-tape",
+          "umbrella",
+          "duct-tape"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "iron",
+        "wrongAnswers": [
+          "hand-saw",
+          "umbrella",
+          "clothes-pin"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "ironing-board",
+        "wrongAnswers": [
+          "measure-tape",
+          "laundry-basket",
+          "clothes-pin"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-2",
+      "questionData": {
+        "imageName": "laundry-basket",
+        "wrongAnswers": [
+          "tumble-dryer",
+          "clothes-pin",
+          "iron"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "light-bulb",
+        "wrongAnswers": [
+          "iron",
+          "laundry-basket",
+          "clothes-pin"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "measure-tape",
+        "wrongAnswers": [
+          "spanner",
+          "clothes-pin",
+          "duct-tape"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-2",
+      "questionData": {
+        "imageName": "spanner",
+        "wrongAnswers": [
+          "washing-machine",
+          "hand-saw",
+          "laundry-basket"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "tumble-dryer",
+        "wrongAnswers": [
+          "ironing-board",
+          "duct-tape",
+          "clothes-pin"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "umbrella",
+        "wrongAnswers": [
+          "spanner",
+          "measure-tape",
+          "clothes-pin"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-2",
+      "questionData": {
+        "imageName": "washing-machine",
+        "wrongAnswers": [
+          "duct-tape",
+          "ironing-board",
+          "measure-tape"
+        ]
+      }
+    }
+  ]
+}

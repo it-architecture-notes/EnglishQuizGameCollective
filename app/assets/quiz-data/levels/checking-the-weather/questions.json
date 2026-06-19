@@ -1,0 +1,158 @@
+{
+  "levelQuestions": [
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "clouds",
+        "wrongAnswers": [
+          "storm",
+          "sunny",
+          "fog"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "fog",
+        "wrongAnswers": [
+          "wind",
+          "humid",
+          "umbrella"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-2",
+      "questionData": {
+        "imageName": "hail",
+        "wrongAnswers": [
+          "clouds",
+          "humid",
+          "ice-storm"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "humid",
+        "wrongAnswers": [
+          "lightning",
+          "wind",
+          "clouds"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "hurricane",
+        "wrongAnswers": [
+          "snow",
+          "ice-storm",
+          "clouds"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "ice-storm",
+        "wrongAnswers": [
+          "thunder",
+          "storm",
+          "clouds"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-2",
+      "questionData": {
+        "imageName": "lightning",
+        "wrongAnswers": [
+          "snow",
+          "sunny",
+          "wind"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "rain",
+        "wrongAnswers": [
+          "hurricane",
+          "lightning",
+          "clouds"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "rainbow",
+        "wrongAnswers": [
+          "rain",
+          "thunder",
+          "clouds"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "snow",
+        "wrongAnswers": [
+          "sunny",
+          "humid",
+          "clouds"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-2",
+      "questionData": {
+        "imageName": "storm",
+        "wrongAnswers": [
+          "humid",
+          "ice-storm",
+          "rain"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "sunny",
+        "wrongAnswers": [
+          "humid",
+          "clouds",
+          "fog"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "thunder",
+        "wrongAnswers": [
+          "lightning",
+          "ice-storm",
+          "clouds"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "wind",
+        "wrongAnswers": [
+          "snow",
+          "storm",
+          "clouds"
+        ]
+      }
+    }
+  ]
+}

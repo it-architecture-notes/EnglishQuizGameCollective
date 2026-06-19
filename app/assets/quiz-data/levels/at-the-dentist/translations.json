@@ -1,0 +1,174 @@
+{
+  "translations_list": [
+    {
+      "english_word": "to hurt",
+      "translations": {
+        "tr": "acımak",
+        "es": "doler",
+        "fr": "faire du mal",
+        "de": "wehtun",
+        "it": "fare male",
+        "pt": "machucar",
+        "ru": "болеть",
+        "zh": "伤害",
+        "ja": "痛む",
+        "ko": "아프다",
+        "ar": "ليؤذي",
+        "hi": "चोट पहुँचाना"
+      }
+    },
+    {
+      "english_word": "how often",
+      "translations": {
+        "tr": "ne sıklıkta",
+        "es": "con qué frecuencia",
+        "fr": "à quelle fréquence",
+        "de": "wie oft",
+        "it": "quanto spesso",
+        "pt": "com que frequência",
+        "ru": "как часто",
+        "zh": "多久一次",
+        "ja": "どのくらいの頻度で",
+        "ko": "얼마나 자주",
+        "ar": "كم مرة",
+        "hi": "कितनी बार"
+      }
+    },
+    {
+      "english_word": "to be afraid of",
+      "translations": {
+        "tr": "korkmak",
+        "es": "tener miedo de",
+        "fr": "avoir peur de",
+        "de": "Angst haben",
+        "it": "avere paura di",
+        "pt": "ter medo de",
+        "ru": "бояться",
+        "zh": "害怕",
+        "ja": "恐れること",
+        "ko": "두려워하다",
+        "ar": "للخوف من",
+        "hi": "डरना"
+      }
+    },
+    {
+      "english_word": "to understand",
+      "translations": {
+        "tr": "anlamak",
+        "es": "entender",
+        "fr": "comprendre",
+        "de": "zu verstehen",
+        "it": "per capire",
+        "pt": "entender",
+        "ru": "понять",
+        "zh": "去理解",
+        "ja": "理解する",
+        "ko": "이해하다",
+        "ar": "لفهم",
+        "hi": "समझने के लिए"
+      }
+    },
+    {
+      "english_word": "to keep",
+      "translations": {
+        "tr": "tutmak",
+        "es": "mantener",
+        "fr": "garder",
+        "de": "behalten",
+        "it": "mantenere",
+        "pt": "manter",
+        "ru": "держать",
+        "zh": "保留",
+        "ja": "保つ",
+        "ko": "유지하다",
+        "ar": "للاحتفاظ بها",
+        "hi": "रखने के लिए"
+      }
+    },
+    {
+      "english_word": "to show",
+      "translations": {
+        "tr": "göstermek",
+        "es": "mostrar",
+        "fr": "montrer",
+        "de": "zeigen",
+        "it": "mostrare",
+        "pt": "mostrar",
+        "ru": "показать",
+        "zh": "展示",
+        "ja": "見せる",
+        "ko": "보여주기 위해",
+        "ar": "لإظهار",
+        "hi": "दिखाने के लिए"
+      }
+    },
+    {
+      "english_word": "to agree",
+      "translations": {
+        "tr": "kabul etmek",
+        "es": "estar de acuerdo",
+        "fr": "être d'accord",
+        "de": "zustimmen",
+        "it": "essere d'accordo",
+        "pt": "concordar",
+        "ru": "согласиться",
+        "zh": "同意",
+        "ja": "同意する",
+        "ko": "동의하다",
+        "ar": "للموافقة",
+        "hi": "सहमत होना"
+      }
+    },
+    {
+      "english_word": "kind",
+      "translations": {
+        "tr": "nazik",
+        "es": "amable",
+        "fr": "gentil",
+        "de": "nett",
+        "it": "gentile",
+        "pt": "gentil",
+        "ru": "добрый",
+        "zh": "善良",
+        "ja": "親切な",
+        "ko": "친절한",
+        "ar": "لطيف",
+        "hi": "दयालु"
+      }
+    },
+    {
+      "english_word": "to explain",
+      "translations": {
+        "tr": "açıklamak",
+        "es": "explicar",
+        "fr": "expliquer",
+        "de": "zu erklären",
+        "it": "per spiegare",
+        "pt": "explicar",
+        "ru": "объяснить",
+        "zh": "解释",
+        "ja": "説明する",
+        "ko": "설명하다",
+        "ar": "لشرح",
+        "hi": "समझाने के लिए"
+      }
+    },
+    {
+      "english_word": "in detail",
+      "translations": {
+        "tr": "detaylı olarak",
+        "es": "en detalle",
+        "fr": "en détail",
+        "de": "im Detail",
+        "it": "in dettaglio",
+        "pt": "em detalhes",
+        "ru": "подробно",
+        "zh": "详细地",
+        "ja": "詳細に",
+        "ko": "자세히",
+        "ar": "بالتفصيل",
+        "hi": "विस्तार से"
+      }
+    }
+  ]
+}

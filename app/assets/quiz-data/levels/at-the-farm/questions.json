@@ -1,0 +1,263 @@
+{
+  "levelQuestions": [
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "barn",
+        "wrongAnswers": [
+          "cottage",
+          "house",
+          "water-mill"
+        ]
+      }
+    },
+    {
+      "template": "ConvoTemplate-1",
+      "questionData": {
+        "character1": "Sarah",
+        "character2": "Daniel",
+        "line1": "Do you think I can _____ a real farmer one day?",
+        "line2": "Of course.",
+        "answer": "become",
+        "distractors": [
+          "am",
+          "will",
+          "turn"
+        ]
+      },
+      "audio_file1": "do-you-think-i-can-become-a-real-farmer-one-day-convo",
+      "audio_file2": "of-course-convo"
+    },
+    {
+      "template": "ConvoTemplate-1",
+      "questionData": {
+        "character1": "Beth",
+        "character2": "Alex",
+        "line1": "The apples look so good! Can we ____ them now?",
+        "line2": "No, but we can _____ them next week.",
+        "answer": "pick",
+        "distractors": [
+          "sell",
+          "gather",
+          "carry"
+        ]
+      },
+      "audio_file1": "the-apples-look-so-good-can-we-pick-them-now-convo",
+      "audio_file2": "no-but-we-can-pick-them-next-week-convo"
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "hose",
+        "wrongAnswers": [
+          "bucket",
+          "water-tap",
+          "water-pipe"
+        ]
+      }
+    },
+    {
+      "template": "WordPairs",
+      "questionData": {
+        "english_words": [
+          "thin",
+          "thick",
+          "top",
+          "bottom"
+        ],
+        "translations": [
+          {
+            "tr": "ince",
+            "es": "delgado",
+            "fr": "mince",
+            "de": "dünn",
+            "it": "magro",
+            "pt": "fino",
+            "ru": "тонкий",
+            "zh": "薄的",
+            "ja": "薄い",
+            "ko": "얇은",
+            "ar": "رفيع",
+            "hi": "पतला"
+          },
+          {
+            "tr": "kalın",
+            "es": "grueso",
+            "fr": "épais",
+            "de": "dick",
+            "it": "spesso",
+            "pt": "espesso",
+            "ru": "толстый",
+            "zh": "厚的",
+            "ja": "厚い",
+            "ko": "두꺼운",
+            "ar": "سميك",
+            "hi": "मोटा"
+          },
+          {
+            "tr": "tepe",
+            "es": "arriba",
+            "fr": "haut",
+            "de": "Spitze",
+            "it": "superiore",
+            "pt": "topo",
+            "ru": "вершина",
+            "zh": "顶部",
+            "ja": "トップ",
+            "ko": "맨 위",
+            "ar": "قمة",
+            "hi": "शीर्ष"
+          },
+          {
+            "tr": "alt",
+            "es": "abajo",
+            "fr": "bas",
+            "de": "unten",
+            "it": "fondo",
+            "pt": "fundo",
+            "ru": "нижний",
+            "zh": "底部",
+            "ja": "底",
+            "ko": "맨 아래",
+            "ar": "قاع",
+            "hi": "तल"
+          }
+        ]
+      }
+    },
+    {
+      "template": "DialogueCompletion",
+      "questionData": {
+        "character1": "Omar",
+        "character2": "Lily",
+        "line1": "Which animals do you like most on the farm?",
+        "answer": "I like to ride the horses",
+        "distractors": [
+          "I don't like the cows",
+          "I like to drive the horses",
+          "I cannot like any"
+        ]
+      },
+      "audio_file1": "which-animals-do-you-like-most-on-the-farm-convo",
+      "audio_file2": "i-like-to-ride-the-horses-convo"
+    },
+    {
+      "template": "AppearDisappear",
+      "questionData": {
+        "words": "You need to push hard to open the barn doors.",
+        "distractors": [
+          "pull",
+          "softly",
+          "have",
+          "farm"
+        ]
+      },
+      "audio_file": "you-need-to-push-hard-to-open-the-barn-doors-convo"
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "tractor",
+        "wrongAnswers": [
+          "truck",
+          "excavator",
+          "forklift"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-2",
+      "questionData": {
+        "imageName": "shovel",
+        "wrongAnswers": [
+          "rake",
+          "barn",
+          "hose"
+        ]
+      },
+      "answer": "shovel"
+    },
+    {
+      "template": "SentenceBuilder",
+      "questionData": {
+        "correct_order": "The cows are finally big enough."
+      },
+      "audio_file": "the-cows-are-finally-big-enough-convo"
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "wheelbarrow",
+        "wrongAnswers": [
+          "tractor",
+          "carrier",
+          "stroller"
+        ]
+      }
+    },
+    {
+      "template": "ClozeSequence",
+      "questionData": {
+        "sentence": "The farmer _____ the cows to a fresh pasture _____.",
+        "answer": [
+          "moves",
+          "daily"
+        ],
+        "distractors": [
+          "stays",
+          "pushes",
+          "gets",
+          "weekend"
+        ]
+      },
+      "audio_file": "the-farmer-moves-the-cows-to-a-fresh-pasture-daily-convo"
+    },
+    {
+      "template": "GrammarForm",
+      "questionData": {
+        "sentence": "It is important that we _____ more nutrients.",
+        "answer": "add",
+        "distractors": [
+          "are adding",
+          "will add",
+          "do add"
+        ]
+      },
+      "audio_file": "it-is-important-that-we-add-more-nutrients-convo"
+    },
+    {
+      "template": "ClozeSequence",
+      "questionData": {
+        "sentence": "____ hard to open the barn doors where we ____ the baby goats.",
+        "answer": [
+          "pull",
+          "raise"
+        ],
+        "distractors": [
+          "take",
+          "take out",
+          "grow",
+          "see"
+        ]
+      },
+      "audio_file": "pull-hard-to-open-the-barn-doors-where-we-raise-the-baby-goats-convo"
+    },
+    {
+      "template": "ClozeSequence",
+      "questionData": {
+        "sentence": "Farmer John ____ many things, _____ sunflowers.",
+        "answer": [
+          "plants",
+          "especially"
+        ],
+        "distractors": [
+          "holds",
+          "checks",
+          "daily",
+          "really"
+        ]
+      },
+      "audio_file": "farmer-john-plants-many-things-especially-sunflowers-convo"
+    }
+  ]
+}

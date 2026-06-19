@@ -1,0 +1,289 @@
+{
+  "levelQuestions": [
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "conductor",
+        "wrongAnswers": [
+          "ticket-seller",
+          "check-in-counter",
+          "train-driver"
+        ]
+      }
+    },
+    {
+      "template": "ConvoTemplate-1",
+      "questionData": {
+        "character1": "Daniel",
+        "character2": "Sarah",
+        "line1": "Do you know this couple?",
+        "line2": "Yes, they always _____ together to see the world.",
+        "answer": "travel",
+        "distractors": [
+          "run",
+          "hike",
+          "drive a car"
+        ]
+      },
+      "audio_file1": "do-you-know-this-couple-convo",
+      "audio_file2": "yes-they-always-travel-together-to-see-the-world-convo"
+    },
+    {
+      "template": "ConvoTemplate-1",
+      "questionData": {
+        "character1": "Beth",
+        "character2": "Omar",
+        "line1": "How do you go to Europe?",
+        "line2": "I go ______.",
+        "answer": "by train",
+        "distractors": [
+          "at bike",
+          "on walking",
+          "railroad"
+        ]
+      },
+      "audio_file1": "how-do-you-go-to-europe-convo",
+      "audio_file2": "i-go-by-train-convo"
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "rail-road",
+        "wrongAnswers": [
+          "train",
+          "road",
+          "river"
+        ]
+      }
+    },
+    {
+      "template": "WordPairs",
+      "questionData": {
+        "english_words": [
+          "after tomorrow",
+          "since yesterday",
+          "as soon as possible",
+          "until next week",
+          "while",
+          "days ago"
+        ],
+        "translations": [
+          {
+            "tr": "yarından sonra",
+            "es": "pasado mañana",
+            "fr": "après-demain",
+            "de": "übermorgen",
+            "it": "dopo domani",
+            "pt": "depois de amanhã",
+            "ru": "после завтра",
+            "zh": "后天",
+            "ja": "明後日",
+            "ko": "모레",
+            "ar": "بعد غد",
+            "hi": "परसों"
+          },
+          {
+            "tr": "dünden beri",
+            "es": "desde ayer",
+            "fr": "depuis hier",
+            "de": "seit gestern",
+            "it": "da ieri",
+            "pt": "desde ontem",
+            "ru": "со вчерашнего дня",
+            "zh": "从昨天开始",
+            "ja": "昨日から",
+            "ko": "어제부터",
+            "ar": "منذ الأمس",
+            "hi": "कल से"
+          },
+          {
+            "tr": "mümkün olan en kısa sürede",
+            "es": "lo antes posible",
+            "fr": "dès que possible",
+            "de": "so schnell wie möglich",
+            "it": "appena possibile",
+            "pt": "O mais breve possível",
+            "ru": "как можно скорее",
+            "zh": "尽快地",
+            "ja": "できるだけ早く",
+            "ko": "가능한 한 빨리",
+            "ar": "في أسرع وقت ممكن",
+            "hi": "जितनी जल्दी हो सके"
+          },
+          {
+            "tr": "gelecek haftaya kadar",
+            "es": "hasta próxima semana",
+            "fr": "jusqu'à la semaine prochaine",
+            "de": "bis nächste Woche",
+            "it": "fino alla prossima settimana",
+            "pt": "até semana que vem",
+            "ru": "до следующей недели",
+            "zh": "直到下周",
+            "ja": "来週まで",
+            "ko": "다음주까지",
+            "ar": "حتى الأسبوع المقبل",
+            "hi": "अगले सप्ताह तक"
+          },
+          {
+            "tr": "sırasında",
+            "es": "mientras",
+            "fr": "alors que",
+            "de": "während",
+            "it": "Mentre",
+            "pt": "enquanto",
+            "ru": "пока",
+            "zh": "当...的时候",
+            "ja": "その間",
+            "ko": "~하는 동안",
+            "ar": "بينما",
+            "hi": "जबकि"
+          },
+          {
+            "tr": "günler önce",
+            "es": "hace dias",
+            "fr": "il y a quelques jours",
+            "de": "vor Tagen",
+            "it": "giorni fa",
+            "pt": "dias atrás",
+            "ru": "дней назад",
+            "zh": "几天前",
+            "ja": "数日前",
+            "ko": "며칠 전",
+            "ar": "منذ أيام",
+            "hi": "दिन पहले"
+          }
+        ]
+      }
+    },
+    {
+      "template": "DialogueCompletion",
+      "questionData": {
+        "character1": "Alex",
+        "character2": "Ethan",
+        "line1": "Why do you run?",
+        "answer": "We run to catch the train.",
+        "distractors": [
+          "We run to wait for the train",
+          "We run to the station",
+          "We run at the last moment"
+        ]
+      },
+      "audio_file1": "why-do-you-run-convo",
+      "audio_file2": "we-run-to-catch-the-train-convo"
+    },
+    {
+      "template": "AppearDisappear",
+      "questionData": {
+        "words": "I always miss the early train.",
+        "distractors": [
+          "morning",
+          "never",
+          "catch",
+          "He"
+        ]
+      },
+      "audio_file": "i-always-miss-the-early-train-convo"
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "wagon",
+        "wrongAnswers": [
+          "trailer",
+          "bus",
+          "platform"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "railroad-crossing",
+        "wrongAnswers": [
+          "barrier",
+          "traffic-light",
+          "guard"
+        ]
+      }
+    },
+    {
+      "template": "SentenceBuilder",
+      "questionData": {
+        "correct_order": "The announcement is very loud."
+      },
+      "audio_file": "the-announcement-is-very-loud-convo"
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "high-speed-train",
+        "wrongAnswers": [
+          "rocket-train",
+          "runner-train",
+          "train-on-wheels"
+        ]
+      }
+    },
+    {
+      "template": "ClozeSequence",
+      "questionData": {
+        "sentence": "We ______ our suitcases near the window in the waiting room.",
+        "answer": [
+          "put"
+        ],
+        "distractors": [
+          "check",
+          "carry",
+          "take"
+        ]
+      },
+      "audio_file": "we-put-our-suitcases-near-the-window-in-the-waiting-room-convo"
+    },
+    {
+      "template": "GrammarForm",
+      "questionData": {
+        "sentence": "____ I need to show my ticket?",
+        "answer": "do",
+        "distractors": [
+          "am",
+          "are",
+          "will be"
+        ]
+      }
+    },
+    {
+      "template": "ClozeSequence",
+      "questionData": {
+        "sentence": "Passengers _____ to the platform before _____ trains arrive.",
+        "answer": [
+          "hurry",
+          "other"
+        ],
+        "distractors": [
+          "another",
+          "wait",
+          "leave",
+          "some"
+        ]
+      },
+      "audio_file": "passengers-hurry-to-the-platform-before-other-trains-arrive-convo"
+    },
+    {
+      "template": "ClozeSequence",
+      "questionData": {
+        "sentence": "____ trains _____ at the station at noon.",
+        "answer": [
+          "both",
+          "arrive"
+        ],
+        "distractors": [
+          "none",
+          "every",
+          "depart",
+          "always"
+        ]
+      },
+      "audio_file": "both-trains-arrive-at-the-station-at-noon-convo"
+    }
+  ]
+}

@@ -1,0 +1,158 @@
+{
+  "levelQuestions": [
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "apricot",
+        "wrongAnswers": [
+          "papaya",
+          "pineapple",
+          "banana"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "banana",
+        "wrongAnswers": [
+          "pomegranate",
+          "apricot",
+          "cantaloupe"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-2",
+      "questionData": {
+        "imageName": "cantaloupe",
+        "wrongAnswers": [
+          "quince",
+          "apricot",
+          "cherry"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "cherry",
+        "wrongAnswers": [
+          "coconut",
+          "pomegranate",
+          "apricot"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "coconut",
+        "wrongAnswers": [
+          "kiwi",
+          "cantaloupe",
+          "apricot"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-2",
+      "questionData": {
+        "imageName": "dragon-fruit",
+        "wrongAnswers": [
+          "coconut",
+          "kiwi",
+          "pineapple"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "grape",
+        "wrongAnswers": [
+          "strawberry",
+          "apricot",
+          "banana"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "kiwi",
+        "wrongAnswers": [
+          "cantaloupe",
+          "coconut",
+          "apricot"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-2",
+      "questionData": {
+        "imageName": "papaya",
+        "wrongAnswers": [
+          "pomegranate",
+          "strawberry",
+          "banana"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "pineapple",
+        "wrongAnswers": [
+          "papaya",
+          "banana",
+          "apricot"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "plum",
+        "wrongAnswers": [
+          "quince",
+          "grape",
+          "apricot"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-2",
+      "questionData": {
+        "imageName": "pomegranate",
+        "wrongAnswers": [
+          "cherry",
+          "dragon-fruit",
+          "kiwi"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "quince",
+        "wrongAnswers": [
+          "coconut",
+          "cherry",
+          "apricot"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-2",
+      "questionData": {
+        "imageName": "strawberry",
+        "wrongAnswers": [
+          "kiwi",
+          "pineapple",
+          "pomegranate"
+        ]
+      }
+    }
+  ]
+}

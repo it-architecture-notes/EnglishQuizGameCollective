@@ -1,0 +1,174 @@
+{
+  "translations_list": [
+    {
+      "english_word": "beautiful",
+      "translations": {
+        "tr": "güzel",
+        "es": "hermosa",
+        "fr": "belle",
+        "de": "schön",
+        "it": "bellissimo",
+        "pt": "lindo",
+        "ru": "красивый",
+        "zh": "美丽的",
+        "ja": "美しい",
+        "ko": "아름다운",
+        "ar": "جميلة",
+        "hi": "सुन्दर"
+      }
+    },
+    {
+      "english_word": "to jump",
+      "translations": {
+        "tr": "atlamak",
+        "es": "saltar",
+        "fr": "sauter",
+        "de": "springen",
+        "it": "saltare",
+        "pt": "pular",
+        "ru": "прыгать",
+        "zh": "跳",
+        "ja": "ジャンプする",
+        "ko": "점프하다",
+        "ar": "للقفز",
+        "hi": "कूदना"
+      }
+    },
+    {
+      "english_word": "to enjoy",
+      "translations": {
+        "tr": "zevk almak",
+        "es": "disfrutar",
+        "fr": "profiter",
+        "de": "zu genießen",
+        "it": "per godere",
+        "pt": "aproveitar",
+        "ru": "наслаждаться",
+        "zh": "享受",
+        "ja": "楽しむ",
+        "ko": "즐기다",
+        "ar": "للاستمتاع",
+        "hi": "आनंद लेना"
+      }
+    },
+    {
+      "english_word": "to run away",
+      "translations": {
+        "tr": "kaçmak",
+        "es": "huir",
+        "fr": "s'enfuir",
+        "de": "weglaufen",
+        "it": "scappare",
+        "pt": "fugir",
+        "ru": "убежать",
+        "zh": "逃跑",
+        "ja": "逃げる",
+        "ko": "도망치다",
+        "ar": "الهروب",
+        "hi": "भाग जाना"
+      }
+    },
+    {
+      "english_word": "to climb",
+      "translations": {
+        "tr": "tırmanmak",
+        "es": "escalar",
+        "fr": "grimper",
+        "de": "klettern",
+        "it": "salire",
+        "pt": "subir",
+        "ru": "подняться",
+        "zh": "攀登",
+        "ja": "登る",
+        "ko": "오르다",
+        "ar": "لتسلق",
+        "hi": "चढ़ना"
+      }
+    },
+    {
+      "english_word": "to fall",
+      "translations": {
+        "tr": "düşmek",
+        "es": "caer",
+        "fr": "tomber",
+        "de": "fallen",
+        "it": "cadere",
+        "pt": "cair",
+        "ru": "падать",
+        "zh": "跌倒",
+        "ja": "落ちる",
+        "ko": "떨어지다",
+        "ar": "للسقوط",
+        "hi": "गिरना"
+      }
+    },
+    {
+      "english_word": "to throw",
+      "translations": {
+        "tr": "atmak",
+        "es": "tirar",
+        "fr": "jeter",
+        "de": "werfen",
+        "it": "lanciare",
+        "pt": "jogar",
+        "ru": "бросить",
+        "zh": "扔",
+        "ja": "投げる",
+        "ko": "던지기",
+        "ar": "لرمي",
+        "hi": "फेंकना"
+      }
+    },
+    {
+      "english_word": "to play",
+      "translations": {
+        "tr": "oynamak",
+        "es": "jugar",
+        "fr": "jouer",
+        "de": "zu spielen",
+        "it": "per giocare",
+        "pt": "jogar",
+        "ru": "играть",
+        "zh": "玩",
+        "ja": "遊ぶ",
+        "ko": "놀다",
+        "ar": "للعب",
+        "hi": "खेलने के लिए"
+      }
+    },
+    {
+      "english_word": "fun",
+      "translations": {
+        "tr": "eğlence",
+        "es": "divertido",
+        "fr": "amusant",
+        "de": "Spaß",
+        "it": "divertimento",
+        "pt": "divertido",
+        "ru": "веселье",
+        "zh": "有趣",
+        "ja": "楽しい",
+        "ko": "재미",
+        "ar": "متعة",
+        "hi": "मज़ा"
+      }
+    },
+    {
+      "english_word": "what kind of dog",
+      "translations": {
+        "tr": "ne tür bir köpek",
+        "es": "qué tipo de perro",
+        "fr": "quel genre de chien",
+        "de": "was für ein Hund",
+        "it": "che tipo di cane",
+        "pt": "que tipo de cachorro",
+        "ru": "какой породы собака",
+        "zh": "什么品种的狗",
+        "ja": "どんな犬種",
+        "ko": "어떤 종류의 개",
+        "ar": "أي نوع من الكلاب",
+        "hi": "किस तरह का कुत्ता"
+      }
+    }
+  ]
+}

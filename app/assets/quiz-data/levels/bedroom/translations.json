@@ -1,0 +1,174 @@
+{
+  "translations_list": [
+    {
+      "english_word": "to dream",
+      "translations": {
+        "tr": "rüya görmek",
+        "es": "soñar",
+        "fr": "rêver",
+        "de": "träumen",
+        "it": "sognare",
+        "pt": "sonhar",
+        "ru": "видеть сны",
+        "zh": "做梦",
+        "ja": "夢を見る",
+        "ko": "꿈을 꾸다",
+        "ar": "يحلم",
+        "hi": "सपना देखना"
+      }
+    },
+    {
+      "english_word": "all",
+      "translations": {
+        "tr": "bütün",
+        "es": "todo",
+        "fr": "tout",
+        "de": "alle",
+        "it": "tutto",
+        "pt": "todos",
+        "ru": "всё",
+        "zh": "所有",
+        "ja": "すべて",
+        "ko": "모든",
+        "ar": "الكل",
+        "hi": "सब"
+      }
+    },
+    {
+      "english_word": "one more thing",
+      "translations": {
+        "tr": "bir şey daha",
+        "es": "una cosa más",
+        "fr": "encore une chose",
+        "de": "noch eine Sache",
+        "it": "un'altra cosa",
+        "pt": "mais uma coisa",
+        "ru": "ещё одно дело",
+        "zh": "还有一件事",
+        "ja": "もう一つ",
+        "ko": "한 가지 더",
+        "ar": "شيء آخر",
+        "hi": "एक और चीज़"
+      }
+    },
+    {
+      "english_word": "very",
+      "translations": {
+        "tr": "çok",
+        "es": "muy",
+        "fr": "très",
+        "de": "sehr",
+        "it": "molto",
+        "pt": "muito",
+        "ru": "очень",
+        "zh": "非常",
+        "ja": "とても",
+        "ko": "매우",
+        "ar": "جداً",
+        "hi": "बहुत"
+      }
+    },
+    {
+      "english_word": "turn on the light",
+      "translations": {
+        "tr": "ışığı açmak",
+        "es": "encender la luz",
+        "fr": "allumer la lumière",
+        "de": "das Licht einschalten",
+        "it": "accendere la luce",
+        "pt": "acender a luz",
+        "ru": "включить свет",
+        "zh": "开灯",
+        "ja": "電気をつける",
+        "ko": "불을 켜다",
+        "ar": "تشغيل الضوء",
+        "hi": "लाइट चालू करना"
+      }
+    },
+    {
+      "english_word": "turn off the light",
+      "translations": {
+        "tr": "ışığı kapatmak",
+        "es": "apagar la luz",
+        "fr": "éteindre la lumière",
+        "de": "das Licht ausschalten",
+        "it": "spegnere la luce",
+        "pt": "apagar a luz",
+        "ru": "выключить свет",
+        "zh": "关灯",
+        "ja": "電気を消す",
+        "ko": "불을 끄다",
+        "ar": "إطفاء الضوء",
+        "hi": "लाइट बंद करना"
+      }
+    },
+    {
+      "english_word": "dark",
+      "translations": {
+        "tr": "karanlık",
+        "es": "oscuro",
+        "fr": "sombre",
+        "de": "dunkel",
+        "it": "buio",
+        "pt": "escuro",
+        "ru": "темно",
+        "zh": "黑暗",
+        "ja": "暗い",
+        "ko": "어둡다",
+        "ar": "مظلم",
+        "hi": "अंधेरा"
+      }
+    },
+    {
+      "english_word": "comfortable",
+      "translations": {
+        "tr": "rahat",
+        "es": "cómodo",
+        "fr": "confortable",
+        "de": "bequem",
+        "it": "comodo",
+        "pt": "confortável",
+        "ru": "удобный",
+        "zh": "舒适",
+        "ja": "快適な",
+        "ko": "편안한",
+        "ar": "مريح",
+        "hi": "आरामदायक"
+      }
+    },
+    {
+      "english_word": "too",
+      "translations": {
+        "tr": "fazla",
+        "es": "demasiado",
+        "fr": "trop",
+        "de": "zu",
+        "it": "troppo",
+        "pt": "demais",
+        "ru": "слишком",
+        "zh": "太",
+        "ja": "あまりに",
+        "ko": "너무",
+        "ar": "أكثر من اللازم",
+        "hi": "बहुत ज़्यादा"
+      }
+    },
+    {
+      "english_word": "to clean",
+      "translations": {
+        "tr": "temizlemek",
+        "es": "limpiar",
+        "fr": "nettoyer",
+        "de": "aufräumen",
+        "it": "pulire",
+        "pt": "limpar",
+        "ru": "убирать",
+        "zh": "打扫",
+        "ja": "掃除する",
+        "ko": "청소하다",
+        "ar": "تنظيف",
+        "hi": "साफ़ करना"
+      }
+    }
+  ]
+}

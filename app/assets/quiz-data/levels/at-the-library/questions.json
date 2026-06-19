@@ -1,0 +1,258 @@
+{
+  "levelQuestions": [
+    {
+      "template": "imageQuizTemplate-2",
+      "questionData": {
+        "imageName": "book",
+        "wrongAnswers": [
+          "bookmark",
+          "newspaper",
+          "desk"
+        ]
+      }
+    },
+    {
+      "template": "ConvoTemplate-1",
+      "questionData": {
+        "character1": "Beth",
+        "character2": "Alex",
+        "line1": "This book is due tomorrow. Can I _____ it?",
+        "line2": "Yes, I can _____ it for another two weeks.",
+        "answer": "renew",
+        "distractors": [
+          "buy",
+          "cancel",
+          "print"
+        ]
+      },
+      "audio_file1": "this-book-is-due-tomorrow-can-i-renew-it-convo",
+      "audio_file2": "yes-i-can-renew-it-for-another-two-weeks-convo"
+    },
+    {
+      "template": "ClozeSequence",
+      "questionData": {
+        "sentence": "Excuse me, could you _____ me _____ a book?",
+        "answers": [
+          "help",
+          "find"
+        ],
+        "distractors": [
+          "buy",
+          "read"
+        ]
+      },
+      "audio_file": "excuse-me-could-you-help-me-find-a-book-convo"
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "desk",
+        "wrongAnswers": [
+          "chair",
+          "counter",
+          "shelf"
+        ]
+      }
+    },
+    {
+      "template": "WordPairs",
+      "questionData": {
+        "english_words": [
+          "long",
+          "short",
+          "quiet",
+          "boring"
+        ],
+        "translations": [
+          {
+            "tr": "uzun",
+            "es": "largo",
+            "fr": "long",
+            "de": "lang",
+            "it": "lungo",
+            "pt": "longo",
+            "ru": "длинный",
+            "zh": "长的",
+            "ja": "長い",
+            "ko": "긴",
+            "ar": "طويل",
+            "hi": "लंबा"
+          },
+          {
+            "tr": "kısa",
+            "es": "corto",
+            "fr": "court",
+            "de": "kurz",
+            "it": "corto",
+            "pt": "curto",
+            "ru": "короткий",
+            "zh": "短的",
+            "ja": "短い",
+            "ko": "짧은",
+            "ar": "قصير",
+            "hi": "छोटा"
+          },
+          {
+            "tr": "sessiz",
+            "es": "silencioso",
+            "fr": "silencieux",
+            "de": "ruhig",
+            "it": "silenzioso",
+            "pt": "silencioso",
+            "ru": "тихий",
+            "zh": "安静的",
+            "ja": "静かな",
+            "ko": "조용한",
+            "ar": "هادئ",
+            "hi": "शांत"
+          },
+          {
+            "tr": "sıkıcı",
+            "es": "aburrido",
+            "fr": "ennuyeux",
+            "de": "langweilig",
+            "it": "noioso",
+            "pt": "entediante",
+            "ru": "скучный",
+            "zh": "无聊的",
+            "ja": "退屈な",
+            "ko": "지루한",
+            "ar": "ممل",
+            "hi": "उबाऊ"
+          }
+        ]
+      }
+    },
+    {
+      "template": "DialogueCompletion",
+      "questionData": {
+        "character1": "Omar",
+        "character2": "Lily",
+        "line1": "How long can I keep this book?",
+        "answer": "You can borrow it for three weeks.",
+        "distractors": [
+          "You must return it today.",
+          "You can borrow it for one week only.",
+          "I'm sorry, it is already reserved."
+        ]
+      },
+      "audio_file1": "how-long-can-i-keep-this-book-convo",
+      "audio_file2": "you-can-borrow-it-for-three-weeks-convo"
+    },
+    {
+      "template": "AppearDisappear",
+      "questionData": {
+        "words": "Is the library closed on Sundays?",
+        "distractors": [
+          "open",
+          "Saturday",
+          "when",
+          "there"
+        ]
+      },
+      "audio_file": "is-the-library-closed-on-sundays-convo"
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "newspaper",
+        "wrongAnswers": [
+          "magazine",
+          "comic",
+          "pamphlet"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "table-lamp",
+        "wrongAnswers": [
+          "floor lamp",
+          "chandelier",
+          "candle"
+        ]
+      }
+    },
+    {
+      "template": "SentenceBuilder",
+      "questionData": {
+        "correct_order": "Let me search our catalogue."
+      },
+      "audio_file": "let-me-search-our-catalogue-convo"
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "bookmark",
+        "wrongAnswers": [
+          "notebook",
+          "envelope",
+          "letter"
+        ]
+      }
+    },
+    {
+      "template": "ClozeSequence",
+      "questionData": {
+        "sentence": "It is ______ to _____ this book today — another reader reserved it.",
+        "answers": [
+          "impossible",
+          "take"
+        ],
+        "distractors": [
+          "full",
+          "empty",
+          "here",
+          "always"
+        ]
+      },
+      "audio_file": "it-is-impossible-to-take-this-book-today-another-reader-reserved-it-convo"
+    },
+    {
+      "template": "GrammarForm",
+      "questionData": {
+        "sentence": "____ I get a library card please?",
+        "answer": "Can",
+        "distractors": [
+          "Must",
+          "Am",
+          "Do"
+        ]
+      }
+    },
+    {
+      "template": "ClozeSequence",
+      "questionData": {
+        "sentence": "She needs to _____ her card to borrow any books.",
+        "answers": [
+          "show"
+        ],
+        "distractors": [
+          "return",
+          "cancel",
+          "replace",
+          "forget"
+        ]
+      },
+      "audio_file": "she-needs-to-show-her-card-to-borrow-any-books-convo"
+    },
+    {
+      "template": "ClozeSequence",
+      "questionData": {
+        "sentence": "I want to _____ in the _____ area to study.",
+        "answers": [
+          "sit",
+          "silent"
+        ],
+        "distractors": [
+          "loudly",
+          "borrow",
+          "here",
+          "always"
+        ]
+      },
+      "audio_file": "i-want-to-sit-in-the-silent-area-to-study-convo"
+    }
+  ]
+}

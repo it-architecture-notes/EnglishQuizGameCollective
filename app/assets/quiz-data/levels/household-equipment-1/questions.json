@@ -1,0 +1,147 @@
+{
+  "levelQuestions": [
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "bolt-and-nuts",
+        "wrongAnswers": [
+          "ladder",
+          "nail",
+          "box-cutter"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "box-cutter",
+        "wrongAnswers": [
+          "trash",
+          "dish-rack",
+          "bolt-and-nuts"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-2",
+      "questionData": {
+        "imageName": "dish-rack",
+        "wrongAnswers": [
+          "vacuum",
+          "extension-cord",
+          "ladder"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "extension-cord",
+        "wrongAnswers": [
+          "nail",
+          "dish-rack",
+          "bolt-and-nuts"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "hammer",
+        "wrongAnswers": [
+          "vacuum",
+          "screwdriver",
+          "bolt-and-nuts"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-2",
+      "questionData": {
+        "imageName": "key",
+        "wrongAnswers": [
+          "box-cutter",
+          "hammer",
+          "plunger"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "ladder",
+        "wrongAnswers": [
+          "plunger",
+          "trash",
+          "bolt-and-nuts"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "nail",
+        "wrongAnswers": [
+          "bolt-and-nuts",
+          "hammer",
+          "box-cutter"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-2",
+      "questionData": {
+        "imageName": "plunger",
+        "wrongAnswers": [
+          "extension-cord",
+          "ladder",
+          "trash"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "screwdriver",
+        "wrongAnswers": [
+          "plunger",
+          "key",
+          "bolt-and-nuts"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "trash",
+        "wrongAnswers": [
+          "box-cutter",
+          "bolt-and-nuts",
+          "dish-rack"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-2",
+      "questionData": {
+        "imageName": "vacuum",
+        "wrongAnswers": [
+          "key",
+          "plunger",
+          "bolt-and-nuts"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "scales",
+        "wrongAnswers": [
+          "vacuum",
+          "ladder",
+          "dish-rack"
+        ]
+      }
+    }
+  ]
+}

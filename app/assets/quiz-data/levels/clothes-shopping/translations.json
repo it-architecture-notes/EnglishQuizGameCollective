@@ -1,0 +1,208 @@
+{
+  "translations_list": [
+    {
+      "english_word": "to try on",
+      "translations": {
+        "tr": "denemek",
+        "es": "para probar",
+        "fr": "essayer",
+        "de": "zum Anprobieren",
+        "it": "da provare",
+        "pt": "para experimentar",
+        "ru": "примерить",
+        "zh": "试穿",
+        "ja": "試着する",
+        "ko": "입어보기",
+        "ar": "أن يجرب الملابس",
+        "hi": "पहनकर देखना"
+      }
+    },
+    {
+      "english_word": "to spend",
+      "translations": {
+        "tr": "harcamak",
+        "es": "gastar",
+        "fr": "dépenser",
+        "de": "ausgeben",
+        "it": "spendere",
+        "pt": "gastar",
+        "ru": "тратить",
+        "zh": "花费",
+        "ja": "使う",
+        "ko": "지출하다",
+        "ar": "أن ينفق",
+        "hi": "खर्च करना"
+      }
+    },
+    {
+      "english_word": "to remove  ",
+      "translations": {
+        "tr": "kaldırmak",
+        "es": "quitar",
+        "fr": "supprimer",
+        "de": "zu entfernen",
+        "it": "rimuovere",
+        "pt": "remover",
+        "ru": "удалить",
+        "zh": "取下",
+        "ja": "取り除く",
+        "ko": "제거하다",
+        "ar": "لإزالة",
+        "hi": "हटाना"
+      }
+    },
+    {
+      "english_word": "to prefer",
+      "translations": {
+        "tr": "tercih etmek",
+        "es": "preferir",
+        "fr": "préférer",
+        "de": "bevorzugen",
+        "it": "preferire",
+        "pt": "preferir",
+        "ru": "предпочитать",
+        "zh": "更喜欢",
+        "ja": "好む",
+        "ko": "선호하다",
+        "ar": "لتفضل",
+        "hi": "पसंद करना"
+      }
+    },
+    {
+      "english_word": "to fit",
+      "translations": {
+        "tr": "uymak",
+        "es": "encajar",
+        "fr": "s'adapter",
+        "de": "passen",
+        "it": "adattarsi",
+        "pt": "para caber",
+        "ru": "подходить",
+        "zh": "适合",
+        "ja": "フィットする",
+        "ko": "적합하다",
+        "ar": "لتناسب",
+        "hi": "फिट होना"
+      }
+    },
+    {
+      "english_word": "to return something",
+      "translations": {
+        "tr": "bir şeyi iade etmek",
+        "es": "devolver algo",
+        "fr": "rendre quelque chose",
+        "de": "etwas zurückgeben",
+        "it": "restituire qualcosa",
+        "pt": "devolver algo",
+        "ru": "вернуть что-то",
+        "zh": "退还某物",
+        "ja": "何かを返品する",
+        "ko": "무언가를 반품하다",
+        "ar": "إرجاع شيء ما",
+        "hi": "कुछ वापस करना"
+      }
+    },
+    {
+      "english_word": "to win",
+      "translations": {
+        "tr": "kazanmak",
+        "es": "ganar",
+        "fr": "gagner",
+        "de": "gewinnen",
+        "it": "vincere",
+        "pt": "vencer",
+        "ru": "выиграть",
+        "zh": "赢",
+        "ja": "勝つ",
+        "ko": "이기다",
+        "ar": "الفوز",
+        "hi": "जीतना"
+      }
+    },
+    {
+      "english_word": "to wear",
+      "translations": {
+        "tr": "giymek",
+        "es": "usar",
+        "fr": "porter",
+        "de": "zu tragen",
+        "it": "da indossare",
+        "pt": "vestir",
+        "ru": "носить",
+        "zh": "穿",
+        "ja": "着る",
+        "ko": "입다",
+        "ar": "لارتداء",
+        "hi": "पहनना"
+      }
+    },
+    {
+      "english_word": "young",
+      "translations": {
+        "tr": "genç",
+        "es": "joven",
+        "fr": "jeune",
+        "de": "jung",
+        "it": "giovane",
+        "pt": "jovem",
+        "ru": "молодой",
+        "zh": "年轻的",
+        "ja": "若い",
+        "ko": "젊은",
+        "ar": "شاب",
+        "hi": "युवा"
+      }
+    },
+    {
+      "english_word": "to look for",
+      "translations": {
+        "tr": "aramak",
+        "es": "buscar",
+        "fr": "chercher",
+        "de": "suchen",
+        "it": "cercare",
+        "pt": "procurar",
+        "ru": "искать",
+        "zh": "寻找",
+        "ja": "探す",
+        "ko": "찾으려고",
+        "ar": "للبحث عنه",
+        "hi": "ढूँढने के लिए"
+      }
+    },
+    {
+      "english_word": "perfect",
+      "translations": {
+        "tr": "mükemmel",
+        "es": "perfecto",
+        "fr": "parfait",
+        "de": "perfekt",
+        "it": "perfetto",
+        "pt": "perfeito",
+        "ru": "идеальный",
+        "zh": "完美的",
+        "ja": "完璧な",
+        "ko": "완벽한",
+        "ar": "مثالي",
+        "hi": "उत्तम"
+      }
+    },
+    {
+      "english_word": "to love",
+      "translations": {
+        "tr": "sevmek",
+        "es": "amar",
+        "fr": "aimer",
+        "de": "zu lieben",
+        "it": "amare",
+        "pt": "amar",
+        "ru": "любить",
+        "zh": "去爱",
+        "ja": "愛すること",
+        "ko": "사랑하다",
+        "ar": "للحب",
+        "hi": "प्यार करना"
+      }
+    }
+  ]
+}

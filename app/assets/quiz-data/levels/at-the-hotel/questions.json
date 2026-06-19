@@ -1,0 +1,261 @@
+{
+  "levelQuestions": [
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "door-hanger",
+        "wrongAnswers": [
+          "door-key",
+          "door-lock",
+          "door-bell"
+        ]
+      }
+    },
+    {
+      "template": "ConvoTemplate-1",
+      "questionData": {
+        "character1": "Beth",
+        "character2": "Alex",
+        "line1": "Excuse me, is the swimming pool open today?",
+        "line2": "_____, the pool is closed for maintenance. ",
+        "answer": "unfortunately",
+        "distractors": [
+          "fortunately",
+          "maybe",
+          "certainly"
+        ]
+      },
+      "audio_file1": "excuse-me-is-the-swimming-pool-open-today-convo",
+      "audio_file2": "unfortunately-the-pool-is-closed-for-maintenance-convo"
+    },
+    {
+      "template": "ConvoTemplate-1",
+      "questionData": {
+        "character1": "Sarah",
+        "character2": "Daniel",
+        "line1": "Good morning. I would like to _______, please.?",
+        "line2": "Sure, welcome to our hotel. What is your name?",
+        "answer": "check in",
+        "distractors": [
+          "check out",
+          "book a room",
+          "get a key"
+        ]
+      },
+      "audio_file1": "good-morning-i-would-like-to-check-in-please-convo",
+      "audio_file2": "sure-welcome-to-our-hotel-what-is-your-name-convo"
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "elevator",
+        "wrongAnswers": [
+          "lift",
+          "door",
+          "stairs"
+        ]
+      }
+    },
+    {
+      "template": "WordPairs",
+      "questionData": {
+        "english_words": [
+          "helpful",
+          "funny",
+          "clear",
+          "amazing"
+        ],
+        "translations": [
+          {
+            "tr": "yardımcı",
+            "es": "útil",
+            "fr": "utile",
+            "de": "hilfreich",
+            "it": "utile",
+            "pt": "útil",
+            "ru": "полезный",
+            "zh": "有用的",
+            "ja": "役に立つ",
+            "ko": "유용한",
+            "ar": "مفيد",
+            "hi": "सहायक"
+          },
+          {
+            "tr": "komik",
+            "es": "divertido",
+            "fr": "amusant",
+            "de": "amüsant",
+            "it": "divertente",
+            "pt": "divertido",
+            "ru": "веселый",
+            "zh": "有趣的",
+            "ja": "面白い",
+            "ko": "재미있는",
+            "ar": "مضحك",
+            "hi": "हंसमुख"
+          },
+          {
+            "tr": "açık",
+            "es": "claro",
+            "fr": "clair",
+            "de": "klar",
+            "it": "chiaro",
+            "pt": "claro",
+            "ru": "ясный",
+            "zh": "清晰的",
+            "ja": "明るい",
+            "ko": "명확한",
+            "ar": "واضح",
+            "hi": "स्पष्ट"
+          },
+          {
+            "tr": "harika",
+            "es": "increíble",
+            "fr": "incroyable",
+            "de": "unglaublich",
+            "it": "incredibile",
+            "pt": "incrível",
+            "ru": "удивительный",
+            "zh": "惊人的",
+            "ja": "驚くべき",
+            "ko": "놀라운",
+            "ar": "مثير",
+            "hi": "अद्भुत"
+          }
+        ]
+      }
+    },
+    {
+      "template": "DialogueCompletion",
+      "questionData": {
+        "character1": "Omar",
+        "character2": "Lily",
+        "line1": "Hello. The shower in my room is not working.",
+        "answer": "Would you prefer another room?",
+        "distractors": [
+          "Should you get another one?",
+          "I am sending someone to take it",
+          "No cost will be needed"
+        ]
+      },
+      "audio_file1": "hello-the-shower-in-my-room-is-not-working-convo",
+      "audio_file2": "would-you-prefer-another-room-convo"
+    },
+    {
+      "template": "AppearDisappear",
+      "questionData": {
+        "words": "Please confirm if there is a room available",
+        "distractors": [
+          "unfortunately",
+          "are",
+          "unavailable",
+          "check"
+        ]
+      },
+      "audio_file": "please-confirm-if-there-is-a-room-available-convo"
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "hair-dryer",
+        "wrongAnswers": [
+          "shampoo",
+          "soap",
+          "towel"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "reception",
+        "wrongAnswers": [
+          "lobby",
+          "restaurant",
+          "bar"
+        ]
+      }
+    },
+    {
+      "template": "SentenceBuilder",
+      "questionData": {
+        "correct_order": "I have to complain about the noise in my room."
+      },
+      "audio_file": "i-have-to-complain-about-the-noise-in-my-room-convo"
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "hallway",
+        "wrongAnswers": [
+          "lobby",
+          "restaurant",
+          "aisle"
+        ]
+      }
+    },
+    {
+      "template": "ClozeSequence",
+      "questionData": {
+        "sentence": "I want to _____ the hotel tour, but I need to _____ to the concierge first.",
+        "answer": [
+          "join",
+          "speak"
+        ],
+        "distractors": [
+          "leave",
+          "call",
+          "visit",
+          "wait"
+        ]
+      },
+      "audio_file": "i-want-to-join-the-hotel-tour-but-i-need-to-speak-to-the-concierge-first-convo"
+    },
+    {
+      "template": "GrammarForm",
+      "questionData": {
+        "sentence": "____ I borrow an umbrella? ",
+        "answer": "could",
+        "distractors": [
+          "am",
+          "have",
+          "might"
+        ]
+      }
+    },
+    {
+      "template": "ClozeSequence",
+      "questionData": {
+        "sentence": "Would you like to _____ now, or ______ using the spa?",
+        "answer": [
+          "check out",
+          "continue"
+        ],
+        "distractors": [
+          "check in",
+          "leave",
+          "stay",
+          "prefer"
+        ]
+      },
+      "audio_file": "would-you-like-to-check-out-now-or-continue-using-the-spa-convo"
+    },
+    {
+      "template": "ClozeSequence",
+      "questionData": {
+        "sentence": "The staff was ____ and let me ____ an extra hour after checkout.",
+        "answer": [
+          "helpful",
+          "stay"
+        ],
+        "distractors": [
+          "ready",
+          "leave",
+          "check in",
+          "confirm"
+        ]
+      },
+      "audio_file": "the-staff-was-helpful-and-let-me-stay-an-extra-hour-after-checkout-convo"
+    }
+  ]
+}

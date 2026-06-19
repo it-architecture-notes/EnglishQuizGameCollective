@@ -1,0 +1,191 @@
+{
+  "translations_list": [
+    {
+      "english_word": "to sell",
+      "translations": {
+        "tr": "satmak",
+        "es": "vender",
+        "fr": "vendre",
+        "de": "zu verkaufen",
+        "it": "vendere",
+        "pt": "vender",
+        "ru": "продать",
+        "zh": "出售",
+        "ja": "売る",
+        "ko": "팔다",
+        "ar": "للبيع",
+        "hi": "बेचने के लिए"
+      }
+    },
+    {
+      "english_word": "today",
+      "translations": {
+        "tr": "bugün",
+        "es": "hoy",
+        "fr": "aujourd'hui",
+        "de": "heute",
+        "it": "oggi",
+        "pt": "hoje",
+        "ru": "сегодня",
+        "zh": "今天",
+        "ja": "今日",
+        "ko": "오늘",
+        "ar": "اليوم",
+        "hi": "आज"
+      }
+    },
+    {
+      "english_word": "fresh",
+      "translations": {
+        "tr": "taze",
+        "es": "fresco",
+        "fr": "frais",
+        "de": "frisch",
+        "it": "fresco",
+        "pt": "fresco",
+        "ru": "свежий",
+        "zh": "新鲜的",
+        "ja": "新鮮な",
+        "ko": "신선한",
+        "ar": "طازجة",
+        "hi": "ताजा"
+      }
+    },
+    {
+      "english_word": "yesterday",
+      "translations": {
+        "tr": "dün",
+        "es": "ayer",
+        "fr": "hier",
+        "de": "gestern",
+        "it": "ieri",
+        "pt": "ontem",
+        "ru": "вчера",
+        "zh": "昨天",
+        "ja": "昨日",
+        "ko": "어제",
+        "ar": "أمس",
+        "hi": "कल"
+      }
+    },
+    {
+      "english_word": "tomorrow",
+      "translations": {
+        "tr": "yarın",
+        "es": "mañana",
+        "fr": "demain",
+        "de": "morgen",
+        "it": "domani",
+        "pt": "amanhã",
+        "ru": "завтра",
+        "zh": "明天",
+        "ja": "明日",
+        "ko": "내일",
+        "ar": "غدا",
+        "hi": "कल"
+      }
+    },
+    {
+      "english_word": "to need",
+      "translations": {
+        "tr": "ihtiyaç duymak",
+        "es": "necesitar",
+        "fr": "avoir besoin",
+        "de": "brauchen",
+        "it": "aver bisogno",
+        "pt": "precisar",
+        "ru": "нуждаться",
+        "zh": "需要",
+        "ja": "必要とする",
+        "ko": "필요하다",
+        "ar": "بحاجة",
+        "hi": "जरूरत के लिए"
+      }
+    },
+    {
+      "english_word": "to grow",
+      "translations": {
+        "tr": "yetiştirmek",
+        "es": "cultivar",
+        "fr": "cultiver",
+        "de": "anbauen",
+        "it": "coltivare",
+        "pt": "cultivar",
+        "ru": "выращивать",
+        "zh": "种植",
+        "ja": "栽培する",
+        "ko": "재배하다",
+        "ar": "يزرع",
+        "hi": "उगाना"
+      }
+    },
+    {
+      "english_word": "to compare",
+      "translations": {
+        "tr": "karşılaştırmak",
+        "es": "comparar",
+        "fr": "comparer",
+        "de": "zu vergleichen",
+        "it": "confrontare",
+        "pt": "comparar",
+        "ru": "сравнивать",
+        "zh": "比较",
+        "ja": "比較する",
+        "ko": "비교하다",
+        "ar": "للمقارنة",
+        "hi": "तुलना करना"
+      }
+    },
+    {
+      "english_word": "price",
+      "translations": {
+        "tr": "fiyat",
+        "es": "precio",
+        "fr": "prix",
+        "de": "Preis",
+        "it": "prezzo",
+        "pt": "preço",
+        "ru": "цена",
+        "zh": "价格",
+        "ja": "価格",
+        "ko": "가격",
+        "ar": "السعر",
+        "hi": "कीमत"
+      }
+    },
+    {
+      "english_word": "to choose",
+      "translations": {
+        "tr": "seçmek",
+        "es": "elegir",
+        "fr": "choisir",
+        "de": "zu wählen",
+        "it": "scegliere",
+        "pt": "escolher",
+        "ru": "выбирать",
+        "zh": "选择",
+        "ja": "選択する",
+        "ko": "선택하다",
+        "ar": "للاختيار",
+        "hi": "चुनने के लिए"
+      }
+    },
+    {
+      "english_word": "only",
+      "translations": {
+        "tr": "sadece",
+        "es": "solo",
+        "fr": "seulement",
+        "de": "nur",
+        "it": "solo",
+        "pt": "apenas",
+        "ru": "только",
+        "zh": "仅",
+        "ja": "だけ",
+        "ko": "만",
+        "ar": "فقط",
+        "hi": "केवल"
+      }
+    }
+  ]
+}

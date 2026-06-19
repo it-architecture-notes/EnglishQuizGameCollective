@@ -1,0 +1,169 @@
+{
+  "levelQuestions": [
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "alligator",
+        "wrongAnswers": [
+          "bird",
+          "camel",
+          "bat"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "bat",
+        "wrongAnswers": [
+          "fox",
+          "lion",
+          "alligator"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-2",
+      "questionData": {
+        "imageName": "bird",
+        "wrongAnswers": [
+          "giraffe",
+          "lion",
+          "rhinoceros"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "camel",
+        "wrongAnswers": [
+          "shark",
+          "dolphin",
+          "alligator"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "dolphin",
+        "wrongAnswers": [
+          "wolf",
+          "mouse",
+          "alligator"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-2",
+      "questionData": {
+        "imageName": "fox",
+        "wrongAnswers": [
+          "squirrel",
+          "wolf",
+          "bat"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "giraffe",
+        "wrongAnswers": [
+          "fox",
+          "dolphin",
+          "alligator"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "hedgehog",
+        "wrongAnswers": [
+          "mouse",
+          "rhinoceros",
+          "alligator"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-2",
+      "questionData": {
+        "imageName": "lion",
+        "wrongAnswers": [
+          "camel",
+          "fox",
+          "hedgehog"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "mouse",
+        "wrongAnswers": [
+          "alligator",
+          "fox",
+          "bat"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "rhinoceros",
+        "wrongAnswers": [
+          "camel",
+          "shark",
+          "alligator"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-2",
+      "questionData": {
+        "imageName": "shark",
+        "wrongAnswers": [
+          "mouse",
+          "squirrel",
+          "wolf"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "squirrel",
+        "wrongAnswers": [
+          "mouse",
+          "giraffe",
+          "alligator"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "tiger",
+        "wrongAnswers": [
+          "squirrel",
+          "shark",
+          "alligator"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "wolf",
+        "wrongAnswers": [
+          "bat",
+          "bird",
+          "alligator"
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,225 @@
+{
+  "translations_list": [
+    {
+      "english_word": "to send",
+      "translations": {
+        "tr": "göndermek",
+        "es": "enviar",
+        "fr": "envoyer",
+        "de": "zu senden",
+        "it": "inviare",
+        "pt": "enviar",
+        "ru": "отправить",
+        "zh": "发送",
+        "ja": "送る",
+        "ko": "보내다",
+        "ar": "لإرسال",
+        "hi": "भेजना"
+      }
+    },
+    {
+      "english_word": "to complete",
+      "translations": {
+        "tr": "tamamlamak",
+        "es": "completar",
+        "fr": "compléter",
+        "de": "zu vervollständigen",
+        "it": "per completare",
+        "pt": "completar",
+        "ru": "завершить",
+        "zh": "完成",
+        "ja": "完了する",
+        "ko": "완료하다",
+        "ar": "لإكمال",
+        "hi": "पूरा करना"
+      }
+    },
+    {
+      "english_word": "to deliver",
+      "translations": {
+        "tr": "teslim etmek",
+        "es": "entregar",
+        "fr": "livrer",
+        "de": "zu liefern",
+        "it": "consegnare",
+        "pt": "entregar",
+        "ru": "доставить",
+        "zh": "交付",
+        "ja": "届ける",
+        "ko": "배달하다",
+        "ar": "لتسليم",
+        "hi": "पहुंचाना"
+      }
+    },
+    {
+      "english_word": "to receive",
+      "translations": {
+        "tr": "almak",
+        "es": "recibir",
+        "fr": "recevoir",
+        "de": "zu empfangen",
+        "it": "ricevere",
+        "pt": "receber",
+        "ru": "получать",
+        "zh": "接收",
+        "ja": "受け取る",
+        "ko": "받다",
+        "ar": "لتلقي",
+        "hi": "प्राप्त करना"
+      }
+    },
+    {
+      "english_word": "important",
+      "translations": {
+        "tr": "önemli",
+        "es": "importante",
+        "fr": "important",
+        "de": "wichtig",
+        "it": "importante",
+        "pt": "importante",
+        "ru": "важный",
+        "zh": "重要的",
+        "ja": "重要な",
+        "ko": "중요한",
+        "ar": "مهم",
+        "hi": "महत्वपूर्ण"
+      }
+    },
+    {
+      "english_word": "to bring",
+      "translations": {
+        "tr": "getirmek",
+        "es": "traer",
+        "fr": "apporter",
+        "de": "bringen",
+        "it": "portare",
+        "pt": "trazer",
+        "ru": "принести",
+        "zh": "带来",
+        "ja": "持ってくる",
+        "ko": "가져오다",
+        "ar": "لجلب",
+        "hi": "लाना"
+      }
+    },
+    {
+      "english_word": "already",
+      "translations": {
+        "tr": "zaten",
+        "es": "ya",
+        "fr": "déjà",
+        "de": "schon",
+        "it": "già",
+        "pt": "já",
+        "ru": "уже",
+        "zh": "已经",
+        "ja": "すでに",
+        "ko": "이미",
+        "ar": "بالفعل",
+        "hi": "पहले से ही"
+      }
+    },
+    {
+      "english_word": "to include",
+      "translations": {
+        "tr": "dahil etmek",
+        "es": "incluir",
+        "fr": "inclure",
+        "de": "einzubeziehen",
+        "it": "includere",
+        "pt": "incluir",
+        "ru": "включать",
+        "zh": "包括",
+        "ja": "含める",
+        "ko": "포함하다",
+        "ar": "لتشمل",
+        "hi": "शामिल करना"
+      }
+    },
+    {
+      "english_word": "to break",
+      "translations": {
+        "tr": "kırılmak",
+        "es": "romperse",
+        "fr": "briser",
+        "de": "brechen",
+        "it": "rompere",
+        "pt": "quebrar",
+        "ru": "сломать",
+        "zh": "打破",
+        "ja": "壊れる",
+        "ko": "깨다",
+        "ar": "لكسر",
+        "hi": "तोड़ना"
+      }
+    },
+    {
+      "english_word": "correct",
+      "translations": {
+        "tr": "doğru",
+        "es": "correcto",
+        "fr": "correct",
+        "de": "richtig",
+        "it": "corretto",
+        "pt": "correto",
+        "ru": "правильный",
+        "zh": "正确",
+        "ja": "正しい",
+        "ko": "맞다",
+        "ar": "صحيح",
+        "hi": "सही"
+      }
+    },
+    {
+      "english_word": "to lose",
+      "translations": {
+        "tr": "kaybetmek",
+        "es": "perder",
+        "fr": "perdre",
+        "de": "verlieren",
+        "it": "perdere",
+        "pt": "perder",
+        "ru": "потерять",
+        "zh": "失去",
+        "ja": "失うこと",
+        "ko": "잃다",
+        "ar": "ليخسر",
+        "hi": "खोना"
+      }
+    },
+    {
+      "english_word": "how much",
+      "translations": {
+        "tr": "ne kadar",
+        "es": "cuanto",
+        "fr": "combien",
+        "de": "wie viel",
+        "it": "quanto",
+        "pt": "quanto",
+        "ru": "сколько",
+        "zh": "多少",
+        "ja": "いくら",
+        "ko": "얼마나",
+        "ar": "كم",
+        "hi": "कितना"
+      }
+    },
+    {
+      "english_word": "to cost",
+      "translations": {
+        "tr": "mal olmak",
+        "es": "costar",
+        "fr": "coûter",
+        "de": "kosten",
+        "it": "costare",
+        "pt": "custar",
+        "ru": "стоить",
+        "zh": "花费",
+        "ja": "費用がかかる",
+        "ko": "비용이 들다",
+        "ar": "للتكلفة",
+        "hi": "लागत के लिए"
+      }
+    }
+  ]
+}

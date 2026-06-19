@@ -1,0 +1,251 @@
+{
+  "levelQuestions": [
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "kiosk",
+        "wrongAnswers": [
+          "table",
+          "bench",
+          "tent"
+        ]
+      }
+    },
+    {
+      "template": "ConvoTemplate-1",
+      "questionData": {
+        "character1": "Sarah",
+        "character2": "Daniel",
+        "line1": "What does she do at the farmers market?",
+        "line2": "She _____ vegetables.",
+        "answer": "sells",
+        "distractors": [
+          "goes",
+          "eats",
+          "makes"
+        ]
+      },
+      "audio_file1": "what-does-she-do-at-the-farmers-market-convo",
+      "audio_file2": "she-sells-vegetables-convo"
+    },
+    {
+      "template": "imageQuizTemplate-2",
+      "questionData": {
+        "imageName": "basket",
+        "wrongAnswers": [
+          "scale",
+          "chalkboard",
+          "tent"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "chalkboard",
+        "wrongAnswers": [
+          "wooden-board",
+          "wall",
+          "price-tag"
+        ]
+      }
+    },
+    {
+      "template": "WordPairs",
+      "questionData": {
+        "english_words": [
+          "free",
+          "expensive",
+          "cheap",
+          "on sale"
+        ],
+        "translations": [
+          {
+            "tr": "ücretsiz",
+            "es": "gratis",
+            "fr": "gratuit",
+            "de": "frei",
+            "it": "gratuito",
+            "pt": "grátis",
+            "ru": "бесплатно",
+            "zh": "免费的",
+            "ja": "無料",
+            "ko": "무료",
+            "ar": "مجاني",
+            "hi": "मुफ़्त"
+          },
+          {
+            "tr": "masraflı",
+            "es": "caro",
+            "fr": "cher",
+            "de": "teuer",
+            "it": "costoso",
+            "pt": "caro",
+            "ru": "дорогой",
+            "zh": "昂贵的",
+            "ja": "高い",
+            "ko": "값비싼",
+            "ar": "غالي",
+            "hi": "महँगा"
+          },
+          {
+            "tr": "ucuz",
+            "es": "barato",
+            "fr": "bon marché",
+            "de": "billig",
+            "it": "economico",
+            "pt": "barato",
+            "ru": "дешевый",
+            "zh": "便宜的",
+            "ja": "安い",
+            "ko": "값이 싼",
+            "ar": "رخيص",
+            "hi": "सस्ता"
+          },
+          {
+            "tr": "satışta",
+            "es": "en oferta",
+            "fr": "en promotion",
+            "de": "im Angebot",
+            "it": "in offerta",
+            "pt": "em promoção",
+            "ru": "в продаже",
+            "zh": "打折",
+            "ja": "セール中",
+            "ko": "할인 중",
+            "ar": "بسعر مخفض",
+            "hi": "बिक्री पर"
+          }
+        ]
+      }
+    },
+    {
+      "template": "DialogueCompletion",
+      "questionData": {
+        "character1": "Ben",
+        "character2": "Nora",
+        "line1": "Is this bread made today?",
+        "answer": "Yes, it is very fresh.",
+        "distractors": [
+          "Yes, it is made yesterday.",
+          "It will be made tomorrow.",
+          "These are made today."
+        ]
+      },
+      "audio_file1": "is-this-bread-made-today-convo",
+      "audio_file2": "yes-it-is-very-fresh-convo"
+    },
+    {
+      "template": "AppearDisappear",
+      "questionData": {
+        "words": "I need some apples for tomorrow.",
+        "distractors": [
+          "any",
+          "yesterday",
+          "He",
+          "help"
+        ]
+      },
+      "audio_file": "i-need-some-apples-for-tomorrow-convo"
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "scale",
+        "wrongAnswers": [
+          "basket",
+          "cart",
+          "weight"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "seller",
+        "wrongAnswers": [
+          "giver",
+          "talker",
+          "helper"
+        ]
+      }
+    },
+    {
+      "template": "SentenceBuilder",
+      "questionData": {
+        "correct_order": "He grows organic and fresh fruits"
+      },
+      "audio_file": "he-grows-organic-and-fresh-fruits-convo"
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "tent",
+        "wrongAnswers": [
+          "store",
+          "kiosk",
+          "chalkboard"
+        ]
+      }
+    },
+    {
+      "template": "ClozeSequence",
+      "questionData": {
+        "sentence": "I _____ the ______ before I buy honey.",
+        "answer": [
+          "compare",
+          "prices"
+        ],
+        "distractors": [
+          "check",
+          "look",
+          "find"
+        ]
+      },
+      "audio_file": "i-compare-the-prices-before-i-buy-honey-convo"
+    },
+    {
+      "template": "GrammarForm",
+      "questionData": {
+        "sentence": "We are ______ some apples from the cart.",
+        "answer": "choosing",
+        "distractors": [
+          "choose",
+          "chose",
+          "does choosing"
+        ]
+      }
+    },
+    {
+      "template": "ClozeSequence",
+      "questionData": {
+        "sentence": "I have some ____ _____ for you.",
+        "answer": [
+          "free",
+          "samples"
+        ],
+        "distractors": [
+          "expensive",
+          "tries",
+          "today",
+          "warm"
+        ]
+      },
+      "audio_file": "i-have-some-free-samples-for-you-convo"
+    },
+    {
+      "template": "ClozeSequence",
+      "questionData": {
+        "sentence": "I saved this pie _____ for you.",
+        "answer": [
+          "only"
+        ],
+        "distractors": [
+          "another",
+          "other",
+          "similar"
+        ]
+      }
+    }
+  ]
+}

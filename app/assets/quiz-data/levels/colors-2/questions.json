@@ -1,0 +1,125 @@
+{
+  "levelQuestions": [
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "beige",
+        "wrongAnswers": [
+          "dark-blue",
+          "gold",
+          "cyan"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "cyan",
+        "wrongAnswers": [
+          "green",
+          "peach",
+          "beige"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "dark-blue",
+        "wrongAnswers": [
+          "peach",
+          "gold",
+          "beige"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "gold",
+        "wrongAnswers": [
+          "beige",
+          "peach",
+          "cyan"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "gray",
+        "wrongAnswers": [
+          "gold",
+          "dark-blue",
+          "beige"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "green",
+        "wrongAnswers": [
+          "maroon",
+          "peach",
+          "beige"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "magenta",
+        "wrongAnswers": [
+          "violet",
+          "dark-blue",
+          "beige"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "maroon",
+        "wrongAnswers": [
+          "dark-blue",
+          "peach",
+          "beige"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "peach",
+        "wrongAnswers": [
+          "green",
+          "dark-blue",
+          "beige"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "turqoise",
+        "wrongAnswers": [
+          "peach",
+          "maroon",
+          "beige"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "violet",
+        "wrongAnswers": [
+          "cyan",
+          "dark-blue",
+          "beige"
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,191 @@
+{
+  "levelQuestions": [
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "boat",
+        "wrongAnswers": [
+          "limousine",
+          "scooter",
+          "bulldozer"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "bulldozer",
+        "wrongAnswers": [
+          "subway",
+          "truck",
+          "boat"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-2",
+      "questionData": {
+        "imageName": "bus",
+        "wrongAnswers": [
+          "limousine",
+          "submarine",
+          "tram"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "car",
+        "wrongAnswers": [
+          "crane-truck",
+          "submarine",
+          "boat"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "crane-truck",
+        "wrongAnswers": [
+          "limousine",
+          "boat",
+          "bulldozer"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "ferry",
+        "wrongAnswers": [
+          "subway",
+          "forklift",
+          "boat"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-2",
+      "questionData": {
+        "imageName": "fire-truck",
+        "wrongAnswers": [
+          "limousine",
+          "submarine",
+          "tram"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "forklift",
+        "wrongAnswers": [
+          "car",
+          "bus",
+          "boat"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "limousine",
+        "wrongAnswers": [
+          "forklift",
+          "scooter",
+          "boat"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "scooter",
+        "wrongAnswers": [
+          "subway",
+          "truck",
+          "boat"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-2",
+      "questionData": {
+        "imageName": "ship",
+        "wrongAnswers": [
+          "forklift",
+          "submarine",
+          "tram"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "submarine",
+        "wrongAnswers": [
+          "car",
+          "ship",
+          "boat"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "subway",
+        "wrongAnswers": [
+          "forklift",
+          "boat",
+          "bulldozer"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "train",
+        "wrongAnswers": [
+          "submarine",
+          "fire-truck",
+          "boat"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-2",
+      "questionData": {
+        "imageName": "tram",
+        "wrongAnswers": [
+          "forklift",
+          "ship",
+          "train"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "truck",
+        "wrongAnswers": [
+          "car",
+          "bus",
+          "boat"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "van",
+        "wrongAnswers": [
+          "forklift",
+          "limousine",
+          "boat"
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,136 @@
+{
+  "levelQuestions": [
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "circle",
+        "wrongAnswers": [
+          "trapezoid",
+          "cone",
+          "cube"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "cone",
+        "wrongAnswers": [
+          "cylinder",
+          "pentagon",
+          "circle"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "cube",
+        "wrongAnswers": [
+          "pentagon",
+          "trapezoid",
+          "circle"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "cylinder",
+        "wrongAnswers": [
+          "sphere",
+          "hexagonal",
+          "circle"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "ellipse",
+        "wrongAnswers": [
+          "circle",
+          "square",
+          "cone"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "hexagonal",
+        "wrongAnswers": [
+          "cylinder",
+          "ellipse",
+          "circle"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "pentagon",
+        "wrongAnswers": [
+          "pyramid",
+          "sphere",
+          "circle"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "pyramid",
+        "wrongAnswers": [
+          "square",
+          "cube",
+          "circle"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "rectangle",
+        "wrongAnswers": [
+          "cone",
+          "pyramid",
+          "circle"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "sphere",
+        "wrongAnswers": [
+          "ellipse",
+          "cone",
+          "circle"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "square",
+        "wrongAnswers": [
+          "pyramid",
+          "pentagon",
+          "circle"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "trapezoid",
+        "wrongAnswers": [
+          "square",
+          "circle",
+          "cone"
+        ]
+      }
+    }
+  ]
+}

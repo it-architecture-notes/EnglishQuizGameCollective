@@ -1,0 +1,258 @@
+{
+  "levelQuestions": [
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "tooth",
+        "wrongAnswers": [
+          "mouth",
+          "teeth",
+          "jaw"
+        ]
+      }
+    },
+    {
+      "template": "DialogueCompletion",
+      "questionData": {
+        "character1": "Emma",
+        "character2": "Chris",
+        "line1": "You need to brush more often.",
+        "answer": "Yes. I agree.",
+        "distractors": [
+          "No. I don't agree.",
+          "Maybe. I don't know.",
+          "Yes. I can't brush more often."
+        ]
+      },
+      "audio_file1": "you-need-to-brush-more-often-convo",
+      "audio_file2": "yes-i-agree-convo"
+    },
+    {
+      "template": "ClozeSequence",
+      "questionData": {
+        "sentence": "____ your mouth open, please. ____ me your teeth.",
+        "answer": [
+          "keep",
+          "show"
+        ],
+        "distractors": [
+          "close",
+          "pull",
+          "take",
+          "watch"
+        ]
+      },
+      "audio_file": "keep-your-mouth-open-please-show-me-your-teeth-convo"
+    },
+    {
+      "template": "ClozeSequence",
+      "questionData": {
+        "sentence": "My dentist is _____ and _______.",
+        "answer": [
+          "kind",
+          "friendly"
+        ],
+        "distractors": [
+          "serious",
+          "angry",
+          "afraid",
+          "brush"
+        ]
+      },
+      "audio_file": "my-dentist-is-kind-and-friendly-convo"
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "gauze",
+        "wrongAnswers": [
+          "bandage",
+          "needle",
+          "cotton-ball"
+        ]
+      }
+    },
+    {
+      "template": "ConvoTemplate-1",
+      "questionData": {
+        "character1": "Emma",
+        "character2": "Chris",
+        "line1": "Does it ____ when I press here?",
+        "line2": "Yes, it ______.",
+        "answer": "hurt",
+        "distractors": [
+          "pain",
+          "touch",
+          "hit"
+        ]
+      },
+      "audio_file1": "does-it-hurt-when-i-press-here-convo",
+      "audio_file2": "yes-it-hurts-convo"
+    },
+    {
+      "template": "ConvoTemplate-1",
+      "questionData": {
+        "character1": "Beth",
+        "character2": "Alex",
+        "line1": "Do you ______ how to brush your teeth?",
+        "line2": "Yes. I _____.",
+        "answer": "understand",
+        "distractors": [
+          "learn",
+          "clean",
+          "seeing"
+        ]
+      },
+      "audio_file1": "do-you-understand-how-to-brush-your-teeth-convo",
+      "audio_file2": "yes-i-understand-convo"
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "filling",
+        "wrongAnswers": [
+          "extraction",
+          "cleaning",
+          "fill in"
+        ]
+      }
+    },
+    {
+      "template": "WordPairs",
+      "questionData": {
+        "english_words": [
+          "true",
+          "false",
+          "happy",
+          "sad"
+        ],
+        "translations": [
+          {
+            "tr": "doğru",
+            "es": "verdadero",
+            "fr": "vrai",
+            "de": "WAHR",
+            "it": "VERO",
+            "pt": "verdadeiro",
+            "ru": "истинный",
+            "zh": "真的",
+            "ja": "真実",
+            "ko": "진실",
+            "ar": "حقيقي",
+            "hi": "सत्य"
+          },
+          {
+            "tr": "YANLIŞ",
+            "es": "FALSO",
+            "fr": "FAUX",
+            "de": "FALSCH",
+            "it": "falso",
+            "pt": "falso",
+            "ru": "ЛОЖЬ",
+            "zh": "错误的",
+            "ja": "間違い",
+            "ko": "거짓",
+            "ar": "خاطئ",
+            "hi": "असत्य"
+          },
+          {
+            "tr": "mutlu",
+            "es": "feliz",
+            "fr": "heureux",
+            "de": "Glücklich",
+            "it": "Contento",
+            "pt": "feliz",
+            "ru": "счастливый",
+            "zh": "快乐的",
+            "ja": "ハッピー",
+            "ko": "행복하다",
+            "ar": "سعيد",
+            "hi": "खुश"
+          },
+          {
+            "tr": "üzgün",
+            "es": "triste",
+            "fr": "triste",
+            "de": "traurig",
+            "it": "triste",
+            "pt": "triste",
+            "ru": "грустный",
+            "zh": "伤心",
+            "ja": "悲しい",
+            "ko": "슬픈",
+            "ar": "حزين",
+            "hi": "दुखी"
+          }
+        ]
+      }
+    },
+    {
+      "template": "DialogueCompletion",
+      "questionData": {
+        "character1": "Omar",
+        "character2": "Lily",
+        "line1": "How often do you visit the dentist?",
+        "answer": "I visit the dentist every 6 months",
+        "distractors": [
+          "I only call the dentist",
+          "I am afraid of the dentist",
+          "I visit the dentist every week"
+        ]
+      },
+      "audio_file1": "how-often-do-you-visit-the-dentist-convo",
+      "audio_file2": "i-visit-the-dentist-every-6-months-convo"
+    },
+    {
+      "template": "AppearDisappear",
+      "questionData": {
+        "words": "The dentist explains everything in detail.",
+        "distractors": [
+          "quickly",
+          "shows",
+          "slowly"
+        ]
+      },
+      "audio_file": "the-dentist-explains-everything-in-detail-convo"
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "braces",
+        "wrongAnswers": [
+          "metal",
+          "extraction",
+          "correction"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "extraction",
+        "wrongAnswers": [
+          "root-canal",
+          "treatment",
+          "filling"
+        ]
+      }
+    },
+    {
+      "template": "SentenceBuilder",
+      "questionData": {
+        "correct_order": "I am not afraid of the dentist"
+      },
+      "audio_file": "i-am-not-afraid-of-the-dentist-convo"
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "root-canal",
+        "wrongAnswers": [
+          "extraction",
+          "filling",
+          "braces"
+        ]
+      }
+    }
+  ]
+}

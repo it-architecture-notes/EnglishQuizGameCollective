@@ -1,0 +1,191 @@
+{
+  "translations_list": [
+    {
+      "english_word": "to get up",
+      "translations": {
+        "tr": "kalkmak",
+        "es": "levantarse",
+        "fr": "se lever",
+        "de": "aufstehen",
+        "it": "alzarsi",
+        "pt": "levantar-se",
+        "ru": "вставать",
+        "zh": "起床",
+        "ja": "起きる",
+        "ko": "일어나다",
+        "ar": "النهوض",
+        "hi": "उठना"
+      }
+    },
+    {
+      "english_word": "to wake up",
+      "translations": {
+        "tr": "uyanmak",
+        "es": "despertarse",
+        "fr": "se réveiller",
+        "de": "aufwachen",
+        "it": "svegliarsi",
+        "pt": "acordar",
+        "ru": "проснуться",
+        "zh": "醒来",
+        "ja": "目を覚ます",
+        "ko": "잠에서 깨다",
+        "ar": "الاستيقاظ",
+        "hi": "जागना"
+      }
+    },
+    {
+      "english_word": "to open",
+      "translations": {
+        "tr": "açmak",
+        "es": "abrir",
+        "fr": "ouvrir",
+        "de": "öffnen",
+        "it": "aprire",
+        "pt": "abrir",
+        "ru": "открыть",
+        "zh": "打开",
+        "ja": "開く",
+        "ko": "열다",
+        "ar": "فتح",
+        "hi": "खोलना"
+      }
+    },
+    {
+      "english_word": "to sleep",
+      "translations": {
+        "tr": "uyumak",
+        "es": "dormir",
+        "fr": "dormir",
+        "de": "schlafen",
+        "it": "dormire",
+        "pt": "dormir",
+        "ru": "спать",
+        "zh": "睡觉",
+        "ja": "寝る",
+        "ko": "잠을 자다",
+        "ar": "النوم",
+        "hi": "सोना"
+      }
+    },
+    {
+      "english_word": "early",
+      "translations": {
+        "tr": "erken",
+        "es": "temprano",
+        "fr": "tôt",
+        "de": "früh",
+        "it": "presto",
+        "pt": "cedo",
+        "ru": "рано",
+        "zh": "早",
+        "ja": "早く",
+        "ko": "일찍",
+        "ar": "في وقت مبكر",
+        "hi": "जल्दी"
+      }
+    },
+    {
+      "english_word": "what time?",
+      "translations": {
+        "tr": "saat kaçta?",
+        "es": "¿a qué hora?",
+        "fr": "à quelle heure ?",
+        "de": "um wie viel Uhr?",
+        "it": "a che ora?",
+        "pt": "a que horas?",
+        "ru": "в какое время?",
+        "zh": "什么时间？",
+        "ja": "何時ですか？",
+        "ko": "몇 시에?",
+        "ar": "كم الساعة؟",
+        "hi": "किस समय?"
+      }
+    },
+    {
+      "english_word": "to try",
+      "translations": {
+        "tr": "denemek",
+        "es": "intentar",
+        "fr": "essayer",
+        "de": "versuchen",
+        "it": "provare",
+        "pt": "tentar",
+        "ru": "попробовать",
+        "zh": "尝试",
+        "ja": "試してみる",
+        "ko": "시도하다",
+        "ar": "المحاولة",
+        "hi": "प्रयास करना"
+      }
+    },
+    {
+      "english_word": "well",
+      "translations": {
+        "tr": "iyi",
+        "es": "bien",
+        "fr": "bien",
+        "de": "gut",
+        "it": "bene",
+        "pt": "bem",
+        "ru": "хорошо",
+        "zh": "好",
+        "ja": "よく",
+        "ko": "잘",
+        "ar": "جيدًا",
+        "hi": "अच्छी तरह"
+      }
+    },
+    {
+      "english_word": "now",
+      "translations": {
+        "tr": "şimdi",
+        "es": "ahora",
+        "fr": "maintenant",
+        "de": "jetzt",
+        "it": "ora",
+        "pt": "agora",
+        "ru": "сейчас",
+        "zh": "现在",
+        "ja": "今",
+        "ko": "지금",
+        "ar": "الآن",
+        "hi": "अभी"
+      }
+    },
+    {
+      "english_word": "sleepy",
+      "translations": {
+        "tr": "uykulu",
+        "es": "somnoliento",
+        "fr": "somnolent",
+        "de": "schläfrig",
+        "it": "assonnato",
+        "pt": "sonolento",
+        "ru": "сонный",
+        "zh": "困倦",
+        "ja": "眠い",
+        "ko": "졸린",
+        "ar": "نعسان",
+        "hi": "नींद में"
+      }
+    },
+    {
+      "english_word": "to stand up",
+      "translations": {
+        "tr": "ayağa kalkmak",
+        "es": "ponerse de pie",
+        "fr": "se lever",
+        "de": "aufstehen",
+        "it": "alzarsi",
+        "pt": "levantar-se",
+        "ru": "встать",
+        "zh": "站起来",
+        "ja": "立ち上がる",
+        "ko": "일어서다",
+        "ar": "الوقوف",
+        "hi": "खड़ा होना"
+      }
+    }
+  ]
+}

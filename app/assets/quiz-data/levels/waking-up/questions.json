@@ -1,0 +1,256 @@
+{
+  "levelQuestions": [
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "alarm-clock",
+        "answer": "alarm clock",
+        "wrongAnswers": [
+          "nightstand",
+          "blanket",
+          "mattress"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-2",
+      "questionData": {
+        "imageName": "mattress",
+        "wrongAnswers": [
+          "bed",
+          "blanket",
+          "pillow"
+        ],
+        "auto_next_delay": 1.0,
+        "show_correct_on_wrong": false
+      }
+    },
+    {
+      "template": "ClozeSequence",
+      "questionData": {
+        "sentence": "Time to _____ ! You’ll _____ the bus.",
+        "answer": [
+          "get up",
+          "miss"
+        ],
+        "distractors": [
+          "look out",
+          "start",
+          "fall"
+        ]
+      },
+      "audio_file": "time-to-get-up-convo"
+    },
+    {
+      "template": "ClozeSequence",
+      "questionData": {
+        "sentence": "I ___ my eyes when I ____ in the morning.",
+        "answer": [
+          "open",
+          "wake up"
+        ],
+        "distractors": [
+          "look out",
+          "go to sleep",
+          "have",
+          "find"
+        ]
+      },
+      "audio_file": "i-open-my-eyes-when-i-wake-up-in-the-morning-convo"
+    },
+    {
+      "template": "GrammarForm",
+      "questionData": {
+        "sentence": "Great job. Now, _____ to stand up and stretch.",
+        "answer": "try",
+        "distractors": [
+          "tries",
+          "are trying",
+          "am trying"
+        ]
+      }
+    },
+    {
+      "template": "SentenceBuilder",
+      "questionData": {
+        "correct_order": "You sleep on a pillow."
+      }
+    },
+    {
+      "template": "DialogueCompletion",
+      "questionData": {
+        "character1": "Nora",
+        "character2": "Alex",
+        "line1": "What time do you get up?",
+        "answer": "I get up at 6:00.",
+        "distractors": [
+          "I go to sleep at 6:00.",
+          "I get up now.",
+          "I am waking up at 6:00."
+        ]
+      },
+      "audio_file1": "what-time-do-you-get-up-convo",
+      "audio_file2": "i-get-up-at-6-00-convo"
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "blanket",
+        "wrongAnswers": [
+          "pillow",
+          "mattress",
+          "nightstand"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "nightstand",
+        "wrongAnswers": [
+          "alarm clock",
+          "mattress",
+          "pillow"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "bed",
+        "wrongAnswers": [
+          "nightstand",
+          "blanket",
+          "pillow"
+        ]
+      }
+    },
+    {
+      "template": "WordPairs",
+      "questionData": {
+        "english_words": [
+          "and",
+          "out of bed",
+          "go to sleep",
+          "from sleep"
+        ],
+        "translations": [
+          {
+            "tr": "ve",
+            "es": "y",
+            "fr": "et",
+            "de": "und",
+            "it": "e",
+            "pt": "e",
+            "ru": "и",
+            "zh": "和",
+            "ja": "そして",
+            "ko": "그리고",
+            "ar": "و",
+            "hi": "और"
+          },
+          {
+            "tr": "yataktan",
+            "es": "de la cama",
+            "fr": "du lit",
+            "de": "aus dem Bett",
+            "it": "dal letto",
+            "pt": "da cama",
+            "ru": "из кровати",
+            "zh": "从床上",
+            "ja": "ベッドから",
+            "ko": "침대에서",
+            "ar": "من السرير",
+            "hi": "बिस्तर से"
+          },
+          {
+            "tr": "uyumaya gitmek",
+            "es": "irse a dormir",
+            "fr": "aller dormir",
+            "de": "schlafen gehen",
+            "it": "andare a dormire",
+            "pt": "ir dormir",
+            "ru": "идти спать",
+            "zh": "去睡觉",
+            "ja": "寝る",
+            "ko": "잠자리에 들다",
+            "ar": "يذهب للنوم",
+            "hi": "सोने जाना"
+          },
+          {
+            "tr": "uykudan",
+            "es": "del sueño",
+            "fr": "du sommeil",
+            "de": "aus dem Schlaf",
+            "it": "dal sonno",
+            "pt": "do sono",
+            "ru": "ото сна",
+            "zh": "从睡眠中",
+            "ja": "睡眠から",
+            "ko": "잠에서",
+            "ar": "من النوم",
+            "hi": "नींद से"
+          }
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "pillow",
+        "wrongAnswers": [
+          "blanket",
+          "mattress",
+          "bed"
+        ]
+      }
+    },
+    {
+      "template": "ConvoTemplate-1",
+      "questionData": {
+        "character1": "Ethan",
+        "character2": "Grace",
+        "line1": "You look so _____ this morning!",
+        "line2": "I know, I'm so _____. I need coffee!",
+        "answer": "sleepy",
+        "distractors": [
+          "happy",
+          "nervous",
+          "ready"
+        ]
+      },
+      "audio_file1": "you-look-so-sleepy-this-morning-convo",
+      "audio_file2": "i-know-i-m-so-sleepy-i-need-coffee-convo"
+    },
+    {
+      "template": "AppearDisappear",
+      "questionData": {
+        "words": "Wake up early to see the sunrise.",
+        "distractors": [
+          "late",
+          "good",
+          "morning",
+          "fast"
+        ]
+      },
+      "audio_file": "wake-up-early-to-see-the-sunrise-convo"
+    },
+    {
+      "template": "ConvoTemplate-1",
+      "questionData": {
+        "character1": "Ethan",
+        "character2": "Grace",
+        "line1": "Can I sleep for five more minutes?",
+        "line2": "No, you must get up ____.",
+        "answer": "now",
+        "distractors": [
+          "after",
+          "back",
+          "tomorrow"
+        ]
+      },
+      "audio_file1": "can-i-sleep-for-five-more-minutes-convo",
+      "audio_file2": "no-you-must-get-up-now-convo"
+    }
+  ]
+}

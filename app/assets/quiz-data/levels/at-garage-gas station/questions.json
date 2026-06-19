@@ -1,0 +1,262 @@
+{
+  "levelQuestions": [
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "gas-pump",
+        "wrongAnswers": [
+          "gas-pusher",
+          "fuelling",
+          "diesel"
+        ]
+      }
+    },
+    {
+      "template": "ConvoTemplate-1",
+      "questionData": {
+        "character1": "Beth",
+        "character2": "Alex",
+        "line1": "Good morning. My car broke down yesterday.",
+        "line2": "We can _____ it, but I need to check it first. ",
+        "answer": "repair",
+        "distractors": [
+          "replace",
+          "buy",
+          "sell"
+        ]
+      },
+      "audio_file1": "good-morning-my-car-broke-down-yesterday-convo",
+      "audio_file2": "we-can-repair-it-but-i-need-to-check-it-first-convo"
+    },
+    {
+      "template": "ConvoTemplate-1",
+      "questionData": {
+        "character1": "Sarah",
+        "character2": "Daniel",
+        "line1": "My car is making a very loud noise. Is it ______?",
+        "line2": "Yes, I'm afraid it is ______.",
+        "answer": "serious",
+        "distractors": [
+          "loud",
+          "quiet",
+          "noisy"
+        ]
+      },
+      "audio_file1": "my-car-is-making-a-very-loud-noise-is-it-serious-convo",
+      "audio_file2": "yes-im-afraid-it-is-serious-convo"
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "wrench",
+        "wrongAnswers": [
+          "screwdriver",
+          "hammer",
+          "pliers"
+        ]
+      }
+    },
+    {
+      "template": "WordPairs",
+      "questionData": {
+        "english_words": [
+          "sometimes",
+          "always",
+          "frequently",
+          "rarely"
+        ],
+        "translations": [
+          {
+            "tr": "Bazen",
+            "es": "a veces",
+            "fr": "parfois",
+            "de": "Manchmal",
+            "it": "A volte",
+            "pt": "às vezes",
+            "ru": "иногда",
+            "zh": "有时",
+            "ja": "時々",
+            "ko": "때때로",
+            "ar": "أحيانا",
+            "hi": "कभी-कभी"
+          },
+          {
+            "tr": "Her zaman",
+            "es": "siempre",
+            "fr": "toujours",
+            "de": "stets",
+            "it": "Sempre",
+            "pt": "sempre",
+            "ru": "всегда",
+            "zh": "总是",
+            "ja": "いつも",
+            "ko": "언제나",
+            "ar": "دائماً",
+            "hi": "हमेशा"
+          },
+          {
+            "tr": "sıklıkla",
+            "es": "frecuentemente",
+            "fr": "fréquemment",
+            "de": "häufig",
+            "it": "frequentemente",
+            "pt": "frequentemente",
+            "ru": "часто",
+            "zh": "频繁地",
+            "ja": "頻繁に",
+            "ko": "자주",
+            "ar": "مرارًا",
+            "hi": "बार-बार"
+          },
+          {
+            "tr": "nadiren",
+            "es": "casi nunca",
+            "fr": "rarement",
+            "de": "selten",
+            "it": "raramente",
+            "pt": "raramente",
+            "ru": "редко",
+            "zh": "很少",
+            "ja": "めったに",
+            "ko": "드물게",
+            "ar": "نادرًا",
+            "hi": "कभी-कभार"
+          }
+        ]
+      }
+    },
+    {
+      "template": "DialogueCompletion",
+      "questionData": {
+        "character1": "Omar",
+        "character2": "Lily",
+        "line1": "How much will a flat tire repair cost?",
+        "answer": "Let me check it first.",
+        "distractors": [
+          "It could be cost $50",
+          "I don't know, is it serious?",
+          "No cost will be needed"
+        ]
+      },
+      "audio_file1": "how-much-will-a-flat-tire-repair-cost-convo",
+      "audio_file2": "let-me-check-it-first-convo"
+    },
+    {
+      "template": "AppearDisappear",
+      "questionData": {
+        "words": "Is the garage closed on Sundays?",
+        "distractors": [
+          "opened",
+          "Does",
+          "Fridays",
+          "close"
+        ]
+      },
+      "audio_file": "is-the-garage-closed-on-sundays-convo"
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "lift",
+        "wrongAnswers": [
+          "wheel-tire",
+          "holder",
+          "screwdriver"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-2",
+      "questionData": {
+        "imageName": "fire-extinguisher",
+        "wrongAnswers": [
+          "wrench",
+          "gas-pump",
+          "battery"
+        ]
+      },
+      "answer": "fire-extinguisher"
+    },
+    {
+      "template": "SentenceBuilder",
+      "questionData": {
+        "correct_order": "Can you describe the car problem?"
+      },
+      "audio_file": "can-you-describe-the-car-problem-convo"
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "wheel-tire",
+        "wrongAnswers": [
+          "scooter",
+          "circle",
+          "trunk"
+        ]
+      }
+    },
+    {
+      "template": "ClozeSequence",
+      "questionData": {
+        "sentence": "It is ______ to _____ the engine — the battery is dead.",
+        "answer": [
+          "impossible",
+          "start"
+        ],
+        "distractors": [
+          "possible",
+          "repair",
+          "replace",
+          "easy"
+        ]
+      },
+      "audio_file": "it-is-impossible-to-start-the-engine-the-battery-is-dead-convo"
+    },
+    {
+      "template": "GrammarForm",
+      "questionData": {
+        "sentence": "Mechanic ____ only replace the battery tomorrow.",
+        "answer": "can",
+        "distractors": [
+          "must",
+          "could be",
+          "do"
+        ]
+      }
+    },
+    {
+      "template": "ClozeSequence",
+      "questionData": {
+        "sentence": "Always ______ for a long trip — _____ the tank before you leave.",
+        "answer": [
+          "prepare",
+          "fill up"
+        ],
+        "distractors": [
+          "empty",
+          "replace",
+          "fix",
+          "carefully"
+        ]
+      },
+      "audio_file": "always-prepare-for-a-long-trip-fill-up-the-tank-before-you-leave-convo"
+    },
+    {
+      "template": "ClozeSequence",
+      "questionData": {
+        "sentence": "The mechanic saw that the exhaust pipe was _____ and fixed it ______.",
+        "answer": [
+          "broken",
+          "immediately"
+        ],
+        "distractors": [
+          "prepare",
+          "good",
+          "clean",
+          "exactly"
+        ]
+      },
+      "audio_file": "the-mechanic-saw-that-the-exhaust-pipe-was-broken-and-fixed-it-immediately-convo"
+    }
+  ]
+}

@@ -1,0 +1,169 @@
+{
+  "levelQuestions": [
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "animal",
+        "wrongAnswers": [
+          "snake",
+          "swan",
+          "bear"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "bear",
+        "wrongAnswers": [
+          "animal",
+          "elephant",
+          "butterfly"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-2",
+      "questionData": {
+        "imageName": "butterfly",
+        "wrongAnswers": [
+          "bear",
+          "elephant",
+          "gorilla"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "deer",
+        "wrongAnswers": [
+          "hippo",
+          "animal",
+          "bear"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "elephant",
+        "wrongAnswers": [
+          "sea-turtle",
+          "gorilla",
+          "animal"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-2",
+      "questionData": {
+        "imageName": "frog",
+        "wrongAnswers": [
+          "monkey",
+          "sea-turtle",
+          "swan"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "gorilla",
+        "wrongAnswers": [
+          "butterfly",
+          "deer",
+          "animal"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "hippo",
+        "wrongAnswers": [
+          "frog",
+          "monkey",
+          "animal"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-2",
+      "questionData": {
+        "imageName": "monkey",
+        "wrongAnswers": [
+          "animal",
+          "butterfly",
+          "elephant"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "penguin",
+        "wrongAnswers": [
+          "swan",
+          "elephant",
+          "animal"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "sea-turtle",
+        "wrongAnswers": [
+          "bear",
+          "penguin",
+          "animal"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-2",
+      "questionData": {
+        "imageName": "snake",
+        "wrongAnswers": [
+          "gorilla",
+          "monkey",
+          "sea-turtle"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "swan",
+        "wrongAnswers": [
+          "hippo",
+          "gorilla",
+          "animal"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "whale",
+        "wrongAnswers": [
+          "sea-turtle",
+          "snake",
+          "animal"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "crab",
+        "wrongAnswers": [
+          "sea-turtle",
+          "frog",
+          "animal"
+        ]
+      }
+    }
+  ]
+}

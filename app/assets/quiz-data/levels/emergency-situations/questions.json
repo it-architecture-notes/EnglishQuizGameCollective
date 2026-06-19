@@ -1,0 +1,261 @@
+{
+  "levelQuestions": [
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "smoke",
+        "wrongAnswers": [
+          "water",
+          "wood",
+          "cloud"
+        ]
+      }
+    },
+    {
+      "template": "ConvoTemplate-1",
+      "questionData": {
+        "character1": "Beth",
+        "character2": "Alex",
+        "line1": "We need to _____ everyone on this street. The river is rising fast!",
+        "line2": "You are right!",
+        "answer": "warn",
+        "distractors": [
+          "call",
+          "cry",
+          "talk to"
+        ]
+      },
+      "audio_file1": "we-need-to-warn-everyone-on-this-street-the-river-is-rising-fast-convo",
+      "audio_file2": "you-are-right-convo"
+    },
+    {
+      "template": "ConvoTemplate-1",
+      "questionData": {
+        "character1": "Sarah",
+        "character2": "Daniel",
+        "line1": "This woman collapsed and not moving. Can anyone _____ her?",
+        "line2": "I know CPR. Give her space, everyone!",
+        "answer": "save",
+        "distractors": [
+          "prepare",
+          "remove",
+          "join"
+        ]
+      },
+      "audio_file1": "this-woman-collapsed-and-not-moving-can-anyone-save-her-convo",
+      "audio_file2": "i-know-cpr-give-her-space-everyone-convo"
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "direction",
+        "wrongAnswers": [
+          "way",
+          "road",
+          "path"
+        ]
+      }
+    },
+    {
+      "template": "WordPairs",
+      "questionData": {
+        "english_words": [
+          "short",
+          "fat",
+          "first",
+          "last"
+        ],
+        "translations": [
+          {
+            "tr": "kısa",
+            "es": "delgado",
+            "fr": "court",
+            "de": "kurz",
+            "it": "corto",
+            "pt": "curto",
+            "ru": "короткий",
+            "zh": "短的",
+            "ja": "短い",
+            "ko": "짧은",
+            "ar": "قصير",
+            "hi": "छोटा"
+          },
+          {
+            "tr": "şişman",
+            "es": "gordo",
+            "fr": "gros",
+            "de": "groß",
+            "it": "grosso",
+            "pt": "grosso",
+            "ru": "толстый",
+            "zh": "胖的",
+            "ja": "太った",
+            "ko": "뚱뚱한",
+            "ar": "سميك",
+            "hi": "मोटा"
+          },
+          {
+            "tr": "ilk",
+            "es": "primero",
+            "fr": "premier",
+            "de": "erster",
+            "it": "primo",
+            "pt": "primeiro",
+            "ru": "первый",
+            "zh": "第一的",
+            "ja": "最初の",
+            "ko": "첫 번째",
+            "ar": "أول",
+            "hi": "पहला"
+          },
+          {
+            "tr": "son",
+            "es": "último",
+            "fr": "dernier",
+            "de": "letzter",
+            "it": "ultimo",
+            "pt": "último",
+            "ru": "последний",
+            "zh": "最后的",
+            "ja": "最後の",
+            "ko": "마지막",
+            "ar": "آخر",
+            "hi": "अंतिम"
+          }
+        ]
+      }
+    },
+    {
+      "template": "DialogueCompletion",
+      "questionData": {
+        "character1": "Omar",
+        "character2": "Lily",
+        "line1": "A man fell from a ladder. He is injured. What do we do?",
+        "answer": "Don't move him, call the ambulance",
+        "distractors": [
+          "Move him to the hospital",
+          "Call the police",
+          "Call the fire department"
+        ]
+      },
+      "audio_file1": "a-man-fell-from-a-ladder-he-is-injured-what-do-we-do-convo",
+      "audio_file2": "don-t-move-him-call-the-ambulance-convo"
+    },
+    {
+      "template": "AppearDisappear",
+      "questionData": {
+        "words": "The smoke made everyone cough",
+        "distractors": [
+          "uncomfortable",
+          "sneeze",
+          "breath",
+          "make"
+        ]
+      },
+      "audio_file": "the-smoke-made-everyone-cough-convo"
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "disaster",
+        "wrongAnswers": [
+          "fire",
+          "hurricane",
+          "snow"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "headache",
+        "wrongAnswers": [
+          "fever",
+          "cold",
+          "flu"
+        ]
+      }
+    },
+    {
+      "template": "SentenceBuilder",
+      "questionData": {
+        "correct_order": "It is urgent to put a warning sign there."
+      },
+      "audio_file": "it-is-urgent-to-put-a-warning-sign-there-convo"
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "siren",
+        "wrongAnswers": [
+          "noise",
+          "warning",
+          "sign"
+        ]
+      }
+    },
+    {
+      "template": "ClozeSequence",
+      "questionData": {
+        "sentence": "The bear ______ and caused a ______ injury to the man.",
+        "answer": [
+          "attacked",
+          "terrible"
+        ],
+        "distractors": [
+          "amazing",
+          "searched",
+          "thought",
+          "tiny"
+        ]
+      },
+      "audio_file": "the-bear-attacked-and-caused-a-terrible-injury-to-the-man-convo"
+    },
+    {
+      "template": "GrammarForm",
+      "questionData": {
+        "sentence": "_____ slip on the wet floor ",
+        "answer": "do not",
+        "distractors": [
+          "let's not",
+          "isn't she",
+          "she could"
+        ]
+      }
+    },
+    {
+      "template": "ClozeSequence",
+      "questionData": {
+        "sentence": "We need to _____ a safety plan to ______ accidents in the factory.",
+        "answer": [
+          "create",
+          "prevent"
+        ],
+        "distractors": [
+          "ask for",
+          "do",
+          "continue",
+          "try"
+        ]
+      },
+      "audio_file": "we-need-to-create-a-safety-plan-to-prevent-accidents-in-the-factory-convo"
+    },
+    {
+      "template": "ClozeSequence",
+      "questionData": {
+        "sentence": "She tried to _____ her neighbor but found the man had fallen and could not _____ himself.",
+        "answer": [
+          "visit",
+          "rescue"
+        ],
+        "distractors": [
+          "call",
+          "help",
+          "see",
+          "talk"
+        ]
+      },
+      "audio_file": "she-tried-to-visit-her-neighbor-but-found-the-man-had-fallen-and-could-not-rescue-himself-convo"
+    }
+  ]
+}

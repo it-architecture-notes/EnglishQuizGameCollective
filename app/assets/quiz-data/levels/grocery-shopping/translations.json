@@ -1,0 +1,174 @@
+{
+  "translations_list": [
+    {
+      "english_word": "to shop",
+      "translations": {
+        "tr": "alışveriş yapmak",
+        "es": "ir de compras",
+        "fr": "faire du shopping",
+        "de": "einkaufen",
+        "it": "fare acquisti",
+        "pt": "fazer compras",
+        "ru": "делать покупки",
+        "zh": "购物",
+        "ja": "買い物する",
+        "ko": "쇼핑하다",
+        "ar": "للتسوق",
+        "hi": "खरीदारी करने के लिए"
+      }
+    },
+    {
+      "english_word": "to buy",
+      "translations": {
+        "tr": "satın almak",
+        "es": "comprar",
+        "fr": "acheter",
+        "de": "zu kaufen",
+        "it": "comprare",
+        "pt": "comprar",
+        "ru": "купить",
+        "zh": "买",
+        "ja": "買う",
+        "ko": "구매",
+        "ar": "للشراء",
+        "hi": "खरीदने के लिए"
+      }
+    },
+    {
+      "english_word": "to give",
+      "translations": {
+        "tr": "vermek",
+        "es": "dar",
+        "fr": "donner",
+        "de": "geben",
+        "it": "dare",
+        "pt": "para dar",
+        "ru": "дать",
+        "zh": "给予",
+        "ja": "与える",
+        "ko": "주다",
+        "ar": "لإعطاء",
+        "hi": "देना"
+      }
+    },
+    {
+      "english_word": "to make",
+      "translations": {
+        "tr": "yapmak",
+        "es": "hacer",
+        "fr": "faire",
+        "de": "machen",
+        "it": "fare",
+        "pt": "fazer",
+        "ru": "сделать",
+        "zh": "制作",
+        "ja": "作る",
+        "ko": "만들다",
+        "ar": "لجعل",
+        "hi": "बनाना"
+      }
+    },
+    {
+      "english_word": "before",
+      "translations": {
+        "tr": "önce",
+        "es": "antes",
+        "fr": "avant",
+        "de": "vor",
+        "it": "prima",
+        "pt": "antes",
+        "ru": "раньше",
+        "zh": "之前",
+        "ja": "前に",
+        "ko": "전에",
+        "ar": "من قبل",
+        "hi": "पहले"
+      }
+    },
+    {
+      "english_word": "new",
+      "translations": {
+        "tr": "yeni",
+        "es": "nuevo",
+        "fr": "nouveau",
+        "de": "neu",
+        "it": "nuovo",
+        "pt": "novo",
+        "ru": "новый",
+        "zh": "新的",
+        "ja": "新しい",
+        "ko": "새로운",
+        "ar": "جديد",
+        "hi": "नया"
+      }
+    },
+    {
+      "english_word": "why",
+      "translations": {
+        "tr": "neden",
+        "es": "por qué",
+        "fr": "pourquoi",
+        "de": "warum",
+        "it": "perché",
+        "pt": "por que",
+        "ru": "почему",
+        "zh": "为什么",
+        "ja": "なぜ",
+        "ko": "왜",
+        "ar": "لماذا",
+        "hi": "क्यों"
+      }
+    },
+    {
+      "english_word": "to wait",
+      "translations": {
+        "tr": "beklemek",
+        "es": "esperar",
+        "fr": "attendre",
+        "de": "warten",
+        "it": "aspettare",
+        "pt": "esperar",
+        "ru": "ждать",
+        "zh": "等待",
+        "ja": "待つ",
+        "ko": "기다리다",
+        "ar": "للانتظار",
+        "hi": "इंतज़ार करना"
+      }
+    },
+    {
+      "english_word": "to find",
+      "translations": {
+        "tr": "bulmak",
+        "es": "encontrar",
+        "fr": "trouver",
+        "de": "zu finden",
+        "it": "trovare",
+        "pt": "encontrar",
+        "ru": "найти",
+        "zh": "找到",
+        "ja": "見つける",
+        "ko": "찾기 위해",
+        "ar": "للعثور على",
+        "hi": "खोजने के लिए"
+      }
+    },
+    {
+      "english_word": "to want",
+      "translations": {
+        "tr": "istemek",
+        "es": "querer",
+        "fr": "vouloir",
+        "de": "wollen",
+        "it": "volere",
+        "pt": "querer",
+        "ru": "хотеть",
+        "zh": "想要",
+        "ja": "欲しい",
+        "ko": "원하다",
+        "ar": "تريد",
+        "hi": "चाहना"
+      }
+    }
+  ]
+}

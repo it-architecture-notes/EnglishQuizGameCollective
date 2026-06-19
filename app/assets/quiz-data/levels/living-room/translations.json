@@ -1,0 +1,191 @@
+{
+  "translations_list": [
+    {
+      "english_word": "to sit",
+      "translations": {
+        "tr": "oturmak",
+        "es": "sentarse",
+        "fr": "s'asseoir",
+        "de": "sitzen",
+        "it": "sedersi",
+        "pt": "sentar",
+        "ru": "сидеть",
+        "zh": "坐",
+        "ja": "座る",
+        "ko": "앉다",
+        "ar": "للجلوس",
+        "hi": "बैठना"
+      }
+    },
+    {
+      "english_word": "together",
+      "translations": {
+        "tr": "birlikte",
+        "es": "juntos",
+        "fr": "ensemble",
+        "de": "zusammen",
+        "it": "insieme",
+        "pt": "juntos",
+        "ru": "вместе",
+        "zh": "在一起",
+        "ja": "一緒に",
+        "ko": "함께",
+        "ar": "معًا",
+        "hi": "एक साथ"
+      }
+    },
+    {
+      "english_word": "to lie down",
+      "translations": {
+        "tr": "uzanmak",
+        "es": "acostarse",
+        "fr": "s'allonger",
+        "de": "sich hinlegen",
+        "it": "sdraiarsi",
+        "pt": "deitar",
+        "ru": "лечь",
+        "zh": "躺下",
+        "ja": "横になる",
+        "ko": "눕다",
+        "ar": "للاستلقاء",
+        "hi": "लेटना"
+      }
+    },
+    {
+      "english_word": "Who else?",
+      "translations": {
+        "tr": "Başka kim?",
+        "es": "¿Quién más?",
+        "fr": "Qui d'autre ?",
+        "de": "Wer sonst?",
+        "it": "Chi altro?",
+        "pt": "Quem mais?",
+        "ru": "Кто еще?",
+        "zh": "还有谁？",
+        "ja": "他に誰がいますか？",
+        "ko": "또 누구야?",
+        "ar": "من آخر؟",
+        "hi": "और कौन?"
+      }
+    },
+    {
+      "english_word": "to listen to",
+      "translations": {
+        "tr": "dinlemek",
+        "es": "escuchar",
+        "fr": "écouter",
+        "de": "zuhören",
+        "it": "ascoltare",
+        "pt": "para ouvir",
+        "ru": "слушать",
+        "zh": "听",
+        "ja": "聞く",
+        "ko": "듣기 위해",
+        "ar": "للاستماع إلى",
+        "hi": "सुनने के लिए"
+      }
+    },
+    {
+      "english_word": "small",
+      "translations": {
+        "tr": "küçük",
+        "es": "pequeño",
+        "fr": "petit",
+        "de": "klein",
+        "it": "piccolo",
+        "pt": "pequeno",
+        "ru": "маленький",
+        "zh": "小",
+        "ja": "小さい",
+        "ko": "작은",
+        "ar": "صغير",
+        "hi": "छोटा"
+      }
+    },
+    {
+      "english_word": "bright",
+      "translations": {
+        "tr": "parlak",
+        "es": "brillante",
+        "fr": "lumineux",
+        "de": "hell",
+        "it": "luminoso",
+        "pt": "brilhante",
+        "ru": "яркий",
+        "zh": "明亮",
+        "ja": "明るい",
+        "ko": "밝은",
+        "ar": "مشرق",
+        "hi": "उज्ज्वल"
+      }
+    },
+    {
+      "english_word": "to close",
+      "translations": {
+        "tr": "kapatmak",
+        "es": "cerrar",
+        "fr": "fermer",
+        "de": "schließen",
+        "it": "chiudere",
+        "pt": "fechar",
+        "ru": "закрывать",
+        "zh": "关闭",
+        "ja": "閉じる",
+        "ko": "닫다",
+        "ar": "إغلاق",
+        "hi": "बंद करना"
+      }
+    },
+    {
+      "english_word": "to say",
+      "translations": {
+        "tr": "söylemek",
+        "es": "decir",
+        "fr": "dire",
+        "de": "zu sagen",
+        "it": "dire",
+        "pt": "dizer",
+        "ru": "сказать",
+        "zh": "说",
+        "ja": "言うこと",
+        "ko": "말하다",
+        "ar": "ليقول",
+        "hi": "कहना"
+      }
+    },
+    {
+      "english_word": "to watch",
+      "translations": {
+        "tr": "izlemek",
+        "es": "mirar",
+        "fr": "regarder",
+        "de": "fernsehen",
+        "it": "guardare",
+        "pt": "assistir",
+        "ru": "смотреть",
+        "zh": "观看",
+        "ja": "見る",
+        "ko": "시청하다",
+        "ar": "للمشاهدة",
+        "hi": "देखने के लिए"
+      }
+    },
+    {
+      "english_word": "to talk",
+      "translations": {
+        "tr": "konuşmak",
+        "es": "hablar",
+        "fr": "parler",
+        "de": "reden",
+        "it": "parlare",
+        "pt": "conversar",
+        "ru": "говорить",
+        "zh": "说话",
+        "ja": "話す",
+        "ko": "이야기하다",
+        "ar": "للتحدث",
+        "hi": "बात करना"
+      }
+    }
+  ]
+}

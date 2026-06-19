@@ -1,0 +1,174 @@
+{
+  "translations_list": [
+    {
+      "english_word": "to deposit",
+      "translations": {
+        "tr": "yatırmak",
+        "es": "depositar",
+        "fr": "déposer",
+        "de": "einzuzahlen",
+        "it": "depositare",
+        "pt": "depositar",
+        "ru": "внести на депозит",
+        "zh": "存款",
+        "ja": "預ける",
+        "ko": "입금하다",
+        "ar": "للإيداع",
+        "hi": "जमा करना"
+      }
+    },
+    {
+      "english_word": "to withdraw money",
+      "translations": {
+        "tr": "para çekmek",
+        "es": "retirar dinero",
+        "fr": "retirer de l'argent",
+        "de": "Geld abheben",
+        "it": "prelevare denaro",
+        "pt": "sacar dinheiro",
+        "ru": "снять деньги",
+        "zh": "取钱",
+        "ja": "お金を引き出す",
+        "ko": "돈을 인출하다",
+        "ar": "سحب المال",
+        "hi": "पैसे निकालना"
+      }
+    },
+    {
+      "english_word": "to save",
+      "translations": {
+        "tr": "kaydetmek",
+        "es": "guardar",
+        "fr": "sauver",
+        "de": "zu retten",
+        "it": "salvare",
+        "pt": "para salvar",
+        "ru": "сохранить",
+        "zh": "保存",
+        "ja": "保存する",
+        "ko": "저장하다",
+        "ar": "للحفظ",
+        "hi": "बचाने के लिए"
+      }
+    },
+    {
+      "english_word": "to sign",
+      "translations": {
+        "tr": "imzalamak",
+        "es": "firmar",
+        "fr": "signer",
+        "de": "unterschreiben",
+        "it": "firmare",
+        "pt": "assinar",
+        "ru": "подписать",
+        "zh": "签署",
+        "ja": "署名する",
+        "ko": "서명하다",
+        "ar": "للتوقيع",
+        "hi": "हस्ताक्षर करना"
+      }
+    },
+    {
+      "english_word": "fill in a form",
+      "translations": {
+        "tr": "bir form doldur",
+        "es": "llenar un formulario",
+        "fr": "remplir un formulaire",
+        "de": "Füllen Sie ein Formular aus",
+        "it": "compilare un modulo",
+        "pt": "preencha um formulário",
+        "ru": "заполнить форму",
+        "zh": "填写表格",
+        "ja": "フォームに記入する",
+        "ko": "양식을 작성하다",
+        "ar": "ملء النموذج",
+        "hi": "एक फॉर्म भरें"
+      }
+    },
+    {
+      "english_word": "to discuss",
+      "translations": {
+        "tr": "tartışmak",
+        "es": "discutir",
+        "fr": "discuter",
+        "de": "zu besprechen",
+        "it": "discutere",
+        "pt": "discutir",
+        "ru": "обсудить",
+        "zh": "讨论",
+        "ja": "議論する",
+        "ko": "토론하다",
+        "ar": "للمناقشة",
+        "hi": "चर्चा करना"
+      }
+    },
+    {
+      "english_word": "to count",
+      "translations": {
+        "tr": "saymak",
+        "es": "contar",
+        "fr": "compter",
+        "de": "zählen",
+        "it": "contare",
+        "pt": "contar",
+        "ru": "считать",
+        "zh": "数数",
+        "ja": "数える",
+        "ko": "계산하다",
+        "ar": "لحساب",
+        "hi": "गिनना"
+      }
+    },
+    {
+      "english_word": "to remember",
+      "translations": {
+        "tr": "hatırlamak",
+        "es": "recordar",
+        "fr": "se souvenir",
+        "de": "zu erinnern",
+        "it": "da ricordare",
+        "pt": "lembrar",
+        "ru": "помнить",
+        "zh": "记住",
+        "ja": "思い出す",
+        "ko": "기억하다",
+        "ar": "لنتذكر",
+        "hi": "याद रखना"
+      }
+    },
+    {
+      "english_word": "large",
+      "translations": {
+        "tr": "büyük",
+        "es": "grande",
+        "fr": "grand",
+        "de": "groß",
+        "it": "grande",
+        "pt": "grande",
+        "ru": "большой",
+        "zh": "大",
+        "ja": "大きい",
+        "ko": "큰",
+        "ar": "كبير",
+        "hi": "बड़ा"
+      }
+    },
+    {
+      "english_word": "to open an account",
+      "translations": {
+        "tr": "hesap açmak",
+        "es": "abrir una cuenta",
+        "fr": "ouvrir un compte",
+        "de": "ein Konto eröffnen",
+        "it": "aprire un conto",
+        "pt": "abrir uma conta",
+        "ru": "открыть счет",
+        "zh": "开立账户",
+        "ja": "口座を開設する",
+        "ko": "계좌를 개설하다",
+        "ar": "فتح حساب",
+        "hi": "खाता खोलना"
+      }
+    }
+  ]
+}

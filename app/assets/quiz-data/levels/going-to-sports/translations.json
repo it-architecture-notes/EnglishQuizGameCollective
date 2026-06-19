@@ -1,0 +1,225 @@
+{
+  "translations_list": [
+    {
+      "english_word": "to practice",
+      "translations": {
+        "tr": "pratik yapmak",
+        "es": "practicar",
+        "fr": "pratiquer",
+        "de": "zu üben",
+        "it": "esercitarsi",
+        "pt": "praticar",
+        "ru": "практиковать",
+        "zh": "练习",
+        "ja": "練習する",
+        "ko": "연습하다",
+        "ar": "لممارسة",
+        "hi": "अभ्यास करना"
+      }
+    },
+    {
+      "english_word": "lucky",
+      "translations": {
+        "tr": "şanslı",
+        "es": "afortunado",
+        "fr": "chanceux",
+        "de": "Glück gehabt",
+        "it": "fortunato",
+        "pt": "sortudo",
+        "ru": "повезло",
+        "zh": "幸运的",
+        "ja": "幸運な",
+        "ko": "운이 좋은",
+        "ar": "محظوظ",
+        "hi": "भाग्यशाली"
+      }
+    },
+    {
+      "english_word": "to improve",
+      "translations": {
+        "tr": "geliştirmek",
+        "es": "mejorar",
+        "fr": "améliorer",
+        "de": "zu verbessern",
+        "it": "per migliorare",
+        "pt": "melhorar",
+        "ru": "улучшить",
+        "zh": "改善",
+        "ja": "改善する",
+        "ko": "개선하다",
+        "ar": "لتحسين",
+        "hi": "सुधार करना"
+      }
+    },
+    {
+      "english_word": "to practice",
+      "translations": {
+        "tr": "pratik yapmak",
+        "es": "practicar",
+        "fr": "pratiquer",
+        "de": "zu üben",
+        "it": "esercitarsi",
+        "pt": "praticar",
+        "ru": "практиковать",
+        "zh": "练习",
+        "ja": "練習する",
+        "ko": "연습하다",
+        "ar": "لممارسة",
+        "hi": "अभ्यास करना"
+      }
+    },
+    {
+      "english_word": "to finish",
+      "translations": {
+        "tr": "bitirmek",
+        "es": "terminar",
+        "fr": "pour finir",
+        "de": "zu beenden",
+        "it": "per finire",
+        "pt": "terminar",
+        "ru": "закончить",
+        "zh": "完成",
+        "ja": "終わらせる",
+        "ko": "끝내다",
+        "ar": "لإنهاء",
+        "hi": "ख़त्म करना"
+      }
+    },
+    {
+      "english_word": "to hit",
+      "translations": {
+        "tr": "vurmak",
+        "es": "golpear",
+        "fr": "frapper",
+        "de": "schlagen",
+        "it": "colpire",
+        "pt": "acertar",
+        "ru": "ударить",
+        "zh": "打",
+        "ja": "打つ",
+        "ko": "치다",
+        "ar": "لضرب",
+        "hi": "मारना"
+      }
+    },
+    {
+      "english_word": "tough",
+      "translations": {
+        "tr": "zor",
+        "es": "duro",
+        "fr": "dur",
+        "de": "hart",
+        "it": "duro",
+        "pt": "difícil",
+        "ru": "трудный",
+        "zh": "困难的",
+        "ja": "厳しい",
+        "ko": "힘든",
+        "ar": "صعبة",
+        "hi": "कठिन"
+      }
+    },
+    {
+      "english_word": "to swim",
+      "translations": {
+        "tr": "yüzmek",
+        "es": "nadar",
+        "fr": "nager",
+        "de": "schwimmen",
+        "it": "nuotare",
+        "pt": "nadar",
+        "ru": "плавать",
+        "zh": "游泳",
+        "ja": "泳ぐ",
+        "ko": "수영하다",
+        "ar": "للسباحة",
+        "hi": "तैरना"
+      }
+    },
+    {
+      "english_word": "to catch",
+      "translations": {
+        "tr": "yakalamak",
+        "es": "atrapar",
+        "fr": "attraper",
+        "de": "zu fangen",
+        "it": "catturare",
+        "pt": "pegar",
+        "ru": "поймать",
+        "zh": "抓住",
+        "ja": "捕まえる",
+        "ko": "잡으려고",
+        "ar": "للقبض",
+        "hi": "पकड़ने के लिए"
+      }
+    },
+    {
+      "english_word": "to end",
+      "translations": {
+        "tr": "bitirmek",
+        "es": "terminar",
+        "fr": "terminer",
+        "de": "enden",
+        "it": "per finire",
+        "pt": "terminar",
+        "ru": "закончить",
+        "zh": "结束",
+        "ja": "終わる",
+        "ko": "끝내다",
+        "ar": "لإنهاء",
+        "hi": "ख़त्म करना"
+      }
+    },
+    {
+      "english_word": "to score",
+      "translations": {
+        "tr": "gol atmak",
+        "es": "anotar",
+        "fr": "marquer",
+        "de": "punkten",
+        "it": "segnare",
+        "pt": "marcar",
+        "ru": "забить",
+        "zh": "得分",
+        "ja": "得点する",
+        "ko": "득점하다",
+        "ar": "ليسجل",
+        "hi": "स्कोर करने के लिए"
+      }
+    },
+    {
+      "english_word": "to lose",
+      "translations": {
+        "tr": "kaybetmek",
+        "es": "perder",
+        "fr": "perdre",
+        "de": "verlieren",
+        "it": "perdere",
+        "pt": "perder",
+        "ru": "проиграть",
+        "zh": "输",
+        "ja": "負ける",
+        "ko": "지다",
+        "ar": "ليخسر",
+        "hi": "हारना"
+      }
+    },
+    {
+      "english_word": "race",
+      "translations": {
+        "tr": "yarış",
+        "es": "carrera",
+        "fr": "course",
+        "de": "Rennen",
+        "it": "gara",
+        "pt": "corrida",
+        "ru": "гонка",
+        "zh": "比赛",
+        "ja": "レース",
+        "ko": "경주",
+        "ar": "سباق",
+        "hi": "दौड़"
+      }
+    }
+  ]
+}

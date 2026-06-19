@@ -10,11 +10,11 @@
         "it": "guidare",
         "pt": "dirigir",
         "ru": "водить",
-        "zh": "驾驶",
+        "zh": "开车",
         "ja": "運転する",
         "ko": "운전하다",
-        "ar": "القيادة",
-        "hi": "चालक बनाना"
+        "ar": "للقيادة",
+        "hi": "चलाना"
       }
     },
     {
@@ -38,34 +38,34 @@
       "english_word": "to let",
       "translations": {
         "tr": "izin vermek",
-        "es": "permitir",
-        "fr": "permettre",
+        "es": "dejar",
+        "fr": "laisser",
         "de": "lassen",
         "it": "lasciare",
-        "pt": "permitir",
+        "pt": "deixar",
         "ru": "позволить",
-        "zh": "允许",
-        "ja": "許可",
-        "ko": "허용",
-        "ar": "السماح",
-        "hi": "अनुमति देना"
+        "zh": "让",
+        "ja": "させます",
+        "ko": "허락하다",
+        "ar": "للسماح",
+        "hi": "जाने देना"
       }
     },
     {
       "english_word": "slow down",
       "translations": {
-        "tr": "yavaşlamak",
-        "es": "reducir la velocidad",
+        "tr": "yavaşla",
+        "es": "ralentizar",
         "fr": "ralentir",
-        "de": "langsamer fahren",
+        "de": "verlangsamen",
         "it": "rallentare",
-        "pt": "desacelerar",
+        "pt": "desacelere",
         "ru": "замедлить",
-        "zh": "减速",
-        "ja": "減速する",
-        "ko": "감속하다",
-        "ar": "تقليل السرعة",
-        "hi": "धीमा करना"
+        "zh": "慢下来",
+        "ja": "ゆっくりする",
+        "ko": "속도를 늦추다",
+        "ar": "تبطئ",
+        "hi": "धीमा करो"
       }
     },
     {
@@ -78,7 +78,7 @@
         "it": "occupato",
         "pt": "ocupado",
         "ru": "занят",
-        "zh": "忙碌的",
+        "zh": "忙",
         "ja": "忙しい",
         "ko": "바쁜",
         "ar": "مشغول",
@@ -89,34 +89,34 @@
       "english_word": "to stop",
       "translations": {
         "tr": "durdurmak",
-        "es": "detener",
+        "es": "parar",
         "fr": "arrêter",
-        "de": "bremsen",
-        "it": "fermare",
+        "de": "aufzuhören",
+        "it": "fermarsi",
         "pt": "parar",
         "ru": "остановить",
         "zh": "停止",
-        "ja": "止まる",
+        "ja": "止める",
         "ko": "멈추다",
-        "ar": "توقف",
-        "hi": "रोकना"
+        "ar": "للتوقف",
+        "hi": "रुकना"
       }
     },
     {
       "english_word": "to get out",
       "translations": {
-        "tr": "çıkmak",
+        "tr": "dışarı çıkmak",
         "es": "salir",
         "fr": "sortir",
-        "de": "aussteigen",
-        "it": "scendere",
-        "pt": "sair",
+        "de": "rauskommen",
+        "it": "uscire",
+        "pt": "para sair",
         "ru": "выйти",
-        "zh": "下车",
-        "ja": "降りる",
-        "ko": "내리다",
-        "ar": "صعود",
-        "hi": "उतरना"
+        "zh": "出去",
+        "ja": "出る",
+        "ko": "나가기 위해",
+        "ar": "للخروج",
+        "hi": "बाहर निकलने के लिए"
       }
     },
     {
@@ -124,19 +124,18 @@
       "translations": {
         "tr": "hızlı",
         "es": "rápido",
-        "fr": "vite",
+        "fr": "rapide",
         "de": "schnell",
         "it": "veloce",
         "pt": "rápido",
         "ru": "быстрый",
-        "zh": "快速的",
+        "zh": "快的",
         "ja": "速い",
-        "ko": "빠르다",
+        "ko": "빠른",
         "ar": "سريع",
-        "hi": "जल्दी"
+        "hi": "तेज़"
       }
     },
-    
     {
       "english_word": "to cross",
       "translations": {
@@ -147,10 +146,10 @@
         "it": "attraversare",
         "pt": "atravessar",
         "ru": "пересекать",
-        "zh": "穿过",
+        "zh": "穿越",
         "ja": "渡る",
         "ko": "건너다",
-        "ar": "تخطى",
+        "ar": "للعبور",
         "hi": "पार करना"
       }
     },
@@ -162,13 +161,13 @@
         "fr": "entrer",
         "de": "eintreten",
         "it": "entrare",
-        "pt": "entrar",
-        "ru": "входить",
+        "pt": "para entrar",
+        "ru": "войти",
         "zh": "进入",
         "ja": "入る",
         "ko": "들어가다",
-        "ar": "دخول",
-        "hi": "चले जाना"
+        "ar": "للدخول",
+        "hi": "प्रवेश करना"
       }
     }
   ]

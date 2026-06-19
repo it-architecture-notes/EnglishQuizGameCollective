@@ -1,0 +1,225 @@
+{
+  "translations_list": [
+    {
+      "english_word": "almost",
+      "translations": {
+        "tr": "neredeyse",
+        "es": "casi",
+        "fr": "presque",
+        "de": "fast",
+        "it": "quasi",
+        "pt": "quase",
+        "ru": "почти",
+        "zh": "几乎",
+        "ja": "ほぼ",
+        "ko": "거의",
+        "ar": "تقريبا",
+        "hi": "लगभग"
+      }
+    },
+    {
+      "english_word": "noisy",
+      "translations": {
+        "tr": "gürültülü",
+        "es": "ruidoso",
+        "fr": "bruyant",
+        "de": "laut",
+        "it": "rumoroso",
+        "pt": "barulhento",
+        "ru": "шумный",
+        "zh": "吵闹的",
+        "ja": "騒々しい",
+        "ko": "시끄러운",
+        "ar": "صاخبة",
+        "hi": "शोरगुल वाला"
+      }
+    },
+    {
+      "english_word": "away",
+      "translations": {
+        "tr": "uzakta",
+        "es": "lejos",
+        "fr": "loin",
+        "de": "weg",
+        "it": "lontano",
+        "pt": "longe",
+        "ru": "прочь",
+        "zh": "离开",
+        "ja": "離れて",
+        "ko": "떨어져",
+        "ar": "بعيدا",
+        "hi": "दूर"
+      }
+    },
+    {
+      "english_word": "to decide",
+      "translations": {
+        "tr": "karar vermek",
+        "es": "decidir",
+        "fr": "décider",
+        "de": "zu entscheiden",
+        "it": "decidere",
+        "pt": "decidir",
+        "ru": "решать",
+        "zh": "决定",
+        "ja": "決める",
+        "ko": "결정하다",
+        "ar": "ليقرر",
+        "hi": "निर्णय लेना"
+      }
+    },
+    {
+      "english_word": "quick",
+      "translations": {
+        "tr": "hızlı",
+        "es": "rapido",
+        "fr": "rapide",
+        "de": "schnell",
+        "it": "veloce",
+        "pt": "rápido",
+        "ru": "быстрый",
+        "zh": "快",
+        "ja": "早い",
+        "ko": "빨리",
+        "ar": "سريع",
+        "hi": "जल्दी"
+      }
+    },
+    {
+      "english_word": "are you sure",
+      "translations": {
+        "tr": "emin misin",
+        "es": "¿estás seguro?",
+        "fr": "tu es sûr ?",
+        "de": "Bist du sicher?",
+        "it": "sei sicuro?",
+        "pt": "você tem certeza?",
+        "ru": "ты уверен?",
+        "zh": "你确定吗？",
+        "ja": "確かですか？",
+        "ko": "확실해요?",
+        "ar": "هل أنت متأكد؟",
+        "hi": "क्या आप निश्चित हैं?"
+      }
+    },
+    {
+      "english_word": "to own",
+      "translations": {
+        "tr": "sahip olmak",
+        "es": "poseer",
+        "fr": "posséder",
+        "de": "besitzen",
+        "it": "possedere",
+        "pt": "possuir",
+        "ru": "владеть",
+        "zh": "拥有",
+        "ja": "所有する",
+        "ko": "소유하다",
+        "ar": "لامتلاك",
+        "hi": "स्वामित्व के लिए"
+      }
+    },
+    {
+      "english_word": "to connect",
+      "translations": {
+        "tr": "bağlanmak",
+        "es": "para conectar",
+        "fr": "se connecter",
+        "de": "verbinden",
+        "it": "per connettersi",
+        "pt": "conectar",
+        "ru": "соединить",
+        "zh": "连接",
+        "ja": "接続する",
+        "ko": "연결하다",
+        "ar": "للاتصال",
+        "hi": "कनेक्ट करने के लिए"
+      }
+    },
+    {
+      "english_word": "available",
+      "translations": {
+        "tr": "mevcut",
+        "es": "disponible",
+        "fr": "disponible",
+        "de": "verfügbar",
+        "it": "disponibile",
+        "pt": "disponível",
+        "ru": "доступен",
+        "zh": "可用",
+        "ja": "利用可能",
+        "ko": "사용 가능",
+        "ar": "متاح",
+        "hi": "उपलब्ध"
+      }
+    },
+    {
+      "english_word": "usually",
+      "translations": {
+        "tr": "genellikle",
+        "es": "normalmente",
+        "fr": "habituellement",
+        "de": "normalerweise",
+        "it": "di solito",
+        "pt": "normalmente",
+        "ru": "обычно",
+        "zh": "通常",
+        "ja": "通常",
+        "ko": "보통",
+        "ar": "عادة",
+        "hi": "आमतौर पर"
+      }
+    },
+    {
+      "english_word": "great",
+      "translations": {
+        "tr": "harika",
+        "es": "genial",
+        "fr": "super",
+        "de": "großartig",
+        "it": "fantastico",
+        "pt": "ótimo",
+        "ru": "отлично",
+        "zh": "太棒了",
+        "ja": "素晴らしい",
+        "ko": "대단해",
+        "ar": "عظيم",
+        "hi": "बढ़िया"
+      }
+    },
+    {
+      "english_word": "to suggest",
+      "translations": {
+        "tr": "önermek",
+        "es": "sugerir",
+        "fr": "suggérer",
+        "de": "vorschlagen",
+        "it": "suggerire",
+        "pt": "sugerir",
+        "ru": "предложить",
+        "zh": "建议",
+        "ja": "提案する",
+        "ko": "제안하다",
+        "ar": "لاقتراح",
+        "hi": "सुझाव देना"
+      }
+    },
+    {
+      "english_word": "smart",
+      "translations": {
+        "tr": "akıllı",
+        "es": "inteligente",
+        "fr": "intelligent",
+        "de": "klug",
+        "it": "intelligente",
+        "pt": "inteligente",
+        "ru": "умный",
+        "zh": "聪明的",
+        "ja": "賢い",
+        "ko": "똑똑한",
+        "ar": "ذكي",
+        "hi": "होशियार"
+      }
+    }
+  ]
+}

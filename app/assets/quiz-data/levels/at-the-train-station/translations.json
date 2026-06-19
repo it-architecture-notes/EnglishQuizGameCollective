@@ -1,0 +1,191 @@
+{
+  "translations_list": [
+    {
+      "english_word": "to travel",
+      "translations": {
+        "tr": "seyahat etmek",
+        "es": "viajar",
+        "fr": "voyager",
+        "de": "reisen",
+        "it": "viaggiare",
+        "pt": "viajar",
+        "ru": "путешествовать",
+        "zh": "去旅行",
+        "ja": "旅行する",
+        "ko": "여행하다",
+        "ar": "للسفر",
+        "hi": "यात्रा करना"
+      }
+    },
+    {
+      "english_word": "to return",
+      "translations": {
+        "tr": "geri dönmek",
+        "es": "regresar",
+        "fr": "revenir",
+        "de": "zurückkehren",
+        "it": "ritornare",
+        "pt": "voltar",
+        "ru": "вернуться",
+        "zh": "返回",
+        "ja": "戻る",
+        "ko": "돌아오다",
+        "ar": "العودة",
+        "hi": "वापस लौटना"
+      }
+    },
+    {
+      "english_word": "always",
+      "translations": {
+        "tr": "her zaman",
+        "es": "siempre",
+        "fr": "toujours",
+        "de": "immer",
+        "it": "sempre",
+        "pt": "sempre",
+        "ru": "всегда",
+        "zh": "总是",
+        "ja": "いつも",
+        "ko": "항상",
+        "ar": "دائما",
+        "hi": "हमेशा"
+      }
+    },
+    {
+      "english_word": "to hurry",
+      "translations": {
+        "tr": "acele etmek",
+        "es": "darse prisa",
+        "fr": "se dépêcher",
+        "de": "sich beeilen",
+        "it": "fare in fretta",
+        "pt": "se apressar",
+        "ru": "спешить",
+        "zh": "快点",
+        "ja": "急ぐ",
+        "ko": "서두르다",
+        "ar": "على عجل",
+        "hi": "जल्दी करना"
+      }
+    },
+    {
+      "english_word": "other",
+      "translations": {
+        "tr": "diğer",
+        "es": "otro",
+        "fr": "autre",
+        "de": "andere",
+        "it": "altro",
+        "pt": "outro",
+        "ru": "другой",
+        "zh": "其他",
+        "ja": "その他",
+        "ko": "다른",
+        "ar": "أخرى",
+        "hi": "अन्य"
+      }
+    },
+    {
+      "english_word": "to run",
+      "translations": {
+        "tr": "koşmak",
+        "es": "correr",
+        "fr": "courir",
+        "de": "laufen",
+        "it": "correre",
+        "pt": "correr",
+        "ru": "бежать",
+        "zh": "跑",
+        "ja": "走る",
+        "ko": "달리다",
+        "ar": "للركض",
+        "hi": "दौड़ना"
+      }
+    },
+    {
+      "english_word": "to catch",
+      "translations": {
+        "tr": "yakalamak",
+        "es": "atrapar",
+        "fr": "attraper",
+        "de": "erwischen",
+        "it": "prendere",
+        "pt": "pegar",
+        "ru": "поймать",
+        "zh": "赶上",
+        "ja": "間に合う",
+        "ko": "잡으려고",
+        "ar": "للحاق بـ",
+        "hi": "पकड़ने के लिए"
+      }
+    },
+    {
+      "english_word": "to miss",
+      "translations": {
+        "tr": "kaçırmak",
+        "es": "perder",
+        "fr": "manquer",
+        "de": "verpassen",
+        "it": "perdere",
+        "pt": "perder",
+        "ru": "пропустить",
+        "zh": "错过",
+        "ja": "逃す",
+        "ko": "놓치다",
+        "ar": "لتفويت",
+        "hi": "चूकना"
+      }
+    },
+    {
+      "english_word": "to put",
+      "translations": {
+        "tr": "koymak",
+        "es": "poner",
+        "fr": "mettre",
+        "de": "stellen",
+        "it": "mettere",
+        "pt": "colocar",
+        "ru": "положить",
+        "zh": "放",
+        "ja": "置く",
+        "ko": "넣다",
+        "ar": "لوضع",
+        "hi": "लगाना"
+      }
+    },
+    {
+      "english_word": "to arrive",
+      "translations": {
+        "tr": "varmak",
+        "es": "llegar",
+        "fr": "arriver",
+        "de": "ankommen",
+        "it": "arrivare",
+        "pt": "chegar",
+        "ru": "прибыть",
+        "zh": "到达",
+        "ja": "到着する",
+        "ko": "도착하다",
+        "ar": "للوصول",
+        "hi": "पहुंचना"
+      }
+    },
+    {
+      "english_word": "both",
+      "translations": {
+        "tr": "ikisi de",
+        "es": "ambos",
+        "fr": "les deux",
+        "de": "beides",
+        "it": "entrambi",
+        "pt": "ambos",
+        "ru": "оба",
+        "zh": "两者",
+        "ja": "両方",
+        "ko": "둘 다",
+        "ar": "على حد سواء",
+        "hi": "दोनों"
+      }
+    }
+  ]
+}

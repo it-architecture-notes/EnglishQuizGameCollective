@@ -1,0 +1,169 @@
+{
+  "levelQuestions": [
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "ant",
+        "wrongAnswers": [
+          "corn-borer",
+          "dragonfly",
+          "beetle"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "beetle",
+        "wrongAnswers": [
+          "fly",
+          "ladybug",
+          "ant"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-2",
+      "questionData": {
+        "imageName": "corn-borer",
+        "wrongAnswers": [
+          "grasshopper",
+          "ladybug",
+          "mosquito"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "dragonfly",
+        "wrongAnswers": [
+          "spider",
+          "firefly",
+          "ant"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "firefly",
+        "wrongAnswers": [
+          "worm",
+          "mantis",
+          "ant"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "fly",
+        "wrongAnswers": [
+          "corn-borer",
+          "worm",
+          "ant"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "grasshopper",
+        "wrongAnswers": [
+          "fly",
+          "firefly",
+          "ant"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-2",
+      "questionData": {
+        "imageName": "insect-repellent",
+        "wrongAnswers": [
+          "beetle",
+          "dragonfly",
+          "fly"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "ladybug",
+        "wrongAnswers": [
+          "tick",
+          "ant",
+          "beetle"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "mantis",
+        "wrongAnswers": [
+          "ant",
+          "fly",
+          "beetle"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "mosquito",
+        "wrongAnswers": [
+          "dragonfly",
+          "spider",
+          "ant"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "spider",
+        "wrongAnswers": [
+          "grasshopper",
+          "beetle",
+          "ant"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-2",
+      "questionData": {
+        "imageName": "tick",
+        "wrongAnswers": [
+          "spider",
+          "worm",
+          "beetle"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "wasp",
+        "wrongAnswers": [
+          "tick",
+          "spider",
+          "ant"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "worm",
+        "wrongAnswers": [
+          "beetle",
+          "corn-borer",
+          "ant"
+        ]
+      }
+    }
+  ]
+}

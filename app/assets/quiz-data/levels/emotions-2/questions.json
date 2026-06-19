@@ -1,0 +1,180 @@
+{
+  "levelQuestions": [
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "fever",
+        "wrongAnswers": [
+          "in-love",
+          "jealous-envious",
+          "healthy"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "healthy",
+        "wrongAnswers": [
+          "lazy",
+          "scared",
+          "fever"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-2",
+      "questionData": {
+        "imageName": "hurt-injured",
+        "wrongAnswers": [
+          "lonely",
+          "scared",
+          "stressed"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "in-love",
+        "wrongAnswers": [
+          "surprised",
+          "jealous-envious",
+          "fever"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "jealous-envious",
+        "wrongAnswers": [
+          "tired-exhausted",
+          "scared",
+          "fever"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-2",
+      "questionData": {
+        "imageName": "kind-helpful",
+        "wrongAnswers": [
+          "thankful",
+          "tired-exhausted",
+          "healthy"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "lazy",
+        "wrongAnswers": [
+          "kind-helpful",
+          "in-love",
+          "fever"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "lonely",
+        "wrongAnswers": [
+          "scared",
+          "sorry",
+          "fever"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-2",
+      "questionData": {
+        "imageName": "proud",
+        "wrongAnswers": [
+          "in-love",
+          "kind-helpful",
+          "lonely"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "scared",
+        "wrongAnswers": [
+          "tired-exhausted",
+          "in-love",
+          "fever"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "sorry",
+        "wrongAnswers": [
+          "hurt-injured",
+          "proud",
+          "fever"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-2",
+      "questionData": {
+        "imageName": "stressed",
+        "wrongAnswers": [
+          "scared",
+          "surprised",
+          "thirsty"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "surprised",
+        "wrongAnswers": [
+          "proud",
+          "in-love",
+          "fever"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "thankful",
+        "wrongAnswers": [
+          "stressed",
+          "proud",
+          "fever"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "thirsty",
+        "wrongAnswers": [
+          "tired-exhausted",
+          "fever",
+          "healthy"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "tired-exhausted",
+        "wrongAnswers": [
+          "hurt-injured",
+          "in-love",
+          "fever"
+        ]
+      }
+    }
+  ]
+}

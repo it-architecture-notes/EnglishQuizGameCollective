@@ -1,0 +1,208 @@
+{
+  "translations_list": [
+    {
+      "english_word": "to feed",
+      "translations": {
+        "tr": "beslemek",
+        "es": "alimentar",
+        "fr": "nourrir",
+        "de": "zu füttern",
+        "it": "nutrire",
+        "pt": "alimentar",
+        "ru": "кормить",
+        "zh": "喂养",
+        "ja": "食べさせる",
+        "ko": "먹이다",
+        "ar": "لإطعام",
+        "hi": "खिलाने के लिए"
+      }
+    },
+    {
+      "english_word": "to sing",
+      "translations": {
+        "tr": "şarkı söylemek",
+        "es": "cantar",
+        "fr": "chanter",
+        "de": "singen",
+        "it": "cantare",
+        "pt": "cantar",
+        "ru": "петь",
+        "zh": "唱歌",
+        "ja": "歌うこと",
+        "ko": "노래하다",
+        "ar": "للغناء",
+        "hi": "गाना"
+      }
+    },
+    {
+      "english_word": "newborn",
+      "translations": {
+        "tr": "yeni doğmuş",
+        "es": "recién nacido",
+        "fr": "nouveau né",
+        "de": "Neugeborenes",
+        "it": "neonato",
+        "pt": "recém-nascido",
+        "ru": "новорожденный",
+        "zh": "新生儿",
+        "ja": "新生児",
+        "ko": "신생아",
+        "ar": "حديثي الولادة",
+        "hi": "नवजात"
+      }
+    },
+    {
+      "english_word": "to cry",
+      "translations": {
+        "tr": "ağlamak",
+        "es": "llorar",
+        "fr": "pleurer",
+        "de": "weinen",
+        "it": "piangere",
+        "pt": "chorar",
+        "ru": "плакать",
+        "zh": "哭",
+        "ja": "泣く",
+        "ko": "울다",
+        "ar": "للبكاء",
+        "hi": "रोना"
+      }
+    },
+    {
+      "english_word": "to smile",
+      "translations": {
+        "tr": "gülümsemek",
+        "es": "sonreír",
+        "fr": "sourire",
+        "de": "lächeln",
+        "it": "sorridere",
+        "pt": "sorrir",
+        "ru": "улыбаться",
+        "zh": "微笑",
+        "ja": "微笑む",
+        "ko": "미소 짓다",
+        "ar": "لتبتسم",
+        "hi": "मुस्कुराना"
+      }
+    },
+    {
+      "english_word": "to laugh",
+      "translations": {
+        "tr": "gülmek",
+        "es": "reír",
+        "fr": "rire",
+        "de": "lachen",
+        "it": "ridere",
+        "pt": "rir",
+        "ru": "смеяться",
+        "zh": "笑",
+        "ja": "笑うこと",
+        "ko": "웃다",
+        "ar": "للضحك",
+        "hi": "हंसना"
+      }
+    },
+    {
+      "english_word": "to hold",
+      "translations": {
+        "tr": "tutmak",
+        "es": "sostener",
+        "fr": "tenir",
+        "de": "zu halten",
+        "it": "tenere",
+        "pt": "segurar",
+        "ru": "держать",
+        "zh": "抱着",
+        "ja": "抱く",
+        "ko": "안다",
+        "ar": "لعقد",
+        "hi": "धारण करना"
+      }
+    },
+    {
+      "english_word": "to change",
+      "translations": {
+        "tr": "değiştirmek",
+        "es": "cambiar",
+        "fr": "changer",
+        "de": "wechseln",
+        "it": "cambiare",
+        "pt": "mudar",
+        "ru": "изменить",
+        "zh": "换",
+        "ja": "変える",
+        "ko": "갈다",
+        "ar": "للتغيير",
+        "hi": "बदलने के लिए"
+      }
+    },
+    {
+      "english_word": "regularly",
+      "translations": {
+        "tr": "düzenli olarak",
+        "es": "regularmente",
+        "fr": "régulièrement",
+        "de": "regelmäßig",
+        "it": "regolarmente",
+        "pt": "regularmente",
+        "ru": "регулярно",
+        "zh": "定期",
+        "ja": "定期的に",
+        "ko": "정기적으로",
+        "ar": "بانتظام",
+        "hi": "नियमित रूप से"
+      }
+    },
+    {
+      "english_word": "to repeat",
+      "translations": {
+        "tr": "tekrarlamak",
+        "es": "repetir",
+        "fr": "répéter",
+        "de": "wiederholen",
+        "it": "ripetere",
+        "pt": "repetir",
+        "ru": "повторять",
+        "zh": "重复",
+        "ja": "繰り返す",
+        "ko": "반복하다",
+        "ar": "لتكرار",
+        "hi": "दोहराना"
+      }
+    },
+    {
+      "english_word": "pretty",
+      "translations": {
+        "tr": "güzel",
+        "es": "bonita",
+        "fr": "jolie",
+        "de": "hübsch",
+        "it": "carino",
+        "pt": "bonito",
+        "ru": "красивая",
+        "zh": "漂亮",
+        "ja": "かわいい",
+        "ko": "예쁜",
+        "ar": "جميلة",
+        "hi": "सुन्दर"
+      }
+    },
+    {
+      "english_word": "to kiss",
+      "translations": {
+        "tr": "öpmek",
+        "es": "besar",
+        "fr": "embrasser",
+        "de": "küssen",
+        "it": "baciare",
+        "pt": "beijar",
+        "ru": "целовать",
+        "zh": "亲吻",
+        "ja": "キスする",
+        "ko": "키스하다",
+        "ar": "لتقبيل",
+        "hi": "चूमना"
+      }
+    }
+  ]
+}

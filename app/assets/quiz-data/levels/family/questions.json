@@ -1,0 +1,201 @@
+{
+  "levelQuestions": [
+    
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "boy",
+        "wrongAnswers": [
+          "mother",
+          "uncle",
+          "girl"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "brother",
+        "wrongAnswers": [
+          "woman",
+          "father",
+          "sister"
+        ]
+      }
+    },
+    {
+      "template": "ClozeSequence",
+      "questionData": {
+        "sentence": "_____ is the daughter or son of uncle or aunt.",
+        "answer": [
+          "cousin"
+        ],
+        "wrongAnswers": [
+          "grandkid",
+          "sibling",
+          "daughter"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "daughter",
+        "wrongAnswers": [
+          "family",
+          "parents",
+          "boy"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "family",
+        "wrongAnswers": [
+          "grandmother",
+          "brother",
+          "group"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "father",
+        "wrongAnswers": [
+          "sister",
+          "grandparents",
+          "mother"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "son",
+        "wrongAnswers": [
+          "grandkid",
+          "cousin",
+          "sister"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "grandfather",
+        "wrongAnswers": [
+          "boy",
+          "aunt",
+          "old father"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "grandkid",
+        "wrongAnswers": [
+          "father",
+          "grandfather",
+          "girl"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "grandmother",
+        "wrongAnswers": [
+          "mother",
+          "uncle",
+          "old mother"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "grandparents",
+        "wrongAnswers": [
+          "woman",
+          "family",
+          "group"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "mother",
+        "wrongAnswers": [
+          "daughter",
+          "parents",
+          "father"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "parents",
+        "wrongAnswers": [
+          "grandkid",
+          "brother",
+          "family"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "sister",
+        "wrongAnswers": [
+          "parents",
+          "grandmother",
+          "brother"
+        ]
+      }
+    },
+    {
+      "template": "ClozeSequence",
+      "questionData": {
+        "sentence": "_____ is the sister of father or mother.",
+        "answer": [
+          "aunt"
+        ],
+        "wrongAnswers": [
+          "uncle",
+          "cousin",
+          "daughter"
+        ]
+      }
+    },
+    {
+      "template": "ClozeSequence",
+      "questionData": {
+        "sentence": "_____ is the brother of father or mother.",
+        "answer": [
+          "uncle"
+        ],
+        "wrongAnswers": [
+          "aunt",
+          "cousin",
+          "sibling"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "woman",
+        "wrongAnswers": [
+          "father",
+          "grandfather",
+          "gentleman"
+        ]
+      }
+    }
+  ]
+}

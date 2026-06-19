@@ -1,0 +1,169 @@
+{
+  "levelQuestions": [
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "alone",
+        "wrongAnswers": [
+          "sad",
+          "angry",
+          "bored"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "angry",
+        "wrongAnswers": [
+          "brave",
+          "confused",
+          "alone"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-2",
+      "questionData": {
+        "imageName": "bored",
+        "wrongAnswers": [
+          "calm-relaxed",
+          "confused",
+          "disgusted"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "brave",
+        "wrongAnswers": [
+          "embarrassed",
+          "angry",
+          "alone"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "calm-relaxed",
+        "wrongAnswers": [
+          "laughing",
+          "curious",
+          "alone"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-2",
+      "questionData": {
+        "imageName": "confident",
+        "wrongAnswers": [
+          "happy",
+          "laughing",
+          "sad"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "confused",
+        "wrongAnswers": [
+          "brave",
+          "bored",
+          "alone"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "curious",
+        "wrongAnswers": [
+          "confused",
+          "disgusted",
+          "alone"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-2",
+      "questionData": {
+        "imageName": "disgusted",
+        "wrongAnswers": [
+          "angry",
+          "brave",
+          "confident"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "embarrassed",
+        "wrongAnswers": [
+          "nervous",
+          "brave",
+          "alone"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "happy",
+        "wrongAnswers": [
+          "angry",
+          "disgusted",
+          "alone"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-2",
+      "questionData": {
+        "imageName": "hungry",
+        "wrongAnswers": [
+          "curious",
+          "embarrassed",
+          "laughing"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "laughing",
+        "wrongAnswers": [
+          "curious",
+          "calm-relaxed",
+          "alone"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "nervous",
+        "wrongAnswers": [
+          "happy",
+          "embarrassed",
+          "alone"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "sad",
+        "wrongAnswers": [
+          "nervous",
+          "alone",
+          "angry"
+        ]
+      }
+    }
+  ]
+}

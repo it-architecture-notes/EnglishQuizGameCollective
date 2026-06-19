@@ -1,0 +1,174 @@
+{
+  "translations_list": [
+    {
+      "english_word": "there is, there are",
+      "translations": {
+        "tr": "var, var",
+        "es": "hay, hay",
+        "fr": "il y a, il y a",
+        "de": "es gibt, es gibt",
+        "it": "c’è, ci sono",
+        "pt": "há, há",
+        "ru": "есть, есть",
+        "zh": "有, 有",
+        "ja": "あります, あります",
+        "ko": "있다, 있다",
+        "ar": "هناك، هناك",
+        "hi": "है, हैं"
+      }
+    },
+    {
+      "english_word": "to cook",
+      "translations": {
+        "tr": "yemek pişirmek",
+        "es": "cocinar",
+        "fr": "cuisiner",
+        "de": "kochen",
+        "it": "cucinare",
+        "pt": "cozinhar",
+        "ru": "готовить",
+        "zh": "做饭",
+        "ja": "料理する",
+        "ko": "요리하다",
+        "ar": "لطهي الطعام",
+        "hi": "खाना बनाना"
+      }
+    },
+    {
+      "english_word": "to cut",
+      "translations": {
+        "tr": "kesmek",
+        "es": "cortar",
+        "fr": "couper",
+        "de": "schneiden",
+        "it": "tagliare",
+        "pt": "cortar",
+        "ru": "резать",
+        "zh": "切割",
+        "ja": "切る",
+        "ko": "자르다",
+        "ar": "لقطع",
+        "hi": "काटना"
+      }
+    },
+    {
+      "english_word": "breakfast",
+      "translations": {
+        "tr": "kahvaltı",
+        "es": "desayuno",
+        "fr": "petit déjeuner",
+        "de": "Frühstück",
+        "it": "colazione",
+        "pt": "café da manhã",
+        "ru": "завтрак",
+        "zh": "早餐",
+        "ja": "朝食",
+        "ko": "아침 식사",
+        "ar": "الفطور",
+        "hi": "नाश्ता"
+      }
+    },
+    {
+      "english_word": "to bake",
+      "translations": {
+        "tr": "pişirmek",
+        "es": "hornear",
+        "fr": "faire cuire",
+        "de": "backen",
+        "it": "cuocere",
+        "pt": "assar",
+        "ru": "испечь",
+        "zh": "烘烤",
+        "ja": "焼く",
+        "ko": "굽다",
+        "ar": "لخبز",
+        "hi": "सेंकना"
+      }
+    },
+    {
+      "english_word": "hungry",
+      "translations": {
+        "tr": "aç",
+        "es": "hambriento",
+        "fr": "avoir faim",
+        "de": "hungrig",
+        "it": "affamato",
+        "pt": "com fome",
+        "ru": "голодный",
+        "zh": "饿了",
+        "ja": "お腹が空いた",
+        "ko": "배고픈",
+        "ar": "جائع",
+        "hi": "भूखा"
+      }
+    },
+    {
+      "english_word": "thirsty",
+      "translations": {
+        "tr": "susamış",
+        "es": "sediento",
+        "fr": "avoir soif",
+        "de": "durstig",
+        "it": "assetato",
+        "pt": "sedento",
+        "ru": "жаждущий",
+        "zh": "渴了",
+        "ja": "のどが渇いた",
+        "ko": "목마른",
+        "ar": "عطشان",
+        "hi": "प्यासा"
+      }
+    },
+    {
+      "english_word": "to eat",
+      "translations": {
+        "tr": "yemek",
+        "es": "comer",
+        "fr": "manger",
+        "de": "zu essen",
+        "it": "mangiare",
+        "pt": "comer",
+        "ru": "есть",
+        "zh": "吃饭",
+        "ja": "食べる",
+        "ko": "먹다",
+        "ar": "لتناول الطعام",
+        "hi": "खाने के लिए"
+      }
+    },
+    {
+      "english_word": "to drink",
+      "translations": {
+        "tr": "içmek",
+        "es": "beber",
+        "fr": "boire",
+        "de": "zu trinken",
+        "it": "bere",
+        "pt": "beber",
+        "ru": "пить",
+        "zh": "喝",
+        "ja": "飲む",
+        "ko": "마시다",
+        "ar": "للشرب",
+        "hi": "पीने के लिए"
+      }
+    },
+    {
+      "english_word": "to do the dishes",
+      "translations": {
+        "tr": "bulaşıkları yıkamak",
+        "es": "para lavar los platos",
+        "fr": "faire la vaisselle",
+        "de": "den Abwasch machen",
+        "it": "lavare i piatti",
+        "pt": "para lavar a louça",
+        "ru": "мыть посуду",
+        "zh": "洗碗",
+        "ja": "皿洗いをする",
+        "ko": "설거지를 하려고",
+        "ar": "غسل الأطباق",
+        "hi": "बर्तन साफ़ करने के लिए"
+      }
+    }
+  ]
+}

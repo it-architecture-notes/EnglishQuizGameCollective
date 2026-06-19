@@ -1,0 +1,225 @@
+{
+  "translations_list": [
+    {
+      "english_word": "to scare",
+      "translations": {
+        "tr": "korkutmak",
+        "es": "asustar",
+        "fr": "faire peur",
+        "de": "erschrecken",
+        "it": "spaventare",
+        "pt": "assustar",
+        "ru": "пугать",
+        "zh": "吓唬",
+        "ja": "怖がらせる",
+        "ko": "겁을 주다",
+        "ar": "لتخويف",
+        "hi": "डराना"
+      }
+    },
+    {
+      "english_word": "quiet",
+      "translations": {
+        "tr": "sessiz",
+        "es": "tranquilo",
+        "fr": "calme",
+        "de": "ruhig",
+        "it": "tranquillo",
+        "pt": "quieto",
+        "ru": "тихий",
+        "zh": "安静",
+        "ja": "静かな",
+        "ko": "조용한",
+        "ar": "هادئ",
+        "hi": "शांत"
+      }
+    },
+    {
+      "english_word": "to collect",
+      "translations": {
+        "tr": "toplamak",
+        "es": "recoger",
+        "fr": "collecter",
+        "de": "sammeln",
+        "it": "raccogliere",
+        "pt": "coletar",
+        "ru": "собирать",
+        "zh": "收集",
+        "ja": "集める",
+        "ko": "수집하다",
+        "ar": "لجمع",
+        "hi": "इकट्ठा करना"
+      }
+    },
+    {
+      "english_word": "big",
+      "translations": {
+        "tr": "büyük",
+        "es": "grande",
+        "fr": "grand",
+        "de": "groß",
+        "it": "grande",
+        "pt": "grande",
+        "ru": "большой",
+        "zh": "大",
+        "ja": "大きい",
+        "ko": "큰",
+        "ar": "كبير",
+        "hi": "बड़ा"
+      }
+    },
+    {
+      "english_word": "to touch",
+      "translations": {
+        "tr": "dokunmak",
+        "es": "tocar",
+        "fr": "toucher",
+        "de": "zu berühren",
+        "it": "toccare",
+        "pt": "tocar",
+        "ru": "коснуться",
+        "zh": "触摸",
+        "ja": "触れる",
+        "ko": "만지다",
+        "ar": "للمس",
+        "hi": "छूना"
+      }
+    },
+    {
+      "english_word": "wild",
+      "translations": {
+        "tr": "vahşi",
+        "es": "salvaje",
+        "fr": "sauvage",
+        "de": "wild",
+        "it": "selvaggio",
+        "pt": "selvagem",
+        "ru": "дикий",
+        "zh": "野生的",
+        "ja": "野生の",
+        "ko": "야생",
+        "ar": "برية",
+        "hi": "जंगली"
+      }
+    },
+    {
+      "english_word": "to notice",
+      "translations": {
+        "tr": "fark etmek",
+        "es": "darse cuenta",
+        "fr": "remarquer",
+        "de": "bemerken",
+        "it": "notare",
+        "pt": "notar",
+        "ru": "заметить",
+        "zh": "注意到",
+        "ja": "気づくこと",
+        "ko": "알아차리다",
+        "ar": "لملاحظة",
+        "hi": "नोटिस करना"
+      }
+    },
+    {
+      "english_word": "wide",
+      "translations": {
+        "tr": "geniş",
+        "es": "ancho",
+        "fr": "large",
+        "de": "breit",
+        "it": "largo",
+        "pt": "largo",
+        "ru": "широкий",
+        "zh": "宽",
+        "ja": "広い",
+        "ko": "넓은",
+        "ar": "واسعة",
+        "hi": "विस्तृत"
+      }
+    },
+    {
+      "english_word": "to shout",
+      "translations": {
+        "tr": "bağırmak",
+        "es": "gritar",
+        "fr": "crier",
+        "de": "schreien",
+        "it": "gridare",
+        "pt": "gritar",
+        "ru": "кричать",
+        "zh": "喊叫",
+        "ja": "叫ぶ",
+        "ko": "소리치다",
+        "ar": "ليصرخ",
+        "hi": "चिल्लाना"
+      }
+    },
+    {
+      "english_word": "calm",
+      "translations": {
+        "tr": "sakin",
+        "es": "calma",
+        "fr": "calme",
+        "de": "ruhig",
+        "it": "calma",
+        "pt": "calmo",
+        "ru": "спокойный",
+        "zh": "冷静",
+        "ja": "穏やかな",
+        "ko": "침착한",
+        "ar": "هادئ",
+        "hi": "शांत"
+      }
+    },
+    {
+      "english_word": "to build",
+      "translations": {
+        "tr": "inşa etmek",
+        "es": "construir",
+        "fr": "construire",
+        "de": "zu bauen",
+        "it": "costruire",
+        "pt": "construir",
+        "ru": "строить",
+        "zh": "建造",
+        "ja": "作る",
+        "ko": "짓다",
+        "ar": "لبناء",
+        "hi": "निर्माण करना"
+      }
+    },
+    {
+      "english_word": "deep",
+      "translations": {
+        "tr": "derin",
+        "es": "profundo",
+        "fr": "profond",
+        "de": "tief",
+        "it": "profondo",
+        "pt": "profundo",
+        "ru": "глубокий",
+        "zh": "深",
+        "ja": "深い",
+        "ko": "깊은",
+        "ar": "عميق",
+        "hi": "गहरा"
+      }
+    },
+    {
+      "english_word": "suddenly",
+      "translations": {
+        "tr": "aniden",
+        "es": "de repente",
+        "fr": "tout à coup",
+        "de": "plötzlich",
+        "it": "all'improvviso",
+        "pt": "de repente",
+        "ru": "внезапно",
+        "zh": "突然",
+        "ja": "突然",
+        "ko": "갑자기",
+        "ar": "فجأة",
+        "hi": "अचानक"
+      }
+    }
+  ]
+}

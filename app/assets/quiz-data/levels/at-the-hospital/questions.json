@@ -1,0 +1,257 @@
+{
+  "levelQuestions": [
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "ambulance",
+        "wrongAnswers": [
+          "fire-truck",
+          "bus",
+          "emergency-bus"
+        ]
+      }
+    },
+    {
+      "template": "ConvoTemplate-1",
+      "questionData": {
+        "character1": "Sarah",
+        "character2": "Daniel",
+        "line1": "Hello, how do you ____ today?",
+        "line2": "I don't ____ well.",
+        "answer": "feel",
+        "distractors": [
+          "have",
+          "sense",
+          "taste"
+        ]
+      },
+      "audio_file1": "hello-how-do-you-feel-today-convo",
+      "audio_file2": "i-don-t-feel-well-convo"
+    },
+    {
+      "template": "ConvoTemplate-1",
+      "questionData": {
+        "character1": "Beth",
+        "character2": "Alex",
+        "line1": "You look sick. Let me _____ your temperature.",
+        "line2": "Okay. Is my temperature high?",
+        "answer": "check",
+        "distractors": [
+          "feel",
+          "test",
+          "take"
+        ]
+      },
+      "audio_file1": "you-look-sick-let-me-check-your-temperature-convo",
+      "audio_file2": "okay-is-my-temperature-high-convo"
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "caregiver",
+        "wrongAnswers": [
+          "helper",
+          "taker",
+          "checker-person"
+        ]
+      }
+    },
+    {
+      "template": "WordPairs",
+      "questionData": {
+        "english_words": [
+          "high",
+          "low",
+          "weak",
+          "strong"
+        ],
+        "translations": [
+          {
+            "tr": "yüksek",
+            "es": "alto",
+            "fr": "haut",
+            "de": "hoch",
+            "it": "alto",
+            "pt": "alto",
+            "ru": "высокий",
+            "zh": "高的",
+            "ja": "高い",
+            "ko": "높은",
+            "ar": "عالي",
+            "hi": "उच्च"
+          },
+          {
+            "tr": "Düşük",
+            "es": "bajo",
+            "fr": "faible",
+            "de": "niedrig",
+            "it": "Basso",
+            "pt": "baixo",
+            "ru": "низкий",
+            "zh": "低的",
+            "ja": "低い",
+            "ko": "낮은",
+            "ar": "قليل",
+            "hi": "कम"
+          },
+          {
+            "tr": "zayıf",
+            "es": "débil",
+            "fr": "faible",
+            "de": "schwach",
+            "it": "Debole",
+            "pt": "fraco",
+            "ru": "слабый",
+            "zh": "虚弱的",
+            "ja": "弱い",
+            "ko": "약한",
+            "ar": "ضعيف",
+            "hi": "कमज़ोर"
+          },
+          {
+            "tr": "güçlü",
+            "es": "fuerte",
+            "fr": "fort",
+            "de": "stark",
+            "it": "forte",
+            "pt": "forte",
+            "ru": "сильный",
+            "zh": "强的",
+            "ja": "強い",
+            "ko": "강한",
+            "ar": "قوي",
+            "hi": "मज़बूत"
+          }
+        ]
+      }
+    },
+    {
+      "template": "ClozeSequence",
+      "questionData": {
+        "sentence": "Doctors must be _____ when they _____.",
+        "answer": [
+          "careful",
+          "work"
+        ],
+        "distractors": [
+          "careless",
+          "rest",
+          "tell",
+          "call"
+        ]
+      },
+      "audio_file": "doctors-must-be-careful-when-they-work-convo"
+    },
+    {
+      "template": "AppearDisappear",
+      "questionData": {
+        "words": "The doctor said I need to rest in bed.",
+        "distractors": [
+          "asked",
+          "have",
+          "nurse",
+          "stay"
+        ]
+      },
+      "audio_file": "the-doctor-said-i-need-to-rest-in-bed-convo"
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "crutches",
+        "wrongAnswers": [
+          "walker",
+          "wheelchair",
+          "cane"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "gurney",
+        "wrongAnswers": [
+          "bed",
+          "carry-on",
+          "hospital-bed"
+        ]
+      }
+    },
+    {
+      "template": "SentenceBuilder",
+      "questionData": {
+        "correct_order": "Do you think I can go home today?"
+      },
+      "audio_file": "do-you-think-i-can-go-home-today-convo"
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "patient",
+        "wrongAnswers": [
+          "weak",
+          "customer",
+          "visitor"
+        ]
+      }
+    },
+    {
+      "template": "ClozeSequence",
+      "questionData": {
+        "sentence": "Please _____ the hospital if you have an emergency.",
+        "answer": [
+          "call"
+        ],
+        "distractors": [
+          "check",
+          "no",
+          "problem",
+          "help"
+        ]
+      },
+      "audio_file": "please-call-the-hospital-if-you-have-an-emergency-convo"
+    },
+    {
+      "template": "GrammarForm",
+      "questionData": {
+        "sentence": "The nurse _____ the patients every day.",
+        "answer": "helps",
+        "distractors": [
+          "helping",
+          "are helping",
+          "may helping"
+        ]
+      }
+    },
+    {
+      "template": "ClozeSequence",
+      "questionData": {
+        "sentence": "The doctor has _____ information now.",
+        "answer": [
+          "enough"
+        ],
+        "distractors": [
+          "too many",
+          "sorry",
+          "quiet"
+        ]
+      },
+      "audio_file": "the-doctor-has-enough-information-now-convo"
+    },
+    {
+      "template": "ClozeSequence",
+      "questionData": {
+        "sentence": "The treatment will _____ this afternoon.",
+        "answer": [
+          "begin"
+        ],
+        "distractors": [
+          "take",
+          "long",
+          "check"
+        ]
+      },
+      "audio_file": "the-treatment-will-begin-this-afternoon-convo"
+    }
+  ]
+}

@@ -1,0 +1,262 @@
+{
+  "levelQuestions": [
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "hanger",
+        "wrongAnswers": [
+          "hook",
+          "broom",
+          "closet"
+        ]
+      }
+    },
+    {
+      "template": "ConvoTemplate-1",
+      "questionData": {
+        "character1": "Sarah",
+        "character2": "Daniel",
+        "line1": "Excuse me, can I ____ on this coat, please?",
+        "line2": "Of course, here you go.",
+        "answer": "try",
+        "distractors": [
+          "wear",
+          "hang",
+          "put"
+        ]
+      },
+      "audio_file1": "excuse-me-can-i-try-on-this-coat-please-convo",
+      "audio_file2": "of-course-here-you-go-convo"
+    },
+    {
+      "template": "ConvoTemplate-1",
+      "questionData": {
+        "character1": "Beth",
+        "character2": "Alex",
+        "line1": "I like this jacket, but I don't want to _____ too much.",
+        "line2": "We have a 30% discount on it this week.",
+        "answer": "spend",
+        "distractors": [
+          "save",
+          "look for",
+          "find"
+        ]
+      },
+      "audio_file1": "i-like-this-jacket-but-i-don-t-want-to-spend-too-much-convo",
+      "audio_file2": "we-have-a-30-discount-on-it-this-week-convo"
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "shoes",
+        "wrongAnswers": [
+          "slippers",
+          "socks",
+          "boots"
+        ]
+      }
+    },
+    {
+      "template": "WordPairs",
+      "questionData": {
+        "english_words": [
+          "nice",
+          "ugly",
+          "rich",
+          "poor"
+        ],
+        "translations": [
+          {
+            "tr": "Güzel",
+            "es": "lindo",
+            "fr": "bon",
+            "de": "Hübsch",
+            "it": "Carino",
+            "pt": "legal",
+            "ru": "хороший",
+            "zh": "好的",
+            "ja": "すてきな",
+            "ko": "멋진",
+            "ar": "لطيف - جيد",
+            "hi": "अच्छा"
+          },
+          {
+            "tr": "çirkin",
+            "es": "feo",
+            "fr": "laid",
+            "de": "hässlich",
+            "it": "brutto",
+            "pt": "feio",
+            "ru": "уродливый",
+            "zh": "丑陋的",
+            "ja": "醜い",
+            "ko": "못생긴",
+            "ar": "قبيح",
+            "hi": "कुरूप"
+          },
+          {
+            "tr": "zengin",
+            "es": "rico",
+            "fr": "riche",
+            "de": "reich",
+            "it": "ricco",
+            "pt": "rico",
+            "ru": "богатый",
+            "zh": "富有的",
+            "ja": "リッチ",
+            "ko": "부자",
+            "ar": "ثري",
+            "hi": "अमीर"
+          },
+          {
+            "tr": "fakir",
+            "es": "pobre",
+            "fr": "pauvre",
+            "de": "arm",
+            "it": "povero",
+            "pt": "pobre",
+            "ru": "бедный",
+            "zh": "贫穷的",
+            "ja": "貧しい",
+            "ko": "가난한",
+            "ar": "فقير",
+            "hi": "गरीब"
+          }
+        ]
+      }
+    },
+    {
+      "template": "DialogueCompletion",
+      "questionData": {
+        "character1": "Omar",
+        "character2": "Lily",
+        "line1": "Do I need to remove the price tag before I try it on?",
+        "answer": "No, please leave it on.",
+        "distractors": [
+          "No, please remove it.",
+          "No, carry it with me please.",
+          "Yes, you can always keep it on."
+        ]
+      },
+      "audio_file1": "do-i-need-to-remove-the-price-tag-before-i-try-it-on-convo",
+      "audio_file2": "no-please-leave-it-on-convo"
+    },
+    {
+      "template": "AppearDisappear",
+      "questionData": {
+        "words": "I prefer a jacket in dark blue.",
+        "distractors": [
+          "to",
+          "wear",
+          "shirt",
+          "bright"
+        ]
+      },
+      "audio_file": "i-prefer-a-jacket-in-dark-blue-convo"
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "pants",
+        "wrongAnswers": [
+          "shirt",
+          "dress",
+          "skirt"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-2",
+      "questionData": {
+        "imageName": "jacket",
+        "wrongAnswers": [
+          "pants",
+          "socks",
+          "shoes"
+        ]
+      },
+      "answer": "jacket"
+    },
+    {
+      "template": "SentenceBuilder",
+      "questionData": {
+        "correct_order": "These trousers don't fit well."
+      },
+      "audio_file": "these-trousers-don-t-fit-well-convo"
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "socks",
+        "wrongAnswers": [
+          "slippers",
+          "boots",
+          "sandals"
+        ]
+      }
+    },
+    {
+      "template": "ClozeSequence",
+      "questionData": {
+        "sentence": "He had to _____ the shoes which he _____ in a competition but they were the wrong size.",
+        "answer": [
+          "return",
+          "won"
+        ],
+        "distractors": [
+          "took",
+          "replace",
+          "bought",
+          "borrowed"
+        ]
+      },
+      "audio_file": "he-had-to-return-the-shoes-which-he-won-in-a-competition-but-they-were-the-wrong-size-convo"
+    },
+    {
+      "template": "GrammarForm",
+      "questionData": {
+        "sentence": "I think you _____ this style.",
+        "answer": "will love",
+        "distractors": [
+          "must love",
+          "could love",
+          "should be loving"
+        ]
+      }
+    },
+    {
+      "template": "ClozeSequence",
+      "questionData": {
+        "sentence": "She likes to _____ colorful skirts because they make her feel _____.",
+        "answer": [
+          "wear",
+          "young"
+        ],
+        "distractors": [
+          "old",
+          "dressing",
+          "prefer",
+          "boring"
+        ]
+      },
+      "audio_file": "she-likes-to-wear-colorful-skirts-because-they-make-her-feel-young-convo"
+    },
+    {
+      "template": "ClozeSequence",
+      "questionData": {
+        "sentence": "I am ______ the ______ gift for my mom — maybe a nice scarf or a handbag.",
+        "answer": [
+          "looking for",
+          "perfect"
+        ],
+        "distractors": [
+          "looking to",
+          "giving",
+          "having",
+          "old"
+        ]
+      },
+      "audio_file": "i-am-looking-for-the-perfect-gift-for-my-mom-maybe-a-nice-scarf-or-a-handbag-convo"
+    }
+  ]
+}

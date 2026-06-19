@@ -1,0 +1,256 @@
+{
+  "levelQuestions": [
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "bench",
+        "wrongAnswers": [
+          "chair",
+          "stairs",
+          "statue"
+        ]
+      }
+    },
+    {
+      "template": "ConvoTemplate-1",
+      "questionData": {
+        "character1": "Emma",
+        "character2": "Leo",
+        "line1": "Do you want to _____ to the park?",
+        "line2": "Yes! Is it far?",
+        "answer": "walk",
+        "distractors": [
+          "come",
+          "call",
+          "follow"
+        ]
+      },
+      "audio_file1": "do-you-want-to-walk-to-the-park-convo",
+      "audio_file2": "yes-is-it-far-convo"
+    },
+    {
+      "template": "ConvoTemplate-1",
+      "questionData": {
+        "character1": "Alex",
+        "character2": "Nora",
+        "line1": "_____ at the buildings?",
+        "line2": "Yes, they are very tall.",
+        "answer": "look",
+        "distractors": [
+          "see",
+          "watch",
+          "listen"
+        ]
+      },
+      "audio_file1": "look-at-the-buildings-convo",
+      "audio_file2": "yes-they-are-very-tall-convo"
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "fire-hydrant",
+        "wrongAnswers": [
+          "fire-engine",
+          "fire-truck",
+          "fire-station"
+        ]
+      }
+    },
+    {
+      "template": "WordPairs",
+      "questionData": {
+        "english_words": [
+          "far",
+          "near",
+          "inside",
+          "outside"
+        ],
+        "translations": [
+          {
+            "tr": "uzak",
+            "es": "lejos",
+            "fr": "loin",
+            "de": "weit",
+            "it": "lontano",
+            "pt": "distante",
+            "ru": "далеко",
+            "zh": "远的",
+            "ja": "遠い",
+            "ko": "멀리",
+            "ar": "بعيد",
+            "hi": "दूर"
+          },
+          {
+            "tr": "yakın",
+            "es": "cerca",
+            "fr": "près",
+            "de": "nahe",
+            "it": "vicino",
+            "pt": "perto",
+            "ru": "около",
+            "zh": "靠近",
+            "ja": "近く",
+            "ko": "가까운",
+            "ar": "قريب",
+            "hi": "पास में"
+          },
+          {
+            "tr": "içeri",
+            "es": "adentro",
+            "fr": "à l'intérieur",
+            "de": "innen",
+            "it": "dentro",
+            "pt": "dentro",
+            "ru": "внутри",
+            "zh": "里面",
+            "ja": "内部",
+            "ko": "내부에",
+            "ar": "داخل",
+            "hi": "अंदर"
+          },
+          {
+            "tr": "dışarıda",
+            "es": "afuera",
+            "fr": "dehors",
+            "de": "draußen",
+            "it": "al di fuori",
+            "pt": "fora",
+            "ru": "снаружи",
+            "zh": "外部",
+            "ja": "外",
+            "ko": "밖의",
+            "ar": "الخارج",
+            "hi": "बाहर"
+          }
+        ]
+      }
+    },
+    {
+      "template": "DialogueCompletion",
+      "questionData": {
+        "character1": "Emma",
+        "character2": "Anna",
+        "line1": "Be careful, the ground is wet.",
+        "answer": "I will walk carefully.",
+        "distractors": [
+          "Sometimes walking slowly.",
+          "I always walk quickly.",
+          "I am not careful."
+        ]
+      },
+      "audio_file1": "be-careful-the-ground-is-wet-convo",
+      "audio_file2": "i-will-walk-carefully-convo"
+    },
+    {
+      "template": "AppearDisappear",
+      "questionData": {
+        "words": "Turn left at the corner.",
+        "distractors": [
+          "go",
+          "leave",
+          "right",
+          "straight"
+        ]
+      },
+      "audio_file": "turn-left-at-the-corner-convo"
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "bus-stop",
+        "wrongAnswers": [
+          "bus-station",
+          "bus-lane",
+          "bus-shelter"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "parking-meter",
+        "wrongAnswers": [
+          "parking-lot",
+          "parking-sign",
+          "parking-space"
+        ]
+      }
+    },
+    {
+      "template": "SentenceBuilder",
+      "questionData": {
+        "correct_order": "He leaves the house quietly."
+      },
+      "audio_file": "he-leaves-the-house-quietly-convo"
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "recycle-bin",
+        "wrongAnswers": [
+          "trash-can",
+          "garbage-bag",
+          "mailbox"
+        ]
+      }
+    },
+    {
+      "template": "ClozeSequence",
+      "questionData": {
+        "sentence": "She _____ here every weekend to walk around.",
+        "answer": "comes",
+        "distractors": [
+          "stops",
+          "goes",
+          "runs"
+        ]
+      },
+      "audio_file": "she-comes-here-every-weekend-to-walk-around-convo"
+    },
+    {
+      "template": "GrammarForm",
+      "questionData": {
+        "sentence": "Do you ____ far from here?",
+        "answer": "live",
+        "distractors": [
+          "are living",
+          "do live",
+          "living"
+        ]
+      }
+    },
+    {
+      "template": "DialogueCompletion",
+      "questionData": {
+        "character1": "Olivia",
+        "character2": "Sophie",
+        "line1": "Let’s go this way.",
+        "answer": "Ok, follow me",
+        "distractors": [
+          "Ok, leave me here",
+          "Look at the building",
+          "See you later"
+        ]
+      },
+      "audio_file1": "lets-go-this-way-convo",
+      "audio_file2": "ok-follow-me-convo"
+    },
+    {
+      "template": "ClozeSequence",
+      "questionData": {
+        "sentence": "I am _____ so I will go _____",
+        "answer": [
+          "tired",
+          "back"
+        ],
+        "distractors": [
+          "forward",
+          "check",
+          "hungry",
+          "very well"
+        ]
+      },
+      "audio_file": "i-am-tired-so-i-will-go-back-convo"
+    }
+  ]
+}

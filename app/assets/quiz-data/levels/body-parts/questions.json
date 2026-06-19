@@ -1,0 +1,235 @@
+{
+  "levelQuestions": [
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "back",
+        "wrongAnswers": [
+          "hair",
+          "hand",
+          "brain"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "brain",
+        "wrongAnswers": [
+          "heart",
+          "mouth",
+          "back"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-2",
+      "questionData": {
+        "imageName": "chest",
+        "wrongAnswers": [
+          "knee",
+          "mouth",
+          "neck"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "ear",
+        "wrongAnswers": [
+          "nose",
+          "elbow",
+          "back"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "elbow",
+        "wrongAnswers": [
+          "tongue",
+          "hand",
+          "back"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "eyes",
+        "wrongAnswers": [
+          "chest",
+          "mouth",
+          "back"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-2",
+      "questionData": {
+        "imageName": "finger",
+        "wrongAnswers": [
+          "tongue",
+          "brain",
+          "ear"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "foot",
+        "wrongAnswers": [
+          "hand",
+          "ear",
+          "back"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "hair",
+        "wrongAnswers": [
+          "knee",
+          "hand",
+          "back"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "hand",
+        "wrongAnswers": [
+          "muscle",
+          "mouth",
+          "back"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-2",
+      "questionData": {
+        "imageName": "head",
+        "wrongAnswers": [
+          "foot",
+          "hand",
+          "knee"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "heart",
+        "wrongAnswers": [
+          "back",
+          "ear",
+          "brain"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "knee",
+        "wrongAnswers": [
+          "ear",
+          "hair",
+          "back"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "leg",
+        "wrongAnswers": [
+          "finger",
+          "mouth",
+          "back"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-2",
+      "questionData": {
+        "imageName": "mouth",
+        "wrongAnswers": [
+          "neck",
+          "shoulder",
+          "tongue"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "muscle",
+        "wrongAnswers": [
+          "knee",
+          "ear",
+          "back"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "neck",
+        "wrongAnswers": [
+          "muscle",
+          "hair",
+          "back"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "nose",
+        "wrongAnswers": [
+          "stomach",
+          "leg",
+          "back"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-2",
+      "questionData": {
+        "imageName": "shoulder",
+        "wrongAnswers": [
+          "ear",
+          "eyes",
+          "foot"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "stomach",
+        "wrongAnswers": [
+          "elbow",
+          "ear",
+          "back"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "tongue",
+        "wrongAnswers": [
+          "foot",
+          "hair",
+          "back"
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,262 @@
+{
+  "levelQuestions": [
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "ball",
+        "wrongAnswers": [
+          "bulb",
+          "bowl",
+          "bat"
+        ]
+      }
+    },
+    {
+      "template": "ConvoTemplate-1",
+      "questionData": {
+        "character1": "Beth",
+        "character2": "Alex",
+        "line1": "Are you going to ______ today?",
+        "line2": "Yes, I have ______ at four o'clock.",
+        "answer": "practice",
+        "distractors": [
+          "play",
+          "watch",
+          "listen"
+        ]
+      },
+      "audio_file1": "are-you-going-to-practice-today-convo",
+      "audio_file2": "yes-i-have-practice-at-four-o-clock-convo"
+    },
+    {
+      "template": "ConvoTemplate-1",
+      "questionData": {
+        "character1": "Sarah",
+        "character2": "Daniel",
+        "line1": "Did you win the race?",
+        "line2": "I did! But I was really _____, because the fastest runner fell.",
+        "answer": "lucky",
+        "distractors": [
+          "careful",
+          "happy",
+          "amazing"
+        ]
+      },
+      "audio_file1": "did-you-win-the-race-convo",
+      "audio_file2": "i-did-but-i-was-really-lucky-because-the-fastest-runner-fell-convo"
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "skates",
+        "wrongAnswers": [
+          "stakes",
+          "goggles",
+          "helmet"
+        ]
+      }
+    },
+    {
+      "template": "WordPairs",
+      "questionData": {
+        "english_words": [
+          "future",
+          "past",
+          "present",
+          "recent"
+        ],
+        "translations": [
+          {
+            "tr": "gelecek",
+            "es": "futuro",
+            "fr": "avenir",
+            "de": "Zukunft",
+            "it": "futuro",
+            "pt": "futuro",
+            "ru": "будущее",
+            "zh": "未来",
+            "ja": "未来",
+            "ko": "미래",
+            "ar": "مستقبل",
+            "hi": "भविष्य"
+          },
+          {
+            "tr": "geçmiş",
+            "es": "pasado",
+            "fr": "passé",
+            "de": "Vergangenheit",
+            "it": "passato",
+            "pt": "passado",
+            "ru": "прошлое",
+            "zh": "过去的",
+            "ja": "過去",
+            "ko": "과거",
+            "ar": "ماضي",
+            "hi": "अतीत"
+          },
+          {
+            "tr": "şimdi",
+            "es": "presente",
+            "fr": "présent",
+            "de": "gegenwärtig",
+            "it": "presente",
+            "pt": "presente",
+            "ru": "настоящее",
+            "zh": "现在",
+            "ja": "現在",
+            "ko": "현재의",
+            "ar": "حاضر",
+            "hi": "वर्तमान"
+          },
+          {
+            "tr": "son",
+            "es": "reciente",
+            "fr": "récent",
+            "de": "jüngste",
+            "it": "recente",
+            "pt": "recente",
+            "ru": "недавний",
+            "zh": "最近的",
+            "ja": "最近の",
+            "ko": "최근의",
+            "ar": "حديث",
+            "hi": "हाल ही का"
+          }
+        ]
+      }
+    },
+    {
+      "template": "DialogueCompletion",
+      "questionData": {
+        "character1": "Omar",
+        "character2": "Lily",
+        "line1": "What is your plan to improve your swimming skills?",
+        "answer": "More practice and better sleep.",
+        "distractors": [
+          "More sleep and less practice",
+          "More practice and no sleep",
+          "More experience and little practice"
+        ]
+      },
+      "audio_file1": "what-is-your-plan-to-improve-your-swimming-skills-convo",
+      "audio_file2": "more-practice-and-better-sleep-convo"
+    },
+    {
+      "template": "AppearDisappear",
+      "questionData": {
+        "words": "She was so tired to finish the marathon.",
+        "distractors": [
+          "that",
+          "end",
+          "tiresome",
+          "for"
+        ]
+      },
+      "audio_file": "she-was-so-tired-to-finish-the-marathon-convo"
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "bat",
+        "wrongAnswers": [
+          "ball",
+          "stick",
+          "racket"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-2",
+      "questionData": {
+        "imageName": "whistle",
+        "wrongAnswers": [
+          "bat",
+          "ball",
+          "skates"
+        ]
+      },
+      "answer": "whistle"
+    },
+    {
+      "template": "SentenceBuilder",
+      "questionData": {
+        "correct_order": "She hit the ball perfectly."
+      },
+      "audio_file": "she-hit-the-ball-perfectly-convo"
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "goal-post",
+        "wrongAnswers": [
+          "hook",
+          "net",
+          "goal-pole"
+        ]
+      }
+    },
+    {
+      "template": "ClozeSequence",
+      "questionData": {
+        "sentence": "It is ____ to ____ in cold water every morning.",
+        "answer": [
+          "tough",
+          "swim"
+        ],
+        "distractors": [
+          "possible",
+          "run",
+          "jump",
+          "have fun"
+        ]
+      },
+      "audio_file": "it-is-tough-to-swim-in-cold-water-every-morning-convo"
+    },
+    {
+      "template": "GrammarForm",
+      "questionData": {
+        "sentence": "He was quick ______ the ball at the last second.",
+        "answer": "to catch",
+        "distractors": [
+          "catching",
+          "is catching",
+          "have caught"
+        ]
+      }
+    },
+    {
+      "template": "ClozeSequence",
+      "questionData": {
+        "sentence": "The game _____ in a draw, but he _____ in extra time.",
+        "answer": [
+          "ended",
+          "scored"
+        ],
+        "distractors": [
+          "started",
+          "tried",
+          "called",
+          "began"
+        ]
+      },
+      "audio_file": "the-game-ended-in-a-draw-but-he-scored-in-extra-time-convo"
+    },
+    {
+      "template": "ClozeSequence",
+      "questionData": {
+        "sentence": "He did not want to ____, so he ran faster in the _____.",
+        "answer": [
+          "lose",
+          "race"
+        ],
+        "distractors": [
+          "finish",
+          "win",
+          "come first",
+          "road"
+        ]
+      },
+      "audio_file": "he-did-not-want-to-lose-so-he-ran-faster-in-the-race-convo"
+    }
+  ]
+}

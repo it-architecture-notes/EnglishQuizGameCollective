@@ -1,0 +1,136 @@
+{
+  "levelQuestions": [
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "beans",
+        "wrongAnswers": [
+          "bread",
+          "eggs",
+          "garbage-bag"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "bread",
+        "wrongAnswers": [
+          "beans",
+          "pasta",
+          "eggs"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "eggs",
+        "wrongAnswers": [
+          "bread",
+          "beans",
+          "garbage-bag"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "garbage-bag",
+        "wrongAnswers": [
+          "soap",
+          "toilet-paper",
+          "honey"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "honey",
+        "wrongAnswers": [
+          "walnut",
+          "sunflower-oil",
+          "beans"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "meat",
+        "wrongAnswers": [
+          "pasta",
+          "eggs",
+          "beans"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "pasta",
+        "wrongAnswers": [
+          "bread",
+          "popcorn",
+          "beans"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "popcorn",
+        "wrongAnswers": [
+          "pasta",
+          "honey",
+          "beans"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "soap",
+        "wrongAnswers": [
+          "toilet-paper",
+          "garbage-bag",
+          "walnut"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "sunflower-oil",
+        "wrongAnswers": [
+          "honey",
+          "meat",
+          "scrub-brush"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "toilet-paper",
+        "wrongAnswers": [
+          "soap",
+          "garbage-bag",
+          "beans"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "walnut",
+        "wrongAnswers": [
+          "honey",
+          "beans",
+          "bread"
+        ]
+      }
+    }
+  ]
+}
