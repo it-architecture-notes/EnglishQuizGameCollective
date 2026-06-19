@@ -1,0 +1,27 @@
+Template,Count in level
+AppearDisappear,0
+ClozeSequence,0
+ConvoTemplate-1,0
+DialogueCompletion,0
+GrammarForm,0
+imageQuizTemplate-1,11
+imageQuizTemplate-2,4
+SentenceBuilder,0
+WordPairs,0
+
+#,Template,Line 1 / Prompt,Line 2,Answer,English (translate),Audio
+1,imageQuizTemplate-1,image: beanie,,beanie,,
+2,imageQuizTemplate-1,image: blouse,,blouse,,
+3,imageQuizTemplate-2,image: dress,,dress,,
+4,imageQuizTemplate-1,image: bracelets,,bracelets,,
+5,imageQuizTemplate-2,image: gloves,,gloves,,
+6,imageQuizTemplate-1,image: hat,,hat,,
+7,imageQuizTemplate-1,image: hoodie,,hoodie,,
+8,imageQuizTemplate-2,image: jeans,,jeans,,
+9,imageQuizTemplate-1,image: necklace,,necklace,,
+10,imageQuizTemplate-1,image: raincoat,,raincoat,,
+11,imageQuizTemplate-1,image: scarf,,scarf,,
+12,imageQuizTemplate-1,image: shoes,,shoes,,
+13,imageQuizTemplate-2,image: snow-boots,,snow-boots,,
+14,imageQuizTemplate-1,image: sunglasses,,sunglasses,,
+15,imageQuizTemplate-1,image: tie,,tie,,

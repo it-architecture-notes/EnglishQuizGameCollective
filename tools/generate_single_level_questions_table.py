@@ -32,7 +32,11 @@ translation fields not misplaced at question root). Any violation
 prints all errors and exits with code 1.
 
 Questions table columns:
-  - English (translate): questionData.english_to_translate (English strings only)
+  - English (translate): english_word values from translations.json that appear in that
+    question's prompt/sentence text or answer(s) — full phrase, verb stem, or partial
+    content-word overlap (e.g. "to ask a question" ↔ "Teacher asks an easy question");
+    for **WordPairs**, all `english_words` that have an embedded `translations` row;
+    excludes distractors and wrongAnswers
   - Audio: top-level audio_file, audio_file1, audio_file2 when present
 
 Template summary: a small table with one row per template supported by the game
@@ -53,6 +57,9 @@ only), `questionData.distractors`, and `questionData.wrongAnswers`. Other string
 use the same token rule as
 `tools/update_final_word_counts_from_levels.py` (`[a-z0-9]+(?:[-'][a-z0-9]+)*`,
 case-insensitive, lowercased). Sorted by count descending, then word.
+
+HTML only: in the questions table, **English (translate)** entries that appear in
+more than one question row (or twice in the same cell) are shown in **red**.
 """
 
 from __future__ import annotations
@@ -76,13 +83,14 @@ TABLE_HEADERS = [
     "Audio",
 ]
 
+# Column index in questions table rows for English (translate) highlighting.
+_ENGLISH_TRANSLATE_COL = TABLE_HEADERS.index("English (translate)")
+
 # Templates accepted by app/lib/models/level_config.dart _parseQuestion switch.
 _KNOWN_TEMPLATES = frozenset(
     {
         "imageQuizTemplate-1",
         "imageQuizTemplate-2",
-        "imageQuizTemplate-3",
-        "imageQuizTemplate-SentenceChoice",
         "ConvoTemplate-1",
         "AppearDisappear",
         "ClozeSequence",
@@ -107,6 +115,34 @@ _QD_WORD_FREQ_SKIP_KEYS = frozenset({"distractors", "wrongAnswers"})
 
 # Same token pattern as tools/update_final_word_counts_from_levels.py
 _WORD_FREQ_TOKEN_RE = re.compile(r"[a-z0-9]+(?:[-'][a-z0-9]+)*", re.IGNORECASE)
+
+# Ignored when checking partial phrase overlap (e.g. "to ask a question" → ask, question).
+_PHRASE_STOP_WORDS = frozenset(
+    {
+        "to",
+        "a",
+        "an",
+        "the",
+        "and",
+        "or",
+        "of",
+        "in",
+        "on",
+        "at",
+        "for",
+        "with",
+        "your",
+        "my",
+        "his",
+        "her",
+        "our",
+        "their",
+        "its",
+        "this",
+        "that",
+        "some",
+    }
+)
 
 
 _BLANK_CORE_RE = re.compile(r"^_{2,}$")
@@ -195,12 +231,6 @@ def collect_word_frequency_rows(questions_json_root: dict) -> list[list[str]]:
 
 def repo_root() -> Path:
     return Path(__file__).resolve().parent.parent
-
-
-def normalize_template(template: str) -> str:
-    if template in ("imageQuizTemplate-3", "imageQuizTemplate-SentenceChoice"):
-        return "imageQuizTemplate-1"
-    return template or "unknown"
 
 
 def _nonempty_str(value) -> str:
@@ -304,11 +334,7 @@ def validate_question_shape(index: int, item: dict) -> list[str]:
             f"{prefix}: `questionData.local_translation` must be a locale map (object)"
         )
 
-    if template in (
-        "imageQuizTemplate-1",
-        "imageQuizTemplate-3",
-        "imageQuizTemplate-SentenceChoice",
-    ):
+    if template == "imageQuizTemplate-1":
         name = _nonempty_str(qd.get("imageName"))
         if not name:
             errs.append(
@@ -452,9 +478,9 @@ def validate_question_shape(index: int, item: dict) -> list[str]:
                     f"{prefix} (WordPairs): `translations[{i}]` must be a non-empty locale map"
                 )
         n = len(ew)
-        if n < 3 or n > 5:
+        if n < 3 or n > 6:
             errs.append(
-                f"{prefix} (WordPairs): expect 3–5 pairs, got {n}"
+                f"{prefix} (WordPairs): expect 3–6 pairs, got {n}"
             )
 
     elif template == "GrammarForm":
@@ -509,34 +535,32 @@ def words_from_array_or_sentence(value) -> list[str]:
 
 
 def summarize_row(template: str, question_data: dict) -> tuple[str, str, str]:
-    tpl = normalize_template(template)
-
-    if tpl == "imageQuizTemplate-1":
+    if template == "imageQuizTemplate-1":
         image_name = (question_data.get("imageName") or "").strip()
         answer = (question_data.get("answer") or image_name or "").strip()
         return (f"image: {image_name}" if image_name else "(no image)", "", answer)
 
-    if tpl == "imageQuizTemplate-2":
+    if template == "imageQuizTemplate-2":
         image_name = (question_data.get("imageName") or "").strip()
         answer = (question_data.get("answer") or image_name or "").strip()
         return (f"image: {image_name}" if image_name else "(no image)", "", answer)
 
-    if tpl == "ConvoTemplate-1":
+    if template == "ConvoTemplate-1":
         return (
             str(question_data.get("line1", "")),
             str(question_data.get("line2", "")),
             str(question_data.get("answer", "")),
         )
 
-    if tpl == "DialogueCompletion":
+    if template == "DialogueCompletion":
         return (str(question_data.get("line1", "")), "", str(question_data.get("answer", "")))
 
-    if tpl == "AppearDisappear":
+    if template == "AppearDisappear":
         words = words_from_array_or_sentence(question_data.get("words"))
         line1 = " ".join(words) if words else str(question_data.get("words", ""))
         return (line1, "", "-")
 
-    if tpl == "ClozeSequence":
+    if template == "ClozeSequence":
         sentence = str(question_data.get("sentence", ""))
         raw_answer = question_data.get("answer")
         if raw_answer is None:
@@ -547,7 +571,7 @@ def summarize_row(template: str, question_data: dict) -> tuple[str, str, str]:
             answer = str(raw_answer or "")
         return (sentence, "", answer)
 
-    if tpl == "SentenceBuilder":
+    if template == "SentenceBuilder":
         correct_order = question_data.get("correct_order")
         if isinstance(correct_order, list):
             sentence = " ".join(str(x) for x in correct_order)
@@ -555,7 +579,7 @@ def summarize_row(template: str, question_data: dict) -> tuple[str, str, str]:
             sentence = str(correct_order or "").strip()
         return (sentence, "", sentence)
 
-    if tpl == "WordPairs":
+    if template == "WordPairs":
         words = question_data.get("english_words")
         if isinstance(words, list):
             line1 = "; ".join(str(x) for x in words)
@@ -563,7 +587,7 @@ def summarize_row(template: str, question_data: dict) -> tuple[str, str, str]:
             line1 = str(words or "")
         return (line1, "word pairs", "match all pairs")
 
-    if tpl == "GrammarForm":
+    if template == "GrammarForm":
         sentence = str(question_data.get("sentence", ""))
         raw_answer = question_data.get("answer")
         if isinstance(raw_answer, list):
@@ -575,8 +599,198 @@ def summarize_row(template: str, question_data: dict) -> tuple[str, str, str]:
     return (f"(unsupported template {template})", "", "")
 
 
-def english_translate_cell(question_data: dict) -> str:
-    """questionData.english_to_translate — English-only strings for translation reveal."""
+def _cloze_answer_strings(question_data: dict) -> list[str]:
+    raw = question_data.get("answer")
+    if raw is None:
+        raw = question_data.get("answers")
+    if isinstance(raw, list):
+        return [str(x).strip() for x in raw if str(x).strip()]
+    if isinstance(raw, str) and raw.strip():
+        return [raw.strip()]
+    return []
+
+
+def _answer_strings_for_template(template: str, question_data: dict) -> list[str]:
+    """Answer tokens/phrases only (never distractors or wrongAnswers)."""
+    if template in ("ConvoTemplate-1", "DialogueCompletion", "GrammarForm"):
+        a = _nonempty_str(question_data.get("answer"))
+        return [a] if a else []
+    if template == "ClozeSequence":
+        return _cloze_answer_strings(question_data)
+    if template == "WordPairs":
+        return [str(x).strip() for x in _string_list(question_data.get("english_words")) if str(x).strip()]
+    if template in ("imageQuizTemplate-1", "imageQuizTemplate-2"):
+        a = _nonempty_str(question_data.get("answer"))
+        if a:
+            return [a]
+        name = _nonempty_str(question_data.get("imageName"))
+        return [name] if name else []
+    return []
+
+
+def _question_text_parts(template: str, question_data: dict) -> list[str]:
+    """Prompt / sentence text only (no distractors, wrongAnswers, or WordPairs locale maps)."""
+    parts: list[str] = []
+
+    if template in ("ConvoTemplate-1", "DialogueCompletion"):
+        for key in ("line1", "line2"):
+            s = _english_line_field(question_data.get(key))
+            if s:
+                parts.append(s)
+    elif template == "AppearDisappear":
+        words = question_data.get("words")
+        if isinstance(words, str) and words.strip():
+            parts.append(words.strip())
+        elif isinstance(words, list):
+            parts.extend(str(x).strip() for x in words if str(x).strip())
+    elif template == "ClozeSequence":
+        s = question_data.get("sentence")
+        if isinstance(s, str) and s.strip():
+            parts.append(s.strip())
+    elif template == "SentenceBuilder":
+        parts.extend(_words_from_array_or_sentence_typed(question_data.get("correct_order")))
+    elif template == "GrammarForm":
+        s = _grammar_sentence_str(question_data.get("sentence"))
+        if s:
+            parts.append(s)
+    elif template == "WordPairs":
+        parts.extend(_string_list(question_data.get("english_words")))
+    elif template in ("imageQuizTemplate-1", "imageQuizTemplate-2"):
+        name = _nonempty_str(question_data.get("imageName"))
+        if name:
+            parts.append(name)
+
+    return parts
+
+
+def load_translation_english_words(translations_path: Path) -> list[str]:
+    """Ordered english_word list from translations.json (file order)."""
+    if not translations_path.is_file():
+        return []
+    try:
+        data = json.loads(translations_path.read_text(encoding="utf-8"))
+    except (OSError, json.JSONDecodeError):
+        return []
+    lst = data.get("translations_list")
+    if not isinstance(lst, list):
+        return []
+    out: list[str] = []
+    for e in lst:
+        if not isinstance(e, dict):
+            continue
+        ew = e.get("english_word")
+        if isinstance(ew, str) and ew.strip():
+            out.append(ew.strip())
+    return out
+
+
+def _content_tokens(english_word: str) -> list[str]:
+    """Significant tokens from a translation headword (drops to/a/the etc.)."""
+    tokens = _WORD_FREQ_TOKEN_RE.findall(english_word.lower())
+    return [t for t in tokens if t not in _PHRASE_STOP_WORDS]
+
+
+def _token_in_haystack(token: str, haystack: str) -> bool:
+    """Word-boundary match, including simple inflections (ask ↔ asks)."""
+    if not token:
+        return False
+    if re.search(r"(?<![a-z0-9-])" + re.escape(token) + r"(?![a-z0-9-])", haystack):
+        return True
+    for suffix in ("s", "es", "ed", "ing"):
+        inflected = token + suffix
+        if re.search(
+            r"(?<![a-z0-9-])" + re.escape(inflected) + r"(?![a-z0-9-])", haystack
+        ):
+            return True
+    return False
+
+
+def _partial_phrase_match(english_word: str, haystack: str) -> bool:
+    """
+    True when all content words of a multi-word headword appear in haystack.
+    E.g. "to ask a question" matches "Teacher asks an easy question."
+    """
+    tokens = _content_tokens(english_word)
+    if len(tokens) < 2:
+        return False
+    return all(_token_in_haystack(t, haystack) for t in tokens)
+
+
+def _translation_matches_question(
+    english_word: str, haystack: str, answer_strings: list[str]
+) -> bool:
+    """True if english_word appears in question text or answer(s) (full or partial)."""
+    ew = english_word.lower().strip()
+    if not ew:
+        return False
+
+    if ew in haystack:
+        return True
+
+    answers_lower = [a.lower() for a in answer_strings if a.strip()]
+    if ew in answers_lower:
+        return True
+
+    bare = ew[3:].strip() if ew.startswith("to ") else ""
+    if bare:
+        if _token_in_haystack(bare, haystack):
+            return True
+        if bare in answers_lower:
+            return True
+
+    # Short headwords in text (e.g. translation "today" in "... learn today?")
+    if " " not in ew and len(ew) >= 2:
+        if _token_in_haystack(ew, haystack):
+            return True
+
+    # Partial phrase (e.g. "to ask a question" in "Teacher asks an easy question.")
+    if _partial_phrase_match(ew, haystack):
+        return True
+
+    return False
+
+
+def _wordpairs_translated_english_words(question_data: dict) -> str:
+    """All english_words with a paired non-empty entry in questionData.translations."""
+    words = _string_list(question_data.get("english_words"))
+    tr_list = question_data.get("translations")
+    if not isinstance(tr_list, list):
+        return ""
+    out: list[str] = []
+    for i, w in enumerate(words):
+        w = w.strip()
+        if not w:
+            continue
+        if i < len(tr_list) and isinstance(tr_list[i], dict) and tr_list[i]:
+            out.append(w)
+    return "; ".join(out)
+
+
+def english_translate_cell(
+    template: str,
+    question_data: dict,
+    translation_words: list[str],
+) -> str:
+    """
+    english_word entries from translations.json that appear in this question's
+    prompt/sentence text or answer(s). WordPairs: all english_words with embedded
+    translations. Ignores distractors and wrongAnswers.
+    Falls back to questionData.english_to_translate when no translations.json words.
+    """
+    if template == "WordPairs":
+        return _wordpairs_translated_english_words(question_data)
+
+    if translation_words:
+        text_parts = _question_text_parts(template, question_data)
+        answer_strings = _answer_strings_for_template(template, question_data)
+        haystack = " ".join(text_parts + answer_strings).lower()
+        matched = [
+            ew
+            for ew in translation_words
+            if _translation_matches_question(ew, haystack, answer_strings)
+        ]
+        return "; ".join(matched)
+
     raw = question_data.get("english_to_translate")
     if not isinstance(raw, list) or not raw:
         return ""
@@ -614,8 +828,11 @@ def collect_template_count_rows(questions: list) -> list[list[str]]:
     return [[tpl, str(counts[tpl])] for tpl in order]
 
 
-def collect_rows(questions: list) -> list[list[str]]:
+def collect_rows(
+    questions: list, translation_words: list[str] | None = None
+) -> list[list[str]]:
     """One data row = seven plain strings (no format-specific escaping)."""
+    tw = translation_words or []
     rows: list[list[str]] = []
     for index, item in enumerate(questions, start=1):
         if not isinstance(item, dict):
@@ -640,12 +857,12 @@ def collect_rows(questions: list) -> list[list[str]]:
             continue
 
         line1, line2, answer = summarize_row(template, question_data)
-        en_tr = english_translate_cell(question_data)
+        en_tr = english_translate_cell(template, question_data, tw)
         audio = audio_files_cell(item)
         rows.append(
             [
                 str(index),
-                normalize_template(template),
+                template,
                 line1,
                 line2,
                 answer,
@@ -804,12 +1021,60 @@ def build_csv(
     return buf.getvalue()
 
 
-def _html_table(headers: list[str], data_rows: list[list[str]]) -> str:
+def _parse_translate_cell(cell: str) -> list[str]:
+    """Split English (translate) cell on ';' into trimmed phrases."""
+    if not (cell or "").strip():
+        return []
+    return [p.strip() for p in str(cell).split(";") if p.strip()]
+
+
+def repeated_translate_words(rows: list[list[str]]) -> frozenset[str]:
+    """
+    Lowercase headwords that appear more than once across the English (translate)
+    column (including duplicates within a single cell).
+    """
+    counts: Counter[str] = Counter()
+    for row in rows:
+        if len(row) <= _ENGLISH_TRANSLATE_COL:
+            continue
+        for phrase in _parse_translate_cell(row[_ENGLISH_TRANSLATE_COL]):
+            counts[phrase.lower()] += 1
+    return frozenset(k for k, v in counts.items() if v > 1)
+
+
+def _html_translate_cell(cell: str, repeated_lower: frozenset[str]) -> str:
+    parts = _parse_translate_cell(cell)
+    if not parts:
+        return ""
+    rendered: list[str] = []
+    for phrase in parts:
+        esc = html.escape(phrase)
+        if phrase.lower() in repeated_lower:
+            rendered.append(f'<span class="repeat-word">{esc}</span>')
+        else:
+            rendered.append(esc)
+    return "; ".join(rendered)
+
+
+def _html_table(
+    headers: list[str],
+    data_rows: list[list[str]],
+    *,
+    highlight_translate_repeats: frozenset[str] | None = None,
+) -> str:
     thead = "<thead><tr>" + "".join(f"<th>{html.escape(h)}</th>" for h in headers) + "</tr></thead>"
     body_rows = []
     for r in data_rows:
-        tds = "".join(f"<td>{html.escape(c)}</td>" for c in r)
-        body_rows.append(f"<tr>{tds}</tr>")
+        cells: list[str] = []
+        for col_i, c in enumerate(r):
+            if (
+                highlight_translate_repeats is not None
+                and col_i == _ENGLISH_TRANSLATE_COL
+            ):
+                cells.append(f"<td>{_html_translate_cell(c, highlight_translate_repeats)}</td>")
+            else:
+                cells.append(f"<td>{html.escape(c)}</td>")
+        body_rows.append(f"<tr>{''.join(cells)}</tr>")
     tbody = "<tbody>" + "".join(body_rows) + "</tbody>"
     return f"<table>\n{thead}\n{tbody}\n</table>"
 
@@ -830,11 +1095,15 @@ def build_html(
     th, td { border: 1px solid #c8c8c8; padding: 8px 10px; vertical-align: top; text-align: left; word-wrap: break-word; }
     th { background: #e8e8e8; font-weight: 600; white-space: nowrap; }
     tr:nth-child(even) td { background: #fafafa; }
+    .repeat-word { color: #c62828; font-weight: 600; }
     .wrap.template-counts { max-width: 28rem; }
     .wrap.word-frequency { max-width: 40rem; }
     """
     tpl_table = _html_table(TEMPLATE_COUNT_HEADERS, template_count_rows)
-    q_table = _html_table(TABLE_HEADERS, rows)
+    translate_repeats = repeated_translate_words(rows)
+    q_table = _html_table(
+        TABLE_HEADERS, rows, highlight_translate_repeats=translate_repeats
+    )
     trans_block = ""
     if trans:
         th, trows = trans
@@ -957,7 +1226,8 @@ def main() -> int:
         return 1
 
     template_count_rows = collect_template_count_rows(questions)
-    rows = collect_rows(questions)
+    translation_words = load_translation_english_words(translations_path)
+    rows = collect_rows(questions, translation_words)
     trans = collect_translation_rows(translations_path)
     word_freq_rows = collect_word_frequency_rows(data)
     body = render(

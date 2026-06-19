@@ -1,0 +1,130 @@
+english_word,level
+amazing,at-the-hotel
+clear,at-the-hotel
+funny,at-the-hotel
+helpful,at-the-hotel
+fat,emergency-situations
+first,emergency-situations
+last,emergency-situations
+short,emergency-situations
+always,implemented/at-garage-gas station
+frequently,implemented/at-garage-gas station
+rarely,implemented/at-garage-gas station
+sometimes,implemented/at-garage-gas station
+angry,implemented/at-the-airport
+excited,implemented/at-the-airport
+hungry,implemented/at-the-airport
+sad,implemented/at-the-airport
+after,implemented/at-the-bank
+if,implemented/at-the-bank
+never,implemented/at-the-bank
+though,implemented/at-the-bank
+false,implemented/at-the-dentist
+happy,implemented/at-the-dentist
+sad,implemented/at-the-dentist
+true,implemented/at-the-dentist
+bottom,implemented/at-the-farm
+thick,implemented/at-the-farm
+thin,implemented/at-the-farm
+top,implemented/at-the-farm
+cheap,implemented/at-the-farmers-market
+expensive,implemented/at-the-farmers-market
+free,implemented/at-the-farmers-market
+on sale,implemented/at-the-farmers-market
+high,implemented/at-the-hospital
+low,implemented/at-the-hospital
+strong,implemented/at-the-hospital
+weak,implemented/at-the-hospital
+day,implemented/at-the-office
+month,implemented/at-the-office
+week,implemented/at-the-office
+year,implemented/at-the-office
+everyday,implemented/at-the-park
+once a day,implemented/at-the-park
+once in a while,implemented/at-the-park
+twice a week,implemented/at-the-park
+better,implemented/at-the-pharmacy
+different,implemented/at-the-pharmacy
+same,implemented/at-the-pharmacy
+similar,implemented/at-the-pharmacy
+nobody,implemented/at-the-post-office
+nothing,implemented/at-the-post-office
+somebody,implemented/at-the-post-office
+something,implemented/at-the-post-office
+salty,implemented/at-the-restaurant
+sour,implemented/at-the-restaurant
+spicy,implemented/at-the-restaurant
+sweet,implemented/at-the-restaurant
+difficult,implemented/at-the-school
+easy,implemented/at-the-school
+right,implemented/at-the-school
+wrong,implemented/at-the-school
+because,implemented/at-the-traffic
+before,implemented/at-the-traffic
+but,implemented/at-the-traffic
+or,implemented/at-the-traffic
+after tomorrow,implemented/at-the-train-station
+as soon as possible,implemented/at-the-train-station
+days ago,implemented/at-the-train-station
+since yesterday,implemented/at-the-train-station
+until next week,implemented/at-the-train-station
+while,implemented/at-the-train-station
+hard,implemented/baby-care
+loud,implemented/baby-care
+silent,implemented/baby-care
+soft,implemented/baby-care
+that,implemented/basic-sentences
+these,implemented/basic-sentences
+this,implemented/basic-sentences
+those,implemented/basic-sentences
+cold,implemented/bathroom
+dry,implemented/bathroom
+hot,implemented/bathroom
+wet,implemented/bathroom
+to him/her,implemented/bedroom
+to me,implemented/bedroom
+to them,implemented/bedroom
+to us,implemented/bedroom
+to you,implemented/bedroom
+far,implemented/city-walk
+inside,implemented/city-walk
+near,implemented/city-walk
+outside,implemented/city-walk
+nice,implemented/clothes-shopping
+poor,implemented/clothes-shopping
+rich,implemented/clothes-shopping
+ugly,implemented/clothes-shopping
+future,implemented/going-to-sports
+past,implemented/going-to-sports
+present,implemented/going-to-sports
+recent,implemented/going-to-sports
+he-she,implemented/greetings
+I,implemented/greetings
+they,implemented/greetings
+we,implemented/greetings
+you,implemented/greetings
+empty,implemented/grocery-shopping
+full,implemented/grocery-shopping
+heavy,implemented/grocery-shopping
+light,implemented/grocery-shopping
+I can do it,implemented/kitchen
+I do it,implemented/kitchen
+I must do it,implemented/kitchen
+I will do it,implemented/kitchen
+more comfortable,implemented/living-room
+softer,implemented/living-room
+softest,implemented/living-room
+the most comfortable,implemented/living-room
+east,implemented/nature-walk
+north,implemented/nature-walk
+south,implemented/nature-walk
+west,implemented/nature-walk
+his/her,implemented/verb-to-be
+my,implemented/verb-to-be
+our,implemented/verb-to-be
+their,implemented/verb-to-be
+your,implemented/verb-to-be
+and,implemented/waking-up
+from the house,implemented/waking-up
+of the girl,implemented/waking-up
+to the school,implemented/waking-up

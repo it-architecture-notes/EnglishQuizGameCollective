@@ -5,7 +5,12 @@ Scan quiz level JSON and refresh `count` + `levels` columns in the CSV files und
 
 Counted sources (per level folder — each word/phrase contributes at most once per level):
   questions.json
-    - Only `WordPairs` / legacy `ConvoTemplate-WordPairs`: `questionData.english_words`.
+    - `WordPairs` / legacy `ConvoTemplate-WordPairs`: `questionData.english_words`.
+    - ``implemented/prepositions``, ``implemented/family``, and
+      ``implemented/emotions-*``: each ``imageQuizTemplate-*`` row adds
+      ``imageName`` and optional ``answer`` (not ``wrongAnswers``).
+    - ``implemented/family`` only: non-image rows also add ``answer`` /
+      ``answers`` (e.g. ``ClozeSequence``).
 
   translations.json
     - Only `english_word` in each `translations_list` entry.
@@ -19,10 +24,10 @@ Output CSV header: word,level,count,levels
   - count: number of distinct level folders where the word matched.
   - levels: comma-separated relative paths from the levels root (sorted).
 
-Also prunes rows/lines from reference word lists when the **first word** of each row
-matches level vocabulary (same matching as final-word CSVs):
-  - ``remove-word-list-references/1 lemmas-Table 1.csv`` (``lemma`` column, else first token)
-  - ``remove-word-list-references/google-10000-no-swears-usa.txt`` (one word per line)
+Also marks ``remove-word-list-references/3000 words oxford.txt``: prepends ``**`` to
+lines whose headword matches level vocabulary (same ``match_csv_word`` rules as the
+final-word CSVs). Marked lines have no leading tabs; unmarked vocabulary lines get
+three tabs. Header/footer lines are left untabbed.
 
 Usage:
   python3 tools/update_final_word_counts_from_levels.py
@@ -45,6 +50,34 @@ _WORD_PAIRS_TEMPLATE_IDS = frozenset({"WordPairs", "ConvoTemplate-WordPairs"})
 
 # Tokens omitted from the vocabulary index (still part of multi-word phrases).
 _IGNORED_TOKENS = frozenset({"to"})
+
+# Image-only levels: count taught labels from image quiz rows (imageName + answer).
+_IMAGE_QUIZ_VOCAB_LEVELS = frozenset({
+    "implemented/prepositions",
+    "implemented/family",
+})
+_IMAGE_QUIZ_VOCAB_LEVEL_PREFIXES = ("implemented/emotions-",)
+
+# Levels where non-image question rows contribute answer/answers vocabulary.
+_NON_IMAGE_ANSWER_VOCAB_LEVELS = frozenset({
+    "implemented/family",
+})
+
+
+def level_counts_image_quiz_vocab(label: str) -> bool:
+    """True when image quiz rows should contribute imageName/answer vocabulary."""
+    if label in _IMAGE_QUIZ_VOCAB_LEVELS:
+        return True
+    return any(label.startswith(p) for p in _IMAGE_QUIZ_VOCAB_LEVEL_PREFIXES)
+
+
+def level_counts_non_image_answer_vocab(label: str) -> bool:
+    """True when non-image rows should contribute answer/answers vocabulary."""
+    return label in _NON_IMAGE_ANSWER_VOCAB_LEVELS
+
+_OXFORD_MARK_PREFIX = "**"
+_OXFORD_INDENT = "\t\t\t"
+_OXFORD_LEVEL_END = re.compile(r"\b(A1|A2|B1|B2)\s*$", re.I)
 
 
 def _template_str(raw) -> str:
@@ -88,7 +121,12 @@ def add_value_to_bucket(raw, bucket: set[str]) -> None:
             bucket.add(t)
 
 
-def vocabulary_from_questions(path: Path) -> set[str]:
+def vocabulary_from_questions(
+    path: Path,
+    *,
+    count_image_quiz_vocab: bool = False,
+    count_non_image_answers: bool = False,
+) -> set[str]:
     bucket: set[str] = set()
     try:
         data = json.loads(path.read_text(encoding="utf-8"))
@@ -101,11 +139,18 @@ def vocabulary_from_questions(path: Path) -> set[str]:
         if not isinstance(item, dict):
             continue
         tpl = _template_str(item.get("template"))
-        if tpl not in _WORD_PAIRS_TEMPLATE_IDS:
-            continue
         qd = item.get("questionData")
-        if isinstance(qd, dict):
+        if tpl.startswith("imageQuizTemplate"):
+            if count_image_quiz_vocab and isinstance(qd, dict):
+                add_value_to_bucket(qd.get("imageName"), bucket)
+                add_value_to_bucket(qd.get("answer"), bucket)
+            continue
+        if tpl in _WORD_PAIRS_TEMPLATE_IDS and isinstance(qd, dict):
             add_value_to_bucket(qd.get("english_words"), bucket)
+            continue
+        if count_non_image_answers and isinstance(qd, dict):
+            add_value_to_bucket(qd.get("answer"), bucket)
+            add_value_to_bucket(qd.get("answers"), bucket)
     return bucket
 
 
@@ -148,13 +193,17 @@ def collect_word_to_levels(levels_root: Path) -> dict[str, set[str]]:
         bucket: set[str] = set()
         qp = d / "questions.json"
         tp = d / "translations.json"
+        label = level_label(d, levels_root)
         if qp.is_file():
-            bucket |= vocabulary_from_questions(qp)
+            bucket |= vocabulary_from_questions(
+                qp,
+                count_image_quiz_vocab=level_counts_image_quiz_vocab(label),
+                count_non_image_answers=level_counts_non_image_answer_vocab(label),
+            )
         if tp.is_file():
             bucket |= vocabulary_from_translations(tp)
         if not bucket:
             continue
-        label = level_label(d, levels_root)
         for w in bucket:
             word_levels.setdefault(w, set()).add(label)
     return word_levels
@@ -235,6 +284,7 @@ def update_csv(path: Path, word_levels: dict[str, set[str]], dry_run: bool) -> i
             }
         )
         n += 1
+    rows_out.sort(key=lambda r: int(r["count"]) != 0)
     if dry_run:
         print(f"[dry-run] Would rewrite {path} ({n} rows)")
         return n
@@ -246,18 +296,31 @@ def update_csv(path: Path, word_levels: dict[str, set[str]], dry_run: bool) -> i
     return n
 
 
-def reference_row_matches_vocab(row_headword: str, word_levels: dict[str, set[str]]) -> bool:
-    """True when the row's first word hits indexed level vocabulary."""
-    head = (row_headword or "").strip()
-    if not head:
-        return False
-    return match_csv_word(head, word_levels)[0] > 0
+def _strip_oxford_mark(line: str) -> str:
+    s = line.strip("\r\n")
+    if s.startswith(_OXFORD_MARK_PREFIX):
+        return s[len(_OXFORD_MARK_PREFIX) :]
+    return s
 
 
-def prune_lemmas_csv(
+def _oxford_line_content(line: str) -> str:
+    """Line text without ``**`` prefix or leading tabs."""
+    return _strip_oxford_mark(line).lstrip("\t")
+
+
+def _is_oxford_vocab_line(core: str) -> bool:
+    return bool(_OXFORD_LEVEL_END.search((core or "").strip()))
+
+
+def _oxford_line_headword(line: str) -> str:
+    core = _oxford_line_content(line)
+    return first_word(core) or core.strip()
+
+
+def mark_oxford_wordlist(
     path: Path, word_levels: dict[str, set[str]], dry_run: bool
 ) -> tuple[int, int]:
-    """Drop rows whose lemma (or first token) appears in level vocabulary. Returns kept, removed."""
+    """Mark used vocabulary with ``**`` (no tabs); indent unmarked vocab lines. Returns total, marked."""
     try:
         text = path.read_text(encoding="utf-8")
     except OSError as e:
@@ -265,68 +328,38 @@ def prune_lemmas_csv(
         return 0, 0
     if text.startswith("\ufeff"):
         text = text.lstrip("\ufeff")
-    reader = csv.DictReader(text.splitlines())
-    fieldnames = list(reader.fieldnames or [])
-    if not fieldnames:
-        print(f"Skip {path}: empty or missing header", file=sys.stderr)
-        return 0, 0
-    lemma_key = next((f for f in fieldnames if f.lower() == "lemma"), None)
-    rows_in = list(reader)
-    rows_out: list[dict[str, str]] = []
-    removed = 0
-    for row in rows_in:
-        if lemma_key and row.get(lemma_key):
-            head = str(row[lemma_key]).strip()
-        else:
-            head = first_word(" ".join(str(row.get(f) or "") for f in fieldnames))
-        if reference_row_matches_vocab(head, word_levels):
-            removed += 1
-            continue
-        rows_out.append({k: str(row.get(k) or "") for k in fieldnames})
-    kept = len(rows_out)
-    if dry_run:
-        print(f"[dry-run] Would prune {path}: remove {removed}, keep {kept} rows")
-        return kept, removed
-    with path.open("w", encoding="utf-8", newline="") as f:
-        w = csv.DictWriter(f, fieldnames=fieldnames)
-        w.writeheader()
-        w.writerows(rows_out)
-    print(f"Pruned {path}: removed {removed}, kept {kept} rows")
-    return kept, removed
 
-
-def prune_word_lines_file(
-    path: Path, word_levels: dict[str, set[str]], dry_run: bool
-) -> tuple[int, int]:
-    """Drop lines whose first word appears in level vocabulary. Returns kept, removed."""
-    try:
-        text = path.read_text(encoding="utf-8")
-    except OSError as e:
-        print(f"Skip {path}: {e}", file=sys.stderr)
-        return 0, 0
-    if text.startswith("\ufeff"):
-        text = text.lstrip("\ufeff")
     lines_out: list[str] = []
-    removed = 0
+    marked = 0
     for line in text.splitlines():
-        core = line.strip("\r\n")
-        if not core:
+        raw = line.strip("\r\n")
+        if not raw:
             continue
-        head = first_word(core) or core.strip()
-        if reference_row_matches_vocab(head, word_levels):
-            removed += 1
+        core = _oxford_line_content(raw)
+        if not core.strip():
             continue
-        lines_out.append(core)
-    kept = len(lines_out)
+        head = _oxford_line_headword(core)
+        hit = bool(head) and match_csv_word(head, word_levels)[0] > 0
+        if hit:
+            lines_out.append(f"{_OXFORD_MARK_PREFIX}{core}")
+            marked += 1
+        elif _is_oxford_vocab_line(core):
+            lines_out.append(f"{_OXFORD_INDENT}{core}")
+        elif raw.startswith(_OXFORD_MARK_PREFIX):
+            lines_out.append(f"{_OXFORD_MARK_PREFIX}{core}")
+        else:
+            lines_out.append(core)
+
+    total = len(lines_out)
     if dry_run:
-        print(f"[dry-run] Would prune {path}: remove {removed}, keep {kept} lines")
-        return kept, removed
+        print(f"[dry-run] Would mark {path}: {marked} of {total} line(s) with {_OXFORD_MARK_PREFIX!r}")
+        return total, marked
     body = "\n".join(lines_out)
     if body:
         body += "\n"
     path.write_text(body, encoding="utf-8")
-    print(f"Pruned {path}: removed {removed}, kept {kept} lines")
-    return kept, removed
+    print(f"Marked {path}: {marked} of {total} line(s) with {_OXFORD_MARK_PREFIX!r}")
+    return total, marked
 
 
 def main() -> int:
@@ -351,21 +384,15 @@ def main() -> int:
     )
     ref_default = root / "cursor-claude-common/references/remove-word-list-references"
     parser.add_argument(
-        "--lemmas-csv",
+        "--oxford-txt",
         type=Path,
-        default=ref_default / "1 lemmas-Table 1.csv",
-        help="Lemma frequency CSV to prune (first word / lemma column)",
+        default=ref_default / "3000 words oxford.txt",
+        help="Oxford word list to mark with ** when headword is used in levels",
     )
     parser.add_argument(
-        "--google-words-txt",
-        type=Path,
-        default=ref_default / "google-10000-no-swears-usa.txt",
-        help="One-word-per-line list to prune by first word",
-    )
-    parser.add_argument(
-        "--skip-reference-prune",
+        "--skip-oxford-mark",
         action="store_true",
-        help="Do not prune lemmas CSV or google words txt",
+        help="Do not update the Oxford word list file",
     )
     args = parser.parse_args()
 
@@ -386,17 +413,12 @@ def main() -> int:
     for csv_path in sorted(csv_dir.glob("*.csv")):
         total_rows += update_csv(csv_path, word_levels, args.dry_run)
 
-    if not args.skip_reference_prune:
-        lemmas_path = args.lemmas_csv.resolve()
-        google_path = args.google_words_txt.resolve()
-        if lemmas_path.is_file():
-            prune_lemmas_csv(lemmas_path, word_levels, args.dry_run)
+    if not args.skip_oxford_mark:
+        oxford_path = args.oxford_txt.resolve()
+        if oxford_path.is_file():
+            mark_oxford_wordlist(oxford_path, word_levels, args.dry_run)
         else:
-            print(f"Skip lemmas CSV (not found): {lemmas_path}", file=sys.stderr)
-        if google_path.is_file():
-            prune_word_lines_file(google_path, word_levels, args.dry_run)
-        else:
-            print(f"Skip google words txt (not found): {google_path}", file=sys.stderr)
+            print(f"Skip Oxford list (not found): {oxford_path}", file=sys.stderr)
 
     print(f"Done. Processed rows across final-word CSVs: {total_rows}.")
     return 0

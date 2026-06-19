@@ -160,7 +160,7 @@ Answer options: all tokens from `correct_order` shuffled into a tile Wrap (no ex
 
 | questionData field | Required | Description |
 |--------------------|----------|-------------|
-| `english_words` | ✓ | Array of 3–4 English words/phrases (left column) |
+| `english_words` | ✓ | Array of 3–6 English words/phrases (left column) |
 | `translations` | ✓ | Array of locale maps — same length as `english_words` |
 
 Answer options: two columns; either side can be tapped first (selected = blue). Correct pairs move to a green matched section; wrong pairs show red/green feedback.  
