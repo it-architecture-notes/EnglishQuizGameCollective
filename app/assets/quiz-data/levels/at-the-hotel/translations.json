@@ -9,11 +9,11 @@
         "de": "leider",
         "it": "sfortunatamente",
         "pt": "desafortunadamente",
-        "ru": "неудачно",
+        "ru": "к сожалению",
         "zh": "不幸的是",
         "ja": "残念ながら",
         "ko": "불행히도",
-        "ar": "عذراً",
+        "ar": "للأسف",
         "hi": "दुर्भाग्य से"
       }
     },
@@ -23,15 +23,15 @@
         "tr": "giriş yapmak",
         "es": "registrarse",
         "fr": "s'enregistrer",
-        "de": "einzuchecken",
-        "it": "per effettuare il check-in",
+        "de": "einchecken",
+        "it": "fare il check-in",
         "pt": "fazer check-in",
-        "ru": "чтобы зарегистрироваться",
-        "zh": "办理登机手续",
+        "ru": "зарегистрироваться",
+        "zh": "办理入住",
         "ja": "チェックインする",
         "ko": "체크인하다",
-        "ar": "لتسجيل الوصول",
-        "hi": "चेक इन करने के लिए"
+        "ar": "يسجل الوصول",
+        "hi": "चेक इन करना"
       }
     },
     {
@@ -64,7 +64,7 @@
         "zh": "确认",
         "ja": "確認する",
         "ko": "확인하다",
-        "ar": "تأكيد",
+        "ar": "يؤكد",
         "hi": "सत्यापित करना"
       }
     },
@@ -73,16 +73,16 @@
       "translations": {
         "tr": "şikayet etmek",
         "es": "quejarse",
-        "fr": "plaindre",
+        "fr": "se plaindre",
         "de": "beschweren",
-        "it": "denunciare",
-        "pt": "denunciar",
+        "it": "lamentarsi",
+        "pt": "reclamar",
         "ru": "жаловаться",
         "zh": "抱怨",
-        "ja": "申し立てる",
+        "ja": "不平を言う",
         "ko": "불평하다",
         "ar": "يشكو",
-        "hi": "निरादर करना"
+        "hi": "शिकायत करना"
       }
     },
     {
@@ -90,7 +90,7 @@
       "translations": {
         "tr": "katılmak",
         "es": "unirse",
-        "fr": "joindre",
+        "fr": "rejoindre",
         "de": "beitreten",
         "it": "unirsi",
         "pt": "juntar-se",
@@ -98,7 +98,7 @@
         "zh": "加入",
         "ja": "参加する",
         "ko": "참여하다",
-        "ar": "للانضمام",
+        "ar": "ينضم",
         "hi": "शामिल होना"
       }
     },
@@ -120,37 +120,20 @@
       }
     },
     {
-      "english_word": "to borrow",
-      "translations": {
-        "tr": "ödünç almak",
-        "es": "prestar",
-        "fr": "prêter",
-        "de": "ausleihen",
-        "it": "prestare",
-        "pt": "emprestar",
-        "ru": "одолжить",
-        "zh": "借",
-        "ja": "貸す",
-        "ko": "빌리다",
-        "ar": "لقرض",
-        "hi": "उधार लेना"
-      }
-    },
-    {
       "english_word": "to check out",
       "translations": {
         "tr": "çıkış yapmak",
-        "es": "salir",
-        "fr": "sortir",
+        "es": "hacer el check-out",
+        "fr": "faire le check-out",
         "de": "auschecken",
-        "it": "uscire",
-        "pt": "sair",
+        "it": "fare il check-out",
+        "pt": "fazer check-out",
         "ru": "выйти",
         "zh": "退房",
         "ja": "チェックアウトする",
         "ko": "체크아웃하다",
-        "ar": "للخروج",
-        "hi": "चेक आउट करने के लिए"
+        "ar": "يسجل الخروج",
+        "hi": "चेक आउट करना"
       }
     },
     {
@@ -166,8 +149,25 @@
         "zh": "继续",
         "ja": "続ける",
         "ko": "계속하다",
-        "ar": "للتواصل",
+        "ar": "يستمر",
         "hi": "जारी रखना"
+      }
+    },
+    {
+      "english_word": "to rent",
+      "translations": {
+        "tr": "kiralamak",
+        "es": "alquilar",
+        "fr": "louer",
+        "de": "mieten",
+        "it": "affittare",
+        "pt": "alugar",
+        "ru": "арендовать",
+        "zh": "租用",
+        "ja": "レンタルする",
+        "ko": "렌트하다",
+        "ar": "يستأجر",
+        "hi": "किराए पर रखना"
       }
     },
     {
@@ -200,7 +200,7 @@
         "zh": "留下",
         "ja": "滞在する",
         "ko": "머무르다",
-        "ar": "البقاء",
+        "ar": "يبقى",
         "hi": "रहना"
       }
     }

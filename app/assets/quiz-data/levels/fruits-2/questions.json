@@ -153,6 +153,18 @@
           "pomegranate"
         ]
       }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "orange-fruit",
+        "answer": "orange",
+        "wrongAnswers": [
+          "apricot",
+          "grapefruit",
+          "lemon"
+        ]
+      }
     }
   ]
 }

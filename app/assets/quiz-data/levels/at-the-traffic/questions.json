@@ -61,45 +61,45 @@
       "questionData": {
         "english_words": [
           "but",
-          "before",
+          "except",
           "or",
           "because"
         ],
         "translations": [
           {
-            "tr": "Ancak",
+            "tr": "ancak",
             "es": "pero",
             "fr": "mais",
-            "de": "Aber",
-            "it": "Ma",
+            "de": "aber",
+            "it": "ma",
             "pt": "mas",
             "ru": "но",
-            "zh": "但",
+            "zh": "但是",
             "ja": "しかし",
             "ko": "하지만",
             "ar": "لكن",
             "hi": "लेकिन"
           },
           {
-            "tr": "önce",
-            "es": "antes",
-            "fr": "avant",
-            "de": "vor",
-            "it": "Prima",
-            "pt": "antes",
-            "ru": "до",
-            "zh": "前",
-            "ja": "前に",
-            "ko": "~ 전에",
-            "ar": "قبل",
-            "hi": "पहले"
+            "tr": "hariç",
+            "es": "excepto",
+            "fr": "sauf",
+            "de": "außer",
+            "it": "tranne",
+            "pt": "exceto",
+            "ru": "кроме",
+            "zh": "除了",
+            "ja": "～を除いて",
+            "ko": "제외하고",
+            "ar": "باستثناء",
+            "hi": "को छोड़कर"
           },
           {
             "tr": "veya",
             "es": "o",
             "fr": "ou",
             "de": "oder",
-            "it": "O",
+            "it": "o",
             "pt": "ou",
             "ru": "или",
             "zh": "或者",
@@ -109,11 +109,11 @@
             "hi": "या"
           },
           {
-            "tr": "Çünkü",
+            "tr": "çünkü",
             "es": "porque",
             "fr": "parce que",
-            "de": "Weil",
-            "it": "Perché",
+            "de": "weil",
+            "it": "perché",
             "pt": "porque",
             "ru": "потому что",
             "zh": "因为",
@@ -130,16 +130,16 @@
       "questionData": {
         "character1": "Lily",
         "character2": "Alex",
-        "line1": "When can we go?",
-        "answer": "When the light is green",
+        "line1": "Should we use the tunnel?",
+        "answer": "It sounds dangerous.",
         "distractors": [
-          "When the light is red",
-          "When there is no light",
-          "When we are not ready"
+          "This road is very busy.",
+          "Slow down, it's a school zone.",
+          "The light is green now."
         ]
       },
-      "audio_file1": "when-can-we-go-convo",
-      "audio_file2": "when-the-light-is-green-convo"
+      "audio_file1": "should-we-use-the-tunnel-convo",
+      "audio_file2": "it-sounds-dangerous-convo"
     },
     {
       "template": "AppearDisappear",
@@ -197,25 +197,29 @@
     {
       "template": "ClozeSequence",
       "questionData": {
-        "sentence": "_____, it's a school zone.",
-        "answer": "Slow down",
+        "sentence": "_____, it's a school zone and the city _____ fines.",
+        "answer": [
+          "slow down",
+          "increases"
+        ],
         "distractors": [
-          "Speed up",
-          "Turn left",
-          "Stop here"
+          "speed up",
+          "turn left",
+          "stop here",
+          "lets"
         ]
       },
-      "audio_file": "slow-down-it-s-a-school-zone-convo"
+      "audio_file": "slow-down-it-s-a-school-zone-city-increases-fines-for-speeding-in-school-zones-convo"
     },
     {
       "template": "GrammarForm",
       "questionData": {
-        "sentence": "We ____ the tunnel.",
-        "answer": "are entering",
+        "sentence": "____ left at the traffic light.",
+        "answer": "Turn",
         "distractors": [
-          "is entering",
-          "enters",
-          "entered"
+          "Turned",
+          "Turns",
+          "Turning"
         ]
       }
     },
@@ -228,30 +232,30 @@
           "get out"
         ],
         "distractors": [
-          "follow",
-          "get in",
-          "cross",
-          "drive"
+          "look",
+          "listen",
+          "cook",
+          "feed"
         ]
       },
-      "audio_file": "can-you-stop-the-car-please-i-will-get-out-convo"
+      "audio_file": "can-you-stop-the-car-please-i-would-like-to-get-out-convo"
     },
     {
       "template": "ClozeSequence",
       "questionData": {
-        "sentence": "It's a _____ and ______ road.",
+        "sentence": "You should not ____ the traffic test. You have to _____ it.",
         "answer": [
-          "long",
-          "narrow"
+          "fail",
+          "pass"
         ],
         "distractors": [
-          "short",
-          "wide",
-          "busy",
-          "empty"
+          "carry",
+          "get",
+          "late",
+          "leave"
         ]
       },
-      "audio_file": "it-s-a-long-and-narrow-road-convo"
+      "audio_file": "you-should-not-fail-the-traffic-test-you-have-to-pass-it-convo"
     }
   ]
 }

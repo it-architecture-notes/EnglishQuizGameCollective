@@ -21,7 +21,7 @@
         "answer": "sit",
         "distractors": [
           "stand",
-          "lie",
+          "cook",
           "walk"
         ]
       },
@@ -33,24 +33,24 @@
       "questionData": {
         "character1": "Olivia",
         "character2": "Ethan",
-        "line1": "What are you doing?",
-        "line2": "I am _____ TV.",
-        "answer": "watching",
+        "line1": "Mom, I cannot find the remote control.",
+        "line2": "Did you ____ where you put it again?",
+        "answer": "forget",
         "distractors": [
-          "reading",
-          "having",
-          "seeing"
+          "let",
+          "ask",
+          "understand"
         ]
       },
-      "audio_file1": "what-are-you-doing-convo",
-      "audio_file2": "i-am-watching-tv-convo"
+      "audio_file1": "mom-i-cannot-find-the-remote-control-convo",
+      "audio_file2": "did-you-forget-where-you-put-it-again-convo"
     },
     {
       "template": "imageQuizTemplate-1",
       "questionData": {
         "imageName": "coat-rack",
         "wrongAnswers": [
-          "coat-table",
+          "umbrella-stand",
           "hat-stand",
           "hanging-clothes"
         ]
@@ -72,9 +72,9 @@
             "fr": "plus doux",
             "de": "weicher",
             "it": "più morbido",
-            "pt": "mais suave",
+            "pt": "mais macio",
             "ru": "мягче",
-            "zh": "较软",
+            "zh": "更柔软",
             "ja": "より柔らかい",
             "ko": "더 부드러운",
             "ar": "أكثر ليونة",
@@ -86,37 +86,37 @@
             "fr": "le plus doux",
             "de": "am weichsten",
             "it": "il più morbido",
-            "pt": "o mais suave",
+            "pt": "o mais macio",
             "ru": "самый мягкий",
-            "zh": "最柔软的",
+            "zh": "最柔软",
             "ja": "最も柔らかい",
             "ko": "가장 부드러운",
-            "ar": "أنعم",
+            "ar": "الأنعم",
             "hi": "सबसे नरम"
           },
           {
             "tr": "daha rahat",
             "es": "más cómodo",
             "fr": "plus confortable",
-            "de": "komfortabler",
+            "de": "bequemer",
             "it": "più comodo",
             "pt": "mais confortável",
             "ru": "более удобный",
-            "zh": "更舒服",
+            "zh": "更舒适",
             "ja": "より快適な",
-            "ko": "더 편안하다",
+            "ko": "더 편안한",
             "ar": "أكثر راحة",
             "hi": "अधिक आरामदायक"
           },
           {
-            "tr": "en rahatı",
+            "tr": "en rahat",
             "es": "el más cómodo",
             "fr": "le plus confortable",
             "de": "am bequemsten",
             "it": "il più comodo",
             "pt": "o mais confortável",
             "ru": "самый удобный",
-            "zh": "最舒服的",
+            "zh": "最舒适",
             "ja": "最も快適な",
             "ko": "가장 편안한",
             "ar": "الأكثر راحة",
@@ -130,16 +130,16 @@
       "questionData": {
         "character1": "Ben",
         "character2": "James",
-        "line1": "Who else is in the living room?",
-        "answer": "My brother.",
+        "line1": "Could you please close the window?",
+        "answer": "I am closing it right now.",
         "distractors": [
-          "10 o'clock",
-          "My father else",
-          "Every person"
+          "I am cleaning the kitchen now.",
+          "Yes, it's quite cold today.",
+          "The window is already open."
         ]
       },
-      "audio_file1": "who-else-is-in-the-living-room-convo",
-      "audio_file2": "my-brother"
+      "audio_file1": "could-you-please-close-the-window-convo",
+      "audio_file2": "i-am-closing-it-right-now-convo"
     },
     {
       "template": "imageQuizTemplate-1",
@@ -147,8 +147,8 @@
         "imageName": "bookshelf",
         "wrongAnswers": [
           "booklet",
-          "book-board",
-          "noteshelf"
+          "cabinet",
+          "display-case"
         ]
       }
     },
@@ -172,23 +172,24 @@
           "bookshelf",
           "curtains"
         ]
-      },
-      "answer": "coffee-table"
+      }
     },
     {
       "template": "ClozeSequence",
       "questionData": {
-        "sentence": "Their living room is ____",
+        "sentence": "Their living room is ____, so the family loves to ____ there.",
         "answer": [
-          "small but bright"
+          "great",
+          "gather"
         ],
         "distractors": [
-          "big and near",
-          "great but noisy",
-          "dark and colorful"
+          "quickly",
+          "carefully",
+          "swim",
+          "loudly"
         ]
       },
-      "audio_file": "their-living-room-is-small-but-bright-convo"
+      "audio_file": "their-living-room-is-great-so-the-family-loves-to-gather-there-convo"
     },
     {
       "template": "imageQuizTemplate-1",
@@ -204,15 +205,15 @@
     {
       "template": "AppearDisappear",
       "questionData": {
-        "words": "The family watches TV together.",
+        "words": "The family relaxes together every evening.",
         "distractors": [
           "alone",
           "living room",
-          "This",
-          "sees"
+          "this",
+          "works"
         ]
       },
-      "audio_file": "the-family-watches-tv-together-convo"
+      "audio_file": "the-family-relaxes-together-every-evening-convo"
     },
     {
       "template": "ClozeSequence",
@@ -223,10 +224,10 @@
           "listen to"
         ],
         "distractors": [
-          "stand up",
           "ask",
-          "sit up",
-          "look at"
+          "rarely",
+          "cool",
+          "softly"
         ]
       },
       "audio_file": "she-likes-to-lie-down-and-listen-to-the-rain-convo"
@@ -234,21 +235,21 @@
     {
       "template": "GrammarForm",
       "questionData": {
-        "sentence": "They _____ with the guests right now.",
-        "answer": "are talking",
+        "sentence": "Have you ever _____ to your father about the new job?",
+        "answer": "talked",
         "distractors": [
           "will talk",
-          "talks",
-          "do the talks"
+          "talking",
+          "talk"
         ]
       }
     },
     {
       "template": "SentenceBuilder",
       "questionData": {
-        "correct_order": "He likes to say hello to guests"
+        "correct_order": "He likes to greet guests"
       },
-      "audio_file": "he-likes-to-say-hello-to-guests-convo"
+      "audio_file": "he-likes-to-greet-guests-convo"
     }
   ]
 }

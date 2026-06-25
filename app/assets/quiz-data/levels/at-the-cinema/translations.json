@@ -1,0 +1,208 @@
+{
+  "translations_list": [
+    {
+      "english_word": "tonight",
+      "translations": {
+        "tr": "bu gece",
+        "es": "esta noche",
+        "fr": "ce soir",
+        "de": "heute Abend",
+        "it": "stasera",
+        "pt": "esta noite",
+        "ru": "сегодня вечером",
+        "zh": "今晚",
+        "ja": "今夜",
+        "ko": "오늘 밤",
+        "ar": "الليلة",
+        "hi": "आज रात"
+      }
+    },
+    {
+      "english_word": "to watch",
+      "translations": {
+        "tr": "izlemek",
+        "es": "ver",
+        "fr": "regarder",
+        "de": "anschauen",
+        "it": "guardare",
+        "pt": "assistir",
+        "ru": "смотреть",
+        "zh": "观看",
+        "ja": "観る",
+        "ko": "보다",
+        "ar": "يشاهد",
+        "hi": "देखना"
+      }
+    },
+    {
+      "english_word": "familiar",
+      "translations": {
+        "tr": "tanıdık",
+        "es": "familiar",
+        "fr": "familier",
+        "de": "vertraut",
+        "it": "familiare",
+        "pt": "familiar",
+        "ru": "знакомый",
+        "zh": "熟悉的",
+        "ja": "なじみの",
+        "ko": "친숙한",
+        "ar": "مألوف",
+        "hi": "परिचित"
+      }
+    },
+    {
+      "english_word": "to enter",
+      "translations": {
+        "tr": "girmek",
+        "es": "entrar",
+        "fr": "entrer",
+        "de": "eintreten",
+        "it": "entrare",
+        "pt": "entrar",
+        "ru": "входить",
+        "zh": "进入",
+        "ja": "入る",
+        "ko": "들어가다",
+        "ar": "يدخل",
+        "hi": "प्रवेश करना"
+      }
+    },
+    {
+      "english_word": "to miss",
+      "translations": {
+        "tr": "kaçırmak",
+        "es": "perder",
+        "fr": "rater",
+        "de": "verpassen",
+        "it": "perdere",
+        "pt": "perder",
+        "ru": "пропустить",
+        "zh": "错过",
+        "ja": "見逃す",
+        "ko": "놓치다",
+        "ar": "يفوت",
+        "hi": "चूकना"
+      }
+    },
+    {
+      "english_word": "whole",
+      "translations": {
+        "tr": "bütün",
+        "es": "entero",
+        "fr": "entier",
+        "de": "ganz",
+        "it": "intero",
+        "pt": "inteiro",
+        "ru": "целый",
+        "zh": "完整的",
+        "ja": "全体の",
+        "ko": "전체의",
+        "ar": "كامل",
+        "hi": "पूरा"
+      }
+    },
+    {
+      "english_word": "to recommend",
+      "translations": {
+        "tr": "tavsiye etmek",
+        "es": "recomendar",
+        "fr": "recommander",
+        "de": "empfehlen",
+        "it": "consigliare",
+        "pt": "recomendar",
+        "ru": "рекомендовать",
+        "zh": "推荐",
+        "ja": "勧める",
+        "ko": "추천하다",
+        "ar": "يوصي",
+        "hi": "सिफारिश करना"
+      }
+    },
+    {
+      "english_word": "to select",
+      "translations": {
+        "tr": "seçmek",
+        "es": "elegir",
+        "fr": "choisir",
+        "de": "auswählen",
+        "it": "selezionare",
+        "pt": "selecionar",
+        "ru": "выбирать",
+        "zh": "选择",
+        "ja": "選ぶ",
+        "ko": "선택하다",
+        "ar": "يختار",
+        "hi": "चुनना"
+      }
+    },
+    {
+      "english_word": "to hate",
+      "translations": {
+        "tr": "nefret etmek",
+        "es": "odiar",
+        "fr": "détester",
+        "de": "hassen",
+        "it": "odiare",
+        "pt": "odiar",
+        "ru": "ненавидеть",
+        "zh": "讨厌",
+        "ja": "嫌う",
+        "ko": "싫어하다",
+        "ar": "يكره",
+        "hi": "नफरत करना"
+      }
+    },
+    {
+      "english_word": "to mean",
+      "translations": {
+        "tr": "anlamına gelmek",
+        "es": "significar",
+        "fr": "signifier",
+        "de": "bedeuten",
+        "it": "significare",
+        "pt": "significar",
+        "ru": "означать",
+        "zh": "意味着",
+        "ja": "意味する",
+        "ko": "의미하다",
+        "ar": "يعني",
+        "hi": "मतलब होना"
+      }
+    },
+    {
+      "english_word": "to book",
+      "translations": {
+        "tr": "rezervasyon yapmak",
+        "es": "reservar",
+        "fr": "réserver",
+        "de": "buchen",
+        "it": "prenotare",
+        "pt": "reservar",
+        "ru": "забронировать",
+        "zh": "预订",
+        "ja": "予約する",
+        "ko": "예약하다",
+        "ar": "يحجز",
+        "hi": "बुक करना"
+      }
+    },
+    {
+      "english_word": "easily",
+      "translations": {
+        "tr": "kolayca",
+        "es": "fácilmente",
+        "fr": "facilement",
+        "de": "leicht",
+        "it": "facilmente",
+        "pt": "facilmente",
+        "ru": "легко",
+        "zh": "容易地",
+        "ja": "簡単に",
+        "ko": "쉽게",
+        "ar": "بسهولة",
+        "hi": "आसानी से"
+      }
+    }
+  ]
+}

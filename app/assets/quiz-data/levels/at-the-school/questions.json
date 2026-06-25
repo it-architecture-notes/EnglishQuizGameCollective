@@ -29,6 +29,23 @@
       "audio_file2": "i-want-to-learn-new-english-words-convo"
     },
     {
+      "template": "ConvoTemplate-1",
+      "questionData": {
+        "character1": "Grace",
+        "character2": "Mike",
+        "line1": "What do you want to do one day?",
+        "line2": "I want to _____ children at a school.",
+        "answer": "teach",
+        "distractors": [
+          "learn",
+          "study",
+          "speak"
+        ]
+      },
+      "audio_file1": "what-do-you-want-to-do-one-day-convo",
+      "audio_file2": "i-want-to-teach-children-at-a-school-convo"
+    },
+    {
       "template": "AppearDisappear",
       "questionData": {
         "words": "We study and write in our notebooks.",
@@ -152,7 +169,7 @@
     {
       "template": "ClozeSequence",
       "questionData": {
-        "sentence": "You made a mistake. Please _____ _____!",
+        "sentence": "There is a mistake. Please _____ _____!",
         "answers": [
           "read",
           "again"
@@ -164,7 +181,7 @@
           "wrong"
         ]
       },
-      "audio_file": "you-made-a-mistake-please-read-again-convo"
+      "audio_file": "there-is-a-mistake-please-read-again-convo"
     },
     {
       "template": "imageQuizTemplate-1",
@@ -194,17 +211,6 @@
         "correct_order": "This lesson is interesting."
       },
       "audio_file": "this-lesson-is-interesting-convo"
-    },
-    {
-      "template": "imageQuizTemplate-1",
-      "questionData": {
-        "imageName": "fire-alarm",
-        "wrongAnswers": [
-          "fire-extinguisher",
-          "fire-exit",
-          "fire-station"
-        ]
-      }
     },
     {
       "template": "AppearDisappear",
@@ -240,7 +246,7 @@
         "answer": "I can! I know the answer!",
         "distractors": [
           "He can't answer it.",
-          "I don't know the answer.",
+          "Please open your books.",
           "I don't find the answer."
         ]
       },

@@ -1,0 +1,259 @@
+{
+  "translations_list": [
+    {
+      "english_word": "friendly",
+      "translations": {
+        "tr": "arkadaş canlısı",
+        "es": "amigable",
+        "fr": "sympathique",
+        "de": "freundlich",
+        "it": "amichevole",
+        "pt": "amigável",
+        "ru": "дружелюбный",
+        "zh": "友好的",
+        "ja": "親しみやすい",
+        "ko": "친근한",
+        "ar": "ودود",
+        "hi": "मिलनसार"
+      }
+    },
+    {
+      "english_word": "to think",
+      "translations": {
+        "tr": "düşünmek",
+        "es": "pensar",
+        "fr": "penser",
+        "de": "denken",
+        "it": "pensare",
+        "pt": "pensar",
+        "ru": "думать",
+        "zh": "思考",
+        "ja": "考える",
+        "ko": "생각하다",
+        "ar": "يفكر",
+        "hi": "सोचना"
+      }
+    },
+    {
+      "english_word": "to win",
+      "translations": {
+        "tr": "kazanmak",
+        "es": "ganar",
+        "fr": "gagner",
+        "de": "gewinnen",
+        "it": "vincere",
+        "pt": "ganhar",
+        "ru": "побеждать",
+        "zh": "赢",
+        "ja": "勝つ",
+        "ko": "이기다",
+        "ar": "يفوز",
+        "hi": "जीतना"
+      }
+    },
+    {
+      "english_word": "exactly",
+      "translations": {
+        "tr": "tam olarak",
+        "es": "exactamente",
+        "fr": "exactement",
+        "de": "genau",
+        "it": "esattamente",
+        "pt": "exatamente",
+        "ru": "именно",
+        "zh": "正是",
+        "ja": "まさに",
+        "ko": "정확히",
+        "ar": "بالضبط",
+        "hi": "बिल्कुल"
+      }
+    },
+    {
+      "english_word": "awesome",
+      "translations": {
+        "tr": "harika",
+        "es": "increíble",
+        "fr": "génial",
+        "de": "toll",
+        "it": "fantastico",
+        "pt": "incrível",
+        "ru": "потрясающий",
+        "zh": "太棒了",
+        "ja": "すごい",
+        "ko": "멋진",
+        "ar": "رائع",
+        "hi": "शानदार"
+      }
+    },
+    {
+      "english_word": "against",
+      "translations": {
+        "tr": "karşı",
+        "es": "contra",
+        "fr": "contre",
+        "de": "gegen",
+        "it": "contro",
+        "pt": "contra",
+        "ru": "против",
+        "zh": "对抗",
+        "ja": "に対して",
+        "ko": "에 대항하여",
+        "ar": "ضد",
+        "hi": "के खिलाफ"
+      }
+    },
+    {
+      "english_word": "not yet",
+      "translations": {
+        "tr": "henüz değil",
+        "es": "todavía no",
+        "fr": "pas encore",
+        "de": "noch nicht",
+        "it": "non ancora",
+        "pt": "ainda não",
+        "ru": "ещё нет",
+        "zh": "还没有",
+        "ja": "まだ",
+        "ko": "아직",
+        "ar": "ليس بعد",
+        "hi": "अभी नहीं"
+      }
+    },
+    {
+      "english_word": "crowded",
+      "translations": {
+        "tr": "kalabalık",
+        "es": "concurrido",
+        "fr": "bondé",
+        "de": "überfüllt",
+        "it": "affollato",
+        "pt": "lotado",
+        "ru": "переполненный",
+        "zh": "拥挤的",
+        "ja": "混雑した",
+        "ko": "붐비는",
+        "ar": "مزدحم",
+        "hi": "भीड़ वाला"
+      }
+    },
+    {
+      "english_word": "to lock",
+      "translations": {
+        "tr": "kilitlemek",
+        "es": "cerrar con llave",
+        "fr": "verrouiller",
+        "de": "abschließen",
+        "it": "chiudere a chiave",
+        "pt": "trancar",
+        "ru": "запирать",
+        "zh": "锁",
+        "ja": "鍵をかける",
+        "ko": "잠그다",
+        "ar": "يقفل",
+        "hi": "ताला लगाना"
+      }
+    },
+    {
+      "english_word": "to keep",
+      "translations": {
+        "tr": "tutmak",
+        "es": "mantener",
+        "fr": "garder",
+        "de": "halten",
+        "it": "tenere",
+        "pt": "manter",
+        "ru": "держать",
+        "zh": "保持",
+        "ja": "保つ",
+        "ko": "유지하다",
+        "ar": "يحفظ",
+        "hi": "रखना"
+      }
+    },
+    {
+      "english_word": "to protect",
+      "translations": {
+        "tr": "korumak",
+        "es": "proteger",
+        "fr": "protéger",
+        "de": "schützen",
+        "it": "proteggere",
+        "pt": "proteger",
+        "ru": "защищать",
+        "zh": "保护",
+        "ja": "守る",
+        "ko": "보호하다",
+        "ar": "يحمي",
+        "hi": "सुरक्षित करना"
+      }
+    },
+    {
+      "english_word": "to hide",
+      "translations": {
+        "tr": "saklamak",
+        "es": "esconder",
+        "fr": "cacher",
+        "de": "verstecken",
+        "it": "nascondere",
+        "pt": "esconder",
+        "ru": "прятать",
+        "zh": "藏",
+        "ja": "隠す",
+        "ko": "숨기다",
+        "ar": "يخفي",
+        "hi": "छुपाना"
+      }
+    },
+    {
+      "english_word": "probably",
+      "translations": {
+        "tr": "muhtemelen",
+        "es": "probablemente",
+        "fr": "probablement",
+        "de": "wahrscheinlich",
+        "it": "probabilmente",
+        "pt": "provavelmente",
+        "ru": "вероятно",
+        "zh": "可能",
+        "ja": "たぶん",
+        "ko": "아마도",
+        "ar": "على الأرجح",
+        "hi": "शायद"
+      }
+    },
+    {
+      "english_word": "worst",
+      "translations": {
+        "tr": "en kötü",
+        "es": "el peor",
+        "fr": "le pire",
+        "de": "am schlimmsten",
+        "it": "il peggiore",
+        "pt": "o pior",
+        "ru": "худший",
+        "zh": "最糟糕的",
+        "ja": "最悪の",
+        "ko": "최악의",
+        "ar": "الأسوأ",
+        "hi": "सबसे बुरा"
+      }
+    },
+    {
+      "english_word": "still waiting",
+      "translations": {
+        "tr": "hâlâ bekliyorum",
+        "es": "todavía esperando",
+        "fr": "j'attends encore",
+        "de": "noch wartend",
+        "it": "ancora in attesa",
+        "pt": "ainda esperando",
+        "ru": "всё ещё жду",
+        "zh": "还在等",
+        "ja": "まだ待っています",
+        "ko": "아직 기다리는 중",
+        "ar": "لا أزال أنتظر",
+        "hi": "अभी भी इंतज़ार में"
+      }
+    }
+  ]
+}

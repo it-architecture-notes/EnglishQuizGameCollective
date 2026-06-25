@@ -12,8 +12,8 @@
         "ru": "ходить",
         "zh": "走路",
         "ja": "歩く",
-        "ko": "걷기",
-        "ar": "للمشي",
+        "ko": "걷다",
+        "ar": "يمشي",
         "hi": "चलना"
       }
     },
@@ -23,32 +23,49 @@
         "tr": "bakmak",
         "es": "mirar",
         "fr": "regarder",
-        "de": "zum Anschauen",
+        "de": "ansehen",
         "it": "guardare",
         "pt": "olhar",
         "ru": "посмотреть",
         "zh": "看看",
         "ja": "見る",
         "ko": "보다",
-        "ar": "للنظر في",
-        "hi": "देखने के लिए"
+        "ar": "ينظر إلى",
+        "hi": "देखना"
       }
     },
     {
-      "english_word": "tall",
+      "english_word": "wonderful",
       "translations": {
-        "tr": "uzun",
-        "es": "alto",
-        "fr": "grand",
-        "de": "groß",
-        "it": "alto",
-        "pt": "alto",
-        "ru": "высокий",
-        "zh": "高",
-        "ja": "背が高い",
-        "ko": "키가 큰",
-        "ar": "طويل القامة",
-        "hi": "लंबा"
+        "tr": "harika",
+        "es": "increíble",
+        "fr": "merveilleux",
+        "de": "wunderbar",
+        "it": "meraviglioso",
+        "pt": "maravilhoso",
+        "ru": "великолепный",
+        "zh": "精彩的",
+        "ja": "すばらしい",
+        "ko": "멋진",
+        "ar": "رائع",
+        "hi": "अद्भुत"
+      }
+    },
+    {
+      "english_word": "carefully",
+      "translations": {
+        "tr": "dikkatlice",
+        "es": "cuidadosamente",
+        "fr": "avec attention",
+        "de": "vorsichtig",
+        "it": "accuratamente",
+        "pt": "cuidadosamente",
+        "ru": "осторожно",
+        "zh": "小心",
+        "ja": "注意深く",
+        "ko": "조심스럽게",
+        "ar": "بحذر",
+        "hi": "सावधानी से"
       }
     },
     {
@@ -59,13 +76,30 @@
         "fr": "venir",
         "de": "kommen",
         "it": "venire",
-        "pt": "para vir",
+        "pt": "vir",
         "ru": "прийти",
         "zh": "来",
         "ja": "来る",
-        "ko": "올",
-        "ar": "ليأتي",
+        "ko": "오다",
+        "ar": "يأتي",
         "hi": "आना"
+      }
+    },
+    {
+      "english_word": "to see",
+      "translations": {
+        "tr": "görmek",
+        "es": "ver",
+        "fr": "voir",
+        "de": "sehen",
+        "it": "vedere",
+        "pt": "ver",
+        "ru": "видеть",
+        "zh": "看见",
+        "ja": "見る",
+        "ko": "보다",
+        "ar": "يرى",
+        "hi": "देखना"
       }
     },
     {
@@ -74,14 +108,14 @@
         "tr": "sola dönmek",
         "es": "girar a la izquierda",
         "fr": "tourner à gauche",
-        "de": "um nach links abzubiegen",
+        "de": "nach links abbiegen",
         "it": "girare a sinistra",
         "pt": "virar à esquerda",
         "ru": "повернуть налево",
         "zh": "向左转",
         "ja": "左折する",
         "ko": "좌회전하다",
-        "ar": "للانعطاف إلى اليسار",
+        "ar": "ينعطف إلى اليسار",
         "hi": "बाएँ मुड़ना"
       }
     },
@@ -103,6 +137,23 @@
       }
     },
     {
+      "english_word": "quietly",
+      "translations": {
+        "tr": "sessizce",
+        "es": "silenciosamente",
+        "fr": "silencieusement",
+        "de": "leise",
+        "it": "silenziosamente",
+        "pt": "silenciosamente",
+        "ru": "тихо",
+        "zh": "安静地",
+        "ja": "静かに",
+        "ko": "조용히",
+        "ar": "بهدوء",
+        "hi": "चुपचाप"
+      }
+    },
+    {
       "english_word": "to live",
       "translations": {
         "tr": "yaşamak",
@@ -115,7 +166,7 @@
         "zh": "住",
         "ja": "住む",
         "ko": "살다",
-        "ar": "للعيش",
+        "ar": "يعيش",
         "hi": "रहना"
       }
     },
@@ -124,7 +175,7 @@
       "translations": {
         "tr": "takip etmek",
         "es": "seguir",
-        "fr": "à suivre",
+        "fr": "suivre",
         "de": "folgen",
         "it": "seguire",
         "pt": "seguir",
@@ -132,7 +183,7 @@
         "zh": "跟随",
         "ja": "ついて行く",
         "ko": "따르다",
-        "ar": "أن يتبع",
+        "ar": "يتبع",
         "hi": "अनुसरण करना"
       }
     },
@@ -166,8 +217,8 @@
         "zh": "回去",
         "ja": "戻る",
         "ko": "돌아가다",
-        "ar": "للعودة",
-        "hi": "वापस जाने के लिए"
+        "ar": "يعود",
+        "hi": "वापस जाना"
       }
     }
   ]

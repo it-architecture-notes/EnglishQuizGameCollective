@@ -13,8 +13,8 @@
         "zh": "购物",
         "ja": "買い物する",
         "ko": "쇼핑하다",
-        "ar": "للتسوق",
-        "hi": "खरीदारी करने के लिए"
+        "ar": "يتسوق",
+        "hi": "खरीदारी करना"
       }
     },
     {
@@ -23,66 +23,15 @@
         "tr": "satın almak",
         "es": "comprar",
         "fr": "acheter",
-        "de": "zu kaufen",
+        "de": "kaufen",
         "it": "comprare",
         "pt": "comprar",
-        "ru": "купить",
+        "ru": "покупать",
         "zh": "买",
         "ja": "買う",
-        "ko": "구매",
-        "ar": "للشراء",
-        "hi": "खरीदने के लिए"
-      }
-    },
-    {
-      "english_word": "to give",
-      "translations": {
-        "tr": "vermek",
-        "es": "dar",
-        "fr": "donner",
-        "de": "geben",
-        "it": "dare",
-        "pt": "para dar",
-        "ru": "дать",
-        "zh": "给予",
-        "ja": "与える",
-        "ko": "주다",
-        "ar": "لإعطاء",
-        "hi": "देना"
-      }
-    },
-    {
-      "english_word": "to make",
-      "translations": {
-        "tr": "yapmak",
-        "es": "hacer",
-        "fr": "faire",
-        "de": "machen",
-        "it": "fare",
-        "pt": "fazer",
-        "ru": "сделать",
-        "zh": "制作",
-        "ja": "作る",
-        "ko": "만들다",
-        "ar": "لجعل",
-        "hi": "बनाना"
-      }
-    },
-    {
-      "english_word": "before",
-      "translations": {
-        "tr": "önce",
-        "es": "antes",
-        "fr": "avant",
-        "de": "vor",
-        "it": "prima",
-        "pt": "antes",
-        "ru": "раньше",
-        "zh": "之前",
-        "ja": "前に",
-        "ko": "전에",
-        "ar": "من قبل",
-        "hi": "पहले"
+        "ko": "사다",
+        "ar": "يشتري",
+        "hi": "खरीदना"
       }
     },
     {
@@ -100,6 +49,74 @@
         "ko": "새로운",
         "ar": "جديد",
         "hi": "नया"
+      }
+    },
+    {
+      "english_word": "how much",
+      "translations": {
+        "tr": "ne kadar",
+        "es": "cuánto",
+        "fr": "combien",
+        "de": "wie viel",
+        "it": "quanto",
+        "pt": "quanto",
+        "ru": "сколько",
+        "zh": "多少",
+        "ja": "いくら",
+        "ko": "얼마",
+        "ar": "كم",
+        "hi": "कितना"
+      }
+    },
+    {
+      "english_word": "expensive",
+      "translations": {
+        "tr": "pahalı",
+        "es": "caro",
+        "fr": "cher",
+        "de": "teuer",
+        "it": "caro",
+        "pt": "caro",
+        "ru": "дорогой",
+        "zh": "贵",
+        "ja": "高い",
+        "ko": "비싼",
+        "ar": "غالي",
+        "hi": "महंगा"
+      }
+    },
+    {
+      "english_word": "to pay",
+      "translations": {
+        "tr": "ödemek",
+        "es": "pagar",
+        "fr": "payer",
+        "de": "bezahlen",
+        "it": "pagare",
+        "pt": "pagar",
+        "ru": "платить",
+        "zh": "支付",
+        "ja": "支払う",
+        "ko": "지불하다",
+        "ar": "يدفع",
+        "hi": "भुगतान करना"
+      }
+    },
+    {
+      "english_word": "checkout",
+      "translations": {
+        "tr": "kasa",
+        "es": "caja",
+        "fr": "caisse",
+        "de": "Kasse",
+        "it": "cassa",
+        "pt": "caixa",
+        "ru": "касса",
+        "zh": "收银台",
+        "ja": "レジ",
+        "ko": "계산대",
+        "ar": "الكاشير",
+        "hi": "कैश काउंटर"
       }
     },
     {
@@ -132,42 +149,59 @@
         "zh": "等待",
         "ja": "待つ",
         "ko": "기다리다",
-        "ar": "للانتظار",
+        "ar": "ينتظر",
         "hi": "इंतज़ार करना"
       }
     },
     {
-      "english_word": "to find",
+      "english_word": "to choose",
       "translations": {
-        "tr": "bulmak",
-        "es": "encontrar",
-        "fr": "trouver",
-        "de": "zu finden",
-        "it": "trovare",
-        "pt": "encontrar",
-        "ru": "найти",
-        "zh": "找到",
-        "ja": "見つける",
-        "ko": "찾기 위해",
-        "ar": "للعثور على",
-        "hi": "खोजने के लिए"
+        "tr": "seçmek",
+        "es": "elegir",
+        "fr": "choisir",
+        "de": "wählen",
+        "it": "scegliere",
+        "pt": "escolher",
+        "ru": "выбирать",
+        "zh": "选择",
+        "ja": "選ぶ",
+        "ko": "선택하다",
+        "ar": "يختار",
+        "hi": "चुनना"
       }
     },
     {
-      "english_word": "to want",
+      "english_word": "to guess",
       "translations": {
-        "tr": "istemek",
-        "es": "querer",
-        "fr": "vouloir",
-        "de": "wollen",
-        "it": "volere",
-        "pt": "querer",
-        "ru": "хотеть",
-        "zh": "想要",
-        "ja": "欲しい",
-        "ko": "원하다",
-        "ar": "تريد",
-        "hi": "चाहना"
+        "tr": "tahmin etmek",
+        "es": "adivinar",
+        "fr": "deviner",
+        "de": "erraten",
+        "it": "indovinare",
+        "pt": "adivinhar",
+        "ru": "угадать",
+        "zh": "猜测",
+        "ja": "当てる",
+        "ko": "추측하다",
+        "ar": "يخمن",
+        "hi": "अनुमान लगाना"
+      }
+    },
+    {
+      "english_word": "to carry",
+      "translations": {
+        "tr": "taşımak",
+        "es": "llevar",
+        "fr": "porter",
+        "de": "tragen",
+        "it": "portare",
+        "pt": "carregar",
+        "ru": "нести",
+        "zh": "携带",
+        "ja": "運ぶ",
+        "ko": "나르다",
+        "ar": "يحمل",
+        "hi": "ले जाना"
       }
     }
   ]

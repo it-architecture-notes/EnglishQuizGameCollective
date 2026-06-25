@@ -6,11 +6,11 @@ Scan quiz level JSON and refresh `count` + `levels` columns in the CSV files und
 Counted sources (per level folder — each word/phrase contributes at most once per level):
   questions.json
     - `WordPairs` / legacy `ConvoTemplate-WordPairs`: `questionData.english_words`.
-    - ``implemented/prepositions``, ``implemented/family``, and
-      ``implemented/emotions-*``: each ``imageQuizTemplate-*`` row adds
-      ``imageName`` and optional ``answer`` (not ``wrongAnswers``).
-    - ``implemented/family`` only: non-image rows also add ``answer`` /
-      ``answers`` (e.g. ``ClozeSequence``).
+    - ``prepositions``, ``family``, and ``emotions-*``: each
+      ``imageQuizTemplate-*`` row adds ``imageName`` and optional ``answer`` (not
+      ``wrongAnswers``).
+    - ``family`` only: non-image rows also add ``answer`` / ``answers`` (e.g.
+      ``ClozeSequence``).
 
   translations.json
     - Only `english_word` in each `translations_list` entry.
@@ -23,6 +23,10 @@ the counted text, or equals the whole normalized phrase (for multi-word `word` r
 Output CSV header: word,level,count,levels
   - count: number of distinct level folders where the word matched.
   - levels: comma-separated relative paths from the levels root (sorted).
+
+Rows are sorted: (1) used words first (`count` > 0), then unused; (2) CEFR
+difficulty (`level` column: A1, A2, B1, B2, C1, C2, then unknown); (3) word
+alphabetically within each group.
 
 Also marks ``remove-word-list-references/3000 words oxford.txt``: prepends ``**`` to
 lines whose headword matches level vocabulary (same ``match_csv_word`` rules as the
@@ -53,14 +57,14 @@ _IGNORED_TOKENS = frozenset({"to"})
 
 # Image-only levels: count taught labels from image quiz rows (imageName + answer).
 _IMAGE_QUIZ_VOCAB_LEVELS = frozenset({
-    "implemented/prepositions",
-    "implemented/family",
+    "prepositions",
+    "family",
 })
-_IMAGE_QUIZ_VOCAB_LEVEL_PREFIXES = ("implemented/emotions-",)
+_IMAGE_QUIZ_VOCAB_LEVEL_PREFIXES = ("emotions-",)
 
 # Levels where non-image question rows contribute answer/answers vocabulary.
 _NON_IMAGE_ANSWER_VOCAB_LEVELS = frozenset({
-    "implemented/family",
+    "family",
 })
 
 
@@ -232,6 +236,18 @@ def match_csv_word(csv_word: str, word_levels: dict[str, set[str]]) -> tuple[int
     return len(seen_levels), levels_str
 
 
+_CEFR_LEVEL_ORDER = {"A1": 0, "A2": 1, "B1": 2, "B2": 3, "C1": 4, "C2": 5}
+
+
+def _difficulty_rank(level: str) -> int:
+    return _CEFR_LEVEL_ORDER.get((level or "").strip().upper(), 999)
+
+
+def _csv_row_sort_key(row: dict[str, str]) -> tuple:
+    used_last = int((row.get("count") or "0").strip() or "0") == 0
+    return (used_last, _difficulty_rank(row.get("level") or ""), (row.get("word") or "").lower())
+
+
 def _normalize_headers(fieldnames: list[str] | None) -> dict[str, str]:
     """Map canonical keys word, level, count to actual CSV header names."""
     if not fieldnames:
@@ -284,7 +300,7 @@ def update_csv(path: Path, word_levels: dict[str, set[str]], dry_run: bool) -> i
             }
         )
         n += 1
-    rows_out.sort(key=lambda r: int(r["count"]) != 0)
+    rows_out.sort(key=_csv_row_sort_key)
     if dry_run:
         print(f"[dry-run] Would rewrite {path} ({n} rows)")
         return n

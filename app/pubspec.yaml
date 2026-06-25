@@ -52,9 +52,12 @@ flutter:
     - assets/quiz-data/levels/travel-1/
     - assets/quiz-data/levels/travel-2/
     - assets/quiz-data/levels/travel-3/
+    - assets/quiz-data/levels/travel-items/
     - assets/quiz-data/levels/bathroom-2/
     - assets/quiz-data/levels/basic-sentences/
     - assets/quiz-data/levels/colors-1/
+    - assets/quiz-data/levels/colors-2/
+    - assets/quiz-data/levels/geometric-shapes/
     - assets/quiz-data/levels/bedroom/
     - assets/quiz-data/levels/body-parts/
     - assets/quiz-data/levels/verb-to-be/
@@ -90,6 +93,7 @@ flutter:
     - assets/quiz-data/levels/kitchen-3/
     - assets/quiz-data/levels/kitchen-4/
     - assets/quiz-data/levels/kitchen-5/
+    - assets/quiz-data/levels/kitchen-items-1/
     - assets/quiz-data/levels/kitchen-items-2/
     - assets/quiz-data/levels/living-room/
     - assets/quiz-data/levels/living-room-items/
@@ -155,6 +159,7 @@ flutter:
     - assets/quiz-data/levels/at-the-gas-station/
     - assets/quiz-data/levels/insect-world/
     - assets/quiz-data/levels/home-decoration/
+    - assets/quiz-data/levels/house-parts/
     - assets/quiz-data/levels/waking-up/
     - assets/quiz-data/levels/brushing-teeth/
     - assets/quiz-data/levels/taking-a-shower/

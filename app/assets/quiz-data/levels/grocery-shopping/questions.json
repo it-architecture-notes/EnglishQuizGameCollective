@@ -21,7 +21,7 @@
         "answer": "shop",
         "distractors": [
           "take",
-          "sell",
+          "live",
           "eat"
         ]
       },
@@ -31,19 +31,19 @@
     {
       "template": "ClozeSequence",
       "questionData": {
-        "sentence": "Can you ____ me a ____ bag? This one is broken.",
+        "sentence": "Can I ____ a ____ bag at the checkout?",
         "answer": [
-          "give",
+          "buy",
           "new"
         ],
         "distractors": [
-          "offer",
-          "old",
-          "free",
-          "take"
+          "move",
+          "wet",
+          "eat",
+          "silent"
         ]
       },
-      "audio_file": "can-you-give-me-a-new-bag-convo"
+      "audio_file": "can-i-buy-a-new-bag-at-the-checkout-convo"
     },
     {
       "template": "imageQuizTemplate-1",
@@ -104,12 +104,12 @@
             "ru": "пустой",
             "zh": "空的",
             "ja": "空の",
-            "ko": "비어 있는",
+            "ko": "빈",
             "ar": "فارغ",
             "hi": "खाली"
           },
           {
-            "tr": "tam dolu",
+            "tr": "dolu",
             "es": "lleno",
             "fr": "plein",
             "de": "voll",
@@ -117,9 +117,9 @@
             "pt": "cheio",
             "ru": "полный",
             "zh": "满的",
-            "ja": "満杯",
+            "ja": "いっぱい",
             "ko": "가득한",
-            "ar": "ممتلىء",
+            "ar": "ممتلئ",
             "hi": "भरा हुआ"
           }
         ]
@@ -130,29 +130,29 @@
       "questionData": {
         "character1": "Omar",
         "character2": "Sophie",
-        "line1": "How much is this?",
-        "answer": "It costs 10 dollars.",
+        "line1": "How much is this cheese?",
+        "answer": "It is too expensive for me.",
         "distractors": [
-          "You buy 10 dollars",
-          "You get 10 items",
-          "It's very expensive"
+          "It weighs ten dollars.",
+          "You buy ten bags.",
+          "It opens at ten o'clock."
         ]
       },
-      "audio_file1": "how-much-is-this-convo",
-      "audio_file2": "it-costs-10-dollars-convo"
+      "audio_file1": "how-much-is-this-cheese-convo",
+      "audio_file2": "it-is-too-expensive-for-me-convo"
     },
     {
       "template": "AppearDisappear",
       "questionData": {
-        "words": "Where is the checkout?",
+        "words": "Please pay at the checkout.",
         "distractors": [
-          "Who",
-          "are",
-          "books",
-          "checkin"
+          "who",
+          "buy",
+          "cashier",
+          "enter"
         ]
       },
-      "audio_file": "where-is-the-checkout-convo"
+      "audio_file": "please-pay-at-the-checkout-convo"
     },
     {
       "template": "imageQuizTemplate-2",
@@ -180,18 +180,18 @@
     {
       "template": "ClozeSequence",
       "questionData": {
-        "sentence": "He ____ chocolate but Mom says no.",
+        "sentence": "He can _____ one treat from the shelf.",
         "answer": [
-          "wants"
+          "choose"
         ],
         "distractors": [
-          "asks",
-          "gets",
-          "gives",
-          "other"
+          "stand up",
+          "wash",
+          "run",
+          "cook"
         ]
       },
-      "audio_file": "he-wants-chocolate-but-mom-says-no-convo"
+      "audio_file": "he-can-choose-one-treat-from-the-shelf-convo"
     },
     {
       "template": "imageQuizTemplate-1",
@@ -199,7 +199,7 @@
         "imageName": "salt",
         "wrongAnswers": [
           "pepper",
-          "soap",
+          "vinegar",
           "meat"
         ]
       }
@@ -219,42 +219,42 @@
         "distractors": [
           "waiting",
           "waits",
-          "have wait"
+          "has waited"
         ]
       }
     },
     {
       "template": "ClozeSequence",
       "questionData": {
-        "sentence": "Let's ____ a list _____ we go to the store.",
+        "sentence": "I _____ we need more milk and eggs.",
         "answer": [
-          "make",
-          "before"
+          "guess"
         ],
         "distractors": [
-          "after",
-          "buy",
-          "take",
-          "until"
+          "try",
+          "read",
+          "wash",
+          "use"
         ]
       },
-      "audio_file": "let-s-make-a-list-before-we-go-to-the-store-convo"
+      "audio_file": "i-guess-we-need-more-milk-and-eggs-convo"
     },
     {
       "template": "ConvoTemplate-1",
       "questionData": {
         "character1": "Emma",
         "character2": "Sophie",
-        "line1": "Hello. Did you ____ everything?",
-        "line2": "Yes I did, thank you.",
-        "answer": "find",
+        "line1": "These bags are heavy. Can you _____ them?",
+        "line2": "Sure, I can _____ them to the car.",
+        "answer": "carry",
         "distractors": [
-          "buy",
-          "shop",
-          "get"
+          "drop",
+          "sell",
+          "eat"
         ]
       },
-      "audio_file": "hello-did-you-find-everything-convo"
+      "audio_file1": "these-bags-are-heavy-can-you-carry-them-convo",
+      "audio_file2": "sure-i-can-carry-them-to-the-car-convo"
     }
   ]
 }

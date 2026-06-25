@@ -1,4 +1,13 @@
 word,level,count,levels
+am,A1,3,"at-the-restaurant,greetings,verb-to-be"
+are,A1,5,"at-the-office,basic-sentences,greetings,kitchen,verb-to-be"
+be,A1,2,"at-the-airport,at-the-dentist"
+can,A1,1,kitchen
+do,A1,2,"at-the-school,kitchen"
+have,A1,1,basic-sentences
+is,A1,4,"basic-sentences,clothes-shopping,greetings,kitchen"
+must,A1,1,kitchen
+will,A1,1,kitchen
 did,A1,0,
 does,A1,0,
 has,A1,0,
@@ -11,12 +20,3 @@ might,A2,0,
 should,A2,0,
 would,A2,0,
 shall,B1,0,
-am,A1,3,"at-the-restaurant,greetings,verb-to-be"
-are,A1,5,"at-the-office,basic-sentences,greetings,kitchen,verb-to-be"
-be,A1,2,"at-the-airport,at-the-dentist"
-can,A1,1,kitchen
-do,A1,2,"at-the-school,kitchen"
-have,A1,1,basic-sentences
-is,A1,3,"basic-sentences,greetings,kitchen"
-must,A1,1,kitchen
-will,A1,1,kitchen

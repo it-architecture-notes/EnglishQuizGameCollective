@@ -1,0 +1,276 @@
+{
+  "translations_list": [
+    {
+      "english_word": "people",
+      "translations": {
+        "tr": "insanlar",
+        "es": "personas",
+        "fr": "personnes",
+        "de": "Menschen",
+        "it": "persone",
+        "pt": "pessoas",
+        "ru": "люди",
+        "zh": "人们",
+        "ja": "人々",
+        "ko": "사람들",
+        "ar": "الناس",
+        "hi": "लोग"
+      }
+    },
+    {
+      "english_word": "recently",
+      "translations": {
+        "tr": "son zamanlarda",
+        "es": "recientemente",
+        "fr": "récemment",
+        "de": "kürzlich",
+        "it": "recentemente",
+        "pt": "recentemente",
+        "ru": "недавно",
+        "zh": "最近",
+        "ja": "最近",
+        "ko": "최근에",
+        "ar": "مؤخراً",
+        "hi": "हाल ही में"
+      }
+    },
+    {
+      "english_word": "to earn",
+      "translations": {
+        "tr": "kazanmak",
+        "es": "ganar",
+        "fr": "gagner",
+        "de": "verdienen",
+        "it": "guadagnare",
+        "pt": "ganhar",
+        "ru": "зарабатывать",
+        "zh": "赚取",
+        "ja": "稼ぐ",
+        "ko": "벌다",
+        "ar": "يكسب",
+        "hi": "कमाना"
+      }
+    },
+    {
+      "english_word": "idea",
+      "translations": {
+        "tr": "fikir",
+        "es": "idea",
+        "fr": "idée",
+        "de": "Idee",
+        "it": "idea",
+        "pt": "ideia",
+        "ru": "идея",
+        "zh": "想法",
+        "ja": "アイデア",
+        "ko": "아이디어",
+        "ar": "فكرة",
+        "hi": "विचार"
+      }
+    },
+    {
+      "english_word": "completely",
+      "translations": {
+        "tr": "tamamen",
+        "es": "completamente",
+        "fr": "complètement",
+        "de": "völlig",
+        "it": "completamente",
+        "pt": "completamente",
+        "ru": "полностью",
+        "zh": "完全地",
+        "ja": "完全に",
+        "ko": "완전히",
+        "ar": "تماماً",
+        "hi": "पूरी तरह से"
+      }
+    },
+    {
+      "english_word": "to draw",
+      "translations": {
+        "tr": "çizmek",
+        "es": "dibujar",
+        "fr": "dessiner",
+        "de": "zeichnen",
+        "it": "disegnare",
+        "pt": "desenhar",
+        "ru": "рисовать",
+        "zh": "画",
+        "ja": "描く",
+        "ko": "그리다",
+        "ar": "يرسم",
+        "hi": "चित्र बनाना"
+      }
+    },
+    {
+      "english_word": "to design",
+      "translations": {
+        "tr": "tasarlamak",
+        "es": "diseñar",
+        "fr": "concevoir",
+        "de": "entwerfen",
+        "it": "progettare",
+        "pt": "projetar",
+        "ru": "проектировать",
+        "zh": "设计",
+        "ja": "デザインする",
+        "ko": "설계하다",
+        "ar": "يصمم",
+        "hi": "डिज़ाइन करना"
+      }
+    },
+    {
+      "english_word": "fair",
+      "translations": {
+        "tr": "adil",
+        "es": "justo",
+        "fr": "juste",
+        "de": "fair",
+        "it": "giusto",
+        "pt": "justo",
+        "ru": "справедливый",
+        "zh": "公平的",
+        "ja": "公平な",
+        "ko": "공정한",
+        "ar": "عادل",
+        "hi": "निष्पक्ष"
+      }
+    },
+    {
+      "english_word": "to apply",
+      "translations": {
+        "tr": "başvurmak",
+        "es": "solicitar",
+        "fr": "postuler",
+        "de": "sich bewerben",
+        "it": "candidarsi",
+        "pt": "candidatar-se",
+        "ru": "подавать заявку",
+        "zh": "申请",
+        "ja": "応募する",
+        "ko": "지원하다",
+        "ar": "يتقدم",
+        "hi": "आवेदन करना"
+      }
+    },
+    {
+      "english_word": "to accept",
+      "translations": {
+        "tr": "kabul etmek",
+        "es": "aceptar",
+        "fr": "accepter",
+        "de": "annehmen",
+        "it": "accettare",
+        "pt": "aceitar",
+        "ru": "принимать",
+        "zh": "接受",
+        "ja": "受け入れる",
+        "ko": "받아들이다",
+        "ar": "يقبل",
+        "hi": "स्वीकार करना"
+      }
+    },
+    {
+      "english_word": "to fight",
+      "translations": {
+        "tr": "mücadele etmek",
+        "es": "luchar",
+        "fr": "lutter",
+        "de": "kämpfen",
+        "it": "lottare",
+        "pt": "lutar",
+        "ru": "бороться",
+        "zh": "战斗",
+        "ja": "戦う",
+        "ko": "싸우다",
+        "ar": "يقاتل",
+        "hi": "लड़ना"
+      }
+    },
+    {
+      "english_word": "to escape",
+      "translations": {
+        "tr": "kaçmak",
+        "es": "escapar",
+        "fr": "s'échapper",
+        "de": "entkommen",
+        "it": "scappare",
+        "pt": "escapar",
+        "ru": "сбежать",
+        "zh": "逃脱",
+        "ja": "逃げる",
+        "ko": "탈출하다",
+        "ar": "يهرب",
+        "hi": "भागना"
+      }
+    },
+    {
+      "english_word": "to fold",
+      "translations": {
+        "tr": "katlamak",
+        "es": "doblar",
+        "fr": "plier",
+        "de": "falten",
+        "it": "piegare",
+        "pt": "dobrar",
+        "ru": "складывать",
+        "zh": "折叠",
+        "ja": "折る",
+        "ko": "접다",
+        "ar": "يطوي",
+        "hi": "मोड़ना"
+      }
+    },
+    {
+      "english_word": "secret",
+      "translations": {
+        "tr": "sır",
+        "es": "secreto",
+        "fr": "secret",
+        "de": "Geheimnis",
+        "it": "segreto",
+        "pt": "segredo",
+        "ru": "секрет",
+        "zh": "秘密",
+        "ja": "秘密",
+        "ko": "비밀",
+        "ar": "سر",
+        "hi": "रहस्य"
+      }
+    },
+    {
+      "english_word": "certain",
+      "translations": {
+        "tr": "emin",
+        "es": "seguro",
+        "fr": "certain",
+        "de": "sicher",
+        "it": "certo",
+        "pt": "certo",
+        "ru": "уверенный",
+        "zh": "确定",
+        "ja": "確かな",
+        "ko": "확실한",
+        "ar": "متأكد",
+        "hi": "निश्चित"
+      }
+    },
+    {
+      "english_word": "equal",
+      "translations": {
+        "tr": "eşit",
+        "es": "igual",
+        "fr": "égal",
+        "de": "gleich",
+        "it": "uguale",
+        "pt": "igual",
+        "ru": "равный",
+        "zh": "相等的",
+        "ja": "等しい",
+        "ko": "동등한",
+        "ar": "متساوٍ",
+        "hi": "समान"
+      }
+    }
+  ]
+}

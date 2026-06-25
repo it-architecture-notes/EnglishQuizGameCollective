@@ -1,0 +1,261 @@
+{
+  "levelQuestions": [
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "movie-ticket",
+        "wrongAnswers": [
+          "boarding-pass",
+          "receipt",
+          "price-tag"
+        ]
+      }
+    },
+    
+    {
+      "template": "WordPairs",
+      "questionData": {
+        "english_words": [
+          "exciting",
+          "scary",
+          "funny",
+          "awful"
+        ],
+        "translations": [
+          {
+            "tr": "heyecan verici",
+            "es": "emocionante",
+            "fr": "passionnant",
+            "de": "aufregend",
+            "it": "entusiasmante",
+            "pt": "emocionante",
+            "ru": "захватывающий",
+            "zh": "令人兴奋的",
+            "ja": "わくわくする",
+            "ko": "흥미진진한",
+            "ar": "مثير",
+            "hi": "रोमांचक"
+          },
+          {
+            "tr": "ürkütücü",
+            "es": "aterrador",
+            "fr": "effrayant",
+            "de": "gruselig",
+            "it": "spaventoso",
+            "pt": "assustador",
+            "ru": "страшный",
+            "zh": "恐怖的",
+            "ja": "怖い",
+            "ko": "무서운",
+            "ar": "مخيف",
+            "hi": "डरावना"
+          },
+          {
+            "tr": "komik",
+            "es": "gracioso",
+            "fr": "drôle",
+            "de": "lustig",
+            "it": "buffo",
+            "pt": "engraçado",
+            "ru": "смешной",
+            "zh": "搞笑的",
+            "ja": "面白い",
+            "ko": "웃긴",
+            "ar": "مضحك",
+            "hi": "मज़ेदार"
+          },
+          {
+            "tr": "berbat",
+            "es": "horrible",
+            "fr": "affreux",
+            "de": "schrecklich",
+            "it": "orribile",
+            "pt": "horrível",
+            "ru": "ужасный",
+            "zh": "糟糕的",
+            "ja": "ひどい",
+            "ko": "끔찍한",
+            "ar": "فظيع",
+            "hi": "भयानक"
+          }
+        ]
+      }
+    },
+    {
+      "template": "AppearDisappear",
+      "questionData": {
+        "words": "The movie starts at eight tonight.",
+        "distractors": [
+          "early",
+          "now"
+        ]
+      },
+      "audio_file": "the-movie-starts-at-eight-tonight-convo"
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "drink",
+        "wrongAnswers": [
+          "snack",
+          "meal",
+          "dessert"
+        ]
+      }
+    },
+    {
+      "template": "ClozeSequence",
+      "questionData": {
+        "sentence": "I want to ______ that movie because the story seems ______.",
+        "answer": [
+          "watch",
+          "familiar"
+        ],
+        "distractors": [
+          "study",
+          "cook",
+          "change",
+          "polite",
+          "slowly"
+        ]
+      },
+      "audio_file": "i-want-to-watch-that-movie-because-the-story-seems-familiar-convo"
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "popcorn",
+        "wrongAnswers": [
+          "chips",
+          "candy",
+          "nachos"
+        ]
+      }
+    },
+    {
+      "template": "ConvoTemplate-1",
+      "questionData": {
+        "character1": "Maya",
+        "character2": "Leo",
+        "line1": "We need to _____ the cinema before the film starts.",
+        "line2": "Yes, let's _____ now before the doors close.",
+        "answer": "enter",
+        "distractors": [
+          "wait",
+          "buy",
+          "find"
+        ]
+      },
+      "audio_file1": "we-need-to-enter-the-cinema-before-the-film-starts-convo",
+      "audio_file2": "yes-lets-enter-now-before-the-doors-close-convo"
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "emergency-exit",
+        "wrongAnswers": [
+          "entrance",
+          "main-door",
+          "side-door"
+        ]
+      }
+    },
+    {
+      "template": "ClozeSequence",
+      "questionData": {
+        "sentence": "We must hurry or we will _____ the _____ film.",
+        "answer": [
+          "miss",
+          "whole"
+        ],
+        "distractors": [
+          "wait",
+          "buy",
+          "change",
+          "cook"
+        ]
+      },
+      "audio_file": "we-must-hurry-or-we-will-miss-the-whole-film-convo"
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "3d-glasses",
+        "wrongAnswers": [
+          "sunglasses",
+          "goggles",
+          "binoculars"
+        ]
+      }
+    },
+    {
+      "template": "ConvoTemplate-1",
+      "questionData": {
+        "character1": "Nora",
+        "character2": "Sam",
+        "line1": "Can you _____ a good film for us to watch?",
+        "line2": "I _____ this one. It is very exciting.",
+        "answer": "recommend",
+        "distractors": [
+          "read",
+          "help",
+          "try"
+        ]
+      },
+      "audio_file1": "can-you-recommend-a-good-film-for-us-to-watch-convo",
+      "audio_file2": "i-recommend-this-one-it-is-very-exciting-convo"
+    },
+    {
+      "template": "SentenceBuilder",
+      "questionData": {
+        "correct_order": "I will select seats near the screen."
+      },
+      "audio_file": "i-will-select-seats-near-the-screen-convo"
+    },
+    {
+      "template": "DialogueCompletion",
+      "questionData": {
+        "character1": "Ana",
+        "character2": "Tom",
+        "line1": "Do you like scary films?",
+        "answer": "No, I hate scary films.",
+        "distractors": [
+          "The movie starts at eight tonight.",
+          "I will select seats near the screen.",
+          "The screen is very big in this cinema."
+        ]
+      },
+      "audio_file1": "do-you-like-scary-films-convo",
+      "audio_file2": "no-i-hate-scary-films-convo"
+    },
+    {
+      "template": "GrammarForm",
+      "questionData": {
+        "sentence": "What does 'sold out' _____ on the ticket board?",
+        "answer": "mean",
+        "distractors": [
+          "means",
+          "meant",
+          "meaning"
+        ]
+      }
+    },
+    {
+      "template": "ClozeSequence",
+      "questionData": {
+        "sentence": "You can _____ your tickets online _____ for tonight's show.",
+        "answer": [
+          "book",
+          "easily"
+        ],
+        "distractors": [
+          "read",
+          "hate",
+          "mean",
+          "carry"
+        ]
+      },
+      "audio_file": "you-can-book-your-tickets-online-easily-for-tonights-show-convo"
+    }
+  ]
+}

@@ -6,32 +6,15 @@
         "tr": "satmak",
         "es": "vender",
         "fr": "vendre",
-        "de": "zu verkaufen",
+        "de": "verkaufen",
         "it": "vendere",
         "pt": "vender",
-        "ru": "продать",
+        "ru": "продавать",
         "zh": "出售",
         "ja": "売る",
         "ko": "팔다",
-        "ar": "للبيع",
-        "hi": "बेचने के लिए"
-      }
-    },
-    {
-      "english_word": "today",
-      "translations": {
-        "tr": "bugün",
-        "es": "hoy",
-        "fr": "aujourd'hui",
-        "de": "heute",
-        "it": "oggi",
-        "pt": "hoje",
-        "ru": "сегодня",
-        "zh": "今天",
-        "ja": "今日",
-        "ko": "오늘",
-        "ar": "اليوم",
-        "hi": "आज"
+        "ar": "يبيع",
+        "hi": "बेचना"
       }
     },
     {
@@ -47,25 +30,8 @@
         "zh": "新鲜的",
         "ja": "新鮮な",
         "ko": "신선한",
-        "ar": "طازجة",
+        "ar": "طازج",
         "hi": "ताजा"
-      }
-    },
-    {
-      "english_word": "yesterday",
-      "translations": {
-        "tr": "dün",
-        "es": "ayer",
-        "fr": "hier",
-        "de": "gestern",
-        "it": "ieri",
-        "pt": "ontem",
-        "ru": "вчера",
-        "zh": "昨天",
-        "ja": "昨日",
-        "ko": "어제",
-        "ar": "أمس",
-        "hi": "कल"
       }
     },
     {
@@ -86,37 +52,37 @@
       }
     },
     {
-      "english_word": "to need",
+      "english_word": "to seem",
       "translations": {
-        "tr": "ihtiyaç duymak",
-        "es": "necesitar",
-        "fr": "avoir besoin",
-        "de": "brauchen",
-        "it": "aver bisogno",
-        "pt": "precisar",
-        "ru": "нуждаться",
-        "zh": "需要",
-        "ja": "必要とする",
-        "ko": "필요하다",
-        "ar": "بحاجة",
-        "hi": "जरूरत के लिए"
+        "tr": "görünmek",
+        "es": "parecer",
+        "fr": "sembler",
+        "de": "scheinen",
+        "it": "sembrare",
+        "pt": "parecer",
+        "ru": "казаться",
+        "zh": "似乎",
+        "ja": "見える",
+        "ko": "보이다",
+        "ar": "يبدو",
+        "hi": "लगना"
       }
     },
     {
-      "english_word": "to grow",
+      "english_word": "genuine",
       "translations": {
-        "tr": "yetiştirmek",
-        "es": "cultivar",
-        "fr": "cultiver",
-        "de": "anbauen",
-        "it": "coltivare",
-        "pt": "cultivar",
-        "ru": "выращивать",
-        "zh": "种植",
-        "ja": "栽培する",
-        "ko": "재배하다",
-        "ar": "يزرع",
-        "hi": "उगाना"
+        "tr": "gerçek",
+        "es": "genuino",
+        "fr": "authentique",
+        "de": "echt",
+        "it": "originale",
+        "pt": "genuíno",
+        "ru": "подлинный",
+        "zh": "真实的",
+        "ja": "本物の",
+        "ko": "진짜",
+        "ar": "أصلي",
+        "hi": "असली"
       }
     },
     {
@@ -125,14 +91,14 @@
         "tr": "karşılaştırmak",
         "es": "comparar",
         "fr": "comparer",
-        "de": "zu vergleichen",
+        "de": "vergleichen",
         "it": "confrontare",
         "pt": "comparar",
         "ru": "сравнивать",
         "zh": "比较",
         "ja": "比較する",
         "ko": "비교하다",
-        "ar": "للمقارنة",
+        "ar": "يقارن",
         "hi": "तुलना करना"
       }
     },
@@ -149,25 +115,59 @@
         "zh": "价格",
         "ja": "価格",
         "ko": "가격",
-        "ar": "السعر",
+        "ar": "سعر",
         "hi": "कीमत"
       }
     },
     {
-      "english_word": "to choose",
+      "english_word": "to welcome",
       "translations": {
-        "tr": "seçmek",
-        "es": "elegir",
-        "fr": "choisir",
-        "de": "zu wählen",
-        "it": "scegliere",
-        "pt": "escolher",
-        "ru": "выбирать",
-        "zh": "选择",
-        "ja": "選択する",
-        "ko": "선택하다",
-        "ar": "للاختيار",
-        "hi": "चुनने के लिए"
+        "tr": "karşılamak",
+        "es": "dar la bienvenida",
+        "fr": "accueillir",
+        "de": "willkommen heißen",
+        "it": "accogliere",
+        "pt": "acolher",
+        "ru": "приветствовать",
+        "zh": "欢迎",
+        "ja": "歓迎する",
+        "ko": "환영하다",
+        "ar": "يرحب ب",
+        "hi": "स्वागत करना"
+      }
+    },
+    {
+      "english_word": "polite",
+      "translations": {
+        "tr": "kibar",
+        "es": "educado",
+        "fr": "poli",
+        "de": "höflich",
+        "it": "gentile",
+        "pt": "gentil",
+        "ru": "вежливый",
+        "zh": "礼貌的",
+        "ja": "礼儀正しい",
+        "ko": "예의 바른",
+        "ar": "مهذب",
+        "hi": "विनम्र"
+      }
+    },
+    {
+      "english_word": "sample",
+      "translations": {
+        "tr": "örnek",
+        "es": "muestra",
+        "fr": "échantillon",
+        "de": "Probe",
+        "it": "campione",
+        "pt": "amostra",
+        "ru": "образец",
+        "zh": "样本",
+        "ja": "サンプル",
+        "ko": "샘플",
+        "ar": "عينة",
+        "hi": "नमूना"
       }
     },
     {

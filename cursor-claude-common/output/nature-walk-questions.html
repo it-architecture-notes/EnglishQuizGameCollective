@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>nature-walk — level tables</title>
+  <style>
+    body { font-family: system-ui, -apple-system, Segoe UI, Roboto, sans-serif; margin: 16px; background: #f5f5f5; }
+    h1 { font-size: 1.25rem; margin-bottom: 12px; }
+    h2 { font-size: 1.1rem; margin-top: 24px; margin-bottom: 8px; }
+    .wrap { overflow-x: auto; background: #fff; padding: 12px; border-radius: 8px; box-shadow: 0 1px 3px rgba(0,0,0,.08); margin-bottom: 16px; }
+    table { border-collapse: collapse; width: 100%; font-size: 13px; table-layout: fixed; }
+    th, td { border: 1px solid #c8c8c8; padding: 8px 10px; vertical-align: top; text-align: left; word-wrap: break-word; }
+    th { background: #e8e8e8; font-weight: 600; white-space: nowrap; }
+    tr:nth-child(even) td { background: #fafafa; }
+    .repeat-word { color: #c62828; font-weight: 600; }
+    .wrap.template-counts { max-width: 28rem; }
+    .wrap.word-frequency { max-width: 40rem; }
+    </style>
+</head>
+<body>
+  <h1>nature-walk — questions</h1>
+  <h2>Questions</h2>
+  <div class="wrap">
+    <table>
+<thead><tr><th>#</th><th>Template</th><th>Line 1 / Prompt</th><th>Line 2</th><th>Answer</th><th>English (translate)</th><th>Audio</th></tr></thead>
+<tbody><tr><td>1</td><td>imageQuizTemplate-1</td><td>image: desert</td><td></td><td>desert</td><td></td><td></td></tr><tr><td>2</td><td>ConvoTemplate-1</td><td>Wow, this forest is so _____.</td><td>Yes, I can only hear the wind in the trees.</td><td>quiet</td><td>quiet</td><td>audio_file1: wow-this-forest-is-so-quiet-convo · audio_file2: yes-i-can-only-hear-the-wind-in-the-trees-convo</td></tr><tr><td>3</td><td>ConvoTemplate-1</td><td>What are you putting in your bag?</td><td>I am ______ leaves! </td><td>collecting</td><td>to collect</td><td>audio_file1: what-are-you-putting-in-your-bag-convo · audio_file2: i-am-collecting-leaves-convo</td></tr><tr><td>4</td><td>imageQuizTemplate-1</td><td>image: forest</td><td></td><td>forest</td><td></td><td></td></tr><tr><td>5</td><td>WordPairs</td><td>east; west; north; south</td><td>word pairs</td><td>match all pairs</td><td>east; west; north; south</td><td></td></tr><tr><td>6</td><td>DialogueCompletion</td><td>Wow, that is a really big tree! How old do you think it is?</td><td></td><td>It could be hundreds of years old</td><td>big</td><td>audio_file1: wow-that-is-a-really-big-tree-how-old-do-you-think-it-is-convo · audio_file2: it-could-be-hundreds-of-years-old-convo</td></tr><tr><td>7</td><td>AppearDisappear</td><td>Do not touch the wild plants</td><td></td><td>-</td><td>to touch; wild</td><td>audio_file: do-not-touch-the-wild-plants-convo</td></tr><tr><td>8</td><td>imageQuizTemplate-1</td><td>image: sea</td><td></td><td>sea</td><td></td><td></td></tr><tr><td>9</td><td>imageQuizTemplate-2</td><td>image: river</td><td></td><td>river</td><td></td><td></td></tr><tr><td>10</td><td>SentenceBuilder</td><td>We could notice the wide river.</td><td></td><td>We could notice the wide river.</td><td>to notice; wide</td><td>audio_file: we-could-notice-the-wide-river-convo</td></tr><tr><td>11</td><td>imageQuizTemplate-1</td><td>image: stones</td><td></td><td>stones</td><td></td><td></td></tr><tr><td>12</td><td>ClozeSequence</td><td>Please do not _____ — stay ____ when you see an animal.</td><td></td><td>shout, calm</td><td>to shout; calm</td><td>audio_file: please-do-not-shout-—-stay-calm-when-you-see-an-animal-convo</td></tr><tr><td>13</td><td>GrammarForm</td><td>The snow _____ and we could see the river again.</td><td></td><td>melted</td><td>to melt</td><td></td></tr><tr><td>14</td><td>ClozeSequence</td><td>Small ants _____ _____ hills in the dry, sandy ground.</td><td></td><td>build, deep</td><td>to build; deep</td><td>audio_file: small-ants-build-deep-hills-in-the-dry-sandy-ground-convo</td></tr><tr><td>15</td><td>ClozeSequence</td><td>The bear growled ______, and ______ the campers.</td><td></td><td>suddenly, scared</td><td>suddenly</td><td>audio_file: suddenly,-a-rabbit-came-out-from-the-bushes-convo</td></tr></tbody>
+</table>
+  </div>
+
+  <h2>nature-walk — translations</h2>
+  <div class="wrap">
+    <table>
+<thead><tr><th>#</th><th>English word</th><th>ar</th><th>de</th><th>es</th><th>fr</th><th>hi</th><th>it</th><th>ja</th><th>ko</th><th>pt</th><th>ru</th><th>tr</th><th>zh</th></tr></thead>
+<tbody><tr><td>1</td><td>quiet</td><td>هادئ</td><td>ruhig</td><td>tranquilo</td><td>calme</td><td>शांत</td><td>tranquillo</td><td>静かな</td><td>조용한</td><td>quieto</td><td>тихий</td><td>sessiz</td><td>安静</td></tr><tr><td>2</td><td>to collect</td><td>لجمع</td><td>sammeln</td><td>recoger</td><td>collecter</td><td>इकट्ठा करना</td><td>raccogliere</td><td>集める</td><td>수집하다</td><td>coletar</td><td>собирать</td><td>toplamak</td><td>收集</td></tr><tr><td>3</td><td>big</td><td>كبير</td><td>groß</td><td>grande</td><td>grand</td><td>बड़ा</td><td>grande</td><td>大きい</td><td>큰</td><td>grande</td><td>большой</td><td>büyük</td><td>大</td></tr><tr><td>4</td><td>to touch</td><td>للمس</td><td>zu berühren</td><td>tocar</td><td>toucher</td><td>छूना</td><td>toccare</td><td>触れる</td><td>만지다</td><td>tocar</td><td>коснуться</td><td>dokunmak</td><td>触摸</td></tr><tr><td>5</td><td>wild</td><td>برية</td><td>wild</td><td>salvaje</td><td>sauvage</td><td>जंगली</td><td>selvaggio</td><td>野生の</td><td>야생</td><td>selvagem</td><td>дикий</td><td>vahşi</td><td>野生的</td></tr><tr><td>6</td><td>to notice</td><td>لملاحظة</td><td>bemerken</td><td>darse cuenta</td><td>remarquer</td><td>नोटिस करना</td><td>notare</td><td>気づくこと</td><td>알아차리다</td><td>notar</td><td>заметить</td><td>fark etmek</td><td>注意到</td></tr><tr><td>7</td><td>wide</td><td>واسعة</td><td>breit</td><td>ancho</td><td>large</td><td>विस्तृत</td><td>largo</td><td>広い</td><td>넓은</td><td>largo</td><td>широкий</td><td>geniş</td><td>宽</td></tr><tr><td>8</td><td>to shout</td><td>ليصرخ</td><td>schreien</td><td>gritar</td><td>crier</td><td>चिल्लाना</td><td>gridare</td><td>叫ぶ</td><td>소리치다</td><td>gritar</td><td>кричать</td><td>bağırmak</td><td>喊叫</td></tr><tr><td>9</td><td>calm</td><td>هادئ</td><td>ruhig</td><td>calma</td><td>calme</td><td>शांत</td><td>calma</td><td>穏やかな</td><td>침착한</td><td>calmo</td><td>спокойный</td><td>sakin</td><td>冷静</td></tr><tr><td>10</td><td>to melt</td><td>يذوب</td><td>schmelzen</td><td>fundirse</td><td>fondu</td><td>पिघल जाना</td><td>scioltura</td><td>溶ける</td><td>녹다</td><td>derreter</td><td>расплавиться</td><td>eritmek</td><td>融化</td></tr><tr><td>11</td><td>to build</td><td>لبناء</td><td>zu bauen</td><td>construir</td><td>construire</td><td>निर्माण करना</td><td>costruire</td><td>作る</td><td>짓다</td><td>construir</td><td>строить</td><td>inşa etmek</td><td>建造</td></tr><tr><td>12</td><td>deep</td><td>عميق</td><td>tief</td><td>profundo</td><td>profond</td><td>गहरा</td><td>profondo</td><td>深い</td><td>깊은</td><td>profundo</td><td>глубокий</td><td>derin</td><td>深</td></tr><tr><td>13</td><td>suddenly</td><td>فجأة</td><td>plötzlich</td><td>de repente</td><td>tout à coup</td><td>अचानक</td><td>all&#x27;improvviso</td><td>突然</td><td>갑자기</td><td>de repente</td><td>внезапно</td><td>aniden</td><td>突然</td></tr><tr><td>14</td><td>to scare</td><td>لتخويف</td><td>erschrecken</td><td>asustar</td><td>faire peur</td><td>डराना</td><td>spaventare</td><td>怖がらせる</td><td>겁을 주다</td><td>assustar</td><td>пугать</td><td>korkutmak</td><td>吓唬</td></tr></tbody>
+</table>
+  </div>
+
+  <h2>Template counts</h2>
+  <div class="wrap template-counts">
+    <table>
+<thead><tr><th>Template</th><th>Count in level</th></tr></thead>
+<tbody><tr><td>AppearDisappear</td><td>1</td></tr><tr><td>ClozeSequence</td><td>3</td></tr><tr><td>ConvoTemplate-1</td><td>2</td></tr><tr><td>DialogueCompletion</td><td>1</td></tr><tr><td>GrammarForm</td><td>1</td></tr><tr><td>imageQuizTemplate-1</td><td>4</td></tr><tr><td>imageQuizTemplate-2</td><td>1</td></tr><tr><td>SentenceBuilder</td><td>1</td></tr><tr><td>WordPairs</td><td>1</td></tr></tbody>
+</table>
+  </div>
+
+  <h2>Word frequency (questions.json; excludes template, audio_file*, WordPairs translations, distractors, wrongAnswers)</h2>
+  <div class="wrap word-frequency">
+    <table>
+<thead><tr><th>word</th><th>count</th></tr></thead>
+<tbody><tr><td>the</td><td>9</td></tr><tr><td>could</td><td>3</td></tr><tr><td>do</td><td>3</td></tr><tr><td>in</td><td>3</td></tr><tr><td>is</td><td>3</td></tr><tr><td>river</td><td>3</td></tr><tr><td>you</td><td>3</td></tr><tr><td>and</td><td>2</td></tr><tr><td>forest</td><td>2</td></tr><tr><td>i</td><td>2</td></tr><tr><td>it</td><td>2</td></tr><tr><td>not</td><td>2</td></tr><tr><td>old</td><td>2</td></tr><tr><td>see</td><td>2</td></tr><tr><td>we</td><td>2</td></tr><tr><td>wow</td><td>2</td></tr><tr><td>a</td><td>1</td></tr><tr><td>again</td><td>1</td></tr><tr><td>alex</td><td>1</td></tr><tr><td>am</td><td>1</td></tr><tr><td>an</td><td>1</td></tr><tr><td>animal</td><td>1</td></tr><tr><td>ants</td><td>1</td></tr><tr><td>are</td><td>1</td></tr><tr><td>bag</td><td>1</td></tr><tr><td>be</td><td>1</td></tr><tr><td>bear</td><td>1</td></tr><tr><td>beth</td><td>1</td></tr><tr><td>big</td><td>1</td></tr><tr><td>build</td><td>1</td></tr><tr><td>calm</td><td>1</td></tr><tr><td>campers</td><td>1</td></tr><tr><td>can</td><td>1</td></tr><tr><td>collecting</td><td>1</td></tr><tr><td>daniel</td><td>1</td></tr><tr><td>deep</td><td>1</td></tr><tr><td>desert</td><td>1</td></tr><tr><td>dry</td><td>1</td></tr><tr><td>east</td><td>1</td></tr><tr><td>ground</td><td>1</td></tr><tr><td>growled</td><td>1</td></tr><tr><td>hear</td><td>1</td></tr><tr><td>hills</td><td>1</td></tr><tr><td>how</td><td>1</td></tr><tr><td>hundreds</td><td>1</td></tr><tr><td>leaves</td><td>1</td></tr><tr><td>lily</td><td>1</td></tr><tr><td>melted</td><td>1</td></tr><tr><td>north</td><td>1</td></tr><tr><td>notice</td><td>1</td></tr><tr><td>of</td><td>1</td></tr><tr><td>omar</td><td>1</td></tr><tr><td>only</td><td>1</td></tr><tr><td>plants</td><td>1</td></tr><tr><td>please</td><td>1</td></tr><tr><td>putting</td><td>1</td></tr><tr><td>quiet</td><td>1</td></tr><tr><td>really</td><td>1</td></tr><tr><td>sandy</td><td>1</td></tr><tr><td>sarah</td><td>1</td></tr><tr><td>scared</td><td>1</td></tr><tr><td>sea</td><td>1</td></tr><tr><td>shout</td><td>1</td></tr><tr><td>small</td><td>1</td></tr><tr><td>snow</td><td>1</td></tr><tr><td>so</td><td>1</td></tr><tr><td>south</td><td>1</td></tr><tr><td>stay</td><td>1</td></tr><tr><td>stones</td><td>1</td></tr><tr><td>suddenly</td><td>1</td></tr><tr><td>that</td><td>1</td></tr><tr><td>think</td><td>1</td></tr><tr><td>this</td><td>1</td></tr><tr><td>touch</td><td>1</td></tr><tr><td>tree</td><td>1</td></tr><tr><td>trees</td><td>1</td></tr><tr><td>west</td><td>1</td></tr><tr><td>what</td><td>1</td></tr><tr><td>when</td><td>1</td></tr><tr><td>wide</td><td>1</td></tr><tr><td>wild</td><td>1</td></tr><tr><td>wind</td><td>1</td></tr><tr><td>years</td><td>1</td></tr><tr><td>yes</td><td>1</td></tr><tr><td>your</td><td>1</td></tr></tbody>
+</table>
+  </div>
+
+</body>
+</html>

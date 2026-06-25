@@ -72,7 +72,7 @@
         "imageName": "pasta",
         "wrongAnswers": [
           "bread",
-          "popcorn",
+          "paper-towel",
           "beans"
         ]
       }
@@ -80,11 +80,11 @@
     {
       "template": "imageQuizTemplate-1",
       "questionData": {
-        "imageName": "popcorn",
+        "imageName": "paper-towel",
         "wrongAnswers": [
-          "pasta",
-          "honey",
-          "beans"
+          "toilet-paper",
+          "garbage-bag",
+          "soap"
         ]
       }
     },

@@ -64,10 +64,14 @@ Agent:
 
 1. Read this skill + project rules
 2. `python3 tools/gather_prior_level_words.py bedroom --format json -o cursor-claude-common/output/bedroom-prior-words.json`
-3. Load `bedroom/questions.json`, `bedroom/translations.json`, flow position
+3. Load `bedroom/questions.json`, `bedroom/translations.json`, flow position — note **`mainLevel`** and look up the grammar band in **SKILL.md → Grammar progression by mainLevel**
 4. Build available words (CSVs + Oxford minus prior-words JSON)
-5. List image-taught words from image templates; build translated-word inventory; **scan for within-level duplicate answer words**; suggest vocabulary swaps
+5. List image-taught words from image templates; build translated-word inventory; **check grammar vs ML band**; **scan for within-level duplicate answer words**; suggest vocabulary swaps; **list unused reference-word opportunities**
 6. Report inline (or `{level-id}-audit.md` if requested) → wait for approval to apply fixes
+
+## Grammar progression
+
+Each ML row in **SKILL.md → Grammar progression by mainLevel** lists what that chapter **newly introduces**. Levels may reuse grammar from **ML1 through current ML**; grammar from **later MLs is forbidden** everywhere (stems, answers, distractors). Include the **Grammar progression** section in every audit report.
 
 ## Within-level word repetition
 
@@ -177,7 +181,7 @@ Required when auditing levels with `translations.json` and/or WordPairs.
 **Selection rules:**
 
 1. Not in `gather_prior_level_words.py` output for this level
-2. Fits level theme and flow position (grammar + vocabulary)
+2. Fits level theme and flow position (**grammar band** per SKILL.md + vocabulary)
 3. Prefer A1 from final-word CSVs / Oxford 3000
 4. **Not** already image-taught in this level
 5. Tie to a **text question** — as an answer **or** in AppearDisappear / SentenceBuilder sentence; state question edits in the report
@@ -195,6 +199,32 @@ Required when auditing levels with `translations.json` and/or WordPairs.
 | Any unused object noun | *(do not swap in)* | Object nouns → image questions, not translation slots |
 
 Report column **Question change** when the swap requires editing Cloze, Convo, WordPairs, or `translations.json` together.
+
+## Unused reference-word opportunities
+
+**Required** in every standard-level audit report (skip medley levels).
+
+If in your opinion there are better unused words in the references that suit the context, mention them in the audit review — even when no translation slot is weak or wasted.
+
+**Difference from vocabulary swaps:**
+
+| | Vocabulary swap (§4) | Unused reference-word opportunities (§4b) |
+|--|----------------------|-------------------------------------------|
+| Trigger | Weak / wasted / redundant **existing** slot | Proactive improvement; level may already be OK |
+| Action | Replace tracked word | Suggest optional addition or question tweak |
+| Required? | When weak slots exist | Always scan; report 1–5 candidates or “none noted” |
+
+**Sources:** final-word CSVs (`count` 0 preferred), Oxford 3000 (A1/A2), minus `gather_prior_level_words.py` output.
+
+**Exclude:** object nouns (standard levels), words already in level answers/translations/WordPairs/images, prior-blocked `translations.json` / WordPairs entries.
+
+**Report table:**
+
+| Word | POS / ref level | Why it fits | Suggested use |
+|------|-----------------|-------------|---------------|
+| `express` | verb B1, count 0 | express mail | Q15 Cloze instead of prior `how much` |
+
+**Deeper pass:** use **`cursor-claude-common/skills/improve-level-vocabulary/SKILL.md`** for ranked unused + misplaced-later analysis and full Recommended swaps blocks.
 
 ## Audio file stems
 
@@ -232,7 +262,7 @@ Flag when:
 
 | Template | Distractor rules |
 |----------|------------------|
-| `imageQuizTemplate-1` | 3 text `wrongAnswers` (or `distractors`); any string OK if on-theme |
+| `imageQuizTemplate-1` | 3 text `wrongAnswers` (or `distractors`); on-theme; **prefer prior consumed words** |
 | `imageQuizTemplate-2` | 3 `wrongAnswers` = image stems in level folder |
 | `ConvoTemplate-1` | `answer` + 3 `distractors` |
 | `ClozeSequence` | `sentence` with `____` blanks; `answer` or `answers`; `distractors` pool |
@@ -246,18 +276,53 @@ Full schema: `cursor-claude-common/context/page-designs-and-templates.md`
 
 ## Distractor quality (template-1 and convo)
 
+### Prior-vocabulary preference
+
+Distractors should **prefer words from previously used vocabulary** — the consumed set from `gather_prior_level_words.py` (prior levels' `translations.json` + WordPairs only).
+
+| Goal | Detail |
+|------|--------|
+| **Why** | Reinforce words the player already learned; distractors are review, not new teaching |
+| **Source** | Prior `english_word` / WordPairs entries; use the inflected form that fits the slot |
+| **Fit first** | Prior word must still fail the blank / both Convo lines / dialogue context — never pick a prior word that could be correct |
+| **Flag** | Fresh unused distractors when a prior word in the same field would work |
+| **Avoid** | Current-level answer words as distractors when plausible in that slot |
+| **template-2** | Image stems in folder required; prefer on-theme stems the player may know from earlier levels |
+
+### Good / bad (all templates)
+
 Good:
 
 - Same semantic field as the question (other fruits for a fruit image; other buildings for a bank image)
 - Plausible but clearly wrong for the shown image/sentence
 - Similar length/register when possible
+- **Drawn from prior consumed vocabulary** when a suitable prior word exists
 
 Bad:
 
 - Random household filler unrelated to theme (`soap`, `fork`, `napkin` on animal/bird questions)
+- **Brand-new words as distractors** when prior words in the same field would work and still be wrong
 - Misspellings used as traps (unless explicitly teaching spelling)
 - Distractor equals correct answer
 - For template-2: image stem not in folder
+
+### DialogueCompletion distractors (three checks)
+
+Every distractor must be:
+
+1. **Grammatically correct** — full, natural English (no broken forms like `this are not`, unless the level explicitly teaches form via ungrammatical MCQ and the audit scope says otherwise).
+2. **Situation-related** — same scene/topic as `line1` (leaving, food, hotel problem, etc.). Not a random line from another context.
+3. **Not a reasonable answer** — must not directly or plausibly respond to the question, including **alternate valid branches** (yes/no, ready/not ready, food arrived/not arrived).
+
+**Good pattern:** Q: “Can we leave now? Are you ready?” → D: “The traffic will be heavy today.” (trip-related, does not answer readiness)
+
+**Bad patterns:**
+
+- **Reasonable alternate answer:** “Yes, I am ready.” when keyed answer is “Not yet.”
+- **Off-topic:** “Where are you from?” when asked about leaving
+- **Ungrammatical:** “Sometimes walking slowly.” as a reply line
+
+When auditing, list each failing distractor and which check failed.
 
 ## Capitalization & punctuation conventions
 

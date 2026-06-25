@@ -37,8 +37,8 @@
         "line2": "How much do you need?",
         "answer": "withdraw",
         "distractors": [
-          "deposit",
-          "transfer",
+          "study",
+          "bake",
           "balance"
         ]
       },
@@ -62,65 +62,65 @@
         "english_words": [
           "if",
           "though",
-          "after",
-          "never"
+          "until",
+          "often"
         ],
         "translations": [
           {
             "tr": "eğer",
             "es": "si",
             "fr": "si",
-            "de": "Wenn",
-            "it": "Se",
+            "de": "wenn",
+            "it": "se",
             "pt": "se",
             "ru": "если",
             "zh": "如果",
             "ja": "もし",
-            "ko": "만약에",
-            "ar": "لو",
+            "ko": "만약",
+            "ar": "إذا",
             "hi": "अगर"
           },
           {
-            "tr": "Yine de",
+            "tr": "olmasına rağmen",
             "es": "aunque",
             "fr": "bien que",
             "de": "obwohl",
-            "it": "Anche se",
+            "it": "anche se",
             "pt": "embora",
             "ru": "хотя",
-            "zh": "尽管",
-            "ja": "けれど",
-            "ko": "그렇지만",
-            "ar": "رغم ذلك",
-            "hi": "यद्यपि"
+            "zh": "虽然",
+            "ja": "けれども",
+            "ko": "비록 ~일지라도",
+            "ar": "على الرغم من أن",
+            "hi": "हालाँकि"
           },
           {
-            "tr": "sonrasında",
-            "es": "después",
-            "fr": "après",
-            "de": "nach",
-            "it": "Dopo",
-            "pt": "depois",
-            "ru": "после",
-            "zh": "后",
-            "ja": "後",
-            "ko": "~ 후에",
-            "ar": "بعد",
-            "hi": "बाद"
+            "tr": "kadar",
+            "es": "hasta",
+            "fr": "jusqu'à",
+            "de": "bis",
+            "it": "fino a",
+            "pt": "até",
+            "ru": "до",
+            "zh": "直到",
+            "ja": "まで",
+            "ko": "~까지",
+            "ar": "حتى",
+            "hi": "तक"
           },
           {
-            "tr": "Asla",
-            "es": "nunca",
-            "fr": "jamais",
-            "de": "niemals",
-            "it": "Mai",
-            "pt": "nunca",
-            "ru": "никогда",
-            "zh": "绝不",
-            "ja": "一度もない",
-            "ko": "절대",
-            "ar": "أبداً",
-            "hi": "कभी नहीं"
+            "tr": "sıklıkla",
+            "es": "a menudo",
+            "fr": "souvent",
+            "de": "oft",
+            "it": "spesso",
+            "pt": "frequentemente",
+            "ru": "часто",
+            "zh": "经常",
+            "ja": "よく",
+            "ko": "자주",
+            "ar": "غالباً",
+            "hi": "अक्सर"
           }
         ]
       }
@@ -144,7 +144,7 @@
     {
       "template": "AppearDisappear",
       "questionData": {
-        "words": "Just sign at the bottom of this page",
+        "words": "Sign here and we will lend you money.",
         "distractors": [
           "only",
           "leave",
@@ -152,7 +152,7 @@
           "letter"
         ]
       },
-      "audio_file": "just-sign-at-the-bottom-of-this-page-convo"
+      "audio_file": "sign-here-and-we-will-lend-you-money-convo"
     },
     {
       "template": "imageQuizTemplate-1",
@@ -197,18 +197,19 @@
     {
       "template": "ClozeSequence",
       "questionData": {
-        "sentence": "I'd like to ______ my mortgage options _____.",
+        "sentence": "I'd like to ______ my account options _____.",
         "answer": [
           "discuss",
-          "too"
+          "soon"
         ],
         "distractors": [
-          "ask",
-          "never",
-          "always"
+          "pay",
+          "sign",
+          "borrow",
+          "call"
         ]
       },
-      "audio_file": "i-d-like-to-discuss-my-mortgage-options-too-convo"
+      "audio_file": "i-d-like-to-discuss-my-account-options-soon-convo"
     },
     {
       "template": "GrammarForm",
@@ -225,33 +226,33 @@
     {
       "template": "ClozeSequence",
       "questionData": {
-        "sentence": "______ that _____ cash withdrawals must be reported.",
+        "sentence": "______ that _____ amounts need your ID.",
         "answer": [
           "remember",
           "large"
         ],
         "distractors": [
-          "ask",
+          "cook",
           "look",
-          "small",
-          "high"
+          "short",
+          "new"
         ]
       },
-      "audio_file": "remember-that-large-cash-withdrawals-must-be-reported-convo"
+      "audio_file": "remember-that-large-amounts-need-your-id-convo"
     },
     {
       "template": "ClozeSequence",
       "questionData": {
-        "sentence": "I want to _____ a new _____ please",
+        "sentence": "I want to _____ a new _____ please.",
         "answer": [
           "open",
           "account"
         ],
         "distractors": [
           "close",
-          "deposit",
+          "borrow",
           "cash",
-          "card"
+          "report"
         ]
       },
       "audio_file": "i-want-to-open-a-new-account-please-convo"

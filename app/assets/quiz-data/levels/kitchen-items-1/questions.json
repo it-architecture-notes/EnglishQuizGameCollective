@@ -61,7 +61,7 @@
         "imageName": "colander",
         "wrongAnswers": [
           "strainer",
-          "cooking-pot",
+          "teapot",
           "bowl"
         ]
       }
@@ -72,7 +72,7 @@
         "imageName": "casserole-dish",
         "wrongAnswers": [
           "baking-tray",
-          "cooking-pot",
+          "measuring-cup",
           "apron"
         ]
       }
@@ -80,11 +80,11 @@
     {
       "template": "imageQuizTemplate-1",
       "questionData": {
-        "imageName": "cooking-pot",
+        "imageName": "teapot",
         "wrongAnswers": [
-          "casserole-dish",
-          "stove",
-          "belt"
+          "glass",
+          "bowl",
+          "blender"
         ]
       }
     },
@@ -162,6 +162,17 @@
           "stove",
           "baking-tray",
           "blender"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "measuring-cup",
+        "wrongAnswers": [
+          "glass",
+          "bowl",
+          "spoon"
         ]
       }
     }

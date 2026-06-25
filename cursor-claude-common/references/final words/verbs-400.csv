@@ -1,37 +1,290 @@
 word,level,count,levels
-dance,A1,0,
-design,A1,0,
-die,A1,0,
+add,A1,1,at-the-farm
+agree,A1,1,at-the-dentist
+answer,A1,1,at-the-school
+arrive,A1,1,at-the-train-station
+ask,A1,1,at-the-school
+back,A1,1,city-walk
+become,A1,1,medley-1
+begin,A1,1,at-the-hospital
+believe,A1,1,at-the-pharmacy
+break,A1,1,at-the-post-office
+bring,A1,1,at-the-post-office
+brush,A1,1,bathroom
+build,A1,1,nature-walk
+buy,A1,1,grocery-shopping
+call,A1,1,at-the-hospital
+can,A1,1,kitchen
+carry,A1,2,"at-the-airport,grocery-shopping"
+change,A1,1,baby-care
+check,A1,3,"at-the-airport,at-the-hospital,at-the-hotel"
+choose,A1,1,grocery-shopping
+clean,A1,1,bedroom
+close,A1,1,living-room
+comb,A1,1,bathroom
+come,A1,1,city-walk
+come back,A1,1,city-walk
+come in,A1,7,"at-the-airport,at-the-bank,at-the-dentist,at-the-hotel,at-the-park,city-walk,prepositions"
+come out,A1,5,"at-the-hotel,at-the-traffic,city-walk,prepositions,waking-up"
+compare,A1,1,at-the-farmers-market
+complete,A1,1,at-the-post-office
+cook,A1,1,kitchen
+cost,A1,1,at-the-post-office
+create,A1,1,emergency-situations
+cut,A1,1,kitchen
+dance,A1,1,birthday-party
+describe,A1,1,at-garage-gas station
+design,A1,1,medley-3
+die,A1,1,medley-1
+do,A1,2,"at-the-school,kitchen"
+drink,A1,1,kitchen
+drive,A1,1,at-the-traffic
+eat,A1,1,kitchen
+end,A1,1,going-to-sports
+enjoy,A1,2,"at-the-park,birthday-party"
+explain,A1,1,at-the-dentist
+fall,A1,2,"at-the-park,medley-1"
+feel,A1,2,"at-the-hospital,bathroom"
+fill,A1,2,"at-garage-gas station,at-the-bank"
+find,A1,1,at-the-library
+finish,A1,2,"at-the-office,going-to-sports"
+follow,A1,1,city-walk
+forget,A1,1,living-room
+get,A1,3,"at-the-library,at-the-traffic,waking-up"
+get in,A1,9,"at-the-airport,at-the-bank,at-the-dentist,at-the-hotel,at-the-library,at-the-park,at-the-traffic,prepositions,waking-up"
+get out,A1,5,"at-the-hotel,at-the-library,at-the-traffic,prepositions,waking-up"
+get up,A1,5,"at-garage-gas station,at-the-library,at-the-traffic,prepositions,waking-up"
+give,A1,1,birthday-party
+go,A1,3,"basic-sentences,city-walk,waking-up"
+go back,A1,3,"basic-sentences,city-walk,waking-up"
+go down,A1,6,"at-the-traffic,basic-sentences,city-walk,living-room,prepositions,waking-up"
+go out,A1,6,"at-the-hotel,at-the-traffic,basic-sentences,city-walk,prepositions,waking-up"
+go up,A1,5,"at-garage-gas station,basic-sentences,city-walk,prepositions,waking-up"
+greet,A1,1,living-room
+grow,A1,1,at-the-farm
+guess,A1,1,grocery-shopping
+happen,A1,1,at-the-pharmacy
+hate,A1,1,at-the-cinema
+have,A1,1,basic-sentences
+hear,A1,1,medley-1
+help,A1,2,"at-the-hospital,at-the-library"
+hope,A1,1,at-the-airport
+imagine,A1,1,medley-1
+improve,A1,1,going-to-sports
+include,A1,1,at-the-post-office
+join,A1,1,at-the-hotel
+keep,A1,2,"at-the-dentist,medley-2"
+know,A1,2,"at-the-school,basic-sentences"
+learn,A1,1,at-the-school
+leave,A1,2,"city-walk,clothes-shopping"
+let,A1,1,at-the-traffic
+like,A1,1,basic-sentences
+listen,A1,1,living-room
+live,A1,1,city-walk
+log in,A1,6,"at-the-airport,at-the-bank,at-the-dentist,at-the-hotel,at-the-park,prepositions"
+log out,A1,4,"at-the-hotel,at-the-traffic,prepositions,waking-up"
+look,A1,2,"city-walk,clothes-shopping"
+look for,A1,3,"basic-sentences,city-walk,clothes-shopping"
+lose,A1,2,"at-the-post-office,going-to-sports"
+love,A1,1,clothes-shopping
+make,A1,1,birthday-party
+mean,A1,1,at-the-cinema
+meet,A1,1,greetings
+miss,A1,2,"at-the-cinema,at-the-train-station"
+move,A1,1,at-the-farm
+must,A1,1,kitchen
+name,A1,1,greetings
+need,A1,1,baby-care
+open,A1,2,"at-the-bank,waking-up"
+order,A1,1,at-the-restaurant
+pay,A1,1,grocery-shopping
+pick up,A1,4,"at-garage-gas station,at-the-farm,prepositions,waking-up"
+plan,A1,1,at-the-office
+play,A1,1,at-the-park
+practice,A1,1,going-to-sports
+put,A1,1,at-the-train-station
+put down,A1,4,"at-the-traffic,at-the-train-station,living-room,prepositions"
+put on,A1,6,"at-the-airport,at-the-farmers-market,at-the-train-station,bedroom,clothes-shopping,prepositions"
+read,A1,1,at-the-school
+remember,A1,1,at-the-bank
+repeat,A1,1,baby-care
+return,A1,2,"at-the-train-station,clothes-shopping"
+ride,A1,1,at-the-farm
+run,A1,2,"at-the-park,at-the-train-station"
+say,A1,1,basic-sentences
+see,A1,2,"city-walk,greetings"
+seem,A1,1,at-the-farmers-market
+sell,A1,1,at-the-farmers-market
+send,A1,1,at-the-post-office
+share,A1,1,at-the-restaurant
+shop,A1,1,grocery-shopping
+show,A1,2,"at-the-dentist,at-the-library"
+shut down,A1,3,"at-the-traffic,living-room,prepositions"
+sign in,A1,6,"at-the-airport,at-the-bank,at-the-dentist,at-the-hotel,at-the-park,prepositions"
+sign out,A1,5,"at-the-bank,at-the-hotel,at-the-traffic,prepositions,waking-up"
+sign up,A1,4,"at-garage-gas station,at-the-bank,prepositions,waking-up"
+sing,A1,1,birthday-party
+sit,A1,1,living-room
+sit down,A1,3,"at-the-traffic,living-room,prepositions"
+sleep,A1,1,waking-up
+sound,A1,1,at-the-traffic
+speak,A1,1,at-the-hotel
+spend,A1,1,clothes-shopping
+stand,A1,1,waking-up
+stand up,A1,3,"at-garage-gas station,prepositions,waking-up"
+start,A1,2,"at-garage-gas station,medley-1"
+stay,A1,1,at-the-hotel
+stop,A1,1,at-the-traffic
+study,A1,1,at-the-school
+swim,A1,1,going-to-sports
+take,A1,3,"at-the-library,at-the-pharmacy,bathroom"
+take off,A1,5,"at-the-library,at-the-pharmacy,bathroom,bedroom,prepositions"
+talk,A1,1,living-room
+teach,A1,1,at-the-school
+tell,A1,1,at-the-pharmacy
+thank,A1,1,greetings
+think,A1,2,"at-the-hospital,medley-2"
+travel,A1,1,at-the-train-station
+try,A1,2,"clothes-shopping,waking-up"
+turn,A1,3,"at-the-traffic,bedroom,city-walk"
+turn off,A1,4,"at-the-traffic,bedroom,city-walk,prepositions"
+turn on,A1,7,"at-the-airport,at-the-farmers-market,at-the-traffic,bedroom,city-walk,clothes-shopping,prepositions"
+understand,A1,2,"at-the-dentist,at-the-school"
+use,A1,2,"at-the-pharmacy,bathroom"
+visit,A1,1,emergency-situations
+wait,A1,1,grocery-shopping
+wake,A1,1,waking-up
+wake up,A1,3,"at-garage-gas station,prepositions,waking-up"
+walk,A1,1,city-walk
+want,A1,1,birthday-party
+wash,A1,1,bathroom
+watch,A1,1,at-the-cinema
+wear,A1,1,clothes-shopping
+welcome,A1,2,"at-the-farmers-market,basic-sentences"
+will,A1,1,kitchen
+win,A1,1,medley-2
+work,A1,2,"at-the-hospital,at-the-office"
+write,A1,1,at-the-school
+accept,A2,1,medley-3
+apply,A2,1,medley-3
+attack,A2,1,emergency-situations
+attend,A2,1,at-the-office
+blow,A2,1,birthday-party
+boil,A2,1,at-the-restaurant
+book,A2,1,at-the-cinema
+borrow,A2,1,at-the-library
+bring back,A2,2,"at-the-post-office,city-walk"
+burn,A2,1,emergency-situations
+cancel,A2,1,at-the-airport
+catch,A2,2,"at-the-train-station,going-to-sports"
+celebrate,A2,1,birthday-party
+climb,A2,1,at-the-park
+collect,A2,1,nature-walk
+come along,A2,1,city-walk
+confirm,A2,1,at-the-hotel
+connect,A2,1,at-the-office
+continue,A2,1,at-the-hotel
+cough,A2,1,emergency-situations
+count,A2,1,at-the-bank
+cross,A2,1,at-the-traffic
+cry,A2,1,baby-care
+decide,A2,1,at-the-office
+deliver,A2,1,at-the-post-office
+discuss,A2,1,at-the-bank
+draw,A2,1,medley-3
+drop,A2,1,medley-4
+earn,A2,1,medley-3
+enter,A2,1,at-the-cinema
+escape,A2,1,medley-3
+expect,A2,1,medley-4
+fail,A2,1,at-the-traffic
+feed,A2,1,baby-care
+fight,A2,1,medley-3
+find out,A2,5,"at-the-hotel,at-the-library,at-the-traffic,prepositions,waking-up"
+fit,A2,1,clothes-shopping
+fly,A2,1,at-the-airport
+fold,A2,1,medley-3
+gather,A2,1,living-room
+give up,A2,4,"at-garage-gas station,birthday-party,prepositions,waking-up"
+hide,A2,1,medley-2
+hit,A2,1,going-to-sports
+hold,A2,1,baby-care
+hurry,A2,1,at-the-train-station
+hurt,A2,1,at-the-dentist
+increase,A2,1,at-the-traffic
+invite,A2,1,birthday-party
+jump,A2,1,at-the-park
+kick,A2,1,medley-4
+land,A2,1,at-the-airport
+last,A2,1,emergency-situations
+laugh,A2,1,baby-care
+lend,A2,1,at-the-bank
+lie,A2,1,living-room
+lift,A2,1,medley-4
+lock,A2,1,medley-2
+marry,A2,1,medley-4
+melt,A2,1,nature-walk
+mix,A2,1,medley-4
+notice,A2,1,nature-walk
+offer,A2,1,at-the-restaurant
+pack,A2,1,at-the-post-office
+pass,A2,1,at-the-traffic
+pick,A2,1,at-the-farm
+plant,A2,1,at-the-farm
+pour,A2,1,medley-4
+prefer,A2,1,clothes-shopping
+prepare,A2,1,at-garage-gas station
+present,A2,1,going-to-sports
+prevent,A2,1,emergency-situations
+protect,A2,1,medley-2
+pull,A2,1,at-the-farm
+push,A2,1,at-the-farm
+raise,A2,1,at-the-farm
+receive,A2,1,at-the-post-office
+recommend,A2,1,at-the-cinema
+relax,A2,1,living-room
+remove,A2,1,clothes-shopping
+repair,A2,1,at-garage-gas station
+replace,A2,1,at-garage-gas station
+rest,A2,1,at-the-hospital
+run away,A2,3,"at-the-office,at-the-park,at-the-train-station"
+save,A2,2,"at-the-bank,emergency-situations"
+score,A2,1,going-to-sports
+search,A2,1,at-the-library
+select,A2,1,at-the-cinema
+serve,A2,1,at-the-restaurant
+sign,A2,1,at-the-bank
+smile,A2,1,baby-care
+suggest,A2,1,at-the-office
+surprise,A2,1,birthday-party
+take away,A2,5,"at-the-library,at-the-office,at-the-park,at-the-pharmacy,bathroom"
+taste,A2,1,at-the-restaurant
+throw,A2,1,at-the-park
+touch,A2,1,nature-walk
+water,A2,1,at-the-pharmacy
+wish,A2,1,medley-4
+bake,B1,1,kitchen
+clear,B1,1,at-the-hotel
+complain,B1,1,at-the-hotel
+depart,B1,1,at-the-airport
+warn,B1,1,emergency-situations
+whisper,B1,1,baby-care
+excuse,B2,1,basic-sentences
+renew,B2,1,at-the-library
 dress,A1,0,
-greet,A1,0,
-guess,A1,0,
-hate,A1,0,
-hear,A1,0,
-imagine,A1,0,
-mean,A1,0,
 park,A1,0,
-plan,A1,0,
 post,A1,0,
-seem,A1,0,
-should,A1,0,
-sound,A1,0,
-teach,A1,0,
 test,A1,0,
 would,A1,0,
-accept,A2,0,
 achieve,A2,0,
 act,A2,0,
 adopt,A2,0,
 affect,A2,0,
 allow,A2,0,
 appear,A2,0,
-apply,A2,0,
-attend,A2,0,
 avoid,A2,0,
 beat,A2,0,
 behave,A2,0,
-boil,A2,0,
-book,A2,0,
 bore,A2,0,
 care,A2,0,
 cause,A2,0,
@@ -49,67 +302,45 @@ disappear,A2,0,
 disconnect,A2,0,
 discover,A2,0,
 dive,A2,0,
-draw,A2,0,
-drop,A2,0,
 dust,A2,0,
-earn,A2,0,
-escape,A2,0,
 excite,A2,0,
 exist,A2,0,
 exit,A2,0,
-expect,A2,0,
 fade,A2,0,
-fail,A2,0,
 fetch,A2,0,
-fight,A2,0,
 fire,A2,0,
 fix,A2,0,
 focus,A2,0,
-fold,A2,0,
 freeze,A2,0,
 frighten,A2,0,
-gather,A2,0,
 grate,A2,0,
 grill,A2,0,
 hang,A2,0,
 head,A2,0,
-hide,A2,0,
-increase,A2,0,
 introduce,A2,0,
 involve,A2,0,
 iron,A2,0,
-kick,A2,0,
 kill,A2,0,
 knock,A2,0,
 lead,A2,0,
-lend,A2,0,
-lift,A2,0,
 link,A2,0,
-lock,A2,0,
 manage,A2,0,
 mark,A2,0,
-marry,A2,0,
 matter,A2,0,
 may,A2,0,
-melt,A2,0,
 might,A2,0,
 mind,A2,0,
-mix,A2,0,
-offer,A2,0,
 organize,A2,0,
-pack,A2,0,
-pass,A2,0,
+own,A2,0,
 peel,A2,0,
 perform,A2,0,
+place,A2,0,
 point,A2,0,
 polish,A2,0,
-pour,A2,0,
 predict,A2,0,
-print,A2,0,
 produce,A2,0,
 promise,A2,0,
 pronounce,A2,0,
-protect,A2,0,
 provide,A2,0,
 publish,A2,0,
 reach,A2,0,
@@ -119,7 +350,6 @@ record,A2,0,
 reduce,A2,0,
 refer,A2,0,
 refuse,A2,0,
-relax,A2,0,
 reply,A2,0,
 report,A2,0,
 respond,A2,0,
@@ -127,8 +357,6 @@ review,A2,0,
 rise,A2,0,
 roast,A2,0,
 rush,A2,0,
-select,A2,0,
-serve,A2,0,
 shake,A2,0,
 shock,A2,0,
 shut,A2,0,
@@ -156,7 +384,6 @@ unlock,A2,0,
 unpack,A2,0,
 vote,A2,0,
 wander,A2,0,
-wish,A2,0,
 worry,A2,0,
 wrap,A2,0,
 yell,A2,0,
@@ -233,6 +460,7 @@ remain,B1,0,
 remind,B1,0,
 represent,B1,0,
 require,B1,0,
+reserve,B1,0,
 restart,B1,0,
 result,B1,0,
 roll,B1,0,
@@ -251,7 +479,6 @@ treat,B1,0,
 unload,B1,0,
 upload,B1,0,
 view,B1,0,
-whisper,B1,0,
 wonder,B1,0,
 abandon,B2,0,
 acknowledge,B2,0,
@@ -323,232 +550,3 @@ survive,B2,0,
 threaten,B2,0,
 trust,B2,0,
 fuck,C2,0,
-place,A2,0,
-reserve,B1,0,
-forget,A1,0,
-blow,A2,1,birthday-party
-celebrate,A2,1,birthday-party
-invite,A2,1,birthday-party
-surprise,A2,1,birthday-party
-welcome,A1,1,basic-sentences
-search,A2,1,at-the-library
-excuse,B2,1,basic-sentences
-renew,B2,1,at-the-library
-create,A1,1,emergency-situations
-visit,A1,1,emergency-situations
-attack,A2,1,emergency-situations
-burn,A2,1,emergency-situations
-cough,A2,1,emergency-situations
-last,A2,1,emergency-situations
-prevent,A2,1,emergency-situations
-warn,B1,1,emergency-situations
-add,A1,1,at-the-farm
-agree,A1,1,at-the-dentist
-answer,A1,1,at-the-school
-arrive,A1,1,at-the-train-station
-ask,A1,1,at-the-school
-back,A1,1,city-walk
-become,A1,1,at-the-farm
-begin,A1,1,at-the-hospital
-believe,A1,1,at-the-pharmacy
-break,A1,1,at-the-post-office
-bring,A1,1,at-the-post-office
-brush,A1,1,bathroom
-build,A1,1,nature-walk
-buy,A1,1,grocery-shopping
-call,A1,1,at-the-hospital
-can,A1,1,kitchen
-carry,A1,1,at-the-airport
-change,A1,1,baby-care
-check,A1,3,"at-the-airport,at-the-hospital,at-the-hotel"
-choose,A1,1,at-the-farmers-market
-clean,A1,1,bedroom
-close,A1,1,living-room
-comb,A1,1,bathroom
-come,A1,1,city-walk
-come back,A1,1,city-walk
-come in,A1,6,"at-the-airport,at-the-bank,at-the-dentist,at-the-hotel,at-the-park,city-walk"
-come out,A1,4,"at-the-hotel,at-the-traffic,city-walk,waking-up"
-compare,A1,1,at-the-farmers-market
-complete,A1,1,at-the-post-office
-cook,A1,1,kitchen
-cost,A1,1,at-the-post-office
-cut,A1,1,kitchen
-describe,A1,1,at-garage-gas station
-do,A1,2,"at-the-school,kitchen"
-drink,A1,1,kitchen
-drive,A1,1,at-the-traffic
-eat,A1,1,kitchen
-end,A1,1,going-to-sports
-enjoy,A1,2,"at-the-park,birthday-party"
-explain,A1,1,at-the-dentist
-fall,A1,1,at-the-park
-feel,A1,2,"at-the-hospital,bathroom"
-fill,A1,2,"at-garage-gas station,at-the-bank"
-find,A1,2,"at-the-library,grocery-shopping"
-finish,A1,1,going-to-sports
-follow,A1,1,city-walk
-get,A1,3,"at-the-library,at-the-traffic,waking-up"
-get in,A1,8,"at-the-airport,at-the-bank,at-the-dentist,at-the-hotel,at-the-library,at-the-park,at-the-traffic,waking-up"
-get out,A1,4,"at-the-hotel,at-the-library,at-the-traffic,waking-up"
-get up,A1,4,"at-garage-gas station,at-the-library,at-the-traffic,waking-up"
-give,A1,2,"birthday-party,grocery-shopping"
-go,A1,3,"basic-sentences,city-walk,waking-up"
-go back,A1,3,"basic-sentences,city-walk,waking-up"
-go down,A1,5,"at-the-traffic,basic-sentences,city-walk,living-room,waking-up"
-go out,A1,5,"at-the-hotel,at-the-traffic,basic-sentences,city-walk,waking-up"
-go up,A1,4,"at-garage-gas station,basic-sentences,city-walk,waking-up"
-grow,A1,1,at-the-farmers-market
-happen,A1,1,at-the-pharmacy
-have,A1,1,basic-sentences
-help,A1,2,"at-the-hospital,at-the-library"
-hope,A1,1,at-the-airport
-improve,A1,1,going-to-sports
-include,A1,1,at-the-post-office
-join,A1,1,at-the-hotel
-keep,A1,1,at-the-dentist
-know,A1,2,"at-the-school,basic-sentences"
-learn,A1,1,at-the-school
-leave,A1,1,city-walk
-let,A1,1,at-the-traffic
-like,A1,1,basic-sentences
-listen,A1,1,living-room
-live,A1,1,city-walk
-log in,A1,5,"at-the-airport,at-the-bank,at-the-dentist,at-the-hotel,at-the-park"
-log out,A1,3,"at-the-hotel,at-the-traffic,waking-up"
-look,A1,2,"city-walk,clothes-shopping"
-look for,A1,3,"basic-sentences,city-walk,clothes-shopping"
-lose,A1,2,"at-the-post-office,going-to-sports"
-love,A1,1,clothes-shopping
-make,A1,2,"birthday-party,grocery-shopping"
-meet,A1,1,greetings
-miss,A1,1,at-the-train-station
-move,A1,1,at-the-farm
-must,A1,1,kitchen
-name,A1,1,greetings
-need,A1,1,at-the-farmers-market
-open,A1,2,"at-the-bank,waking-up"
-order,A1,1,at-the-restaurant
-pay,A1,1,at-the-restaurant
-pick up,A1,3,"at-garage-gas station,at-the-farm,waking-up"
-play,A1,1,at-the-park
-practice,A1,1,going-to-sports
-put,A1,1,at-the-train-station
-put down,A1,3,"at-the-traffic,at-the-train-station,living-room"
-put on,A1,5,"at-the-airport,at-the-farmers-market,at-the-train-station,bedroom,clothes-shopping"
-read,A1,1,at-the-school
-remember,A1,1,at-the-bank
-repeat,A1,1,baby-care
-return,A1,2,"at-the-train-station,clothes-shopping"
-ride,A1,1,at-the-farm
-run,A1,2,"at-the-park,at-the-train-station"
-say,A1,2,"basic-sentences,living-room"
-see,A1,1,greetings
-sell,A1,1,at-the-farmers-market
-send,A1,1,at-the-post-office
-share,A1,1,at-the-restaurant
-shop,A1,1,grocery-shopping
-show,A1,2,"at-the-dentist,at-the-library"
-shut down,A1,2,"at-the-traffic,living-room"
-sign in,A1,5,"at-the-airport,at-the-bank,at-the-dentist,at-the-hotel,at-the-park"
-sign out,A1,4,"at-the-bank,at-the-hotel,at-the-traffic,waking-up"
-sign up,A1,3,"at-garage-gas station,at-the-bank,waking-up"
-sing,A1,2,"baby-care,birthday-party"
-sit,A1,1,living-room
-sit down,A1,2,"at-the-traffic,living-room"
-sleep,A1,1,waking-up
-speak,A1,1,at-the-hotel
-spend,A1,1,clothes-shopping
-stand,A1,1,waking-up
-stand up,A1,2,"at-garage-gas station,waking-up"
-start,A1,1,at-garage-gas station
-stay,A1,1,at-the-hotel
-stop,A1,1,at-the-traffic
-study,A1,1,at-the-school
-swim,A1,1,going-to-sports
-take,A1,3,"at-the-library,at-the-pharmacy,bathroom"
-take off,A1,4,"at-the-library,at-the-pharmacy,bathroom,bedroom"
-talk,A1,1,living-room
-tell,A1,1,at-the-pharmacy
-thank,A1,1,greetings
-think,A1,1,at-the-hospital
-travel,A1,1,at-the-train-station
-try,A1,2,"clothes-shopping,waking-up"
-turn,A1,2,"bedroom,city-walk"
-turn off,A1,2,"bedroom,city-walk"
-turn on,A1,5,"at-the-airport,at-the-farmers-market,bedroom,city-walk,clothes-shopping"
-understand,A1,2,"at-the-dentist,at-the-school"
-use,A1,2,"at-the-pharmacy,bathroom"
-wait,A1,1,grocery-shopping
-wake,A1,1,waking-up
-wake up,A1,2,"at-garage-gas station,waking-up"
-walk,A1,1,city-walk
-want,A1,2,"birthday-party,grocery-shopping"
-wash,A1,1,bathroom
-watch,A1,1,living-room
-wear,A1,1,clothes-shopping
-will,A1,1,kitchen
-win,A1,1,clothes-shopping
-work,A1,1,at-the-hospital
-write,A1,1,at-the-school
-borrow,A2,2,"at-the-hotel,at-the-library"
-bring back,A2,2,"at-the-post-office,city-walk"
-cancel,A2,1,at-the-airport
-catch,A2,2,"at-the-train-station,going-to-sports"
-climb,A2,1,at-the-park
-collect,A2,1,nature-walk
-come along,A2,1,city-walk
-confirm,A2,1,at-the-hotel
-connect,A2,1,at-the-office
-continue,A2,1,at-the-hotel
-count,A2,1,at-the-bank
-cross,A2,1,at-the-traffic
-cry,A2,1,baby-care
-decide,A2,1,at-the-office
-deliver,A2,1,at-the-post-office
-discuss,A2,1,at-the-bank
-enter,A2,1,at-the-traffic
-feed,A2,1,baby-care
-find out,A2,5,"at-the-hotel,at-the-library,at-the-traffic,grocery-shopping,waking-up"
-fit,A2,1,clothes-shopping
-fly,A2,1,at-the-airport
-give up,A2,4,"at-garage-gas station,birthday-party,grocery-shopping,waking-up"
-hit,A2,1,going-to-sports
-hold,A2,1,baby-care
-hurry,A2,1,at-the-train-station
-hurt,A2,1,at-the-dentist
-jump,A2,1,at-the-park
-land,A2,1,at-the-airport
-laugh,A2,1,baby-care
-lie,A2,1,living-room
-notice,A2,1,nature-walk
-own,A2,1,at-the-office
-pick,A2,1,at-the-farm
-plant,A2,1,at-the-farm
-prefer,A2,1,clothes-shopping
-prepare,A2,1,at-garage-gas station
-present,A2,1,going-to-sports
-pull,A2,1,at-the-farm
-push,A2,1,at-the-farm
-raise,A2,1,at-the-farm
-receive,A2,1,at-the-post-office
-recommend,A2,1,at-the-restaurant
-remove,A2,1,clothes-shopping
-repair,A2,1,at-garage-gas station
-replace,A2,1,at-garage-gas station
-rest,A2,1,at-the-hospital
-run away,A2,3,"at-the-office,at-the-park,at-the-train-station"
-save,A2,2,"at-the-bank,emergency-situations"
-score,A2,1,going-to-sports
-sign,A2,1,at-the-bank
-smile,A2,1,baby-care
-suggest,A2,1,at-the-office
-take away,A2,5,"at-the-library,at-the-office,at-the-park,at-the-pharmacy,bathroom"
-taste,A2,1,at-the-restaurant
-throw,A2,1,at-the-park
-touch,A2,1,nature-walk
-water,A2,1,at-the-pharmacy
-bake,B1,1,kitchen
-clear,B1,1,at-the-hotel
-complain,B1,1,at-the-hotel
-depart,B1,1,at-the-airport

@@ -13,7 +13,7 @@
         "zh": "开车",
         "ja": "運転する",
         "ko": "운전하다",
-        "ar": "للقيادة",
+        "ar": "يقود",
         "hi": "चलाना"
       }
     },
@@ -35,6 +35,23 @@
       }
     },
     {
+      "english_word": "to sound",
+      "translations": {
+        "tr": "gibi gelmek",
+        "es": "sonar",
+        "fr": "sembler",
+        "de": "klingen",
+        "it": "sembrare",
+        "pt": "soar",
+        "ru": "звучать",
+        "zh": "听起来",
+        "ja": "聞こえる",
+        "ko": "들리다",
+        "ar": "يبدو",
+        "hi": "लगना"
+      }
+    },
+    {
       "english_word": "to let",
       "translations": {
         "tr": "izin vermek",
@@ -45,95 +62,10 @@
         "pt": "deixar",
         "ru": "позволить",
         "zh": "让",
-        "ja": "させます",
+        "ja": "させる",
         "ko": "허락하다",
-        "ar": "للسماح",
+        "ar": "يسمح",
         "hi": "जाने देना"
-      }
-    },
-    {
-      "english_word": "slow down",
-      "translations": {
-        "tr": "yavaşla",
-        "es": "ralentizar",
-        "fr": "ralentir",
-        "de": "verlangsamen",
-        "it": "rallentare",
-        "pt": "desacelere",
-        "ru": "замедлить",
-        "zh": "慢下来",
-        "ja": "ゆっくりする",
-        "ko": "속도를 늦추다",
-        "ar": "تبطئ",
-        "hi": "धीमा करो"
-      }
-    },
-    {
-      "english_word": "busy",
-      "translations": {
-        "tr": "meşgul",
-        "es": "ocupado",
-        "fr": "occupé",
-        "de": "beschäftigt",
-        "it": "occupato",
-        "pt": "ocupado",
-        "ru": "занят",
-        "zh": "忙",
-        "ja": "忙しい",
-        "ko": "바쁜",
-        "ar": "مشغول",
-        "hi": "व्यस्त"
-      }
-    },
-    {
-      "english_word": "to stop",
-      "translations": {
-        "tr": "durdurmak",
-        "es": "parar",
-        "fr": "arrêter",
-        "de": "aufzuhören",
-        "it": "fermarsi",
-        "pt": "parar",
-        "ru": "остановить",
-        "zh": "停止",
-        "ja": "止める",
-        "ko": "멈추다",
-        "ar": "للتوقف",
-        "hi": "रुकना"
-      }
-    },
-    {
-      "english_word": "to get out",
-      "translations": {
-        "tr": "dışarı çıkmak",
-        "es": "salir",
-        "fr": "sortir",
-        "de": "rauskommen",
-        "it": "uscire",
-        "pt": "para sair",
-        "ru": "выйти",
-        "zh": "出去",
-        "ja": "出る",
-        "ko": "나가기 위해",
-        "ar": "للخروج",
-        "hi": "बाहर निकलने के लिए"
-      }
-    },
-    {
-      "english_word": "fast",
-      "translations": {
-        "tr": "hızlı",
-        "es": "rápido",
-        "fr": "rapide",
-        "de": "schnell",
-        "it": "veloce",
-        "pt": "rápido",
-        "ru": "быстрый",
-        "zh": "快的",
-        "ja": "速い",
-        "ko": "빠른",
-        "ar": "سريع",
-        "hi": "तेज़"
       }
     },
     {
@@ -146,28 +78,147 @@
         "it": "attraversare",
         "pt": "atravessar",
         "ru": "пересекать",
-        "zh": "穿越",
+        "zh": "穿过",
         "ja": "渡る",
         "ko": "건너다",
-        "ar": "للعبور",
+        "ar": "يعبر",
         "hi": "पार करना"
       }
     },
     {
-      "english_word": "to enter",
+      "english_word": "busy",
       "translations": {
-        "tr": "girmek",
-        "es": "entrar",
-        "fr": "entrer",
-        "de": "eintreten",
-        "it": "entrare",
-        "pt": "para entrar",
-        "ru": "войти",
-        "zh": "进入",
-        "ja": "入る",
-        "ko": "들어가다",
-        "ar": "للدخول",
-        "hi": "प्रवेश करना"
+        "tr": "yoğun",
+        "es": "concurrido",
+        "fr": "chargé",
+        "de": "belebt",
+        "it": "trafficato",
+        "pt": "movimentado",
+        "ru": "оживлённый",
+        "zh": "繁忙",
+        "ja": "混んでいる",
+        "ko": "붐비는",
+        "ar": "مزدحم",
+        "hi": "भीड़भाड़ वाला"
+      }
+    },
+    {
+      "english_word": "slow down",
+      "translations": {
+        "tr": "yavaşlamak",
+        "es": "ralentizar",
+        "fr": "ralentir",
+        "de": "verlangsamen",
+        "it": "rallentare",
+        "pt": "desacelerar",
+        "ru": "замедлять",
+        "zh": "慢下来",
+        "ja": "減速する",
+        "ko": "속도를 늦추다",
+        "ar": "تبطئ",
+        "hi": "धीमा होना"
+      }
+    },
+    {
+      "english_word": "to increase",
+      "translations": {
+        "tr": "artırmak",
+        "es": "aumentar",
+        "fr": "augmenter",
+        "de": "erhöhen",
+        "it": "aumentare",
+        "pt": "aumentar",
+        "ru": "увеличивать",
+        "zh": "增加",
+        "ja": "増やす",
+        "ko": "증가시키다",
+        "ar": "يزيد",
+        "hi": "बढ़ाना"
+      }
+    },
+    {
+      "english_word": "to turn",
+      "translations": {
+        "tr": "dönmek",
+        "es": "girar",
+        "fr": "tourner",
+        "de": "abbiegen",
+        "it": "girare",
+        "pt": "virar",
+        "ru": "поворачивать",
+        "zh": "转弯",
+        "ja": "曲がる",
+        "ko": "돌다",
+        "ar": "ينعطف",
+        "hi": "मुड़ना"
+      }
+    },
+    {
+      "english_word": "to stop",
+      "translations": {
+        "tr": "durdurmak",
+        "es": "parar",
+        "fr": "arrêter",
+        "de": "anhalten",
+        "it": "fermare",
+        "pt": "parar",
+        "ru": "остановить",
+        "zh": "停止",
+        "ja": "止める",
+        "ko": "멈추다",
+        "ar": "يتوقف",
+        "hi": "रुकना"
+      }
+    },
+    {
+      "english_word": "to get out",
+      "translations": {
+        "tr": "dışarı çıkmak",
+        "es": "salir",
+        "fr": "sortir",
+        "de": "aussteigen",
+        "it": "uscire",
+        "pt": "sair",
+        "ru": "выйти",
+        "zh": "出去",
+        "ja": "出る",
+        "ko": "나가다",
+        "ar": "يخرج",
+        "hi": "बाहर निकलना"
+      }
+    },
+    {
+      "english_word": "to pass",
+      "translations": {
+        "tr": "sınavı geçmek",
+        "es": "aprobar",
+        "fr": "réussir",
+        "de": "bestehen",
+        "it": "superare",
+        "pt": "ser aprovado",
+        "ru": "сдать",
+        "zh": "通过",
+        "ja": "合格する",
+        "ko": "합격하다",
+        "ar": "ينجح",
+        "hi": "पास करना"
+      }
+    },
+    {
+      "english_word": "to fail",
+      "translations": {
+        "tr": "sınavda kalmak",
+        "es": "suspender",
+        "fr": "échouer",
+        "de": "durchfallen",
+        "it": "bocciare",
+        "pt": "reprovar",
+        "ru": "не сдать",
+        "zh": "不及格",
+        "ja": "不合格になる",
+        "ko": "불합격하다",
+        "ar": "يرسب",
+        "hi": "फेल होना"
       }
     }
   ]

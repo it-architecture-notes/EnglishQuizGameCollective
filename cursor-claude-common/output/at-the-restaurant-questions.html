@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>at-the-restaurant — level tables</title>
+  <style>
+    body { font-family: system-ui, -apple-system, Segoe UI, Roboto, sans-serif; margin: 16px; background: #f5f5f5; }
+    h1 { font-size: 1.25rem; margin-bottom: 12px; }
+    h2 { font-size: 1.1rem; margin-top: 24px; margin-bottom: 8px; }
+    .wrap { overflow-x: auto; background: #fff; padding: 12px; border-radius: 8px; box-shadow: 0 1px 3px rgba(0,0,0,.08); margin-bottom: 16px; }
+    table { border-collapse: collapse; width: 100%; font-size: 13px; table-layout: fixed; }
+    th, td { border: 1px solid #c8c8c8; padding: 8px 10px; vertical-align: top; text-align: left; word-wrap: break-word; }
+    th { background: #e8e8e8; font-weight: 600; white-space: nowrap; }
+    tr:nth-child(even) td { background: #fafafa; }
+    .repeat-word { color: #c62828; font-weight: 600; }
+    .wrap.template-counts { max-width: 28rem; }
+    .wrap.word-frequency { max-width: 40rem; }
+    </style>
+</head>
+<body>
+  <h1>at-the-restaurant — questions</h1>
+  <h2>Questions</h2>
+  <div class="wrap">
+    <table>
+<thead><tr><th>#</th><th>Template</th><th>Line 1 / Prompt</th><th>Line 2</th><th>Answer</th><th>English (translate)</th><th>Audio</th></tr></thead>
+<tbody><tr><td>1</td><td>imageQuizTemplate-1</td><td>image: bill</td><td></td><td>bill</td><td></td><td></td></tr><tr><td>2</td><td>ConvoTemplate-1</td><td>What do you want to _____?</td><td>I want to _____ the fish, but I don&#x27;t know which one</td><td>order</td><td><span class="repeat-word">to order</span>; <span class="repeat-word">which</span></td><td>audio_file1: what-do-you-want-to-order-convo · audio_file2: i-want-to-order-the-fish-but-i-don-t-know-which-one-convo</td></tr><tr><td>3</td><td>ConvoTemplate-1</td><td>Would you like to see the dessert menu?</td><td>Yes, please. Can we ______ one dessert between two people?</td><td>share</td><td>to share</td><td>audio_file1: would-you-like-to-see-the-dessert-menu-convo · audio_file2: yes-please-can-we-share-one-dessert-between-two-people-convo</td></tr><tr><td>4</td><td>imageQuizTemplate-1</td><td>image: pie</td><td></td><td>pie</td><td></td><td></td></tr><tr><td>5</td><td>WordPairs</td><td>sweet; salty; sour; spicy</td><td>word pairs</td><td>match all pairs</td><td>sweet; salty; sour; spicy</td><td></td></tr><tr><td>6</td><td>DialogueCompletion</td><td>We are ready for dessert.</td><td></td><td>Great, I will serve it right away.</td><td>to serve</td><td>audio_file1: we-are-ready-for-dessert-convo · audio_file2: great-i-will-serve-it-right-away-convo</td></tr><tr><td>7</td><td>AppearDisappear</td><td>I am full and I can&#x27;t eat any more.</td><td></td><td>-</td><td>I am full</td><td>audio_file: i-am-full-and-i-can-t-eat-any-more-convo</td></tr><tr><td>8</td><td>imageQuizTemplate-1</td><td>image: meal</td><td></td><td>meal</td><td></td><td></td></tr><tr><td>9</td><td>imageQuizTemplate-2</td><td>image: menu</td><td></td><td>menu</td><td></td><td></td></tr><tr><td>10</td><td>SentenceBuilder</td><td>He reserved a table for us.</td><td></td><td>He reserved a table for us.</td><td></td><td>audio_file: he-reserved-a-table-for-us-convo</td></tr><tr><td>11</td><td>imageQuizTemplate-1</td><td>image: tray</td><td></td><td>tray</td><td></td><td></td></tr><tr><td>12</td><td>ClozeSequence</td><td>_____ dish is the most _____ on the menu?</td><td></td><td>which, delicious</td><td><span class="repeat-word">which</span>; delicious</td><td>audio_file: which-dish-is-the-most-delicious-on-the-menu-convo</td></tr><tr><td>13</td><td>GrammarForm</td><td>_____ you the soup of the day?</td><td></td><td>Can I offer</td><td>to offer</td><td></td></tr><tr><td>14</td><td>ClozeSequence</td><td>_____ the soup _____ until it&#x27;s warm</td><td></td><td>heat, properly</td><td>to heat; properly</td><td>audio_file: heat-the-soup-properly-until-it-s-warm-convo</td></tr><tr><td>15</td><td>ClozeSequence</td><td>Can I _____ the ____ dish before I order?</td><td></td><td>taste, main</td><td><span class="repeat-word">to order</span>; main; to taste</td><td>audio_file: can-i-taste-the-main-dish-before-i-order-convo</td></tr></tbody>
+</table>
+  </div>
+
+  <h2>at-the-restaurant — translations</h2>
+  <div class="wrap">
+    <table>
+<thead><tr><th>#</th><th>English word</th><th>ar</th><th>de</th><th>es</th><th>fr</th><th>hi</th><th>it</th><th>ja</th><th>ko</th><th>pt</th><th>ru</th><th>tr</th><th>zh</th></tr></thead>
+<tbody><tr><td>1</td><td>to order</td><td>للطلب</td><td>bestellen</td><td>ordenar</td><td>commander</td><td>ऑर्डर करने के लिए</td><td>per ordinare</td><td>注文する</td><td>주문하다</td><td>encomendar</td><td>заказать</td><td>sipariş vermek</td><td>订购</td></tr><tr><td>2</td><td>to share</td><td>للمشاركة</td><td>teilen</td><td>compartir</td><td>partager</td><td>साझा करना</td><td>condividere</td><td>共有する</td><td>공유하다</td><td>compartilhar</td><td>поделиться</td><td>paylaşmak</td><td>分享</td></tr><tr><td>3</td><td>to serve</td><td>يقدّم</td><td>servieren</td><td>servir</td><td>servir</td><td>परोसना</td><td>servire</td><td>出す</td><td>서빙하다</td><td>servir</td><td>подавать</td><td>servis etmek</td><td>上菜</td></tr><tr><td>4</td><td>I am full</td><td>أنا ممتلئ</td><td>Ich bin satt</td><td>estoy lleno</td><td>je suis rassasié</td><td>मेरा पेट भर गया है</td><td>Sono pieno</td><td>お腹いっぱいです</td><td>나는 배불러요</td><td>estou cheio</td><td>я сыт</td><td>tokum</td><td>我吃饱了</td></tr><tr><td>5</td><td>which</td><td>الذي</td><td>welche</td><td>cual</td><td>lequel</td><td>जो</td><td>quale</td><td>どの</td><td>어느</td><td>qual</td><td>который</td><td>hangisi</td><td>哪一个</td></tr><tr><td>6</td><td>delicious</td><td>لذيذ</td><td>köstlich</td><td>delicioso</td><td>délicieux</td><td>स्वादिष्ट</td><td>delizioso</td><td>おいしい</td><td>맛있다</td><td>delicioso</td><td>вкусно</td><td>lezzetli</td><td>好吃</td></tr><tr><td>7</td><td>to offer</td><td>يعرض</td><td>anbieten</td><td>ofrecer</td><td>proposer</td><td>पेश करना</td><td>offrire</td><td>勧める</td><td>권하다</td><td>oferecer</td><td>предложить</td><td>sunmak</td><td>提供</td></tr><tr><td>8</td><td>to heat</td><td>تسخين</td><td>zu erhitzen</td><td>calentar</td><td>chauffer</td><td>गरम करना</td><td>riscaldare</td><td>加熱する</td><td>가열하다</td><td>aquecer</td><td>нагревать</td><td>ısıtmak</td><td>加热</td></tr><tr><td>9</td><td>properly</td><td>بشكل صحيح</td><td>richtig</td><td>correctamente</td><td>correctement</td><td>ठीक से</td><td>correttamente</td><td>きちんと</td><td>제대로</td><td>adequadamente</td><td>правильно</td><td>düzgünce</td><td>适当地</td></tr><tr><td>10</td><td>main</td><td>رئيسي</td><td>Haupt</td><td>principal</td><td>principal</td><td>मुख्य</td><td>principale</td><td>メイン</td><td>메인</td><td>principal</td><td>главный</td><td>ana</td><td>主要</td></tr><tr><td>11</td><td>to taste</td><td>تذوق</td><td>schmecken</td><td>saborear</td><td>goûter</td><td>स्वाद लेना</td><td>provare</td><td>味を見る</td><td>맛을 보다</td><td>saborear</td><td>пробовать</td><td>tatmak</td><td>品尝</td></tr></tbody>
+</table>
+  </div>
+
+  <h2>Template counts</h2>
+  <div class="wrap template-counts">
+    <table>
+<thead><tr><th>Template</th><th>Count in level</th></tr></thead>
+<tbody><tr><td>AppearDisappear</td><td>1</td></tr><tr><td>ClozeSequence</td><td>3</td></tr><tr><td>ConvoTemplate-1</td><td>2</td></tr><tr><td>DialogueCompletion</td><td>1</td></tr><tr><td>GrammarForm</td><td>1</td></tr><tr><td>imageQuizTemplate-1</td><td>4</td></tr><tr><td>imageQuizTemplate-2</td><td>1</td></tr><tr><td>SentenceBuilder</td><td>1</td></tr><tr><td>WordPairs</td><td>1</td></tr></tbody>
+</table>
+  </div>
+
+  <h2>Word frequency (questions.json; excludes template, audio_file*, WordPairs translations, distractors, wrongAnswers)</h2>
+  <div class="wrap word-frequency">
+    <table>
+<thead><tr><th>word</th><th>count</th></tr></thead>
+<tbody><tr><td>i</td><td>8</td></tr><tr><td>the</td><td>8</td></tr><tr><td>menu</td><td>4</td></tr><tr><td>can</td><td>3</td></tr><tr><td>dessert</td><td>3</td></tr><tr><td>to</td><td>3</td></tr><tr><td>you</td><td>3</td></tr><tr><td>dish</td><td>2</td></tr><tr><td>for</td><td>2</td></tr><tr><td>one</td><td>2</td></tr><tr><td>order</td><td>2</td></tr><tr><td>soup</td><td>2</td></tr><tr><td>want</td><td>2</td></tr><tr><td>we</td><td>2</td></tr><tr><td>which</td><td>2</td></tr><tr><td>a</td><td>1</td></tr><tr><td>alex</td><td>1</td></tr><tr><td>am</td><td>1</td></tr><tr><td>and</td><td>1</td></tr><tr><td>any</td><td>1</td></tr><tr><td>are</td><td>1</td></tr><tr><td>away</td><td>1</td></tr><tr><td>before</td><td>1</td></tr><tr><td>beth</td><td>1</td></tr><tr><td>between</td><td>1</td></tr><tr><td>bill</td><td>1</td></tr><tr><td>but</td><td>1</td></tr><tr><td>can&#x27;t</td><td>1</td></tr><tr><td>daniel</td><td>1</td></tr><tr><td>day</td><td>1</td></tr><tr><td>delicious</td><td>1</td></tr><tr><td>do</td><td>1</td></tr><tr><td>don&#x27;t</td><td>1</td></tr><tr><td>eat</td><td>1</td></tr><tr><td>fish</td><td>1</td></tr><tr><td>full</td><td>1</td></tr><tr><td>great</td><td>1</td></tr><tr><td>he</td><td>1</td></tr><tr><td>heat</td><td>1</td></tr><tr><td>is</td><td>1</td></tr><tr><td>it</td><td>1</td></tr><tr><td>it&#x27;s</td><td>1</td></tr><tr><td>know</td><td>1</td></tr><tr><td>like</td><td>1</td></tr><tr><td>lily</td><td>1</td></tr><tr><td>main</td><td>1</td></tr><tr><td>meal</td><td>1</td></tr><tr><td>more</td><td>1</td></tr><tr><td>most</td><td>1</td></tr><tr><td>of</td><td>1</td></tr><tr><td>offer</td><td>1</td></tr><tr><td>omar</td><td>1</td></tr><tr><td>on</td><td>1</td></tr><tr><td>people</td><td>1</td></tr><tr><td>pie</td><td>1</td></tr><tr><td>please</td><td>1</td></tr><tr><td>properly</td><td>1</td></tr><tr><td>ready</td><td>1</td></tr><tr><td>reserved</td><td>1</td></tr><tr><td>right</td><td>1</td></tr><tr><td>salty</td><td>1</td></tr><tr><td>sarah</td><td>1</td></tr><tr><td>see</td><td>1</td></tr><tr><td>serve</td><td>1</td></tr><tr><td>share</td><td>1</td></tr><tr><td>sour</td><td>1</td></tr><tr><td>spicy</td><td>1</td></tr><tr><td>sweet</td><td>1</td></tr><tr><td>table</td><td>1</td></tr><tr><td>taste</td><td>1</td></tr><tr><td>tray</td><td>1</td></tr><tr><td>two</td><td>1</td></tr><tr><td>until</td><td>1</td></tr><tr><td>us</td><td>1</td></tr><tr><td>warm</td><td>1</td></tr><tr><td>what</td><td>1</td></tr><tr><td>will</td><td>1</td></tr><tr><td>would</td><td>1</td></tr><tr><td>yes</td><td>1</td></tr></tbody>
+</table>
+  </div>
+
+</body>
+</html>

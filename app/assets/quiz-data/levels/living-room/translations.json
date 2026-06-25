@@ -13,25 +13,25 @@
         "zh": "坐",
         "ja": "座る",
         "ko": "앉다",
-        "ar": "للجلوس",
+        "ar": "يجلس",
         "hi": "बैठना"
       }
     },
     {
-      "english_word": "together",
+      "english_word": "to forget",
       "translations": {
-        "tr": "birlikte",
-        "es": "juntos",
-        "fr": "ensemble",
-        "de": "zusammen",
-        "it": "insieme",
-        "pt": "juntos",
-        "ru": "вместе",
-        "zh": "在一起",
-        "ja": "一緒に",
-        "ko": "함께",
-        "ar": "معًا",
-        "hi": "एक साथ"
+        "tr": "unutmak",
+        "es": "olvidar",
+        "fr": "oublier",
+        "de": "vergessen",
+        "it": "dimenticare",
+        "pt": "esquecer",
+        "ru": "забыть",
+        "zh": "忘记",
+        "ja": "忘れる",
+        "ko": "잊다",
+        "ar": "ينسى",
+        "hi": "भूलना"
       }
     },
     {
@@ -42,30 +42,13 @@
         "fr": "s'allonger",
         "de": "sich hinlegen",
         "it": "sdraiarsi",
-        "pt": "deitar",
+        "pt": "deitar-se",
         "ru": "лечь",
         "zh": "躺下",
         "ja": "横になる",
         "ko": "눕다",
-        "ar": "للاستلقاء",
+        "ar": "يستلقي",
         "hi": "लेटना"
-      }
-    },
-    {
-      "english_word": "Who else?",
-      "translations": {
-        "tr": "Başka kim?",
-        "es": "¿Quién más?",
-        "fr": "Qui d'autre ?",
-        "de": "Wer sonst?",
-        "it": "Chi altro?",
-        "pt": "Quem mais?",
-        "ru": "Кто еще?",
-        "zh": "还有谁？",
-        "ja": "他に誰がいますか？",
-        "ko": "또 누구야?",
-        "ar": "من آخر؟",
-        "hi": "और कौन?"
       }
     },
     {
@@ -76,47 +59,47 @@
         "fr": "écouter",
         "de": "zuhören",
         "it": "ascoltare",
-        "pt": "para ouvir",
+        "pt": "ouvir",
         "ru": "слушать",
         "zh": "听",
         "ja": "聞く",
-        "ko": "듣기 위해",
-        "ar": "للاستماع إلى",
-        "hi": "सुनने के लिए"
+        "ko": "듣다",
+        "ar": "يستمع إلى",
+        "hi": "सुनना"
       }
     },
     {
-      "english_word": "small",
+      "english_word": "great",
       "translations": {
-        "tr": "küçük",
-        "es": "pequeño",
-        "fr": "petit",
-        "de": "klein",
-        "it": "piccolo",
-        "pt": "pequeno",
-        "ru": "маленький",
-        "zh": "小",
-        "ja": "小さい",
-        "ko": "작은",
-        "ar": "صغير",
-        "hi": "छोटा"
+        "tr": "harika",
+        "es": "genial",
+        "fr": "génial",
+        "de": "toll",
+        "it": "ottimo",
+        "pt": "ótimo",
+        "ru": "отличный",
+        "zh": "很棒",
+        "ja": "素晴らしい",
+        "ko": "훌륭한",
+        "ar": "رائع",
+        "hi": "बहुत अच्छा"
       }
     },
     {
-      "english_word": "bright",
+      "english_word": "to gather",
       "translations": {
-        "tr": "parlak",
-        "es": "brillante",
-        "fr": "lumineux",
-        "de": "hell",
-        "it": "luminoso",
-        "pt": "brilhante",
-        "ru": "яркий",
-        "zh": "明亮",
-        "ja": "明るい",
-        "ko": "밝은",
-        "ar": "مشرق",
-        "hi": "उज्ज्वल"
+        "tr": "toplanmak",
+        "es": "reunirse",
+        "fr": "se réunir",
+        "de": "sich versammeln",
+        "it": "riunirsi",
+        "pt": "reunir-se",
+        "ru": "собираться",
+        "zh": "聚集",
+        "ja": "集まる",
+        "ko": "모이다",
+        "ar": "يتجمع",
+        "hi": "इकट्ठा होना"
       }
     },
     {
@@ -132,42 +115,25 @@
         "zh": "关闭",
         "ja": "閉じる",
         "ko": "닫다",
-        "ar": "إغلاق",
+        "ar": "يغلق",
         "hi": "बंद करना"
       }
     },
     {
-      "english_word": "to say",
+      "english_word": "to relax",
       "translations": {
-        "tr": "söylemek",
-        "es": "decir",
-        "fr": "dire",
-        "de": "zu sagen",
-        "it": "dire",
-        "pt": "dizer",
-        "ru": "сказать",
-        "zh": "说",
-        "ja": "言うこと",
-        "ko": "말하다",
-        "ar": "ليقول",
-        "hi": "कहना"
-      }
-    },
-    {
-      "english_word": "to watch",
-      "translations": {
-        "tr": "izlemek",
-        "es": "mirar",
-        "fr": "regarder",
-        "de": "fernsehen",
-        "it": "guardare",
-        "pt": "assistir",
-        "ru": "смотреть",
-        "zh": "观看",
-        "ja": "見る",
-        "ko": "시청하다",
-        "ar": "للمشاهدة",
-        "hi": "देखने के लिए"
+        "tr": "rahatlamak",
+        "es": "relajarse",
+        "fr": "se détendre",
+        "de": "sich entspannen",
+        "it": "rilassarsi",
+        "pt": "relaxar",
+        "ru": "расслабиться",
+        "zh": "放松",
+        "ja": "リラックスする",
+        "ko": "쉬다",
+        "ar": "يسترخي",
+        "hi": "आराम करना"
       }
     },
     {
@@ -178,13 +144,30 @@
         "fr": "parler",
         "de": "reden",
         "it": "parlare",
-        "pt": "conversar",
+        "pt": "falar",
         "ru": "говорить",
         "zh": "说话",
         "ja": "話す",
         "ko": "이야기하다",
-        "ar": "للتحدث",
+        "ar": "يتحدث",
         "hi": "बात करना"
+      }
+    },
+    {
+      "english_word": "to greet",
+      "translations": {
+        "tr": "selamlamak",
+        "es": "saludar",
+        "fr": "saluer",
+        "de": "begrüßen",
+        "it": "salutare",
+        "pt": "cumprimentar",
+        "ru": "приветствовать",
+        "zh": "问候",
+        "ja": "挨拶する",
+        "ko": "인사하다",
+        "ar": "يحيي",
+        "hi": "अभिवादन करना"
       }
     }
   ]

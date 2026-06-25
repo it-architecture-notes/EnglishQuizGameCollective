@@ -16,13 +16,13 @@
       "questionData": {
         "character1": "Sarah",
         "character2": "Daniel",
-        "line1": "Is it time to ____ the baby again?",
+        "line1": "Is it time to _____ the baby again?",
         "line2": "Yes, it's been almost three hours.",
         "answer": "feed",
         "distractors": [
-          "eat",
-          "drink",
-          "kiss"
+          "bathe",
+          "rock",
+          "dress"
         ]
       },
       "audio_file1": "is-it-time-to-feed-the-baby-again-convo",
@@ -34,15 +34,15 @@
         "character1": "Beth",
         "character2": "Alex",
         "line1": "I always _____ to her at bedtime.",
-        "line2": "Does she like it? ",
-        "answer": "sing",
+        "line2": "Does she like it?",
+        "answer": "whisper",
         "distractors": [
-          "reading",
-          "tell",
+          "shout",
+          "cry",
           "ask"
         ]
       },
-      "audio_file1": "i-always-sing-to-her-at-bedtime-convo",
+      "audio_file1": "i-always-whisper-to-her-at-bedtime-convo",
       "audio_file2": "does-she-like-it-convo"
     },
     {
@@ -62,7 +62,7 @@
         "english_words": [
           "soft",
           "hard",
-          "silent",
+          "gentle",
           "loud"
         ],
         "translations": [
@@ -95,26 +95,26 @@
             "hi": "कठोर"
           },
           {
-            "tr": "sessiz",
-            "es": "silencioso",
-            "fr": "silencieux",
-            "de": "still",
-            "it": "silenzioso",
-            "pt": "silencioso",
-            "ru": "тихий",
-            "zh": "沉默的",
-            "ja": "静かな",
-            "ko": "조용한",
-            "ar": "صامت",
-            "hi": "शांत"
+            "tr": "nazik",
+            "es": "tierno",
+            "fr": "tendre",
+            "de": "sanft",
+            "it": "delicato",
+            "pt": "gentil",
+            "ru": "нежный",
+            "zh": "温柔的",
+            "ja": "優しい",
+            "ko": "온화한",
+            "ar": "لطيف",
+            "hi": "सौम्य"
           },
           {
             "tr": "yüksek sesli",
-            "es": "alto",
+            "es": "fuerte",
             "fr": "fort",
             "de": "laut",
             "it": "forte",
-            "pt": "alto",
+            "pt": "barulhento",
             "ru": "громкий",
             "zh": "大声",
             "ja": "うるさい",
@@ -130,30 +130,28 @@
       "questionData": {
         "character1": "Omar",
         "character2": "Lily",
-        "line1": "The baby is crying. Is she hungry?",
-        "answer": "No, I just fed her.",
+        "line1": "The baby is not sleeping. Is she hungry?",
+        "answer": "No, she just needs her pacifier.",
         "distractors": [
-          "Yes, I just fed her",
-          "I just fed she",
-          "She will not be hungry"
+          "She always sleeps at this time.",
+          "The room is very quiet tonight.",
+          "Grandma is coming to visit later."
         ]
       },
-      "audio_file1": "the-baby-is-crying-is-she-hungry-convo",
-      "audio_file2": "no-i-just-fed-her-convo"
+      "audio_file1": "the-baby-is-not-sleeping-is-she-hungry-convo",
+      "audio_file2": "no-she-just-needs-her-pacifier-convo"
     },
     {
       "template": "AppearDisappear",
       "questionData": {
-        "words": "The newborn baby began to cry",
+        "words": "The newborn baby starts to cry.",
         "distractors": [
-          "starts",
-          "smile",
-          "big",
+          "crawl",
           "old",
-          "This"
+          "this"
         ]
       },
-      "audio_file": "the-newborn-baby-began-to-cry-convo"
+      "audio_file": "the-newborn-baby-starts-to-cry-convo"
     },
     {
       "template": "imageQuizTemplate-1",
@@ -175,8 +173,7 @@
           "diaper",
           "feeder"
         ]
-      },
-      "answer": "pacifier"
+      }
     },
     {
       "template": "SentenceBuilder",
@@ -191,8 +188,8 @@
         "imageName": "stroller",
         "wrongAnswers": [
           "cart",
-          "baby-carry",
-          "puller"
+          "sling",
+          "wagon"
         ]
       }
     },
@@ -206,9 +203,9 @@
         ],
         "distractors": [
           "cry",
-          "brings",
-          "gets",
-          "sleeping"
+          "drops",
+          "rocks",
+          "yells"
         ]
       },
       "audio_file": "dad-holds-the-baby-up-and-she-starts-to-happily-laugh-convo"
@@ -216,12 +213,12 @@
     {
       "template": "GrammarForm",
       "questionData": {
-        "sentence": "She ______ the song until the baby fell asleep.",
-        "answer": "repeated",
+        "sentence": "She _____ the song until the baby falls asleep.",
+        "answer": "repeats",
         "distractors": [
-          "were repeated",
-          "will be repeated",
-          "repeat"
+          "repeat",
+          "is repeating",
+          "was repeating"
         ]
       }
     },
@@ -234,8 +231,8 @@
           "regularly"
         ],
         "distractors": [
-          "clean",
-          "wear",
+          "fold",
+          "buy",
           "put",
           "careful"
         ]
@@ -251,11 +248,11 @@
           "pretty"
         ],
         "distractors": [
-          "holds",
-          "changes",
-          "wipes",
-          "wide",
-          "hard"
+          "yells",
+          "throws",
+          "tall",
+          "loud",
+          "new"
         ]
       },
       "audio_file": "grandma-kisses-the-baby-s-pretty-little-cheeks-convo"

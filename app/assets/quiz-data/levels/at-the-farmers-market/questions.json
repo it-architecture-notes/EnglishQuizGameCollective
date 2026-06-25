@@ -21,7 +21,7 @@
         "answer": "sells",
         "distractors": [
           "goes",
-          "eats",
+          "counts",
           "makes"
         ]
       },
@@ -55,7 +55,7 @@
       "questionData": {
         "english_words": [
           "free",
-          "expensive",
+          "costly",
           "cheap",
           "on sale"
         ],
@@ -64,10 +64,10 @@
             "tr": "ücretsiz",
             "es": "gratis",
             "fr": "gratuit",
-            "de": "frei",
+            "de": "kostenlos",
             "it": "gratuito",
             "pt": "grátis",
-            "ru": "бесплатно",
+            "ru": "бесплатный",
             "zh": "免费的",
             "ja": "無料",
             "ko": "무료",
@@ -75,18 +75,18 @@
             "hi": "मुफ़्त"
           },
           {
-            "tr": "masraflı",
-            "es": "caro",
-            "fr": "cher",
+            "tr": "pahalı",
+            "es": "costoso",
+            "fr": "coûteux",
             "de": "teuer",
             "it": "costoso",
             "pt": "caro",
             "ru": "дорогой",
-            "zh": "昂贵的",
+            "zh": "贵的",
             "ja": "高い",
-            "ko": "값비싼",
+            "ko": "비싼",
             "ar": "غالي",
-            "hi": "महँगा"
+            "hi": "महंगा"
           },
           {
             "tr": "ucuz",
@@ -98,7 +98,7 @@
             "ru": "дешевый",
             "zh": "便宜的",
             "ja": "安い",
-            "ko": "값이 싼",
+            "ko": "싼",
             "ar": "رخيص",
             "hi": "सस्ता"
           },
@@ -109,12 +109,12 @@
             "de": "im Angebot",
             "it": "in offerta",
             "pt": "em promoção",
-            "ru": "в продаже",
+            "ru": "со скидкой",
             "zh": "打折",
             "ja": "セール中",
             "ko": "할인 중",
             "ar": "بسعر مخفض",
-            "hi": "बिक्री पर"
+            "hi": "छूट पर"
           }
         ]
       }
@@ -124,29 +124,29 @@
       "questionData": {
         "character1": "Ben",
         "character2": "Nora",
-        "line1": "Is this bread made today?",
+        "line1": "Is this bread fresh today?",
         "answer": "Yes, it is very fresh.",
         "distractors": [
-          "Yes, it is made yesterday.",
-          "It will be made tomorrow.",
-          "These are made today."
+          "The seller is very polite.",
+          "I need to compare the prices first.",
+          "This market is very crowded today."
         ]
       },
-      "audio_file1": "is-this-bread-made-today-convo",
+      "audio_file1": "is-this-bread-fresh-today-convo",
       "audio_file2": "yes-it-is-very-fresh-convo"
     },
     {
       "template": "AppearDisappear",
       "questionData": {
-        "words": "I need some apples for tomorrow.",
+        "words": "I need apples for tomorrow.",
         "distractors": [
           "any",
           "yesterday",
-          "He",
+          "he",
           "help"
         ]
       },
-      "audio_file": "i-need-some-apples-for-tomorrow-convo"
+      "audio_file": "i-need-apples-for-tomorrow-convo"
     },
     {
       "template": "imageQuizTemplate-1",
@@ -173,9 +173,9 @@
     {
       "template": "SentenceBuilder",
       "questionData": {
-        "correct_order": "He grows organic and fresh fruits"
+        "correct_order": "This honey seems genuine."
       },
-      "audio_file": "he-grows-organic-and-fresh-fruits-convo"
+      "audio_file": "this-honey-seems-genuine-convo"
     },
     {
       "template": "imageQuizTemplate-1",
@@ -197,9 +197,9 @@
           "prices"
         ],
         "distractors": [
-          "check",
+          "count",
           "look",
-          "find"
+          "smell"
         ]
       },
       "audio_file": "i-compare-the-prices-before-i-buy-honey-convo"
@@ -207,36 +207,36 @@
     {
       "template": "GrammarForm",
       "questionData": {
-        "sentence": "We are ______ some apples from the cart.",
-        "answer": "choosing",
+        "sentence": "The farmer is _____ new customers.",
+        "answer": "welcoming",
         "distractors": [
-          "choose",
-          "chose",
-          "does choosing"
+          "welcomed",
+          "welcomer",
+          "welcomes"
         ]
       }
     },
     {
       "template": "ClozeSequence",
       "questionData": {
-        "sentence": "I have some ____ _____ for you.",
+        "sentence": "This seller is very ______. She also offers free _____ to customers.",
         "answer": [
-          "free",
+          "polite",
           "samples"
         ],
         "distractors": [
-          "expensive",
-          "tries",
+          "quickly",
+          "before",
           "today",
-          "warm"
+          "carefully"
         ]
       },
-      "audio_file": "i-have-some-free-samples-for-you-convo"
+      "audio_file": "this-seller-is-very-polite-she-also-offers-free-samples-to-customers-convo"
     },
     {
       "template": "ClozeSequence",
       "questionData": {
-        "sentence": "I saved this pie _____ for you.",
+        "sentence": "This pie is _____ for you.",
         "answer": [
           "only"
         ],

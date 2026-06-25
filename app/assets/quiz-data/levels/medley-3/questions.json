@@ -1,0 +1,232 @@
+{
+  "levelQuestions": [
+    {
+      "template": "AppearDisappear",
+      "questionData": {
+        "words": "There were many people in this city.",
+        "distractors": [
+          "before",
+          "never",
+          "person",
+          "much"
+        ]
+      },
+      "audio_file": "there-were-many-people-in-this-city-convo"
+    },
+    {
+      "template": "ClozeSequence",
+      "questionData": {
+        "sentence": "I will ____ for the job if they ____ new workers.",
+        "answers": [
+          "apply",
+          "accept"
+        ],
+        "distractors": [
+          "count",
+          "lose",
+          "bake"
+        ]
+      },
+      "audio_file": "i-will-apply-for-the-job-if-they-accept-new-workers-convo"
+    },
+    {
+      "template": "WordPairs",
+      "questionData": {
+        "english_words": [
+          "man",
+          "woman",
+          "child",
+          "adult"
+        ],
+        "translations": [
+          {
+            "tr": "adam",
+            "es": "hombre",
+            "fr": "homme",
+            "de": "Mann",
+            "it": "uomo",
+            "pt": "homem",
+            "ru": "мужчина",
+            "zh": "男人",
+            "ja": "男性",
+            "ko": "남자",
+            "ar": "رجل",
+            "hi": "आदमी"
+          },
+          {
+            "tr": "kadın",
+            "es": "mujer",
+            "fr": "femme",
+            "de": "Frau",
+            "it": "donna",
+            "pt": "mulher",
+            "ru": "женщина",
+            "zh": "女人",
+            "ja": "女性",
+            "ko": "여자",
+            "ar": "امرأة",
+            "hi": "महिला"
+          },
+          {
+            "tr": "çocuk",
+            "es": "niño/niña",
+            "fr": "enfant",
+            "de": "Kind",
+            "it": "bambino/bambina",
+            "pt": "criança",
+            "ru": "ребёнок",
+            "zh": "孩子",
+            "ja": "子供",
+            "ko": "아이",
+            "ar": "طفل",
+            "hi": "बच्चा"
+          },
+          {
+            "tr": "yetişkin",
+            "es": "adulto",
+            "fr": "adulte",
+            "de": "Erwachsener",
+            "it": "adulto",
+            "pt": "adulto",
+            "ru": "взрослый человек",
+            "zh": "成年人",
+            "ja": "大人",
+            "ko": "성인",
+            "ar": "بالغ",
+            "hi": "वयस्क"
+          }
+        ]
+      }
+    },
+    {
+      "template": "ConvoTemplate-1",
+      "questionData": {
+        "character1": "Tom",
+        "character2": "Mia",
+        "line1": "Do you want to _____ extra money this summer?",
+        "line2": "Yes! I hope to _____ enough for a new phone.",
+        "answer": "earn",
+        "distractors": [
+          "lose",
+          "sign",
+          "wash"
+        ]
+      },
+      "audio_file1": "do-you-want-to-earn-extra-money-this-summer-convo",
+      "audio_file2": "yes-i-hope-to-earn-enough-for-a-new-phone-convo"
+    },
+    {
+      "template": "AppearDisappear",
+      "questionData": {
+        "words": "That idea is completely new and exciting.",
+        "distractors": [
+          "boring",
+          "bad",
+          "wrong"
+        ]
+      },
+      "audio_file": "that-idea-is-completely-new-and-exciting-convo"
+    },
+    {
+      "template": "ClozeSequence",
+      "questionData": {
+        "sentence": "He _____ the note to keep his ____ safe.",
+        "answers": [
+          "folded",
+          "secret"
+        ],
+        "distractors": [
+          "bought",
+          "counted",
+          "cleaned"
+        ]
+      },
+      "audio_file": "he-folded-the-note-to-keep-his-secret-safe-convo"
+    },
+    {
+      "template": "ConvoTemplate-1",
+      "questionData": {
+        "character1": "Beth",
+        "character2": "Alex",
+        "line1": "Can you _____ a circle on the board?",
+        "line2": "Sure! I will _____ it on the board right now.",
+        "answer": "draw",
+        "distractors": [
+          "count",
+          "send",
+          "carry"
+        ]
+      },
+      "audio_file1": "can-you-draw-a-circle-on-the-board-convo",
+      "audio_file2": "sure-i-will-draw-it-on-the-board-right-now-convo"
+    },
+    {
+      "template": "DialogueCompletion",
+      "questionData": {
+        "character1": "Ben",
+        "character2": "Nina",
+        "line1": "Why does everyone get the same pie?",
+        "answer": "Because it's fair.",
+        "distractors": [
+          "The shop was busy today.",
+          "I wanted a different flavor.",
+          "The line was very long."
+        ]
+      },
+      "audio_file1": "why-does-everyone-get-the-same-pie-convo",
+      "audio_file2": "because-it-s-fair-convo"
+    },
+    {
+      "template": "ClozeSequence",
+      "questionData": {
+        "sentence": "The prisoner ______ the guard and ______.",
+        "answers": [
+          "fights",
+          "escapes"
+        ],
+        "distractors": [
+          "bakes",
+          "delivers",
+          "sends"
+        ]
+      },
+      "audio_file": "the-prisoner-fights-the-guard-and-escapes-convo"
+    },
+    
+    {
+      "template": "SentenceBuilder",
+      "questionData": {
+        "correct_order": "I recently applied for a new job."
+      },
+      "audio_file": "i-recently-applied-for-a-new-job-convo"
+    },
+    {
+      "template": "GrammarForm",
+      "questionData": {
+        "sentence": "He ______ a logo for the company last week.",
+        "answer": "designed",
+        "distractors": [
+          "design",
+          "designs",
+          "is designing"
+        ]
+      }
+    },
+    {
+      "template": "DialogueCompletion",
+      "questionData": {
+        "character1": "Chris",
+        "character2": "Nina",
+        "line1": "Are you certain the pieces are equal?",
+        "answer": "Yes, I'm certain. It's all fair.",
+        "distractors": [
+          "Let me bring a ruler to check.",
+          "The pieces look different to me.",
+          "It is hard to tell without a scale."
+        ]
+      },
+      "audio_file1": "are-you-certain-the-pieces-are-equal-convo",
+      "audio_file2": "yes-i-m-certain-it-s-all-fair-convo"
+    }
+  ]
+}

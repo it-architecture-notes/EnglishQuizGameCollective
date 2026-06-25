@@ -69,20 +69,20 @@
       }
     },
     {
-      "english_word": "today",
+      "english_word": "to teach",
       "translations": {
-        "tr": "bugün",
-        "es": "hoy",
-        "fr": "aujourd'hui",
-        "de": "heute",
-        "it": "oggi",
-        "pt": "hoje",
-        "ru": "сегодня",
-        "zh": "今天",
-        "ja": "今日",
-        "ko": "오늘",
-        "ar": "اليوم",
-        "hi": "आज"
+        "tr": "öğretmek",
+        "es": "enseñar",
+        "fr": "enseigner",
+        "de": "unterrichten",
+        "it": "insegnare",
+        "pt": "ensinar",
+        "ru": "обучать",
+        "zh": "教",
+        "ja": "教える",
+        "ko": "가르치다",
+        "ar": "يُعلِّم",
+        "hi": "पढ़ाना"
       }
     },
     {

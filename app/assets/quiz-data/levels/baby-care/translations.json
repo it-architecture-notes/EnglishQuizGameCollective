@@ -6,32 +6,32 @@
         "tr": "beslemek",
         "es": "alimentar",
         "fr": "nourrir",
-        "de": "zu füttern",
+        "de": "füttern",
         "it": "nutrire",
         "pt": "alimentar",
         "ru": "кормить",
         "zh": "喂养",
         "ja": "食べさせる",
         "ko": "먹이다",
-        "ar": "لإطعام",
-        "hi": "खिलाने के लिए"
+        "ar": "يُطعم",
+        "hi": "खिलाना"
       }
     },
     {
-      "english_word": "to sing",
+      "english_word": "to whisper",
       "translations": {
-        "tr": "şarkı söylemek",
-        "es": "cantar",
-        "fr": "chanter",
-        "de": "singen",
-        "it": "cantare",
-        "pt": "cantar",
-        "ru": "петь",
-        "zh": "唱歌",
-        "ja": "歌うこと",
-        "ko": "노래하다",
-        "ar": "للغناء",
-        "hi": "गाना"
+        "tr": "fısıldamak",
+        "es": "susurrar",
+        "fr": "chuchoter",
+        "de": "flüstern",
+        "it": "sussurrare",
+        "pt": "sussurrar",
+        "ru": "шептать",
+        "zh": "低声说",
+        "ja": "ささやく",
+        "ko": "속삭이다",
+        "ar": "يهمس",
+        "hi": "फुसफुसाना"
       }
     },
     {
@@ -39,7 +39,7 @@
       "translations": {
         "tr": "yeni doğmuş",
         "es": "recién nacido",
-        "fr": "nouveau né",
+        "fr": "nouveau-né",
         "de": "Neugeborenes",
         "it": "neonato",
         "pt": "recém-nascido",
@@ -47,7 +47,7 @@
         "zh": "新生儿",
         "ja": "新生児",
         "ko": "신생아",
-        "ar": "حديثي الولادة",
+        "ar": "حديث الولادة",
         "hi": "नवजात"
       }
     },
@@ -64,7 +64,7 @@
         "zh": "哭",
         "ja": "泣く",
         "ko": "울다",
-        "ar": "للبكاء",
+        "ar": "يبكي",
         "hi": "रोना"
       }
     },
@@ -81,7 +81,7 @@
         "zh": "微笑",
         "ja": "微笑む",
         "ko": "미소 짓다",
-        "ar": "لتبتسم",
+        "ar": "يبتسم",
         "hi": "मुस्कुराना"
       }
     },
@@ -96,9 +96,9 @@
         "pt": "rir",
         "ru": "смеяться",
         "zh": "笑",
-        "ja": "笑うこと",
+        "ja": "笑う",
         "ko": "웃다",
-        "ar": "للضحك",
+        "ar": "يضحك",
         "hi": "हंसना"
       }
     },
@@ -108,14 +108,14 @@
         "tr": "tutmak",
         "es": "sostener",
         "fr": "tenir",
-        "de": "zu halten",
+        "de": "halten",
         "it": "tenere",
         "pt": "segurar",
         "ru": "держать",
         "zh": "抱着",
         "ja": "抱く",
         "ko": "안다",
-        "ar": "لعقد",
+        "ar": "يمسك",
         "hi": "धारण करना"
       }
     },
@@ -128,12 +128,12 @@
         "de": "wechseln",
         "it": "cambiare",
         "pt": "mudar",
-        "ru": "изменить",
+        "ru": "менять",
         "zh": "换",
         "ja": "変える",
         "ko": "갈다",
-        "ar": "للتغيير",
-        "hi": "बदलने के लिए"
+        "ar": "يغيّر",
+        "hi": "बदलना"
       }
     },
     {
@@ -146,11 +146,28 @@
         "it": "regolarmente",
         "pt": "regularmente",
         "ru": "регулярно",
-        "zh": "定期",
+        "zh": "定期地",
         "ja": "定期的に",
         "ko": "정기적으로",
         "ar": "بانتظام",
         "hi": "नियमित रूप से"
+      }
+    },
+    {
+      "english_word": "to need",
+      "translations": {
+        "tr": "ihtiyaç duymak",
+        "es": "necesitar",
+        "fr": "avoir besoin de",
+        "de": "brauchen",
+        "it": "aver bisogno di",
+        "pt": "precisar",
+        "ru": "нуждаться",
+        "zh": "需要",
+        "ja": "必要とする",
+        "ko": "필요하다",
+        "ar": "يحتاج",
+        "hi": "जरूरत होना"
       }
     },
     {
@@ -166,7 +183,7 @@
         "zh": "重复",
         "ja": "繰り返す",
         "ko": "반복하다",
-        "ar": "لتكرار",
+        "ar": "يكرر",
         "hi": "दोहराना"
       }
     },
@@ -174,16 +191,16 @@
       "english_word": "pretty",
       "translations": {
         "tr": "güzel",
-        "es": "bonita",
-        "fr": "jolie",
+        "es": "bonito",
+        "fr": "joli",
         "de": "hübsch",
         "it": "carino",
         "pt": "bonito",
-        "ru": "красивая",
+        "ru": "красивый",
         "zh": "漂亮",
         "ja": "かわいい",
         "ko": "예쁜",
-        "ar": "جميلة",
+        "ar": "جميل",
         "hi": "सुन्दर"
       }
     },
@@ -200,7 +217,7 @@
         "zh": "亲吻",
         "ja": "キスする",
         "ko": "키스하다",
-        "ar": "لتقبيل",
+        "ar": "يقبّل",
         "hi": "चूमना"
       }
     }

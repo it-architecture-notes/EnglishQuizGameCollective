@@ -1,0 +1,2312 @@
+{
+  "target_level": "at-the-hotel",
+  "prior_level_count": 60,
+  "word_count": 461,
+  "words": [
+    {
+      "word": "My name is",
+      "level": "greetings",
+      "source": "translations"
+    },
+    {
+      "word": "How are you?",
+      "level": "greetings",
+      "source": "translations"
+    },
+    {
+      "word": "How old are you?",
+      "level": "greetings",
+      "source": "translations"
+    },
+    {
+      "word": "Nice to meet you",
+      "level": "greetings",
+      "source": "translations"
+    },
+    {
+      "word": "I am very well",
+      "level": "greetings",
+      "source": "translations"
+    },
+    {
+      "word": "Where are you from?",
+      "level": "greetings",
+      "source": "translations"
+    },
+    {
+      "word": "where",
+      "level": "greetings",
+      "source": "translations"
+    },
+    {
+      "word": "what",
+      "level": "greetings",
+      "source": "translations"
+    },
+    {
+      "word": "please",
+      "level": "greetings",
+      "source": "translations"
+    },
+    {
+      "word": "thank you",
+      "level": "greetings",
+      "source": "translations"
+    },
+    {
+      "word": "see you later",
+      "level": "greetings",
+      "source": "translations"
+    },
+    {
+      "word": "I",
+      "level": "greetings",
+      "source": "wordpairs"
+    },
+    {
+      "word": "you",
+      "level": "greetings",
+      "source": "wordpairs"
+    },
+    {
+      "word": "he-she",
+      "level": "greetings",
+      "source": "wordpairs"
+    },
+    {
+      "word": "they",
+      "level": "greetings",
+      "source": "wordpairs"
+    },
+    {
+      "word": "we",
+      "level": "greetings",
+      "source": "wordpairs"
+    },
+    {
+      "word": "Who are you?",
+      "level": "verb-to-be",
+      "source": "translations"
+    },
+    {
+      "word": "I am a teacher",
+      "level": "verb-to-be",
+      "source": "translations"
+    },
+    {
+      "word": "Are you ready?",
+      "level": "verb-to-be",
+      "source": "translations"
+    },
+    {
+      "word": "yes",
+      "level": "verb-to-be",
+      "source": "translations"
+    },
+    {
+      "word": "no",
+      "level": "verb-to-be",
+      "source": "translations"
+    },
+    {
+      "word": "ready",
+      "level": "verb-to-be",
+      "source": "translations"
+    },
+    {
+      "word": "good",
+      "level": "verb-to-be",
+      "source": "translations"
+    },
+    {
+      "word": "best",
+      "level": "verb-to-be",
+      "source": "translations"
+    },
+    {
+      "word": "here",
+      "level": "verb-to-be",
+      "source": "translations"
+    },
+    {
+      "word": "about",
+      "level": "verb-to-be",
+      "source": "translations"
+    },
+    {
+      "word": "my",
+      "level": "verb-to-be",
+      "source": "wordpairs"
+    },
+    {
+      "word": "your",
+      "level": "verb-to-be",
+      "source": "wordpairs"
+    },
+    {
+      "word": "his/her",
+      "level": "verb-to-be",
+      "source": "wordpairs"
+    },
+    {
+      "word": "their",
+      "level": "verb-to-be",
+      "source": "wordpairs"
+    },
+    {
+      "word": "our",
+      "level": "verb-to-be",
+      "source": "wordpairs"
+    },
+    {
+      "word": "You are welcome",
+      "level": "basic-sentences",
+      "source": "translations"
+    },
+    {
+      "word": "I don't know",
+      "level": "basic-sentences",
+      "source": "translations"
+    },
+    {
+      "word": "Excuse me",
+      "level": "basic-sentences",
+      "source": "translations"
+    },
+    {
+      "word": "When",
+      "level": "basic-sentences",
+      "source": "translations"
+    },
+    {
+      "word": "for",
+      "level": "basic-sentences",
+      "source": "translations"
+    },
+    {
+      "word": "with",
+      "level": "basic-sentences",
+      "source": "translations"
+    },
+    {
+      "word": "what time is it?",
+      "level": "basic-sentences",
+      "source": "translations"
+    },
+    {
+      "word": "at 2 o'clock",
+      "level": "basic-sentences",
+      "source": "translations"
+    },
+    {
+      "word": "to have",
+      "level": "basic-sentences",
+      "source": "translations"
+    },
+    {
+      "word": "What is this?",
+      "level": "basic-sentences",
+      "source": "translations"
+    },
+    {
+      "word": "to like",
+      "level": "basic-sentences",
+      "source": "translations"
+    },
+    {
+      "word": "to go",
+      "level": "basic-sentences",
+      "source": "translations"
+    },
+    {
+      "word": "to say",
+      "level": "basic-sentences",
+      "source": "translations"
+    },
+    {
+      "word": "bad",
+      "level": "basic-sentences",
+      "source": "translations"
+    },
+    {
+      "word": "this",
+      "level": "basic-sentences",
+      "source": "wordpairs"
+    },
+    {
+      "word": "that",
+      "level": "basic-sentences",
+      "source": "wordpairs"
+    },
+    {
+      "word": "these",
+      "level": "basic-sentences",
+      "source": "wordpairs"
+    },
+    {
+      "word": "those",
+      "level": "basic-sentences",
+      "source": "wordpairs"
+    },
+    {
+      "word": "to get up",
+      "level": "waking-up",
+      "source": "translations"
+    },
+    {
+      "word": "to wake up",
+      "level": "waking-up",
+      "source": "translations"
+    },
+    {
+      "word": "to open",
+      "level": "waking-up",
+      "source": "translations"
+    },
+    {
+      "word": "to sleep",
+      "level": "waking-up",
+      "source": "translations"
+    },
+    {
+      "word": "early",
+      "level": "waking-up",
+      "source": "translations"
+    },
+    {
+      "word": "what time?",
+      "level": "waking-up",
+      "source": "translations"
+    },
+    {
+      "word": "to try",
+      "level": "waking-up",
+      "source": "translations"
+    },
+    {
+      "word": "well",
+      "level": "waking-up",
+      "source": "translations"
+    },
+    {
+      "word": "now",
+      "level": "waking-up",
+      "source": "translations"
+    },
+    {
+      "word": "sleepy",
+      "level": "waking-up",
+      "source": "translations"
+    },
+    {
+      "word": "to stand up",
+      "level": "waking-up",
+      "source": "translations"
+    },
+    {
+      "word": "and",
+      "level": "waking-up",
+      "source": "wordpairs"
+    },
+    {
+      "word": "out of bed",
+      "level": "waking-up",
+      "source": "wordpairs"
+    },
+    {
+      "word": "go to sleep",
+      "level": "waking-up",
+      "source": "wordpairs"
+    },
+    {
+      "word": "from sleep",
+      "level": "waking-up",
+      "source": "wordpairs"
+    },
+    {
+      "word": "to dream",
+      "level": "bedroom",
+      "source": "translations"
+    },
+    {
+      "word": "all",
+      "level": "bedroom",
+      "source": "translations"
+    },
+    {
+      "word": "one more thing",
+      "level": "bedroom",
+      "source": "translations"
+    },
+    {
+      "word": "very",
+      "level": "bedroom",
+      "source": "translations"
+    },
+    {
+      "word": "turn on the light",
+      "level": "bedroom",
+      "source": "translations"
+    },
+    {
+      "word": "turn off the light",
+      "level": "bedroom",
+      "source": "translations"
+    },
+    {
+      "word": "dark",
+      "level": "bedroom",
+      "source": "translations"
+    },
+    {
+      "word": "comfortable",
+      "level": "bedroom",
+      "source": "translations"
+    },
+    {
+      "word": "too",
+      "level": "bedroom",
+      "source": "translations"
+    },
+    {
+      "word": "to clean",
+      "level": "bedroom",
+      "source": "translations"
+    },
+    {
+      "word": "to me",
+      "level": "bedroom",
+      "source": "wordpairs"
+    },
+    {
+      "word": "to you",
+      "level": "bedroom",
+      "source": "wordpairs"
+    },
+    {
+      "word": "to him/her",
+      "level": "bedroom",
+      "source": "wordpairs"
+    },
+    {
+      "word": "to us",
+      "level": "bedroom",
+      "source": "wordpairs"
+    },
+    {
+      "word": "to them",
+      "level": "bedroom",
+      "source": "wordpairs"
+    },
+    {
+      "word": "to wash",
+      "level": "bathroom",
+      "source": "translations"
+    },
+    {
+      "word": "to feel",
+      "level": "bathroom",
+      "source": "translations"
+    },
+    {
+      "word": "to comb hair",
+      "level": "bathroom",
+      "source": "translations"
+    },
+    {
+      "word": "to brush teeth",
+      "level": "bathroom",
+      "source": "translations"
+    },
+    {
+      "word": "to take a shower",
+      "level": "bathroom",
+      "source": "translations"
+    },
+    {
+      "word": "always",
+      "level": "bathroom",
+      "source": "translations"
+    },
+    {
+      "word": "then",
+      "level": "bathroom",
+      "source": "translations"
+    },
+    {
+      "word": "to use",
+      "level": "bathroom",
+      "source": "translations"
+    },
+    {
+      "word": "before",
+      "level": "bathroom",
+      "source": "translations"
+    },
+    {
+      "word": "after",
+      "level": "bathroom",
+      "source": "translations"
+    },
+    {
+      "word": "dirty",
+      "level": "bathroom",
+      "source": "translations"
+    },
+    {
+      "word": "wet",
+      "level": "bathroom",
+      "source": "wordpairs"
+    },
+    {
+      "word": "dry",
+      "level": "bathroom",
+      "source": "wordpairs"
+    },
+    {
+      "word": "hot",
+      "level": "bathroom",
+      "source": "wordpairs"
+    },
+    {
+      "word": "cold",
+      "level": "bathroom",
+      "source": "wordpairs"
+    },
+    {
+      "word": "to learn",
+      "level": "at-the-school",
+      "source": "translations"
+    },
+    {
+      "word": "to write",
+      "level": "at-the-school",
+      "source": "translations"
+    },
+    {
+      "word": "to know",
+      "level": "at-the-school",
+      "source": "translations"
+    },
+    {
+      "word": "to answer",
+      "level": "at-the-school",
+      "source": "translations"
+    },
+    {
+      "word": "to teach",
+      "level": "at-the-school",
+      "source": "translations"
+    },
+    {
+      "word": "to read",
+      "level": "at-the-school",
+      "source": "translations"
+    },
+    {
+      "word": "again",
+      "level": "at-the-school",
+      "source": "translations"
+    },
+    {
+      "word": "interesting",
+      "level": "at-the-school",
+      "source": "translations"
+    },
+    {
+      "word": "to study",
+      "level": "at-the-school",
+      "source": "translations"
+    },
+    {
+      "word": "to ask a question",
+      "level": "at-the-school",
+      "source": "translations"
+    },
+    {
+      "word": "to understand",
+      "level": "at-the-school",
+      "source": "translations"
+    },
+    {
+      "word": "to do homework",
+      "level": "at-the-school",
+      "source": "translations"
+    },
+    {
+      "word": "difficult",
+      "level": "at-the-school",
+      "source": "wordpairs"
+    },
+    {
+      "word": "easy",
+      "level": "at-the-school",
+      "source": "wordpairs"
+    },
+    {
+      "word": "right",
+      "level": "at-the-school",
+      "source": "wordpairs"
+    },
+    {
+      "word": "wrong",
+      "level": "at-the-school",
+      "source": "wordpairs"
+    },
+    {
+      "word": "to renew",
+      "level": "at-the-library",
+      "source": "translations"
+    },
+    {
+      "word": "to help",
+      "level": "at-the-library",
+      "source": "translations"
+    },
+    {
+      "word": "to find",
+      "level": "at-the-library",
+      "source": "translations"
+    },
+    {
+      "word": "to borrow",
+      "level": "at-the-library",
+      "source": "translations"
+    },
+    {
+      "word": "closed",
+      "level": "at-the-library",
+      "source": "translations"
+    },
+    {
+      "word": "to search",
+      "level": "at-the-library",
+      "source": "translations"
+    },
+    {
+      "word": "impossible",
+      "level": "at-the-library",
+      "source": "translations"
+    },
+    {
+      "word": "to take",
+      "level": "at-the-library",
+      "source": "translations"
+    },
+    {
+      "word": "to show",
+      "level": "at-the-library",
+      "source": "translations"
+    },
+    {
+      "word": "to get",
+      "level": "at-the-library",
+      "source": "translations"
+    },
+    {
+      "word": "silent",
+      "level": "at-the-library",
+      "source": "translations"
+    },
+    {
+      "word": "long",
+      "level": "at-the-library",
+      "source": "wordpairs"
+    },
+    {
+      "word": "short",
+      "level": "at-the-library",
+      "source": "wordpairs"
+    },
+    {
+      "word": "quiet",
+      "level": "at-the-library",
+      "source": "wordpairs"
+    },
+    {
+      "word": "boring",
+      "level": "at-the-library",
+      "source": "wordpairs"
+    },
+    {
+      "word": "happy",
+      "level": "birthday-party",
+      "source": "translations"
+    },
+    {
+      "word": "to invite",
+      "level": "birthday-party",
+      "source": "translations"
+    },
+    {
+      "word": "to enjoy",
+      "level": "birthday-party",
+      "source": "translations"
+    },
+    {
+      "word": "together",
+      "level": "birthday-party",
+      "source": "translations"
+    },
+    {
+      "word": "to blow",
+      "level": "birthday-party",
+      "source": "translations"
+    },
+    {
+      "word": "to make",
+      "level": "birthday-party",
+      "source": "translations"
+    },
+    {
+      "word": "to give",
+      "level": "birthday-party",
+      "source": "translations"
+    },
+    {
+      "word": "to celebrate",
+      "level": "birthday-party",
+      "source": "translations"
+    },
+    {
+      "word": "to want",
+      "level": "birthday-party",
+      "source": "translations"
+    },
+    {
+      "word": "to sing",
+      "level": "birthday-party",
+      "source": "translations"
+    },
+    {
+      "word": "surprise",
+      "level": "birthday-party",
+      "source": "translations"
+    },
+    {
+      "word": "to dance",
+      "level": "birthday-party",
+      "source": "translations"
+    },
+    {
+      "word": "big",
+      "level": "birthday-party",
+      "source": "wordpairs"
+    },
+    {
+      "word": "small",
+      "level": "birthday-party",
+      "source": "wordpairs"
+    },
+    {
+      "word": "fun",
+      "level": "birthday-party",
+      "source": "wordpairs"
+    },
+    {
+      "word": "special",
+      "level": "birthday-party",
+      "source": "wordpairs"
+    },
+    {
+      "word": "to feed",
+      "level": "baby-care",
+      "source": "translations"
+    },
+    {
+      "word": "to whisper",
+      "level": "baby-care",
+      "source": "translations"
+    },
+    {
+      "word": "newborn",
+      "level": "baby-care",
+      "source": "translations"
+    },
+    {
+      "word": "to cry",
+      "level": "baby-care",
+      "source": "translations"
+    },
+    {
+      "word": "to smile",
+      "level": "baby-care",
+      "source": "translations"
+    },
+    {
+      "word": "to laugh",
+      "level": "baby-care",
+      "source": "translations"
+    },
+    {
+      "word": "to hold",
+      "level": "baby-care",
+      "source": "translations"
+    },
+    {
+      "word": "to change",
+      "level": "baby-care",
+      "source": "translations"
+    },
+    {
+      "word": "regularly",
+      "level": "baby-care",
+      "source": "translations"
+    },
+    {
+      "word": "to need",
+      "level": "baby-care",
+      "source": "translations"
+    },
+    {
+      "word": "to repeat",
+      "level": "baby-care",
+      "source": "translations"
+    },
+    {
+      "word": "pretty",
+      "level": "baby-care",
+      "source": "translations"
+    },
+    {
+      "word": "to kiss",
+      "level": "baby-care",
+      "source": "translations"
+    },
+    {
+      "word": "soft",
+      "level": "baby-care",
+      "source": "wordpairs"
+    },
+    {
+      "word": "hard",
+      "level": "baby-care",
+      "source": "wordpairs"
+    },
+    {
+      "word": "gentle",
+      "level": "baby-care",
+      "source": "wordpairs"
+    },
+    {
+      "word": "loud",
+      "level": "baby-care",
+      "source": "wordpairs"
+    },
+    {
+      "word": "to start",
+      "level": "medley-1",
+      "source": "translations"
+    },
+    {
+      "word": "to hear",
+      "level": "medley-1",
+      "source": "translations"
+    },
+    {
+      "word": "to imagine",
+      "level": "medley-1",
+      "source": "translations"
+    },
+    {
+      "word": "world",
+      "level": "medley-1",
+      "source": "translations"
+    },
+    {
+      "word": "to die",
+      "level": "medley-1",
+      "source": "translations"
+    },
+    {
+      "word": "never",
+      "level": "medley-1",
+      "source": "translations"
+    },
+    {
+      "word": "size",
+      "level": "medley-1",
+      "source": "translations"
+    },
+    {
+      "word": "huge",
+      "level": "medley-1",
+      "source": "translations"
+    },
+    {
+      "word": "family",
+      "level": "medley-1",
+      "source": "translations"
+    },
+    {
+      "word": "home",
+      "level": "medley-1",
+      "source": "translations"
+    },
+    {
+      "word": "way",
+      "level": "medley-1",
+      "source": "translations"
+    },
+    {
+      "word": "date",
+      "level": "medley-1",
+      "source": "translations"
+    },
+    {
+      "word": "paper",
+      "level": "medley-1",
+      "source": "translations"
+    },
+    {
+      "word": "useful",
+      "level": "medley-1",
+      "source": "translations"
+    },
+    {
+      "word": "to become",
+      "level": "medley-1",
+      "source": "translations"
+    },
+    {
+      "word": "life",
+      "level": "medley-1",
+      "source": "translations"
+    },
+    {
+      "word": "friend",
+      "level": "medley-1",
+      "source": "translations"
+    },
+    {
+      "word": "spring",
+      "level": "medley-1",
+      "source": "wordpairs"
+    },
+    {
+      "word": "summer",
+      "level": "medley-1",
+      "source": "wordpairs"
+    },
+    {
+      "word": "fall",
+      "level": "medley-1",
+      "source": "wordpairs"
+    },
+    {
+      "word": "winter",
+      "level": "medley-1",
+      "source": "wordpairs"
+    },
+    {
+      "word": "there is, there are",
+      "level": "kitchen",
+      "source": "translations"
+    },
+    {
+      "word": "to cook",
+      "level": "kitchen",
+      "source": "translations"
+    },
+    {
+      "word": "to cut",
+      "level": "kitchen",
+      "source": "translations"
+    },
+    {
+      "word": "breakfast",
+      "level": "kitchen",
+      "source": "translations"
+    },
+    {
+      "word": "to bake",
+      "level": "kitchen",
+      "source": "translations"
+    },
+    {
+      "word": "hungry",
+      "level": "kitchen",
+      "source": "translations"
+    },
+    {
+      "word": "thirsty",
+      "level": "kitchen",
+      "source": "translations"
+    },
+    {
+      "word": "to eat",
+      "level": "kitchen",
+      "source": "translations"
+    },
+    {
+      "word": "to drink",
+      "level": "kitchen",
+      "source": "translations"
+    },
+    {
+      "word": "slowly",
+      "level": "kitchen",
+      "source": "translations"
+    },
+    {
+      "word": "to do the dishes",
+      "level": "kitchen",
+      "source": "translations"
+    },
+    {
+      "word": "I do it",
+      "level": "kitchen",
+      "source": "wordpairs"
+    },
+    {
+      "word": "I can do it",
+      "level": "kitchen",
+      "source": "wordpairs"
+    },
+    {
+      "word": "I will do it",
+      "level": "kitchen",
+      "source": "wordpairs"
+    },
+    {
+      "word": "I must do it",
+      "level": "kitchen",
+      "source": "wordpairs"
+    },
+    {
+      "word": "to shop",
+      "level": "grocery-shopping",
+      "source": "translations"
+    },
+    {
+      "word": "to buy",
+      "level": "grocery-shopping",
+      "source": "translations"
+    },
+    {
+      "word": "new",
+      "level": "grocery-shopping",
+      "source": "translations"
+    },
+    {
+      "word": "how much",
+      "level": "grocery-shopping",
+      "source": "translations"
+    },
+    {
+      "word": "expensive",
+      "level": "grocery-shopping",
+      "source": "translations"
+    },
+    {
+      "word": "to pay",
+      "level": "grocery-shopping",
+      "source": "translations"
+    },
+    {
+      "word": "checkout",
+      "level": "grocery-shopping",
+      "source": "translations"
+    },
+    {
+      "word": "why",
+      "level": "grocery-shopping",
+      "source": "translations"
+    },
+    {
+      "word": "to wait",
+      "level": "grocery-shopping",
+      "source": "translations"
+    },
+    {
+      "word": "to choose",
+      "level": "grocery-shopping",
+      "source": "translations"
+    },
+    {
+      "word": "to guess",
+      "level": "grocery-shopping",
+      "source": "translations"
+    },
+    {
+      "word": "to carry",
+      "level": "grocery-shopping",
+      "source": "translations"
+    },
+    {
+      "word": "heavy",
+      "level": "grocery-shopping",
+      "source": "wordpairs"
+    },
+    {
+      "word": "light",
+      "level": "grocery-shopping",
+      "source": "wordpairs"
+    },
+    {
+      "word": "empty",
+      "level": "grocery-shopping",
+      "source": "wordpairs"
+    },
+    {
+      "word": "full",
+      "level": "grocery-shopping",
+      "source": "wordpairs"
+    },
+    {
+      "word": "to sell",
+      "level": "at-the-farmers-market",
+      "source": "translations"
+    },
+    {
+      "word": "fresh",
+      "level": "at-the-farmers-market",
+      "source": "translations"
+    },
+    {
+      "word": "tomorrow",
+      "level": "at-the-farmers-market",
+      "source": "translations"
+    },
+    {
+      "word": "to seem",
+      "level": "at-the-farmers-market",
+      "source": "translations"
+    },
+    {
+      "word": "genuine",
+      "level": "at-the-farmers-market",
+      "source": "translations"
+    },
+    {
+      "word": "to compare",
+      "level": "at-the-farmers-market",
+      "source": "translations"
+    },
+    {
+      "word": "price",
+      "level": "at-the-farmers-market",
+      "source": "translations"
+    },
+    {
+      "word": "to welcome",
+      "level": "at-the-farmers-market",
+      "source": "translations"
+    },
+    {
+      "word": "polite",
+      "level": "at-the-farmers-market",
+      "source": "translations"
+    },
+    {
+      "word": "sample",
+      "level": "at-the-farmers-market",
+      "source": "translations"
+    },
+    {
+      "word": "only",
+      "level": "at-the-farmers-market",
+      "source": "translations"
+    },
+    {
+      "word": "free",
+      "level": "at-the-farmers-market",
+      "source": "wordpairs"
+    },
+    {
+      "word": "costly",
+      "level": "at-the-farmers-market",
+      "source": "wordpairs"
+    },
+    {
+      "word": "cheap",
+      "level": "at-the-farmers-market",
+      "source": "wordpairs"
+    },
+    {
+      "word": "on sale",
+      "level": "at-the-farmers-market",
+      "source": "wordpairs"
+    },
+    {
+      "word": "friendly",
+      "level": "medley-2",
+      "source": "translations"
+    },
+    {
+      "word": "to think",
+      "level": "medley-2",
+      "source": "translations"
+    },
+    {
+      "word": "to win",
+      "level": "medley-2",
+      "source": "translations"
+    },
+    {
+      "word": "exactly",
+      "level": "medley-2",
+      "source": "translations"
+    },
+    {
+      "word": "awesome",
+      "level": "medley-2",
+      "source": "translations"
+    },
+    {
+      "word": "against",
+      "level": "medley-2",
+      "source": "translations"
+    },
+    {
+      "word": "not yet",
+      "level": "medley-2",
+      "source": "translations"
+    },
+    {
+      "word": "crowded",
+      "level": "medley-2",
+      "source": "translations"
+    },
+    {
+      "word": "to lock",
+      "level": "medley-2",
+      "source": "translations"
+    },
+    {
+      "word": "to keep",
+      "level": "medley-2",
+      "source": "translations"
+    },
+    {
+      "word": "to protect",
+      "level": "medley-2",
+      "source": "translations"
+    },
+    {
+      "word": "to hide",
+      "level": "medley-2",
+      "source": "translations"
+    },
+    {
+      "word": "probably",
+      "level": "medley-2",
+      "source": "translations"
+    },
+    {
+      "word": "worst",
+      "level": "medley-2",
+      "source": "translations"
+    },
+    {
+      "word": "still waiting",
+      "level": "medley-2",
+      "source": "translations"
+    },
+    {
+      "word": "cool",
+      "level": "medley-2",
+      "source": "wordpairs"
+    },
+    {
+      "word": "warm",
+      "level": "medley-2",
+      "source": "wordpairs"
+    },
+    {
+      "word": "half",
+      "level": "medley-2",
+      "source": "wordpairs"
+    },
+    {
+      "word": "quarter",
+      "level": "medley-2",
+      "source": "wordpairs"
+    },
+    {
+      "word": "to walk",
+      "level": "city-walk",
+      "source": "translations"
+    },
+    {
+      "word": "to look at",
+      "level": "city-walk",
+      "source": "translations"
+    },
+    {
+      "word": "wonderful",
+      "level": "city-walk",
+      "source": "translations"
+    },
+    {
+      "word": "carefully",
+      "level": "city-walk",
+      "source": "translations"
+    },
+    {
+      "word": "to come",
+      "level": "city-walk",
+      "source": "translations"
+    },
+    {
+      "word": "to see",
+      "level": "city-walk",
+      "source": "translations"
+    },
+    {
+      "word": "to turn left",
+      "level": "city-walk",
+      "source": "translations"
+    },
+    {
+      "word": "to leave the house",
+      "level": "city-walk",
+      "source": "translations"
+    },
+    {
+      "word": "quietly",
+      "level": "city-walk",
+      "source": "translations"
+    },
+    {
+      "word": "to live",
+      "level": "city-walk",
+      "source": "translations"
+    },
+    {
+      "word": "to follow",
+      "level": "city-walk",
+      "source": "translations"
+    },
+    {
+      "word": "tired",
+      "level": "city-walk",
+      "source": "translations"
+    },
+    {
+      "word": "to go back",
+      "level": "city-walk",
+      "source": "translations"
+    },
+    {
+      "word": "far",
+      "level": "city-walk",
+      "source": "wordpairs"
+    },
+    {
+      "word": "near",
+      "level": "city-walk",
+      "source": "wordpairs"
+    },
+    {
+      "word": "inside",
+      "level": "city-walk",
+      "source": "wordpairs"
+    },
+    {
+      "word": "outside",
+      "level": "city-walk",
+      "source": "wordpairs"
+    },
+    {
+      "word": "tonight",
+      "level": "at-the-cinema",
+      "source": "translations"
+    },
+    {
+      "word": "to watch",
+      "level": "at-the-cinema",
+      "source": "translations"
+    },
+    {
+      "word": "familiar",
+      "level": "at-the-cinema",
+      "source": "translations"
+    },
+    {
+      "word": "to enter",
+      "level": "at-the-cinema",
+      "source": "translations"
+    },
+    {
+      "word": "to miss",
+      "level": "at-the-cinema",
+      "source": "translations"
+    },
+    {
+      "word": "whole",
+      "level": "at-the-cinema",
+      "source": "translations"
+    },
+    {
+      "word": "to recommend",
+      "level": "at-the-cinema",
+      "source": "translations"
+    },
+    {
+      "word": "to select",
+      "level": "at-the-cinema",
+      "source": "translations"
+    },
+    {
+      "word": "to hate",
+      "level": "at-the-cinema",
+      "source": "translations"
+    },
+    {
+      "word": "to mean",
+      "level": "at-the-cinema",
+      "source": "translations"
+    },
+    {
+      "word": "to book",
+      "level": "at-the-cinema",
+      "source": "translations"
+    },
+    {
+      "word": "easily",
+      "level": "at-the-cinema",
+      "source": "translations"
+    },
+    {
+      "word": "exciting",
+      "level": "at-the-cinema",
+      "source": "wordpairs"
+    },
+    {
+      "word": "scary",
+      "level": "at-the-cinema",
+      "source": "wordpairs"
+    },
+    {
+      "word": "funny",
+      "level": "at-the-cinema",
+      "source": "wordpairs"
+    },
+    {
+      "word": "awful",
+      "level": "at-the-cinema",
+      "source": "wordpairs"
+    },
+    {
+      "word": "to drive",
+      "level": "at-the-traffic",
+      "source": "translations"
+    },
+    {
+      "word": "dangerous",
+      "level": "at-the-traffic",
+      "source": "translations"
+    },
+    {
+      "word": "to sound",
+      "level": "at-the-traffic",
+      "source": "translations"
+    },
+    {
+      "word": "to let",
+      "level": "at-the-traffic",
+      "source": "translations"
+    },
+    {
+      "word": "to cross",
+      "level": "at-the-traffic",
+      "source": "translations"
+    },
+    {
+      "word": "busy",
+      "level": "at-the-traffic",
+      "source": "translations"
+    },
+    {
+      "word": "slow down",
+      "level": "at-the-traffic",
+      "source": "translations"
+    },
+    {
+      "word": "to increase",
+      "level": "at-the-traffic",
+      "source": "translations"
+    },
+    {
+      "word": "to turn",
+      "level": "at-the-traffic",
+      "source": "translations"
+    },
+    {
+      "word": "to stop",
+      "level": "at-the-traffic",
+      "source": "translations"
+    },
+    {
+      "word": "to get out",
+      "level": "at-the-traffic",
+      "source": "translations"
+    },
+    {
+      "word": "to pass",
+      "level": "at-the-traffic",
+      "source": "translations"
+    },
+    {
+      "word": "to fail",
+      "level": "at-the-traffic",
+      "source": "translations"
+    },
+    {
+      "word": "but",
+      "level": "at-the-traffic",
+      "source": "wordpairs"
+    },
+    {
+      "word": "except",
+      "level": "at-the-traffic",
+      "source": "wordpairs"
+    },
+    {
+      "word": "or",
+      "level": "at-the-traffic",
+      "source": "wordpairs"
+    },
+    {
+      "word": "because",
+      "level": "at-the-traffic",
+      "source": "wordpairs"
+    },
+    {
+      "word": "to deposit",
+      "level": "at-the-bank",
+      "source": "translations"
+    },
+    {
+      "word": "to withdraw money",
+      "level": "at-the-bank",
+      "source": "translations"
+    },
+    {
+      "word": "to save",
+      "level": "at-the-bank",
+      "source": "translations"
+    },
+    {
+      "word": "to sign",
+      "level": "at-the-bank",
+      "source": "translations"
+    },
+    {
+      "word": "to lend",
+      "level": "at-the-bank",
+      "source": "translations"
+    },
+    {
+      "word": "fill in a form",
+      "level": "at-the-bank",
+      "source": "translations"
+    },
+    {
+      "word": "to discuss",
+      "level": "at-the-bank",
+      "source": "translations"
+    },
+    {
+      "word": "soon",
+      "level": "at-the-bank",
+      "source": "translations"
+    },
+    {
+      "word": "to count",
+      "level": "at-the-bank",
+      "source": "translations"
+    },
+    {
+      "word": "to remember",
+      "level": "at-the-bank",
+      "source": "translations"
+    },
+    {
+      "word": "large",
+      "level": "at-the-bank",
+      "source": "translations"
+    },
+    {
+      "word": "to open an account",
+      "level": "at-the-bank",
+      "source": "translations"
+    },
+    {
+      "word": "if",
+      "level": "at-the-bank",
+      "source": "wordpairs"
+    },
+    {
+      "word": "though",
+      "level": "at-the-bank",
+      "source": "wordpairs"
+    },
+    {
+      "word": "until",
+      "level": "at-the-bank",
+      "source": "wordpairs"
+    },
+    {
+      "word": "often",
+      "level": "at-the-bank",
+      "source": "wordpairs"
+    },
+    {
+      "word": "to send",
+      "level": "at-the-post-office",
+      "source": "translations"
+    },
+    {
+      "word": "to complete",
+      "level": "at-the-post-office",
+      "source": "translations"
+    },
+    {
+      "word": "to deliver",
+      "level": "at-the-post-office",
+      "source": "translations"
+    },
+    {
+      "word": "to receive",
+      "level": "at-the-post-office",
+      "source": "translations"
+    },
+    {
+      "word": "important",
+      "level": "at-the-post-office",
+      "source": "translations"
+    },
+    {
+      "word": "to bring",
+      "level": "at-the-post-office",
+      "source": "translations"
+    },
+    {
+      "word": "already",
+      "level": "at-the-post-office",
+      "source": "translations"
+    },
+    {
+      "word": "to include",
+      "level": "at-the-post-office",
+      "source": "translations"
+    },
+    {
+      "word": "to break",
+      "level": "at-the-post-office",
+      "source": "translations"
+    },
+    {
+      "word": "correct",
+      "level": "at-the-post-office",
+      "source": "translations"
+    },
+    {
+      "word": "to lose",
+      "level": "at-the-post-office",
+      "source": "translations"
+    },
+    {
+      "word": "to pack",
+      "level": "at-the-post-office",
+      "source": "translations"
+    },
+    {
+      "word": "to cost",
+      "level": "at-the-post-office",
+      "source": "translations"
+    },
+    {
+      "word": "somebody",
+      "level": "at-the-post-office",
+      "source": "wordpairs"
+    },
+    {
+      "word": "something",
+      "level": "at-the-post-office",
+      "source": "wordpairs"
+    },
+    {
+      "word": "nobody",
+      "level": "at-the-post-office",
+      "source": "wordpairs"
+    },
+    {
+      "word": "nothing",
+      "level": "at-the-post-office",
+      "source": "wordpairs"
+    },
+    {
+      "word": "to grow",
+      "level": "at-the-farm",
+      "source": "translations"
+    },
+    {
+      "word": "to pick apples",
+      "level": "at-the-farm",
+      "source": "translations"
+    },
+    {
+      "word": "to ride a horse",
+      "level": "at-the-farm",
+      "source": "translations"
+    },
+    {
+      "word": "to push",
+      "level": "at-the-farm",
+      "source": "translations"
+    },
+    {
+      "word": "finally",
+      "level": "at-the-farm",
+      "source": "translations"
+    },
+    {
+      "word": "to move something",
+      "level": "at-the-farm",
+      "source": "translations"
+    },
+    {
+      "word": "daily",
+      "level": "at-the-farm",
+      "source": "translations"
+    },
+    {
+      "word": "to add",
+      "level": "at-the-farm",
+      "source": "translations"
+    },
+    {
+      "word": "to pull",
+      "level": "at-the-farm",
+      "source": "translations"
+    },
+    {
+      "word": "to raise something",
+      "level": "at-the-farm",
+      "source": "translations"
+    },
+    {
+      "word": "to plant something",
+      "level": "at-the-farm",
+      "source": "translations"
+    },
+    {
+      "word": "especially",
+      "level": "at-the-farm",
+      "source": "translations"
+    },
+    {
+      "word": "thin",
+      "level": "at-the-farm",
+      "source": "wordpairs"
+    },
+    {
+      "word": "thick",
+      "level": "at-the-farm",
+      "source": "wordpairs"
+    },
+    {
+      "word": "top",
+      "level": "at-the-farm",
+      "source": "wordpairs"
+    },
+    {
+      "word": "bottom",
+      "level": "at-the-farm",
+      "source": "wordpairs"
+    },
+    {
+      "word": "people",
+      "level": "medley-3",
+      "source": "translations"
+    },
+    {
+      "word": "recently",
+      "level": "medley-3",
+      "source": "translations"
+    },
+    {
+      "word": "to earn",
+      "level": "medley-3",
+      "source": "translations"
+    },
+    {
+      "word": "idea",
+      "level": "medley-3",
+      "source": "translations"
+    },
+    {
+      "word": "completely",
+      "level": "medley-3",
+      "source": "translations"
+    },
+    {
+      "word": "to draw",
+      "level": "medley-3",
+      "source": "translations"
+    },
+    {
+      "word": "to design",
+      "level": "medley-3",
+      "source": "translations"
+    },
+    {
+      "word": "fair",
+      "level": "medley-3",
+      "source": "translations"
+    },
+    {
+      "word": "to apply",
+      "level": "medley-3",
+      "source": "translations"
+    },
+    {
+      "word": "to accept",
+      "level": "medley-3",
+      "source": "translations"
+    },
+    {
+      "word": "to fight",
+      "level": "medley-3",
+      "source": "translations"
+    },
+    {
+      "word": "to escape",
+      "level": "medley-3",
+      "source": "translations"
+    },
+    {
+      "word": "to fold",
+      "level": "medley-3",
+      "source": "translations"
+    },
+    {
+      "word": "secret",
+      "level": "medley-3",
+      "source": "translations"
+    },
+    {
+      "word": "certain",
+      "level": "medley-3",
+      "source": "translations"
+    },
+    {
+      "word": "equal",
+      "level": "medley-3",
+      "source": "translations"
+    },
+    {
+      "word": "man",
+      "level": "medley-3",
+      "source": "wordpairs"
+    },
+    {
+      "word": "woman",
+      "level": "medley-3",
+      "source": "wordpairs"
+    },
+    {
+      "word": "child",
+      "level": "medley-3",
+      "source": "wordpairs"
+    },
+    {
+      "word": "adult",
+      "level": "medley-3",
+      "source": "wordpairs"
+    },
+    {
+      "word": "to work",
+      "level": "at-the-office",
+      "source": "translations"
+    },
+    {
+      "word": "to plan",
+      "level": "at-the-office",
+      "source": "translations"
+    },
+    {
+      "word": "away",
+      "level": "at-the-office",
+      "source": "translations"
+    },
+    {
+      "word": "to decide",
+      "level": "at-the-office",
+      "source": "translations"
+    },
+    {
+      "word": "are you sure",
+      "level": "at-the-office",
+      "source": "translations"
+    },
+    {
+      "word": "to attend a meeting",
+      "level": "at-the-office",
+      "source": "translations"
+    },
+    {
+      "word": "to connect",
+      "level": "at-the-office",
+      "source": "translations"
+    },
+    {
+      "word": "available",
+      "level": "at-the-office",
+      "source": "translations"
+    },
+    {
+      "word": "to finish",
+      "level": "at-the-office",
+      "source": "translations"
+    },
+    {
+      "word": "to suggest",
+      "level": "at-the-office",
+      "source": "translations"
+    },
+    {
+      "word": "smart",
+      "level": "at-the-office",
+      "source": "translations"
+    },
+    {
+      "word": "year",
+      "level": "at-the-office",
+      "source": "wordpairs"
+    },
+    {
+      "word": "month",
+      "level": "at-the-office",
+      "source": "wordpairs"
+    },
+    {
+      "word": "week",
+      "level": "at-the-office",
+      "source": "wordpairs"
+    },
+    {
+      "word": "day",
+      "level": "at-the-office",
+      "source": "wordpairs"
+    },
+    {
+      "word": "to order",
+      "level": "at-the-restaurant",
+      "source": "translations"
+    },
+    {
+      "word": "to share",
+      "level": "at-the-restaurant",
+      "source": "translations"
+    },
+    {
+      "word": "to serve",
+      "level": "at-the-restaurant",
+      "source": "translations"
+    },
+    {
+      "word": "I am full",
+      "level": "at-the-restaurant",
+      "source": "translations"
+    },
+    {
+      "word": "which",
+      "level": "at-the-restaurant",
+      "source": "translations"
+    },
+    {
+      "word": "delicious",
+      "level": "at-the-restaurant",
+      "source": "translations"
+    },
+    {
+      "word": "to offer",
+      "level": "at-the-restaurant",
+      "source": "translations"
+    },
+    {
+      "word": "to heat",
+      "level": "at-the-restaurant",
+      "source": "translations"
+    },
+    {
+      "word": "properly",
+      "level": "at-the-restaurant",
+      "source": "translations"
+    },
+    {
+      "word": "main",
+      "level": "at-the-restaurant",
+      "source": "translations"
+    },
+    {
+      "word": "to taste",
+      "level": "at-the-restaurant",
+      "source": "translations"
+    },
+    {
+      "word": "to boil",
+      "level": "at-the-restaurant",
+      "source": "translations"
+    },
+    {
+      "word": "lunch",
+      "level": "at-the-restaurant",
+      "source": "translations"
+    },
+    {
+      "word": "sweet",
+      "level": "at-the-restaurant",
+      "source": "wordpairs"
+    },
+    {
+      "word": "salty",
+      "level": "at-the-restaurant",
+      "source": "wordpairs"
+    },
+    {
+      "word": "sour",
+      "level": "at-the-restaurant",
+      "source": "wordpairs"
+    },
+    {
+      "word": "spicy",
+      "level": "at-the-restaurant",
+      "source": "wordpairs"
+    },
+    {
+      "word": "to try on",
+      "level": "clothes-shopping",
+      "source": "translations"
+    },
+    {
+      "word": "to spend",
+      "level": "clothes-shopping",
+      "source": "translations"
+    },
+    {
+      "word": "discount",
+      "level": "clothes-shopping",
+      "source": "translations"
+    },
+    {
+      "word": "to remove",
+      "level": "clothes-shopping",
+      "source": "translations"
+    },
+    {
+      "word": "to leave something as is",
+      "level": "clothes-shopping",
+      "source": "translations"
+    },
+    {
+      "word": "to prefer",
+      "level": "clothes-shopping",
+      "source": "translations"
+    },
+    {
+      "word": "to fit",
+      "level": "clothes-shopping",
+      "source": "translations"
+    },
+    {
+      "word": "to return something",
+      "level": "clothes-shopping",
+      "source": "translations"
+    },
+    {
+      "word": "loose",
+      "level": "clothes-shopping",
+      "source": "translations"
+    },
+    {
+      "word": "to wear",
+      "level": "clothes-shopping",
+      "source": "translations"
+    },
+    {
+      "word": "young",
+      "level": "clothes-shopping",
+      "source": "translations"
+    },
+    {
+      "word": "to look for",
+      "level": "clothes-shopping",
+      "source": "translations"
+    },
+    {
+      "word": "perfect",
+      "level": "clothes-shopping",
+      "source": "translations"
+    },
+    {
+      "word": "to love",
+      "level": "clothes-shopping",
+      "source": "translations"
+    },
+    {
+      "word": "nice",
+      "level": "clothes-shopping",
+      "source": "wordpairs"
+    },
+    {
+      "word": "ugly",
+      "level": "clothes-shopping",
+      "source": "wordpairs"
+    },
+    {
+      "word": "rich",
+      "level": "clothes-shopping",
+      "source": "wordpairs"
+    },
+    {
+      "word": "poor",
+      "level": "clothes-shopping",
+      "source": "wordpairs"
+    },
+    {
+      "word": "to marry",
+      "level": "medley-4",
+      "source": "translations"
+    },
+    {
+      "word": "story",
+      "level": "medley-4",
+      "source": "translations"
+    },
+    {
+      "word": "today",
+      "level": "medley-4",
+      "source": "translations"
+    },
+    {
+      "word": "honest",
+      "level": "medley-4",
+      "source": "translations"
+    },
+    {
+      "word": "to pour",
+      "level": "medley-4",
+      "source": "translations"
+    },
+    {
+      "word": "to mix",
+      "level": "medley-4",
+      "source": "translations"
+    },
+    {
+      "word": "to expect",
+      "level": "medley-4",
+      "source": "translations"
+    },
+    {
+      "word": "to drop",
+      "level": "medley-4",
+      "source": "translations"
+    },
+    {
+      "word": "example",
+      "level": "medley-4",
+      "source": "translations"
+    },
+    {
+      "word": "less",
+      "level": "medley-4",
+      "source": "translations"
+    },
+    {
+      "word": "to wish",
+      "level": "medley-4",
+      "source": "translations"
+    },
+    {
+      "word": "health",
+      "level": "medley-4",
+      "source": "translations"
+    },
+    {
+      "word": "to kick",
+      "level": "medley-4",
+      "source": "translations"
+    },
+    {
+      "word": "to lift",
+      "level": "medley-4",
+      "source": "translations"
+    },
+    {
+      "word": "minute",
+      "level": "medley-4",
+      "source": "wordpairs"
+    },
+    {
+      "word": "hour",
+      "level": "medley-4",
+      "source": "wordpairs"
+    },
+    {
+      "word": "second",
+      "level": "medley-4",
+      "source": "wordpairs"
+    },
+    {
+      "word": "time",
+      "level": "medley-4",
+      "source": "wordpairs"
+    },
+    {
+      "word": "to collect",
+      "level": "nature-walk",
+      "source": "translations"
+    },
+    {
+      "word": "to touch",
+      "level": "nature-walk",
+      "source": "translations"
+    },
+    {
+      "word": "wild",
+      "level": "nature-walk",
+      "source": "translations"
+    },
+    {
+      "word": "to notice",
+      "level": "nature-walk",
+      "source": "translations"
+    },
+    {
+      "word": "wide",
+      "level": "nature-walk",
+      "source": "translations"
+    },
+    {
+      "word": "to shout",
+      "level": "nature-walk",
+      "source": "translations"
+    },
+    {
+      "word": "calm",
+      "level": "nature-walk",
+      "source": "translations"
+    },
+    {
+      "word": "to melt",
+      "level": "nature-walk",
+      "source": "translations"
+    },
+    {
+      "word": "to build",
+      "level": "nature-walk",
+      "source": "translations"
+    },
+    {
+      "word": "deep",
+      "level": "nature-walk",
+      "source": "translations"
+    },
+    {
+      "word": "suddenly",
+      "level": "nature-walk",
+      "source": "translations"
+    },
+    {
+      "word": "to scare",
+      "level": "nature-walk",
+      "source": "translations"
+    },
+    {
+      "word": "east",
+      "level": "nature-walk",
+      "source": "wordpairs"
+    },
+    {
+      "word": "west",
+      "level": "nature-walk",
+      "source": "wordpairs"
+    },
+    {
+      "word": "north",
+      "level": "nature-walk",
+      "source": "wordpairs"
+    },
+    {
+      "word": "south",
+      "level": "nature-walk",
+      "source": "wordpairs"
+    },
+    {
+      "word": "to sit",
+      "level": "living-room",
+      "source": "translations"
+    },
+    {
+      "word": "to forget",
+      "level": "living-room",
+      "source": "translations"
+    },
+    {
+      "word": "to lie down",
+      "level": "living-room",
+      "source": "translations"
+    },
+    {
+      "word": "to listen to",
+      "level": "living-room",
+      "source": "translations"
+    },
+    {
+      "word": "great",
+      "level": "living-room",
+      "source": "translations"
+    },
+    {
+      "word": "to gather",
+      "level": "living-room",
+      "source": "translations"
+    },
+    {
+      "word": "to close",
+      "level": "living-room",
+      "source": "translations"
+    },
+    {
+      "word": "to relax",
+      "level": "living-room",
+      "source": "translations"
+    },
+    {
+      "word": "to talk",
+      "level": "living-room",
+      "source": "translations"
+    },
+    {
+      "word": "to greet",
+      "level": "living-room",
+      "source": "translations"
+    },
+    {
+      "word": "softer",
+      "level": "living-room",
+      "source": "wordpairs"
+    },
+    {
+      "word": "softest",
+      "level": "living-room",
+      "source": "wordpairs"
+    },
+    {
+      "word": "more comfortable",
+      "level": "living-room",
+      "source": "wordpairs"
+    },
+    {
+      "word": "the most comfortable",
+      "level": "living-room",
+      "source": "wordpairs"
+    }
+  ]
+}

@@ -131,9 +131,9 @@
         "line1": "How long can I keep this book?",
         "answer": "You can borrow it for three weeks.",
         "distractors": [
-          "You must return it today.",
-          "You can borrow it for one week only.",
-          "I'm sorry, it is already reserved."
+          "The book is on the top shelf.",
+          "Please show your library card.",
+          "This book is very long."
         ]
       },
       "audio_file1": "how-long-can-i-keep-this-book-convo",
@@ -195,7 +195,7 @@
     {
       "template": "ClozeSequence",
       "questionData": {
-        "sentence": "It is ______ to _____ this book today — another reader reserved it.",
+        "sentence": "It is ______ to _____ this book today — another reader wants it.",
         "answers": [
           "impossible",
           "take"
@@ -207,7 +207,7 @@
           "always"
         ]
       },
-      "audio_file": "it-is-impossible-to-take-this-book-today-another-reader-reserved-it-convo"
+      "audio_file": "it-is-impossible-to-take-this-book-today-another-reader-wants-it-convo"
     },
     {
       "template": "GrammarForm",

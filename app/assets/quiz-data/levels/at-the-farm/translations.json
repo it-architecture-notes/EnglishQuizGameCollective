@@ -1,20 +1,20 @@
 {
   "translations_list": [
     {
-      "english_word": "to become a farmer",
+      "english_word": "to grow",
       "translations": {
-        "tr": "çiftçi olmak",
-        "es": "convertirse en granjero",
-        "fr": "devenir agriculteur",
-        "de": "Bauer werden",
-        "it": "diventare agricoltore",
-        "pt": "tornar-se agricultor",
-        "ru": "стать фермером",
-        "zh": "成为农民",
-        "ja": "農家になる",
-        "ko": "농부가 되다",
-        "ar": "أن تصبح مزارعًا",
-        "hi": "किसान बनना"
+        "tr": "yetiştirmek",
+        "es": "cultivar",
+        "fr": "cultiver",
+        "de": "anbauen",
+        "it": "coltivare",
+        "pt": "cultivar",
+        "ru": "выращивать",
+        "zh": "种植",
+        "ja": "育てる",
+        "ko": "재배하다",
+        "ar": "يزرع",
+        "hi": "उगाना"
       }
     },
     {
@@ -30,7 +30,7 @@
         "zh": "摘苹果",
         "ja": "リンゴを摘む",
         "ko": "사과를 따다",
-        "ar": "قطف التفاح",
+        "ar": "يقطف التفاح",
         "hi": "सेब तोड़ना"
       }
     },
@@ -40,14 +40,14 @@
         "tr": "ata binmek",
         "es": "montar a caballo",
         "fr": "monter à cheval",
-        "de": "Pferd reiten",
+        "de": "reiten",
         "it": "andare a cavallo",
         "pt": "andar a cavalo",
         "ru": "ездить верхом",
         "zh": "骑马",
         "ja": "馬に乗る",
         "ko": "말을 타다",
-        "ar": "ركوب الخيل",
+        "ar": "يركب الخيل",
         "hi": "घुड़सवारी करना"
       }
     },
@@ -64,7 +64,7 @@
         "zh": "推动",
         "ja": "押す",
         "ko": "밀다",
-        "ar": "لدفع",
+        "ar": "يدفع",
         "hi": "धक्का देना"
       }
     },
@@ -98,7 +98,7 @@
         "zh": "移动某物",
         "ja": "何かを動かす",
         "ko": "무언가를 옮기다",
-        "ar": "تحريك شيء ما",
+        "ar": "يحرك شيئاً",
         "hi": "कुछ स्थानांतरित करना"
       }
     },
@@ -109,14 +109,14 @@
         "es": "diariamente",
         "fr": "quotidiennement",
         "de": "täglich",
-        "it": "quotidiano",
+        "it": "quotidianamente",
         "pt": "diariamente",
         "ru": "ежедневно",
-        "zh": "每日",
+        "zh": "每天",
         "ja": "毎日",
         "ko": "매일",
-        "ar": "يوميا",
-        "hi": "दैनिक"
+        "ar": "يوميًا",
+        "hi": "प्रतिदिन"
       }
     },
     {
@@ -132,8 +132,8 @@
         "zh": "添加",
         "ja": "追加する",
         "ko": "추가하다",
-        "ar": "لإضافة",
-        "hi": "जोड़ने के लिए"
+        "ar": "يضيف",
+        "hi": "जोड़ना"
       }
     },
     {
@@ -149,12 +149,12 @@
         "zh": "拉",
         "ja": "引っ張る",
         "ko": "당기다",
-        "ar": "لسحب",
+        "ar": "يسحب",
         "hi": "खींचना"
       }
     },
     {
-      "english_word": "raise something",
+      "english_word": "to raise something",
       "translations": {
         "tr": "bir şeyi yetiştirmek",
         "es": "criar algo",
@@ -166,7 +166,7 @@
         "zh": "饲养某物",
         "ja": "何かを育てる",
         "ko": "무언가를 키우다",
-        "ar": "تربية شيء ما",
+        "ar": "يربي شيئاً",
         "hi": "कुछ पालना"
       }
     },
@@ -183,7 +183,7 @@
         "zh": "种植某物",
         "ja": "何かを植える",
         "ko": "무언가를 심다",
-        "ar": "زرع شيء ما",
+        "ar": "يزرع شيئاً",
         "hi": "कुछ लगाना"
       }
     },

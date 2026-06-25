@@ -3,17 +3,17 @@
     {
       "english_word": "to try on",
       "translations": {
-        "tr": "denemek",
-        "es": "para probar",
-        "fr": "essayer",
-        "de": "zum Anprobieren",
-        "it": "da provare",
-        "pt": "para experimentar",
+        "tr": "denemek (kıyafet)",
+        "es": "probarse",
+        "fr": "essayer un vêtement",
+        "de": "anprobieren",
+        "it": "provare",
+        "pt": "experimentar / provar",
         "ru": "примерить",
         "zh": "试穿",
         "ja": "試着する",
-        "ko": "입어보기",
-        "ar": "أن يجرب الملابس",
+        "ko": "입어보다",
+        "ar": "يجرب",
         "hi": "पहनकर देखना"
       }
     },
@@ -30,25 +30,59 @@
         "zh": "花费",
         "ja": "使う",
         "ko": "지출하다",
-        "ar": "أن ينفق",
+        "ar": "ينفق",
         "hi": "खर्च करना"
       }
     },
     {
-      "english_word": "to remove  ",
+      "english_word": "discount",
+      "translations": {
+        "tr": "indirim",
+        "es": "descuento",
+        "fr": "remise",
+        "de": "Rabatt",
+        "it": "sconto",
+        "pt": "desconto",
+        "ru": "скидка",
+        "zh": "折扣",
+        "ja": "割引",
+        "ko": "할인",
+        "ar": "خصم",
+        "hi": "छूट"
+      }
+    },
+    {
+      "english_word": "to remove",
       "translations": {
         "tr": "kaldırmak",
         "es": "quitar",
-        "fr": "supprimer",
-        "de": "zu entfernen",
+        "fr": "retirer",
+        "de": "entfernen",
         "it": "rimuovere",
         "pt": "remover",
         "ru": "удалить",
         "zh": "取下",
         "ja": "取り除く",
         "ko": "제거하다",
-        "ar": "لإزالة",
+        "ar": "يزيل",
         "hi": "हटाना"
+      }
+    },
+    {
+      "english_word": "to leave something as is",
+      "translations": {
+        "tr": "bir şeyi olduğu gibi bırakmak",
+        "es": "dejar algo como está",
+        "fr": "laisser quelque chose tel quel",
+        "de": "etwas so lassen",
+        "it": "lasciarlo come è",
+        "pt": "deixar algo como está",
+        "ru": "оставить что-то как есть",
+        "zh": "保持原样",
+        "ja": "そのままにする",
+        "ko": "그대로 두다",
+        "ar": "يترك شيئاً كما هو",
+        "hi": "इसे वैसे ही छोड़ना"
       }
     },
     {
@@ -64,7 +98,7 @@
         "zh": "更喜欢",
         "ja": "好む",
         "ko": "선호하다",
-        "ar": "لتفضل",
+        "ar": "يفضل",
         "hi": "पसंद करना"
       }
     },
@@ -73,15 +107,15 @@
       "translations": {
         "tr": "uymak",
         "es": "encajar",
-        "fr": "s'adapter",
+        "fr": "convenir / aller bien",
         "de": "passen",
-        "it": "adattarsi",
-        "pt": "para caber",
+        "it": "calzare (vestiti)",
+        "pt": "caber",
         "ru": "подходить",
         "zh": "适合",
         "ja": "フィットする",
         "ko": "적합하다",
-        "ar": "لتناسب",
+        "ar": "يناسب",
         "hi": "फिट होना"
       }
     },
@@ -98,41 +132,41 @@
         "zh": "退还某物",
         "ja": "何かを返品する",
         "ko": "무언가를 반품하다",
-        "ar": "إرجاع شيء ما",
+        "ar": "يُرجع شيئاً",
         "hi": "कुछ वापस करना"
       }
     },
     {
-      "english_word": "to win",
+      "english_word": "loose",
       "translations": {
-        "tr": "kazanmak",
-        "es": "ganar",
-        "fr": "gagner",
-        "de": "gewinnen",
-        "it": "vincere",
-        "pt": "vencer",
-        "ru": "выиграть",
-        "zh": "赢",
-        "ja": "勝つ",
-        "ko": "이기다",
-        "ar": "الفوز",
-        "hi": "जीतना"
+        "tr": "bol",
+        "es": "holgado",
+        "fr": "ample",
+        "de": "locker",
+        "it": "largo",
+        "pt": "folgado",
+        "ru": "свободный",
+        "zh": "宽松的",
+        "ja": "ゆるい",
+        "ko": "헐렁한",
+        "ar": "واسع",
+        "hi": "ढीला"
       }
     },
     {
       "english_word": "to wear",
       "translations": {
         "tr": "giymek",
-        "es": "usar",
+        "es": "llevar",
         "fr": "porter",
-        "de": "zu tragen",
-        "it": "da indossare",
-        "pt": "vestir",
+        "de": "tragen",
+        "it": "indossare",
+        "pt": "usar",
         "ru": "носить",
         "zh": "穿",
         "ja": "着る",
         "ko": "입다",
-        "ar": "لارتداء",
+        "ar": "يرتدي",
         "hi": "पहनना"
       }
     },
@@ -156,7 +190,7 @@
     {
       "english_word": "to look for",
       "translations": {
-        "tr": "aramak",
+        "tr": "bir şeyi aramak",
         "es": "buscar",
         "fr": "chercher",
         "de": "suchen",
@@ -165,9 +199,9 @@
         "ru": "искать",
         "zh": "寻找",
         "ja": "探す",
-        "ko": "찾으려고",
-        "ar": "للبحث عنه",
-        "hi": "ढूँढने के लिए"
+        "ko": "찾다",
+        "ar": "يبحث عن",
+        "hi": "ढूँढना"
       }
     },
     {
@@ -193,14 +227,14 @@
         "tr": "sevmek",
         "es": "amar",
         "fr": "aimer",
-        "de": "zu lieben",
+        "de": "lieben",
         "it": "amare",
         "pt": "amar",
         "ru": "любить",
-        "zh": "去爱",
-        "ja": "愛すること",
+        "zh": "爱",
+        "ja": "愛する",
         "ko": "사랑하다",
-        "ar": "للحب",
+        "ar": "يحب",
         "hi": "प्यार करना"
       }
     }

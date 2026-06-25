@@ -17,7 +17,7 @@
         "character1": "Beth",
         "character2": "Alex",
         "line1": "Excuse me, is the swimming pool open today?",
-        "line2": "_____, the pool is closed for maintenance. ",
+        "line2": "_____, the pool is closed for maintenance.",
         "answer": "unfortunately",
         "distractors": [
           "fortunately",
@@ -33,7 +33,7 @@
       "questionData": {
         "character1": "Sarah",
         "character2": "Daniel",
-        "line1": "Good morning. I would like to _______, please.?",
+        "line1": "Good morning. I would like to _______, please.",
         "line2": "Sure, welcome to our hotel. What is your name?",
         "answer": "check in",
         "distractors": [
@@ -50,7 +50,7 @@
       "questionData": {
         "imageName": "elevator",
         "wrongAnswers": [
-          "lift",
+          "escalator",
           "door",
           "stairs"
         ]
@@ -60,39 +60,39 @@
       "template": "WordPairs",
       "questionData": {
         "english_words": [
-          "helpful",
-          "funny",
+          "noisy",
+          "tidy",
           "clear",
           "amazing"
         ],
         "translations": [
           {
-            "tr": "yardımcı",
-            "es": "útil",
-            "fr": "utile",
-            "de": "hilfreich",
-            "it": "utile",
-            "pt": "útil",
-            "ru": "полезный",
-            "zh": "有用的",
-            "ja": "役に立つ",
-            "ko": "유용한",
-            "ar": "مفيد",
-            "hi": "सहायक"
+            "tr": "gürültülü",
+            "es": "ruidoso",
+            "fr": "bruyant",
+            "de": "laut",
+            "it": "rumoroso",
+            "pt": "barulhento",
+            "ru": "шумный",
+            "zh": "吵闹的",
+            "ja": "うるさい",
+            "ko": "시끄러운",
+            "ar": "صاخب",
+            "hi": "शोरगुल वाला"
           },
           {
-            "tr": "komik",
-            "es": "divertido",
-            "fr": "amusant",
-            "de": "amüsant",
-            "it": "divertente",
-            "pt": "divertido",
-            "ru": "веселый",
-            "zh": "有趣的",
-            "ja": "面白い",
-            "ko": "재미있는",
-            "ar": "مضحك",
-            "hi": "हंसमुख"
+            "tr": "düzenli",
+            "es": "ordenado",
+            "fr": "rangé",
+            "de": "ordentlich",
+            "it": "ordinato",
+            "pt": "arrumado",
+            "ru": "аккуратный",
+            "zh": "整洁的",
+            "ja": "きちんとした",
+            "ko": "깔끔한",
+            "ar": "مرتب",
+            "hi": "साफ-सुथरा"
           },
           {
             "tr": "açık",
@@ -103,7 +103,7 @@
             "pt": "claro",
             "ru": "ясный",
             "zh": "清晰的",
-            "ja": "明るい",
+            "ja": "明確な",
             "ko": "명확한",
             "ar": "واضح",
             "hi": "स्पष्ट"
@@ -119,7 +119,7 @@
             "zh": "惊人的",
             "ja": "驚くべき",
             "ko": "놀라운",
-            "ar": "مثير",
+            "ar": "مذهل",
             "hi": "अद्भुत"
           }
         ]
@@ -133,9 +133,9 @@
         "line1": "Hello. The shower in my room is not working.",
         "answer": "Would you prefer another room?",
         "distractors": [
-          "Should you get another one?",
-          "I am sending someone to take it",
-          "No cost will be needed"
+          "The shower was cleaned this morning.",
+          "The shower temperature can be adjusted.",
+          "There will be no extra charge for this."
         ]
       },
       "audio_file1": "hello-the-shower-in-my-room-is-not-working-convo",
@@ -144,7 +144,7 @@
     {
       "template": "AppearDisappear",
       "questionData": {
-        "words": "Please confirm if there is a room available",
+        "words": "Please confirm if there is a room available.",
         "distractors": [
           "unfortunately",
           "are",
@@ -179,9 +179,9 @@
     {
       "template": "SentenceBuilder",
       "questionData": {
-        "correct_order": "I have to complain about the noise in my room."
+        "correct_order": "I have to complain about the noise."
       },
-      "audio_file": "i-have-to-complain-about-the-noise-in-my-room-convo"
+      "audio_file": "i-have-to-complain-about-the-noise-convo"
     },
     {
       "template": "imageQuizTemplate-1",
@@ -203,7 +203,7 @@
           "speak"
         ],
         "distractors": [
-          "leave",
+          "ask",
           "call",
           "visit",
           "wait"
@@ -214,12 +214,12 @@
     {
       "template": "GrammarForm",
       "questionData": {
-        "sentence": "____ I borrow an umbrella? ",
-        "answer": "could",
+        "sentence": "Were you ______ of renting a car?",
+        "answer": "thinking",
         "distractors": [
-          "am",
-          "have",
-          "might"
+          "think",
+          "could think",
+          "thought"
         ]
       }
     },
@@ -233,7 +233,7 @@
         ],
         "distractors": [
           "check in",
-          "leave",
+          "count",
           "stay",
           "prefer"
         ]
@@ -249,7 +249,7 @@
           "stay"
         ],
         "distractors": [
-          "ready",
+          "noisy",
           "leave",
           "check in",
           "confirm"

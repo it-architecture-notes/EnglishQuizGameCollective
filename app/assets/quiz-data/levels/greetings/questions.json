@@ -1,5 +1,4 @@
 {
-  "timer_seconds": 10,
   "levelQuestions": [
     {
       "template": "imageQuizTemplate-1",

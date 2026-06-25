@@ -136,7 +136,7 @@
       "questionData": {
         "character1": "Sarah",
         "character2": "Omar",
-        "line1": "Did you _____ Tom to your birthday party?",
+        "line1": "Do you _____ Tom to your birthday party?",
         "line2": "Yes, I always _____ him to my parties.",
         "answer": "invite",
         "distractors": [
@@ -145,7 +145,7 @@
           "follow"
         ]
       },
-      "audio_file1": "did-you-invite-tom-to-your-birthday-party-convo",
+      "audio_file1": "do-you-invite-tom-to-your-birthday-party-convo",
       "audio_file2": "yes-i-always-invite-him-to-my-parties-convo"
     },
     {
@@ -181,9 +181,9 @@
     {
       "template": "SentenceBuilder",
       "questionData": {
-        "correct_order": "My friends gave me a birthday present."
+        "correct_order": "My friends are giving me a birthday present."
       },
-      "audio_file": "my-friends-gave-me-a-birthday-present-convo"
+      "audio_file": "my-friends-are-giving-me-a-birthday-present-convo"
     },
     {
       "template": "GrammarForm",
@@ -227,10 +227,10 @@
     {
       "template": "ClozeSequence",
       "questionData": {
-        "sentence": "We always _____ Happy Birthday and _____ the party together.",
+        "sentence": "We always _____ Happy Birthday and _____ together at the party.",
         "answers": [
           "sing",
-          "start"
+          "dance"
         ],
         "distractors": [
           "dance",
@@ -239,23 +239,23 @@
           "read"
         ]
       },
-      "audio_file": "we-always-sing-happy-birthday-and-start-the-party-together-convo"
+      "audio_file": "we-always-sing-happy-birthday-and-dance-together-at-the-party-convo"
     },
     {
       "template": "DialogueCompletion",
       "questionData": {
         "character1": "Mike",
         "character2": "Lily",
-        "line1": "Did Emma know about her birthday party?",
-        "answer": "No! It was a complete surprise for her.",
+        "line1": "Does Emma know about her birthday party?",
+        "answer": "No! It is a complete surprise for her.",
         "distractors": [
-          "Yes, Emma organized everything herself.",
+          "We need more balloons for the room.",
           "She left early without saying goodbye.",
           "The party is tomorrow evening."
         ]
       },
-      "audio_file1": "did-emma-know-about-her-birthday-party-convo",
-      "audio_file2": "no-it-was-a-complete-surprise-for-her-convo"
+      "audio_file1": "does-emma-know-about-her-birthday-party-convo",
+      "audio_file2": "no-it-is-a-complete-surprise-for-her-convo"
     }
   ]
 }

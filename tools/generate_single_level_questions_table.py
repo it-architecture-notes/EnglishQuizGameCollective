@@ -23,6 +23,9 @@ Usage:
 
 Output (default --format html):
   cursor-claude-common/output/<level-name>-questions.<ext>
+  cursor-claude-common/output/prior-words-by-type.md
+    (always this filename; overwritten for the selected level — prior flow
+    vocabulary grouped by verb / adjective / adverb / etc.)
 
 Before writing output, every question is checked against template rules from
 `page-designs-and-templates.md` and `app/lib/models/level_config.dart` (required
@@ -70,8 +73,45 @@ import html
 import json
 import re
 import sys
-from collections import Counter
+from collections import Counter, defaultdict
 from pathlib import Path
+
+_TOOLS_DIR = Path(__file__).resolve().parent
+if str(_TOOLS_DIR) not in sys.path:
+    sys.path.insert(0, str(_TOOLS_DIR))
+
+try:
+    from gather_prior_level_words import (
+        collect_level_vocabulary,
+        dedupe_entries,
+        load_flow_order,
+        resolve_level_dir,
+    )
+except ImportError:  # pragma: no cover
+    collect_level_vocabulary = None  # type: ignore[misc, assignment]
+    dedupe_entries = None  # type: ignore[misc, assignment]
+    load_flow_order = None  # type: ignore[misc, assignment]
+    resolve_level_dir = None  # type: ignore[misc, assignment]
+
+# final words/*.csv filename -> coarse word-type label for prior-vocabulary grouping
+_FINAL_CSV_WORD_TYPES: dict[str, str] = {
+    "verbs-400.csv": "verb",
+    "adjectives-300.csv": "adjective",
+    "adverbs-150.csv": "adverb",
+    "prepositions.csv": "preposition",
+    "conjunctions.csv": "conjunction",
+    "auxiliaries.csv": "auxiliary",
+}
+
+_PRIOR_TYPE_SECTION_ORDER = (
+    "verb",
+    "adjective",
+    "adverb",
+    "preposition",
+    "conjunction",
+    "auxiliary",
+    "other",
+)
 
 TABLE_HEADERS = [
     "#",
@@ -231,6 +271,196 @@ def collect_word_frequency_rows(questions_json_root: dict) -> list[list[str]]:
 
 def repo_root() -> Path:
     return Path(__file__).resolve().parent.parent
+
+
+def normalize_phrase(text: str) -> str:
+    return " ".join((text or "").strip().split()).lower()
+
+
+def build_word_type_index(csv_dir: Path) -> dict[str, str]:
+    """Map normalized headword (and bare stem after ``to ``) -> coarse type from final-word CSVs."""
+    index: dict[str, str] = {}
+    if not csv_dir.is_dir():
+        return index
+    for filename, word_type in _FINAL_CSV_WORD_TYPES.items():
+        path = csv_dir / filename
+        if not path.is_file():
+            continue
+        try:
+            text = path.read_text(encoding="utf-8")
+        except OSError:
+            continue
+        if text.startswith("\ufeff"):
+            text = text.lstrip("\ufeff")
+        reader = csv.DictReader(text.splitlines())
+        if not reader.fieldnames:
+            continue
+        lower_map = {f.lower(): f for f in reader.fieldnames}
+        wkey = lower_map.get("word") or lower_map.get("adverb")
+        if not wkey:
+            continue
+        for row in reader:
+            if not row:
+                continue
+            raw = (row.get(wkey) or "").strip()
+            if not raw:
+                continue
+            phrase = normalize_phrase(raw)
+            if phrase and phrase not in index:
+                index[phrase] = word_type
+            if phrase.startswith("to "):
+                bare = phrase[3:].strip()
+                if bare and bare not in index:
+                    index[bare] = word_type
+    return index
+
+
+def classify_prior_word(english_word: str, type_index: dict[str, str]) -> str:
+    """Assign verb / adjective / adverb / … using final-word CSVs, with simple fallbacks."""
+    phrase = normalize_phrase(english_word)
+    if not phrase:
+        return "other"
+    if phrase in type_index:
+        return type_index[phrase]
+    if phrase.startswith("to "):
+        bare = phrase[3:].strip()
+        if bare in type_index:
+            return type_index[bare]
+        return "verb"
+    # Multi-word phrases (e.g. "My name is", "thank you") — avoid token guessing.
+    if " " in phrase:
+        return "other"
+    if phrase in type_index:
+        return type_index[phrase]
+    tokens = [t for t in _WORD_FREQ_TOKEN_RE.findall(phrase) if t not in _PHRASE_STOP_WORDS]
+    for tok in tokens:
+        if tok in type_index:
+            return type_index[tok]
+    return "other"
+
+
+def collect_prior_vocabulary_entries(
+    target_level: str,
+    *,
+    flow_path: Path,
+    levels_root: Path,
+) -> tuple[list[tuple[str, str, str]], list[str], int]:
+    """
+    Return (deduped entries, prior flow icon names, prior level folder count).
+    Each entry is (word, level_label, source).
+    """
+    if load_flow_order is None or resolve_level_dir is None:
+        raise RuntimeError("gather_prior_level_words import failed")
+    flow_order = load_flow_order(flow_path)
+    if target_level not in flow_order:
+        raise ValueError(
+            f"level {target_level!r} not in {flow_path.name} "
+            f"({len(flow_order)} entries)"
+        )
+    target_idx = flow_order.index(target_level)
+    prior_names = flow_order[:target_idx]
+
+    prior_dirs: list[tuple[str, Path]] = []
+    missing: list[str] = []
+    for name in prior_names:
+        d = resolve_level_dir(levels_root, name)
+        if d is None:
+            missing.append(name)
+            continue
+        prior_dirs.append((name, d))
+
+    all_entries: list[tuple[str, str, str]] = []
+    for _name, d in prior_dirs:
+        all_entries.extend(collect_level_vocabulary(d, levels_root))
+    return dedupe_entries(all_entries), missing, len(prior_dirs)
+
+
+def build_prior_words_markdown(
+    target_level: str,
+    entries: list[tuple[str, str, str]],
+    *,
+    prior_level_count: int,
+    missing_flow_levels: list[str],
+    type_index: dict[str, str],
+) -> str:
+    grouped: dict[str, list[tuple[str, str, str]]] = defaultdict(list)
+    for word, level, source in entries:
+        wtype = classify_prior_word(word, type_index)
+        grouped[wtype].append((word, level, source))
+
+    lines = [
+        f"# {target_level} — prior vocabulary (by type)",
+        "",
+        f"Words and phrases from **translations.json** and **WordPairs** in the "
+        f"**{prior_level_count}** flow level(s) before `{target_level}`.",
+        "",
+        f"**Total distinct entries:** {len(entries)}",
+        "",
+    ]
+    if missing_flow_levels:
+        lines.append(
+            f"*Warning: {len(missing_flow_levels)} flow level(s) not found on disk: "
+            + ", ".join(missing_flow_levels)
+            + "*"
+        )
+        lines.append("")
+
+    for wtype in _PRIOR_TYPE_SECTION_ORDER:
+        items = grouped.get(wtype, [])
+        title = wtype.capitalize() + ("s" if wtype != "other" else "")
+        lines.append(f"## {title} ({len(items)})")
+        lines.append("")
+        if not items:
+            lines.append("_None_")
+        else:
+            for word, level, source in items:
+                lines.append(f"- {word} — `{level}` ({source})")
+        lines.append("")
+
+    return "\n".join(lines).rstrip() + "\n"
+
+
+def write_prior_words_by_type(
+    target_level: str,
+    output_dir: Path,
+    *,
+    flow_path: Path,
+    levels_root: Path,
+    csv_dir: Path,
+    dry_run: bool = False,
+) -> Path | None:
+    """Write ``prior-words-by-type.md`` (fixed name, overwritten each run); return path or None if skipped."""
+    if collect_prior_vocabulary_entries is None:
+        print(
+            "Skip prior-words report: could not import gather_prior_level_words",
+            file=sys.stderr,
+        )
+        return None
+    try:
+        entries, missing, prior_count = collect_prior_vocabulary_entries(
+            target_level,
+            flow_path=flow_path,
+            levels_root=levels_root,
+        )
+    except ValueError as e:
+        print(f"Skip prior-words report: {e}", file=sys.stderr)
+        return None
+
+    type_index = build_word_type_index(csv_dir)
+    body = build_prior_words_markdown(
+        target_level,
+        entries,
+        prior_level_count=prior_count,
+        missing_flow_levels=missing,
+        type_index=type_index,
+    )
+    out_path = output_dir / "prior-words-by-type.md"
+    if dry_run:
+        print(f"[dry-run] Would write {out_path} ({len(entries)} prior words)")
+        return out_path
+    out_path.write_text(body, encoding="utf-8")
+    print(f"Wrote {out_path} ({len(entries)} prior words in {prior_count} level(s))")
+    return out_path
 
 
 def _nonempty_str(value) -> str:
@@ -1190,6 +1420,23 @@ def main() -> int:
         default="html",
         help="Output format: html (bordered table in browser), tsv/csv (Excel/Sheets), md (GitHub-style). Default: html.",
     )
+    parser.add_argument(
+        "--flow",
+        type=Path,
+        default=root / "app/assets/data/flow/game-flow.json",
+        help="Game flow JSON for prior-vocabulary report (default: game-flow.json)",
+    )
+    parser.add_argument(
+        "--csv-dir",
+        type=Path,
+        default=root / "cursor-claude-common/references/final words",
+        help="Final-word CSV folder used to classify prior words by type",
+    )
+    parser.add_argument(
+        "--skip-prior-words",
+        action="store_true",
+        help="Do not write prior-words-by-type.md",
+    )
     args = parser.parse_args()
 
     level_dir = args.level_folder
@@ -1249,6 +1496,19 @@ def main() -> int:
         print(f"  (includes translations from {translations_path.name})")
     else:
         print(f"  (no translations table: missing or empty {translations_path.name})")
+
+    if not args.skip_prior_words:
+        flow_path = args.flow.resolve()
+        levels_root = level_dir.parent
+        csv_dir = args.csv_dir.resolve()
+        write_prior_words_by_type(
+            level_name,
+            output_dir,
+            flow_path=flow_path,
+            levels_root=levels_root,
+            csv_dir=csv_dir,
+        )
+
     return 0
 
 

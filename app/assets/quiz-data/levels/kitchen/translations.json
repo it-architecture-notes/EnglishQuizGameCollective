@@ -30,7 +30,7 @@
         "zh": "做饭",
         "ja": "料理する",
         "ko": "요리하다",
-        "ar": "لطهي الطعام",
+        "ar": "يطهو",
         "hi": "खाना बनाना"
       }
     },
@@ -44,10 +44,10 @@
         "it": "tagliare",
         "pt": "cortar",
         "ru": "резать",
-        "zh": "切割",
+        "zh": "切",
         "ja": "切る",
         "ko": "자르다",
-        "ar": "لقطع",
+        "ar": "يقطع",
         "hi": "काटना"
       }
     },
@@ -77,11 +77,11 @@
         "de": "backen",
         "it": "cuocere",
         "pt": "assar",
-        "ru": "испечь",
+        "ru": "печь",
         "zh": "烘烤",
         "ja": "焼く",
         "ko": "굽다",
-        "ar": "لخبز",
+        "ar": "يخبز",
         "hi": "सेंकना"
       }
     },
@@ -110,8 +110,8 @@
         "fr": "avoir soif",
         "de": "durstig",
         "it": "assetato",
-        "pt": "sedento",
-        "ru": "жаждущий",
+        "pt": "com sede",
+        "ru": "хочется пить",
         "zh": "渴了",
         "ja": "のどが渇いた",
         "ko": "목마른",
@@ -125,15 +125,15 @@
         "tr": "yemek",
         "es": "comer",
         "fr": "manger",
-        "de": "zu essen",
+        "de": "essen",
         "it": "mangiare",
         "pt": "comer",
         "ru": "есть",
-        "zh": "吃饭",
+        "zh": "吃",
         "ja": "食べる",
         "ko": "먹다",
-        "ar": "لتناول الطعام",
-        "hi": "खाने के लिए"
+        "ar": "يأكل",
+        "hi": "खाना"
       }
     },
     {
@@ -142,32 +142,49 @@
         "tr": "içmek",
         "es": "beber",
         "fr": "boire",
-        "de": "zu trinken",
+        "de": "trinken",
         "it": "bere",
         "pt": "beber",
         "ru": "пить",
         "zh": "喝",
         "ja": "飲む",
         "ko": "마시다",
-        "ar": "للشرب",
-        "hi": "पीने के लिए"
+        "ar": "يشرب",
+        "hi": "पीना"
+      }
+    },
+    {
+      "english_word": "slowly",
+      "translations": {
+        "tr": "yavaşça",
+        "es": "lentamente",
+        "fr": "lentement",
+        "de": "langsam",
+        "it": "lentamente",
+        "pt": "lentamente",
+        "ru": "медленно",
+        "zh": "慢慢",
+        "ja": "ゆっくり",
+        "ko": "천천히",
+        "ar": "ببطء",
+        "hi": "धीरे से"
       }
     },
     {
       "english_word": "to do the dishes",
       "translations": {
         "tr": "bulaşıkları yıkamak",
-        "es": "para lavar los platos",
+        "es": "lavar los platos",
         "fr": "faire la vaisselle",
         "de": "den Abwasch machen",
         "it": "lavare i piatti",
-        "pt": "para lavar a louça",
+        "pt": "lavar a louça",
         "ru": "мыть посуду",
         "zh": "洗碗",
         "ja": "皿洗いをする",
-        "ko": "설거지를 하려고",
-        "ar": "غسل الأطباق",
-        "hi": "बर्तन साफ़ करने के लिए"
+        "ko": "설거지하다",
+        "ar": "يغسل الأطباق",
+        "hi": "बर्तन धोना"
       }
     }
   ]

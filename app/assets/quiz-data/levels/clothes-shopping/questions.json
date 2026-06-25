@@ -22,7 +22,7 @@
         "distractors": [
           "wear",
           "hang",
-          "put"
+          "carry"
         ]
       },
       "audio_file1": "excuse-me-can-i-try-on-this-coat-please-convo",
@@ -67,17 +67,17 @@
         ],
         "translations": [
           {
-            "tr": "Güzel",
+            "tr": "güzel",
             "es": "lindo",
-            "fr": "bon",
-            "de": "Hübsch",
-            "it": "Carino",
+            "fr": "joli",
+            "de": "hübsch",
+            "it": "carino",
             "pt": "legal",
-            "ru": "хороший",
-            "zh": "好的",
+            "ru": "приятный",
+            "zh": "好看",
             "ja": "すてきな",
             "ko": "멋진",
-            "ar": "لطيف - جيد",
+            "ar": "لطيف",
             "hi": "अच्छा"
           },
           {
@@ -102,7 +102,7 @@
             "it": "ricco",
             "pt": "rico",
             "ru": "богатый",
-            "zh": "富有的",
+            "zh": "有钱的",
             "ja": "リッチ",
             "ko": "부자",
             "ar": "ثري",
@@ -116,7 +116,7 @@
             "it": "povero",
             "pt": "pobre",
             "ru": "бедный",
-            "zh": "贫穷的",
+            "zh": "穷",
             "ja": "貧しい",
             "ko": "가난한",
             "ar": "فقير",
@@ -134,8 +134,8 @@
         "answer": "No, please leave it on.",
         "distractors": [
           "No, please remove it.",
-          "No, carry it with me please.",
-          "Yes, you can always keep it on."
+          "No, but please show it to the cashier.",
+          "Yes, please take it off before you pay."
         ]
       },
       "audio_file1": "do-i-need-to-remove-the-price-tag-before-i-try-it-on-convo",
@@ -174,8 +174,7 @@
           "socks",
           "shoes"
         ]
-      },
-      "answer": "jacket"
+      }
     },
     {
       "template": "SentenceBuilder",
@@ -198,19 +197,19 @@
     {
       "template": "ClozeSequence",
       "questionData": {
-        "sentence": "He had to _____ the shoes which he _____ in a competition but they were the wrong size.",
+        "sentence": "These shoes are too _____ and I want to _____ them.",
         "answer": [
-          "return",
-          "won"
+          "loose",
+          "return"
         ],
         "distractors": [
-          "took",
-          "replace",
           "bought",
-          "borrowed"
+          "found",
+          "kept",
+          "paid"
         ]
       },
-      "audio_file": "he-had-to-return-the-shoes-which-he-won-in-a-competition-but-they-were-the-wrong-size-convo"
+      "audio_file": "these-shoes-are-too-loose-and-i-want-to-return-them-convo"
     },
     {
       "template": "GrammarForm",
@@ -218,8 +217,8 @@
         "sentence": "I think you _____ this style.",
         "answer": "will love",
         "distractors": [
-          "must love",
-          "could love",
+          "will loved",
+          "are loving",
           "should be loving"
         ]
       }
@@ -233,9 +232,9 @@
           "young"
         ],
         "distractors": [
-          "old",
+          "quiet",
           "dressing",
-          "prefer",
+          "often",
           "boring"
         ]
       },
@@ -251,9 +250,9 @@
         ],
         "distractors": [
           "looking to",
-          "giving",
+          "searching",
           "having",
-          "old"
+          "spending"
         ]
       },
       "audio_file": "i-am-looking-for-the-perfect-gift-for-my-mom-maybe-a-nice-scarf-or-a-handbag-convo"

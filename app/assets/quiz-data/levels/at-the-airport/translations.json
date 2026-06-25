@@ -13,7 +13,7 @@
         "zh": "飞翔",
         "ja": "飛ぶ",
         "ko": "날다",
-        "ar": "للطيران",
+        "ar": "يطير",
         "hi": "उड़ना"
       }
     },
@@ -21,16 +21,16 @@
       "english_word": "to hope",
       "translations": {
         "tr": "umut etmek",
-        "es": "tener esperanza",
+        "es": "esperar",
         "fr": "espérer",
         "de": "hoffen",
         "it": "sperare",
-        "pt": "ter esperança",
+        "pt": "esperar",
         "ru": "надеяться",
         "zh": "希望",
         "ja": "希望する",
         "ko": "희망하다",
-        "ar": "للأمل",
+        "ar": "يأمل",
         "hi": "आशा करना"
       }
     },
@@ -47,7 +47,7 @@
         "zh": "离开",
         "ja": "出発する",
         "ko": "출발하다",
-        "ar": "للمغادرة",
+        "ar": "يغادر",
         "hi": "प्रस्थान करना"
       }
     },
@@ -64,25 +64,25 @@
         "zh": "着陆",
         "ja": "着陸する",
         "ko": "착륙하다",
-        "ar": "للهبوط",
+        "ar": "يهبط",
         "hi": "उतरना"
       }
     },
     {
-      "english_word": "to carry",
+      "english_word": "according to",
       "translations": {
-        "tr": "taşımak",
-        "es": "llevar",
-        "fr": "porter",
-        "de": "tragen",
-        "it": "portare",
-        "pt": "carregar",
-        "ru": "нести",
-        "zh": "携带",
-        "ja": "運ぶ",
-        "ko": "운반하다",
-        "ar": "للحمل",
-        "hi": "ले जाना"
+        "tr": "göre",
+        "es": "según",
+        "fr": "selon",
+        "de": "laut",
+        "it": "secondo",
+        "pt": "de acordo com",
+        "ru": "согласно",
+        "zh": "根据",
+        "ja": "〜によると",
+        "ko": "에 따르면",
+        "ar": "وفقًا لـ",
+        "hi": "के अनुसार"
       }
     },
     {
@@ -98,7 +98,7 @@
         "zh": "迟到",
         "ja": "遅刻する",
         "ko": "늦다",
-        "ar": "أن تتأخر",
+        "ar": "يتأخر",
         "hi": "देर होना"
       }
     },
@@ -106,7 +106,7 @@
       "english_word": "how long",
       "translations": {
         "tr": "ne kadar",
-        "es": "cuanto tiempo",
+        "es": "cuánto tiempo",
         "fr": "combien de temps",
         "de": "wie lange",
         "it": "quanto tempo",
@@ -114,26 +114,9 @@
         "ru": "как долго",
         "zh": "多长时间",
         "ja": "どのくらいの間",
-        "ko": "얼마나 오래?",
+        "ko": "얼마나 오래",
         "ar": "كم من الوقت",
-        "hi": "कब तक"
-      }
-    },
-    {
-      "english_word": "to depart",
-      "translations": {
-        "tr": "ayrılmak",
-        "es": "partir",
-        "fr": "partir",
-        "de": "abreisen",
-        "it": "partire",
-        "pt": "partir",
-        "ru": "уйти",
-        "zh": "离开",
-        "ja": "出発する",
-        "ko": "출발하다",
-        "ar": "للمغادرة",
-        "hi": "प्रस्थान करना"
+        "hi": "कितनी देर"
       }
     },
     {
@@ -142,32 +125,15 @@
         "tr": "iptal etmek",
         "es": "cancelar",
         "fr": "annuler",
-        "de": "abzubrechen",
-        "it": "per annullare",
+        "de": "stornieren",
+        "it": "annullare",
         "pt": "cancelar",
         "ru": "отменить",
         "zh": "取消",
         "ja": "キャンセルする",
         "ko": "취소하다",
-        "ar": "للإلغاء",
+        "ar": "يلغي",
         "hi": "रद्द करना"
-      }
-    },
-    {
-      "english_word": "Then",
-      "translations": {
-        "tr": "sonra",
-        "es": "entonces",
-        "fr": "Puis",
-        "de": "Dann",
-        "it": "Poi",
-        "pt": "Então",
-        "ru": "Тогда",
-        "zh": "然后",
-        "ja": "それから",
-        "ko": "그런 다음",
-        "ar": "ثم",
-        "hi": "फिर"
       }
     },
     {
@@ -188,35 +154,35 @@
       }
     },
     {
-      "english_word": "to check in",
+      "english_word": "to delay",
       "translations": {
-        "tr": "check-in yapmak",
-        "es": "para registrarse",
-        "fr": "s'enregistrer",
-        "de": "einzuchecken",
-        "it": "per effettuare il check-in",
-        "pt": "fazer check-in",
-        "ru": "чтобы зарегистрироваться",
-        "zh": "办理登机手续",
-        "ja": "チェックインする",
-        "ko": "체크인하다",
-        "ar": "لتسجيل الوصول",
-        "hi": "चेक इन करने के लिए"
+        "tr": "gecikmek",
+        "es": "retrasar",
+        "fr": "être retardé",
+        "de": "verzögern",
+        "it": "ritardare",
+        "pt": "atrasar",
+        "ru": "задерживаться",
+        "zh": "延误",
+        "ja": "遅れる",
+        "ko": "지연되다",
+        "ar": "يؤخر",
+        "hi": "देरी होना"
       }
     },
     {
       "english_word": "how many",
       "translations": {
         "tr": "kaç tane",
-        "es": "cuantos",
+        "es": "cuántos",
         "fr": "combien",
         "de": "wie viele",
-        "it": "quanti",
+        "it": "quanti/quante",
         "pt": "quantos",
         "ru": "сколько",
         "zh": "有多少",
         "ja": "何個",
-        "ko": "얼마나 많은",
+        "ko": "몇",
         "ar": "كم",
         "hi": "कितने"
       }

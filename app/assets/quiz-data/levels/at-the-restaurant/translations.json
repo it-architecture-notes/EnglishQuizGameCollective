@@ -7,14 +7,14 @@
         "es": "ordenar",
         "fr": "commander",
         "de": "bestellen",
-        "it": "per ordinare",
+        "it": "ordinare",
         "pt": "encomendar",
         "ru": "заказать",
         "zh": "订购",
         "ja": "注文する",
         "ko": "주문하다",
-        "ar": "للطلب",
-        "hi": "ऑर्डर करने के लिए"
+        "ar": "يطلب",
+        "hi": "ऑर्डर करना"
       }
     },
     {
@@ -30,25 +30,25 @@
         "zh": "分享",
         "ja": "共有する",
         "ko": "공유하다",
-        "ar": "للمشاركة",
+        "ar": "يشارك",
         "hi": "साझा करना"
       }
     },
     {
-      "english_word": "to pay",
+      "english_word": "to serve",
       "translations": {
-        "tr": "ödemek",
-        "es": "pagar",
-        "fr": "payer",
-        "de": "zu bezahlen",
-        "it": "pagare",
-        "pt": "pagar",
-        "ru": "платить",
-        "zh": "支付",
-        "ja": "支払う",
-        "ko": "지불하다",
-        "ar": "للدفع",
-        "hi": "भुगतान करना"
+        "tr": "servis etmek",
+        "es": "servir",
+        "fr": "servir",
+        "de": "servieren",
+        "it": "servire",
+        "pt": "servir",
+        "ru": "подавать",
+        "zh": "上菜",
+        "ja": "出す",
+        "ko": "서빙하다",
+        "ar": "يقدّم",
+        "hi": "परोसना"
       }
     },
     {
@@ -63,8 +63,8 @@
         "ru": "я сыт",
         "zh": "我吃饱了",
         "ja": "お腹いっぱいです",
-        "ko": "나는 배불러요",
-        "ar": "أنا ممتلئ",
+        "ko": "배가 불러요",
+        "ar": "أنا شبعان/شبعانة",
         "hi": "मेरा पेट भर गया है"
       }
     },
@@ -72,7 +72,7 @@
       "english_word": "which",
       "translations": {
         "tr": "hangisi",
-        "es": "cual",
+        "es": "cuál",
         "fr": "lequel",
         "de": "welche",
         "it": "quale",
@@ -81,8 +81,8 @@
         "zh": "哪一个",
         "ja": "どの",
         "ko": "어느",
-        "ar": "الذي",
-        "hi": "जो"
+        "ar": "أي",
+        "hi": "कौन सा"
       }
     },
     {
@@ -94,7 +94,7 @@
         "de": "köstlich",
         "it": "delizioso",
         "pt": "delicioso",
-        "ru": "вкусно",
+        "ru": "вкусный",
         "zh": "好吃",
         "ja": "おいしい",
         "ko": "맛있다",
@@ -103,20 +103,20 @@
       }
     },
     {
-      "english_word": "to recommend",
+      "english_word": "to offer",
       "translations": {
-        "tr": "tavsiye etmek",
-        "es": "recomendar",
-        "fr": "à recommander",
-        "de": "zu empfehlen",
-        "it": "da consigliare",
-        "pt": "recomendar",
-        "ru": "рекомендовать",
-        "zh": "推荐",
+        "tr": "sunmak",
+        "es": "ofrecer",
+        "fr": "proposer",
+        "de": "anbieten",
+        "it": "offrire",
+        "pt": "oferecer",
+        "ru": "предложить",
+        "zh": "提供",
         "ja": "勧める",
-        "ko": "추천하다",
-        "ar": "للتوصية",
-        "hi": "सिफ़ारिश करना"
+        "ko": "권하다",
+        "ar": "يعرض",
+        "hi": "पेश करना"
       }
     },
     {
@@ -125,32 +125,32 @@
         "tr": "ısıtmak",
         "es": "calentar",
         "fr": "chauffer",
-        "de": "zu erhitzen",
+        "de": "erhitzen",
         "it": "riscaldare",
         "pt": "aquecer",
         "ru": "нагревать",
         "zh": "加热",
         "ja": "加熱する",
         "ko": "가열하다",
-        "ar": "تسخين",
+        "ar": "يسخن",
         "hi": "गरम करना"
       }
     },
     {
-      "english_word": "slowly",
+      "english_word": "properly",
       "translations": {
-        "tr": "yavaşça",
-        "es": "lentamente",
-        "fr": "lentement",
-        "de": "langsam",
-        "it": "lentamente",
-        "pt": "lentamente",
-        "ru": "медленно",
-        "zh": "慢慢地",
-        "ja": "ゆっくりと",
-        "ko": "천천히",
-        "ar": "ببطء",
-        "hi": "धीरे-धीरे"
+        "tr": "düzgünce",
+        "es": "correctamente",
+        "fr": "correctement",
+        "de": "richtig",
+        "it": "correttamente",
+        "pt": "adequadamente",
+        "ru": "правильно",
+        "zh": "适当地",
+        "ja": "きちんと",
+        "ko": "제대로",
+        "ar": "بشكل صحيح",
+        "hi": "ठीक से"
       }
     },
     {
@@ -171,20 +171,54 @@
       }
     },
     {
-      "english_word": "taste",
+      "english_word": "to taste",
       "translations": {
-        "tr": "tat",
-        "es": "gusto",
-        "fr": "goût",
-        "de": "Geschmack",
-        "it": "gusto",
-        "pt": "gosto",
-        "ru": "вкус",
-        "zh": "味道",
-        "ja": "味",
-        "ko": "맛",
-        "ar": "طعم",
-        "hi": "स्वाद"
+        "tr": "tatmak",
+        "es": "saborear",
+        "fr": "goûter",
+        "de": "schmecken",
+        "it": "assaggiare",
+        "pt": "saborear",
+        "ru": "пробовать",
+        "zh": "品尝",
+        "ja": "味を見る",
+        "ko": "맛을 보다",
+        "ar": "يتذوق",
+        "hi": "स्वाद लेना"
+      }
+    },
+    {
+      "english_word": "to boil",
+      "translations": {
+        "tr": "kaynatmak",
+        "es": "hervir",
+        "fr": "faire bouillir",
+        "de": "kochen",
+        "it": "bollire",
+        "pt": "ferver",
+        "ru": "кипятить",
+        "zh": "煮沸",
+        "ja": "沸かす",
+        "ko": "끓이다",
+        "ar": "يغلي",
+        "hi": "उबालना"
+      }
+    },
+    {
+      "english_word": "lunch",
+      "translations": {
+        "tr": "öğle yemeği",
+        "es": "almuerzo",
+        "fr": "déjeuner",
+        "de": "Mittagessen",
+        "it": "pranzo",
+        "pt": "almoço",
+        "ru": "обед",
+        "zh": "午餐",
+        "ja": "昼食",
+        "ko": "점심",
+        "ar": "غداء",
+        "hi": "दोपहर का भोजन"
       }
     }
   ]

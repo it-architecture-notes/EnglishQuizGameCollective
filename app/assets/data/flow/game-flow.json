@@ -66,6 +66,11 @@
   },
   {
     "mainLevel": 3,
+    "iconImageName": "school-items-1",
+    "title": "School Supplies 1 - Image only"
+  },
+  {
+    "mainLevel": 3,
     "iconImageName": "at-the-library",
     "title": "At the Library"
   },
@@ -76,8 +81,8 @@
   },
   {
     "mainLevel": 3,
-    "iconImageName": "school-items-1",
-    "title": "School Supplies 1 - Image only"
+    "iconImageName": "school-items-2",
+    "title": "School Supplies 2 - Image only"
   },
   {
     "mainLevel": 3,
@@ -86,19 +91,15 @@
   },
   {
     "mainLevel": 3,
+    "iconImageName": "medley-1",
+    "title": "Medley 1 - Words Only"
+  },
+  {
+    "mainLevel": 3,
     "iconImageName": "body-parts",
     "title": "Body Parts - Image only"
   },
-  {
-    "mainLevel": 3,
-    "iconImageName": "school-items-2",
-    "title": "School Supplies 2 - Image only"
-  },
-  {
-    "mainLevel": 3,
-    "iconImageName": "medley-1",
-    "title": "Medley 1"
-  },
+  
   {
     "mainLevel": 4,
     "iconImageName": "kitchen",
@@ -109,11 +110,7 @@
     "iconImageName": "kitchen-items-1",
     "title": "Kitchen Items 1 - Image only"
   },
-  {
-    "mainLevel": 4,
-    "iconImageName": "kitchen-items-2",
-    "title": "Kitchen Items 2 - Image only"
-  },
+  
   {
     "mainLevel": 4,
     "iconImageName": "grocery-shopping",
@@ -121,9 +118,10 @@
   },
   {
     "mainLevel": 4,
-    "iconImageName": "grocery-list-1",
-    "title": "Grocery List 1 - Image only"
+    "iconImageName": "kitchen-items-2",
+    "title": "Kitchen Items 2 - Image only"
   },
+  
   {
     "mainLevel": 4,
     "iconImageName": "at-the-farmers-market",
@@ -131,6 +129,17 @@
   },
   {
     "mainLevel": 4,
+    "iconImageName": "grocery-list-1",
+    "title": "Grocery List 1 - Image only"
+  },
+  
+  {
+    "mainLevel": 5,
+    "iconImageName": "medley-2",
+    "title": "Medley 2"
+  },
+  {
+    "mainLevel": 5,
     "iconImageName": "grocery-list-2",
     "title": "Grocery List 2 - Image only"
   },
@@ -138,11 +147,6 @@
     "mainLevel": 5,
     "iconImageName": "fruits-1",
     "title": "Fruits 1 - Image only"
-  },
-  {
-    "mainLevel": 5,
-    "iconImageName": "medley-2",
-    "title": "Medley 2"
   },
   {
     "mainLevel": 5,
@@ -181,13 +185,13 @@
   },
   {
     "mainLevel": 6,
-    "iconImageName": "medley-3",
-    "title": "Medley 3"
+    "iconImageName": "vegetables-1",
+    "title": "Vegetables 1 - Image only"
   },
   {
     "mainLevel": 6,
-    "iconImageName": "vegetables-1",
-    "title": "Vegetables 1 - Image only"
+    "iconImageName": "farm-animals",
+    "title": "Farm Animals - Image only"
   },
   {
     "mainLevel": 6,
@@ -201,8 +205,8 @@
   },
   {
     "mainLevel": 6,
-    "iconImageName": "farm-animals",
-    "title": "Farm Animals - Image only"
+    "iconImageName": "medley-3",
+    "title": "Medley 3"
   },
   {
     "mainLevel": 7,

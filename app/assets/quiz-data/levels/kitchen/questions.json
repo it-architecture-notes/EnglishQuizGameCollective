@@ -20,7 +20,7 @@
         "line2": "Yes, _____ is orange juice in the fridge.",
         "answer": "there",
         "distractors": [
-          "here",
+          "which",
           "these",
           "those"
         ]
@@ -39,10 +39,10 @@
         "distractors": [
           "to have",
           "to take out",
-          "to bake"
+          "to wash"
         ]
       },
-      "audio_file1": "want-me-to-cook-you-breakfast-convo",
+      "audio_file1": "do-you-want-me-to-cook-you-breakfast-convo",
       "audio_file2": "yes-please-i-would-love-some-scrambled-eggs-convo"
     },
     {
@@ -76,7 +76,7 @@
             "ru": "я делаю это",
             "zh": "我做",
             "ja": "やります",
-            "ko": "나는 그것을한다",
+            "ko": "나는 그것을 한다",
             "ar": "أنا أفعل ذلك",
             "hi": "मैं करता हूँ"
           },
@@ -84,12 +84,12 @@
             "tr": "Bunu yapabilirim",
             "es": "puedo hacerlo",
             "fr": "je peux le faire",
-            "de": "Ich kann es schaffen",
-            "it": "riesco a farlo",
+            "de": "Ich kann es tun",
+            "it": "posso farlo",
             "pt": "Eu posso fazer isso",
             "ru": "Я могу сделать это",
             "zh": "我能做到",
-            "ja": "私はそれを行うことができます",
+            "ja": "できます",
             "ko": "난 할 수 있어",
             "ar": "أستطيع أن أفعل ذلك",
             "hi": "मैं यह कर सकता हूँ"
@@ -133,10 +133,10 @@
           "cuts"
         ],
         "distractors": [
-          "puts",
+          "drops",
           "does",
-          "gets",
-          "to"
+          "throws",
+          "draws"
         ]
       },
       "audio_file": "he-cuts-the-red-apple-with-a-small-knife-convo"
@@ -144,7 +144,7 @@
     {
       "template": "AppearDisappear",
       "questionData": {
-        "words": "We bake fresh blueberry muffins",
+        "words": "We bake fresh blueberry muffins.",
         "distractors": [
           "cook",
           "I",
@@ -179,7 +179,7 @@
     {
       "template": "ClozeSequence",
       "questionData": {
-        "sentence": "She is _____ and she has no water.",
+        "sentence": "She needs water because she is _____.",
         "answer": [
           "thirsty"
         ],
@@ -189,7 +189,7 @@
           "quiet"
         ]
       },
-      "audio_file": "she-is-thirsty-so-she-will-drink-some-water-convo"
+      "audio_file": "she-needs-water-because-she-is-thirsty-convo"
     },
     {
       "template": "imageQuizTemplate-1",
@@ -207,18 +207,18 @@
       "questionData": {
         "words": "I am very hungry today.",
         "distractors": [
-          "very",
-          "thirsty",
+          "full",
+          "tired",
           "you",
           "are"
         ]
       },
-      "audio_file": "the-popcorn-is-too-salty-for-me-convo"
+      "audio_file": "i-am-very-hungry-today-convo"
     },
     {
       "template": "GrammarForm",
       "questionData": {
-        "sentence": "Let’s ____ dinner at the table",
+        "sentence": "Let’s ____ dinner at the table.",
         "answer": "eat",
         "distractors": [
           "eats",
@@ -235,9 +235,9 @@
         "line1": "Can I drink the tea now?",
         "answer": "Yes, do it slowly.",
         "distractors": [
-          "Yes do it slightly",
-          "Yes, usually drink it",
-          "Yes, drink it quiet"
+          "I made it with fresh water.",
+          "This tea is green tea.",
+          "The mug is on the table."
         ]
       },
       "audio_file1": "can-i-drink-the-tea-now-convo",
@@ -249,7 +249,7 @@
         "words": "Who wants to do the dishes?",
         "distractors": [
           "there",
-          "Which",
+          "which",
           "plates",
           "to clean"
         ]

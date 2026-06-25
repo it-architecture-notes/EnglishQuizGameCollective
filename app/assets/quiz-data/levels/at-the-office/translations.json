@@ -1,37 +1,37 @@
 {
   "translations_list": [
     {
-      "english_word": "almost",
+      "english_word": "to work",
       "translations": {
-        "tr": "neredeyse",
-        "es": "casi",
-        "fr": "presque",
-        "de": "fast",
-        "it": "quasi",
-        "pt": "quase",
-        "ru": "почти",
-        "zh": "几乎",
-        "ja": "ほぼ",
-        "ko": "거의",
-        "ar": "تقريبا",
-        "hi": "लगभग"
+        "tr": "çalışmak",
+        "es": "trabajar",
+        "fr": "travailler",
+        "de": "arbeiten",
+        "it": "lavorare",
+        "pt": "trabalhar",
+        "ru": "работать",
+        "zh": "工作/上班",
+        "ja": "働く",
+        "ko": "일하다",
+        "ar": "يعمل",
+        "hi": "काम करना"
       }
     },
     {
-      "english_word": "noisy",
+      "english_word": "to plan",
       "translations": {
-        "tr": "gürültülü",
-        "es": "ruidoso",
-        "fr": "bruyant",
-        "de": "laut",
-        "it": "rumoroso",
-        "pt": "barulhento",
-        "ru": "шумный",
-        "zh": "吵闹的",
-        "ja": "騒々しい",
-        "ko": "시끄러운",
-        "ar": "صاخبة",
-        "hi": "शोरगुल वाला"
+        "tr": "planlamak",
+        "es": "planificar",
+        "fr": "planifier",
+        "de": "planen",
+        "it": "pianificare",
+        "pt": "planejar",
+        "ru": "планировать",
+        "zh": "计划",
+        "ja": "計画する",
+        "ko": "계획하다",
+        "ar": "يخطط",
+        "hi": "योजना बनाना"
       }
     },
     {
@@ -43,8 +43,8 @@
         "de": "weg",
         "it": "lontano",
         "pt": "longe",
-        "ru": "прочь",
-        "zh": "离开",
+        "ru": "вдали",
+        "zh": "远离",
         "ja": "離れて",
         "ko": "떨어져",
         "ar": "بعيدا",
@@ -57,32 +57,15 @@
         "tr": "karar vermek",
         "es": "decidir",
         "fr": "décider",
-        "de": "zu entscheiden",
+        "de": "entscheiden",
         "it": "decidere",
         "pt": "decidir",
         "ru": "решать",
         "zh": "决定",
         "ja": "決める",
         "ko": "결정하다",
-        "ar": "ليقرر",
+        "ar": "يقرر",
         "hi": "निर्णय लेना"
-      }
-    },
-    {
-      "english_word": "quick",
-      "translations": {
-        "tr": "hızlı",
-        "es": "rapido",
-        "fr": "rapide",
-        "de": "schnell",
-        "it": "veloce",
-        "pt": "rápido",
-        "ru": "быстрый",
-        "zh": "快",
-        "ja": "早い",
-        "ko": "빨리",
-        "ar": "سريع",
-        "hi": "जल्दी"
       }
     },
     {
@@ -90,7 +73,7 @@
       "translations": {
         "tr": "emin misin",
         "es": "¿estás seguro?",
-        "fr": "tu es sûr ?",
+        "fr": "tu es sûr ? / tu es sûre ?",
         "de": "Bist du sicher?",
         "it": "sei sicuro?",
         "pt": "você tem certeza?",
@@ -103,88 +86,71 @@
       }
     },
     {
-      "english_word": "to own",
+      "english_word": "to attend a meeting",
       "translations": {
-        "tr": "sahip olmak",
-        "es": "poseer",
-        "fr": "posséder",
-        "de": "besitzen",
-        "it": "possedere",
-        "pt": "possuir",
-        "ru": "владеть",
-        "zh": "拥有",
-        "ja": "所有する",
-        "ko": "소유하다",
-        "ar": "لامتلاك",
-        "hi": "स्वामित्व के लिए"
+        "tr": "toplantıya katılmak",
+        "es": "asistir a una reunión",
+        "fr": "assister à une réunion",
+        "de": "an einem Meeting teilnehmen",
+        "it": "partecipare a una riunione",
+        "pt": "participar de uma reunião",
+        "ru": "присутствовать на встрече",
+        "zh": "参加会议 / 出席会议",
+        "ja": "会議に出席する",
+        "ko": "회의에 참석하다",
+        "ar": "يحضر اجتماعًا",
+        "hi": "बैठक में शामिल होना"
       }
     },
     {
       "english_word": "to connect",
       "translations": {
-        "tr": "bağlanmak",
-        "es": "para conectar",
-        "fr": "se connecter",
-        "de": "verbinden",
-        "it": "per connettersi",
-        "pt": "conectar",
+        "tr": "bağlamak",
+        "es": "poner en contacto",
+        "fr": "mettre en relation",
+        "de": "durchstellen",
+        "it": "mettere in contatto",
+        "pt": "transferir",
         "ru": "соединить",
-        "zh": "连接",
-        "ja": "接続する",
-        "ko": "연결하다",
-        "ar": "للاتصال",
-        "hi": "कनेक्ट करने के लिए"
+        "zh": "接通",
+        "ja": "つなぐ",
+        "ko": "연결해 주다",
+        "ar": "يوصل",
+        "hi": "जोड़ना"
       }
     },
     {
       "english_word": "available",
       "translations": {
-        "tr": "mevcut",
+        "tr": "müsait",
         "es": "disponible",
         "fr": "disponible",
         "de": "verfügbar",
         "it": "disponibile",
         "pt": "disponível",
-        "ru": "доступен",
-        "zh": "可用",
-        "ja": "利用可能",
-        "ko": "사용 가능",
+        "ru": "свободен",
+        "zh": "有空",
+        "ja": "空いている",
+        "ko": "연락 가능",
         "ar": "متاح",
         "hi": "उपलब्ध"
       }
     },
     {
-      "english_word": "usually",
+      "english_word": "to finish",
       "translations": {
-        "tr": "genellikle",
-        "es": "normalmente",
-        "fr": "habituellement",
-        "de": "normalerweise",
-        "it": "di solito",
-        "pt": "normalmente",
-        "ru": "обычно",
-        "zh": "通常",
-        "ja": "通常",
-        "ko": "보통",
-        "ar": "عادة",
-        "hi": "आमतौर पर"
-      }
-    },
-    {
-      "english_word": "great",
-      "translations": {
-        "tr": "harika",
-        "es": "genial",
-        "fr": "super",
-        "de": "großartig",
-        "it": "fantastico",
-        "pt": "ótimo",
-        "ru": "отлично",
-        "zh": "太棒了",
-        "ja": "素晴らしい",
-        "ko": "대단해",
-        "ar": "عظيم",
-        "hi": "बढ़िया"
+        "tr": "bitirmek",
+        "es": "terminar",
+        "fr": "finir",
+        "de": "beenden",
+        "it": "finire",
+        "pt": "terminar",
+        "ru": "закончить",
+        "zh": "完成",
+        "ja": "終わらせる",
+        "ko": "끝내다",
+        "ar": "ينهي",
+        "hi": "ख़त्म करना"
       }
     },
     {
@@ -197,10 +163,10 @@
         "it": "suggerire",
         "pt": "sugerir",
         "ru": "предложить",
-        "zh": "建议",
+        "zh": "建议 / 提议",
         "ja": "提案する",
         "ko": "제안하다",
-        "ar": "لاقتراح",
+        "ar": "يقترح",
         "hi": "सुझाव देना"
       }
     },

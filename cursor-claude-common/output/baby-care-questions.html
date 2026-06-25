@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>baby-care — level tables</title>
+  <style>
+    body { font-family: system-ui, -apple-system, Segoe UI, Roboto, sans-serif; margin: 16px; background: #f5f5f5; }
+    h1 { font-size: 1.25rem; margin-bottom: 12px; }
+    h2 { font-size: 1.1rem; margin-top: 24px; margin-bottom: 8px; }
+    .wrap { overflow-x: auto; background: #fff; padding: 12px; border-radius: 8px; box-shadow: 0 1px 3px rgba(0,0,0,.08); margin-bottom: 16px; }
+    table { border-collapse: collapse; width: 100%; font-size: 13px; table-layout: fixed; }
+    th, td { border: 1px solid #c8c8c8; padding: 8px 10px; vertical-align: top; text-align: left; word-wrap: break-word; }
+    th { background: #e8e8e8; font-weight: 600; white-space: nowrap; }
+    tr:nth-child(even) td { background: #fafafa; }
+    .repeat-word { color: #c62828; font-weight: 600; }
+    .wrap.template-counts { max-width: 28rem; }
+    .wrap.word-frequency { max-width: 40rem; }
+    </style>
+</head>
+<body>
+  <h1>baby-care — questions</h1>
+  <h2>Questions</h2>
+  <div class="wrap">
+    <table>
+<thead><tr><th>#</th><th>Template</th><th>Line 1 / Prompt</th><th>Line 2</th><th>Answer</th><th>English (translate)</th><th>Audio</th></tr></thead>
+<tbody><tr><td>1</td><td>imageQuizTemplate-1</td><td>image: diaper</td><td></td><td>diaper</td><td></td><td></td></tr><tr><td>2</td><td>ConvoTemplate-1</td><td>Is it time to _____ the baby again?</td><td>Yes, it&#x27;s been almost three hours.</td><td>feed</td><td>to feed</td><td>audio_file1: is-it-time-to-feed-the-baby-again-convo · audio_file2: yes-its-been-almost-three-hours-convo</td></tr><tr><td>3</td><td>ConvoTemplate-1</td><td>I always _____ to her at bedtime.</td><td>Does she like it?</td><td>whisper</td><td>to whisper</td><td>audio_file1: i-always-whisper-to-her-at-bedtime-convo · audio_file2: does-she-like-it-convo</td></tr><tr><td>4</td><td>imageQuizTemplate-1</td><td>image: baby-crib</td><td></td><td>baby-crib</td><td></td><td></td></tr><tr><td>5</td><td>WordPairs</td><td>soft; hard; gentle; loud</td><td>word pairs</td><td>match all pairs</td><td>soft; hard; gentle; loud</td><td></td></tr><tr><td>6</td><td>DialogueCompletion</td><td>The baby is not sleeping. Is she hungry?</td><td></td><td>No, she just needs her pacifier.</td><td>to need</td><td>audio_file1: the-baby-is-not-sleeping-is-she-hungry-convo · audio_file2: no-she-just-needs-her-pacifier-convo</td></tr><tr><td>7</td><td>AppearDisappear</td><td>The newborn baby starts to cry.</td><td></td><td>-</td><td>newborn; to cry</td><td>audio_file: the-newborn-baby-starts-to-cry-convo</td></tr><tr><td>8</td><td>imageQuizTemplate-1</td><td>image: feeder</td><td></td><td>feeder</td><td></td><td></td></tr><tr><td>9</td><td>imageQuizTemplate-2</td><td>image: pacifier</td><td></td><td>pacifier</td><td></td><td></td></tr><tr><td>10</td><td>SentenceBuilder</td><td>The baby smiles at her mother.</td><td></td><td>The baby smiles at her mother.</td><td>to smile</td><td>audio_file: the-baby-smiles-at-her-mother-convo</td></tr><tr><td>11</td><td>imageQuizTemplate-1</td><td>image: stroller</td><td></td><td>stroller</td><td></td><td></td></tr><tr><td>12</td><td>ClozeSequence</td><td>Dad _____ the baby up and she starts to happily _____.</td><td></td><td>holds, laugh</td><td>to laugh; to hold</td><td>audio_file: dad-holds-the-baby-up-and-she-starts-to-happily-laugh-convo</td></tr><tr><td>13</td><td>GrammarForm</td><td>She _____ the song until the baby falls asleep.</td><td></td><td>repeats</td><td>to repeat</td><td></td></tr><tr><td>14</td><td>ClozeSequence</td><td>It is important to _____ the baby&#x27;s diaper ______.</td><td></td><td>change, regularly</td><td>to change; regularly</td><td>audio_file: it-is-important-to-change-the-baby-s-diaper-regularly-convo</td></tr><tr><td>15</td><td>ClozeSequence</td><td>Grandma _____ the baby&#x27;s _____ little cheeks.</td><td></td><td>kisses, pretty</td><td>pretty; to kiss</td><td>audio_file: grandma-kisses-the-baby-s-pretty-little-cheeks-convo</td></tr></tbody>
+</table>
+  </div>
+
+  <h2>baby-care — translations</h2>
+  <div class="wrap">
+    <table>
+<thead><tr><th>#</th><th>English word</th><th>ar</th><th>de</th><th>es</th><th>fr</th><th>hi</th><th>it</th><th>ja</th><th>ko</th><th>pt</th><th>ru</th><th>tr</th><th>zh</th></tr></thead>
+<tbody><tr><td>1</td><td>to feed</td><td>يُطعم</td><td>füttern</td><td>alimentar</td><td>nourrir</td><td>खिलाना</td><td>nutrire</td><td>食べさせる</td><td>먹이다</td><td>alimentar</td><td>кормить</td><td>beslemek</td><td>喂养</td></tr><tr><td>2</td><td>to whisper</td><td>يهمس</td><td>flüstern</td><td>susurrar</td><td>chuchoter</td><td>फुसफुसाना</td><td>sussurrare</td><td>ささやく</td><td>속삭이다</td><td>sussurrar</td><td>шептать</td><td>fısıldamak</td><td>低声说</td></tr><tr><td>3</td><td>newborn</td><td>حديث الولادة</td><td>Neugeborenes</td><td>recién nacido</td><td>nouveau-né</td><td>नवजात</td><td>neonato</td><td>新生児</td><td>신생아</td><td>recém-nascido</td><td>новорожденный</td><td>yeni doğmuş</td><td>新生儿</td></tr><tr><td>4</td><td>to cry</td><td>يبكي</td><td>weinen</td><td>llorar</td><td>pleurer</td><td>रोना</td><td>piangere</td><td>泣く</td><td>울다</td><td>chorar</td><td>плакать</td><td>ağlamak</td><td>哭</td></tr><tr><td>5</td><td>to smile</td><td>يبتسم</td><td>lächeln</td><td>sonreír</td><td>sourire</td><td>मुस्कुराना</td><td>sorridere</td><td>微笑む</td><td>미소 짓다</td><td>sorrir</td><td>улыбаться</td><td>gülümsemek</td><td>微笑</td></tr><tr><td>6</td><td>to laugh</td><td>يضحك</td><td>lachen</td><td>reír</td><td>rire</td><td>हंसना</td><td>ridere</td><td>笑う</td><td>웃다</td><td>rir</td><td>смеяться</td><td>gülmek</td><td>笑</td></tr><tr><td>7</td><td>to hold</td><td>يمسك</td><td>halten</td><td>sostener</td><td>tenir</td><td>धारण करना</td><td>tenere</td><td>抱く</td><td>안다</td><td>segurar</td><td>держать</td><td>tutmak</td><td>抱着</td></tr><tr><td>8</td><td>to change</td><td>يغيّر</td><td>wechseln</td><td>cambiar</td><td>changer</td><td>बदलना</td><td>cambiare</td><td>変える</td><td>갈다</td><td>mudar</td><td>менять</td><td>değiştirmek</td><td>换</td></tr><tr><td>9</td><td>regularly</td><td>بانتظام</td><td>regelmäßig</td><td>regularmente</td><td>régulièrement</td><td>नियमित रूप से</td><td>regolarmente</td><td>定期的に</td><td>정기적으로</td><td>regularmente</td><td>регулярно</td><td>düzenli olarak</td><td>定期地</td></tr><tr><td>10</td><td>to need</td><td>يحتاج</td><td>brauchen</td><td>necesitar</td><td>avoir besoin de</td><td>जरूरत होना</td><td>aver bisogno di</td><td>必要とする</td><td>필요하다</td><td>precisar</td><td>нуждаться</td><td>ihtiyaç duymak</td><td>需要</td></tr><tr><td>11</td><td>to repeat</td><td>يكرر</td><td>wiederholen</td><td>repetir</td><td>répéter</td><td>दोहराना</td><td>ripetere</td><td>繰り返す</td><td>반복하다</td><td>repetir</td><td>повторять</td><td>tekrarlamak</td><td>重复</td></tr><tr><td>12</td><td>pretty</td><td>جميل</td><td>hübsch</td><td>bonito</td><td>joli</td><td>सुन्दर</td><td>carino</td><td>かわいい</td><td>예쁜</td><td>bonito</td><td>красивый</td><td>güzel</td><td>漂亮</td></tr><tr><td>13</td><td>to kiss</td><td>يقبّل</td><td>küssen</td><td>besar</td><td>embrasser</td><td>चूमना</td><td>baciare</td><td>キスする</td><td>키스하다</td><td>beijar</td><td>целовать</td><td>öpmek</td><td>亲吻</td></tr></tbody>
+</table>
+  </div>
+
+  <h2>Template counts</h2>
+  <div class="wrap template-counts">
+    <table>
+<thead><tr><th>Template</th><th>Count in level</th></tr></thead>
+<tbody><tr><td>AppearDisappear</td><td>1</td></tr><tr><td>ClozeSequence</td><td>3</td></tr><tr><td>ConvoTemplate-1</td><td>2</td></tr><tr><td>DialogueCompletion</td><td>1</td></tr><tr><td>GrammarForm</td><td>1</td></tr><tr><td>imageQuizTemplate-1</td><td>4</td></tr><tr><td>imageQuizTemplate-2</td><td>1</td></tr><tr><td>SentenceBuilder</td><td>1</td></tr><tr><td>WordPairs</td><td>1</td></tr></tbody>
+</table>
+  </div>
+
+  <h2>Word frequency (questions.json; excludes template, audio_file*, WordPairs translations, distractors, wrongAnswers)</h2>
+  <div class="wrap word-frequency">
+    <table>
+<thead><tr><th>word</th><th>count</th></tr></thead>
+<tbody><tr><td>the</td><td>9</td></tr><tr><td>baby</td><td>6</td></tr><tr><td>she</td><td>5</td></tr><tr><td>to</td><td>5</td></tr><tr><td>is</td><td>4</td></tr><tr><td>her</td><td>3</td></tr><tr><td>it</td><td>3</td></tr><tr><td>at</td><td>2</td></tr><tr><td>baby&#x27;s</td><td>2</td></tr><tr><td>diaper</td><td>2</td></tr><tr><td>pacifier</td><td>2</td></tr><tr><td>starts</td><td>2</td></tr><tr><td>again</td><td>1</td></tr><tr><td>alex</td><td>1</td></tr><tr><td>almost</td><td>1</td></tr><tr><td>always</td><td>1</td></tr><tr><td>and</td><td>1</td></tr><tr><td>asleep</td><td>1</td></tr><tr><td>baby-crib</td><td>1</td></tr><tr><td>bedtime</td><td>1</td></tr><tr><td>been</td><td>1</td></tr><tr><td>beth</td><td>1</td></tr><tr><td>change</td><td>1</td></tr><tr><td>cheeks</td><td>1</td></tr><tr><td>cry</td><td>1</td></tr><tr><td>dad</td><td>1</td></tr><tr><td>daniel</td><td>1</td></tr><tr><td>does</td><td>1</td></tr><tr><td>falls</td><td>1</td></tr><tr><td>feed</td><td>1</td></tr><tr><td>feeder</td><td>1</td></tr><tr><td>gentle</td><td>1</td></tr><tr><td>grandma</td><td>1</td></tr><tr><td>happily</td><td>1</td></tr><tr><td>hard</td><td>1</td></tr><tr><td>holds</td><td>1</td></tr><tr><td>hours</td><td>1</td></tr><tr><td>hungry</td><td>1</td></tr><tr><td>i</td><td>1</td></tr><tr><td>important</td><td>1</td></tr><tr><td>it&#x27;s</td><td>1</td></tr><tr><td>just</td><td>1</td></tr><tr><td>kisses</td><td>1</td></tr><tr><td>laugh</td><td>1</td></tr><tr><td>like</td><td>1</td></tr><tr><td>lily</td><td>1</td></tr><tr><td>little</td><td>1</td></tr><tr><td>loud</td><td>1</td></tr><tr><td>mother</td><td>1</td></tr><tr><td>needs</td><td>1</td></tr><tr><td>newborn</td><td>1</td></tr><tr><td>no</td><td>1</td></tr><tr><td>not</td><td>1</td></tr><tr><td>omar</td><td>1</td></tr><tr><td>pretty</td><td>1</td></tr><tr><td>regularly</td><td>1</td></tr><tr><td>repeats</td><td>1</td></tr><tr><td>sarah</td><td>1</td></tr><tr><td>sleeping</td><td>1</td></tr><tr><td>smiles</td><td>1</td></tr><tr><td>soft</td><td>1</td></tr><tr><td>song</td><td>1</td></tr><tr><td>stroller</td><td>1</td></tr><tr><td>three</td><td>1</td></tr><tr><td>time</td><td>1</td></tr><tr><td>until</td><td>1</td></tr><tr><td>up</td><td>1</td></tr><tr><td>whisper</td><td>1</td></tr><tr><td>yes</td><td>1</td></tr></tbody>
+</table>
+  </div>
+
+</body>
+</html>

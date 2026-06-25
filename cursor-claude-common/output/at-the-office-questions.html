@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>at-the-office — level tables</title>
+  <style>
+    body { font-family: system-ui, -apple-system, Segoe UI, Roboto, sans-serif; margin: 16px; background: #f5f5f5; }
+    h1 { font-size: 1.25rem; margin-bottom: 12px; }
+    h2 { font-size: 1.1rem; margin-top: 24px; margin-bottom: 8px; }
+    .wrap { overflow-x: auto; background: #fff; padding: 12px; border-radius: 8px; box-shadow: 0 1px 3px rgba(0,0,0,.08); margin-bottom: 16px; }
+    table { border-collapse: collapse; width: 100%; font-size: 13px; table-layout: fixed; }
+    th, td { border: 1px solid #c8c8c8; padding: 8px 10px; vertical-align: top; text-align: left; word-wrap: break-word; }
+    th { background: #e8e8e8; font-weight: 600; white-space: nowrap; }
+    tr:nth-child(even) td { background: #fafafa; }
+    .repeat-word { color: #c62828; font-weight: 600; }
+    .wrap.template-counts { max-width: 28rem; }
+    .wrap.word-frequency { max-width: 40rem; }
+    </style>
+</head>
+<body>
+  <h1>at-the-office — questions</h1>
+  <h2>Questions</h2>
+  <div class="wrap">
+    <table>
+<thead><tr><th>#</th><th>Template</th><th>Line 1 / Prompt</th><th>Line 2</th><th>Answer</th><th>English (translate)</th><th>Audio</th></tr></thead>
+<tbody><tr><td>1</td><td>imageQuizTemplate-1</td><td>image: briefcase</td><td></td><td>briefcase</td><td></td><td></td></tr><tr><td>2</td><td>AppearDisappear</td><td>We work on the presentation for the client.</td><td></td><td>-</td><td>to work</td><td>audio_file: we-work-on-the-presentation-for-the-client-convo</td></tr><tr><td>3</td><td>AppearDisappear</td><td>We need to plan the meeting for Friday.</td><td></td><td>-</td><td>to plan</td><td>audio_file: we-need-to-plan-the-meeting-for-friday-convo</td></tr><tr><td>4</td><td>imageQuizTemplate-1</td><td>image: file</td><td></td><td>file</td><td></td><td></td></tr><tr><td>5</td><td>WordPairs</td><td>year; month; week; day</td><td>word pairs</td><td>match all pairs</td><td>year; month; week; day</td><td></td></tr><tr><td>6</td><td>DialogueCompletion</td><td>Is Sarah in the office today?</td><td></td><td>No, she is away on business.</td><td>away</td><td>audio_file1: is-sarah-in-the-office-today-convo · audio_file2: no-she-is-away-on-business-convo</td></tr><tr><td>7</td><td>AppearDisappear</td><td>It is hard to decide, both are good.</td><td></td><td>-</td><td>to decide</td><td>audio_file: it-is-hard-to-decide-both-are-good-convo</td></tr><tr><td>8</td><td>imageQuizTemplate-1</td><td>image: meeting</td><td></td><td>meeting</td><td></td><td></td></tr><tr><td>9</td><td>imageQuizTemplate-2</td><td>image: cabinet</td><td></td><td>cabinet</td><td></td><td></td></tr><tr><td>10</td><td>SentenceBuilder</td><td>I will attend a meeting now.</td><td></td><td>I will attend a meeting now.</td><td>to attend a meeting</td><td>audio_file: i-will-attend-a-meeting-now-convo</td></tr><tr><td>11</td><td>imageQuizTemplate-1</td><td>image: computer</td><td></td><td>computer</td><td></td><td></td></tr><tr><td>12</td><td>ClozeSequence</td><td>Are you ____ this report is ready for the client?</td><td></td><td>sure</td><td>are you sure</td><td>audio_file: are-you-sure-it-s-a-good-idea-to-attend-a-meeting-today-convo</td></tr><tr><td>13</td><td>GrammarForm</td><td>Did you _____ the report before the meeting?</td><td></td><td>finish</td><td>to finish</td><td></td></tr><tr><td>14</td><td>ClozeSequence</td><td>I will _____ you to the manager as soon as she is _____.</td><td></td><td>connect, available</td><td>to connect; available</td><td>audio_file: i-will-connect-you-to-the-manager-as-soon-as-she-is-available-convo</td></tr><tr><td>15</td><td>ClozeSequence</td><td>I _____ we use the _____ calendar system to book all our meetings.</td><td></td><td>suggest, smart</td><td>to suggest; smart</td><td>audio_file: i-suggest-we-use-the-smart-calendar-system-to-book-all-our-meetings-convo</td></tr></tbody>
+</table>
+  </div>
+
+  <h2>at-the-office — translations</h2>
+  <div class="wrap">
+    <table>
+<thead><tr><th>#</th><th>English word</th><th>ar</th><th>de</th><th>es</th><th>fr</th><th>hi</th><th>it</th><th>ja</th><th>ko</th><th>pt</th><th>ru</th><th>tr</th><th>zh</th></tr></thead>
+<tbody><tr><td>1</td><td>to work</td><td>يعمل</td><td>arbeiten</td><td>trabajar</td><td>travailler</td><td>काम करना</td><td>lavorare</td><td>働く</td><td>일하다</td><td>trabalhar</td><td>работать</td><td>çalışmak</td><td>工作/上班</td></tr><tr><td>2</td><td>to plan</td><td>يخطط</td><td>planen</td><td>planificar</td><td>planifier</td><td>योजना बनाना</td><td>pianificare</td><td>計画する</td><td>계획하다</td><td>planejar</td><td>планировать</td><td>planlamak</td><td>计划</td></tr><tr><td>3</td><td>away</td><td>بعيدا</td><td>weg</td><td>lejos</td><td>loin</td><td>दूर</td><td>lontano</td><td>離れて</td><td>떨어져</td><td>longe</td><td>вдали</td><td>uzakta</td><td>远离</td></tr><tr><td>4</td><td>to decide</td><td>يقرر</td><td>entscheiden</td><td>decidir</td><td>décider</td><td>निर्णय लेना</td><td>decidere</td><td>決める</td><td>결정하다</td><td>decidir</td><td>решать</td><td>karar vermek</td><td>决定</td></tr><tr><td>5</td><td>are you sure</td><td>هل أنت متأكد؟</td><td>Bist du sicher?</td><td>¿estás seguro?</td><td>tu es sûr ? / tu es sûre ?</td><td>क्या आप निश्चित हैं?</td><td>sei sicuro?</td><td>確かですか？</td><td>확실해요?</td><td>você tem certeza?</td><td>ты уверен?</td><td>emin misin</td><td>你确定吗？</td></tr><tr><td>6</td><td>to attend a meeting</td><td>يحضر اجتماعًا</td><td>an einem Meeting teilnehmen</td><td>asistir a una reunión</td><td>assister à une réunion</td><td>बैठक में शामिल होना</td><td>partecipare a una riunione</td><td>会議に出席する</td><td>회의에 참석하다</td><td>participar de uma reunião</td><td>присутствовать на встрече</td><td>toplantıya katılmak</td><td>参加会议 / 出席会议</td></tr><tr><td>7</td><td>to connect</td><td>يتصل</td><td>verbinden</td><td>conectar</td><td>se connecter</td><td>जोड़ना</td><td>collegare</td><td>接続する</td><td>연결하다</td><td>conectar</td><td>подключить / соединить</td><td>bağlanmak</td><td>连接 / 接通</td></tr><tr><td>8</td><td>available</td><td>متاح</td><td>verfügbar</td><td>disponible</td><td>disponible</td><td>उपलब्ध</td><td>disponibile</td><td>利用可能</td><td>사용 가능</td><td>disponível</td><td>доступен</td><td>mevcut</td><td>可用</td></tr><tr><td>9</td><td>to finish</td><td>ينهي</td><td>beenden</td><td>terminar</td><td>finir</td><td>ख़त्म करना</td><td>finire</td><td>終わらせる</td><td>끝내다</td><td>terminar</td><td>закончить</td><td>bitirmek</td><td>完成</td></tr><tr><td>10</td><td>to suggest</td><td>يقترح</td><td>vorschlagen</td><td>sugerir</td><td>suggérer</td><td>सुझाव देना</td><td>suggerire</td><td>提案する</td><td>제안하다</td><td>sugerir</td><td>предложить</td><td>önermek</td><td>建议 / 提议</td></tr><tr><td>11</td><td>smart</td><td>ذكي</td><td>klug</td><td>inteligente</td><td>intelligent</td><td>होशियार</td><td>intelligente</td><td>賢い</td><td>똑똑한</td><td>inteligente</td><td>умный</td><td>akıllı</td><td>聪明的</td></tr></tbody>
+</table>
+  </div>
+
+  <h2>Template counts</h2>
+  <div class="wrap template-counts">
+    <table>
+<thead><tr><th>Template</th><th>Count in level</th></tr></thead>
+<tbody><tr><td>AppearDisappear</td><td>3</td></tr><tr><td>ClozeSequence</td><td>3</td></tr><tr><td>ConvoTemplate-1</td><td>0</td></tr><tr><td>DialogueCompletion</td><td>1</td></tr><tr><td>GrammarForm</td><td>1</td></tr><tr><td>imageQuizTemplate-1</td><td>4</td></tr><tr><td>imageQuizTemplate-2</td><td>1</td></tr><tr><td>SentenceBuilder</td><td>1</td></tr><tr><td>WordPairs</td><td>1</td></tr></tbody>
+</table>
+  </div>
+
+  <h2>Word frequency (questions.json; excludes template, audio_file*, WordPairs translations, distractors, wrongAnswers)</h2>
+  <div class="wrap word-frequency">
+    <table>
+<thead><tr><th>word</th><th>count</th></tr></thead>
+<tbody><tr><td>the</td><td>9</td></tr><tr><td>is</td><td>5</td></tr><tr><td>meeting</td><td>4</td></tr><tr><td>to</td><td>4</td></tr><tr><td>for</td><td>3</td></tr><tr><td>i</td><td>3</td></tr><tr><td>we</td><td>3</td></tr><tr><td>you</td><td>3</td></tr><tr><td>are</td><td>2</td></tr><tr><td>as</td><td>2</td></tr><tr><td>cabinet</td><td>2</td></tr><tr><td>client</td><td>2</td></tr><tr><td>on</td><td>2</td></tr><tr><td>report</td><td>2</td></tr><tr><td>she</td><td>2</td></tr><tr><td>will</td><td>2</td></tr><tr><td>a</td><td>1</td></tr><tr><td>all</td><td>1</td></tr><tr><td>attend</td><td>1</td></tr><tr><td>available</td><td>1</td></tr><tr><td>away</td><td>1</td></tr><tr><td>before</td><td>1</td></tr><tr><td>book</td><td>1</td></tr><tr><td>both</td><td>1</td></tr><tr><td>briefcase</td><td>1</td></tr><tr><td>business</td><td>1</td></tr><tr><td>calendar</td><td>1</td></tr><tr><td>computer</td><td>1</td></tr><tr><td>connect</td><td>1</td></tr><tr><td>day</td><td>1</td></tr><tr><td>decide</td><td>1</td></tr><tr><td>did</td><td>1</td></tr><tr><td>file</td><td>1</td></tr><tr><td>finish</td><td>1</td></tr><tr><td>friday</td><td>1</td></tr><tr><td>good</td><td>1</td></tr><tr><td>hard</td><td>1</td></tr><tr><td>in</td><td>1</td></tr><tr><td>it</td><td>1</td></tr><tr><td>lily</td><td>1</td></tr><tr><td>manager</td><td>1</td></tr><tr><td>meetings</td><td>1</td></tr><tr><td>month</td><td>1</td></tr><tr><td>need</td><td>1</td></tr><tr><td>no</td><td>1</td></tr><tr><td>now</td><td>1</td></tr><tr><td>office</td><td>1</td></tr><tr><td>omar</td><td>1</td></tr><tr><td>our</td><td>1</td></tr><tr><td>plan</td><td>1</td></tr><tr><td>presentation</td><td>1</td></tr><tr><td>ready</td><td>1</td></tr><tr><td>sarah</td><td>1</td></tr><tr><td>smart</td><td>1</td></tr><tr><td>soon</td><td>1</td></tr><tr><td>suggest</td><td>1</td></tr><tr><td>sure</td><td>1</td></tr><tr><td>system</td><td>1</td></tr><tr><td>this</td><td>1</td></tr><tr><td>today</td><td>1</td></tr><tr><td>use</td><td>1</td></tr><tr><td>week</td><td>1</td></tr><tr><td>work</td><td>1</td></tr><tr><td>year</td><td>1</td></tr></tbody>
+</table>
+  </div>
+
+</body>
+</html>

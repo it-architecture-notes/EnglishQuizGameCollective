@@ -16,8 +16,8 @@
       "questionData": {
         "character1": "Sarah",
         "character2": "Daniel",
-        "line1": "We must move slowly so we do not scare the birds.",
-        "line2": "I will tell the others to be _____ too.",
+        "line1": "Wow, this forest is so _____.",
+        "line2": "Yes, I can only hear the wind in the trees.",
         "answer": "quiet",
         "distractors": [
           "loud",
@@ -25,8 +25,8 @@
           "noisy"
         ]
       },
-      "audio_file1": "we-must-move-slowly-so-we-do-not-scare-the-birds-convo",
-      "audio_file2": "i-will-tell-the-others-to-be-quiet-too-convo"
+      "audio_file1": "wow-this-forest-is-so-quiet-convo",
+      "audio_file2": "yes-i-can-only-hear-the-wind-in-the-trees-convo"
     },
     {
       "template": "ConvoTemplate-1",
@@ -38,8 +38,8 @@
         "answer": "collecting",
         "distractors": [
           "bringing",
-          "picking",
-          "collecting"
+          "throwing",
+          "taking"
         ]
       },
       "audio_file1": "what-are-you-putting-in-your-bag-convo",
@@ -82,8 +82,8 @@
           },
           {
             "tr": "batı",
-            "es": "Oeste",
-            "fr": "Ouest",
+            "es": "oeste",
+            "fr": "ouest",
             "de": "Westen",
             "it": "ovest",
             "pt": "oeste",
@@ -149,7 +149,7 @@
           "taste",
           "smell",
           "free",
-          "quiet"
+          "heavy"
         ]
       },
       "audio_file": "do-not-touch-the-wild-plants-convo"
@@ -174,8 +174,7 @@
           "forest",
           "desert"
         ]
-      },
-      "answer": "river"
+      }
     },
     {
       "template": "SentenceBuilder",
@@ -215,12 +214,12 @@
     {
       "template": "GrammarForm",
       "questionData": {
-        "sentence": "Who _____ acorns?",
-        "answer": "collects",
+        "sentence": "The snow _____ and we could see the river again.",
+        "answer": "melted",
         "distractors": [
-          "can collects",
-          "will be collect",
-          "collect"
+          "can melt",
+          "will melt",
+          "melt"
         ]
       }
     },
@@ -233,7 +232,7 @@
           "deep"
         ],
         "distractors": [
-          "quiet",
+          "small",
           "take",
           "heavy",
           "bring"
@@ -244,9 +243,9 @@
     {
       "template": "ClozeSequence",
       "questionData": {
-        "sentence": "_______, a rabbit came out from the bushes.",
+        "sentence": "The bear growled ______, and ______ the campers.",
         "answer": [
-          "suddenly"
+          "suddenly","scared"
         ],
         "distractors": [
           "slowly",
@@ -254,7 +253,7 @@
           "loudly"
         ]
       },
-      "audio_file": "a-rabbit-came-out-from-the-bushes-convo"
+      "audio_file": "the-bear-growled-suddenly-and-scared-the-campers-convo"
     }
   ]
 }

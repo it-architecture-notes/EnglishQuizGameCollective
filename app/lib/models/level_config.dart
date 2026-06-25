@@ -169,7 +169,7 @@ class WordPairItem {
   }
 }
 
-/// [WordPairs]: 3–4 pairs; UI scrambles the right column.
+/// [WordPairs]: 3–6 pairs; UI scrambles the right column.
 class WordPairsQuestionData {
   const WordPairsQuestionData({required this.pairs});
 
@@ -529,9 +529,9 @@ class LevelConfig {
       pairs.add(WordPairItem(left: englishWords[i], translations: translationMap));
     }
 
-    if (pairs.length < 3 || pairs.length > 4) {
+    if (pairs.length < 3 || pairs.length > 6) {
       throw FormatException(
-        'WordPairs expects 3–4 pairs, got ${pairs.length}',
+        'WordPairs expects 3–6 pairs, got ${pairs.length}',
       );
     }
     return WordPairsQuestionData(pairs: pairs);

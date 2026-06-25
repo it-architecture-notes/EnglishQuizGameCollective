@@ -1,31 +1,14 @@
 {
   "translations_list": [
     {
-      "english_word": "to scare",
-      "translations": {
-        "tr": "korkutmak",
-        "es": "asustar",
-        "fr": "faire peur",
-        "de": "erschrecken",
-        "it": "spaventare",
-        "pt": "assustar",
-        "ru": "пугать",
-        "zh": "吓唬",
-        "ja": "怖がらせる",
-        "ko": "겁을 주다",
-        "ar": "لتخويف",
-        "hi": "डराना"
-      }
-    },
-    {
       "english_word": "quiet",
       "translations": {
         "tr": "sessiz",
-        "es": "tranquilo",
-        "fr": "calme",
+        "es": "silencioso",
+        "fr": "silencieux",
         "de": "ruhig",
         "it": "tranquillo",
-        "pt": "quieto",
+        "pt": "silencioso",
         "ru": "тихий",
         "zh": "安静",
         "ja": "静かな",
@@ -47,7 +30,7 @@
         "zh": "收集",
         "ja": "集める",
         "ko": "수집하다",
-        "ar": "لجمع",
+        "ar": "يجمع",
         "hi": "इकट्ठा करना"
       }
     },
@@ -74,14 +57,14 @@
         "tr": "dokunmak",
         "es": "tocar",
         "fr": "toucher",
-        "de": "zu berühren",
+        "de": "berühren",
         "it": "toccare",
         "pt": "tocar",
         "ru": "коснуться",
         "zh": "触摸",
         "ja": "触れる",
         "ko": "만지다",
-        "ar": "للمس",
+        "ar": "يلمس",
         "hi": "छूना"
       }
     },
@@ -98,7 +81,7 @@
         "zh": "野生的",
         "ja": "野生の",
         "ko": "야생",
-        "ar": "برية",
+        "ar": "بري",
         "hi": "जंगली"
       }
     },
@@ -113,9 +96,9 @@
         "pt": "notar",
         "ru": "заметить",
         "zh": "注意到",
-        "ja": "気づくこと",
+        "ja": "気づく",
         "ko": "알아차리다",
-        "ar": "لملاحظة",
+        "ar": "يلاحظ",
         "hi": "नोटिस करना"
       }
     },
@@ -132,7 +115,7 @@
         "zh": "宽",
         "ja": "広い",
         "ko": "넓은",
-        "ar": "واسعة",
+        "ar": "واسع",
         "hi": "विस्तृत"
       }
     },
@@ -149,7 +132,7 @@
         "zh": "喊叫",
         "ja": "叫ぶ",
         "ko": "소리치다",
-        "ar": "ليصرخ",
+        "ar": "يصرخ",
         "hi": "चिल्लाना"
       }
     },
@@ -157,10 +140,10 @@
       "english_word": "calm",
       "translations": {
         "tr": "sakin",
-        "es": "calma",
+        "es": "tranquilo",
         "fr": "calme",
         "de": "ruhig",
-        "it": "calma",
+        "it": "calmo",
         "pt": "calmo",
         "ru": "спокойный",
         "zh": "冷静",
@@ -171,19 +154,36 @@
       }
     },
     {
+      "english_word": "to melt",
+      "translations": {
+        "tr": "erimek",
+        "es": "fundirse",
+        "fr": "fondre",
+        "de": "schmelzen",
+        "it": "sciogliersi",
+        "pt": "derreter",
+        "ru": "таять",
+        "zh": "融化",
+        "ja": "溶ける",
+        "ko": "녹다",
+        "ar": "يذوب",
+        "hi": "पिघल जाना"
+      }
+    },
+    {
       "english_word": "to build",
       "translations": {
         "tr": "inşa etmek",
         "es": "construir",
         "fr": "construire",
-        "de": "zu bauen",
+        "de": "bauen",
         "it": "costruire",
         "pt": "construir",
         "ru": "строить",
         "zh": "建造",
-        "ja": "作る",
+        "ja": "建てる",
         "ko": "짓다",
-        "ar": "لبناء",
+        "ar": "يبني",
         "hi": "निर्माण करना"
       }
     },
@@ -219,6 +219,23 @@
         "ko": "갑자기",
         "ar": "فجأة",
         "hi": "अचानक"
+      }
+    },
+    {
+      "english_word": "to scare",
+      "translations": {
+        "tr": "korkutmak",
+        "es": "asustar",
+        "fr": "faire peur",
+        "de": "erschrecken",
+        "it": "spaventare",
+        "pt": "assustar",
+        "ru": "пугать",
+        "zh": "吓唬",
+        "ja": "怖がらせる",
+        "ko": "겁을 주다",
+        "ar": "يُخيف",
+        "hi": "डराना"
       }
     }
   ]

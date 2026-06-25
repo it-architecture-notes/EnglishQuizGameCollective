@@ -16,17 +16,17 @@
       "questionData": {
         "character1": "Sarah",
         "character2": "Daniel",
-        "line1": "Do you think I can _____ a real farmer one day?",
-        "line2": "Of course.",
-        "answer": "become",
+        "line1": "What do they ____ on this farm?",
+        "line2": "They _____ vegetables and keep chickens.",
+        "answer": "grow",
         "distractors": [
-          "am",
-          "will",
-          "turn"
+          "bake",
+          "deliver",
+          "count"
         ]
       },
-      "audio_file1": "do-you-think-i-can-become-a-real-farmer-one-day-convo",
-      "audio_file2": "of-course-convo"
+      "audio_file1": "what-do-they-grow-on-this-farm-convo",
+      "audio_file2": "they-grow-vegetables-and-keep-chickens-convo"
     },
     {
       "template": "ConvoTemplate-1",
@@ -71,7 +71,7 @@
             "es": "delgado",
             "fr": "mince",
             "de": "dünn",
-            "it": "magro",
+            "it": "sottile",
             "pt": "fino",
             "ru": "тонкий",
             "zh": "薄的",
@@ -95,32 +95,32 @@
             "hi": "मोटा"
           },
           {
-            "tr": "tepe",
-            "es": "arriba",
+            "tr": "üst",
+            "es": "parte superior",
             "fr": "haut",
-            "de": "Spitze",
-            "it": "superiore",
-            "pt": "topo",
-            "ru": "вершина",
+            "de": "oben",
+            "it": "parte superiore",
+            "pt": "parte superior",
+            "ru": "верх",
             "zh": "顶部",
-            "ja": "トップ",
-            "ko": "맨 위",
-            "ar": "قمة",
-            "hi": "शीर्ष"
+            "ja": "上部",
+            "ko": "위쪽",
+            "ar": "أعلى",
+            "hi": "ऊपरी भाग"
           },
           {
             "tr": "alt",
-            "es": "abajo",
+            "es": "parte inferior",
             "fr": "bas",
             "de": "unten",
-            "it": "fondo",
-            "pt": "fundo",
-            "ru": "нижний",
+            "it": "parte inferiore",
+            "pt": "parte inferior",
+            "ru": "низ",
             "zh": "底部",
-            "ja": "底",
-            "ko": "맨 아래",
-            "ar": "قاع",
-            "hi": "तल"
+            "ja": "下部",
+            "ko": "아래쪽",
+            "ar": "أسفل",
+            "hi": "निचला भाग"
           }
         ]
       }
@@ -135,7 +135,7 @@
         "distractors": [
           "I don't like the cows",
           "I like to drive the horses",
-          "I cannot like any"
+          "I cannot like any of them"
         ]
       },
       "audio_file1": "which-animals-do-you-like-most-on-the-farm-convo",
@@ -144,7 +144,7 @@
     {
       "template": "AppearDisappear",
       "questionData": {
-        "words": "You need to push hard to open the barn doors.",
+        "words": "You need to push hard to move the wheelbarrow.",
         "distractors": [
           "pull",
           "softly",
@@ -152,7 +152,7 @@
           "farm"
         ]
       },
-      "audio_file": "you-need-to-push-hard-to-open-the-barn-doors-convo"
+      "audio_file": "you-need-to-push-hard-to-move-the-wheelbarrow-convo"
     },
     {
       "template": "imageQuizTemplate-1",
@@ -171,11 +171,10 @@
         "imageName": "shovel",
         "wrongAnswers": [
           "rake",
-          "barn",
+          "wheelbarrow",
           "hose"
         ]
-      },
-      "answer": "shovel"
+      }
     },
     {
       "template": "SentenceBuilder",
@@ -205,8 +204,8 @@
         ],
         "distractors": [
           "stays",
-          "pushes",
-          "gets",
+          "sells",
+          "enters",
           "weekend"
         ]
       },
@@ -228,19 +227,19 @@
     {
       "template": "ClozeSequence",
       "questionData": {
-        "sentence": "____ hard to open the barn doors where we ____ the baby goats.",
+        "sentence": "You need to ____ hard to open the barn doors where we ____ the baby goats.",
         "answer": [
           "pull",
           "raise"
         ],
         "distractors": [
-          "take",
-          "take out",
-          "grow",
-          "see"
+          "bake",
+          "write",
+          "sign",
+          "cook"
         ]
       },
-      "audio_file": "pull-hard-to-open-the-barn-doors-where-we-raise-the-baby-goats-convo"
+      "audio_file": "you-need-to-pull-hard-to-open-the-barn-doors-where-we-raise-the-baby-goats-convo"
     },
     {
       "template": "ClozeSequence",
@@ -251,8 +250,8 @@
           "especially"
         ],
         "distractors": [
-          "holds",
-          "checks",
+          "walks",
+          "slowly",
           "daily",
           "really"
         ]

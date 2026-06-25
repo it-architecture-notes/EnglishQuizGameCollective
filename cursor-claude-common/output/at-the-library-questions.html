@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>at-the-library — level tables</title>
+  <style>
+    body { font-family: system-ui, -apple-system, Segoe UI, Roboto, sans-serif; margin: 16px; background: #f5f5f5; }
+    h1 { font-size: 1.25rem; margin-bottom: 12px; }
+    h2 { font-size: 1.1rem; margin-top: 24px; margin-bottom: 8px; }
+    .wrap { overflow-x: auto; background: #fff; padding: 12px; border-radius: 8px; box-shadow: 0 1px 3px rgba(0,0,0,.08); margin-bottom: 16px; }
+    table { border-collapse: collapse; width: 100%; font-size: 13px; table-layout: fixed; }
+    th, td { border: 1px solid #c8c8c8; padding: 8px 10px; vertical-align: top; text-align: left; word-wrap: break-word; }
+    th { background: #e8e8e8; font-weight: 600; white-space: nowrap; }
+    tr:nth-child(even) td { background: #fafafa; }
+    .repeat-word { color: #c62828; font-weight: 600; }
+    .wrap.template-counts { max-width: 28rem; }
+    .wrap.word-frequency { max-width: 40rem; }
+    </style>
+</head>
+<body>
+  <h1>at-the-library — questions</h1>
+  <h2>Questions</h2>
+  <div class="wrap">
+    <table>
+<thead><tr><th>#</th><th>Template</th><th>Line 1 / Prompt</th><th>Line 2</th><th>Answer</th><th>English (translate)</th><th>Audio</th></tr></thead>
+<tbody><tr><td>1</td><td>imageQuizTemplate-2</td><td>image: book</td><td></td><td>book</td><td></td><td></td></tr><tr><td>2</td><td>ConvoTemplate-1</td><td>This book is due tomorrow. Can I _____ it?</td><td>Yes, I can _____ it for another two weeks.</td><td>renew</td><td>to renew</td><td>audio_file1: this-book-is-due-tomorrow-can-i-renew-it-convo · audio_file2: yes-i-can-renew-it-for-another-two-weeks-convo</td></tr><tr><td>3</td><td>ClozeSequence</td><td>Excuse me, could you _____ me _____ a book?</td><td></td><td>help, find</td><td>to help; to find</td><td>audio_file: excuse-me-could-you-help-me-find-a-book-convo</td></tr><tr><td>4</td><td>imageQuizTemplate-1</td><td>image: desk</td><td></td><td>desk</td><td></td><td></td></tr><tr><td>5</td><td>WordPairs</td><td>long; short; quiet; boring</td><td>word pairs</td><td>match all pairs</td><td>long; short; quiet; boring</td><td></td></tr><tr><td>6</td><td>DialogueCompletion</td><td>How long can I keep this book?</td><td></td><td>You can borrow it for three weeks.</td><td><span class="repeat-word">to borrow</span></td><td>audio_file1: how-long-can-i-keep-this-book-convo · audio_file2: you-can-borrow-it-for-three-weeks-convo</td></tr><tr><td>7</td><td>AppearDisappear</td><td>Is the library closed on Sundays?</td><td></td><td>-</td><td>closed</td><td>audio_file: is-the-library-closed-on-sundays-convo</td></tr><tr><td>8</td><td>imageQuizTemplate-1</td><td>image: newspaper</td><td></td><td>newspaper</td><td></td><td></td></tr><tr><td>9</td><td>imageQuizTemplate-1</td><td>image: table-lamp</td><td></td><td>table-lamp</td><td></td><td></td></tr><tr><td>10</td><td>SentenceBuilder</td><td>Let me search our catalogue.</td><td></td><td>Let me search our catalogue.</td><td>to search</td><td>audio_file: let-me-search-our-catalogue-convo</td></tr><tr><td>11</td><td>imageQuizTemplate-1</td><td>image: bookmark</td><td></td><td>bookmark</td><td></td><td></td></tr><tr><td>12</td><td>ClozeSequence</td><td>It is ______ to _____ this book today — another reader wants it.</td><td></td><td>impossible, take</td><td>impossible; to take</td><td>audio_file: it-is-impossible-to-take-this-book-today-another-reader-wants-it-convo</td></tr><tr><td>13</td><td>GrammarForm</td><td>____ I get a library card please?</td><td></td><td>Can</td><td>to get</td><td></td></tr><tr><td>14</td><td>ClozeSequence</td><td>She needs to _____ her card to borrow any books.</td><td></td><td>show</td><td><span class="repeat-word">to borrow</span>; to show</td><td>audio_file: she-needs-to-show-her-card-to-borrow-any-books-convo</td></tr><tr><td>15</td><td>ClozeSequence</td><td>I want to _____ in the _____ area to study.</td><td></td><td>sit, silent</td><td>silent</td><td>audio_file: i-want-to-sit-in-the-silent-area-to-study-convo</td></tr></tbody>
+</table>
+  </div>
+
+  <h2>at-the-library — translations</h2>
+  <div class="wrap">
+    <table>
+<thead><tr><th>#</th><th>English word</th><th>ar</th><th>de</th><th>es</th><th>fr</th><th>hi</th><th>it</th><th>ja</th><th>ko</th><th>pt</th><th>ru</th><th>tr</th><th>zh</th></tr></thead>
+<tbody><tr><td>1</td><td>to renew</td><td>التجديد</td><td>verlängern</td><td>renovar</td><td>renouveler</td><td>नवीनीकरण करना</td><td>rinnovare</td><td>延長する</td><td>연장하다</td><td>renovar</td><td>продлевать</td><td>yenilemek</td><td>续借</td></tr><tr><td>2</td><td>to help</td><td>المساعدة</td><td>helfen</td><td>ayudar</td><td>aider</td><td>मदद करना</td><td>aiutare</td><td>手伝う</td><td>돕다</td><td>ajudar</td><td>помогать</td><td>yardım etmek</td><td>帮助</td></tr><tr><td>3</td><td>to find</td><td>الإيجاد</td><td>finden</td><td>encontrar</td><td>trouver</td><td>ढूँढना</td><td>trovare</td><td>見つける</td><td>찾다</td><td>encontrar</td><td>находить</td><td>bulmak</td><td>找</td></tr><tr><td>4</td><td>to borrow</td><td>الاستعارة</td><td>ausleihen</td><td>pedir prestado</td><td>emprunter</td><td>उधार लेना</td><td>prendere in prestito</td><td>借りる</td><td>빌리다</td><td>pegar emprestado</td><td>брать на дом</td><td>ödünç almak</td><td>借阅</td></tr><tr><td>5</td><td>closed</td><td>مغلق</td><td>geschlossen</td><td>cerrado</td><td>fermé</td><td>बंद</td><td>chiuso</td><td>閉まっている</td><td>닫힌</td><td>fechado</td><td>закрытый</td><td>kapalı</td><td>闭馆的</td></tr><tr><td>6</td><td>to search</td><td>البحث</td><td>suchen</td><td>buscar</td><td>rechercher</td><td>खोजना</td><td>cercare</td><td>検索する</td><td>검색하다</td><td>pesquisar</td><td>искать</td><td>aramak</td><td>搜索</td></tr><tr><td>7</td><td>impossible</td><td>مستحيل</td><td>unmöglich</td><td>imposible</td><td>impossible</td><td>असंभव</td><td>impossibile</td><td>不可能な</td><td>불가능한</td><td>impossível</td><td>невозможный</td><td>imkansız</td><td>不可能的</td></tr><tr><td>8</td><td>to take</td><td>الأخذ</td><td>nehmen</td><td>tomar</td><td>prendre</td><td>लेना</td><td>prendere</td><td>取る</td><td>가져가다</td><td>pegar</td><td>брать</td><td>almak</td><td>拿</td></tr><tr><td>9</td><td>to show</td><td>الإظهار</td><td>zeigen</td><td>mostrar</td><td>montrer</td><td>दिखाना</td><td>mostrare</td><td>見せる</td><td>보여주다</td><td>mostrar</td><td>показывать</td><td>göstermek</td><td>出示</td></tr><tr><td>10</td><td>to get</td><td>الحصول على</td><td>bekommen</td><td>obtener</td><td>obtenir</td><td>प्राप्त करना</td><td>ottenere</td><td>取得する</td><td>얻다</td><td>obter</td><td>получить</td><td>edinmek</td><td>领取</td></tr><tr><td>11</td><td>silent</td><td>هادئ</td><td>still</td><td>silencioso</td><td>silencieux</td><td>शांत</td><td>silenzioso</td><td>静かな</td><td>조용한</td><td>silencioso</td><td>тихий</td><td>sessiz</td><td>安静的</td></tr></tbody>
+</table>
+  </div>
+
+  <h2>Template counts</h2>
+  <div class="wrap template-counts">
+    <table>
+<thead><tr><th>Template</th><th>Count in level</th></tr></thead>
+<tbody><tr><td>AppearDisappear</td><td>1</td></tr><tr><td>ClozeSequence</td><td>4</td></tr><tr><td>ConvoTemplate-1</td><td>1</td></tr><tr><td>DialogueCompletion</td><td>1</td></tr><tr><td>GrammarForm</td><td>1</td></tr><tr><td>imageQuizTemplate-1</td><td>4</td></tr><tr><td>imageQuizTemplate-2</td><td>1</td></tr><tr><td>SentenceBuilder</td><td>1</td></tr><tr><td>WordPairs</td><td>1</td></tr></tbody>
+</table>
+  </div>
+
+  <h2>Word frequency (questions.json; excludes template, audio_file*, WordPairs translations, distractors, wrongAnswers)</h2>
+  <div class="wrap word-frequency">
+    <table>
+<thead><tr><th>word</th><th>count</th></tr></thead>
+<tbody><tr><td>book</td><td>5</td></tr><tr><td>can</td><td>5</td></tr><tr><td>i</td><td>5</td></tr><tr><td>it</td><td>5</td></tr><tr><td>to</td><td>5</td></tr><tr><td>is</td><td>3</td></tr><tr><td>me</td><td>3</td></tr><tr><td>this</td><td>3</td></tr><tr><td>a</td><td>2</td></tr><tr><td>another</td><td>2</td></tr><tr><td>borrow</td><td>2</td></tr><tr><td>card</td><td>2</td></tr><tr><td>for</td><td>2</td></tr><tr><td>library</td><td>2</td></tr><tr><td>long</td><td>2</td></tr><tr><td>the</td><td>2</td></tr><tr><td>weeks</td><td>2</td></tr><tr><td>you</td><td>2</td></tr><tr><td>alex</td><td>1</td></tr><tr><td>any</td><td>1</td></tr><tr><td>area</td><td>1</td></tr><tr><td>beth</td><td>1</td></tr><tr><td>bookmark</td><td>1</td></tr><tr><td>books</td><td>1</td></tr><tr><td>boring</td><td>1</td></tr><tr><td>catalogue</td><td>1</td></tr><tr><td>closed</td><td>1</td></tr><tr><td>could</td><td>1</td></tr><tr><td>desk</td><td>1</td></tr><tr><td>due</td><td>1</td></tr><tr><td>excuse</td><td>1</td></tr><tr><td>find</td><td>1</td></tr><tr><td>get</td><td>1</td></tr><tr><td>help</td><td>1</td></tr><tr><td>her</td><td>1</td></tr><tr><td>how</td><td>1</td></tr><tr><td>impossible</td><td>1</td></tr><tr><td>in</td><td>1</td></tr><tr><td>keep</td><td>1</td></tr><tr><td>let</td><td>1</td></tr><tr><td>lily</td><td>1</td></tr><tr><td>needs</td><td>1</td></tr><tr><td>newspaper</td><td>1</td></tr><tr><td>omar</td><td>1</td></tr><tr><td>on</td><td>1</td></tr><tr><td>our</td><td>1</td></tr><tr><td>please</td><td>1</td></tr><tr><td>quiet</td><td>1</td></tr><tr><td>reader</td><td>1</td></tr><tr><td>renew</td><td>1</td></tr><tr><td>search</td><td>1</td></tr><tr><td>she</td><td>1</td></tr><tr><td>short</td><td>1</td></tr><tr><td>show</td><td>1</td></tr><tr><td>silent</td><td>1</td></tr><tr><td>sit</td><td>1</td></tr><tr><td>study</td><td>1</td></tr><tr><td>sundays</td><td>1</td></tr><tr><td>table-lamp</td><td>1</td></tr><tr><td>take</td><td>1</td></tr><tr><td>three</td><td>1</td></tr><tr><td>today</td><td>1</td></tr><tr><td>tomorrow</td><td>1</td></tr><tr><td>two</td><td>1</td></tr><tr><td>want</td><td>1</td></tr><tr><td>wants</td><td>1</td></tr><tr><td>yes</td><td>1</td></tr></tbody>
+</table>
+  </div>
+
+</body>
+</html>

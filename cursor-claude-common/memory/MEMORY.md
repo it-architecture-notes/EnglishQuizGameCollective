@@ -4,10 +4,12 @@
 Flutter mobile language learning quiz app (portrait-only, Android/iOS). Unified quiz screen handles all question types (image, vocab, grammar).
 
 ## Current State
-- **Active issue:** Issue-26 — Audio play rules refactor (hide answer audio until after answer; template-specific sequencing for Convo-1, ClozeSequence, SentenceBuilder, DialogueCompletion)
-- **Current branch:** feature/issue-26-audio-play-rules
-- **Last completed:** Issue-25 (translation field restructure, locale-keyed local_translation map, tr_ok penalty, greetings cleanup)
-- **Issue-26 status:** Implementation in progress — AudioPlayButton visibility rules, TranslationRevealButton disabled-during-audio, post-answer audio sequencing, regex cloze detection all done per active-progress-context.md
+- **Active issue:** Issue-27 — Level translations page (end-of-level word table + "Words" button on levels map). Plan consolidated at `cursor-claude-common/plans/consolidated-issue-27-level-translations-plans.md`; per-level `translations.json` (`translations_list` of `{english_word, translations:{locale:...}}`) drives a scrollable English|local table shown before final results screen (skipped if `userLanguage=='en'`, list empty, or reminder run), plus a "Words" button on levels map for completed levels (stars>=1) opening the same table in a fade dialog with OK.
+- **Current branch:** feature/issue-27-level-translations-page
+- **Last completed:** Issue-26 (audio play rules refactor — answer audio gating, AudioPlayButton visibility, TranslationRevealButton disabled-during-audio, post-answer sequencing)
+- **Issue-27 status:** Plan written, not yet implemented (no translations screen file exists yet as of last check)
+- **Story overlays simplified on this branch (not part of Issue-27):** Single text source `story_text` locale map only; only `page_template_id` 1 (`StoryTemplateA`/`character_dialog_scene`) and 4 (`StoryTemplateC`/`scene_story_text`) remain valid — template B and animation-only removed. Story completion is per sub-level (>=1 star), no `covered_levels_number`.
+- **Other branch fixes (not part of Issue-27):** ClozeSequence multi-blank wrong-answer highlight shows all remaining expected tiles; DialogueCompletion answer buttons now also locked during line1 audio.
 
 ## Tech Stack
 - Flutter (Dart), Riverpod, portrait-only
@@ -36,6 +38,7 @@ Flutter mobile language learning quiz app (portrait-only, Android/iOS). Unified 
 - Story images: `app/assets/images/story/`
 
 ## Completed Issues (summary)
+26 → Audio play rules refactor: answer-bearing clips no longer play before the user answers; Next/auto-advance gated on required post-answer playback. ConvoTemplate-1 dual audio_file1/audio_file2, Case A/B present-time playback split by which line is cloze; DialogueCompletion/ClozeSequence/SentenceBuilder aligned to same present-vs-outcome audio spec; missing audio on disk/data hides the audio feature entirely for that question; AudioPlayButton stays visible whenever audioAssetPath is non-null; TranslationRevealButton globe-tap plays outcome audio like a wrong answer then applies tr_ok penalty, disabled during playback
 25 → Translation field restructure: english_to_translate/local_translation arrays, locale-keyed map {"tr":[...]}, tr_ok penalty (globe tap = wrong, reveals in blue), TranslationRevealButton onRevealed callback, greetings questions.json cleanup
 24 → Audio/translation/monster refactoring: per-template audio wiring, TranslationRevealButton, Simon template removed, Gemini TTS dual single-speaker calls, gender voice tokens
 23 → Dev-time TTS generation (Gemini script in `tools/gemini_tts/`), in-game audio playback wiring via `audio_file` JSON tag, AppearDisappear words as string-or-array, SentenceBuilder correct_order as string-or-array, WordPairs locale-map refactor, GrammarForm hintWord removal, AudioService helpers

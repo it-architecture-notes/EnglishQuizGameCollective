@@ -6,14 +6,14 @@
         "tr": "göndermek",
         "es": "enviar",
         "fr": "envoyer",
-        "de": "zu senden",
+        "de": "schicken",
         "it": "inviare",
         "pt": "enviar",
         "ru": "отправить",
         "zh": "发送",
         "ja": "送る",
         "ko": "보내다",
-        "ar": "لإرسال",
+        "ar": "يرسل",
         "hi": "भेजना"
       }
     },
@@ -23,14 +23,14 @@
         "tr": "tamamlamak",
         "es": "completar",
         "fr": "compléter",
-        "de": "zu vervollständigen",
-        "it": "per completare",
+        "de": "ausfüllen",
+        "it": "completare",
         "pt": "completar",
         "ru": "завершить",
         "zh": "完成",
         "ja": "完了する",
         "ko": "완료하다",
-        "ar": "لإكمال",
+        "ar": "يكمل",
         "hi": "पूरा करना"
       }
     },
@@ -40,14 +40,14 @@
         "tr": "teslim etmek",
         "es": "entregar",
         "fr": "livrer",
-        "de": "zu liefern",
+        "de": "liefern",
         "it": "consegnare",
         "pt": "entregar",
         "ru": "доставить",
         "zh": "交付",
         "ja": "届ける",
         "ko": "배달하다",
-        "ar": "لتسليم",
+        "ar": "يسلّم",
         "hi": "पहुंचाना"
       }
     },
@@ -57,14 +57,14 @@
         "tr": "almak",
         "es": "recibir",
         "fr": "recevoir",
-        "de": "zu empfangen",
+        "de": "empfangen",
         "it": "ricevere",
         "pt": "receber",
-        "ru": "получать",
+        "ru": "получить",
         "zh": "接收",
         "ja": "受け取る",
         "ko": "받다",
-        "ar": "لتلقي",
+        "ar": "يتلقى",
         "hi": "प्राप्त करना"
       }
     },
@@ -98,7 +98,7 @@
         "zh": "带来",
         "ja": "持ってくる",
         "ko": "가져오다",
-        "ar": "لجلب",
+        "ar": "يجلب",
         "hi": "लाना"
       }
     },
@@ -125,31 +125,31 @@
         "tr": "dahil etmek",
         "es": "incluir",
         "fr": "inclure",
-        "de": "einzubeziehen",
+        "de": "einschließen",
         "it": "includere",
         "pt": "incluir",
         "ru": "включать",
         "zh": "包括",
         "ja": "含める",
         "ko": "포함하다",
-        "ar": "لتشمل",
+        "ar": "يشمل",
         "hi": "शामिल करना"
       }
     },
     {
       "english_word": "to break",
       "translations": {
-        "tr": "kırılmak",
-        "es": "romperse",
-        "fr": "briser",
+        "tr": "kırmak",
+        "es": "romper",
+        "fr": "casser",
         "de": "brechen",
-        "it": "rompere",
+        "it": "rompersi",
         "pt": "quebrar",
         "ru": "сломать",
         "zh": "打破",
         "ja": "壊れる",
-        "ko": "깨다",
-        "ar": "لكسر",
+        "ko": "깨뜨리다",
+        "ar": "ينكسر",
         "hi": "तोड़ना"
       }
     },
@@ -165,7 +165,7 @@
         "ru": "правильный",
         "zh": "正确",
         "ja": "正しい",
-        "ko": "맞다",
+        "ko": "올바른",
         "ar": "صحيح",
         "hi": "सही"
       }
@@ -181,27 +181,27 @@
         "pt": "perder",
         "ru": "потерять",
         "zh": "失去",
-        "ja": "失うこと",
+        "ja": "失う",
         "ko": "잃다",
-        "ar": "ليخسر",
+        "ar": "يخسر",
         "hi": "खोना"
       }
     },
     {
-      "english_word": "how much",
+      "english_word": "to pack",
       "translations": {
-        "tr": "ne kadar",
-        "es": "cuanto",
-        "fr": "combien",
-        "de": "wie viel",
-        "it": "quanto",
-        "pt": "quanto",
-        "ru": "сколько",
-        "zh": "多少",
-        "ja": "いくら",
-        "ko": "얼마나",
-        "ar": "كم",
-        "hi": "कितना"
+        "tr": "paketlemek",
+        "es": "empaquetar",
+        "fr": "emballer",
+        "de": "einpacken",
+        "it": "imballare",
+        "pt": "empacotar",
+        "ru": "упаковывать",
+        "zh": "打包",
+        "ja": "梱包する",
+        "ko": "포장하다",
+        "ar": "يعبئ",
+        "hi": "पैक करना"
       }
     },
     {
@@ -217,8 +217,8 @@
         "zh": "花费",
         "ja": "費用がかかる",
         "ko": "비용이 들다",
-        "ar": "للتكلفة",
-        "hi": "लागत के लिए"
+        "ar": "يكلّف",
+        "hi": "खर्च होना"
       }
     }
   ]

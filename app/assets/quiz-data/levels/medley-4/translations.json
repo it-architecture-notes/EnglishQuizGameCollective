@@ -1,0 +1,247 @@
+{
+  "translations_list": [
+    
+    {
+      "english_word": "to marry",
+      "translations": {
+        "tr": "evlenmek",
+        "es": "casarse",
+        "fr": "se marier",
+        "de": "heiraten",
+        "it": "sposarsi",
+        "pt": "casar-se",
+        "ru": "жениться",
+        "zh": "结婚",
+        "ja": "結婚する",
+        "ko": "결혼하다",
+        "ar": "يتزوج",
+        "hi": "शादी करना"
+      }
+    },
+    
+    {
+      "english_word": "story",
+      "translations": {
+        "tr": "hikaye",
+        "es": "historia",
+        "fr": "histoire",
+        "de": "Geschichte",
+        "it": "storia",
+        "pt": "história",
+        "ru": "история",
+        "zh": "故事",
+        "ja": "物語",
+        "ko": "이야기",
+        "ar": "قصة",
+        "hi": "कहानी"
+      }
+    },
+    
+    {
+      "english_word": "today",
+      "translations": {
+        "tr": "bugün",
+        "es": "hoy",
+        "fr": "aujourd'hui",
+        "de": "heute",
+        "it": "oggi",
+        "pt": "hoje",
+        "ru": "сегодня",
+        "zh": "今天",
+        "ja": "今日",
+        "ko": "오늘",
+        "ar": "اليوم",
+        "hi": "आज"
+      }
+    },
+    
+    {
+      "english_word": "honest",
+      "translations": {
+        "tr": "dürüst",
+        "es": "honesto",
+        "fr": "honnête",
+        "de": "ehrlich",
+        "it": "onesto",
+        "pt": "honesto",
+        "ru": "честный",
+        "zh": "诚实的",
+        "ja": "正直な",
+        "ko": "정직한",
+        "ar": "صادق",
+        "hi": "ईमानदार"
+      }
+    },
+    
+    {
+      "english_word": "to pour",
+      "translations": {
+        "tr": "dökmek",
+        "es": "verter",
+        "fr": "verser",
+        "de": "gießen",
+        "it": "versare",
+        "pt": "derramar",
+        "ru": "наливать",
+        "zh": "倒",
+        "ja": "注ぐ",
+        "ko": "붓다",
+        "ar": "يسكب",
+        "hi": "डालना"
+      }
+    },
+    {
+      "english_word": "to mix",
+      "translations": {
+        "tr": "karıştırmak",
+        "es": "mezclar",
+        "fr": "mélanger",
+        "de": "mischen",
+        "it": "mescolare",
+        "pt": "misturar",
+        "ru": "смешивать",
+        "zh": "混合",
+        "ja": "混ぜる",
+        "ko": "섞다",
+        "ar": "يخلط",
+        "hi": "मिलाना"
+      }
+    },
+    {
+      "english_word": "to expect",
+      "translations": {
+        "tr": "ummak",
+        "es": "esperar",
+        "fr": "s'attendre à",
+        "de": "erwarten",
+        "it": "aspettarsi",
+        "pt": "esperar",
+        "ru": "ожидать",
+        "zh": "期待",
+        "ja": "期待する",
+        "ko": "예상하다",
+        "ar": "يتوقع",
+        "hi": "उम्मीद करना"
+      }
+    },
+    {
+      "english_word": "to drop",
+      "translations": {
+        "tr": "düşürmek",
+        "es": "dejar caer",
+        "fr": "laisser tomber",
+        "de": "fallen lassen",
+        "it": "far cadere",
+        "pt": "deixar cair",
+        "ru": "уронить",
+        "zh": "掉",
+        "ja": "落とす",
+        "ko": "떨어뜨리다",
+        "ar": "يسقط",
+        "hi": "गिराना"
+      }
+    },
+    {
+      "english_word": "example",
+      "translations": {
+        "tr": "örnek",
+        "es": "ejemplo",
+        "fr": "exemple",
+        "de": "Beispiel",
+        "it": "esempio",
+        "pt": "exemplo",
+        "ru": "пример",
+        "zh": "例子",
+        "ja": "例",
+        "ko": "예시",
+        "ar": "مثال",
+        "hi": "उदाहरण"
+      }
+    },
+    {
+      "english_word": "less",
+      "translations": {
+        "tr": "daha az",
+        "es": "menos",
+        "fr": "moins",
+        "de": "weniger",
+        "it": "meno",
+        "pt": "menos",
+        "ru": "меньше",
+        "zh": "更少",
+        "ja": "より少なく",
+        "ko": "덜",
+        "ar": "أقل",
+        "hi": "कम"
+      }
+    },
+    {
+      "english_word": "to wish",
+      "translations": {
+        "tr": "dilemek",
+        "es": "desear",
+        "fr": "souhaiter",
+        "de": "wünschen",
+        "it": "augurare",
+        "pt": "desejar",
+        "ru": "желать",
+        "zh": "祝愿",
+        "ja": "願う",
+        "ko": "바라다",
+        "ar": "يتمنى",
+        "hi": "कामना करना"
+      }
+    },
+    {
+      "english_word": "health",
+      "translations": {
+        "tr": "sağlık",
+        "es": "salud",
+        "fr": "santé",
+        "de": "Gesundheit",
+        "it": "salute",
+        "pt": "saúde",
+        "ru": "здоровье",
+        "zh": "健康",
+        "ja": "健康",
+        "ko": "건강",
+        "ar": "صحة",
+        "hi": "स्वास्थ्य"
+      }
+    },
+    {
+      "english_word": "to kick",
+      "translations": {
+        "tr": "tekmelemek",
+        "es": "patear",
+        "fr": "donner un coup de pied",
+        "de": "treten",
+        "it": "calciare",
+        "pt": "chutar",
+        "ru": "пинать",
+        "zh": "踢",
+        "ja": "蹴る",
+        "ko": "차다",
+        "ar": "يركل",
+        "hi": "लात मारना"
+      }
+    },
+    {
+      "english_word": "to lift",
+      "translations": {
+        "tr": "kaldırmak",
+        "es": "levantar",
+        "fr": "soulever",
+        "de": "heben",
+        "it": "sollevare",
+        "pt": "levantar",
+        "ru": "поднять",
+        "zh": "举",
+        "ja": "持ち上げる",
+        "ko": "들어올리다",
+        "ar": "يرفع",
+        "hi": "उठाना"
+      }
+    }
+  ]
+}

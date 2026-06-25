@@ -20,11 +20,11 @@
           "hope"
         ],
         "distractors": [
-          "walk",
-          "want",
-          "understand",
+          "carry",
+          "land",
+          "quickly",
           "coming",
-          "wish"
+          "swim"
         ]
       },
       "audio_file": "tomorrow-i-will-fly-to-see-my-grandma-i-hope-she-is-well-convo"
@@ -43,24 +43,24 @@
           "comes"
         ]
       },
-      "audio_file": "the-plane-departs-from-gate-c4-and-arrives-in-2-hours-convo"
+      "audio_file": "the-plane-departs-from-gate-c4-and-lands-in-london-in-2-hours-convo"
     },
     {
       "template": "ClozeSequence",
       "questionData": {
-        "sentence": "If we _____ too many things, we will be ____ for the plane.",
+        "sentence": "_______ the departures board, our flight is going to be _____.",
         "answer": [
-          "carry",
+          "according to",
           "late"
         ],
         "distractors": [
-          "check",
+          "looking",
           "early",
-          "sooner",
-          "tired"
+          "confused",
+          "checking in"
         ]
       },
-      "audio_file": "if-we-carry-too-many-things-we-will-be-late-for-the-plane-convo"
+      "audio_file": "according-to-the-departures-board-our-flight-is-going-to-be-late-convo"
     },
     {
       "template": "imageQuizTemplate-1",
@@ -79,7 +79,7 @@
         "character1": "Emma",
         "character2": "Chris",
         "line1": "_____ will we wait?",
-        "line2": "One hour. I hope we can play a game.",
+        "line2": "One hour. We can play a game together.",
         "answer": "how long",
         "distractors": [
           "how much",
@@ -88,7 +88,7 @@
         ]
       },
       "audio_file1": "how-long-will-we-wait-convo",
-      "audio_file2": "one-hour-i-hope-we-can-play-a-game-convo"
+      "audio_file2": "one-hour-we-can-play-a-game-together-convo"
     },
     {
       "template": "ConvoTemplate-1",
@@ -101,7 +101,7 @@
         "distractors": [
           "start",
           "depart",
-          "delay"
+          "check in"
         ]
       },
       "audio_file1": "what-if-they-cancel-the-flight-convo",
@@ -125,16 +125,16 @@
           "excited",
           "sad",
           "angry",
-          "hungry"
+          "rude"
         ],
         "translations": [
           {
             "tr": "heyecanlı",
             "es": "entusiasmado",
-            "fr": "excité",
+            "fr": "enthousiaste",
             "de": "aufgeregt",
-            "it": "eccitato",
-            "pt": "excitado",
+            "it": "entusiasta",
+            "pt": "entusiasmado",
             "ru": "взволнованный",
             "zh": "兴奋的",
             "ja": "興奮した",
@@ -150,7 +150,7 @@
             "it": "triste",
             "pt": "triste",
             "ru": "грустный",
-            "zh": "伤心",
+            "zh": "伤心的",
             "ja": "悲しい",
             "ko": "슬픈",
             "ar": "حزين",
@@ -162,27 +162,27 @@
             "fr": "en colère",
             "de": "wütend",
             "it": "arrabbiato",
-            "pt": "nervoso",
+            "pt": "zangado",
             "ru": "злой",
             "zh": "生气的",
             "ja": "怒っている",
             "ko": "화난",
             "ar": "غاضب",
-            "hi": "गुस्सा"
+            "hi": "गुस्से में"
           },
           {
-            "tr": "aç",
-            "es": "hambriento",
-            "fr": "affamé",
-            "de": "hungrig",
-            "it": "affamato",
-            "pt": "com fome",
-            "ru": "голодный",
-            "zh": "饥饿的",
-            "ja": "お腹がすいた",
-            "ko": "배고픈",
-            "ar": "جائع",
-            "hi": "भूखा"
+            "tr": "kaba",
+            "es": "grosero",
+            "fr": "impoli",
+            "de": "unhöflich",
+            "it": "maleducato",
+            "pt": "grosseiro",
+            "ru": "грубый",
+            "zh": "粗鲁的",
+            "ja": "失礼な",
+            "ko": "무례한",
+            "ar": "وقح",
+            "hi": "असभ्य"
           }
         ]
       }
@@ -193,11 +193,11 @@
         "character1": "Omar",
         "character2": "Lily",
         "line1": "Is the flight on time?",
-        "answer": "Yes it leaves now, hurry up!",
+        "answer": "Yes, it leaves now. Hurry up!",
         "distractors": [
-          "No, I don't know the time",
-          "Yes I missed it",
-          "Yes it's cancelled"
+          "The cafe is next to gate B4.",
+          "I do not have your passport.",
+          "Security opens at six o'clock."
         ]
       },
       "audio_file1": "is-the-flight-on-time-convo",
@@ -206,7 +206,7 @@
     {
       "template": "AppearDisappear",
       "questionData": {
-        "words": "How many bags do you check in?",
+        "words": "How many bags are checked in?",
         "distractors": [
           "why",
           "much",
@@ -214,7 +214,7 @@
           "she"
         ]
       },
-      "audio_file": "how-many-bags-do-you-check-in-convo"
+      "audio_file": "how-many-bags-are-checked-in-convo"
     },
     {
       "template": "imageQuizTemplate-1",
@@ -233,7 +233,7 @@
         "imageName": "traveler",
         "wrongAnswers": [
           "visitor",
-          "goer",
+          "waiter",
           "driver"
         ]
       }
@@ -241,9 +241,9 @@
     {
       "template": "SentenceBuilder",
       "questionData": {
-        "correct_order": "The plane lands safely."
+        "correct_order": "My flight was delayed."
       },
-      "audio_file": "the-plane-lands-safely-convo"
+      "audio_file": "my-flight-was-delayed-convo"
     },
     {
       "template": "imageQuizTemplate-1",

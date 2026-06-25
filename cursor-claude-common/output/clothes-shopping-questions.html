@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>clothes-shopping — level tables</title>
+  <style>
+    body { font-family: system-ui, -apple-system, Segoe UI, Roboto, sans-serif; margin: 16px; background: #f5f5f5; }
+    h1 { font-size: 1.25rem; margin-bottom: 12px; }
+    h2 { font-size: 1.1rem; margin-top: 24px; margin-bottom: 8px; }
+    .wrap { overflow-x: auto; background: #fff; padding: 12px; border-radius: 8px; box-shadow: 0 1px 3px rgba(0,0,0,.08); margin-bottom: 16px; }
+    table { border-collapse: collapse; width: 100%; font-size: 13px; table-layout: fixed; }
+    th, td { border: 1px solid #c8c8c8; padding: 8px 10px; vertical-align: top; text-align: left; word-wrap: break-word; }
+    th { background: #e8e8e8; font-weight: 600; white-space: nowrap; }
+    tr:nth-child(even) td { background: #fafafa; }
+    .repeat-word { color: #c62828; font-weight: 600; }
+    .wrap.template-counts { max-width: 28rem; }
+    .wrap.word-frequency { max-width: 40rem; }
+    </style>
+</head>
+<body>
+  <h1>clothes-shopping — questions</h1>
+  <h2>Questions</h2>
+  <div class="wrap">
+    <table>
+<thead><tr><th>#</th><th>Template</th><th>Line 1 / Prompt</th><th>Line 2</th><th>Answer</th><th>English (translate)</th><th>Audio</th></tr></thead>
+<tbody><tr><td>1</td><td>imageQuizTemplate-1</td><td>image: hanger</td><td></td><td>hanger</td><td></td><td></td></tr><tr><td>2</td><td>ConvoTemplate-1</td><td>Excuse me, can I ____ on this coat, please?</td><td>Of course, here you go.</td><td>try</td><td></td><td>audio_file1: excuse-me-can-i-try-on-this-coat-please-convo · audio_file2: of-course-here-you-go-convo</td></tr><tr><td>3</td><td>ConvoTemplate-1</td><td>I like this jacket, but I don&#x27;t want to _____ too much.</td><td>We have a 30% discount on it this week.</td><td>spend</td><td>to spend</td><td>audio_file1: i-like-this-jacket-but-i-don-t-want-to-spend-too-much-convo · audio_file2: we-have-a-30-discount-on-it-this-week-convo</td></tr><tr><td>4</td><td>imageQuizTemplate-1</td><td>image: shoes</td><td></td><td>shoes</td><td></td><td></td></tr><tr><td>5</td><td>WordPairs</td><td>nice; ugly; rich; poor</td><td>word pairs</td><td>match all pairs</td><td>nice; ugly; rich; poor</td><td></td></tr><tr><td>6</td><td>DialogueCompletion</td><td>Do I need to remove the price tag before I try it on?</td><td></td><td>No, please leave it on.</td><td>to remove</td><td>audio_file1: do-i-need-to-remove-the-price-tag-before-i-try-it-on-convo · audio_file2: no-please-leave-it-on-convo</td></tr><tr><td>7</td><td>AppearDisappear</td><td>I prefer a jacket in dark blue.</td><td></td><td>-</td><td>to prefer</td><td>audio_file: i-prefer-a-jacket-in-dark-blue-convo</td></tr><tr><td>8</td><td>imageQuizTemplate-1</td><td>image: pants</td><td></td><td>pants</td><td></td><td></td></tr><tr><td>9</td><td>imageQuizTemplate-2</td><td>image: jacket</td><td></td><td>jacket</td><td></td><td></td></tr><tr><td>10</td><td>SentenceBuilder</td><td>These trousers don&#x27;t fit well.</td><td></td><td>These trousers don&#x27;t fit well.</td><td>to fit</td><td>audio_file: these-trousers-don-t-fit-well-convo</td></tr><tr><td>11</td><td>imageQuizTemplate-1</td><td>image: socks</td><td></td><td>socks</td><td></td><td></td></tr><tr><td>12</td><td>ClozeSequence</td><td>He had to _____ the shoes which he _____ in a competition but they were the wrong size.</td><td></td><td>return, won</td><td></td><td>audio_file: he-had-to-return-the-shoes-which-he-won-in-a-competition-but-they-were-the-wrong-size-convo</td></tr><tr><td>13</td><td>GrammarForm</td><td>I think you _____ this style.</td><td></td><td>will love</td><td>to love</td><td></td></tr><tr><td>14</td><td>ClozeSequence</td><td>She likes to _____ colorful skirts because they make her feel _____.</td><td></td><td>wear, young</td><td>to wear; young</td><td>audio_file: she-likes-to-wear-colorful-skirts-because-they-make-her-feel-young-convo</td></tr><tr><td>15</td><td>ClozeSequence</td><td>I am ______ the ______ gift for my mom — maybe a nice scarf or a handbag.</td><td></td><td>looking for, perfect</td><td>perfect</td><td>audio_file: i-am-looking-for-the-perfect-gift-for-my-mom-maybe-a-nice-scarf-or-a-handbag-convo</td></tr></tbody>
+</table>
+  </div>
+
+  <h2>clothes-shopping — translations</h2>
+  <div class="wrap">
+    <table>
+<thead><tr><th>#</th><th>English word</th><th>ar</th><th>de</th><th>es</th><th>fr</th><th>hi</th><th>it</th><th>ja</th><th>ko</th><th>pt</th><th>ru</th><th>tr</th><th>zh</th></tr></thead>
+<tbody><tr><td>1</td><td>to try on</td><td>أن يجرب الملابس</td><td>zum Anprobieren</td><td>para probar</td><td>essayer</td><td>पहनकर देखना</td><td>da provare</td><td>試着する</td><td>입어보기</td><td>para experimentar</td><td>примерить</td><td>denemek</td><td>试穿</td></tr><tr><td>2</td><td>to spend</td><td>أن ينفق</td><td>ausgeben</td><td>gastar</td><td>dépenser</td><td>खर्च करना</td><td>spendere</td><td>使う</td><td>지출하다</td><td>gastar</td><td>тратить</td><td>harcamak</td><td>花费</td></tr><tr><td>3</td><td>to remove  </td><td>لإزالة</td><td>zu entfernen</td><td>quitar</td><td>supprimer</td><td>हटाना</td><td>rimuovere</td><td>取り除く</td><td>제거하다</td><td>remover</td><td>удалить</td><td>kaldırmak</td><td>取下</td></tr><tr><td>4</td><td>to prefer</td><td>لتفضل</td><td>bevorzugen</td><td>preferir</td><td>préférer</td><td>पसंद करना</td><td>preferire</td><td>好む</td><td>선호하다</td><td>preferir</td><td>предпочитать</td><td>tercih etmek</td><td>更喜欢</td></tr><tr><td>5</td><td>to fit</td><td>لتناسب</td><td>passen</td><td>encajar</td><td>s&#x27;adapter</td><td>फिट होना</td><td>adattarsi</td><td>フィットする</td><td>적합하다</td><td>para caber</td><td>подходить</td><td>uymak</td><td>适合</td></tr><tr><td>6</td><td>to return something</td><td>إرجاع شيء ما</td><td>etwas zurückgeben</td><td>devolver algo</td><td>rendre quelque chose</td><td>कुछ वापस करना</td><td>restituire qualcosa</td><td>何かを返品する</td><td>무언가를 반품하다</td><td>devolver algo</td><td>вернуть что-то</td><td>bir şeyi iade etmek</td><td>退还某物</td></tr><tr><td>7</td><td>to win</td><td>الفوز</td><td>gewinnen</td><td>ganar</td><td>gagner</td><td>जीतना</td><td>vincere</td><td>勝つ</td><td>이기다</td><td>vencer</td><td>выиграть</td><td>kazanmak</td><td>赢</td></tr><tr><td>8</td><td>to wear</td><td>لارتداء</td><td>zu tragen</td><td>usar</td><td>porter</td><td>पहनना</td><td>da indossare</td><td>着る</td><td>입다</td><td>vestir</td><td>носить</td><td>giymek</td><td>穿</td></tr><tr><td>9</td><td>young</td><td>شاب</td><td>jung</td><td>joven</td><td>jeune</td><td>युवा</td><td>giovane</td><td>若い</td><td>젊은</td><td>jovem</td><td>молодой</td><td>genç</td><td>年轻的</td></tr><tr><td>10</td><td>to look for</td><td>للبحث عنه</td><td>suchen</td><td>buscar</td><td>chercher</td><td>ढूँढने के लिए</td><td>cercare</td><td>探す</td><td>찾으려고</td><td>procurar</td><td>искать</td><td>aramak</td><td>寻找</td></tr><tr><td>11</td><td>perfect</td><td>مثالي</td><td>perfekt</td><td>perfecto</td><td>parfait</td><td>उत्तम</td><td>perfetto</td><td>完璧な</td><td>완벽한</td><td>perfeito</td><td>идеальный</td><td>mükemmel</td><td>完美的</td></tr><tr><td>12</td><td>to love</td><td>للحب</td><td>zu lieben</td><td>amar</td><td>aimer</td><td>प्यार करना</td><td>amare</td><td>愛すること</td><td>사랑하다</td><td>amar</td><td>любить</td><td>sevmek</td><td>去爱</td></tr></tbody>
+</table>
+  </div>
+
+  <h2>Template counts</h2>
+  <div class="wrap template-counts">
+    <table>
+<thead><tr><th>Template</th><th>Count in level</th></tr></thead>
+<tbody><tr><td>AppearDisappear</td><td>1</td></tr><tr><td>ClozeSequence</td><td>3</td></tr><tr><td>ConvoTemplate-1</td><td>2</td></tr><tr><td>DialogueCompletion</td><td>1</td></tr><tr><td>GrammarForm</td><td>1</td></tr><tr><td>imageQuizTemplate-1</td><td>4</td></tr><tr><td>imageQuizTemplate-2</td><td>1</td></tr><tr><td>SentenceBuilder</td><td>1</td></tr><tr><td>WordPairs</td><td>1</td></tr></tbody>
+</table>
+  </div>
+
+  <h2>Word frequency (questions.json; excludes template, audio_file*, WordPairs translations, distractors, wrongAnswers)</h2>
+  <div class="wrap word-frequency">
+    <table>
+<thead><tr><th>word</th><th>count</th></tr></thead>
+<tbody><tr><td>i</td><td>8</td></tr><tr><td>a</td><td>5</td></tr><tr><td>jacket</td><td>4</td></tr><tr><td>on</td><td>4</td></tr><tr><td>the</td><td>4</td></tr><tr><td>this</td><td>4</td></tr><tr><td>to</td><td>4</td></tr><tr><td>it</td><td>3</td></tr><tr><td>but</td><td>2</td></tr><tr><td>don&#x27;t</td><td>2</td></tr><tr><td>for</td><td>2</td></tr><tr><td>he</td><td>2</td></tr><tr><td>in</td><td>2</td></tr><tr><td>nice</td><td>2</td></tr><tr><td>please</td><td>2</td></tr><tr><td>shoes</td><td>2</td></tr><tr><td>they</td><td>2</td></tr><tr><td>try</td><td>2</td></tr><tr><td>you</td><td>2</td></tr><tr><td>30</td><td>1</td></tr><tr><td>alex</td><td>1</td></tr><tr><td>am</td><td>1</td></tr><tr><td>because</td><td>1</td></tr><tr><td>before</td><td>1</td></tr><tr><td>beth</td><td>1</td></tr><tr><td>blue</td><td>1</td></tr><tr><td>can</td><td>1</td></tr><tr><td>coat</td><td>1</td></tr><tr><td>colorful</td><td>1</td></tr><tr><td>competition</td><td>1</td></tr><tr><td>course</td><td>1</td></tr><tr><td>daniel</td><td>1</td></tr><tr><td>dark</td><td>1</td></tr><tr><td>discount</td><td>1</td></tr><tr><td>do</td><td>1</td></tr><tr><td>excuse</td><td>1</td></tr><tr><td>feel</td><td>1</td></tr><tr><td>fit</td><td>1</td></tr><tr><td>gift</td><td>1</td></tr><tr><td>go</td><td>1</td></tr><tr><td>had</td><td>1</td></tr><tr><td>handbag</td><td>1</td></tr><tr><td>hanger</td><td>1</td></tr><tr><td>have</td><td>1</td></tr><tr><td>her</td><td>1</td></tr><tr><td>here</td><td>1</td></tr><tr><td>leave</td><td>1</td></tr><tr><td>like</td><td>1</td></tr><tr><td>likes</td><td>1</td></tr><tr><td>lily</td><td>1</td></tr><tr><td>looking</td><td>1</td></tr><tr><td>love</td><td>1</td></tr><tr><td>make</td><td>1</td></tr><tr><td>maybe</td><td>1</td></tr><tr><td>me</td><td>1</td></tr><tr><td>mom</td><td>1</td></tr><tr><td>much</td><td>1</td></tr><tr><td>my</td><td>1</td></tr><tr><td>need</td><td>1</td></tr><tr><td>no</td><td>1</td></tr><tr><td>of</td><td>1</td></tr><tr><td>omar</td><td>1</td></tr><tr><td>or</td><td>1</td></tr><tr><td>pants</td><td>1</td></tr><tr><td>perfect</td><td>1</td></tr><tr><td>poor</td><td>1</td></tr><tr><td>prefer</td><td>1</td></tr><tr><td>price</td><td>1</td></tr><tr><td>remove</td><td>1</td></tr><tr><td>return</td><td>1</td></tr><tr><td>rich</td><td>1</td></tr><tr><td>sarah</td><td>1</td></tr><tr><td>scarf</td><td>1</td></tr><tr><td>she</td><td>1</td></tr><tr><td>size</td><td>1</td></tr><tr><td>skirts</td><td>1</td></tr><tr><td>socks</td><td>1</td></tr><tr><td>spend</td><td>1</td></tr><tr><td>style</td><td>1</td></tr><tr><td>tag</td><td>1</td></tr><tr><td>these</td><td>1</td></tr><tr><td>think</td><td>1</td></tr><tr><td>too</td><td>1</td></tr><tr><td>trousers</td><td>1</td></tr><tr><td>ugly</td><td>1</td></tr><tr><td>want</td><td>1</td></tr><tr><td>we</td><td>1</td></tr><tr><td>wear</td><td>1</td></tr><tr><td>week</td><td>1</td></tr><tr><td>well</td><td>1</td></tr><tr><td>were</td><td>1</td></tr><tr><td>which</td><td>1</td></tr><tr><td>will</td><td>1</td></tr><tr><td>won</td><td>1</td></tr><tr><td>wrong</td><td>1</td></tr><tr><td>young</td><td>1</td></tr></tbody>
+</table>
+  </div>
+
+</body>
+</html>

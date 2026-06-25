@@ -17,42 +17,42 @@
         "character1": "Sarah",
         "character2": "Daniel",
         "line1": "What do you want to _____?",
-        "line2": "I want to _____ the fish, but I don't know which one",
+        "line2": "I want to _____ the fish, but I can't decide.",
         "answer": "order",
         "distractors": [
           "think",
-          "drink",
-          "serve"
+          "hide",
+          "write"
         ]
       },
       "audio_file1": "what-do-you-want-to-order-convo",
-      "audio_file2": "i-want-to-order-the-fish-but-i-don-t-know-which-one-convo"
+      "audio_file2": "i-want-to-order-the-fish-but-i-can-t-decide-convo"
     },
     {
       "template": "ConvoTemplate-1",
       "questionData": {
         "character1": "Beth",
         "character2": "Alex",
-        "line1": "Would you like to see the dessert menu?",
+        "line1": "Do you want to _____ a dessert with me?",
         "line2": "Yes, please. Can we ______ one dessert between two people?",
         "answer": "share",
         "distractors": [
-          "order",
-          "take",
+          "carry",
+          "book",
           "ask"
         ]
       },
-      "audio_file1": "would-you-like-to-see-the-dessert-menu-convo",
+      "audio_file1": "do-you-want-to-share-a-dessert-with-me-convo",
       "audio_file2": "yes-please-can-we-share-one-dessert-between-two-people-convo"
     },
     {
       "template": "imageQuizTemplate-1",
       "questionData": {
-        "imageName": "waiter",
+        "imageName": "pie",
         "wrongAnswers": [
-          "chef",
-          "customer",
-          "manager"
+          "meat",
+          "bill",
+          "pasta"
         ]
       }
     },
@@ -69,7 +69,7 @@
           {
             "tr": "tatlı",
             "es": "dulce",
-            "fr": "doux",
+            "fr": "sucré",
             "de": "süß",
             "it": "dolce",
             "pt": "doce",
@@ -113,7 +113,7 @@
             "es": "picante",
             "fr": "épicé",
             "de": "scharf",
-            "it": "speziato",
+            "it": "piccante",
             "pt": "apimentado",
             "ru": "пряный",
             "zh": "辛辣的",
@@ -130,16 +130,16 @@
       "questionData": {
         "character1": "Omar",
         "character2": "Lily",
-        "line1": "Can we take the bill?",
-        "answer": "Sure, how do you want to pay?",
+        "line1": "We are ready for dessert.",
+        "answer": "Great, I will serve it right away.",
         "distractors": [
-          "Yes, do you want cash?",
-          "No, we will pay later",
-          "Yes, we will pay now"
+          "I'm afraid we have no more desserts today.",
+          "Please wait, the chef is still busy.",
+          "Let me bring the dessert menu first."
         ]
       },
-      "audio_file1": "can-we-take-the-bill-convo",
-      "audio_file2": "sure-how-do-you-want-to-pay-convo"
+      "audio_file1": "we-are-ready-for-dessert-convo",
+      "audio_file2": "great-i-will-serve-it-right-away-convo"
     },
     {
       "template": "AppearDisappear",
@@ -174,15 +174,14 @@
           "tray",
           "bill"
         ]
-      },
-      "answer": "menu"
+      }
     },
     {
       "template": "SentenceBuilder",
       "questionData": {
-        "correct_order": "He reserved a table for us."
+        "correct_order": "The chef boils soup for lunch."
       },
-      "audio_file": "he-reserved-a-table-for-us-convo"
+      "audio_file": "we-boil-soup-for-lunch-convo"
     },
     {
       "template": "imageQuizTemplate-1",
@@ -204,9 +203,9 @@
           "delicious"
         ],
         "distractors": [
-          "what",
+          "when",
           "where",
-          "tastless",
+          "spicier",
           "saltier"
         ]
       },
@@ -215,30 +214,31 @@
     {
       "template": "GrammarForm",
       "questionData": {
-        "sentence": "_____ a dish that is not too salty?",
-        "answer": "can you recommend",
+        "sentence": "_____ you the soup of the day?",
+        "answer": "Can I offer",
         "distractors": [
-          "could you recommends",
-          "will recommend you",
-          "are you recommending"
+          "Will you serve",
+          "Did I offer",
+          "Do you want"
         ]
       }
     },
     {
       "template": "ClozeSequence",
       "questionData": {
-        "sentence": "_____ the soup _____ until it's warm",
+        "sentence": "_____ the soup _____ until it's warm.",
         "answer": [
           "heat",
-          "slowly"
+          "properly"
         ],
         "distractors": [
           "bake",
           "cooler",
-          "quicker"
+          "cold",
+          "frozen"
         ]
       },
-      "audio_file": "heat-the-soup-slowly-until-it-s-warm-convo"
+      "audio_file": "heat-the-soup-properly-until-it-s-warm-convo"
     },
     {
       "template": "ClozeSequence",
@@ -249,9 +249,9 @@
           "main"
         ],
         "distractors": [
-          "eat",
+          "send",
           "sense",
-          "minor"
+          "slowly"
         ]
       },
       "audio_file": "can-i-taste-the-main-dish-before-i-order-convo"

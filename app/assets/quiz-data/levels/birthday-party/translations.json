@@ -188,20 +188,20 @@
       }
     },
     {
-      "english_word": "to start",
+      "english_word": "to dance",
       "translations": {
-        "tr": "başlamak",
-        "es": "empezar",
-        "fr": "commencer",
-        "de": "anfangen",
-        "it": "iniziare",
-        "pt": "começar",
-        "ru": "начинать",
-        "zh": "开始",
-        "ja": "始める",
-        "ko": "시작하다",
-        "ar": "يبدأ",
-        "hi": "शुरू करना"
+        "tr": "dans etmek",
+        "es": "bailar",
+        "fr": "danse",
+        "de": "tanzen",
+        "it": "ballare",
+        "pt": "dançar",
+        "ru": "танцевать",
+        "zh": "跳舞",
+        "ja": "踊る",
+        "ko": "춤추다",
+        "ar": "يرقص",
+        "hi": "नृत्य करना"
       }
     }
   ]

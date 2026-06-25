@@ -6,14 +6,14 @@
         "tr": "yatırmak",
         "es": "depositar",
         "fr": "déposer",
-        "de": "einzuzahlen",
+        "de": "einzahlen",
         "it": "depositare",
         "pt": "depositar",
-        "ru": "внести на депозит",
+        "ru": "вносить",
         "zh": "存款",
         "ja": "預ける",
         "ko": "입금하다",
-        "ar": "للإيداع",
+        "ar": "يودع",
         "hi": "जमा करना"
       }
     },
@@ -26,29 +26,29 @@
         "de": "Geld abheben",
         "it": "prelevare denaro",
         "pt": "sacar dinheiro",
-        "ru": "снять деньги",
+        "ru": "снимать деньги",
         "zh": "取钱",
         "ja": "お金を引き出す",
         "ko": "돈을 인출하다",
-        "ar": "سحب المال",
+        "ar": "يسحب المال",
         "hi": "पैसे निकालना"
       }
     },
     {
       "english_word": "to save",
       "translations": {
-        "tr": "kaydetmek",
-        "es": "guardar",
-        "fr": "sauver",
-        "de": "zu retten",
-        "it": "salvare",
-        "pt": "para salvar",
-        "ru": "сохранить",
-        "zh": "保存",
-        "ja": "保存する",
-        "ko": "저장하다",
-        "ar": "للحفظ",
-        "hi": "बचाने के लिए"
+        "tr": "biriktirmek",
+        "es": "ahorrar",
+        "fr": "épargner",
+        "de": "sparen",
+        "it": "risparmiare",
+        "pt": "poupar",
+        "ru": "копить",
+        "zh": "存钱",
+        "ja": "貯金する",
+        "ko": "저축하다",
+        "ar": "يوفر",
+        "hi": "बचत करना"
       }
     },
     {
@@ -60,46 +60,80 @@
         "de": "unterschreiben",
         "it": "firmare",
         "pt": "assinar",
-        "ru": "подписать",
+        "ru": "подписывать",
         "zh": "签署",
         "ja": "署名する",
         "ko": "서명하다",
-        "ar": "للتوقيع",
+        "ar": "يوقع",
         "hi": "हस्ताक्षर करना"
+      }
+    },
+    {
+      "english_word": "to lend",
+      "translations": {
+        "tr": "ödünç vermek",
+        "es": "prestar",
+        "fr": "prêter",
+        "de": "verleihen",
+        "it": "prestare",
+        "pt": "emprestar",
+        "ru": "одалживать",
+        "zh": "借出",
+        "ja": "貸す",
+        "ko": "빌려주다",
+        "ar": "يُقرِض",
+        "hi": "उधार देना"
       }
     },
     {
       "english_word": "fill in a form",
       "translations": {
-        "tr": "bir form doldur",
+        "tr": "form doldurmak",
         "es": "llenar un formulario",
         "fr": "remplir un formulaire",
-        "de": "Füllen Sie ein Formular aus",
+        "de": "ein Formular ausfüllen",
         "it": "compilare un modulo",
-        "pt": "preencha um formulário",
-        "ru": "заполнить форму",
+        "pt": "preencher um formulário",
+        "ru": "заполнять форму",
         "zh": "填写表格",
         "ja": "フォームに記入する",
         "ko": "양식을 작성하다",
-        "ar": "ملء النموذج",
-        "hi": "एक फॉर्म भरें"
+        "ar": "يملأ النموذج",
+        "hi": "फॉर्म भरना"
       }
     },
     {
       "english_word": "to discuss",
       "translations": {
-        "tr": "tartışmak",
-        "es": "discutir",
+        "tr": "görüşmek",
+        "es": "hablar de",
         "fr": "discuter",
-        "de": "zu besprechen",
+        "de": "besprechen",
         "it": "discutere",
         "pt": "discutir",
-        "ru": "обсудить",
+        "ru": "обсуждать",
         "zh": "讨论",
-        "ja": "議論する",
-        "ko": "토론하다",
-        "ar": "للمناقشة",
+        "ja": "話し合う",
+        "ko": "상의하다",
+        "ar": "يناقش",
         "hi": "चर्चा करना"
+      }
+    },
+    {
+      "english_word": "soon",
+      "translations": {
+        "tr": "yakında",
+        "es": "pronto",
+        "fr": "bientôt",
+        "de": "bald",
+        "it": "presto",
+        "pt": "em breve",
+        "ru": "скоро",
+        "zh": "很快",
+        "ja": "すぐに",
+        "ko": "곧",
+        "ar": "قريباً",
+        "hi": "जल्द ही"
       }
     },
     {
@@ -114,8 +148,8 @@
         "ru": "считать",
         "zh": "数数",
         "ja": "数える",
-        "ko": "계산하다",
-        "ar": "لحساب",
+        "ko": "세다",
+        "ar": "يعد",
         "hi": "गिनना"
       }
     },
@@ -124,15 +158,15 @@
       "translations": {
         "tr": "hatırlamak",
         "es": "recordar",
-        "fr": "se souvenir",
-        "de": "zu erinnern",
-        "it": "da ricordare",
+        "fr": "se souvenir de",
+        "de": "sich erinnern",
+        "it": "ricordare",
         "pt": "lembrar",
         "ru": "помнить",
         "zh": "记住",
-        "ja": "思い出す",
+        "ja": "覚えている",
         "ko": "기억하다",
-        "ar": "لنتذكر",
+        "ar": "يتذكر",
         "hi": "याद रखना"
       }
     },
@@ -162,11 +196,11 @@
         "de": "ein Konto eröffnen",
         "it": "aprire un conto",
         "pt": "abrir uma conta",
-        "ru": "открыть счет",
+        "ru": "открывать счёт",
         "zh": "开立账户",
         "ja": "口座を開設する",
         "ko": "계좌를 개설하다",
-        "ar": "فتح حساب",
+        "ar": "يفتح حساباً",
         "hi": "खाता खोलना"
       }
     }

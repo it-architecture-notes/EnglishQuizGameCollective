@@ -175,6 +175,30 @@
           "lettuce"
         ]
       }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "peach-fruit",
+        "answer": "peach",
+        "wrongAnswers": [
+          "apple",
+          "pear",
+          "apricot"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "olive-fruit",
+        "answer": "olive",
+        "wrongAnswers": [
+          "avocado",
+          "grape",
+          "fig"
+        ]
+      }
     }
   ]
 }

@@ -224,9 +224,9 @@
         "line1": "Do you shower every morning?",
         "answer": "Yes, I always do. It makes me feel fresh!",
         "distractors": [
-          "No, I shower at night.",
-          "I showered yesterday.",
-          "Yes, but only sometimes."
+          "The towel is on the sink.",
+          "The soap smells very nice.",
+          "I always brush my teeth after breakfast."
         ]
       },
       "audio_file1": "do-you-shower-every-morning-convo",

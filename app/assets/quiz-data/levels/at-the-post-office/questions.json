@@ -33,12 +33,12 @@
       "questionData": {
         "character1": "Beth",
         "character2": "Alex",
-        "line1": "Please ______ the fragile-items declaration",
+        "line1": "Please ______ the fragile-items declaration.",
         "line2": "Right away — I am sending a ceramic vase.",
         "answer": "complete",
         "distractors": [
           "help",
-          "check",
+          "count",
           "sell"
         ]
       },
@@ -76,7 +76,7 @@
             "ru": "кто-нибудь",
             "zh": "某人",
             "ja": "誰か",
-            "ko": "어떤 사람",
+            "ko": "누군가",
             "ar": "شخص ما",
             "hi": "कोई व्यक्ति"
           },
@@ -87,11 +87,11 @@
             "de": "etwas",
             "it": "qualcosa",
             "pt": "algo",
-            "ru": "что-нибудь",
+            "ru": "что-то",
             "zh": "某物",
             "ja": "何か",
             "ko": "무언가",
-            "ar": "شئ ما",
+            "ar": "شيء ما",
             "hi": "कुछ"
           },
           {
@@ -103,23 +103,23 @@
             "pt": "ninguém",
             "ru": "никто",
             "zh": "没有人",
-            "ja": "誰でもない",
+            "ja": "誰もいない",
             "ko": "아무도",
             "ar": "لا أحد",
             "hi": "कोई नहीं"
           },
           {
-            "tr": "Hiçbir şey",
+            "tr": "hiçbir şey",
             "es": "nada",
             "fr": "rien",
-            "de": "Nichts",
-            "it": "Niente",
+            "de": "nichts",
+            "it": "niente",
             "pt": "nada",
             "ru": "ничего",
             "zh": "没有什么",
             "ja": "何もない",
-            "ko": "아무것도 아님",
-            "ar": "لا شئ",
+            "ko": "아무것도",
+            "ar": "لا شيء",
             "hi": "कुछ नहीं"
           }
         ]
@@ -134,10 +134,10 @@
           "receive"
         ],
         "distractors": [
-          "pick up",
+          "write",
           "packing",
-          "check",
-          "carry"
+          "lock",
+          "sign"
         ]
       },
       "audio_file": "we-will-deliver-the-package-today-so-you-can-receive-it-before-the-holiday-convo"
@@ -147,10 +147,10 @@
       "questionData": {
         "words": "It is important that you bring a valid ID.",
         "distractors": [
-          "asked",
-          "have",
-          "nurse",
-          "stay"
+          "optional",
+          "forget",
+          "wrong",
+          "later"
         ]
       },
       "audio_file": "it-is-important-that-you-bring-a-valid-id-convo"
@@ -160,9 +160,9 @@
       "questionData": {
         "imageName": "postbox",
         "wrongAnswers": [
-          "mailcan",
+          "letterbox",
           "postcard",
-          "red-post-envelope"
+          "mailbox"
         ]
       }
     },
@@ -173,7 +173,7 @@
         "wrongAnswers": [
           "information-desk",
           "counter",
-          "postman-desk"
+          "service desk"
         ]
       }
     },
@@ -189,9 +189,9 @@
       "questionData": {
         "imageName": "stamp",
         "wrongAnswers": [
-          "envelope",
-          "letter",
-          "paper"
+          "postcard",
+          "seal",
+          "tag"
         ]
       }
     },
@@ -204,25 +204,24 @@
           "break"
         ],
         "distractors": [
-          "bring",
+          "sell",
           "do",
           "problem",
-          "complete"
+          "read"
         ]
       },
-      "audio_file": "did-you-include-protection-glass-can-break-convo"
+      "audio_file": "did-you-include-protection-glass-items-can-break-convo"
     },
     {
       "template": "imageQuizTemplate-2",
       "questionData": {
-        "imageName": "postbox",
+        "imageName": "postcard",
         "wrongAnswers": [
-          "postcard",
+          "postbox",
           "stamp",
           "package-parcel"
         ]
-      },
-      "answer": "postbox"
+      }
     },
     {
       "template": "ClozeSequence",
@@ -233,8 +232,8 @@
           "lose"
         ],
         "distractors": [
-          "wrong",
-          "find",
+          "large",
+          "lock",
           "receive",
           "deliver"
         ]
@@ -244,19 +243,19 @@
     {
       "template": "ClozeSequence",
       "questionData": {
-        "sentence": "______ does it _____ to send a package to New York?",
+        "sentence": "You need to _____ the item carefully. How much does it _____?",
         "answer": [
-          "how much",
+          "pack",
           "cost"
         ],
         "distractors": [
-          "buy",
+          "study",
+          "sign",
           "how many",
-          "take",
           "how long"
         ]
       },
-      "audio_file": "how-much-does-it-cost-to-send-a-package-to-new-york-convo"
+      "audio_file": "you-need-to-pack-the-item-carefully-how-much-does-it-cost-convo"
     }
   ]
 }

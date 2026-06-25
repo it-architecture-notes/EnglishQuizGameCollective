@@ -9,8 +9,8 @@
         "answer": "You are welcome.",
         "distractors": [
           "I am sorry.",
-          "You are great",
-          "No problem."
+          "That was very hard for me.",
+          "See you later."
         ]
       },
       "audio_file1": "thank-you-for-your-help-convo",
@@ -95,8 +95,8 @@
         "answer": "This is a pencil",
         "distractors": [
           "That is a pencil",
-          "It is a pencil",
-          "This are pencil"
+          "I have a pencil.",
+          "These are pencils."
         ]
       },
       "audio_file1": "what-is-this-convo",

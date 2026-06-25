@@ -20,7 +20,7 @@
         "line2": "Yes! Is it far?",
         "answer": "walk",
         "distractors": [
-          "come",
+          "wait",
           "call",
           "follow"
         ]
@@ -33,8 +33,8 @@
       "questionData": {
         "character1": "Alex",
         "character2": "Nora",
-        "line1": "_____ at the buildings?",
-        "line2": "Yes, they are very tall.",
+        "line1": "_____ at the buildings!",
+        "line2": "Yes, they are wonderful.",
         "answer": "look",
         "distractors": [
           "see",
@@ -43,15 +43,15 @@
         ]
       },
       "audio_file1": "look-at-the-buildings-convo",
-      "audio_file2": "yes-they-are-very-tall-convo"
+      "audio_file2": "yes-they-are-wonderful-convo"
     },
     {
       "template": "imageQuizTemplate-1",
       "questionData": {
-        "imageName": "fire-hydrant",
+        "imageName": "building",
         "wrongAnswers": [
-          "fire-engine",
-          "fire-truck",
+          "barn",
+          "tower",
           "fire-station"
         ]
       }
@@ -74,9 +74,9 @@
             "it": "lontano",
             "pt": "distante",
             "ru": "далеко",
-            "zh": "远的",
+            "zh": "远",
             "ja": "遠い",
-            "ko": "멀리",
+            "ko": "멀다",
             "ar": "بعيد",
             "hi": "दूर"
           },
@@ -87,10 +87,10 @@
             "de": "nahe",
             "it": "vicino",
             "pt": "perto",
-            "ru": "около",
-            "zh": "靠近",
+            "ru": "близко",
+            "zh": "近",
             "ja": "近く",
-            "ko": "가까운",
+            "ko": "가깝다",
             "ar": "قريب",
             "hi": "पास में"
           },
@@ -103,8 +103,8 @@
             "pt": "dentro",
             "ru": "внутри",
             "zh": "里面",
-            "ja": "内部",
-            "ko": "내부에",
+            "ja": "中",
+            "ko": "안에",
             "ar": "داخل",
             "hi": "अंदर"
           },
@@ -113,13 +113,13 @@
             "es": "afuera",
             "fr": "dehors",
             "de": "draußen",
-            "it": "al di fuori",
+            "it": "fuori",
             "pt": "fora",
             "ru": "снаружи",
-            "zh": "外部",
+            "zh": "外面",
             "ja": "外",
-            "ko": "밖의",
-            "ar": "الخارج",
+            "ko": "밖에",
+            "ar": "في الخارج",
             "hi": "बाहर"
           }
         ]
@@ -133,9 +133,9 @@
         "line1": "Be careful, the ground is wet.",
         "answer": "I will walk carefully.",
         "distractors": [
-          "Sometimes walking slowly.",
+          "I sometimes walk slowly.",
           "I always walk quickly.",
-          "I am not careful."
+          "My shoes are still wet."
         ]
       },
       "audio_file1": "be-careful-the-ground-is-wet-convo",
@@ -157,22 +157,22 @@
     {
       "template": "imageQuizTemplate-1",
       "questionData": {
-        "imageName": "bus-stop",
+        "imageName": "streets",
         "wrongAnswers": [
-          "bus-station",
-          "bus-lane",
-          "bus-shelter"
+          "building",
+          "statue",
+          "bus-stop"
         ]
       }
     },
     {
       "template": "imageQuizTemplate-1",
       "questionData": {
-        "imageName": "parking-meter",
+        "imageName": "statue",
         "wrongAnswers": [
-          "parking-lot",
-          "parking-sign",
-          "parking-space"
+          "bench",
+          "tree",
+          "fountain"
         ]
       }
     },
@@ -186,26 +186,30 @@
     {
       "template": "imageQuizTemplate-1",
       "questionData": {
-        "imageName": "recycle-bin",
+        "imageName": "tower",
         "wrongAnswers": [
-          "trash-can",
-          "garbage-bag",
-          "mailbox"
+          "castle",
+          "building",
+          "statue"
         ]
       }
     },
     {
       "template": "ClozeSequence",
       "questionData": {
-        "sentence": "She _____ here every weekend to walk around.",
-        "answer": "comes",
+        "sentence": "She _____ here every weekend to ____ the lake.",
+        "answer": [
+          "comes",
+          "see"
+        ],
         "distractors": [
-          "stops",
-          "goes",
-          "runs"
+          "build",
+          "wait",
+          "carry",
+          "start"
         ]
       },
-      "audio_file": "she-comes-here-every-weekend-to-walk-around-convo"
+      "audio_file": "she-comes-here-every-weekend-to-see-the-lake-convo"
     },
     {
       "template": "GrammarForm",
@@ -225,11 +229,11 @@
         "character1": "Olivia",
         "character2": "Sophie",
         "line1": "Let’s go this way.",
-        "answer": "Ok, follow me",
+        "answer": "Ok, follow me.",
         "distractors": [
           "Ok, leave me here",
-          "Look at the building",
-          "See you later"
+          "Look at the building.",
+          "See you later."
         ]
       },
       "audio_file1": "lets-go-this-way-convo",
@@ -238,16 +242,16 @@
     {
       "template": "ClozeSequence",
       "questionData": {
-        "sentence": "I am _____ so I will go _____",
+        "sentence": "I am _____ so I will go _____.",
         "answer": [
           "tired",
           "back"
         ],
         "distractors": [
-          "forward",
+          "never",
           "check",
-          "hungry",
-          "very well"
+          "already",
+          "only"
         ]
       },
       "audio_file": "i-am-tired-so-i-will-go-back-convo"

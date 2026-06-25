@@ -1,0 +1,238 @@
+{
+  "levelQuestions": [
+    {
+      "template": "AppearDisappear",
+      "questionData": {
+        "words": "She is a very friendly person.",
+        "distractors": [
+          "happy",
+          "quiet",
+          "interesting"
+        ]
+      },
+      "audio_file": "she-is-a-very-friendly-person-convo"
+    },
+    {
+      "template": "WordPairs",
+      "questionData": {
+        "english_words": [
+          "cool",
+          "warm",
+          "half",
+          "quarter"
+        ],
+        "translations": [
+          {
+            "tr": "serin",
+            "es": "fresco",
+            "fr": "frais",
+            "de": "kühl",
+            "it": "fresco",
+            "pt": "fresco",
+            "ru": "прохладный",
+            "zh": "凉爽",
+            "ja": "涼しい",
+            "ko": "시원한",
+            "ar": "معتدل",
+            "hi": "ठंडा"
+          },
+          {
+            "tr": "ılık",
+            "es": "cálido",
+            "fr": "chaud",
+            "de": "warm",
+            "it": "tiepido",
+            "pt": "morno",
+            "ru": "тёплый",
+            "zh": "温暖",
+            "ja": "暖かい",
+            "ko": "따뜻한",
+            "ar": "دافئ",
+            "hi": "गर्म"
+          },
+          {
+            "tr": "yarım",
+            "es": "medio",
+            "fr": "demi",
+            "de": "halb",
+            "it": "mezzo",
+            "pt": "meio",
+            "ru": "половина",
+            "zh": "半",
+            "ja": "半分",
+            "ko": "반",
+            "ar": "نصف",
+            "hi": "आधा"
+          },
+          {
+            "tr": "çeyrek",
+            "es": "cuarto",
+            "fr": "quart",
+            "de": "Viertel",
+            "it": "quarto",
+            "pt": "quarto",
+            "ru": "четверть",
+            "zh": "四分之一",
+            "ja": "四分の一",
+            "ko": "사분의 일",
+            "ar": "ربع",
+            "hi": "चौथाई"
+          }
+        ]
+      }
+    },
+    {
+      "template": "ConvoTemplate-1",
+      "questionData": {
+        "character1": "Lisa",
+        "character2": "Tom",
+        "line1": "Do you _____ she will come to the party?",
+        "line2": "I _____ so. She loves parties.",
+        "answer": "think",
+        "distractors": [
+          "want",
+          "buy",
+          "wait"
+        ]
+      },
+      "audio_file1": "do-you-think-she-will-come-to-the-party-convo",
+      "audio_file2": "i-think-so-she-loves-parties-convo"
+    },
+    {
+      "template": "SentenceBuilder",
+      "questionData": {
+        "correct_order": "She really wants to win the race."
+      },
+      "audio_file": "she-really-wants-to-win-the-race-convo"
+    },
+    {
+      "template": "AppearDisappear",
+      "questionData": {
+        "words": "That is exactly right and totally awesome.",
+        "distractors": [
+          "boring",
+          "wrong"
+        ]
+      },
+      "audio_file": "that-is-exactly-right-and-totally-awesome-convo"
+    },
+    {
+      "template": "ClozeSequence",
+      "questionData": {
+        "sentence": "We are fighting _____ pollution in our city.",
+        "answer": [
+          "against"
+        ],
+        "distractors": [
+          "before",
+          "after",
+          "for",
+          "with"
+        ]
+      },
+      "audio_file": "we-are-fighting-against-pollution-in-our-city-convo"
+    },
+    {
+      "template": "DialogueCompletion",
+      "questionData": {
+        "character1": "Ana",
+        "character2": "Mark",
+        "line1": "Can we leave now? Are you ready?",
+        "answer": "Not yet. Give me five more minutes.",
+        "distractors": [
+          "The traffic will be heavy today.",
+          "We should take the shorter route.",
+          "Do you have your bag with you?"
+        ]
+      },
+      "audio_file1": "can-we-leave-now-are-you-ready-convo",
+      "audio_file2": "not-yet-give-me-five-more-minutes-convo"
+    },
+    {
+      "template": "ClozeSequence",
+      "questionData": {
+        "sentence": "The room is too _____ for everyone, so please _____ the door.",
+        "answer": [
+          "crowded",
+          "lock"
+        ],
+        "distractors": [
+          "silent",
+          "open",
+          "boring",
+          "closed"
+        ]
+      },
+      "audio_file": "the-room-is-too-crowded-for-everyone-so-please-lock-the-door-convo"
+    },
+    {
+      "template": "ClozeSequence",
+      "questionData": {
+        "sentence": "Please _____ your voice low and wear sunscreen to _____ our skin.",
+        "answer": [
+          "keep",
+          "protect"
+        ],
+        "distractors": [
+          "try",
+          "read",
+          "wash",
+          "sing"
+        ]
+      },
+      "audio_file": "please-keep-your-voice-low-and-wear-sunscreen-to-protect-our-skin-convo"
+    },
+    {
+      "template": "GrammarForm",
+      "questionData": {
+        "sentence": "We must always _____ personal information from strangers.",
+        "answer": "hide",
+        "distractors": [
+          "hides",
+          "hid",
+          "hidden"
+        ]
+      }
+    },
+    {
+      "template": "GrammarForm",
+      "questionData": {
+        "sentence": "Today is going to be the _____ day of the week.",
+        "answer": "worst",
+        "distractors": [
+          "worse",
+          "bad",
+          "most bad"
+        ]
+      }
+    },
+    {
+      "template": "AppearDisappear",
+      "questionData": {
+        "words": "She will probably be late today.",
+        "distractors": [
+          "very",
+          "too",
+          "early"
+        ]
+      },
+      "audio_file": "she-will-probably-be-late-today-convo"
+    },
+    {
+      "template": "DialogueCompletion",
+      "questionData": {
+        "character1": "Sophie",
+        "character2": "Omar",
+        "line1": "Is your food here yet?",
+        "answer": "Still waiting. It should come soon.",
+        "distractors": [
+          "Yes, it is here and I am eating now.",
+          "I have the wrong dish here.",
+          "The restaurant is very nice here."
+        ]
+      },
+      "audio_file1": "is-your-food-here-yet-convo",
+      "audio_file2": "still-waiting-it-should-come-soon-convo"
+    }
+  ]
+}

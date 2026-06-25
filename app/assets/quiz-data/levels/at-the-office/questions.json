@@ -12,38 +12,20 @@
       }
     },
     {
-      "template": "ConvoTemplate-1",
+      "template": "AppearDisappear",
       "questionData": {
-        "character1": "Sarah",
-        "character2": "Daniel",
-        "line1": "Is the presentation ready for the client?",
-        "line2": "It's _____ done. I just need five more minutes.",
-        "answer": "almost",
-        "distractors": [
-          "already",
-          "completely",
-          "soon"
-        ]
+        "words": "We work on the presentation for the client.",
+        "distractors": ["finished", "late", "urgent"]
       },
-      "audio_file1": "is-the-presentation-ready-for-the-client-convo",
-      "audio_file2": "it-s-almost-done-i-just-need-five-more-minutes-convo"
+      "audio_file": "we-work-on-the-presentation-for-the-client-convo"
     },
     {
-      "template": "ConvoTemplate-1",
+      "template": "AppearDisappear",
       "questionData": {
-        "character1": "Beth",
-        "character2": "Alex",
-        "line1": "Can you close the door?",
-        "line2": "Yes, the hallway is very ____",
-        "answer": "noisy",
-        "distractors": [
-          "quiet",
-          "cool",
-          "noise"
-        ]
+        "words": "We need to plan the meeting for Friday.",
+        "distractors": ["cancel", "delay", "forget"]
       },
-      "audio_file1": "can-you-close-the-door-convo",
-      "audio_file2": "yes-the-hallway-is-very-noisy-convo"
+      "audio_file": "we-need-to-plan-the-meeting-for-friday-convo"
     },
     {
       "template": "imageQuizTemplate-1",
@@ -76,7 +58,7 @@
             "ru": "год",
             "zh": "年",
             "ja": "年",
-            "ko": "년도",
+            "ko": "년",
             "ar": "سنة",
             "hi": "वर्ष"
           },
@@ -118,7 +100,7 @@
             "ru": "день",
             "zh": "天",
             "ja": "日",
-            "ko": "낮",
+            "ko": "날",
             "ar": "يوم",
             "hi": "दिन"
           }
@@ -134,7 +116,7 @@
         "answer": "No, she is away on business.",
         "distractors": [
           "Yes, she will come later",
-          "No, but she is in the office",
+          "She usually works from home.",
           "Yes, she is in the other office"
         ]
       },
@@ -149,7 +131,7 @@
           "was",
           "bad",
           "most",
-          "difficult"
+          "easy"
         ]
       },
       "audio_file": "it-is-hard-to-decide-both-are-good-convo"
@@ -173,16 +155,16 @@
           "file",
           "briefcase",
           "computer"
-        ]
-      },
-      "answer": "cabinet"
+        ],
+        "answer": "cabinet"
+      }
     },
     {
       "template": "SentenceBuilder",
       "questionData": {
-        "correct_order": "She sent him a quick message "
+        "correct_order": "I will attend a meeting now."
       },
-      "audio_file": "she-sent-him-a-quick-message-convo"
+      "audio_file": "i-will-attend-a-meeting-now-convo"
     },
     {
       "template": "imageQuizTemplate-1",
@@ -198,29 +180,28 @@
     {
       "template": "ClozeSequence",
       "questionData": {
-        "sentence": "Are you _____ it's a good idea _____ that old printer?",
+        "sentence": "Are you ____ this report is ready for the client?",
         "answer": [
-          "sure",
-          "to own"
+          "sure"
         ],
         "distractors": [
-          "to decide",
-          "to look",
+          "quick",
+          "careful",
           "quickly",
-          "worried"
+          "certainly"
         ]
       },
-      "audio_file": "are-you-sure-it-s-a-good-idea-to-own-that-old-printer-convo"
+      "audio_file": "are-you-sure-this-report-is-ready-for-the-client-convo"
     },
     {
       "template": "GrammarForm",
       "questionData": {
-        "sentence": "Our team usually ____ a great job?",
-        "answer": "does",
+        "sentence": "Did you _____ the report before the meeting?",
+        "answer": "finish",
         "distractors": [
-          "do",
-          "will do",
-          "are doing"
+          "finished",
+          "finishes",
+          "finishing"
         ]
       }
     },
@@ -234,9 +215,9 @@
         ],
         "distractors": [
           "put to",
-          "take",
-          "busy",
-          "there"
+          "quickly",
+          "soon",
+          "nearly"
         ]
       },
       "audio_file": "i-will-connect-you-to-the-manager-as-soon-as-she-is-available-convo"
@@ -244,18 +225,19 @@
     {
       "template": "ClozeSequence",
       "questionData": {
-        "sentence": "I _____ we use the _____ calendar system to book all our meetings.",
+        "sentence": "I _____ we use the _____ app to book all our meetings.",
         "answer": [
           "suggest",
           "smart"
         ],
         "distractors": [
-          "say",
-          "think",
-          "dull"
+          "always",
+          "clearly",
+          "often",
+          "really"
         ]
       },
-      "audio_file": "i-suggest-we-use-the-smart-calendar-system-to-book-all-our-meetings-convo"
+      "audio_file": "i-suggest-we-use-the-smart-app-to-book-all-our-meetings-convo"
     }
   ]
 }
