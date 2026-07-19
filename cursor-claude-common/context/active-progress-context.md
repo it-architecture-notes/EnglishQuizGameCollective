@@ -29,7 +29,7 @@ Short spec for **`game-main-level-stories.json`** and **`story-templates.json`**
 - **Template 1 (`StoryTemplateA`):** Speech bubble shows **`localizedStoryText`** (current app language, fallback `en`). Optional JSON **`character_image`** (asset path) supplies the bottom-left sprite; scene stays a placeholder unless extended later.
 - **Template 4 (`StoryTemplateC`):** Primary line = **`story_text["en"]`**; if the app language is not English, a second **italic** line uses **`story_text[languageCode]`**. Scene block is a **placeholder** only.
 - **Completion:** Story **`event_id`** is marked complete when the sub-level at the **resolved trigger level** has **≥ 1 star** (no `covered_levels_number`; multi-level coverage was removed).
-- **Trigger:** `trigger.type` is `before_level` or `after_level`; `trigger.level` is 1-based within the main level, or **`0`** = last regular sub-level in the flow. `after_level` uses the overlay “congratulations” header behavior.
+- **Trigger:** `trigger.type` is `before_level` or `after_level`; `trigger.level` is the flow **`title`** of the target level (e.g. `"Greetings"`, `"Reminder 2"`), or **`""`** = last regular sub-level in the flow. `after_level` uses the overlay “congratulations” header behavior.
 - **Docs:** Full detail lives in **`cursor-claude-common/context/story-templates-and-design.md`**.
 
 ---

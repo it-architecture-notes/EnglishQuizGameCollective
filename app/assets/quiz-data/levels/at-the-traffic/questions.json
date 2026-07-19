@@ -130,29 +130,29 @@
       "questionData": {
         "character1": "Lily",
         "character2": "Alex",
-        "line1": "Should we use the tunnel?",
-        "answer": "It sounds dangerous.",
+        "line1": "Which lane can we stay in?",
+        "answer": "Stay in the left lane, please.",
         "distractors": [
           "This road is very busy.",
-          "Slow down, it's a school zone.",
+          "Slow down at the crosswalk.",
           "The light is green now."
         ]
       },
-      "audio_file1": "should-we-use-the-tunnel-convo",
-      "audio_file2": "it-sounds-dangerous-convo"
+      "audio_file1": "which-lane-should-we-stay-in-convo",
+      "audio_file2": "stay-in-the-left-lane-please-convo"
     },
     {
       "template": "AppearDisappear",
       "questionData": {
-        "words": "Let the pedestrians cross the street.",
+        "words": "You must brake when you see a red light.",
         "distractors": [
-          "don't",
-          "stop",
-          "run",
-          "go"
+          "pause",
+          "swerve",
+          "ride",
+          "speed"
         ]
       },
-      "audio_file": "let-the-pedestrians-cross-the-street-convo"
+      "audio_file": "you-must-brake-when-you-see-a-red-light-convo"
     },
     {
       "template": "imageQuizTemplate-1",
@@ -179,9 +179,9 @@
     {
       "template": "SentenceBuilder",
       "questionData": {
-        "correct_order": "This intersection is very busy."
+        "correct_order": "Do not speed on this road."
       },
-      "audio_file": "this-intersection-is-very-busy-convo"
+      "audio_file": "do-not-speed-on-this-road-convo"
     },
     {
       "template": "imageQuizTemplate-1",
@@ -197,19 +197,19 @@
     {
       "template": "ClozeSequence",
       "questionData": {
-        "sentence": "_____, it's a school zone and the city _____ fines.",
+        "sentence": "_____, there is an accident _____.",
         "answer": [
           "slow down",
-          "increases"
+          "ahead"
         ],
         "distractors": [
           "speed up",
           "turn left",
-          "stop here",
-          "lets"
+          "behind",
+          "later"
         ]
       },
-      "audio_file": "slow-down-it-s-a-school-zone-city-increases-fines-for-speeding-in-school-zones-convo"
+      "audio_file": "slow-down-there-is-an-accident-ahead-convo"
     },
     {
       "template": "GrammarForm",
@@ -226,24 +226,24 @@
     {
       "template": "ClozeSequence",
       "questionData": {
-        "sentence": "Can you _____ the car please. I would like to _____.",
+        "sentence": "_____ at the crosswalk and always _____ the rules.",
         "answer": [
           "stop",
-          "get out"
+          "obey"
         ],
         "distractors": [
-          "look",
-          "listen",
-          "cook",
-          "feed"
+          "walk",
+          "run",
+          "ignore",
+          "break"
         ]
       },
-      "audio_file": "can-you-stop-the-car-please-i-would-like-to-get-out-convo"
+      "audio_file": "stop-at-the-crosswalk-and-always-obey-the-rules-convo"
     },
     {
       "template": "ClozeSequence",
       "questionData": {
-        "sentence": "You should not ____ the traffic test. You have to _____ it.",
+        "sentence": "You must not ____ the traffic test. You will _____ it.",
         "answer": [
           "fail",
           "pass"

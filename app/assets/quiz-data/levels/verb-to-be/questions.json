@@ -40,9 +40,9 @@
         "sentence": "I ___ a teacher",
         "answer": "am",
         "distractors": [
-          "are",
           "is",
-          "are not"
+          "are",
+          "be"
         ]
       }
     },
@@ -113,82 +113,82 @@
       "template": "WordPairs",
       "questionData": {
         "english_words": [
-          "my",
-          "your",
-          "his/her",
-          "their",
-          "our"
+          "I",
+          "you",
+          "he/she/it",
+          "they",
+          "we"
         ],
         "translations": [
           {
-            "tr": "benim",
-            "es": "mi",
-            "fr": "mon",
-            "de": "mein",
-            "it": "mio",
-            "pt": "meu",
-            "ru": "мой",
-            "zh": "我的",
-            "ja": "私の",
-            "ko": "나의",
-            "ar": "ي",
-            "hi": "मेरा"
+            "tr": "ben",
+            "es": "yo",
+            "fr": "je",
+            "de": "ich",
+            "it": "io",
+            "pt": "eu",
+            "ru": "я",
+            "zh": "我",
+            "ja": "私",
+            "ko": "나",
+            "ar": "أنا",
+            "hi": "मैं"
           },
           {
-            "tr": "senin",
-            "es": "tu",
-            "fr": "ton",
-            "de": "dein",
-            "it": "tuo",
-            "pt": "teu",
-            "ru": "твой",
-            "zh": "你的",
-            "ja": "あなたの",
-            "ko": "당신의",
-            "ar": "ك",
-            "hi": "तुम्हारा"
+            "tr": "sen",
+            "es": "tú",
+            "fr": "tu",
+            "de": "du",
+            "it": "tu",
+            "pt": "você",
+            "ru": "ты",
+            "zh": "你",
+            "ja": "あなた",
+            "ko": "너",
+            "ar": "أنت",
+            "hi": "आप"
           },
           {
-            "tr": "onun",
-            "es": "su",
-            "fr": "son/sa",
-            "de": "sein/ihr",
-            "it": "il suo",
-            "pt": "dele/dela",
-            "ru": "его/её",
-            "zh": "他/她的",
-            "ja": "彼の/彼女の",
-            "ko": "그의/그녀의",
-            "ar": "ـه/ـها",
-            "hi": "उसका/उसकी"
+            "tr": "o",
+            "es": "él / ella / eso",
+            "fr": "il / elle / ça",
+            "de": "er / sie / es",
+            "it": "lui / lei / esso",
+            "pt": "ele / ela / isso",
+            "ru": "он / она / оно",
+            "zh": "他 / 她 / 它",
+            "ja": "彼 / 彼女 / それ",
+            "ko": "그 / 그녀 / 그것",
+            "ar": "هو / هي / هو لغير العاقل",
+            "hi": "वह / यह"
           },
           {
-            "tr": "onların",
-            "es": "su",
-            "fr": "leur",
-            "de": "ihre",
+            "tr": "onlar",
+            "es": "ellos / ellas",
+            "fr": "ils / elles",
+            "de": "sie",
             "it": "loro",
-            "pt": "deles",
-            "ru": "их",
-            "zh": "他们的",
-            "ja": "彼らの",
-            "ko": "그들의",
-            "ar": "ـهم",
-            "hi": "उनका"
+            "pt": "eles / elas",
+            "ru": "они",
+            "zh": "他们 / 她们",
+            "ja": "彼ら / 彼女たち",
+            "ko": "그들",
+            "ar": "هم / هن",
+            "hi": "वे"
           },
           {
-            "tr": "bizim",
-            "es": "nuestro",
-            "fr": "notre",
-            "de": "unser",
-            "it": "nostro",
-            "pt": "nosso",
-            "ru": "наш",
-            "zh": "我们的",
-            "ja": "私たちの",
-            "ko": "우리의",
-            "ar": "ـنا",
-            "hi": "हमारा"
+            "tr": "biz",
+            "es": "nosotros",
+            "fr": "nous",
+            "de": "wir",
+            "it": "noi",
+            "pt": "nós",
+            "ru": "мы",
+            "zh": "我们",
+            "ja": "私たち",
+            "ko": "우리",
+            "ar": "نحن",
+            "hi": "हम"
           }
         ]
       }
@@ -214,7 +214,7 @@
     {
       "template": "AppearDisappear",
       "questionData": {
-        "words": "The book ____ about a boy.",
+        "words": "The book is about a boy.",
         "distractors": [
           "are",
           "am",
@@ -241,8 +241,8 @@
         ],
         "distractors": [
           "are",
-          "is not",
-          "the",
+          "day",
+          "many",
           "am"
         ]
       },

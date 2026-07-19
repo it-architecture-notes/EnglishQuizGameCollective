@@ -1,14 +1,14 @@
 {
   "translations_list": [
     {
-      "english_word": "to try on",
+      "english_word": "to try",
       "translations": {
-        "tr": "denemek (kıyafet)",
-        "es": "probarse",
-        "fr": "essayer un vêtement",
+        "tr": "denemek",
+        "es": "probar",
+        "fr": "essayer",
         "de": "anprobieren",
         "it": "provare",
-        "pt": "experimentar / provar",
+        "pt": "experimentar",
         "ru": "примерить",
         "zh": "试穿",
         "ja": "試着する",
@@ -69,37 +69,20 @@
       }
     },
     {
-      "english_word": "to leave something as is",
+      "english_word": "to dress",
       "translations": {
-        "tr": "bir şeyi olduğu gibi bırakmak",
-        "es": "dejar algo como está",
-        "fr": "laisser quelque chose tel quel",
-        "de": "etwas so lassen",
-        "it": "lasciarlo come è",
-        "pt": "deixar algo como está",
-        "ru": "оставить что-то как есть",
-        "zh": "保持原样",
-        "ja": "そのままにする",
-        "ko": "그대로 두다",
-        "ar": "يترك شيئاً كما هو",
-        "hi": "इसे वैसे ही छोड़ना"
-      }
-    },
-    {
-      "english_word": "to prefer",
-      "translations": {
-        "tr": "tercih etmek",
-        "es": "preferir",
-        "fr": "préférer",
-        "de": "bevorzugen",
-        "it": "preferire",
-        "pt": "preferir",
-        "ru": "предпочитать",
-        "zh": "更喜欢",
-        "ja": "好む",
-        "ko": "선호하다",
-        "ar": "يفضل",
-        "hi": "पसंद करना"
+        "tr": "giyinmek",
+        "es": "vestirse",
+        "fr": "s'habiller",
+        "de": "sich anziehen",
+        "it": "vestirsi",
+        "pt": "vestir-se",
+        "ru": "одеваться",
+        "zh": "穿衣服",
+        "ja": "服を着る",
+        "ko": "옷을 입다",
+        "ar": "يَلبَس",
+        "hi": "कपड़े पहनना"
       }
     },
     {
@@ -120,37 +103,71 @@
       }
     },
     {
-      "english_word": "to return something",
+      "english_word": "to return an item",
       "translations": {
-        "tr": "bir şeyi iade etmek",
-        "es": "devolver algo",
-        "fr": "rendre quelque chose",
-        "de": "etwas zurückgeben",
-        "it": "restituire qualcosa",
-        "pt": "devolver algo",
-        "ru": "вернуть что-то",
-        "zh": "退还某物",
-        "ja": "何かを返品する",
-        "ko": "무언가를 반품하다",
-        "ar": "يُرجع شيئاً",
-        "hi": "कुछ वापस करना"
+        "tr": "bir ürünü iade etmek",
+        "es": "devolver un artículo",
+        "fr": "rendre un article",
+        "de": "einen Artikel zurückgeben",
+        "it": "restituire un articolo",
+        "pt": "devolver um item",
+        "ru": "вернуть товар",
+        "zh": "退还商品",
+        "ja": "商品を返品する",
+        "ko": "물건을 반품하다",
+        "ar": "إرجاع سلعة",
+        "hi": "सामान वापस करना"
       }
     },
     {
-      "english_word": "loose",
+      "english_word": "to afford",
       "translations": {
-        "tr": "bol",
-        "es": "holgado",
-        "fr": "ample",
-        "de": "locker",
-        "it": "largo",
-        "pt": "folgado",
-        "ru": "свободный",
-        "zh": "宽松的",
-        "ja": "ゆるい",
-        "ko": "헐렁한",
-        "ar": "واسع",
-        "hi": "ढीला"
+        "tr": "gücü yetmek",
+        "es": "poder pagar",
+        "fr": "se permettre",
+        "de": "sich leisten können",
+        "it": "permettersi",
+        "pt": "poder pagar",
+        "ru": "позволить себе",
+        "zh": "买得起",
+        "ja": "余裕がある",
+        "ko": "여유가 있다",
+        "ar": "يستطيع تحمل تكلفة",
+        "hi": "खर्च उठा पाना"
+      }
+    },
+    {
+      "english_word": "by mistake",
+      "translations": {
+        "tr": "yanlışlıkla",
+        "es": "por error",
+        "fr": "par erreur",
+        "de": "aus Versehen",
+        "it": "per errore",
+        "pt": "por engano",
+        "ru": "по ошибке",
+        "zh": "不小心地",
+        "ja": "間違えて",
+        "ko": "실수로",
+        "ar": "بالخطأ",
+        "hi": "गलती से"
+      }
+    },
+    {
+      "english_word": "fitting room",
+      "translations": {
+        "tr": "deneme kabini",
+        "es": "probador",
+        "fr": "cabine d'essayage",
+        "de": "Umkleidekabine",
+        "it": "camerino",
+        "pt": "provador",
+        "ru": "примерочная",
+        "zh": "试衣间",
+        "ja": "試着室",
+        "ko": "탈의실",
+        "ar": "غرفة القياس",
+        "hi": "ट्रायल रूम"
       }
     },
     {
@@ -171,20 +188,20 @@
       }
     },
     {
-      "english_word": "young",
+      "english_word": "to match",
       "translations": {
-        "tr": "genç",
-        "es": "joven",
-        "fr": "jeune",
-        "de": "jung",
-        "it": "giovane",
-        "pt": "jovem",
-        "ru": "молодой",
-        "zh": "年轻的",
-        "ja": "若い",
-        "ko": "젊은",
-        "ar": "شاب",
-        "hi": "युवा"
+        "tr": "uymak",
+        "es": "combinar con",
+        "fr": "assortir",
+        "de": "passen zu",
+        "it": "abbinare",
+        "pt": "combinar com",
+        "ru": "сочетаться",
+        "zh": "搭配",
+        "ja": "合わせる",
+        "ko": "어울리다",
+        "ar": "يتناسق مع",
+        "hi": "मेल खाना"
       }
     },
     {

@@ -16,17 +16,17 @@
       "questionData": {
         "character1": "Beth",
         "character2": "Alex",
-        "line1": "This book is due tomorrow. Can I _____ it?",
-        "line2": "Yes, I can _____ it for another two weeks.",
-        "answer": "renew",
+        "line1": "Is this copy _____ to borrow?",
+        "line2": "Yes, this copy is _____.",
+        "answer": "available",
         "distractors": [
           "buy",
           "cancel",
           "print"
         ]
       },
-      "audio_file1": "this-book-is-due-tomorrow-can-i-renew-it-convo",
-      "audio_file2": "yes-i-can-renew-it-for-another-two-weeks-convo"
+      "audio_file1": "is-this-copy-available-to-borrow-convo",
+      "audio_file2": "yes-this-copy-is-available-convo"
     },
     {
       "template": "ClozeSequence",
@@ -38,7 +38,8 @@
         ],
         "distractors": [
           "buy",
-          "read"
+          "read",
+          "borrow"
         ]
       },
       "audio_file": "excuse-me-could-you-help-me-find-a-book-convo"
@@ -195,19 +196,19 @@
     {
       "template": "ClozeSequence",
       "questionData": {
-        "sentence": "It is ______ to _____ this book today — another reader wants it.",
+        "sentence": "My library card is _____. I need to _____ it soon.",
         "answers": [
-          "impossible",
-          "take"
+          "expired",
+          "renew"
         ],
         "distractors": [
-          "full",
-          "empty",
-          "here",
-          "always"
+          "cancel",
+          "print",
+          "borrow",
+          "search"
         ]
       },
-      "audio_file": "it-is-impossible-to-take-this-book-today-another-reader-wants-it-convo"
+      "audio_file": "my-library-card-is-expired-i-need-to-renew-it-soon-convo"
     },
     {
       "template": "GrammarForm",
@@ -215,44 +216,44 @@
         "sentence": "____ I get a library card please?",
         "answer": "Can",
         "distractors": [
-          "Must",
-          "Am",
-          "Do"
+          "Could",
+          "cans",
+          "canning"
         ]
       }
     },
     {
       "template": "ClozeSequence",
       "questionData": {
-        "sentence": "She needs to _____ her card to borrow any books.",
+        "sentence": "She needs to _____ her card to reserve books.",
         "answers": [
           "show"
         ],
         "distractors": [
-          "return",
+          "hide",
           "cancel",
           "replace",
           "forget"
         ]
       },
-      "audio_file": "she-needs-to-show-her-card-to-borrow-any-books-convo"
+      "audio_file": "she-needs-to-show-her-card-to-reserve-books-convo"
     },
     {
-      "template": "ClozeSequence",
+      "template": "ConvoTemplate-1",
       "questionData": {
-        "sentence": "I want to _____ in the _____ area to study.",
-        "answers": [
-          "sit",
-          "silent"
-        ],
+        "character1": "Sam",
+        "character2": "Lily",
+        "line1": "This book is due today. I need to _____ it.",
+        "line2": "Yes, please _____ it to the library.",
+        "answer": "return",
         "distractors": [
-          "loudly",
-          "borrow",
-          "here",
-          "always"
+          "buy",
+          "search",
+          "show"
         ]
       },
-      "audio_file": "i-want-to-sit-in-the-silent-area-to-study-convo"
+      "audio_file1": "this-book-is-due-today-i-need-to-return-it-convo",
+      "audio_file2": "yes-please-return-it-to-the-library-convo"
     }
   ]
 }

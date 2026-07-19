@@ -20,7 +20,7 @@
         "line2": "Of course, I can help you with that.",
         "answer": "send",
         "distractors": [
-          "receive",
+          "mail",
           "bring",
           "take"
         ]
@@ -60,67 +60,67 @@
       "template": "WordPairs",
       "questionData": {
         "english_words": [
-          "somebody",
-          "something",
-          "nobody",
-          "nothing"
+          "fragile",
+          "urgent",
+          "priority",
+          "domestic"
         ],
         "translations": [
           {
-            "tr": "birisi",
-            "es": "alguien",
-            "fr": "quelqu'un",
-            "de": "jemand",
-            "it": "qualcuno",
-            "pt": "alguém",
-            "ru": "кто-нибудь",
-            "zh": "某人",
-            "ja": "誰か",
-            "ko": "누군가",
-            "ar": "شخص ما",
-            "hi": "कोई व्यक्ति"
+            "tr": "kırılgan",
+            "es": "frágil",
+            "fr": "fragile",
+            "de": "zerbrechlich",
+            "it": "fragile",
+            "pt": "frágil",
+            "ru": "хрупкий",
+            "zh": "易碎",
+            "ja": "壊れやすい",
+            "ko": "깨지기 쉬운",
+            "ar": "قابل للكسر",
+            "hi": "नाज़ुक"
           },
           {
-            "tr": "bir şey",
-            "es": "algo",
-            "fr": "quelque chose",
-            "de": "etwas",
-            "it": "qualcosa",
-            "pt": "algo",
-            "ru": "что-то",
-            "zh": "某物",
-            "ja": "何か",
-            "ko": "무언가",
-            "ar": "شيء ما",
-            "hi": "कुछ"
+            "tr": "acil",
+            "es": "urgente",
+            "fr": "urgent",
+            "de": "dringend",
+            "it": "urgente",
+            "pt": "urgente",
+            "ru": "срочный",
+            "zh": "紧急的",
+            "ja": "緊急の",
+            "ko": "긴급한",
+            "ar": "عاجل",
+            "hi": "ज़रूरी"
           },
           {
-            "tr": "hiç kimse",
-            "es": "nadie",
-            "fr": "personne",
-            "de": "niemand",
-            "it": "nessuno",
-            "pt": "ninguém",
-            "ru": "никто",
-            "zh": "没有人",
-            "ja": "誰もいない",
-            "ko": "아무도",
-            "ar": "لا أحد",
-            "hi": "कोई नहीं"
+            "tr": "öncelik",
+            "es": "prioridad",
+            "fr": "priorité",
+            "de": "Priorität",
+            "it": "priorità",
+            "pt": "prioridade",
+            "ru": "приоритет",
+            "zh": "优先",
+            "ja": "優先",
+            "ko": "우선순위",
+            "ar": "أولوية",
+            "hi": "प्राथमिकता"
           },
           {
-            "tr": "hiçbir şey",
-            "es": "nada",
-            "fr": "rien",
-            "de": "nichts",
-            "it": "niente",
-            "pt": "nada",
-            "ru": "ничего",
-            "zh": "没有什么",
-            "ja": "何もない",
-            "ko": "아무것도",
-            "ar": "لا شيء",
-            "hi": "कुछ नहीं"
+            "tr": "yurt içi",
+            "es": "doméstico",
+            "fr": "intérieur",
+            "de": "Inland",
+            "it": "nazionale",
+            "pt": "doméstico",
+            "ru": "внутренний",
+            "zh": "国内的",
+            "ja": "国内の",
+            "ko": "국내",
+            "ar": "محلي",
+            "hi": "देशीय"
           }
         ]
       }
@@ -145,15 +145,15 @@
     {
       "template": "AppearDisappear",
       "questionData": {
-        "words": "It is important that you bring a valid ID.",
+        "words": "It's important to keep your tracking number.",
         "distractors": [
           "optional",
-          "forget",
+          "drop",
           "wrong",
           "later"
         ]
       },
-      "audio_file": "it-is-important-that-you-bring-a-valid-id-convo"
+      "audio_file": "its-important-to-keep-your-tracking-number-convo"
     },
     {
       "template": "imageQuizTemplate-1",
@@ -180,9 +180,9 @@
     {
       "template": "SentenceBuilder",
       "questionData": {
-        "correct_order": "Your parcel is already on its way."
+        "correct_order": "I need to pick up my package."
       },
-      "audio_file": "your-parcel-is-already-on-its-way-convo"
+      "audio_file": "i-need-to-pick-up-my-package-convo"
     },
     {
       "template": "imageQuizTemplate-1",
@@ -234,8 +234,8 @@
         "distractors": [
           "large",
           "lock",
-          "receive",
-          "deliver"
+          "track",
+          "forward"
         ]
       },
       "audio_file": "write-the-correct-address-or-we-might-lose-your-package-convo"

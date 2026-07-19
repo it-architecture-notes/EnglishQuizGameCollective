@@ -9,7 +9,7 @@
         "answer": "You are welcome.",
         "distractors": [
           "I am sorry.",
-          "That was very hard for me.",
+          "That is very hard for me.",
           "See you later."
         ]
       },
@@ -20,67 +20,82 @@
       "template": "WordPairs",
       "questionData": {
         "english_words": [
-          "this",
-          "that",
-          "these",
-          "those"
+          "my",
+          "your",
+          "his/her",
+          "their",
+          "our"
         ],
         "translations": [
           {
-            "tr": "bu",
-            "es": "este",
-            "fr": "ceci",
-            "de": "dieses",
-            "it": "questo",
-            "pt": "isto",
-            "ru": "этот",
-            "zh": "这",
-            "ja": "これ",
-            "ko": "이것",
-            "ar": "هذا",
-            "hi": "यह"
+            "tr": "benim",
+            "es": "mi",
+            "fr": "mon",
+            "de": "mein",
+            "it": "mio",
+            "pt": "meu",
+            "ru": "мой",
+            "zh": "我的",
+            "ja": "私の",
+            "ko": "나의",
+            "ar": "ي",
+            "hi": "मेरा"
           },
           {
-            "tr": "şu",
-            "es": "eso",
-            "fr": "cela",
-            "de": "das",
-            "it": "quello",
-            "pt": "aquilo",
-            "ru": "то",
-            "zh": "那",
-            "ja": "それ",
-            "ko": "저것",
-            "ar": "ذلك",
-            "hi": "वह"
+            "tr": "senin",
+            "es": "tu",
+            "fr": "ton",
+            "de": "dein",
+            "it": "tuo",
+            "pt": "teu",
+            "ru": "твой",
+            "zh": "你的",
+            "ja": "あなたの",
+            "ko": "당신의",
+            "ar": "ك",
+            "hi": "तुम्हारा"
           },
           {
-            "tr": "bunlar",
-            "es": "estos",
-            "fr": "ces",
-            "de": "diese",
-            "it": "questi",
-            "pt": "esses",
-            "ru": "эти",
-            "zh": "这些",
-            "ja": "これら",
-            "ko": "이것들",
-            "ar": "هذه",
-            "hi": "ये"
+            "tr": "onun",
+            "es": "su",
+            "fr": "son / sa",
+            "de": "sein / ihr",
+            "it": "il suo / la sua",
+            "pt": "dele / dela",
+            "ru": "его / её",
+            "zh": "他 / 她的",
+            "ja": "彼の / 彼女の",
+            "ko": "그의 / 그녀의",
+            "ar": "ـه / ـها",
+            "hi": "उसका / उसकी"
           },
           {
-            "tr": "şunlar",
-            "es": "aquellos",
-            "fr": "ceux",
-            "de": "jene",
-            "it": "quelli",
-            "pt": "aqueles",
-            "ru": "те",
-            "zh": "那些",
-            "ja": "それら",
-            "ko": "저것들",
-            "ar": "أولئك",
-            "hi": "वे"
+            "tr": "onların",
+            "es": "su",
+            "fr": "leur",
+            "de": "ihr",
+            "it": "loro",
+            "pt": "deles / delas",
+            "ru": "их",
+            "zh": "他们 / 她们的",
+            "ja": "彼らの / 彼女たちの",
+            "ko": "그들의",
+            "ar": "ـهم / ـهن",
+            "hi": "उनका"
+          },
+          {
+            "tr": "bizim",
+            "es": "nuestro",
+            "fr": "notre",
+            "de": "unser",
+            "it": "nostro",
+            "pt": "nosso",
+            "ru": "наш",
+            "zh": "我们的",
+            "ja": "私たちの",
+            "ko": "우리의",
+            "ar": "ـنا",
+            "hi": "हमारा"
           }
         ]
       }
@@ -127,11 +142,20 @@
       }
     },
     {
-      "template": "SentenceBuilder",
+      "template": "DialogueCompletion",
       "questionData": {
-        "correct_order": "I have a question"
+        "character1": "Grace",
+        "character2": "Tom",
+        "line1": "You are late again!",
+        "answer": "I am sorry.",
+        "distractors": [
+          "I am busy.",
+          "You are welcome.",
+          "I am happy."
+        ]
       },
-      "audio_file": "i-have-a-question-convo"
+      "audio_file1": "you-are-late-again-convo",
+      "audio_file2": "i-am-sorry-convo"
     },
     {
       "template": "SentenceBuilder",
@@ -233,14 +257,14 @@
     {
       "template": "GrammarForm",
       "questionData": {
-        "sentence": "I ___ the sunshine every day",
+        "sentence": "I ___ my dad every day",
         "answer": [
           "see"
         ],
         "distractors": [
-          "saw",
-          "seeing",
-          "sees"
+          "sees",
+          "am see",
+          "are seeing"
         ]
       }
     },

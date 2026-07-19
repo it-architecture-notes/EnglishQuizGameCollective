@@ -3,30 +3,13 @@
     {
       "template": "imageQuizTemplate-1",
       "questionData": {
-        "imageName": "door-hanger",
+        "imageName": "luggage",
         "wrongAnswers": [
-          "door-key",
-          "door-lock",
-          "door-bell"
+          "backpack",
+          "handbag",
+          "luggage-trolley"
         ]
       }
-    },
-    {
-      "template": "ConvoTemplate-1",
-      "questionData": {
-        "character1": "Beth",
-        "character2": "Alex",
-        "line1": "Excuse me, is the swimming pool open today?",
-        "line2": "_____, the pool is closed for maintenance.",
-        "answer": "unfortunately",
-        "distractors": [
-          "fortunately",
-          "maybe",
-          "certainly"
-        ]
-      },
-      "audio_file1": "excuse-me-is-the-swimming-pool-open-today-convo",
-      "audio_file2": "unfortunately-the-pool-is-closed-for-maintenance-convo"
     },
     {
       "template": "ConvoTemplate-1",
@@ -37,13 +20,29 @@
         "line2": "Sure, welcome to our hotel. What is your name?",
         "answer": "check in",
         "distractors": [
-          "check out",
+          "reserve",
           "book a room",
           "get a key"
         ]
       },
       "audio_file1": "good-morning-i-would-like-to-check-in-please-convo",
       "audio_file2": "sure-welcome-to-our-hotel-what-is-your-name-convo"
+    },
+    {
+      "template": "DialogueCompletion",
+      "questionData": {
+        "character1": "Beth",
+        "character2": "Alex",
+        "line1": "Could I request a room with a better view?",
+        "answer": "Let me check what's available for you.",
+        "distractors": [
+          "Sorry, we have no rooms with a view left.",
+          "All our rooms already have the same view.",
+          "You can change rooms tomorrow morning only."
+        ]
+      },
+      "audio_file1": "could-i-request-a-room-with-a-better-view-convo",
+      "audio_file2": "let-me-check-what-s-available-for-you-convo"
     },
     {
       "template": "imageQuizTemplate-1",
@@ -61,8 +60,8 @@
       "questionData": {
         "english_words": [
           "noisy",
-          "tidy",
-          "clear",
+          "private",
+          "silent",
           "amazing"
         ],
         "translations": [
@@ -81,32 +80,32 @@
             "hi": "शोरगुल वाला"
           },
           {
-            "tr": "düzenli",
-            "es": "ordenado",
-            "fr": "rangé",
-            "de": "ordentlich",
-            "it": "ordinato",
-            "pt": "arrumado",
-            "ru": "аккуратный",
-            "zh": "整洁的",
-            "ja": "きちんとした",
-            "ko": "깔끔한",
-            "ar": "مرتب",
-            "hi": "साफ-सुथरा"
+            "tr": "özel",
+            "es": "privado",
+            "fr": "privé",
+            "de": "privat",
+            "it": "privato",
+            "pt": "privado",
+            "ru": "частный",
+            "zh": "私人的",
+            "ja": "プライベートな",
+            "ko": "사적인",
+            "ar": "خاص",
+            "hi": "निजी"
           },
           {
-            "tr": "açık",
-            "es": "claro",
-            "fr": "clair",
-            "de": "klar",
-            "it": "chiaro",
-            "pt": "claro",
-            "ru": "ясный",
-            "zh": "清晰的",
-            "ja": "明確な",
-            "ko": "명확한",
-            "ar": "واضح",
-            "hi": "स्पष्ट"
+            "tr": "sessiz",
+            "es": "silencioso",
+            "fr": "silencieux",
+            "de": "still",
+            "it": "silenzioso",
+            "pt": "silencioso",
+            "ru": "тихий",
+            "zh": "安静的",
+            "ja": "静かな",
+            "ko": "조용한",
+            "ar": "صامت",
+            "hi": "शांत"
           },
           {
             "tr": "harika",
@@ -130,16 +129,16 @@
       "questionData": {
         "character1": "Omar",
         "character2": "Lily",
-        "line1": "Hello. The shower in my room is not working.",
-        "answer": "Would you prefer another room?",
+        "line1": "Could you bring me another towel, please?",
+        "answer": "Sure, I'll bring one right away.",
         "distractors": [
-          "The shower was cleaned this morning.",
-          "The shower temperature can be adjusted.",
-          "There will be no extra charge for this."
+          "Sorry, we don't have any towels left.",
+          "You can pick up a towel at the front desk.",
+          "Housekeeping will come tomorrow morning."
         ]
       },
-      "audio_file1": "hello-the-shower-in-my-room-is-not-working-convo",
-      "audio_file2": "would-you-prefer-another-room-convo"
+      "audio_file1": "could-you-bring-me-another-towel-please-convo",
+      "audio_file2": "sure-i-ll-bring-one-right-away-convo"
     },
     {
       "template": "AppearDisappear",
@@ -197,19 +196,19 @@
     {
       "template": "ClozeSequence",
       "questionData": {
-        "sentence": "I want to _____ the hotel tour, but I need to _____ to the concierge first.",
+        "sentence": "I tried to _____ with the manager, but the hotel was _____.",
         "answer": [
-          "join",
-          "speak"
+          "speak",
+          "fully-booked"
         ],
         "distractors": [
-          "ask",
-          "call",
-          "visit",
-          "wait"
+          "talk",
+          "busy",
+          "closed",
+          "empty"
         ]
       },
-      "audio_file": "i-want-to-join-the-hotel-tour-but-i-need-to-speak-to-the-concierge-first-convo"
+      "audio_file": "i-tried-to-speak-with-the-manager-but-the-hotel-was-fully-booked-convo"
     },
     {
       "template": "GrammarForm",
@@ -218,7 +217,7 @@
         "answer": "thinking",
         "distractors": [
           "think",
-          "could think",
+          "thinks",
           "thought"
         ]
       }
@@ -232,9 +231,9 @@
           "continue"
         ],
         "distractors": [
-          "check in",
+          "book",
           "count",
-          "stay",
+          "relax",
           "prefer"
         ]
       },
@@ -251,7 +250,7 @@
         "distractors": [
           "noisy",
           "leave",
-          "check in",
+          "return",
           "confirm"
         ]
       },

@@ -120,20 +120,20 @@
       }
     },
     {
-      "english_word": "best",
+      "english_word": "best friend",
       "translations": {
-        "tr": "en iyi",
-        "es": "mejor",
-        "fr": "meilleur",
-        "de": "beste",
-        "it": "migliore",
-        "pt": "melhor",
-        "ru": "лучший",
-        "zh": "最好的",
-        "ja": "最高の",
-        "ko": "최고",
-        "ar": "الأفضل",
-        "hi": "सर्वश्रेष्ठ"
+        "tr": "en iyi arkadaş",
+        "es": "mejor amigo",
+        "fr": "meilleur ami",
+        "de": "bester Freund",
+        "it": "migliore amico",
+        "pt": "melhor amigo",
+        "ru": "лучший друг",
+        "zh": "最好的朋友",
+        "ja": "親友",
+        "ko": "가장 친한 친구",
+        "ar": "أفضل صديق",
+        "hi": "सबसे अच्छा दोस्त"
       }
     },
     {

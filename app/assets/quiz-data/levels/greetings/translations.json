@@ -103,37 +103,37 @@
       }
     },
     {
-      "english_word": "where",
+      "english_word": "Good morning",
       "translations": {
-        "tr": "nerede",
-        "es": "dónde",
-        "fr": "où",
-        "de": "wo",
-        "it": "dove",
-        "pt": "onde",
-        "ru": "где",
-        "zh": "哪里",
-        "ja": "どこ",
-        "ko": "어디",
-        "ar": "أين",
-        "hi": "कहाँ"
+        "tr": "Günaydın",
+        "es": "Buenos días",
+        "fr": "Bonjour",
+        "de": "Guten Morgen",
+        "it": "Buongiorno",
+        "pt": "Bom dia",
+        "ru": "Доброе утро",
+        "zh": "早上好",
+        "ja": "おはようございます",
+        "ko": "좋은 아침이에요",
+        "ar": "صباح الخير",
+        "hi": "सुप्रभात"
       }
     },
     {
-      "english_word": "what",
+      "english_word": "Have a great day",
       "translations": {
-        "tr": "ne",
-        "es": "qué",
-        "fr": "quoi",
-        "de": "was",
-        "it": "cosa",
-        "pt": "o que",
-        "ru": "что",
-        "zh": "什么",
-        "ja": "何",
-        "ko": "뭐",
-        "ar": "ماذا",
-        "hi": "क्या"
+        "tr": "Harika bir gün geçir",
+        "es": "Que tengas un gran día",
+        "fr": "Passe une excellente journée",
+        "de": "Hab einen schönen Tag",
+        "it": "Buona giornata",
+        "pt": "Tenha um ótimo dia",
+        "ru": "Хорошего дня",
+        "zh": "祝你今天愉快",
+        "ja": "良い一日を",
+        "ko": "좋은 하루 보내세요",
+        "ar": "أتمنى لك يوماً رائعاً",
+        "hi": "आपका दिन अच्छा हो"
       }
     },
     {

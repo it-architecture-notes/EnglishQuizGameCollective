@@ -17,33 +17,33 @@
         "character1": "Daniel",
         "character2": "Sarah",
         "line1": "Do you know this couple?",
-        "line2": "Yes, they always _____ together to see the world.",
+        "line2": "Yes, they _____ to different countries together.",
         "answer": "travel",
         "distractors": [
-          "run",
-          "hike",
+          "cook",
+          "stay home",
           "drive a car"
         ]
       },
       "audio_file1": "do-you-know-this-couple-convo",
-      "audio_file2": "yes-they-always-travel-together-to-see-the-world-convo"
+      "audio_file2": "yes-they-travel-to-different-countries-together-convo"
     },
     {
       "template": "ConvoTemplate-1",
       "questionData": {
         "character1": "Beth",
         "character2": "Omar",
-        "line1": "How do you go to Europe?",
-        "line2": "I go ______.",
-        "answer": "by train",
+        "line1": "How do you plan to ______ from Europe?",
+        "line2": "I will _____ by train.",
+        "answer": "return",
         "distractors": [
-          "at bike",
-          "on walking",
-          "railroad"
+          "drive",
+          "ride",
+          "stay"
         ]
       },
-      "audio_file1": "how-do-you-go-to-europe-convo",
-      "audio_file2": "i-go-by-train-convo"
+      "audio_file1": "how-do-you-plan-to-return-from-europe-convo",
+      "audio_file2": "i-will-return-by-train-convo"
     },
     {
       "template": "imageQuizTemplate-1",
@@ -73,9 +73,9 @@
             "es": "pasado mañana",
             "fr": "après-demain",
             "de": "übermorgen",
-            "it": "dopo domani",
+            "it": "dopodomani",
             "pt": "depois de amanhã",
-            "ru": "после завтра",
+            "ru": "послезавтра",
             "zh": "后天",
             "ja": "明後日",
             "ko": "모레",
@@ -101,10 +101,10 @@
             "es": "lo antes posible",
             "fr": "dès que possible",
             "de": "so schnell wie möglich",
-            "it": "appena possibile",
-            "pt": "O mais breve possível",
+            "it": "il prima possibile",
+            "pt": "o mais breve possível",
             "ru": "как можно скорее",
-            "zh": "尽快地",
+            "zh": "尽快",
             "ja": "できるだけ早く",
             "ko": "가능한 한 빨리",
             "ar": "في أسرع وقت ممكن",
@@ -112,45 +112,45 @@
           },
           {
             "tr": "gelecek haftaya kadar",
-            "es": "hasta próxima semana",
+            "es": "hasta la próxima semana",
             "fr": "jusqu'à la semaine prochaine",
             "de": "bis nächste Woche",
             "it": "fino alla prossima settimana",
-            "pt": "até semana que vem",
+            "pt": "até a próxima semana",
             "ru": "до следующей недели",
             "zh": "直到下周",
             "ja": "来週まで",
-            "ko": "다음주까지",
+            "ko": "다음 주까지",
             "ar": "حتى الأسبوع المقبل",
             "hi": "अगले सप्ताह तक"
           },
           {
             "tr": "sırasında",
             "es": "mientras",
-            "fr": "alors que",
+            "fr": "pendant que",
             "de": "während",
-            "it": "Mentre",
+            "it": "mentre",
             "pt": "enquanto",
             "ru": "пока",
-            "zh": "当...的时候",
-            "ja": "その間",
+            "zh": "当……的时候",
+            "ja": "〜する間",
             "ko": "~하는 동안",
             "ar": "بينما",
             "hi": "जबकि"
           },
           {
             "tr": "günler önce",
-            "es": "hace dias",
+            "es": "hace días",
             "fr": "il y a quelques jours",
             "de": "vor Tagen",
             "it": "giorni fa",
             "pt": "dias atrás",
-            "ru": "дней назад",
+            "ru": "несколько дней назад",
             "zh": "几天前",
             "ja": "数日前",
             "ko": "며칠 전",
             "ar": "منذ أيام",
-            "hi": "दिन पहले"
+            "hi": "कुछ दिन पहले"
           }
         ]
       }
@@ -160,29 +160,29 @@
       "questionData": {
         "character1": "Alex",
         "character2": "Ethan",
-        "line1": "Why do you run?",
-        "answer": "We run to catch the train.",
+        "line1": "Do you think we'll catch the train in time?",
+        "answer": "If we hurry, yes!",
         "distractors": [
-          "We run to wait for the train",
-          "We run to the station",
-          "We run at the last moment"
+          "No, the train already left.",
+          "Maybe, if we run.",
+          "I am not sure yet."
         ]
       },
-      "audio_file1": "why-do-you-run-convo",
-      "audio_file2": "we-run-to-catch-the-train-convo"
+      "audio_file1": "do-you-think-well-catch-the-train-in-time-convo",
+      "audio_file2": "if-we-hurry-yes-convo"
     },
     {
       "template": "AppearDisappear",
       "questionData": {
-        "words": "I always miss the early train.",
+        "words": "You must exit the platform before the train arrives.",
         "distractors": [
           "morning",
           "never",
-          "catch",
-          "He"
+          "left",
+          "could"
         ]
       },
-      "audio_file": "i-always-miss-the-early-train-convo"
+      "audio_file": "the-platform-must-be-exited-before-the-train-arrives-convo"
     },
     {
       "template": "imageQuizTemplate-1",
@@ -209,17 +209,17 @@
     {
       "template": "SentenceBuilder",
       "questionData": {
-        "correct_order": "The announcement is very loud."
+        "correct_order": "They lined up to board the express train to the city."
       },
-      "audio_file": "the-announcement-is-very-loud-convo"
+      "audio_file": "they-lined-up-to-board-the-express-train-to-the-city-convo"
     },
     {
       "template": "imageQuizTemplate-1",
       "questionData": {
         "imageName": "high-speed-train",
         "wrongAnswers": [
-          "rocket-train",
-          "runner-train",
+          "steam-train",
+          "freight-train",
           "train-on-wheels"
         ]
       }
@@ -227,63 +227,65 @@
     {
       "template": "ClozeSequence",
       "questionData": {
-        "sentence": "We ______ our suitcases near the window in the waiting room.",
+        "sentence": "He _____ the _____ on the table to plan the route.",
         "answer": [
-          "put"
+          "put",
+          "railway map"
         ],
         "distractors": [
-          "check",
-          "carry",
-          "take"
+          "place",
+          "lay",
+          "timetable",
+          "ticket"
         ]
       },
-      "audio_file": "we-put-our-suitcases-near-the-window-in-the-waiting-room-convo"
+      "audio_file": "he-put-the-railway-map-on-the-table-to-plan-the-route-convo"
     },
     {
       "template": "GrammarForm",
       "questionData": {
-        "sentence": "____ I need to show my ticket?",
-        "answer": "do",
+        "sentence": "Trains _____ be fast on this line before the engineering works started.",
+        "answer": "used to",
         "distractors": [
-          "am",
-          "are",
-          "will be"
+          "use to",
+          "uses to",
+          "used for"
         ]
       }
     },
     {
       "template": "ClozeSequence",
       "questionData": {
-        "sentence": "Passengers _____ to the platform before _____ trains arrive.",
+        "sentence": "Wait for everyone to _____ before you try to _____.",
         "answer": [
-          "hurry",
-          "other"
+          "get off",
+          "get on"
         ],
         "distractors": [
-          "another",
-          "wait",
-          "leave",
-          "some"
+          "get in",
+          "get out",
+          "board",
+          "leave"
         ]
       },
-      "audio_file": "passengers-hurry-to-the-platform-before-other-trains-arrive-convo"
+      "audio_file": "wait-for-everyone-to-get-off-before-you-try-to-get-on-convo"
     },
     {
       "template": "ClozeSequence",
       "questionData": {
-        "sentence": "____ trains _____ at the station at noon.",
+        "sentence": "They asked everyone to _____ _____ until boarding began.",
         "answer": [
-          "both",
-          "arrive"
+          "stand",
+          "patiently"
         ],
         "distractors": [
-          "none",
-          "every",
-          "depart",
-          "always"
+          "sit",
+          "wait",
+          "quietly",
+          "quickly"
         ]
       },
-      "audio_file": "both-trains-arrive-at-the-station-at-noon-convo"
+      "audio_file": "they-asked-everyone-to-stand-patiently-until-boarding-began-convo"
     }
   ]
 }

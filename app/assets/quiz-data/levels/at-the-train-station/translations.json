@@ -10,10 +10,10 @@
         "it": "viaggiare",
         "pt": "viajar",
         "ru": "путешествовать",
-        "zh": "去旅行",
+        "zh": "旅行",
         "ja": "旅行する",
         "ko": "여행하다",
-        "ar": "للسفر",
+        "ar": "يسافر",
         "hi": "यात्रा करना"
       }
     },
@@ -30,25 +30,8 @@
         "zh": "返回",
         "ja": "戻る",
         "ko": "돌아오다",
-        "ar": "العودة",
+        "ar": "يعود",
         "hi": "वापस लौटना"
-      }
-    },
-    {
-      "english_word": "always",
-      "translations": {
-        "tr": "her zaman",
-        "es": "siempre",
-        "fr": "toujours",
-        "de": "immer",
-        "it": "sempre",
-        "pt": "sempre",
-        "ru": "всегда",
-        "zh": "总是",
-        "ja": "いつも",
-        "ko": "항상",
-        "ar": "دائما",
-        "hi": "हमेशा"
       }
     },
     {
@@ -61,45 +44,45 @@
         "it": "fare in fretta",
         "pt": "se apressar",
         "ru": "спешить",
-        "zh": "快点",
+        "zh": "赶快",
         "ja": "急ぐ",
         "ko": "서두르다",
-        "ar": "على عجل",
+        "ar": "يستعجل",
         "hi": "जल्दी करना"
       }
     },
     {
-      "english_word": "other",
+      "english_word": "to get off",
       "translations": {
-        "tr": "diğer",
-        "es": "otro",
-        "fr": "autre",
-        "de": "andere",
-        "it": "altro",
-        "pt": "outro",
-        "ru": "другой",
-        "zh": "其他",
-        "ja": "その他",
-        "ko": "다른",
-        "ar": "أخرى",
-        "hi": "अन्य"
+        "tr": "araçtan inmek",
+        "es": "bajarse de un vehículo",
+        "fr": "descendre d'un véhicule",
+        "de": "aus einem Fahrzeug aussteigen",
+        "it": "scendere da un veicolo",
+        "pt": "sair de um veículo",
+        "ru": "выходить из транспорта",
+        "zh": "下车",
+        "ja": "乗り物から降りる",
+        "ko": "차에서 내리다",
+        "ar": "النزول من مركبة",
+        "hi": "वाहन से उतरना"
       }
     },
     {
-      "english_word": "to run",
+      "english_word": "to get on",
       "translations": {
-        "tr": "koşmak",
-        "es": "correr",
-        "fr": "courir",
-        "de": "laufen",
-        "it": "correre",
-        "pt": "correr",
-        "ru": "бежать",
-        "zh": "跑",
-        "ja": "走る",
-        "ko": "달리다",
-        "ar": "للركض",
-        "hi": "दौड़ना"
+        "tr": "araca binmek",
+        "es": "subir a un vehículo",
+        "fr": "monter dans un véhicule",
+        "de": "in ein Fahrzeug einsteigen",
+        "it": "salire su un veicolo",
+        "pt": "entrar em um veículo",
+        "ru": "садиться в транспорт",
+        "zh": "上车",
+        "ja": "乗り物に乗る",
+        "ko": "차에 타다",
+        "ar": "الصعود إلى مركبة",
+        "hi": "वाहन पर चढ़ना"
       }
     },
     {
@@ -114,26 +97,60 @@
         "ru": "поймать",
         "zh": "赶上",
         "ja": "間に合う",
-        "ko": "잡으려고",
-        "ar": "للحاق بـ",
-        "hi": "पकड़ने के लिए"
+        "ko": "잡다",
+        "ar": "يلحق بـ",
+        "hi": "पकड़ना"
       }
     },
     {
-      "english_word": "to miss",
+      "english_word": "to exit",
       "translations": {
-        "tr": "kaçırmak",
-        "es": "perder",
-        "fr": "manquer",
-        "de": "verpassen",
-        "it": "perdere",
-        "pt": "perder",
-        "ru": "пропустить",
-        "zh": "错过",
-        "ja": "逃す",
-        "ko": "놓치다",
-        "ar": "لتفويت",
-        "hi": "चूकना"
+        "tr": "çıkmak",
+        "es": "salir",
+        "fr": "sortir",
+        "de": "aussteigen",
+        "it": "uscire",
+        "pt": "sair",
+        "ru": "выйти",
+        "zh": "离开",
+        "ja": "出る",
+        "ko": "나가다",
+        "ar": "يخرج",
+        "hi": "बाहर निकलना"
+      }
+    },
+    {
+      "english_word": "to line up",
+      "translations": {
+        "tr": "sıraya girmek",
+        "es": "hacer cola",
+        "fr": "faire la queue",
+        "de": "sich anstellen",
+        "it": "mettersi in fila",
+        "pt": "entrar na fila",
+        "ru": "встать в очередь",
+        "zh": "排队",
+        "ja": "並ぶ",
+        "ko": "줄을 서다",
+        "ar": "يصطف",
+        "hi": "कतार में लगना"
+      }
+    },
+    {
+      "english_word": "to board",
+      "translations": {
+        "tr": "binmek",
+        "es": "abordar",
+        "fr": "monter à bord",
+        "de": "einsteigen",
+        "it": "salire a bordo",
+        "pt": "embarcar",
+        "ru": "садиться на поезд",
+        "zh": "登上",
+        "ja": "乗る",
+        "ko": "타다",
+        "ar": "يصعد إلى",
+        "hi": "चढ़ना"
       }
     },
     {
@@ -148,9 +165,26 @@
         "ru": "положить",
         "zh": "放",
         "ja": "置く",
-        "ko": "넣다",
-        "ar": "لوضع",
-        "hi": "लगाना"
+        "ko": "놓다",
+        "ar": "يضع",
+        "hi": "रखना"
+      }
+    },
+    {
+      "english_word": "railway map",
+      "translations": {
+        "tr": "demiryolu haritası",
+        "es": "mapa ferroviario",
+        "fr": "carte ferroviaire",
+        "de": "Eisenbahnkarte",
+        "it": "mappa ferroviaria",
+        "pt": "mapa ferroviário",
+        "ru": "железнодорожная карта",
+        "zh": "铁路地图",
+        "ja": "鉄道地図",
+        "ko": "철도 지도",
+        "ar": "خريطة السكك الحديدية",
+        "hi": "रेलवे का नक्शा"
       }
     },
     {
@@ -166,25 +200,59 @@
         "zh": "到达",
         "ja": "到着する",
         "ko": "도착하다",
-        "ar": "للوصول",
+        "ar": "يصل",
         "hi": "पहुंचना"
       }
     },
     {
-      "english_word": "both",
+      "english_word": "to stand",
       "translations": {
-        "tr": "ikisi de",
-        "es": "ambos",
-        "fr": "les deux",
-        "de": "beides",
-        "it": "entrambi",
-        "pt": "ambos",
-        "ru": "оба",
-        "zh": "两者",
-        "ja": "両方",
-        "ko": "둘 다",
-        "ar": "على حد سواء",
-        "hi": "दोनों"
+        "tr": "ayakta durmak",
+        "es": "ponerse de pie",
+        "fr": "rester debout",
+        "de": "stehen",
+        "it": "stare in piedi",
+        "pt": "ficar de pé",
+        "ru": "стоять",
+        "zh": "站立",
+        "ja": "立つ",
+        "ko": "서다",
+        "ar": "يقف",
+        "hi": "खड़ा होना"
+      }
+    },
+    {
+      "english_word": "patiently",
+      "translations": {
+        "tr": "sabırla",
+        "es": "pacientemente",
+        "fr": "patiemment",
+        "de": "geduldig",
+        "it": "pazientemente",
+        "pt": "pacientemente",
+        "ru": "терпеливо",
+        "zh": "耐心地",
+        "ja": "辛抱強く",
+        "ko": "참을성 있게",
+        "ar": "بصبر",
+        "hi": "धैर्य से"
+      }
+    },
+    {
+      "english_word": "fast",
+      "translations": {
+        "tr": "hızlı",
+        "es": "rápido",
+        "fr": "rapide",
+        "de": "schnell",
+        "it": "veloce",
+        "pt": "rápido",
+        "ru": "быстрый",
+        "zh": "快",
+        "ja": "速い",
+        "ko": "빠른",
+        "ar": "سريع",
+        "hi": "तेज़"
       }
     }
   ]

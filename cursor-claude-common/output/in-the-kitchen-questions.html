@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>in-the-kitchen — level tables</title>
+  <style>
+    body { font-family: system-ui, -apple-system, Segoe UI, Roboto, sans-serif; margin: 16px; background: #f5f5f5; }
+    h1 { font-size: 1.25rem; margin-bottom: 12px; }
+    h2 { font-size: 1.1rem; margin-top: 24px; margin-bottom: 8px; }
+    .wrap { overflow-x: auto; background: #fff; padding: 12px; border-radius: 8px; box-shadow: 0 1px 3px rgba(0,0,0,.08); margin-bottom: 16px; }
+    table { border-collapse: collapse; width: 100%; font-size: 13px; table-layout: fixed; }
+    th, td { border: 1px solid #c8c8c8; padding: 8px 10px; vertical-align: top; text-align: left; word-wrap: break-word; }
+    th { background: #e8e8e8; font-weight: 600; white-space: nowrap; }
+    tr:nth-child(even) td { background: #fafafa; }
+    .repeat-word { color: #c62828; font-weight: 600; }
+    .wrap.template-counts { max-width: 28rem; }
+    .wrap.word-frequency { max-width: 40rem; }
+    </style>
+</head>
+<body>
+  <h1>in-the-kitchen — questions</h1>
+  <h2>Questions</h2>
+  <div class="wrap">
+    <table>
+<thead><tr><th>#</th><th>Template</th><th>Line 1 / Prompt</th><th>Line 2</th><th>Answer</th><th>English (translate)</th><th>Audio</th></tr></thead>
+<tbody><tr><td>1</td><td>imageQuizTemplate-1</td><td>image: plate</td><td></td><td>plate</td><td></td><td></td></tr><tr><td>2</td><td>ConvoTemplate-1</td><td>Can you _____ so that we can have dinner together?</td><td>Yes, I can _____ now.</td><td>set the table</td><td>to set the table</td><td>audio_file1: can-you-set-the-table-so-that-we-can-have-dinner-together-convo · audio_file2: yes-i-can-set-the-table-now-convo</td></tr><tr><td>3</td><td>ConvoTemplate-1</td><td>Do you want me ___ you breakfast?</td><td>Yes please. I&#x27;d love some scrambled eggs.</td><td>to cook</td><td>to cook; breakfast</td><td>audio_file1: do-you-want-me-to-cook-you-breakfast-convo · audio_file2: yes-please-i-would-love-some-scrambled-eggs-convo</td></tr><tr><td>4</td><td>imageQuizTemplate-1</td><td>image: dish-soap</td><td></td><td>dish-soap</td><td></td><td></td></tr><tr><td>5</td><td>WordPairs</td><td>I do it; I can do it; I will do it; I must do it</td><td>word pairs</td><td>match all pairs</td><td>I do it; I can do it; I will do it; I must do it</td><td></td></tr><tr><td>6</td><td>ClozeSequence</td><td>He _____ the red apple with a _____ knife.</td><td></td><td>cuts, sharp</td><td>to cut; sharp</td><td>audio_file: he-cuts-the-red-apple-with-a-sharp-knife-convo</td></tr><tr><td>7</td><td>ClozeSequence</td><td>We _____ the flour and eggs and then _____ fresh muffins.</td><td></td><td>mix, bake</td><td>to mix; to bake</td><td>audio_file: we-mix-the-flour-and-eggs-and-then-bake-fresh-muffins-convo</td></tr><tr><td>8</td><td>imageQuizTemplate-1</td><td>image: frying-pan</td><td></td><td>frying-pan</td><td></td><td></td></tr><tr><td>9</td><td>imageQuizTemplate-1</td><td>image: funnel</td><td></td><td>funnel</td><td></td><td></td></tr><tr><td>10</td><td>ClozeSequence</td><td>Follow the _____ and _____ the juice into the glass.</td><td></td><td>recipe, pour</td><td>recipe; to pour</td><td>audio_file: follow-the-recipe-and-pour-the-juice-into-the-glass-convo</td></tr><tr><td>11</td><td>imageQuizTemplate-1</td><td>image: grater</td><td></td><td>grater</td><td></td><td></td></tr><tr><td>12</td><td>AppearDisappear</td><td>She slices the cucumber for the salad.</td><td></td><td>-</td><td>to slice</td><td>audio_file: she-slices-the-cucumber-for-the-salad-convo</td></tr><tr><td>13</td><td>GrammarForm</td><td>Let’s ____ dinner at the table.</td><td></td><td>eat</td><td>to eat</td><td></td></tr><tr><td>14</td><td>DialogueCompletion</td><td>Can I drink the tea now?</td><td></td><td>Yes, do it slowly.</td><td>to drink; slowly</td><td>audio_file1: can-i-drink-the-tea-now-convo · audio_file2: yes-do-it-slowly-convo</td></tr><tr><td>15</td><td>AppearDisappear</td><td>Who wants to do the dishes?</td><td></td><td>-</td><td>to do the dishes</td><td>audio_file: who-wants-to-do-the-dishes-convo</td></tr></tbody>
+</table>
+  </div>
+
+  <h2>in-the-kitchen — translations</h2>
+  <div class="wrap">
+    <table>
+<thead><tr><th>#</th><th>English word</th><th>ar</th><th>de</th><th>es</th><th>fr</th><th>hi</th><th>it</th><th>ja</th><th>ko</th><th>pt</th><th>ru</th><th>tr</th><th>zh</th></tr></thead>
+<tbody><tr><td>1</td><td>to set the table</td><td>يجهز المائدة</td><td>den Tisch decken</td><td>poner la mesa</td><td>mettre la table</td><td>मेज़ लगाना</td><td>apparecchiare la tavola</td><td>テーブルをセットする</td><td>식탁을 차리다</td><td>pôr a mesa</td><td>накрывать на стол</td><td>masayı kurmak</td><td>摆餐桌</td></tr><tr><td>2</td><td>to cook</td><td>يطهو</td><td>kochen</td><td>cocinar</td><td>cuisiner</td><td>खाना बनाना</td><td>cucinare</td><td>料理する</td><td>요리하다</td><td>cozinhar</td><td>готовить</td><td>yemek pişirmek</td><td>做饭</td></tr><tr><td>3</td><td>to cut</td><td>يقطع</td><td>schneiden</td><td>cortar</td><td>couper</td><td>काटना</td><td>tagliare</td><td>切る</td><td>자르다</td><td>cortar</td><td>резать</td><td>kesmek</td><td>切</td></tr><tr><td>4</td><td>sharp</td><td>حاد</td><td>scharf</td><td>afilado</td><td>tranchant</td><td>तेज़</td><td>affilato</td><td>鋭い</td><td>날카로운</td><td>afiado</td><td>острый</td><td>keskin</td><td>锋利的</td></tr><tr><td>5</td><td>breakfast</td><td>الفطور</td><td>Frühstück</td><td>desayuno</td><td>petit déjeuner</td><td>नाश्ता</td><td>colazione</td><td>朝食</td><td>아침 식사</td><td>café da manhã</td><td>завтрак</td><td>kahvaltı</td><td>早餐</td></tr><tr><td>6</td><td>to mix</td><td>يخلط</td><td>mischen</td><td>mezclar</td><td>mélanger</td><td>मिलाना</td><td>mescolare</td><td>混ぜる</td><td>섞다</td><td>misturar</td><td>смешивать</td><td>karıştırmak</td><td>搅拌</td></tr><tr><td>7</td><td>to bake</td><td>يخبز</td><td>backen</td><td>hornear</td><td>faire cuire</td><td>सेंकना</td><td>cuocere</td><td>焼く</td><td>굽다</td><td>assar</td><td>печь</td><td>pişirmek</td><td>烘烤</td></tr><tr><td>8</td><td>recipe</td><td>وصفة</td><td>Rezept</td><td>receta</td><td>recette</td><td>रेसिपी</td><td>ricetta</td><td>レシピ</td><td>레시피</td><td>receita</td><td>рецепт</td><td>tarif</td><td>食谱</td></tr><tr><td>9</td><td>to pour</td><td>يسكب</td><td>gießen</td><td>verter</td><td>verser</td><td>डालना</td><td>versare</td><td>注ぐ</td><td>따르다</td><td>despejar</td><td>наливать</td><td>dökmek</td><td>倒</td></tr><tr><td>10</td><td>to slice</td><td>يقطع شرائح</td><td>in Scheiben schneiden</td><td>rebanar</td><td>trancher</td><td>टुकड़े काटना</td><td>affettare</td><td>薄切りにする</td><td>썰다</td><td>fatiar</td><td>нарезать</td><td>dilimlemek</td><td>切片</td></tr><tr><td>11</td><td>to eat</td><td>يأكل</td><td>essen</td><td>comer</td><td>manger</td><td>खाना</td><td>mangiare</td><td>食べる</td><td>먹다</td><td>comer</td><td>есть</td><td>yemek</td><td>吃</td></tr><tr><td>12</td><td>to drink</td><td>يشرب</td><td>trinken</td><td>beber</td><td>boire</td><td>पीना</td><td>bere</td><td>飲む</td><td>마시다</td><td>beber</td><td>пить</td><td>içmek</td><td>喝</td></tr><tr><td>13</td><td>slowly</td><td>ببطء</td><td>langsam</td><td>lentamente</td><td>lentement</td><td>धीरे से</td><td>lentamente</td><td>ゆっくり</td><td>천천히</td><td>lentamente</td><td>медленно</td><td>yavaşça</td><td>慢慢</td></tr><tr><td>14</td><td>to do the dishes</td><td>يغسل الأطباق</td><td>den Abwasch machen</td><td>lavar los platos</td><td>faire la vaisselle</td><td>बर्तन धोना</td><td>lavare i piatti</td><td>皿洗いをする</td><td>설거지하다</td><td>lavar a louça</td><td>мыть посуду</td><td>bulaşıkları yıkamak</td><td>洗碗</td></tr></tbody>
+</table>
+  </div>
+
+  <h2>Template counts</h2>
+  <div class="wrap template-counts">
+    <table>
+<thead><tr><th>Template</th><th>Count in level</th></tr></thead>
+<tbody><tr><td>AppearDisappear</td><td>2</td></tr><tr><td>ClozeSequence</td><td>3</td></tr><tr><td>ConvoTemplate-1</td><td>2</td></tr><tr><td>DialogueCompletion</td><td>1</td></tr><tr><td>GrammarForm</td><td>1</td></tr><tr><td>imageQuizTemplate-1</td><td>5</td></tr><tr><td>imageQuizTemplate-2</td><td>0</td></tr><tr><td>SentenceBuilder</td><td>0</td></tr><tr><td>WordPairs</td><td>1</td></tr></tbody>
+</table>
+  </div>
+
+  <h2>Word frequency (questions.json; excludes template, audio_file*, WordPairs translations, distractors, wrongAnswers)</h2>
+  <div class="wrap word-frequency">
+    <table>
+<thead><tr><th>word</th><th>count</th></tr></thead>
+<tbody><tr><td>the</td><td>11</td></tr><tr><td>do</td><td>7</td></tr><tr><td>i</td><td>6</td></tr><tr><td>can</td><td>5</td></tr><tr><td>it</td><td>5</td></tr><tr><td>and</td><td>3</td></tr><tr><td>yes</td><td>3</td></tr><tr><td>you</td><td>3</td></tr><tr><td>anna</td><td>2</td></tr><tr><td>dinner</td><td>2</td></tr><tr><td>eggs</td><td>2</td></tr><tr><td>emma</td><td>2</td></tr><tr><td>now</td><td>2</td></tr><tr><td>table</td><td>2</td></tr><tr><td>to</td><td>2</td></tr><tr><td>we</td><td>2</td></tr><tr><td>a</td><td>1</td></tr><tr><td>apple</td><td>1</td></tr><tr><td>at</td><td>1</td></tr><tr><td>bake</td><td>1</td></tr><tr><td>breakfast</td><td>1</td></tr><tr><td>cook</td><td>1</td></tr><tr><td>cucumber</td><td>1</td></tr><tr><td>cuts</td><td>1</td></tr><tr><td>dish-soap</td><td>1</td></tr><tr><td>dishes</td><td>1</td></tr><tr><td>drink</td><td>1</td></tr><tr><td>eat</td><td>1</td></tr><tr><td>flour</td><td>1</td></tr><tr><td>follow</td><td>1</td></tr><tr><td>for</td><td>1</td></tr><tr><td>fresh</td><td>1</td></tr><tr><td>frying-pan</td><td>1</td></tr><tr><td>funnel</td><td>1</td></tr><tr><td>glass</td><td>1</td></tr><tr><td>grater</td><td>1</td></tr><tr><td>have</td><td>1</td></tr><tr><td>he</td><td>1</td></tr><tr><td>i&#x27;d</td><td>1</td></tr><tr><td>into</td><td>1</td></tr><tr><td>juice</td><td>1</td></tr><tr><td>knife</td><td>1</td></tr><tr><td>let</td><td>1</td></tr><tr><td>love</td><td>1</td></tr><tr><td>me</td><td>1</td></tr><tr><td>mike</td><td>1</td></tr><tr><td>mix</td><td>1</td></tr><tr><td>muffins</td><td>1</td></tr><tr><td>must</td><td>1</td></tr><tr><td>plate</td><td>1</td></tr><tr><td>please</td><td>1</td></tr><tr><td>pour</td><td>1</td></tr><tr><td>recipe</td><td>1</td></tr><tr><td>red</td><td>1</td></tr><tr><td>s</td><td>1</td></tr><tr><td>salad</td><td>1</td></tr><tr><td>scrambled</td><td>1</td></tr><tr><td>set</td><td>1</td></tr><tr><td>sharp</td><td>1</td></tr><tr><td>she</td><td>1</td></tr><tr><td>slices</td><td>1</td></tr><tr><td>slowly</td><td>1</td></tr><tr><td>so</td><td>1</td></tr><tr><td>some</td><td>1</td></tr><tr><td>sophie</td><td>1</td></tr><tr><td>tea</td><td>1</td></tr><tr><td>that</td><td>1</td></tr><tr><td>then</td><td>1</td></tr><tr><td>together</td><td>1</td></tr><tr><td>want</td><td>1</td></tr><tr><td>wants</td><td>1</td></tr><tr><td>who</td><td>1</td></tr><tr><td>will</td><td>1</td></tr><tr><td>with</td><td>1</td></tr></tbody>
+</table>
+  </div>
+
+</body>
+</html>

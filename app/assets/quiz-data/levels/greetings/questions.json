@@ -87,9 +87,9 @@
         "line1": "How old are you?",
         "answer": "I am 10 years old.",
         "distractors": [
-          "I have 10 years old.",
+          "I are 10 years old.",
           "I get 10 years.",
-          "I was born 10 years ago."
+          "I is 10 years old."
         ]
       },
       "audio_file1": "how-old-are-you-convo",
@@ -111,25 +111,25 @@
     {
       "template": "SentenceBuilder",
       "questionData": {
-        "correct_order": "Can you help me, please?"
+        "correct_order": "Please say hello to Beth."
       },
-      "audio_file": "can-you-help-me-please-convo",
-      "audio_file_text": "Can you help me, please?"
+      "audio_file": "please-say-hello-to-beth-convo",
+      "audio_file_text": "Please say hello to Beth."
     },
     {
       "template": "DialogueCompletion",
       "questionData": {
         "character1": "Alex",
         "character2": "Sarah",
-        "line1": "What do you do?",
+        "line1": "What is your job?",
         "answer": "I am a student",
         "distractors": [
           "I have a student",
-          "I was the teacher",
+          "I is a teacher.",
           "I see an engineer"
         ]
       },
-      "audio_file1": "what-do-you-do-convo",
+      "audio_file1": "what-is-your-job-convo",
       "audio_file2": "i-am-a-student-convo"
     },
     {
@@ -138,9 +138,9 @@
         "sentence": "Where ____ she from?",
         "answer": "is",
         "distractors": [
+          "am",
           "are",
-          "can",
-          "does"
+          "be"
         ]
       }
     },
@@ -190,82 +190,82 @@
       "template": "WordPairs",
       "questionData": {
         "english_words": [
-          "I",
-          "you",
-          "he-she",
-          "they",
-          "we"
+          "hello",
+          "goodbye",
+          "thanks",
+          "I am sorry",
+          "welcome"
         ],
         "translations": [
           {
-            "tr": "ben",
-            "es": "yo",
-            "fr": "je",
-            "de": "ich",
-            "it": "io",
-            "pt": "eu",
-            "ru": "я",
-            "zh": "我",
-            "ja": "私",
-            "ko": "나",
-            "ar": "أنا",
-            "hi": "मैं"
+            "tr": "merhaba",
+            "es": "hola",
+            "fr": "bonjour",
+            "de": "hallo",
+            "it": "ciao",
+            "pt": "olá",
+            "ru": "привет",
+            "zh": "你好",
+            "ja": "こんにちは",
+            "ko": "안녕하세요",
+            "ar": "مرحباً",
+            "hi": "नमस्ते"
           },
           {
-            "tr": "sen",
-            "es": "tú",
-            "fr": "tu",
-            "de": "Du",
-            "it": "tu",
-            "pt": "você",
-            "ru": "ты",
-            "zh": "你",
-            "ja": "あなた",
-            "ko": "너",
-            "ar": "أنت",
-            "hi": "आप"
+            "tr": "hoşça kal",
+            "es": "adiós",
+            "fr": "au revoir",
+            "de": "auf Wiedersehen",
+            "it": "arrivederci",
+            "pt": "adeus",
+            "ru": "до свидания",
+            "zh": "再见",
+            "ja": "さようなら",
+            "ko": "안녕히 가세요",
+            "ar": "وداعاً",
+            "hi": "अलविदा"
           },
           {
-            "tr": "o",
-            "es": "él-ella",
-            "fr": "il-elle",
-            "de": "er-sie",
-            "it": "lui-lei",
-            "pt": "ele-ela",
-            "ru": "он-она",
-            "zh": "他-她",
-            "ja": "彼-彼女",
-            "ko": "그-그녀",
-            "ar": "هو-هي",
-            "hi": "वह-वह"
+            "tr": "teşekkürler",
+            "es": "gracias",
+            "fr": "merci",
+            "de": "danke",
+            "it": "grazie",
+            "pt": "obrigado",
+            "ru": "спасибо",
+            "zh": "谢谢",
+            "ja": "ありがとう",
+            "ko": "고마워요",
+            "ar": "شكراً",
+            "hi": "धन्यवाद"
           },
           {
-            "tr": "onlar",
-            "es": "ellos",
-            "fr": "ils",
-            "de": "sie",
-            "it": "loro",
-            "pt": "eles",
-            "ru": "они",
-            "zh": "他们",
-            "ja": "彼ら",
-            "ko": "그들",
-            "ar": "هم",
-            "hi": "वे"
+            "tr": "özür dilerim",
+            "es": "lo siento",
+            "fr": "désolé",
+            "de": "Entschuldigung",
+            "it": "mi dispiace",
+            "pt": "desculpe",
+            "ru": "извините",
+            "zh": "对不起",
+            "ja": "ごめんなさい",
+            "ko": "미안해요",
+            "ar": "آسف",
+            "hi": "माफ़ कीजिए"
           },
           {
-            "tr": "biz",
-            "es": "nosotros",
-            "fr": "nous",
-            "de": "wir",
-            "it": "noi",
-            "pt": "nós",
-            "ru": "мы",
-            "zh": "我们",
-            "ja": "私たちは",
-            "ko": "우리",
-            "ar": "نحن",
-            "hi": "हम"
+            "tr": "hoş geldiniz",
+            "es": "bienvenido",
+            "fr": "bienvenue",
+            "de": "willkommen",
+            "it": "benvenuto",
+            "pt": "bem-vindo",
+            "ru": "добро пожаловать",
+            "zh": "欢迎",
+            "ja": "ようこそ",
+            "ko": "환영합니다",
+            "ar": "أهلاً وسهلاً",
+            "hi": "स्वागत है"
           }
         ]
       }

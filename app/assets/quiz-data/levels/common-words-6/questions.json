@@ -1,0 +1,124 @@
+{
+  "levelQuestions": [
+    {
+      "template": "ClozeSequence",
+      "questionData": {
+        "sentence": "He _____ the accident but it still _____ some damage.",
+        "answer": ["avoided", "caused"],
+        "distractors": ["prevented", "made"]
+      },
+      "audio_file": "he-avoided-the-accident-but-it-still-caused-some-damage-convo"
+    },
+    {
+      "template": "ClozeSequence",
+      "questionData": {
+        "sentence": "I did not _____ it was her until I _____ her voice.",
+        "answer": ["realize", "recognized"],
+        "distractors": ["notice", "remember"]
+      },
+      "audio_file": "i-did-not-realize-it-was-her-until-i-recognized-her-voice-convo"
+    },
+    {
+      "template": "ClozeSequence",
+      "questionData": {
+        "sentence": "She chose tea _____ of coffee, and she found it _____ tasty.",
+        "answer": ["instead", "rather"],
+        "distractors": ["despite", "hardly"]
+      },
+      "audio_file": "she-chose-tea-instead-of-coffee-and-she-found-it-rather-tasty-convo"
+    },
+    {
+      "template": "GrammarForm",
+      "questionData": {
+        "sentence": "They _____ a new app last year.",
+        "answer": "developed",
+        "distractors": ["develop", "developing", "will develop"]
+      }
+    },
+    {
+      "template": "AppearDisappear",
+      "questionData": {
+        "words": "We finally reached the top.",
+        "distractors": ["left", "missed", "avoided"]
+      },
+      "audio_file": "we-finally-reached-the-top-convo"
+    },
+    {
+      "template": "AppearDisappear",
+      "questionData": {
+        "words": "She reported the problem yesterday.",
+        "distractors": ["ignored", "hid", "forgot"]
+      },
+      "audio_file": "she-reported-the-problem-yesterday-convo"
+    },
+    {
+      "template": "AppearDisappear",
+      "questionData": {
+        "words": "This soup is extremely spicy.",
+        "distractors": ["slightly", "barely", "mildly"]
+      },
+      "audio_file": "this-soup-is-extremely-spicy-convo"
+    },
+    {
+      "template": "ConvoTemplate-1",
+      "questionData": {
+        "character1": "Sarah",
+        "character2": "Daniel",
+        "line1": "Did the moon appear last night?",
+        "line2": "Yes, it _____ around midnight.",
+        "answer": "appeared",
+        "distractors": ["shone", "rose", "vanished"]
+      },
+      "audio_file1": "did-the-moon-appear-last-night-convo",
+      "audio_file2": "yes-it-appeared-around-midnight-convo"
+    },
+    {
+      "template": "ConvoTemplate-1",
+      "questionData": {
+        "character1": "Beth",
+        "character2": "Alex",
+        "line1": "Which way did he walk?",
+        "line2": "He walked _____ the exit.",
+        "answer": "towards",
+        "distractors": ["away", "beside", "around"]
+      },
+      "audio_file1": "which-way-did-he-walk-convo",
+      "audio_file2": "he-walked-towards-the-exit-convo"
+    },
+    {
+      "template": "DialogueCompletion",
+      "questionData": {
+        "character1": "Omar",
+        "character2": "Lily",
+        "line1": "Did the hotel provide breakfast?",
+        "answer": "Yes, they provided fresh fruit, plus coffee.",
+        "distractors": [
+          "No, we had to buy food outside.",
+          "No, the hotel was fully booked.",
+          "Yes, but only on weekends."
+        ]
+      },
+      "audio_file1": "did-the-hotel-provide-breakfast-convo",
+      "audio_file2": "yes-they-provided-fresh-fruit-plus-coffee-convo"
+    },
+    {
+      "template": "SentenceBuilder",
+      "questionData": {
+        "correct_order": "This old book is worth a lot."
+      },
+      "audio_file": "this-old-book-is-worth-a-lot-convo"
+    },
+    {
+      "template": "WordPairs",
+      "questionData": {
+        "english_words": ["unhealthy", "useful", "wonderful", "false"],
+        "translations": [
+          {"tr": "unhealthy", "es": "unhealthy", "fr": "unhealthy", "de": "unhealthy", "it": "unhealthy", "pt": "unhealthy", "ru": "unhealthy", "zh": "unhealthy", "ja": "unhealthy", "ko": "unhealthy", "ar": "unhealthy", "hi": "unhealthy"},
+          {"tr": "useful", "es": "useful", "fr": "useful", "de": "useful", "it": "useful", "pt": "useful", "ru": "useful", "zh": "useful", "ja": "useful", "ko": "useful", "ar": "useful", "hi": "useful"},
+          {"tr": "wonderful", "es": "wonderful", "fr": "wonderful", "de": "wonderful", "it": "wonderful", "pt": "wonderful", "ru": "wonderful", "zh": "wonderful", "ja": "wonderful", "ko": "wonderful", "ar": "wonderful", "hi": "wonderful"},
+          {"tr": "false", "es": "false", "fr": "false", "de": "false", "it": "false", "pt": "false", "ru": "false", "zh": "false", "ja": "false", "ko": "false", "ar": "false", "hi": "false"}
+        ]
+      }
+    }
+  ]
+}

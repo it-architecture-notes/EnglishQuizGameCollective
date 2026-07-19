@@ -27,6 +27,11 @@ Output (default --format html):
     (always this filename; overwritten for the selected level — prior flow
     vocabulary grouped by verb / adjective / adverb / etc.)
 
+Also refreshes ``cursor-claude-common/references/final words/*.csv`` (including
+``langeek-500-most-common-nouns.csv``, and ``common-verbs.csv``) and marks the Oxford 3000 list — same as
+``tools/update_final_word_counts_from_levels.py``. Use ``--skip-final-words`` to
+skip that step.
+
 Before writing output, every question is checked against template rules from
 `page-designs-and-templates.md` and `app/lib/models/level_config.dart` (required
 fields, counts, Cloze blank/answer alignment — blanks may use trailing `.` `!`
@@ -52,6 +57,10 @@ Translations table (only if translations.json exists and has translations_list):
   - #: row index
   - English word: english_word
   - One column per locale code found across all rows (sorted), values from translations[locale]
+
+HTML only: between translations and template counts, a compact **question summary**
+table with columns `#`, Line 1, Line 2, Answer, Distractors (distractors or
+wrongAnswers from questionData; empty when a template has none).
 
 HTML only: after template counts, a **Word frequency** table for strings in
 `questions.json` except: each question’s `template` and `audio_file` /
@@ -85,26 +94,34 @@ try:
         collect_level_vocabulary,
         dedupe_entries,
         load_flow_order,
-        resolve_level_dir,
+        resolve_prior_level_dirs,
     )
 except ImportError:  # pragma: no cover
     collect_level_vocabulary = None  # type: ignore[misc, assignment]
     dedupe_entries = None  # type: ignore[misc, assignment]
     load_flow_order = None  # type: ignore[misc, assignment]
-    resolve_level_dir = None  # type: ignore[misc, assignment]
+    resolve_prior_level_dirs = None  # type: ignore[misc, assignment]
+
+try:
+    from update_final_word_counts_from_levels import refresh_final_word_references
+except ImportError:  # pragma: no cover
+    refresh_final_word_references = None  # type: ignore[misc, assignment]
 
 # final words/*.csv filename -> coarse word-type label for prior-vocabulary grouping
 _FINAL_CSV_WORD_TYPES: dict[str, str] = {
     "verbs-400.csv": "verb",
+    "common-verbs.csv": "verb",
     "adjectives-300.csv": "adjective",
     "adverbs-150.csv": "adverb",
     "prepositions.csv": "preposition",
     "conjunctions.csv": "conjunction",
     "auxiliaries.csv": "auxiliary",
+    "langeek-500-most-common-nouns.csv": "noun",
 }
 
 _PRIOR_TYPE_SECTION_ORDER = (
     "verb",
+    "noun",
     "adjective",
     "adverb",
     "preposition",
@@ -142,6 +159,8 @@ _KNOWN_TEMPLATES = frozenset(
 )
 
 TEMPLATE_COUNT_HEADERS = ["Template", "Count in level"]
+
+QUESTION_SUMMARY_HEADERS = ["#", "Line 1", "Line 2", "Answer", "Distractors"]
 
 WORD_FREQ_HEADERS = ["word", "count"]
 
@@ -349,7 +368,7 @@ def collect_prior_vocabulary_entries(
     Return (deduped entries, prior flow icon names, prior level folder count).
     Each entry is (word, level_label, source).
     """
-    if load_flow_order is None or resolve_level_dir is None:
+    if load_flow_order is None or resolve_prior_level_dirs is None:
         raise RuntimeError("gather_prior_level_words import failed")
     flow_order = load_flow_order(flow_path)
     if target_level not in flow_order:
@@ -360,14 +379,11 @@ def collect_prior_vocabulary_entries(
     target_idx = flow_order.index(target_level)
     prior_names = flow_order[:target_idx]
 
-    prior_dirs: list[tuple[str, Path]] = []
-    missing: list[str] = []
-    for name in prior_names:
-        d = resolve_level_dir(levels_root, name)
-        if d is None:
-            missing.append(name)
-            continue
-        prior_dirs.append((name, d))
+    prior_dirs, missing = resolve_prior_level_dirs(
+        prior_names,
+        levels_root=levels_root,
+        flow_path=flow_path,
+    )
 
     all_entries: list[tuple[str, str, str]] = []
     for _name, d in prior_dirs:
@@ -764,6 +780,15 @@ def words_from_array_or_sentence(value) -> list[str]:
     return []
 
 
+def distractors_cell(template: str, question_data: dict) -> str:
+    """Join distractors or wrongAnswers for summary table; empty if none."""
+    if template in ("imageQuizTemplate-1", "imageQuizTemplate-2"):
+        items = _wrong_answers_image_tpl(question_data)
+    else:
+        items = _string_list(question_data.get("distractors"))
+    return "; ".join(x.strip() for x in items if str(x).strip())
+
+
 def summarize_row(template: str, question_data: dict) -> tuple[str, str, str]:
     if template == "imageQuizTemplate-1":
         image_name = (question_data.get("imageName") or "").strip()
@@ -777,13 +802,17 @@ def summarize_row(template: str, question_data: dict) -> tuple[str, str, str]:
 
     if template == "ConvoTemplate-1":
         return (
-            str(question_data.get("line1", "")),
-            str(question_data.get("line2", "")),
-            str(question_data.get("answer", "")),
+            _english_line_field(question_data.get("line1")),
+            _english_line_field(question_data.get("line2")),
+            _nonempty_str(question_data.get("answer")),
         )
 
     if template == "DialogueCompletion":
-        return (str(question_data.get("line1", "")), "", str(question_data.get("answer", "")))
+        return (
+            _english_line_field(question_data.get("line1")),
+            "",
+            _nonempty_str(question_data.get("answer")),
+        )
 
     if template == "AppearDisappear":
         words = words_from_array_or_sentence(question_data.get("words"))
@@ -818,7 +847,7 @@ def summarize_row(template: str, question_data: dict) -> tuple[str, str, str]:
         return (line1, "word pairs", "match all pairs")
 
     if template == "GrammarForm":
-        sentence = str(question_data.get("sentence", ""))
+        sentence = _grammar_sentence_str(question_data.get("sentence"))
         raw_answer = question_data.get("answer")
         if isinstance(raw_answer, list):
             answer = ", ".join(str(x) for x in raw_answer)
@@ -1056,6 +1085,24 @@ def collect_template_count_rows(questions: list) -> list[list[str]]:
             counts[t] += 1
     order = sorted(counts.keys(), key=str.lower)
     return [[tpl, str(counts[tpl])] for tpl in order]
+
+
+def collect_question_summary_rows(questions: list) -> list[list[str]]:
+    """Compact rows for HTML summary: #, line1, line2, answer, distractors."""
+    rows: list[list[str]] = []
+    for index, item in enumerate(questions, start=1):
+        if not isinstance(item, dict):
+            rows.append([str(index), "(invalid)", "", "", ""])
+            continue
+        template = str(item.get("template", ""))
+        question_data = item.get("questionData")
+        if not isinstance(question_data, dict):
+            rows.append([str(index), "(missing questionData)", "", "", ""])
+            continue
+        line1, line2, answer = summarize_row(template, question_data)
+        dist = distractors_cell(template, question_data)
+        rows.append([str(index), line1, line2, answer, dist])
+    return rows
 
 
 def collect_rows(
@@ -1313,6 +1360,7 @@ def build_html(
     level_name: str,
     template_count_rows: list[list[str]],
     rows: list[list[str]],
+    question_summary_rows: list[list[str]],
     trans: tuple[list[str], list[list[str]]] | None,
     word_freq_rows: list[list[str]],
 ) -> str:
@@ -1344,6 +1392,13 @@ def build_html(
     {trans_table}
   </div>
 """
+    summary_table = _html_table(QUESTION_SUMMARY_HEADERS, question_summary_rows)
+    question_summary_block = f"""
+  <h2>Question summary</h2>
+  <div class="wrap">
+    {summary_table}
+  </div>
+"""
     template_counts_block = f"""
   <h2>Template counts</h2>
   <div class="wrap template-counts">
@@ -1371,7 +1426,7 @@ def build_html(
   <div class="wrap">
     {q_table}
   </div>
-{trans_block}{template_counts_block}{word_freq_block}
+{trans_block}{question_summary_block}{template_counts_block}{word_freq_block}
 </body>
 </html>
 """
@@ -1386,6 +1441,7 @@ def render(
     level_name: str,
     template_count_rows: list[list[str]],
     rows: list[list[str]],
+    question_summary_rows: list[list[str]],
     trans: tuple[list[str], list[list[str]]] | None,
     word_freq_rows: list[list[str]],
 ) -> str:
@@ -1396,7 +1452,14 @@ def render(
     if fmt == "csv":
         return build_csv(template_count_rows, rows, trans)
     if fmt == "html":
-        return build_html(level_name, template_count_rows, rows, trans, word_freq_rows)
+        return build_html(
+            level_name,
+            template_count_rows,
+            rows,
+            question_summary_rows,
+            trans,
+            word_freq_rows,
+        )
     raise ValueError(fmt)
 
 
@@ -1437,6 +1500,27 @@ def main() -> int:
         action="store_true",
         help="Do not write prior-words-by-type.md",
     )
+    parser.add_argument(
+        "--skip-final-words",
+        action="store_true",
+        help="Do not refresh final words/*.csv, LanGeek nouns CSV, or Oxford list",
+    )
+    parser.add_argument(
+        "--dry-run-final-words",
+        action="store_true",
+        help="Print final-word refresh actions without writing reference files",
+    )
+    parser.add_argument(
+        "--oxford-txt",
+        type=Path,
+        default=root / "cursor-claude-common/references/remove-word-list-references/3000 words oxford.txt",
+        help="Oxford word list to mark when refreshing final-word references",
+    )
+    parser.add_argument(
+        "--skip-oxford-mark",
+        action="store_true",
+        help="When refreshing final-word references, skip Oxford list marking",
+    )
     args = parser.parse_args()
 
     level_dir = args.level_folder
@@ -1475,6 +1559,7 @@ def main() -> int:
     template_count_rows = collect_template_count_rows(questions)
     translation_words = load_translation_english_words(translations_path)
     rows = collect_rows(questions, translation_words)
+    question_summary_rows = collect_question_summary_rows(questions)
     trans = collect_translation_rows(translations_path)
     word_freq_rows = collect_word_frequency_rows(data)
     body = render(
@@ -1482,6 +1567,7 @@ def main() -> int:
         level_name,
         template_count_rows,
         rows,
+        question_summary_rows,
         trans,
         word_freq_rows,
     )
@@ -1497,10 +1583,11 @@ def main() -> int:
     else:
         print(f"  (no translations table: missing or empty {translations_path.name})")
 
+    flow_path = args.flow.resolve()
+    levels_root = level_dir.parent
+    csv_dir = args.csv_dir.resolve()
+
     if not args.skip_prior_words:
-        flow_path = args.flow.resolve()
-        levels_root = level_dir.parent
-        csv_dir = args.csv_dir.resolve()
         write_prior_words_by_type(
             level_name,
             output_dir,
@@ -1508,6 +1595,28 @@ def main() -> int:
             levels_root=levels_root,
             csv_dir=csv_dir,
         )
+
+    if not args.skip_final_words:
+        if refresh_final_word_references is None:
+            print(
+                "Skip final-word refresh: could not import update_final_word_counts_from_levels",
+                file=sys.stderr,
+            )
+        else:
+            oxford_path = (
+                args.oxford_txt
+                if args.oxford_txt.is_absolute()
+                else (root / args.oxford_txt)
+            )
+            rc = refresh_final_word_references(
+                levels_root,
+                csv_dir,
+                oxford_txt=oxford_path,
+                skip_oxford=args.skip_oxford_mark,
+                dry_run=args.dry_run_final_words,
+            )
+            if rc != 0:
+                return rc
 
     return 0
 

@@ -6,50 +6,52 @@ import 'quiz_progress_service.dart';
 class StoryTriggerService {
   const StoryTriggerService._();
 
+  /// Finds an incomplete before-level story whose trigger matches [levelTitle].
   static StoryPageConfig? findBeforeLevelPage({
     required MainLevelStoryConfig? mainStory,
     required StoryProgressState storyProgress,
     required int mainLevelId,
-    required int currentLocalLevel,
+    required String levelTitle,
     required Iterable<SubLevelItem> flowSubLevels,
   }) {
-    if (mainStory == null) return null;
+    if (mainStory == null || levelTitle.isEmpty) return null;
     for (final page in mainStory.storySequences) {
       if (page.trigger.type != StoryTriggerType.beforeLevel) continue;
       if (storyProgress.isCompleted(
           mainLevelId: mainLevelId, eventId: page.eventId)) {
         continue;
       }
-      final triggerLevel = _resolveTriggerLevel(
+      final triggerTitle = resolveTriggerLevelTitle(
         page: page,
         mainLevelId: mainLevelId,
         flowSubLevels: flowSubLevels,
       );
-      if (triggerLevel == currentLocalLevel) return page;
+      if (triggerTitle == levelTitle) return page;
     }
     return null;
   }
 
+  /// Finds an incomplete after-level story whose trigger matches [levelTitle].
   static StoryPageConfig? findAfterLevelPage({
     required MainLevelStoryConfig? mainStory,
     required StoryProgressState storyProgress,
     required int mainLevelId,
-    required int completedLocalLevel,
+    required String levelTitle,
     required Iterable<SubLevelItem> flowSubLevels,
   }) {
-    if (mainStory == null) return null;
+    if (mainStory == null || levelTitle.isEmpty) return null;
     for (final page in mainStory.storySequences) {
       if (page.trigger.type != StoryTriggerType.afterLevel) continue;
       if (storyProgress.isCompleted(
           mainLevelId: mainLevelId, eventId: page.eventId)) {
         continue;
       }
-      final triggerLevel = _resolveTriggerLevel(
+      final triggerTitle = resolveTriggerLevelTitle(
         page: page,
         mainLevelId: mainLevelId,
         flowSubLevels: flowSubLevels,
       );
-      if (triggerLevel == completedLocalLevel) return page;
+      if (triggerTitle == levelTitle) return page;
     }
     return null;
   }
@@ -62,8 +64,7 @@ class StoryTriggerService {
     required Iterable<SubLevelItem> flowSubLevels,
   }) {
     if (mainStory == null) return const [];
-    final mappers = _buildMappers(flowSubLevels);
-    final byLocal = mappers[mainLevelId] ?? const <int, String>{};
+    final byTitle = _itemByTitle(flowSubLevels, mainLevelId);
 
     final ready = <StoryPageConfig>[];
     for (final page in mainStory.storySequences) {
@@ -73,15 +74,18 @@ class StoryTriggerService {
           mainLevelId: mainLevelId, eventId: page.eventId)) {
         continue;
       }
-      final triggerLevel = _resolveTriggerLevel(
+      final triggerTitle = resolveTriggerLevelTitle(
         page: page,
         mainLevelId: mainLevelId,
         flowSubLevels: flowSubLevels,
       );
-      final progressKey = byLocal[triggerLevel];
-      final stars = progressKey == null
-          ? 0
-          : quizProgress.levels[progressKey]?.highestStars ?? 0;
+      final item = byTitle[triggerTitle];
+      if (item == null) continue;
+      // Reminder completion is not stored as quiz stars; skip auto-complete here.
+      // Those pages are shown via [findAfterLevelPage] when the reminder finishes.
+      if (item.sub.isReminder) continue;
+      final stars =
+          quizProgress.levels[item.progressKey]?.highestStars ?? 0;
       if (stars >= 1) {
         ready.add(page);
       }
@@ -102,42 +106,58 @@ class StoryTriggerService {
     return localByOrdinal;
   }
 
-  static int resolveTriggerLevel({
+  /// Resolves the flow `title` this page triggers on.
+  /// Empty [StoryTrigger.level] → last regular level title in [mainLevelId].
+  static String resolveTriggerLevelTitle({
     required StoryPageConfig page,
     required int mainLevelId,
     required Iterable<SubLevelItem> flowSubLevels,
   }) {
-    return _resolveTriggerLevel(
+    final configured = page.trigger.level.trim();
+    if (configured.isNotEmpty) return configured;
+    return lastRegularLevelTitle(mainLevelId, flowSubLevels) ?? '';
+  }
+
+  /// Whether [page]'s trigger points at the last regular level of [mainLevelId].
+  static bool isTriggerOnLastRegularLevel({
+    required StoryPageConfig page,
+    required int mainLevelId,
+    required Iterable<SubLevelItem> flowSubLevels,
+  }) {
+    final triggerTitle = resolveTriggerLevelTitle(
       page: page,
       mainLevelId: mainLevelId,
       flowSubLevels: flowSubLevels,
     );
+    final lastTitle = lastRegularLevelTitle(mainLevelId, flowSubLevels);
+    return lastTitle != null && triggerTitle == lastTitle;
   }
 
-  static int _resolveTriggerLevel({
-    required StoryPageConfig page,
-    required int mainLevelId,
-    required Iterable<SubLevelItem> flowSubLevels,
-  }) {
-    if (page.trigger.level > 0) return page.trigger.level;
-    final byMain =
-        _buildMappers(flowSubLevels)[mainLevelId] ?? const <int, String>{};
-    if (byMain.isEmpty) return 1;
-    return byMain.keys.reduce((a, b) => a > b ? a : b);
-  }
-
-  static Map<int, Map<int, String>> _buildMappers(
-      Iterable<SubLevelItem> flowSubLevels) {
-    final localCounterByMain = <int, int>{};
-    final mapper = <int, Map<int, String>>{};
-
+  /// Last regular level's `title` for [mainLevelId], or null if none.
+  static String? lastRegularLevelTitle(
+    int mainLevelId,
+    Iterable<SubLevelItem> flowSubLevels,
+  ) {
+    String? last;
     for (final item in flowSubLevels) {
-      final mainLevelId = item.sub.mainLevel;
-      final nextLocal = (localCounterByMain[mainLevelId] ?? 0) + 1;
-      localCounterByMain[mainLevelId] = nextLocal;
-      mapper.putIfAbsent(mainLevelId, () => <int, String>{})[nextLocal] =
-          item.progressKey;
+      if (item.sub.mainLevel == mainLevelId && !item.sub.isReminder) {
+        last = item.sub.title;
+      }
     }
-    return mapper;
+    return last;
+  }
+
+  static Map<String, SubLevelItem> _itemByTitle(
+    Iterable<SubLevelItem> flowSubLevels,
+    int mainLevelId,
+  ) {
+    final map = <String, SubLevelItem>{};
+    for (final item in flowSubLevels) {
+      if (item.sub.mainLevel != mainLevelId) continue;
+      final title = item.sub.title.trim();
+      if (title.isEmpty) continue;
+      map[title] = item;
+    }
+    return map;
   }
 }

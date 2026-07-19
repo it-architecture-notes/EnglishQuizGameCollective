@@ -1,7 +1,3 @@
-# 500 Most Common English Nouns
-# Source: https://langeek.co/en/vocab/category/49/most-common-nouns
-# Crawled: 2026-06-22T18:51:11Z
-
 1	people
 2	thing
 3	time

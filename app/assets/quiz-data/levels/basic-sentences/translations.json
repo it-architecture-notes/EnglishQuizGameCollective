@@ -137,20 +137,37 @@
       }
     },
     {
-      "english_word": "to have",
+      "english_word": "I am sorry",
       "translations": {
-        "tr": "sahip olmak",
-        "es": "tener",
-        "fr": "avoir",
-        "de": "haben",
-        "it": "avere",
-        "pt": "ter",
-        "ru": "иметь",
-        "zh": "拥有",
-        "ja": "持つ",
-        "ko": "갖다",
-        "ar": "امتلاك",
-        "hi": "रखना"
+        "tr": "Özür dilerim",
+        "es": "Lo siento",
+        "fr": "Je suis désolé",
+        "de": "Es tut mir leid",
+        "it": "Mi dispiace",
+        "pt": "Sinto muito",
+        "ru": "Мне жаль",
+        "zh": "对不起",
+        "ja": "ごめんなさい",
+        "ko": "미안해요",
+        "ar": "أنا آسف",
+        "hi": "मुझे खेद है"
+      }
+    },
+    {
+      "english_word": "where",
+      "translations": {
+        "tr": "nerede",
+        "es": "dónde",
+        "fr": "où",
+        "de": "wo",
+        "it": "dove",
+        "pt": "onde",
+        "ru": "где",
+        "zh": "哪里",
+        "ja": "どこ",
+        "ko": "어디",
+        "ar": "أين",
+        "hi": "कहाँ"
       }
     },
     {

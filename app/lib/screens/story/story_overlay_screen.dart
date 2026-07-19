@@ -4,6 +4,7 @@ import '../../models/story_config.dart';
 import '../transitions/custom_page_routes.dart';
 import 'story_templates/story_template_a.dart';
 import 'story_templates/story_template_c.dart';
+import 'story_templates/story_template_d.dart';
 
 class StoryOverlayScreen extends StatefulWidget {
   const StoryOverlayScreen({
@@ -13,6 +14,9 @@ class StoryOverlayScreen extends StatefulWidget {
     required this.languageCode,
     required this.continueLabel,
     required this.congratulationsLabel,
+    this.previousLabel = 'Previous',
+    this.nextLabel = 'Next',
+    this.okLabel = 'OK',
     this.isFinalPage = false,
   });
 
@@ -21,6 +25,9 @@ class StoryOverlayScreen extends StatefulWidget {
   final String languageCode;
   final String continueLabel;
   final String congratulationsLabel;
+  final String previousLabel;
+  final String nextLabel;
+  final String okLabel;
   final bool isFinalPage;
 
   static Future<void> show(
@@ -30,6 +37,9 @@ class StoryOverlayScreen extends StatefulWidget {
     required String languageCode,
     required String continueLabel,
     required String congratulationsLabel,
+    String previousLabel = 'Previous',
+    String nextLabel = 'Next',
+    String okLabel = 'OK',
     bool isFinalPage = false,
   }) {
     return Navigator.of(context).push<void>(
@@ -40,6 +50,9 @@ class StoryOverlayScreen extends StatefulWidget {
           languageCode: languageCode,
           continueLabel: continueLabel,
           congratulationsLabel: congratulationsLabel,
+          previousLabel: previousLabel,
+          nextLabel: nextLabel,
+          okLabel: okLabel,
           isFinalPage: isFinalPage,
         ),
       ),
@@ -54,6 +67,8 @@ class _StoryOverlayScreenState extends State<StoryOverlayScreen>
     with SingleTickerProviderStateMixin {
   late final AnimationController _celebrationController;
   late final Animation<double> _celebrationScale;
+
+  bool get _isGallery => widget.template?.layout == 'multi_image_gallery';
 
   @override
   void initState() {
@@ -119,26 +134,29 @@ class _StoryOverlayScreenState extends State<StoryOverlayScreen>
                   },
                 ),
               ),
-              const SizedBox(height: 24),
-              SizedBox(
-                width: double.infinity,
-                child: FilledButton(
-                  onPressed: () => Navigator.of(context).pop(),
-                  style: FilledButton.styleFrom(
-                    padding: const EdgeInsets.symmetric(vertical: 16),
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(12),
+              // Gallery template owns Prev/Next/OK — hide the shared Continue.
+              if (!_isGallery) ...[
+                const SizedBox(height: 24),
+                SizedBox(
+                  width: double.infinity,
+                  child: FilledButton(
+                    onPressed: () => Navigator.of(context).pop(),
+                    style: FilledButton.styleFrom(
+                      padding: const EdgeInsets.symmetric(vertical: 16),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(12),
+                      ),
                     ),
-                  ),
-                  child: Text(
-                    widget.continueLabel,
-                    style: const TextStyle(
-                      fontSize: 16,
-                      fontWeight: FontWeight.w600,
+                    child: Text(
+                      widget.continueLabel,
+                      style: const TextStyle(
+                        fontSize: 16,
+                        fontWeight: FontWeight.w600,
+                      ),
                     ),
                   ),
                 ),
-              ),
+              ],
             ],
           ),
         ),
@@ -154,6 +172,14 @@ class _StoryOverlayScreenState extends State<StoryOverlayScreen>
       'scene_story_text' => StoryTemplateC(
           page: widget.page,
           languageCode: widget.languageCode,
+          scrollViewportHeight: scrollViewportHeight,
+        ),
+      'multi_image_gallery' => StoryTemplateD(
+          page: widget.page,
+          languageCode: widget.languageCode,
+          previousLabel: widget.previousLabel,
+          nextLabel: widget.nextLabel,
+          okLabel: widget.okLabel,
           scrollViewportHeight: scrollViewportHeight,
         ),
       _ => StoryTemplateA(

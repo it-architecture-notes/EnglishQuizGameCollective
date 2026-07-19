@@ -86,37 +86,37 @@
       }
     },
     {
-      "english_word": "to bring",
+      "english_word": "tracking number",
       "translations": {
-        "tr": "getirmek",
-        "es": "traer",
-        "fr": "apporter",
-        "de": "bringen",
-        "it": "portare",
-        "pt": "trazer",
-        "ru": "принести",
-        "zh": "带来",
-        "ja": "持ってくる",
-        "ko": "가져오다",
-        "ar": "يجلب",
-        "hi": "लाना"
+        "tr": "takip numarası",
+        "es": "número de seguimiento",
+        "fr": "numéro de suivi",
+        "de": "Sendungsnummer",
+        "it": "numero di tracciamento",
+        "pt": "número de rastreamento",
+        "ru": "номер отслеживания",
+        "zh": "追踪号码",
+        "ja": "追跡番号",
+        "ko": "추적 번호",
+        "ar": "رقم التتبع",
+        "hi": "ट्रैकिंग नंबर"
       }
     },
     {
-      "english_word": "already",
+      "english_word": "to pick up",
       "translations": {
-        "tr": "zaten",
-        "es": "ya",
-        "fr": "déjà",
-        "de": "schon",
-        "it": "già",
-        "pt": "já",
-        "ru": "уже",
-        "zh": "已经",
-        "ja": "すでに",
-        "ko": "이미",
-        "ar": "بالفعل",
-        "hi": "पहले से ही"
+        "tr": "teslim almak",
+        "es": "recoger",
+        "fr": "récupérer",
+        "de": "abholen",
+        "it": "ritirare",
+        "pt": "buscar",
+        "ru": "забрать",
+        "zh": "取件",
+        "ja": "受け取りに行く",
+        "ko": "찾다",
+        "ar": "يستلم",
+        "hi": "लेना"
       }
     },
     {

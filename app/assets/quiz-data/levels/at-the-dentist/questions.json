@@ -5,9 +5,9 @@
       "questionData": {
         "imageName": "tooth",
         "wrongAnswers": [
-          "mouth",
-          "teeth",
-          "jaw"
+          "bone",
+          "lip",
+          "gum"
         ]
       }
     },
@@ -16,95 +16,60 @@
       "questionData": {
         "character1": "Emma",
         "character2": "Chris",
-        "line1": "You need to brush more often.",
-        "answer": "Yes. I agree.",
+        "line1": "I can't feel my lip — is that okay?",
+        "answer": "Yes, it's just frozen from the anesthesia.",
         "distractors": [
-          "No. I don't agree.",
-          "Maybe. I don't know.",
-          "Yes. I can't brush more often."
+          "No, that's not normal at all.",
+          "Try rinsing with cold water.",
+          "Open your mouth wider, please."
         ]
       },
-      "audio_file1": "you-need-to-brush-more-often-convo",
-      "audio_file2": "yes-i-agree-convo"
+      "audio_file1": "i-can-t-feel-my-lip-is-that-okay-convo",
+      "audio_file2": "yes-it-s-just-frozen-from-the-anesthesia-convo"
     },
     {
       "template": "ClozeSequence",
       "questionData": {
-        "sentence": "____ your mouth open, please. ____ me your teeth.",
+        "sentence": "My gums _____ and feel _____ when I do not floss.",
         "answer": [
-          "keep",
-          "show"
+          "bleed",
+          "sore"
         ],
         "distractors": [
-          "close",
-          "pull",
-          "take",
-          "watch"
+          "dark",
+          "itchy",
+          "cold"
         ]
       },
-      "audio_file": "keep-your-mouth-open-please-show-me-your-teeth-convo"
-    },
-    {
-      "template": "ClozeSequence",
-      "questionData": {
-        "sentence": "My dentist is _____ and _______.",
-        "answer": [
-          "kind",
-          "friendly"
-        ],
-        "distractors": [
-          "serious",
-          "angry",
-          "afraid",
-          "brush"
-        ]
-      },
-      "audio_file": "my-dentist-is-kind-and-friendly-convo"
+      "audio_file": "my-gums-bleed-and-feel-sore-when-i-do-not-floss-convo"
     },
     {
       "template": "imageQuizTemplate-1",
       "questionData": {
         "imageName": "gauze",
         "wrongAnswers": [
-          "bandage",
-          "needle",
-          "cotton-ball"
+          "tissue",
+          "sponge",
+          "tape"
         ]
       }
     },
     {
       "template": "ConvoTemplate-1",
       "questionData": {
-        "character1": "Emma",
-        "character2": "Chris",
-        "line1": "Does it ____ when I press here?",
-        "line2": "Yes, it ______.",
-        "answer": "hurt",
-        "distractors": [
-          "pain",
-          "touch",
-          "hit"
-        ]
-      },
-      "audio_file1": "does-it-hurt-when-i-press-here-convo",
-      "audio_file2": "yes-it-hurts-convo"
-    },
-    {
-      "template": "ConvoTemplate-1",
-      "questionData": {
         "character1": "Beth",
         "character2": "Alex",
-        "line1": "Do you ______ how to brush your teeth?",
-        "line2": "Yes. I _____.",
-        "answer": "understand",
+        "line1": "My gums are _____.",
+        "line2": "Yes. They look _____.",
+        "answer": "swollen",
         "distractors": [
-          "learn",
-          "clean",
-          "seeing"
+          "wooden",
+          "square",
+          "metal"
         ]
       },
-      "audio_file1": "do-you-understand-how-to-brush-your-teeth-convo",
-      "audio_file2": "yes-i-understand-convo"
+      "audio_file1": "my-gums-are-swollen-convo",
+      "audio_file2": "yes-they-look-swollen-convo"
     },
     {
       "template": "imageQuizTemplate-1",
@@ -113,7 +78,7 @@
         "wrongAnswers": [
           "extraction",
           "cleaning",
-          "fill in"
+          "crown"
         ]
       }
     },
@@ -121,67 +86,67 @@
       "template": "WordPairs",
       "questionData": {
         "english_words": [
-          "true",
-          "false",
-          "happy",
-          "sad"
+          "white",
+          "yellow",
+          "clean",
+          "sharp"
         ],
         "translations": [
           {
-            "tr": "doğru",
-            "es": "verdadero",
-            "fr": "vrai",
-            "de": "WAHR",
-            "it": "VERO",
-            "pt": "verdadeiro",
-            "ru": "истинный",
-            "zh": "真的",
-            "ja": "真実",
-            "ko": "진실",
-            "ar": "حقيقي",
-            "hi": "सत्य"
+            "tr": "beyaz",
+            "es": "blanco",
+            "fr": "blanc",
+            "de": "weiß",
+            "it": "bianco",
+            "pt": "branco",
+            "ru": "белый",
+            "zh": "白色的",
+            "ja": "白い",
+            "ko": "하얀",
+            "ar": "أبيض",
+            "hi": "सफ़ेद"
           },
           {
-            "tr": "YANLIŞ",
-            "es": "FALSO",
-            "fr": "FAUX",
-            "de": "FALSCH",
-            "it": "falso",
-            "pt": "falso",
-            "ru": "ЛОЖЬ",
-            "zh": "错误的",
-            "ja": "間違い",
-            "ko": "거짓",
-            "ar": "خاطئ",
-            "hi": "असत्य"
+            "tr": "sarı",
+            "es": "amarillo",
+            "fr": "jaune",
+            "de": "gelb",
+            "it": "giallo",
+            "pt": "amarelo",
+            "ru": "жёлтый",
+            "zh": "黄色的",
+            "ja": "黄色い",
+            "ko": "노란",
+            "ar": "أصفر",
+            "hi": "पीला"
           },
           {
-            "tr": "mutlu",
-            "es": "feliz",
-            "fr": "heureux",
-            "de": "Glücklich",
-            "it": "Contento",
-            "pt": "feliz",
-            "ru": "счастливый",
-            "zh": "快乐的",
-            "ja": "ハッピー",
-            "ko": "행복하다",
-            "ar": "سعيد",
-            "hi": "खुश"
+            "tr": "temiz",
+            "es": "limpio",
+            "fr": "propre",
+            "de": "sauber",
+            "it": "pulito",
+            "pt": "limpo",
+            "ru": "чистый",
+            "zh": "干净的",
+            "ja": "きれいな",
+            "ko": "깨끗한",
+            "ar": "نظيف",
+            "hi": "साफ़"
           },
           {
-            "tr": "üzgün",
-            "es": "triste",
-            "fr": "triste",
-            "de": "traurig",
-            "it": "triste",
-            "pt": "triste",
-            "ru": "грустный",
-            "zh": "伤心",
-            "ja": "悲しい",
-            "ko": "슬픈",
-            "ar": "حزين",
-            "hi": "दुखी"
+            "tr": "keskin",
+            "es": "afilado",
+            "fr": "tranchant",
+            "de": "scharf",
+            "it": "affilato",
+            "pt": "afiado",
+            "ru": "острый",
+            "zh": "锋利的",
+            "ja": "鋭い",
+            "ko": "날카로운",
+            "ar": "حاد",
+            "hi": "तेज़"
           }
         ]
       }
@@ -191,28 +156,59 @@
       "questionData": {
         "character1": "Omar",
         "character2": "Lily",
-        "line1": "How often do you visit the dentist?",
-        "answer": "I visit the dentist every 6 months",
+        "line1": "What should I do with that gauze?",
+        "answer": "You'll need to bite firmly.",
         "distractors": [
-          "I only call the dentist",
-          "I am afraid of the dentist",
-          "I visit the dentist every week"
+          "Rinse your mouth with warm water.",
+          "Spit it out right away.",
+          "Hold it loosely between your teeth."
         ]
       },
-      "audio_file1": "how-often-do-you-visit-the-dentist-convo",
-      "audio_file2": "i-visit-the-dentist-every-6-months-convo"
+      "audio_file1": "what-should-i-do-with-that-gauze-convo",
+      "audio_file2": "you-ll-need-to-bite-firmly-convo"
     },
     {
       "template": "AppearDisappear",
       "questionData": {
-        "words": "The dentist explains everything in detail.",
+        "words": "I have been feeling some sensitivity on the lower left.",
         "distractors": [
-          "quickly",
-          "shows",
-          "slowly"
+          "sharp",
+          "upper",
+          "right",
+          "noticed"
         ]
       },
-      "audio_file": "the-dentist-explains-everything-in-detail-convo"
+      "audio_file": "i-have-been-feeling-some-sensitivity-on-the-lower-left-convo"
+    },
+    {
+      "template": "GrammarForm",
+      "questionData": {
+        "sentence": "He _____ an appointment after the painful swelling started.",
+        "answer": "scheduled",
+        "distractors": [
+          "schedule",
+          "schedules",
+          "will schedule"
+        ]
+      },
+      "audio_file": "he-scheduled-an-appointment-after-the-painful-swelling-started-convo"
+    },
+    {
+      "template": "ClozeSequence",
+      "questionData": {
+        "sentence": "The dentist _____ her before he had to _____ the tooth.",
+        "answer": [
+          "warned",
+          "extract"
+        ],
+        "distractors": [
+          "told",
+          "called",
+          "remove",
+          "clean"
+        ]
+      },
+      "audio_file": "the-dentist-warned-her-before-he-had-to-extract-the-tooth-convo"
     },
     {
       "template": "imageQuizTemplate-1",
@@ -239,9 +235,9 @@
     {
       "template": "SentenceBuilder",
       "questionData": {
-        "correct_order": "I am not afraid of the dentist"
+        "correct_order": "My tooth aches every time I chew."
       },
-      "audio_file": "i-am-not-afraid-of-the-dentist-convo"
+      "audio_file": "my-tooth-aches-every-time-i-chew-convo"
     },
     {
       "template": "imageQuizTemplate-1",

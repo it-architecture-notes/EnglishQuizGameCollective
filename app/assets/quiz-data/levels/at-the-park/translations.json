@@ -4,17 +4,34 @@
       "english_word": "beautiful",
       "translations": {
         "tr": "güzel",
-        "es": "hermosa",
-        "fr": "belle",
+        "es": "hermoso",
+        "fr": "beau",
         "de": "schön",
-        "it": "bellissimo",
-        "pt": "lindo",
+        "it": "bello",
+        "pt": "bonito",
         "ru": "красивый",
         "zh": "美丽的",
         "ja": "美しい",
         "ko": "아름다운",
-        "ar": "جميلة",
+        "ar": "جميل",
         "hi": "सुन्दर"
+      }
+    },
+    {
+      "english_word": "to jog",
+      "translations": {
+        "tr": "koşmak / jogging yapmak",
+        "es": "trotar",
+        "fr": "faire du jogging",
+        "de": "joggen",
+        "it": "fare jogging",
+        "pt": "correr levemente",
+        "ru": "бегать трусцой",
+        "zh": "慢跑",
+        "ja": "ジョギングする",
+        "ko": "조깅하다",
+        "ar": "يجري",
+        "hi": "धीरे दौड़ना"
       }
     },
     {
@@ -30,25 +47,42 @@
         "zh": "跳",
         "ja": "ジャンプする",
         "ko": "점프하다",
-        "ar": "للقفز",
+        "ar": "يقفز",
         "hi": "कूदना"
       }
     },
     {
-      "english_word": "to enjoy",
+      "english_word": "to chase",
       "translations": {
-        "tr": "zevk almak",
-        "es": "disfrutar",
-        "fr": "profiter",
-        "de": "zu genießen",
-        "it": "per godere",
-        "pt": "aproveitar",
-        "ru": "наслаждаться",
-        "zh": "享受",
-        "ja": "楽しむ",
-        "ko": "즐기다",
-        "ar": "للاستمتاع",
-        "hi": "आनंद लेना"
+        "tr": "kovalamak",
+        "es": "perseguir",
+        "fr": "chasser",
+        "de": "jagen",
+        "it": "inseguire",
+        "pt": "perseguir",
+        "ru": "преследовать",
+        "zh": "追逐",
+        "ja": "追いかける",
+        "ko": "쫓다",
+        "ar": "يطارد",
+        "hi": "पीछा करना"
+      }
+    },
+    {
+      "english_word": "to swing",
+      "translations": {
+        "tr": "sallanmak",
+        "es": "columpiarse",
+        "fr": "se balancer",
+        "de": "schaukeln",
+        "it": "dondolarsi",
+        "pt": "balançar",
+        "ru": "качаться",
+        "zh": "荡秋千",
+        "ja": "ブランコに乗る",
+        "ko": "그네를 타다",
+        "ar": "يتأرجح",
+        "hi": "झूलना"
       }
     },
     {
@@ -64,7 +98,7 @@
         "zh": "逃跑",
         "ja": "逃げる",
         "ko": "도망치다",
-        "ar": "الهروب",
+        "ar": "يهرب",
         "hi": "भाग जाना"
       }
     },
@@ -75,13 +109,13 @@
         "es": "escalar",
         "fr": "grimper",
         "de": "klettern",
-        "it": "salire",
-        "pt": "subir",
-        "ru": "подняться",
+        "it": "arrampicarsi",
+        "pt": "escalar",
+        "ru": "взбираться",
         "zh": "攀登",
         "ja": "登る",
         "ko": "오르다",
-        "ar": "لتسلق",
+        "ar": "يتسلق",
         "hi": "चढ़ना"
       }
     },
@@ -95,10 +129,10 @@
         "it": "cadere",
         "pt": "cair",
         "ru": "падать",
-        "zh": "跌倒",
+        "zh": "掉下",
         "ja": "落ちる",
         "ko": "떨어지다",
-        "ar": "للسقوط",
+        "ar": "يسقط",
         "hi": "गिरना"
       }
     },
@@ -106,7 +140,7 @@
       "english_word": "to throw",
       "translations": {
         "tr": "atmak",
-        "es": "tirar",
+        "es": "lanzar",
         "fr": "jeter",
         "de": "werfen",
         "it": "lanciare",
@@ -114,60 +148,77 @@
         "ru": "бросить",
         "zh": "扔",
         "ja": "投げる",
-        "ko": "던지기",
-        "ar": "لرمي",
+        "ko": "던지다",
+        "ar": "يرمي",
         "hi": "फेंकना"
       }
     },
     {
-      "english_word": "to play",
+      "english_word": "kite",
       "translations": {
-        "tr": "oynamak",
-        "es": "jugar",
-        "fr": "jouer",
-        "de": "zu spielen",
-        "it": "per giocare",
-        "pt": "jogar",
-        "ru": "играть",
-        "zh": "玩",
-        "ja": "遊ぶ",
-        "ko": "놀다",
-        "ar": "للعب",
-        "hi": "खेलने के लिए"
+        "tr": "uçurtma",
+        "es": "cometa",
+        "fr": "cerf-volant",
+        "de": "Drachen",
+        "it": "aquilone",
+        "pt": "pipa",
+        "ru": "воздушный змей",
+        "zh": "风筝",
+        "ja": "凧",
+        "ko": "연",
+        "ar": "طائرة ورقية",
+        "hi": "पतंग"
       }
     },
     {
-      "english_word": "fun",
+      "english_word": "line",
       "translations": {
-        "tr": "eğlence",
-        "es": "divertido",
-        "fr": "amusant",
-        "de": "Spaß",
-        "it": "divertimento",
-        "pt": "divertido",
-        "ru": "веселье",
-        "zh": "有趣",
-        "ja": "楽しい",
-        "ko": "재미",
-        "ar": "متعة",
-        "hi": "मज़ा"
+        "tr": "çizgi",
+        "es": "línea",
+        "fr": "ligne",
+        "de": "Linie",
+        "it": "linea",
+        "pt": "linha",
+        "ru": "линия",
+        "zh": "线",
+        "ja": "線",
+        "ko": "선",
+        "ar": "خط",
+        "hi": "रेखा"
       }
     },
     {
-      "english_word": "what kind of dog",
+      "english_word": "to picnic",
       "translations": {
-        "tr": "ne tür bir köpek",
-        "es": "qué tipo de perro",
-        "fr": "quel genre de chien",
-        "de": "was für ein Hund",
-        "it": "che tipo di cane",
-        "pt": "que tipo de cachorro",
-        "ru": "какой породы собака",
-        "zh": "什么品种的狗",
-        "ja": "どんな犬種",
-        "ko": "어떤 종류의 개",
-        "ar": "أي نوع من الكلاب",
-        "hi": "किस तरह का कुत्ता"
+        "tr": "piknik yapmak",
+        "es": "hacer un picnic",
+        "fr": "faire un pique-nique",
+        "de": "picknicken",
+        "it": "fare un picnic",
+        "pt": "fazer um piquenique",
+        "ru": "устраивать пикник",
+        "zh": "野餐",
+        "ja": "ピクニックをする",
+        "ko": "피크닉을 하다",
+        "ar": "يتنزه",
+        "hi": "पिकनिक मनाना"
+      }
+    },
+    {
+      "english_word": "outdoors",
+      "translations": {
+        "tr": "açık havada",
+        "es": "al aire libre",
+        "fr": "en plein air",
+        "de": "im Freien",
+        "it": "all'aperto",
+        "pt": "ao ar livre",
+        "ru": "на улице",
+        "zh": "在户外",
+        "ja": "屋外で",
+        "ko": "야외에서",
+        "ar": "في الهواء الطلق",
+        "hi": "बाहर"
       }
     }
   ]

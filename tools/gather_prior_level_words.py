@@ -28,6 +28,11 @@ from pathlib import Path
 
 _WORD_PAIRS_TEMPLATE_IDS = frozenset({"WordPairs", "ConvoTemplate-WordPairs"})
 
+# game-flow iconImageName -> on-disk folder when names differ
+_FLOW_ICON_DISK_ALIASES: dict[str, str] = {
+    "city-walk": "walking-in-the-city",
+}
+
 
 def repo_root() -> Path:
     return Path(__file__).resolve().parent.parent
@@ -39,32 +44,99 @@ def normalize_phrase(text: str) -> str:
 
 def load_flow_order(flow_path: Path) -> list[str]:
     """Return ``iconImageName`` values in game-flow order."""
+    return list(load_flow_entries(flow_path).keys())
+
+
+def load_flow_entries(flow_path: Path) -> dict[str, str]:
+    """Return ``iconImageName`` -> title from game-flow (insertion order)."""
     data = json.loads(flow_path.read_text(encoding="utf-8"))
     if not isinstance(data, list):
         raise SystemExit(f"Expected JSON array in {flow_path}")
-    names: list[str] = []
+    entries: dict[str, str] = {}
     for entry in data:
         if isinstance(entry, dict):
             name = entry.get("iconImageName")
             if isinstance(name, str) and name.strip():
-                names.append(name.strip())
-    return names
+                title = entry.get("title")
+                entries[name.strip()] = (
+                    title.strip() if isinstance(title, str) else ""
+                )
+    return entries
+
+
+def _dir_with_questions(levels_root: Path, folder_name: str) -> Path | None:
+    levels_root = levels_root.resolve()
+    for base in (levels_root / "implemented", levels_root):
+        candidate = base / folder_name
+        if (candidate / "questions.json").is_file():
+            return candidate.resolve()
+    return None
 
 
 def resolve_level_dir(levels_root: Path, icon_name: str) -> Path | None:
     """Find level folder containing ``questions.json`` for ``iconImageName``."""
+    icon_name = icon_name.strip()
     levels_root = levels_root.resolve()
-    candidates = [
-        levels_root / "implemented" / icon_name,
-        levels_root / icon_name,
-    ]
-    for c in candidates:
-        if (c / "questions.json").is_file():
-            return c.resolve()
+
+    resolved = _dir_with_questions(levels_root, icon_name)
+    if resolved is not None:
+        return resolved
+
+    alias = _FLOW_ICON_DISK_ALIASES.get(icon_name)
+    if alias:
+        resolved = _dir_with_questions(levels_root, alias)
+        if resolved is not None:
+            return resolved
+
     for p in levels_root.rglob("questions.json"):
         if p.parent.name == icon_name:
             return p.parent.resolve()
+
+    # Image-only splits on disk: body-parts -> body-parts-1, body-parts-2, ...
+    prefix = f"{icon_name}-"
+    numbered: list[tuple[int, Path]] = []
+    for p in levels_root.rglob("questions.json"):
+        parent = p.parent
+        if not parent.name.startswith(prefix):
+            continue
+        suffix = parent.name[len(prefix) :]
+        if suffix.isdigit():
+            numbered.append((int(suffix), parent))
+    if numbered:
+        numbered.sort(key=lambda item: item[0])
+        return numbered[0][1].resolve()
+
     return None
+
+
+def is_image_only_flow_title(title: str) -> bool:
+    return "image only" in (title or "").lower()
+
+
+def resolve_prior_level_dirs(
+    prior_names: list[str],
+    *,
+    levels_root: Path,
+    flow_path: Path,
+) -> tuple[list[tuple[str, Path]], list[str]]:
+    """
+    Map prior flow icon names to level folders.
+
+    Skips flow entries titled ``… Image only`` when no folder exists (no warning).
+    Returns (prior_dirs, missing_icon_names_still_unresolved).
+    """
+    flow_titles = load_flow_entries(flow_path)
+    prior_dirs: list[tuple[str, Path]] = []
+    missing: list[str] = []
+    for name in prior_names:
+        level_dir = resolve_level_dir(levels_root, name)
+        if level_dir is None:
+            if is_image_only_flow_title(flow_titles.get(name, "")):
+                continue
+            missing.append(name)
+            continue
+        prior_dirs.append((name, level_dir))
+    return prior_dirs, missing
 
 
 def level_label(level_dir: Path, levels_root: Path) -> str:
@@ -226,14 +298,11 @@ def main(argv: list[str] | None = None) -> int:
     else:
         prior_names = flow_order[:target_idx]
 
-    prior_dirs: list[tuple[str, Path]] = []
-    missing: list[str] = []
-    for name in prior_names:
-        d = resolve_level_dir(levels_root, name)
-        if d is None:
-            missing.append(name)
-            continue
-        prior_dirs.append((name, d))
+    prior_dirs, missing = resolve_prior_level_dirs(
+        prior_names,
+        levels_root=levels_root,
+        flow_path=flow_path,
+    )
 
     if args.list_levels:
         for name, d in prior_dirs:

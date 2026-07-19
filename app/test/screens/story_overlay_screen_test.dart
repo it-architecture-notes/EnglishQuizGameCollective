@@ -9,7 +9,7 @@ void main() {
     final page = StoryPageConfig(
       eventId: 1,
       pageTemplateId: 1,
-      trigger: const StoryTrigger(type: StoryTriggerType.beforeLevel, level: 1),
+      trigger: const StoryTrigger(type: StoryTriggerType.beforeLevel, level: 'greetings'),
       storyText: const {'en': 'Help the character reach the next place.'},
     );
     const template = StoryTemplateConfig(
@@ -43,7 +43,7 @@ void main() {
     final page = StoryPageConfig(
       eventId: 2,
       pageTemplateId: 4,
-      trigger: const StoryTrigger(type: StoryTriggerType.afterLevel, level: 1),
+      trigger: const StoryTrigger(type: StoryTriggerType.afterLevel, level: 'greetings'),
       storyText: const {'en': 'Great job!'},
     );
     const template = StoryTemplateConfig(

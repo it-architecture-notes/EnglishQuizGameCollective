@@ -18,6 +18,40 @@
       }
     },
     {
+      "english_word": "to dig",
+      "translations": {
+        "tr": "kazmak",
+        "es": "cavar",
+        "fr": "creuser",
+        "de": "graben",
+        "it": "scavare",
+        "pt": "cavar",
+        "ru": "копать",
+        "zh": "挖",
+        "ja": "掘る",
+        "ko": "파다",
+        "ar": "يحفر",
+        "hi": "खोदना"
+      }
+    },
+    {
+      "english_word": "soil",
+      "translations": {
+        "tr": "toprak",
+        "es": "suelo",
+        "fr": "sol",
+        "de": "Boden",
+        "it": "terreno",
+        "pt": "solo",
+        "ru": "почва",
+        "zh": "土壤",
+        "ja": "土",
+        "ko": "흙",
+        "ar": "تربة",
+        "hi": "मिट्टी"
+      }
+    },
+    {
       "english_word": "to pick apples",
       "translations": {
         "tr": "elma toplamak",
@@ -69,71 +103,54 @@
       }
     },
     {
-      "english_word": "finally",
+      "english_word": "to produce",
       "translations": {
-        "tr": "nihayet",
-        "es": "finalmente",
-        "fr": "enfin",
-        "de": "endlich",
-        "it": "finalmente",
-        "pt": "finalmente",
-        "ru": "наконец",
-        "zh": "最后",
-        "ja": "ついに",
-        "ko": "마침내",
-        "ar": "أخيرا",
-        "hi": "अंततः"
+        "tr": "üretmek",
+        "es": "producir",
+        "fr": "produire",
+        "de": "herstellen",
+        "it": "produrre",
+        "pt": "produzir",
+        "ru": "производить",
+        "zh": "生产",
+        "ja": "生産する",
+        "ko": "생산하다",
+        "ar": "ينتج",
+        "hi": "उत्पादन करना"
       }
     },
     {
-      "english_word": "to move something",
+      "english_word": "to build",
       "translations": {
-        "tr": "bir şeyi taşımak",
-        "es": "mover algo",
-        "fr": "déplacer quelque chose",
-        "de": "etwas bewegen",
-        "it": "spostare qualcosa",
-        "pt": "mover algo",
-        "ru": "переместить что-то",
-        "zh": "移动某物",
-        "ja": "何かを動かす",
-        "ko": "무언가를 옮기다",
-        "ar": "يحرك شيئاً",
-        "hi": "कुछ स्थानांतरित करना"
+        "tr": "inşa etmek",
+        "es": "construir",
+        "fr": "construire",
+        "de": "bauen",
+        "it": "costruire",
+        "pt": "construir",
+        "ru": "строить",
+        "zh": "建造",
+        "ja": "建てる",
+        "ko": "짓다",
+        "ar": "يبني",
+        "hi": "बनाना"
       }
     },
     {
-      "english_word": "daily",
+      "english_word": "stable",
       "translations": {
-        "tr": "günlük",
-        "es": "diariamente",
-        "fr": "quotidiennement",
-        "de": "täglich",
-        "it": "quotidianamente",
-        "pt": "diariamente",
-        "ru": "ежедневно",
-        "zh": "每天",
-        "ja": "毎日",
-        "ko": "매일",
-        "ar": "يوميًا",
-        "hi": "प्रतिदिन"
-      }
-    },
-    {
-      "english_word": "to add",
-      "translations": {
-        "tr": "eklemek",
-        "es": "agregar",
-        "fr": "ajouter",
-        "de": "hinzufügen",
-        "it": "aggiungere",
-        "pt": "adicionar",
-        "ru": "добавить",
-        "zh": "添加",
-        "ja": "追加する",
-        "ko": "추가하다",
-        "ar": "يضيف",
-        "hi": "जोड़ना"
+        "tr": "ahır",
+        "es": "establo",
+        "fr": "écurie",
+        "de": "Stall",
+        "it": "stalla",
+        "pt": "estábulo",
+        "ru": "конюшня",
+        "zh": "马厩",
+        "ja": "厩舎",
+        "ko": "마구간",
+        "ar": "إسطبل",
+        "hi": "अस्तबल"
       }
     },
     {
@@ -154,54 +171,71 @@
       }
     },
     {
-      "english_word": "to raise something",
+      "english_word": "to raise",
       "translations": {
-        "tr": "bir şeyi yetiştirmek",
-        "es": "criar algo",
-        "fr": "élever quelque chose",
-        "de": "etwas aufziehen",
-        "it": "allevare qualcosa",
-        "pt": "criar algo",
-        "ru": "выращивать что-то",
-        "zh": "饲养某物",
-        "ja": "何かを育てる",
-        "ko": "무언가를 키우다",
-        "ar": "يربي شيئاً",
-        "hi": "कुछ पालना"
+        "tr": "yetiştirmek",
+        "es": "criar",
+        "fr": "élever",
+        "de": "aufziehen",
+        "it": "allevare",
+        "pt": "criar",
+        "ru": "выращивать",
+        "zh": "饲养",
+        "ja": "育てる",
+        "ko": "기르다",
+        "ar": "يربي",
+        "hi": "पालना"
       }
     },
     {
-      "english_word": "to plant something",
+      "english_word": "to sow",
       "translations": {
-        "tr": "bir şey dikmek",
-        "es": "plantar algo",
-        "fr": "planter quelque chose",
-        "de": "etwas pflanzen",
-        "it": "piantare qualcosa",
-        "pt": "plantar algo",
-        "ru": "посадить что-то",
-        "zh": "种植某物",
-        "ja": "何かを植える",
-        "ko": "무언가를 심다",
-        "ar": "يزرع شيئاً",
-        "hi": "कुछ लगाना"
+        "tr": "tohum ekmek",
+        "es": "sembrar",
+        "fr": "semer",
+        "de": "säen",
+        "it": "seminare",
+        "pt": "semear",
+        "ru": "сеять",
+        "zh": "播种",
+        "ja": "種をまく",
+        "ko": "씨를 뿌리다",
+        "ar": "يزرع البذور",
+        "hi": "बीज बोना"
       }
     },
     {
-      "english_word": "especially",
+      "english_word": "to plant",
       "translations": {
-        "tr": "özellikle",
-        "es": "especialmente",
-        "fr": "surtout",
-        "de": "besonders",
-        "it": "soprattutto",
-        "pt": "especialmente",
-        "ru": "особенно",
-        "zh": "尤其是",
-        "ja": "特に",
-        "ko": "특히",
-        "ar": "خصوصا",
-        "hi": "विशेषकर"
+        "tr": "dikmek",
+        "es": "plantar",
+        "fr": "planter",
+        "de": "pflanzen",
+        "it": "piantare",
+        "pt": "plantar",
+        "ru": "сажать",
+        "zh": "种植",
+        "ja": "植える",
+        "ko": "심다",
+        "ar": "يزرع",
+        "hi": "लगाना"
+      }
+    },
+    {
+      "english_word": "to harvest",
+      "translations": {
+        "tr": "hasat etmek",
+        "es": "cosechar",
+        "fr": "récolter",
+        "de": "ernten",
+        "it": "raccogliere",
+        "pt": "colher",
+        "ru": "собирать урожай",
+        "zh": "收割",
+        "ja": "収穫する",
+        "ko": "수확하다",
+        "ar": "يحصد",
+        "hi": "फसल काटना"
       }
     }
   ]

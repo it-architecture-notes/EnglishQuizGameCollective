@@ -1,0 +1,236 @@
+{
+  "levelQuestions": [
+    {
+      "template": "ConvoTemplate-1",
+      "questionData": {
+        "character1": "Tom",
+        "character2": "Mia",
+        "line1": "Do you _____ tea or coffee?",
+        "line2": "I _____ coffee in the morning.",
+        "answer": "prefer",
+        "distractors": [
+          "count",
+          "bake",
+          "lock"
+        ]
+      },
+      "audio_file1": "do-you-prefer-tea-or-coffee-convo",
+      "audio_file2": "i-prefer-coffee-in-the-morning-convo"
+    },
+    {
+      "template": "WordPairs",
+      "questionData": {
+        "english_words": [
+          "person",
+          "couple",
+          "team",
+          "place"
+        ],
+        "translations": [
+          {
+            "tr": "kişi / insan",
+            "es": "persona",
+            "fr": "personne",
+            "de": "Person",
+            "it": "persona",
+            "pt": "pessoa",
+            "ru": "человек",
+            "zh": "人 / 个人",
+            "ja": "人 / 人間",
+            "ko": "사람 / 인간",
+            "ar": "شخص",
+            "hi": "व्यक्ति"
+          },
+          {
+            "tr": "çift",
+            "es": "pareja",
+            "fr": "couple",
+            "de": "Paar",
+            "it": "coppia",
+            "pt": "casal",
+            "ru": "пара",
+            "zh": "一对 / 夫妻",
+            "ja": "カップル / 夫婦",
+            "ko": "커플 / 부부",
+            "ar": "زوجان",
+            "hi": "जोड़ा"
+          },
+          {
+            "tr": "takım / ekip",
+            "es": "equipo",
+            "fr": "équipe",
+            "de": "Team / Mannschaft",
+            "it": "squadra",
+            "pt": "equipe",
+            "ru": "команда",
+            "zh": "团队 / 队伍",
+            "ja": "チーム / 班",
+            "ko": "팀 / 단체",
+            "ar": "فريق",
+            "hi": "टीम"
+          },
+          {
+            "tr": "yer / mekân",
+            "es": "lugar / sitio",
+            "fr": "lieu / endroit",
+            "de": "Ort / Platz",
+            "it": "posto",
+            "pt": "lugar",
+            "ru": "место",
+            "zh": "地方 / 场所",
+            "ja": "場所 / ところ",
+            "ko": "장소 / 곳",
+            "ar": "مكان",
+            "hi": "जगह"
+          }
+        ]
+      }
+    },
+    {
+      "template": "AppearDisappear",
+      "questionData": {
+        "words": "We should respect the law.",
+        "distractors": [
+          "court",
+          "judge",
+          "police",
+          "order"
+        ]
+      },
+      "audio_file": "we-should-respect-the-law-convo"
+    },
+    {
+      "template": "ConvoTemplate-1",
+      "questionData": {
+        "character1": "Lisa",
+        "character2": "Tom",
+        "line1": "Try to _____ the busy street at noon.",
+        "line2": "Good idea, it is very crowded.",
+        "answer": "avoid",
+        "distractors": [
+          "marry",
+          "pour",
+          "kick"
+        ]
+      },
+      "audio_file1": "try-to-avoid-the-busy-street-at-noon-convo",
+      "audio_file2": "good-idea-it-is-very-crowded-convo"
+    },
+    {
+      "template": "ClozeSequence",
+      "questionData": {
+        "sentence": "The sun is _____ and the weather is _____ today.",
+        "answer": [
+          "bright",
+          "fine"
+        ],
+        "distractors": [
+          "simple",
+          "heavy",
+          "dark",
+          "really"
+        ]
+      },
+      "audio_file": "the-sun-is-bright-and-the-weather-is-fine-today-convo"
+    },
+    {
+      "template": "SentenceBuilder",
+      "questionData": {
+        "correct_order": "I need to iron my shirt."
+      },
+      "audio_file": "i-need-to-iron-my-shirt-convo"
+    },
+    {
+      "template": "AppearDisappear",
+      "questionData": {
+        "words": "Use tea instead of coffee this morning.",
+        "distractors": [
+          "signed",
+          "never",
+          "carried",
+          "cost"
+        ]
+      },
+      "audio_file": "use-tea-instead-of-coffee-this-morning-convo"
+    },
+    {
+      "template": "ConvoTemplate-1",
+      "questionData": {
+        "character1": "Ana",
+        "character2": "Mark",
+        "line1": "Would you _____ watching my bag?",
+        "line2": "Sure, I do not _____ at all.",
+        "answer": "mind",
+        "distractors": [
+          "drop",
+          "mix",
+          "wish"
+        ]
+      },
+      "audio_file1": "would-you-mind-watching-my-bag-convo",
+      "audio_file2": "sure-i-do-not-mind-at-all-convo"
+    },
+    {
+      "template": "ClozeSequence",
+      "questionData": {
+        "sentence": "She was _____ _____ to answer every question.",
+        "answer": [
+          "absolutely",
+          "quick"
+        ],
+        "distractors": [
+          "marry",
+          "bake",
+          "lock",
+          "drop"
+        ]
+      },
+      "audio_file": "she-was-absolutely-quick-to-answer-every-question-convo"
+    },
+    {
+      "template": "ClozeSequence",
+      "questionData": {
+        "sentence": "The _____ found a quiet _____ for lunch.",
+        "answer": [
+          "couple",
+          "place"
+        ],
+        "distractors": [
+          "fold",
+          "earn",
+          "wish",
+          "kick"
+        ]
+      },
+      "audio_file": "the-couple-found-a-quiet-place-for-lunch-convo"
+    },
+    {
+      "template": "DialogueCompletion",
+      "questionData": {
+        "character1": "Omar",
+        "character2": "Lily",
+        "line1": "Are phones allowed in the library?",
+        "answer": "No, they are not allowed.",
+        "distractors": [
+          "Phones are expensive.",
+          "The library closes at six today.",
+          "I don't have a phone."
+        ]
+      },
+      "audio_file1": "are-phones-allowed-in-the-library-convo",
+      "audio_file2": "no-they-are-not-allowed-convo"
+    },
+    {
+      "template": "GrammarForm",
+      "questionData": {
+        "sentence": "The answer to this question is very _____.",
+        "answer": "simple",
+        "distractors": [
+          "quickly",
+          "immediately",
+          "heavy"
+        ]
+      }
+    }
+  ]
+}

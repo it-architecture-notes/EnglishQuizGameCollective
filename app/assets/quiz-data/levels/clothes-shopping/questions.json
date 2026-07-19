@@ -16,16 +16,16 @@
       "questionData": {
         "character1": "Sarah",
         "character2": "Daniel",
-        "line1": "Excuse me, can I ____ on this coat, please?",
+        "line1": "Excuse me, can I ____ this coat in the fitting room, please?",
         "line2": "Of course, here you go.",
         "answer": "try",
         "distractors": [
-          "wear",
+          "buy",
           "hang",
           "carry"
         ]
       },
-      "audio_file1": "excuse-me-can-i-try-on-this-coat-please-convo",
+      "audio_file1": "excuse-me-can-i-try-this-coat-in-the-fitting-room-please-convo",
       "audio_file2": "of-course-here-you-go-convo"
     },
     {
@@ -62,8 +62,8 @@
         "english_words": [
           "nice",
           "ugly",
-          "rich",
-          "poor"
+          "loose",
+          "tight"
         ],
         "translations": [
           {
@@ -95,32 +95,32 @@
             "hi": "कुरूप"
           },
           {
-            "tr": "zengin",
-            "es": "rico",
-            "fr": "riche",
-            "de": "reich",
-            "it": "ricco",
-            "pt": "rico",
-            "ru": "богатый",
-            "zh": "有钱的",
-            "ja": "リッチ",
-            "ko": "부자",
-            "ar": "ثري",
-            "hi": "अमीर"
+            "tr": "bol",
+            "es": "holgado",
+            "fr": "ample",
+            "de": "locker",
+            "it": "largo",
+            "pt": "folgado",
+            "ru": "свободный",
+            "zh": "宽松的",
+            "ja": "ゆるい",
+            "ko": "헐렁한",
+            "ar": "واسع",
+            "hi": "ढीला"
           },
           {
-            "tr": "fakir",
-            "es": "pobre",
-            "fr": "pauvre",
-            "de": "arm",
-            "it": "povero",
-            "pt": "pobre",
-            "ru": "бедный",
-            "zh": "穷",
-            "ja": "貧しい",
-            "ko": "가난한",
-            "ar": "فقير",
-            "hi": "गरीब"
+            "tr": "dar",
+            "es": "ajustado",
+            "fr": "serré",
+            "de": "eng",
+            "it": "stretto",
+            "pt": "apertado",
+            "ru": "тесный",
+            "zh": "紧的",
+            "ja": "きつい",
+            "ko": "꽉 끼는",
+            "ar": "ضيق",
+            "hi": "तंग"
           }
         ]
       }
@@ -144,15 +144,15 @@
     {
       "template": "AppearDisappear",
       "questionData": {
-        "words": "I prefer a jacket in dark blue.",
+        "words": "I would like to dress better this year.",
         "distractors": [
           "to",
-          "wear",
+          "pair",
           "shirt",
-          "bright"
+          "best"
         ]
       },
-      "audio_file": "i-prefer-a-jacket-in-dark-blue-convo"
+      "audio_file": "i-would-like-to-dress-better-this-year-convo"
     },
     {
       "template": "imageQuizTemplate-1",
@@ -197,19 +197,20 @@
     {
       "template": "ClozeSequence",
       "questionData": {
-        "sentence": "These shoes are too _____ and I want to _____ them.",
+        "sentence": "She couldn't _____ the jacket, so she decided to _____ it after buying it _____.",
         "answer": [
-          "loose",
-          "return"
+          "afford",
+          "return",
+          "by mistake"
         ],
         "distractors": [
-          "bought",
-          "found",
-          "kept",
-          "paid"
+          "pay",
+          "keep",
+          "on purpose",
+          "carefully"
         ]
       },
-      "audio_file": "these-shoes-are-too-loose-and-i-want-to-return-them-convo"
+      "audio_file": "she-couldn-t-afford-the-jacket-so-she-decided-to-return-it-after-buying-it-by-mistake-convo"
     },
     {
       "template": "GrammarForm",
@@ -217,28 +218,28 @@
         "sentence": "I think you _____ this style.",
         "answer": "will love",
         "distractors": [
-          "will loved",
-          "are loving",
-          "should be loving"
+          "love",
+          "loved",
+          "loving"
         ]
       }
     },
     {
       "template": "ClozeSequence",
       "questionData": {
-        "sentence": "She likes to _____ colorful skirts because they make her feel _____.",
+        "sentence": "She wanted to _____ a dress that would _____ her shoes.",
         "answer": [
           "wear",
-          "young"
+          "match"
         ],
         "distractors": [
-          "quiet",
-          "dressing",
-          "often",
-          "boring"
+          "buy",
+          "fit",
+          "clash",
+          "find"
         ]
       },
-      "audio_file": "she-likes-to-wear-colorful-skirts-because-they-make-her-feel-young-convo"
+      "audio_file": "she-wanted-to-wear-a-dress-that-would-match-her-shoes-convo"
     },
     {
       "template": "ClozeSequence",

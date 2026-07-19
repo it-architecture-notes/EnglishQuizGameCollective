@@ -6,7 +6,8 @@ description: >-
   CSVs and Oxford 3000 list, translation accuracy, translated-word inventory vs image
   and text questions,   swap suggestions (verbs/adjectives/adverbs only — not object
   nouns), unused reference-word opportunities for the level context, within-level duplicate
-  answer-word checks, image quiz checks, distractors (prefer prior-level consumed vocabulary),
+  answer-word checks, image quiz checks, distractors (mandatory validation — no distractor may be
+  suitable as a correct answer; prefer prior-level consumed vocabulary only after validity passes),
   punctuation, and question order. Runs
   tools/gather_prior_level_words.py for prior WordPairs and translation usage, and
   audio stem name alignment in questions.json (no .m4a files required). Use when the
@@ -39,6 +40,7 @@ Also consult:
 | Parsers | `app/lib/models/level_config.dart` |
 | Final word CSVs (6 files) | `cursor-claude-common/references/final words/` |
 | Oxford 3000 word list | `cursor-claude-common/references/remove-word-list-references/3000 words oxford.txt` |
+| LanGeek common nouns | `cursor-claude-common/references/remove-word-list-references/langeek-500-most-common-nouns.txt` |
 | Word usage tracking script | `tools/update_final_word_counts_from_levels.py` |
 | **Prior-level consumed words** | `tools/gather_prior_level_words.py` — **run this first** |
 
@@ -46,15 +48,15 @@ Also consult:
 
 Check every question from these perspectives:
 
-- Question quality, word selection, grammar quality keeping the level name and context in mind. Not repeating words from previous levels too much, using new words from the 6 csv (final words file) and 3000 oxford words text files so that game covers more words.
+- Question quality, word selection, grammar quality keeping the level name and context in mind. Not repeating words from previous levels too much, using new words from the 6 csv (final words file), Oxford 3000, and LanGeek common nouns reference files so that game covers more words.
 - **Prior-level word reuse limit:** 1–2 words from prior levels may appear as key teaching words in the current level's questions (e.g. in a sentence stem or dialogue line) when strongly relevant to the current context — but they must **not** be re-added to `translations.json` (already consumed). If a word has already appeared as a key teaching word in **2 prior levels**, do not use it in the current level. Global maximum: **2 total appearances** across all levels as a key teaching word. Using a word three times leaves no room for new vocabulary. **Phrasal verbs are independent entries:** a phrasal verb such as `get up` or `turn off` does not count as consuming its base verb — `get` and `turn` remain available for use in other levels' translations independently. The same applies in reverse: having `get` in translations does not block `get up` from being used in another level.
 - if a word is in either wordpairs array or translations.json array it is used  previously, otherwise it's open to use again. any level later using it does not mean it cannot be used in this level.
 - Mostly using verbs first, then adjectives and adverbs etc.
 - Giving more basic words higher priority and trying to consume A1 words first so that learners learn common and necessary words first. Balancing the context words with common word e.g. not using B2 word that is appropriate for the context when there are many A1 words pending in the list to be consumed.
-- **Grammar progression:** each ML **introduces** new structures (see table). Levels may use grammar from **ML1 through current ML**; they **must not** use grammar first introduced in a **later** ML. See **Grammar progression by mainLevel**.
+- **Grammar progression:** grammar is aggregated into 4 macro-bands (Parts), each spanning several MLs (see table). Levels may use grammar from **the current Part and all earlier Parts**; they **must not** use grammar aggregated into a **later** Part. See **Grammar progression by mainLevel**.
 - Translations must be correct in word pairs and translation files. There must not be more than 15 words in translations can be less approx 12.
 - The word we translate can be counted as that can be dropped from the list of selection. Otherwise that word is still open to use. So the available words list is complete list in files minus the ones that are in the translation list (word pair or translations json file) in previous levels.
-- Check distractors and provide better suggestions. **Prefer distractors drawn from previously used vocabulary** (prior levels' `translations.json` + WordPairs — see **Prior-vocabulary distractors** below).
+- Check distractors and provide better suggestions. **Every distractor in every question must be validated** — see **Distractor validity (mandatory)** below. **Prefer distractors drawn from previously used vocabulary** (prior levels' `translations.json` + WordPairs — see **Prior-vocabulary distractors** below) only when they still **fail** the validity test.
 - **Always include image questions** (`imageQuizTemplate-1`, `imageQuizTemplate-2`) in the audit — image presence, on-theme distractors, and which nouns they already teach (see **Image questions** below).
 - **Translated-word inventory:** cross-check every `english_word` in `translations.json` and every `english_words` entry in `WordPairs` against introduced vocabulary (answers **plus** AppearDisappear / SentenceBuilder sentences), image-taught labels, and prior-level consumption. Words in AppearDisappear or SentenceBuilder **do not need a blank answer** to justify a translation row. Flag wasted, redundant, or weak slots; suggest **replacements** from unused A1/context words (see **Vocabulary swap suggestions** below). Swap suggestions must **not** be object nouns — use verbs, adjectives, adverbs, prepositions, etc.
 - **Unused reference-word opportunities:** if in your opinion there are better unused words in the references that suit the context, mention them in the audit review (see **§4b Unused reference-word opportunities** below). This is separate from fixing broken slots — proactive suggestions only.
@@ -69,16 +71,14 @@ Use `game-flow.json` → `mainLevel` for the level under audit.
 
 ### Core rule
 
-Each row in the table below is what that **mainLevel newly introduces** — not the only grammar allowed in that chapter.
+Grammar is organized into **4 macro-bands (Parts)**, each spanning several mainLevels. Within a Part, **all** grammar aggregated into that Part is usable at **any** ML inside that Part's range — there is no further level-by-level gating inside a Part.
 
 | Rule | Meaning |
 |------|---------|
-| **Allowed** | Any structure introduced in **ML1 through the current ML** (inclusive). Levels should **reuse and review** earlier tenses freely. |
-| **Forbidden** | Any structure whose **first introduction** is in a **later ML**. Do not use in question stems, blank answers, GrammarForm `answer`, AppearDisappear / SentenceBuilder main focus, or distractors. |
-| **Introduce at this ML** | The current ML's row lists what is **new** this chapter. At least one text level in the band should introduce each new structure; individual levels may focus on review only. |
+| **Allowed** | Any structure aggregated into the **current Part or an earlier Part**. Levels should **reuse and review** earlier-Part grammar freely, and may use any current-Part grammar regardless of which ML within the Part first "introduces" it. |
+| **Forbidden** | Any structure aggregated into a **later Part**. Do not use in question stems, blank answers, GrammarForm `answer`, AppearDisappear / SentenceBuilder main focus, or distractors. |
 
-**How to audit ML *N*:**  
-**Allowed** = union of table rows ML1…ML*N*. **Forbidden** = union of rows ML(*N*+1)…ML12.
+**How to audit ML *N*:** find which Part contains ML*N* (see table below). **Allowed** = union of all Parts up to and including that Part. **Forbidden** = union of Parts strictly after it.
 
 Levels may mix themes; grammar must still obey the allowed / forbidden sets above.
 
@@ -86,53 +86,91 @@ Levels may mix themes; grammar must still obey the allowed / forbidden sets abov
 
 | Label | Meaning | Audit action |
 |-------|---------|--------------|
-| **OK — review** | Structure introduced in an **earlier** ML | No flag — expected recycling |
-| **OK — new intro** | Structure from the **current** ML's row | Good — this level helps introduce the band's new grammar |
-| **Forbidden — not yet** | Structure first introduced in a **later** ML | Flag **high** anywhere in the question (stem, answer, main sentence, distractor) |
+| **OK — review** | Structure aggregated into an **earlier Part** | No flag — expected recycling |
+| **OK — in band** | Structure aggregated into the **current Part** (regardless of which ML within the Part it's associated with) | No flag — fully allowed anywhere in this Part |
+| **Forbidden — not yet** | Structure aggregated into a **later Part** | Flag **high** anywhere in the question (stem, answer, main sentence, distractor) |
 
-**Medley levels** (`medley-1`, …): vocabulary is user-fixed; **grammar follows the same allowed / forbidden rule** for the flow slot's `mainLevel`. Medleys typically **review** grammar from ML1…current ML.
+**Medley levels** (`medley-1`, …): vocabulary is user-fixed; **grammar follows the same allowed / forbidden rule** for the flow slot's `mainLevel`'s Part. Medleys typically **review** grammar from Part 1…current Part.
 
 **Do not confuse:**
 
-- **Passive adjective / participle** (`Is the library closed?`, `fresh bread`) ≠ passive voice (`was built`, `is made from`) — latter is ML10+
+- **Passive adjective / participle** (`Is the library closed?`, `fresh bread`) ≠ passive voice (`was built`, `is made from`) — latter is Part 4
 - **Directional / fixed phrases** (`turn left`, `sold out`) ≠ past-tense verb teaching
-- **Polite chunk** `Could you help me…?` — introduced as fixed phrase at **ML3**; full **could / might / may** modal band starts **ML8**
-- **GrammarForm distractors** that are clearly wrong forms (e.g. `was celebrating` in an ML3 level) — flag **low** only; prefer distractors built from **allowed** grammar
+- **GrammarForm distractors** that are clearly wrong forms (e.g. `was celebrating` in a Part 1 level) — flag **low** only; prefer distractors built from **allowed** grammar
 
-### Progression table — newly introduced at each ML
+### Progression table — 4 Parts (aggregated bands)
 
-| ML | Newly introduced |
-|----|------------------|
-| **ML1** | Present Simple: **to be** (`am` / `is` / `are`); base present in short fixed phrases (`I go`, `we like`); Yes/No questions; WH-questions (`what`, `where`, `who`) |
-| **ML2** | Present Simple: 3rd person (`she goes`); negatives (`don't` / `doesn't`); questions (`Do you…?` / `Does she…?`); possessives; prepositions |
-| **ML3** | Imperative; modal **can** (ability); infinitives (`want to` / `need to` / `try to` / `like to`); fixed polite chunk **`Could you…?`** |
-| **ML4** | Present Continuous (`is` / `are` + -ing); `There is` / `There are`; infinitive of purpose (`to protect`, `to pay`); `some` / `any` |
-| **ML5** | Future: **will** and **be going to**; modal **must** (obligation); **comparative and superlative** adjectives |
-| **ML6** | Past Simple: **was** / **were**; **regular** verbs (`-ed` — `walked`, `moved`, `folded`) |
-| **ML7** | Past Simple: common **irregular** verbs (`went`, `had`, `came`, `made`, `started`, …); past questions and negatives (`Did you…?`, `didn't`) |
-| **ML8** | Modals: **should** (advice); **have to** / **need to** (obligation); **could** / **might** / **may** (possibility — full teaching) |
-| **ML9** | Present Perfect (`have` / `has` + past participle); `Have you ever…?`; **would like to** |
-| **ML10** | Past Continuous (`was` / `were` + -ing); **used to**; simple **passive voice** (`is made from`, `it is called`, `was built`) |
-| **ML11** | First conditional (`if` + present, `will`); second conditional (`if` + past, `would`) |
-| **ML12** | Present Perfect Continuous; **reported speech** (`He said that…`); third conditional (`If I had known…, I would have…`) |
+| Part | ML range | Aggregated grammar (usable anywhere within this Part) |
+|------|----------|---|
+| **Part 1** | ML1–ML3 | Present Simple: **to be** (`am`/`is`/`are`); base present in short fixed phrases (`I go`, `we like`); Yes/No questions; WH-questions (`what`, `where`, `who`) • 3rd person (`she goes`); negatives (`don't`/`doesn't`); questions (`Do you…?`/`Does she…?`); possessives; prepositions • Imperative; modal **can** (ability); infinitives (`want to`/`need to`/`try to`/`like to`); fixed polite chunk `Could you…?` • Present Continuous (`is`/`are` + -ing); `There is`/`There are`; infinitive of purpose (`to protect`, `to pay`); `some`/`any` |
+| **Part 2** | ML4–ML5 | Future: **will** and **be going to**; modal **must** (obligation); **comparative and superlative** adjectives • **First conditional** (`if` + present, `will` — e.g. "If I go, you will come.") |
+| **Part 3** | ML6–ML8 | Past Simple: **was**/**were**; **regular** verbs (`-ed` — `walked`, `moved`, `folded`) • Past Simple: common **irregular** verbs (`went`, `had`, `came`, `made`, `started`, …); past questions and negatives (`Did you…?`, `didn't`) • Modals: **should** (advice); **have to**/**need to** (obligation); **could**/**might**/**may** (possibility — full teaching) |
+| **Part 4** | ML9–ML12 (end) | Present Perfect (`have`/`has` + past participle); `Have you ever…?`; **would like to** • Past Continuous (`was`/`were` + -ing); **used to**; simple **passive voice** (`is made from`, `it is called`, `was built`) • Second conditional (`if` + past, `would`) • Present Perfect Continuous; **reported speech** (`He said that…`); third conditional (`If I had known…, I would have…`) |
 
 ### Quick examples
 
 | Band | OK (allowed) | Forbidden (not yet) |
 |------|----------------|---------------------|
-| ML5 | `We are going to watch a film.` (new) · `She likes music.` (ML3 review) | `I went home.` (past → ML6+) |
-| ML6 | `She moved here.` / `He was happy.` (new) · `I will apply tomorrow.` (ML5 review) | `Why did you leave?` (ML7) · `He went home.` (irregular past → ML7) |
-| ML7 | `Did you finish?` / `They came early.` (new) · `She walked home.` (ML6 review) | `I have finished.` (present perfect → ML9) |
-| ML9 | `Have you ever been there?` (new) · `I went yesterday.` (ML6–7 review) | `I was working when you called.` (past continuous → ML10) |
+| Part 1 (ML1–3) | `She is watching TV.` (Present Continuous, in-band) · `There is a bus stop near here.` (in-band) · `She likes music.` (to-be/base-present review) | `I went home.` (past → Part 3) · `We are going to watch a film.` (future → Part 2) |
+| Part 2 (ML4–5) | `We are going to watch a film.` (new) · `If I go, you will come.` (first conditional, new) · `There is a bus stop near here.` (Part 1 review) | `I went home.` (past → Part 3) |
+| Part 3 (ML6–8) | `She moved here.` / `He was happy.` (new) · `Did you finish?` / `They came early.` (new) · `I will apply tomorrow.` (Part 2 review) | `I have finished.` (present perfect → Part 4) |
+| Part 4 (ML9–12) | `Have you ever been there?` (new) · `I was working when you called.` (past continuous, new) · `I went yesterday.` (Part 3 review) | — (top band, nothing forbidden) |
 
-When auditing, state the level's **ML band**, list structures found, mark each **OK — review**, **OK — new intro**, or **Forbidden — not yet**.
+When auditing, state the level's **Part** (ML range), list structures found, mark each **OK — review**, **OK — in band**, or **Forbidden — not yet**.
+
+## Distractor validity (mandatory)
+
+**Every audit must check every distractor / `wrongAnswer` in the level.** Do not skip this step on a “quick pass” or when other fixes dominate the report.
+
+### Core rule
+
+A distractor is **invalid** if it could reasonably be accepted as a **correct answer** for that question — even when it is not the keyed answer, even when it is grammatical, and even when it is a prior-level word.
+
+**Invalid ≠ merely “different word”.** Fixing bad grammar (e.g. rewriting an ungrammatical distractor into fluent English) does **not** make it valid — fluent distractors that still answer the question remain **invalid**.
+
+### Required test (apply to each distractor)
+
+1. **Insert the distractor** into every blank it could fill (Cloze: each blank; Convo: **both** lines; DialogueCompletion: as the reply; GrammarForm / image MCQ: as the chosen option).
+2. Read the resulting sentence or reply aloud (or mentally).
+3. Ask: **“If the player picked only this option, would a native speaker treat it as a reasonable correct response?”**
+   - **Yes** → **invalid distractor** — flag **high** and suggest a replacement.
+   - **No** → valid — only then consider prior-vocabulary preference and on-theme fit.
+
+### What “not suitable as an answer” means
+
+| Fail type | Example |
+|-----------|---------|
+| **Same meaning / synonym** | Cloze: `fell` / `tripped` when answer is `slipped` |
+| **Valid alternate action** | Convo flood: `call` / `talk to` when answer is `warn` |
+| **Valid alternate reply** | DialogueCompletion: *“To enjoy swimming with friends”* when asked *“Why do you go to the pool every day?”* |
+| **Fits any Cloze blank** | `game` / `match` when answer is `race` |
+| **Fits both Convo lines** | Adverb or verb that works in line1 **and** line2 when only one keyed `answer` is shared |
+
+Distractors must fail on **meaning**, **collocation**, **grammar**, or **relevance to the specific question** — not merely sound natural in isolation.
+
+### Coverage (no exceptions)
+
+Apply the test to **all** of the following in **every** question:
+
+- `distractors` on ClozeSequence, ConvoTemplate-1, AppearDisappear, DialogueCompletion, GrammarForm
+- `wrongAnswers` on `imageQuizTemplate-1` and `imageQuizTemplate-2`
+
+### Report requirement
+
+In **every** audit (including quick / final passes):
+
+1. State explicitly that distractors were validated with the test above.
+2. In **Question-by-question**, list any **invalid** distractors found and give **replacement suggestions** that fail the answer test.
+3. In **Summary**, count invalid distractors under **high-priority fixes** when any exist.
+
+**Prior-vocabulary preference comes second:** a prior word that passes as an answer is still a **bad** distractor. A fresh on-theme word that clearly fails as an answer is acceptable.
 
 ## Workflow
 
 ### 1. Gather context
 
 1. Read `questions.json` and `translations.json` (if present) for the target level.
-2. Find the level's position in `game-flow.json`. Note **level index** and **`mainLevel`**. Build **allowed grammar** = ML1…current ML introductions; **forbidden** = later ML introductions (see **Grammar progression by mainLevel**).
+2. Find the level's position in `game-flow.json`. Note **level index** and **`mainLevel`**. Find which **Part** contains that `mainLevel`. Build **allowed grammar** = current Part + all earlier Parts; **forbidden** = later Parts (see **Grammar progression by mainLevel**).
 3. **Run the prior-usage script** (do not hand-scan prior level JSON for consumed words):
 
    ```bash
@@ -165,11 +203,11 @@ For each question in `levelQuestions`:
 |-------|-------|
 | Template fit | Sentence/content matches level theme and template type. For SentenceBuilder: `correct_order` must be ≤ 7 words — flag if longer. |
 | Word choice | Prefer unused A1; verbs > adjectives > adverbs; avoid over-repeating prior levels |
-| Grammar | Allowed = ML1…current ML; forbidden = later ML only. Mark each structure **OK — review**, **OK — new intro**, or **Forbidden — not yet** |
-| Distractors | Plausible-but-wrong, same topic; **prefer prior-level consumed words** where they still fail the blank. See template rules and **Prior-vocabulary distractors** below |
+| Grammar | Allowed = current Part + earlier Parts; forbidden = later Parts only. Mark each structure **OK — review**, **OK — in band**, or **Forbidden — not yet** |
+| Distractors | **Mandatory:** validate **every** distractor / `wrongAnswer` with **Distractor validity (mandatory)** — none may be suitable as an answer. Then check on-theme fit. **Prefer prior-level consumed words** only among distractors that pass the validity test. See template rules and **Prior-vocabulary distractors** below |
 | Capitalization & punctuation | Consistent periods/question marks; MCQ labels match convention |
 | Translations | WordPairs embedded maps + `translations.json` entries correct for context |
-| Answer–translation alignment | Key vocabulary in **text** questions should have a matching entry in `translations.json` or WordPairs when it is an **answer** (Convo, Cloze, Dialogue) **or** appears in **AppearDisappear** `words` / **SentenceBuilder** `correct_order` — unless already covered by an **image question**. Flag missing tracking and redundant translation slots. **ClozeSequence and ConvoTemplate-1: only blank answer words qualify — words in the sentence stem and all distractors are excluded from translations.** |
+| Answer–translation alignment | Key vocabulary in **text** questions should have a matching entry in `translations.json` or WordPairs when it is an **answer** (Convo, Cloze, Dialogue) **or** appears in **AppearDisappear** `words` / **SentenceBuilder** `correct_order` — unless already covered by an **image question**. Flag missing tracking and redundant translation slots. **ClozeSequence and ConvoTemplate-1: sentence-stem words now qualify too, not just blank answers — only distractors are excluded from translations.** |
 | Within-level repetition | Word or phrase already tested as an answer (or main AppearDisappear focus) in another question in this level — see **Within-level repetition** |
 | Image quiz (template-1/2) | Image file exists; distractors on-theme and plausible; template-2 stems exist in folder; record `imageName` for vocabulary inventory |
 | Audio stem names | See **Audio alignment** below — compare JSON stems to filled question text; ignore file presence on disk |
@@ -192,21 +230,25 @@ For each question in `levelQuestions`:
 **Prior-vocabulary distractors** (applies to all text templates and `imageQuizTemplate-1` `wrongAnswers`):
 
 1. Build the **prior words** set from `gather_prior_level_words.py` output (every `english_word` in earlier levels' `translations.json` plus every `english_words` entry in earlier levels' WordPairs).
-2. **Prefer distractors from this set** — distractors are a chance to **review vocabulary the player already learned**, not to introduce new words.
-3. Each distractor must still pass the template fit rules below (must not fit any blank, must fail both Convo lines, etc.). A prior word that would be a valid answer is still a **bad** distractor.
-4. When auditing, **flag distractors that are fresh/unused words** when a prior word in the same semantic field would work and still be wrong for the blank.
-5. **Do not** use another **answer word from the current level** as a distractor when it would be plausible in that slot (e.g. `buy` as distractor when `shop` is the answer in the same level).
-6. **Lemma matching:** use the form that fits the sentence (`wash` / `washes` / `to wash` from a prior `to wash` entry). Multi-word prior phrases (`to get up`, `I do it`) count as one prior entry.
-7. **`imageQuizTemplate-2`:** distractors must remain **image file stems in the level folder**; choose on-theme stems first, prefer stems whose labels match prior nouns the player has seen when possible.
-8. If no prior word fits without breaking fit rules, a fresh on-theme word is acceptable — note it in the audit.
+2. **First** run **Distractor validity (mandatory)** on every distractor — reject any that could be accepted as a correct answer.
+3. **Then**, among distractors that pass the validity test, **prefer choices from the prior words** set — distractors are a chance to **review vocabulary the player already learned**, not to introduce new words.
+4. Each distractor must still pass the template fit rules below (must not fit any blank, must fail both Convo lines, etc.). A prior word that would be a valid answer is still a **bad** distractor.
+5. When auditing, **flag distractors that are fresh/unused words** when a prior word in the same semantic field would work **and** still fail as an answer.
+6. **Do not** use another **answer word from the current level** as a distractor when it would be plausible in that slot (e.g. `buy` as distractor when `shop` is the answer in the same level).
+7. **Lemma matching:** use the form that fits the sentence (`wash` / `washes` / `to wash` from a prior `to wash` entry). Multi-word prior phrases (`to get up`, `I do it`) count as one prior entry.
+8. **`imageQuizTemplate-2`:** distractors must remain **image file stems in the level folder**; choose on-theme stems first, prefer stems whose labels match prior nouns the player has seen when possible — each stem must still be a **wrong** label for the hero image (not a valid synonym).
+9. If no prior word fits without breaking validity or fit rules, a fresh on-theme word that **clearly fails as an answer** is acceptable — note it in the audit.
 
 **Distractor rules by template:**
 
-- **ClozeSequence:** each distractor must not fit ANY blank in the sentence naturally. Test mentally: can this word replace any answer and still produce grammatically/contextually valid English? If yes, it's a bad distractor. Prefer prior verbs/adjectives/adverbs that fail all blanks.
-- **ConvoTemplate-1:** the answer fills the same blank in both lines — all distractors must fail for both lines simultaneously. Adverb/adjective distractors often accidentally work in both slots; test all of them. Prefer prior verbs (`to wash`, `to eat`) over unused ones.
-- **AppearDisappear:** distractors should be words plausibly associated with the sentence topic but not present in it. Prefer prior words from the sentence's semantic field. Avoid using the same word as the answer to an adjacent question.
-- **DialogueCompletion:** Each distractor must pass all three checks: (1) **grammatically correct** English, (2) **related to the situation** in `line1` (same scene/topic — not a random off-topic line), and (3) **not a reasonable answer** to the specific question — it must not directly or plausibly respond to what was asked, including alternate valid branches (e.g. do not use “Yes, I am ready” when the keyed answer is “Not yet”). Prefer replies that **miss the point while staying in context** (comment on traffic, route, or a side detail when asked about readiness). Prefer prior words/phrases when they satisfy all three checks. Flag: opposite/direct answers, off-topic replies, and ungrammatical fragments.
-- **GrammarForm:** distractors must be real English forms (not invented constructions like "have dreaming"). Use actual conjugations that are wrong for the grammatical context.
+All rules below assume **Distractor validity (mandatory)** has already been applied.
+
+- **ClozeSequence:** each distractor must not fit ANY blank in the sentence naturally. Test mentally: insert the distractor into **each** blank — if it produces grammatically and contextually valid English for **any** blank, it is an **invalid** distractor. Prefer prior verbs/adjectives/adverbs that fail **all** blanks.
+- **ConvoTemplate-1:** the answer fills the same blank in both lines — insert each distractor into **line1 and line2**; if it works in **either** line as a reasonable response, it is **invalid**. All distractors must fail for **both** lines simultaneously.
+- **AppearDisappear:** distractors should be words plausibly associated with the sentence topic but not present in it and not usable as a substitute that preserves the sentence meaning. Prefer prior words from the sentence's semantic field that fail the validity test.
+- **DialogueCompletion:** Each distractor must pass the validity test first: it must **not** be a reasonable answer to the specific `line1` question (including alternate valid branches). Then check: (1) **grammatically correct** English, (2) **related to the situation** in `line1` (same scene/topic — not a random off-topic line). Prefer replies that **miss the point while staying in context**. Flag: any distractor that could be accepted as a correct reply, opposite/direct valid answers, off-topic replies, and ungrammatical fragments.
+- **GrammarForm:** distractors must be real English forms that are **wrong for the grammatical context** — not alternate forms that could be correct. Use actual conjugations that fail the validity test.
+- **imageQuizTemplate-1 / -2:** each `wrongAnswer` must be a **clearly wrong** label for the hero image — not a valid synonym, near-synonym, or alternate correct name.
 
 **Image template distractor rules:**
 
@@ -264,8 +306,8 @@ After gathering prior words, image-taught words, and introduced vocabulary, prod
 
 | Template | What qualifies for translations.json |
 |----------|--------------------------------------|
-| **ClozeSequence** | Blank answer word(s) only — no sentence stem words |
-| **ConvoTemplate-1** | Blank answer word only — no sentence stem words |
+| **ClozeSequence** | Blank answer word(s) **and** key teaching words in the sentence stem — not distractors |
+| **ConvoTemplate-1** | Blank answer word **and** key teaching words from either line — not distractors |
 | **GrammarForm** | Key teaching words from the question sentence (blank AND non-blank positions) — not distractors |
 | **AppearDisappear** | Key teaching words from the `words` sentence (verbs, adjectives, adverbs, phrases — not every stop word) |
 | **SentenceBuilder** | Key teaching words from `correct_order` (not articles/`the`/`a`/`an` alone). **Max 7 words** in `correct_order` — flag and suggest a shorter sentence if exceeded. |
@@ -280,7 +322,7 @@ After gathering prior words, image-taught words, and introduced vocabulary, prod
 
 **DialogueCompletion rule:** Key teaching words from either the `line1` question or the `answer` field may appear in `translations.json`. Distractors never qualify. Example: DialogueCompletion line1 “How long can I keep this book?” / answer “You can **borrow** it for three weeks.” — `borrow` (from answer) and `keep` (key verb from line1) qualify; distractors do not.
 
-**ClozeSequence / ConvoTemplate-1 rule:** Only the **blank answer word(s)** qualify for `translations.json`. Words in the sentence stem (non-blank positions) and all distractors are **never** added to translations, even if they are important vocabulary. Example: ClozeSequence “It is ______ to _____ this book — another reader **reserved** it.” — `reserved` is in the sentence stem, not a blank, so `to reserve` must **not** be added to translations. Example: ConvoTemplate-1 “This book is **due** tomorrow. Can I _____ it?” — `due` is in the sentence stem, not the blank, so `due` must **not** be added to translations.
+**ClozeSequence / ConvoTemplate-1 rule:** Both the **blank answer word(s)** and key teaching words in the **sentence stem** (non-blank positions, or either line for ConvoTemplate-1) qualify for `translations.json`. Distractors still **never** qualify. Example: ClozeSequence “It is ______ to _____ this book — another reader **reserved** it.” — `reserved` is a stem word and is now a valid candidate for `to reserve` in translations, same as the blank answer would be. Example: ConvoTemplate-1 “This book is **due** tomorrow. Can I _____ it?” — `due` is a stem word (line1) and may be added to translations, same as any blank answer.
 
 **Universal distractor rule:** Distractors and `wrongAnswers` from **any** template — ClozeSequence, ConvoTemplate-1, GrammarForm, AppearDisappear, SentenceBuilder, DialogueCompletion, imageQuizTemplate-1/2 — **never** qualify for `translations.json`, regardless of how important or relevant the word seems.
 
@@ -288,7 +330,7 @@ After gathering prior words, image-taught words, and introduced vocabulary, prod
 
 - **Missing tracking** — introduced keyword (answer, AppearDisappear, or SentenceBuilder) not in `translations.json` or WordPairs and not covered by an image question
 - **Redundant slot** — translation/WordPairs entry duplicates a noun already taught by image MCQ
-- **Wasted slot** — tracked word not introduced anywhere in the level (not an answer, not in AppearDisappear/SentenceBuilder sentence, not image answer — only in a distractor or unused). Common sources: words only in ClozeSequence/ConvoTemplate sentence stems, words only in distractors, words never appearing in any question at all. **Remove these from translations.json without replacement unless a question edit can promote them to a blank answer.**
+- **Wasted slot** — tracked word not introduced anywhere in the level at all (not an answer, not a stem word, not in AppearDisappear/SentenceBuilder sentence, not image answer — only in a distractor or genuinely absent from every question). **Remove these from translations.json without replacement** unless a question edit can promote them into the text, or the user explicitly accepts the word as a kept exception.
 - **Weak slot** — generic tracked word while unused, context-fit words appear in the same level’s sentences
 - **Prior repeat** — tracked word already consumed in an earlier level’s translations/WordPairs (prefer fresh A1 from available list)
 - **Over-reused word** — a word that has appeared as a key teaching word in 2 or more prior levels should not be used again in any question (sentence stem, answer, or otherwise). Flag and suggest replacement with unused vocabulary.
@@ -380,19 +422,19 @@ Use this structure:
 ## Level context
 - Flow position: mainLevel N, index …
 - Theme: …
-- Grammar band (ML N): …
+- Grammar band: Part X (ML range) — mainLevel N falls in this Part
 
 ## Grammar progression
-| Structure found | Q | Status (OK — review / OK — new intro / Forbidden — not yet) |
+| Structure found | Q | Status (OK — review / OK — in band / Forbidden — not yet) |
 |-----------------|---|--------------------------------------------------------------|
 | … | … | … |
 
-- Allowed through ML*N*: ML1…ML*N* introductions
-- Forbidden: ML(*N*+1)+ introductions used in this level
-- New intros for this ML band still needed: … (if any row item not yet introduced anywhere in the band)
+- Allowed: Part X and all earlier Parts
+- Forbidden: any Part after Part X used in this level
 
 ## Summary
 - Questions reviewed: N
+- **Distractors validated:** yes — all checked with **Distractor validity (mandatory)**; invalid count: …
 - High-priority fixes: …
 - Translation fixes: …
 - Translation slot / swap suggestions: …
@@ -437,7 +479,7 @@ Use this structure:
 - **Current:** …
 - **Issues:** …
 - **Suggestion:** …
-- **Distractors:** current → suggested (note when suggested swaps use **prior consumed words**)
+- **Distractors:** current → validity result (valid / **invalid — suitable as answer**) → suggested replacement (note when suggested swaps use **prior consumed words**)
 
 (repeat)
 
@@ -463,17 +505,18 @@ When user says **fix**, **apply**, or **implement**, patch JSON only for approve
 ## Priority order for fixes
 
 1. Wrong translations (high confidence)
-2. **Within-level duplicate answer words** (same lemma/phrase tested in 2+ questions)
-3. Invalid JSON / template constraint violations (e.g. template-2 missing images)
-4. Grammar from a **later** ML used anywhere in the level (**Forbidden — not yet**)
-5. Bad distractors (irrelevant, ambiguous, or fresh words when prior words would work)
-6. Audio stem name mismatches (JSON vs question text)
-7. Missing translation tracking for text-answer words
-8. Vocabulary swap suggestions (weak/redundant translation slots)
-9. Word selection / A1 coverage improvements
-10. Image quiz issues (missing files, off-theme distractors)
-11. Punctuation and capitalization
-12. Question reordering
+2. **Invalid distractors** — any option suitable as a correct answer (**Distractor validity (mandatory)**)
+3. **Within-level duplicate answer words** (same lemma/phrase tested in 2+ questions)
+4. Invalid JSON / template constraint violations (e.g. template-2 missing images)
+5. Grammar from a **later Part** used anywhere in the level (**Forbidden — not yet**)
+6. Distractors that are off-topic or ambiguous (but not valid as answers)
+7. Audio stem name mismatches (JSON vs question text)
+8. Missing translation tracking for text-answer words
+9. Vocabulary swap suggestions (weak/redundant translation slots)
+10. Word selection / A1 coverage improvements
+11. Image quiz issues (missing files, off-theme distractors)
+12. Punctuation and capitalization
+13. Question reordering
 
 ## Do not
 
@@ -507,7 +550,7 @@ Medley levels (`medley-1`, `medley-2`, …) have different rules from standard t
    - Concrete nouns → SentenceBuilder key word or ClozeSequence blank answer (acceptable since no image questions exist)
 4. All given translation words must appear as introduced vocabulary (answer, AppearDisappear key word, or SentenceBuilder key word) — never only as a distractor.
 5. Skip the **Vocabulary swap suggestions** section — vocabulary is fixed by the user, not selectable by the auditor.
-6. Distractor fit, within-level repetition, **prior-vocabulary distractors**, **grammar progression** (allowed = ML1…current; forbidden = later ML), audio stems, and all other standard checks still apply.
+6. Distractor fit, within-level repetition, **prior-vocabulary distractors**, **grammar progression** (allowed = current Part + earlier Parts; forbidden = later Parts), audio stems, and all other standard checks still apply.
 
 ## Additional reference
 

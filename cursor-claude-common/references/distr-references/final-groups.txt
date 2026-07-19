@@ -1,0 +1,130 @@
+FINAL 19 GROUPS — synthesized from dist-1.txt, dist-2.txt, dist-3.txt, dist-4.txt
+dist-4 given primary weight (its group boundaries, word choices, and 9/4/6 structure were kept as-is
+wherever they did not collide with another group). dist-1/2/3 were used only to source replacement
+words for the 5 duplicate collisions found inside dist-4 itself. Groups are ordered highest-frequency
+(Group 1) to most-advanced (Group 19), matching dist-4's own ordering.
+
+Structure per group (19 words total, matching the 15+4 spec):
+  Verbs (9) + Mixed (6)  = 15-word "main" set (60% verbs)
+  Adj/Adv (4)            = 4-word "extra" set
+
+Fixes applied to dist-4's 5 internal duplicate collisions (word appeared in two places):
+  - "instead" / "rather": kept in Group 10 (Adj/Adv), replaced in Group 6 (Mixed) with "ability", "access"
+  - "daily" (listed twice within Group 13's own Adj/Adv line): 2nd instance replaced with "confident"
+  - "mean" (Group 1 Verbs vs Group 19 Adj/Adv): kept in Group 1, replaced in Group 19 with "advanced"
+  - "apart" (Group 16 Adj/Adv vs Group 19 Mixed): kept in Group 19, replaced in Group 16 with "initial"
+No word appears in more than one group below (verified).
+
+============================================================
+Group 1 (Most common)
+Verbs (9): think, want, give, tell, become, mean, keep, let, begin
+Adj/Adv (4): other, new, little, young
+Mixed (6): to, through, during, within, without, against
+
+============================================================
+Group 2
+Verbs (9): seem, hear, believe, happen, end, remember, come back, go back, imagine
+Adj/Adv (4): real, only, sure, true
+Mixed (6): among, across, toward, upon, beyond, despite
+
+============================================================
+Group 3
+Verbs (9): create, forget, put down, sound, visit, add, guess, hope, join
+Adj/Adv (4): fine, poor, main, smart
+Mixed (6): including, along, per, lucky, tasty, monthly
+
+============================================================
+Group 4
+Verbs (9): agree, die, win, sit down, come out, get out, go up, go down, shut down
+Adj/Adv (4): quick, kind, tall, rich
+Mixed (6): weekly, yearly, jealous, male, worthless, ancient
+
+============================================================
+Group 5
+Verbs (9): sign up, design, back, log in, sign out, log out, allow, consider, expect
+Adj/Adv (4): afraid, worried, funny, friendly
+Mixed (6): classical, assistant, due, throughout, via, regarding
+
+============================================================
+Group 6
+Verbs (9): provide, reach, realize, recognize, report, cause, develop, avoid, appear
+Adj/Adv (4): useful, wonderful, false, unhealthy
+Mixed (6): towards, worth, plus, ability, access, extremely
+
+============================================================
+Group 7
+Verbs (9): deal, lead, matter, mind, exist, focus, increase, protect, refuse
+Adj/Adv (4): all, just, clear, certain
+Mixed (6): definitely, current, aware, basically, currently, obvious
+
+============================================================
+Group 8
+Verbs (9): count, control, contain, drop, draw, fight, manage, perform, promise
+Adj/Adv (4): whole, likely, huge, active
+Mixed (6): highly, totally, truly, powerful, seriously, previous
+
+============================================================
+Group 9
+Verbs (9): publish, record, solve, vote, worry, accept, beat, destroy, disagree
+Adj/Adv (4): clearly, completely, absolutely, obviously
+Mixed (6): possibly, fairly, honest, familiar, entirely, fully
+
+============================================================
+Group 10
+Verbs (9): escape, hide, kill, last, own, place, point, predict, prefer
+Adj/Adv (4): generally, instead, rather, mostly
+Mixed (6): naturally, proper, closely, strongly, primary, somehow
+
+============================================================
+Group 11
+Verbs (9): achieve, adopt, disappear, fix, introduce, involve, marry, kick, lock
+Adj/Adv (4): particularly, recently, directly, indeed
+Mixed (6): otherwise, rare, apparently, perfectly, standard, similarly
+
+============================================================
+Group 12
+Verbs (9): organize, pronounce, reply, shock, shut, depend, refer, rise, attack
+Adj/Adv (4): connected, creative, regular, specific
+Mixed (6): essential, relatively, responsible, constantly, equal, deeply
+
+============================================================
+Group 13
+Verbs (9): behave, collect, confuse, earn, fire, freeze, frighten, give up, hang
+Adj/Adv (4): successful, fair, daily, confident
+Mixed (6): personally, historical, specifically, scientific, automatically, involved
+
+============================================================
+Group 14
+Verbs (9): head, link, mark, peel, polish, sink, slide, spill, steal
+Adj/Adv (4): attractive, excellent, strange, crazy
+Mixed (6): potentially, glad, ultimately, illegal, widely, roughly
+
+============================================================
+Group 15
+Verbs (9): steer, stir, suppose, tie, train, unlock, water, wrap, come along
+Adj/Adv (4): traditional, valuable, forward, eventually
+Mixed (6): tiny, slightly, virtually, academic, primarily, effectively
+
+============================================================
+Group 16
+Verbs (9): cough, disconnect, dust, fetch, find out, fold, iron, take away, tap
+Adj/Adv (4): initial, anywhere, everywhere, nearby
+Mixed (6): largely, necessarily, forever, purely, briefly, straight
+
+============================================================
+Group 17
+Verbs (9): text, unpack, excite, bore, bring back, fade, grate, grill, knock
+Adj/Adv (4): worse, worst, anyway, impossible
+Mixed (6): equally, accurately, tightly, somewhere, successfully, unlike
+
+============================================================
+Group 18
+Verbs (9): roast, sneeze, yell, zoom, experience, express, face, require, claim
+Adj/Adv (4): independent, necessary, secret, brilliant
+Mixed (6): besides, beneath, concerning, prior, amid, alongside
+
+============================================================
+Group 19 (Most advanced)
+Verbs (9): determine, define, force, ignore, identify, prove, state, result, represent
+Adj/Adv (4): awful, advanced, middle, confusing
+Mixed (6): apart, till, actual, unique, appropriate, limited

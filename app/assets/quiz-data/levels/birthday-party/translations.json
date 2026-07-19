@@ -86,37 +86,37 @@
       }
     },
     {
-      "english_word": "to make",
+      "english_word": "to wish",
       "translations": {
-        "tr": "yapmak",
-        "es": "hacer",
-        "fr": "faire",
-        "de": "machen",
-        "it": "fare",
-        "pt": "fazer",
-        "ru": "делать",
-        "zh": "做",
-        "ja": "作る",
-        "ko": "만들다",
-        "ar": "صنع",
-        "hi": "बनाना"
+        "tr": "dilemek",
+        "es": "desear",
+        "fr": "souhaiter",
+        "de": "wünschen",
+        "it": "esprimere un desiderio",
+        "pt": "desejar",
+        "ru": "загадать желание",
+        "zh": "许愿",
+        "ja": "願う",
+        "ko": "소원을 빌다",
+        "ar": "يتمنى",
+        "hi": "इच्छा करना"
       }
     },
     {
-      "english_word": "to give",
+      "english_word": "to decorate",
       "translations": {
-        "tr": "vermek",
-        "es": "dar",
-        "fr": "donner",
-        "de": "geben",
-        "it": "dare",
-        "pt": "dar",
-        "ru": "давать",
-        "zh": "给",
-        "ja": "あげる",
-        "ko": "주다",
-        "ar": "إعطاء",
-        "hi": "देना"
+        "tr": "süslemek",
+        "es": "decorar",
+        "fr": "décorer",
+        "de": "dekorieren",
+        "it": "decorare",
+        "pt": "decorar",
+        "ru": "украшать",
+        "zh": "装饰",
+        "ja": "飾る",
+        "ko": "장식하다",
+        "ar": "يزين",
+        "hi": "सजाना"
       }
     },
     {
@@ -137,20 +137,20 @@
       }
     },
     {
-      "english_word": "to want",
+      "english_word": "to unwrap gifts",
       "translations": {
-        "tr": "istemek",
-        "es": "querer",
-        "fr": "vouloir",
-        "de": "wollen",
-        "it": "volere",
-        "pt": "querer",
-        "ru": "хотеть",
-        "zh": "想要",
-        "ja": "望む",
-        "ko": "원하다",
-        "ar": "يريد",
-        "hi": "चाहना"
+        "tr": "hediyeleri açmak",
+        "es": "desenvolver regalos",
+        "fr": "déballer les cadeaux",
+        "de": "Geschenke auspacken",
+        "it": "scartare i regali",
+        "pt": "desembrulhar os presentes",
+        "ru": "разворачивать подарки",
+        "zh": "拆礼物",
+        "ja": "プレゼントを開ける",
+        "ko": "선물을 풀다",
+        "ar": "يفتح الهدايا",
+        "hi": "उपहार खोलना"
       }
     },
     {

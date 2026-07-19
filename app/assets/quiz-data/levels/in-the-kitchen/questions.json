@@ -1,0 +1,267 @@
+{
+  "levelQuestions": [
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "plate",
+        "wrongAnswers": [
+          "bowl",
+          "cup",
+          "glass"
+        ]
+      }
+    },
+    {
+      "template": "ConvoTemplate-1",
+      "questionData": {
+        "character1": "Mike",
+        "character2": "Sophie",
+        "line1": "Can you _____ so that we can have dinner together?",
+        "line2": "Yes, I can _____ now.",
+        "answer": "set the table",
+        "distractors": [
+          "wash the floor",
+          "read a book",
+          "open the door"
+        ]
+      },
+      "audio_file1": "can-you-set-the-table-so-that-we-can-have-dinner-together-convo",
+      "audio_file2": "yes-i-can-set-the-table-now-convo"
+    },
+    {
+      "template": "ConvoTemplate-1",
+      "questionData": {
+        "character1": "Emma",
+        "character2": "Anna",
+        "line1": "Do you want me to _____ you breakfast?",
+        "line2": "Yes please. _____ me some scrambled eggs.",
+        "answer": "cook",
+        "distractors": [
+          "have",
+          "take out",
+          "wash"
+        ]
+      },
+      "audio_file1": "do-you-want-me-to-cook-you-breakfast-convo",
+      "audio_file2": "yes-please-cook-me-some-scrambled-eggs-convo"
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "dish-soap",
+        "wrongAnswers": [
+          "hand-soap",
+          "dish-rack",
+          "hand-blender"
+        ]
+      }
+    },
+    {
+      "template": "WordPairs",
+      "questionData": {
+        "english_words": [
+          "I do it",
+          "I can do it",
+          "I will do it",
+          "I must do it"
+        ],
+        "translations": [
+          {
+            "tr": "ben yaparım",
+            "es": "lo hago",
+            "fr": "je le fais",
+            "de": "Ich mache es",
+            "it": "Lo faccio",
+            "pt": "eu faço isso",
+            "ru": "я делаю это",
+            "zh": "我做",
+            "ja": "やります",
+            "ko": "나는 그것을 한다",
+            "ar": "أنا أفعل ذلك",
+            "hi": "मैं करता हूँ"
+          },
+          {
+            "tr": "Bunu yapabilirim",
+            "es": "puedo hacerlo",
+            "fr": "je peux le faire",
+            "de": "Ich kann es tun",
+            "it": "posso farlo",
+            "pt": "Eu posso fazer isso",
+            "ru": "Я могу сделать это",
+            "zh": "我能做到",
+            "ja": "できます",
+            "ko": "난 할 수 있어",
+            "ar": "أستطيع أن أفعل ذلك",
+            "hi": "मैं यह कर सकता हूँ"
+          },
+          {
+            "tr": "Yapacağım",
+            "es": "lo haré",
+            "fr": "je le ferai",
+            "de": "ich werde es tun",
+            "it": "io lo farò",
+            "pt": "eu farei",
+            "ru": "я сделаю это",
+            "zh": "我会做",
+            "ja": "私がやります",
+            "ko": "내가 할게",
+            "ar": "أنا سأفعلها",
+            "hi": "मैं यह करूंगा"
+          },
+          {
+            "tr": "bunu yapmalıyım",
+            "es": "debo hacerlo",
+            "fr": "je dois le faire",
+            "de": "Ich muss es tun",
+            "it": "Devo farlo",
+            "pt": "Eu devo fazer isso",
+            "ru": "я должен это сделать",
+            "zh": "我必须这么做",
+            "ja": "やらなければいけない",
+            "ko": "꼭 해야 해요",
+            "ar": "يجب أن أفعل ذلك",
+            "hi": "मुझे यह करना होगा"
+          }
+        ]
+      }
+    },
+    {
+      "template": "ClozeSequence",
+      "questionData": {
+        "sentence": "He _____ the red apple with a _____ knife.",
+        "answers": [
+          "cuts",
+          "sharp"
+        ],
+        "distractors": [
+          "does",
+          "mixes",
+          "reads",
+          "opens"
+        ]
+      },
+      "audio_file": "he-cuts-the-red-apple-with-a-sharp-knife-convo"
+    },
+    {
+      "template": "ClozeSequence",
+      "questionData": {
+        "sentence": "We _____ the flour and eggs and then _____ fresh muffins.",
+        "answers": [
+          "mix",
+          "bake"
+        ],
+        "distractors": [
+          "cuts",
+          "washes",
+          "reads",
+          "opens"
+        ]
+      },
+      "audio_file": "we-mix-the-flour-and-eggs-and-then-bake-fresh-muffins-convo"
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "frying-pan",
+        "wrongAnswers": [
+          "coffee-mug",
+          "dish-rack",
+          "dish-soap"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "funnel",
+        "wrongAnswers": [
+          "spoon",
+          "colander",
+          "strainer"
+        ]
+      }
+    },
+    {
+      "template": "ClozeSequence",
+      "questionData": {
+        "sentence": "Follow the _____ and _____ the juice into the glass.",
+        "answers": [
+          "recipe",
+          "pour"
+        ],
+        "distractors": [
+          "cuts",
+          "mixes",
+          "washes",
+          "cooks"
+        ]
+      },
+      "audio_file": "follow-the-recipe-and-pour-the-juice-into-the-glass-convo"
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "grater",
+        "wrongAnswers": [
+          "strainer",
+          "cutter",
+          "table-knife"
+        ]
+      }
+    },
+    {
+      "template": "AppearDisappear",
+      "questionData": {
+        "words": "She slices the cucumber for the salad.",
+        "distractors": [
+          "full",
+          "tired",
+          "you",
+          "are"
+        ]
+      },
+      "audio_file": "she-slices-the-cucumber-for-the-salad-convo"
+    },
+    {
+      "template": "GrammarForm",
+      "questionData": {
+        "sentence": "Let’s ____ dinner at the table.",
+        "answer": "eat",
+        "distractors": [
+          "eats",
+          "to eat",
+          "eating"
+        ]
+      }
+    },
+    {
+      "template": "DialogueCompletion",
+      "questionData": {
+        "character1": "Emma",
+        "character2": "Anna",
+        "line1": "Can I drink the tea now?",
+        "answer": "Yes, do it slowly.",
+        "distractors": [
+          "I make it with fresh water.",
+          "This tea is green tea.",
+          "The mug is on the table."
+        ]
+      },
+      "audio_file1": "can-i-drink-the-tea-now-convo",
+      "audio_file2": "yes-do-it-slowly-convo"
+    },
+    {
+      "template": "AppearDisappear",
+      "questionData": {
+        "words": "Who wants to do the dishes?",
+        "distractors": [
+          "there",
+          "which",
+          "plates",
+          "to clean"
+        ]
+      },
+      "audio_file": "who-wants-to-do-the-dishes-convo"
+    }
+  ]
+}

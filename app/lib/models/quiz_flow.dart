@@ -2,31 +2,46 @@
 class SubLevel {
   const SubLevel({
     required this.mainLevel,
-    required this.iconImageName,
+    required this.directoryName,
+    String? iconImageName,
     required this.title,
     this.kind = 'regular',
     this.reminderIndex = 0,
-  });
+  }) : _iconImageName = iconImageName;
 
   final int mainLevel;
-  final String iconImageName;
+
+  /// Folder name under `assets/quiz-data/levels/` — the source of truth for
+  /// where this level's `questions.json` / `translations.json` live. Reminder
+  /// levels have no folder (their questions come from prior wrong answers), so
+  /// this is empty for them.
+  final String directoryName;
+
+  final String? _iconImageName;
   final String title;
   final String kind;
   final int reminderIndex;
 
+  /// Icon image name for `assets/images/level-icons/`. Falls back to
+  /// [directoryName] when not explicitly set in the flow JSON.
+  String get iconImageName => _iconImageName ?? directoryName;
+
   bool get isReminder => kind == 'reminder';
 
   /// Stable progress key used for persisting completion state.
-  /// Regular level: "{mainLevel}_{iconImageName}", e.g. "1_travel-1".
+  /// Regular level: "{mainLevel}_{directoryName}", e.g. "1_travel-1".
   /// Reminder level: "{mainLevel}_reminder_{reminderIndex}", e.g. "1_reminder_1".
   String get progressKey => isReminder
       ? '${mainLevel}_reminder_$reminderIndex'
-      : '${mainLevel}_$iconImageName';
+      : '${mainLevel}_$directoryName';
 
   static SubLevel fromJson(Map<String, dynamic> json) {
+    // Reminder levels have no on-disk folder; questions are sourced from prior
+    // wrong answers, so `directoryName` may be omitted from the flow JSON.
     return SubLevel(
       mainLevel: json['mainLevel'] as int,
-      iconImageName: json['iconImageName'] as String,
+      directoryName: (json['directoryName'] as String?) ?? '',
+      iconImageName: json['iconImageName'] as String?,
       title: json['title'] as String,
       kind: json['kind'] as String? ?? 'regular',
       reminderIndex: (json['reminderIndex'] as num?)?.toInt() ?? 0,

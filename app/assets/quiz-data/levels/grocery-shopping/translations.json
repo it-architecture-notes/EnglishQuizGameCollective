@@ -35,20 +35,20 @@
       }
     },
     {
-      "english_word": "new",
+      "english_word": "brand",
       "translations": {
-        "tr": "yeni",
-        "es": "nuevo",
-        "fr": "nouveau",
-        "de": "neu",
-        "it": "nuovo",
-        "pt": "novo",
-        "ru": "новый",
-        "zh": "新的",
-        "ja": "新しい",
-        "ko": "새로운",
-        "ar": "جديد",
-        "hi": "नया"
+        "tr": "marka",
+        "es": "marca",
+        "fr": "marque",
+        "de": "Marke",
+        "it": "marca",
+        "pt": "marca",
+        "ru": "бренд",
+        "zh": "品牌",
+        "ja": "ブランド",
+        "ko": "브랜드",
+        "ar": "ماركة",
+        "hi": "ब्रांड"
       }
     },
     {
@@ -69,20 +69,20 @@
       }
     },
     {
-      "english_word": "expensive",
+      "english_word": "receipt",
       "translations": {
-        "tr": "pahalı",
-        "es": "caro",
-        "fr": "cher",
-        "de": "teuer",
-        "it": "caro",
-        "pt": "caro",
-        "ru": "дорогой",
-        "zh": "贵",
-        "ja": "高い",
-        "ko": "비싼",
-        "ar": "غالي",
-        "hi": "महंगा"
+        "tr": "fiş",
+        "es": "recibo",
+        "fr": "reçu",
+        "de": "Kassenbon",
+        "it": "scontrino",
+        "pt": "recibo",
+        "ru": "чек",
+        "zh": "收据",
+        "ja": "レシート",
+        "ko": "영수증",
+        "ar": "إيصال",
+        "hi": "रसीद"
       }
     },
     {
@@ -120,20 +120,20 @@
       }
     },
     {
-      "english_word": "why",
+      "english_word": "to load",
       "translations": {
-        "tr": "neden",
-        "es": "por qué",
-        "fr": "pourquoi",
-        "de": "warum",
-        "it": "perché",
-        "pt": "por que",
-        "ru": "почему",
-        "zh": "为什么",
-        "ja": "なぜ",
-        "ko": "왜",
-        "ar": "لماذا",
-        "hi": "क्यों"
+        "tr": "yüklemek",
+        "es": "cargar",
+        "fr": "charger",
+        "de": "laden",
+        "it": "caricare",
+        "pt": "carregar",
+        "ru": "грузить",
+        "zh": "装",
+        "ja": "積む",
+        "ko": "싣다",
+        "ar": "يحمّل",
+        "hi": "लादना"
       }
     },
     {
@@ -171,20 +171,71 @@
       }
     },
     {
-      "english_word": "to guess",
+      "english_word": "to calculate",
       "translations": {
-        "tr": "tahmin etmek",
-        "es": "adivinar",
-        "fr": "deviner",
-        "de": "erraten",
-        "it": "indovinare",
-        "pt": "adivinhar",
-        "ru": "угадать",
-        "zh": "猜测",
-        "ja": "当てる",
-        "ko": "추측하다",
-        "ar": "يخمن",
-        "hi": "अनुमान लगाना"
+        "tr": "hesaplamak",
+        "es": "calcular",
+        "fr": "calculer",
+        "de": "berechnen",
+        "it": "calcolare",
+        "pt": "calcular",
+        "ru": "вычислять",
+        "zh": "计算",
+        "ja": "計算する",
+        "ko": "계산하다",
+        "ar": "يحسب",
+        "hi": "गणना करना"
+      }
+    },
+    {
+      "english_word": "to compare",
+      "translations": {
+        "tr": "karşılaştırmak",
+        "es": "comparar",
+        "fr": "comparer",
+        "de": "vergleichen",
+        "it": "confrontare",
+        "pt": "comparar",
+        "ru": "сравнивать",
+        "zh": "比较",
+        "ja": "比較する",
+        "ko": "비교하다",
+        "ar": "يقارن",
+        "hi": "तुलना करना"
+      }
+    },
+    {
+      "english_word": "to weigh",
+      "translations": {
+        "tr": "tartmak",
+        "es": "pesar",
+        "fr": "peser",
+        "de": "wiegen",
+        "it": "pesare",
+        "pt": "pesar",
+        "ru": "взвешивать",
+        "zh": "称重",
+        "ja": "量る",
+        "ko": "무게를 재다",
+        "ar": "يزن",
+        "hi": "तौलना"
+      }
+    },
+    {
+      "english_word": "weight",
+      "translations": {
+        "tr": "ağırlık",
+        "es": "peso",
+        "fr": "poids",
+        "de": "Gewicht",
+        "it": "peso",
+        "pt": "peso",
+        "ru": "вес",
+        "zh": "重量",
+        "ja": "重さ",
+        "ko": "무게",
+        "ar": "وزن",
+        "hi": "वज़न"
       }
     },
     {

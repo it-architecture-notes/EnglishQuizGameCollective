@@ -1,0 +1,242 @@
+{
+  "translations_list": [
+    {
+      "english_word": "to prefer",
+      "translations": {
+        "tr": "tercih etmek",
+        "es": "preferir",
+        "fr": "préférer",
+        "de": "bevorzugen",
+        "it": "preferire",
+        "pt": "preferir",
+        "ru": "предпочитать",
+        "zh": "更喜欢",
+        "ja": "好む",
+        "ko": "선호하다",
+        "ar": "يفضل",
+        "hi": "पसंद करना"
+      }
+    },
+    {
+      "english_word": "law",
+      "translations": {
+        "tr": "kanun / yasa",
+        "es": "ley",
+        "fr": "loi",
+        "de": "Gesetz",
+        "it": "legge",
+        "pt": "lei",
+        "ru": "закон",
+        "zh": "法律",
+        "ja": "法律",
+        "ko": "법",
+        "ar": "قانون",
+        "hi": "कानून"
+      }
+    },
+    {
+      "english_word": "simple",
+      "translations": {
+        "tr": "basit",
+        "es": "simple",
+        "fr": "simple",
+        "de": "einfach",
+        "it": "semplice",
+        "pt": "simples",
+        "ru": "простой",
+        "zh": "简单的",
+        "ja": "簡単な",
+        "ko": "간단한",
+        "ar": "بسيط",
+        "hi": "सरल"
+      }
+    },
+    {
+      "english_word": "to avoid",
+      "translations": {
+        "tr": "kaçınmak",
+        "es": "evitar",
+        "fr": "éviter",
+        "de": "vermeiden",
+        "it": "evitare",
+        "pt": "evitar",
+        "ru": "избегать",
+        "zh": "避免",
+        "ja": "避ける",
+        "ko": "피하다",
+        "ar": "يتجنب",
+        "hi": "बचना"
+      }
+    },
+    {
+      "english_word": "bright",
+      "translations": {
+        "tr": "parlak",
+        "es": "brillante",
+        "fr": "lumineux",
+        "de": "hell",
+        "it": "luminoso",
+        "pt": "brilhante",
+        "ru": "яркий",
+        "zh": "明亮的",
+        "ja": "明るい",
+        "ko": "밝은",
+        "ar": "مشرق",
+        "hi": "उज्ज्वल"
+      }
+    },
+    {
+      "english_word": "fine",
+      "translations": {
+        "tr": "iyi",
+        "es": "bueno",
+        "fr": "beau / agréable",
+        "de": "schön / gut",
+        "it": "buono",
+        "pt": "bom",
+        "ru": "хороший",
+        "zh": "不错 / 还好",
+        "ja": "いい / 良い",
+        "ko": "좋은 / 괜찮은",
+        "ar": "لطيف / جيد",
+        "hi": "ठीक"
+      }
+    },
+    {
+      "english_word": "to iron",
+      "translations": {
+        "tr": "ütülemek",
+        "es": "planchar",
+        "fr": "repasser",
+        "de": "bügeln",
+        "it": "stirare",
+        "pt": "passar",
+        "ru": "гладить",
+        "zh": "熨",
+        "ja": "アイロンをかける",
+        "ko": "다림질하다",
+        "ar": "يكوي",
+        "hi": "इस्त्री करना"
+      }
+    },
+    {
+      "english_word": "instead of",
+      "translations": {
+        "tr": "yerine",
+        "es": "en lugar de",
+        "fr": "au lieu de",
+        "de": "anstatt",
+        "it": "invece di",
+        "pt": "em vez de",
+        "ru": "вместо",
+        "zh": "代替 / 而不是",
+        "ja": "の代わりに",
+        "ko": "대신에",
+        "ar": "بدلاً من",
+        "hi": "के बजाय"
+      }
+    },
+    {
+      "english_word": "to mind",
+      "translations": {
+        "tr": "aldırmak",
+        "es": "importar",
+        "fr": "déranger",
+        "de": "stören / etwas ausmachen",
+        "it": "dispiacere",
+        "pt": "importar-se",
+        "ru": "возражать / беспокоить",
+        "zh": "介意 / 在意",
+        "ja": "気にする / かまう",
+        "ko": "꺼리다 / 신경 쓰다",
+        "ar": "يمانع / يضايق",
+        "hi": "परवाह करना"
+      }
+    },
+    {
+      "english_word": "absolutely",
+      "translations": {
+        "tr": "kesinlikle",
+        "es": "absolutamente",
+        "fr": "absolument",
+        "de": "absolut",
+        "it": "assolutamente",
+        "pt": "absolutamente",
+        "ru": "абсолютно",
+        "zh": "绝对",
+        "ja": "絶対に",
+        "ko": "절대적으로",
+        "ar": "تماماً",
+        "hi": "बिल्कुल"
+      }
+    },
+    {
+      "english_word": "quick",
+      "translations": {
+        "tr": "hızlı / çabuk",
+        "es": "rápido",
+        "fr": "rapide",
+        "de": "schnell / rasch",
+        "it": "veloce",
+        "pt": "rápido",
+        "ru": "быстрый",
+        "zh": "快 / 迅速",
+        "ja": "速い / 素早い",
+        "ko": "빠른 / 신속한",
+        "ar": "سريع",
+        "hi": "तेज़"
+      }
+    },
+    {
+      "english_word": "couple",
+      "translations": {
+        "tr": "çift",
+        "es": "pareja",
+        "fr": "couple",
+        "de": "Paar",
+        "it": "coppia",
+        "pt": "casal",
+        "ru": "пара",
+        "zh": "一对 / 夫妻",
+        "ja": "カップル / 夫婦",
+        "ko": "커플 / 부부",
+        "ar": "زوجان",
+        "hi": "जोड़ा"
+      }
+    },
+    {
+      "english_word": "place",
+      "translations": {
+        "tr": "yer / mekân",
+        "es": "lugar / sitio",
+        "fr": "lieu / endroit",
+        "de": "Ort / Platz",
+        "it": "posto",
+        "pt": "lugar",
+        "ru": "место",
+        "zh": "地方 / 场所",
+        "ja": "場所 / ところ",
+        "ko": "장소 / 곳",
+        "ar": "مكان",
+        "hi": "जगह"
+      }
+    },
+    {
+      "english_word": "to allow",
+      "translations": {
+        "tr": "izin vermek",
+        "es": "permitir",
+        "fr": "permettre",
+        "de": "erlauben",
+        "it": "permettere",
+        "pt": "permitir",
+        "ru": "разрешать",
+        "zh": "允许",
+        "ja": "許可する",
+        "ko": "허용하다",
+        "ar": "يسمح",
+        "hi": "अनुमति देना"
+      }
+    }
+  ]
+}

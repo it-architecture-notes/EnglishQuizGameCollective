@@ -1,24 +1,24 @@
 {
   "translations_list": [
     {
-      "english_word": "unfortunately",
+      "english_word": "to request",
       "translations": {
-        "tr": "maalesef",
-        "es": "desafortunadamente",
-        "fr": "malheureusement",
-        "de": "leider",
-        "it": "sfortunatamente",
-        "pt": "desafortunadamente",
-        "ru": "к сожалению",
-        "zh": "不幸的是",
-        "ja": "残念ながら",
-        "ko": "불행히도",
-        "ar": "للأسف",
-        "hi": "दुर्भाग्य से"
+        "tr": "rica etmek",
+        "es": "solicitar",
+        "fr": "demander",
+        "de": "anfragen",
+        "it": "richiedere",
+        "pt": "solicitar",
+        "ru": "попросить",
+        "zh": "请求",
+        "ja": "リクエストする",
+        "ko": "요청하다",
+        "ar": "يطلب",
+        "hi": "अनुरोध करना"
       }
     },
     {
-      "english_word": "check in",
+      "english_word": "to check in",
       "translations": {
         "tr": "giriş yapmak",
         "es": "registrarse",
@@ -32,6 +32,23 @@
         "ko": "체크인하다",
         "ar": "يسجل الوصول",
         "hi": "चेक इन करना"
+      }
+    },
+    {
+      "english_word": "to bring",
+      "translations": {
+        "tr": "getirmek",
+        "es": "traer",
+        "fr": "apporter",
+        "de": "bringen",
+        "it": "portare",
+        "pt": "trazer",
+        "ru": "принести",
+        "zh": "带来",
+        "ja": "持ってくる",
+        "ko": "가져오다",
+        "ar": "يحضر",
+        "hi": "लाना"
       }
     },
     {
@@ -86,20 +103,20 @@
       }
     },
     {
-      "english_word": "to join",
+      "english_word": "fully-booked",
       "translations": {
-        "tr": "katılmak",
-        "es": "unirse",
-        "fr": "rejoindre",
-        "de": "beitreten",
-        "it": "unirsi",
-        "pt": "juntar-se",
-        "ru": "присоединиться",
-        "zh": "加入",
-        "ja": "参加する",
-        "ko": "참여하다",
-        "ar": "ينضم",
-        "hi": "शामिल होना"
+        "tr": "tamamen dolu",
+        "es": "completamente reservado",
+        "fr": "complet",
+        "de": "ausgebucht",
+        "it": "al completo",
+        "pt": "lotado",
+        "ru": "полностью забронирован",
+        "zh": "客满的",
+        "ja": "満室の",
+        "ko": "예약이 꽉 찬",
+        "ar": "محجوز بالكامل",
+        "hi": "पूरी तरह बुक"
       }
     },
     {

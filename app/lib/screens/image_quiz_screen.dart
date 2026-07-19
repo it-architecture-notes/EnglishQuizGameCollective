@@ -155,6 +155,11 @@ class _ImageQuizScreenState extends ConsumerState<ImageQuizScreen>
   /// When true, [_goNext] ends the run after the 3rd question (index 2) with 2 stars.
   bool _shortQuizDebug = false;
   bool _endedEarlyShortQuiz = false;
+
+  /// Settings "Test Mode": when true, [_goNext] ends the run after the first
+  /// answered question, awarding 2 stars if that question was answered correctly.
+  bool _testMode = false;
+  bool _endedEarlyTestMode = false;
   bool _answerLocked = false;
   bool _convo1TranslationPenalized = false;
   bool _showNext = false;
@@ -216,7 +221,7 @@ class _ImageQuizScreenState extends ConsumerState<ImageQuizScreen>
   TranslationsPageData? _translationsData;
 
   /// Asset-bundle prefix key for resolving images under this sub-level’s folder.
-  static String _levelKey(SubLevel sub) => imageQuizLevelKey(sub.iconImageName);
+  static String _levelKey(SubLevel sub) => imageQuizLevelKey(sub.directoryName);
 
   /// True when this route is the reminder replay flow rather than a normal sub-level.
   bool get _isReminder => widget.reminderMode;
@@ -323,7 +328,7 @@ class _ImageQuizScreenState extends ConsumerState<ImageQuizScreen>
       LevelConfig? levelCfg = widget.preloadedLevelConfig;
       if (levelCfg == null) {
         try {
-          levelCfg = await loadLevelConfig(widget.subLevel.iconImageName);
+          levelCfg = await loadLevelConfig(widget.subLevel.directoryName);
         } catch (_) {
           levelCfg = null;
         }
@@ -379,7 +384,7 @@ class _ImageQuizScreenState extends ConsumerState<ImageQuizScreen>
         final prevHighestDiamonds =
             prevProgress.level(widget.progressKey).highestDiamonds;
         final translationsPageData =
-            await loadLevelTranslations(widget.subLevel.iconImageName);
+            await loadLevelTranslations(widget.subLevel.directoryName);
 
         if (mounted) {
           setState(() {
@@ -397,6 +402,9 @@ class _ImageQuizScreenState extends ConsumerState<ImageQuizScreen>
             _selectedMonster = selectedMonster;
             _shortQuizDebug = shortQuizDebug;
             _endedEarlyShortQuiz = false;
+            _testMode =
+                ref.read(settingsProvider).valueOrNull?.testModeOn ?? false;
+            _endedEarlyTestMode = false;
             _translationsData = translationsPageData;
             _previousHighestDiamonds = prevHighestDiamonds;
             _phase = _Phase.playing;
@@ -538,10 +546,28 @@ class _ImageQuizScreenState extends ConsumerState<ImageQuizScreen>
         }
       }
 
-      final questionIds = List.generate(
-        questions.length,
-        (i) => buildReminderQuestionId(widget.progressKey, i),
-      );
+      // Randomize question order for image-only levels so replaying a level
+      // does not repeat the same sequence. Question IDs keep encoding the
+      // original file index so reminder generation still resolves questions.
+      final bool imageOnlyLevel = questions
+              .any((q) => !q.isSkipPlaceholder && q.isImageTemplate) &&
+          questions
+              .where((q) => !q.isSkipPlaceholder)
+              .every((q) => q.isImageTemplate);
+      final displayOrder = List<int>.generate(questions.length, (i) => i);
+      if (imageOnlyLevel) {
+        displayOrder.shuffle(Random());
+      }
+      final orderedQuestions = [for (final i in displayOrder) questions[i]];
+      final orderedImgPaths = [for (final i in displayOrder) imgPaths[i]];
+      final orderedQ2Paths = [for (final i in displayOrder) q2Paths[i]];
+      final orderedConvoThumbPaths = [
+        for (final i in displayOrder) convoThumbPaths[i]
+      ];
+      final questionIds = [
+        for (final i in displayOrder)
+          buildReminderQuestionId(widget.progressKey, i)
+      ];
       final monsterEligibleCount = questions
           .where(
             (q) =>
@@ -566,23 +592,26 @@ class _ImageQuizScreenState extends ConsumerState<ImageQuizScreen>
       final prevHighestDiamonds =
           prevProgress.level(widget.progressKey).highestDiamonds;
       final translationsPageData =
-          await loadLevelTranslations(widget.subLevel.iconImageName);
+          await loadLevelTranslations(widget.subLevel.directoryName);
 
       if (mounted) {
         setState(() {
           _config = config;
           _conversations = conversations;
-          _allQuestions = questions;
-          _questionImagePaths = imgPaths;
-          _questionQuiz2Paths = q2Paths;
-          _questionConvoThumbPaths = convoThumbPaths;
+          _allQuestions = orderedQuestions;
+          _questionImagePaths = orderedImgPaths;
+          _questionQuiz2Paths = orderedQ2Paths;
+          _questionConvoThumbPaths = orderedConvoThumbPaths;
           _currentQuestionIds = questionIds;
-          _initialQuestionCount = questions.length;
+          _initialQuestionCount = orderedQuestions.length;
           _monsterEligibleQuestionCount = monsterEligibleCount;
           _guestAnimal = guestAnimal;
           _selectedMonster = selectedMonster;
           _shortQuizDebug = shortQuizDebug;
           _endedEarlyShortQuiz = false;
+          _testMode =
+              ref.read(settingsProvider).valueOrNull?.testModeOn ?? false;
+          _endedEarlyTestMode = false;
           _levelTimerSeconds = levelCfg?.timerSeconds;
           _translationsData = translationsPageData;
           _previousHighestDiamonds = prevHighestDiamonds;
@@ -591,9 +620,9 @@ class _ImageQuizScreenState extends ConsumerState<ImageQuizScreen>
           _currentOptions = _buildOptions();
         });
         // Start timer only for image questions (first question might be vocab)
-        if (questions.isNotEmpty &&
-            !questions.first.isSkipPlaceholder &&
-            questions.first.isImageTemplate) {
+        if (orderedQuestions.isNotEmpty &&
+            !orderedQuestions.first.isSkipPlaceholder &&
+            orderedQuestions.first.isImageTemplate) {
           _timerController.duration =
               Duration(seconds: _timerSecondsForCurrentQuestion());
           _startTimer();
@@ -637,10 +666,10 @@ class _ImageQuizScreenState extends ConsumerState<ImageQuizScreen>
             parseReminderQuestionId(questionId);
         final sourceItem = sourceLevels[progressKey];
         if (sourceItem == null) continue;
-        final levelKey = imageQuizLevelKey(sourceItem.sub.iconImageName);
+        final levelKey = imageQuizLevelKey(sourceItem.sub.directoryName);
         LevelConfig? lc;
         try {
-          lc = await loadLevelConfig(sourceItem.sub.iconImageName);
+          lc = await loadLevelConfig(sourceItem.sub.directoryName);
         } catch (_) {
           lc = null;
         }
@@ -807,6 +836,9 @@ class _ImageQuizScreenState extends ConsumerState<ImageQuizScreen>
         _selectedMonster = selectedMonster;
         _shortQuizDebug = shortQuizDebug;
         _endedEarlyShortQuiz = false;
+        _testMode =
+            ref.read(settingsProvider).valueOrNull?.testModeOn ?? false;
+        _endedEarlyTestMode = false;
         _reviewingMistakes = false;
         _phase = _Phase.playing;
         _quizStartTime = DateTime.now();
@@ -1343,6 +1375,19 @@ class _ImageQuizScreenState extends ConsumerState<ImageQuizScreen>
   /// Advances index or ends the run; handles debug short-quiz, reminder review pass, and per-question timers.
   void _goNext() {
     audio.stopQuestionAudio();
+    if (_testMode && !_reviewingMistakes) {
+      _endedEarlyTestMode = true;
+      if (!_isConvoMode) {
+        _monsterIdleController
+          ..stop()
+          ..reset();
+      }
+      setState(() {
+        _phase = _Phase.end;
+        _bubbleConversation = null;
+      });
+      return;
+    }
     if (_shortQuizDebug &&
         !_reviewingMistakes &&
         !_isReminder &&
@@ -1528,6 +1573,7 @@ class _ImageQuizScreenState extends ConsumerState<ImageQuizScreen>
 
   /// Maps accuracy percentage to 0–3 stars (fixed 2 stars when debug early-exit fired).
   int _stars() {
+    if (_endedEarlyTestMode) return _correctCount >= 1 ? 2 : 0;
     if (_endedEarlyShortQuiz) return 2;
     if (_questionCount == 0) return 0;
     final rate = (_correctCount / _questionCount) * 100;
@@ -1574,7 +1620,9 @@ class _ImageQuizScreenState extends ConsumerState<ImageQuizScreen>
     if (stars >= 1) {
       await ProfileService.instance.registerQuizCompletion(
         quizType: kQuizGameType,
-        questionCount: _endedEarlyShortQuiz ? 3 : _questionCount,
+        questionCount: _endedEarlyTestMode
+            ? 1
+            : (_endedEarlyShortQuiz ? 3 : _questionCount),
       );
     }
     if (mounted) {
@@ -2665,6 +2713,9 @@ class _ImageQuizScreenState extends ConsumerState<ImageQuizScreen>
           final ok1 = snap.data != null && snap.data![0];
           final ok2 = snap.data != null && snap.data![1];
           if (p1 == null || p2 == null) return const SizedBox.shrink();
+          if (snap.connectionState != ConnectionState.done || !ok1 || !ok2) {
+            return const SizedBox.shrink();
+          }
           final line1HasCloze = _convo1Line1HasCloze(q);
           final line2HasCloze = _convo1Line2HasCloze(q);
           final caseA = !line1HasCloze && line2HasCloze;
@@ -2745,6 +2796,9 @@ class _ImageQuizScreenState extends ConsumerState<ImageQuizScreen>
       future: _resolveAudioExists(path),
       builder: (context, snap) {
         final exists = snap.data == true;
+        if (snap.connectionState != ConnectionState.done || !exists) {
+          return const SizedBox.shrink();
+        }
         return Padding(
           padding: const EdgeInsets.symmetric(vertical: 4),
           child: Row(

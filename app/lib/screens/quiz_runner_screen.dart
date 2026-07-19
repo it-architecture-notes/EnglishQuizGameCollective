@@ -61,7 +61,7 @@ class _QuizRunnerScreenState extends ConsumerState<QuizRunnerScreen> {
   Future<void> _runRegular() async {
     LevelConfig cfg;
     try {
-      cfg = await loadLevelConfig(widget.subLevel.iconImageName);
+      cfg = await loadLevelConfig(widget.subLevel.directoryName);
     } catch (e) {
       if (!mounted) return;
       setState(() => _error = e.toString());
@@ -108,7 +108,7 @@ class _QuizRunnerScreenState extends ConsumerState<QuizRunnerScreen> {
         final src = sources[progressKey];
         if (src == null) continue;
         final cfg = loadedConfigs[progressKey] ??=
-            await loadLevelConfig(src.sub.iconImageName);
+            await loadLevelConfig(src.sub.directoryName);
         if (questionIndex >= 0 && questionIndex < cfg.questions.length) {
           if (cfg.questions[questionIndex].isImageTemplate) {
             imageReminderIds.add(id);

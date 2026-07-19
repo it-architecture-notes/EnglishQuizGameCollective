@@ -137,23 +137,6 @@
       }
     },
     {
-      "english_word": "regularly",
-      "translations": {
-        "tr": "düzenli olarak",
-        "es": "regularmente",
-        "fr": "régulièrement",
-        "de": "regelmäßig",
-        "it": "regolarmente",
-        "pt": "regularmente",
-        "ru": "регулярно",
-        "zh": "定期地",
-        "ja": "定期的に",
-        "ko": "정기적으로",
-        "ar": "بانتظام",
-        "hi": "नियमित रूप से"
-      }
-    },
-    {
       "english_word": "to need",
       "translations": {
         "tr": "ihtiyaç duymak",
@@ -219,6 +202,23 @@
         "ko": "키스하다",
         "ar": "يقبّل",
         "hi": "चूमना"
+      }
+    },
+    {
+      "english_word": "gently",
+      "translations": {
+        "tr": "nazikçe",
+        "es": "suavemente",
+        "fr": "doucement",
+        "de": "sanft",
+        "it": "delicatamente",
+        "pt": "suavemente",
+        "ru": "нежно",
+        "zh": "轻轻地",
+        "ja": "優しく",
+        "ko": "부드럽게",
+        "ar": "برفق",
+        "hi": "धीरे से"
       }
     }
   ]

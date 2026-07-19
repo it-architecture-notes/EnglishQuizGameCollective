@@ -16,17 +16,17 @@
       "questionData": {
         "character1": "Sarah",
         "character2": "Daniel",
-        "line1": "How does the park look today?",
-        "line2": "I am so happy! It looks _____.",
-        "answer": "beautiful",
+        "line1": "Do you want to _____ with me this morning?",
+        "line2": "Sure, the park looks so beautiful right now.",
+        "answer": "jog",
         "distractors": [
-          "dirty",
-          "bad",
-          "ugly"
+          "walk",
+          "run",
+          "sit"
         ]
       },
-      "audio_file1": "how-does-the-park-look-today-convo",
-      "audio_file2": "it-looks-beautiful-convo"
+      "audio_file1": "do-you-want-to-jog-with-me-this-morning-convo",
+      "audio_file2": "sure-the-park-looks-so-beautiful-right-now-convo"
     },
     {
       "template": "imageQuizTemplate-1",
@@ -44,7 +44,7 @@
       "questionData": {
         "imageName": "fountain",
         "wrongAnswers": [
-          "tree",
+          "pond",
           "bench",
           "waterfall"
         ]
@@ -61,7 +61,7 @@
         ],
         "translations": [
           {
-            "tr": "Her gün",
+            "tr": "her gün",
             "es": "cada día",
             "fr": "tous les jours",
             "de": "täglich",
@@ -69,14 +69,14 @@
             "pt": "diariamente",
             "ru": "каждый день",
             "zh": "每天",
-            "ja": "日常",
+            "ja": "毎日",
             "ko": "매일",
             "ar": "كل يوم",
-            "hi": "रोज रोज"
+            "hi": "हर दिन"
           },
           {
             "tr": "günde bir kez",
-            "es": "una vez al dia",
+            "es": "una vez al día",
             "fr": "une fois par jour",
             "de": "einmal am Tag",
             "it": "una volta al giorno",
@@ -107,46 +107,47 @@
             "es": "de vez en cuando",
             "fr": "de temps à autre",
             "de": "ab und zu",
-            "it": "una volta ogni tanto",
+            "it": "ogni tanto",
             "pt": "de vez em quando",
             "ru": "время от времени",
             "zh": "偶尔",
             "ja": "時々",
             "ko": "가끔씩",
             "ar": "من حين لآخر",
-            "hi": "एक समय में एक बार"
+            "hi": "कभी-कभी"
           }
         ]
       }
     },
     {
-      "template": "DialogueCompletion",
+      "template": "ConvoTemplate-1",
       "questionData": {
         "character1": "Omar",
         "character2": "Lily",
-        "line1": "Can you reach that branch?",
-        "answer": "yes, only if I jump",
+        "line1": "How far can you _____ from that line?",
+        "line2": "I think I can make it past the bench!",
+        "answer": "jump",
         "distractors": [
-          "yes, if I comb",
-          "no, I can't see it",
-          "yes, if I can arrive"
+          "run",
+          "walk",
+          "hop"
         ]
       },
-      "audio_file1": "can-you-reach-that-branch-convo",
-      "audio_file2": "yes-only-if-i-jump-convo"
+      "audio_file1": "how-far-can-you-jump-from-that-line-convo",
+      "audio_file2": "i-think-i-can-make-it-past-the-bench-convo"
     },
     {
       "template": "AppearDisappear",
       "questionData": {
-        "words": "They enjoy having a picnic under the trees.",
+        "words": "The children swing near the big tree.",
         "distractors": [
-          "joy",
+          "branch",
           "playing",
           "fun",
           "sign"
         ]
       },
-      "audio_file": "they-enjoy-having-a-picnic-under-the-trees-convo"
+      "audio_file": "the-children-swing-near-the-big-tree-convo"
     },
     {
       "template": "imageQuizTemplate-2",
@@ -166,7 +167,7 @@
         "imageName": "swing",
         "wrongAnswers": [
           "desk",
-          "tree",
+          "slide",
           "bench"
         ]
       }
@@ -184,8 +185,8 @@
         "imageName": "grass",
         "wrongAnswers": [
           "flower",
-          "tree",
-          "fountain"
+          "bush",
+          "path"
         ]
       }
     },
@@ -198,9 +199,10 @@
           "fall"
         ],
         "distractors": [
-          "jump",
           "run",
-          "walk"
+          "walk",
+          "carry",
+          "push"
         ]
       },
       "audio_file": "don-t-climb-too-high-or-you-might-fall-convo"
@@ -211,45 +213,45 @@
         "sentence": "You ________ the ball far so the dog gets some exercise.",
         "answer": "should throw",
         "distractors": [
-          "could be thrown",
+          "throw",
           "throws",
-          "might throw"
+          "throwing"
         ]
       }
     },
     {
       "template": "ClozeSequence",
       "questionData": {
-        "sentence": "The children ____ and ______ near the fountain in the park.",
+        "sentence": "The kids loved to _____ the _____ as it flew across the field.",
         "answer": [
-          "play",
-          "have fun"
+          "chase",
+          "kite"
         ],
         "distractors": [
-          "bored",
-          "climb",
-          "have enjoy",
-          "picniking"
+          "catch",
+          "ball",
+          "run",
+          "bird"
         ]
       },
-      "audio_file": "the-children-play-and-have-fun-near-the-fountain-in-the-park-convo"
+      "audio_file": "the-kids-loved-to-chase-the-kite-as-it-flew-across-the-field-convo"
     },
     {
-      "template": "ConvoTemplate-1",
+      "template": "ClozeSequence",
       "questionData": {
-        "character1": "Omar",
-        "character2": "Lily",
-        "line1": "_____ dog is that?",
-        "line2": "He is a golden retriever. ",
-        "answer": "what kind of",
+        "sentence": "It's fun to _____ _____ with friends during summer.",
+        "answer": [
+          "picnic",
+          "outdoors"
+        ],
         "distractors": [
-          "how many",
-          "which type of",
-          "where of"
+          "play",
+          "indoors",
+          "inside",
+          "walk"
         ]
       },
-      "audio_file1": "what-kind-of-dog-is-that-convo",
-      "audio_file2": "he-is-a-golden-retriever-convo"
+      "audio_file": "its-fun-to-picnic-outdoors-with-friends-during-summer-convo"
     }
   ]
 }

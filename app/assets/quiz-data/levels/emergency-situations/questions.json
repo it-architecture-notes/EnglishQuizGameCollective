@@ -16,43 +16,43 @@
       "questionData": {
         "character1": "Beth",
         "character2": "Alex",
-        "line1": "We need to _____ everyone on this street. The river is rising fast!",
-        "line2": "You are right!",
-        "answer": "warn",
+        "line1": "Can you _____ us through the storm?",
+        "line2": "Yes, follow me to the nearest shelter.",
+        "answer": "guide",
         "distractors": [
-          "call",
-          "cry",
-          "talk to"
+          "lead",
+          "show",
+          "take"
         ]
       },
-      "audio_file1": "we-need-to-warn-everyone-on-this-street-the-river-is-rising-fast-convo",
-      "audio_file2": "you-are-right-convo"
+      "audio_file1": "can-you-guide-us-through-the-storm-convo",
+      "audio_file2": "yes-follow-me-to-the-nearest-shelter-convo"
     },
     {
       "template": "ConvoTemplate-1",
       "questionData": {
         "character1": "Sarah",
         "character2": "Daniel",
-        "line1": "This woman collapsed and not moving. Can anyone _____ her?",
-        "line2": "I know CPR. Give her space, everyone!",
+        "line1": "How did they manage to _____ her from the flood?",
+        "line2": "A rescue team used a boat to reach her.",
         "answer": "save",
         "distractors": [
-          "prepare",
-          "remove",
-          "join"
+          "help",
+          "find",
+          "pull"
         ]
       },
-      "audio_file1": "this-woman-collapsed-and-not-moving-can-anyone-save-her-convo",
-      "audio_file2": "i-know-cpr-give-her-space-everyone-convo"
+      "audio_file1": "how-did-they-manage-to-save-her-from-the-flood-convo",
+      "audio_file2": "a-rescue-team-used-a-boat-to-reach-her-convo"
     },
     {
       "template": "imageQuizTemplate-1",
       "questionData": {
         "imageName": "direction",
         "wrongAnswers": [
-          "way",
-          "road",
-          "path"
+          "corner",
+          "distance",
+          "speed"
         ]
       }
     },
@@ -60,67 +60,67 @@
       "template": "WordPairs",
       "questionData": {
         "english_words": [
-          "short",
-          "fat",
-          "first",
-          "last"
+          "immediately",
+          "bravely",
+          "serious",
+          "terrible"
         ],
         "translations": [
           {
-            "tr": "kısa",
-            "es": "delgado",
-            "fr": "court",
-            "de": "kurz",
-            "it": "corto",
-            "pt": "curto",
-            "ru": "короткий",
-            "zh": "短的",
-            "ja": "短い",
-            "ko": "짧은",
-            "ar": "قصير",
-            "hi": "छोटा"
+            "tr": "hemen",
+            "es": "inmediatamente",
+            "fr": "immédiatement",
+            "de": "sofort",
+            "it": "immediatamente",
+            "pt": "imediatamente",
+            "ru": "немедленно",
+            "zh": "立即",
+            "ja": "すぐに",
+            "ko": "즉시",
+            "ar": "فورًا",
+            "hi": "तुरंत"
           },
           {
-            "tr": "şişman",
-            "es": "gordo",
-            "fr": "gros",
-            "de": "groß",
-            "it": "grosso",
-            "pt": "grosso",
-            "ru": "толстый",
-            "zh": "胖的",
-            "ja": "太った",
-            "ko": "뚱뚱한",
-            "ar": "سميك",
-            "hi": "मोटा"
+            "tr": "cesurca",
+            "es": "valientemente",
+            "fr": "courageusement",
+            "de": "mutig",
+            "it": "coraggiosamente",
+            "pt": "corajosamente",
+            "ru": "храбро",
+            "zh": "勇敢地",
+            "ja": "勇敢に",
+            "ko": "용감하게",
+            "ar": "بشجاعة",
+            "hi": "बहादुरी से"
           },
           {
-            "tr": "ilk",
-            "es": "primero",
-            "fr": "premier",
-            "de": "erster",
-            "it": "primo",
-            "pt": "primeiro",
-            "ru": "первый",
-            "zh": "第一的",
-            "ja": "最初の",
-            "ko": "첫 번째",
-            "ar": "أول",
-            "hi": "पहला"
+            "tr": "ciddi",
+            "es": "grave",
+            "fr": "grave",
+            "de": "ernst",
+            "it": "grave",
+            "pt": "sério",
+            "ru": "серьёзный",
+            "zh": "严重的",
+            "ja": "深刻な",
+            "ko": "심각한",
+            "ar": "خطير",
+            "hi": "गंभीर"
           },
           {
-            "tr": "son",
-            "es": "último",
-            "fr": "dernier",
-            "de": "letzter",
-            "it": "ultimo",
-            "pt": "último",
-            "ru": "последний",
-            "zh": "最后的",
-            "ja": "最後の",
-            "ko": "마지막",
-            "ar": "آخر",
-            "hi": "अंतिम"
+            "tr": "korkunç",
+            "es": "horrible",
+            "fr": "terrible",
+            "de": "schlimm",
+            "it": "orribile",
+            "pt": "horrível",
+            "ru": "ужасный",
+            "zh": "可怕的",
+            "ja": "恐ろしい",
+            "ko": "무서운",
+            "ar": "فظيع",
+            "hi": "भयानक"
           }
         ]
       }
@@ -134,7 +134,7 @@
         "answer": "Don't move him, call the ambulance",
         "distractors": [
           "Move him to the hospital",
-          "Call the police",
+          "Call the police right away.",
           "Call the fire department"
         ]
       },
@@ -144,24 +144,24 @@
     {
       "template": "AppearDisappear",
       "questionData": {
-        "words": "The smoke made everyone cough",
+        "words": "Volunteers came to support the fire department.",
         "distractors": [
-          "uncomfortable",
-          "sneeze",
-          "breath",
-          "make"
+          "fight",
+          "refuse",
+          "ignore",
+          "leave"
         ]
       },
-      "audio_file": "the-smoke-made-everyone-cough-convo"
+      "audio_file": "volunteers-came-to-support-the-fire-department-convo"
     },
     {
       "template": "imageQuizTemplate-1",
       "questionData": {
         "imageName": "disaster",
         "wrongAnswers": [
-          "fire",
-          "hurricane",
-          "snow"
+          "garden",
+          "kitchen",
+          "office"
         ]
       }
     },
@@ -179,9 +179,9 @@
     {
       "template": "SentenceBuilder",
       "questionData": {
-        "correct_order": "It is urgent to put a warning sign there."
+        "correct_order": "He called an ambulance for urgent assistance."
       },
-      "audio_file": "it-is-urgent-to-put-a-warning-sign-there-convo"
+      "audio_file": "he-called-an-ambulance-for-urgent-assistance-convo"
     },
     {
       "template": "imageQuizTemplate-1",
@@ -197,65 +197,65 @@
     {
       "template": "ClozeSequence",
       "questionData": {
-        "sentence": "The bear ______ and caused a ______ injury to the man.",
+        "sentence": "Neighbors called to _____ the fire department, who rushed to _____ within minutes.",
         "answer": [
-          "attacked",
-          "terrible"
+          "alert",
+          "respond"
         ],
         "distractors": [
-          "amazing",
-          "searched",
-          "thought",
-          "tiny"
+          "ignore",
+          "delay",
+          "refuse",
+          "forget"
         ]
       },
-      "audio_file": "the-bear-attacked-and-caused-a-terrible-injury-to-the-man-convo"
+      "audio_file": "neighbors-called-to-alert-the-fire-department-who-rushed-to-respond-within-minutes-convo"
     },
     {
       "template": "GrammarForm",
       "questionData": {
-        "sentence": "_____ slip on the wet floor ",
+        "sentence": "_____ slip on the wet floor.",
         "answer": "do not",
         "distractors": [
-          "let's not",
-          "isn't she",
-          "she could"
+          "does not",
+          "did not",
+          "doesnt"
         ]
       }
     },
     {
       "template": "ClozeSequence",
       "questionData": {
-        "sentence": "We need to _____ a safety plan to ______ accidents in the factory.",
+        "sentence": "Officials decided to _____ the area to _____ further injuries.",
         "answer": [
-          "create",
+          "evacuate",
           "prevent"
         ],
         "distractors": [
-          "ask for",
-          "do",
-          "continue",
-          "try"
+          "ignore",
+          "delay",
+          "refuse",
+          "forget"
         ]
       },
-      "audio_file": "we-need-to-create-a-safety-plan-to-prevent-accidents-in-the-factory-convo"
+      "audio_file": "officials-decided-to-evacuate-the-area-to-prevent-further-injuries-convo"
     },
     {
       "template": "ClozeSequence",
       "questionData": {
-        "sentence": "She tried to _____ her neighbor but found the man had fallen and could not _____ himself.",
+        "sentence": "They rushed to _____ the people as the building continued to _____.",
         "answer": [
-          "visit",
-          "rescue"
+          "rescue",
+          "burn"
         ],
         "distractors": [
-          "call",
-          "help",
-          "see",
-          "talk"
+          "cook",
+          "sell",
+          "lock",
+          "paint"
         ]
       },
-      "audio_file": "she-tried-to-visit-her-neighbor-but-found-the-man-had-fallen-and-could-not-rescue-himself-convo"
+      "audio_file": "they-rushed-to-rescue-the-people-as-the-building-continued-to-burn-convo"
     }
   ]
 }

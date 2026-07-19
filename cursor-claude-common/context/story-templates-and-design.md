@@ -24,6 +24,7 @@ There are **no** `page_text_list_for_template`, `page_image_list_for_template`, 
 |---------------|----------|--------|------|
 | **1** | `character_dialog_scene` | `StoryTemplateA` | Stack: **scene** placeholder, **character** = `character_image` or placeholder, **speech bubble** = `localizedStoryText` from `story_text`. |
 | **4** | `scene_story_text` | `StoryTemplateC` | Placeholder “scene” block; **primary** line = `story_text["en"]`; if app language ≠ `en`, **italic** second line = `story_text[languageCode]`. |
+| **5** | `multi_image_gallery` | `StoryTemplateD` | Carousel of `scene_images` with parallel `story_texts` captions; Previous/Next; OK on last slide dismisses overlay. |
 
 Unknown `layout` falls through to **template A**.
 
@@ -40,11 +41,13 @@ Each **main level** has:
 Each **story page** has:
 
 - `event_id` — progress key with `main_level_id`
-- `page_template_id` — **1** or **4**
-- `trigger` — `{ "type": "before_level" | "after_level", "level": <int> }`  
-  - `level` is 1-based within that main level; **`0`** resolves to the **last** regular sub-level in the flow (`StoryTriggerService`).
-- `story_text` — locale map for all visible copy
-- `character_image` — optional; **template 1** only, pub asset path for the bottom-left character
+- `page_template_id` — **1**, **4**, or **5**
+- `trigger` — `{ "type": "before_level" | "after_level", "level": "<title>" }`  
+  - `level` is the flow **`title`** of the target level (e.g. `"Greetings"`, `"Reminder 2"`).  
+  - Empty string `""` resolves to the **last regular** sub-level title in that main level (`StoryTriggerService`).
+- `story_text` — locale map for single-caption templates (1 / 4)
+- `scene_image` / `character_image` — optional for templates 1 / 4
+- `scene_images` + `story_texts` — for template **5** (parallel lists; one caption locale-map per image)
 
 **Completion:** `StoryTriggerService.pagesReadyToMarkCompleted` marks an event completable when the sub-level at the **resolved trigger level** has **≥ 1 star**. `after_level` also sets the overlay’s **congratulations** header (`isFinalPage`).
 
@@ -54,6 +57,7 @@ Each **story page** has:
 
 - **1 — `character_dialog_scene`:** A fixed-height comic-style stack with a gray scene placeholder, an optional **character** image from `character_image`, otherwise a gray placeholder, and a white speech bubble; the bubble shows the current app language from `story_text` (fallback `en`).
 - **4 — `scene_story_text`:** A centered column with a placeholder image block, then English from `story_text["en"]`, then an italic translated line when the player’s language is not English.
+- **5 — `multi_image_gallery`:** One image at a time from `scene_images`, caption from matching `story_texts[i]` (falls back to `story_text`); Previous / Next; on the last slide OK pops the overlay so a `before_level` trigger continues into the quiz.
 
 ---
 

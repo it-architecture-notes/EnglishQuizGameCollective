@@ -16,17 +16,17 @@
       "questionData": {
         "character1": "Sarah",
         "character2": "Daniel",
-        "line1": "Hello, how do you ____ today?",
-        "line2": "I don't ____ well.",
-        "answer": "feel",
+        "line1": "Did you get _____ in the accident?",
+        "line2": "A little, but they didn't need to admit me to the hospital.",
+        "answer": "hurt",
         "distractors": [
-          "have",
-          "sense",
-          "taste"
+          "feel",
+          "fall",
+          "lose"
         ]
       },
-      "audio_file1": "hello-how-do-you-feel-today-convo",
-      "audio_file2": "i-don-t-feel-well-convo"
+      "audio_file1": "did-you-get-hurt-in-the-accident-convo",
+      "audio_file2": "a-little-but-they-didn-t-need-to-admit-me-to-the-hospital-convo"
     },
     {
       "template": "ConvoTemplate-1",
@@ -38,8 +38,8 @@
         "answer": "check",
         "distractors": [
           "feel",
-          "test",
-          "take"
+          "tell",
+          "count"
         ]
       },
       "audio_file1": "you-look-sick-let-me-check-your-temperature-convo",
@@ -50,7 +50,7 @@
       "questionData": {
         "imageName": "caregiver",
         "wrongAnswers": [
-          "helper",
+          "doctor",
           "taker",
           "checker-person"
         ]
@@ -83,7 +83,7 @@
           {
             "tr": "Düşük",
             "es": "bajo",
-            "fr": "faible",
+            "fr": "bas",
             "de": "niedrig",
             "it": "Basso",
             "pt": "baixo",
@@ -128,10 +128,10 @@
     {
       "template": "ClozeSequence",
       "questionData": {
-        "sentence": "Doctors must be _____ when they _____.",
+        "sentence": "She learned to _____ for patients, including how to _____ blood pressure correctly.",
         "answer": [
-          "careful",
-          "work"
+          "care",
+          "measure"
         ],
         "distractors": [
           "careless",
@@ -140,7 +140,7 @@
           "call"
         ]
       },
-      "audio_file": "doctors-must-be-careful-when-they-work-convo"
+      "audio_file": "she-learned-to-care-for-patients-including-how-to-measure-blood-pressure-correctly-convo"
     },
     {
       "template": "AppearDisappear",
@@ -150,7 +150,7 @@
           "asked",
           "have",
           "nurse",
-          "stay"
+          "wait"
         ]
       },
       "audio_file": "the-doctor-said-i-need-to-rest-in-bed-convo"
@@ -171,18 +171,18 @@
       "questionData": {
         "imageName": "gurney",
         "wrongAnswers": [
-          "bed",
+          "operating-table",
           "carry-on",
-          "hospital-bed"
+          "examination-table"
         ]
       }
     },
     {
       "template": "SentenceBuilder",
       "questionData": {
-        "correct_order": "Do you think I can go home today?"
+        "correct_order": "Please breathe deeply and try to relax."
       },
-      "audio_file": "do-you-think-i-can-go-home-today-convo"
+      "audio_file": "please-breathe-deeply-and-try-to-relax-convo"
     },
     {
       "template": "imageQuizTemplate-1",
@@ -198,60 +198,63 @@
     {
       "template": "ClozeSequence",
       "questionData": {
-        "sentence": "Please _____ the hospital if you have an emergency.",
+        "sentence": "It took weeks to _____ the injury before he could _____ completely.",
         "answer": [
-          "call"
+          "treat",
+          "recover"
         ],
         "distractors": [
-          "check",
-          "no",
-          "problem",
-          "help"
+          "visit",
+          "send",
+          "rest"
         ]
       },
-      "audio_file": "please-call-the-hospital-if-you-have-an-emergency-convo"
+      "audio_file": "it-took-weeks-to-treat-the-injury-before-he-could-recover-completely-convo"
     },
     {
       "template": "GrammarForm",
       "questionData": {
-        "sentence": "The nurse _____ the patients every day.",
-        "answer": "helps",
+        "sentence": "The doctor _____ the patient carefully yesterday.",
+        "answer": "examined",
         "distractors": [
-          "helping",
-          "are helping",
-          "may helping"
+          "examine",
+          "examines",
+          "examining"
         ]
       }
     },
     {
       "template": "ClozeSequence",
       "questionData": {
-        "sentence": "The doctor has _____ information now.",
+        "sentence": "Can you _____ the _____ in your arm?",
         "answer": [
-          "enough"
+          "describe",
+          "pain"
         ],
         "distractors": [
-          "too many",
-          "sorry",
-          "quiet"
+          "safe",
+          "quickly",
+          "normal",
+          "visit"
         ]
       },
-      "audio_file": "the-doctor-has-enough-information-now-convo"
+      "audio_file": "can-you-describe-the-pain-in-your-arm-convo"
     },
     {
-      "template": "ClozeSequence",
+      "template": "DialogueCompletion",
       "questionData": {
-        "sentence": "The treatment will _____ this afternoon.",
-        "answer": [
-          "begin"
-        ],
+        "character1": "Omar",
+        "character2": "Lily",
+        "line1": "When will he be able to leave?",
+        "answer": "The doctor plans to discharge him this afternoon.",
         "distractors": [
-          "take",
-          "long",
-          "check"
+          "He needs to stay for another week.",
+          "The doctor wants to examine him again.",
+          "His treatment will begin this afternoon."
         ]
       },
-      "audio_file": "the-treatment-will-begin-this-afternoon-convo"
+      "audio_file1": "when-will-he-be-able-to-leave-convo",
+      "audio_file2": "the-doctor-plans-to-discharge-him-this-afternoon-convo"
     }
   ]
 }

@@ -35,71 +35,54 @@
       }
     },
     {
-      "english_word": "to sound",
+      "english_word": "lane",
       "translations": {
-        "tr": "gibi gelmek",
-        "es": "sonar",
-        "fr": "sembler",
-        "de": "klingen",
-        "it": "sembrare",
-        "pt": "soar",
-        "ru": "звучать",
-        "zh": "听起来",
-        "ja": "聞こえる",
-        "ko": "들리다",
-        "ar": "يبدو",
-        "hi": "लगना"
+        "tr": "şerit",
+        "es": "carril",
+        "fr": "voie",
+        "de": "Spur",
+        "it": "corsia",
+        "pt": "faixa",
+        "ru": "полоса",
+        "zh": "车道",
+        "ja": "車線",
+        "ko": "차선",
+        "ar": "حارة",
+        "hi": "लेन"
       }
     },
     {
-      "english_word": "to let",
+      "english_word": "to brake",
       "translations": {
-        "tr": "izin vermek",
-        "es": "dejar",
-        "fr": "laisser",
-        "de": "lassen",
-        "it": "lasciare",
-        "pt": "deixar",
-        "ru": "позволить",
-        "zh": "让",
-        "ja": "させる",
-        "ko": "허락하다",
-        "ar": "يسمح",
-        "hi": "जाने देना"
+        "tr": "fren yapmak",
+        "es": "frenar",
+        "fr": "freiner",
+        "de": "bremsen",
+        "it": "frenare",
+        "pt": "frear",
+        "ru": "тормозить",
+        "zh": "刹车",
+        "ja": "ブレーキをかける",
+        "ko": "브레이크를 밟다",
+        "ar": "يفرمل",
+        "hi": "ब्रेक लगाना"
       }
     },
     {
-      "english_word": "to cross",
+      "english_word": "to speed",
       "translations": {
-        "tr": "geçmek",
-        "es": "cruzar",
-        "fr": "traverser",
-        "de": "überqueren",
-        "it": "attraversare",
-        "pt": "atravessar",
-        "ru": "пересекать",
-        "zh": "穿过",
-        "ja": "渡る",
-        "ko": "건너다",
-        "ar": "يعبر",
-        "hi": "पार करना"
-      }
-    },
-    {
-      "english_word": "busy",
-      "translations": {
-        "tr": "yoğun",
-        "es": "concurrido",
-        "fr": "chargé",
-        "de": "belebt",
-        "it": "trafficato",
-        "pt": "movimentado",
-        "ru": "оживлённый",
-        "zh": "繁忙",
-        "ja": "混んでいる",
-        "ko": "붐비는",
-        "ar": "مزدحم",
-        "hi": "भीड़भाड़ वाला"
+        "tr": "hız yapmak",
+        "es": "ir demasiado rápido",
+        "fr": "rouler trop vite",
+        "de": "zu schnell fahren",
+        "it": "andare troppo veloce",
+        "pt": "andar em excesso de velocidade",
+        "ru": "превышать скорость",
+        "zh": "超速",
+        "ja": "スピードを出す",
+        "ko": "과속하다",
+        "ar": "يتجاوز السرعة",
+        "hi": "तेज़ गति से चलना"
       }
     },
     {
@@ -120,20 +103,37 @@
       }
     },
     {
-      "english_word": "to increase",
+      "english_word": "accident",
       "translations": {
-        "tr": "artırmak",
-        "es": "aumentar",
-        "fr": "augmenter",
-        "de": "erhöhen",
-        "it": "aumentare",
-        "pt": "aumentar",
-        "ru": "увеличивать",
-        "zh": "增加",
-        "ja": "増やす",
-        "ko": "증가시키다",
-        "ar": "يزيد",
-        "hi": "बढ़ाना"
+        "tr": "kaza",
+        "es": "accidente",
+        "fr": "accident",
+        "de": "Unfall",
+        "it": "incidente",
+        "pt": "acidente",
+        "ru": "авария",
+        "zh": "事故",
+        "ja": "事故",
+        "ko": "사고",
+        "ar": "حادث",
+        "hi": "दुर्घटना"
+      }
+    },
+    {
+      "english_word": "ahead",
+      "translations": {
+        "tr": "ileride",
+        "es": "más adelante",
+        "fr": "plus loin",
+        "de": "voraus",
+        "it": "più avanti",
+        "pt": "adiante",
+        "ru": "впереди",
+        "zh": "前方",
+        "ja": "前方",
+        "ko": "앞쪽에",
+        "ar": "في الأمام",
+        "hi": "आगे"
       }
     },
     {
@@ -171,20 +171,20 @@
       }
     },
     {
-      "english_word": "to get out",
+      "english_word": "to obey the rules",
       "translations": {
-        "tr": "dışarı çıkmak",
-        "es": "salir",
-        "fr": "sortir",
-        "de": "aussteigen",
-        "it": "uscire",
-        "pt": "sair",
-        "ru": "выйти",
-        "zh": "出去",
-        "ja": "出る",
-        "ko": "나가다",
-        "ar": "يخرج",
-        "hi": "बाहर निकलना"
+        "tr": "kurallara uymak",
+        "es": "obedecer las reglas",
+        "fr": "obéir aux règles",
+        "de": "die Regeln befolgen",
+        "it": "obbedire alle regole",
+        "pt": "obedecer às regras",
+        "ru": "соблюдать правила",
+        "zh": "遵守规则",
+        "ja": "ルールを守る",
+        "ko": "규칙을 따르다",
+        "ar": "يطيع القواعد",
+        "hi": "नियमों का पालन करना"
       }
     },
     {

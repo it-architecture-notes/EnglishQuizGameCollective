@@ -1,8 +1,8 @@
 import 'package:flutter/services.dart';
 
-/// Level key = iconImageName (folder name under quiz-data/levels/, e.g. "travel-1").
-String imageQuizLevelKey(String iconImageName) {
-  return iconImageName;
+/// Level key = directoryName (folder name under quiz-data/levels/, e.g. "travel-1").
+String imageQuizLevelKey(String directoryName) {
+  return directoryName;
 }
 
 const String _quizImagePrefix = 'assets/quiz-data/levels/';

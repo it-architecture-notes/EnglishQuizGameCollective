@@ -394,15 +394,16 @@ class _ClozeSequenceQuizBodyState extends State<ClozeSequenceQuizBody> {
           FutureBuilder<bool>(
             future: widget.resolveAudioExists(widget.audioAssetPath!),
             builder: (context, snap) {
-              final ok = snap.data == true;
+              if (snap.connectionState != ConnectionState.done ||
+                  snap.data != true) {
+                return const SizedBox.shrink();
+              }
               return Row(
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: [
                   AudioPlayButton(
                     isPlaying: _audioPlaying,
-                    onPressed: (!ok || !_concluded)
-                        ? null
-                        : () => _playAudio(),
+                    onPressed: !_concluded ? null : () => _playAudio(),
                   ),
                 ],
               );
@@ -507,15 +508,16 @@ class _ClozeSequenceQuizBodyState extends State<ClozeSequenceQuizBody> {
           FutureBuilder<bool>(
             future: widget.resolveAudioExists(widget.audioAssetPath!),
             builder: (context, snap) {
-              final ok = snap.data == true;
+              if (snap.connectionState != ConnectionState.done ||
+                  snap.data != true) {
+                return const SizedBox.shrink();
+              }
               return Row(
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: [
                   AudioPlayButton(
                     isPlaying: _audioPlaying,
-                    onPressed: (!ok || !_concluded)
-                        ? null
-                        : () => _playAudio(),
+                    onPressed: !_concluded ? null : () => _playAudio(),
                   ),
                 ],
               );

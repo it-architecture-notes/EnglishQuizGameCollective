@@ -226,13 +226,13 @@ class _DialogueCompletionQuizBodyState
             style: theme.textTheme.bodyLarge,
           ),
         ),
-        if (widget.audio1Path != null)
+        if (widget.audio1Path != null && _bothAudiosOk == true)
           Row(
             mainAxisAlignment: MainAxisAlignment.end,
             children: [
               AudioPlayButton(
                 isPlaying: _audio1Playing || _audio2Playing,
-                onPressed: (_bothAudiosOk == true && !(_locked && !_answeredWrong))
+                onPressed: !(_locked && !_answeredWrong)
                     ? _playAudioManual
                     : null,
               ),

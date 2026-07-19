@@ -56,6 +56,12 @@ Under `cursor-claude-common/references/final words/`:
 
 Entries include CEFR tags (e.g. `A1`, `A2`, `B1`, `B2`). Prefer **A1** when context allows and the word is still unused.
 
+## LanGeek 500 Common Nouns
+
+`cursor-claude-common/references/remove-word-list-references/langeek-500-most-common-nouns.txt`
+
+Use as a secondary source for common noun candidates missing from the final-word CSVs or Oxford-driven candidate set. For standard themed levels, concrete object nouns usually belong in image questions rather than `translations.json`; use noun candidates carefully unless the user explicitly asks for nouns or the level has no image coverage.
+
 ## Example invocation
 
 User: *"Audit the bedroom level using the quiz level audit skill"*
@@ -71,7 +77,7 @@ Agent:
 
 ## Grammar progression
 
-Each ML row in **SKILL.md → Grammar progression by mainLevel** lists what that chapter **newly introduces**. Levels may reuse grammar from **ML1 through current ML**; grammar from **later MLs is forbidden** everywhere (stems, answers, distractors). Include the **Grammar progression** section in every audit report.
+Grammar is aggregated into 4 macro-bands (Parts: ML1–3, ML4–5, ML6–8, ML9–12) — see **SKILL.md → Grammar progression by mainLevel**. All grammar in a Part is usable anywhere within that Part's ML range, no further gating by individual ML. Levels may reuse grammar from **the current Part and all earlier Parts**; grammar from **later Parts is forbidden** everywhere (stems, answers, distractors). Include the **Grammar progression** section in every audit report.
 
 ## Within-level word repetition
 

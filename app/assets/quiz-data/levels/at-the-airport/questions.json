@@ -14,20 +14,19 @@
     {
       "template": "ClozeSequence",
       "questionData": {
-        "sentence": "Tomorrow, I will ____ to see my grandma. I _____ she is well.",
+        "sentence": "He was nervous as the plane began to _____ on his first time to _____.",
         "answer": [
-          "fly",
-          "hope"
+          "take off",
+          "fly"
         ],
         "distractors": [
-          "carry",
           "land",
-          "quickly",
-          "coming",
-          "swim"
+          "leave",
+          "drive",
+          "ride"
         ]
       },
-      "audio_file": "tomorrow-i-will-fly-to-see-my-grandma-i-hope-she-is-well-convo"
+      "audio_file": "he-was-nervous-as-the-plane-began-to-take-off-on-his-first-time-to-fly-convo"
     },
     {
       "template": "ClozeSequence",
@@ -48,19 +47,19 @@
     {
       "template": "ClozeSequence",
       "questionData": {
-        "sentence": "_______ the departures board, our flight is going to be _____.",
+        "sentence": "The airline had to _____ that the flight would be _____.",
         "answer": [
-          "according to",
+          "announce",
           "late"
         ],
         "distractors": [
-          "looking",
+          "report",
+          "say",
           "early",
-          "confused",
-          "checking in"
+          "cancel"
         ]
       },
-      "audio_file": "according-to-the-departures-board-our-flight-is-going-to-be-late-convo"
+      "audio_file": "the-airline-had-to-announce-that-the-flight-would-be-late-convo"
     },
     {
       "template": "imageQuizTemplate-1",
@@ -78,34 +77,33 @@
       "questionData": {
         "character1": "Emma",
         "character2": "Chris",
-        "line1": "_____ will we wait?",
-        "line2": "One hour. We can play a game together.",
-        "answer": "how long",
+        "line1": "Do I need to _____ my bags myself?",
+        "line2": "No, they'll be transferred automatically.",
+        "answer": "transfer",
         "distractors": [
-          "how much",
-          "how many",
-          "how many hour"
+          "carry",
+          "move",
+          "send"
         ]
       },
-      "audio_file1": "how-long-will-we-wait-convo",
-      "audio_file2": "one-hour-we-can-play-a-game-together-convo"
+      "audio_file1": "do-i-need-to-transfer-my-bags-myself-convo",
+      "audio_file2": "no-they-ll-be-transferred-automatically-convo"
     },
     {
-      "template": "ConvoTemplate-1",
+      "template": "DialogueCompletion",
       "questionData": {
         "character1": "Beth",
         "character2": "Alex",
-        "line1": "What if they _____ the flight?",
-        "line2": "Then we will take the next flight.",
-        "answer": "cancel",
+        "line1": "What if they cancel the flight?",
+        "answer": "Then the airline will rebook every passenger on the next flight.",
         "distractors": [
-          "start",
-          "depart",
-          "check in"
+          "Then we will wait at the gate for one hour.",
+          "Then every passenger must find a new hotel.",
+          "Then the airline will cancel the next flight too."
         ]
       },
       "audio_file1": "what-if-they-cancel-the-flight-convo",
-      "audio_file2": "then-we-will-take-the-next-flight-convo"
+      "audio_file2": "then-the-airline-will-rebook-every-passenger-on-the-next-flight-convo"
     },
     {
       "template": "imageQuizTemplate-1",
@@ -206,15 +204,15 @@
     {
       "template": "AppearDisappear",
       "questionData": {
-        "words": "How many bags are checked in?",
+        "words": "My connecting flight has a two-hour layover.",
         "distractors": [
-          "why",
-          "much",
-          "take back",
-          "she"
+          "direct",
+          "short",
+          "arriving",
+          "cancel"
         ]
       },
-      "audio_file": "how-many-bags-are-checked-in-convo"
+      "audio_file": "my-connecting-flight-has-a-two-hour-layover-convo"
     },
     {
       "template": "imageQuizTemplate-1",

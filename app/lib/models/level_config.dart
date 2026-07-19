@@ -279,7 +279,7 @@ class LevelQuestion {
   bool get isImageTemplate => template.startsWith('imageQuizTemplate');
 }
 
-/// Full level definition from `assets/quiz-data/levels/{iconImageName}.json`.
+/// Full level definition from `assets/quiz-data/levels/{directoryName}.json`.
 class LevelConfig {
   const LevelConfig({required this.questions, this.timerSeconds});
 

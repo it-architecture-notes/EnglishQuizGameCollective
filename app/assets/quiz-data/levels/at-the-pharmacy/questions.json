@@ -12,19 +12,63 @@
       }
     },
     {
-      "template": "ClozeSequence",
+      "template": "ConvoTemplate-1",
       "questionData": {
-        "sentence": "Please read the label before you ____ it.",
-        "answer": [
-          "use"
-        ],
+        "character1": "Maya",
+        "character2": "Sophie",
+        "line1": "Is this prescription ready for pickup?",
+        "line2": "Yes, and I'll _____ the instructions before you go.",
+        "answer": "explain",
         "distractors": [
-          "run",
-          "take in",
-          "put"
+          "tell",
+          "show",
+          "read"
         ]
       },
-      "audio_file": "please-read-the-label-before-you-use-it-convo"
+      "audio_file1": "is-this-prescription-ready-for-pickup-convo",
+      "audio_file2": "yes-and-ill-explain-the-instructions-before-you-go-convo"
+    },
+    {
+      "template": "AppearDisappear",
+      "questionData": {
+        "words": "She forgot to refill her medication again.",
+        "distractors": [
+          "remember",
+          "buy",
+          "never",
+          "doctor"
+        ]
+      },
+      "audio_file": "she-forgot-to-refill-her-medication-again-convo"
+    },
+    {
+      "template": "DialogueCompletion",
+      "questionData": {
+        "character1": "Omar",
+        "character2": "Lily",
+        "line1": "Do you have a painkiller for headaches?",
+        "answer": "Yes, and I'd advise taking it with food.",
+        "distractors": [
+          "No, we only have cough syrup.",
+          "Yes, but take it on an empty stomach.",
+          "Maybe, ask the pharmacist tomorrow."
+        ]
+      },
+      "audio_file1": "do-you-have-a-painkiller-for-headaches-convo",
+      "audio_file2": "yes-and-id-advise-taking-it-with-food-convo"
+    },
+    {
+      "template": "AppearDisappear",
+      "questionData": {
+        "words": "You have exactly two remaining refills on this treatment.",
+        "distractors": [
+          "only",
+          "about",
+          "three",
+          "doctor"
+        ]
+      },
+      "audio_file": "you-have-exactly-two-remaining-refills-on-this-treatment-convo"
     },
     {
       "template": "GrammarForm",
@@ -34,7 +78,7 @@
         "distractors": [
           "is",
           "are",
-          "will be"
+          "were"
         ]
       }
     },
@@ -43,34 +87,17 @@
       "questionData": {
         "character1": "Mike",
         "character2": "Ethan",
-        "line1": "How often should I _____ this?",
-        "line2": "____ it twice a day.",
-        "answer": "take",
+        "line1": "Should I _____ the syrup first?",
+        "line2": "Yes, _____ it well. Without that, it would be too thick.",
+        "answer": "shake",
         "distractors": [
-          "receive",
-          "send",
-          "give"
+          "break",
+          "drop",
+          "sell"
         ]
       },
-      "audio_file1": "how-often-should-i-take-this-convo",
-      "audio_file2": "take-it-twice-a-day-convo"
-    },
-    {
-      "template": "ConvoTemplate-1",
-      "questionData": {
-        "character1": "Maya",
-        "character2": "Sophie",
-        "line1": "Can you _____ me where the pain reliever is?",
-        "line2": "Yes I can _____ you. It is on aisle three.",
-        "answer": "tell",
-        "distractors": [
-          "say",
-          "help",
-          "give"
-        ]
-      },
-      "audio_file1": "can-you-tell-me-where-the-cough-medicine-is-convo",
-      "audio_file2": "yes-i-can-tell-you-it-is-on-aisle-three-convo"
+      "audio_file1": "should-i-shake-the-syrup-first-convo",
+      "audio_file2": "yes-shake-it-well-without-that-it-would-be-too-thick-convo"
     },
     {
       "template": "imageQuizTemplate-1",
@@ -94,13 +121,13 @@
         ],
         "translations": [
           {
-            "tr": "Aynı",
+            "tr": "aynı",
             "es": "mismo",
             "fr": "même",
-            "de": "Dasselbe",
-            "it": "Stesso",
+            "de": "gleich",
+            "it": "stesso",
             "pt": "mesmo",
-            "ru": "такой же",
+            "ru": "одинаковый",
             "zh": "相同的",
             "ja": "同じ",
             "ko": "같은",
@@ -138,48 +165,19 @@
           {
             "tr": "daha iyi",
             "es": "mejor",
-            "fr": "mieux",
+            "fr": "meilleur",
             "de": "besser",
-            "it": "Meglio",
+            "it": "migliore",
             "pt": "melhor",
             "ru": "лучше",
             "zh": "更好的",
             "ja": "より良い",
             "ko": "더 나은",
-            "ar": "أحسن",
+            "ar": "أفضل",
             "hi": "बेहतर"
           }
         ]
       }
-    },
-    {
-      "template": "DialogueCompletion",
-      "questionData": {
-        "character1": "Omar",
-        "character2": "Lily",
-        "line1": "Is it safe for children?",
-        "answer": "Yes, give a little water with it.",
-        "distractors": [
-          "Yes, but only for adults",
-          "Yes, but don't read the label",
-          "No, it's not for you"
-        ]
-      },
-      "audio_file1": "is-it-safe-for-children-convo",
-      "audio_file2": "yes-give-a-little-water-with-it-convo"
-    },
-    {
-      "template": "AppearDisappear",
-      "questionData": {
-        "words": "Maybe you should talk to the pharmacist.",
-        "distractors": [
-          "So",
-          "ask",
-          "was",
-          "doctor"
-        ]
-      },
-      "audio_file": "maybe-you-should-talk-to-the-pharmacist-convo"
     },
     {
       "template": "imageQuizTemplate-1",
@@ -206,21 +204,21 @@
     {
       "template": "imageQuizTemplate-2",
       "questionData": {
-        "imageName": "adhesive-bandage",
+        "imageName": "drugs-medicine",
         "wrongAnswers": [
-          "cotton-balls",
+          "elastic-bandage",
           "cough-syrup",
-          "elastic-bandage"
+          "cotton-balls"
         ]
       },
-      "answer": "adhesive bandage"
+      "answer": "drugs medicine"
     },
     {
       "template": "SentenceBuilder",
       "questionData": {
-        "correct_order": "I believe this medicine will help you."
+        "correct_order": "Is this medicine safe to buy over-the-counter?"
       },
-      "audio_file": "i-believe-this-medicine-will-help-you-convo"
+      "audio_file": "is-this-medicine-safe-to-buy-over-the-counter-convo"
     },
     {
       "template": "imageQuizTemplate-1",
@@ -234,21 +232,21 @@
       }
     },
     {
-      "template": "ClozeSequence",
+      "template": "ConvoTemplate-1",
       "questionData": {
-        "sentence": "What will _____ if I ____ take this syrup?",
-        "answer": [
-          "happen",
-          "also"
-        ],
+        "character1": "Omar",
+        "character2": "Lily",
+        "line1": "Could you _____ your full name and date of birth for me?",
+        "line2": "Yes, of course.",
+        "answer": "verify",
         "distractors": [
-          "have",
-          "go away",
-          "turn off",
-          "turn on"
+          "check",
+          "confirm",
+          "write"
         ]
       },
-      "audio_file": "if-you-also-take-this-syrup-what-will-happen-convo"
+      "audio_file1": "could-you-verify-your-full-name-and-date-of-birth-for-me-convo",
+      "audio_file2": "yes-of-course-convo"
     }
   ]
 }

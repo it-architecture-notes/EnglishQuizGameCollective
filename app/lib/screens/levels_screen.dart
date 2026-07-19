@@ -40,7 +40,8 @@ List<LevelListItem> buildLevelItems(QuizFlowData data) {
       shownBanners.add(sub.mainLevel);
       items.add(BannerItem(meta));
     }
-    items.add(SubLevelItem(sub, ordinalLevelIndex: i + 1, progressKey: sub.progressKey));
+    items.add(SubLevelItem(sub,
+        ordinalLevelIndex: i + 1, progressKey: sub.progressKey));
   }
 
   return items;
@@ -96,15 +97,18 @@ class _LevelsScreenState extends ConsumerState<LevelsScreen> {
   /// Levels with `translations.json` (for Words button on map when completed + stars).
   Set<String> _levelsWithTranslations = {};
 
-  /// Window into _filtered: only _filtered[_windowStart.._windowEnd-1] are shown.
-  int _windowStart = 0;
-  int _windowEnd = 0;
+  /// Row index (in the fully-rendered layout row list) to align at the top of
+  /// the viewport on the next list build. Set to the just-played level on return
+  /// from a quiz, or the progression frontier on a fresh open.
+  int _initialScrollIndex = 0;
+
+  /// Bumped on every (re)load so the ScrollablePositionedList is rebuilt fresh
+  /// and re-applies [_initialScrollIndex].
+  int _listReloadToken = 0;
   String? _loadError;
   bool _loading = true;
   late ItemScrollController _itemScrollController;
   late ItemPositionsListener _itemPositionsListener;
-
-  static const int _batchSize = 10;
 
   /// Curvy path: (sin+1)/2 drives position from left (0) to right (1).
   static const double _sinFrequency = 0.5;
@@ -115,14 +119,11 @@ class _LevelsScreenState extends ConsumerState<LevelsScreen> {
     super.initState();
     _itemScrollController = ItemScrollController();
     _itemPositionsListener = ItemPositionsListener.create();
-    _itemPositionsListener.itemPositions.addListener(_onScroll);
     _loadData();
   }
 
-  /// Detaches scroll listener before the state object is torn down.
   @override
   void dispose() {
-    _itemPositionsListener.itemPositions.removeListener(_onScroll);
     super.dispose();
   }
 
@@ -130,8 +131,9 @@ class _LevelsScreenState extends ConsumerState<LevelsScreen> {
   // Scroll anchor helpers
   // ---------------------------------------------------------------------------
 
-/// Returns the ordinal of the sub-level immediately before [ordinalLevelIndex] in [filtered] (no banners).
-  /// Used when a failed quiz should anchor scroll to the prior step instead of the attempted one.
+  /// Returns the ordinal of the sub-level immediately before [ordinalLevelIndex]
+  /// in [filtered] (banners skipped), or null if it is the first sub-level.
+  /// Used to anchor scroll to `X-1` when replaying an already-completed level.
   int? _findPreviousSubLevelOrdinal(
       List<LevelListItem> filtered, int ordinalLevelIndex) {
     int? prevOrdinal;
@@ -144,7 +146,8 @@ class _LevelsScreenState extends ConsumerState<LevelsScreen> {
     return null;
   }
 
-  /// Returns the index in [filtered] that should become [_windowStart].
+  /// Returns the index in [filtered] (equivalently, the layout row index) to
+  /// align at the top of the viewport.
   ///
   /// With [anchorOrdinal]: positions the named sub-level at the top.
   /// Without anchor (default / fresh open): positions the last completed sub-level
@@ -271,7 +274,24 @@ class _LevelsScreenState extends ConsumerState<LevelsScreen> {
 
     final previousMainLevel = item.sub.mainLevel - 1;
     if (previousMainLevel < 1) return true;
+    // Only gate on the previous main level's second reminder when reminder
+    // nodes actually exist for it. The current flow has no reminder levels, so
+    // without this guard the first level of every main level (>= 2) would be
+    // permanently locked (reminders can never be shown or completed).
+    if (!_hasReminderNodesForMain(previousMainLevel)) return true;
     return reminders.isReminderCompleted(previousMainLevel, 2);
+  }
+
+  /// Whether the loaded flow contains any reminder sub-level nodes for [mainLevel].
+  bool _hasReminderNodesForMain(int mainLevel) {
+    for (final item in _items) {
+      if (item is SubLevelItem &&
+          item.sub.isReminder &&
+          item.sub.mainLevel == mainLevel) {
+        return true;
+      }
+    }
+    return false;
   }
 
   /// Whether this reminder node was already cleared according to persisted reminder progress.
@@ -295,8 +315,11 @@ class _LevelsScreenState extends ConsumerState<LevelsScreen> {
   }
 
   /// Counts how many regular sub-level rows exist for [mainLevelId] inside [regularFlow].
-  int _lastRegularLocalLevel(int mainLevelId, Iterable<SubLevelItem> regularFlow) {
-    return regularFlow.where((item) => item.sub.mainLevel == mainLevelId).length;
+  int _lastRegularLocalLevel(
+      int mainLevelId, Iterable<SubLevelItem> regularFlow) {
+    return regularFlow
+        .where((item) => item.sub.mainLevel == mainLevelId)
+        .length;
   }
 
   /// Blocks auto-completing certain “after level” story pages until reminder 2 is done for that main level.
@@ -306,14 +329,11 @@ class _LevelsScreenState extends ConsumerState<LevelsScreen> {
     required Iterable<SubLevelItem> regularFlowSubLevels,
   }) {
     if (page.trigger.type != StoryTriggerType.afterLevel) return false;
-    final resolvedTriggerLevel = StoryTriggerService.resolveTriggerLevel(
-      page: page,
-      mainLevelId: mainLevelId,
-      flowSubLevels: regularFlowSubLevels,
-    );
-    final lastRegularLocalLevel =
-        _lastRegularLocalLevel(mainLevelId, regularFlowSubLevels);
-    return resolvedTriggerLevel == lastRegularLocalLevel &&
+    return StoryTriggerService.isTriggerOnLastRegularLevel(
+          page: page,
+          mainLevelId: mainLevelId,
+          flowSubLevels: regularFlowSubLevels,
+        ) &&
         !_reminderProgress.isReminderCompleted(mainLevelId, 2);
   }
 
@@ -325,8 +345,7 @@ class _LevelsScreenState extends ConsumerState<LevelsScreen> {
   Future<void> _loadData({int? anchorOrdinal}) async {
     try {
       final data = await loadGameFlow();
-      final progressFuture =
-          QuizProgressService.instance.loadProgress();
+      final progressFuture = QuizProgressService.instance.loadProgress();
       final reminderProgressFuture =
           ReminderProgressService.instance.loadProgress();
       final progress = await progressFuture;
@@ -357,7 +376,14 @@ class _LevelsScreenState extends ConsumerState<LevelsScreen> {
         });
       }
 
-      final filtered = _applyFilter(allItems, progress, reminderProgress);
+      final showAllLevels =
+          ref.read(settingsProvider).valueOrNull?.showAllLevels ?? false;
+      final filtered = _applyFilter(
+        allItems,
+        progress,
+        reminderProgress,
+        showAllLevels: showAllLevels,
+      );
       storyProgress = await _syncCompletedStoryPages(
         storyConfig: storyConfig,
         storyProgress: storyProgress,
@@ -370,7 +396,6 @@ class _LevelsScreenState extends ConsumerState<LevelsScreen> {
         progress,
         anchorOrdinal: anchorOrdinal,
       );
-      final end = (startAt + _batchSize).clamp(0, filtered.length);
 
       var levelsWithTranslations = <String>{};
       final uiLang = ref.read(settingsProvider).valueOrNull?.language ?? 'en';
@@ -379,9 +404,9 @@ class _LevelsScreenState extends ConsumerState<LevelsScreen> {
           if (item is SubLevelItem && !item.sub.isReminder) {
             final stars = progress.levels[item.progressKey]?.highestStars ?? 0;
             if (stars >= 1) {
-              final d = await loadLevelTranslations(item.sub.iconImageName);
+              final d = await loadLevelTranslations(item.sub.directoryName);
               if (d != null) {
-                levelsWithTranslations.add(item.sub.iconImageName);
+                levelsWithTranslations.add(item.sub.directoryName);
               }
             }
           }
@@ -396,28 +421,11 @@ class _LevelsScreenState extends ConsumerState<LevelsScreen> {
           _reminderProgress = reminderProgress;
           _storyConfig = storyConfig;
           _storyProgress = storyProgress;
-          _windowStart = startAt;
-          _windowEnd = end;
+          _initialScrollIndex = startAt;
+          _listReloadToken++;
           _loading = false;
           _levelsWithTranslations = levelsWithTranslations;
         });
-        // The ItemScrollController retains its previous scroll offset even after
-        // the widget is rebuilt via the loading spinner. If the user had scrolled
-        // down before pushing the quiz (e.g. to tap a reminder level), the
-        // controller restores that offset on the new list, causing minVisible > 1
-        // which prevents the backward-expansion logic from firing.
-        //
-        // Fix: after the first frame, if backward expansion has not yet fired
-        // (i.e. _windowStart still > 0), reset scroll to index 0 so _onScroll
-        // sees minVisible=0 and triggers backward expansion normally.
-        if (startAt > 0) {
-          WidgetsBinding.instance.addPostFrameCallback((_) {
-            if (!mounted) return;
-            if (_windowStart > 0 && _itemScrollController.isAttached) {
-              _itemScrollController.jumpTo(index: 0);
-            }
-          });
-        }
       }
     } catch (e, st) {
       if (mounted) {
@@ -432,7 +440,7 @@ class _LevelsScreenState extends ConsumerState<LevelsScreen> {
 
   /// Reloads data with a fresh list render (identical to the home-screen entry path).
   /// Sets _loading = true first so the ScrollablePositionedList is destroyed and
-  /// rebuilt from scratch, ensuring _onScroll fires at index 0 on first render.
+  /// rebuilt from scratch, so it re-applies [_initialScrollIndex] on the new list.
   Future<void> _freshLoadData({int? anchorOrdinal}) async {
     if (mounted) setState(() => _loading = true);
     await _loadData(anchorOrdinal: anchorOrdinal);
@@ -487,117 +495,18 @@ class _LevelsScreenState extends ConsumerState<LevelsScreen> {
   // Scroll windowing
   // ---------------------------------------------------------------------------
 
-  /// Expands [_windowStart]/[_windowEnd] as the user scrolls so only a slice of [_filtered] is built.
-  void _onScroll() {
-    final positions = _itemPositionsListener.itemPositions.value;
-    if (positions.isEmpty) return;
+  /// Maps the full [_filtered] list into layout rows for the list builder.
+  List<_LayoutRow> get _visibleLayoutRows => _itemsToLayoutRows(_filtered);
 
-    final minVisible = positions
-        .where((p) => p.itemLeadingEdge < 1)
-        .map((p) => p.index)
-        .fold<int>(999999, (a, b) => a < b ? a : b);
-    final maxVisible = positions
-        .where((p) => p.itemTrailingEdge > 0)
-        .map((p) => p.index)
-        .fold<int>(0, (a, b) => a > b ? a : b);
-
-    final windowedItemCount = _windowEnd - _windowStart;
-
-    if (maxVisible >= windowedItemCount - 2 && _windowEnd < _filtered.length) {
-      final newEnd = (_windowEnd + _batchSize).clamp(0, _filtered.length);
-      if (newEnd != _windowEnd && mounted) {
-        setState(() => _windowEnd = newEnd);
-      }
-    }
-
-    if (minVisible <= 1 && _windowStart > 0) {
-      final oldStart = _windowStart;
-      final newStart = (_windowStart - _batchSize).clamp(0, _filtered.length);
-      if (newStart != oldStart && mounted) {
-        final added = oldStart - newStart;
-        final jumpTarget = minVisible + added;
-        setState(() => _windowStart = newStart);
-        // Defer jumpTo to the next frame so it runs against the already-rebuilt
-        // list. Calling jumpTo immediately after setState hits the OLD item list
-        // whose size is _batchSize; when jumpTarget >= oldWindowSize the index
-        // is out of bounds and the scroll lands on the wrong item.
-        WidgetsBinding.instance.addPostFrameCallback((_) {
-          if (mounted && _itemScrollController.isAttached) {
-            _itemScrollController.jumpTo(index: jumpTarget);
-          }
-        });
-      }
-    }
-  }
-
-  /// Maps the current scroll window of [_filtered] into layout rows for the list builder.
-  List<_LayoutRow> get _visibleLayoutRows {
-    final windowed = _filtered.sublist(_windowStart, _windowEnd);
-    return _itemsToLayoutRows(windowed);
-  }
-
-  static const int _maxLockedPreview = 12;
-
-  /// Hides far-future locked nodes (except a preview budget) and drops banners with no visible sub-levels.
+  /// Shows every level all the time; locked levels still render frozen. There is
+  /// no preview budget or hiding of far-future nodes.
   List<LevelListItem> _applyFilter(
     List<LevelListItem> rawItems,
     QuizTypeProgress progress,
-    ReminderProgressData reminderProgress,
-  ) {
-    final visibleOrdinals = <int>{};
-    var lockedRemaining = _maxLockedPreview;
-    final regularFlowSubLevels = _regularSubLevelsFrom(rawItems);
-    for (final item in rawItems) {
-      if (item is SubLevelItem) {
-        if (item.sub.isReminder) {
-          // Unlocked/completed reminders always show; locked reminders count
-          // against the budget the same as locked regular levels.
-          final isUnlocked = _isReminderUnlocked(item) ||
-              ReminderProgressService.instance.isReminderCompleted(
-                data: reminderProgress,
-                mainLevel: item.sub.mainLevel,
-                reminderIndex: item.sub.reminderIndex,
-              );
-          if (isUnlocked) {
-            visibleOrdinals.add(item.ordinalLevelIndex);
-          } else if (lockedRemaining > 0) {
-            visibleOrdinals.add(item.ordinalLevelIndex);
-            lockedRemaining--;
-          }
-          continue;
-        }
-        final isUnlocked = _isRegularLevelUnlocked(
-          item,
-          progress,
-          regularFlowSubLevels: regularFlowSubLevels,
-          reminderProgress: reminderProgress,
-        );
-        if (isUnlocked) {
-          visibleOrdinals.add(item.ordinalLevelIndex);
-        } else if (lockedRemaining > 0) {
-          visibleOrdinals.add(item.ordinalLevelIndex);
-          lockedRemaining--;
-        }
-      }
-    }
-
-    final visibleMainLevels = <int>{};
-    for (final item in rawItems) {
-      if (item is SubLevelItem &&
-          visibleOrdinals.contains(item.ordinalLevelIndex)) {
-        visibleMainLevels.add(item.sub.mainLevel);
-      }
-    }
-
-    return rawItems.where((item) {
-      if (item is BannerItem) {
-        return visibleMainLevels.contains(item.meta.mainLevel);
-      }
-      if (item is SubLevelItem) {
-        return visibleOrdinals.contains(item.ordinalLevelIndex);
-      }
-      return false;
-    }).toList();
+    ReminderProgressData reminderProgress, {
+    bool showAllLevels = false,
+  }) {
+    return rawItems;
   }
 
   // ---------------------------------------------------------------------------
@@ -650,10 +559,6 @@ class _LevelsScreenState extends ConsumerState<LevelsScreen> {
     }
 
     final visibleRows = _visibleLayoutRows;
-    int subRowsBefore = 0;
-    for (var i = 0; i < _windowStart; i++) {
-      if (_filtered[i] is SubLevelItem) subRowsBefore++;
-    }
 
     return Scaffold(
       appBar: AppBar(
@@ -665,13 +570,16 @@ class _LevelsScreenState extends ConsumerState<LevelsScreen> {
       ),
       body: SafeArea(
         child: ScrollablePositionedList.builder(
+          key: ValueKey('levels-list-$_listReloadToken'),
           itemScrollController: _itemScrollController,
           itemPositionsListener: _itemPositionsListener,
+          initialScrollIndex: _initialScrollIndex,
+          initialAlignment: 0,
           padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
           itemCount: visibleRows.length,
           itemBuilder: (context, index) {
             final row = visibleRows[index];
-            final globalSubRowIndex = subRowsBefore +
+            final globalSubRowIndex =
                 visibleRows.take(index).whereType<_SubsLayoutRow>().length;
             return _buildRow(context, row, globalSubRowIndex);
           },
@@ -696,8 +604,8 @@ class _LevelsScreenState extends ConsumerState<LevelsScreen> {
   /// Colored title strip for a main level plus optional story shortcut when the first sub-level is unlocked.
   Widget _buildBanner(BuildContext context, MainLevelMeta meta) {
     final firstItem = _firstRegularItemForMain(meta.mainLevel);
-    final isStoryUnlocked = firstItem != null &&
-        _isRegularLevelUnlocked(firstItem, _progress);
+    final isStoryUnlocked =
+        firstItem != null && _isRegularLevelUnlocked(firstItem, _progress);
     final storyIconPath =
         _storyConfig.storyForMainLevel(meta.mainLevel)?.storyIconAssetPath;
 
@@ -816,7 +724,7 @@ class _LevelsScreenState extends ConsumerState<LevelsScreen> {
         !isLocked &&
         stars >= 1 &&
         (ref.read(settingsProvider).valueOrNull?.language ?? 'en') != 'en' &&
-        _levelsWithTranslations.contains(subLevelItem.sub.iconImageName);
+        _levelsWithTranslations.contains(subLevelItem.sub.directoryName);
 
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 4),
@@ -843,7 +751,7 @@ class _LevelsScreenState extends ConsumerState<LevelsScreen> {
 
   /// Fade popup with the same translations table as end-of-level sheet.
   Future<void> _showLevelWordsDialog(SubLevelItem item) async {
-    final data = await loadLevelTranslations(item.sub.iconImageName);
+    final data = await loadLevelTranslations(item.sub.directoryName);
     if (!mounted || data == null) return;
     final strings = ref.read(currentLocalizedStringsProvider).valueOrNull ?? {};
     final lang = ref.read(settingsProvider).valueOrNull?.language ?? 'en';
@@ -918,7 +826,9 @@ class _LevelsScreenState extends ConsumerState<LevelsScreen> {
       ),
     );
 
-    if (isLocked) {
+    final showAllLevels =
+        ref.read(settingsProvider).valueOrNull?.showAllLevels ?? false;
+    if (isLocked && !showAllLevels) {
       iconWidget = ColorFiltered(
         colorFilter: const ColorFilter.matrix(<double>[
           0.2126,
@@ -961,8 +871,7 @@ class _LevelsScreenState extends ConsumerState<LevelsScreen> {
           Material(
             color: Colors.transparent,
             child: InkWell(
-              onTap: isLocked
-                  || isCompletedReminder
+              onTap: isLocked || isCompletedReminder
                   ? null
                   : () {
                       final soundFxOn =
@@ -993,7 +902,9 @@ class _LevelsScreenState extends ConsumerState<LevelsScreen> {
                           overflow: TextOverflow.ellipsis,
                           style:
                               Theme.of(context).textTheme.bodySmall?.copyWith(
-                                    color: isLocked ? Colors.grey.shade400 : null,
+                                    color: isLocked && !showAllLevels
+                                        ? Colors.grey.shade400
+                                        : null,
                                   ),
                         ),
                         if (sub.isReminder)
@@ -1002,13 +913,13 @@ class _LevelsScreenState extends ConsumerState<LevelsScreen> {
                             child: Icon(
                               isCompletedReminder
                                   ? Icons.check_circle_rounded
-                                  : isLocked
+                                  : isLocked && !showAllLevels
                                       ? Icons.lock_rounded
                                       : Icons.quiz_rounded,
                               size: 16,
                               color: isCompletedReminder
                                   ? Colors.green
-                                  : isLocked
+                                  : isLocked && !showAllLevels
                                       ? Colors.grey.shade400
                                       : Theme.of(context).colorScheme.primary,
                             ),
@@ -1023,7 +934,7 @@ class _LevelsScreenState extends ConsumerState<LevelsScreen> {
                                     ? Icons.star_rounded
                                     : Icons.star_border_rounded,
                                 size: 12,
-                                color: isLocked
+                                color: isLocked && !showAllLevels
                                     ? Colors.grey.shade300
                                     : Colors.amber,
                               ),
@@ -1069,14 +980,15 @@ class _LevelsScreenState extends ConsumerState<LevelsScreen> {
   // ---------------------------------------------------------------------------
 
   /// Loads each regular sub-level’s `questions.json` to count rows for reminder question generation.
-  Future<Map<String, int>> _buildRegularQuestionCountsForMain(int mainLevel) async {
+  Future<Map<String, int>> _buildRegularQuestionCountsForMain(
+      int mainLevel) async {
     final counts = <String, int>{};
-    final regularItems = _regularSubLevels
-        .where((item) => item.sub.mainLevel == mainLevel);
+    final regularItems =
+        _regularSubLevels.where((item) => item.sub.mainLevel == mainLevel);
     for (final item in regularItems) {
       final sub = item.sub;
       try {
-        final cfg = await loadLevelConfig(sub.iconImageName);
+        final cfg = await loadLevelConfig(sub.directoryName);
         counts[item.progressKey] = cfg.questions.length;
       } catch (_) {
         counts[item.progressKey] = 10;
@@ -1090,7 +1002,8 @@ class _LevelsScreenState extends ConsumerState<LevelsScreen> {
     final reminderState = _reminderProgress.reminderState(mainLevel, 1);
     if (reminderState.questionIds.isNotEmpty) return;
     final counts = await _buildRegularQuestionCountsForMain(mainLevel);
-    final updated = await ReminderProgressService.instance.generateReminderQuestions(
+    final updated =
+        await ReminderProgressService.instance.generateReminderQuestions(
       mainLevel: mainLevel,
       questionCountByProgressKey: counts,
     );
@@ -1124,12 +1037,15 @@ class _LevelsScreenState extends ConsumerState<LevelsScreen> {
   void _openQuiz(BuildContext context, SubLevelItem subLevelItem) async {
     final sub = subLevelItem.sub;
 
-    // Capture scroll anchor context before pushing the quiz, while _filtered
-    // and _progress reflect the current state.
+    // Capture scroll-anchor context BEFORE pushing the quiz, while _filtered,
+    // _progress and _reminderProgress still reflect the pre-play state.
     //
-    // wasAlreadyCompleted: true if this level was beaten before (replay).
-    // A simpler check than full frontier detection — no unlock logic needed.
-    final previousOrdinal =
+    // wasCompletedBefore: this level already had progress (replay) — option 2.
+    // Otherwise it is a first play of a newly-playable level — option 1.
+    final bool wasCompletedBefore = sub.isReminder
+        ? _isReminderCompleted(subLevelItem)
+        : (_progress.levels[subLevelItem.progressKey]?.highestStars ?? 0) > 0;
+    final int? previousOrdinal =
         _findPreviousSubLevelOrdinal(_filtered, subLevelItem.ordinalLevelIndex);
 
     await _showBeforeStoryIfNeeded(subLevelItem);
@@ -1154,9 +1070,14 @@ class _LevelsScreenState extends ConsumerState<LevelsScreen> {
     if (!mounted) return;
     if (result == null) return;
 
-    final int? anchorOrdinal = result.completed
-        ? result.ordinalLevelIndex
-        : previousOrdinal;
+    // Scroll anchor on return:
+    //   Option 2 (replay of an already-completed level): anchor to X-1 so that
+    //     level sits at the top of the viewport.
+    //   Option 1 (first play of a newly-playable level, success OR fail): use
+    //     the frontier heuristic (null anchor) which shows the last completed
+    //     level above the current frontier — i.e. two colorful levels on top.
+    //     On success the frontier advances (lands on X); on fail it stays (X-1).
+    final int? anchorOrdinal = wasCompletedBefore ? previousOrdinal : null;
 
     if (result.completed) {
       final regularFlowSubLevels = _regularSubLevels;
@@ -1165,24 +1086,24 @@ class _LevelsScreenState extends ConsumerState<LevelsScreen> {
       final completedLocalLevel = sub.isReminder
           ? _lastRegularLocalLevel(sub.mainLevel, regularFlowSubLevels)
           : localByOrdinal[subLevelItem.ordinalLevelIndex] ?? 1;
+      // Story triggers match by flow title (works for reminders too).
+      final completedLevelTitle = sub.title;
       final mainLevelId = sub.mainLevel;
 
-      if (!sub.isReminder) {
-        final mainStory = _storyConfig.storyForMainLevel(mainLevelId);
-        final beforePage = StoryTriggerService.findBeforeLevelPage(
-          mainStory: mainStory,
-          storyProgress: _storyProgress,
+      final mainStoryForBefore = _storyConfig.storyForMainLevel(mainLevelId);
+      final beforePage = StoryTriggerService.findBeforeLevelPage(
+        mainStory: mainStoryForBefore,
+        storyProgress: _storyProgress,
+        mainLevelId: mainLevelId,
+        levelTitle: sub.title,
+        flowSubLevels: regularFlowSubLevels,
+      );
+      if (beforePage != null) {
+        _storyProgress = await StoryProgressService.instance.markCompleted(
+          current: _storyProgress,
           mainLevelId: mainLevelId,
-          currentLocalLevel: completedLocalLevel,
-          flowSubLevels: regularFlowSubLevels,
+          eventId: beforePage.eventId,
         );
-        if (beforePage != null) {
-          _storyProgress = await StoryProgressService.instance.markCompleted(
-            current: _storyProgress,
-            mainLevelId: mainLevelId,
-            eventId: beforePage.eventId,
-          );
-        }
       }
       final mainStory = _storyConfig.storyForMainLevel(mainLevelId);
       StoryPageConfig? afterPage;
@@ -1192,23 +1113,40 @@ class _LevelsScreenState extends ConsumerState<LevelsScreen> {
             mainStory: mainStory,
             storyProgress: _storyProgress,
             mainLevelId: mainLevelId,
-            completedLocalLevel: completedLocalLevel,
+            levelTitle: completedLevelTitle,
             flowSubLevels: regularFlowSubLevels,
           );
         }
       } else {
-        final isLastRegularLevel =
-            completedLocalLevel == _lastRegularLocalLevel(mainLevelId, regularFlowSubLevels);
+        final isLastRegularLevel = completedLocalLevel ==
+            _lastRegularLocalLevel(mainLevelId, regularFlowSubLevels);
         if (!isLastRegularLevel) {
           afterPage = StoryTriggerService.findAfterLevelPage(
             mainStory: mainStory,
             storyProgress: _storyProgress,
             mainLevelId: mainLevelId,
-            completedLocalLevel: completedLocalLevel,
+            levelTitle: sub.title,
             flowSubLevels: regularFlowSubLevels,
           );
         } else {
           await _ensureReminderQuestionsGenerated(mainLevelId);
+          // Test Mode: skip reminder levels. Once the last regular level of this
+          // main level is done, auto-complete both reminders so the player moves
+          // on to the next main level without playing them.
+          final testModeOn =
+              ref.read(settingsProvider).valueOrNull?.testModeOn ?? false;
+          if (testModeOn) {
+            await ReminderProgressService.instance.markReminderCompleted(
+              mainLevel: mainLevelId,
+              reminderIndex: 1,
+              answeredIds: const [],
+            );
+            await ReminderProgressService.instance.markReminderCompleted(
+              mainLevel: mainLevelId,
+              reminderIndex: 2,
+              answeredIds: const [],
+            );
+          }
         }
       }
       await _freshLoadData(anchorOrdinal: anchorOrdinal);
@@ -1221,21 +1159,16 @@ class _LevelsScreenState extends ConsumerState<LevelsScreen> {
     }
   }
 
-  /// Presents a “before level” story page when configured for this ordinal, skipping reminder rows.
+  /// Presents a “before level” story page when configured for this title.
   Future<void> _showBeforeStoryIfNeeded(SubLevelItem subLevelItem) async {
-    if (subLevelItem.sub.isReminder) return;
     final regularFlowSubLevels = _regularSubLevels;
-    final localByOrdinal = StoryTriggerService.localLevelByOrdinal(
-      regularFlowSubLevels,
-    );
-    final localLevel = localByOrdinal[subLevelItem.ordinalLevelIndex] ?? 1;
     final mainLevelId = subLevelItem.sub.mainLevel;
     final mainStory = _storyConfig.storyForMainLevel(mainLevelId);
     final page = StoryTriggerService.findBeforeLevelPage(
       mainStory: mainStory,
       storyProgress: _storyProgress,
       mainLevelId: mainLevelId,
-      currentLocalLevel: localLevel,
+      levelTitle: subLevelItem.sub.title,
       flowSubLevels: regularFlowSubLevels,
     );
     if (page == null || !mounted) return;
@@ -1256,6 +1189,9 @@ class _LevelsScreenState extends ConsumerState<LevelsScreen> {
       continueLabel: strings['story_continue'] ?? 'Continue',
       congratulationsLabel:
           strings['story_congratulations'] ?? 'Congratulations!',
+      previousLabel: strings['previous'] ?? 'Previous',
+      nextLabel: strings['next'] ?? 'Next',
+      okLabel: strings['ok'] ?? 'OK',
       isFinalPage: page.trigger.type == StoryTriggerType.afterLevel,
     );
   }

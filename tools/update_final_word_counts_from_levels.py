@@ -17,8 +17,10 @@ Counted sources (per level folder — each word/phrase contributes at most once 
 
 Ignored tokens: ``to`` is never indexed (standalone or when split from phrases).
 
-Matching: CSV `word` matches if its lowercase form equals any token extracted from
-the counted text, or equals the whole normalized phrase (for multi-word `word` rows).
+Matching: CSV ``word`` matches a level only when every reference token (after
+tokenizing the row and omitting ignored tokens like ``to``) appears in that level's
+taught vocabulary. Multi-word rows such as ``come in`` match ``come in please`` but
+not ``fill in`` (missing ``come``). Single-word rows still match on that token.
 
 Output CSV header: word,level,count,levels
   - count: number of distinct level folders where the word matched.
@@ -32,6 +34,9 @@ Also marks ``remove-word-list-references/3000 words oxford.txt``: prepends ``**`
 lines whose headword matches level vocabulary (same ``match_csv_word`` rules as the
 final-word CSVs). Marked lines have no leading tabs; unmarked vocabulary lines get
 three tabs. Header/footer lines are left untabbed.
+
+Also refreshes ``final words/common-verbs.csv`` (plain verb list or existing
+``word,level,count,levels`` rows) in the same schema, preserving list order.
 
 Usage:
   python3 tools/update_final_word_counts_from_levels.py
@@ -82,6 +87,9 @@ def level_counts_non_image_answer_vocab(label: str) -> bool:
 _OXFORD_MARK_PREFIX = "**"
 _OXFORD_INDENT = "\t\t\t"
 _OXFORD_LEVEL_END = re.compile(r"\b(A1|A2|B1|B2)\s*$", re.I)
+
+COMMON_VERBS_CSV = "common-verbs.csv"
+_ORDERED_REFERENCE_CSV_SKIP = frozenset({COMMON_VERBS_CSV})
 
 
 def _template_str(raw) -> str:
@@ -216,7 +224,10 @@ def collect_word_to_levels(levels_root: Path) -> dict[str, set[str]]:
 def match_csv_word(csv_word: str, word_levels: dict[str, set[str]]) -> tuple[int, str]:
     """
     Return (count, comma-separated sorted level names).
-    csv_word may be multi-word; try whole phrase then tokens.
+
+    A level counts only when every reference token is taught there (set
+    intersection). ``come in`` matches levels that teach both ``come`` and ``in``,
+    not levels that teach only ``in`` (e.g. answer ``fill in``).
     """
     key = (csv_word or "").strip()
     if not key:
@@ -224,14 +235,24 @@ def match_csv_word(csv_word: str, word_levels: dict[str, set[str]]) -> tuple[int
     phrase = normalize_phrase(key)
     if phrase in _IGNORED_TOKENS:
         return 0, ""
+    ref_tokens = [t for t in tokenize(key) if t not in _IGNORED_TOKENS]
+    if not ref_tokens:
+        return 0, ""
+
     seen_levels: set[str] = set()
     if phrase in word_levels:
         seen_levels |= word_levels[phrase]
-    for tok in tokenize(key):
-        if tok in _IGNORED_TOKENS:
-            continue
-        if tok in word_levels:
-            seen_levels |= word_levels[tok]
+
+    candidate_levels: set[str] | None = None
+    for tok in ref_tokens:
+        levels_for_tok = word_levels.get(tok, set())
+        if candidate_levels is None:
+            candidate_levels = set(levels_for_tok)
+        else:
+            candidate_levels &= levels_for_tok
+    if candidate_levels:
+        seen_levels |= candidate_levels
+
     levels_str = ",".join(sorted(seen_levels))
     return len(seen_levels), levels_str
 
@@ -378,6 +399,160 @@ def mark_oxford_wordlist(
     return total, marked
 
 
+def _ordered_word_row_sort_key(item: tuple[int, dict[str, str]]) -> tuple:
+    rank, row = item
+    used_last = int((row.get("count") or "0").strip() or "0") == 0
+    return (used_last, rank, (row.get("word") or "").lower())
+
+
+def _write_ordered_reference_csv(
+    ranked_words: list[tuple[int, str]],
+    csv_path: Path,
+    word_levels: dict[str, set[str]],
+    *,
+    dry_run: bool,
+    source_label: str,
+) -> int:
+    """Write ``word,level,count,levels`` rows; sort used-first then source order."""
+    if not ranked_words:
+        return 0
+    fieldnames = ["word", "level", "count", "levels"]
+    items: list[tuple[int, dict[str, str]]] = []
+    for rank, word in ranked_words:
+        cnt, levels_str = match_csv_word(word, word_levels)
+        items.append(
+            (
+                rank,
+                {
+                    "word": word,
+                    "level": "",
+                    "count": str(cnt),
+                    "levels": levels_str,
+                },
+            )
+        )
+    items.sort(key=_ordered_word_row_sort_key)
+    rows_out = [row for _, row in items]
+    n = len(rows_out)
+    if dry_run:
+        print(f"[dry-run] Would rewrite {csv_path} from {source_label} ({n} rows)")
+        return n
+    with csv_path.open("w", encoding="utf-8", newline="") as f:
+        w = csv.DictWriter(f, fieldnames=fieldnames)
+        w.writeheader()
+        w.writerows(rows_out)
+    print(f"Wrote {csv_path} from {source_label} ({n} rows)")
+    return n
+
+
+def parse_common_verbs_list(path: Path) -> list[tuple[int, str]]:
+    """
+    Return (rank, word) rows from ``common-verbs.csv``.
+
+    Accepts either a plain one-word-per-line list or an existing
+    ``word,level,count,levels`` table (words taken in file order).
+    """
+    try:
+        text = path.read_text(encoding="utf-8")
+    except OSError as e:
+        print(f"Skip {path}: {e}", file=sys.stderr)
+        return []
+    if text.startswith("\ufeff"):
+        text = text.lstrip("\ufeff")
+    lines = text.splitlines()
+    if not lines:
+        return []
+    first = lines[0].strip()
+    if first.lower().startswith("word,") or (
+        "," in first and "word" in {p.strip().lower() for p in first.split(",")}
+    ):
+        reader = csv.DictReader(lines)
+        hdr_map = _normalize_headers(reader.fieldnames)
+        wkey = hdr_map.get("word")
+        if wkey:
+            rows: list[tuple[int, str]] = []
+            for rank, row in enumerate(reader, start=1):
+                if not row:
+                    continue
+                word = (row.get(wkey) or "").strip()
+                if word:
+                    rows.append((rank, word))
+            return rows
+    rows = []
+    for rank, line in enumerate(lines, start=1):
+        raw = line.strip()
+        if not raw or raw.startswith("#"):
+            continue
+        rows.append((rank, raw))
+    return rows
+
+
+def update_common_verbs_csv(
+    csv_path: Path,
+    word_levels: dict[str, set[str]],
+    dry_run: bool,
+) -> int:
+    """Refresh ``common-verbs.csv`` with level usage counts."""
+    ranked = parse_common_verbs_list(csv_path)
+    if not ranked:
+        print(f"Skip common verbs: no rows in {csv_path}", file=sys.stderr)
+        return 0
+    return _write_ordered_reference_csv(
+        ranked,
+        csv_path,
+        word_levels,
+        dry_run=dry_run,
+        source_label=csv_path.name,
+    )
+
+
+def refresh_final_word_references(
+    levels_root: Path,
+    csv_dir: Path,
+    *,
+    oxford_txt: Path | None = None,
+    skip_oxford: bool = False,
+    dry_run: bool = False,
+) -> int:
+    """
+    Re-scan all level folders and refresh final-word CSVs (including LanGeek nouns)
+    and (optionally) the Oxford word list. Returns 0 on success, 1 on fatal path errors.
+    """
+    levels_root = levels_root.resolve()
+    csv_dir = csv_dir.resolve()
+    if not levels_root.is_dir():
+        print(f"Not a directory: {levels_root}", file=sys.stderr)
+        return 1
+    if not csv_dir.is_dir():
+        print(f"Not a directory: {csv_dir}", file=sys.stderr)
+        return 1
+
+    word_levels = collect_word_to_levels(levels_root)
+    print(f"Indexed vocabulary from {levels_root} ({len(word_levels)} distinct tokens/phrases).")
+
+    total_rows = 0
+    for csv_path in sorted(csv_dir.glob("*.csv")):
+        if csv_path.name in _ORDERED_REFERENCE_CSV_SKIP:
+            continue
+        total_rows += update_csv(csv_path, word_levels, dry_run)
+
+    common_verbs_csv = csv_dir / COMMON_VERBS_CSV
+    if common_verbs_csv.is_file():
+        total_rows += update_common_verbs_csv(common_verbs_csv, word_levels, dry_run)
+    else:
+        print(f"Skip common verbs (not found): {common_verbs_csv}", file=sys.stderr)
+
+    if not skip_oxford and oxford_txt is not None:
+        oxford_path = oxford_txt.resolve()
+        if oxford_path.is_file():
+            mark_oxford_wordlist(oxford_path, word_levels, dry_run)
+        else:
+            print(f"Skip Oxford list (not found): {oxford_path}", file=sys.stderr)
+
+    print(f"Done. Processed rows across final-word CSVs (+ common verbs): {total_rows}.")
+    return 0
+
+
 def main() -> int:
     root = repo_root()
     parser = argparse.ArgumentParser(description=__doc__)
@@ -412,32 +587,13 @@ def main() -> int:
     )
     args = parser.parse_args()
 
-    levels_root = args.levels_root.resolve()
-    if not levels_root.is_dir():
-        print(f"Not a directory: {levels_root}", file=sys.stderr)
-        return 1
-
-    csv_dir = args.csv_dir.resolve()
-    if not csv_dir.is_dir():
-        print(f"Not a directory: {csv_dir}", file=sys.stderr)
-        return 1
-
-    word_levels = collect_word_to_levels(levels_root)
-    print(f"Indexed vocabulary from {levels_root} ({len(word_levels)} distinct tokens/phrases).")
-
-    total_rows = 0
-    for csv_path in sorted(csv_dir.glob("*.csv")):
-        total_rows += update_csv(csv_path, word_levels, args.dry_run)
-
-    if not args.skip_oxford_mark:
-        oxford_path = args.oxford_txt.resolve()
-        if oxford_path.is_file():
-            mark_oxford_wordlist(oxford_path, word_levels, args.dry_run)
-        else:
-            print(f"Skip Oxford list (not found): {oxford_path}", file=sys.stderr)
-
-    print(f"Done. Processed rows across final-word CSVs: {total_rows}.")
-    return 0
+    return refresh_final_word_references(
+        args.levels_root.resolve(),
+        args.csv_dir.resolve(),
+        oxford_txt=args.oxford_txt,
+        skip_oxford=args.skip_oxford_mark,
+        dry_run=args.dry_run,
+    )
 
 
 if __name__ == "__main__":

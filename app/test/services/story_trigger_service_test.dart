@@ -11,7 +11,7 @@ void main() {
       SubLevelItem(
         const SubLevel(
           mainLevel: 1,
-          iconImageName: 'a',
+          directoryName: 'a',
           title: 'A',
         ),
         ordinalLevelIndex: 1,
@@ -20,7 +20,7 @@ void main() {
       SubLevelItem(
         const SubLevel(
           mainLevel: 1,
-          iconImageName: 'b',
+          directoryName: 'b',
           title: 'B',
         ),
         ordinalLevelIndex: 2,
@@ -29,7 +29,7 @@ void main() {
       SubLevelItem(
         const SubLevel(
           mainLevel: 1,
-          iconImageName: 'c',
+          directoryName: 'c',
           title: 'C',
         ),
         ordinalLevelIndex: 3,
@@ -37,11 +37,22 @@ void main() {
       ),
       SubLevelItem(
         const SubLevel(
-          mainLevel: 2,
-          iconImageName: 'd',
-          title: 'D',
+          mainLevel: 1,
+          directoryName: '',
+          title: 'Reminder 2',
+          kind: 'reminder',
+          reminderIndex: 2,
         ),
         ordinalLevelIndex: 4,
+        progressKey: '1_reminder_2',
+      ),
+      SubLevelItem(
+        const SubLevel(
+          mainLevel: 2,
+          directoryName: 'd',
+          title: 'D',
+        ),
+        ordinalLevelIndex: 5,
         progressKey: '2_d',
       ),
     ];
@@ -55,7 +66,7 @@ void main() {
           pageTemplateId: 1,
           trigger: const StoryTrigger(
             type: StoryTriggerType.beforeLevel,
-            level: 1,
+            level: 'A',
           ),
           storyText: const {'en': 'x'},
         ),
@@ -64,7 +75,7 @@ void main() {
           pageTemplateId: 1,
           trigger: const StoryTrigger(
             type: StoryTriggerType.beforeLevel,
-            level: 2,
+            level: 'B',
           ),
           storyText: const {'en': 'y'},
         ),
@@ -73,19 +84,28 @@ void main() {
           pageTemplateId: 4,
           trigger: const StoryTrigger(
             type: StoryTriggerType.afterLevel,
-            level: 0,
+            level: '',
           ),
           storyText: const {'en': 'z'},
+        ),
+        StoryPageConfig(
+          eventId: 104,
+          pageTemplateId: 4,
+          trigger: const StoryTrigger(
+            type: StoryTriggerType.afterLevel,
+            level: 'Reminder 2',
+          ),
+          storyText: const {'en': 'done'},
         ),
       ],
     );
 
-    test('findBeforeLevelPage returns matching incomplete page', () {
+    test('findBeforeLevelPage returns matching incomplete page by title', () {
       final page = StoryTriggerService.findBeforeLevelPage(
         mainStory: mainStory,
         storyProgress: const StoryProgressState(),
         mainLevelId: 1,
-        currentLocalLevel: 1,
+        levelTitle: 'A',
         flowSubLevels: flowItems,
       );
       expect(page?.eventId, 101);
@@ -100,24 +120,35 @@ void main() {
         mainStory: mainStory,
         storyProgress: progress,
         mainLevelId: 1,
-        currentLocalLevel: 1,
+        levelTitle: 'A',
         flowSubLevels: flowItems,
       );
       expect(page, isNull);
     });
 
-    test('findAfterLevelPage resolves level 0 as last level in main', () {
+    test('findAfterLevelPage resolves empty level as last regular title', () {
       final page = StoryTriggerService.findAfterLevelPage(
         mainStory: mainStory,
         storyProgress: const StoryProgressState(),
         mainLevelId: 1,
-        completedLocalLevel: 3,
+        levelTitle: 'C',
         flowSubLevels: flowItems,
       );
       expect(page?.eventId, 103);
     });
 
-    test('pagesReadyToMarkCompleted requires trigger local level to have a star',
+    test('findAfterLevelPage matches reminder title', () {
+      final page = StoryTriggerService.findAfterLevelPage(
+        mainStory: mainStory,
+        storyProgress: const StoryProgressState(),
+        mainLevelId: 1,
+        levelTitle: 'Reminder 2',
+        flowSubLevels: flowItems,
+      );
+      expect(page?.eventId, 104);
+    });
+
+    test('pagesReadyToMarkCompleted requires trigger level to have a star',
         () {
       final quizProgress = QuizTypeProgress(
         levels: const {
@@ -126,7 +157,7 @@ void main() {
           '1_b': LevelProgress(
               progressKey: '1_b', highestStars: 3, highestDiamonds: 3),
           '1_c': LevelProgress(
-              progressKey: '1_c', highestStars: 0, highestDiamonds: 1),
+              progressKey: '1_c', highestStars: 2, highestDiamonds: 2),
         },
       );
 
@@ -138,50 +169,32 @@ void main() {
         flowSubLevels: flowItems,
       );
 
-      expect(ready.map((p) => p.eventId), [101, 102]);
+      // before_level skipped; after empty→C ready; Reminder 2 not auto-completed.
+      expect(ready.map((p) => p.eventId), [103]);
     });
 
-    test(
-        'pagesReadyToMarkCompleted skips page when its trigger level has no star',
-        () {
-      final quizProgress = QuizTypeProgress(
-        levels: const {
-          '1_b': LevelProgress(
-              progressKey: '1_b', highestStars: 0, highestDiamonds: 0),
-          '1_c': LevelProgress(
-              progressKey: '1_c', highestStars: 3, highestDiamonds: 3),
-        },
-      );
-
-      final ready = StoryTriggerService.pagesReadyToMarkCompleted(
-        mainStory: mainStory,
-        storyProgress: const StoryProgressState(),
-        quizProgress: quizProgress,
-        mainLevelId: 1,
-        flowSubLevels: flowItems,
-      );
-
-      expect(ready.map((p) => p.eventId).contains(102), isFalse);
-    });
-
-    test('replay rule: no before-level story appears for level 3 retry', () {
+    test('replay rule: no before-level story for unmatched title', () {
       final page = StoryTriggerService.findBeforeLevelPage(
         mainStory: mainStory,
         storyProgress: const StoryProgressState(),
         mainLevelId: 1,
-        currentLocalLevel: 3,
+        levelTitle: 'C',
         flowSubLevels: flowItems,
       );
 
       expect(page, isNull);
     });
 
-    test('localLevelByOrdinal maps local index per main level', () {
-      final map = StoryTriggerService.localLevelByOrdinal(flowItems);
-      expect(map[1], 1);
-      expect(map[2], 2);
-      expect(map[3], 3);
-      expect(map[4], 1);
+    test('resolveTriggerLevelTitle uses configured title', () {
+      final page = mainStory.storySequences[1];
+      expect(
+        StoryTriggerService.resolveTriggerLevelTitle(
+          page: page,
+          mainLevelId: 1,
+          flowSubLevels: flowItems,
+        ),
+        'B',
+      );
     });
   });
 }

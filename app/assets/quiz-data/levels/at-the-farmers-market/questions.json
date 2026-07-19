@@ -55,7 +55,7 @@
       "questionData": {
         "english_words": [
           "free",
-          "costly",
+          "expensive",
           "cheap",
           "on sale"
         ],
@@ -76,10 +76,10 @@
           },
           {
             "tr": "pahalı",
-            "es": "costoso",
-            "fr": "coûteux",
+            "es": "caro",
+            "fr": "cher",
             "de": "teuer",
-            "it": "costoso",
+            "it": "caro",
             "pt": "caro",
             "ru": "дорогой",
             "zh": "贵的",
@@ -138,15 +138,15 @@
     {
       "template": "AppearDisappear",
       "questionData": {
-        "words": "I need apples for tomorrow.",
+        "words": "The seller greets every customer.",
         "distractors": [
-          "any",
-          "yesterday",
-          "he",
-          "help"
+          "fresh",
+          "market",
+          "bread",
+          "he"
         ]
       },
-      "audio_file": "i-need-apples-for-tomorrow-convo"
+      "audio_file": "the-seller-greets-every-customer-convo"
     },
     {
       "template": "imageQuizTemplate-1",
@@ -173,9 +173,9 @@
     {
       "template": "SentenceBuilder",
       "questionData": {
-        "correct_order": "This honey seems genuine."
+        "correct_order": "The ripe mango smells sweet."
       },
-      "audio_file": "this-honey-seems-genuine-convo"
+      "audio_file": "the-ripe-mango-smells-sweet-convo"
     },
     {
       "template": "imageQuizTemplate-1",
@@ -193,8 +193,8 @@
       "questionData": {
         "sentence": "I _____ the ______ before I buy honey.",
         "answer": [
-          "compare",
-          "prices"
+          "reduce",
+          "price"
         ],
         "distractors": [
           "count",
@@ -202,50 +202,53 @@
           "smell"
         ]
       },
-      "audio_file": "i-compare-the-prices-before-i-buy-honey-convo"
+      "audio_file": "i-reduce-the-price-before-i-buy-honey-convo"
     },
     {
       "template": "GrammarForm",
       "questionData": {
-        "sentence": "The farmer is _____ new customers.",
+        "sentence": "Farmers are _____ shoppers by setting out samples.",
         "answer": "welcoming",
         "distractors": [
+          "welcomes",
           "welcomed",
-          "welcomer",
-          "welcomes"
+          "welcome"
         ]
       }
     },
     {
       "template": "ClozeSequence",
       "questionData": {
-        "sentence": "This seller is very ______. She also offers free _____ to customers.",
+        "sentence": "The market is _____ because its _____ produce is so popular.",
         "answer": [
-          "polite",
-          "samples"
+          "crowded",
+          "local"
         ],
         "distractors": [
-          "quickly",
-          "before",
-          "today",
-          "carefully"
+          "fresh",
+          "cheap",
+          "popular",
+          "expensive"
         ]
       },
-      "audio_file": "this-seller-is-very-polite-she-also-offers-free-samples-to-customers-convo"
+      "audio_file": "the-market-is-crowded-because-its-local-produce-is-so-popular-convo"
     },
     {
       "template": "ClozeSequence",
       "questionData": {
-        "sentence": "This pie is _____ for you.",
+        "sentence": "She will _____ the boxes and _____ the fruit.",
         "answer": [
-          "only"
+          "unload",
+          "display"
         ],
         "distractors": [
-          "another",
-          "other",
-          "similar"
+          "load",
+          "carry",
+          "sell",
+          "hide"
         ]
-      }
+      },
+      "audio_file": "she-will-unload-the-boxes-and-display-the-fruit-convo"
     }
   ]
 }

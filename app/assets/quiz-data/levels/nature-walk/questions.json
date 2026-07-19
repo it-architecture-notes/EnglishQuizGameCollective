@@ -12,38 +12,37 @@
       }
     },
     {
-      "template": "ConvoTemplate-1",
+      "template": "DialogueCompletion",
       "questionData": {
         "character1": "Sarah",
         "character2": "Daniel",
-        "line1": "Wow, this forest is so _____.",
-        "line2": "Yes, I can only hear the wind in the trees.",
-        "answer": "quiet",
+        "line1": "Should we stay longer to watch the sky?",
+        "answer": "Definitely—it is amazing.",
         "distractors": [
-          "loud",
-          "fast",
-          "noisy"
+          "No, it is getting too dark.",
+          "I am tired and want to leave now.",
+          "The sky looks cloudy tonight."
         ]
       },
-      "audio_file1": "wow-this-forest-is-so-quiet-convo",
-      "audio_file2": "yes-i-can-only-hear-the-wind-in-the-trees-convo"
+      "audio_file1": "should-we-stay-longer-to-watch-the-sky-convo",
+      "audio_file2": "definitely-it-is-amazing-convo"
     },
     {
       "template": "ConvoTemplate-1",
       "questionData": {
         "character1": "Beth",
         "character2": "Alex",
-        "line1": "What are you putting in your bag?",
-        "line2": "I am ______ leaves! ",
-        "answer": "collecting",
+        "line1": "Did you notice how the shadows changed while we _____?",
+        "line2": "Yes, they got so long by the end!",
+        "answer": "hiked",
         "distractors": [
-          "bringing",
-          "throwing",
-          "taking"
+          "walked",
+          "ran",
+          "climbed"
         ]
       },
-      "audio_file1": "what-are-you-putting-in-your-bag-convo",
-      "audio_file2": "i-am-collecting-leaves-convo"
+      "audio_file1": "did-you-notice-how-the-shadows-changed-while-we-hiked-convo",
+      "audio_file2": "yes-they-got-so-long-by-the-end-convo"
     },
     {
       "template": "imageQuizTemplate-1",
@@ -135,7 +134,7 @@
         "distractors": [
           "It could be too many years",
           "It is too tall to see the top",
-          "I cannot tell you"
+          "I cannot say for sure yet."
         ]
       },
       "audio_file1": "wow-that-is-a-really-big-tree-how-old-do-you-think-it-is-convo",
@@ -144,15 +143,15 @@
     {
       "template": "AppearDisappear",
       "questionData": {
-        "words": "Do not touch the wild plants",
+        "words": "They paused to observe the steep hillside.",
         "distractors": [
-          "taste",
-          "smell",
-          "free",
-          "heavy"
+          "looked",
+          "flat",
+          "valley",
+          "quickly"
         ]
       },
-      "audio_file": "do-not-touch-the-wild-plants-convo"
+      "audio_file": "they-paused-to-observe-the-steep-hillside-convo"
     },
     {
       "template": "imageQuizTemplate-1",
@@ -179,18 +178,18 @@
     {
       "template": "SentenceBuilder",
       "questionData": {
-        "correct_order": "We could notice the wide river."
+        "correct_order": "Do not touch the wild plants."
       },
-      "audio_file": "we-could-notice-the-wide-river-convo"
+      "audio_file": "do-not-touch-the-wild-plants-convo"
     },
     {
       "template": "imageQuizTemplate-1",
       "questionData": {
-        "imageName": "stones",
+        "imageName": "compass",
         "wrongAnswers": [
-          "tree",
-          "river",
-          "rock"
+          "watch",
+          "clock",
+          "map"
         ]
       }
     },
@@ -205,7 +204,7 @@
         "distractors": [
           "noisy",
           "walk",
-          "scared",
+          "quiet",
           "stand"
         ]
       },
@@ -217,35 +216,36 @@
         "sentence": "The snow _____ and we could see the river again.",
         "answer": "melted",
         "distractors": [
-          "can melt",
-          "will melt",
-          "melt"
+          "melt",
+          "melts",
+          "melting"
         ]
       }
     },
     {
       "template": "ClozeSequence",
       "questionData": {
-        "sentence": "Small ants _____ _____ hills in the dry, sandy ground.",
+        "sentence": "The explorers _____ a _____, ancient cave.",
         "answer": [
-          "build",
+          "discovered",
           "deep"
         ],
         "distractors": [
-          "small",
-          "take",
-          "heavy",
-          "bring"
+          "found",
+          "shallow",
+          "narrow",
+          "dark"
         ]
       },
-      "audio_file": "small-ants-build-deep-hills-in-the-dry-sandy-ground-convo"
+      "audio_file": "the-explorers-discovered-a-deep-ancient-cave-convo"
     },
     {
       "template": "ClozeSequence",
       "questionData": {
         "sentence": "The bear growled ______, and ______ the campers.",
         "answer": [
-          "suddenly","scared"
+          "suddenly",
+          "scared"
         ],
         "distractors": [
           "slowly",

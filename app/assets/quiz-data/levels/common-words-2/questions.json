@@ -1,0 +1,223 @@
+{
+  "levelQuestions": [
+    {
+      "template": "ClozeSequence",
+      "questionData": {
+        "sentence": "I always _____ in second chances, and I always _____ your kindness.",
+        "answer": [
+          "believe",
+          "remember"
+        ],
+        "distractors": [
+          "doubt",
+          "forget"
+        ]
+      },
+      "audio_file": "i-always-believe-in-second-chances-and-i-always-remember-your-kindness-convo"
+    },
+    {
+      "template": "ClozeSequence",
+      "questionData": {
+        "sentence": "You _____ tired today; do you _____ that noise?",
+        "answer": [
+          "seem",
+          "hear"
+        ],
+        "distractors": [
+          "look",
+          "see"
+        ]
+      },
+      "audio_file": "you-seem-tired-today-do-you-hear-that-noise-convo"
+    },
+    {
+      "template": "ClozeSequence",
+      "questionData": {
+        "sentence": "She feels comfortable _____ her friends, _____ being shy at first.",
+        "answer": [
+          "among",
+          "despite"
+        ],
+        "distractors": [
+          "between",
+          "without"
+        ]
+      },
+      "audio_file": "she-feels-comfortable-among-her-friends-despite-being-shy-at-first-convo"
+    },
+    {
+      "template": "GrammarForm",
+      "questionData": {
+        "sentence": "What _____ when you press this button?",
+        "answer": "happens",
+        "distractors": [
+          "happen",
+          "is happening",
+          "happening"
+        ]
+      }
+    },
+    {
+      "template": "AppearDisappear",
+      "questionData": {
+        "words": "Please end the call now.",
+        "distractors": [
+          "start",
+          "continue",
+          "pause"
+        ]
+      },
+      "audio_file": "please-end-the-call-now-convo"
+    },
+    {
+      "template": "AppearDisappear",
+      "questionData": {
+        "words": "Let's go back home.",
+        "distractors": [
+          "come",
+          "run",
+          "walk"
+        ]
+      },
+      "audio_file": "lets-go-back-home-convo"
+    },
+    {
+      "template": "AppearDisappear",
+      "questionData": {
+        "words": "The dog walks toward the door.",
+        "distractors": [
+          "away",
+          "beside",
+          "past"
+        ]
+      },
+      "audio_file": "the-dog-walks-toward-the-door-convo"
+    },
+    {
+      "template": "ConvoTemplate-1",
+      "questionData": {
+        "character1": "Emma",
+        "character2": "Chris",
+        "line1": "Do you visit your parents often?",
+        "line2": "Yes, I _____ every weekend.",
+        "answer": "come back",
+        "distractors": [
+          "go",
+          "return",
+          "stay"
+        ]
+      },
+      "audio_file1": "do-you-visit-your-parents-often-convo",
+      "audio_file2": "yes-i-come-back-every-weekend-convo"
+    },
+    {
+      "template": "ConvoTemplate-1",
+      "questionData": {
+        "character1": "Mia",
+        "character2": "Noah",
+        "line1": "When can I call you?",
+        "line2": "Call me _____ your arrival.",
+        "answer": "upon",
+        "distractors": [
+          "after",
+          "before",
+          "during"
+        ]
+      },
+      "audio_file1": "when-should-i-call-you-convo",
+      "audio_file2": "call-me-upon-your-arrival-convo"
+    },
+    {
+      "template": "DialogueCompletion",
+      "questionData": {
+        "character1": "Beth",
+        "character2": "Alex",
+        "line1": "You look like you are daydreaming.",
+        "answer": "I like to imagine new places far beyond my town.",
+        "distractors": [
+          "I am just tired today.",
+          "I need more coffee.",
+          "I forgot my keys."
+        ]
+      },
+      "audio_file1": "you-look-like-you-are-daydreaming-convo",
+      "audio_file2": "i-like-to-imagine-new-places-far-beyond-my-town-convo"
+    },
+    {
+      "template": "SentenceBuilder",
+      "questionData": {
+        "correct_order": "Everyone is here, including my mom."
+      },
+      "audio_file": "everyone-came-including-my-mom-convo"
+    },
+    {
+      "template": "WordPairs",
+      "questionData": {
+        "english_words": [
+          "sure",
+          "only",
+          "real",
+          "true"
+        ],
+        "translations": [
+          {
+            "tr": "sure",
+            "es": "sure",
+            "fr": "sure",
+            "de": "sure",
+            "it": "sure",
+            "pt": "sure",
+            "ru": "sure",
+            "zh": "sure",
+            "ja": "sure",
+            "ko": "sure",
+            "ar": "sure",
+            "hi": "sure"
+          },
+          {
+            "tr": "only",
+            "es": "only",
+            "fr": "only",
+            "de": "only",
+            "it": "only",
+            "pt": "only",
+            "ru": "only",
+            "zh": "only",
+            "ja": "only",
+            "ko": "only",
+            "ar": "only",
+            "hi": "only"
+          },
+          {
+            "tr": "real",
+            "es": "real",
+            "fr": "real",
+            "de": "real",
+            "it": "real",
+            "pt": "real",
+            "ru": "real",
+            "zh": "real",
+            "ja": "real",
+            "ko": "real",
+            "ar": "real",
+            "hi": "real"
+          },
+          {
+            "tr": "true",
+            "es": "true",
+            "fr": "true",
+            "de": "true",
+            "it": "true",
+            "pt": "true",
+            "ru": "true",
+            "zh": "true",
+            "ja": "true",
+            "ko": "true",
+            "ar": "true",
+            "hi": "true"
+          }
+        ]
+      }
+    }
+  ]
+}

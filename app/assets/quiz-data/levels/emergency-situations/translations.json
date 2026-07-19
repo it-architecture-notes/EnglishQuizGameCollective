@@ -1,20 +1,20 @@
 {
   "translations_list": [
     {
-      "english_word": "to burn",
+      "english_word": "urgent",
       "translations": {
-        "tr": "yakmak",
-        "es": "quemar",
-        "fr": "brûler",
-        "de": "brennen",
-        "it": "bruciare",
-        "pt": "queimar",
-        "ru": "гореть",
-        "zh": "燃烧",
-        "ja": "燃える",
-        "ko": "불타다",
-        "ar": "للاشتعال",
-        "hi": "जलना"
+        "tr": "acil",
+        "es": "urgente",
+        "fr": "urgent",
+        "de": "dringend",
+        "it": "urgente",
+        "pt": "urgente",
+        "ru": "срочный",
+        "zh": "紧急的",
+        "ja": "緊急の",
+        "ko": "긴급한",
+        "ar": "عاجل",
+        "hi": "ज़रूरी"
       }
     },
     {
@@ -24,31 +24,65 @@
         "es": "herido",
         "fr": "blessé",
         "de": "verletzt",
-        "it": "lesionato",
-        "pt": "lesado",
-        "ru": "поранен",
-        "zh": "受伤",
-        "ja": "怪我をした",
-        "ko": "부상",
-        "ar": "إصابة",
-        "hi": "चोट पहुंचा"
+        "it": "ferito",
+        "pt": "ferido",
+        "ru": "раненый",
+        "zh": "受伤的",
+        "ja": "けがをした",
+        "ko": "다친",
+        "ar": "مصاب",
+        "hi": "घायल"
       }
     },
     {
-      "english_word": "to warn",
+      "english_word": "to call",
       "translations": {
-        "tr": "uyarmak",
-        "es": "advertir",
-        "fr": "avertir",
-        "de": "warnen",
-        "it": "avvertire",
-        "pt": "avisar",
-        "ru": "предупреждать",
-        "zh": "警告",
-        "ja": "警告する",
-        "ko": "경보하다",
-        "ar": "تحذير",
-        "hi": "चेतावनी देना"
+        "tr": "aramak",
+        "es": "llamar",
+        "fr": "appeler",
+        "de": "anrufen",
+        "it": "chiamare",
+        "pt": "ligar",
+        "ru": "вызывать",
+        "zh": "呼叫",
+        "ja": "呼ぶ",
+        "ko": "부르다",
+        "ar": "يتصل",
+        "hi": "बुलाना"
+      }
+    },
+    {
+      "english_word": "to guide",
+      "translations": {
+        "tr": "yol göstermek",
+        "es": "guiar",
+        "fr": "guider",
+        "de": "führen",
+        "it": "guidare",
+        "pt": "guiar",
+        "ru": "вести",
+        "zh": "引导",
+        "ja": "案内する",
+        "ko": "안내하다",
+        "ar": "يرشد",
+        "hi": "मार्गदर्शन करना"
+      }
+    },
+    {
+      "english_word": "shelter",
+      "translations": {
+        "tr": "sığınak",
+        "es": "refugio",
+        "fr": "abri",
+        "de": "Schutzraum",
+        "it": "rifugio",
+        "pt": "abrigo",
+        "ru": "убежище",
+        "zh": "避难所",
+        "ja": "避難所",
+        "ko": "대피소",
+        "ar": "ملجأ",
+        "hi": "आश्रय"
       }
     },
     {
@@ -64,110 +98,110 @@
         "zh": "拯救",
         "ja": "救う",
         "ko": "구하다",
-        "ar": "إنقاذ",
+        "ar": "ينقذ",
         "hi": "बचाना"
       }
     },
     {
-      "english_word": "to cough",
+      "english_word": "to support",
       "translations": {
-        "tr": "öksürmek",
-        "es": "toser",
-        "fr": "tousser",
-        "de": "husten",
-        "it": "tossire",
-        "pt": "tossir",
-        "ru": "кашлять",
-        "zh": "咳嗽",
-        "ja": "咳く",
-        "ko": "기침하다",
-        "ar": "يقيظ",
-        "hi": "खाँसना"
+        "tr": "desteklemek",
+        "es": "apoyar",
+        "fr": "soutenir",
+        "de": "unterstützen",
+        "it": "sostenere",
+        "pt": "apoiar",
+        "ru": "поддерживать",
+        "zh": "支持",
+        "ja": "支援する",
+        "ko": "지원하다",
+        "ar": "يدعم",
+        "hi": "समर्थन करना"
       }
     },
     {
-      "english_word": "to attack",
+      "english_word": "to alert",
       "translations": {
-        "tr": "saldırmak",
-        "es": "atacar",
-        "fr": "attaquer",
-        "de": "angreifen",
-        "it": "attaccare",
-        "pt": "atacar",
-        "ru": "атаковать",
-        "zh": "攻击",
-        "ja": "攻撃する",
-        "ko": "공격하다",
-        "ar": "القتال",
-        "hi": "हमला करना"
+        "tr": "haber vermek",
+        "es": "alertar",
+        "fr": "alerter",
+        "de": "alarmieren",
+        "it": "allertare",
+        "pt": "alertar",
+        "ru": "оповестить",
+        "zh": "报警",
+        "ja": "知らせる",
+        "ko": "알리다",
+        "ar": "ينبه",
+        "hi": "सचेत करना"
       }
     },
     {
-      "english_word": "terrible",
+      "english_word": "to respond",
       "translations": {
-        "tr": "korkunc",
-        "es": "horrible",
-        "fr": "terrible",
-        "de": "schlimm",
-        "it": "orribile",
-        "pt": "horrível",
-        "ru": "ужасный",
-        "zh": "可怕的",
-        "ja": "恐ろしいです",
-        "ko": "무서운",
-        "ar": "قاتل",
-        "hi": "भयानक है"
+        "tr": "müdahale etmek",
+        "es": "responder",
+        "fr": "intervenir",
+        "de": "einschreiten",
+        "it": "intervenire",
+        "pt": "responder",
+        "ru": "отреагировать",
+        "zh": "响应",
+        "ja": "対応する",
+        "ko": "대응하다",
+        "ar": "يستجيب",
+        "hi": "प्रतिक्रिया देना"
       }
     },
     {
-      "english_word": "to visit",
+      "english_word": "to burn",
       "translations": {
-        "tr": "ziyaret etmek",
-        "es": "visitar",
-        "fr": "visiter",
-        "de": "besuchen",
-        "it": "visitare",
-        "pt": "visitar",
-        "ru": "посетить",
-        "zh": "访问",
-        "ja": "訪問する",
-        "ko": "방문하다",
-        "ar": "زيارة",
-        "hi": "भेजना"
+        "tr": "yanmak",
+        "es": "quemar",
+        "fr": "brûler",
+        "de": "brennen",
+        "it": "bruciare",
+        "pt": "queimar",
+        "ru": "гореть",
+        "zh": "燃烧",
+        "ja": "燃える",
+        "ko": "불타다",
+        "ar": "يحترق",
+        "hi": "जलना"
       }
     },
     {
       "english_word": "to rescue",
       "translations": {
         "tr": "kurtarmak",
-        "es": "salvar",
-        "fr": "sauver",
+        "es": "rescatar",
+        "fr": "secourir",
         "de": "retten",
-        "it": "salvare",
-        "pt": "salvar",
+        "it": "soccorrere",
+        "pt": "resgatar",
         "ru": "спасти",
-        "zh": "拯救",
-        "ja": "救う",
-        "ko": "구하다",
-        "ar": "إنقاذ",
+        "zh": "救出",
+        "ja": "救助する",
+        "ko": "구조하다",
+        "ar": "ينقذ",
         "hi": "बचाना"
       }
     },
     {
-      "english_word": "to create",
+      "english_word": "to evacuate",
       "translations": {
-        "tr": "oluşturmak",
-        "es": "crear",
-        "fr": "créer",
-        "de": "erstellen",
-        "it": "creare",
-        "pt": "criar",
-        "ru": "создать",
-        "zh": "创建",
-        "ja": "作成する",
-        "ko": "만들다",
-        "ar": "إنشاء",
-        "hi": "बनाना"
+        "tr": "tahliye etmek",
+        "es": "evacuar",
+        "fr": "évacuer",
+        "de": "evakuieren",
+        "it": "evacuare",
+        "pt": "evacuar",
+        "ru": "эвакуировать",
+        "zh": "疏散",
+        "ja": "避難させる",
+        "ko": "대피시키다",
+        "ar": "يُخلي",
+        "hi": "खाली कराना"
       }
     },
     {
@@ -181,9 +215,9 @@
         "pt": "prevenir",
         "ru": "предотвратить",
         "zh": "预防",
-        "ja": "防止する",
+        "ja": "防ぐ",
         "ko": "방지하다",
-        "ar": "منع",
+        "ar": "يمنع",
         "hi": "रोकना"
       }
     }

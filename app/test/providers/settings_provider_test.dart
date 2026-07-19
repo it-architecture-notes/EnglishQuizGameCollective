@@ -57,6 +57,18 @@ void main() {
       await container.read(settingsProvider.notifier).setSoundFxOn(false);
       expect(container.read(settingsProvider).valueOrNull?.soundFxOn, false);
     });
+
+    test('setShowAllLevels updates state', () async {
+      final container = ProviderContainer();
+      addTearDown(container.dispose);
+
+      await waitForLoad(container);
+      expect(
+          container.read(settingsProvider).valueOrNull?.showAllLevels, false);
+      await container.read(settingsProvider.notifier).setShowAllLevels(true);
+      expect(
+          container.read(settingsProvider).valueOrNull?.showAllLevels, true);
+    });
   });
 
   group('SettingsState', () {
@@ -65,11 +77,13 @@ void main() {
         language: 'en',
         musicOn: true,
         soundFxOn: false,
+        showAllLevels: false,
       );
       final updated = state.copyWith(language: 'tr');
       expect(updated.language, 'tr');
       expect(updated.musicOn, true);
       expect(updated.soundFxOn, false);
+      expect(updated.showAllLevels, false);
     });
   });
 }

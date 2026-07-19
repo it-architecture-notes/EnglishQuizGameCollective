@@ -49,149 +49,92 @@ flutter:
     - assets/data/settings/
     - assets/data/flow/
     - assets/data/story/
-    - assets/quiz-data/levels/travel-1/
-    - assets/quiz-data/levels/travel-2/
-    - assets/quiz-data/levels/travel-3/
     - assets/quiz-data/levels/travel-items/
-    - assets/quiz-data/levels/bathroom-2/
     - assets/quiz-data/levels/basic-sentences/
+    - assets/quiz-data/levels/body-parts-1/
+    - assets/quiz-data/levels/body-parts-2/
     - assets/quiz-data/levels/colors-1/
     - assets/quiz-data/levels/colors-2/
     - assets/quiz-data/levels/geometric-shapes/
-    - assets/quiz-data/levels/bedroom/
-    - assets/quiz-data/levels/body-parts/
     - assets/quiz-data/levels/verb-to-be/
     - assets/quiz-data/levels/numbers/
     - assets/quiz-data/levels/body-parts-2/
-    - assets/quiz-data/levels/body-parts-3/
     - assets/quiz-data/levels/dressing-1/
     - assets/quiz-data/levels/dressing-2/
-    - assets/quiz-data/levels/dressing-3/
-    - assets/quiz-data/levels/dressing-4/
     - assets/quiz-data/levels/emotions-1/
     - assets/quiz-data/levels/emotions-2/
-    - assets/quiz-data/levels/emotions-3/
-    - assets/quiz-data/levels/emotions-4/
     - assets/quiz-data/levels/farm-animals/
-    - assets/quiz-data/levels/farm-animals-2/
     - assets/quiz-data/levels/greetings/
-    - assets/quiz-data/levels/grocery/
-    - assets/quiz-data/levels/grocery-2/
-    - assets/quiz-data/levels/grocery-3/
-    - assets/quiz-data/levels/hospital/
-    - assets/quiz-data/levels/hospital-2/
-    - assets/quiz-data/levels/hospital-3/
     - assets/quiz-data/levels/household-equipment-1/
     - assets/quiz-data/levels/household-equipment-2/
     - assets/quiz-data/levels/household-equipment-3/
-    - assets/quiz-data/levels/household-equipment-4/
     - assets/quiz-data/levels/jobs-1/
     - assets/quiz-data/levels/jobs-2/
-    - assets/quiz-data/levels/jobs-3/
-    - assets/quiz-data/levels/jobs-4/
-    - assets/quiz-data/levels/jobs-5/
-    - assets/quiz-data/levels/kitchen-3/
-    - assets/quiz-data/levels/kitchen-4/
-    - assets/quiz-data/levels/kitchen-5/
     - assets/quiz-data/levels/kitchen-items-1/
     - assets/quiz-data/levels/kitchen-items-2/
     - assets/quiz-data/levels/living-room/
     - assets/quiz-data/levels/living-room-items/
-    - assets/quiz-data/levels/living-room-2/
-    - assets/quiz-data/levels/living-room-3/
-    - assets/quiz-data/levels/market-fruits-1/
-    - assets/quiz-data/levels/market-fruits-2/
-    - assets/quiz-data/levels/market-fruits-3/
-    - assets/quiz-data/levels/market-vegetables-1/
-    - assets/quiz-data/levels/market-vegetables-2/
-    - assets/quiz-data/levels/market-vegetables-3/
-    - assets/quiz-data/levels/market-vegetables-4/
     - assets/quiz-data/levels/fruits-1/
     - assets/quiz-data/levels/fruits-2/
     - assets/quiz-data/levels/vegetables-1/
     - assets/quiz-data/levels/vegetables-2/
-    - assets/quiz-data/levels/nature-1/
-    - assets/quiz-data/levels/nature-2/
-    - assets/quiz-data/levels/nature-3/
-    - assets/quiz-data/levels/pharmacy/
-    - assets/quiz-data/levels/pharmacy-2/
-    - assets/quiz-data/levels/school supplies/
-    - assets/quiz-data/levels/school supplies-2/
-    - assets/quiz-data/levels/school-1/
-    - assets/quiz-data/levels/school-2/
-    - assets/quiz-data/levels/school-3/
     - assets/quiz-data/levels/school-items-1/
     - assets/quiz-data/levels/school-items-2/
     - assets/quiz-data/levels/vehicles/
-    - assets/quiz-data/levels/vehicles-2/
-    - assets/quiz-data/levels/vehicles-3/
     - assets/quiz-data/levels/wild-animals-1/
     - assets/quiz-data/levels/wild-animals-2/
-    - assets/quiz-data/levels/wild-animals-3/
-    - assets/quiz-data/levels/wild-animals-4/
     - assets/quiz-data/levels/at-the-airport/
-    - assets/quiz-data/levels/visiting-the-doctor/
     - assets/quiz-data/levels/at-the-pharmacy/
-    - assets/quiz-data/levels/cooking-at-home/
     - assets/quiz-data/levels/grocery-shopping/
     - assets/quiz-data/levels/at-the-farmers-market/
-    - assets/quiz-data/levels/morning-routine/
-    - assets/quiz-data/levels/getting-dressed/
-    - assets/quiz-data/levels/school-day/
-    - assets/quiz-data/levels/relaxing-at-home/
-    - assets/quiz-data/levels/on-the-farm/
-    - assets/quiz-data/levels/wildlife-watching/
-    - assets/quiz-data/levels/driving-around-town/
-    - assets/quiz-data/levels/gardening-at-home/
-    - assets/quiz-data/levels/eating-at-a-restaurant/
-    - assets/quiz-data/levels/home-repairs/
     - assets/quiz-data/levels/at-the-bank/
-    - assets/quiz-data/levels/shopping-for-clothes/
     - assets/quiz-data/levels/at-the-post-office/
-    - assets/quiz-data/levels/exploring-nature/
     - assets/quiz-data/levels/baby-care/
-    - assets/quiz-data/levels/expressing-emotions/
-    - assets/quiz-data/levels/body-and-health/
-    - assets/quiz-data/levels/city-walk/
     - assets/quiz-data/levels/city-buildings-1/
     - assets/quiz-data/levels/city-buildings-2/
-    - assets/quiz-data/levels/going-to-work/
-    - assets/quiz-data/levels/at-the-gas-station/
     - assets/quiz-data/levels/insect-world/
-    - assets/quiz-data/levels/home-decoration/
     - assets/quiz-data/levels/house-parts/
     - assets/quiz-data/levels/waking-up/
-    - assets/quiz-data/levels/brushing-teeth/
-    - assets/quiz-data/levels/taking-a-shower/
-    - assets/quiz-data/levels/eating-breakfast/
-    - assets/quiz-data/levels/packing-a-lunch/
-    - assets/quiz-data/levels/feeding-a-pet/
-    - assets/quiz-data/levels/walking-the-dog/
-    - assets/quiz-data/levels/getting-ready-for-bed/
-    - assets/quiz-data/levels/doing-laundry/
-    - assets/quiz-data/levels/washing-dishes/
-    - assets/quiz-data/levels/taking-out-the-trash/
-    - assets/quiz-data/levels/vacuuming-the-house/
-    - assets/quiz-data/levels/making-dinner/
-    - assets/quiz-data/levels/setting-the-table/
-    - assets/quiz-data/levels/clearing-the-table/
-    - assets/quiz-data/levels/watering-plants/
-    - assets/quiz-data/levels/making-coffee-or-tea/
-    - assets/quiz-data/levels/watching-tv/
     - assets/quiz-data/levels/at-the-park/
     - assets/quiz-data/levels/at-the-dentist/
-    - assets/quiz-data/levels/exercising/
-    - assets/quiz-data/levels/packing-school-bag/
-    - assets/quiz-data/levels/baking-at-home/
-    - assets/quiz-data/levels/reading-at-home/
-    - assets/quiz-data/levels/playing-with-pets/
-    - assets/quiz-data/levels/at-the-coffee-shop/
-    - assets/quiz-data/levels/at-the-zoo/
     - assets/quiz-data/levels/bird-watching/
-    - assets/quiz-data/levels/at-the-beach/
-    - assets/quiz-data/levels/hiking-outdoors/
     - assets/quiz-data/levels/at-the-train-station/
     - assets/quiz-data/levels/checking-the-weather/
-    - assets/quiz-data/levels/going-to-sleep/
-    - assets/quiz-data/levels/personal-hygiene/
+    - assets/quiz-data/levels/in-the-bedroom/
+    - assets/quiz-data/levels/in-the-bathroom/
+    - assets/quiz-data/levels/prepositions/
+    - assets/quiz-data/levels/family/
+    - assets/quiz-data/levels/common-words-1/
+    - assets/quiz-data/levels/at-the-school/
+    - assets/quiz-data/levels/at-the-library/
+    - assets/quiz-data/levels/birthday-party/
+    - assets/quiz-data/levels/common-words-2/
+    - assets/quiz-data/levels/in-the-kitchen/
+    - assets/quiz-data/levels/grocery-list-1/
+    - assets/quiz-data/levels/grocery-list-2/
+    - assets/quiz-data/levels/common-words-3/
+    - assets/quiz-data/levels/walking-in-the-city/
+    - assets/quiz-data/levels/at-the-cinema/
+    - assets/quiz-data/levels/at-the-traffic/
+    - assets/quiz-data/levels/common-words-4/
+    - assets/quiz-data/levels/at-the-farm/
+    - assets/quiz-data/levels/common-words-5/
+    - assets/quiz-data/levels/at-the-office/
+    - assets/quiz-data/levels/at-the-restaurant/
+    - assets/quiz-data/levels/restaurant-items/
+    - assets/quiz-data/levels/clothes-shopping/
+    - assets/quiz-data/levels/common-words-6/
+    - assets/quiz-data/levels/nature-walk/
+    - assets/quiz-data/levels/common-words-7/
+    - assets/quiz-data/levels/common-words-8/
+    - assets/quiz-data/levels/at-the-hotel/
+    - assets/quiz-data/levels/at-the-garage/
+    - assets/quiz-data/levels/common-words-9/
+    - assets/quiz-data/levels/nature-objects/
+    - assets/quiz-data/levels/going-to-sports/
+    - assets/quiz-data/levels/common-words-10/
+    - assets/quiz-data/levels/hospital-pharmacy-items/
+    - assets/quiz-data/levels/emergency-situations/
+    - assets/quiz-data/levels/at-the-hospital/
+    - assets/quiz-data/levels/common-words-11/
     - assets/audio/

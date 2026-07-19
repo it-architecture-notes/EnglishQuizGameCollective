@@ -18,37 +18,71 @@
       }
     },
     {
-      "english_word": "to forget",
+      "english_word": "to chat",
       "translations": {
-        "tr": "unutmak",
-        "es": "olvidar",
-        "fr": "oublier",
-        "de": "vergessen",
-        "it": "dimenticare",
-        "pt": "esquecer",
-        "ru": "забыть",
-        "zh": "忘记",
-        "ja": "忘れる",
-        "ko": "잊다",
-        "ar": "ينسى",
-        "hi": "भूलना"
+        "tr": "sohbet etmek",
+        "es": "charlar",
+        "fr": "bavarder",
+        "de": "plaudern",
+        "it": "chiacchierare",
+        "pt": "conversar",
+        "ru": "болтать",
+        "zh": "聊天",
+        "ja": "おしゃべりする",
+        "ko": "수다 떨다",
+        "ar": "يدردش",
+        "hi": "गपशप करना"
       }
     },
     {
-      "english_word": "to lie down",
+      "english_word": "me too",
       "translations": {
-        "tr": "uzanmak",
-        "es": "acostarse",
-        "fr": "s'allonger",
-        "de": "sich hinlegen",
-        "it": "sdraiarsi",
-        "pt": "deitar-se",
-        "ru": "лечь",
-        "zh": "躺下",
-        "ja": "横になる",
-        "ko": "눕다",
-        "ar": "يستلقي",
-        "hi": "लेटना"
+        "tr": "ben de",
+        "es": "yo también",
+        "fr": "moi aussi",
+        "de": "ich auch",
+        "it": "anch'io",
+        "pt": "eu também",
+        "ru": "я тоже",
+        "zh": "我也是",
+        "ja": "私も",
+        "ko": "나도",
+        "ar": "أنا أيضاً",
+        "hi": "मैं भी"
+      }
+    },
+    {
+      "english_word": "spacious",
+      "translations": {
+        "tr": "ferah",
+        "es": "espacioso",
+        "fr": "spacieux",
+        "de": "geräumig",
+        "it": "spazioso",
+        "pt": "espaçoso",
+        "ru": "просторный",
+        "zh": "宽敞的",
+        "ja": "広い",
+        "ko": "넓은",
+        "ar": "واسع",
+        "hi": "विशाल"
+      }
+    },
+    {
+      "english_word": "to host",
+      "translations": {
+        "tr": "misafir etmek",
+        "es": "recibir",
+        "fr": "recevoir",
+        "de": "Gäste empfangen",
+        "it": "ospitare",
+        "pt": "receber",
+        "ru": "принимать гостей",
+        "zh": "招待",
+        "ja": "もてなす",
+        "ko": "초대하다",
+        "ar": "يستضيف",
+        "hi": "मेज़बानी करना"
       }
     },
     {
@@ -69,20 +103,20 @@
       }
     },
     {
-      "english_word": "great",
+      "english_word": "cozy",
       "translations": {
-        "tr": "harika",
-        "es": "genial",
-        "fr": "génial",
-        "de": "toll",
-        "it": "ottimo",
-        "pt": "ótimo",
-        "ru": "отличный",
-        "zh": "很棒",
-        "ja": "素晴らしい",
-        "ko": "훌륭한",
-        "ar": "رائع",
-        "hi": "बहुत अच्छा"
+        "tr": "samimi",
+        "es": "acogedor",
+        "fr": "douillet",
+        "de": "gemütlich",
+        "it": "accogliente",
+        "pt": "aconchegante",
+        "ru": "уютный",
+        "zh": "温馨舒适的",
+        "ja": "居心地の良い",
+        "ko": "아늑한",
+        "ar": "مريح",
+        "hi": "आरामदायक"
       }
     },
     {
@@ -120,6 +154,40 @@
       }
     },
     {
+      "english_word": "cluttered",
+      "translations": {
+        "tr": "dağınık",
+        "es": "desordenado",
+        "fr": "en désordre",
+        "de": "unordentlich",
+        "it": "disordinato",
+        "pt": "bagunçado",
+        "ru": "захламлённый",
+        "zh": "杂乱的",
+        "ja": "散らかった",
+        "ko": "어질러진",
+        "ar": "فوضوي",
+        "hi": "बिखरा हुआ"
+      }
+    },
+    {
+      "english_word": "to tidy",
+      "translations": {
+        "tr": "toparlamak",
+        "es": "ordenar",
+        "fr": "ranger",
+        "de": "aufräumen",
+        "it": "riordinare",
+        "pt": "arrumar",
+        "ru": "прибирать",
+        "zh": "整理",
+        "ja": "片付ける",
+        "ko": "정리하다",
+        "ar": "يرتب",
+        "hi": "साफ़ करना"
+      }
+    },
+    {
       "english_word": "to relax",
       "translations": {
         "tr": "rahatlamak",
@@ -154,20 +222,37 @@
       }
     },
     {
-      "english_word": "to greet",
+      "english_word": "to wave",
       "translations": {
-        "tr": "selamlamak",
-        "es": "saludar",
-        "fr": "saluer",
-        "de": "begrüßen",
-        "it": "salutare",
-        "pt": "cumprimentar",
-        "ru": "приветствовать",
-        "zh": "问候",
-        "ja": "挨拶する",
-        "ko": "인사하다",
-        "ar": "يحيي",
-        "hi": "अभिवादन करना"
+        "tr": "el sallamak",
+        "es": "saludar con la mano",
+        "fr": "faire un signe de la main",
+        "de": "winken",
+        "it": "salutare con la mano",
+        "pt": "acenar",
+        "ru": "махать",
+        "zh": "挥手",
+        "ja": "手を振る",
+        "ko": "손을 흔들다",
+        "ar": "يلوّح",
+        "hi": "हाथ हिलाना"
+      }
+    },
+    {
+      "english_word": "to move",
+      "translations": {
+        "tr": "taşımak",
+        "es": "mover",
+        "fr": "déplacer",
+        "de": "bewegen",
+        "it": "spostare",
+        "pt": "mover",
+        "ru": "перемещать",
+        "zh": "移动",
+        "ja": "動かす",
+        "ko": "옮기다",
+        "ar": "تحريك",
+        "hi": "हिलाना"
       }
     }
   ]

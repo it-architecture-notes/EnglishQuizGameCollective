@@ -17,7 +17,7 @@
         "character1": "Sarah",
         "character2": "Daniel",
         "line1": "Is it time to _____ the baby again?",
-        "line2": "Yes, it's been almost three hours.",
+        "line2": "Yes, she eats every three hours.",
         "answer": "feed",
         "distractors": [
           "bathe",
@@ -26,7 +26,7 @@
         ]
       },
       "audio_file1": "is-it-time-to-feed-the-baby-again-convo",
-      "audio_file2": "yes-its-been-almost-three-hours-convo"
+      "audio_file2": "yes-she-eats-every-three-hours-convo"
     },
     {
       "template": "ConvoTemplate-1",
@@ -147,7 +147,7 @@
         "words": "The newborn baby starts to cry.",
         "distractors": [
           "crawl",
-          "old",
+          "quickly",
           "this"
         ]
       },
@@ -217,27 +217,27 @@
         "answer": "repeats",
         "distractors": [
           "repeat",
-          "is repeating",
-          "was repeating"
+          "repeating",
+          "repeated"
         ]
       }
     },
     {
       "template": "ClozeSequence",
       "questionData": {
-        "sentence": "It is important to _____ the baby's diaper ______.",
+        "sentence": "Mom _____ the baby's diaper _____ so she does not wake up.",
         "answer": [
-          "change",
-          "regularly"
+          "changes",
+          "gently"
         ],
         "distractors": [
-          "fold",
-          "buy",
-          "put",
-          "careful"
+          "happy",
+          "yesterday",
+          "careful",
+          "loud"
         ]
       },
-      "audio_file": "it-is-important-to-change-the-baby-s-diaper-regularly-convo"
+      "audio_file": "mom-changes-the-baby-s-diaper-gently-so-she-does-not-wake-up-convo"
     },
     {
       "template": "ClozeSequence",

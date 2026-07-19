@@ -35,20 +35,37 @@
       }
     },
     {
-      "english_word": "away",
+      "english_word": "busy",
       "translations": {
-        "tr": "uzakta",
-        "es": "lejos",
-        "fr": "loin",
-        "de": "weg",
-        "it": "lontano",
-        "pt": "longe",
-        "ru": "вдали",
-        "zh": "远离",
-        "ja": "離れて",
-        "ko": "떨어져",
-        "ar": "بعيدا",
-        "hi": "दूर"
+        "tr": "meşgul",
+        "es": "ocupado",
+        "fr": "occupé",
+        "de": "beschäftigt",
+        "it": "occupato",
+        "pt": "ocupado",
+        "ru": "занят",
+        "zh": "忙碌",
+        "ja": "忙しい",
+        "ko": "바쁜",
+        "ar": "مشغول",
+        "hi": "व्यस्त"
+      }
+    },
+    {
+      "english_word": "to review",
+      "translations": {
+        "tr": "gözden geçirmek",
+        "es": "revisar",
+        "fr": "relire",
+        "de": "überprüfen",
+        "it": "rivedere",
+        "pt": "revisar",
+        "ru": "проверять",
+        "zh": "审阅",
+        "ja": "確認する",
+        "ko": "검토하다",
+        "ar": "يراجع",
+        "hi": "समीक्षा करना"
       }
     },
     {
@@ -69,20 +86,37 @@
       }
     },
     {
-      "english_word": "are you sure",
+      "english_word": "to schedule",
       "translations": {
-        "tr": "emin misin",
-        "es": "¿estás seguro?",
-        "fr": "tu es sûr ? / tu es sûre ?",
-        "de": "Bist du sicher?",
-        "it": "sei sicuro?",
-        "pt": "você tem certeza?",
-        "ru": "ты уверен?",
-        "zh": "你确定吗？",
-        "ja": "確かですか？",
-        "ko": "확실해요?",
-        "ar": "هل أنت متأكد؟",
-        "hi": "क्या आप निश्चित हैं?"
+        "tr": "randevu ayarlamak",
+        "es": "programar",
+        "fr": "planifier",
+        "de": "einen Termin vereinbaren",
+        "it": "fissare",
+        "pt": "agendar",
+        "ru": "назначить",
+        "zh": "安排",
+        "ja": "予定を入れる",
+        "ko": "일정을 잡다",
+        "ar": "يحدد موعداً",
+        "hi": "समय तय करना"
+      }
+    },
+    {
+      "english_word": "to discuss",
+      "translations": {
+        "tr": "görüşmek",
+        "es": "hablar de",
+        "fr": "discuter",
+        "de": "besprechen",
+        "it": "discutere",
+        "pt": "discutir",
+        "ru": "обсуждать",
+        "zh": "讨论",
+        "ja": "話し合う",
+        "ko": "상의하다",
+        "ar": "يناقش",
+        "hi": "चर्चा करना"
       }
     },
     {
@@ -137,6 +171,40 @@
       }
     },
     {
+      "english_word": "manager",
+      "translations": {
+        "tr": "yönetici",
+        "es": "gerente",
+        "fr": "responsable",
+        "de": "Manager",
+        "it": "responsabile",
+        "pt": "gerente",
+        "ru": "менеджер",
+        "zh": "经理",
+        "ja": "マネージャー",
+        "ko": "관리자",
+        "ar": "مدير",
+        "hi": "प्रबंधक"
+      }
+    },
+    {
+      "english_word": "salary",
+      "translations": {
+        "tr": "maaş",
+        "es": "salario",
+        "fr": "salaire",
+        "de": "Gehalt",
+        "it": "stipendio",
+        "pt": "salário",
+        "ru": "зарплата",
+        "zh": "薪水",
+        "ja": "給料",
+        "ko": "급여",
+        "ar": "راتب",
+        "hi": "वेतन"
+      }
+    },
+    {
       "english_word": "to finish",
       "translations": {
         "tr": "bitirmek",
@@ -171,20 +239,20 @@
       }
     },
     {
-      "english_word": "smart",
+      "english_word": "to hire",
       "translations": {
-        "tr": "akıllı",
-        "es": "inteligente",
-        "fr": "intelligent",
-        "de": "klug",
-        "it": "intelligente",
-        "pt": "inteligente",
-        "ru": "умный",
-        "zh": "聪明的",
-        "ja": "賢い",
-        "ko": "똑똑한",
-        "ar": "ذكي",
-        "hi": "होशियार"
+        "tr": "işe almak",
+        "es": "contratar",
+        "fr": "embaucher",
+        "de": "einstellen",
+        "it": "assumere",
+        "pt": "contratar",
+        "ru": "нанять",
+        "zh": "雇用",
+        "ja": "雇う",
+        "ko": "고용하다",
+        "ar": "يوظف",
+        "hi": "नियुक्त करना"
       }
     }
   ]

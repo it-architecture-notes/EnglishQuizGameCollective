@@ -8,49 +8,374 @@
           "event_id": 1001,
           "page_template_id": 4,
           "story_text": {
-            "en": "Help Maya Heal the Dog",
-            "fr": "Aide Maya à soigner le chien",
-            "tr": "Maya’nın köpeği iyileştirmesine yardım et",
-            "es": "Ayuda a Maya a curar al perro",
-            "de": "Hilf Maya, den Hund zu heilen",
-            "it": "Aiuta Maya a curare il cane",
-            "pt": "Ajude Maya a curar o cão",
-            "ru": "Помоги Майе вылечить собаку",
-            "zh": "帮助玛雅治疗小狗",
-            "ja": "マヤが犬を治すのを手伝おう",
-            "ko": "마야가 개를 치료하도록 도와주세요",
-            "ar": "ساعد مايا في علاج الكلب",
-            "hi": "माया को कुत्ते का इलाज करने में मदद करें"
+            "en": "Maya hears someone calling for help. Play the next level to find out what's happening.",
+            "fr": "Maya entend quelqu'un appeler à l'aide. Joue le niveau suivant pour découvrir ce qui se passe.",
+            "tr": "Maya yardım isteyen birini duyuyor. Neler olduğunu öğrenmek için bir sonraki seviyeyi oyna.",
+            "es": "Maya escucha a alguien pidiendo ayuda. Juega el siguiente nivel para descubrir qué está pasando.",
+            "de": "Maya hört jemanden um Hilfe rufen. Spiele das nächste Level, um herauszufinden, was passiert.",
+            "it": "Maya sente qualcuno che chiede aiuto. Gioca il livello successivo per scoprire cosa sta succedendo.",
+            "pt": "Maya ouve alguém pedindo ajuda. Jogue o próximo nível para descobrir o que está acontecendo.",
+            "ru": "Майя слышит, как кто-то зовёт на помощь. Пройди следующий уровень, чтобы узнать, что происходит.",
+            "zh": "玛雅听到有人在呼救。完成下一关，看看发生了什么。",
+            "ja": "マヤは誰かが助けを呼ぶ声を聞きました。次のレベルをプレイして、何が起こっているのか見てみましょう。",
+            "ko": "마야가 누군가 도움을 요청하는 소리를 들었어요. 무슨 일이 일어났는지 알아보려면 다음 레벨을 플레이하세요.",
+            "ar": "تسمع مايا شخصًا يطلب المساعدة. العب المستوى التالي لتعرف ماذا يحدث.",
+            "hi": "माया किसी को मदद के लिए पुकारते हुए सुनती है। क्या हो रहा है, यह जानने के लिए अगला स्तर खेलें।"
           },
           "trigger": {
             "type": "before_level",
-            "level": 1
+            "level": "Greetings"
           },
-          "scene_image": "puppy-1.png"
+          "scene_image": "puppy-story-1.png"
         },
         {
           "event_id": 1002,
-          "page_template_id": 1,
+          "page_template_id": 4,
           "story_text": {
-            "en": "Thanks for helping Maya. Now we need some medicine for the puppy. Complete two levels to get the medicine.",
-            "fr": "Merci d’avoir aidé Maya. Maintenant, nous avons besoin de médicaments pour le chiot. Termine deux niveaux pour obtenir les médicaments.",
-            "tr": "Maya’ya yardım ettiğin için teşekkürler. Şimdi yavru köpek için ilaca ihtiyacımız var. İlacı almak için iki seviyeyi tamamla.",
-            "es": "Gracias por ayudar a Maya. Ahora necesitamos medicina para el cachorro. Completa dos niveles para conseguir la medicina.",
-            "de": "Danke, dass du Maya geholfen hast. Jetzt brauchen wir Medizin für den Welpen. Schließe zwei Level ab, um die Medizin zu bekommen.",
-            "it": "Grazie per aver aiutato Maya. Ora abbiamo bisogno di medicine per il cucciolo. Completa due livelli per ottenere le medicine.",
-            "pt": "Obrigado por ajudar a Maya. Agora precisamos de remédio para o cachorrinho. Complete dois níveis para obter o remédio.",
-            "ru": "Спасибо за помощь Майе. Теперь нам нужно лекарство для щенка. Пройди два уровня, чтобы получить лекарство.",
-            "zh": "谢谢你帮助玛雅。现在我们需要给小狗一些药。完成两个关卡以获得药物。",
-            "ja": "マヤを手伝ってくれてありがとう。今、子犬のために薬が必要です。薬を手に入れるために2つのレベルをクリアしてください。",
-            "ko": "마야를 도와줘서 고마워요. 이제 강아지를 위한 약이 필요해요. 약을 얻으려면 두 레벨을 완료하세요.",
-            "ar": "شكرًا لمساعدتك مايا. الآن نحتاج إلى دواء للجرو. أكمل مستويين للحصول على الدواء.",
-            "hi": "माया की मदद करने के लिए धन्यवाद। अब हमें पिल्ले के लिए दवा चाहिए। दवा पाने के लिए दो स्तर पूरे करें।"
+            "en": "It's a puppy! He is hurt. Play the next two levels to help Maya remove the thorns from his paw.",
+            "fr": "C'est un chiot ! Il est blessé. Joue les deux prochains niveaux pour aider Maya à retirer les épines de sa patte.",
+            "tr": "Bu bir yavru köpek! Yaralanmış. Maya'nın patisindeki dikenleri çıkarmasına yardım etmek için sonraki iki seviyeyi oyna.",
+            "es": "¡Es un cachorro! Está herido. Juega los dos siguientes niveles para ayudar a Maya a quitarle las espinas de la pata.",
+            "de": "Es ist ein Welpe! Er ist verletzt. Spiele die nächsten zwei Level, um Maya zu helfen, die Dornen aus seiner Pfote zu entfernen.",
+            "it": "È un cucciolo! È ferito. Gioca i prossimi due livelli per aiutare Maya a togliere le spine dalla sua zampa.",
+            "pt": "É um cachorrinho! Ele está machucado. Jogue os próximos dois níveis para ajudar Maya a tirar os espinhos da pata dele.",
+            "ru": "Это щенок! Он поранился. Пройди следующие два уровня, чтобы помочь Майе вытащить колючки из его лапки.",
+            "zh": "是一只小狗！它受伤了。完成接下来的两关，帮助玛雅拔掉它爪子上的刺。",
+            "ja": "子犬です！けがをしています。次の2つのレベルをプレイして、マヤが足のトゲを取るのを手伝いましょう。",
+            "ko": "강아지예요! 다쳤어요. 다음 두 레벨을 플레이해서 마야가 발에 박힌 가시를 빼는 것을 도와주세요.",
+            "ar": "إنه جرو! إنه مصاب. العب المستويين التاليين لمساعدة مايا على إزالة الأشواك من كفه.",
+            "hi": "यह एक पिल्ला है! उसे चोट लगी है। माया की उसके पंजे से कांटे निकालने में मदद करने के लिए अगले दो स्तर खेलें।"
           },
-          "character_image": "mainlevel1-story-icon-puppy.png",
-          "scene_image": "puppy-2.png",
+          "scene_image": "puppy-story-2.png",
           "trigger": {
             "type": "before_level",
-            "level": 2
+            "level": "Verb - To Be"
+          }
+        },
+        {
+          "event_id": 1003,
+          "page_template_id": 4,
+          "story_text": {
+            "en": "Great! Maya removed the thorns from the puppy's paw. The puppy wags his tail happily! Play the next level to help Maya and her mom take the puppy to the vet.",
+            "fr": "Bravo ! Maya a retiré les épines de la patte du chiot. Le chiot remue joyeusement la queue ! Joue le niveau suivant pour aider Maya et sa maman à emmener le chiot chez le vétérinaire.",
+            "tr": "Harika! Maya yavru köpeğin patisindeki dikenleri çıkardı. Yavru köpek kuyruğunu mutlu bir şekilde sallıyor! Maya ve annesinin yavru köpeği veterinere götürmesine yardım etmek için bir sonraki seviyeyi oyna.",
+            "es": "¡Genial! Maya quitó las espinas de la pata del cachorro. ¡El cachorro mueve la cola muy feliz! Juega el siguiente nivel para ayudar a Maya y a su mamá a llevar al cachorro al veterinario.",
+            "de": "Super! Maya hat die Dornen aus der Pfote des Welpen entfernt. Der Welpe wedelt fröhlich mit dem Schwanz! Spiele das nächste Level, um Maya und ihrer Mama zu helfen, den Welpen zum Tierarzt zu bringen.",
+            "it": "Fantastico! Maya ha tolto le spine dalla zampa del cucciolo. Il cucciolo scodinzola felice! Gioca il livello successivo per aiutare Maya e la sua mamma a portare il cucciolo dal veterinario.",
+            "pt": "Muito bem! Maya tirou os espinhos da pata do cachorrinho. O cachorrinho abana o rabo feliz! Jogue o próximo nível para ajudar Maya e sua mãe a levar o cachorrinho ao veterinário.",
+            "ru": "Отлично! Майя вытащила колючки из лапки щенка. Щенок радостно виляет хвостом! Пройди следующий уровень, чтобы помочь Майе и её маме отвезти щенка к ветеринару.",
+            "zh": "太好了！玛雅拔掉了小狗爪子上的刺。小狗开心地摇着尾巴！完成下一关，帮助玛雅和妈妈带小狗去看兽医。",
+            "ja": "やったね！マヤは子犬の足のトゲを取りました。子犬はうれしそうにしっぽを振っています！次のレベルをプレイして、マヤとお母さんが子犬を動物病院へ連れて行くのを手伝いましょう。",
+            "ko": "잘했어요! 마야가 강아지 발의 가시를 뺐어요. 강아지가 기쁘게 꼬리를 흔들어요! 다음 레벨을 플레이해서 마야와 엄마가 강아지를 동물병원에 데려가도록 도와주세요.",
+            "ar": "رائع! أزالت مايا الأشواك من كف الجرو. يهز الجرو ذيله بسعادة! العب المستوى التالي لمساعدة مايا ووالدتها على أخذ الجرو إلى الطبيب البيطري.",
+            "hi": "बहुत बढ़िया! माया ने पिल्ले के पंजे से कांटे निकाल दिए। पिल्ला खुशी से अपनी पूँछ हिला रहा है! माया और उसकी माँ की पिल्ले को पशु चिकित्सक के पास ले जाने में मदद करने के लिए अगला स्तर खेलें।"
+          },
+          "scene_image": "puppy-story-3.png",
+          "trigger": {
+            "type": "before_level",
+            "level": "Numbers"
+          }
+        },
+        {
+          "event_id": 1004,
+          "page_template_id": 4,
+          "story_text": {
+            "en": "Maya and her mom are at the vet. The vet is taking care of the puppy. Play the next level to help Maya's mom get the puppy's medicine from the pharmacy.",
+            "fr": "Maya et sa maman sont chez le vétérinaire. Le vétérinaire soigne le chiot. Joue le niveau suivant pour aider la maman de Maya à aller chercher le médicament du chiot à la pharmacie.",
+            "tr": "Maya ve annesi veterinerdeler. Veteriner yavru köpekle ilgileniyor. Maya'nın annesinin yavru köpeğin ilacını eczaneden almasına yardım etmek için bir sonraki seviyeyi oyna.",
+            "es": "Maya y su mamá están en el veterinario. El veterinario está cuidando al cachorro. Juega el siguiente nivel para ayudar a la mamá de Maya a recoger la medicina del cachorro en la farmacia.",
+            "de": "Maya und ihre Mama sind beim Tierarzt. Der Tierarzt kümmert sich um den Welpen. Spiele das nächste Level, um Mayas Mama zu helfen, das Medikament für den Welpen aus der Apotheke zu holen.",
+            "it": "Maya e la sua mamma sono dal veterinario. Il veterinario si sta prendendo cura del cucciolo. Gioca il livello successivo per aiutare la mamma di Maya a prendere la medicina del cucciolo in farmacia.",
+            "pt": "Maya e sua mãe estão no veterinário. O veterinário está cuidando do cachorrinho. Jogue o próximo nível para ajudar a mãe de Maya a buscar o remédio do cachorrinho na farmácia.",
+            "ru": "Майя и её мама у ветеринара. Ветеринар лечит щенка. Пройди следующий уровень, чтобы помочь маме Майи получить лекарство для щенка в аптеке.",
+            "zh": "玛雅和妈妈来到兽医诊所。兽医正在照顾小狗。完成下一关，帮助玛雅的妈妈去药房拿小狗的药。",
+            "ja": "マヤとお母さんは動物病院にいます。獣医さんが子犬を診ています。次のレベルをプレイして、マヤのお母さんが薬局で子犬の薬を受け取るのを手伝いましょう。",
+            "ko": "마야와 엄마는 동물병원에 있어요. 수의사가 강아지를 돌보고 있어요. 다음 레벨을 플레이해서 마야의 엄마가 약국에서 강아지 약을 가져오도록 도와주세요.",
+            "ar": "مايا ووالدتها عند الطبيب البيطري. الطبيب البيطري يعتني بالجرو. العب المستوى التالي لمساعدة والدة مايا في الحصول على دواء الجرو من الصيدلية.",
+            "hi": "माया और उसकी माँ पशु चिकित्सक के पास हैं। डॉक्टर पिल्ले का इलाज कर रहे हैं। माया की माँ को पिल्ले की दवा फार्मेसी से लाने में मदद करने के लिए अगला स्तर खेलें।"
+          },
+          "scene_image": "puppy-story-4.png",
+          "trigger": {
+            "type": "before_level",
+            "level": "Geometric Shapes - Image only"
+          }
+        },
+        {
+          "event_id": 1005,
+          "page_template_id": 4,
+          "story_text": {
+            "en": "The puppy is feeling much better. Play the next two levels to help Maya feed him so he can get stronger and recover faster.",
+            "fr": "Le chiot va beaucoup mieux. Joue les deux prochains niveaux pour aider Maya à le nourrir afin qu'il retrouve vite ses forces.",
+            "tr": "Yavru köpek kendini çok daha iyi hissediyor. Maya'nın onu beslemesine yardım etmek için sonraki iki seviyeyi oyna. Böylece daha güçlü olur ve daha çabuk iyileşir.",
+            "es": "El cachorro se siente mucho mejor. Juega los dos siguientes niveles para ayudar a Maya a darle de comer y así podrá hacerse más fuerte y recuperarse más rápido.",
+            "de": "Dem Welpen geht es schon viel besser. Spiele die nächsten zwei Level, um Maya beim Füttern zu helfen, damit er stärker wird und sich schneller erholt.",
+            "it": "Il cucciolo si sente molto meglio. Gioca i prossimi due livelli per aiutare Maya a dargli da mangiare così potrà diventare più forte e guarire più in fretta.",
+            "pt": "O cachorrinho está se sentindo muito melhor. Jogue os próximos dois níveis para ajudar Maya a alimentá-lo. Assim ele ficará mais forte e se recuperará mais rápido.",
+            "ru": "Щенку стало намного лучше. Пройди следующие два уровня, чтобы помочь Майе покормить его. Тогда он быстрее окрепнет и выздоровеет.",
+            "zh": "小狗感觉好多了。完成接下来的两关，帮助玛雅喂它吃东西，让它变得更强壮，恢复得更快。",
+            "ja": "子犬はずいぶん元気になりました。次の2つのレベルをプレイして、マヤが子犬にごはんをあげるのを手伝いましょう。もっと元気になって、早く回復できます。",
+            "ko": "강아지가 훨씬 좋아졌어요. 다음 두 레벨을 플레이해서 마야가 강아지에게 먹이를 주도록 도와주세요. 그러면 더 튼튼해지고 더 빨리 회복할 수 있어요.",
+            "ar": "أصبح الجرو يشعر بتحسن كبير. العب المستويين التاليين لمساعدة مايا على إطعامه حتى يصبح أقوى ويتعافى بسرعة.",
+            "hi": "पिल्ला अब काफी बेहतर महसूस कर रहा है। अगले दो स्तर खेलें और माया की उसे खाना खिलाने में मदद करें ताकि वह और मजबूत हो जाए और जल्दी ठीक हो जाए।"
+          },
+          "scene_image": "puppy-story-5.png",
+          "trigger": {
+            "type": "before_level",
+            "level": "Reminder 1"
+          }
+        },
+        {
+          "event_id": 1006,
+          "page_template_id": 4,
+          "story_text": {
+            "en": "The puppy is healthy again! Maya and the puppy are now best friends. Thank you for helping them!",
+            "fr": "Le chiot est de nouveau en bonne santé ! Maya et le chiot sont maintenant les meilleurs amis du monde. Merci de les avoir aidés !",
+            "tr": "Yavru köpek yeniden sağlığına kavuştu! Maya ve yavru köpek artık en iyi arkadaşlar. Onlara yardım ettiğin için teşekkür ederiz!",
+            "es": "¡El cachorro está sano otra vez! Maya y el cachorro ahora son mejores amigos. ¡Gracias por ayudarlos!",
+            "de": "Der Welpe ist wieder gesund! Maya und der Welpe sind jetzt beste Freunde. Danke, dass du ihnen geholfen hast!",
+            "it": "Il cucciolo è di nuovo in salute! Maya e il cucciolo ora sono migliori amici. Grazie per averli aiutati!",
+            "pt": "O cachorrinho está saudável de novo! Maya e o cachorrinho agora são melhores amigos. Obrigado por ajudá-los!",
+            "ru": "Щенок снова здоров! Теперь Майя и щенок — лучшие друзья. Спасибо, что помог им!",
+            "zh": "小狗又健康了！玛雅和小狗现在成了最好的朋友。谢谢你的帮助！",
+            "ja": "子犬はすっかり元気になりました！マヤと子犬は今では大の仲良しです。手伝ってくれてありがとう！",
+            "ko": "강아지가 다시 건강해졌어요! 이제 마야와 강아지는 가장 친한 친구예요. 도와줘서 고마워요!",
+            "ar": "عاد الجرو بصحة جيدة! أصبحت مايا والجرو أفضل صديقين. شكرًا لمساعدتك لهما!",
+            "hi": "पिल्ला फिर से पूरी तरह स्वस्थ हो गया है! अब माया और पिल्ला सबसे अच्छे दोस्त हैं। उनकी मदद करने के लिए धन्यवाद!"
+          },
+          "scene_image": "puppy-story-6.png",
+          "trigger": {
+            "type": "after_level",
+            "level": "Reminder 2"
+          }
+        }
+      ]
+    },
+    {
+      "main_level_id": 2,
+      "story_icon_asset_path": "assets/images/story/mainlevel1-story-icon-puppy.png",
+      "story_sequences": [
+        {
+          "event_id": 1001,
+          "page_template_id": 4,
+          "story_text": {
+            "en": "A big storm has hit Oak Street Town, and many neighbors need help. Emma, Noah, and Louis are ready to help everyone. Play the next level to begin their first rescue.",
+            "fr": "Une grosse tempête a frappé Oak Street Town et beaucoup de voisins ont besoin d'aide. Emma, Noah et Louis sont prêts à aider tout le monde. Joue le niveau suivant pour commencer leur première mission de secours.",
+            "tr": "Büyük bir fırtına Oak Street Town'u vurdu ve birçok komşunun yardıma ihtiyacı var. Emma, Noah ve Louis herkese yardım etmeye hazır. İlk kurtarma görevlerine başlamak için bir sonraki seviyeyi oyna.",
+            "es": "Una gran tormenta ha golpeado Oak Street Town y muchos vecinos necesitan ayuda. Emma, Noah y Louis están listos para ayudar a todos. Juega el siguiente nivel para comenzar su primera misión de rescate.",
+            "de": "Ein großer Sturm hat Oak Street Town getroffen und viele Nachbarn brauchen Hilfe. Emma, Noah und Louis sind bereit, allen zu helfen. Spiele das nächste Level, um ihre erste Rettungsmission zu beginnen.",
+            "it": "Una grande tempesta ha colpito Oak Street Town e molti vicini hanno bisogno di aiuto. Emma, Noah e Louis sono pronti ad aiutare tutti. Gioca il livello successivo per iniziare la loro prima missione di salvataggio.",
+            "pt": "Uma grande tempestade atingiu Oak Street Town e muitos vizinhos precisam de ajuda. Emma, Noah e Louis estão prontos para ajudar todos. Jogue o próximo nível para começar a primeira missão de resgate deles.",
+            "ru": "На город Оук-стрит обрушилась сильная буря, и многим соседям нужна помощь. Эмма, Ноа и Луис готовы помочь всем. Пройди следующий уровень, чтобы начать их первую спасательную миссию.",
+            "zh": "一场大暴风雨袭击了橡树街小镇，许多邻居需要帮助。艾玛、诺亚和路易斯已经准备好帮助大家。完成下一关，开始他们的第一次救援任务。",
+            "ja": "大きな嵐がオークストリートタウンを襲い、たくさんの人が助けを必要としています。エマ、ノア、ルイスはみんなを助ける準備ができています。次のレベルをプレイして、最初の救助を始めましょう。",
+            "ko": "큰 폭풍이 오크 스트리트 마을을 덮쳤어요. 많은 이웃들이 도움이 필요해요. 엠마, 노아, 루이스가 모두를 도울 준비를 했어요. 다음 레벨을 플레이해서 첫 번째 구조 활동을 시작하세요.",
+            "ar": "ضربت عاصفة كبيرة بلدة أوك ستريت، والعديد من الجيران يحتاجون إلى المساعدة. إيما ونواه ولويس مستعدون لمساعدة الجميع. العب المستوى التالي لبدء أول مهمة إنقاذ لهم.",
+            "hi": "ओक स्ट्रीट टाउन में एक बड़ा तूफ़ान आया है और कई पड़ोसियों को मदद की ज़रूरत है। एमा, नोआ और लुई सभी की मदद करने के लिए तैयार हैं। उनकी पहली बचाव यात्रा शुरू करने के लिए अगला स्तर खेलें।"
+          },
+          "scene_image": "big-storm-1.png",
+          "trigger": {
+            "type": "before_level",
+            "level": "Waking Up"
+          }
+        },
+        {
+          "event_id": 1002,
+          "page_template_id": 4,
+          "story_text": {
+            "en": "Mrs. Gable's favorite car is trapped under a huge tree branch! She looks very worried. Play the next two levels to help Emma, Noah, and Louis remove the branch and save her car.",
+            "fr": "La voiture préférée de Mme Gable est coincée sous une énorme branche d'arbre ! Elle est très inquiète. Joue les deux prochains niveaux pour aider Emma, Noah et Louis à retirer la branche et à sauver sa voiture.",
+            "tr": "Bayan Gable'ın en sevdiği araba büyük bir ağaç dalının altında kaldı! Çok endişeli görünüyor. Emma, Noah ve Louis'nin dalı kaldırıp arabayı kurtarmasına yardım etmek için sonraki iki seviyeyi oyna.",
+            "es": "¡El coche favorito de la señora Gable está atrapado bajo una enorme rama de árbol! Ella está muy preocupada. Juega los dos siguientes niveles para ayudar a Emma, Noah y Louis a quitar la rama y salvar su coche.",
+            "de": "Mrs. Gables Lieblingsauto steckt unter einem riesigen Ast fest! Sie macht sich große Sorgen. Spiele die nächsten zwei Level, um Emma, Noah und Louis zu helfen, den Ast zu entfernen und ihr Auto zu retten.",
+            "it": "L'auto preferita della signora Gable è bloccata sotto un enorme ramo! È molto preoccupata. Gioca i prossimi due livelli per aiutare Emma, Noah e Louis a rimuovere il ramo e salvare la sua auto.",
+            "pt": "O carro favorito da senhora Gable ficou preso debaixo de um enorme galho! Ela está muito preocupada. Jogue os próximos dois níveis para ajudar Emma, Noah e Louis a remover o galho e salvar seu carro.",
+            "ru": "Любимая машина миссис Гейбл застряла под огромной веткой дерева! Она очень переживает. Пройди следующие два уровня, чтобы помочь Эмме, Ноа и Луису убрать ветку и спасти её машину.",
+            "zh": "盖布尔太太最喜欢的汽车被一根大树枝压住了！她看起来非常担心。完成接下来的两关，帮助艾玛、诺亚和路易斯移开树枝，救出她的汽车。",
+            "ja": "ゲーブルさんのお気に入りの車が大きな木の枝の下敷きになっています！とても心配しています。次の2つのレベルをプレイして、エマ、ノア、ルイスが枝をどかして車を助けるのを手伝いましょう。",
+            "ko": "게이블 아주머니가 가장 아끼는 자동차가 커다란 나뭇가지 아래에 갇혔어요! 아주 걱정하고 있어요. 다음 두 레벨을 플레이해서 엠마, 노아, 루이스가 나뭇가지를 치우고 자동차를 구하도록 도와주세요.",
+            "ar": "سيارة السيدة غايبل المفضلة عالقة تحت غصن شجرة ضخم! إنها تبدو قلقة جدًا. العب المستويين التاليين لمساعدة إيما ونواه ولويس على إزالة الغصن وإنقاذ سيارتها.",
+            "hi": "श्रीमती गेबल की पसंदीदा कार एक बड़ी पेड़ की शाखा के नीचे फँस गई है! वह बहुत चिंतित हैं। एमा, नोआ और लुई की शाखा हटाकर उनकी कार बचाने में मदद करने के लिए अगले दो स्तर खेलें।"
+          },
+          "scene_image": "big-storm-2.png",
+          "trigger": {
+            "type": "before_level",
+            "level": "In the Bedroom"
+          }
+        },
+        {
+          "event_id": 1003,
+          "page_template_id": 5,
+          "scene_images": [
+            "big-storm-2_1.png",
+            "big-storm-3.png"
+          ],
+          "story_texts": [
+            {
+              "en": "Great job! Thanks to your help, Emma, Noah, and Louis saved Mrs. Gable's favorite car. Mrs. Gable smiles with relief and thanks the team.",
+              "fr": "Bravo ! Grâce à ton aide, Emma, Noah et Louis ont sauvé la voiture préférée de Mme Gable. Mme Gable sourit de soulagement et remercie toute l'équipe.",
+              "tr": "Harika iş! Senin yardımın sayesinde Emma, Noah ve Louis Bayan Gable'ın en sevdiği arabayı kurtardı. Bayan Gable rahat bir nefes alıyor ve ekibe teşekkür ediyor.",
+              "es": "¡Buen trabajo! Gracias a tu ayuda, Emma, Noah y Louis salvaron el coche favorito de la señora Gable. Ella sonríe aliviada y da las gracias al equipo.",
+              "de": "Großartig! Dank deiner Hilfe haben Emma, Noah und Louis Mrs. Gables Lieblingsauto gerettet. Mrs. Gable lächelt erleichtert und bedankt sich beim Team.",
+              "it": "Ottimo lavoro! Grazie al tuo aiuto, Emma, Noah e Louis hanno salvato l'auto preferita della signora Gable. La signora Gable sorride sollevata e ringrazia la squadra.",
+              "pt": "Muito bem! Graças à sua ajuda, Emma, Noah e Louis salvaram o carro favorito da senhora Gable. Ela sorri aliviada e agradece à equipe.",
+              "ru": "Отличная работа! Благодаря твоей помощи Эмма, Ноа и Луис спасли любимую машину миссис Гейбл. Миссис Гейбл с облегчением улыбается и благодарит команду.",
+              "zh": "干得漂亮！在你的帮助下，艾玛、诺亚和路易斯救出了盖布尔太太最喜欢的汽车。盖布尔太太终于松了一口气，并向团队表示感谢。",
+              "ja": "よくできました！あなたの助けのおかげで、エマ、ノア、ルイスはゲーブルさんのお気に入りの車を助けることができました。ゲーブルさんはほっとした笑顔でチームにお礼を言います。",
+              "ko": "정말 잘했어요! 여러분의 도움 덕분에 엠마, 노아, 루이스가 게이블 아주머니가 가장 아끼는 자동차를 구했어요. 게이블 아주머니는 안도의 미소를 지으며 팀에게 고마워합니다.",
+              "ar": "عمل رائع! بفضل مساعدتك، تمكنت إيما ونواه ولويس من إنقاذ سيارة السيدة غايبل المفضلة. تبتسم السيدة غايبل براحة وتشكر الفريق.",
+              "hi": "बहुत बढ़िया! आपकी मदद से एमा, नोआ और लुई ने श्रीमती गेबल की पसंदीदा कार बचा ली। श्रीमती गेबल राहत की मुस्कान के साथ पूरी टीम को धन्यवाद देती हैं।"
+            },
+            {
+              "en": "Oh no! Mr. Green's garden is flooded. He worked hard to grow these vegetables. Play the next two levels to help Emma, Noah, and Louis save his garden.",
+              "fr": "Oh non ! Le jardin de M. Green est inondé. Il a travaillé très dur pour faire pousser ces légumes. Joue les deux prochains niveaux pour aider Emma, Noah et Louis à sauver son jardin.",
+              "tr": "Eyvah! Bay Green'in bahçesini su bastı. Bu sebzeleri yetiştirmek için çok çalıştı. Emma, Noah ve Louis'nin bahçesini kurtarmasına yardım etmek için sonraki iki seviyeyi oyna.",
+              "es": "¡Oh, no! El huerto del señor Green está inundado. Trabajó muy duro para cultivar estas verduras. Juega los dos siguientes niveles para ayudar a Emma, Noah y Louis a salvar su huerto.",
+              "de": "Oh nein! Mr. Greens Garten steht unter Wasser. Er hat hart gearbeitet, um dieses Gemüse anzubauen. Spiele die nächsten zwei Level, um Emma, Noah und Louis zu helfen, seinen Garten zu retten.",
+              "it": "Oh no! L'orto del signor Green è allagato. Ha lavorato tanto per coltivare queste verdure. Gioca i prossimi due livelli per aiutare Emma, Noah e Louis a salvare il suo orto.",
+              "pt": "Ah, não! A horta do senhor Green está inundada. Ele trabalhou muito para cultivar esses legumes. Jogue os próximos dois níveis para ajudar Emma, Noah e Louis a salvar sua horta.",
+              "ru": "О нет! Огород мистера Грина затопило. Он много трудился, чтобы вырастить эти овощи. Пройди следующие два уровня, чтобы помочь Эмме, Ноа и Луису спасти его огород.",
+              "zh": "不好了！格林先生的菜园被淹了。他辛苦种植了这些蔬菜。完成接下来的两关，帮助艾玛、诺亚和路易斯拯救他的菜园。",
+              "ja": "たいへん！グリーンさんの畑が水びたしです。この野菜を育てるために一生懸命頑張りました。次の2つのレベルをプレイして、エマ、ノア、ルイスが畑を助けるのを手伝いましょう。",
+              "ko": "큰일이에요! 그린 아저씨의 텃밭이 물에 잠겼어요. 이 채소들을 키우기 위해 정말 열심히 일했어요. 다음 두 레벨을 플레이해서 엠마, 노아, 루이스가 텃밭을 구하도록 도와주세요.",
+              "ar": "أوه لا! غرقت حديقة السيد غرين بالمياه. لقد عمل بجد لزراعة هذه الخضروات. العب المستويين التاليين لمساعدة إيما ونواه ولويس على إنقاذ حديقته.",
+              "hi": "अरे नहीं! मिस्टर ग्रीन का बगीचा पानी में डूब गया है। उन्होंने इन सब्ज़ियों को उगाने के लिए बहुत मेहनत की है। एमा, नोआ और लुई की उनके बगीचे को बचाने में मदद करने के लिए अगले दो स्तर खेलें।"
+            }
+          ],
+          "trigger": {
+            "type": "before_level",
+            "level": "Prepositions"
+          }
+        },
+        {
+          "event_id": 1004,
+          "page_template_id": 5,
+          "scene_images": [
+            "big-storm-3_1.png",
+            "big-storm-4.png"
+          ],
+          "story_texts": [
+            {
+              "en": "Great work! Thanks to your help, Emma, Noah, and Louis saved Mr. Green's garden. Mr. Green smiles and thanks the team.",
+              "fr": "Bravo ! Grâce à ton aide, Emma, Noah et Louis ont sauvé le jardin de M. Green. M. Green sourit et remercie toute l'équipe.",
+              "tr": "Harika iş! Senin yardımın sayesinde Emma, Noah ve Louis Bay Green'in bahçesini kurtardı. Bay Green gülümsüyor ve ekibe teşekkür ediyor.",
+              "es": "¡Buen trabajo! Gracias a tu ayuda, Emma, Noah y Louis salvaron el huerto del señor Green. El señor Green sonríe y da las gracias al equipo.",
+              "de": "Großartig! Dank deiner Hilfe haben Emma, Noah und Louis Mr. Greens Garten gerettet. Mr. Green lächelt und bedankt sich beim Team.",
+              "it": "Ottimo lavoro! Grazie al tuo aiuto, Emma, Noah e Louis hanno salvato l'orto del signor Green. Il signor Green sorride e ringrazia la squadra.",
+              "pt": "Muito bem! Graças à sua ajuda, Emma, Noah e Louis salvaram a horta do senhor Green. O senhor Green sorri e agradece à equipe.",
+              "ru": "Отличная работа! Благодаря твоей помощи Эмма, Ноа и Луис спасли огород мистера Грина. Мистер Грин улыбается и благодарит команду.",
+              "zh": "干得漂亮！在你的帮助下，艾玛、诺亚和路易斯救下了格林先生的菜园。格林先生笑着感谢整个团队。",
+              "ja": "よくできました！あなたの助けのおかげで、エマ、ノア、ルイスはグリーンさんの畑を守ることができました。グリーンさんは笑顔でチームにお礼を言います。",
+              "ko": "정말 잘했어요! 여러분의 도움 덕분에 엠마, 노아, 루이스가 그린 아저씨의 텃밭을 구했어요. 그린 아저씨는 웃으며 팀에게 고마워합니다.",
+              "ar": "عمل رائع! بفضل مساعدتك، تمكنت إيما ونواه ولويس من إنقاذ حديقة السيد غرين. يبتسم السيد غرين ويشكر الفريق.",
+              "hi": "बहुत बढ़िया! आपकी मदद से एमा, नोआ और लुई ने मिस्टर ग्रीन का बगीचा बचा लिया। मिस्टर ग्रीन मुस्कुराते हैं और पूरी टीम को धन्यवाद देते हैं।"
+            },
+            {
+              "en": "Oh no! The bakery is full of mud and water. Play the next two levels to help Emma, Noah, and Louis clean the bakery.",
+              "fr": "Oh non ! La boulangerie est remplie de boue et d'eau. Joue les deux prochains niveaux pour aider Emma, Noah et Louis à nettoyer la boulangerie.",
+              "tr": "Eyvah! Fırın çamur ve suyla dolmuş. Emma, Noah ve Louis'nin fırını temizlemesine yardım etmek için sonraki iki seviyeyi oyna.",
+              "es": "¡Oh, no! La panadería está llena de barro y agua. Juega los dos siguientes niveles para ayudar a Emma, Noah y Louis a limpiar la panadería.",
+              "de": "Oh nein! Die Bäckerei ist voller Schlamm und Wasser. Spiele die nächsten zwei Level, um Emma, Noah und Louis beim Reinigen der Bäckerei zu helfen.",
+              "it": "Oh no! La panetteria è piena di fango e acqua. Gioca i prossimi due livelli per aiutare Emma, Noah e Louis a pulire la panetteria.",
+              "pt": "Ah, não! A padaria está cheia de lama e água. Jogue os próximos dois níveis para ajudar Emma, Noah e Louis a limpar a padaria.",
+              "ru": "О нет! Пекарня полна грязи и воды. Пройди следующие два уровня, чтобы помочь Эмме, Ноа и Луису убрать пекарню.",
+              "zh": "不好了！面包店里到处都是泥和水。完成接下来的两关，帮助艾玛、诺亚和路易斯清理面包店。",
+              "ja": "たいへん！パン屋さんが泥と水でいっぱいです。次の2つのレベルをプレイして、エマ、ノア、ルイスがパン屋さんをきれいにするのを手伝いましょう。",
+              "ko": "큰일이에요! 빵집이 진흙과 물로 가득 찼어요. 다음 두 레벨을 플레이해서 엠마, 노아, 루이스가 빵집을 청소하도록 도와주세요.",
+              "ar": "أوه لا! المخبز مليء بالطين والماء. العب المستويين التاليين لمساعدة إيما ونواه ولويس على تنظيف المخبز.",
+              "hi": "अरे नहीं! बेकरी में कीचड़ और पानी भर गया है। एमा, नोआ और लुई की बेकरी साफ़ करने में मदद करने के लिए अगले दो स्तर खेलें।"
+            }
+          ],
+          "trigger": {
+            "type": "before_level",
+            "level": "Family"
+          }
+        },
+        {
+          "event_id": 1005,
+          "page_template_id": 5,
+          "scene_images": [
+            "big-storm-4_1.png",
+            "big-storm-5.png"
+          ],
+          "story_texts": [
+            {
+              "en": "Wonderful! Thanks to your help, Emma, Noah, and Louis cleaned the bakery. The smell of fresh bread fills the street, and the baker thanks the team.",
+              "fr": "Magnifique ! Grâce à ton aide, Emma, Noah et Louis ont nettoyé la boulangerie. L'odeur du pain frais emplit la rue et le boulanger remercie toute l'équipe.",
+              "tr": "Harika! Senin yardımın sayesinde Emma, Noah ve Louis fırını temizledi. Taze ekmek kokusu sokağı dolduruyor ve fırıncı ekibe teşekkür ediyor.",
+              "es": "¡Fantástico! Gracias a tu ayuda, Emma, Noah y Louis limpiaron la panadería. El olor a pan recién hecho llena la calle y el panadero da las gracias al equipo.",
+              "de": "Wunderbar! Dank deiner Hilfe haben Emma, Noah und Louis die Bäckerei gereinigt. Der Duft von frischem Brot erfüllt die Straße und der Bäcker bedankt sich beim Team.",
+              "it": "Fantastico! Grazie al tuo aiuto, Emma, Noah e Louis hanno pulito la panetteria. Il profumo del pane fresco riempie la strada e il panettiere ringrazia la squadra.",
+              "pt": "Maravilhoso! Graças à sua ajuda, Emma, Noah e Louis limparam a padaria. O cheiro de pão fresco enche a rua e o padeiro agradece à equipe.",
+              "ru": "Замечательно! Благодаря твоей помощи Эмма, Ноа и Луис убрали пекарню. Улица наполнилась ароматом свежего хлеба, а пекарь благодарит команду.",
+              "zh": "太棒了！在你的帮助下，艾玛、诺亚和路易斯把面包店清理干净了。新鲜面包的香味飘满整条街，面包师向团队表示感谢。",
+              "ja": "すばらしい！あなたの助けのおかげで、エマ、ノア、ルイスはパン屋さんをきれいにしました。焼きたてのパンの香りが通りいっぱいに広がり、パン屋さんはチームにお礼を言います。",
+              "ko": "정말 멋져요! 여러분의 도움 덕분에 엠마, 노아, 루이스가 빵집을 깨끗하게 만들었어요. 갓 구운 빵 냄새가 거리에 퍼지고 빵집 주인이 팀에게 고마워합니다.",
+              "ar": "رائع! بفضل مساعدتك، قام إيما ونواه ولويس بتنظيف المخبز. تنتشر رائحة الخبز الطازج في الشارع ويشكر الخباز الفريق.",
+              "hi": "शानदार! आपकी मदद से एमा, नोआ और लुई ने बेकरी साफ़ कर दी। ताज़ी रोटी की खुशबू पूरे रास्ते में फैल गई और बेकर पूरी टीम को धन्यवाद देता है।"
+            },
+            {
+              "en": "Hurry! The animal shelter needs help. The animals are cold and scared. Play the next two levels to help Emma, Noah, and Louis keep them safe and warm.",
+              "fr": "Vite ! Le refuge pour animaux a besoin d'aide. Les animaux ont froid et ont peur. Joue les deux prochains niveaux pour aider Emma, Noah et Louis à les mettre en sécurité et au chaud.",
+              "tr": "Çabuk! Hayvan barınağının yardıma ihtiyacı var. Hayvanlar üşüyor ve korkuyor. Emma, Noah ve Louis'nin onları güvende ve sıcak tutmasına yardım etmek için sonraki iki seviyeyi oyna.",
+              "es": "¡Rápido! El refugio de animales necesita ayuda. Los animales tienen frío y están asustados. Juega los dos siguientes niveles para ayudar a Emma, Noah y Louis a mantenerlos seguros y calentitos.",
+              "de": "Schnell! Das Tierheim braucht Hilfe. Die Tiere frieren und haben Angst. Spiele die nächsten zwei Level, um Emma, Noah und Louis zu helfen, sie sicher und warm zu halten.",
+              "it": "Presto! Il rifugio per animali ha bisogno di aiuto. Gli animali hanno freddo e sono spaventati. Gioca i prossimi due livelli per aiutare Emma, Noah e Louis a tenerli al sicuro e al caldo.",
+              "pt": "Depressa! O abrigo de animais precisa de ajuda. Os animais estão com frio e assustados. Jogue os próximos dois níveis para ajudar Emma, Noah e Louis a mantê-los seguros e aquecidos.",
+              "ru": "Скорее! Приюту для животных нужна помощь. Животным холодно и страшно. Пройди следующие два уровня, чтобы помочь Эмме, Ноа и Луису согреть их и защитить.",
+              "zh": "快点！动物收容所需要帮助。动物们又冷又害怕。完成接下来的两关，帮助艾玛、诺亚和路易斯让它们安全又温暖。",
+              "ja": "急いで！動物シェルターが助けを必要としています。動物たちは寒くて怖がっています。次の2つのレベルをプレイして、エマ、ノア、ルイスが動物たちを安全であたたかく守るのを手伝いましょう。",
+              "ko": "서두르세요! 동물 보호소에 도움이 필요해요. 동물들이 춥고 무서워하고 있어요. 다음 두 레벨을 플레이해서 엠마, 노아, 루이스가 동물들을 안전하고 따뜻하게 지키도록 도와주세요.",
+              "ar": "أسرع! ملجأ الحيوانات يحتاج إلى المساعدة. الحيوانات تشعر بالبرد والخوف. العب المستويين التاليين لمساعدة إيما ونواه ولويس على إبقائها آمنة ودافئة.",
+              "hi": "जल्दी करो! पशु आश्रय को मदद की ज़रूरत है। जानवर ठंडे हैं और डरे हुए हैं। एमा, नोआ और लुई की उन्हें सुरक्षित और गर्म रखने में मदद करने के लिए अगले दो स्तर खेलें।"
+            }
+          ],
+          "trigger": {
+            "type": "before_level",
+            "level": "Reminder 1"
+          }
+        },
+        {
+          "event_id": 1006,
+          "page_template_id": 5,
+          "scene_images": [
+            "big-storm-5_1.png",
+            "big-storm-6.png"
+          ],
+          "story_texts": [
+            {
+              "en": "Amazing! Thanks to your help, Emma, Noah, and Louis made the animals safe and warm. Happy dogs wag their tails while curious cats watch from cozy places. The shelter staff thank the team.",
+              "fr": "Incroyable ! Grâce à ton aide, Emma, Noah et Louis ont mis les animaux en sécurité et au chaud. Les chiens remuent joyeusement la queue tandis que les chats observent depuis un endroit confortable. Le personnel du refuge remercie toute l'équipe.",
+              "tr": "Muhteşem! Senin yardımın sayesinde Emma, Noah ve Louis hayvanları güvende ve sıcak tuttu. Mutlu köpekler kuyruklarını sallarken meraklı kediler rahat yerlerinden etrafı izliyor. Barınak çalışanları ekibe teşekkür ediyor.",
+              "es": "¡Increíble! Gracias a tu ayuda, Emma, Noah y Louis mantuvieron a los animales seguros y calentitos. Los perros mueven la cola felices mientras los gatos observan desde lugares cómodos. El personal del refugio da las gracias al equipo.",
+              "de": "Fantastisch! Dank deiner Hilfe haben Emma, Noah und Louis die Tiere sicher und warm gehalten. Glückliche Hunde wedeln mit dem Schwanz, während neugierige Katzen von gemütlichen Plätzen aus zusehen. Das Tierheim bedankt sich beim Team.",
+              "it": "Fantastico! Grazie al tuo aiuto, Emma, Noah e Louis hanno tenuto gli animali al sicuro e al caldo. I cani scodinzolano felici mentre i gatti curiosi osservano dai loro angolini. Il personale del rifugio ringrazia la squadra.",
+              "pt": "Incrível! Graças à sua ajuda, Emma, Noah e Louis deixaram os animais seguros e aquecidos. Cachorros felizes abanam o rabo enquanto gatos curiosos observam de lugares confortáveis. A equipe do abrigo agradece ao time.",
+              "ru": "Потрясающе! Благодаря твоей помощи Эмма, Ноа и Луис согрели животных и сделали их безопасными. Счастливые собаки весело виляют хвостами, а любопытные кошки наблюдают из уютных мест. Сотрудники приюта благодарят команду.",
+              "zh": "太棒了！在你的帮助下，艾玛、诺亚和路易斯让动物们既安全又温暖。快乐的小狗摇着尾巴，好奇的小猫在舒适的地方静静地看着。收容所的工作人员感谢整个团队。",
+              "ja": "すばらしい！あなたの助けのおかげで、エマ、ノア、ルイスは動物たちを安全であたたかく守ることができました。犬たちはうれしそうにしっぽを振り、好奇心いっぱいの猫たちはあたたかい場所から見守っています。シェルターのスタッフはチームに感謝しています。",
+              "ko": "정말 멋져요! 여러분의 도움 덕분에 엠마, 노아, 루이스가 동물들을 안전하고 따뜻하게 지켜주었어요. 행복한 강아지들은 꼬리를 흔들고 호기심 많은 고양이들은 아늑한 곳에서 지켜보고 있어요. 보호소 직원들이 팀에게 감사해합니다.",
+              "ar": "رائع! بفضل مساعدتك، جعلت إيما ونواه ولويس الحيوانات آمنة ودافئة. تهز الكلاب السعيدة ذيولها بينما تراقب القطط الفضولية من أماكن دافئة. يشكر موظفو الملجأ الفريق.",
+              "hi": "कमाल कर दिया! आपकी मदद से एमा, नोआ और लुई ने जानवरों को सुरक्षित और गर्म रखा। खुश कुत्ते अपनी पूँछ हिला रहे हैं और जिज्ञासु बिल्लियाँ आरामदायक जगहों से देख रही हैं। आश्रय के कर्मचारी पूरी टीम को धन्यवाद देते हैं।"
+            },
+            {
+              "en": "Look around! Oak Street Town is smiling again. Thanks to your help, Emma, Noah, and Louis were able to help every neighbor. Thank you for being part of the team!",
+              "fr": "Regarde autour de toi ! Oak Street Town retrouve le sourire. Grâce à ton aide, Emma, Noah et Louis ont pu aider tous les voisins. Merci de faire partie de l'équipe !",
+              "tr": "Etrafına bak! Oak Street Town yeniden gülümsüyor. Senin yardımın sayesinde Emma, Noah ve Louis tüm komşulara yardım edebildi. Ekibin bir parçası olduğun için teşekkür ederiz!",
+              "es": "¡Mira a tu alrededor! Oak Street Town vuelve a sonreír. Gracias a tu ayuda, Emma, Noah y Louis pudieron ayudar a todos los vecinos. ¡Gracias por formar parte del equipo!",
+              "de": "Schau dich um! Oak Street Town lächelt wieder. Dank deiner Hilfe konnten Emma, Noah und Louis allen Nachbarn helfen. Danke, dass du Teil des Teams bist!",
+              "it": "Guardati intorno! Oak Street Town sorride di nuovo. Grazie al tuo aiuto, Emma, Noah e Louis hanno potuto aiutare tutti i vicini. Grazie per far parte della squadra!",
+              "pt": "Olhe ao seu redor! Oak Street Town está sorrindo novamente. Graças à sua ajuda, Emma, Noah e Louis conseguiram ajudar todos os vizinhos. Obrigado por fazer parte da equipe!",
+              "ru": "Посмотри вокруг! Город Оук-стрит снова улыбается. Благодаря твоей помощи Эмма, Ноа и Луис смогли помочь всем соседям. Спасибо, что стал частью команды!",
+              "zh": "看看四周！橡树街小镇又充满了笑容。在你的帮助下，艾玛、诺亚和路易斯帮助了每一位邻居。感谢你成为团队的一员！",
+              "ja": "まわりを見てください！オークストリートタウンに笑顔が戻りました。あなたの助けのおかげで、エマ、ノア、ルイスはみんなを助けることができました。チームの一員になってくれてありがとう！",
+              "ko": "주위를 둘러보세요! 오크 스트리트 마을에 다시 웃음이 돌아왔어요. 여러분의 도움 덕분에 엠마, 노아, 루이스가 모든 이웃을 도울 수 있었어요. 팀의 일원이 되어 주셔서 감사합니다!",
+              "ar": "انظر حولك! عادت الابتسامة إلى بلدة أوك ستريت. بفضل مساعدتك، تمكنت إيما ونواه ولويس من مساعدة جميع الجيران. شكرًا لأنك جزء من الفريق!",
+              "hi": "चारों ओर देखो! ओक स्ट्रीट टाउन फिर से मुस्कुरा रहा है। आपकी मदद से एमा, नोआ और लुई सभी पड़ोसियों की मदद कर पाए। हमारी टीम का हिस्सा बनने के लिए धन्यवाद!"
+            }
+          ],
+          "trigger": {
+            "type": "after_level",
+            "level": "Reminder 2"
           }
         }
       ]

@@ -179,15 +179,16 @@ class _SentenceBuilderQuizBodyState extends State<SentenceBuilderQuizBody> {
           FutureBuilder<bool>(
             future: widget.resolveAudioExists(widget.audioAssetPath!),
             builder: (context, snap) {
-              final ok = snap.data == true;
+              if (snap.connectionState != ConnectionState.done ||
+                  snap.data != true) {
+                return const SizedBox.shrink();
+              }
               return Row(
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: [
                   AudioPlayButton(
                     isPlaying: _audioPlaying,
-                    onPressed: (!ok || (!_completed && !_failed))
-                        ? null
-                        : _playAudio,
+                    onPressed: (!_completed && !_failed) ? null : _playAudio,
                   ),
                 ],
               );

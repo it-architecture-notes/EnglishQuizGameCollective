@@ -1,0 +1,225 @@
+{
+  "translations_list": [
+    {
+      "english_word": "to dream",
+      "translations": {
+        "tr": "rüya görmek",
+        "es": "soñar",
+        "fr": "rêver",
+        "de": "träumen",
+        "it": "sognare",
+        "pt": "sonhar",
+        "ru": "видеть сны",
+        "zh": "做梦",
+        "ja": "夢を見る",
+        "ko": "꿈을 꾸다",
+        "ar": "يحلم",
+        "hi": "सपना देखना"
+      }
+    },
+    {
+      "english_word": "quietly",
+      "translations": {
+        "tr": "sessizce",
+        "es": "silenciosamente",
+        "fr": "silencieusement",
+        "de": "leise",
+        "it": "silenziosamente",
+        "pt": "silenciosamente",
+        "ru": "тихо",
+        "zh": "安静地",
+        "ja": "静かに",
+        "ko": "조용히",
+        "ar": "بهدوء",
+        "hi": "चुपचाप"
+      }
+    },
+    {
+      "english_word": "tired",
+      "translations": {
+        "tr": "yorgun",
+        "es": "cansado",
+        "fr": "fatigué",
+        "de": "müde",
+        "it": "stanco",
+        "pt": "cansado",
+        "ru": "устал",
+        "zh": "累了",
+        "ja": "疲れた",
+        "ko": "피곤하다",
+        "ar": "متعب",
+        "hi": "थका हुआ"
+      }
+    },
+    {
+      "english_word": "to lie down",
+      "translations": {
+        "tr": "uzanmak",
+        "es": "acostarse",
+        "fr": "s'allonger",
+        "de": "sich hinlegen",
+        "it": "sdraiarsi",
+        "pt": "deitar-se",
+        "ru": "лечь",
+        "zh": "躺下",
+        "ja": "横になる",
+        "ko": "눕다",
+        "ar": "يستلقي",
+        "hi": "लेटना"
+      }
+    },
+    {
+      "english_word": "to rest",
+      "translations": {
+        "tr": "dinlenmek",
+        "es": "descansar",
+        "fr": "se reposer",
+        "de": "sich ausruhen",
+        "it": "riposare",
+        "pt": "descansar",
+        "ru": "отдыхать",
+        "zh": "休息",
+        "ja": "休む",
+        "ko": "쉬다",
+        "ar": "يرتاح",
+        "hi": "आराम करना"
+      }
+    },
+    {
+      "english_word": "turn on the light",
+      "translations": {
+        "tr": "ışığı açmak",
+        "es": "encender la luz",
+        "fr": "allumer la lumière",
+        "de": "das Licht einschalten",
+        "it": "accendere la luce",
+        "pt": "acender a luz",
+        "ru": "включить свет",
+        "zh": "开灯",
+        "ja": "電気をつける",
+        "ko": "불을 켜다",
+        "ar": "تشغيل الضوء",
+        "hi": "लाइट चालू करना"
+      }
+    },
+    {
+      "english_word": "turn off the light",
+      "translations": {
+        "tr": "ışığı kapatmak",
+        "es": "apagar la luz",
+        "fr": "éteindre la lumière",
+        "de": "das Licht ausschalten",
+        "it": "spegnere la luce",
+        "pt": "apagar a luz",
+        "ru": "выключить свет",
+        "zh": "关灯",
+        "ja": "電気を消す",
+        "ko": "불을 끄다",
+        "ar": "إطفاء الضوء",
+        "hi": "लाइट बंद करना"
+      }
+    },
+    {
+      "english_word": "dark",
+      "translations": {
+        "tr": "karanlık",
+        "es": "oscuro",
+        "fr": "sombre",
+        "de": "dunkel",
+        "it": "buio",
+        "pt": "escuro",
+        "ru": "темно",
+        "zh": "黑暗",
+        "ja": "暗い",
+        "ko": "어둡다",
+        "ar": "مظلم",
+        "hi": "अंधेरा"
+      }
+    },
+    {
+      "english_word": "comfortable",
+      "translations": {
+        "tr": "rahat",
+        "es": "cómodo",
+        "fr": "confortable",
+        "de": "bequem",
+        "it": "comodo",
+        "pt": "confortável",
+        "ru": "удобный",
+        "zh": "舒适",
+        "ja": "快適な",
+        "ko": "편안한",
+        "ar": "مريح",
+        "hi": "आरामदायक"
+      }
+    },
+    {
+      "english_word": "to make the bed",
+      "translations": {
+        "tr": "yatağı toplamak",
+        "es": "hacer la cama",
+        "fr": "faire le lit",
+        "de": "das Bett machen",
+        "it": "rifare il letto",
+        "pt": "arrumar a cama",
+        "ru": "заправить кровать",
+        "zh": "铺床",
+        "ja": "ベッドを整える",
+        "ko": "침대를 정리하다",
+        "ar": "ترتيب السرير",
+        "hi": "बिस्तर ठीक करना"
+      }
+    },
+    {
+      "english_word": "awake",
+      "translations": {
+        "tr": "uyanık",
+        "es": "despierto",
+        "fr": "éveillé",
+        "de": "wach",
+        "it": "sveglio",
+        "pt": "acordado",
+        "ru": "бодрствующий",
+        "zh": "醒着",
+        "ja": "起きている",
+        "ko": "깨어있는",
+        "ar": "مستيقظ",
+        "hi": "जागा हुआ"
+      }
+    },
+    {
+      "english_word": "asleep",
+      "translations": {
+        "tr": "uykuda",
+        "es": "dormido",
+        "fr": "endormi",
+        "de": "schlafend",
+        "it": "addormentato",
+        "pt": "adormecido",
+        "ru": "спящий",
+        "zh": "睡着",
+        "ja": "眠っている",
+        "ko": "잠든",
+        "ar": "نائم",
+        "hi": "सोया हुआ"
+      }
+    },
+    {
+      "english_word": "bright",
+      "translations": {
+        "tr": "parlak",
+        "es": "claro",
+        "fr": "lumineux",
+        "de": "hell",
+        "it": "luminoso",
+        "pt": "claro",
+        "ru": "яркий",
+        "zh": "明亮",
+        "ja": "明るい",
+        "ko": "밝은",
+        "ar": "مشرق",
+        "hi": "चमकीला"
+      }
+    }
+  ]
+}

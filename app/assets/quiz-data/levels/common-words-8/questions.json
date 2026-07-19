@@ -1,0 +1,124 @@
+{
+  "levelQuestions": [
+    {
+      "template": "ClozeSequence",
+      "questionData": {
+        "sentence": "She has just _____ a picture and _____ the pencil on the table.",
+        "answer": ["drawn", "dropped"],
+        "distractors": ["painted", "thrown"]
+      },
+      "audio_file": "she-has-just-drawn-a-picture-and-dropped-the-pencil-on-the-table-convo"
+    },
+    {
+      "template": "ClozeSequence",
+      "questionData": {
+        "sentence": "The firefighters have _____ the fire, which _____ dangerous chemicals.",
+        "answer": ["fought", "contained"],
+        "distractors": ["solved", "held"]
+      },
+      "audio_file": "the-firefighters-have-fought-the-fire-which-contained-dangerous-chemicals-convo"
+    },
+    {
+      "template": "ClozeSequence",
+      "questionData": {
+        "sentence": "He was _____ injured during his _____ job as a firefighter.",
+        "answer": ["seriously", "previous"],
+        "distractors": ["happily", "future"]
+      },
+      "audio_file": "he-was-seriously-injured-during-his-previous-job-as-a-firefighter-convo"
+    },
+    {
+      "template": "GrammarForm",
+      "questionData": {
+        "sentence": "I _____ this project for three years now.",
+        "answer": "have managed",
+        "distractors": ["manage", "managed", "am managing"]
+      }
+    },
+    {
+      "template": "AppearDisappear",
+      "questionData": {
+        "words": "I have counted all the votes.",
+        "distractors": ["added", "checked", "sorted"]
+      },
+      "audio_file": "i-have-counted-all-the-votes-convo"
+    },
+    {
+      "template": "AppearDisappear",
+      "questionData": {
+        "words": "She used to control the whole team.",
+        "distractors": ["manage", "lead", "run"]
+      },
+      "audio_file": "she-used-to-control-the-whole-team-convo"
+    },
+    {
+      "template": "AppearDisappear",
+      "questionData": {
+        "words": "This method is highly effective.",
+        "distractors": ["barely", "poorly", "rarely"]
+      },
+      "audio_file": "this-method-is-highly-effective-convo"
+    },
+    {
+      "template": "ConvoTemplate-1",
+      "questionData": {
+        "character1": "Beth",
+        "character2": "Alex",
+        "line1": "Have you ever performed on stage?",
+        "line2": "Yes, I have _____ many times.",
+        "answer": "performed",
+        "distractors": ["practiced", "watched", "joined"]
+      },
+      "audio_file1": "have-you-ever-performed-on-stage-convo",
+      "audio_file2": "yes-i-have-performed-many-times-convo"
+    },
+    {
+      "template": "ConvoTemplate-1",
+      "questionData": {
+        "character1": "Sarah",
+        "character2": "Daniel",
+        "line1": "Did you enjoy the concert?",
+        "line2": "Yes, it was _____ amazing.",
+        "answer": "truly",
+        "distractors": ["barely", "hardly", "rarely"]
+      },
+      "audio_file1": "did-you-enjoy-the-concert-convo",
+      "audio_file2": "yes-it-was-truly-amazing-convo"
+    },
+    {
+      "template": "DialogueCompletion",
+      "questionData": {
+        "character1": "Omar",
+        "character2": "Lily",
+        "line1": "Will you help me move next week?",
+        "answer": "I have totally promised to help you.",
+        "distractors": [
+          "No, I am too busy that day.",
+          "Maybe, I will check my schedule.",
+          "I promised someone else instead."
+        ]
+      },
+      "audio_file1": "will-you-help-me-move-next-week-convo",
+      "audio_file2": "i-have-totally-promised-to-help-you-convo"
+    },
+    {
+      "template": "SentenceBuilder",
+      "questionData": {
+        "correct_order": "This engine is very powerful."
+      },
+      "audio_file": "this-engine-is-very-powerful-convo"
+    },
+    {
+      "template": "WordPairs",
+      "questionData": {
+        "english_words": ["huge", "likely", "whole", "connected"],
+        "translations": [
+          {"tr": "huge", "es": "huge", "fr": "huge", "de": "huge", "it": "huge", "pt": "huge", "ru": "huge", "zh": "huge", "ja": "huge", "ko": "huge", "ar": "huge", "hi": "huge"},
+          {"tr": "likely", "es": "likely", "fr": "likely", "de": "likely", "it": "likely", "pt": "likely", "ru": "likely", "zh": "likely", "ja": "likely", "ko": "likely", "ar": "likely", "hi": "likely"},
+          {"tr": "whole", "es": "whole", "fr": "whole", "de": "whole", "it": "whole", "pt": "whole", "ru": "whole", "zh": "whole", "ja": "whole", "ko": "whole", "ar": "whole", "hi": "whole"},
+          {"tr": "connected", "es": "connected", "fr": "connected", "de": "connected", "it": "connected", "pt": "connected", "ru": "connected", "zh": "connected", "ja": "connected", "ko": "connected", "ar": "connected", "hi": "connected"}
+        ]
+      }
+    }
+  ]
+}

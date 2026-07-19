@@ -35,6 +35,23 @@
       }
     },
     {
+      "english_word": "split the bill",
+      "translations": {
+        "tr": "hesabı bölmek",
+        "es": "dividir la cuenta",
+        "fr": "partager l'addition",
+        "de": "die Rechnung teilen",
+        "it": "dividere il conto",
+        "pt": "dividir a conta",
+        "ru": "разделить счёт",
+        "zh": "平分账单",
+        "ja": "割り勘にする",
+        "ko": "계산을 나누다",
+        "ar": "تقاسم الفاتورة",
+        "hi": "बिल बाँटना"
+      }
+    },
+    {
       "english_word": "to serve",
       "translations": {
         "tr": "servis etmek",
@@ -69,20 +86,20 @@
       }
     },
     {
-      "english_word": "which",
+      "english_word": "polite",
       "translations": {
-        "tr": "hangisi",
-        "es": "cuál",
-        "fr": "lequel",
-        "de": "welche",
-        "it": "quale",
-        "pt": "qual",
-        "ru": "который",
-        "zh": "哪一个",
-        "ja": "どの",
-        "ko": "어느",
-        "ar": "أي",
-        "hi": "कौन सा"
+        "tr": "kibar",
+        "es": "educado",
+        "fr": "poli",
+        "de": "höflich",
+        "it": "educato",
+        "pt": "educado",
+        "ru": "вежливый",
+        "zh": "有礼貌的",
+        "ja": "丁寧な",
+        "ko": "정중한",
+        "ar": "مهذب",
+        "hi": "विनम्र"
       }
     },
     {
@@ -100,6 +117,23 @@
         "ko": "맛있다",
         "ar": "لذيذ",
         "hi": "स्वादिष्ट"
+      }
+    },
+    {
+      "english_word": "to tip",
+      "translations": {
+        "tr": "bahşiş vermek",
+        "es": "dar propina",
+        "fr": "donner un pourboire",
+        "de": "Trinkgeld geben",
+        "it": "lasciare la mancia",
+        "pt": "dar gorjeta",
+        "ru": "оставить чаевые",
+        "zh": "给小费",
+        "ja": "チップを渡す",
+        "ko": "팁을 주다",
+        "ar": "يعطي إكرامية",
+        "hi": "टिप देना"
       }
     },
     {
@@ -151,23 +185,6 @@
         "ko": "제대로",
         "ar": "بشكل صحيح",
         "hi": "ठीक से"
-      }
-    },
-    {
-      "english_word": "main",
-      "translations": {
-        "tr": "ana",
-        "es": "principal",
-        "fr": "principal",
-        "de": "Haupt",
-        "it": "principale",
-        "pt": "principal",
-        "ru": "главный",
-        "zh": "主要",
-        "ja": "メイン",
-        "ko": "메인",
-        "ar": "رئيسي",
-        "hi": "मुख्य"
       }
     },
     {

@@ -128,6 +128,39 @@
     {
       "template": "imageQuizTemplate-1",
       "questionData": {
+        "imageName": "husband",
+        "wrongAnswers": [
+          "wife",
+          "brother",
+          "man"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "wife",
+        "wrongAnswers": [
+          "husband",
+          "sister",
+          "woman"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "man",
+        "wrongAnswers": [
+          "boy",
+          "grandfather",
+          "woman"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
         "imageName": "mother",
         "wrongAnswers": [
           "daughter",

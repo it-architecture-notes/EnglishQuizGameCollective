@@ -4,13 +4,17 @@ import 'package:shared_preferences/shared_preferences.dart';
 /// Manages user-facing app settings persisted via SharedPreferences.
 ///
 /// Stores: language ([getLanguage]/[setLanguage]), music on/off ([getMusicOn]/[setMusicOn]),
-/// sound/FX on/off ([getSoundFxOn]/[setSoundFxOn]). Defaults: language "en", music on, sound/FX on.
+/// sound/FX on/off ([getSoundFxOn]/[setSoundFxOn]), show-all-levels preview
+/// ([getShowAllLevels]/[setShowAllLevels]), and test mode ([getTestModeOn]/[setTestModeOn]).
+/// Defaults: language "en", music on, sound/FX on, show-all-levels off, test mode off.
 class AppSettingsService {
   AppSettingsService._();
 
   static const String _langKey = 'app_language';
   static const String _musicKey = 'app_music_on';
   static const String _soundFxKey = 'app_sound_fx_on';
+  static const String _showAllLevelsKey = 'app_show_all_levels';
+  static const String _testModeKey = 'app_test_mode_on';
   static const String _defaultLanguage = 'en';
 
   static SharedPreferences? _prefs;
@@ -72,6 +76,44 @@ class AppSettingsService {
       await prefs.setBool(_soundFxKey, value);
     } catch (e, st) {
       debugPrint('AppSettingsService.setSoundFxOn: $e\n$st');
+    }
+  }
+
+  static Future<bool> getShowAllLevels() async {
+    try {
+      final prefs = await _preferences;
+      return prefs.getBool(_showAllLevelsKey) ?? false;
+    } catch (e, st) {
+      debugPrint('AppSettingsService.getShowAllLevels: $e\n$st');
+      return false;
+    }
+  }
+
+  static Future<void> setShowAllLevels(bool value) async {
+    try {
+      final prefs = await _preferences;
+      await prefs.setBool(_showAllLevelsKey, value);
+    } catch (e, st) {
+      debugPrint('AppSettingsService.setShowAllLevels: $e\n$st');
+    }
+  }
+
+  static Future<bool> getTestModeOn() async {
+    try {
+      final prefs = await _preferences;
+      return prefs.getBool(_testModeKey) ?? false;
+    } catch (e, st) {
+      debugPrint('AppSettingsService.getTestModeOn: $e\n$st');
+      return false;
+    }
+  }
+
+  static Future<void> setTestModeOn(bool value) async {
+    try {
+      final prefs = await _preferences;
+      await prefs.setBool(_testModeKey, value);
+    } catch (e, st) {
+      debugPrint('AppSettingsService.setTestModeOn: $e\n$st');
     }
   }
 }

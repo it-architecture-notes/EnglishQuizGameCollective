@@ -31,19 +31,19 @@
     {
       "template": "ClozeSequence",
       "questionData": {
-        "sentence": "Can I ____ a ____ bag at the checkout?",
+        "sentence": "Can I ____ this ____ at the checkout?",
         "answer": [
           "buy",
-          "new"
+          "brand"
         ],
         "distractors": [
           "move",
-          "wet",
+          "milk",
           "eat",
-          "silent"
+          "store"
         ]
       },
-      "audio_file": "can-i-buy-a-new-bag-at-the-checkout-convo"
+      "audio_file": "can-i-buy-this-brand-at-the-checkout-convo"
     },
     {
       "template": "imageQuizTemplate-1",
@@ -131,28 +131,28 @@
         "character1": "Omar",
         "character2": "Sophie",
         "line1": "How much is this cheese?",
-        "answer": "It is too expensive for me.",
+        "answer": "It costs ten dollars.",
         "distractors": [
-          "It weighs ten dollars.",
-          "You buy ten bags.",
+          "It weighs ten bags.",
+          "You buy ten stores.",
           "It opens at ten o'clock."
         ]
       },
       "audio_file1": "how-much-is-this-cheese-convo",
-      "audio_file2": "it-is-too-expensive-for-me-convo"
+      "audio_file2": "it-costs-ten-dollars-convo"
     },
     {
       "template": "AppearDisappear",
       "questionData": {
-        "words": "Please pay at the checkout.",
+        "words": "Please pay and take your receipt.",
         "distractors": [
           "who",
-          "buy",
+          "pay",
           "cashier",
           "enter"
         ]
       },
-      "audio_file": "please-pay-at-the-checkout-convo"
+      "audio_file": "please-pay-and-take-your-receipt-convo"
     },
     {
       "template": "imageQuizTemplate-2",
@@ -180,18 +180,19 @@
     {
       "template": "ClozeSequence",
       "questionData": {
-        "sentence": "He can _____ one treat from the shelf.",
+        "sentence": "She must _____ the best deal after she _____ the total cost.",
         "answer": [
-          "choose"
+          "choose",
+          "calculates"
         ],
         "distractors": [
-          "stand up",
-          "wash",
-          "run",
-          "cook"
+          "eat",
+          "carry",
+          "forgets",
+          "loses"
         ]
       },
-      "audio_file": "he-can-choose-one-treat-from-the-shelf-convo"
+      "audio_file": "she-must-choose-the-best-deal-after-she-calculates-the-total-cost-convo"
     },
     {
       "template": "imageQuizTemplate-1",
@@ -207,37 +208,39 @@
     {
       "template": "SentenceBuilder",
       "questionData": {
-        "correct_order": "Why is that bag heavy?"
+        "correct_order": "Please load the bags into the car."
       },
-      "audio_file": "why-is-that-bag-heavy-convo"
+      "audio_file": "please-load-the-bags-into-the-car-convo"
     },
     {
       "template": "GrammarForm",
       "questionData": {
-        "sentence": "We ____ for the cashier to scan the food.",
+        "sentence": "We ____ in the checkout line.",
         "answer": "wait",
         "distractors": [
+          "are waiting",
           "waiting",
-          "waits",
-          "has waited"
+          "waits"
         ]
       }
     },
     {
       "template": "ClozeSequence",
       "questionData": {
-        "sentence": "I _____ we need more milk and eggs.",
+        "sentence": "I _____ the olive oil bottles to _____ the _____.",
         "answer": [
-          "guess"
+          "weigh",
+          "compare",
+          "weights"
         ],
         "distractors": [
           "try",
-          "read",
-          "wash",
-          "use"
+          "pick",
+          "heavy",
+          "price"
         ]
       },
-      "audio_file": "i-guess-we-need-more-milk-and-eggs-convo"
+      "audio_file": "i-weigh-the-olive-oil-bottles-to-compare-the-weights-convo"
     },
     {
       "template": "ConvoTemplate-1",

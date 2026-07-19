@@ -1,71 +1,88 @@
 {
   "translations_list": [
     {
-      "english_word": "to use",
-      "translations": {
-        "tr": "kullanmak",
-        "es": "usar",
-        "fr": "utiliser",
-        "de": "zu verwenden",
-        "it": "da usare",
-        "pt": "usar",
-        "ru": "использовать",
-        "zh": "使用",
-        "ja": "使用する",
-        "ko": "사용하다",
-        "ar": "للاستخدام",
-        "hi": "उपयोग करना"
-      }
-    },
-    {
-      "english_word": "bad",
-      "translations": {
-        "tr": "kötü",
-        "es": "malo",
-        "fr": "mauvais",
-        "de": "schlecht",
-        "it": "cattivo",
-        "pt": "ruim",
-        "ru": "плохой",
-        "zh": "坏",
-        "ja": "悪い",
-        "ko": "나쁜",
-        "ar": "سيئة",
-        "hi": "ख़राब"
-      }
-    },
-    {
-      "english_word": "to take",
+      "english_word": "to pick up",
       "translations": {
         "tr": "almak",
-        "es": "tomar",
-        "fr": "prendre",
-        "de": "nehmen",
-        "it": "prendere",
-        "pt": "tomar",
-        "ru": "принимать",
-        "zh": "服用",
-        "ja": "服用する",
-        "ko": "복용하다",
-        "ar": "لتناول",
+        "es": "recoger",
+        "fr": "récupérer",
+        "de": "abholen",
+        "it": "ritirare",
+        "pt": "buscar",
+        "ru": "забрать",
+        "zh": "取药",
+        "ja": "受け取る",
+        "ko": "찾다",
+        "ar": "يستلم",
         "hi": "लेना"
       }
     },
     {
-      "english_word": "to tell",
+      "english_word": "to shake",
       "translations": {
-        "tr": "anlatmak",
-        "es": "decir",
-        "fr": "dire",
-        "de": "erzählen",
-        "it": "raccontare",
-        "pt": "contar",
-        "ru": "рассказать",
-        "zh": "告诉",
-        "ja": "伝える",
-        "ko": "말하다",
-        "ar": "ليقول",
-        "hi": "बताना"
+        "tr": "çalkalamak",
+        "es": "agitar",
+        "fr": "secouer",
+        "de": "schütteln",
+        "it": "scuotere",
+        "pt": "agitar",
+        "ru": "трясти",
+        "zh": "摇晃",
+        "ja": "振る",
+        "ko": "흔들다",
+        "ar": "يهز",
+        "hi": "हिलाना"
+      }
+    },
+    {
+      "english_word": "prescription",
+      "translations": {
+        "tr": "reçete",
+        "es": "receta",
+        "fr": "ordonnance",
+        "de": "Rezept",
+        "it": "ricetta",
+        "pt": "receita",
+        "ru": "рецепт",
+        "zh": "处方",
+        "ja": "処方箋",
+        "ko": "처방전",
+        "ar": "وصفة طبية",
+        "hi": "नुस्खा"
+      }
+    },
+    {
+      "english_word": "to explain",
+      "translations": {
+        "tr": "açıklamak",
+        "es": "explicar",
+        "fr": "expliquer",
+        "de": "erklären",
+        "it": "spiegare",
+        "pt": "explicar",
+        "ru": "объяснять",
+        "zh": "解释",
+        "ja": "説明する",
+        "ko": "설명하다",
+        "ar": "يشرح",
+        "hi": "समझाना"
+      }
+    },
+    {
+      "english_word": "instruction",
+      "translations": {
+        "tr": "talimat",
+        "es": "instrucción",
+        "fr": "instruction",
+        "de": "Anweisung",
+        "it": "istruzione",
+        "pt": "instrução",
+        "ru": "инструкция",
+        "zh": "说明",
+        "ja": "指示",
+        "ko": "지시",
+        "ar": "تعليمات",
+        "hi": "निर्देश"
       }
     },
     {
@@ -78,113 +95,147 @@
         "it": "sicuro",
         "pt": "seguro",
         "ru": "безопасный",
-        "zh": "安全",
+        "zh": "安全的",
         "ja": "安全な",
-        "ko": "안전하다",
-        "ar": "آمنة",
+        "ko": "안전한",
+        "ar": "آمن",
         "hi": "सुरक्षित"
       }
     },
     {
-      "english_word": "a little water",
+      "english_word": "painkiller",
       "translations": {
-        "tr": "biraz su",
-        "es": "un poco de agua",
-        "fr": "un peu d'eau",
-        "de": "etwas Wasser",
-        "it": "un po' d'acqua",
-        "pt": "um pouco de água",
-        "ru": "немного воды",
-        "zh": "一点水",
-        "ja": "少量の水",
-        "ko": "약간의 물",
-        "ar": "القليل من الماء",
-        "hi": "थोड़ा सा पानी"
+        "tr": "ağrı kesici",
+        "es": "analgésico",
+        "fr": "antidouleur",
+        "de": "Schmerzmittel",
+        "it": "antidolorifico",
+        "pt": "analgésico",
+        "ru": "обезболивающее",
+        "zh": "止痛药",
+        "ja": "鎮痛剤",
+        "ko": "진통제",
+        "ar": "مسكن للألم",
+        "hi": "दर्द निवारक"
       }
     },
     {
-      "english_word": "maybe",
+      "english_word": "headache",
       "translations": {
-        "tr": "belki",
-        "es": "tal vez",
-        "fr": "peut-être",
-        "de": "vielleicht",
-        "it": "forse",
-        "pt": "talvez",
-        "ru": "может быть",
-        "zh": "也许",
-        "ja": "たぶん",
-        "ko": "아마도",
-        "ar": "ربما",
-        "hi": "शायद"
+        "tr": "baş ağrısı",
+        "es": "dolor de cabeza",
+        "fr": "mal de tête",
+        "de": "Kopfschmerzen",
+        "it": "mal di testa",
+        "pt": "dor de cabeça",
+        "ru": "головная боль",
+        "zh": "头痛",
+        "ja": "頭痛",
+        "ko": "두통",
+        "ar": "صداع",
+        "hi": "सिरदर्द"
       }
     },
     {
-      "english_word": "without",
+      "english_word": "to advise",
       "translations": {
-        "tr": "olmadan",
-        "es": "sin",
-        "fr": "sans",
-        "de": "ohne",
-        "it": "senza",
-        "pt": "sem",
-        "ru": "без",
-        "zh": "没有",
-        "ja": "なしで",
-        "ko": "없이",
-        "ar": "بدون",
-        "hi": "बिना"
+        "tr": "tavsiye etmek",
+        "es": "aconsejar",
+        "fr": "conseiller",
+        "de": "raten",
+        "it": "consigliare",
+        "pt": "aconselhar",
+        "ru": "советовать",
+        "zh": "建议",
+        "ja": "勧める",
+        "ko": "조언하다",
+        "ar": "ينصح",
+        "hi": "सलाह देना"
       }
     },
     {
-      "english_word": "to believe",
+      "english_word": "exactly",
       "translations": {
-        "tr": "inanmak",
-        "es": "creer",
-        "fr": "croire",
-        "de": "zu glauben",
-        "it": "credere",
-        "pt": "acreditar",
-        "ru": "верить",
-        "zh": "相信",
-        "ja": "信じること",
-        "ko": "믿다",
-        "ar": "للاعتقاد",
-        "hi": "विश्वास करना"
+        "tr": "tam olarak",
+        "es": "exactamente",
+        "fr": "exactement",
+        "de": "genau",
+        "it": "esattamente",
+        "pt": "exatamente",
+        "ru": "ровно",
+        "zh": "正好",
+        "ja": "ちょうど",
+        "ko": "정확히",
+        "ar": "بالضبط",
+        "hi": "बिल्कुल"
       }
     },
     {
-      "english_word": "also",
+      "english_word": "to remain",
       "translations": {
-        "tr": "ayrıca",
-        "es": "también",
-        "fr": "aussi",
-        "de": "auch",
-        "it": "anche",
-        "pt": "também",
-        "ru": "также",
-        "zh": "还有",
-        "ja": "また",
-        "ko": "또한",
-        "ar": "ايضا",
-        "hi": "भी"
+        "tr": "kalmak",
+        "es": "quedar",
+        "fr": "rester",
+        "de": "übrig bleiben",
+        "it": "rimanere",
+        "pt": "restar",
+        "ru": "оставаться",
+        "zh": "剩余",
+        "ja": "残る",
+        "ko": "남다",
+        "ar": "يتبقى",
+        "hi": "बचा रहना"
       }
     },
     {
-      "english_word": "to happen",
+      "english_word": "to refill",
       "translations": {
-        "tr": "olmak",
-        "es": "suceder",
-        "fr": "arriver",
-        "de": "passieren",
-        "it": "accadere",
-        "pt": "acontecer",
-        "ru": "случиться",
-        "zh": "发生",
-        "ja": "起こる",
-        "ko": "일어나다",
-        "ar": "أن يحدث",
-        "hi": "घटित होना"
+        "tr": "yeniden doldurmak",
+        "es": "volver a surtir",
+        "fr": "renouveler",
+        "de": "nachfüllen",
+        "it": "rifornire",
+        "pt": "reabastecer",
+        "ru": "пополнить",
+        "zh": "续配",
+        "ja": "補充する",
+        "ko": "다시 채우다",
+        "ar": "يعيد التعبئة",
+        "hi": "दोबारा भरना"
+      }
+    },
+    {
+      "english_word": "over-the-counter",
+      "translations": {
+        "tr": "reçetesiz",
+        "es": "sin receta",
+        "fr": "en vente libre",
+        "de": "rezeptfrei",
+        "it": "senza ricetta",
+        "pt": "sem receita",
+        "ru": "без рецепта",
+        "zh": "非处方药",
+        "ja": "市販の",
+        "ko": "처방전 없이",
+        "ar": "بدون وصفة",
+        "hi": "बिना पर्चे के"
+      }
+    },
+    {
+      "english_word": "to verify",
+      "translations": {
+        "tr": "doğrulamak",
+        "es": "verificar",
+        "fr": "vérifier",
+        "de": "überprüfen",
+        "it": "verificare",
+        "pt": "verificar",
+        "ru": "проверить",
+        "zh": "核实",
+        "ja": "確認する",
+        "ko": "확인하다",
+        "ar": "يتحقق",
+        "hi": "सत्यापित करना"
       }
     }
   ]

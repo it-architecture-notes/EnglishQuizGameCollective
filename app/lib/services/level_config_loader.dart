@@ -7,8 +7,8 @@ import '../models/level_translations.dart';
 
 /// Reads one sub-level’s `questions.json` from the asset bundle into a [LevelConfig].
 /// Invoked by [QuizRunnerScreen._runRegular], reminder resolution, and [ImageQuizScreen._loadLevel] fallback.
-Future<LevelConfig> loadLevelConfig(String iconImageName) async {
-  final path = 'assets/quiz-data/levels/$iconImageName/questions.json';
+Future<LevelConfig> loadLevelConfig(String directoryName) async {
+  final path = 'assets/quiz-data/levels/$directoryName/questions.json';
   final String raw;
   try {
     raw = await rootBundle.loadString(path);
@@ -23,8 +23,8 @@ Future<LevelConfig> loadLevelConfig(String iconImageName) async {
 }
 
 /// Optional `translations.json` beside `questions.json`. Returns null if missing, empty, or invalid.
-Future<TranslationsPageData?> loadLevelTranslations(String iconImageName) async {
-  final path = 'assets/quiz-data/levels/$iconImageName/translations.json';
+Future<TranslationsPageData?> loadLevelTranslations(String directoryName) async {
+  final path = 'assets/quiz-data/levels/$directoryName/translations.json';
   try {
     final raw = await rootBundle.loadString(path);
     return TranslationsPageData.parse(raw);

@@ -16,17 +16,17 @@
       "questionData": {
         "character1": "Sarah",
         "character2": "Daniel",
-        "line1": "What do they ____ on this farm?",
-        "line2": "They _____ vegetables and keep chickens.",
-        "answer": "grow",
+        "line1": "Did you _____ the soil deep enough for the seeds?",
+        "line2": "Yes, I _____ it deep enough.",
+        "answer": "dig",
         "distractors": [
-          "bake",
-          "deliver",
-          "count"
+          "measure",
+          "water",
+          "push"
         ]
       },
-      "audio_file1": "what-do-they-grow-on-this-farm-convo",
-      "audio_file2": "they-grow-vegetables-and-keep-chickens-convo"
+      "audio_file1": "did-you-dig-the-soil-deep-enough-for-the-seeds-convo",
+      "audio_file2": "yes-i-dig-it-deep-enough-convo"
     },
     {
       "template": "ConvoTemplate-1",
@@ -146,7 +146,7 @@
       "questionData": {
         "words": "You need to push hard to move the wheelbarrow.",
         "distractors": [
-          "pull",
+          "lift",
           "softly",
           "have",
           "farm"
@@ -179,9 +179,9 @@
     {
       "template": "SentenceBuilder",
       "questionData": {
-        "correct_order": "The cows are finally big enough."
+        "correct_order": "Farmers work hard to produce food."
       },
-      "audio_file": "the-cows-are-finally-big-enough-convo"
+      "audio_file": "farmers-work-hard-to-produce-food-convo"
     },
     {
       "template": "imageQuizTemplate-1",
@@ -197,66 +197,66 @@
     {
       "template": "ClozeSequence",
       "questionData": {
-        "sentence": "The farmer _____ the cows to a fresh pasture _____.",
+        "sentence": "We need to _____ a new _____ for the horses.",
         "answer": [
-          "moves",
-          "daily"
+          "build",
+          "stable"
         ],
         "distractors": [
-          "stays",
-          "sells",
-          "enters",
-          "weekend"
+          "water",
+          "open",
+          "barn",
+          "road"
         ]
       },
-      "audio_file": "the-farmer-moves-the-cows-to-a-fresh-pasture-daily-convo"
+      "audio_file": "we-need-to-build-a-new-stable-for-the-horses-convo"
     },
     {
       "template": "GrammarForm",
       "questionData": {
-        "sentence": "It is important that we _____ more nutrients.",
-        "answer": "add",
+        "sentence": "They decided to _____ chickens on their small farm.",
+        "answer": "raise",
         "distractors": [
-          "are adding",
-          "will add",
-          "do add"
+          "raises",
+          "raised",
+          "raising"
         ]
       },
-      "audio_file": "it-is-important-that-we-add-more-nutrients-convo"
+      "audio_file": "they-decided-to-raise-chickens-on-their-small-farm-convo"
     },
     {
       "template": "ClozeSequence",
       "questionData": {
-        "sentence": "You need to ____ hard to open the barn doors where we ____ the baby goats.",
+        "sentence": "Before you _____ new seeds, you need to _____ out the weeds.",
         "answer": [
-          "pull",
-          "raise"
+          "sow",
+          "pull"
         ],
         "distractors": [
-          "bake",
-          "write",
-          "sign",
-          "cook"
+          "bury",
+          "push",
+          "grow",
+          "collect"
         ]
       },
-      "audio_file": "you-need-to-pull-hard-to-open-the-barn-doors-where-we-raise-the-baby-goats-convo"
+      "audio_file": "before-you-sow-new-seeds-you-need-to-pull-out-the-weeds-convo"
     },
     {
       "template": "ClozeSequence",
       "questionData": {
-        "sentence": "Farmer John ____ many things, _____ sunflowers.",
+        "sentence": "Farmers work hard to _____ in spring and to _____ in fall.",
         "answer": [
-          "plants",
-          "especially"
+          "plant",
+          "harvest"
         ],
         "distractors": [
-          "walks",
-          "slowly",
-          "daily",
-          "really"
+          "grow",
+          "gather",
+          "grow",
+          "repair"
         ]
       },
-      "audio_file": "farmer-john-plants-many-things-especially-sunflowers-convo"
+      "audio_file": "farmers-work-hard-to-plant-in-spring-and-to-harvest-in-fall-convo"
     }
   ]
 }

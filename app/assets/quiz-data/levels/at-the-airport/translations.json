@@ -18,20 +18,20 @@
       }
     },
     {
-      "english_word": "to hope",
+      "english_word": "to take off",
       "translations": {
-        "tr": "umut etmek",
-        "es": "esperar",
-        "fr": "espérer",
-        "de": "hoffen",
-        "it": "sperare",
-        "pt": "esperar",
-        "ru": "надеяться",
-        "zh": "希望",
-        "ja": "希望する",
-        "ko": "희망하다",
-        "ar": "يأمل",
-        "hi": "आशा करना"
+        "tr": "kalkmak",
+        "es": "despegar",
+        "fr": "décoller",
+        "de": "abheben",
+        "it": "decollare",
+        "pt": "decolar",
+        "ru": "взлетать",
+        "zh": "起飞",
+        "ja": "離陸する",
+        "ko": "이륙하다",
+        "ar": "يُقلع",
+        "hi": "उड़ान भरना"
       }
     },
     {
@@ -69,20 +69,20 @@
       }
     },
     {
-      "english_word": "according to",
+      "english_word": "to announce",
       "translations": {
-        "tr": "göre",
-        "es": "según",
-        "fr": "selon",
-        "de": "laut",
-        "it": "secondo",
-        "pt": "de acordo com",
-        "ru": "согласно",
-        "zh": "根据",
-        "ja": "〜によると",
-        "ko": "에 따르면",
-        "ar": "وفقًا لـ",
-        "hi": "के अनुसार"
+        "tr": "duyurmak",
+        "es": "anunciar",
+        "fr": "annoncer",
+        "de": "ankündigen",
+        "it": "annunciare",
+        "pt": "anunciar",
+        "ru": "объявить",
+        "zh": "宣布",
+        "ja": "アナウンスする",
+        "ko": "발표하다",
+        "ar": "يُعلن",
+        "hi": "घोषणा करना"
       }
     },
     {
@@ -103,20 +103,20 @@
       }
     },
     {
-      "english_word": "how long",
+      "english_word": "to transfer",
       "translations": {
-        "tr": "ne kadar",
-        "es": "cuánto tiempo",
-        "fr": "combien de temps",
-        "de": "wie lange",
-        "it": "quanto tempo",
-        "pt": "quanto tempo",
-        "ru": "как долго",
-        "zh": "多长时间",
-        "ja": "どのくらいの間",
-        "ko": "얼마나 오래",
-        "ar": "كم من الوقت",
-        "hi": "कितनी देर"
+        "tr": "aktarmak",
+        "es": "transferir",
+        "fr": "transférer",
+        "de": "umladen",
+        "it": "trasferire",
+        "pt": "transferir",
+        "ru": "перевозить",
+        "zh": "转运",
+        "ja": "移す",
+        "ko": "옮기다",
+        "ar": "ينقل",
+        "hi": "स्थानांतरित करना"
       }
     },
     {
@@ -134,6 +134,23 @@
         "ko": "취소하다",
         "ar": "يلغي",
         "hi": "रद्द करना"
+      }
+    },
+    {
+      "english_word": "passenger",
+      "translations": {
+        "tr": "yolcu",
+        "es": "pasajero",
+        "fr": "passager",
+        "de": "Passagier",
+        "it": "passeggero",
+        "pt": "passageiro",
+        "ru": "пассажир",
+        "zh": "乘客",
+        "ja": "乗客",
+        "ko": "승객",
+        "ar": "راكب",
+        "hi": "यात्री"
       }
     },
     {
@@ -171,20 +188,37 @@
       }
     },
     {
-      "english_word": "how many",
+      "english_word": "connecting flight",
       "translations": {
-        "tr": "kaç tane",
-        "es": "cuántos",
-        "fr": "combien",
-        "de": "wie viele",
-        "it": "quanti/quante",
-        "pt": "quantos",
-        "ru": "сколько",
-        "zh": "有多少",
-        "ja": "何個",
-        "ko": "몇",
-        "ar": "كم",
-        "hi": "कितने"
+        "tr": "aktarmalı uçuş",
+        "es": "vuelo de conexión",
+        "fr": "vol de correspondance",
+        "de": "Anschlussflug",
+        "it": "volo di coincidenza",
+        "pt": "voo de conexão",
+        "ru": "стыковочный рейс",
+        "zh": "转机航班",
+        "ja": "乗り継ぎ便",
+        "ko": "환승편",
+        "ar": "رحلة ترانزيت",
+        "hi": "कनेक्टिंग फ़्लाइट"
+      }
+    },
+    {
+      "english_word": "layover",
+      "translations": {
+        "tr": "aktarma süresi",
+        "es": "escala",
+        "fr": "escale",
+        "de": "Zwischenstopp",
+        "it": "scalo",
+        "pt": "escala",
+        "ru": "стыковка",
+        "zh": "中途停留",
+        "ja": "乗り継ぎ時間",
+        "ko": "환승 대기",
+        "ar": "توقف",
+        "hi": "लंबा इंतज़ार"
       }
     }
   ]

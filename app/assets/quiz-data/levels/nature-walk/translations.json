@@ -1,37 +1,54 @@
 {
   "translations_list": [
     {
-      "english_word": "quiet",
+      "english_word": "sky",
       "translations": {
-        "tr": "sessiz",
-        "es": "silencioso",
-        "fr": "silencieux",
-        "de": "ruhig",
-        "it": "tranquillo",
-        "pt": "silencioso",
-        "ru": "тихий",
-        "zh": "安静",
-        "ja": "静かな",
-        "ko": "조용한",
-        "ar": "هادئ",
-        "hi": "शांत"
+        "tr": "gökyüzü",
+        "es": "cielo",
+        "fr": "ciel",
+        "de": "Himmel",
+        "it": "cielo",
+        "pt": "céu",
+        "ru": "небо",
+        "zh": "天空",
+        "ja": "空",
+        "ko": "하늘",
+        "ar": "سماء",
+        "hi": "आसमान"
       }
     },
     {
-      "english_word": "to collect",
+      "english_word": "to hike",
       "translations": {
-        "tr": "toplamak",
-        "es": "recoger",
-        "fr": "collecter",
-        "de": "sammeln",
-        "it": "raccogliere",
-        "pt": "coletar",
-        "ru": "собирать",
-        "zh": "收集",
-        "ja": "集める",
-        "ko": "수집하다",
-        "ar": "يجمع",
-        "hi": "इकट्ठा करना"
+        "tr": "yürüyüş yapmak",
+        "es": "hacer senderismo",
+        "fr": "randonner",
+        "de": "wandern",
+        "it": "fare escursionismo",
+        "pt": "fazer trilha",
+        "ru": "идти в поход",
+        "zh": "徒步",
+        "ja": "ハイキングする",
+        "ko": "하이킹하다",
+        "ar": "يتنزه في الطبيعة",
+        "hi": "लंबी पैदल यात्रा करना"
+      }
+    },
+    {
+      "english_word": "shadow",
+      "translations": {
+        "tr": "gölge",
+        "es": "sombra",
+        "fr": "ombre",
+        "de": "Schatten",
+        "it": "ombra",
+        "pt": "sombra",
+        "ru": "тень",
+        "zh": "影子",
+        "ja": "影",
+        "ko": "그림자",
+        "ar": "ظل",
+        "hi": "परछाई"
       }
     },
     {
@@ -103,20 +120,37 @@
       }
     },
     {
-      "english_word": "wide",
+      "english_word": "to observe",
       "translations": {
-        "tr": "geniş",
-        "es": "ancho",
-        "fr": "large",
-        "de": "breit",
-        "it": "largo",
-        "pt": "largo",
-        "ru": "широкий",
-        "zh": "宽",
-        "ja": "広い",
-        "ko": "넓은",
-        "ar": "واسع",
-        "hi": "विस्तृत"
+        "tr": "gözlemlemek",
+        "es": "observar",
+        "fr": "observer",
+        "de": "beobachten",
+        "it": "osservare",
+        "pt": "observar",
+        "ru": "наблюдать",
+        "zh": "观察",
+        "ja": "観察する",
+        "ko": "관찰하다",
+        "ar": "يراقب",
+        "hi": "अवलोकन करना"
+      }
+    },
+    {
+      "english_word": "steep",
+      "translations": {
+        "tr": "dik",
+        "es": "empinado",
+        "fr": "raide",
+        "de": "steil",
+        "it": "ripido",
+        "pt": "íngreme",
+        "ru": "крутой",
+        "zh": "陡峭的",
+        "ja": "急な",
+        "ko": "가파른",
+        "ar": "حاد",
+        "hi": "खड़ी"
       }
     },
     {
@@ -171,20 +205,20 @@
       }
     },
     {
-      "english_word": "to build",
+      "english_word": "to discover",
       "translations": {
-        "tr": "inşa etmek",
-        "es": "construir",
-        "fr": "construire",
-        "de": "bauen",
-        "it": "costruire",
-        "pt": "construir",
-        "ru": "строить",
-        "zh": "建造",
-        "ja": "建てる",
-        "ko": "짓다",
-        "ar": "يبني",
-        "hi": "निर्माण करना"
+        "tr": "keşfetmek",
+        "es": "descubrir",
+        "fr": "découvrir",
+        "de": "entdecken",
+        "it": "scoprire",
+        "pt": "descobrir",
+        "ru": "обнаружить",
+        "zh": "发现",
+        "ja": "発見する",
+        "ko": "발견하다",
+        "ar": "يكتشف",
+        "hi": "खोजना"
       }
     },
     {

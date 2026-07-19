@@ -18,6 +18,23 @@
       }
     },
     {
+      "english_word": "available",
+      "translations": {
+        "tr": "mevcut",
+        "es": "disponible",
+        "fr": "disponible",
+        "de": "verfügbar",
+        "it": "disponibile",
+        "pt": "disponível",
+        "ru": "доступный",
+        "zh": "可借",
+        "ja": "借りられる",
+        "ko": "대출 가능",
+        "ar": "متاح",
+        "hi": "उपलब्ध"
+      }
+    },
+    {
       "english_word": "to help",
       "translations": {
         "tr": "yardım etmek",
@@ -103,37 +120,20 @@
       }
     },
     {
-      "english_word": "impossible",
+      "english_word": "expired",
       "translations": {
-        "tr": "imkansız",
-        "es": "imposible",
-        "fr": "impossible",
-        "de": "unmöglich",
-        "it": "impossibile",
-        "pt": "impossível",
-        "ru": "невозможный",
-        "zh": "不可能的",
-        "ja": "不可能な",
-        "ko": "불가능한",
-        "ar": "مستحيل",
-        "hi": "असंभव"
-      }
-    },
-    {
-      "english_word": "to take",
-      "translations": {
-        "tr": "almak",
-        "es": "tomar",
-        "fr": "prendre",
-        "de": "nehmen",
-        "it": "prendere",
-        "pt": "pegar",
-        "ru": "брать",
-        "zh": "拿",
-        "ja": "取る",
-        "ko": "가져가다",
-        "ar": "الأخذ",
-        "hi": "लेना"
+        "tr": "süresi dolmuş",
+        "es": "vencido",
+        "fr": "expiré",
+        "de": "abgelaufen",
+        "it": "scaduto",
+        "pt": "expirado",
+        "ru": "просроченный",
+        "zh": "过期的",
+        "ja": "期限切れの",
+        "ko": "만료된",
+        "ar": "منتهي الصلاحية",
+        "hi": "समाप्त हो चुका"
       }
     },
     {
@@ -154,6 +154,23 @@
       }
     },
     {
+      "english_word": "to reserve",
+      "translations": {
+        "tr": "ayırtmak",
+        "es": "reservar",
+        "fr": "réserver",
+        "de": "reservieren",
+        "it": "prenotare",
+        "pt": "reservar",
+        "ru": "бронировать",
+        "zh": "预约",
+        "ja": "予約する",
+        "ko": "예약하다",
+        "ar": "يحجز",
+        "hi": "आरक्षित करना"
+      }
+    },
+    {
       "english_word": "to get",
       "translations": {
         "tr": "edinmek",
@@ -171,20 +188,20 @@
       }
     },
     {
-      "english_word": "silent",
+      "english_word": "to return something",
       "translations": {
-        "tr": "sessiz",
-        "es": "silencioso",
-        "fr": "silencieux",
-        "de": "still",
-        "it": "silenzioso",
-        "pt": "silencioso",
-        "ru": "тихий",
-        "zh": "安静的",
-        "ja": "静かな",
-        "ko": "조용한",
-        "ar": "هادئ",
-        "hi": "शांत"
+        "tr": "geri vermek",
+        "es": "devolver",
+        "fr": "rendre",
+        "de": "zurückgeben",
+        "it": "restituire",
+        "pt": "devolver",
+        "ru": "возвращать",
+        "zh": "归还",
+        "ja": "返す",
+        "ko": "반납하다",
+        "ar": "يعيد",
+        "hi": "वापस करना"
       }
     }
   ]

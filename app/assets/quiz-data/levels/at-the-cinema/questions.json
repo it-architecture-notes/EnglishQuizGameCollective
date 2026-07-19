@@ -11,86 +11,34 @@
         ]
       }
     },
-    
     {
-      "template": "WordPairs",
+      "template": "ConvoTemplate-1",
       "questionData": {
-        "english_words": [
-          "exciting",
-          "scary",
-          "funny",
-          "awful"
-        ],
-        "translations": [
-          {
-            "tr": "heyecan verici",
-            "es": "emocionante",
-            "fr": "passionnant",
-            "de": "aufregend",
-            "it": "entusiasmante",
-            "pt": "emocionante",
-            "ru": "захватывающий",
-            "zh": "令人兴奋的",
-            "ja": "わくわくする",
-            "ko": "흥미진진한",
-            "ar": "مثير",
-            "hi": "रोमांचक"
-          },
-          {
-            "tr": "ürkütücü",
-            "es": "aterrador",
-            "fr": "effrayant",
-            "de": "gruselig",
-            "it": "spaventoso",
-            "pt": "assustador",
-            "ru": "страшный",
-            "zh": "恐怖的",
-            "ja": "怖い",
-            "ko": "무서운",
-            "ar": "مخيف",
-            "hi": "डरावना"
-          },
-          {
-            "tr": "komik",
-            "es": "gracioso",
-            "fr": "drôle",
-            "de": "lustig",
-            "it": "buffo",
-            "pt": "engraçado",
-            "ru": "смешной",
-            "zh": "搞笑的",
-            "ja": "面白い",
-            "ko": "웃긴",
-            "ar": "مضحك",
-            "hi": "मज़ेदार"
-          },
-          {
-            "tr": "berbat",
-            "es": "horrible",
-            "fr": "affreux",
-            "de": "schrecklich",
-            "it": "orribile",
-            "pt": "horrível",
-            "ru": "ужасный",
-            "zh": "糟糕的",
-            "ja": "ひどい",
-            "ko": "끔찍한",
-            "ar": "فظيع",
-            "hi": "भयानक"
-          }
+        "character1": "Lena",
+        "character2": "Omar",
+        "line1": "Can you turn on the _____ for this film?",
+        "line2": "Yes, the _____ help me understand the dialogue.",
+        "answer": "subtitles",
+        "distractors": [
+          "tickets",
+          "trailers",
+          "snacks"
         ]
-      }
+      },
+      "audio_file1": "can-you-turn-on-the-subtitles-for-this-film-convo",
+      "audio_file2": "yes-the-subtitles-help-me-understand-the-dialogue-convo"
     },
     {
       "template": "AppearDisappear",
       "questionData": {
-        "words": "The movie starts at eight tonight.",
+        "words": "The audience claps loudly at the end.",
         "distractors": [
-          "early",
-          "now"
+          "quietly",
+          "before",
+          "begins"
         ]
       },
-      "audio_file": "the-movie-starts-at-eight-tonight-convo"
+      "audio_file": "the-audience-claps-loudly-at-the-end-convo"
     },
     {
       "template": "imageQuizTemplate-1",
@@ -106,20 +54,20 @@
     {
       "template": "ClozeSequence",
       "questionData": {
-        "sentence": "I want to ______ that movie because the story seems ______.",
+        "sentence": "I want to be at the cinema before the ______ ______.",
         "answer": [
-          "watch",
-          "familiar"
+          "movie",
+          "starts"
         ],
         "distractors": [
-          "study",
-          "cook",
-          "change",
-          "polite",
-          "slowly"
+          "film",
+          "ends",
+          "show",
+          "tonight",
+          "early"
         ]
       },
-      "audio_file": "i-want-to-watch-that-movie-because-the-story-seems-familiar-convo"
+      "audio_file": "i-want-to-be-at-the-cinema-before-the-movie-starts-convo"
     },
     {
       "template": "imageQuizTemplate-1",
@@ -137,8 +85,8 @@
       "questionData": {
         "character1": "Maya",
         "character2": "Leo",
-        "line1": "We need to _____ the cinema before the film starts.",
-        "line2": "Yes, let's _____ now before the doors close.",
+        "line1": "We need to _____ the cinema before the doors close.",
+        "line2": "Yes, let's _____ now.",
         "answer": "enter",
         "distractors": [
           "wait",
@@ -146,8 +94,8 @@
           "find"
         ]
       },
-      "audio_file1": "we-need-to-enter-the-cinema-before-the-film-starts-convo",
-      "audio_file2": "yes-lets-enter-now-before-the-doors-close-convo"
+      "audio_file1": "we-need-to-enter-the-cinema-before-the-doors-close-convo",
+      "audio_file2": "yes-lets-enter-now-convo"
     },
     {
       "template": "imageQuizTemplate-1",
@@ -163,19 +111,19 @@
     {
       "template": "ClozeSequence",
       "questionData": {
-        "sentence": "We must hurry or we will _____ the _____ film.",
+        "sentence": "We must _____ or we will _____ the film.",
         "answer": [
-          "miss",
-          "whole"
+          "rush",
+          "miss"
         ],
         "distractors": [
+          "relax",
           "wait",
           "buy",
-          "change",
-          "cook"
+          "change"
         ]
       },
-      "audio_file": "we-must-hurry-or-we-will-miss-the-whole-film-convo"
+      "audio_file": "we-must-rush-or-we-will-miss-the-film-convo"
     },
     {
       "template": "imageQuizTemplate-1",
@@ -220,7 +168,7 @@
         "line1": "Do you like scary films?",
         "answer": "No, I hate scary films.",
         "distractors": [
-          "The movie starts at eight tonight.",
+          "Yes, I love scary films.",
           "I will select seats near the screen.",
           "The screen is very big in this cinema."
         ]
@@ -231,12 +179,12 @@
     {
       "template": "GrammarForm",
       "questionData": {
-        "sentence": "What does 'sold out' _____ on the ticket board?",
-        "answer": "mean",
+        "sentence": "We _____ out to the cinema instead of staying home.",
+        "answer": "are going to go",
         "distractors": [
-          "means",
-          "meant",
-          "meaning"
+          "go out",
+          "going out",
+          "goes out"
         ]
       }
     },
@@ -251,7 +199,7 @@
         "distractors": [
           "read",
           "hate",
-          "mean",
+          "open",
           "carry"
         ]
       },

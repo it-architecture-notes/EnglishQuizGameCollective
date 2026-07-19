@@ -86,54 +86,54 @@
       }
     },
     {
-      "english_word": "what time?",
+      "english_word": "still",
       "translations": {
-        "tr": "saat kaçta?",
-        "es": "¿a qué hora?",
-        "fr": "à quelle heure ?",
-        "de": "um wie viel Uhr?",
-        "it": "a che ora?",
-        "pt": "a que horas?",
-        "ru": "в какое время?",
-        "zh": "什么时间？",
-        "ja": "何時ですか？",
-        "ko": "몇 시에?",
-        "ar": "كم الساعة؟",
-        "hi": "किस समय?"
+        "tr": "hâlâ",
+        "es": "todavía",
+        "fr": "encore",
+        "de": "noch",
+        "it": "ancora",
+        "pt": "ainda",
+        "ru": "всё ещё",
+        "zh": "仍然",
+        "ja": "まだ",
+        "ko": "아직도",
+        "ar": "لا يزال",
+        "hi": "अभी भी"
       }
     },
     {
-      "english_word": "to try",
+      "english_word": "to stretch",
       "translations": {
-        "tr": "denemek",
-        "es": "intentar",
-        "fr": "essayer",
-        "de": "versuchen",
-        "it": "provare",
-        "pt": "tentar",
-        "ru": "попробовать",
-        "zh": "尝试",
-        "ja": "試してみる",
-        "ko": "시도하다",
-        "ar": "المحاولة",
-        "hi": "प्रयास करना"
+        "tr": "esnemek",
+        "es": "estirarse",
+        "fr": "s'étirer",
+        "de": "sich strecken",
+        "it": "stirarsi",
+        "pt": "alongar-se",
+        "ru": "потягиваться",
+        "zh": "伸展",
+        "ja": "ストレッチする",
+        "ko": "스트레칭하다",
+        "ar": "يتمدد",
+        "hi": "अंगड़ाई लेना"
       }
     },
     {
-      "english_word": "well",
+      "english_word": "late",
       "translations": {
-        "tr": "iyi",
-        "es": "bien",
-        "fr": "bien",
-        "de": "gut",
-        "it": "bene",
-        "pt": "bem",
-        "ru": "хорошо",
-        "zh": "好",
-        "ja": "よく",
-        "ko": "잘",
-        "ar": "جيدًا",
-        "hi": "अच्छी तरह"
+        "tr": "geç",
+        "es": "tarde",
+        "fr": "en retard",
+        "de": "spät",
+        "it": "in ritardo",
+        "pt": "atrasado",
+        "ru": "поздно",
+        "zh": "迟到",
+        "ja": "遅い",
+        "ko": "늦은",
+        "ar": "متأخر",
+        "hi": "देर से"
       }
     },
     {
@@ -185,6 +185,23 @@
         "ko": "일어서다",
         "ar": "الوقوف",
         "hi": "खड़ा होना"
+      }
+    },
+    {
+      "english_word": "quickly",
+      "translations": {
+        "tr": "hızlıca",
+        "es": "rápidamente",
+        "fr": "rapidement",
+        "de": "schnell",
+        "it": "rapidamente",
+        "pt": "rapidamente",
+        "ru": "быстро",
+        "zh": "快速地",
+        "ja": "すぐに",
+        "ko": "빨리",
+        "ar": "بسرعة",
+        "hi": "जल्दी से"
       }
     }
   ]

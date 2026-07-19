@@ -16,8 +16,8 @@
       "questionData": {
         "character1": "Omar",
         "character2": "Ryan",
-        "line1": "Where do you ____?",
-        "line2": "I ____ on the sofa.",
+        "line1": "I love to _____ by the window and chat with you.",
+        "line2": "Me too, it's so relaxing.",
         "answer": "sit",
         "distractors": [
           "stand",
@@ -25,25 +25,24 @@
           "walk"
         ]
       },
-      "audio_file1": "where-do-you-sit-convo",
-      "audio_file2": "i-sit-on-the-sofa-convo"
+      "audio_file1": "i-love-to-sit-by-the-window-and-chat-with-you-convo",
+      "audio_file2": "me-too-it-s-so-relaxing-convo"
     },
     {
-      "template": "ConvoTemplate-1",
+      "template": "DialogueCompletion",
       "questionData": {
         "character1": "Olivia",
         "character2": "Ethan",
-        "line1": "Mom, I cannot find the remote control.",
-        "line2": "Did you ____ where you put it again?",
-        "answer": "forget",
+        "line1": "I love how spacious your backyard is.",
+        "answer": "Thanks! It's perfect to host guests for book reading.",
         "distractors": [
-          "let",
-          "ask",
-          "understand"
+          "Thanks, but it is too small for guests.",
+          "I prefer reading alone in the living room.",
+          "We never invite guests to the backyard."
         ]
       },
-      "audio_file1": "mom-i-cannot-find-the-remote-control-convo",
-      "audio_file2": "did-you-forget-where-you-put-it-again-convo"
+      "audio_file1": "i-love-how-spacious-your-backyard-is-convo",
+      "audio_file2": "thanks-it-s-perfect-to-host-guests-for-book-reading-convo"
     },
     {
       "template": "imageQuizTemplate-1",
@@ -60,67 +59,67 @@
       "template": "WordPairs",
       "questionData": {
         "english_words": [
-          "softer",
-          "softest",
-          "more comfortable",
-          "the most comfortable"
+          "warm",
+          "cool",
+          "simple",
+          "soft"
         ],
         "translations": [
           {
-            "tr": "daha yumuşak",
-            "es": "más suave",
-            "fr": "plus doux",
-            "de": "weicher",
-            "it": "più morbido",
-            "pt": "mais macio",
-            "ru": "мягче",
-            "zh": "更柔软",
-            "ja": "より柔らかい",
-            "ko": "더 부드러운",
-            "ar": "أكثر ليونة",
-            "hi": "ज़्यादा नरम"
+            "tr": "sıcak",
+            "es": "cálido",
+            "fr": "chaud",
+            "de": "warm",
+            "it": "caldo",
+            "pt": "quente",
+            "ru": "тёплый",
+            "zh": "温暖的",
+            "ja": "暖かい",
+            "ko": "따뜻한",
+            "ar": "دافئ",
+            "hi": "गर्म"
           },
           {
-            "tr": "en yumuşak",
-            "es": "el más suave",
-            "fr": "le plus doux",
-            "de": "am weichsten",
-            "it": "il più morbido",
-            "pt": "o mais macio",
-            "ru": "самый мягкий",
-            "zh": "最柔软",
-            "ja": "最も柔らかい",
-            "ko": "가장 부드러운",
-            "ar": "الأنعم",
-            "hi": "सबसे नरम"
+            "tr": "serin",
+            "es": "fresco",
+            "fr": "frais",
+            "de": "kühl",
+            "it": "fresco",
+            "pt": "fresco",
+            "ru": "прохладный",
+            "zh": "凉爽的",
+            "ja": "涼しい",
+            "ko": "시원한",
+            "ar": "بارد",
+            "hi": "ठंडा"
           },
           {
-            "tr": "daha rahat",
-            "es": "más cómodo",
-            "fr": "plus confortable",
-            "de": "bequemer",
-            "it": "più comodo",
-            "pt": "mais confortável",
-            "ru": "более удобный",
-            "zh": "更舒适",
-            "ja": "より快適な",
-            "ko": "더 편안한",
-            "ar": "أكثر راحة",
-            "hi": "अधिक आरामदायक"
+            "tr": "basit",
+            "es": "simple",
+            "fr": "simple",
+            "de": "einfach",
+            "it": "semplice",
+            "pt": "simples",
+            "ru": "простой",
+            "zh": "简单的",
+            "ja": "シンプルな",
+            "ko": "간단한",
+            "ar": "بسيط",
+            "hi": "सरल"
           },
           {
-            "tr": "en rahat",
-            "es": "el más cómodo",
-            "fr": "le plus confortable",
-            "de": "am bequemsten",
-            "it": "il più comodo",
-            "pt": "o mais confortável",
-            "ru": "самый удобный",
-            "zh": "最舒适",
-            "ja": "最も快適な",
-            "ko": "가장 편안한",
-            "ar": "الأكثر راحة",
-            "hi": "सबसे आरामदायक"
+            "tr": "yumuşak",
+            "es": "suave",
+            "fr": "doux",
+            "de": "weich",
+            "it": "morbido",
+            "pt": "macio",
+            "ru": "мягкий",
+            "zh": "柔软的",
+            "ja": "柔らかい",
+            "ko": "부드러운",
+            "ar": "ناعم",
+            "hi": "नरम"
           }
         ]
       }
@@ -164,22 +163,28 @@
       }
     },
     {
-      "template": "imageQuizTemplate-2",
+      "template": "ClozeSequence",
       "questionData": {
-        "imageName": "coffee-table",
-        "wrongAnswers": [
-          "coat-rack",
-          "bookshelf",
-          "curtains"
+        "sentence": "The living room looked so _____ that she decided to _____ it up.",
+        "answer": [
+          "cluttered",
+          "tidy"
+        ],
+        "distractors": [
+          "messy",
+          "clean",
+          "neat",
+          "wash"
         ]
-      }
+      },
+      "audio_file": "the-living-room-looked-so-cluttered-that-she-decided-to-tidy-it-up-convo"
     },
     {
       "template": "ClozeSequence",
       "questionData": {
         "sentence": "Their living room is ____, so the family loves to ____ there.",
         "answer": [
-          "great",
+          "cozy",
           "gather"
         ],
         "distractors": [
@@ -189,7 +194,7 @@
           "loudly"
         ]
       },
-      "audio_file": "their-living-room-is-great-so-the-family-loves-to-gather-there-convo"
+      "audio_file": "their-living-room-is-cozy-so-the-family-loves-to-gather-there-convo"
     },
     {
       "template": "imageQuizTemplate-1",
@@ -247,9 +252,9 @@
     {
       "template": "SentenceBuilder",
       "questionData": {
-        "correct_order": "He likes to greet guests"
+        "correct_order": "She moved the bookshelf against the other wall."
       },
-      "audio_file": "he-likes-to-greet-guests-convo"
+      "audio_file": "he-waved-to-greet-his-neighbor-convo"
     }
   ]
 }

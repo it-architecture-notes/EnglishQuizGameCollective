@@ -1,0 +1,132 @@
+Group 1
+Verbs: want, think, give, tell, become, begin, keep, show, hear
+
+Adjectives/Adverbs: new, little, only, other
+
+Mixed: to, through, during, against, across, along
+
+Group 2
+Verbs: believe, happen, mean, remember, want, win, sit down, come back, go back
+
+Adjectives/Adverbs: real, sure, true, young
+
+Mixed: without, within, among, beyond, toward, upon
+
+Group 3
+Verbs: allow, appear, develop, carry, include, create, design, die, end
+
+Adjectives/Adverbs: poor, quick, rich, smart
+
+Mixed: including, per, despite, due, instead, plus
+
+Group 4
+Verbs: forget, guess, hope, imagine, join, let, save, sound, visit
+
+Adjectives/Adverbs: afraid, false, fine, friendly
+
+Mixed: rather, regarding, throughout, towards, via, worth
+
+Group 5
+Verbs: log in, log out, shut down, sign out, sign up, come out, get out, go down, go up
+
+Adjectives/Adverbs: funny, kind, main, tall
+
+Mixed: alongside, amid, apart, beneath, besides, concerning
+
+Group 6
+Verbs: put down, accept, achieve, adopt, attack, avoid, beat, behave, bore
+
+Adjectives/Adverbs: unhealthy, useful, wonderful, worried
+
+Mixed: prior, till, unlike, ability, access, activity
+
+Group 7
+Verbs: bring back, cause, collect, come along, confuse, consider, contain, control, cough
+
+Adjectives/Adverbs: active, all, certain, clear
+
+Mixed: adult, advantage, advice, afternoon, age, air
+
+Group 8
+Verbs: count, deal, depend, destroy, disagree, disappear, disconnect, draw, drop
+
+Adjectives/Adverbs: daily, excellent, huge, impossible
+
+Mixed: air force, amount, animal, applause, area, argument
+
+Group 9
+Verbs: dust, earn, escape, excite, exist, expect, fade, fetch, fight
+
+Adjectives/Adverbs: independent, just, likely, lucky
+
+Mixed: arm, army, art, attack, attention, baby
+
+Group 10
+Verbs: find out, fire, fix, focus, fold, freeze, frighten, give up, grate
+
+Adjectives/Adverbs: necessary, regular, specific, strange
+
+Mixed: back, background, bag, ball, bank, bar
+
+Group 11
+Verbs: grill, hang, head, hide, increase, introduce, involve, iron, kick
+
+Adjectives/Adverbs: successful, traditional, valuable, whole
+
+Mixed: battery, battle, beginning, behavior, belief, benefit
+
+Group 12
+Verbs: kill, knock, last, lead, link, lock, manage, mark, marry
+
+Adjectives/Adverbs: ancient, assistant, attractive, awful
+
+Mixed: bird, bit, blindness, blood, body, bone
+
+Group 13
+Verbs: matter, mind, organize, own, peel, perform, place, point, polish
+
+Adjectives/Adverbs: brilliant, classical, confusing, connected
+
+Mixed: boss, box, brain, building, bunch, business
+
+Group 14
+Verbs: predict, prefer, promise, pronounce, protect, provide, publish, reach, realize
+
+Adjectives/Adverbs: crazy, creative, fair, jealous
+
+Mixed: button, cake, camera, campaign, cancer, car
+
+Group 15
+Verbs: recognize, record, refer, refuse, reply, report, rise, roast, shock
+
+Adjectives/Adverbs: male, mean, middle, secret
+
+Mixed: career, case, cause, cell, center, century
+
+Group 16
+Verbs: shut, sink, slide, sneeze, solve, spill, steal, steer, stir
+
+Adjectives/Adverbs: tasty, worthless, absolutely, anyway
+
+Mixed: challenge, chance, channel, charge, cheese, child
+
+Group 17
+Verbs: suppose, take away, tap, text, tie, train, unlock, unpack, vote
+
+Adjectives/Adverbs: anywhere, apart, clearly, completely
+
+Mixed: chocolate, choice, class, client, coffee, college
+
+Group 18
+Verbs: water, worry, wrap, yell, zoom, admire, analyze, apologize, appreciate
+
+Adjectives/Adverbs: directly, eventually, everywhere, forward
+
+Mixed: color, comment, community, company, computer, condition
+
+Group 19
+Verbs: arrest, attach, base, bend, bother, calculate, charge, claim, clear
+
+Adjectives/Adverbs: generally, indeed, instead, mostly
+
+Mixed: connection, content, continent, conversation, country, couple

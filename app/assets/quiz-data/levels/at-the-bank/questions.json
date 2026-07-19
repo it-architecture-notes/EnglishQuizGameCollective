@@ -197,48 +197,49 @@
     {
       "template": "ClozeSequence",
       "questionData": {
-        "sentence": "I'd like to ______ my account options _____.",
+        "sentence": "The bank will _____ your card _____.",
         "answer": [
-          "discuss",
-          "soon"
+          "approve",
+          "application"
         ],
         "distractors": [
-          "pay",
-          "sign",
-          "borrow",
-          "call"
+          "deny",
+          "reject",
+          "savings",
+          "balance"
         ]
       },
-      "audio_file": "i-d-like-to-discuss-my-account-options-soon-convo"
+      "audio_file": "the-bank-will-approve-your-card-application-convo"
     },
     {
       "template": "GrammarForm",
       "questionData": {
-        "sentence": "I _____ my money carefully tomorrow.",
-        "answer": "will count",
+        "sentence": "He _____ his card to the ATM.",
+        "answer": "inserted",
         "distractors": [
-          "counting",
-          "count",
-          "have counted"
+          "insert",
+          "inserts",
+          "will insert"
         ]
-      }
+      },
+      "audio_file": "he-inserted-his-card-to-the-atm-convo"
     },
     {
       "template": "ClozeSequence",
       "questionData": {
-        "sentence": "______ that _____ amounts need your ID.",
+        "sentence": "They wanted to _____ for a _____ loan and the bank _____.",
         "answer": [
-          "remember",
-          "large"
+          "apply",
+          "large",
+          "denied"
         ],
         "distractors": [
-          "cook",
-          "look",
-          "short",
-          "new"
+          "borrow",
+          "small",
+          "accept"
         ]
       },
-      "audio_file": "remember-that-large-amounts-need-your-id-convo"
+      "audio_file": "they-wanted-to-apply-for-a-large-loan-and-the-bank-denied-convo"
     },
     {
       "template": "ClozeSequence",

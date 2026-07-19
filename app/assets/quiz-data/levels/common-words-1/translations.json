@@ -1,0 +1,259 @@
+{
+  "translations_list": [
+    {
+      "english_word": "to begin",
+      "translations": {
+        "tr": "to begin",
+        "es": "to begin",
+        "fr": "to begin",
+        "de": "to begin",
+        "it": "to begin",
+        "pt": "to begin",
+        "ru": "to begin",
+        "zh": "to begin",
+        "ja": "to begin",
+        "ko": "to begin",
+        "ar": "to begin",
+        "hi": "to begin"
+      }
+    },
+    {
+      "english_word": "to give",
+      "translations": {
+        "tr": "to give",
+        "es": "to give",
+        "fr": "to give",
+        "de": "to give",
+        "it": "to give",
+        "pt": "to give",
+        "ru": "to give",
+        "zh": "to give",
+        "ja": "to give",
+        "ko": "to give",
+        "ar": "to give",
+        "hi": "to give"
+      }
+    },
+    {
+      "english_word": "to think",
+      "translations": {
+        "tr": "to think",
+        "es": "to think",
+        "fr": "to think",
+        "de": "to think",
+        "it": "to think",
+        "pt": "to think",
+        "ru": "to think",
+        "zh": "to think",
+        "ja": "to think",
+        "ko": "to think",
+        "ar": "to think",
+        "hi": "to think"
+      }
+    },
+    {
+      "english_word": "to tell",
+      "translations": {
+        "tr": "to tell",
+        "es": "to tell",
+        "fr": "to tell",
+        "de": "to tell",
+        "it": "to tell",
+        "pt": "to tell",
+        "ru": "to tell",
+        "zh": "to tell",
+        "ja": "to tell",
+        "ko": "to tell",
+        "ar": "to tell",
+        "hi": "to tell"
+      }
+    },
+    {
+      "english_word": "to keep",
+      "translations": {
+        "tr": "to keep",
+        "es": "to keep",
+        "fr": "to keep",
+        "de": "to keep",
+        "it": "to keep",
+        "pt": "to keep",
+        "ru": "to keep",
+        "zh": "to keep",
+        "ja": "to keep",
+        "ko": "to keep",
+        "ar": "to keep",
+        "hi": "to keep"
+      }
+    },
+    {
+      "english_word": "to become",
+      "translations": {
+        "tr": "to become",
+        "es": "to become",
+        "fr": "to become",
+        "de": "to become",
+        "it": "to become",
+        "pt": "to become",
+        "ru": "to become",
+        "zh": "to become",
+        "ja": "to become",
+        "ko": "to become",
+        "ar": "to become",
+        "hi": "to become"
+      }
+    },
+    {
+      "english_word": "to want",
+      "translations": {
+        "tr": "to want",
+        "es": "to want",
+        "fr": "to want",
+        "de": "to want",
+        "it": "to want",
+        "pt": "to want",
+        "ru": "to want",
+        "zh": "to want",
+        "ja": "to want",
+        "ko": "to want",
+        "ar": "to want",
+        "hi": "to want"
+      }
+    },
+    {
+      "english_word": "to let",
+      "translations": {
+        "tr": "to let",
+        "es": "to let",
+        "fr": "to let",
+        "de": "to let",
+        "it": "to let",
+        "pt": "to let",
+        "ru": "to let",
+        "zh": "to let",
+        "ja": "to let",
+        "ko": "to let",
+        "ar": "to let",
+        "hi": "to let"
+      }
+    },
+    {
+      "english_word": "to mean",
+      "translations": {
+        "tr": "to mean",
+        "es": "to mean",
+        "fr": "to mean",
+        "de": "to mean",
+        "it": "to mean",
+        "pt": "to mean",
+        "ru": "to mean",
+        "zh": "to mean",
+        "ja": "to mean",
+        "ko": "to mean",
+        "ar": "to mean",
+        "hi": "to mean"
+      }
+    },
+    {
+      "english_word": "unlike",
+      "translations": {
+        "tr": "unlike",
+        "es": "unlike",
+        "fr": "unlike",
+        "de": "unlike",
+        "it": "unlike",
+        "pt": "unlike",
+        "ru": "unlike",
+        "zh": "unlike",
+        "ja": "unlike",
+        "ko": "unlike",
+        "ar": "unlike",
+        "hi": "unlike"
+      }
+    },
+    {
+      "english_word": "against",
+      "translations": {
+        "tr": "against",
+        "es": "against",
+        "fr": "against",
+        "de": "against",
+        "it": "against",
+        "pt": "against",
+        "ru": "against",
+        "zh": "against",
+        "ja": "against",
+        "ko": "against",
+        "ar": "against",
+        "hi": "against"
+      }
+    },
+    {
+      "english_word": "through",
+      "translations": {
+        "tr": "through",
+        "es": "through",
+        "fr": "through",
+        "de": "through",
+        "it": "through",
+        "pt": "through",
+        "ru": "through",
+        "zh": "through",
+        "ja": "through",
+        "ko": "through",
+        "ar": "through",
+        "hi": "through"
+      }
+    },
+    {
+      "english_word": "during",
+      "translations": {
+        "tr": "during",
+        "es": "during",
+        "fr": "during",
+        "de": "during",
+        "it": "during",
+        "pt": "during",
+        "ru": "during",
+        "zh": "during",
+        "ja": "during",
+        "ko": "during",
+        "ar": "during",
+        "hi": "during"
+      }
+    },
+    {
+      "english_word": "without",
+      "translations": {
+        "tr": "without",
+        "es": "without",
+        "fr": "without",
+        "de": "without",
+        "it": "without",
+        "pt": "without",
+        "ru": "without",
+        "zh": "without",
+        "ja": "without",
+        "ko": "without",
+        "ar": "without",
+        "hi": "without"
+      }
+    },
+    {
+      "english_word": "across",
+      "translations": {
+        "tr": "across",
+        "es": "across",
+        "fr": "across",
+        "de": "across",
+        "it": "across",
+        "pt": "across",
+        "ru": "across",
+        "zh": "across",
+        "ja": "across",
+        "ko": "across",
+        "ar": "across",
+        "hi": "across"
+      }
+    }
+  ]
+}

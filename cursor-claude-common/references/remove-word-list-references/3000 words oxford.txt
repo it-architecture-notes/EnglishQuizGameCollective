@@ -14,10 +14,10 @@
 **agree v. A1
 **all det. A1
 **all pron. A1
-**also adv. A1
+			also adv. A1
 **always adv. A1
 **amazing adj. A1
-**and conj. A1
+			and conj. A1
 **angry adj. A1
 **another det./pron. A1
 **answer n. A1
@@ -29,7 +29,7 @@
 **ask v. A1
 **at prep. A1
 **away adv. A1
-**awesome adj. A1
+			awesome adj. A1
 **back adv. A1
 **bad adj. A1
 **be auxiliary v. A1
@@ -50,7 +50,7 @@
 **big adj. A1
 **bored adj. A1
 **boring adj. A1
-**both det./pron. A1
+			both det./pron. A1
 **break v. A1
 **breakfast n. A1
 **bring v. A1
@@ -89,17 +89,17 @@
 **daughter n. A1
 **decide v. A1
 **describe v. A1
-**detail n. A1
+			detail n. A1
 **die v. A1
 **different adj. A1
 **difficult adj. A1
 **dirty adj. A1
 **discuss v. A1
 **do v. A1
-**dog n. A1
+			dog n. A1
 **down adv. A1
 **down prep. A1
-			dress v. A1
+**dress v. A1
 **drink n. A1
 **drink v. A1
 **drive v. A1
@@ -112,9 +112,9 @@
 **eat v. A1
 			else adv. A1
 **enjoy v. A1
-**enough adv. A1
-**enough det. A1
-**enough pron. A1
+			enough adv. A1
+			enough det. A1
+			enough pron. A1
 **excited adj. A1
 **expensive adj. A1
 **explain v. A1
@@ -122,16 +122,16 @@
 **fall v. A1
 **false adj. A1
 **far adv. A1
-			fast adj. A1
-			fast adv. A1
-**fat adj. A1
+**fast adj. A1
+**fast adv. A1
+			fat adj. A1
 **father n. A1
 **feel v. A1
 **fill v. A1
 **find v. A1
-			fine adj. A1
+**fine adj. A1
 **finish v. A1
-**first adv. A1
+			first adv. A1
 **fly v. A1
 **follow v. A1
 **for prep. A1
@@ -154,7 +154,7 @@
 **great adj. A1
 **grow v. A1
 **guess v. A1
-**half n. A1
+			half n. A1
 **happen v. A1
 **happy adj. A1
 **hard adj. A1
@@ -178,7 +178,7 @@
 **house v. A1
 **how adv. A1
 **hungry adj. A1
-			husband n. A1
+**husband n. A1
 **I pron. A1
 **if conj. A1
 **imagine v. A1
@@ -188,10 +188,10 @@
 **in prep. A1
 **include v. A1
 **into prep. A1
-			introduce v. A1
+**introduce v. A1
 **it pron. A1
 **join v. A1
-			just adv. A1
+**just adv. A1
 **keep v. A1
 **kind (type) n. A1
 **know v. A1
@@ -220,17 +220,17 @@
 **lose v. A1
 **main adj. A1
 **make v. A1
-**many det./pron. A1
-**maybe adv. A1
+			many det./pron. A1
+			maybe adv. A1
 **me pron. A1
 **mean v. A1
 **meet v. A1
 **miss v. A1
 **month n. A1
-**more adv. A1
-**more det./pron. A1
-**most adv. A1
-**most det./pron. A1
+			more adv. A1
+			more det./pron. A1
+			most adv. A1
+			most det./pron. A1
 **mother n. A1
 **move v. A1
 **much adv. A1
@@ -243,7 +243,7 @@
 **near adv. A1
 **near prep. A1
 **need v. A1
-**never adv. A1
+			never adv. A1
 **new adj. A1
 **next adj. A1
 **next adv. A1
@@ -252,8 +252,8 @@
 **no det. A1
 **no exclam. A1
 **no one pron. A1
-**nobody pron. A1
-**nothing pron. A1
+			nobody pron. A1
+			nothing pron. A1
 **now adv. A1
 **of prep. A1
 **off adv. A1
@@ -277,10 +277,10 @@
 **outside adv. A1
 **over adv. A1
 **over prep. A1
-			own adj./pron. A1
+**own adj./pron. A1
 **past adj. A1
 **pay v. A1
-			place n. A1
+**place n. A1
 **play n. A1
 **play v. A1
 **please exclam. A1
@@ -291,11 +291,11 @@
 **pretty adj. A1
 **pretty adv. A1
 **price n. A1
-**probably adv. A1
+			probably adv. A1
 **put v. A1
 **question n. A1
-			quick adj. A1
-			quickly adv. A1
+**quick adj. A1
+**quickly adv. A1
 **quiet adj. A1
 			quite adv. A1
 **read v. A1
@@ -333,7 +333,7 @@
 **slow adj. A1
 **small adj. A1
 **smart adj. A1
-**somebody pron. A1
+			somebody pron. A1
 **something pron. A1
 **sometimes adv. A1
 **son n. A1
@@ -357,20 +357,20 @@
 **swim v. A1
 **take v. A1
 **talk v. A1
-			tall adj. A1
+**tall adj. A1
 **teach v. A1
 **tell v. A1
 **thank v. A1
-**that conj. A1
-**that det. A1
-**that pron. A1
+			that conj. A1
+			that det. A1
+			that pron. A1
 **the definite article A1
 **their det. A1
 **them pron. A1
-**then adv. A1
-**there adv. A1
+			then adv. A1
+			there adv. A1
 **they pron. A1
-**thing n. A1
+			thing n. A1
 **think v. A1
 **thirsty adj. A1
 **this det./pron. A1
@@ -400,7 +400,7 @@
 **us pron. A1
 **use v. A1
 **useful adj. A1
-			usually adv. A1
+**usually adv. A1
 **very adv. A1
 **visit v. A1
 **wait v. A1
@@ -426,9 +426,9 @@
 **when pron. A1
 **where adv. A1
 **where conj. A1
-**which pron./det. A1
+			which pron./det. A1
 **who pron. A1
-**why adv. A1
+			why adv. A1
 **will modal v. A1
 **win v. A1
 **with prep. A1
@@ -447,20 +447,20 @@
 **your det. A1
 **accept v. A2
 			according to prep. A2
-			achieve v. A2
+**achieve v. A2
 **after adv. A2
 **after conj. A2
 **against prep. A2
 **all adv. A2
 **all right adj./adv. A2
-			allow v. A2
+**allow v. A2
 			almost adv. A2
 **alone adj./adv. A2
-			along adv. A2
-			along prep. A2
-**already adv. A2
+**along adv. A2
+**along prep. A2
+			already adv. A2
 			although conj. A2
-			appear v. A2
+**appear v. A2
 **apply v. A2
 			argue v. A2
 			arrange v. A2
@@ -468,20 +468,20 @@
 **as conj. A2
 **attack v. A2
 **attend v. A2
-			attractive adj. A2
+**attractive adj. A2
 **available adj. A2
 			average adj. A2
 			average n. A2
-			avoid v. A2
+**avoid v. A2
 			award n. A2
-**awful adj. A2
+			awful adj. A2
 **back adj. A2
 			background n. A2
 			badly adv. A2
 			based adj. A2
 			bean n. A2
 			bear (animal) n. A2
-			beat v. A2
+**beat v. A2
 			beef n. A2
 **before adv. A2
 **before conj. A2
@@ -498,7 +498,7 @@
 **borrow v. A2
 **bottom adj. A2
 **bottom n. A2
-			bright adj. A2
+**bright adj. A2
 			brilliant adj. A2
 **broken adj. A2
 **brush n. A2
@@ -512,16 +512,16 @@
 			campus n. A2
 			can2 n. A2
 			candy n. A2
-			care n. A2
-			care v. A2
+**care n. A2
+**care v. A2
 **careful adj. A2
-**carefully adv. A2
+			carefully adv. A2
 			carpet n. A2
 			cartoon n. A2
 			case n. A2
 **catch v. A2
-			cause n. A2
-			cause v. A2
+**cause n. A2
+**cause v. A2
 **celebrate v. A2
 			celebrity n. A2
 			cell n. A2
@@ -531,8 +531,8 @@
 			chance n. A2
 			character n. A2
 			charity n. A2
-			chat n. A2
-			chat v. A2
+**chat n. A2
+**chat v. A2
 **check n. A2
 			chef n. A2
 			chemistry n. A2
@@ -541,29 +541,29 @@
 			church n. A2
 			cigarette n. A2
 			circle v. A2
-			classical adj. A2
-**clear adj. A2
-			clearly adv. A2
+**classical adj. A2
+			clear adj. A2
+**clearly adv. A2
 			climate n. A2
 			close2 adj. A2
 **closed adj. A2
 			coast n. A2
-**collect v. A2
+			collect v. A2
 			column n. A2
 **comfortable adj. A2
 			comment n. A2
 			communicate v. A2
 			community n. A2
-			compete v. A2
+**compete v. A2
 			competition n. A2
 **complain v. A2
 **completely adv. A2
 			condition n. A2
 			conference n. A2
 **connect v. A2
-			connected adj. A2
-			consider v. A2
-			contain v. A2
+**connected adj. A2
+**consider v. A2
+**contain v. A2
 			context n. A2
 			continent n. A2
 **continue v. A2
@@ -578,20 +578,20 @@
 			curly adj. A2
 			cycle n. A2
 			cycle v. A2
-**daily adj. A2
+			daily adj. A2
 			danger n. A2
 **dark n. A2
-			deal v. A2
+**deal v. A2
 			decision n. A2
 **deep adj. A2
-			depend v. A2
-			destroy v. A2
-			develop v. A2
+**depend v. A2
+**destroy v. A2
+**develop v. A2
 			differently adv. A2
-			disagree v. A2
-			disappear v. A2
+**disagree v. A2
+**disappear v. A2
 			disaster n. A2
-			discover v. A2
+**discover v. A2
 			discussion n. A2
 			disease n. A2
 			distance n. A2
@@ -606,7 +606,7 @@
 			drug n. A2
 **dry adj. A2
 **dry v. A2
-**earn v. A2
+			earn v. A2
 			earth n. A2
 **easily adv. A2
 			education n. A2
@@ -617,29 +617,29 @@
 **empty adj. A2
 **enter v. A2
 			error n. A2
-**especially adv. A2
+			especially adv. A2
 **everyday adj. A2
 			everywhere adv. A2
 **exactly adv. A2
 			excellent adj. A2
 **except prep. A2
-			exist v. A2
+**exist v. A2
 **expect v. A2
 			experience n. A2
-			extremely adv. A2
+**extremely adv. A2
 **fail v. A2
-**fair adj. A2
-**fat n. A2
+			fair adj. A2
+			fat n. A2
 **feed v. A2
 **fight v. A2
-**finally adv. A2
+			finally adv. A2
 **finish n. A2
 			fire v. A2
 **fit adj. A2
 **fit v. A2
-			fix v. A2
+**fix v. A2
 **flat adj. A2
-			focus v. A2
+**focus v. A2
 			forward adv. A2
 **free adv. A2
 **fresh adj. A2
@@ -648,12 +648,12 @@
 			gift n. A2
 **good n. A2
 			guest n. A2
-			guide n. A2
-			guide v. A2
+**guide n. A2
+**guide v. A2
 			habit n. A2
-**half adv. A2
+			half adv. A2
 **have auxiliary v. A2
-			headache n. A2
+**headache n. A2
 **heat n. A2
 **heat v. A2
 **heavy adj. A2
@@ -673,7 +673,7 @@
 **hold v. A2
 			hole n. A2
 			holiday n. A2
-**home adj. A2
+			home adj. A2
 **hope n. A2
 **huge adj. A2
 			human adj. A2
@@ -688,11 +688,11 @@
 **immediately adv. A2
 **impossible adj. A2
 			included adj. A2
-			including prep. A2
+**including prep. A2
 **increase n. A2
 **increase v. A2
 			incredible adj. A2
-			independent adj. A2
+**independent adj. A2
 			individual adj. A2
 			individual n. A2
 			industry n. A2
@@ -703,8 +703,8 @@
 **inside adv. A2
 **inside n. A2
 **inside prep. A2
-			instead adv. A2
-			instruction n. A2
+**instead adv. A2
+**instruction n. A2
 			instructor n. A2
 			instrument n. A2
 			intelligent adj. A2
@@ -714,8 +714,8 @@
 			invention n. A2
 			invitation n. A2
 **invite v. A2
-			involve v. A2
-			item n. A2
+**involve v. A2
+**item n. A2
 			itself pron. A2
 			jam n. A2
 			jazz n. A2
@@ -726,7 +726,7 @@
 **jump n. A2
 **jump v. A2
 			kid n. A2
-			kill v. A2
+**kill v. A2
 			kilometer n. A2
 			king n. A2
 			knife n. A2
@@ -753,13 +753,13 @@
 			lecture v. A2
 			lemon n. A2
 **lend v. A2
-**less adv. A2
-**less det./pron. A2
+			less adv. A2
+			less det./pron. A2
 			level n. A2
 			lifestyle n. A2
 **lift v. A2
 **light (not heavy) adj. A2
-			likely adj. A2
+**likely adj. A2
 			link n. A2
 			link v. A2
 			listener n. A2
@@ -778,10 +778,10 @@
 			mail n. A2
 			mail v. A2
 			major adj. A2
-			male adj. A2
-			male n. A2
-			manage v. A2
-			manager n. A2
+**male adj. A2
+**male n. A2
+**manage v. A2
+**manager n. A2
 			manner n. A2
 			mark n. A2
 			mark v. A2
@@ -789,8 +789,8 @@
 			material n. A2
 			math n. A2
 			mathematics n. A2
-			matter n. A2
-			matter v. A2
+**matter n. A2
+**matter v. A2
 			may modal v. A2
 			mayor n. A2
 			media n. A2
@@ -803,11 +803,11 @@
 			middle adj. A2
 			middle n. A2
 			might modal v. A2
-			mind n. A2
-			mind v. A2
+**mind n. A2
+**mind v. A2
 			mine (belongs to me) pron. A2
 			missing adj. A2
-			mostly adv. A2
+**mostly adv. A2
 			motorcycle n. A2
 			movement n. A2
 			musical adj. A2
@@ -840,29 +840,29 @@
 			option n. A2
 			ordinary adj. A2
 			organization n. A2
-			organize v. A2
+**organize v. A2
 			original adj. A2
 			ourselves pron. A2
 			oven n. A2
 			overseas adv. A2
-			own v. A2
+**own v. A2
 			owner n. A2
 **pack v. A2
-			pain n. A2
+**pain n. A2
 			palace n. A2
 			parking n. A2
 			particular adj. A2
 **pass v. A2
-			passenger n. A2
+**passenger n. A2
 **past adv. A2
 			pattern n. A2
 **pay n. A2
 			peace n. A2
 			penny n. A2
-			per prep. A2
+**per prep. A2
 			percent adj./adv. A2
 			percent noun. A2
-			perform v. A2
+**perform v. A2
 			perhaps adv. A2
 			permission n. A2
 			personality n. A2
@@ -889,7 +889,7 @@
 			possibility n. A2
 			poster n. A2
 			power n. A2
-			predict v. A2
+**predict v. A2
 **present v. A2
 			president n. A2
 **prevent v. A2
@@ -898,20 +898,20 @@
 			prison n. A2
 			prize n. A2
 			process n. A2
-			produce v. A2
+**produce v. A2
 			professional adj. A2
 			professor n. A2
 			profile n. A2
 			progress n. A2
 			progress v. A2
-			promise n. A2
-			promise v. A2
-			pronounce v. A2
+**promise n. A2
+**promise v. A2
+**pronounce v. A2
 **protect v. A2
-			provide v. A2
+**provide v. A2
 			public adj. A2
 			public n. A2
-			publish v. A2
+**publish v. A2
 **pull v. A2
 			purpose n. A2
 **push v. A2
@@ -924,50 +924,50 @@
 **race (competition) v. A2
 **raise v. A2
 			rate n. A2
-			rather adv. A2
-			reach v. A2
+**rather adv. A2
+**reach v. A2
 			react v. A2
-			realize v. A2
+**realize v. A2
 **receive v. A2
 **recent adj. A2
 **recently adv. A2
 			reception n. A2
-			recipe n. A2
-			recognize v. A2
+**recipe n. A2
+**recognize v. A2
 **recommend v. A2
-			record n. A2
-			record v. A2
+**record n. A2
+**record v. A2
 			recording n. A2
 			recycle v. A2
-			reduce v. A2
-			refer v. A2
+**reduce v. A2
+**refer v. A2
 			refrigerator n. A2
 			refuse1 v. A2
 			region n. A2
-			regular adj. A2
+**regular adj. A2
 			relationship n. A2
 **remove v. A2
 **repair v. A2
 **replace v. A2
-			reply n. A2
-			reply v. A2
-			report v. A2
+**reply n. A2
+**reply v. A2
+**report v. A2
 			reporter n. A2
-			request n. A2
+**request n. A2
 			research n. A2
 			research v. A2
 			researcher n. A2
-			respond v. A2
+**respond v. A2
 			response n. A2
 **rest (remaining part) n. A2
 **rest (sleep/relax) n. A2
 **rest (sleep/relax) v. A2
-			review n. A2
-			review v. A2
+**review n. A2
+**review v. A2
 **ride n. A2
 			ring1 n. A2
 			ring2 v. A2
-			rise v. A2
+**rise v. A2
 			rock (music) n. A2
 			rock (stone) n. A2
 			role n. A2
@@ -975,7 +975,7 @@
 			round adv. A2
 			round prep. A2
 			route n. A2
-			rude adj. A2
+**rude adj. A2
 **run n. A2
 			runner n. A2
 			running n. A2
@@ -983,14 +983,14 @@
 **safe adj. A2
 			sail v. A2
 			sailing n. A2
-			salary n. A2
+**salary n. A2
 **sale n. A2
 			sauce n. A2
 **save v. A2
 **scared adj. A2
-**scary adj. A2
+			scary adj. A2
 			scene n. A2
-			schedule n. A2
+**schedule n. A2
 **score n. A2
 **score v. A2
 			screen n. A2
@@ -998,8 +998,8 @@
 **search v. A2
 			season n. A2
 			seat n. A2
-**secret adj. A2
-**secret n. A2
+			secret adj. A2
+			secret n. A2
 			secretary n. A2
 **seem v. A2
 			sense n. A2
@@ -1009,19 +1009,19 @@
 **serve v. A2
 			service n. A2
 			several det./pron. A2
-			shake v. A2
+**shake v. A2
 			shape n. A2
 			sheet n. A2
 **shout n. A2
 **shout v. A2
-			shut adj. A2
-			shut v. A2
+**shut adj. A2
+**shut v. A2
 			side n. A2
 **sign n. A2
 **sign v. A2
 			silver adj. A2
 			silver n. A2
-			simple adj. A2
+**simple adj. A2
 **since conj. A2
 **since prep. A2
 			singing n. A2
@@ -1029,17 +1029,17 @@
 			single n. A2
 			sir n. A2
 			site n. A2
-**size n. A2
+			size n. A2
 			ski n. A2
 			ski v. A2
 			skiing n. A2
 			skin n. A2
-			sky n. A2
+**sky n. A2
 **sleep n. A2
 **slowly adv. A2
 			smartphone n. A2
-			smell n. A2
-			smell v. A2
+**smell n. A2
+**smell v. A2
 **smile v. A2
 			smoke n. A2
 			smoke v. A2
@@ -1051,15 +1051,15 @@
 			sock n. A2
 **soft adj. A2
 			solution n. A2
-			solve v. A2
+**solve v. A2
 			somewhere adv. A2
 			somewhere pron. A2
 			sort n. A2
 			source n. A2
 			speaker n. A2
-			specific adj. A2
+**specific adj. A2
 			speech n. A2
-			speed n. A2
+**speed n. A2
 			square adj. A2
 			stage n. A2
 			stair n. A2
@@ -1086,8 +1086,8 @@
 **suggest v. A2
 			suggestion n. A2
 			suit n. A2
-			support n. A2
-			support v. A2
+**support n. A2
+**support v. A2
 			suppose v. A2
 **sure adv. A2
 **surprise n. A2
@@ -1107,7 +1107,7 @@
 			teaching n. A2
 			technology n. A2
 			teenage adj. A2
-			temperature n. A2
+**temperature n. A2
 			term n. A2
 			text v. A2
 			themselves pron. A2
@@ -1119,14 +1119,14 @@
 			thought n. A2
 **throw v. A2
 			tie v. A2
-			tip n. A2
+**tip n. A2
 			tool n. A2
 **top adj. A2
 **top n. A2
 **touch v. A2
 			tour n. A2
 			tourism n. A2
-			toward prep. A2
+**toward prep. A2
 			tower n. A2
 			toy adj. A2
 			toy n. A2
@@ -1143,7 +1143,7 @@
 			underground adj. A2
 			underground adv. A2
 			understanding n. A2
-**unfortunately adv. A2
+			unfortunately adv. A2
 			unhappy adj. A2
 			uniform n. A2
 			unit n. A2
@@ -1151,7 +1151,7 @@
 			unusual adj. A2
 			upstairs adj. A2
 **use n. A2
-			used to modal v. A2
+**used to modal v. A2
 			user n. A2
 			usual adj. A2
 			v. A2
@@ -1167,11 +1167,11 @@
 			war n. A2
 **wash n. A2
 			washing n. A2
-			wave n. A2
+**wave n. A2
 **weak adj. A2
 			web n. A2
 			wedding n. A2
-			weight n. A2
+**weight n. A2
 **welcome n. A2
 **wet adj. A2
 			wheel n. A2
@@ -1187,16 +1187,16 @@
 			wood n. A2
 			wooden adj. A2
 			working adj. A2
-			worried adj. A2
-			worry v. A2
+**worried adj. A2
+**worry v. A2
 			worse adj. A2
-**worst adj. A2
+			worst adj. A2
 			wow exclam. A2
-**yet adv. A2
+			yet adv. A2
 			yours pron. A2
 			zero number A2
 			B1
-			absolutely adv. B1
+**absolutely adv. B1
 			academic adj. B1
 			access n. B1
 			access v. B1
@@ -1207,14 +1207,14 @@
 			addition n. B1
 			administration n. B1
 			admire v. B1
-			admit v. B1
+**admit v. B1
 			advanced adj. B1
-			advise v. B1
-			afford v. B1
+**advise v. B1
+**afford v. B1
 			age v. B1
 			agent n. B1
 			agreement n. B1
-			ahead adv. B1
+**ahead adv. B1
 			aim n. B1
 			aim v. B1
 			alarm n. B1
@@ -1225,15 +1225,15 @@
 			amazed adj. B1
 			ambition n. B1
 			analysis n. B1
-			announce v. B1
+**announce v. B1
 			announcement n. B1
 			annoy v. B1
 			annoyed adj. B1
 			annoying adj. B1
 			apart adv. B1
 			apologize v. B1
-			application n. B1
-			appointment n. B1
+**application n. B1
+**appointment n. B1
 			appreciate v. B1
 			approximately adv. B1
 			arrest n. B1
@@ -1251,7 +1251,7 @@
 			automatically adv. B1
 			average v. B1
 			award v. B1
-			aware adj. B1
+**aware adj. B1
 			backward adv. B1
 **bake v. B1
 			balance n. B1
@@ -1272,25 +1272,25 @@
 			bend v. B1
 			benefit v. B1
 **better n. B1
-			bite n. B1
-			bite v. B1
+**bite n. B1
+**bite v. B1
 			block v. B1
-			board v. B1
+**board v. B1
 			bomb n. B1
 			bomb v. B1
 			border n. B1
 			bother v. B1
 			branch n. B1
-			brand n. B1
-			brand v. B1
+**brand n. B1
+**brand v. B1
 **brave adj. B1
 			breath n. B1
-			breathe v. B1
+**breathe v. B1
 			breathing n. B1
 			bride n. B1
 			bubble n. B1
 			bury v. B1
-			by adv. B1
+**by adv. B1
 			cable n. B1
 **calm adj. B1
 **calm n. B1
@@ -1324,7 +1324,7 @@
 			claim n. B1
 			claim v. B1
 			clause n. B1
-**clear v. B1
+			clear v. B1
 			clever adj. B1
 			click n. B1
 			click v. B1
@@ -1376,7 +1376,7 @@
 **count n. B1
 			countryside n. B1
 			court n. B1
-			cover n. B1
+**cover n. B1
 			covered adj. B1
 			cream adj. B1
 			criminal adj. B1
@@ -1384,15 +1384,15 @@
 			cultural adj. B1
 			cupboard n. B1
 			currency n. B1
-			current adj. B1
-			currently adv. B1
+**current adj. B1
+**currently adv. B1
 			curtain n. B1
 			custom n. B1
 **cut n. B1
-**daily adv. B1
-			damage n. B1
-			damage v. B1
-			deal n. B1
+			daily adv. B1
+**damage n. B1
+**damage v. B1
+**deal n. B1
 			decade n. B1
 **deep adv. B1
 			define v. B1
@@ -1400,7 +1400,7 @@
 			definition n. B1
 **deliver v. B1
 			departure n. B1
-			despite prep. B1
+**despite prep. B1
 			destination n. B1
 			determine v. B1
 			determined adj. B1
@@ -1410,7 +1410,7 @@
 			difficulty n. B1
 			direct adv. B1
 			direct v. B1
-			directly adv. B1
+**directly adv. B1
 			dirt n. B1
 			disadvantage n. B1
 			disappointed adj. B1
@@ -1428,7 +1428,7 @@
 **drop n. B1
 			drum n. B1
 			drunk adj. B1
-			due adj. B1
+**due adj. B1
 			dust n. B1
 			duty n. B1
 			earthquake n. B1
@@ -1466,15 +1466,15 @@
 			equally adv. B1
 **escape n. B1
 **escape v. B1
-			essential adj. B1
+**essential adj. B1
 			eventually adv. B1
-			examine v. B1
+**examine v. B1
 **except conj. B1
 			exchange n. B1
 			exchange v. B1
 			excitement n. B1
 			exhibition n. B1
-			exit n. B1
+**exit n. B1
 			expand v. B1
 			expected adj. B1
 			experience v. B1
@@ -1488,7 +1488,7 @@
 			extra adv. B1
 			extra n. B1
 			face v. B1
-			fairly adv. B1
+**fairly adv. B1
 **familiar adj. B1
 			fancy adj. B1
 **far adj. B1
@@ -1508,7 +1508,7 @@
 			flood v. B1
 			flow n. B1
 			flow v. B1
-**fold v. B1
+			fold v. B1
 			folk adj. B1
 			folk n. B1
 			following n. B1
@@ -1523,7 +1523,7 @@
 			frighten v. B1
 			frightened adj. B1
 			frightening adj. B1
-			frozen adj. B1
+**frozen adj. B1
 			fry v. B1
 			fuel n. B1
 			function n. B1
@@ -1531,7 +1531,7 @@
 			further adv. B1
 			garage n. B1
 **gather v. B1
-			generally adv. B1
+**generally adv. B1
 			generation n. B1
 			generous adj. B1
 **gentle adj. B1
@@ -1564,15 +1564,15 @@
 			helicopter n. B1
 			highlight n. B1
 			highlight v. B1
-			highly adv. B1
+**highly adv. B1
 			highway n. B1
-			hire v. B1
+**hire v. B1
 			historic adj. B1
 			historical adj. B1
 **honest adj. B1
 			horrible adj. B1
 			horror n. B1
-			host n. B1
+**host n. B1
 			hunt v. B1
 			hurricane n. B1
 **hurry n. B1
@@ -1592,7 +1592,7 @@
 			impressive adj. B1
 			improvement n. B1
 			incredibly adv. B1
-			indeed adv. B1
+**indeed adv. B1
 			indicate v. B1
 			indirect adj. B1
 			indoor adj. B1
@@ -1651,7 +1651,7 @@
 			live2 adv. B1
 			living adj. B1
 			living n. B1
-			local n. B1
+**local n. B1
 			locate v. B1
 			located adj. B1
 			location n. B1
@@ -1667,8 +1667,8 @@
 			marketing n. B1
 			marriage n. B1
 			meanwhile adv. B1
-			measure n. B1
-			measure v. B1
+**measure n. B1
+**measure v. B1
 			medium adj. B1
 			mental adj. B1
 			mention n. B1
@@ -1692,7 +1692,7 @@
 			nation n. B1
 			native adj. B1
 			native n. B1
-			naturally adv. B1
+**naturally adv. B1
 			neat adj. B1
 			necessarily adv. B1
 **need modal v. B1
@@ -1706,8 +1706,8 @@
 			note v. B1
 **now conj. B1
 			nuclear adj. B1
-			obvious adj. B1
-			obviously adv. B1
+**obvious adj. B1
+**obviously adv. B1
 			occasion n. B1
 			occur v. B1
 			odd adj. B1
@@ -1722,22 +1722,22 @@
 			ought modal v. B1
 			ours pron. B1
 			outdoor adj. B1
-			outdoors adv. B1
+**outdoors adv. B1
 			overseas adj. B1
 **pack n. B1
 			package n. B1
-			painful adj. B1
+**painful adj. B1
 			pale adj. B1
 			pan n. B1
 			participate v. B1
-			particularly adv. B1
+**particularly adv. B1
 **pass n. B1
 			passion n. B1
 			path n. B1
 			payment n. B1
 			peaceful adj. B1
 			percentage n. B1
-			perfectly adv. B1
+**perfectly adv. B1
 			performance n. B1
 			personally adv. B1
 			persuade v. B1
@@ -1745,7 +1745,7 @@
 			photography n. B1
 			pin v. B1
 			pipe n. B1
-			place v. B1
+**place v. B1
 			planning n. B1
 			pleasant adj. B1
 			pleasure n. B1
@@ -1755,7 +1755,7 @@
 			poem n. B1
 			poet n. B1
 			poetry n. B1
-			point v. B1
+**point v. B1
 			poison n. B1
 			poison v. B1
 			poisonous adj. B1
@@ -1764,11 +1764,11 @@
 			politician n. B1
 			politics n. B1
 			portrait n. B1
-			possibly adv. B1
+**possibly adv. B1
 **pour v. B1
 			poverty n. B1
 			powder n. B1
-			powerful adj. B1
+**powerful adj. B1
 			practical adj. B1
 			pray v. B1
 			prayer n. B1
@@ -1779,23 +1779,23 @@
 			press v. B1
 			pressure n. B1
 			pretend v. B1
-			previous adj. B1
+**previous adj. B1
 			previously adv. B1
 			priest n. B1
-			primary adj. B1
+**primary adj. B1
 			prince n. B1
 			princess n. B1
 			principal n. B1
 			printing n. B1
 			prisoner n. B1
-			private adj. B1
+**private adj. B1
 			producer n. B1
 			production n. B1
 			profession n. B1
 			profit n. B1
 			program v. B1
 			promote v. B1
-			proper adj. B1
+**proper adj. B1
 **properly adv. B1
 			property n. B1
 			protest n. B1
@@ -1817,11 +1817,11 @@
 			racing n. B1
 **raise n. B1
 			range n. B1
-			rare adj. B1
+**rare adj. B1
 **rarely adv. B1
 			reaction n. B1
 			reality n. B1
-			receipt n. B1
+**receipt n. B1
 			recommendation n. B1
 			reference n. B1
 			reflect v. B1
@@ -1839,7 +1839,7 @@
 			reliable adj. B1
 			religion n. B1
 			religious adj. B1
-			remain v. B1
+**remain v. B1
 			remind v. B1
 			remote adj. B1
 **rent n. B1
@@ -1848,14 +1848,14 @@
 **repeat n. B1
 			repeated adj. B1
 			represent v. B1
-			request v. B1
+**request v. B1
 			require v. B1
 			reservation n. B1
 			resource n. B1
 			respect n. B1
 			respect v. B1
 			responsibility n. B1
-			responsible adj. B1
+**responsible adj. B1
 			result v. B1
 			retire v. B1
 			retired adj. B1
@@ -1885,16 +1885,16 @@
 			seed n. B1
 			sensible adj. B1
 			separate v. B1
-			seriously adv. B1
+**seriously adv. B1
 			servant n. B1
-			set (group) n. B1
-			set (put) v. B1
+**set (group) n. B1
+**set (put) v. B1
 			setting n. B1
 			sex n. B1
 			sexual adj. B1
-			shake n. B1
+**shake n. B1
 **share n. B1
-			sharp adj. B1
+**sharp adj. B1
 			shelf n. B1
 			shell n. B1
 			shift n. B1
@@ -1908,18 +1908,18 @@
 **silent adj. B1
 			silly adj. B1
 			similarity n. B1
-			similarly adv. B1
+**similarly adv. B1
 			simply adv. B1
 **since adv. B1
 			sink v. B1
 			slave n. B1
-			slice n. B1
-			slice v. B1
+**slice n. B1
+**slice v. B1
 			slightly adv. B1
 **slow v. B1
 			smooth adj. B1
 			software n. B1
-			soil n. B1
+**soil n. B1
 			solid adj. B1
 			solid n. B1
 			sort v. B1
@@ -1931,10 +1931,10 @@
 			spoken adj. B1
 			spot n. B1
 			spread v. B1
-**spring v. B1
+			spring v. B1
 			staff n. B1
-			standard adj. B1
-			standard n. B1
+**standard adj. B1
+**standard n. B1
 			state adj. B1
 			state v. B1
 			statistic n. B1
@@ -1946,7 +1946,7 @@
 			stranger n. B1
 			strength n. B1
 			string n. B1
-			strongly adv. B1
+**strongly adv. B1
 			studio n. B1
 			stuff n. B1
 			substance n. B1
@@ -1974,7 +1974,7 @@
 			technical adj. B1
 			technique n. B1
 			tend v. B1
-**that adv. B1
+			that adv. B1
 			theirs pron. B1
 			theme n. B1
 			theory n. B1
@@ -1983,17 +1983,17 @@
 **though adv. B1
 **though conj. B1
 			throat n. B1
-			throughout prep./adv. B1
-			tight adj. B1
+**throughout prep./adv. B1
+**tight adj. B1
 			till conj./prep. B1
 			tiny adj. B1
-			tip v. B1
+**tip v. B1
 **tire n. B1
 			toe n. B1
 			ton n. B1
 			total adj. B1
 			total n. B1
-			totally adv. B1
+**totally adv. B1
 **touch n. B1
 			tour v. B1
 			trade n. B1
@@ -2002,7 +2002,7 @@
 			translate v. B1
 			translation n. B1
 			transport v. B1
-			treat v. B1
+**treat v. B1
 			treatment n. B1
 			trend n. B1
 			trick n. B1
@@ -2020,13 +2020,13 @@
 			unfair adj. B1
 			union n. B1
 			unless conj. B1
-			unlike prep. B1
+**unlike prep. B1
 			unlikely adj. B1
 			unnecessary adj. B1
 			unpleasant adj. B1
 			update n. B1
 			update v. B1
-			upon prep. B1
+**upon prep. B1
 			upset adj. B1
 			upset v. B1
 			used1 adj. B1
@@ -2041,18 +2041,18 @@
 			violent adj. B1
 			volunteer n. B1
 			volunteer v. B1
-			vote n. B1
-			vote v. B1
+**vote n. B1
+**vote v. B1
 **warm v. B1
-**warn v. B1
+			warn v. B1
 			warning n. B1
 			waste adj. B1
 			waste n. B1
 			waste v. B1
-**water v. B1
-			wave v. B1
+			water v. B1
+**wave v. B1
 			weapon n. B1
-			weigh v. B1
+**weigh v. B1
 			western adj. B1
 			whatever det./pron. B1
 			whenever conj. B1
@@ -2062,16 +2062,16 @@
 **will n. B1
 **win n. B1
 			wing n. B1
-			within prep. B1
+**within prep. B1
 			wonder n. B1
 			wonder v. B1
 			wool n. B1
 			worldwide adj. B1
 			worldwide adv. B1
-			worry n. B1
+**worry n. B1
 			worse adv. B1
-**worst adv. B1
-			worth adj. B1
+			worst adv. B1
+**worth adj. B1
 			written adj. B1
 **wrong adv. B1
 **young n. B1
@@ -2090,7 +2090,7 @@
 			adapt v. B2
 			additional adj. B2
 			address v. B2
-			adopt v. B2
+**adopt v. B2
 			advance adj. B2
 			advance n. B2
 			advance v. B2
@@ -2111,14 +2111,14 @@
 			annual adj. B2
 			anxious adj. B2
 			apparent adj. B2
-			apparently adv. B2
+**apparently adv. B2
 			appeal n. B2
 			appeal v. B2
 			approach n. B2
 			approach v. B2
 			appropriate adj. B2
 			approval n. B2
-			approve v. B2
+**approve v. B2
 			arise v. B2
 			armed adj. B2
 			arms n. B2
@@ -2140,18 +2140,18 @@
 			bacteria n. B2
 			bar v. B2
 			barrier n. B2
-			basically adv. B2
+**basically adv. B2
 			battle v. B2
 			bear (deal with) v. B2
-			beat n. B2
+**beat n. B2
 			beg v. B2
 			being n. B2
 			bent adj. B2
 			bet n. B2
 			bet v. B2
-			beyond adv. B2
-			beyond prep. B2
-			bill v. B2
+**beyond adv. B2
+**beyond prep. B2
+**bill v. B2
 			bitter adj. B2
 			blame n. B2
 			blame v. B2
@@ -2195,7 +2195,7 @@
 			classic adj. B2
 			classic n. B2
 			close1 n. B2
-			closely adv. B2
+**closely adv. B2
 			collapse n. B2
 			collapse v. B2
 			combination n. B2
@@ -2229,7 +2229,7 @@
 			consideration n. B2
 			consistent adj. B2
 			constant adj. B2
-			constantly adv. B2
+**constantly adv. B2
 			construct v. B2
 			construction n. B2
 			contemporary adj. B2
@@ -2264,11 +2264,11 @@
 **cry n. B2
 			cure n. B2
 			cure v. B2
-			current n. B2
+**current n. B2
 			curve n. B2
 			curve v. B2
 			curved adj. B2
-**date v. B2
+			date v. B2
 			debate n. B2
 			debate v. B2
 			debt n. B2
@@ -2276,24 +2276,24 @@
 			declare v. B2
 			decline n. B2
 			decline v. B2
-			decorate v. B2
+**decorate v. B2
 			decoration n. B2
 			decrease n. B2
 			decrease v. B2
-			deeply adv. B2
+**deeply adv. B2
 			defeat n. B2
 			defeat v. B2
 			defend v. B2
 			defense n. B2
-			delay n. B2
-			delay v. B2
+**delay n. B2
+**delay v. B2
 			deliberate adj. B2
 			deliberately adv. B2
 			delivery n. B2
 			demand n. B2
 			demand v. B2
 			demonstrate v. B2
-			deny v. B2
+**deny v. B2
 			depressed adj. B2
 			depressing adj. B2
 			depth n. B2
@@ -2302,23 +2302,23 @@
 			desire n. B2
 			desire v. B2
 			desperate adj. B2
-**detail v. B2
+			detail v. B2
 			detailed adj. B2
 			detect v. B2
-			dig v. B2
+**dig v. B2
 			discipline n. B2
 **discount v. B2
 			dishonest adj. B2
 			disk n. B2
 			dismiss v. B2
-			display n. B2
-			display v. B2
+**display n. B2
+**display v. B2
 			distribute v. B2
 			distribution n. B2
 			divide n. B2
 			division n. B2
 			document v. B2
-			domestic adj. B2
+**domestic adj. B2
 			dominate v. B2
 			downward adj. B2
 			downward adv. B2
@@ -2347,12 +2347,12 @@
 			enthusiasm n. B2
 			enthusiastic adj. B2
 			entire adj. B2
-			entirely adv. B2
+**entirely adv. B2
 **equal n. B2
 			establish v. B2
 			estate n. B2
-			estimate n. B2
-			estimate v. B2
+**estimate n. B2
+**estimate v. B2
 			ethical adj. B2
 			evaluate v. B2
 			even adj. B2
@@ -2366,7 +2366,7 @@
 			exhibit n. B2
 			exhibit v. B2
 			existence n. B2
-			exit v. B2
+**exit v. B2
 			expectation n. B2
 			expense n. B2
 			exploration n. B2
@@ -2393,13 +2393,13 @@
 			finance v. B2
 			finding n. B2
 			firm n. B2
-			fix n. B2
+**fix n. B2
 			flame n. B2
 			flash n. B2
 			flash v. B2
 			flexible adj. B2
 			float v. B2
-**fold n. B2
+			fold n. B2
 			folding adj. B2
 			following prep. B2
 			forgive v. B2
@@ -2411,7 +2411,7 @@
 			freedom n. B2
 			frequency n. B2
 			fuel v. B2
-			fully adv. B2
+**fully adv. B2
 			function v. B2
 			fund n. B2
 			fund v. B2
@@ -2445,13 +2445,13 @@
 			hell n. B2
 			hesitate v. B2
 **high n. B2
-			hire n. B2
+**hire n. B2
 **hold n. B2
 			hollow adj. B2
 			holy adj. B2
 			honor n. B2
 			honor v. B2
-			host v. B2
+**host v. B2
 			household n. B2
 			housing n. B2
 			humor n. B2
@@ -2483,7 +2483,7 @@
 			insight n. B2
 			insist v. B2
 			inspire v. B2
-			install v. B2
+**install v. B2
 			instance n. B2
 			institute n. B2
 			institution n. B2
@@ -2514,11 +2514,11 @@
 			level v. B2
 			license n. B2
 			limited adj. B2
-			line v. B2
+**line v. B2
 			lively adj. B2
-			load n. B2
-			load v. B2
-			loan n. B2
+**load n. B2
+**load v. B2
+**loan n. B2
 			logical adj. B2
 			long-term adj. B2
 			long-term adv. B2
@@ -2531,7 +2531,7 @@
 			major n. B2
 			majority n. B2
 **make n. B2
-			map v. B2
+**map v. B2
 			mass adj. B2
 			mass n. B2
 			massive adj. B2
@@ -2554,7 +2554,7 @@
 			minor adj. B2
 			minority n. B2
 			mission n. B2
-			mistake v. B2
+**mistake v. B2
 			mixed adj. B2
 			model v. B2
 			modify v. B2
@@ -2576,13 +2576,13 @@
 			nightmare n. B2
 			notion n. B2
 			numerous adj. B2
-			obey v. B2
+**obey v. B2
 			object v. B2
 			objective adj. B2
 			objective n. B2
 			obligation n. B2
 			observation n. B2
-			observe v. B2
+**observe v. B2
 			obtain v. B2
 			occasionally adv. B2
 			offend v. B2
@@ -2597,7 +2597,7 @@
 			opposition n. B2
 			organ n. B2
 			origin n. B2
-			otherwise adv. B2
+**otherwise adv. B2
 			outcome n. B2
 			outer adj. B2
 			outline n. B2
@@ -2650,11 +2650,11 @@
 			principal adj. B2
 			principle n. B2
 			print n. B2
-			priority n. B2
+**priority n. B2
 			privacy n. B2
 			procedure n. B2
 			process v. B2
-			produce v. B2
+**produce v. B2
 			professional n. B2
 			project v. B2
 			proof n. B2
@@ -2676,11 +2676,11 @@
 			rapidly adv. B2
 			rate v. B2
 			raw adj. B2
-			reach n. B2
+**reach n. B2
 			realistic adj. B2
 			reasonable adj. B2
 			recall v. B2
-			recover v. B2
+**recover v. B2
 			reduction n. B2
 			regard n. B2
 			regard v. B2
@@ -2690,7 +2690,7 @@
 			regret n. B2
 			regret v. B2
 			regulation n. B2
-			relatively adv. B2
+**relatively adv. B2
 			relevant adj. B2
 			relief n. B2
 			rely v. B2
@@ -2702,8 +2702,8 @@
 			requirement n. B2
 **rescue n. B2
 **rescue v. B2
-			reserve n. B2
-			reserve v. B2
+**reserve n. B2
+**reserve v. B2
 			resident adj. B2
 			resident n. B2
 			resist v. B2
@@ -2716,7 +2716,7 @@
 			reward v. B2
 			rhythm n. B2
 			rid v. B2
-			rise n. B2
+**rise n. B2
 			root n. B2
 			round n. B2
 			routine adj. B2
@@ -2724,14 +2724,14 @@
 			rubber adj. B2
 			rubber n. B2
 			rural adj. B2
-			rush n. B2
-			rush v. B2
+**rush n. B2
+**rush v. B2
 **sample v. B2
 			satellite n. B2
 			satisfied adj. B2
 			satisfy v. B2
 			saving n. B2
-			schedule v. B2
+**schedule v. B2
 			scream n. B2
 			scream v. B2
 			screen v. B2
@@ -2754,17 +2754,17 @@
 			settle v. B2
 			severe adj. B2
 			shade n. B2
-			shadow n. B2
+**shadow n. B2
 			shall modal v. B2
 			shallow adj. B2
 			shame n. B2
 			shape v. B2
-			shelter n. B2
-			shelter v. B2
+**shelter n. B2
+**shelter v. B2
 			shift v. B2
 			ship v. B2
-			shock n. B2
-			shock v. B2
+**shock n. B2
+**shock v. B2
 			shocked adj. B2
 			shooting n. B2
 			shot n. B2
@@ -2776,7 +2776,7 @@
 			slide n. B2
 			slide v. B2
 			slight adj. B2
-			slip v. B2
+**slip v. B2
 			slope n. B2
 			slope v. B2
 			solar adj. B2
@@ -2785,29 +2785,29 @@
 			specialist adj. B2
 			specialist n. B2
 			species n. B2
-			speed v. B2
+**speed v. B2
 			spiritual adj. B2
-			split n. B2
-			split v. B2
+**split n. B2
+**split v. B2
 			sponsor n. B2
 			sponsor v. B2
 			spot v. B2
 			spread n. B2
-			stable adj. B2
+**stable adj. B2
 			stage v. B2
 **stand n. B2
 			stare v. B2
 			status n. B2
 			steady adj. B2
 			steel n. B2
-			steep adj. B2
+**steep adj. B2
 			step v. B2
 			sticky adj. B2
 			stiff adj. B2
 			stock n. B2
 			stream n. B2
-			stretch n. B2
-			stretch v. B2
+**stretch n. B2
+**stretch v. B2
 			strict adj. B2
 			strike n. B2
 			strike v. B2
@@ -2846,15 +2846,15 @@
 			tone n. B2
 **tough adj. B2
 			track v. B2
-			transfer n. B2
-			transfer v. B2
+**transfer n. B2
+**transfer v. B2
 			transform v. B2
 			transition n. B2
 			trial n. B2
 			trip v. B2
 			tropical adj. B2
 			trouble v. B2
-			truly adv. B2
+**truly adv. B2
 			trust n. B2
 			trust v. B2
 **try n. B2
@@ -2874,7 +2874,7 @@
 			vast adj. B2
 			venue n. B2
 **very adj. B2
-			via prep. B2
+**via prep. B2
 			victory n. B2
 			violence n. B2
 			virtual adj. B2
@@ -2884,7 +2884,7 @@
 			vitamin n. B2
 			volume n. B2
 			wage n. B2
-**way adv. B2
+			way adv. B2
 			weakness n. B2
 			wealth n. B2
 			wealthy adj. B2
@@ -2902,16 +2902,16 @@
 			witness n. B2
 			witness v. B2
 			worse n. B2
-**worst n. B2
-			worth n. B2
+			worst n. B2
+**worth n. B2
 			wound n. B2
 			wound v. B2
 			wrap v. B2
 **wrong n. B2
-**yet conj. B2
+			yet conj. B2
 			zone n. B2
 **light (from the sun/a lamp) n.,
-match (contest/correspond) n.,
+**match (contest/correspond) n.,
 second1 (next after the first) det./
 © Oxford University Press 1 / 11
 © Oxford University Press The Oxford 3000™ (American English) 2 / 11

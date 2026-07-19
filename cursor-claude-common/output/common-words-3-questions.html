@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>common-words-3 — level tables</title>
+  <style>
+    body { font-family: system-ui, -apple-system, Segoe UI, Roboto, sans-serif; margin: 16px; background: #f5f5f5; }
+    h1 { font-size: 1.25rem; margin-bottom: 12px; }
+    h2 { font-size: 1.1rem; margin-top: 24px; margin-bottom: 8px; }
+    .wrap { overflow-x: auto; background: #fff; padding: 12px; border-radius: 8px; box-shadow: 0 1px 3px rgba(0,0,0,.08); margin-bottom: 16px; }
+    table { border-collapse: collapse; width: 100%; font-size: 13px; table-layout: fixed; }
+    th, td { border: 1px solid #c8c8c8; padding: 8px 10px; vertical-align: top; text-align: left; word-wrap: break-word; }
+    th { background: #e8e8e8; font-weight: 600; white-space: nowrap; }
+    tr:nth-child(even) td { background: #fafafa; }
+    .repeat-word { color: #c62828; font-weight: 600; }
+    .wrap.template-counts { max-width: 28rem; }
+    .wrap.word-frequency { max-width: 40rem; }
+    </style>
+</head>
+<body>
+  <h1>common-words-3 — questions</h1>
+  <h2>Questions</h2>
+  <div class="wrap">
+    <table>
+<thead><tr><th>#</th><th>Template</th><th>Line 1 / Prompt</th><th>Line 2</th><th>Answer</th><th>English (translate)</th><th>Audio</th></tr></thead>
+<tbody><tr><td>1</td><td>AppearDisappear</td><td>Today was a wonderful day at school.</td><td></td><td>-</td><td>wonderful</td><td>audio_file: today-was-a-wonderful-day-at-school-convo</td></tr><tr><td>2</td><td>WordPairs</td><td>little; young; huge; tall</td><td>word pairs</td><td>match all pairs</td><td>little; young; huge; tall</td><td></td></tr><tr><td>3</td><td>ConvoTemplate-1</td><td>Do you _____ with my plan?</td><td>Yes, I _____ with you.</td><td>agree</td><td><span class="repeat-word">to agree</span></td><td>audio_file1: do-you-agree-with-my-plan-convo · audio_file2: yes-i-agree-with-you-convo</td></tr><tr><td>4</td><td>AppearDisappear</td><td>She has already finished her homework.</td><td></td><td>-</td><td>already</td><td>audio_file: she-has-already-finished-her-homework-convo</td></tr><tr><td>5</td><td>ConvoTemplate-1</td><td>I _____ we can still win.</td><td>Yes, I _____ so too.</td><td>hope</td><td>to hope</td><td>audio_file1: i-hope-we-can-still-win-convo · audio_file2: yes-i-hope-so-too-convo</td></tr><tr><td>6</td><td>ClozeSequence</td><td>He wants to _____ a doctor, and I do _____ agree.</td><td></td><td>become, also</td><td><span class="repeat-word">to agree</span>; to become; also</td><td>audio_file: he-wants-to-become-a-doctor-and-i-do-also-agree-convo</td></tr><tr><td>7</td><td>SentenceBuilder</td><td>I almost forgot to bring enough water.</td><td></td><td>I almost forgot to bring enough water.</td><td>almost; enough</td><td>audio_file: i-almost-forgot-to-bring-enough-water-convo</td></tr><tr><td>8</td><td>AppearDisappear</td><td>Do not forget to keep your promise.</td><td></td><td>-</td><td>to forget; <span class="repeat-word">to keep</span></td><td>audio_file: do-not-forget-to-keep-your-promise-convo</td></tr><tr><td>9</td><td>ClozeSequence</td><td>Please _____ my apology and _____ your name here.</td><td></td><td>accept, add</td><td>to accept; to add</td><td>audio_file: please-accept-my-apology-and-add-your-name-here-convo</td></tr><tr><td>10</td><td>ClozeSequence</td><td>Try to _____ the answer and _____ quiet.</td><td></td><td>guess, keep</td><td><span class="repeat-word">to keep</span>; to guess</td><td>audio_file: try-to-guess-the-answer-and-keep-quiet-convo</td></tr><tr><td>11</td><td>GrammarForm</td><td>Please _____ down and relax.</td><td></td><td>sit</td><td>to sit down</td><td></td></tr><tr><td>12</td><td>DialogueCompletion</td><td>What happened to the flowers?</td><td></td><td>They died because we forgot to water them.</td><td></td><td>audio_file1: what-happened-to-the-flowers-convo · audio_file2: they-died-because-we-forgot-to-water-them-convo</td></tr></tbody>
+</table>
+  </div>
+
+  <h2>common-words-3 — translations</h2>
+  <div class="wrap">
+    <table>
+<thead><tr><th>#</th><th>English word</th><th>ar</th><th>de</th><th>es</th><th>fr</th><th>hi</th><th>it</th><th>ja</th><th>ko</th><th>pt</th><th>ru</th><th>tr</th><th>zh</th></tr></thead>
+<tbody><tr><td>1</td><td>wonderful</td><td>رائع</td><td>wunderbar</td><td>maravilloso</td><td>merveilleux</td><td>शानदार</td><td>meraviglioso</td><td>素晴らしい</td><td>멋진</td><td>maravilhoso</td><td>замечательный</td><td>harika</td><td>精彩的</td></tr><tr><td>2</td><td>to agree</td><td>يوافق</td><td>zustimmen</td><td>estar de acuerdo</td><td>être d&#x27;accord</td><td>सहमत होना</td><td>essere d&#x27;accordo</td><td>同意する</td><td>동의하다</td><td>concordar</td><td>соглашаться</td><td>katılmak</td><td>同意</td></tr><tr><td>3</td><td>already</td><td>بالفعل</td><td>schon</td><td>ya</td><td>déjà</td><td>पहले से</td><td>già</td><td>もう</td><td>이미</td><td>já</td><td>уже</td><td>zaten</td><td>已经</td></tr><tr><td>4</td><td>to hope</td><td>يأمل</td><td>hoffen</td><td>esperar</td><td>espérer</td><td>आशा करना</td><td>sperare</td><td>願う</td><td>바라다</td><td>esperar</td><td>надеяться</td><td>ummak</td><td>希望</td></tr><tr><td>5</td><td>to become</td><td>يصبح</td><td>werden</td><td>convertirse</td><td>devenir</td><td>बनना</td><td>diventare</td><td>なる</td><td>되다</td><td>tornar-se</td><td>становиться</td><td>olmak</td><td>成为</td></tr><tr><td>6</td><td>also</td><td>أيضًا</td><td>auch</td><td>también</td><td>aussi</td><td>भी</td><td>anche</td><td>また</td><td>또한</td><td>também</td><td>также</td><td>ayrıca</td><td>也</td></tr><tr><td>7</td><td>almost</td><td>تقريبًا</td><td>fast</td><td>casi</td><td>presque</td><td>लगभग</td><td>quasi</td><td>ほとんど</td><td>거의</td><td>quase</td><td>почти</td><td>neredeyse</td><td>几乎</td></tr><tr><td>8</td><td>enough</td><td>كافي</td><td>genug</td><td>suficiente</td><td>assez</td><td>पर्याप्त</td><td>abbastanza</td><td>十分に</td><td>충분히</td><td>suficiente</td><td>достаточно</td><td>yeterince</td><td>足够</td></tr><tr><td>9</td><td>to forget</td><td>ينسى</td><td>vergessen</td><td>olvidar</td><td>oublier</td><td>भूलना</td><td>dimenticare</td><td>忘れる</td><td>잊다</td><td>esquecer</td><td>забывать</td><td>unutmak</td><td>忘记</td></tr><tr><td>10</td><td>to keep</td><td>يحافظ</td><td>behalten</td><td>guardar</td><td>garder</td><td>रखना</td><td>tenere</td><td>保つ</td><td>유지하다</td><td>manter</td><td>держать</td><td>tutmak</td><td>保持</td></tr><tr><td>11</td><td>to accept</td><td>يقبل</td><td>akzeptieren</td><td>aceptar</td><td>accepter</td><td>स्वीकार करना</td><td>accettare</td><td>受け入れる</td><td>받아들이다</td><td>aceitar</td><td>принимать</td><td>kabul etmek</td><td>接受</td></tr><tr><td>12</td><td>to add</td><td>يضيف</td><td>hinzufügen</td><td>añadir</td><td>ajouter</td><td>जोड़ना</td><td>aggiungere</td><td>加える</td><td>더하다</td><td>adicionar</td><td>добавлять</td><td>eklemek</td><td>添加</td></tr><tr><td>13</td><td>to guess</td><td>يخمن</td><td>raten</td><td>adivinar</td><td>deviner</td><td>अनुमान लगाना</td><td>indovinare</td><td>推測する</td><td>추측하다</td><td>adivinhar</td><td>угадывать</td><td>tahmin etmek</td><td>猜测</td></tr><tr><td>14</td><td>to sit down</td><td>يجلس</td><td>sich setzen</td><td>sentarse</td><td>s&#x27;asseoir</td><td>बैठना</td><td>sedersi</td><td>座る</td><td>앉다</td><td>sentar-se</td><td>садиться</td><td>oturmak</td><td>坐下</td></tr><tr><td>15</td><td>to die</td><td>يموت</td><td>sterben</td><td>morir</td><td>mourir</td><td>मरना</td><td>morire</td><td>死ぬ</td><td>죽다</td><td>morrer</td><td>умирать</td><td>ölmek</td><td>死亡</td></tr></tbody>
+</table>
+  </div>
+
+  <h2>Template counts</h2>
+  <div class="wrap template-counts">
+    <table>
+<thead><tr><th>Template</th><th>Count in level</th></tr></thead>
+<tbody><tr><td>AppearDisappear</td><td>3</td></tr><tr><td>ClozeSequence</td><td>3</td></tr><tr><td>ConvoTemplate-1</td><td>2</td></tr><tr><td>DialogueCompletion</td><td>1</td></tr><tr><td>GrammarForm</td><td>1</td></tr><tr><td>imageQuizTemplate-1</td><td>0</td></tr><tr><td>imageQuizTemplate-2</td><td>0</td></tr><tr><td>SentenceBuilder</td><td>1</td></tr><tr><td>WordPairs</td><td>1</td></tr></tbody>
+</table>
+  </div>
+
+  <h2>Word frequency (questions.json; excludes template, audio_file*, WordPairs translations, distractors, wrongAnswers)</h2>
+  <div class="wrap word-frequency">
+    <table>
+<thead><tr><th>word</th><th>count</th></tr></thead>
+<tbody><tr><td>to</td><td>6</td></tr><tr><td>i</td><td>5</td></tr><tr><td>and</td><td>4</td></tr><tr><td>do</td><td>3</td></tr><tr><td>a</td><td>2</td></tr><tr><td>agree</td><td>2</td></tr><tr><td>forgot</td><td>2</td></tr><tr><td>keep</td><td>2</td></tr><tr><td>my</td><td>2</td></tr><tr><td>please</td><td>2</td></tr><tr><td>the</td><td>2</td></tr><tr><td>water</td><td>2</td></tr><tr><td>we</td><td>2</td></tr><tr><td>with</td><td>2</td></tr><tr><td>yes</td><td>2</td></tr><tr><td>you</td><td>2</td></tr><tr><td>your</td><td>2</td></tr><tr><td>accept</td><td>1</td></tr><tr><td>add</td><td>1</td></tr><tr><td>almost</td><td>1</td></tr><tr><td>already</td><td>1</td></tr><tr><td>also</td><td>1</td></tr><tr><td>ana</td><td>1</td></tr><tr><td>answer</td><td>1</td></tr><tr><td>apology</td><td>1</td></tr><tr><td>at</td><td>1</td></tr><tr><td>because</td><td>1</td></tr><tr><td>become</td><td>1</td></tr><tr><td>bring</td><td>1</td></tr><tr><td>can</td><td>1</td></tr><tr><td>chris</td><td>1</td></tr><tr><td>day</td><td>1</td></tr><tr><td>died</td><td>1</td></tr><tr><td>doctor</td><td>1</td></tr><tr><td>down</td><td>1</td></tr><tr><td>enough</td><td>1</td></tr><tr><td>finished</td><td>1</td></tr><tr><td>flowers</td><td>1</td></tr><tr><td>forget</td><td>1</td></tr><tr><td>guess</td><td>1</td></tr><tr><td>happened</td><td>1</td></tr><tr><td>has</td><td>1</td></tr><tr><td>he</td><td>1</td></tr><tr><td>her</td><td>1</td></tr><tr><td>here</td><td>1</td></tr><tr><td>homework</td><td>1</td></tr><tr><td>hope</td><td>1</td></tr><tr><td>huge</td><td>1</td></tr><tr><td>little</td><td>1</td></tr><tr><td>mark</td><td>1</td></tr><tr><td>mia</td><td>1</td></tr><tr><td>name</td><td>1</td></tr><tr><td>nina</td><td>1</td></tr><tr><td>not</td><td>1</td></tr><tr><td>plan</td><td>1</td></tr><tr><td>promise</td><td>1</td></tr><tr><td>quiet</td><td>1</td></tr><tr><td>relax</td><td>1</td></tr><tr><td>school</td><td>1</td></tr><tr><td>she</td><td>1</td></tr><tr><td>sit</td><td>1</td></tr><tr><td>so</td><td>1</td></tr><tr><td>still</td><td>1</td></tr><tr><td>tall</td><td>1</td></tr><tr><td>them</td><td>1</td></tr><tr><td>they</td><td>1</td></tr><tr><td>today</td><td>1</td></tr><tr><td>tom</td><td>1</td></tr><tr><td>too</td><td>1</td></tr><tr><td>try</td><td>1</td></tr><tr><td>wants</td><td>1</td></tr><tr><td>was</td><td>1</td></tr><tr><td>what</td><td>1</td></tr><tr><td>win</td><td>1</td></tr><tr><td>wonderful</td><td>1</td></tr><tr><td>young</td><td>1</td></tr></tbody>
+</table>
+  </div>
+
+</body>
+</html>

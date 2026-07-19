@@ -231,9 +231,9 @@
         "sentence": "When do you ____ your homework?",
         "answer": "do",
         "distractors": [
-          "was",
-          "doing",
-          "are doing"
+          "does",
+          "did",
+          "doing"
         ]
       }
     },

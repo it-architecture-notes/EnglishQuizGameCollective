@@ -28,10 +28,10 @@
     {
       "template": "ClozeSequence",
       "questionData": {
-        "sentence": "Time to _____ ! You’ll _____ the bus.",
+        "sentence": "Time to _____ ! You are _____ for the bus.",
         "answer": [
           "get up",
-          "miss"
+          "late"
         ],
         "distractors": [
           "look out",
@@ -39,7 +39,7 @@
           "fall"
         ]
       },
-      "audio_file": "time-to-get-up-convo"
+      "audio_file": "time-to-get-up-you-are-late-for-the-bus-convo"
     },
     {
       "template": "ClozeSequence",
@@ -61,19 +61,19 @@
     {
       "template": "GrammarForm",
       "questionData": {
-        "sentence": "Great job. Now, _____ to stand up and stretch.",
-        "answer": "try",
+        "sentence": "Great job. Now, _____ your arms.",
+        "answer": "stretch",
         "distractors": [
-          "tries",
-          "are trying",
-          "am trying"
+          "stretches",
+          "stretched",
+          "stretching"
         ]
       }
     },
     {
       "template": "SentenceBuilder",
       "questionData": {
-        "correct_order": "You sleep on a pillow."
+        "correct_order": "I stand up quickly."
       }
     },
     {
@@ -81,16 +81,16 @@
       "questionData": {
         "character1": "Nora",
         "character2": "Alex",
-        "line1": "What time do you get up?",
-        "answer": "I get up at 6:00.",
+        "line1": "Are you still in bed?",
+        "answer": "No, I am up now.",
         "distractors": [
-          "I go to sleep at 6:00.",
-          "I get up now.",
-          "I am waking up at 6:00."
+          "Yes, I like tea.",
+          "No, I am busy.",
+          "Yes, the bed is soft."
         ]
       },
-      "audio_file1": "what-time-do-you-get-up-convo",
-      "audio_file2": "i-get-up-at-6-00-convo"
+      "audio_file1": "are-you-still-in-bed-convo",
+      "audio_file2": "no-i-am-up-now-convo"
     },
     {
       "template": "imageQuizTemplate-1",
@@ -129,67 +129,82 @@
       "template": "WordPairs",
       "questionData": {
         "english_words": [
-          "and",
-          "out of bed",
-          "go to sleep",
-          "from sleep"
+          "today",
+          "tomorrow",
+          "yesterday",
+          "in two days",
+          "two days before"
         ],
         "translations": [
           {
-            "tr": "ve",
-            "es": "y",
-            "fr": "et",
-            "de": "und",
-            "it": "e",
-            "pt": "e",
-            "ru": "и",
-            "zh": "和",
-            "ja": "そして",
-            "ko": "그리고",
-            "ar": "و",
-            "hi": "और"
+            "tr": "bugün",
+            "es": "hoy",
+            "fr": "aujourd'hui",
+            "de": "heute",
+            "it": "oggi",
+            "pt": "hoje",
+            "ru": "сегодня",
+            "zh": "今天",
+            "ja": "今日",
+            "ko": "오늘",
+            "ar": "اليوم",
+            "hi": "आज"
           },
           {
-            "tr": "yataktan",
-            "es": "de la cama",
-            "fr": "du lit",
-            "de": "aus dem Bett",
-            "it": "dal letto",
-            "pt": "da cama",
-            "ru": "из кровати",
-            "zh": "从床上",
-            "ja": "ベッドから",
-            "ko": "침대에서",
-            "ar": "من السرير",
-            "hi": "बिस्तर से"
+            "tr": "yarın",
+            "es": "mañana",
+            "fr": "demain",
+            "de": "morgen",
+            "it": "domani",
+            "pt": "amanhã",
+            "ru": "завтра",
+            "zh": "明天",
+            "ja": "明日",
+            "ko": "내일",
+            "ar": "غدا",
+            "hi": "कल"
           },
           {
-            "tr": "uyumaya gitmek",
-            "es": "irse a dormir",
-            "fr": "aller dormir",
-            "de": "schlafen gehen",
-            "it": "andare a dormire",
-            "pt": "ir dormir",
-            "ru": "идти спать",
-            "zh": "去睡觉",
-            "ja": "寝る",
-            "ko": "잠자리에 들다",
-            "ar": "يذهب للنوم",
-            "hi": "सोने जाना"
+            "tr": "dün",
+            "es": "ayer",
+            "fr": "hier",
+            "de": "gestern",
+            "it": "ieri",
+            "pt": "ontem",
+            "ru": "вчера",
+            "zh": "昨天",
+            "ja": "昨日",
+            "ko": "어제",
+            "ar": "أمس",
+            "hi": "कल"
           },
           {
-            "tr": "uykudan",
-            "es": "del sueño",
-            "fr": "du sommeil",
-            "de": "aus dem Schlaf",
-            "it": "dal sonno",
-            "pt": "do sono",
-            "ru": "ото сна",
-            "zh": "从睡眠中",
-            "ja": "睡眠から",
-            "ko": "잠에서",
-            "ar": "من النوم",
-            "hi": "नींद से"
+            "tr": "iki gün sonra",
+            "es": "en dos días",
+            "fr": "dans deux jours",
+            "de": "in zwei Tagen",
+            "it": "tra due giorni",
+            "pt": "em dois dias",
+            "ru": "через два дня",
+            "zh": "两天后",
+            "ja": "二日後",
+            "ko": "이틀 후",
+            "ar": "خلال يومين",
+            "hi": "दो दिन में"
+          },
+          {
+            "tr": "iki gün önce",
+            "es": "dos días antes",
+            "fr": "il y a deux jours",
+            "de": "vor zwei Tagen",
+            "it": "due giorni fa",
+            "pt": "dois dias antes",
+            "ru": "два дня назад",
+            "zh": "两天前",
+            "ja": "二日前",
+            "ko": "이틀 전",
+            "ar": "قبل يومين",
+            "hi": "दो दिन पहले"
           }
         ]
       }
@@ -241,7 +256,7 @@
         "character1": "Ethan",
         "character2": "Grace",
         "line1": "Can I sleep for five more minutes?",
-        "line2": "No, you must get up ____.",
+        "line2": "No, get up ____!",
         "answer": "now",
         "distractors": [
           "after",
@@ -250,7 +265,7 @@
         ]
       },
       "audio_file1": "can-i-sleep-for-five-more-minutes-convo",
-      "audio_file2": "no-you-must-get-up-now-convo"
+      "audio_file2": "no-get-up-now-convo"
     }
   ]
 }

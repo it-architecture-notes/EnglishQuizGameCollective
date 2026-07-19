@@ -15,6 +15,9 @@ class ReminderQuestionSplit {
 class ReminderQuestionBuilder {
   const ReminderQuestionBuilder._();
 
+  /// Total questions across both reminders (15 + 15).
+  static const int kTotalReminderQuestions = 30;
+
   static ReminderQuestionSplit build({
     required Map<String, int> wrongAnswerCounters,
     required Map<String, int> questionCountByProgressKey,
@@ -36,10 +39,12 @@ class ReminderQuestionBuilder {
     final cleanIds = allIds.where((id) => !wrongIds.contains(id)).toList();
 
     final selected = <String>[];
-    if (wrongEntries.length <= 60) {
+    if (wrongEntries.length <= kTotalReminderQuestions) {
       selected.addAll(wrongEntries.map((entry) => entry.key));
       cleanIds.shuffle(rng);
-      selected.addAll(cleanIds.take(max(0, 60 - selected.length)));
+      selected.addAll(
+        cleanIds.take(max(0, kTotalReminderQuestions - selected.length)),
+      );
     } else {
       final groupedByCount = <int, List<String>>{};
       for (final entry in wrongEntries) {
@@ -50,10 +55,10 @@ class ReminderQuestionBuilder {
       for (final count in sortedCounts) {
         final ids = groupedByCount[count]!..shuffle(rng);
         for (final id in ids) {
-          if (selected.length >= 60) break;
+          if (selected.length >= kTotalReminderQuestions) break;
           selected.add(id);
         }
-        if (selected.length >= 60) break;
+        if (selected.length >= kTotalReminderQuestions) break;
       }
     }
 

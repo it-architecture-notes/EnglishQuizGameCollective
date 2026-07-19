@@ -1,173 +1,241 @@
 {
   "translations_list": [
     {
-      "english_word": "to hurt",
+      "english_word": "to bite",
       "translations": {
-        "tr": "acımak",
+        "tr": "ısırmak",
+        "es": "morder",
+        "fr": "mordre",
+        "de": "beißen",
+        "it": "mordere",
+        "pt": "morder",
+        "ru": "кусать",
+        "zh": "咬住",
+        "ja": "噛む",
+        "ko": "물다",
+        "ar": "يعض",
+        "hi": "काटना"
+      }
+    },
+    {
+      "english_word": "firmly",
+      "translations": {
+        "tr": "sıkıca",
+        "es": "con firmeza",
+        "fr": "fermement",
+        "de": "fest",
+        "it": "con fermezza",
+        "pt": "firmemente",
+        "ru": "крепко",
+        "zh": "紧紧地",
+        "ja": "しっかり",
+        "ko": "단단히",
+        "ar": "بإحكام",
+        "hi": "मज़बूती से"
+      }
+    },
+    {
+      "english_word": "open wide",
+      "translations": {
+        "tr": "ağzını aç",
+        "es": "abrir bien la boca",
+        "fr": "ouvrir grand la bouche",
+        "de": "weit aufmachen",
+        "it": "aprire bene la bocca",
+        "pt": "abrir bem a boca",
+        "ru": "широко открыть рот",
+        "zh": "张大嘴巴",
+        "ja": "大きく口を開ける",
+        "ko": "입을 크게 벌리다",
+        "ar": "افتح فمك على مصراعيه",
+        "hi": "मुँह खोलना"
+      }
+    },
+    {
+      "english_word": "to warn",
+      "translations": {
+        "tr": "uyarmak",
+        "es": "advertir",
+        "fr": "avertir",
+        "de": "warnen",
+        "it": "avvertire",
+        "pt": "avisar",
+        "ru": "предупреждать",
+        "zh": "警告",
+        "ja": "警告する",
+        "ko": "경고하다",
+        "ar": "يحذر",
+        "hi": "चेतावनी देना"
+      }
+    },
+    {
+      "english_word": "to extract",
+      "translations": {
+        "tr": "çekmek",
+        "es": "extraer",
+        "fr": "extraire",
+        "de": "ziehen",
+        "it": "estrarre",
+        "pt": "extrair",
+        "ru": "удалить",
+        "zh": "拔除",
+        "ja": "抜く",
+        "ko": "뽑다",
+        "ar": "يخلع",
+        "hi": "निकालना"
+      }
+    },
+    {
+      "english_word": "swollen",
+      "translations": {
+        "tr": "şişmiş",
+        "es": "hinchado",
+        "fr": "enflé",
+        "de": "geschwollen",
+        "it": "gonfio",
+        "pt": "inchado",
+        "ru": "опухший",
+        "zh": "肿胀的",
+        "ja": "腫れた",
+        "ko": "부은",
+        "ar": "متورم",
+        "hi": "सूजा हुआ"
+      }
+    },
+    {
+      "english_word": "to bleed",
+      "translations": {
+        "tr": "kanamak",
+        "es": "sangrar",
+        "fr": "saigner",
+        "de": "bluten",
+        "it": "sanguinare",
+        "pt": "sangrar",
+        "ru": "кровоточить",
+        "zh": "流血",
+        "ja": "出血する",
+        "ko": "피가 나다",
+        "ar": "ينزف",
+        "hi": "खून बहना"
+      }
+    },
+    {
+      "english_word": "to floss",
+      "translations": {
+        "tr": "diş ipi kullanmak",
+        "es": "usar hilo dental",
+        "fr": "utiliser du fil dentaire",
+        "de": "Zahnseide benutzen",
+        "it": "usare il filo interdentale",
+        "pt": "passar fio dental",
+        "ru": "пользоваться зубной нитью",
+        "zh": "用牙线",
+        "ja": "フロスする",
+        "ko": "치실질하다",
+        "ar": "يستخدم خيط الأسنان",
+        "hi": "फ्लॉस करना"
+      }
+    },
+    {
+      "english_word": "frozen",
+      "translations": {
+        "tr": "uyuşmuş",
+        "es": "entumecido",
+        "fr": "engourdi",
+        "de": "taub",
+        "it": "intorpidito",
+        "pt": "dormente",
+        "ru": "онемевший",
+        "zh": "麻木的",
+        "ja": "しびれた",
+        "ko": "저린",
+        "ar": "مخدر",
+        "hi": "सुन्न"
+      }
+    },
+    {
+      "english_word": "appointment",
+      "translations": {
+        "tr": "randevu",
+        "es": "cita",
+        "fr": "rendez-vous",
+        "de": "Termin",
+        "it": "appuntamento",
+        "pt": "consulta",
+        "ru": "приём",
+        "zh": "预约",
+        "ja": "予約",
+        "ko": "예약",
+        "ar": "موعد",
+        "hi": "अपॉइंटमेंट"
+      }
+    },
+    {
+      "english_word": "painful",
+      "translations": {
+        "tr": "ağrılı",
+        "es": "doloroso",
+        "fr": "douloureux",
+        "de": "schmerzhaft",
+        "it": "doloroso",
+        "pt": "doloroso",
+        "ru": "болезненный",
+        "zh": "疼痛的",
+        "ja": "痛い",
+        "ko": "아픈",
+        "ar": "مؤلم",
+        "hi": "दर्दनाक"
+      }
+    },
+    {
+      "english_word": "to ache",
+      "translations": {
+        "tr": "ağrımak",
         "es": "doler",
-        "fr": "faire du mal",
-        "de": "wehtun",
+        "fr": "avoir mal",
+        "de": "schmerzen",
         "it": "fare male",
-        "pt": "machucar",
+        "pt": "doer",
         "ru": "болеть",
-        "zh": "伤害",
+        "zh": "疼痛",
         "ja": "痛む",
         "ko": "아프다",
-        "ar": "ليؤذي",
-        "hi": "चोट पहुँचाना"
+        "ar": "يؤلم",
+        "hi": "दर्द होना"
       }
     },
     {
-      "english_word": "how often",
+      "english_word": "to chew",
       "translations": {
-        "tr": "ne sıklıkta",
-        "es": "con qué frecuencia",
-        "fr": "à quelle fréquence",
-        "de": "wie oft",
-        "it": "quanto spesso",
-        "pt": "com que frequência",
-        "ru": "как часто",
-        "zh": "多久一次",
-        "ja": "どのくらいの頻度で",
-        "ko": "얼마나 자주",
-        "ar": "كم مرة",
-        "hi": "कितनी बार"
+        "tr": "çiğnemek",
+        "es": "masticar",
+        "fr": "mâcher",
+        "de": "kauen",
+        "it": "masticare",
+        "pt": "mastigar",
+        "ru": "жевать",
+        "zh": "咀嚼",
+        "ja": "噛む",
+        "ko": "씹다",
+        "ar": "يمضغ",
+        "hi": "चबाना"
       }
     },
     {
-      "english_word": "to be afraid of",
+      "english_word": "sensitivity",
       "translations": {
-        "tr": "korkmak",
-        "es": "tener miedo de",
-        "fr": "avoir peur de",
-        "de": "Angst haben",
-        "it": "avere paura di",
-        "pt": "ter medo de",
-        "ru": "бояться",
-        "zh": "害怕",
-        "ja": "恐れること",
-        "ko": "두려워하다",
-        "ar": "للخوف من",
-        "hi": "डरना"
-      }
-    },
-    {
-      "english_word": "to understand",
-      "translations": {
-        "tr": "anlamak",
-        "es": "entender",
-        "fr": "comprendre",
-        "de": "zu verstehen",
-        "it": "per capire",
-        "pt": "entender",
-        "ru": "понять",
-        "zh": "去理解",
-        "ja": "理解する",
-        "ko": "이해하다",
-        "ar": "لفهم",
-        "hi": "समझने के लिए"
-      }
-    },
-    {
-      "english_word": "to keep",
-      "translations": {
-        "tr": "tutmak",
-        "es": "mantener",
-        "fr": "garder",
-        "de": "behalten",
-        "it": "mantenere",
-        "pt": "manter",
-        "ru": "держать",
-        "zh": "保留",
-        "ja": "保つ",
-        "ko": "유지하다",
-        "ar": "للاحتفاظ بها",
-        "hi": "रखने के लिए"
-      }
-    },
-    {
-      "english_word": "to show",
-      "translations": {
-        "tr": "göstermek",
-        "es": "mostrar",
-        "fr": "montrer",
-        "de": "zeigen",
-        "it": "mostrare",
-        "pt": "mostrar",
-        "ru": "показать",
-        "zh": "展示",
-        "ja": "見せる",
-        "ko": "보여주기 위해",
-        "ar": "لإظهار",
-        "hi": "दिखाने के लिए"
-      }
-    },
-    {
-      "english_word": "to agree",
-      "translations": {
-        "tr": "kabul etmek",
-        "es": "estar de acuerdo",
-        "fr": "être d'accord",
-        "de": "zustimmen",
-        "it": "essere d'accordo",
-        "pt": "concordar",
-        "ru": "согласиться",
-        "zh": "同意",
-        "ja": "同意する",
-        "ko": "동의하다",
-        "ar": "للموافقة",
-        "hi": "सहमत होना"
-      }
-    },
-    {
-      "english_word": "kind",
-      "translations": {
-        "tr": "nazik",
-        "es": "amable",
-        "fr": "gentil",
-        "de": "nett",
-        "it": "gentile",
-        "pt": "gentil",
-        "ru": "добрый",
-        "zh": "善良",
-        "ja": "親切な",
-        "ko": "친절한",
-        "ar": "لطيف",
-        "hi": "दयालु"
-      }
-    },
-    {
-      "english_word": "to explain",
-      "translations": {
-        "tr": "açıklamak",
-        "es": "explicar",
-        "fr": "expliquer",
-        "de": "zu erklären",
-        "it": "per spiegare",
-        "pt": "explicar",
-        "ru": "объяснить",
-        "zh": "解释",
-        "ja": "説明する",
-        "ko": "설명하다",
-        "ar": "لشرح",
-        "hi": "समझाने के लिए"
-      }
-    },
-    {
-      "english_word": "in detail",
-      "translations": {
-        "tr": "detaylı olarak",
-        "es": "en detalle",
-        "fr": "en détail",
-        "de": "im Detail",
-        "it": "in dettaglio",
-        "pt": "em detalhes",
-        "ru": "подробно",
-        "zh": "详细地",
-        "ja": "詳細に",
-        "ko": "자세히",
-        "ar": "بالتفصيل",
-        "hi": "विस्तार से"
+        "tr": "hassasiyet",
+        "es": "sensibilidad",
+        "fr": "sensibilité",
+        "de": "Empfindlichkeit",
+        "it": "sensibilità",
+        "pt": "sensibilidade",
+        "ru": "чувствительность",
+        "zh": "敏感",
+        "ja": "しみる",
+        "ko": "시림",
+        "ar": "حساسية",
+        "hi": "संवेदनशीलता"
       }
     }
   ]

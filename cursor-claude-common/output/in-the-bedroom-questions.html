@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>in-the-bedroom — level tables</title>
+  <style>
+    body { font-family: system-ui, -apple-system, Segoe UI, Roboto, sans-serif; margin: 16px; background: #f5f5f5; }
+    h1 { font-size: 1.25rem; margin-bottom: 12px; }
+    h2 { font-size: 1.1rem; margin-top: 24px; margin-bottom: 8px; }
+    .wrap { overflow-x: auto; background: #fff; padding: 12px; border-radius: 8px; box-shadow: 0 1px 3px rgba(0,0,0,.08); margin-bottom: 16px; }
+    table { border-collapse: collapse; width: 100%; font-size: 13px; table-layout: fixed; }
+    th, td { border: 1px solid #c8c8c8; padding: 8px 10px; vertical-align: top; text-align: left; word-wrap: break-word; }
+    th { background: #e8e8e8; font-weight: 600; white-space: nowrap; }
+    tr:nth-child(even) td { background: #fafafa; }
+    .repeat-word { color: #c62828; font-weight: 600; }
+    .wrap.template-counts { max-width: 28rem; }
+    .wrap.word-frequency { max-width: 40rem; }
+    </style>
+</head>
+<body>
+  <h1>in-the-bedroom — questions</h1>
+  <h2>Questions</h2>
+  <div class="wrap">
+    <table>
+<thead><tr><th>#</th><th>Template</th><th>Line 1 / Prompt</th><th>Line 2</th><th>Answer</th><th>English (translate)</th><th>Audio</th></tr></thead>
+<tbody><tr><td>1</td><td>imageQuizTemplate-1</td><td>image: drawer</td><td></td><td>drawer</td><td></td><td></td></tr><tr><td>2</td><td>AppearDisappear</td><td>She sleeps quietly in her room.</td><td></td><td>-</td><td>quietly</td><td>audio_file: she-sleeps-quietly-in-her-room-convo</td></tr><tr><td>3</td><td>ClozeSequence</td><td>It is ____ dark in the room.</td><td></td><td>too</td><td><span class="repeat-word">dark</span></td><td>audio_file: it-is-too-dark-in-the-room-convo</td></tr><tr><td>4</td><td>ClozeSequence</td><td>I am very _____ , so I _____ to _____.</td><td></td><td>tired, lie down, rest</td><td>tired; <span class="repeat-word">to lie down</span>; to rest</td><td>audio_file: i-am-very-tired-so-i-lie-down-to-rest-convo</td></tr><tr><td>5</td><td>imageQuizTemplate-1</td><td>image: slippers</td><td></td><td>slippers</td><td></td><td></td></tr><tr><td>6</td><td>imageQuizTemplate-1</td><td>image: duvet-comforter</td><td></td><td>duvet-comforter</td><td></td><td></td></tr><tr><td>7</td><td>ConvoTemplate-1</td><td>Do you _____ every morning?</td><td>Yes, I _____ every day.</td><td>make the bed</td><td>to make the bed</td><td>audio_file1: do-you-make-the-bed-every-morning-convo · audio_file2: yes-i-make-the-bed-every-day-convo</td></tr><tr><td>8</td><td>ClozeSequence</td><td>I ____ the light when it&#x27;s dark. I _____ the light when it&#x27;s bright.</td><td></td><td>turn on, turn off</td><td>turn on the light; turn off the light; <span class="repeat-word">dark</span>; bright</td><td>audio_file: i-turn-on-the-light-when-its-dark-convo</td></tr><tr><td>9</td><td>imageQuizTemplate-1</td><td>image: cradle</td><td></td><td>cradle</td><td></td><td></td></tr><tr><td>10</td><td>SentenceBuilder</td><td>This bed is very comfortable.</td><td></td><td>This bed is very comfortable.</td><td>comfortable</td><td></td></tr><tr><td>11</td><td>WordPairs</td><td>to me; to you; to him/her; to us; to them</td><td>word pairs</td><td>match all pairs</td><td>to me; to you; to him/her; to us; to them</td><td></td></tr><tr><td>12</td><td>imageQuizTemplate-1</td><td>image: pajamas</td><td></td><td>pajamas</td><td></td><td></td></tr><tr><td>13</td><td>ClozeSequence</td><td>She lies down _____ for hours before finally falling _____.</td><td></td><td>awake, asleep</td><td><span class="repeat-word">to lie down</span>; awake; asleep</td><td>audio_file: she-lies-down-awake-for-hours-before-finally-falling-asleep-convo</td></tr><tr><td>14</td><td>imageQuizTemplate-1</td><td>image: wardrobe-or-closet</td><td></td><td>wardrobe-or-closet</td><td></td><td></td></tr><tr><td>15</td><td>GrammarForm</td><td>Do you _____ a lot?</td><td></td><td>dream</td><td>to dream</td><td></td></tr></tbody>
+</table>
+  </div>
+
+  <h2>in-the-bedroom — translations</h2>
+  <div class="wrap">
+    <table>
+<thead><tr><th>#</th><th>English word</th><th>ar</th><th>de</th><th>es</th><th>fr</th><th>hi</th><th>it</th><th>ja</th><th>ko</th><th>pt</th><th>ru</th><th>tr</th><th>zh</th></tr></thead>
+<tbody><tr><td>1</td><td>to dream</td><td>يحلم</td><td>träumen</td><td>soñar</td><td>rêver</td><td>सपना देखना</td><td>sognare</td><td>夢を見る</td><td>꿈을 꾸다</td><td>sonhar</td><td>видеть сны</td><td>rüya görmek</td><td>做梦</td></tr><tr><td>2</td><td>quietly</td><td>بهدوء</td><td>leise</td><td>silenciosamente</td><td>silencieusement</td><td>चुपचाप</td><td>silenziosamente</td><td>静かに</td><td>조용히</td><td>silenciosamente</td><td>тихо</td><td>sessizce</td><td>安静地</td></tr><tr><td>3</td><td>tired</td><td>متعب</td><td>müde</td><td>cansado</td><td>fatigué</td><td>थका हुआ</td><td>stanco</td><td>疲れた</td><td>피곤하다</td><td>cansado</td><td>устал</td><td>yorgun</td><td>累了</td></tr><tr><td>4</td><td>to lie down</td><td>يستلقي</td><td>sich hinlegen</td><td>acostarse</td><td>s&#x27;allonger</td><td>लेटना</td><td>sdraiarsi</td><td>横になる</td><td>눕다</td><td>deitar-se</td><td>лечь</td><td>uzanmak</td><td>躺下</td></tr><tr><td>5</td><td>to rest</td><td>يرتاح</td><td>sich ausruhen</td><td>descansar</td><td>se reposer</td><td>आराम करना</td><td>riposare</td><td>休む</td><td>쉬다</td><td>descansar</td><td>отдыхать</td><td>dinlenmek</td><td>休息</td></tr><tr><td>6</td><td>turn on the light</td><td>تشغيل الضوء</td><td>das Licht einschalten</td><td>encender la luz</td><td>allumer la lumière</td><td>लाइट चालू करना</td><td>accendere la luce</td><td>電気をつける</td><td>불을 켜다</td><td>acender a luz</td><td>включить свет</td><td>ışığı açmak</td><td>开灯</td></tr><tr><td>7</td><td>turn off the light</td><td>إطفاء الضوء</td><td>das Licht ausschalten</td><td>apagar la luz</td><td>éteindre la lumière</td><td>लाइट बंद करना</td><td>spegnere la luce</td><td>電気を消す</td><td>불을 끄다</td><td>apagar a luz</td><td>выключить свет</td><td>ışığı kapatmak</td><td>关灯</td></tr><tr><td>8</td><td>dark</td><td>مظلم</td><td>dunkel</td><td>oscuro</td><td>sombre</td><td>अंधेरा</td><td>buio</td><td>暗い</td><td>어둡다</td><td>escuro</td><td>темно</td><td>karanlık</td><td>黑暗</td></tr><tr><td>9</td><td>comfortable</td><td>مريح</td><td>bequem</td><td>cómodo</td><td>confortable</td><td>आरामदायक</td><td>comodo</td><td>快適な</td><td>편안한</td><td>confortável</td><td>удобный</td><td>rahat</td><td>舒适</td></tr><tr><td>10</td><td>to make the bed</td><td>ترتيب السرير</td><td>das Bett machen</td><td>hacer la cama</td><td>faire le lit</td><td>बिस्तर ठीक करना</td><td>rifare il letto</td><td>ベッドを整える</td><td>침대를 정리하다</td><td>arrumar a cama</td><td>заправить кровать</td><td>yatağı toplamak</td><td>铺床</td></tr><tr><td>11</td><td>awake</td><td>مستيقظ</td><td>wach</td><td>despierto</td><td>éveillé</td><td>जागा हुआ</td><td>sveglio</td><td>起きている</td><td>깨어있는</td><td>acordado</td><td>бодрствующий</td><td>uyanık</td><td>醒着</td></tr><tr><td>12</td><td>asleep</td><td>نائم</td><td>schlafend</td><td>dormido</td><td>endormi</td><td>सोया हुआ</td><td>addormentato</td><td>眠っている</td><td>잠든</td><td>adormecido</td><td>спящий</td><td>uykuda</td><td>睡着</td></tr><tr><td>13</td><td>bright</td><td>مشرق</td><td>hell</td><td>claro</td><td>lumineux</td><td>चमकीला</td><td>luminoso</td><td>明るい</td><td>밝은</td><td>claro</td><td>яркий</td><td>parlak</td><td>明亮</td></tr></tbody>
+</table>
+  </div>
+
+  <h2>Template counts</h2>
+  <div class="wrap template-counts">
+    <table>
+<thead><tr><th>Template</th><th>Count in level</th></tr></thead>
+<tbody><tr><td>AppearDisappear</td><td>1</td></tr><tr><td>ClozeSequence</td><td>4</td></tr><tr><td>ConvoTemplate-1</td><td>1</td></tr><tr><td>DialogueCompletion</td><td>0</td></tr><tr><td>GrammarForm</td><td>1</td></tr><tr><td>imageQuizTemplate-1</td><td>6</td></tr><tr><td>imageQuizTemplate-2</td><td>0</td></tr><tr><td>SentenceBuilder</td><td>1</td></tr><tr><td>WordPairs</td><td>1</td></tr></tbody>
+</table>
+  </div>
+
+  <h2>Word frequency (questions.json; excludes template, audio_file*, WordPairs translations, distractors, wrongAnswers)</h2>
+  <div class="wrap word-frequency">
+    <table>
+<thead><tr><th>word</th><th>count</th></tr></thead>
+<tbody><tr><td>to</td><td>6</td></tr><tr><td>i</td><td>5</td></tr><tr><td>the</td><td>4</td></tr><tr><td>you</td><td>3</td></tr><tr><td>bed</td><td>2</td></tr><tr><td>dark</td><td>2</td></tr><tr><td>do</td><td>2</td></tr><tr><td>down</td><td>2</td></tr><tr><td>every</td><td>2</td></tr><tr><td>her</td><td>2</td></tr><tr><td>in</td><td>2</td></tr><tr><td>is</td><td>2</td></tr><tr><td>it&#x27;s</td><td>2</td></tr><tr><td>light</td><td>2</td></tr><tr><td>room</td><td>2</td></tr><tr><td>she</td><td>2</td></tr><tr><td>turn</td><td>2</td></tr><tr><td>very</td><td>2</td></tr><tr><td>when</td><td>2</td></tr><tr><td>a</td><td>1</td></tr><tr><td>am</td><td>1</td></tr><tr><td>asleep</td><td>1</td></tr><tr><td>awake</td><td>1</td></tr><tr><td>before</td><td>1</td></tr><tr><td>bright</td><td>1</td></tr><tr><td>comfortable</td><td>1</td></tr><tr><td>cradle</td><td>1</td></tr><tr><td>day</td><td>1</td></tr><tr><td>drawer</td><td>1</td></tr><tr><td>dream</td><td>1</td></tr><tr><td>duvet-comforter</td><td>1</td></tr><tr><td>emma</td><td>1</td></tr><tr><td>falling</td><td>1</td></tr><tr><td>finally</td><td>1</td></tr><tr><td>for</td><td>1</td></tr><tr><td>him</td><td>1</td></tr><tr><td>hours</td><td>1</td></tr><tr><td>it</td><td>1</td></tr><tr><td>lie</td><td>1</td></tr><tr><td>lies</td><td>1</td></tr><tr><td>lot</td><td>1</td></tr><tr><td>make</td><td>1</td></tr><tr><td>me</td><td>1</td></tr><tr><td>morning</td><td>1</td></tr><tr><td>off</td><td>1</td></tr><tr><td>on</td><td>1</td></tr><tr><td>pajamas</td><td>1</td></tr><tr><td>quietly</td><td>1</td></tr><tr><td>rest</td><td>1</td></tr><tr><td>sarah</td><td>1</td></tr><tr><td>sleeps</td><td>1</td></tr><tr><td>slippers</td><td>1</td></tr><tr><td>so</td><td>1</td></tr><tr><td>them</td><td>1</td></tr><tr><td>this</td><td>1</td></tr><tr><td>tired</td><td>1</td></tr><tr><td>too</td><td>1</td></tr><tr><td>us</td><td>1</td></tr><tr><td>wardrobe-or-closet</td><td>1</td></tr><tr><td>yes</td><td>1</td></tr></tbody>
+</table>
+  </div>
+
+</body>
+</html>

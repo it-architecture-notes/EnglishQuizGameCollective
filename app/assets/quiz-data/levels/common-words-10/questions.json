@@ -1,0 +1,124 @@
+{
+  "levelQuestions": [
+    {
+      "template": "ClozeSequence",
+      "questionData": {
+        "sentence": "The thief managed to _____ from the police and _____ in an old building.",
+        "answer": ["escape", "hide"],
+        "distractors": ["run", "disappear"]
+      },
+      "audio_file": "the-thief-managed-to-escape-from-the-police-and-hide-in-an-old-building-convo"
+    },
+    {
+      "template": "ClozeSequence",
+      "questionData": {
+        "sentence": "Experts have _____ heavy rain, so they _____ to the dark clouds as proof.",
+        "answer": ["predicted", "point"],
+        "distractors": ["expected", "refer"]
+      },
+      "audio_file": "experts-have-predicted-heavy-rain-so-they-point-to-the-dark-clouds-as-proof-convo"
+    },
+    {
+      "template": "ClozeSequence",
+      "questionData": {
+        "sentence": "Please watch the road _____ , and hold the wheel _____ .",
+        "answer": ["closely", "strongly"],
+        "distractors": ["loosely", "gently"]
+      },
+      "audio_file": "please-watch-the-road-closely-and-hold-the-wheel-strongly-convo"
+    },
+    {
+      "template": "GrammarForm",
+      "questionData": {
+        "sentence": "They _____ this house for over twenty years.",
+        "answer": "have owned",
+        "distractors": ["own", "owned", "are owning"]
+      }
+    },
+    {
+      "template": "AppearDisappear",
+      "questionData": {
+        "words": "The frost killed all the plants.",
+        "distractors": ["damaged", "hurt", "weakened"]
+      },
+      "audio_file": "the-frost-killed-all-the-plants-convo"
+    },
+    {
+      "template": "AppearDisappear",
+      "questionData": {
+        "words": "She placed the vase on the shelf.",
+        "distractors": ["put", "left", "moved"]
+      },
+      "audio_file": "she-placed-the-vase-on-the-shelf-convo"
+    },
+    {
+      "template": "AppearDisappear",
+      "questionData": {
+        "words": "Reading is her primary hobby.",
+        "distractors": ["secondary", "occasional", "difficult"]
+      },
+      "audio_file": "reading-is-her-primary-hobby-convo"
+    },
+    {
+      "template": "ConvoTemplate-1",
+      "questionData": {
+        "character1": "Omar",
+        "character2": "Lily",
+        "line1": "Would you like tea or coffee?",
+        "line2": "I _____ coffee, thank you.",
+        "answer": "prefer",
+        "distractors": ["like", "want", "need"]
+      },
+      "audio_file1": "would-you-like-tea-or-coffee-convo",
+      "audio_file2": "i-prefer-coffee-thank-you-convo"
+    },
+    {
+      "template": "ConvoTemplate-1",
+      "questionData": {
+        "character1": "Beth",
+        "character2": "Alex",
+        "line1": "How did you finish so quickly?",
+        "line2": "I don't know, I _____ managed it.",
+        "answer": "somehow",
+        "distractors": ["barely", "hardly", "rarely"]
+      },
+      "audio_file1": "how-did-you-finish-so-quickly-convo",
+      "audio_file2": "i-dont-know-i-somehow-managed-it-convo"
+    },
+    {
+      "template": "DialogueCompletion",
+      "questionData": {
+        "character1": "Sarah",
+        "character2": "Daniel",
+        "line1": "How long will the meeting take?",
+        "answer": "It should naturally last about one hour.",
+        "distractors": [
+          "It already finished an hour ago.",
+          "It was cancelled this morning.",
+          "It starts again tomorrow."
+        ]
+      },
+      "audio_file1": "how-long-will-the-meeting-take-convo",
+      "audio_file2": "it-should-naturally-last-about-one-hour-convo"
+    },
+    {
+      "template": "SentenceBuilder",
+      "questionData": {
+        "correct_order": "She wore proper shoes today."
+      },
+      "audio_file": "she-wore-proper-shoes-today-convo"
+    },
+    {
+      "template": "WordPairs",
+      "questionData": {
+        "english_words": ["generally", "mostly", "impossible", "independent"],
+        "translations": [
+          {"tr": "generally", "es": "generally", "fr": "generally", "de": "generally", "it": "generally", "pt": "generally", "ru": "generally", "zh": "generally", "ja": "generally", "ko": "generally", "ar": "generally", "hi": "generally"},
+          {"tr": "mostly", "es": "mostly", "fr": "mostly", "de": "mostly", "it": "mostly", "pt": "mostly", "ru": "mostly", "zh": "mostly", "ja": "mostly", "ko": "mostly", "ar": "mostly", "hi": "mostly"},
+          {"tr": "impossible", "es": "impossible", "fr": "impossible", "de": "impossible", "it": "impossible", "pt": "impossible", "ru": "impossible", "zh": "impossible", "ja": "impossible", "ko": "impossible", "ar": "impossible", "hi": "impossible"},
+          {"tr": "independent", "es": "independent", "fr": "independent", "de": "independent", "it": "independent", "pt": "independent", "ru": "independent", "zh": "independent", "ja": "independent", "ko": "independent", "ar": "independent", "hi": "independent"}
+        ]
+      }
+    }
+  ]
+}

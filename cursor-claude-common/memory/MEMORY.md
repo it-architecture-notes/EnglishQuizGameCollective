@@ -4,12 +4,12 @@
 Flutter mobile language learning quiz app (portrait-only, Android/iOS). Unified quiz screen handles all question types (image, vocab, grammar).
 
 ## Current State
-- **Active issue:** Issue-27 — Level translations page (end-of-level word table + "Words" button on levels map). Plan consolidated at `cursor-claude-common/plans/consolidated-issue-27-level-translations-plans.md`; per-level `translations.json` (`translations_list` of `{english_word, translations:{locale:...}}`) drives a scrollable English|local table shown before final results screen (skipped if `userLanguage=='en'`, list empty, or reminder run), plus a "Words" button on levels map for completed levels (stars>=1) opening the same table in a fade dialog with OK.
-- **Current branch:** feature/issue-27-level-translations-page
-- **Last completed:** Issue-26 (audio play rules refactor — answer audio gating, AudioPlayButton visibility, TranslationRevealButton disabled-during-audio, post-answer sequencing)
-- **Issue-27 status:** Plan written, not yet implemented (no translations screen file exists yet as of last check)
-- **Story overlays simplified on this branch (not part of Issue-27):** Single text source `story_text` locale map only; only `page_template_id` 1 (`StoryTemplateA`/`character_dialog_scene`) and 4 (`StoryTemplateC`/`scene_story_text`) remain valid — template B and animation-only removed. Story completion is per sub-level (>=1 star), no `covered_levels_number`.
-- **Other branch fixes (not part of Issue-27):** ClozeSequence multi-blank wrong-answer highlight shows all remaining expected tiles; DialogueCompletion answer buttons now also locked during line1 audio.
+- **Current branch:** feature/issue-27-level-translations-page (still active, several commits past the original Issue-27 commit)
+- **Issue-27 status:** Implemented (commit e07ac8d "Issue-27: level translations page, story config simplification, quiz fixes"). Files: `app/lib/models/level_translations.dart`, `app/lib/widgets/level_translations_view.dart`. Per-level `translations.json` drives the end-of-level word table + "Words" button on levels map, per original plan.
+- **Post-Issue-27 commits on this branch:** e07ac8d (Issue-27 + story config simplification + quiz fixes) → b6bdd88 (Issue-26 audio gating) → d8db5eb (Issue-25 translation restructure) → 1f3aa7c (question translation and py changes) → 41d1881 (question alignments-1) → fc583c4/60a4264 (json file changes) → e5015a9 (py/txt/md/csv changes) → 56a7fa8 (json/csv/txt/md changes 24-Jun) → 380ace8 (png changes 24-Jun, HEAD). Later commits are mostly level content/data edits (questions.json, translations.json per activity) and tooling (`tools/generate_single_level_questions_table.py`, `tools/update_final_word_counts_from_levels.py`), not new feature work.
+- **As of last check:** working tree has uncommitted changes — many level `questions.json`/`translations.json` edits, deletions of some level images/audio (e.g. `at-garage-gas station/*`, several `*-convo.m4a` files), and `app/assets/data/flow/game-flow.json` modified. Likely mid-edit content/asset cleanup, not yet committed.
+- **Story overlays simplified on this branch (bundled in e07ac8d):** Single text source `story_text` locale map only; only `page_template_id` 1 (`StoryTemplateA`/`character_dialog_scene`) and 4 (`StoryTemplateC`/`scene_story_text`) remain valid — template B and animation-only removed. Story completion is per sub-level (>=1 star), no `covered_levels_number`.
+- **Other fixes bundled in e07ac8d:** ClozeSequence multi-blank wrong-answer highlight shows all remaining expected tiles; DialogueCompletion answer buttons now also locked during line1 audio.
 
 ## Tech Stack
 - Flutter (Dart), Riverpod, portrait-only
@@ -60,6 +60,13 @@ Flutter mobile language learning quiz app (portrait-only, Android/iOS). Unified 
 5  → Vocabulary Quiz page
 4  → Image Quiz page
 1  → Project baseline
+
+## Audit Workflow
+- Prior consumed words file: `cursor-claude-common/output/prior-words-by-type.md` — read this instead of running the gather script. Check the header to confirm it matches the target level; regenerate with the script only if auditing a different level.
+- [Grammar-progression idiom exceptions](feedback_grammar_progression_idioms.md) — user accepts short fixed idiomatic phrases (greetings/farewells/courtesy chunks) at ML1 even if they use later-ML grammar (e.g. imperative); still flag but treat as low-priority.
+- [Stem words OK in translations](feedback_stem_words_ok_in_translations.md) — ClozeSequence and ConvoTemplate-1 sentence-stem words now qualify for translations.json, not just blank answers; only distractors stay excluded. Saved into SKILL.md directly. Supersedes the older ConvoTemplate-1-only fix.
+- [Grammar progression restructured into 4 Parts](feedback_grammar_progression_4parts.md) — audit-quiz-level's 12-ML grammar table replaced with 4 aggregated macro-bands (ML1-3/4-5/6-8/9-12); saved directly into SKILL.md and reference.md.
+- [Scan all 8 reference CSVs](feedback_full_reference_file_scan.md) — vocabulary suggestions must check auxiliaries/common-verbs/conjunctions/prepositions/nouns too, not just verbs/adjectives/adverbs.
 
 ## Key Files
 - `app/lib/screens/image_quiz_screen.dart` — unified quiz screen (image + convo modes, timer, monster, animal, animations)

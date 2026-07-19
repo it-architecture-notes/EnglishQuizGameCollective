@@ -1,0 +1,124 @@
+{
+  "levelQuestions": [
+    {
+      "template": "ClozeSequence",
+      "questionData": {
+        "sentence": "Let me _____ you to my colleague; this project will _____ working closely together, similarly to our last one.",
+        "answer": ["introduce", "involve"],
+        "distractors": ["present", "require"]
+      },
+      "audio_file": "let-me-introduce-you-to-my-colleague-this-project-will-involve-working-closely-together-similarly-to-our-last-one-convo"
+    },
+    {
+      "template": "ClozeSequence",
+      "questionData": {
+        "sentence": "She has _____ great success since she _____ a new strategy.",
+        "answer": ["achieved", "adopted"],
+        "distractors": ["gained", "tried"]
+      },
+      "audio_file": "she-has-achieved-great-success-since-she-adopted-a-new-strategy-convo"
+    },
+    {
+      "template": "ClozeSequence",
+      "questionData": {
+        "sentence": "This is a _____ opportunity, not part of our _____ offer.",
+        "answer": ["rare", "standard"],
+        "distractors": ["common", "special"]
+      },
+      "audio_file": "this-is-a-rare-opportunity-not-part-of-our-standard-offer-convo"
+    },
+    {
+      "template": "GrammarForm",
+      "questionData": {
+        "sentence": "I _____ this computer three times this month.",
+        "answer": "have fixed",
+        "distractors": ["fix", "fixed", "am fixing"]
+      }
+    },
+    {
+      "template": "AppearDisappear",
+      "questionData": {
+        "words": "He married his childhood friend.",
+        "distractors": ["met", "dated", "left"]
+      },
+      "audio_file": "he-married-his-childhood-friend-convo"
+    },
+    {
+      "template": "AppearDisappear",
+      "questionData": {
+        "words": "The player kicked the ball hard.",
+        "distractors": ["threw", "caught", "hit"]
+      },
+      "audio_file": "the-player-kicked-the-ball-hard-convo"
+    },
+    {
+      "template": "AppearDisappear",
+      "questionData": {
+        "words": "This dress fits her perfectly.",
+        "distractors": ["barely", "oddly", "poorly"]
+      },
+      "audio_file": "this-dress-fits-her-perfectly-convo"
+    },
+    {
+      "template": "ConvoTemplate-1",
+      "questionData": {
+        "character1": "Mia",
+        "character2": "Noah",
+        "line1": "Did the rabbit disappear during the trick?",
+        "line2": "Yes, it _____ suddenly.",
+        "answer": "disappeared",
+        "distractors": ["vanished", "appeared", "returned"]
+      },
+      "audio_file1": "did-the-rabbit-disappear-during-the-trick-convo",
+      "audio_file2": "yes-it-disappeared-suddenly-convo"
+    },
+    {
+      "template": "ConvoTemplate-1",
+      "questionData": {
+        "character1": "Emma",
+        "character2": "Chris",
+        "line1": "Did you lock the door before leaving?",
+        "line2": "Yes, I _____ it twice, just to be safe.",
+        "answer": "locked",
+        "distractors": ["closed", "checked", "opened"]
+      },
+      "audio_file1": "did-you-lock-the-door-before-leaving-convo",
+      "audio_file2": "yes-i-locked-it-twice-just-to-be-safe-convo"
+    },
+    {
+      "template": "DialogueCompletion",
+      "questionData": {
+        "character1": "Omar",
+        "character2": "Lily",
+        "line1": "Do you always carry an umbrella?",
+        "answer": "Not usually, but today looked rainy, so I brought it; otherwise I don't bother.",
+        "distractors": [
+          "No, I never carry one at all.",
+          "Yes, I always forget it anyway.",
+          "No, I borrowed my friend's umbrella."
+        ]
+      },
+      "audio_file1": "do-you-always-carry-an-umbrella-convo",
+      "audio_file2": "not-usually-but-today-looked-rainy-so-i-brought-it-otherwise-i-dont-bother-convo"
+    },
+    {
+      "template": "SentenceBuilder",
+      "questionData": {
+        "correct_order": "She is apparently very talented."
+      },
+      "audio_file": "she-is-apparently-very-talented-convo"
+    },
+    {
+      "template": "WordPairs",
+      "questionData": {
+        "english_words": ["directly", "indeed", "particularly", "recently"],
+        "translations": [
+          {"tr": "directly", "es": "directly", "fr": "directly", "de": "directly", "it": "directly", "pt": "directly", "ru": "directly", "zh": "directly", "ja": "directly", "ko": "directly", "ar": "directly", "hi": "directly"},
+          {"tr": "indeed", "es": "indeed", "fr": "indeed", "de": "indeed", "it": "indeed", "pt": "indeed", "ru": "indeed", "zh": "indeed", "ja": "indeed", "ko": "indeed", "ar": "indeed", "hi": "indeed"},
+          {"tr": "particularly", "es": "particularly", "fr": "particularly", "de": "particularly", "it": "particularly", "pt": "particularly", "ru": "particularly", "zh": "particularly", "ja": "particularly", "ko": "particularly", "ar": "particularly", "hi": "particularly"},
+          {"tr": "recently", "es": "recently", "fr": "recently", "de": "recently", "it": "recently", "pt": "recently", "ru": "recently", "zh": "recently", "ja": "recently", "ko": "recently", "ar": "recently", "hi": "recently"}
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,129 @@
+Optimized 19-group vocabulary (unused words only)
+========================================================================
+
+Aligned to distr-references dist-1..dist-4 with weights:
+  dist-4.txt ×4  |  dist-3.txt ×2  |  dist-2.txt ×2  |  dist-1.txt ×1
+
+Structure per group: 9 verbs + 4 adj/adv (WordPairs) + 6 other (adj/adv/noun/prep)
+
+Group 1 (19 words) — dist-4 weighted
+
+Verbs (9): to begin, to give, to think, to tell, to keep, to become, to want, to let, to mean
+Adj/Adv (4): little, new, other, young
+Other (6): to, against, through, during, without, across
+
+Group 2 (19 words) — dist-4 weighted
+
+Verbs (9): to believe, to remember, to come back, to end, to go back, to happen, to seem, to hear, to imagine
+Adj/Adv (4): sure, only, real, true
+Other (6): among, beyond, despite, toward, upon, including
+
+Group 3 (19 words) — dist-4 weighted
+
+Verbs (9): to create, to join, to sound, to visit, to add, to forget, to guess, to hope, to put down
+Adj/Adv (4): poor, smart, fine, main
+Other (6): per, along, monthly, lucky, tasty, within
+
+Group 4 (19 words) — dist-4 weighted
+
+Verbs (9): to come out, to get out, to go down, to go up, to sit down, to agree, to die, to shut down, to win
+Adj/Adv (4): tall, kind, quick, rich
+Other (6): weekly, yearly, ancient, jealous, male, worthless
+
+Group 5 (19 words) — dist-4 weighted
+
+Verbs (9): to log out, to sign out, to sign up, to log in, to consider, to allow, to back, to design, to expect
+Adj/Adv (4): funny, worried, afraid, friendly
+Other (6): due, regarding, throughout, via, assistant, classical
+
+Group 6 (19 words) — dist-4 weighted
+
+Verbs (9): to avoid, to develop, to reach, to realize, to recognize, to report, to appear, to cause, to provide
+Adj/Adv (4): unhealthy, useful, wonderful, false
+Other (6): plus, towards, worth, instead, rather, extremely
+
+Group 7 (19 words) — dist-4 weighted
+
+Verbs (9): to exist, to deal, to focus, to increase, to lead, to matter, to mind, to protect, to refuse
+Adj/Adv (4): certain, all, just, active
+Other (6): basically, currently, definitely, aware, current, obvious
+
+Group 8 (19 words) — dist-4 weighted
+
+Verbs (9): to count, to draw, to drop, to fight, to contain, to control, to manage, to perform, to promise
+Adj/Adv (4): huge, likely, whole, connected
+Other (6): highly, seriously, totally, truly, powerful, previous
+
+Group 9 (19 words) — dist-4 weighted
+
+Verbs (9): to accept, to beat, to destroy, to disagree, to publish, to record, to solve, to vote, to worry
+Adj/Adv (4): absolutely, clearly, completely, obviously
+Other (6): entirely, fairly, fully, possibly, familiar, honest
+
+Group 10 (19 words) — dist-4 weighted
+
+Verbs (9): to kill, to last, to hide, to point, to escape, to own, to place, to predict, to prefer
+Adj/Adv (4): generally, mostly, impossible, independent
+Other (6): closely, naturally, somehow, strongly, primary, proper
+
+Group 11 (19 words) — dist-4 weighted
+
+Verbs (9): to introduce, to involve, to kick, to marry, to achieve, to adopt, to disappear, to fix, to lock
+Adj/Adv (4): directly, indeed, particularly, recently
+Other (6): apparently, otherwise, perfectly, similarly, rare, standard
+
+Group 12 (19 words) — dist-4 weighted
+
+Verbs (9): to pronounce, to attack, to depend, to organize, to refer, to reply, to rise, to shock, to shut
+Adj/Adv (4): regular, creative, specific, attractive
+Other (6): constantly, deeply, relatively, equal, essential, responsible
+
+Group 13 (19 words) — dist-4 weighted
+
+Verbs (9): to fire, to freeze, to frighten, to give up, to behave, to collect, to confuse, to earn, to hang
+Adj/Adv (4): daily, successful, fair, brilliant
+Other (6): automatically, personally, specifically, historical, involved, scientific
+
+Group 14 (19 words) — dist-4 weighted
+
+Verbs (9): to sink, to slide, to spill, to steal, to head, to link, to peel, to mark, to polish
+Adj/Adv (4): crazy, excellent, strange, traditional
+Other (6): potentially, roughly, ultimately, widely, glad, illegal
+
+Group 15 (19 words) — dist-4 weighted
+
+Verbs (9): to steer, to stir, to suppose, to tie, to train, to unlock, to come along, to water, to wrap
+Adj/Adv (4): eventually, forward, valuable, middle
+Other (6): effectively, primarily, slightly, virtually, academic, tiny
+
+Group 16 (19 words) — dist-4 weighted
+
+Verbs (9): to take away, to tap, to cough, to disconnect, to dust, to fetch, to find out, to fold, to iron
+Adj/Adv (4): anywhere, apart, everywhere, nearby
+Other (6): briefly, forever, largely, necessarily, purely, straight
+
+Group 17 (19 words) — dist-4 weighted
+
+Verbs (9): to unpack, to text, to bore, to bring back, to excite, to fade, to grate, to grill, to knock
+Adj/Adv (4): anyway, worse, worst, secret
+Other (6): accurately, unlike, equally, somewhere, successfully, tightly
+
+Group 18 (19 words) — dist-4 weighted
+
+Verbs (9): to claim, to yell, to zoom, to roast, to sneeze, to experience, to express, to face, to require
+Adj/Adv (4): necessary, almost, already, also
+Other (6): alongside, amid, beneath, besides, concerning, prior
+
+Group 19 (19 words) — dist-4 weighted
+
+Verbs (9): to determine, to define, to force, to identify, to ignore, to prove, to represent, to result, to state
+Adj/Adv (4): awful, confusing, actual, carefully
+Other (6): till, appropriate, limited, unique, connection, content
+
+========================================================================
+Alignment summary (word overlap with each reference file)
+
+  dist-4.txt (weight ×4): 343/361 target slots matched (95%)
+  dist-3.txt (weight ×2): 53/361 target slots matched (15%)
+  dist-2.txt (weight ×2): 60/361 target slots matched (17%)
+  dist-1.txt (weight ×1): 53/361 target slots matched (15%)

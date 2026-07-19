@@ -49,6 +49,7 @@ Also consult:
 | Level order | `app/assets/data/flow/game-flow.json` |
 | Final word CSVs (6 files) | `cursor-claude-common/references/final words/` |
 | Oxford 3000 (secondary) | `cursor-claude-common/references/remove-word-list-references/3000 words oxford.txt` |
+| LanGeek common nouns (secondary) | `cursor-claude-common/references/remove-word-list-references/langeek-500-most-common-nouns.txt` |
 | Prior-level consumed words | `tools/gather_prior_level_words.py` |
 | Prior words by type (optional) | `cursor-claude-common/output/prior-words-by-type.md` |
 | Distractor / template rules | `cursor-claude-common/skills/audit-quiz-level/SKILL.md` |
@@ -95,17 +96,22 @@ re-added to this level's translations.
      `auxiliaries.csv`, `conjunctions.csv`, `prepositions.csv`
 2. Optionally scan **Oxford 3000** for high-frequency words not in the CSVs
    (e.g. adverbs like `abroad`) — prefer A1/A2 entries.
-3. For each entry, check:
+3. Optionally scan **LanGeek 500 common nouns** for common noun candidates not in
+   the CSVs or Oxford-derived candidate set. For standard themed levels, use
+   noun suggestions carefully: concrete object nouns usually belong in image
+   questions, not `translations.json`, unless the user explicitly asks for noun
+   swaps or the level has no image coverage.
+4. For each entry, check:
    - **Not in prior set** (not consumed by levels 1 … N-1)
    - **Not already in this level's translations/WordPairs**
    - **Not already in this level's introduced vocabulary** (answers, AppearDisappear, SentenceBuilder)
    - Thematically fits the level (use level name + context as the filter)
-4. Prefer **A1** entries, then **A2**. Prefer entries with `count` 0 (never
+5. Prefer **A1** entries, then **A2**. Prefer entries with `count` 0 (never
    used anywhere yet). Verbs first, then adjectives/adverbs.
-5. Also flag words **in level sentences but untracked** (e.g. `mistake` in a
+6. Also flag words **in level sentences but untracked** (e.g. `mistake` in a
    Cloze stem, `lesson` in SentenceBuilder) — strong candidates to **add** or
    swap in without inventing new context.
-6. These are **unused candidates** — words available that could serve this
+7. These are **unused candidates** — words available that could serve this
    level well but are not yet assigned anywhere.
 
 ### 4. Find misplaced later-level words

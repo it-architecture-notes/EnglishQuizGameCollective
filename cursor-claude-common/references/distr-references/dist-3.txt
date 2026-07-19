@@ -1,0 +1,95 @@
+Group 1 (Most Common - Highest Frequency)
+Verbs (9): give, think, tell, mean, keep, let, begin, happen, hear
+Adj/Adv (4): good, new, old, little (Note: "good" not in list - replacing with sure, real, fine, true)
+Adj/Adv (4): sure, real, fine, true
+Other (6): to, through, without, across, against, along
+
+Group 2
+Verbs (9): become, believe, create, design, die, end, forget, guess, hope
+Adj/Adv (4): kind, main, only, other
+Other (6): among, beyond, despite, during, including, per
+
+Group 3
+Verbs (9): imagine, join, remember, seem, sound, tell, visit, want, win
+Adj/Adv (4): poor, quick, rich, smart
+Other (6): upon, within, ability, access, activity, adult
+
+Group 4
+Verbs (9): accept, achieve, adopt, allow, appear, attack, avoid, beat, behave
+Adj/Adv (4): tall, true, unhealthy, useful
+Other (6): advantage, advice, afternoon, age, air, amount
+
+Group 5
+Verbs (9): bore, bring back, cause, collect, come along, confuse, consider, contain, control
+Adj/Adv (4): wonderful, worried, young, active
+Other (6): animal, applause, area, argument, arm, army
+
+Group 6
+Verbs (9): cough, count, deal, depend, destroy, develop, disagree, disappear, disconnect
+Adj/Adv (4): all, ancient, assistant, attractive
+Other (6): art, attack, attention, baby, back, background
+
+Group 7
+Verbs (9): draw, drop, dust, earn, escape, excite, exist, expect, fade
+Adj/Adv (4): awful, brilliant, certain, classical
+Other (6): bag, ball, bank, bar, battery, battle
+
+Group 8
+Verbs (9): fetch, fight, find out, fire, fix, focus, fold, freeze, frighten
+Adj/Adv (4): clear, confusing, connected, crazy
+Other (6): beginning, behavior, belief, benefit, bird, bit
+
+Group 9
+Verbs (9): give up, grate, grill, hang, head, hide, increase, introduce, involve
+Adj/Adv (4): creative, daily, excellent, fair
+Other (6): blindness, blood, body, bone, boss, box
+
+Group 10
+Verbs (9): iron, kick, kill, knock, last, lead, link, lock, manage
+Adj/Adv (4): huge, impossible, independent, jealous
+Other (6): brain, building, bunch, business, button, cake
+
+Group 11
+Verbs (9): mark, marry, matter, mind, organize, own, peel, perform, place
+Adj/Adv (4): just, likely, lucky, male
+Other (6): camera, campaign, cancer, car, career, case
+
+Group 12
+Verbs (9): point, polish, predict, prefer, promise, pronounce, protect, provide, publish
+Adj/Adv (4): mean, middle, necessary, regular
+Other (6): cause, cell, center, century, challenge, chance
+
+Group 13
+Verbs (9): reach, realize, recognize, record, refer, refuse, reply, report, rise
+Adj/Adv (4): secret, specific, strange, successful
+Other (6): channel, charge, cheese, child, chocolate, choice
+
+Group 14
+Verbs (9): roast, shock, shut, sink, slide, sneeze, solve, spill, steal
+Adj/Adv (4): tasty, traditional, valuable, whole
+Other (6): class, client, coffee, college, color, comment
+
+Group 15
+Verbs (9): steer, stir, suppose, take away, tap, text, tie, train, unlock
+Adj/Adv (4): worthless, academic, aware, current
+Other (6): community, company, computer, condition, connection, content
+
+Group 16
+Verbs (9): unpack, vote, water, worry, wrap, yell, zoom, admire, analyze
+Adj/Adv (4): equal, essential, familiar, glad
+Other (6): continent, conversation, country, couple, course, court
+
+Group 17
+Verbs (9): apologize, appreciate, arrest, attach, base, bend, bother, calculate, charge
+Adj/Adv (4): historical, honest, illegal, involved
+Other (6): crime, culture, cup, dad, data, date
+
+Group 18
+Verbs (9): claim, clear, combine, commit, congratulate, cooperate, define, demonstrate, determine
+Adj/Adv (4): obvious, powerful, previous, primary
+Other (6): deal, death, decade, decision, degree, detail
+
+Group 19 (Least Common)
+Verbs (9): direct, disappoint, download, drag, embarrass, encourage, entertain, exchange, expand
+Adj/Adv (4): proper, rare, responsible, scientific
+Other (6): development, device, diet, difference, disease, distance

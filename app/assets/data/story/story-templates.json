@@ -13,6 +13,13 @@
       "requires_text": true,
       "requires_images": false,
       "requires_animation": false
+    },
+    {
+      "template_id": 5,
+      "layout": "multi_image_gallery",
+      "requires_text": true,
+      "requires_images": true,
+      "requires_animation": false
     }
   ]
 }

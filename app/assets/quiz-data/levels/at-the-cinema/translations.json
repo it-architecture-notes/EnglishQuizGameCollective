@@ -35,20 +35,71 @@
       }
     },
     {
-      "english_word": "familiar",
+      "english_word": "movie",
       "translations": {
-        "tr": "tanıdık",
-        "es": "familiar",
-        "fr": "familier",
-        "de": "vertraut",
-        "it": "familiare",
-        "pt": "familiar",
-        "ru": "знакомый",
-        "zh": "熟悉的",
-        "ja": "なじみの",
-        "ko": "친숙한",
-        "ar": "مألوف",
-        "hi": "परिचित"
+        "tr": "film",
+        "es": "película",
+        "fr": "film",
+        "de": "Film",
+        "it": "film",
+        "pt": "filme",
+        "ru": "фильм",
+        "zh": "电影",
+        "ja": "映画",
+        "ko": "영화",
+        "ar": "فيلم",
+        "hi": "फ़िल्म"
+      }
+    },
+    {
+      "english_word": "to start",
+      "translations": {
+        "tr": "başlamak",
+        "es": "empezar",
+        "fr": "commencer",
+        "de": "beginnen",
+        "it": "iniziare",
+        "pt": "começar",
+        "ru": "начать",
+        "zh": "开始",
+        "ja": "始める",
+        "ko": "시작하다",
+        "ar": "يبدأ",
+        "hi": "शुरू करना"
+      }
+    },
+    {
+      "english_word": "audience",
+      "translations": {
+        "tr": "seyirci",
+        "es": "público",
+        "fr": "public",
+        "de": "Publikum",
+        "it": "pubblico",
+        "pt": "público",
+        "ru": "зрители",
+        "zh": "观众",
+        "ja": "観客",
+        "ko": "관객",
+        "ar": "الجمهور",
+        "hi": "दर्शक"
+      }
+    },
+    {
+      "english_word": "subtitles",
+      "translations": {
+        "tr": "altyazı",
+        "es": "subtítulos",
+        "fr": "sous-titres",
+        "de": "Untertitel",
+        "it": "sottotitoli",
+        "pt": "legendas",
+        "ru": "субтитры",
+        "zh": "字幕",
+        "ja": "字幕",
+        "ko": "자막",
+        "ar": "ترجمة نصية",
+        "hi": "उपशीर्षक"
       }
     },
     {
@@ -86,20 +137,20 @@
       }
     },
     {
-      "english_word": "whole",
+      "english_word": "to clap",
       "translations": {
-        "tr": "bütün",
-        "es": "entero",
-        "fr": "entier",
-        "de": "ganz",
-        "it": "intero",
-        "pt": "inteiro",
-        "ru": "целый",
-        "zh": "完整的",
-        "ja": "全体の",
-        "ko": "전체의",
-        "ar": "كامل",
-        "hi": "पूरा"
+        "tr": "alkışlamak",
+        "es": "aplaudir",
+        "fr": "applaudir",
+        "de": "klatschen",
+        "it": "applaudire",
+        "pt": "aplaudir",
+        "ru": "хлопать",
+        "zh": "鼓掌",
+        "ja": "拍手する",
+        "ko": "박수 치다",
+        "ar": "يصفق",
+        "hi": "ताली बजाना"
       }
     },
     {
@@ -154,20 +205,20 @@
       }
     },
     {
-      "english_word": "to mean",
+      "english_word": "to go out",
       "translations": {
-        "tr": "anlamına gelmek",
-        "es": "significar",
-        "fr": "signifier",
-        "de": "bedeuten",
-        "it": "significare",
-        "pt": "significar",
-        "ru": "означать",
-        "zh": "意味着",
-        "ja": "意味する",
-        "ko": "의미하다",
-        "ar": "يعني",
-        "hi": "मतलब होना"
+        "tr": "dışarı çıkmak",
+        "es": "salir",
+        "fr": "sortir",
+        "de": "ausgehen",
+        "it": "uscire",
+        "pt": "sair",
+        "ru": "выходить",
+        "zh": "外出",
+        "ja": "外出する",
+        "ko": "외출하다",
+        "ar": "يخرج",
+        "hi": "बाहर जाना"
       }
     },
     {

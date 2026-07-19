@@ -46,6 +46,21 @@ class SettingsPanelContent extends ConsumerWidget {
                   onChanged: (v) =>
                       ref.read(settingsProvider.notifier).setSoundFxOn(v),
                 ),
+                const SizedBox(height: 8),
+                _SoundFxSwitch(
+                  value: state.showAllLevels,
+                  label: strings['show_all_levels'] ?? 'Show All Levels',
+                  onChanged: (v) =>
+                      ref.read(settingsProvider.notifier).setShowAllLevels(v),
+                ),
+                const SizedBox(height: 8),
+                _SoundFxSwitch(
+                  value: state.testModeOn,
+                  label: strings['test_mode'] ??
+                      'Test Mode (1 question → 2 stars)',
+                  onChanged: (v) =>
+                      ref.read(settingsProvider.notifier).setTestModeOn(v),
+                ),
                 if (kDebugMode) ...[
                   const SizedBox(height: 24),
                   Text(

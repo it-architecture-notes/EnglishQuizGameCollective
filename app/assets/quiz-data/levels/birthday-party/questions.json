@@ -151,7 +151,7 @@
     {
       "template": "AppearDisappear",
       "questionData": {
-        "words": "Everyone enjoys the birthday party together.",
+        "words": "Everyone enjoys the birthday party.",
         "distractors": [
           "leaves",
           "forgets",
@@ -159,7 +159,7 @@
           "walks"
         ]
       },
-      "audio_file": "everyone-enjoys-the-birthday-party-together-convo"
+      "audio_file": "everyone-enjoys-the-birthday-party-convo"
     },
     {
       "template": "ClozeSequence",
@@ -181,9 +181,9 @@
     {
       "template": "SentenceBuilder",
       "questionData": {
-        "correct_order": "My friends are giving me a birthday present."
+        "correct_order": "We decorate the room with banners."
       },
-      "audio_file": "my-friends-are-giving-me-a-birthday-present-convo"
+      "audio_file": "we-decorate-the-room-with-banners-convo"
     },
     {
       "template": "GrammarForm",
@@ -192,8 +192,8 @@
         "answer": "celebrates",
         "distractors": [
           "celebrate",
-          "is celebrating",
-          "was celebrating"
+          "celebrated",
+          "celebrating"
         ]
       }
     },
@@ -213,16 +213,16 @@
       "questionData": {
         "character1": "Chris",
         "character2": "Grace",
-        "line1": "What do you want for your birthday?",
-        "answer": "I want a big birthday cake with lots of candles!",
+        "line1": "When do you unwrap your gifts at the party?",
+        "answer": "After I blow out the candles.",
         "distractors": [
           "I don't like birthday parties.",
-          "My birthday is next month.",
-          "She wants a new bike."
+          "The cake has lots of candles on it.",
+          "We dance together after dinner."
         ]
       },
-      "audio_file1": "what-do-you-want-for-your-birthday-convo",
-      "audio_file2": "i-want-a-big-birthday-cake-with-lots-of-candles-convo"
+      "audio_file1": "when-do-you-unwrap-your-gifts-at-the-party-convo",
+      "audio_file2": "after-i-blow-out-the-candles-convo"
     },
     {
       "template": "ClozeSequence",
@@ -233,10 +233,10 @@
           "dance"
         ],
         "distractors": [
-          "dance",
-          "laugh",
-          "swim",
-          "read"
+          "quickly",
+          "loudly",
+          "carefully",
+          "yesterday"
         ]
       },
       "audio_file": "we-always-sing-happy-birthday-and-dance-together-at-the-party-convo"
@@ -250,7 +250,7 @@
         "answer": "No! It is a complete surprise for her.",
         "distractors": [
           "We need more balloons for the room.",
-          "She left early without saying goodbye.",
+          "She is not at the party yet.",
           "The party is tomorrow evening."
         ]
       },

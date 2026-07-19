@@ -35,88 +35,88 @@
       }
     },
     {
-      "english_word": "tomorrow",
+      "english_word": "customer",
       "translations": {
-        "tr": "yarın",
-        "es": "mañana",
-        "fr": "demain",
-        "de": "morgen",
-        "it": "domani",
-        "pt": "amanhã",
-        "ru": "завтра",
-        "zh": "明天",
-        "ja": "明日",
-        "ko": "내일",
-        "ar": "غدا",
-        "hi": "कल"
+        "tr": "müşteri",
+        "es": "cliente",
+        "fr": "client",
+        "de": "Kunde",
+        "it": "cliente",
+        "pt": "cliente",
+        "ru": "клиент",
+        "zh": "顾客",
+        "ja": "客",
+        "ko": "고객",
+        "ar": "زبون",
+        "hi": "ग्राहक"
       }
     },
     {
-      "english_word": "to seem",
+      "english_word": "to greet",
       "translations": {
-        "tr": "görünmek",
-        "es": "parecer",
-        "fr": "sembler",
-        "de": "scheinen",
-        "it": "sembrare",
-        "pt": "parecer",
-        "ru": "казаться",
-        "zh": "似乎",
-        "ja": "見える",
-        "ko": "보이다",
-        "ar": "يبدو",
-        "hi": "लगना"
+        "tr": "selamlamak",
+        "es": "saludar",
+        "fr": "saluer",
+        "de": "begrüßen",
+        "it": "salutare",
+        "pt": "cumprimentar",
+        "ru": "приветствовать",
+        "zh": "问候",
+        "ja": "挨拶する",
+        "ko": "인사하다",
+        "ar": "يحيي",
+        "hi": "अभिवादन करना"
       }
     },
     {
-      "english_word": "genuine",
+      "english_word": "to smell",
       "translations": {
-        "tr": "gerçek",
-        "es": "genuino",
-        "fr": "authentique",
-        "de": "echt",
-        "it": "originale",
-        "pt": "genuíno",
-        "ru": "подлинный",
-        "zh": "真实的",
-        "ja": "本物の",
-        "ko": "진짜",
-        "ar": "أصلي",
-        "hi": "असली"
+        "tr": "koklamak",
+        "es": "oler",
+        "fr": "sentir",
+        "de": "riechen",
+        "it": "annusare",
+        "pt": "cheirar",
+        "ru": "нюхать",
+        "zh": "闻",
+        "ja": "匂いをかぐ",
+        "ko": "냄새를 맡다",
+        "ar": "يشم",
+        "hi": "सूंघना"
       }
     },
     {
-      "english_word": "to compare",
+      "english_word": "ripe",
       "translations": {
-        "tr": "karşılaştırmak",
-        "es": "comparar",
-        "fr": "comparer",
-        "de": "vergleichen",
-        "it": "confrontare",
-        "pt": "comparar",
-        "ru": "сравнивать",
-        "zh": "比较",
-        "ja": "比較する",
-        "ko": "비교하다",
-        "ar": "يقارن",
-        "hi": "तुलना करना"
+        "tr": "olgun",
+        "es": "maduro",
+        "fr": "mûr",
+        "de": "reif",
+        "it": "maturo",
+        "pt": "maduro",
+        "ru": "спелый",
+        "zh": "成熟的",
+        "ja": "熟した",
+        "ko": "잘 익은",
+        "ar": "ناضج",
+        "hi": "पका हुआ"
       }
     },
     {
-      "english_word": "price",
+      "english_word": "to reduce price",
       "translations": {
-        "tr": "fiyat",
-        "es": "precio",
-        "fr": "prix",
-        "de": "Preis",
-        "it": "prezzo",
-        "pt": "preço",
-        "ru": "цена",
-        "zh": "价格",
-        "ja": "価格",
-        "ko": "가격",
-        "ar": "سعر",
-        "hi": "कीमत"
+        "tr": "fiyatı düşürmek",
+        "es": "reducir el precio",
+        "fr": "réduire le prix",
+        "de": "den Preis senken",
+        "it": "ridurre il prezzo",
+        "pt": "reduzir o preço",
+        "ru": "снижать цену",
+        "zh": "降价",
+        "ja": "値段を下げる",
+        "ko": "가격을 줄이다",
+        "ar": "يخفض السعر",
+        "hi": "कीमत कम करना"
       }
     },
     {
@@ -137,54 +137,88 @@
       }
     },
     {
-      "english_word": "polite",
+      "english_word": "crowded",
       "translations": {
-        "tr": "kibar",
-        "es": "educado",
-        "fr": "poli",
-        "de": "höflich",
-        "it": "gentile",
-        "pt": "gentil",
-        "ru": "вежливый",
-        "zh": "礼貌的",
-        "ja": "礼儀正しい",
-        "ko": "예의 바른",
-        "ar": "مهذب",
-        "hi": "विनम्र"
+        "tr": "kalabalık",
+        "es": "abarrotado",
+        "fr": "bondé",
+        "de": "überfüllt",
+        "it": "affollato",
+        "pt": "lotado",
+        "ru": "переполненный",
+        "zh": "拥挤的",
+        "ja": "混雑した",
+        "ko": "붐비는",
+        "ar": "مزدحم",
+        "hi": "भीड़भाड़ वाला"
+      }
+    },
+    {
+      "english_word": "local",
+      "translations": {
+        "tr": "yerel",
+        "es": "local",
+        "fr": "local",
+        "de": "lokal",
+        "it": "locale",
+        "pt": "local",
+        "ru": "местный",
+        "zh": "当地的",
+        "ja": "地元の",
+        "ko": "지역의",
+        "ar": "محلي",
+        "hi": "स्थानीय"
       }
     },
     {
       "english_word": "sample",
       "translations": {
-        "tr": "örnek",
+        "tr": "tadımlık",
         "es": "muestra",
         "fr": "échantillon",
-        "de": "Probe",
-        "it": "campione",
+        "de": "Kostprobe",
+        "it": "assaggio",
         "pt": "amostra",
-        "ru": "образец",
-        "zh": "样本",
-        "ja": "サンプル",
-        "ko": "샘플",
-        "ar": "عينة",
-        "hi": "नमूना"
+        "ru": "пробник",
+        "zh": "试吃样品",
+        "ja": "試食サンプル",
+        "ko": "시식 샘플",
+        "ar": "عينة للتذوق",
+        "hi": "चखने का नमूना"
       }
     },
     {
-      "english_word": "only",
+      "english_word": "to unload",
       "translations": {
-        "tr": "sadece",
-        "es": "solo",
-        "fr": "seulement",
-        "de": "nur",
-        "it": "solo",
-        "pt": "apenas",
-        "ru": "только",
-        "zh": "仅",
-        "ja": "だけ",
-        "ko": "만",
-        "ar": "فقط",
-        "hi": "केवल"
+        "tr": "boşaltmak",
+        "es": "descargar",
+        "fr": "décharger",
+        "de": "entladen",
+        "it": "scaricare",
+        "pt": "descarregar",
+        "ru": "разгружать",
+        "zh": "卸货",
+        "ja": "降ろす",
+        "ko": "내리다",
+        "ar": "يفرغ",
+        "hi": "उतारना"
+      }
+    },
+    {
+      "english_word": "to display",
+      "translations": {
+        "tr": "sergilemek",
+        "es": "exhibir",
+        "fr": "exposer",
+        "de": "ausstellen",
+        "it": "esporre",
+        "pt": "exibir",
+        "ru": "выставлять",
+        "zh": "展示",
+        "ja": "並べる",
+        "ko": "진열하다",
+        "ar": "يعرض",
+        "hi": "प्रदर्शित करना"
       }
     }
   ]
