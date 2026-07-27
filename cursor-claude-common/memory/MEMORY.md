@@ -4,11 +4,17 @@
 Flutter mobile language learning quiz app (portrait-only, Android/iOS). Unified quiz screen handles all question types (image, vocab, grammar).
 
 ## Current State
-- **Current branch:** feature/issue-27-level-translations-page (still active, several commits past the original Issue-27 commit)
+- **Current branch:** feature/issue-27-level-translations-page (still active, up to date with origin, many commits past the original Issue-27 commit)
 - **Issue-27 status:** Implemented (commit e07ac8d "Issue-27: level translations page, story config simplification, quiz fixes"). Files: `app/lib/models/level_translations.dart`, `app/lib/widgets/level_translations_view.dart`. Per-level `translations.json` drives the end-of-level word table + "Words" button on levels map, per original plan.
-- **Post-Issue-27 commits on this branch:** e07ac8d (Issue-27 + story config simplification + quiz fixes) → b6bdd88 (Issue-26 audio gating) → d8db5eb (Issue-25 translation restructure) → 1f3aa7c (question translation and py changes) → 41d1881 (question alignments-1) → fc583c4/60a4264 (json file changes) → e5015a9 (py/txt/md/csv changes) → 56a7fa8 (json/csv/txt/md changes 24-Jun) → 380ace8 (png changes 24-Jun, HEAD). Later commits are mostly level content/data edits (questions.json, translations.json per activity) and tooling (`tools/generate_single_level_questions_table.py`, `tools/update_final_word_counts_from_levels.py`), not new feature work.
-- **As of last check:** working tree has uncommitted changes — many level `questions.json`/`translations.json` edits, deletions of some level images/audio (e.g. `at-garage-gas station/*`, several `*-convo.m4a` files), and `app/assets/data/flow/game-flow.json` modified. Likely mid-edit content/asset cleanup, not yet committed.
-- **Story overlays simplified on this branch (bundled in e07ac8d):** Single text source `story_text` locale map only; only `page_template_id` 1 (`StoryTemplateA`/`character_dialog_scene`) and 4 (`StoryTemplateC`/`scene_story_text`) remain valid — template B and animation-only removed. Story completion is per sub-level (>=1 star), no `covered_levels_number`.
+- **Latest commit (HEAD): e4f0344 "Big Commit Milestione 1 - After Questions and Images"** (2026-07-19, 534 files changed). Major changes:
+  - **`game-flow.json` schema change:** non-reminder flow entries renamed `iconImageName` → `directoryName`. Reminder entries are now explicit flow-list items (`"iconImageName": "reminder", "kind": "reminder", "reminderIndex": N`) interleaved after each main level's regular sub-levels, rather than being implicit/derived.
+  - Many `level-icons/*.png` renamed to `at-the-*.png` convention (e.g. `airport-2.png` → `at-the-airport.png`, `hospital.png` → `at-the-hospital.png`), several new icons added (bank, cinema, dentist, farm, farmers-market, garage, hotel, library, office, park, pharmacy, post-office).
+  - New skill `cursor-claude-common/skills/redistribute-level-vocabulary/SKILL.md` — report-only workflow to move vocabulary words to their best-fit level and backfill displaced levels via a recursive replacement chain (default start `waking-up`; stops chain at medley levels or unused-word pool).
+  - New tool `tools/generate_unused_word_groups.py`; `gather_prior_level_words.py`, `generate_single_level_questions_table.py`, `update_final_word_counts_from_levels.py` updated.
+  - `game-main-level-stories.json` and `story-templates.json` expanded (+397/+7 lines) — added a **5th story template**, `multi_image_gallery` (`StoryTemplateD`, `page_template_id` 5): carousel of `scene_images` with parallel `story_texts` caption locale-maps, Previous/Next controls, OK on last slide dismisses overlay. This supersedes the earlier "only templates 1 and 4 are valid" note — **template 5 is now also valid**.
+- **Uncommitted working-tree change:** `app/assets/data/story/game-main-level-stories.json` — all `story_text` locale maps are being stripped down to `"en"` only (removing fr/tr/es/de/it/pt/ru/zh/ja/ko/ar/hi translations from existing story beats). Not yet committed; unclear if finished or intentional final state — verify before assuming translations are gone for good.
+- **In-progress content work (documented but not yet wired into JSON beyond the diff above):** `cursor-claude-common/output/BRIDGE-*.md` + `BRIDGE-VISUAL-FLOW.txt` + `INDEX.md` describe a new ML4 story "The Bridge of Wobbling Wood" (characters Ben & Mia, 7 story images `bridge-1.png`…`bridge-7.png` across ML4 sub-levels, watercolor storybook art style). Per `BRIDGE-QUICK-REFERENCE.md`: "JSON configuration already complete", next step is illustration creation + placing images in `app/assets/images/story/`. These `cursor-claude-common/output/*` files are untracked (`git status`).
+- **Story overlays simplified on branch (bundled in e07ac8d, still true for templates 1/4):** Single text source `story_text` locale map; `page_template_id` 1 (`StoryTemplateA`/`character_dialog_scene`) and 4 (`StoryTemplateC`/`scene_story_text`) — plus now template 5 (`StoryTemplateD`, see above). Template B and animation-only (3) remain removed. Story completion is per sub-level (>=1 star), no `covered_levels_number`.
 - **Other fixes bundled in e07ac8d:** ClozeSequence multi-blank wrong-answer highlight shows all remaining expected tiles; DialogueCompletion answer buttons now also locked during line1 audio.
 
 ## Tech Stack
@@ -18,10 +24,13 @@ Flutter mobile language learning quiz app (portrait-only, Android/iOS). Unified 
 - `app/` is the Flutter project root
 
 ## Key Context Files
-- `cursor-claude-common/context/active-progress-context.md` — current issue
+- `cursor-claude-common/context/active-progress-context.md` — current issue (currently: Issue-27 translations page spec, story overlay config spec, and misc branch fixes — no cleared/new active issue since e07ac8d)
 - `cursor-claude-common/context/progress-context-archive.md` — completed issues summary
 - `cursor-claude-common/context/architecture-technical-context.md` — tech/asset layout
+- `cursor-claude-common/context/story-templates-and-design.md` — story template registry (now 5 templates, see Current State)
+- `cursor-claude-common/context/page-designs-and-templates.md` — per-quiz-template UX/JSON schema reference
 - `cursor-claude-common/rules/rules.md` — project rules
+- `app/codebase_signatures.md` — consult before reading full Dart files, to save tokens (per CLAUDE.md instruction)
 
 ## Rules (Key)
 - One issue at a time; plan first, wait for approval before implementing

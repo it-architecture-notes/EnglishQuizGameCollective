@@ -24,7 +24,8 @@
           "leave",
           "drive",
           "ride"
-        ]
+        ],
+        "imageName": "plane-take-off"
       },
       "audio_file": "he-was-nervous-as-the-plane-began-to-take-off-on-his-first-time-to-fly-convo"
     },
@@ -40,7 +41,8 @@
           "flies",
           "shows",
           "comes"
-        ]
+        ],
+        "imageName": "plane-departs-lands"
       },
       "audio_file": "the-plane-departs-from-gate-c4-and-lands-in-london-in-2-hours-convo"
     },
@@ -57,7 +59,8 @@
           "say",
           "early",
           "cancel"
-        ]
+        ],
+        "imageName": "flight-announce-late"
       },
       "audio_file": "the-airline-had-to-announce-that-the-flight-would-be-late-convo"
     },
@@ -84,7 +87,8 @@
           "carry",
           "move",
           "send"
-        ]
+        ],
+        "image_file_name": "transfer-bags"
       },
       "audio_file1": "do-i-need-to-transfer-my-bags-myself-convo",
       "audio_file2": "no-they-ll-be-transferred-automatically-convo"
@@ -100,7 +104,8 @@
           "Then we will wait at the gate for one hour.",
           "Then every passenger must find a new hotel.",
           "Then the airline will cancel the next flight too."
-        ]
+        ],
+        "image_file_name": "cancel-flight-rebook"
       },
       "audio_file1": "what-if-they-cancel-the-flight-convo",
       "audio_file2": "then-the-airline-will-rebook-every-passenger-on-the-next-flight-convo"
@@ -196,7 +201,8 @@
           "The cafe is next to gate B4.",
           "I do not have your passport.",
           "Security opens at six o'clock."
-        ]
+        ],
+        "image_file_name": "flight-on-time-hurry"
       },
       "audio_file1": "is-the-flight-on-time-convo",
       "audio_file2": "yes-it-leaves-now-hurry-up-convo"
@@ -210,7 +216,8 @@
           "short",
           "arriving",
           "cancel"
-        ]
+        ],
+        "imageName": "connecting-flight-layover"
       },
       "audio_file": "my-connecting-flight-has-a-two-hour-layover-convo"
     },
@@ -239,7 +246,8 @@
     {
       "template": "SentenceBuilder",
       "questionData": {
-        "correct_order": "My flight was delayed."
+        "correct_order": "My flight was delayed.",
+        "imageName": "flight-delayed"
       },
       "audio_file": "my-flight-was-delayed-convo"
     },

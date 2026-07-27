@@ -624,7 +624,7 @@ class _LevelsScreenState extends ConsumerState<LevelsScreen> {
             borderRadius: BorderRadius.circular(12),
           ),
           child: Text(
-            meta.title,
+            isStoryUnlocked ? meta.title : 'Future Story',
             style: Theme.of(context).textTheme.titleMedium?.copyWith(
                   fontWeight: FontWeight.w600,
                 ),
@@ -643,12 +643,15 @@ class _LevelsScreenState extends ConsumerState<LevelsScreen> {
     );
   }
 
-  /// Small circular story affordance on a banner; locked shows “?” until the first regular level opens.
+  /// Circular story affordance on a banner (~70% of level-icon size); locked shows “?” until the first regular level opens.
   Widget _buildStoryIcon(
     BuildContext context, {
     required bool isUnlocked,
     required String? iconPath,
   }) {
+    final levelIconSize = MediaQuery.sizeOf(context).width / 5;
+    final size = levelIconSize * 0.7;
+    final fallbackIconSize = size * 0.5;
     final bg = isUnlocked
         ? Theme.of(context).colorScheme.tertiaryContainer
         : Colors.grey.shade400;
@@ -656,8 +659,8 @@ class _LevelsScreenState extends ConsumerState<LevelsScreen> {
         ? Theme.of(context).colorScheme.tertiary
         : Colors.grey.shade600;
     return Container(
-      width: 38,
-      height: 38,
+      width: size,
+      height: size,
       decoration: BoxDecoration(
         shape: BoxShape.circle,
         color: bg,
@@ -670,15 +673,16 @@ class _LevelsScreenState extends ConsumerState<LevelsScreen> {
                       iconPath,
                       fit: BoxFit.cover,
                       errorBuilder: (_, __, ___) =>
-                          const Icon(Icons.menu_book_rounded, size: 20),
+                          Icon(Icons.menu_book_rounded, size: fallbackIconSize),
                     )
-                  : const Icon(Icons.menu_book_rounded, size: 20),
+                  : Icon(Icons.menu_book_rounded, size: fallbackIconSize),
             )
-          : const Center(
+          : Center(
               child: Text(
                 '?',
                 style: TextStyle(
                   fontWeight: FontWeight.w700,
+                  fontSize: size * 0.45,
                   color: Colors.white,
                 ),
               ),

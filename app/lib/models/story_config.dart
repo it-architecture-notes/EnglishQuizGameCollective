@@ -79,6 +79,18 @@ class StoryPageConfig {
     return localizedStoryText(languageCode);
   }
 
+  /// English caption for slide [index] in a multi-image gallery, so the
+  /// gallery can show English alongside the localised translation like the
+  /// single-caption templates do. Prefers [storyTexts][index]; falls back to
+  /// [storyText] when missing.
+  String englishStoryTextAt(int index) {
+    if (index >= 0 && index < storyTexts.length) {
+      final v = storyTexts[index]['en'] ?? '';
+      if (v.isNotEmpty) return v;
+    }
+    return storyText['en'] ?? '';
+  }
+
   static StoryPageConfig fromJson(Map<String, dynamic> json) {
     final storyTextRaw =
         json['story_text'] as Map<String, dynamic>? ?? const {};

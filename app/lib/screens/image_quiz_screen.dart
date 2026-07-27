@@ -210,7 +210,7 @@ class _ImageQuizScreenState extends ConsumerState<ImageQuizScreen>
       []; // asset path per question (null for vocab)
   List<List<String>> _questionQuiz2Paths =
       []; // 4 paths per template-2 question (empty otherwise)
-  /// Parallel to [_allQuestions]: optional 72×72 convo thumbnail per question (e.g. ClozeSequence `imageName`).
+  /// Parallel to [_allQuestions]: optional hero image path per convo/interactive question.
   List<String?> _questionConvoThumbPaths = [];
   final Map<String, bool> _audioExistsCache = {};
 
@@ -477,24 +477,9 @@ class _ImageQuizScreenState extends ConsumerState<ImageQuizScreen>
             }
           } else {
             String? thumb;
-            if (q.template == 'ConvoTemplate-1' &&
-                q.convoData?.imageName != null) {
-              thumb = await resolveQuizImageAsset(
-                key,
-                q.convoData!.imageName!,
-              );
-            } else if (q.template == 'ClozeSequence' &&
-                q.clozeSequenceData?.imageName != null) {
-              thumb = await resolveQuizImageAsset(
-                key,
-                q.clozeSequenceData!.imageName!,
-              );
-            } else if (q.template == 'DialogueCompletion' &&
-                q.dialogueCompletionData?.imageName != null) {
-              thumb = await resolveQuizImageAsset(
-                key,
-                q.dialogueCompletionData!.imageName!,
-              );
+            final thumbStem = _optionalConvoThumbStem(q);
+            if (thumbStem != null) {
+              thumb = await resolveQuizImageAsset(key, thumbStem);
             }
             questions.add(q);
             imgPaths.add(null);
@@ -724,12 +709,15 @@ class _ImageQuizScreenState extends ConsumerState<ImageQuizScreen>
           } else if (!q!.isImageTemplate &&
               (q.convoData != null ||
                   q.appearDisappearData != null ||
-                  q.clozeSequenceData != null)) {
+                  q.clozeSequenceData != null ||
+                  q.sentenceBuilderData != null ||
+                  q.grammarFormData != null ||
+                  q.dialogueCompletionData != null ||
+                  q.wordPairsData != null)) {
             convoByQuestionId[questionId] = q;
-            if (q.template == 'ClozeSequence' &&
-                q.clozeSequenceData?.imageName != null) {
-              final name = q.clozeSequenceData!.imageName!;
-              final p = await resolveQuizImageAsset(levelKey, name);
+            final thumbStem = _optionalConvoThumbStem(q);
+            if (thumbStem != null) {
+              final p = await resolveQuizImageAsset(levelKey, thumbStem);
               if (p != null) convoThumbPathByQuestionId[questionId] = p;
             }
             validQuestionIds.add(questionId);
@@ -2139,12 +2127,15 @@ class _ImageQuizScreenState extends ConsumerState<ImageQuizScreen>
                             _onAnswerTap(i);
                           },
                     child: assetPath != null
-                        ? Image.asset(
-                            assetPath,
-                            fit: BoxFit.cover,
-                            errorBuilder: (_, __, ___) => const Icon(
-                              Icons.image_not_supported,
-                              size: 48,
+                        ? Padding(
+                            padding: const EdgeInsets.all(8),
+                            child: Image.asset(
+                              assetPath,
+                              fit: BoxFit.contain,
+                              errorBuilder: (_, __, ___) => const Icon(
+                                Icons.image_not_supported,
+                                size: 48,
+                              ),
                             ),
                           )
                         : const Icon(Icons.image_not_supported),
@@ -2470,6 +2461,8 @@ class _ImageQuizScreenState extends ConsumerState<ImageQuizScreen>
             ? 0.0
             : (_currentIndex + 1) / _initialQuestionCount);
 
+    final heroImagePath = _resolvedClozeImagePath();
+
     return Column(
       children: [
         Padding(
@@ -2492,7 +2485,28 @@ class _ImageQuizScreenState extends ConsumerState<ImageQuizScreen>
             ],
           ),
         ),
+        if (heroImagePath != null)
+          Expanded(
+            flex: 1,
+            child: Center(
+              child: ConstrainedBox(
+                constraints: BoxConstraints(
+                  maxHeight: MediaQuery.sizeOf(context).height * 0.25,
+                  maxWidth: MediaQuery.sizeOf(context).width * 0.5,
+                ),
+                child: Image.asset(
+                  heroImagePath,
+                  fit: BoxFit.contain,
+                  errorBuilder: (_, __, ___) => Container(
+                    color: Colors.grey.shade300,
+                    child: const Icon(Icons.image_not_supported, size: 64),
+                  ),
+                ),
+              ),
+            ),
+          ),
         Expanded(
+          flex: heroImagePath != null ? 2 : 1,
           child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
             child: q.template == 'ConvoTemplate-1'
@@ -2506,23 +2520,6 @@ class _ImageQuizScreenState extends ConsumerState<ImageQuizScreen>
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.stretch,
                               children: [
-                                if (_resolvedClozeImagePath() != null) ...[
-                                  Center(
-                                    child: ClipRRect(
-                                      borderRadius: BorderRadius.circular(8),
-                                      child: Image.asset(
-                                        _resolvedClozeImagePath()!,
-                                        width: 72,
-                                        height: 72,
-                                        fit: BoxFit.cover,
-                                        errorBuilder: (_, __, ___) =>
-                                            const SizedBox(
-                                                width: 72, height: 72),
-                                      ),
-                                    ),
-                                  ),
-                                  const SizedBox(height: 8),
-                                ],
                                 Expanded(
                                   child: _buildCharactersRow(
                                     q.convoData!,
@@ -2612,7 +2609,6 @@ class _ImageQuizScreenState extends ConsumerState<ImageQuizScreen>
           key: ValueKey('clz-${_currentQuestionId ?? '$_currentIndex'}'),
           data: q.clozeSequenceData!,
           userLanguage: userLanguage,
-          resolvedImagePath: _resolvedClozeImagePath(),
           audioAssetPath: _audioAssetPath(q),
           resolveAudioExists: _resolveAudioExists,
           onPlayQuestionAudio: (path) => audio.playQuestionAudio(path),
@@ -2658,7 +2654,6 @@ class _ImageQuizScreenState extends ConsumerState<ImageQuizScreen>
           userLanguage: userLanguage,
           audio1Path: _audioAssetPathForRaw(q.audioFile1),
           audio2Path: _audioAssetPathForRaw(q.audioFile2),
-          resolvedImagePath: _resolvedClozeImagePath(),
           resolveAudioExists: _resolveAudioExists,
           onPlayQuestionAudio: (path) => audio.playQuestionAudio(path),
           onPlayCorrect: () => audio.playCorrect(soundFxOn: soundFxOn),
@@ -2684,6 +2679,16 @@ class _ImageQuizScreenState extends ConsumerState<ImageQuizScreen>
           : null;
     }
     return null;
+  }
+
+  /// Optional thumbnail basename from any convo/interactive template that supports one.
+  static String? _optionalConvoThumbStem(LevelQuestion q) {
+    return q.convoData?.imageName ??
+        q.clozeSequenceData?.imageName ??
+        q.dialogueCompletionData?.imageName ??
+        q.appearDisappearData?.imageName ??
+        q.sentenceBuilderData?.imageName ??
+        q.grammarFormData?.imageName;
   }
 
   /// Localized “Question X / Y” string for the convo header line.

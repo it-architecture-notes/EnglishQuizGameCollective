@@ -3,10 +3,10 @@
     {
       "template": "imageQuizTemplate-1",
       "questionData": {
-        "imageName": "back",
+        "imageName": "arm",
         "wrongAnswers": [
-          "hair",
-          "hand",
+          "tongue",
+          "ear",
           "brain"
         ]
       }
@@ -16,42 +16,20 @@
       "questionData": {
         "imageName": "brain",
         "wrongAnswers": [
-          "heart",
-          "mouth",
-          "back"
+          "hair",
+          "fingernail",
+          "shoulder"
         ]
       }
     },
     {
       "template": "imageQuizTemplate-2",
       "questionData": {
-        "imageName": "chest",
-        "wrongAnswers": [
-          "knee",
-          "mouth",
-          "neck"
-        ]
-      }
-    },
-    {
-      "template": "imageQuizTemplate-1",
-      "questionData": {
         "imageName": "ear",
         "wrongAnswers": [
-          "nose",
-          "elbow",
-          "back"
-        ]
-      }
-    },
-    {
-      "template": "imageQuizTemplate-1",
-      "questionData": {
-        "imageName": "elbow",
-        "wrongAnswers": [
-          "tongue",
-          "hand",
-          "back"
+          "eyes",
+          "brain",
+          "neck"
         ]
       }
     },
@@ -60,31 +38,20 @@
       "questionData": {
         "imageName": "eyes",
         "wrongAnswers": [
-          "chest",
-          "mouth",
-          "back"
-        ]
-      }
-    },
-    {
-      "template": "imageQuizTemplate-2",
-      "questionData": {
-        "imageName": "finger",
-        "wrongAnswers": [
-          "tongue",
           "brain",
-          "ear"
+          "shoulder",
+          "knee"
         ]
       }
     },
     {
       "template": "imageQuizTemplate-1",
       "questionData": {
-        "imageName": "foot",
+        "imageName": "fingernail",
         "wrongAnswers": [
-          "hand",
-          "ear",
-          "back"
+          "arm",
+          "tongue",
+          "brain"
         ]
       }
     },
@@ -93,20 +60,9 @@
       "questionData": {
         "imageName": "hair",
         "wrongAnswers": [
-          "knee",
-          "hand",
-          "back"
-        ]
-      }
-    },
-    {
-      "template": "imageQuizTemplate-1",
-      "questionData": {
-        "imageName": "hand",
-        "wrongAnswers": [
-          "muscle",
-          "mouth",
-          "back"
+          "eyes",
+          "tongue",
+          "neck"
         ]
       }
     },
@@ -115,20 +71,9 @@
       "questionData": {
         "imageName": "head",
         "wrongAnswers": [
-          "foot",
-          "hand",
-          "knee"
-        ]
-      }
-    },
-    {
-      "template": "imageQuizTemplate-1",
-      "questionData": {
-        "imageName": "heart",
-        "wrongAnswers": [
-          "back",
-          "ear",
-          "brain"
+          "shoulder",
+          "arm",
+          "neck"
         ]
       }
     },
@@ -137,42 +82,20 @@
       "questionData": {
         "imageName": "knee",
         "wrongAnswers": [
-          "ear",
-          "hair",
-          "back"
+          "eyes",
+          "neck",
+          "head"
         ]
       }
     },
     {
       "template": "imageQuizTemplate-1",
-      "questionData": {
-        "imageName": "leg",
-        "wrongAnswers": [
-          "finger",
-          "mouth",
-          "back"
-        ]
-      }
-    },
-    {
-      "template": "imageQuizTemplate-2",
       "questionData": {
         "imageName": "mouth",
         "wrongAnswers": [
-          "neck",
-          "shoulder",
-          "tongue"
-        ]
-      }
-    },
-    {
-      "template": "imageQuizTemplate-1",
-      "questionData": {
-        "imageName": "muscle",
-        "wrongAnswers": [
+          "eyes",
           "knee",
-          "ear",
-          "back"
+          "fingernail"
         ]
       }
     },
@@ -181,20 +104,9 @@
       "questionData": {
         "imageName": "neck",
         "wrongAnswers": [
-          "muscle",
-          "hair",
-          "back"
-        ]
-      }
-    },
-    {
-      "template": "imageQuizTemplate-1",
-      "questionData": {
-        "imageName": "nose",
-        "wrongAnswers": [
-          "stomach",
-          "leg",
-          "back"
+          "arm",
+          "ear",
+          "head"
         ]
       }
     },
@@ -203,20 +115,9 @@
       "questionData": {
         "imageName": "shoulder",
         "wrongAnswers": [
-          "ear",
-          "eyes",
-          "foot"
-        ]
-      }
-    },
-    {
-      "template": "imageQuizTemplate-1",
-      "questionData": {
-        "imageName": "stomach",
-        "wrongAnswers": [
-          "elbow",
-          "ear",
-          "back"
+          "hair",
+          "fingernail",
+          "ear"
         ]
       }
     },
@@ -225,9 +126,9 @@
       "questionData": {
         "imageName": "tongue",
         "wrongAnswers": [
-          "foot",
+          "eyes",
           "hair",
-          "back"
+          "brain"
         ]
       }
     }

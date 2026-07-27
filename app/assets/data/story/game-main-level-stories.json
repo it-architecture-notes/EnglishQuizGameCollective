@@ -2,7 +2,7 @@
   "main_levels": [
     {
       "main_level_id": 1,
-      "story_icon_asset_path": "assets/images/story/mainlevel1-story-icon-puppy.png",
+      "story_icon_asset_path": "assets/images/story/puppy-icon.png",
       "story_sequences": [
         {
           "event_id": 1001,
@@ -73,31 +73,31 @@
           "scene_image": "puppy-story-3.png",
           "trigger": {
             "type": "before_level",
-            "level": "Numbers"
+            "level": "Colors - Image only"
           }
         },
         {
           "event_id": 1004,
           "page_template_id": 4,
           "story_text": {
-            "en": "Maya and her mom are at the vet. The vet is taking care of the puppy. Play the next level to help Maya's mom get the puppy's medicine from the pharmacy.",
-            "fr": "Maya et sa maman sont chez le vétérinaire. Le vétérinaire soigne le chiot. Joue le niveau suivant pour aider la maman de Maya à aller chercher le médicament du chiot à la pharmacie.",
-            "tr": "Maya ve annesi veterinerdeler. Veteriner yavru köpekle ilgileniyor. Maya'nın annesinin yavru köpeğin ilacını eczaneden almasına yardım etmek için bir sonraki seviyeyi oyna.",
-            "es": "Maya y su mamá están en el veterinario. El veterinario está cuidando al cachorro. Juega el siguiente nivel para ayudar a la mamá de Maya a recoger la medicina del cachorro en la farmacia.",
-            "de": "Maya und ihre Mama sind beim Tierarzt. Der Tierarzt kümmert sich um den Welpen. Spiele das nächste Level, um Mayas Mama zu helfen, das Medikament für den Welpen aus der Apotheke zu holen.",
-            "it": "Maya e la sua mamma sono dal veterinario. Il veterinario si sta prendendo cura del cucciolo. Gioca il livello successivo per aiutare la mamma di Maya a prendere la medicina del cucciolo in farmacia.",
-            "pt": "Maya e sua mãe estão no veterinário. O veterinário está cuidando do cachorrinho. Jogue o próximo nível para ajudar a mãe de Maya a buscar o remédio do cachorrinho na farmácia.",
-            "ru": "Майя и её мама у ветеринара. Ветеринар лечит щенка. Пройди следующий уровень, чтобы помочь маме Майи получить лекарство для щенка в аптеке.",
-            "zh": "玛雅和妈妈来到兽医诊所。兽医正在照顾小狗。完成下一关，帮助玛雅的妈妈去药房拿小狗的药。",
-            "ja": "マヤとお母さんは動物病院にいます。獣医さんが子犬を診ています。次のレベルをプレイして、マヤのお母さんが薬局で子犬の薬を受け取るのを手伝いましょう。",
-            "ko": "마야와 엄마는 동물병원에 있어요. 수의사가 강아지를 돌보고 있어요. 다음 레벨을 플레이해서 마야의 엄마가 약국에서 강아지 약을 가져오도록 도와주세요.",
-            "ar": "مايا ووالدتها عند الطبيب البيطري. الطبيب البيطري يعتني بالجرو. العب المستوى التالي لمساعدة والدة مايا في الحصول على دواء الجرو من الصيدلية.",
-            "hi": "माया और उसकी माँ पशु चिकित्सक के पास हैं। डॉक्टर पिल्ले का इलाज कर रहे हैं। माया की माँ को पिल्ले की दवा फार्मेसी से लाने में मदद करने के लिए अगला स्तर खेलें।"
+            "en": "Maya and her mom are at the vet. The vet is taking care of the puppy. Play the next two levels to help Maya's mom get the puppy's medicine from the pharmacy.",
+            "fr": "Maya et sa maman sont chez le vétérinaire. Le vétérinaire soigne le chiot. Joue les deux prochains niveaux pour aider la maman de Maya à aller chercher le médicament du chiot à la pharmacie.",
+            "tr": "Maya ve annesi veterinerdeler. Veteriner yavru köpekle ilgileniyor. Maya'nın annesinin yavru köpeğin ilacını eczaneden almasına yardım etmek için sonraki iki seviyeyi oyna.",
+            "es": "Maya y su mamá están en el veterinario. El veterinario está cuidando al cachorro. Juega los dos siguientes niveles para ayudar a la mamá de Maya a recoger la medicina del cachorro en la farmacia.",
+            "de": "Maya und ihre Mama sind beim Tierarzt. Der Tierarzt kümmert sich um den Welpen. Spiele die nächsten zwei Level, um Mayas Mama zu helfen, das Medikament für den Welpen aus der Apotheke zu holen.",
+            "it": "Maya e la sua mamma sono dal veterinario. Il veterinario si sta prendendo cura del cucciolo. Gioca i prossimi due livelli per aiutare la mamma di Maya a prendere la medicina del cucciolo in farmacia.",
+            "pt": "Maya e sua mãe estão no veterinário. O veterinário está cuidando do cachorrinho. Jogue os próximos dois níveis para ajudar a mãe de Maya a buscar o remédio do cachorrinho na farmácia.",
+            "ru": "Майя и её мама у ветеринара. Ветеринар лечит щенка. Пройди следующие два уровня, чтобы помочь маме Майи получить лекарство для щенка в аптеке.",
+            "zh": "玛雅和妈妈来到兽医诊所。兽医正在照顾小狗。完成接下来的两关，帮助玛雅的妈妈去药房拿小狗的药。",
+            "ja": "マヤとお母さんは動物病院にいます。獣医さんが子犬を診ています。次の2つのレベルをプレイして、マヤのお母さんが薬局で子犬の薬を受け取るのを手伝いましょう。",
+            "ko": "마야와 엄마는 동물병원에 있어요. 수의사가 강아지를 돌보고 있어요. 다음 두 레벨을 플레이해서 마야의 엄마가 약국에서 강아지 약을 가져오도록 도와주세요.",
+            "ar": "مايا ووالدتها عند الطبيب البيطري. الطبيب البيطري يعتني بالجرو. العب المستويين التاليين لمساعدة والدة مايا في الحصول على دواء الجرو من الصيدلية.",
+            "hi": "माया और उसकी माँ पशु चिकित्सक के पास हैं। डॉक्टर पिल्ले का इलाज कर रहे हैं। माया की माँ को पिल्ले की दवा फार्मेसी से लाने में मदद करने के लिए अगले दो स्तर खेलो।"
           },
           "scene_image": "puppy-story-4.png",
           "trigger": {
             "type": "before_level",
-            "level": "Geometric Shapes - Image only"
+            "level": "Numbers"
           }
         },
         {
@@ -152,7 +152,7 @@
     },
     {
       "main_level_id": 2,
-      "story_icon_asset_path": "assets/images/story/mainlevel1-story-icon-puppy.png",
+      "story_icon_asset_path": "assets/images/story/storm-icon.png",
       "story_sequences": [
         {
           "event_id": 1001,
@@ -373,6 +373,1718 @@
               "hi": "चारों ओर देखो! ओक स्ट्रीट टाउन फिर से मुस्कुरा रहा है। आपकी मदद से एमा, नोआ और लुई सभी पड़ोसियों की मदद कर पाए। हमारी टीम का हिस्सा बनने के लिए धन्यवाद!"
             }
           ],
+          "trigger": {
+            "type": "after_level",
+            "level": "Reminder 2"
+          }
+        }
+      ]
+    },
+    {
+      "main_level_id": 3,
+      "story_icon_asset_path": "assets/images/story/beach-1.png",
+      "story_sequences": [
+        {
+          "event_id": 1001,
+          "page_template_id": 4,
+          "story_text": {
+            "en": "Will you join the Beach Heroes? Play the next level to help Nina, Kai, Ruby, and Sam make the beach beautiful again.",
+            "fr": "Veux-tu rejoindre les Héros de la Plage ? Joue le niveau suivant pour aider Nina, Kai, Ruby et Sam à rendre la plage belle à nouveau.",
+            "tr": "Plaj Kahramanları'na katılmak ister misin? Nina, Kai, Ruby ve Sam'in plajı yeniden güzelleştirmesine yardım etmek için bir sonraki seviyeyi oyna.",
+            "es": "¿Quieres unirte a los Héroes de la Playa? Juega el siguiente nivel para ayudar a Nina, Kai, Ruby y Sam a hacer que la playa vuelva a ser hermosa.",
+            "de": "Möchtest du den Strandhelden beitreten? Spiele das nächste Level, um Nina, Kai, Ruby und Sam dabei zu helfen, den Strand wieder schön zu machen.",
+            "it": "Vuoi unirti agli Eroi della Spiaggia? Gioca il livello successivo per aiutare Nina, Kai, Ruby e Sam a rendere di nuovo bella la spiaggia.",
+            "pt": "Você quer se juntar aos Heróis da Praia? Jogue o próximo nível para ajudar Nina, Kai, Ruby e Sam a deixar a praia bonita novamente.",
+            "ru": "Хочешь присоединиться к Пляжным героям? Пройди следующий уровень, чтобы помочь Нине, Каю, Руби и Сэму снова сделать пляж красивым.",
+            "zh": "你愿意加入海滩小英雄吗？完成下一关，帮助妮娜、凯、露比和山姆让海滩重新变得美丽。",
+            "ja": "ビーチヒーローズの仲間になりませんか？次のレベルをプレイして、ニーナ、カイ、ルビー、サムがビーチをきれいにするのを手伝いましょう。",
+            "ko": "비치 히어로즈에 함께할래요? 다음 레벨을 플레이해서 니나, 카이, 루비, 샘이 해변을 다시 아름답게 만드는 것을 도와주세요.",
+            "ar": "هل ترغب في الانضمام إلى أبطال الشاطئ؟ العب المستوى التالي لمساعدة نينا وكاي وروبي وسام في جعل الشاطئ جميلًا من جديد.",
+            "hi": "क्या तुम बीच हीरोज़ में शामिल होना चाहोगे? नीना, काई, रूबी और सैम को समुद्र तट फिर से सुंदर बनाने में मदद करने के लिए अगला स्तर खेलो।"
+          },
+          "scene_image": "beach-1.png",
+          "trigger": {
+            "type": "before_level",
+            "level": "At the School"
+          }
+        },
+        {
+          "event_id": 1002,
+          "page_template_id": 4,
+          "story_text": {
+            "en": "Let's get started! Play the next two levels to help the Beach Heroes gather enough garbage bags to begin the cleanup.",
+            "fr": "C'est parti ! Joue les deux prochains niveaux pour aider les Héros de la Plage à rassembler assez de sacs-poubelle pour commencer le nettoyage.",
+            "tr": "Haydi başlayalım! Plaj Kahramanları'nın temizliğe başlamak için yeterli çöp torbası toplamasına yardım etmek üzere sonraki iki seviyeyi oyna.",
+            "es": "¡Empecemos! Juega los dos siguientes niveles para ayudar a los Héroes de la Playa a reunir suficientes bolsas de basura para comenzar la limpieza.",
+            "de": "Los geht's! Spiele die nächsten zwei Level, um den Strandhelden zu helfen, genügend Müllsäcke für die Aufräumaktion zu sammeln.",
+            "it": "Cominciamo! Gioca i prossimi due livelli per aiutare gli Eroi della Spiaggia a raccogliere abbastanza sacchi della spazzatura per iniziare la pulizia.",
+            "pt": "Vamos começar! Jogue os próximos dois níveis para ajudar os Heróis da Praia a reunir sacos de lixo suficientes para começar a limpeza.",
+            "ru": "Начинаем! Пройди следующие два уровня, чтобы помочь Пляжным героям собрать достаточно мусорных мешков для уборки.",
+            "zh": "开始行动吧！完成接下来的两关，帮助海滩小英雄收集足够的垃圾袋，开始清理海滩。",
+            "ja": "さあ始めよう！次の2つのレベルをプレイして、ビーチヒーローズがごみ袋を集めて清掃を始めるのを手伝いましょう。",
+            "ko": "시작해 볼까요! 다음 두 레벨을 플레이해서 비치 히어로즈가 청소를 시작할 수 있도록 쓰레기봉투를 충분히 모으는 것을 도와주세요.",
+            "ar": "هيا نبدأ! العب المستويين التاليين لمساعدة أبطال الشاطئ في جمع ما يكفي من أكياس القمامة لبدء التنظيف.",
+            "hi": "चलो शुरू करें! बीच हीरोज़ को सफाई शुरू करने के लिए पर्याप्त कूड़े के थैले इकट्ठा करने में मदद करने हेतु अगले दो स्तर खेलो।"
+          },
+          "scene_image": "beach-2.png",
+          "trigger": {
+            "type": "before_level",
+            "level": "School Supplies 1 - Image only"
+          }
+        },
+        {
+          "event_id": 1003,
+          "page_template_id": 4,
+          "story_text": {
+            "en": "Oh no! A tangled fishing net is stuck in the water. Play the next two levels to help the Beach Heroes borrow a safety boat so they can remove it safely.",
+            "fr": "Oh non ! Un filet de pêche emmêlé est coincé dans l'eau. Joue les deux prochains niveaux pour aider les Héros de la Plage à emprunter un bateau de sécurité afin de le retirer sans danger.",
+            "tr": "Eyvah! Suya dolaşmış bir balık ağı takılmış. Plaj Kahramanları'nın güvenli bir tekne ödünç alıp ağı güvenle çıkarmasına yardım etmek için sonraki iki seviyeyi oyna.",
+            "es": "¡Oh, no! Una red de pesca enredada está atrapada en el agua. Juega los dos siguientes niveles para ayudar a los Héroes de la Playa a conseguir un bote de seguridad para retirarla sin peligro.",
+            "de": "Oh nein! Ein verheddertes Fischernetz steckt im Wasser fest. Spiele die nächsten zwei Level, um den Strandhelden zu helfen, ein Sicherheitsboot auszuleihen und das Netz sicher zu entfernen.",
+            "it": "Oh no! Una rete da pesca aggrovigliata è rimasta bloccata nell'acqua. Gioca i prossimi due livelli per aiutare gli Eroi della Spiaggia a prendere una barca di sicurezza e rimuoverla in modo sicuro.",
+            "pt": "Ah, não! Uma rede de pesca emaranhada ficou presa na água. Jogue os próximos dois níveis para ajudar os Heróis da Praia a conseguir um barco de apoio para removê-la com segurança.",
+            "ru": "О нет! Запутавшаяся рыболовная сеть застряла в воде. Пройди следующие два уровня, чтобы помочь Пляжным героям взять спасательную лодку и безопасно убрать сеть.",
+            "zh": "不好了！一张缠住的渔网卡在了水里。完成接下来的两关，帮助海滩小英雄借来一艘安全船，把渔网安全移走。",
+            "ja": "たいへん！絡まった漁網が海に引っかかっています。次の2つのレベルをプレイして、ビーチヒーローズが安全なボートを借りて網を安全に取り除くのを手伝いましょう。",
+            "ko": "큰일이에요! 엉킨 그물이 바다에 걸려 있어요. 다음 두 레벨을 플레이해서 비치 히어로즈가 안전 보트를 빌려 그물을 안전하게 치우도록 도와주세요.",
+            "ar": "أوه لا! توجد شبكة صيد متشابكة عالقة في الماء. العب المستويين التاليين لمساعدة أبطال الشاطئ في استعارة قارب أمان لإزالتها بأمان.",
+            "hi": "अरे नहीं! पानी में एक उलझा हुआ मछली पकड़ने का जाल फँस गया है। बीच हीरोज़ को एक सुरक्षा नाव लेकर उसे सुरक्षित हटाने में मदद करने के लिए अगले दो स्तर खेलो।"
+          },
+          "scene_image": "beach-3.png",
+          "trigger": {
+            "type": "before_level",
+            "level": "Birthday Party"
+          }
+        },
+        {
+          "event_id": 1004,
+          "page_template_id": 4,
+          "story_text": {
+            "en": "Great work! The beach is getting cleaner. Play the next two levels to help Nina, Kai, Ruby, and Sam get recycling bins so they can sort the trash correctly.",
+            "fr": "Bravo ! La plage devient de plus en plus propre. Joue les deux prochains niveaux pour aider Nina, Kai, Ruby et Sam à obtenir des bacs de recyclage afin de trier les déchets correctement.",
+            "tr": "Harika iş! Plaj giderek daha temiz oluyor. Nina, Kai, Ruby ve Sam'in geri dönüşüm kutuları alıp çöpleri doğru şekilde ayırmasına yardım etmek için sonraki iki seviyeyi oyna.",
+            "es": "¡Buen trabajo! La playa está cada vez más limpia. Juega los dos siguientes niveles para ayudar a Nina, Kai, Ruby y Sam a conseguir contenedores de reciclaje para separar la basura correctamente.",
+            "de": "Großartige Arbeit! Der Strand wird immer sauberer. Spiele die nächsten zwei Level, um Nina, Kai, Ruby und Sam dabei zu helfen, Recyclingbehälter zu besorgen und den Müll richtig zu sortieren.",
+            "it": "Ottimo lavoro! La spiaggia sta diventando sempre più pulita. Gioca i prossimi due livelli per aiutare Nina, Kai, Ruby e Sam a procurarsi i contenitori per il riciclo e separare correttamente i rifiuti.",
+            "pt": "Ótimo trabalho! A praia está ficando cada vez mais limpa. Jogue os próximos dois níveis para ajudar Nina, Kai, Ruby e Sam a conseguir lixeiras de reciclagem para separar o lixo corretamente.",
+            "ru": "Отличная работа! Пляж становится всё чище. Пройди следующие два уровня, чтобы помочь Нине, Каю, Руби и Сэму получить контейнеры для переработки и правильно рассортировать мусор.",
+            "zh": "干得漂亮！海滩越来越干净了。完成接下来的两关，帮助妮娜、凯、露比和山姆准备回收箱，把垃圾分类好。",
+            "ja": "すばらしい！ビーチはどんどんきれいになっています。次の2つのレベルをプレイして、ニーナ、カイ、ルビー、サムがリサイクルボックスを用意し、ごみを正しく分別できるように手伝いましょう。",
+            "ko": "정말 잘했어요! 해변이 점점 더 깨끗해지고 있어요. 다음 두 레벨을 플레이해서 니나, 카이, 루비, 샘이 재활용통을 준비하고 쓰레기를 올바르게 분리하도록 도와주세요.",
+            "ar": "عمل رائع! أصبح الشاطئ أنظف بكثير. العب المستويين التاليين لمساعدة نينا وكاي وروبي وسام في الحصول على حاويات إعادة التدوير لفرز النفايات بشكل صحيح.",
+            "hi": "बहुत बढ़िया! समुद्र तट अब पहले से अधिक साफ़ दिख रहा है। नीना, काई, रूबी और सैम को रीसाइक्लिंग डिब्बे लाने और कचरे को सही तरह से अलग करने में मदद करने के लिए अगले दो स्तर खेलो।"
+          },
+          "scene_image": "beach-4.png",
+          "trigger": {
+            "type": "before_level",
+            "level": "Baby Care"
+          }
+        },
+        {
+          "event_id": 1005,
+          "page_template_id": 4,
+          "story_text": {
+            "en": "The beach needs extra care! Play the next two levels to help the Beach Heroes plant beach grass to protect the sand dunes.",
+            "fr": "La plage a besoin d'encore plus d'attention ! Joue les deux prochains niveaux pour aider les Héros de la Plage à planter de l'herbe de plage afin de protéger les dunes de sable.",
+            "tr": "Plajın biraz daha bakıma ihtiyacı var! Plaj Kahramanları'nın kum tepelerini korumak için plaj çimleri dikmesine yardım etmek üzere sonraki iki seviyeyi oyna.",
+            "es": "¡La playa necesita un poco más de cuidado! Juega los dos siguientes niveles para ayudar a los Héroes de la Playa a plantar hierba de playa para proteger las dunas de arena.",
+            "de": "Der Strand braucht noch etwas mehr Pflege! Spiele die nächsten zwei Level, um den Strandhelden dabei zu helfen, Strandgras zu pflanzen und die Sanddünen zu schützen.",
+            "it": "La spiaggia ha bisogno di ancora più cure! Gioca i prossimi due livelli per aiutare gli Eroi della Spiaggia a piantare l'erba della spiaggia per proteggere le dune di sabbia.",
+            "pt": "A praia precisa de um pouco mais de cuidado! Jogue os próximos dois níveis para ajudar os Heróis da Praia a plantar grama de praia para proteger as dunas de areia.",
+            "ru": "Пляжу нужна ещё немного заботы! Пройди следующие два уровня, чтобы помочь Пляжным героям посадить пляжную траву и защитить песчаные дюны.",
+            "zh": "海滩还需要更多照顾！完成接下来的两关，帮助海滩小英雄种植沙滩草，保护沙丘。",
+            "ja": "ビーチにはもう少しお世話が必要です！次の2つのレベルをプレイして、ビーチヒーローズが砂丘を守るために浜草を植えるのを手伝いましょう。",
+            "ko": "해변에는 아직 더 많은 도움이 필요해요! 다음 두 레벨을 플레이해서 비치 히어로즈가 모래언덕을 보호할 수 있도록 해변 풀을 심는 것을 도와주세요.",
+            "ar": "ما زال الشاطئ يحتاج إلى المزيد من العناية! العب المستويين التاليين لمساعدة أبطال الشاطئ في زراعة أعشاب الشاطئ لحماية الكثبان الرملية.",
+            "hi": "समुद्र तट को अभी और देखभाल की ज़रूरत है! बीच हीरोज़ को रेत के टीलों की रक्षा के लिए बीच घास लगाने में मदद करने हेतु अगले दो स्तर खेलो।"
+          },
+          "scene_image": "beach-5.png",
+          "trigger": {
+            "type": "before_level",
+            "level": "Common Words - 2"
+          }
+        },
+        {
+          "event_id": 1006,
+          "page_template_id": 4,
+          "story_text": {
+            "en": "Look! A sea turtle nest needs protection. Play the next two levels to help the Beach Heroes build a rope fence and place a sign around the nest.",
+            "fr": "Regarde ! Un nid de tortues de mer a besoin d'être protégé. Joue les deux prochains niveaux pour aider les Héros de la Plage à installer une corde de protection et un panneau autour du nid.",
+            "tr": "Bak! Bir deniz kaplumbağası yuvasının korunması gerekiyor. Plaj Kahramanları'nın yuvanın etrafına halatlı bir çit ve uyarı tabelası koymasına yardım etmek için sonraki iki seviyeyi oyna.",
+            "es": "¡Mira! Un nido de tortugas marinas necesita protección. Juega los dos siguientes niveles para ayudar a los Héroes de la Playa a colocar una cuerda de protección y un cartel alrededor del nido.",
+            "de": "Schau! Ein Meeresschildkrötennest braucht Schutz. Spiele die nächsten zwei Level, um den Strandhelden dabei zu helfen, einen Seilzaun und ein Schild um das Nest aufzustellen.",
+            "it": "Guarda! Un nido di tartarughe marine ha bisogno di protezione. Gioca i prossimi due livelli per aiutare gli Eroi della Spiaggia a costruire una recinzione di corda e mettere un cartello intorno al nido.",
+            "pt": "Olhe! Um ninho de tartarugas marinhas precisa de proteção. Jogue os próximos dois níveis para ajudar os Heróis da Praia a montar uma cerca de corda e colocar uma placa ao redor do ninho.",
+            "ru": "Смотри! Гнездо морской черепахи нуждается в защите. Пройди следующие два уровня, чтобы помочь Пляжным героям установить верёвочное ограждение и табличку вокруг гнезда.",
+            "zh": "快看！一个海龟巢需要保护。完成接下来的两关，帮助海滩小英雄在海龟巢周围搭起绳栏并放置标志牌。",
+            "ja": "見て！ウミガメの巣を守らなければなりません。次の2つのレベルをプレイして、ビーチヒーローズが巣のまわりにロープを張り、看板を立てるのを手伝いましょう。",
+            "ko": "보세요! 바다거북 둥지를 보호해야 해요. 다음 두 레벨을 플레이해서 비치 히어로즈가 둥지 주변에 밧줄 울타리와 안내 표지판을 설치하도록 도와주세요.",
+            "ar": "انظر! عش سلحفاة بحرية يحتاج إلى الحماية. العب المستويين التاليين لمساعدة أبطال الشاطئ في بناء سياج من الحبال ووضع لافتة حول العش.",
+            "hi": "देखो! समुद्री कछुए के घोंसले को सुरक्षा की ज़रूरत है। बीच हीरोज़ को घोंसले के चारों ओर रस्सी की बाड़ और एक संकेत लगाने में मदद करने के लिए अगले दो स्तर खेलो।"
+          },
+          "scene_image": "beach-6.png",
+          "trigger": {
+            "type": "before_level",
+            "level": "Reminder 1"
+          }
+        },
+        {
+          "event_id": 1007,
+          "page_template_id": 4,
+          "story_text": {
+            "en": "Hooray! Thanks to your help, the Beach Heroes made Sunny Shore Beach clean, safe, and beautiful again. Thank you for being part of the team!",
+            "fr": "Hourra ! Grâce à ton aide, les Héros de la Plage ont rendu Sunny Shore Beach propre, sûre et magnifique à nouveau. Merci de faire partie de l'équipe !",
+            "tr": "Yaşasın! Senin yardımın sayesinde Plaj Kahramanları Sunny Shore Beach'i yeniden temiz, güvenli ve güzel yaptı. Ekibin bir parçası olduğun için teşekkür ederiz!",
+            "es": "¡Hurra! Gracias a tu ayuda, los Héroes de la Playa hicieron que Sunny Shore Beach volviera a estar limpia, segura y hermosa. ¡Gracias por formar parte del equipo!",
+            "de": "Hurra! Dank deiner Hilfe haben die Strandhelden Sunny Shore Beach wieder sauber, sicher und wunderschön gemacht. Danke, dass du Teil des Teams bist!",
+            "it": "Evviva! Grazie al tuo aiuto, gli Eroi della Spiaggia hanno reso Sunny Shore Beach di nuovo pulita, sicura e bellissima. Grazie per far parte della squadra!",
+            "pt": "Viva! Graças à sua ajuda, os Heróis da Praia deixaram Sunny Shore Beach limpa, segura e bonita novamente. Obrigado por fazer parte da equipe!",
+            "ru": "Ура! Благодаря твоей помощи Пляжные герои снова сделали пляж Санни-Шор чистым, безопасным и красивым. Спасибо, что стал частью команды!",
+            "zh": "太棒了！在你的帮助下，海滩小英雄让阳光海岸海滩重新变得干净、安全又美丽。感谢你成为团队的一员！",
+            "ja": "やったね！あなたの助けのおかげで、ビーチヒーローズはサニーショアビーチを再びきれいで安全な美しい場所にしました。チームの一員になってくれてありがとう！",
+            "ko": "만세! 여러분의 도움 덕분에 비치 히어로즈가 서니 쇼어 해변을 다시 깨끗하고 안전하며 아름답게 만들었어요. 팀의 일원이 되어 주셔서 감사합니다!",
+            "ar": "رائع! بفضل مساعدتك، جعل أبطال الشاطئ شاطئ صني شور نظيفًا وآمنًا وجميلًا من جديد. شكرًا لأنك جزء من الفريق!",
+            "hi": "वाह! आपकी मदद से बीच हीरोज़ ने सनी शोर बीच को फिर से साफ़, सुरक्षित और सुंदर बना दिया। हमारी टीम का हिस्सा बनने के लिए धन्यवाद!"
+          },
+          "scene_image": "beach-7.png",
+          "trigger": {
+            "type": "after_level",
+            "level": "Reminder 2"
+          }
+        }
+      ]
+    },
+    {
+      "main_level_id": 4,
+      "story_icon_asset_path": "assets/images/story/grumblebot-1.png",
+      "story_sequences": [
+        {
+          "event_id": 1001,
+          "page_template_id": 4,
+          "story_text": {
+            "en": "After a stormy night, the Grumble-Bot's circuits go haywire and it turns every smile in town into a frown. Everyone is scared of it, but Leo notices its lights blinking sadly. Play the next two levels to help Leo and his friends turn its frown into a smile.",
+            "fr": "Après une nuit d'orage, les circuits du Grommeleur-Bot se dérèglent et transforment tous les sourires de la ville en grimaces. Tout le monde a peur de lui, mais Leo remarque que ses lumières clignotent tristement. Joue les deux prochains niveaux pour aider Leo et ses amis à transformer sa grimace en sourire.",
+            "tr": "Fırtınalı bir gecenin ardından Grumble-Bot'un devreleri bozulur ve kasabadaki her gülümsemeyi kaşlarını çatmaya çevirir. Herkes ondan korkar ama Leo, ışıklarının hüzünle yanıp söndüğünü fark eder. Leo ve arkadaşlarının onun kaşlarını çatmasını gülümsemeye çevirmesine yardım etmek için sonraki iki seviyeyi oyna.",
+            "es": "Después de una noche de tormenta, los circuitos del Robot Gruñón se descontrolan y convierte todas las sonrisas del pueblo en muecas de tristeza. Todos le tienen miedo, pero Leo nota que sus luces parpadean con tristeza. Juega los dos siguientes niveles para ayudar a Leo y sus amigos a convertir su tristeza en una sonrisa.",
+            "de": "Nach einer stürmischen Nacht spielen die Schaltkreise des Grummel-Bots verrückt, und er verwandelt jedes Lächeln in der Stadt in ein trauriges Gesicht. Alle haben Angst vor ihm, aber Leo bemerkt, dass seine Lichter traurig blinken. Spiele die nächsten zwei Level, um Leo und seinen Freunden zu helfen, sein trauriges Gesicht in ein Lächeln zu verwandeln.",
+            "it": "Dopo una notte di tempesta, i circuiti del Robot Brontolone impazziscono e trasforma ogni sorriso della città in una smorfia triste. Tutti ne hanno paura, ma Leo nota che le sue luci lampeggiano tristemente. Gioca i prossimi due livelli per aiutare Leo e i suoi amici a trasformare la sua tristezza in un sorriso.",
+            "pt": "Depois de uma noite de tempestade, os circuitos do Robô Rabugento enlouquecem e transformam todos os sorrisos da cidade em caras tristes. Todos têm medo dele, mas Leo percebe que suas luzes piscam tristemente. Jogue os próximos dois níveis para ajudar Leo e seus amigos a transformar sua tristeza em um sorriso.",
+            "ru": "После грозовой ночи схемы Ворчуна-робота выходят из строя, и он превращает все улыбки в городе в грустные лица. Все его боятся, но Лео замечает, что его огоньки грустно мигают. Пройди следующие два уровня, чтобы помочь Лео и его друзьям превратить его грусть в улыбку.",
+            "zh": "暴风雨之夜过后，唠叨机器人的电路出了故障，把镇上所有人的笑容都变成了皱眉。大家都很害怕它，但莱奥注意到它的灯光在悲伤地闪烁。完成接下来的两关，帮助莱奥和他的朋友们把它的皱眉变回笑容。",
+            "ja": "嵐の夜の後、グランブルボットの回路が誤作動し、町中の笑顔をしかめっ面に変えてしまいました。みんなが怖がっていますが、レオはそのライトが悲しげに点滅しているのに気づきます。次の2つのレベルをプレイして、レオと友達がしかめっ面を笑顔に変える手伝いをしましょう。",
+            "ko": "폭풍우가 몰아친 밤이 지난 후, 그럼블봇의 회로가 고장 나서 마을의 모든 미소를 찡그린 얼굴로 바꿔버려요. 모두가 그것을 무서워하지만, 레오는 그 불빛이 슬프게 깜박이는 것을 알아차려요. 다음 두 레벨을 플레이해서 레오와 친구들이 찡그린 얼굴을 미소로 바꾸도록 도와주세요.",
+            "ar": "بعد ليلة عاصفة، تتعطل دوائر الروبوت المتذمر ويحوّل كل ابتسامة في البلدة إلى عبوس. يخاف الجميع منه، لكن ليو يلاحظ أن أضواءه تومض بحزن. العب المستويين التاليين لمساعدة ليو وأصدقائه على تحويل عبوسه إلى ابتسامة.",
+            "hi": "एक तूफानी रात के बाद, ग्रम्बल-बॉट की सर्किट खराब हो जाती है और वह शहर की हर मुस्कान को उदासी में बदल देता है। सब उससे डरते हैं, लेकिन लियो देखता है कि उसकी बत्तियाँ उदासी से टिमटिमा रही हैं। लियो और उसके दोस्तों को उसकी उदासी को मुस्कान में बदलने में मदद करने के लिए अगले दो स्तर खेलो।"
+          },
+          "scene_image": "grumblebot-1.png",
+          "trigger": {
+            "type": "before_level",
+            "level": "In the Kitchen"
+          }
+        },
+        {
+          "event_id": 1002,
+          "page_template_id": 4,
+          "story_text": {
+            "en": "Leo wants to make the Grumble-Bot laugh, but he cannot think of a good joke on his own. Play the next level to help him find the perfect joke.",
+            "fr": "Leo veut faire rire le Grommeleur-Bot, mais il n'arrive pas à trouver une bonne blague tout seul. Joue le niveau suivant pour l'aider à trouver la blague parfaite.",
+            "tr": "Leo, Grumble-Bot'u güldürmek istiyor ama tek başına iyi bir şaka bulamıyor. Mükemmel şakayı bulmasına yardım etmek için bir sonraki seviyeyi oyna.",
+            "es": "Leo quiere hacer reír al Robot Gruñón, pero no se le ocurre un buen chiste por su cuenta. Juega el siguiente nivel para ayudarlo a encontrar el chiste perfecto.",
+            "de": "Leo möchte den Grummel-Bot zum Lachen bringen, aber ihm fällt allein kein guter Witz ein. Spiele das nächste Level, um ihm zu helfen, den perfekten Witz zu finden.",
+            "it": "Leo vuole far ridere il Robot Brontolone, ma non riesce a pensare a una buona battuta da solo. Gioca il livello successivo per aiutarlo a trovare la battuta perfetta.",
+            "pt": "Leo quer fazer o Robô Rabugento rir, mas não consegue pensar em uma boa piada sozinho. Jogue o próximo nível para ajudá-lo a encontrar a piada perfeita.",
+            "ru": "Лео хочет рассмешить Ворчуна-робота, но никак не может придумать хорошую шутку сам. Пройди следующий уровень, чтобы помочь ему найти идеальную шутку.",
+            "zh": "莱奥想让唠叨机器人笑，但他一个人想不出一个好笑话。完成下一关，帮助他找到完美的笑话。",
+            "ja": "レオはグランブルボットを笑わせたいと思っていますが、一人ではいいジョークが思いつきません。次のレベルをプレイして、彼が完璧なジョークを見つける手伝いをしましょう。",
+            "ko": "레오는 그럼블봇을 웃게 하고 싶지만, 혼자서는 좋은 농담이 떠오르지 않아요. 다음 레벨을 플레이해서 그가 완벽한 농담을 찾도록 도와주세요.",
+            "ar": "يريد ليو أن يجعل الروبوت المتذمر يضحك، لكنه لا يستطيع التفكير في نكتة جيدة بمفرده. العب المستوى التالي لمساعدته على إيجاد النكتة المثالية.",
+            "hi": "लियो ग्रम्बल-बॉट को हंसाना चाहता है, लेकिन वह अकेले कोई अच्छा मज़ाक नहीं सोच पा रहा। उसे एकदम सही मज़ाक खोजने में मदद करने के लिए अगला स्तर खेलो।"
+          },
+          "scene_image": "grumblebot-2.png",
+          "trigger": {
+            "type": "before_level",
+            "level": "Grocery Shopping"
+          }
+        },
+        {
+          "event_id": 1003,
+          "page_template_id": 4,
+          "story_text": {
+            "en": "Robots do not eat sandwiches! Leo and his friends find a shiny oil treat instead, the perfect gift for the Grumble-Bot's gears. Play the next two levels to help them bring it to the robot.",
+            "fr": "Les robots ne mangent pas de sandwichs ! Leo et ses amis trouvent plutôt une friandise d'huile brillante, le cadeau parfait pour les rouages du Grommeleur-Bot. Joue les deux prochains niveaux pour les aider à l'apporter au robot.",
+            "tr": "Robotlar sandviç yemez! Leo ve arkadaşları bunun yerine parlak bir yağ ikramı buluyor, Grumble-Bot'un dişlileri için mükemmel bir hediye. Onu robota götürmelerine yardım etmek için sonraki iki seviyeyi oyna.",
+            "es": "¡Los robots no comen sándwiches! Leo y sus amigos encuentran en su lugar un brillante regalo de aceite, el regalo perfecto para los engranajes del Robot Gruñón. Juega los dos siguientes niveles para ayudarlos a llevárselo al robot.",
+            "de": "Roboter essen keine Sandwiches! Stattdessen finden Leo und seine Freunde ein glänzendes Ölgeschenk, das perfekte Geschenk für die Zahnräder des Grummel-Bots. Spiele die nächsten zwei Level, um ihnen zu helfen, es zum Roboter zu bringen.",
+            "it": "I robot non mangiano panini! Leo e i suoi amici trovano invece un lucido regalo di olio, il dono perfetto per gli ingranaggi del Robot Brontolone. Gioca i prossimi due livelli per aiutarli a portarlo al robot.",
+            "pt": "Robôs não comem sanduíches! Leo e seus amigos encontram, em vez disso, um brilhante presente de óleo, o presente perfeito para as engrenagens do Robô Rabugento. Jogue os próximos dois níveis para ajudá-los a levá-lo até o robô.",
+            "ru": "Роботы не едят бутерброды! Вместо этого Лео и его друзья находят блестящее масло — идеальный подарок для шестерёнок Ворчуна-робота. Пройди следующие два уровня, чтобы помочь им отнести подарок роботу.",
+            "zh": "机器人不吃三明治！莱奥和朋友们找到了一份闪亮的机油礼物，正是唠叨机器人齿轮的完美礼物。完成接下来的两关，帮助他们把礼物带给机器人。",
+            "ja": "ロボットはサンドイッチを食べません！代わりにレオと友達はピカピカのオイルのプレゼントを見つけます。それはグランブルボットの歯車にぴったりの贈り物です。次の2つのレベルをプレイして、それをロボットに届ける手伝いをしましょう。",
+            "ko": "로봇은 샌드위치를 먹지 않아요! 대신 레오와 친구들은 반짝이는 기름 선물을 찾아요, 그럼블봇의 톱니바퀴에 딱 맞는 선물이에요. 다음 두 레벨을 플레이해서 그것을 로봇에게 가져다주도록 도와주세요.",
+            "ar": "الروبوتات لا تأكل السندويشات! يجد ليو وأصدقاؤه بدلاً من ذلك هدية زيت لامعة، الهدية المثالية لتروس الروبوت المتذمر. العب المستويين التاليين لمساعدتهم على إحضارها للروبوت.",
+            "hi": "रोबोट सैंडविच नहीं खाते! इसके बजाय लियो और उसके दोस्तों को एक चमकदार तेल का उपहार मिलता है, जो ग्रम्बल-बॉट के पुर्जों के लिए एकदम सही तोहफ़ा है। उसे रोबोट तक ले जाने में मदद करने के लिए अगले दो स्तर खेलो।"
+          },
+          "scene_image": "grumblebot-3.png",
+          "trigger": {
+            "type": "before_level",
+            "level": "Kitchen Items 2 - Image only"
+          }
+        },
+        {
+          "event_id": 1004,
+          "page_template_id": 4,
+          "story_text": {
+            "en": "The Grumble-Bot still feels like nobody likes it. Leo, Zoe, and Finn make it a colorful friendship card full of kind words. Play the next level to help them finish the card.",
+            "fr": "Le Grommeleur-Bot pense toujours que personne ne l'aime. Leo, Zoe et Finn lui préparent une carte d'amitié colorée pleine de mots gentils. Joue le niveau suivant pour les aider à terminer la carte.",
+            "tr": "Grumble-Bot hâlâ kimsenin onu sevmediğini düşünüyor. Leo, Zoe ve Finn ona nazik sözlerle dolu renkli bir dostluk kartı hazırlıyor. Kartı bitirmelerine yardım etmek için bir sonraki seviyeyi oyna.",
+            "es": "El Robot Gruñón todavía siente que a nadie le agrada. Leo, Zoe y Finn le hacen una colorida tarjeta de amistad llena de palabras amables. Juega el siguiente nivel para ayudarlos a terminar la tarjeta.",
+            "de": "Der Grummel-Bot hat immer noch das Gefühl, dass ihn niemand mag. Leo, Zoe und Finn basteln ihm eine bunte Freundschaftskarte voller freundlicher Worte. Spiele das nächste Level, um ihnen zu helfen, die Karte fertigzustellen.",
+            "it": "Il Robot Brontolone sente ancora che a nessuno piace. Leo, Zoe e Finn gli preparano una colorata cartolina d'amicizia piena di parole gentili. Gioca il livello successivo per aiutarli a finire la cartolina.",
+            "pt": "O Robô Rabugento ainda sente que ninguém gosta dele. Leo, Zoe e Finn fazem para ele um cartão de amizade colorido, cheio de palavras gentis. Jogue o próximo nível para ajudá-los a terminar o cartão.",
+            "ru": "Ворчун-робот всё ещё чувствует, что он никому не нравится. Лео, Зои и Финн делают для него яркую открытку дружбы, полную добрых слов. Пройди следующий уровень, чтобы помочь им закончить открытку.",
+            "zh": "唠叨机器人仍然觉得没有人喜欢它。莱奥、佐伊和芬恩为它做了一张写满善意话语的彩色友谊卡。完成下一关，帮助他们完成这张卡片。",
+            "ja": "グランブルボットはまだ誰にも好かれていないと感じています。レオ、ゾーイ、フィンは優しい言葉でいっぱいのカラフルな友情カードを作ります。次のレベルをプレイして、カードを仕上げる手伝いをしましょう。",
+            "ko": "그럼블봇은 여전히 아무도 자신을 좋아하지 않는다고 느껴요. 레오, 조이, 핀은 다정한 말로 가득한 알록달록한 우정 카드를 만들어요. 다음 레벨을 플레이해서 그들이 카드를 완성하도록 도와주세요.",
+            "ar": "لا يزال الروبوت المتذمر يشعر بأن لا أحد يحبه. يصنع له ليو وزوي وفين بطاقة صداقة ملونة مليئة بالكلمات اللطيفة. العب المستوى التالي لمساعدتهم على إتمام البطاقة.",
+            "hi": "ग्रम्बल-बॉट को अभी भी लगता है कि कोई उसे पसंद नहीं करता। लियो, ज़ोई और फिन उसके लिए दयालु शब्दों से भरा एक रंगीन दोस्ती कार्ड बनाते हैं। उन्हें कार्ड पूरा करने में मदद करने के लिए अगला स्तर खेलो।"
+          },
+          "scene_image": "grumblebot-4.png",
+          "trigger": {
+            "type": "before_level",
+            "level": "Grocery List 2 - Image only"
+          }
+        },
+        {
+          "event_id": 1005,
+          "page_template_id": 4,
+          "story_text": {
+            "en": "The Grumble-Bot tries to help decorate the town but pops the balloons by accident! Leo and his friends forgive it and bring fresh decorations instead. Play the next level to help them redecorate the town square.",
+            "fr": "Le Grommeleur-Bot essaie d'aider à décorer la ville mais fait éclater les ballons par accident ! Leo et ses amis lui pardonnent et apportent de nouvelles décorations à la place. Joue le niveau suivant pour les aider à redécorer la place du village.",
+            "tr": "Grumble-Bot kasabayı süslemeye yardım etmeye çalışır ama kazara balonları patlatır! Leo ve arkadaşları onu affeder ve yerine yeni süslemeler getirir. Kasaba meydanını yeniden süslemelerine yardım etmek için bir sonraki seviyeyi oyna.",
+            "es": "¡El Robot Gruñón intenta ayudar a decorar el pueblo, pero revienta los globos por accidente! Leo y sus amigos lo perdonan y traen decoraciones nuevas en su lugar. Juega el siguiente nivel para ayudarlos a redecorar la plaza del pueblo.",
+            "de": "Der Grummel-Bot versucht, beim Schmücken der Stadt zu helfen, lässt aber aus Versehen die Luftballons platzen! Leo und seine Freunde verzeihen ihm und bringen stattdessen neue Dekorationen. Spiele das nächste Level, um ihnen zu helfen, den Marktplatz neu zu schmücken.",
+            "it": "Il Robot Brontolone cerca di aiutare a decorare la città ma fa scoppiare i palloncini per sbagliato! Leo e i suoi amici lo perdonano e portano nuove decorazioni al loro posto. Gioca il livello successivo per aiutarli a decorare di nuovo la piazza.",
+            "pt": "O Robô Rabugento tenta ajudar a decorar a cidade, mas estoura os balões sem querer! Leo e seus amigos o perdoam e trazem decorações novas em vez disso. Jogue o próximo nível para ajudá-los a redecorar a praça da cidade.",
+            "ru": "Ворчун-робот пытается помочь украсить город, но случайно лопает шарики! Лео и его друзья прощают его и приносят новые украшения. Пройди следующий уровень, чтобы помочь им заново украсить городскую площадь.",
+            "zh": "唠叨机器人想帮忙装饰小镇，却不小心弄破了气球！莱奥和朋友们原谅了它，还带来了新的装饰品。完成下一关，帮助他们重新装饰小镇广场。",
+            "ja": "グランブルボットは町の飾り付けを手伝おうとしますが、うっかり風船を割ってしまいます！レオと友達はそれを許し、代わりに新しい飾り付けを持ってきます。次のレベルをプレイして、町の広場を飾り直す手伝いをしましょう。",
+            "ko": "그럼블봇은 마을을 꾸미는 것을 도우려다 실수로 풍선을 터뜨려요! 레오와 친구들은 그것을 용서하고 대신 새 장식품을 가져와요. 다음 레벨을 플레이해서 그들이 마을 광장을 다시 꾸미도록 도와주세요.",
+            "ar": "يحاول الروبوت المتذمر المساعدة في تزيين البلدة لكنه يفجر البالونات عن طريق الخطأ! يسامحه ليو وأصدقاؤه ويحضرون زينة جديدة بدلاً منها. العب المستوى التالي لمساعدتهم على إعادة تزيين ساحة البلدة.",
+            "hi": "ग्रम्बल-बॉट शहर को सजाने में मदद करने की कोशिश करता है लेकिन गलती से गुब्बारे फोड़ देता है! लियो और उसके दोस्त उसे माफ कर देते हैं और इसके बजाय नई सजावट लाते हैं। शहर के चौक को फिर से सजाने में मदद करने के लिए अगला स्तर खेलो।"
+          },
+          "scene_image": "grumblebot-5.png",
+          "trigger": {
+            "type": "before_level",
+            "level": "Common Words - 3"
+          }
+        },
+        {
+          "event_id": 1006,
+          "page_template_id": 4,
+          "story_text": {
+            "en": "The Grumble-Bot's memory lights start to flicker, and its happy memories begin drifting away! Play the next two levels to help save them before they fade forever.",
+            "fr": "Les lumières de mémoire du Grommeleur-Bot commencent à vaciller, et ses souvenirs heureux commencent à s'échapper ! Joue les deux prochains niveaux pour aider à les sauver avant qu'ils ne disparaissent à jamais.",
+            "tr": "Grumble-Bot'un hafıza ışıkları titremeye başlıyor ve mutlu anıları uçup gitmeye başlıyor! Sonsuza dek kaybolmadan önce onları kurtarmaya yardım etmek için sonraki iki seviyeyi oyna.",
+            "es": "¡Las luces de memoria del Robot Gruñón empiezan a parpadear, y sus recuerdos felices comienzan a desvanecerse! Juega los dos siguientes niveles para ayudar a salvarlos antes de que desaparezcan para siempre.",
+            "de": "Die Erinnerungslichter des Grummel-Bots beginnen zu flackern, und seine glücklichen Erinnerungen beginnen zu verschwinden! Spiele die nächsten zwei Level, um zu helfen, sie zu retten, bevor sie für immer verblassen.",
+            "it": "Le luci della memoria del Robot Brontolone iniziano a tremolare, e i suoi ricordi felici cominciano a svanire! Gioca i prossimi due livelli per aiutare a salvarli prima che scompaiano per sempre.",
+            "pt": "As luzes de memória do Robô Rabugento começam a piscar, e suas memórias felizes começam a desaparecer! Jogue os próximos dois níveis para ajudar a salvá-las antes que desapareçam para sempre.",
+            "ru": "Огоньки памяти Ворчуна-робота начинают мигать, и его счастливые воспоминания начинают исчезать! Пройди следующие два уровня, чтобы помочь спасти их, пока они не исчезли навсегда.",
+            "zh": "唠叨机器人的记忆灯开始闪烁，它快乐的回忆开始渐渐消失！完成接下来的两关，帮助在它们永远消失之前拯救它们。",
+            "ja": "グランブルボットの記憶ライトが点滅し始め、幸せな記憶が消えていってしまいます！次の2つのレベルをプレイして、記憶が永遠に消えてしまう前に救う手伝いをしましょう。",
+            "ko": "그럼블봇의 기억 불빛이 깜박이기 시작하고, 행복한 기억들이 사라지기 시작해요! 다음 두 레벨을 플레이해서 그것들이 영원히 사라지기 전에 구하도록 도와주세요.",
+            "ar": "تبدأ أضواء ذاكرة الروبوت المتذمر بالوميض، وتبدأ ذكرياته السعيدة بالتلاشي! العب المستويين التاليين للمساعدة في إنقاذها قبل أن تتلاشى إلى الأبد.",
+            "hi": "ग्रम्बल-बॉट की याददाश्त की बत्तियाँ टिमटिमाने लगती हैं, और उसकी खुशहाल यादें धुंधली पड़ने लगती हैं! उन्हें हमेशा के लिए मिटने से पहले बचाने में मदद करने के लिए अगले दो स्तर खेलो।"
+          },
+          "scene_image": "grumblebot-6.png",
+          "trigger": {
+            "type": "before_level",
+            "level": "Reminder 1"
+          }
+        },
+        {
+          "event_id": 1007,
+          "page_template_id": 4,
+          "story_text": {
+            "en": "Every happy memory is safe, and the Grumble-Bot's eyes glow warm and gold. It is not the Grumble-Bot anymore, it is Fun-Bot, Willowbrook's happiest helper! Thank you for helping bring joy back to the town!",
+            "fr": "Chaque souvenir heureux est en sécurité, et les yeux du Grommeleur-Bot brillent d'une lumière chaude et dorée. Ce n'est plus le Grommeleur-Bot, c'est Bot-Joyeux, l'assistant le plus heureux de Willowbrook ! Merci d'avoir aidé à ramener la joie dans la ville !",
+            "tr": "Her mutlu anı güvende ve Grumble-Bot'un gözleri sıcak ve altın rengi parlıyor. Artık o Grumble-Bot değil, Willowbrook'un en mutlu yardımcısı Fun-Bot! Kasabaya neşeyi geri getirmeye yardım ettiğin için teşekkür ederiz!",
+            "es": "Todos los recuerdos felices están a salvo, y los ojos del Robot Gruñón brillan de un cálido dorado. Ya no es el Robot Gruñón, ¡es Robot Alegre, el ayudante más feliz de Willowbrook! ¡Gracias por ayudar a traer la alegría de vuelta al pueblo!",
+            "de": "Jede glückliche Erinnerung ist gerettet, und die Augen des Grummel-Bots leuchten warm und golden. Es ist nicht mehr der Grummel-Bot, es ist der Freude-Bot, Willowbrooks fröhlichster Helfer! Danke, dass du geholfen hast, die Freude zurück in die Stadt zu bringen!",
+            "it": "Ogni ricordo felice è al sicuro, e gli occhi del Robot Brontolone brillano di un caldo colore dorato. Non è più il Robot Brontolone, è il Robot Gioioso, l'aiutante più felice di Willowbrook! Grazie per aver aiutato a riportare la gioia in città!",
+            "pt": "Cada memória feliz está a salvo, e os olhos do Robô Rabugento brilham em um dourado quente. Ele não é mais o Robô Rabugento, é o Robô Alegre, o ajudante mais feliz de Willowbrook! Obrigado por ajudar a trazer a alegria de volta à cidade!",
+            "ru": "Все счастливые воспоминания спасены, и глаза Ворчуна-робота светятся тёплым золотым светом. Это уже не Ворчун-робот, это Весёлый Бот, самый счастливый помощник Уиллоубрука! Спасибо за помощь в возвращении радости в город!",
+            "zh": "每一段快乐的回忆都安全了，唠叨机器人的眼睛闪耀着温暖的金色光芒。它不再是唠叨机器人了，它是快乐机器人，威洛布鲁克镇最快乐的小帮手！谢谢你帮助把欢乐带回小镇！",
+            "ja": "すべての幸せな記憶が救われ、グランブルボットの目は温かい金色に輝いています。もうグランブルボットではありません、ウィローブルックで一番幸せなお手伝いロボット、ファンボットです！町に喜びを取り戻す手伝いをしてくれてありがとう！",
+            "ko": "모든 행복한 기억이 안전해졌고, 그럼블봇의 눈은 따뜻한 황금빛으로 빛나요. 이제 더 이상 그럼블봇이 아니라, 윌로우브룩에서 가장 행복한 도우미 펀봇이에요! 마을에 기쁨을 되찾아주는 것을 도와줘서 고마워요!",
+            "ar": "كل ذكرى سعيدة أصبحت آمنة، وتتوهج عينا الروبوت المتذمر بدفء ولون ذهبي. لم يعد الروبوت المتذمر بعد الآن، إنه الروبوت المرح، أكثر مساعد سعيد في ويلوبروك! شكرًا لمساعدتك في إعادة الفرح إلى البلدة!",
+            "hi": "हर खुशहाल याद सुरक्षित है, और ग्रम्बल-बॉट की आंखें गर्म सुनहरी चमक से जगमगा रही हैं। अब वह ग्रम्बल-बॉट नहीं रहा, वह फन-बॉट है, विलोब्रुक का सबसे खुशहाल मददगार! शहर में खुशियाँ वापस लाने में मदद करने के लिए धन्यवाद!"
+          },
+          "scene_image": "grumblebot-7.png",
+          "trigger": {
+            "type": "after_level",
+            "level": "Reminder 2"
+          }
+        }
+      ]
+    },
+    {
+      "main_level_id": 5,
+      "story_icon_asset_path": "assets/images/story/PLACEHOLDER-story-icon.png",
+      "story_sequences": [
+        {
+          "event_id": 1001,
+          "page_template_id": 4,
+          "story_text": {
+            "en": "The school library needs more books for everyone. Ivy, Dash, Priya, and Mustafa — the Book Buddies — decide to help. Play the next two levels to help them begin their mission.",
+            "fr": "La bibliothèque de l'école a besoin de plus de livres pour tout le monde. Ivy, Dash, Priya et Mustafa — les Copains des Livres — décident d'aider. Joue les deux prochains niveaux pour les aider à commencer leur mission.",
+            "tr": "Okul kütüphanesinin herkes için daha fazla kitaba ihtiyacı var. Ivy, Dash, Priya ve Mustafa — Kitap Dostları — yardım etmeye karar veriyor. Görevlerine başlamalarına yardım etmek için sonraki iki seviyeyi oyna.",
+            "es": "La biblioteca de la escuela necesita más libros para todos. Ivy, Dash, Priya y Mustafa —los Amigos de los Libros— deciden ayudar. Juega los dos siguientes niveles para ayudarlos a comenzar su misión.",
+            "de": "Die Schulbibliothek braucht mehr Bücher für alle. Ivy, Dash, Priya und Mustafa — die Buchfreunde — beschließen zu helfen. Spiele die nächsten zwei Level, um ihnen zu helfen, ihre Mission zu beginnen.",
+            "it": "La biblioteca della scuola ha bisogno di più libri per tutti. Ivy, Dash, Priya e Mustafa — gli Amici dei Libri — decidono di aiutare. Gioca i prossimi due livelli per aiutarli a iniziare la loro missione.",
+            "pt": "A biblioteca da escola precisa de mais livros para todos. Ivy, Dash, Priya e Mustafa — os Amigos dos Livros — decidem ajudar. Jogue os próximos dois níveis para ajudá-los a começar sua missão.",
+            "ru": "Школьной библиотеке нужно больше книг для всех. Айви, Дэш, Прия и Мустафа — Друзья Книг — решают помочь. Пройди следующие два уровня, чтобы помочь им начать свою миссию.",
+            "zh": "学校图书馆需要更多的书供大家阅读。艾薇、达什、普丽雅和穆斯塔法——图书小伙伴——决定伸出援手。完成接下来的两关，帮助他们开始他们的任务。",
+            "ja": "学校の図書館にはみんなのためにもっと本が必要です。アイビー、ダッシュ、プリヤ、ムスタファ——ブックバディーズ——が力を貸すことにしました。次の2つのレベルをプレイして、彼らが使命を始めるのを手伝いましょう。",
+            "ko": "학교 도서관에는 모두를 위한 책이 더 필요해요. 아이비, 대시, 프리야, 무스타파—북버디—가 돕기로 했어요. 다음 두 레벨을 플레이해서 그들이 임무를 시작하도록 도와주세요.",
+            "ar": "تحتاج مكتبة المدرسة إلى المزيد من الكتب للجميع. تقرر آيفي وداش وبريا ومصطفى — أصدقاء الكتب — المساعدة. العب المستويين التاليين لمساعدتهم على بدء مهمتهم.",
+            "hi": "स्कूल की लाइब्रेरी को सबके लिए और किताबों की ज़रूरत है। आइवी, डैश, प्रिया और मुस्तफा — किताब दोस्त — मदद करने का फैसला करते हैं। उनकी यात्रा शुरू करने में मदद करने के लिए अगले दो स्तर खेलो।"
+          },
+          "scene_image": "library-1.png",
+          "trigger": {
+            "type": "before_level",
+            "level": "At the Farmers Market"
+          }
+        },
+        {
+          "event_id": 1002,
+          "page_template_id": 4,
+          "story_text": {
+            "en": "Boxes of donated books arrive at school! Play the next two levels to help the Book Buddies unload them safely.",
+            "fr": "Des boîtes de livres donnés arrivent à l'école ! Joue les deux prochains niveaux pour aider les Copains des Livres à les décharger en toute sécurité.",
+            "tr": "Bağışlanan kitap kutuları okula geliyor! Kitap Dostları'nın onları güvenle indirmesine yardım etmek için sonraki iki seviyeyi oyna.",
+            "es": "¡Llegan a la escuela cajas de libros donados! Juega los dos siguientes niveles para ayudar a los Amigos de los Libros a descargarlas con cuidado.",
+            "de": "Kisten mit gespendeten Büchern kommen in der Schule an! Spiele die nächsten zwei Level, um den Buchfreunden zu helfen, sie sicher abzuladen.",
+            "it": "Arrivano a scuola scatole di libri donati! Gioca i prossimi due livelli per aiutare gli Amici dei Libri a scaricarle in sicurezza.",
+            "pt": "Caixas de livros doados chegam à escola! Jogue os próximos dois níveis para ajudar os Amigos dos Livros a descarregá-las com segurança.",
+            "ru": "В школу привозят коробки с книгами в дар! Пройди следующие два уровня, чтобы помочь Друзьям Книг безопасно их разгрузить.",
+            "zh": "捐赠的书箱送到学校啦！完成接下来的两关，帮助图书小伙伴安全地卸下它们。",
+            "ja": "寄付された本の箱が学校に届きました！次の2つのレベルをプレイして、ブックバディーズが安全に荷下ろしするのを手伝いましょう。",
+            "ko": "기증받은 책 상자들이 학교에 도착했어요! 다음 두 레벨을 플레이해서 북버디가 안전하게 상자를 내리도록 도와주세요.",
+            "ar": "وصلت صناديق الكتب المتبرع بها إلى المدرسة! العب المستويين التاليين لمساعدة أصدقاء الكتب على تفريغها بأمان.",
+            "hi": "दान की गई किताबों के डिब्बे स्कूल पहुँचते हैं! किताब दोस्तों को उन्हें सुरक्षित रूप से उतारने में मदद करने के लिए अगले दो स्तर खेलो।"
+          },
+          "scene_image": "library-2.png",
+          "trigger": {
+            "type": "before_level",
+            "level": "City Walk"
+          }
+        },
+        {
+          "event_id": 1003,
+          "page_template_id": 4,
+          "story_text": {
+            "en": "The Book Buddies open the donated boxes and sort the books into neat piles. Play the next two levels to help them organize the books.",
+            "fr": "Les Copains des Livres ouvrent les boîtes de dons et trient les livres en piles bien rangées. Joue les deux prochains niveaux pour les aider à organiser les livres.",
+            "tr": "Kitap Dostları bağışlanan kutuları açar ve kitapları düzenli yığınlar halinde ayırır. Kitapları düzenlemelerine yardım etmek için sonraki iki seviyeyi oyna.",
+            "es": "Los Amigos de los Libros abren las cajas donadas y organizan los libros en pilas ordenadas. Juega los dos siguientes niveles para ayudarlos a organizar los libros.",
+            "de": "Die Buchfreunde öffnen die gespendeten Kisten und sortieren die Bücher in ordentliche Stapel. Spiele die nächsten zwei Level, um ihnen zu helfen, die Bücher zu ordnen.",
+            "it": "Gli Amici dei Libri aprono le scatole donate e dividono i libri in pile ordinate. Gioca i prossimi due livelli per aiutarli a organizzare i libri.",
+            "pt": "Os Amigos dos Livros abrem as caixas doadas e organizam os livros em pilhas arrumadas. Jogue os próximos dois níveis para ajudá-los a organizar os livros.",
+            "ru": "Друзья Книг открывают коробки с пожертвованиями и раскладывают книги по аккуратным стопкам. Пройди следующие два уровня, чтобы помочь им разложить книги.",
+            "zh": "图书小伙伴打开捐赠的箱子，把书整理成整齐的一摞摞。完成接下来的两关，帮助他们整理这些书。",
+            "ja": "ブックバディーズは寄付された箱を開けて、本をきれいな山に分けます。次の2つのレベルをプレイして、本を整理するのを手伝いましょう。",
+            "ko": "북버디가 기증받은 상자를 열어 책을 가지런히 정리해요. 다음 두 레벨을 플레이해서 책 정리를 도와주세요.",
+            "ar": "يفتح أصدقاء الكتب الصناديق المتبرع بها ويرتبون الكتب في أكوام مرتبة. العب المستويين التاليين لمساعدتهم على تنظيم الكتب.",
+            "hi": "किताब दोस्त दान की गई पेटियाँ खोलते हैं और किताबों को करीने से ढेरों में बाँटते हैं। किताबों को व्यवस्थित करने में उनकी मदद करने के लिए अगले दो स्तर खेलो।"
+          },
+          "scene_image": "library-3.png",
+          "trigger": {
+            "type": "before_level",
+            "level": "At the Cinema"
+          }
+        },
+        {
+          "event_id": 1004,
+          "page_template_id": 4,
+          "story_text": {
+            "en": "The books are ready for the shelves! Play the next two levels to help the Book Buddies organize the library.",
+            "fr": "Les livres sont prêts pour les étagères ! Joue les deux prochains niveaux pour aider les Copains des Livres à organiser la bibliothèque.",
+            "tr": "Kitaplar raflara hazır! Kitap Dostları'nın kütüphaneyi düzenlemesine yardım etmek için sonraki iki seviyeyi oyna.",
+            "es": "¡Los libros están listos para los estantes! Juega los dos siguientes niveles para ayudar a los Amigos de los Libros a organizar la biblioteca.",
+            "de": "Die Bücher sind bereit für die Regale! Spiele die nächsten zwei Level, um den Buchfreunden zu helfen, die Bibliothek zu ordnen.",
+            "it": "I libri sono pronti per gli scaffali! Gioca i prossimi due livelli per aiutare gli Amici dei Libri a organizzare la biblioteca.",
+            "pt": "Os livros estão prontos para as prateleiras! Jogue os próximos dois níveis para ajudar os Amigos dos Livros a organizar a biblioteca.",
+            "ru": "Книги готовы отправиться на полки! Пройди следующие два уровня, чтобы помочь Друзьям Книг навести порядок в библиотеке.",
+            "zh": "书本已经准备好上架啦！完成接下来的两关，帮助图书小伙伴整理图书馆。",
+            "ja": "本は棚に並べる準備ができました！次の2つのレベルをプレイして、ブックバディーズが図書館を整理するのを手伝いましょう。",
+            "ko": "책들이 책장에 꽂힐 준비가 됐어요! 다음 두 레벨을 플레이해서 북버디가 도서관을 정리하도록 도와주세요.",
+            "ar": "الكتب جاهزة للرفوف! العب المستويين التاليين لمساعدة أصدقاء الكتب على تنظيم المكتبة.",
+            "hi": "किताबें अलमारियों के लिए तैयार हैं! किताब दोस्तों को लाइब्रेरी व्यवस्थित करने में मदद करने के लिए अगले दो स्तर खेलो।"
+          },
+          "scene_image": "library-4.png",
+          "trigger": {
+            "type": "before_level",
+            "level": "City Buildings 2 - Image only"
+          }
+        },
+        {
+          "event_id": 1005,
+          "page_template_id": 4,
+          "story_text": {
+            "en": "More books will arrive soon! Play the next two levels to help the Book Buddies create a color-coded system to organize every new book.",
+            "fr": "D'autres livres arriveront bientôt ! Joue les deux prochains niveaux pour aider les Copains des Livres à créer un système de couleurs pour organiser chaque nouveau livre.",
+            "tr": "Yakında daha fazla kitap gelecek! Kitap Dostları'nın her yeni kitabı düzenlemek için renk kodlu bir sistem oluşturmasına yardım etmek için sonraki iki seviyeyi oyna.",
+            "es": "¡Pronto llegarán más libros! Juega los dos siguientes niveles para ayudar a los Amigos de los Libros a crear un sistema de colores para organizar cada libro nuevo.",
+            "de": "Bald kommen noch mehr Bücher an! Spiele die nächsten zwei Level, um den Buchfreunden zu helfen, ein Farbsystem zu erstellen, um jedes neue Buch zu ordnen.",
+            "it": "Presto arriveranno altri libri! Gioca i prossimi due livelli per aiutare gli Amici dei Libri a creare un sistema a colori per organizzare ogni nuovo libro.",
+            "pt": "Mais livros chegarão em breve! Jogue os próximos dois níveis para ajudar os Amigos dos Livros a criar um sistema de cores para organizar cada livro novo.",
+            "ru": "Скоро прибудет ещё больше книг! Пройди следующие два уровня, чтобы помочь Друзьям Книг создать цветовую систему для каждой новой книги.",
+            "zh": "很快还会有更多书送来！完成接下来的两关，帮助图书小伙伴创建一个颜色分类系统，整理每一本新书。",
+            "ja": "もうすぐさらに本が届きます！次の2つのレベルをプレイして、ブックバディーズが新しい本を整理するための色分けシステムを作るのを手伝いましょう。",
+            "ko": "곧 더 많은 책이 도착할 거예요! 다음 두 레벨을 플레이해서 북버디가 새로 오는 책마다 정리할 색깔 시스템을 만들도록 도와주세요.",
+            "ar": "المزيد من الكتب ستصل قريبًا! العب المستويين التاليين لمساعدة أصدقاء الكتب على إنشاء نظام ألوان لتنظيم كل كتاب جديد.",
+            "hi": "जल्द ही और किताबें आएंगी! किताब दोस्तों को हर नई किताब को व्यवस्थित करने के लिए एक रंग-कोडित प्रणाली बनाने में मदद करने के लिए अगले दो स्तर खेलो।"
+          },
+          "scene_image": "library-5.png",
+          "trigger": {
+            "type": "before_level",
+            "level": "Reminder 1"
+          }
+        },
+        {
+          "event_id": 1006,
+          "page_template_id": 4,
+          "story_text": {
+            "en": "Hooray! Every student can now find a great book to read. Thank you for helping the Book Buddies make the library a better place!",
+            "fr": "Hourra ! Chaque élève peut maintenant trouver un excellent livre à lire. Merci d'avoir aidé les Copains des Livres à rendre la bibliothèque meilleure !",
+            "tr": "Yaşasın! Artık her öğrenci okuyacak harika bir kitap bulabiliyor. Kitap Dostları'nın kütüphaneyi daha iyi bir yer haline getirmesine yardım ettiğin için teşekkür ederiz!",
+            "es": "¡Hurra! Ahora cada estudiante puede encontrar un buen libro para leer. ¡Gracias por ayudar a los Amigos de los Libros a hacer de la biblioteca un lugar mejor!",
+            "de": "Hurra! Jetzt kann jeder Schüler ein tolles Buch zum Lesen finden. Danke, dass du den Buchfreunden geholfen hast, die Bibliothek zu einem besseren Ort zu machen!",
+            "it": "Evviva! Ora ogni studente può trovare un ottimo libro da leggere. Grazie per aver aiutato gli Amici dei Libri a rendere la biblioteca un posto migliore!",
+            "pt": "Viva! Agora cada aluno pode encontrar um ótimo livro para ler. Obrigado por ajudar os Amigos dos Livros a tornar a biblioteca um lugar melhor!",
+            "ru": "Ура! Теперь каждый ученик может найти отличную книгу для чтения. Спасибо за помощь Друзьям Книг сделать библиотеку лучше!",
+            "zh": "太好了！现在每个学生都能找到一本好书来读。谢谢你帮助图书小伙伴把图书馆变得更好！",
+            "ja": "やったね！これで全ての生徒が読みたい本を見つけられます。ブックバディーズが図書館をより良い場所にするのを手伝ってくれてありがとう！",
+            "ko": "해냈어요! 이제 모든 학생이 읽을 좋은 책을 찾을 수 있어요. 북버디가 도서관을 더 좋은 곳으로 만드는 데 도와줘서 고마워요!",
+            "ar": "رائع! يمكن لكل طالب الآن أن يجد كتابًا رائعًا ليقرأه. شكرًا لمساعدتك أصدقاء الكتب على جعل المكتبة مكانًا أفضل!",
+            "hi": "वाह! अब हर छात्र को पढ़ने के लिए एक बेहतरीन किताब मिल सकती है। किताब दोस्तों को लाइब्रेरी को बेहतर जगह बनाने में मदद करने के लिए धन्यवाद!"
+          },
+          "scene_image": "library-6.png",
+          "trigger": {
+            "type": "after_level",
+            "level": "Reminder 2"
+          }
+        }
+      ]
+    },
+    {
+      "main_level_id": 6,
+      "story_icon_asset_path": "assets/images/story/PLACEHOLDER-story-icon.png",
+      "story_sequences": [
+        {
+          "event_id": 1001,
+          "page_template_id": 4,
+          "story_text": {
+            "en": "Mia is stuck on an old, shaky bridge! Ben is scared, but he wants to save his little sister. Play the next two levels to help Ben start his brave journey.",
+            "fr": "Mia est coincée sur un vieux pont qui tremble ! Ben a peur, mais il veut sauver sa petite sœur. Joue les deux prochains niveaux pour aider Ben à commencer son courageux voyage.",
+            "tr": "Mia eski ve sallanan bir köprüde mahsur kaldı! Ben korkuyor ama küçük kız kardeşini kurtarmak istiyor. Ben'in cesaret yolculuğuna başlamasına yardım etmek için sonraki iki seviyeyi oyna.",
+            "es": "¡Mia está atrapada en un viejo puente que tiembla! Ben tiene miedo, pero quiere salvar a su hermanita. Juega los dos siguientes niveles para ayudar a Ben a comenzar su valiente aventura.",
+            "de": "Mia sitzt auf einer alten, wackeligen Brücke fest! Ben hat Angst, aber er möchte seine kleine Schwester retten. Spiele die nächsten zwei Level, um Ben auf seiner mutigen Reise zu helfen.",
+            "it": "Mia è bloccata su un vecchio ponte che trema! Ben ha paura, ma vuole salvare la sua sorellina. Gioca i prossimi due livelli per aiutare Ben a iniziare il suo coraggioso viaggio.",
+            "pt": "Mia está presa em uma ponte velha e balançando! Ben está com medo, mas quer salvar sua irmãzinha. Jogue os próximos dois níveis para ajudar Ben a começar sua jornada corajosa.",
+            "ru": "Мия застряла на старом шатком мосту! Бен боится, но хочет спасти свою младшую сестру. Пройди следующие два уровня, чтобы помочь Бену начать его смелый путь.",
+            "zh": "米娅被困在一座摇晃的老桥上！本很害怕，但他想救自己的妹妹。完成接下来的两关，帮助本开始他的勇敢旅程。",
+            "ja": "ミアは古くて揺れる橋の上で動けなくなっています！ベンは怖がっていますが、妹を助けたいと思っています。次の2つのレベルをプレイして、ベンの勇気ある旅の始まりを手伝いましょう。",
+            "ko": "미아가 오래되고 흔들리는 다리에 갇혔어요! 벤은 무섭지만 여동생을 구하고 싶어 해요. 다음 두 레벨을 플레이해서 벤의 용감한 여정을 시작하도록 도와주세요.",
+            "ar": "ميا عالقة على جسر قديم ومهتز! يشعر بن بالخوف، لكنه يريد إنقاذ أخته الصغيرة. العب المستويين التاليين لمساعدة بن على بدء رحلته الشجاعة.",
+            "hi": "मिया एक पुराने और हिलते हुए पुल पर फँस गई है! बेन डरा हुआ है, लेकिन वह अपनी छोटी बहन को बचाना चाहता है। बेन की बहादुरी की यात्रा शुरू करने में मदद करने के लिए अगले दो स्तर खेलो।"
+          },
+          "scene_image": "bridge-1.png",
+          "trigger": {
+            "type": "before_level",
+            "level": "At the Bank"
+          }
+        },
+        {
+          "event_id": 1002,
+          "page_template_id": 4,
+          "story_text": {
+            "en": "Being brave does not mean you are never scared. Ben takes a careful step onto the bridge. Play the next level to help him get closer to Mia.",
+            "fr": "Être courageux ne veut pas dire ne jamais avoir peur. Ben avance prudemment sur le pont. Joue le niveau suivant pour l'aider à se rapprocher de Mia.",
+            "tr": "Cesur olmak hiç korkmamak demek değildir. Ben dikkatlice köprüye bir adım atıyor. Mia'ya yaklaşmasına yardım etmek için sonraki seviyeyi oyna.",
+            "es": "Ser valiente no significa no tener miedo nunca. Ben da un paso con cuidado sobre el puente. Juega el siguiente nivel para ayudarlo a acercarse a Mia.",
+            "de": "Mutig zu sein bedeutet nicht, niemals Angst zu haben. Ben macht vorsichtig einen Schritt auf die Brücke. Spiele das nächste Level, um ihm zu helfen, Mia näher zu kommen.",
+            "it": "Essere coraggiosi non significa non avere mai paura. Ben fa un passo attento sul ponte. Gioca il livello successivo per aiutarlo ad avvicinarsi a Mia.",
+            "pt": "Ser corajoso não significa nunca sentir medo. Ben dá um passo cuidadoso na ponte. Jogue o próximo nível para ajudá-lo a chegar mais perto de Mia.",
+            "ru": "Быть смелым не значит никогда не бояться. Бен осторожно делает шаг на мост. Пройди следующий уровень, чтобы помочь ему приблизиться к Мии.",
+            "zh": "勇敢并不代表永远不会害怕。本小心地踏上桥。完成下一关，帮助他更接近米娅。",
+            "ja": "勇気があるというのは、決して怖くないという意味ではありません。ベンは慎重に橋へ一歩踏み出します。次のレベルをプレイして、ミアに近づくのを手伝いましょう。",
+            "ko": "용감하다는 것은 절대 무섭지 않다는 뜻이 아니에요. 벤은 조심스럽게 다리 위로 한 걸음 내딛어요. 다음 레벨을 플레이해서 미아에게 가까이 가도록 도와주세요.",
+            "ar": "الشجاعة لا تعني أنك لا تشعر بالخوف أبدًا. يأخذ بن خطوة حذرة على الجسر. العب المستوى التالي لمساعدته على الاقتراب من ميا.",
+            "hi": "बहादुर होने का मतलब यह नहीं है कि आपको कभी डर नहीं लगेगा। बेन पुल पर सावधानी से कदम रखता है। मिया के पास पहुँचने में उसकी मदद करने के लिए अगला स्तर खेलो।"
+          },
+          "scene_image": "bridge-2.png",
+          "trigger": {
+            "type": "before_level",
+            "level": "Vegetables 1 - Image only"
+          }
+        },
+        {
+          "event_id": 1003,
+          "page_template_id": 4,
+          "story_text": {
+            "en": "Ben looks carefully at the bridge and chooses the best path forward. Play the next level to help him make the right choice.",
+            "fr": "Ben observe attentivement le pont et choisit le meilleur chemin. Joue le niveau suivant pour l'aider à faire le bon choix.",
+            "tr": "Ben köprüye dikkatlice bakıyor ve ilerlemek için en iyi yolu seçiyor. Doğru seçimi yapmasına yardım etmek için sonraki seviyeyi oyna.",
+            "es": "Ben mira con cuidado el puente y elige el mejor camino. Juega el siguiente nivel para ayudarlo a tomar la decisión correcta.",
+            "de": "Ben schaut sich die Brücke genau an und wählt den besten Weg. Spiele das nächste Level, um ihm bei der richtigen Entscheidung zu helfen.",
+            "it": "Ben osserva attentamente il ponte e sceglie il percorso migliore. Gioca il livello successivo per aiutarlo a fare la scelta giusta.",
+            "pt": "Ben olha a ponte com cuidado e escolhe o melhor caminho. Jogue o próximo nível para ajudá-lo a fazer a escolha certa.",
+            "ru": "Бен внимательно смотрит на мост и выбирает лучший путь вперёд. Пройди следующий уровень, чтобы помочь ему сделать правильный выбор.",
+            "zh": "本仔细观察桥面，选择前进的最佳路线。完成下一关，帮助他做出正确的选择。",
+            "ja": "ベンは橋をよく見て、進むための一番良い道を選びます。次のレベルをプレイして、正しい選択ができるように手伝いましょう。",
+            "ko": "벤은 다리를 자세히 살펴보고 가장 좋은 길을 선택해요. 다음 레벨을 플레이해서 올바른 선택을 하도록 도와주세요.",
+            "ar": "ينظر بن إلى الجسر بعناية ويختار أفضل طريق للتقدم. العب المستوى التالي لمساعدته على اتخاذ القرار الصحيح.",
+            "hi": "बेन पुल को ध्यान से देखता है और आगे बढ़ने के लिए सबसे अच्छा रास्ता चुनता है। सही चुनाव करने में उसकी मदद करने के लिए अगला स्तर खेलो।"
+          },
+          "scene_image": "bridge-3.png",
+          "trigger": {
+            "type": "before_level",
+            "level": "Farm Animals - Image only"
+          }
+        },
+        {
+          "event_id": 1004,
+          "page_template_id": 4,
+          "story_text": {
+            "en": "A strong wind shakes the bridge! Ben takes a deep breath and stays calm. Play the next two levels to help him keep moving forward.",
+            "fr": "Un vent fort fait trembler le pont ! Ben prend une grande respiration et reste calme. Joue les deux prochains niveaux pour l'aider à continuer d'avancer.",
+            "tr": "Güçlü bir rüzgâr köprüyü sallıyor! Ben derin bir nefes alıyor ve sakin kalıyor. İlerlemeye devam etmesine yardım etmek için sonraki iki seviyeyi oyna.",
+            "es": "¡Un viento fuerte sacude el puente! Ben respira profundamente y mantiene la calma. Juega los dos siguientes niveles para ayudarlo a seguir avanzando.",
+            "de": "Ein starker Wind lässt die Brücke wackeln! Ben atmet tief ein und bleibt ruhig. Spiele die nächsten zwei Level, um ihm zu helfen, weiterzugehen.",
+            "it": "Un forte vento scuote il ponte! Ben fa un respiro profondo e rimane calmo. Gioca i prossimi due livelli per aiutarlo a continuare ad andare avanti.",
+            "pt": "Um vento forte balança a ponte! Ben respira fundo e mantém a calma. Jogue os próximos dois níveis para ajudá-lo a continuar avançando.",
+            "ru": "Сильный ветер качает мост! Бен делает глубокий вдох и сохраняет спокойствие. Пройди следующие два уровня, чтобы помочь ему двигаться дальше.",
+            "zh": "一阵大风吹动了桥！本深呼吸，让自己保持冷静。完成接下来的两关，帮助他继续前进。",
+            "ja": "強い風が橋を揺らします！ベンは深呼吸をして落ち着きます。次の2つのレベルをプレイして、前に進み続けるのを手伝いましょう。",
+            "ko": "강한 바람이 다리를 흔들어요! 벤은 깊게 숨을 쉬고 침착함을 유지해요. 다음 두 레벨을 플레이해서 계속 앞으로 나아가도록 도와주세요.",
+            "ar": "تهز رياح قوية الجسر! يأخذ بن نفسًا عميقًا ويبقى هادئًا. العب المستويين التاليين لمساعدته على الاستمرار في التقدم.",
+            "hi": "तेज़ हवा पुल को हिला देती है! बेन गहरी साँस लेता है और शांत रहता है। आगे बढ़ते रहने में उसकी मदद करने के लिए अगले दो स्तर खेलो।"
+          },
+          "scene_image": "bridge-4.png",
+          "trigger": {
+            "type": "before_level",
+            "level": "At the Farm"
+          }
+        },
+        {
+          "event_id": 1005,
+          "page_template_id": 4,
+          "story_text": {
+            "en": "Ben reaches Mia, but her shoelace is stuck. With patience and care, he helps her get free. Play the next level to help them continue together.",
+            "fr": "Ben arrive jusqu'à Mia, mais son lacet est coincé. Avec patience et attention, il l'aide à se libérer. Joue le niveau suivant pour les aider à continuer ensemble.",
+            "tr": "Ben Mia'ya ulaşıyor, ancak ayakkabı bağı takılmış. Sabır ve dikkatle ona kurtulmasına yardım ediyor. Birlikte devam etmelerine yardım etmek için sonraki seviyeyi oyna.",
+            "es": "Ben llega hasta Mia, pero su cordón está atrapado. Con paciencia y cuidado, la ayuda a liberarse. Juega el siguiente nivel para ayudarlos a continuar juntos.",
+            "de": "Ben erreicht Mia, aber ihr Schnürsenkel steckt fest. Mit Geduld und Vorsicht hilft er ihr, sich zu befreien. Spiele das nächste Level, um ihnen zu helfen, gemeinsam weiterzugehen.",
+            "it": "Ben raggiunge Mia, ma il suo laccio è bloccato. Con pazienza e attenzione, la aiuta a liberarsi. Gioca il livello successivo per aiutarli a continuare insieme.",
+            "pt": "Ben chega até Mia, mas o cadarço dela está preso. Com paciência e cuidado, ele a ajuda a se soltar. Jogue o próximo nível para ajudá-los a continuar juntos.",
+            "ru": "Бен добирается до Мии, но её шнурок застрял. С терпением и заботой он помогает ей освободиться. Пройди следующий уровень, чтобы помочь им продолжить путь вместе.",
+            "zh": "本终于到达米娅身边，但她的鞋带被卡住了。本耐心又小心地帮助她脱困。完成下一关，帮助他们一起继续前进。",
+            "ja": "ベンはミアのところに着きましたが、靴ひもが引っかかっています。ベンは優しく手伝って、ミアを助けます。次のレベルをプレイして、二人が一緒に進めるように手伝いましょう。",
+            "ko": "벤이 미아에게 도착했지만 신발끈이 걸려 있어요. 벤은 인내심을 가지고 조심스럽게 미아를 도와줘요. 다음 레벨을 플레이해서 함께 계속 나아가도록 도와주세요.",
+            "ar": "يصل بن إلى ميا، لكن رباط حذائها عالق. بصبر واهتمام يساعدها على التحرر. العب المستوى التالي لمساعدتهما على الاستمرار معًا.",
+            "hi": "बेन मिया तक पहुँच जाता है, लेकिन उसके जूते का फीता फँस गया है। धैर्य और देखभाल से वह उसकी मदद करता है। दोनों को साथ आगे बढ़ने में मदद करने के लिए अगला स्तर खेलो।"
+          },
+          "scene_image": "bridge-5.png",
+          "trigger": {
+            "type": "before_level",
+            "level": "Common Words - 5"
+          }
+        },
+        {
+          "event_id": 1006,
+          "page_template_id": 4,
+          "story_text": {
+            "en": "The bridge is falling apart, but Ben and Mia do not give up. Play the next two levels to help them reach the other side.",
+            "fr": "Le pont se détruit peu à peu, mais Ben et Mia n'abandonnent pas. Joue les deux prochains niveaux pour les aider à atteindre l'autre côté.",
+            "tr": "Köprü parçalanmaya başlıyor ama Ben ve Mia pes etmiyor. Diğer tarafa ulaşmalarına yardım etmek için sonraki iki seviyeyi oyna.",
+            "es": "El puente se está rompiendo, pero Ben y Mia no se rinden. Juega los dos siguientes niveles para ayudarlos a llegar al otro lado.",
+            "de": "Die Brücke zerfällt, aber Ben und Mia geben nicht auf. Spiele die nächsten zwei Level, um ihnen zu helfen, die andere Seite zu erreichen.",
+            "it": "Il ponte sta crollando, ma Ben e Mia non si arrendono. Gioca i prossimi due livelli per aiutarli a raggiungere l'altra parte.",
+            "pt": "A ponte está desmoronando, mas Ben e Mia não desistem. Jogue os próximos dois níveis para ajudá-los a chegar ao outro lado.",
+            "ru": "Мост разрушается, но Бен и Мия не сдаются. Пройди следующие два уровня, чтобы помочь им добраться до другой стороны.",
+            "zh": "桥正在倒塌，但本和米娅没有放弃。完成接下来的两关，帮助他们到达另一边。",
+            "ja": "橋は崩れ始めていますが、ベンとミアはあきらめません。次の2つのレベルをプレイして、二人が向こう側へ渡れるように手伝いましょう。",
+            "ko": "다리가 무너지고 있지만 벤과 미아는 포기하지 않아요. 다음 두 레벨을 플레이해서 반대편에 도착하도록 도와주세요.",
+            "ar": "بدأ الجسر في الانهيار، لكن بن وميا لا يستسلمان. العب المستويين التاليين لمساعدتهما على الوصول إلى الجانب الآخر.",
+            "hi": "पुल टूट रहा है, लेकिन बेन और मिया हार नहीं मानते। उन्हें दूसरी तरफ पहुँचने में मदद करने के लिए अगले दो स्तर खेलो।"
+          },
+          "scene_image": "bridge-6.png",
+          "trigger": {
+            "type": "before_level",
+            "level": "Reminder 1"
+          }
+        },
+        {
+          "event_id": 1007,
+          "page_template_id": 4,
+          "story_text": {
+            "en": "Hooray! Ben and Mia are safe. Ben learns that courage means taking a step even when you are afraid. Thank you for helping them!",
+            "fr": "Hourra ! Ben et Mia sont en sécurité. Ben apprend que le courage, c'est avancer même quand on a peur. Merci de les avoir aidés !",
+            "tr": "Yaşasın! Ben ve Mia güvende. Ben cesaretin korksan bile bir adım atmak olduğunu öğreniyor. Onlara yardım ettiğin için teşekkür ederiz!",
+            "es": "¡Hurra! Ben y Mia están a salvo. Ben aprende que el valor significa dar un paso incluso cuando tienes miedo. ¡Gracias por ayudarlos!",
+            "de": "Hurra! Ben und Mia sind sicher. Ben lernt, dass Mut bedeutet, weiterzugehen, auch wenn man Angst hat. Danke, dass du ihnen geholfen hast!",
+            "it": "Evviva! Ben e Mia sono al sicuro. Ben impara che il coraggio significa fare un passo avanti anche quando hai paura. Grazie per averli aiutati!",
+            "pt": "Viva! Ben e Mia estão seguros. Ben aprende que coragem significa dar um passo mesmo quando sentimos medo. Obrigado por ajudá-los!",
+            "ru": "Ура! Бен и Мия в безопасности. Бен понимает, что смелость — это сделать шаг вперёд, даже когда тебе страшно. Спасибо за помощь!",
+            "zh": "太好了！本和米娅安全了。本明白了，勇气就是即使害怕，也愿意迈出一步。谢谢你帮助他们！",
+            "ja": "やったね！ベンとミアは無事です。ベンは、勇気とは怖くても一歩踏み出すことだと学びました。二人を助けてくれてありがとう！",
+            "ko": "해냈어요! 벤과 미아는 안전해요. 벤은 용기란 두려워도 한 걸음 내딛는 것이라는 것을 배웠어요. 도와줘서 고마워요!",
+            "ar": "رائع! بن وميا بأمان. يتعلم بن أن الشجاعة تعني أن تتقدم خطوة حتى عندما تشعر بالخوف. شكرًا لمساعدتهما!",
+            "hi": "वाह! बेन और मिया सुरक्षित हैं। बेन सीखता है कि बहादुरी का मतलब डर लगने पर भी एक कदम आगे बढ़ाना है। उनकी मदद करने के लिए धन्यवाद!"
+          },
+          "scene_image": "bridge-7.png",
+          "trigger": {
+            "type": "after_level",
+            "level": "Reminder 2"
+          }
+        }
+      ]
+    },
+    {
+      "main_level_id": 7,
+      "story_icon_asset_path": "assets/images/story/PLACEHOLDER-story-icon.png",
+      "story_sequences": [
+        {
+          "event_id": 1001,
+          "page_template_id": 4,
+          "story_text": {
+            "en": "Thick fog rolls over the village, and the fishing boats cannot find their way home. Emma remembers her grandfather's stories about the old lighthouse. Play the next two levels to help her begin the journey.",
+            "fr": "Un épais brouillard enveloppe le village, et les bateaux de pêche ne retrouvent plus le chemin du retour. Emma se souvient des histoires que son grand-père racontait sur le vieux phare. Joue les deux prochains niveaux pour l'aider à commencer son voyage.",
+            "tr": "Köyün üzerine yoğun bir sis çöküyor ve balıkçı tekneleri eve dönüş yolunu bulamıyor. Emma, dedesinin eski deniz feneri hakkındaki hikayelerini hatırlıyor. Yolculuğuna başlamasına yardım etmek için sonraki iki seviyeyi oyna.",
+            "es": "Una espesa niebla cubre el pueblo, y los barcos pesqueros no encuentran el camino de vuelta a casa. Emma recuerda las historias que su abuelo le contaba sobre el viejo faro. Juega los dos siguientes niveles para ayudarla a comenzar su viaje.",
+            "de": "Dichter Nebel legt sich über das Dorf, und die Fischerboote finden den Weg nach Hause nicht mehr. Emma erinnert sich an die Geschichten ihres Großvaters über den alten Leuchtturm. Spiele die nächsten zwei Level, um ihr zu helfen, ihre Reise zu beginnen.",
+            "it": "Una fitta nebbia avvolge il villaggio, e le barche dei pescatori non riescono a trovare la via di casa. Emma ricorda i racconti di suo nonno sul vecchio faro. Gioca i prossimi due livelli per aiutarla a iniziare il suo viaggio.",
+            "pt": "Uma neblina espessa cobre a vila, e os barcos de pesca não conseguem encontrar o caminho de volta para casa. Emma se lembra das histórias que seu avô contava sobre o velho farol. Jogue os próximos dois níveis para ajudá-la a começar sua jornada.",
+            "ru": "Густой туман окутывает деревню, и рыбацкие лодки не могут найти дорогу домой. Эмма вспоминает рассказы дедушки о старом маяке. Пройди следующие два уровня, чтобы помочь ей начать свой путь.",
+            "zh": "浓雾笼罩了村庄，渔船找不到回家的路。艾玛想起了爷爷讲过的关于那座旧灯塔的故事。完成接下来的两关，帮助她开始这段旅程。",
+            "ja": "村に濃い霧が立ち込め、漁船たちは家路を見つけられません。エマは、おじいさんが話してくれた古い灯台の物語を思い出します。次の2つのレベルをプレイして、彼女の旅の始まりを手伝いましょう。",
+            "ko": "짙은 안개가 마을을 뒤덮어 고깃배들이 집으로 돌아가는 길을 찾지 못해요. 엠마는 할아버지가 들려주신 낡은 등대 이야기를 떠올려요. 다음 두 레벨을 플레이해서 그녀의 여정이 시작되도록 도와주세요.",
+            "ar": "يغطي الضباب الكثيف القرية، ولا تستطيع قوارب الصيد إيجاد طريقها إلى المنزل. تتذكر إيما قصص جدها عن المنارة القديمة. العب المستويين التاليين لمساعدتها على بدء رحلتها.",
+            "hi": "गाँव पर घना कोहरा छा जाता है, और मछली पकड़ने वाली नावें घर का रास्ता नहीं ढूंढ पातीं। एम्मा को अपने दादा की पुराने लाइटहाउस के बारे में कहानियाँ याद आती हैं। उसकी यात्रा शुरू करने में मदद करने के लिए अगले दो स्तर खेलो।"
+          },
+          "scene_image": "lantern-1.png",
+          "trigger": {
+            "type": "before_level",
+            "level": "Fruits 2 - Image only"
+          }
+        },
+        {
+          "event_id": 1002,
+          "page_template_id": 4,
+          "story_text": {
+            "en": "The old trail up the hill has almost disappeared. Play the next level to help Emma find the hidden path to the lighthouse.",
+            "fr": "Le vieux sentier qui monte sur la colline a presque disparu. Joue le niveau suivant pour aider Emma à trouver le chemin caché menant au phare.",
+            "tr": "Tepeye çıkan eski patika neredeyse kayboldu. Emma'nın deniz fenerine giden gizli yolu bulmasına yardım etmek için bir sonraki seviyeyi oyna.",
+            "es": "El viejo sendero que sube la colina casi ha desaparecido. Juega el siguiente nivel para ayudar a Emma a encontrar el camino escondido hacia el faro.",
+            "de": "Der alte Pfad den Hügel hinauf ist fast verschwunden. Spiele das nächste Level, um Emma zu helfen, den verborgenen Weg zum Leuchtturm zu finden.",
+            "it": "Il vecchio sentiero che sale sulla collina è quasi scomparso. Gioca il livello successivo per aiutare Emma a trovare il sentiero nascosto verso il faro.",
+            "pt": "A velha trilha que sobe a colina quase desapareceu. Jogue o próximo nível para ajudar Emma a encontrar o caminho escondido até o farol.",
+            "ru": "Старая тропа на холм почти исчезла. Пройди следующий уровень, чтобы помочь Эмме найти скрытый путь к маяку.",
+            "zh": "通往山上的旧小路几乎已经消失了。完成下一关，帮助艾玛找到通往灯塔的隐秘小路。",
+            "ja": "丘へ続く古い小道はほとんど消えてしまいました。次のレベルをプレイして、エマが灯台へ続く隠された道を見つけるのを手伝いましょう。",
+            "ko": "언덕으로 이어지는 오래된 오솔길이 거의 사라졌어요. 다음 레벨을 플레이해서 엠마가 등대로 가는 숨겨진 길을 찾도록 도와주세요.",
+            "ar": "الممر القديم الصاعد إلى التل قد اختفى تقريبًا. العب المستوى التالي لمساعدة إيما على إيجاد الطريق الخفي إلى المنارة.",
+            "hi": "पहाड़ी पर जाने वाला पुराना रास्ता लगभग गायब हो चुका है। एम्मा को लाइटहाउस तक जाने वाला छिपा हुआ रास्ता खोजने में मदद करने के लिए अगला स्तर खेलो।"
+          },
+          "scene_image": "lantern-2.png",
+          "trigger": {
+            "type": "before_level",
+            "level": "Jobs 1 - Image only"
+          }
+        },
+        {
+          "event_id": 1003,
+          "page_template_id": 4,
+          "story_text": {
+            "en": "The fog grows even thicker, but glowing seashell markers light the way. Play the next two levels to help Emma follow the trail safely.",
+            "fr": "Le brouillard devient encore plus épais, mais des coquillages lumineux éclairent le chemin. Joue les deux prochains niveaux pour aider Emma à suivre le sentier en toute sécurité.",
+            "tr": "Sis daha da yoğunlaşıyor ama parlayan deniz kabuğu işaretleri yolu aydınlatıyor. Emma'nın patikayı güvenle takip etmesine yardım etmek için sonraki iki seviyeyi oyna.",
+            "es": "La niebla se vuelve aún más espesa, pero unas conchas marinas brillantes iluminan el camino. Juega los dos siguientes niveles para ayudar a Emma a seguir el sendero con seguridad.",
+            "de": "Der Nebel wird noch dichter, aber leuchtende Muschel-Markierungen weisen den Weg. Spiele die nächsten zwei Level, um Emma zu helfen, dem Pfad sicher zu folgen.",
+            "it": "La nebbia diventa ancora più fitta, ma conchiglie luminose illuminano il cammino. Gioca i prossimi due livelli per aiutare Emma a seguire il sentiero in sicurezza.",
+            "pt": "A neblina fica ainda mais espessa, mas conchas brilhantes iluminam o caminho. Jogue os próximos dois níveis para ajudar Emma a seguir a trilha com segurança.",
+            "ru": "Туман становится ещё гуще, но светящиеся ракушки-метки освещают путь. Пройди следующие два уровня, чтобы помочь Эмме безопасно пройти по тропе.",
+            "zh": "雾变得更浓了，但发光的贝壳标记照亮了前路。完成接下来的两关，帮助艾玛安全地沿着小路前行。",
+            "ja": "霧はさらに濃くなりますが、光る貝殻の目印が道を照らします。次の2つのレベルをプレイして、エマが安全に道をたどるのを手伝いましょう。",
+            "ko": "안개가 더욱 짙어지지만, 빛나는 조개 표식이 길을 밝혀줘요. 다음 두 레벨을 플레이해서 엠마가 안전하게 길을 따라가도록 도와주세요.",
+            "ar": "يزداد الضباب كثافة، لكن علامات الأصداف المتوهجة تضيء الطريق. العب المستويين التاليين لمساعدة إيما على اتباع الممر بأمان.",
+            "hi": "कोहरा और भी घना हो जाता है, लेकिन चमकते सीप के निशान रास्ता दिखाते हैं। एम्मा को सुरक्षित रूप से रास्ते पर चलने में मदद करने के लिए अगले दो स्तर खेलो।"
+          },
+          "scene_image": "lantern-3.png",
+          "trigger": {
+            "type": "before_level",
+            "level": "At the Restaurant"
+          }
+        },
+        {
+          "event_id": 1004,
+          "page_template_id": 4,
+          "story_text": {
+            "en": "Emma finds the old supply shed beside the lighthouse. Play the next level to help her gather the supplies to light the beacon.",
+            "fr": "Emma trouve le vieux hangar à côté du phare. Joue le niveau suivant pour l'aider à rassembler les fournitures nécessaires pour allumer la balise du phare.",
+            "tr": "Emma, deniz fenerinin yanındaki eski depoyu bulur. Feneri yakmak için gereken malzemeleri toplamasına yardım etmek için bir sonraki seviyeyi oyna.",
+            "es": "Emma encuentra el viejo cobertizo junto al faro. Juega el siguiente nivel para ayudarla a reunir los suministros para encender el faro.",
+            "de": "Emma findet den alten Vorratsschuppen neben dem Leuchtturm. Spiele das nächste Level, um ihr zu helfen, die Vorräte zum Anzünden des Leuchtfeuers zu sammeln.",
+            "it": "Emma trova il vecchio capanno accanto al faro. Gioca il livello successivo per aiutarla a raccogliere le forniture per accendere il faro.",
+            "pt": "Emma encontra o velho depósito ao lado do farol. Jogue o próximo nível para ajudá-la a reunir os suprimentos para acender o farol.",
+            "ru": "Эмма находит старый сарай с припасами рядом с маяком. Пройди следующий уровень, чтобы помочь ей собрать всё необходимое для зажигания маяка.",
+            "zh": "艾玛在灯塔旁边找到了旧储物棚。完成下一关，帮助她收集点亮灯塔所需的物资。",
+            "ja": "エマは灯台のそばに古い物置小屋を見つけます。次のレベルをプレイして、灯台を灯すための道具を集める彼女を手伝いましょう。",
+            "ko": "엠마는 등대 옆에서 낡은 창고를 발견해요. 다음 레벨을 플레이해서 등대를 밝힐 물품을 모으는 그녀를 도와주세요.",
+            "ar": "تجد إيما الكوخ القديم للمؤن بجانب المنارة. العب المستوى التالي لمساعدتها على جمع المستلزمات لإضاءة المنارة.",
+            "hi": "एम्मा को लाइटहाउस के पास पुराना सामान रखने वाला कमरा मिलता है। लाइटहाउस जलाने के लिए ज़रूरी सामान इकट्ठा करने में उसकी मदद करने के लिए अगला स्तर खेलो।"
+          },
+          "scene_image": "lantern-4.png",
+          "trigger": {
+            "type": "before_level",
+            "level": "Clothes Shopping"
+          }
+        },
+        {
+          "event_id": 1005,
+          "page_template_id": 4,
+          "story_text": {
+            "en": "A tall spiral staircase leads to the lantern room. Play the next level to help Emma reach the top.",
+            "fr": "Un grand escalier en colimaçon mène à la salle de la lanterne. Joue le niveau suivant pour aider Emma à atteindre le sommet.",
+            "tr": "Yüksek bir spiral merdiven fener odasına çıkıyor. Emma'nın tepeye ulaşmasına yardım etmek için bir sonraki seviyeyi oyna.",
+            "es": "Una alta escalera de caracol lleva a la sala de la linterna. Juega el siguiente nivel para ayudar a Emma a llegar hasta arriba.",
+            "de": "Eine hohe Wendeltreppe führt zum Laternenraum. Spiele das nächste Level, um Emma zu helfen, die Spitze zu erreichen.",
+            "it": "Una lunga scala a chiocciola porta alla sala della lanterna. Gioca il livello successivo per aiutare Emma a raggiungere la cima.",
+            "pt": "Uma longa escada em espiral leva à sala da lanterna. Jogue o próximo nível para ajudar Emma a chegar ao topo.",
+            "ru": "Высокая винтовая лестница ведёт в фонарную комнату. Пройди следующий уровень, чтобы помочь Эмме подняться наверх.",
+            "zh": "一段高高的旋转楼梯通向灯塔顶部的灯室。完成下一关，帮助艾玛到达顶端。",
+            "ja": "高くそびえる螺旋階段がランプ室へと続いています。次のレベルをプレイして、エマが頂上にたどり着くのを手伝いましょう。",
+            "ko": "높은 나선형 계단이 등실로 이어져요. 다음 레벨을 플레이해서 엠마가 꼭대기에 도착하도록 도와주세요.",
+            "ar": "يؤدي درج حلزوني طويل إلى غرفة المصباح. العب المستوى التالي لمساعدة إيما على الوصول إلى القمة.",
+            "hi": "एक ऊँची सर्पिल सीढ़ी लालटेन वाले कमरे तक जाती है। एम्मा को ऊपर पहुँचने में मदद करने के लिए अगला स्तर खेलो।"
+          },
+          "scene_image": "lantern-5.png",
+          "trigger": {
+            "type": "before_level",
+            "level": "Common Words - 6"
+          }
+        },
+        {
+          "event_id": 1006,
+          "page_template_id": 4,
+          "story_text": {
+            "en": "Emma has everything she needs. Play the next two levels to help her light the beacon and guide the fishermen home.",
+            "fr": "Emma a tout ce dont elle a besoin. Joue les deux prochains niveaux pour l'aider à allumer la balise du phare et à guider les pêcheurs jusqu'à chez eux.",
+            "tr": "Emma ihtiyacı olan her şeye sahip. Feneri yakıp balıkçıları eve yönlendirmesine yardım etmek için sonraki iki seviyeyi oyna.",
+            "es": "Emma tiene todo lo que necesita. Juega los dos siguientes niveles para ayudarla a encender el faro y guiar a los pescadores a casa.",
+            "de": "Emma hat alles, was sie braucht. Spiele die nächsten zwei Level, um ihr zu helfen, das Leuchtfeuer anzuzünden und die Fischer nach Hause zu führen.",
+            "it": "Emma ha tutto ciò di cui ha bisogno. Gioca i prossimi due livelli per aiutarla ad accendere il faro e guidare i pescatori a casa.",
+            "pt": "Emma tem tudo o que precisa. Jogue os próximos dois níveis para ajudá-la a acender o farol e guiar os pescadores para casa.",
+            "ru": "У Эммы есть всё необходимое. Пройди следующие два уровня, чтобы помочь ей зажечь маяк и привести рыбаков домой.",
+            "zh": "艾玛已经准备好了一切。完成接下来的两关，帮助她点亮灯塔，指引渔民回家。",
+            "ja": "エマは必要なものをすべて手に入れました。次の2つのレベルをプレイして、彼女が灯台を灯し、漁師たちを家へ導くのを手伝いましょう。",
+            "ko": "엠마는 필요한 모든 것을 갖췄어요. 다음 두 레벨을 플레이해서 그녀가 등대를 밝히고 어부들을 집으로 인도하도록 도와주세요.",
+            "ar": "لدى إيما كل ما تحتاجه. العب المستويين التاليين لمساعدتها على إضاءة المنارة وإرشاد الصيادين إلى منازلهم.",
+            "hi": "एम्मा के पास वह सब कुछ है जिसकी उसे ज़रूरत है। उसे लाइटहाउस जलाने और मछुआरों को घर वापस लाने में मदद करने के लिए अगले दो स्तर खेलो।"
+          },
+          "scene_image": "lantern-6.png",
+          "trigger": {
+            "type": "before_level",
+            "level": "Reminder 1"
+          }
+        },
+        {
+          "event_id": 1007,
+          "page_template_id": 4,
+          "story_text": {
+            "en": "Hooray! The beacon shines brightly, and the fishermen find their way home. Emma learns that even a small light can make a big difference. Thank you for helping her light the way!",
+            "fr": "Hourra ! Le phare brille de mille feux, et les pêcheurs retrouvent le chemin de la maison. Emma apprend qu'une petite lumière peut vraiment changer les choses. Merci de l'avoir aidée à éclairer le chemin !",
+            "tr": "Yaşasın! Fener parlak bir şekilde parlıyor ve balıkçılar eve giden yolu buluyor. Emma, küçük bir ışığın bile büyük bir fark yaratabileceğini öğreniyor. Yolu aydınlatmasına yardım ettiğin için teşekkür ederiz!",
+            "es": "¡Hurra! El faro brilla intensamente, y los pescadores encuentran el camino a casa. Emma aprende que incluso una pequeña luz puede marcar una gran diferencia. ¡Gracias por ayudarla a iluminar el camino!",
+            "de": "Hurra! Der Leuchtturm strahlt hell, und die Fischer finden den Weg nach Hause. Emma lernt, dass sogar ein kleines Licht einen großen Unterschied machen kann. Danke, dass du ihr geholfen hast, den Weg zu erhellen!",
+            "it": "Evviva! Il faro brilla luminoso, e i pescatori trovano la via di casa. Emma impara che anche una piccola luce può fare una grande differenza. Grazie per averla aiutata a illuminare la strada!",
+            "pt": "Viva! O farol brilha intensamente, e os pescadores encontram o caminho para casa. Emma aprende que até uma pequena luz pode fazer uma grande diferença. Obrigado por ajudá-la a iluminar o caminho!",
+            "ru": "Ура! Маяк ярко светит, и рыбаки находят дорогу домой. Эмма понимает, что даже маленький огонёк может многое изменить. Спасибо за помощь в освещении пути!",
+            "zh": "太好了！灯塔明亮地照耀着，渔民们找到了回家的路。艾玛明白了，即使是一点微光，也能带来巨大的改变。谢谢你帮助她照亮回家的路！",
+            "ja": "やったね！灯台は明るく輝き、漁師たちは家路を見つけました。エマは、小さな光でも大きな違いを生み出せることを学びました。彼女が道を照らす手伝いをしてくれてありがとう！",
+            "ko": "해냈어요! 등대가 밝게 빛나고, 어부들이 집으로 가는 길을 찾았어요. 엠마는 작은 빛도 큰 변화를 만들 수 있다는 것을 배웠어요. 그녀가 길을 밝히는 것을 도와줘서 고마워요!",
+            "ar": "رائع! تضيء المنارة بسطوع، ويجد الصيادون طريقهم إلى المنزل. تتعلم إيما أن ضوءًا صغيرًا يمكن أن يُحدث فرقًا كبيرًا. شكرًا لمساعدتك لها في إضاءة الطريق!",
+            "hi": "वाह! लाइटहाउस चमकीला जगमगाता है, और मछुआरे घर का रास्ता ढूंढ लेते हैं। एम्मा सीखती है कि एक छोटी सी रोशनी भी बड़ा फ़र्क ला सकती है। उसे रास्ता रोशन करने में मदद करने के लिए धन्यवाद!"
+          },
+          "scene_image": "lantern-7.png",
+          "trigger": {
+            "type": "after_level",
+            "level": "Reminder 2"
+          }
+        }
+      ]
+    },
+    {
+      "main_level_id": 8,
+      "story_icon_asset_path": "assets/images/story/PLACEHOLDER-story-icon.png",
+      "story_sequences": [
+        {
+          "event_id": 1001,
+          "page_template_id": 4,
+          "story_text": {
+            "en": "The mountain is shaking! Something is wrong at Ember Ridge, and the villagers need help. Play the next two levels to help Lily begin her journey.",
+            "fr": "La montagne tremble ! Quelque chose ne va pas à Ember Ridge, et les villageois ont besoin d'aide. Joue les deux prochains niveaux pour aider Lily à commencer son aventure.",
+            "tr": "Dağ sallanıyor! Ember Ridge'de bir şeyler ters gidiyor ve köylülerin yardıma ihtiyacı var. Lily'nin yolculuğuna başlamasına yardım etmek için sonraki iki seviyeyi oyna.",
+            "es": "¡La montaña está temblando! Algo anda mal en Ember Ridge y los aldeanos necesitan ayuda. Juega los dos siguientes niveles para ayudar a Lily a comenzar su aventura.",
+            "de": "Der Berg bebt! In Ember Ridge stimmt etwas nicht, und die Dorfbewohner brauchen Hilfe. Spiele die nächsten zwei Level, um Lily auf ihrer Reise zu helfen.",
+            "it": "La montagna sta tremando! Qualcosa non va a Ember Ridge e gli abitanti del villaggio hanno bisogno di aiuto. Gioca i prossimi due livelli per aiutare Lily a iniziare il suo viaggio.",
+            "pt": "A montanha está tremendo! Algo está errado em Ember Ridge, e os moradores da vila precisam de ajuda. Jogue os próximos dois níveis para ajudar Lily a começar sua jornada.",
+            "ru": "Гора дрожит! В Эмбер-Ридж что-то случилось, и жителям деревни нужна помощь. Пройди следующие два уровня, чтобы помочь Лили начать её путешествие.",
+            "zh": "大山在震动！余烬山脊出了问题，村民们需要帮助。完成接下来的两关，帮助莉莉踏上她的旅程。",
+            "ja": "山が揺れています！エンバーリッジで何かが起こり、村人たちは助けを必要としています。次の2つのレベルをプレイして、リリーの冒険の始まりを手伝いましょう。",
+            "ko": "산이 흔들리고 있어요! 엠버 릿지에 문제가 생겼고 마을 사람들이 도움을 필요로 해요. 다음 두 레벨을 플레이해서 릴리의 모험이 시작되도록 도와주세요.",
+            "ar": "الجبل يهتز! هناك شيء غريب يحدث في إمبر ريدج، وسكان القرية بحاجة إلى المساعدة. العب المستويين التاليين لمساعدة ليلي على بدء رحلتها.",
+            "hi": "पहाड़ काँप रहा है! एम्बर रिज में कुछ गड़बड़ है और गाँव वालों को मदद चाहिए। लिली की यात्रा शुरू करने में मदद करने के लिए अगले दो स्तर खेलो।"
+          },
+          "scene_image": "dragon-1.png",
+          "trigger": {
+            "type": "before_level",
+            "level": "Dressing Items 1 - Image only"
+          }
+        },
+        {
+          "event_id": 1002,
+          "page_template_id": 4,
+          "story_text": {
+            "en": "An ancient puzzle may hold the answer. Play the next level to help Lily and her friend solve it.",
+            "fr": "Une ancienne énigme détient peut-être la réponse. Joue le niveau suivant pour aider Lily et son amie à la résoudre.",
+            "tr": "Eski bir bilmece cevabı saklıyor olabilir. Lily ve arkadaşının onu çözmesine yardım etmek için sonraki seviyeyi oyna.",
+            "es": "Un antiguo rompecabezas puede tener la respuesta. Juega el siguiente nivel para ayudar a Lily y a su amiga a resolverlo.",
+            "de": "Ein altes Rätsel könnte die Antwort enthalten. Spiele das nächste Level, um Lily und ihrer Freundin beim Lösen zu helfen.",
+            "it": "Un antico enigma potrebbe contenere la risposta. Gioca il livello successivo per aiutare Lily e la sua amica a risolverlo.",
+            "pt": "Um antigo quebra-cabeça pode guardar a resposta. Jogue o próximo nível para ajudar Lily e sua amiga a resolvê-lo.",
+            "ru": "Древняя загадка может хранить ответ. Пройди следующий уровень, чтобы помочь Лили и её подруге разгадать её.",
+            "zh": "一块古老的谜题也许藏着答案。完成下一关，帮助莉莉和她的朋友解开谜题。",
+            "ja": "古代のパズルが答えを隠しているかもしれません。次のレベルをプレイして、リリーと友だちが解けるように手伝いましょう。",
+            "ko": "오래된 퍼즐이 답을 숨기고 있을지도 몰라요. 다음 레벨을 플레이해서 릴리와 친구가 퍼즐을 풀도록 도와주세요.",
+            "ar": "قد يحمل اللغز القديم الإجابة. العب المستوى التالي لمساعدة ليلي وصديقتها على حله.",
+            "hi": "एक प्राचीन पहेली में उत्तर छिपा हो सकता है। लिली और उसकी दोस्त की इसे हल करने में मदद करने के लिए अगला स्तर खेलो।"
+          },
+          "scene_image": "dragon-2.png",
+          "trigger": {
+            "type": "before_level",
+            "level": "Jobs 2 - Image only"
+          }
+        },
+        {
+          "event_id": 1003,
+          "page_template_id": 4,
+          "story_text": {
+            "en": "The ancient flute is almost within reach! Play the next two levels to help Lily and her friend clear the path.",
+            "fr": "L'ancienne flûte est presque à portée de main ! Joue les deux prochains niveaux pour aider Lily et son amie à dégager le chemin.",
+            "tr": "Eski flüt neredeyse ulaşılabilir! Lily ve arkadaşının yolu açmasına yardım etmek için sonraki iki seviyeyi oyna.",
+            "es": "¡La antigua flauta está casi al alcance! Juega los dos siguientes niveles para ayudar a Lily y a su amiga a despejar el camino.",
+            "de": "Die alte Flöte ist fast zum Greifen nah! Spiele die nächsten zwei Level, um Lily und ihrer Freundin zu helfen, den Weg freizumachen.",
+            "it": "L'antico flauto è quasi a portata di mano! Gioca i prossimi due livelli per aiutare Lily e la sua amica a liberare il sentiero.",
+            "pt": "A antiga flauta está quase ao alcance! Jogue os próximos dois níveis para ajudar Lily e sua amiga a abrir o caminho.",
+            "ru": "Древняя флейта уже почти рядом! Пройди следующие два уровня, чтобы помочь Лили и её подруге расчистить путь.",
+            "zh": "古老的长笛就在眼前！完成接下来的两关，帮助莉莉和她的朋友清理道路。",
+            "ja": "古代の笛はもうすぐ手に届きます！次の2つのレベルをプレイして、リリーと友だちが道を切り開けるように手伝いましょう。",
+            "ko": "고대의 피리가 거의 손에 닿을 거예요! 다음 두 레벨을 플레이해서 릴리와 친구가 길을 열도록 도와주세요.",
+            "ar": "الناي القديم أصبح قريبًا! العب المستويين التاليين لمساعدة ليلي وصديقتها على فتح الطريق.",
+            "hi": "प्राचीन बाँसुरी अब लगभग मिल ही गई है! लिली और उसकी दोस्त की रास्ता साफ़ करने में मदद करने के लिए अगले दो स्तर खेलो।"
+          },
+          "scene_image": "dragon-3.png",
+          "trigger": {
+            "type": "before_level",
+            "level": "Wild Animals 1 - Image only"
+          }
+        },
+        {
+          "event_id": 1004,
+          "page_template_id": 4,
+          "story_text": {
+            "en": "The mountain water channel is broken. Play the next level to help Lily and her friends repair it before more water is lost.",
+            "fr": "Le canal d'eau de la montagne est endommagé. Joue le niveau suivant pour aider Lily et ses amis à le réparer avant de perdre encore plus d'eau.",
+            "tr": "Dağdaki su kanalı hasar gördü. Daha fazla su kaybolmadan önce Lily ve arkadaşlarının onu onarmasına yardım etmek için sonraki seviyeyi oyna.",
+            "es": "El canal de agua de la montaña está roto. Juega el siguiente nivel para ayudar a Lily y a sus amigos a repararlo antes de que se pierda más agua.",
+            "de": "Der Wasserkanal am Berg ist beschädigt. Spiele das nächste Level, um Lily und ihren Freunden zu helfen, ihn zu reparieren, bevor noch mehr Wasser verloren geht.",
+            "it": "Il canale d'acqua della montagna è danneggiato. Gioca il livello successivo per aiutare Lily e i suoi amici a ripararlo prima che si perda altra acqua.",
+            "pt": "O canal de água da montanha está danificado. Jogue o próximo nível para ajudar Lily e seus amigos a consertá-lo antes que mais água seja perdida.",
+            "ru": "Горный водный канал повреждён. Пройди следующий уровень, чтобы помочь Лили и её друзьям починить его, пока не ушло ещё больше воды.",
+            "zh": "山上的引水渠坏了。完成下一关，帮助莉莉和她的朋友修好它，以免流失更多的水。",
+            "ja": "山の水路が壊れています。これ以上水が失われる前に、リリーたちが修理できるよう次のレベルをプレイして手伝いましょう。",
+            "ko": "산의 물길이 망가졌어요. 더 많은 물이 새어나가기 전에 릴리와 친구들이 고칠 수 있도록 다음 레벨을 플레이해 주세요.",
+            "ar": "قناة المياه الجبلية تضررت. العب المستوى التالي لمساعدة ليلي وأصدقائها على إصلاحها قبل أن نفقد المزيد من المياه.",
+            "hi": "पहाड़ की पानी की नहर टूट गई है। और पानी खोने से पहले लिली और उसके दोस्तों की इसे ठीक करने में मदद करने के लिए अगला स्तर खेलो।"
+          },
+          "scene_image": "dragon-4.png",
+          "trigger": {
+            "type": "before_level",
+            "level": "Wild Animals 2 - Image only"
+          }
+        },
+        {
+          "event_id": 1005,
+          "page_template_id": 4,
+          "story_text": {
+            "en": "Thick ash fills the air. Play the next two levels to help the friends build a machine to clear the smoke.",
+            "fr": "Une épaisse cendre remplit l'air. Joue les deux prochains niveaux pour aider les amis à construire une machine qui dissipera la fumée.",
+            "tr": "Yoğun kül havayı kapladı. Arkadaşların dumanı dağıtacak bir makine yapmasına yardım etmek için sonraki iki seviyeyi oyna.",
+            "es": "La ceniza espesa llena el aire. Juega los dos siguientes niveles para ayudar a los amigos a construir una máquina que despeje el humo.",
+            "de": "Dichter Aschestaub liegt in der Luft. Spiele die nächsten zwei Level, um den Freunden beim Bau einer Maschine zu helfen, die den Rauch vertreibt.",
+            "it": "Una fitta cenere riempie l'aria. Gioca i prossimi due livelli per aiutare gli amici a costruire una macchina che elimini il fumo.",
+            "pt": "Cinzas espessas enchem o ar. Jogue os próximos dois níveis para ajudar os amigos a construir uma máquina para limpar a fumaça.",
+            "ru": "Густой пепел заполнил воздух. Пройди следующие два уровня, чтобы помочь друзьям построить машину и очистить воздух от дыма.",
+            "zh": "浓浓的火山灰遮住了天空。完成接下来的两关，帮助大家造一台机器，把烟雾吹散。",
+            "ja": "灰が空気を覆っています。次の2つのレベルをプレイして、みんなが煙を追い払う機械を作れるよう手伝いましょう。",
+            "ko": "짙은 화산재가 공기를 가득 메우고 있어요. 다음 두 레벨을 플레이해서 친구들이 연기를 없앨 기계를 만들도록 도와주세요.",
+            "ar": "الرماد الكثيف يملأ الهواء. العب المستويين التاليين لمساعدة الأصدقاء على بناء آلة لإزالة الدخان.",
+            "hi": "घनी राख हवा में फैल गई है। दोस्तों को धुआँ हटाने वाली मशीन बनाने में मदद करने के लिए अगले दो स्तर खेलो।"
+          },
+          "scene_image": "dragon-5.png",
+          "trigger": {
+            "type": "before_level",
+            "level": "Bird Watching - Image only"
+          }
+        },
+        {
+          "event_id": 1006,
+          "page_template_id": 4,
+          "story_text": {
+            "en": "At last, Lily meets Emberclaw. She realizes he is frightened, not angry. Play the next two levels to help her play the ancient flute and calm him.",
+            "fr": "Enfin, Lily rencontre Emberclaw. Elle comprend qu'il a peur, et qu'il n'est pas en colère. Joue les deux prochains niveaux pour l'aider à jouer de la flûte ancienne et à le calmer.",
+            "tr": "Sonunda Lily, Emberclaw ile karşılaşıyor. Onun öfkeli değil, korkmuş olduğunu fark ediyor. Eski flütü çalıp onu sakinleştirmesine yardım etmek için sonraki iki seviyeyi oyna.",
+            "es": "Por fin, Lily conoce a Emberclaw. Se da cuenta de que está asustado, no enfadado. Juega los dos siguientes niveles para ayudarla a tocar la antigua flauta y calmarlo.",
+            "de": "Endlich trifft Lily auf Emberclaw. Sie merkt, dass er Angst hat und nicht wütend ist. Spiele die nächsten zwei Level, um ihr zu helfen, die alte Flöte zu spielen und ihn zu beruhigen.",
+            "it": "Finalmente Lily incontra Emberclaw. Capisce che è spaventato, non arrabbiato. Gioca i prossimi due livelli per aiutarla a suonare l'antico flauto e calmarlo.",
+            "pt": "Finalmente, Lily encontra Emberclaw. Ela percebe que ele está assustado, não zangado. Jogue os próximos dois níveis para ajudá-la a tocar a antiga flauta e acalmá-lo.",
+            "ru": "Наконец Лили встречает Эмберкло. Она понимает, что он напуган, а не зол. Пройди следующие два уровня, чтобы помочь ей сыграть на древней флейте и успокоить дракона.",
+            "zh": "终于，莉莉见到了灰烬之爪。她发现他不是生气，而是害怕。完成接下来的两关，帮助她吹响古老的长笛，让巨龙平静下来。",
+            "ja": "ついにリリーはエンバークロウに出会います。彼が怒っているのではなく、怖がっていることに気づきます。次の2つのレベルをプレイして、古代の笛を吹いて彼を落ち着かせるのを手伝いましょう。",
+            "ko": "마침내 릴리는 엠버클로를 만나요. 그는 화난 것이 아니라 두려워하고 있다는 것을 알게 됩니다. 다음 두 레벨을 플레이해서 고대 피리를 연주해 그를 진정시키도록 도와주세요.",
+            "ar": "أخيرًا تلتقي ليلي بالتنين إمبركلو. تدرك أنه خائف وليس غاضبًا. العب المستويين التاليين لمساعدتها على عزف الناي القديم وتهدئته.",
+            "hi": "आख़िरकार लिली की मुलाकात एम्बरक्लॉ से होती है। उसे पता चलता है कि वह गुस्से में नहीं, बल्कि डरा हुआ है। प्राचीन बाँसुरी बजाकर उसे शांत करने में लिली की मदद करने के लिए अगले दो स्तर खेलो।"
+          },
+          "scene_image": "dragon-6.png",
+          "trigger": {
+            "type": "before_level",
+            "level": "Reminder 1"
+          }
+        },
+        {
+          "event_id": 1007,
+          "page_template_id": 4,
+          "story_text": {
+            "en": "Hooray! Emberclaw clears the rocks, and fresh water flows back to the village. Lily and her friends celebrate their new friendship. Thank you for helping save the village!",
+            "fr": "Hourra ! Emberclaw enlève les rochers et l'eau fraîche revient au village. Lily et ses amis célèbrent leur nouvelle amitié. Merci d'avoir aidé à sauver le village !",
+            "tr": "Yaşasın! Emberclaw kayaları temizliyor ve temiz su yeniden köye akıyor. Lily ve arkadaşları yeni dostluklarını kutluyor. Köyü kurtarmaya yardım ettiğin için teşekkür ederiz!",
+            "es": "¡Hurra! Emberclaw aparta las rocas y el agua limpia vuelve al pueblo. Lily y sus amigos celebran su nueva amistad. ¡Gracias por ayudar a salvar el pueblo!",
+            "de": "Hurra! Emberclaw räumt die Felsen weg und frisches Wasser fließt wieder ins Dorf. Lily und ihre Freunde feiern ihre neue Freundschaft. Danke, dass du geholfen hast, das Dorf zu retten!",
+            "it": "Evviva! Emberclaw sposta le rocce e l'acqua torna a scorrere nel villaggio. Lily e i suoi amici festeggiano la loro nuova amicizia. Grazie per aver aiutato a salvare il villaggio!",
+            "pt": "Viva! Emberclaw remove as pedras e a água limpa volta a correr para a vila. Lily e seus amigos comemoram sua nova amizade. Obrigado por ajudar a salvar a vila!",
+            "ru": "Ура! Эмберкло убирает камни, и чистая вода снова течёт в деревню. Лили и её друзья празднуют новую дружбу. Спасибо за помощь в спасении деревни!",
+            "zh": "太好了！灰烬之爪移开了岩石，清澈的水重新流回村庄。莉莉和朋友们庆祝这段新的友谊。谢谢你帮助拯救村庄！",
+            "ja": "やったね！エンバークロウが岩をどかし、きれいな水が村へ戻ってきました。リリーたちは新しい友情を祝います。村を救う手伝いをしてくれてありがとう！",
+            "ko": "해냈어요! 엠버클로가 바위를 치우고 깨끗한 물이 다시 마을로 흘러옵니다. 릴리와 친구들은 새로운 우정을 함께 축하합니다. 마을을 구하는 데 도움을 줘서 고마워요!",
+            "ar": "رائع! يزيح إمبركلو الصخور، ويعود الماء النقي إلى القرية. تحتفل ليلي وأصدقاؤها بصداقتهم الجديدة. شكرًا لمساعدتك في إنقاذ القرية!",
+            "hi": "वाह! एम्बरक्लॉ चट्टानों को हटा देता है और साफ़ पानी फिर से गाँव में बहने लगता है। लिली और उसके दोस्त अपनी नई दोस्ती का जश्न मनाते हैं। गाँव को बचाने में मदद करने के लिए धन्यवाद!"
+          },
+          "scene_image": "dragon-7.png",
+          "trigger": {
+            "type": "after_level",
+            "level": "Reminder 2"
+          }
+        }
+      ]
+    },
+    {
+      "main_level_id": 9,
+      "story_icon_asset_path": "assets/images/story/PLACEHOLDER-story-icon.png",
+      "story_sequences": [
+        {
+          "event_id": 1001,
+          "page_template_id": 4,
+          "story_text": {
+            "en": "Do-yoon has just graduated from the Junior Space Academy. His first mission: deliver a glowing Energy Crystal to Harmony Station. Play the next two levels to help him prepare for launch.",
+            "fr": "Do-yoon vient tout juste d'obtenir son diplôme de l'Académie Spatiale Junior. Sa première mission : livrer un cristal d'énergie lumineux à la station Harmonie. Joue les deux prochains niveaux pour l'aider à se préparer au décollage.",
+            "tr": "Do-yoon, Junior Uzay Akademisi'nden yeni mezun oldu. İlk görevi: parlayan bir Enerji Kristali'ni Harmony İstasyonu'na teslim etmek. Fırlatmaya hazırlanmasına yardım etmek için sonraki iki seviyeyi oyna.",
+            "es": "Do-yoon acaba de graduarse de la Academia Espacial Junior. Su primera misión: entregar un Cristal de Energía brillante a la Estación Armonía. Juega los dos siguientes niveles para ayudarlo a prepararse para el despegue.",
+            "de": "Do-yoon hat gerade seinen Abschluss an der Junior-Weltraumakademie gemacht. Seine erste Mission: einen leuchtenden Energiekristall zur Harmony-Station zu liefern. Spiele die nächsten zwei Level, um ihm zu helfen, sich auf den Start vorzubereiten.",
+            "it": "Do-yoon si è appena diplomato alla Junior Space Academy. La sua prima missione: consegnare un Cristallo di Energia luminoso alla Stazione Armonia. Gioca i prossimi due livelli per aiutarlo a prepararsi al lancio.",
+            "pt": "Do-yoon acabou de se formar na Academia Espacial Júnior. Sua primeira missão: entregar um Cristal de Energia brilhante à Estação Harmonia. Jogue os próximos dois níveis para ajudá-lo a se preparar para o lançamento.",
+            "ru": "До-юн только что окончил Юную Космическую Академию. Его первая миссия — доставить светящийся Энергетический Кристалл на станцию Гармония. Пройди следующие два уровня, чтобы помочь ему подготовиться к запуску.",
+            "zh": "度润刚从少年航天学院毕业。他的第一个任务：把一颗闪闪发光的能量水晶送到和谐空间站。完成接下来的两关，帮助他为发射做准备。",
+            "ja": "ドユンはジュニア宇宙アカデミーを卒業したばかりです。彼の最初の任務は、輝くエネルギークリスタルをハーモニーステーションに届けること。次の2つのレベルをプレイして、彼が打ち上げの準備をする手伝いをしましょう。",
+            "ko": "도윤이는 주니어 우주 아카데미를 막 졸업했어요. 그의 첫 임무는 빛나는 에너지 크리스탈을 하모니 스테이션으로 배달하는 것이에요. 다음 두 레벨을 플레이해서 그가 발사를 준비하도록 도와주세요.",
+            "ar": "تخرج دو-يون للتو من أكاديمية الفضاء الصغار. مهمته الأولى: توصيل بلورة طاقة متوهجة إلى محطة الانسجام. العب المستويين التاليين لمساعدته على الاستعداد للإطلاق.",
+            "hi": "दो-यून ने अभी-अभी जूनियर स्पेस अकादमी से स्नातक किया है। उसका पहला मिशन: हार्मनी स्टेशन तक एक चमकता ऊर्जा क्रिस्टल पहुंचाना है। उसे प्रक्षेपण के लिए तैयार होने में मदद करने के लिए अगले दो स्तर खेलो।"
+          },
+          "scene_image": "space-1.png",
+          "trigger": {
+            "type": "before_level",
+            "level": "Living Room"
+          }
+        },
+        {
+          "event_id": 1002,
+          "page_template_id": 4,
+          "story_text": {
+            "en": "Launch time is almost here, but Do-yoon still needs to find some important equipment. Play the next level to help him get ready.",
+            "fr": "L'heure du décollage approche, mais Do-yoon doit encore trouver du matériel important. Joue le niveau suivant pour l'aider à se préparer.",
+            "tr": "Fırlatma zamanı yaklaşıyor ama Do-yoon'un hâlâ önemli bazı ekipmanları bulması gerekiyor. Hazırlanmasına yardım etmek için bir sonraki seviyeyi oyna.",
+            "es": "La hora del despegue casi ha llegado, pero Do-yoon todavía necesita encontrar equipo importante. Juega el siguiente nivel para ayudarlo a prepararse.",
+            "de": "Der Start rückt näher, aber Do-yoon muss noch wichtige Ausrüstung finden. Spiele das nächste Level, um ihm zu helfen, sich bereit zu machen.",
+            "it": "L'ora del lancio si avvicina, ma Do-yoon deve ancora trovare alcune attrezzature importanti. Gioca il livello successivo per aiutarlo a prepararsi.",
+            "pt": "A hora do lançamento está quase chegando, mas Do-yoon ainda precisa encontrar alguns equipamentos importantes. Jogue o próximo nível para ajudá-lo a se preparar.",
+            "ru": "Время запуска почти пришло, но До-юну ещё нужно найти важное снаряжение. Пройди следующий уровень, чтобы помочь ему подготовиться.",
+            "zh": "发射时间快到了，但度润还需要找到一些重要的装备。完成下一关，帮助他做好准备。",
+            "ja": "打ち上げの時間が近づいていますが、ドユンはまだ大切な装備を見つける必要があります。次のレベルをプレイして、準備を手伝いましょう。",
+            "ko": "발사 시간이 거의 다 되었지만, 도윤이는 아직 중요한 장비를 찾아야 해요. 다음 레벨을 플레이해서 그가 준비하도록 도와주세요.",
+            "ar": "اقترب وقت الإطلاق، لكن دو-يون لا يزال بحاجة إلى إيجاد بعض المعدات المهمة. العب المستوى التالي لمساعدته على الاستعداد.",
+            "hi": "प्रक्षेपण का समय लगभग आ गया है, लेकिन दो-यून को अभी भी कुछ महत्वपूर्ण उपकरण खोजने हैं। उसे तैयार होने में मदद करने के लिए अगला स्तर खेलो।"
+          },
+          "scene_image": "space-2.png",
+          "trigger": {
+            "type": "before_level",
+            "level": "House Parts - Image only"
+          }
+        },
+        {
+          "event_id": 1003,
+          "page_template_id": 4,
+          "story_text": {
+            "en": "Aboard the spacecraft, new route data comes in from Mission Control. Play the next two levels to help Do-yoon calibrate the navigation system.",
+            "fr": "À bord du vaisseau, de nouvelles données de trajectoire arrivent du Centre de Contrôle. Joue les deux prochains niveaux pour aider Do-yoon à calibrer le système de navigation.",
+            "tr": "Uzay aracında, Görev Kontrol'den yeni rota verileri geliyor. Do-yoon'un navigasyon sistemini kalibre etmesine yardım etmek için sonraki iki seviyeyi oyna.",
+            "es": "A bordo de la nave, llegan nuevos datos de ruta desde el Control de Misión. Juega los dos siguientes niveles para ayudar a Do-yoon a calibrar el sistema de navegación.",
+            "de": "An Bord des Raumschiffs treffen neue Routendaten von der Missionskontrolle ein. Spiele die nächsten zwei Level, um Do-yoon zu helfen, das Navigationssystem zu kalibrieren.",
+            "it": "A bordo dell'astronave, arrivano nuovi dati di rotta dal Controllo Missione. Gioca i prossimi due livelli per aiutare Do-yoon a calibrare il sistema di navigazione.",
+            "pt": "A bordo da nave, novos dados de rota chegam do Controle de Missão. Jogue os próximos dois níveis para ajudar Do-yoon a calibrar o sistema de navegação.",
+            "ru": "На борту корабля поступают новые данные о маршруте из Центра управления полётами. Пройди следующие два уровня, чтобы помочь До-юну откалибровать навигационную систему.",
+            "zh": "在飞船上，任务控制中心传来了新的航线数据。完成接下来的两关，帮助度润校准导航系统。",
+            "ja": "宇宙船の中で、ミッションコントロールから新しいルートデータが届きます。次の2つのレベルをプレイして、ドユンがナビゲーションシステムを調整するのを手伝いましょう。",
+            "ko": "우주선 안에서 미션 컨트롤로부터 새로운 경로 데이터가 도착해요. 다음 두 레벨을 플레이해서 도윤이가 항법 시스템을 조정하도록 도와주세요.",
+            "ar": "على متن المركبة الفضائية، تصل بيانات مسار جديدة من مركز التحكم بالمهمة. العب المستويين التاليين لمساعدة دو-يون على معايرة نظام الملاحة.",
+            "hi": "अंतरिक्ष यान पर, मिशन कंट्रोल से नया मार्ग डेटा आता है। दो-यून को नेविगेशन सिस्टम को कैलिब्रेट करने में मदद करने के लिए अगले दो स्तर खेलो।"
+          },
+          "scene_image": "space-3.png",
+          "trigger": {
+            "type": "before_level",
+            "level": "Household Equipment 1 - Image only"
+          }
+        },
+        {
+          "event_id": 1004,
+          "page_template_id": 4,
+          "story_text": {
+            "en": "A field of asteroids drifts slowly across the flight path. Play the next level to help Do-yoon find the safest way through.",
+            "fr": "Un champ d'astéroïdes dérive lentement sur la trajectoire de vol. Joue le niveau suivant pour aider Do-yoon à trouver le chemin le plus sûr.",
+            "tr": "Bir asteroit kuşağı, uçuş rotası boyunca yavaşça sürükleniyor. Do-yoon'un en güvenli yolu bulmasına yardım etmek için bir sonraki seviyeyi oyna.",
+            "es": "Un campo de asteroides se desplaza lentamente por la ruta de vuelo. Juega el siguiente nivel para ayudar a Do-yoon a encontrar el camino más seguro.",
+            "de": "Ein Asteroidenfeld treibt langsam über die Flugroute. Spiele das nächste Level, um Do-yoon zu helfen, den sichersten Weg zu finden.",
+            "it": "Un campo di asteroidi deriva lentamente sulla rotta di volo. Gioca il livello successivo per aiutare Do-yoon a trovare il percorso più sicuro.",
+            "pt": "Um campo de asteroides flutua lentamente pela rota de voo. Jogue o próximo nível para ajudar Do-yoon a encontrar o caminho mais seguro.",
+            "ru": "Поле астероидов медленно дрейфует через маршрут полёта. Пройди следующий уровень, чтобы помочь До-юну найти самый безопасный путь.",
+            "zh": "一片小行星带缓缓漂过飞行路线。完成下一关，帮助度润找到最安全的通道。",
+            "ja": "小惑星帯が飛行経路をゆっくりと漂っています。次のレベルをプレイして、ドユンが最も安全な道を見つけるのを手伝いましょう。",
+            "ko": "소행성대가 비행 경로를 따라 천천히 떠다니고 있어요. 다음 레벨을 플레이해서 도윤이가 가장 안전한 길을 찾도록 도와주세요.",
+            "ar": "يتحرك حقل من الكويكبات ببطء عبر مسار الرحلة. العب المستوى التالي لمساعدة دو-يون على إيجاد أكثر طريق أمانًا.",
+            "hi": "उड़ान पथ पर धीरे-धीरे क्षुद्रग्रहों का एक समूह बह रहा है। दो-यून को सबसे सुरक्षित रास्ता खोजने में मदद करने के लिए अगला स्तर खेलो।"
+          },
+          "scene_image": "space-4.png",
+          "trigger": {
+            "type": "before_level",
+            "level": "Household Equipment 3 - Image only"
+          }
+        },
+        {
+          "event_id": 1005,
+          "page_template_id": 4,
+          "story_text": {
+            "en": "One of the spacecraft's solar panels gets stuck. Play the next level to help Do-yoon complete his first spacewalk.",
+            "fr": "Un des panneaux solaires du vaisseau reste coincé. Joue le niveau suivant pour aider Do-yoon à réussir sa première sortie dans l'espace.",
+            "tr": "Uzay aracının güneş panellerinden biri sıkışıyor. Do-yoon'un ilk uzay yürüyüşünü tamamlamasına yardım etmek için bir sonraki seviyeyi oyna.",
+            "es": "Uno de los paneles solares de la nave se atasca. Juega el siguiente nivel para ayudar a Do-yoon a completar su primera caminata espacial.",
+            "de": "Eines der Solarpanels des Raumschiffs klemmt fest. Spiele das nächste Level, um Do-yoon zu helfen, seinen ersten Weltraumspaziergang zu meistern.",
+            "it": "Uno dei pannelli solari dell'astronave si blocca. Gioca il livello successivo per aiutare Do-yoon a completare la sua prima passeggiata spaziale.",
+            "pt": "Um dos painéis solares da nave fica preso. Jogue o próximo nível para ajudar Do-yoon a completar sua primeira caminhada espacial.",
+            "ru": "Одна из солнечных панелей корабля заклинивает. Пройди следующий уровень, чтобы помочь До-юну совершить его первый выход в открытый космос.",
+            "zh": "飞船的一块太阳能板卡住了。完成下一关，帮助度润完成他的第一次太空行走。",
+            "ja": "宇宙船の太陽光パネルの一枚が動かなくなってしまいました。次のレベルをプレイして、ドユンが初めての宇宙遊泳を成功させる手伝いをしましょう。",
+            "ko": "우주선의 태양광 패널 하나가 걸려버렸어요. 다음 레벨을 플레이해서 도윤이가 첫 우주 유영을 완수하도록 도와주세요.",
+            "ar": "تعلقت إحدى الألواح الشمسية للمركبة الفضائية. العب المستوى التالي لمساعدة دو-يون على إتمام أول مشي فضائي له.",
+            "hi": "अंतरिक्ष यान का एक सोलर पैनल अटक जाता है। दो-यून को अपना पहला स्पेसवॉक पूरा करने में मदद करने के लिए अगला स्तर खेलो।"
+          },
+          "scene_image": "space-5.png",
+          "trigger": {
+            "type": "before_level",
+            "level": "Common Words - 8"
+          }
+        },
+        {
+          "event_id": 1006,
+          "page_template_id": 4,
+          "story_text": {
+            "en": "Harmony Station is almost out of power. Play the next two levels to help Do-yoon dock the spacecraft safely.",
+            "fr": "La station Harmonie est presque à court d'énergie. Joue les deux prochains niveaux pour aider Do-yoon à arrimer le vaisseau en toute sécurité.",
+            "tr": "Harmony İstasyonu'nun gücü neredeyse tükeniyor. Do-yoon'un uzay aracını güvenle kenetlemesine yardım etmek için sonraki iki seviyeyi oyna.",
+            "es": "La Estación Armonía casi se queda sin energía. Juega los dos siguientes niveles para ayudar a Do-yoon a acoplar la nave con seguridad.",
+            "de": "Der Harmony-Station geht fast die Energie aus. Spiele die nächsten zwei Level, um Do-yoon zu helfen, das Raumschiff sicher anzudocken.",
+            "it": "La Stazione Armonia è quasi senza energia. Gioca i prossimi due livelli per aiutare Do-yoon ad agganciare l'astronave in sicurezza.",
+            "pt": "A Estação Harmonia está quase sem energia. Jogue os próximos dois níveis para ajudar Do-yoon a acoplar a nave com segurança.",
+            "ru": "Станция Гармония почти осталась без энергии. Пройди следующие два уровня, чтобы помочь До-юну безопасно состыковать корабль.",
+            "zh": "和谐空间站的电力快要耗尽了。完成接下来的两关，帮助度润安全对接飞船。",
+            "ja": "ハーモニーステーションの電力がほとんど尽きかけています。次の2つのレベルをプレイして、ドユンが宇宙船を安全にドッキングさせるのを手伝いましょう。",
+            "ko": "하모니 스테이션의 전력이 거의 다 떨어졌어요. 다음 두 레벨을 플레이해서 도윤이가 우주선을 안전하게 도킹하도록 도와주세요.",
+            "ar": "أوشكت محطة الانسجام على فقدان الطاقة. العب المستويين التاليين لمساعدة دو-يون على إرساء المركبة الفضائية بأمان.",
+            "hi": "हार्मनी स्टेशन की ऊर्जा लगभग खत्म हो चुकी है। दो-यून को अंतरिक्ष यान को सुरक्षित रूप से डॉक करने में मदद करने के लिए अगले दो स्तर खेलो।"
+          },
+          "scene_image": "space-6.png",
+          "trigger": {
+            "type": "before_level",
+            "level": "Reminder 1"
+          }
+        },
+        {
+          "event_id": 1007,
+          "page_template_id": 4,
+          "story_text": {
+            "en": "Hooray! The Energy Crystal restores power to Harmony Station, and Do-yoon earns his Young Space Explorer Medal. Thank you for helping him complete his first mission!",
+            "fr": "Hourra ! Le cristal d'énergie rétablit l'alimentation de la station Harmonie, et Do-yoon reçoit sa médaille du jeune explorateur de l'espace. Merci de l'avoir aidé à accomplir sa première mission !",
+            "tr": "Yaşasın! Enerji Kristali, Harmony İstasyonu'nun gücünü geri getiriyor ve Do-yoon Genç Uzay Kaşifi Madalyası'nı kazanıyor. İlk görevini tamamlamasına yardım ettiğin için teşekkür ederiz!",
+            "es": "¡Hurra! El Cristal de Energía restaura la energía de la Estación Armonía, y Do-yoon gana su Medalla de Joven Explorador Espacial. ¡Gracias por ayudarlo a completar su primera misión!",
+            "de": "Hurra! Der Energiekristall stellt die Energieversorgung der Harmony-Station wieder her, und Do-yoon erhält seine Medaille als Junger Weltraumforscher. Danke, dass du ihm geholfen hast, seine erste Mission zu erfüllen!",
+            "it": "Evviva! Il Cristallo di Energia ripristina l'alimentazione della Stazione Armonia, e Do-yoon riceve la sua Medaglia da Giovane Esploratore Spaziale. Grazie per averlo aiutato a completare la sua prima missione!",
+            "pt": "Viva! O Cristal de Energia restaura a energia da Estação Harmonia, e Do-yoon ganha sua Medalha de Jovem Explorador Espacial. Obrigado por ajudá-lo a completar sua primeira missão!",
+            "ru": "Ура! Энергетический Кристалл восстанавливает энергию станции Гармония, и До-юн получает медаль Юного Космического Исследователя. Спасибо за помощь в завершении его первой миссии!",
+            "zh": "太好了！能量水晶恢复了和谐空间站的电力，度润获得了少年太空探索者奖章。谢谢你帮助他完成了他的第一个任务！",
+            "ja": "やったね！エネルギークリスタルがハーモニーステーションの電力を回復させ、ドユンはヤング・スペース・エクスプローラー・メダルを獲得しました。彼の最初の任務を成功させる手伝いをしてくれてありがとう！",
+            "ko": "해냈어요! 에너지 크리스탈이 하모니 스테이션의 전력을 복구시켰고, 도윤이는 청소년 우주 탐험가 메달을 받았어요. 그의 첫 임무를 완수하는 것을 도와줘서 고마워요!",
+            "ar": "رائع! تعيد بلورة الطاقة الطاقة إلى محطة الانسجام، ويحصل دو-يون على وسام مستكشف الفضاء الشاب. شكرًا لمساعدتك له في إتمام مهمته الأولى!",
+            "hi": "वाह! ऊर्जा क्रिस्टल हार्मनी स्टेशन में शक्ति बहाल कर देता है, और दो-यून को यंग स्पेस एक्सप्लोरर मेडल मिलता है। उसे उसका पहला मिशन पूरा करने में मदद करने के लिए धन्यवाद!"
+          },
+          "scene_image": "space-7.png",
+          "trigger": {
+            "type": "after_level",
+            "level": "Reminder 2"
+          }
+        }
+      ]
+    },
+    {
+      "main_level_id": 10,
+      "story_icon_asset_path": "assets/images/story/PLACEHOLDER-story-icon.png",
+      "story_sequences": [
+        {
+          "event_id": 1001,
+          "page_template_id": 4,
+          "story_text": {
+            "en": "Every flower and animal in the forest has turned gray, and no one knows why. Isabella sets out to follow the clues. Play the next two levels to help her start solving the mystery.",
+            "fr": "Toutes les fleurs et tous les animaux de la forêt sont devenus gris, et personne ne sait pourquoi. Isabella part à la recherche des indices. Joue les deux prochains niveaux pour l'aider à commencer l'enquête.",
+            "tr": "Ormandaki her çiçek ve hayvan griye döndü ve kimse nedenini bilmiyor. Isabella ipuçlarını takip etmek için yola çıkıyor. Gizemi çözmeye başlamasına yardım etmek için sonraki iki seviyeyi oyna.",
+            "es": "Todas las flores y animales del bosque se han vuelto grises, y nadie sabe por qué. Isabella se pone en marcha para seguir las pistas. Juega los dos siguientes niveles para ayudarla a empezar a resolver el misterio.",
+            "de": "Jede Blume und jedes Tier im Wald ist grau geworden, und niemand weiß warum. Isabella macht sich auf, den Hinweisen zu folgen. Spiele die nächsten zwei Level, um ihr zu helfen, mit der Lösung des Rätsels zu beginnen.",
+            "it": "Ogni fiore e animale della foresta è diventato grigio, e nessuno sa perché. Isabella parte per seguire gli indizi. Gioca i prossimi due livelli per aiutarla a iniziare a risolvere il mistero.",
+            "pt": "Todas as flores e animais da floresta ficaram cinzas, e ninguém sabe por quê. Isabella parte para seguir as pistas. Jogue os próximos dois níveis para ajudá-la a começar a resolver o mistério.",
+            "ru": "Все цветы и животные в лесу стали серыми, и никто не знает почему. Изабелла отправляется искать разгадку. Пройди следующие два уровня, чтобы помочь ей начать расследование.",
+            "zh": "森林里的每一朵花和每一只动物都变成了灰色，没有人知道为什么。伊莎贝拉出发去寻找线索。完成接下来的两关，帮助她开始解开这个谜团。",
+            "ja": "森のすべての花と動物が灰色になってしまい、誰もその理由を知りません。イザベラは手がかりを追う旅に出ます。次の2つのレベルをプレイして、彼女が謎解きを始める手伝いをしましょう。",
+            "ko": "숲속의 모든 꽃과 동물이 회색으로 변했고, 아무도 그 이유를 몰라요. 이사벨라는 단서를 따라가기로 해요. 다음 두 레벨을 플레이해서 그녀가 수수께끼를 풀기 시작하도록 도와주세요.",
+            "ar": "تحولت كل زهرة وحيوان في الغابة إلى اللون الرمادي، ولا أحد يعرف السبب. تنطلق إيزابيلا لتتبع الأدلة. العب المستويين التاليين لمساعدتها على بدء حل اللغز.",
+            "hi": "जंगल में हर फूल और जानवर धूसर हो गया है, और किसी को नहीं पता क्यों। इसाबेला सुरागों का पीछा करने निकलती है। उसे रहस्य सुलझाना शुरू करने में मदद करने के लिए अगले दो स्तर खेलो।"
+          },
+          "scene_image": "grayworld-1.png",
+          "trigger": {
+            "type": "before_level",
+            "level": "At the Hotel"
+          }
+        },
+        {
+          "event_id": 1002,
+          "page_template_id": 4,
+          "story_text": {
+            "en": "Deep in the forest, Isabella finds the very last red rose, glowing with one final drop of color. Play the next level to help her discover its clue before it fades.",
+            "fr": "Au cœur de la forêt, Isabella trouve la toute dernière rose rouge, brillant d'une dernière touche de couleur. Joue le niveau suivant pour l'aider à découvrir son indice avant qu'elle ne s'efface.",
+            "tr": "Ormanın derinliklerinde Isabella, son bir renk damlasıyla parlayan en son kırmızı gülü bulur. Solmadan önce ipucunu keşfetmesine yardım etmek için bir sonraki seviyeyi oyna.",
+            "es": "En lo profundo del bosque, Isabella encuentra la última rosa roja, brillando con una última gota de color. Juega el siguiente nivel para ayudarla a descubrir su pista antes de que se desvanezca.",
+            "de": "Tief im Wald findet Isabella die allerletzte rote Rose, die mit einem letzten Tropfen Farbe leuchtet. Spiele das nächste Level, um ihr zu helfen, den Hinweis zu entdecken, bevor sie verblasst.",
+            "it": "Nel profondo della foresta, Isabella trova l'ultimissima rosa rossa, che brilla con un'ultima goccia di colore. Gioca il livello successivo per aiutarla a scoprire il suo indizio prima che svanisca.",
+            "pt": "No fundo da floresta, Isabella encontra a última rosa vermelha, brilhando com uma última gota de cor. Jogue o próximo nível para ajudá-la a descobrir sua pista antes que ela desapareça.",
+            "ru": "Глубоко в лесу Изабелла находит самую последнюю красную розу, светящуюся последней каплей цвета. Пройди следующий уровень, чтобы помочь ей узнать подсказку, прежде чем роза увянет.",
+            "zh": "在森林深处，伊莎贝拉发现了最后一朵红玫瑰，闪烁着最后一丝色彩。完成下一关，帮助她在玫瑰凋谢之前发现线索。",
+            "ja": "森の奥深くで、イザベラは最後の一滴の色を放つ、たった一輪残った赤いバラを見つけます。次のレベルをプレイして、色が消えてしまう前に手がかりを見つける手伝いをしましょう。",
+            "ko": "숲 깊은 곳에서 이사벨라는 마지막 한 방울의 색을 내며 빛나는 마지막 붉은 장미를 발견해요. 다음 레벨을 플레이해서 장미가 사라지기 전에 단서를 찾도록 도와주세요.",
+            "ar": "في أعماق الغابة، تجد إيزابيلا آخر وردة حمراء، تتوهج بآخر قطرة من اللون. العب المستوى التالي لمساعدتها على اكتشاف دليلها قبل أن يتلاشى.",
+            "hi": "जंगल के अंदर गहराई में, इसाबेला को आखिरी लाल गुलाब मिलता है, जो रंग की आखिरी बूंद से चमक रहा है। उसे इसके फीका पड़ने से पहले सुराग खोजने में मदद करने के लिए अगला स्तर खेलो।"
+          },
+          "scene_image": "grayworld-2.png",
+          "trigger": {
+            "type": "before_level",
+            "level": "Travel Items - Image only"
+          }
+        },
+        {
+          "event_id": 1003,
+          "page_template_id": 4,
+          "story_text": {
+            "en": "Two sets of footprints lead in different directions, and the wind is starting to sweep them away. Play the next two levels to help Isabella choose the right trail.",
+            "fr": "Deux séries d'empreintes partent dans des directions différentes, et le vent commence à les effacer. Joue les deux prochains niveaux pour aider Isabella à choisir le bon chemin.",
+            "tr": "İki ayak izi seti farklı yönlere gidiyor ve rüzgar onları silmeye başlıyor. Isabella'nın doğru patikayı seçmesine yardım etmek için sonraki iki seviyeyi oyna.",
+            "es": "Dos series de huellas llevan en direcciones diferentes, y el viento está empezando a borrarlas. Juega los dos siguientes niveles para ayudar a Isabella a elegir el camino correcto.",
+            "de": "Zwei Spuren führen in unterschiedliche Richtungen, und der Wind beginnt, sie zu verwehen. Spiele die nächsten zwei Level, um Isabella zu helfen, den richtigen Weg zu wählen.",
+            "it": "Due serie di impronte conducono in direzioni diverse, e il vento comincia a spazzarle via. Gioca i prossimi due livelli per aiutare Isabella a scegliere il sentiero giusto.",
+            "pt": "Dois conjuntos de pegadas seguem em direções diferentes, e o vento está começando a apagá-las. Jogue os próximos dois níveis para ajudar Isabella a escolher a trilha certa.",
+            "ru": "Два следа ведут в разные стороны, и ветер начинает их заметать. Пройди следующие два уровня, чтобы помочь Изабелле выбрать правильную тропу.",
+            "zh": "两组脚印通向不同的方向，风开始把它们吹散了。完成接下来的两关，帮助伊莎贝拉选择正确的小径。",
+            "ja": "二組の足跡が別々の方向へ続いていて、風がそれを吹き消し始めています。次の2つのレベルをプレイして、イザベラが正しい道を選ぶのを手伝いましょう。",
+            "ko": "두 갈래의 발자국이 서로 다른 방향으로 나 있고, 바람이 그것들을 지우기 시작해요. 다음 두 레벨을 플레이해서 이사벨라가 올바른 길을 선택하도록 도와주세요.",
+            "ar": "يؤدي مساران من آثار الأقدام في اتجاهين مختلفين، وبدأت الريح تمحوهما. العب المستويين التاليين لمساعدة إيزابيلا على اختيار الطريق الصحيح.",
+            "hi": "पैरों के दो निशान अलग-अलग दिशाओं में जाते हैं, और हवा उन्हें मिटाना शुरू कर रही है। इसाबेला को सही रास्ता चुनने में मदद करने के लिए अगले दो स्तर खेलो।"
+          },
+          "scene_image": "grayworld-3.png",
+          "trigger": {
+            "type": "before_level",
+            "level": "At the Train Station"
+          }
+        },
+        {
+          "event_id": 1004,
+          "page_template_id": 4,
+          "story_text": {
+            "en": "Behind a cluster of ferns, Isabella finds three frightened animals. Play the next level to help her earn their trust.",
+            "fr": "Derrière un bouquet de fougères, Isabella trouve trois animaux effrayés. Joue le niveau suivant pour l'aider à gagner leur confiance.",
+            "tr": "Bir grup eğrelti otunun arkasında Isabella üç korkmuş hayvan bulur. Onların güvenini kazanmasına yardım etmek için bir sonraki seviyeyi oyna.",
+            "es": "Detrás de un grupo de helechos, Isabella encuentra tres animales asustados. Juega el siguiente nivel para ayudarla a ganarse su confianza.",
+            "de": "Hinter einer Ansammlung von Farnen findet Isabella drei verängstigte Tiere. Spiele das nächste Level, um ihr zu helfen, ihr Vertrauen zu gewinnen.",
+            "it": "Dietro un gruppo di felci, Isabella trova tre animali spaventati. Gioca il livello successivo per aiutarla a guadagnarsi la loro fiducia.",
+            "pt": "Atrás de um grupo de samambaias, Isabella encontra três animais assustados. Jogue o próximo nível para ajudá-la a ganhar a confiança deles.",
+            "ru": "За зарослями папоротника Изабелла находит трёх испуганных зверей. Пройди следующий уровень, чтобы помочь ей заслужить их доверие.",
+            "zh": "在一丛蕨类植物后面，伊莎贝拉发现了三只受惊的动物。完成下一关，帮助她赢得它们的信任。",
+            "ja": "シダの茂みの後ろで、イザベラは怯えた三匹の動物を見つけます。次のレベルをプレイして、彼女が動物たちの信頼を得る手伝いをしましょう。",
+            "ko": "고사리 덤불 뒤에서 이사벨라는 겁에 질린 세 마리의 동물을 발견해요. 다음 레벨을 플레이해서 그녀가 그들의 신뢰를 얻도록 도와주세요.",
+            "ar": "خلف مجموعة من نباتات السرخس، تجد إيزابيلا ثلاثة حيوانات خائفة. العب المستوى التالي لمساعدتها على كسب ثقتها.",
+            "hi": "फर्न के एक झुरमुट के पीछे, इसाबेला को तीन डरे हुए जानवर मिलते हैं। उनका भरोसा जीतने में उसकी मदद करने के लिए अगला स्तर खेलो।"
+          },
+          "scene_image": "grayworld-4.png",
+          "trigger": {
+            "type": "before_level",
+            "level": "At the Garage"
+          }
+        },
+        {
+          "event_id": 1005,
+          "page_template_id": 4,
+          "story_text": {
+            "en": "The trail ends at a hidden waterfall and a cave sealed by strange gray crystals. Play the next level to help Isabella find a way inside.",
+            "fr": "Le sentier se termine devant une cascade cachée et une grotte scellée par d'étranges cristaux gris. Joue le niveau suivant pour aider Isabella à trouver un chemin vers l'intérieur.",
+            "tr": "Patika, gizli bir şelale ve garip gri kristallerle mühürlenmiş bir mağarada sona eriyor. Isabella'nın içeri girecek bir yol bulmasına yardım etmek için bir sonraki seviyeyi oyna.",
+            "es": "El sendero termina en una cascada escondida y una cueva sellada por extraños cristales grises. Juega el siguiente nivel para ayudar a Isabella a encontrar una forma de entrar.",
+            "de": "Der Pfad endet an einem versteckten Wasserfall und einer Höhle, die von seltsamen grauen Kristallen versiegelt ist. Spiele das nächste Level, um Isabella zu helfen, einen Weg hinein zu finden.",
+            "it": "Il sentiero termina davanti a una cascata nascosta e una grotta sigillata da strani cristalli grigi. Gioca il livello successivo per aiutare Isabella a trovare una via d'ingresso.",
+            "pt": "A trilha termina em uma cachoeira escondida e uma caverna selada por estranhos cristais cinzas. Jogue o próximo nível para ajudar Isabella a encontrar um caminho para dentro.",
+            "ru": "Тропа заканчивается у скрытого водопада и пещеры, запечатанной странными серыми кристаллами. Пройди следующий уровень, чтобы помочь Изабелле найти путь внутрь.",
+            "zh": "小路的尽头是一处隐秘的瀑布，还有一个被奇怪的灰色水晶封住的洞穴。完成下一关，帮助伊莎贝拉找到进去的路。",
+            "ja": "道の先には隠れた滝と、奇妙な灰色の結晶で封じられた洞窟があります。次のレベルをプレイして、イザベラが中への入り口を見つける手伝いをしましょう。",
+            "ko": "길의 끝에는 숨겨진 폭포와 이상한 회색 수정으로 봉인된 동굴이 있어요. 다음 레벨을 플레이해서 이사벨라가 안으로 들어갈 길을 찾도록 도와주세요.",
+            "ar": "ينتهي الممر عند شلال مخفي وكهف مختوم بكريستالات رمادية غريبة. العب المستوى التالي لمساعدة إيزابيلا على إيجاد طريق إلى الداخل.",
+            "hi": "रास्ता एक छिपे हुए झरने और अजीब धूसर क्रिस्टलों से बंद एक गुफा पर खत्म होता है। इसाबेला को अंदर जाने का रास्ता खोजने में मदद करने के लिए अगला स्तर खेलो।"
+          },
+          "scene_image": "grayworld-5.png",
+          "trigger": {
+            "type": "before_level",
+            "level": "Common Words - 9"
+          }
+        },
+        {
+          "event_id": 1006,
+          "page_template_id": 4,
+          "story_text": {
+            "en": "Inside the cave, Isabella meets the mysterious creature behind the fading colors. Play the next two levels to help her understand the truth.",
+            "fr": "À l'intérieur de la grotte, Isabella rencontre la mystérieuse créature à l'origine des couleurs qui s'effacent. Joue les deux prochains niveaux pour l'aider à comprendre la vérité.",
+            "tr": "Mağaranın içinde Isabella, solan renklerin ardındaki gizemli yaratıkla karşılaşır. Gerçeği anlamasına yardım etmek için sonraki iki seviyeyi oyna.",
+            "es": "Dentro de la cueva, Isabella conoce a la misteriosa criatura detrás de los colores que se desvanecen. Juega los dos siguientes niveles para ayudarla a comprender la verdad.",
+            "de": "In der Höhle trifft Isabella auf das geheimnisvolle Wesen hinter den verblassenden Farben. Spiele die nächsten zwei Level, um ihr zu helfen, die Wahrheit zu verstehen.",
+            "it": "Dentro la grotta, Isabella incontra la misteriosa creatura dietro i colori che svaniscono. Gioca i prossimi due livelli per aiutarla a capire la verità.",
+            "pt": "Dentro da caverna, Isabella encontra a misteriosa criatura por trás das cores que estão desaparecendo. Jogue os próximos dois níveis para ajudá-la a entender a verdade.",
+            "ru": "Внутри пещеры Изабелла встречает загадочное существо, стоящее за исчезновением красок. Пройди следующие два уровня, чтобы помочь ей понять правду.",
+            "zh": "在洞穴里，伊莎贝拉遇到了那个让色彩渐渐消失的神秘生物。完成接下来的两关，帮助她了解真相。",
+            "ja": "洞窟の中で、イザベラは色が消えていく原因である謎の生き物と出会います。次の2つのレベルをプレイして、彼女が真実を理解する手伝いをしましょう。",
+            "ko": "동굴 안에서 이사벨라는 색이 사라지는 것 뒤에 숨겨진 신비한 생물을 만나요. 다음 두 레벨을 플레이해서 그녀가 진실을 이해하도록 도와주세요.",
+            "ar": "داخل الكهف، تلتقي إيزابيلا بالمخلوق الغامض الذي يقف وراء تلاشي الألوان. العب المستويين التاليين لمساعدتها على فهم الحقيقة.",
+            "hi": "गुफा के अंदर, इसाबेला उस रहस्यमयी प्राणी से मिलती है जो रंगों के फीके पड़ने के पीछे है। उसे सच्चाई समझने में मदद करने के लिए अगले दो स्तर खेलो।"
+          },
+          "scene_image": "grayworld-6.png",
+          "trigger": {
+            "type": "before_level",
+            "level": "Reminder 1"
+          }
+        },
+        {
+          "event_id": 1007,
+          "page_template_id": 4,
+          "story_text": {
+            "en": "Hooray! Color floods back into the forest, and Isabella makes a new friend. Thank you for helping her solve the mystery and bring the colors home!",
+            "fr": "Hourra ! Les couleurs reviennent inonder la forêt, et Isabella se fait une nouvelle amie. Merci de l'avoir aidée à résoudre le mystère et à ramener les couleurs !",
+            "tr": "Yaşasın! Renkler ormana geri akıyor ve Isabella yeni bir arkadaş ediniyor. Gizemi çözüp renkleri geri getirmesine yardım ettiğin için teşekkür ederiz!",
+            "es": "¡Hurra! El color inunda de nuevo el bosque, e Isabella hace una nueva amiga. ¡Gracias por ayudarla a resolver el misterio y traer los colores de vuelta!",
+            "de": "Hurra! Die Farben strömen zurück in den Wald, und Isabella findet einen neuen Freund. Danke, dass du ihr geholfen hast, das Rätsel zu lösen und die Farben zurückzubringen!",
+            "it": "Evviva! Il colore torna a riempire la foresta, e Isabella fa una nuova amicizia. Grazie per averla aiutata a risolvere il mistero e a riportare i colori!",
+            "pt": "Viva! A cor volta a inundar a floresta, e Isabella faz uma nova amiga. Obrigado por ajudá-la a resolver o mistério e trazer as cores de volta!",
+            "ru": "Ура! Краски снова заливают лес, и у Изабеллы появляется новый друг. Спасибо за помощь в разгадке тайны и возвращении красок!",
+            "zh": "太好了！色彩重新涌回森林，伊莎贝拉交到了一个新朋友。谢谢你帮助她解开谜团，把颜色带回来！",
+            "ja": "やったね！森に色が戻り、イザベラは新しい友達ができました。彼女が謎を解いて色を取り戻す手伝いをしてくれてありがとう！",
+            "ko": "해냈어요! 색깔이 다시 숲으로 흘러들었고, 이사벨라는 새로운 친구를 사귀었어요. 그녀가 수수께끼를 풀고 색깔을 되찾는 것을 도와줘서 고마워요!",
+            "ar": "رائع! يعود اللون ليغمر الغابة، وتكوّن إيزابيلا صديقًا جديدًا. شكرًا لمساعدتك لها في حل اللغز وإعادة الألوان!",
+            "hi": "वाह! रंग फिर से जंगल में लौट आते हैं, और इसाबेला की एक नई दोस्त बनती है। रहस्य सुलझाने और रंगों को वापस लाने में उसकी मदद करने के लिए धन्यवाद!"
+          },
+          "scene_image": "grayworld-7.png",
+          "trigger": {
+            "type": "after_level",
+            "level": "Reminder 2"
+          }
+        }
+      ]
+    },
+    {
+      "main_level_id": 11,
+      "story_icon_asset_path": "assets/images/story/PLACEHOLDER-story-icon.png",
+      "story_sequences": [
+        {
+          "event_id": 1001,
+          "page_template_id": 4,
+          "story_text": {
+            "en": "In the town square, Mrs. Turner is crying — her son Tommy is missing. Mia, Jack, and Theo — the Search Squad — notice and know they must help. Play the next two levels to help them find out what happened.",
+            "fr": "Sur la place du village, Mme Turner pleure — son fils Tommy a disparu. Mia, Jack et Theo — l'Équipe de Recherche — le remarquent et savent qu'ils doivent absolument aider. Joue les deux prochains niveaux pour les aider à découvrir ce qui s'est passé.",
+            "tr": "Kasaba meydanında Bayan Turner ağlıyor — oğlu Tommy kayıp. Mia, Jack ve Theo — Arama Ekibi — bunu fark eder ve yardım etmeleri gerektiğini bilirler. Ne olduğunu öğrenmelerine yardım etmek için sonraki iki seviyeyi oyna.",
+            "es": "En la plaza del pueblo, la señora Turner está llorando — su hijo Tommy ha desaparecido. Mia, Jack y Theo —el Equipo de Búsqueda— se dan cuenta y saben que deben ayudar. Juega los dos siguientes niveles para ayudarlos a descubrir qué pasó.",
+            "de": "Auf dem Marktplatz weint Frau Turner — ihr Sohn Tommy wird vermisst. Mia, Jack und Theo — das Suchteam — bemerken es und wissen, dass sie helfen müssen. Spiele die nächsten zwei Level, um ihnen zu helfen herauszufinden, was passiert ist.",
+            "it": "Nella piazza del paese, la signora Turner sta piangendo — suo figlio Tommy è scomparso. Mia, Jack e Theo — la Squadra di Ricerca — se ne accorgono e sanno che devono aiutare. Gioca i prossimi due livelli per aiutarli a scoprire cosa è successo.",
+            "pt": "Na praça da cidade, a Sra. Turner está chorando — seu filho Tommy está desaparecido. Mia, Jack e Theo — a Equipe de Busca — percebem e sabem que precisam ajudar. Jogue os próximos dois níveis para ajudá-los a descobrir o que aconteceu.",
+            "ru": "На городской площади миссис Тёрнер плачет — её сын Томми пропал. Миа, Джек и Тео — Поисковый Отряд — замечают это и понимают, что должны помочь. Пройди следующие два уровня, чтобы помочь им узнать, что случилось.",
+            "zh": "在小镇广场上，特纳太太哭了——她的儿子汤米走丢了。米娅、杰克和西奥——搜寻小队——注意到了，知道他们必须帮忙。完成接下来的两关，帮助他们弄清楚发生了什么事。",
+            "ja": "町の広場で、ターナーさんが泣いています——息子のトミーがいなくなってしまったのです。ミア、ジャック、セオ——サーチ・スクワッド——はそれに気づき、助けなければと思います。次の2つのレベルをプレイして、何が起きたのかを知る手伝いをしましょう。",
+            "ko": "마을 광장에서 터너 아주머니가 울고 있어요 — 아들 토미가 사라졌어요. 미아, 잭, 테오 — 서치 스쿼드 — 는 이를 알아차리고 도와야 한다는 것을 깨달아요. 다음 두 레벨을 플레이해서 무슨 일이 있었는지 알아내도록 도와주세요.",
+            "ar": "في ساحة البلدة، تبكي السيدة تيرنر — ابنها تومي مفقود. تلاحظ ميا وجاك وثيو — فريق البحث — ذلك ويدركان أنه يجب عليهم المساعدة. العب المستويين التاليين لمساعدتهم على معرفة ما حدث.",
+            "hi": "शहर के चौक में, श्रीमती टर्नर रो रही हैं — उनका बेटा टॉमी गायब है। मिया, जैक और थियो — सर्च स्क्वॉड — यह देखते हैं और जानते हैं कि उन्हें मदद करनी है। क्या हुआ यह पता लगाने में उनकी मदद करने के लिए अगले दो स्तर खेलो।"
+          },
+          "scene_image": "missing-boy-1.png",
+          "trigger": {
+            "type": "before_level",
+            "level": "Insect World - Image only"
+          }
+        },
+        {
+          "event_id": 1002,
+          "page_template_id": 4,
+          "story_text": {
+            "en": "The kids know that every extra helper makes the search faster. Play the next two levels to help the Search Squad find neighbors who can join in.",
+            "fr": "Les enfants savent que chaque aide supplémentaire fait avancer les recherches plus vite. Joue les deux prochains niveaux pour aider l'Équipe de Recherche à trouver des voisins prêts à se joindre à eux.",
+            "tr": "Çocuklar her ek yardımcının aramayı hızlandıracağını biliyor. Arama Ekibi'nin katılabilecek komşular bulmasına yardım etmek için sonraki iki seviyeyi oyna.",
+            "es": "Los niños saben que cada ayudante extra hace que la búsqueda avance más rápido. Juega los dos siguientes niveles para ayudar al Equipo de Búsqueda a encontrar vecinos que se unan.",
+            "de": "Die Kinder wissen, dass jeder zusätzliche Helfer die Suche schneller macht. Spiele die nächsten zwei Level, um dem Suchteam zu helfen, Nachbarn zu finden, die mitmachen können.",
+            "it": "I bambini sanno che ogni aiutante in più rende la ricerca più veloce. Gioca i prossimi due livelli per aiutare la Squadra di Ricerca a trovare vicini disposti a unirsi.",
+            "pt": "As crianças sabem que cada ajudante extra torna a busca mais rápida. Jogue os próximos dois níveis para ajudar a Equipe de Busca a encontrar vizinhos que queiram participar.",
+            "ru": "Дети знают, что каждый новый помощник ускоряет поиски. Пройди следующие два уровня, чтобы помочь Поисковому Отряду найти соседей, готовых присоединиться.",
+            "zh": "孩子们知道，每多一个人帮忙，搜索就会更快。完成接下来的两关，帮助搜寻小队找到愿意加入的邻居。",
+            "ja": "手伝ってくれる人が一人増えるごとに、捜索は早く進むと子どもたちは知っています。次の2つのレベルをプレイして、サーチ・スクワッドが参加してくれる近所の人を見つける手伝いをしましょう。",
+            "ko": "도와주는 사람이 한 명 늘어날 때마다 수색이 더 빨라진다는 것을 아이들은 알고 있어요. 다음 두 레벨을 플레이해서 서치 스쿼드가 함께할 이웃들을 찾도록 도와주세요.",
+            "ar": "يعرف الأطفال أن كل مساعد إضافي يجعل البحث أسرع. العب المستويين التاليين لمساعدة فريق البحث على إيجاد جيران للانضمام إليهم.",
+            "hi": "बच्चे जानते हैं कि हर अतिरिक्त मददगार खोज को तेज़ बनाता है। सर्च स्क्वॉड को साथ आने वाले पड़ोसियों को खोजने में मदद करने के लिए अगले दो स्तर खेलो।"
+          },
+          "scene_image": "missing-boy-2.png",
+          "trigger": {
+            "type": "before_level",
+            "level": "Nature Objects - Image only"
+          }
+        },
+        {
+          "event_id": 1003,
+          "page_template_id": 4,
+          "story_text": {
+            "en": "Near the creek, the kids search for anything Tommy might have left behind. Play the next two levels to help them spot the clues.",
+            "fr": "Près du ruisseau, les enfants cherchent tout ce que Tommy aurait pu laisser derrière lui. Joue les deux prochains niveaux pour les aider à repérer les indices.",
+            "tr": "Derenin yakınında çocuklar, Tommy'nin bırakmış olabileceği her şeyi arıyor. İpuçlarını bulmalarına yardım etmek için sonraki iki seviyeyi oyna.",
+            "es": "Cerca del arroyo, los niños buscan cualquier cosa que Tommy pueda haber dejado. Juega los dos siguientes niveles para ayudarlos a encontrar las pistas.",
+            "de": "In der Nähe des Bachs suchen die Kinder nach allem, was Tommy zurückgelassen haben könnte. Spiele die nächsten zwei Level, um ihnen zu helfen, die Hinweise zu entdecken.",
+            "it": "Vicino al ruscello, i bambini cercano qualsiasi cosa Tommy possa aver lasciato. Gioca i prossimi due livelli per aiutarli a scovare gli indizi.",
+            "pt": "Perto do riacho, as crianças procuram qualquer coisa que Tommy possa ter deixado para trás. Jogue os próximos dois níveis para ajudá-los a encontrar as pistas.",
+            "ru": "Возле ручья дети ищут всё, что мог оставить после себя Томми. Пройди следующие два уровня, чтобы помочь им найти улики.",
+            "zh": "在小溪附近，孩子们寻找汤米可能留下的任何东西。完成接下来的两关，帮助他们发现线索。",
+            "ja": "小川のそばで、子どもたちはトミーが残したかもしれないものを探しています。次の2つのレベルをプレイして、手がかりを見つける手伝いをしましょう。",
+            "ko": "개울 근처에서 아이들은 토미가 남겼을지도 모를 무언가를 찾고 있어요. 다음 두 레벨을 플레이해서 단서를 찾도록 도와주세요.",
+            "ar": "بالقرب من الجدول، يبحث الأطفال عن أي شيء قد يكون تومي قد تركه خلفه. العب المستويين التاليين لمساعدتهم على اكتشاف الأدلة.",
+            "hi": "नाले के पास, बच्चे कुछ भी ऐसा खोज रहे हैं जो टॉमी ने पीछे छोड़ा हो। सुराग खोजने में उनकी मदद करने के लिए अगले दो स्तर खेलो।"
+          },
+          "scene_image": "missing-boy-3.png",
+          "trigger": {
+            "type": "before_level",
+            "level": "Checking the Weather - Image only"
+          }
+        },
+        {
+          "event_id": 1004,
+          "page_template_id": 4,
+          "story_text": {
+            "en": "The clues point in more than one direction. Play the next level to help the Search Squad read the map and choose the right path.",
+            "fr": "Les indices pointent dans plusieurs directions. Joue le niveau suivant pour aider l'Équipe de Recherche à lire la carte et choisir le bon chemin.",
+            "tr": "İpuçları birden fazla yönü işaret ediyor. Arama Ekibi'nin haritayı okuyup doğru yolu seçmesine yardım etmek için bir sonraki seviyeyi oyna.",
+            "es": "Las pistas apuntan en más de una dirección. Juega el siguiente nivel para ayudar al Equipo de Búsqueda a leer el mapa y elegir el camino correcto.",
+            "de": "Die Hinweise deuten in mehr als eine Richtung. Spiele das nächste Level, um dem Suchteam zu helfen, die Karte zu lesen und den richtigen Weg zu wählen.",
+            "it": "Gli indizi puntano in più di una direzione. Gioca il livello successivo per aiutare la Squadra di Ricerca a leggere la mappa e scegliere il percorso giusto.",
+            "pt": "As pistas apontam para mais de uma direção. Jogue o próximo nível para ajudar a Equipe de Busca a ler o mapa e escolher o caminho certo.",
+            "ru": "Улики указывают в разные стороны. Пройди следующий уровень, чтобы помочь Поисковому Отряду прочитать карту и выбрать правильный путь.",
+            "zh": "线索指向不止一个方向。完成下一关，帮助搜寻小队看懂地图，选择正确的路线。",
+            "ja": "手がかりは複数の方向を示しています。次のレベルをプレイして、サーチ・スクワッドが地図を読み、正しい道を選ぶのを手伝いましょう。",
+            "ko": "단서가 여러 방향을 가리키고 있어요. 다음 레벨을 플레이해서 서치 스쿼드가 지도를 읽고 올바른 길을 선택하도록 도와주세요.",
+            "ar": "تشير الأدلة إلى أكثر من اتجاه. العب المستوى التالي لمساعدة فريق البحث على قراءة الخريطة واختيار الطريق الصحيح.",
+            "hi": "सुराग एक से ज़्यादा दिशाओं की ओर इशारा करते हैं। सर्च स्क्वॉड को नक्शा पढ़ने और सही रास्ता चुनने में मदद करने के लिए अगला स्तर खेलो।"
+          },
+          "scene_image": "missing-boy-4.png",
+          "trigger": {
+            "type": "before_level",
+            "level": "Common Words - 10"
+          }
+        },
+        {
+          "event_id": 1005,
+          "page_template_id": 4,
+          "story_text": {
+            "en": "Fresh footprints lead up a steep, rocky hill. Play the next two levels to help the kids climb up safely.",
+            "fr": "Des empreintes fraîches mènent en haut d'une colline escarpée et rocailleuse. Joue les deux prochains niveaux pour aider les enfants à grimper en toute sécurité.",
+            "tr": "Taze ayak izleri dik, kayalık bir tepeye çıkıyor. Çocukların güvenle tırmanmasına yardım etmek için sonraki iki seviyeyi oyna.",
+            "es": "Unas huellas frescas suben por una colina empinada y rocosa. Juega los dos siguientes niveles para ayudar a los niños a subir con seguridad.",
+            "de": "Frische Fußspuren führen einen steilen, felsigen Hügel hinauf. Spiele die nächsten zwei Level, um den Kindern zu helfen, sicher hinaufzuklettern.",
+            "it": "Impronte fresche salgono su una collina ripida e rocciosa. Gioca i prossimi due livelli per aiutare i bambini a salire in sicurezza.",
+            "pt": "Pegadas frescas sobem por uma colina íngreme e rochosa. Jogue os próximos dois níveis para ajudar as crianças a subir com segurança.",
+            "ru": "Свежие следы ведут вверх по крутому каменистому холму. Пройди следующие два уровня, чтобы помочь детям безопасно подняться.",
+            "zh": "新的脚印通向一座陡峭多石的小山。完成接下来的两关，帮助孩子们安全爬上去。",
+            "ja": "新しい足跡が急で岩だらけの丘の上へと続いています。次の2つのレベルをプレイして、子どもたちが安全に登るのを手伝いましょう。",
+            "ko": "새로 난 발자국이 가파르고 바위투성이인 언덕 위로 이어져요. 다음 두 레벨을 플레이해서 아이들이 안전하게 오르도록 도와주세요.",
+            "ar": "تؤدي آثار أقدام حديثة إلى أعلى تل شديد الانحدار ومليء بالصخور. العب المستويين التاليين لمساعدة الأطفال على التسلق بأمان.",
+            "hi": "ताज़े पैरों के निशान एक खड़ी, पथरीली पहाड़ी की ओर जाते हैं। बच्चों को सुरक्षित रूप से चढ़ने में मदद करने के लिए अगले दो स्तर खेलो।"
+          },
+          "scene_image": "missing-boy-5.png",
+          "trigger": {
+            "type": "before_level",
+            "level": "Reminder 1"
+          }
+        },
+        {
+          "event_id": 1006,
+          "page_template_id": 4,
+          "story_text": {
+            "en": "Hooray! Tommy is found safe and sound, and the whole town gathers to celebrate. Thank you for helping the Search Squad bring him home!",
+            "fr": "Hourra ! Tommy est retrouvé sain et sauf, et toute la ville se rassemble pour célébrer. Merci d'avoir aidé l'Équipe de Recherche à le ramener chez lui !",
+            "tr": "Yaşasın! Tommy sağ salim bulundu ve tüm kasaba kutlamak için toplanıyor. Arama Ekibi'nin onu eve getirmesine yardım ettiğin için teşekkür ederiz!",
+            "es": "¡Hurra! Tommy es encontrado sano y salvo, y todo el pueblo se reúne para celebrar. ¡Gracias por ayudar al Equipo de Búsqueda a traerlo de vuelta a casa!",
+            "de": "Hurra! Tommy wird wohlbehalten gefunden, und die ganze Stadt versammelt sich, um zu feiern. Danke, dass du dem Suchteam geholfen hast, ihn nach Hause zu bringen!",
+            "it": "Evviva! Tommy viene trovato sano e salvo, e tutta la città si riunisce per festeggiare. Grazie per aver aiutato la Squadra di Ricerca a riportarlo a casa!",
+            "pt": "Viva! Tommy é encontrado são e salvo, e toda a cidade se reúne para comemorar. Obrigado por ajudar a Equipe de Busca a trazê-lo para casa!",
+            "ru": "Ура! Томми найден целым и невредимым, и весь город собирается, чтобы отпраздновать это. Спасибо за помощь Поисковому Отряду в том, чтобы вернуть его домой!",
+            "zh": "太好了！汤米平安无事地被找到了，全镇的人都聚在一起庆祝。谢谢你帮助搜寻小队把他带回家！",
+            "ja": "やったね！トミーは無事に見つかり、町中がお祝いに集まります。サーチ・スクワッドが彼を家に連れ帰る手伝いをしてくれてありがとう！",
+            "ko": "해냈어요! 토미가 무사히 발견되었고, 온 마을 사람들이 모여 축하해요. 서치 스쿼드가 그를 집으로 데려오는 것을 도와줘서 고마워요!",
+            "ar": "رائع! تم العثور على تومي سالمًا، ويتجمع أهل البلدة بأكملها للاحتفال. شكرًا لمساعدتك فريق البحث على إعادته إلى المنزل!",
+            "hi": "वाह! टॉमी सुरक्षित मिल गया, और पूरा शहर जश्न मनाने के लिए इकट्ठा होता है। सर्च स्क्वॉड को उसे घर वापस लाने में मदद करने के लिए धन्यवाद!"
+          },
+          "scene_image": "missing-boy-6.png",
+          "trigger": {
+            "type": "after_level",
+            "level": "Reminder 2"
+          }
+        }
+      ]
+    },
+    {
+      "main_level_id": 12,
+      "story_icon_asset_path": "assets/images/story/PLACEHOLDER-story-icon.png",
+      "story_sequences": [
+        {
+          "event_id": 1001,
+          "page_template_id": 4,
+          "story_text": {
+            "en": "Aiden, Zara, Milo, and Nadia have signed up for the Junior Science Rocket Competition, but they have no money, no plan, and no rocket. Play the next two levels to help them get started.",
+            "fr": "Aiden, Zara, Milo et Nadia se sont inscrits au Concours Junior de Fusées Scientifiques, mais ils n'ont ni argent, ni plan, ni fusée. Joue les deux prochains niveaux pour les aider à démarrer.",
+            "tr": "Aiden, Zara, Milo ve Nadia, Junior Bilim Roket Yarışması'na kaydoldu, ama paraları, planları ve roketleri yok. Başlamalarına yardım etmek için sonraki iki seviyeyi oyna.",
+            "es": "Aiden, Zara, Milo y Nadia se han inscrito en la Competencia Junior de Cohetes Científicos, pero no tienen dinero, ni plan, ni cohete. Juega los dos siguientes niveles para ayudarlos a comenzar.",
+            "de": "Aiden, Zara, Milo und Nadia haben sich für den Junior-Wissenschafts-Raketenwettbewerb angemeldet, aber sie haben kein Geld, keinen Plan und keine Rakete. Spiele die nächsten zwei Level, um ihnen den Start zu erleichtern.",
+            "it": "Aiden, Zara, Milo e Nadia si sono iscritti alla Competizione Junior di Razzi Scientifici, ma non hanno soldi, né un piano, né un razzo. Gioca i prossimi due livelli per aiutarli a iniziare.",
+            "pt": "Aiden, Zara, Milo e Nadia se inscreveram na Competição Júnior de Foguetes Científicos, mas não têm dinheiro, nem plano, nem foguete. Jogue os próximos dois níveis para ajudá-los a começar.",
+            "ru": "Эйден, Зара, Майло и Надя записались на Юношеский научный ракетный конкурс, но у них нет ни денег, ни плана, ни ракеты. Пройди следующие два уровня, чтобы помочь им начать.",
+            "zh": "艾登、扎拉、迈洛和娜迪亚报名参加了少年科学火箭大赛，但他们没有钱、没有计划，也没有火箭。完成接下来的两关，帮助他们开始行动。",
+            "ja": "エイデン、ザラ、マイロ、ナディアはジュニア・サイエンス・ロケット・コンペティションに申し込みましたが、お金も計画もロケットもありません。次の2つのレベルをプレイして、彼らのスタートを手伝いましょう。",
+            "ko": "에이든, 자라, 마일로, 나디아는 주니어 과학 로켓 대회에 참가 신청을 했지만, 돈도 계획도 로켓도 없어요. 다음 두 레벨을 플레이해서 그들이 시작하도록 도와주세요.",
+            "ar": "سجّل آيدن وزارا وميلو ونادية في مسابقة الصواريخ العلمية للناشئين، لكن ليس لديهم مال ولا خطة ولا صاروخ. العب المستويين التاليين لمساعدتهم على البدء.",
+            "hi": "एडन, ज़ारा, माइलो और नादिया ने जूनियर साइंस रॉकेट प्रतियोगिता के लिए नामांकन कराया है, लेकिन उनके पास न पैसा है, न योजना, न रॉकेट। उन्हें शुरुआत करने में मदद करने के लिए अगले दो स्तर खेलो।"
+          },
+          "scene_image": "rocket-1.png",
+          "trigger": {
+            "type": "before_level",
+            "level": "At the Pharmacy"
+          }
+        },
+        {
+          "event_id": 1002,
+          "page_template_id": 4,
+          "story_text": {
+            "en": "Rocket parts cost money, and the team's savings jar is almost empty. Play the next level to help them earn the money they need.",
+            "fr": "Les pièces de fusée coûtent de l'argent, et le pot d'épargne de l'équipe est presque vide. Joue le niveau suivant pour les aider à gagner l'argent dont ils ont besoin.",
+            "tr": "Roket parçaları para gerektiriyor ve takımın birikim kavanozu neredeyse boş. İhtiyaç duydukları parayı kazanmalarına yardım etmek için bir sonraki seviyeyi oyna.",
+            "es": "Las piezas del cohete cuestan dinero, y el frasco de ahorros del equipo está casi vacío. Juega el siguiente nivel para ayudarlos a ganar el dinero que necesitan.",
+            "de": "Raketenteile kosten Geld, und das Sparglas des Teams ist fast leer. Spiele das nächste Level, um ihnen zu helfen, das benötigte Geld zu verdienen.",
+            "it": "I pezzi del razzo costano soldi, e il barattolo dei risparmi della squadra è quasi vuoto. Gioca il livello successivo per aiutarli a guadagnare i soldi di cui hanno bisogno.",
+            "pt": "As peças do foguete custam dinheiro, e o pote de economias da equipe está quase vazio. Jogue o próximo nível para ajudá-los a ganhar o dinheiro de que precisam.",
+            "ru": "Детали для ракеты стоят денег, а копилка команды почти пуста. Пройди следующий уровень, чтобы помочь им заработать нужные деньги.",
+            "zh": "火箭零件需要花钱，而团队的储蓄罐几乎空了。完成下一关，帮助他们挣到需要的钱。",
+            "ja": "ロケットの部品にはお金がかかりますが、チームの貯金瓶はほとんど空です。次のレベルをプレイして、必要なお金を稼ぐ手伝いをしましょう。",
+            "ko": "로켓 부품에는 돈이 들지만, 팀의 저금통은 거의 비어 있어요. 다음 레벨을 플레이해서 그들이 필요한 돈을 버는 것을 도와주세요.",
+            "ar": "تكلف أجزاء الصاروخ مالًا، ووعاء مدخرات الفريق شبه فارغ. العب المستوى التالي لمساعدتهم على كسب المال الذي يحتاجونه.",
+            "hi": "रॉकेट के पुर्जों की कीमत होती है, और टीम का बचत जार लगभग खाली है। उन्हें ज़रूरी पैसे कमाने में मदद करने के लिए अगला स्तर खेलो।"
+          },
+          "scene_image": "rocket-2.png",
+          "trigger": {
+            "type": "before_level",
+            "level": "Emergency Situations"
+          }
+        },
+        {
+          "event_id": 1003,
+          "page_template_id": 4,
+          "story_text": {
+            "en": "To design a rocket that flies straight, the team needs a math book with the right formulas, but it is missing from the library shelf. Play the next two levels to help them track it down.",
+            "fr": "Pour concevoir une fusée qui vole droit, l'équipe a besoin d'un livre de mathématiques avec les bonnes formules, mais il manque sur l'étagère de la bibliothèque. Joue les deux prochains niveaux pour les aider à le retrouver.",
+            "tr": "Düz uçan bir roket tasarlamak için takımın doğru formülleri içeren bir matematik kitabına ihtiyacı var, ama kitap kütüphane rafında yok. Onu bulmalarına yardım etmek için sonraki iki seviyeyi oyna.",
+            "es": "Para diseñar un cohete que vuele recto, el equipo necesita un libro de matemáticas con las fórmulas correctas, pero falta en el estante de la biblioteca. Juega los dos siguientes niveles para ayudarlos a encontrarlo.",
+            "de": "Um eine Rakete zu entwerfen, die geradeaus fliegt, braucht das Team ein Mathebuch mit den richtigen Formeln, aber es fehlt im Bibliotheksregal. Spiele die nächsten zwei Level, um ihnen zu helfen, es aufzuspüren.",
+            "it": "Per progettare un razzo che voli dritto, la squadra ha bisogno di un libro di matematica con le formule giuste, ma manca dallo scaffale della biblioteca. Gioca i prossimi due livelli per aiutarli a rintracciarlo.",
+            "pt": "Para projetar um foguete que voe reto, a equipe precisa de um livro de matemática com as fórmulas certas, mas ele está faltando na prateleira da biblioteca. Jogue os próximos dois níveis para ajudá-los a encontrá-lo.",
+            "ru": "Чтобы спроектировать ракету, которая летит прямо, команде нужна книга по математике с нужными формулами, но её нет на полке библиотеки. Пройди следующие два уровня, чтобы помочь им найти её.",
+            "zh": "为了设计一枚能笔直飞行的火箭，团队需要一本有正确公式的数学书，但它不在图书馆的书架上。完成接下来的两关，帮助他们把书找出来。",
+            "ja": "まっすぐ飛ぶロケットを設計するには、正しい公式が載った数学の本が必要ですが、それは図書館の棚から見当たりません。次の2つのレベルをプレイして、それを見つける手伝いをしましょう。",
+            "ko": "곧게 나는 로켓을 설계하려면 팀에게 올바른 공식이 담긴 수학책이 필요하지만, 도서관 서가에서 사라졌어요. 다음 두 레벨을 플레이해서 그것을 찾도록 도와주세요.",
+            "ar": "لتصميم صاروخ يطير بشكل مستقيم، يحتاج الفريق إلى كتاب رياضيات يحتوي على المعادلات الصحيحة، لكنه مفقود من رف المكتبة. العب المستويين التاليين لمساعدتهم على تعقبه.",
+            "hi": "सीधा उड़ने वाला रॉकेट डिज़ाइन करने के लिए, टीम को सही सूत्रों वाली एक गणित की किताब चाहिए, लेकिन वह लाइब्रेरी की शेल्फ से गायब है। उसे ढूंढने में मदद करने के लिए अगले दो स्तर खेलो।"
+          },
+          "scene_image": "rocket-3.png",
+          "trigger": {
+            "type": "before_level",
+            "level": "At the Hospital"
+          }
+        },
+        {
+          "event_id": 1004,
+          "page_template_id": 4,
+          "story_text": {
+            "en": "With a design in hand, the team heads to the hobby shop for parts. Play the next level to help them gather everything on their list.",
+            "fr": "Une fois le plan en main, l'équipe se rend au magasin de loisirs créatifs pour trouver des pièces. Joue le niveau suivant pour les aider à rassembler tout ce qui figure sur leur liste.",
+            "tr": "Elde bir tasarımla takım, parça almak için hobi dükkanına gidiyor. Listelerindeki her şeyi toplamalarına yardım etmek için bir sonraki seviyeyi oyna.",
+            "es": "Con un diseño en mano, el equipo se dirige a la tienda de pasatiempos por las piezas. Juega el siguiente nivel para ayudarlos a reunir todo lo de su lista.",
+            "de": "Mit einem fertigen Entwurf in der Hand macht sich das Team auf den Weg zum Bastelladen, um Teile zu besorgen. Spiele das nächste Level, um ihnen zu helfen, alles auf ihrer Liste zu sammeln.",
+            "it": "Con un progetto in mano, la squadra si dirige al negozio di hobbistica per i pezzi. Gioca il livello successivo per aiutarli a raccogliere tutto ciò che è sulla loro lista.",
+            "pt": "Com um projeto em mãos, a equipe vai até a loja de hobbies em busca de peças. Jogue o próximo nível para ajudá-los a reunir tudo o que está na lista.",
+            "ru": "С готовым чертежом в руках команда отправляется в магазин хобби за деталями. Пройди следующий уровень, чтобы помочь им собрать всё по списку.",
+            "zh": "拿到设计图后，团队前往爱好商店购买零件。完成下一关，帮助他们收集清单上的所有东西。",
+            "ja": "設計図を手に、チームは部品を求めてホビーショップへ向かいます。次のレベルをプレイして、リストにあるものをすべて集める手伝いをしましょう。",
+            "ko": "설계도를 손에 쥔 팀은 부품을 구하러 취미용품점으로 향해요. 다음 레벨을 플레이해서 목록에 있는 모든 것을 모으도록 도와주세요.",
+            "ar": "وبين أيديهم التصميم، يتوجه الفريق إلى متجر الهوايات لشراء القطع. العب المستوى التالي لمساعدتهم على جمع كل ما في قائمتهم.",
+            "hi": "डिज़ाइन हाथ में लेकर, टीम पुर्जों के लिए हॉबी शॉप की ओर जाती है। उनकी सूची में मौजूद हर चीज़ इकट्ठा करने में मदद करने के लिए अगला स्तर खेलो।"
+          },
+          "scene_image": "rocket-4.png",
+          "trigger": {
+            "type": "before_level",
+            "level": "Emotions 2 - Image only"
+          }
+        },
+        {
+          "event_id": 1005,
+          "page_template_id": 5,
+          "scene_images": [
+            "rocket-5_1.png",
+            "rocket-5_2.png"
+          ],
+          "story_texts": [
+            {
+              "en": "Oh no! The rocket wobbles, tips sideways, and thuds back to the ground on its very first test flight.",
+              "fr": "Oh non ! La fusée vacille, penche sur le côté et retombe au sol lors de son tout premier vol d'essai.",
+              "tr": "Aman! Roket, ilk deneme uçuşunda sallanıyor, yana yatıyor ve yere düşüyor.",
+              "es": "¡Oh, no! El cohete se tambalea, se inclina hacia un lado y cae al suelo en su primerísimo vuelo de prueba.",
+              "de": "Oh nein! Die Rakete taumelt, kippt zur Seite und schlägt bei ihrem allerersten Testflug wieder auf dem Boden auf.",
+              "it": "Oh no! Il razzo vacilla, si inclina di lato e ricade a terra al suo primissimo volo di prova.",
+              "pt": "Ah, não! O foguete balança, inclina para o lado e cai de volta ao chão em seu primeiríssimo voo de teste.",
+              "ru": "Ой! Ракета шатается, кренится набок и снова падает на землю во время самого первого испытательного полёта.",
+              "zh": "糟糕！火箭在第一次试飞时摇摇晃晃，侧翻着又摔回了地面。",
+              "ja": "大変！ロケットは最初の試験飛行でぐらつき、横に傾いて地面に落ちてしまいました。",
+              "ko": "이런! 로켓이 첫 시험 비행에서 흔들리고 옆으로 기울어져 다시 땅에 떨어졌어요.",
+              "ar": "يا للأسف! يترنح الصاروخ، ويميل جانبًا، ويرتطم بالأرض مجددًا في أول رحلة اختبار له.",
+              "hi": "अरे नहीं! रॉकेट अपनी पहली परीक्षण उड़ान में डगमगाता है, एक तरफ झुकता है, और फिर ज़मीन पर आ गिरता है।"
+            },
+            {
+              "en": "It is not just one thing. The fins, the nose, and the engine all need fixing. Play the next level to help the team get it right before the next flight.",
+              "fr": "Ce n'est pas qu'un seul problème. Les ailerons, le nez et le moteur ont tous besoin d'être réparés. Joue le niveau suivant pour aider l'équipe à tout corriger avant le prochain vol.",
+              "tr": "Bu tek bir şey değil. Kanatlar, burun ve motorun hepsi onarılmalı. Bir sonraki uçuştan önce her şeyi düzeltmelerine yardım etmek için bir sonraki seviyeyi oyna.",
+              "es": "No es solo una cosa. Las aletas, la punta y el motor necesitan arreglarse. Juega el siguiente nivel para ayudar al equipo a corregirlo todo antes del próximo vuelo.",
+              "de": "Es ist nicht nur eine Sache. Die Flossen, die Spitze und das Triebwerk müssen alle repariert werden. Spiele das nächste Level, um dem Team zu helfen, alles vor dem nächsten Flug richtig hinzubekommen.",
+              "it": "Non è solo una cosa. Le alette, il muso e il motore hanno tutti bisogno di essere sistemati. Gioca il livello successivo per aiutare la squadra a sistemare tutto prima del prossimo volo.",
+              "pt": "Não é só uma coisa. As aletas, o nariz e o motor precisam de conserto. Jogue o próximo nível para ajudar a equipe a acertar tudo antes do próximo voo.",
+              "ru": "Дело не в одном узле. Стабилизаторы, носовой конус и двигатель — всё нужно починить. Пройди следующий уровень, чтобы помочь команде всё исправить перед следующим полётом.",
+              "zh": "这不只是一个问题。尾翼、机头和引擎都需要修理。完成下一关，帮助团队在下次飞行前把一切都调好。",
+              "ja": "問題は一つだけではありません。フィン、先端、エンジン、すべて直す必要があります。次のレベルをプレイして、次の飛行の前にチームがすべてを直す手伝いをしましょう。",
+              "ko": "문제는 한 가지가 아니에요. 날개, 코, 엔진을 모두 고쳐야 해요. 다음 레벨을 플레이해서 다음 비행 전에 팀이 모든 것을 바로잡도록 도와주세요.",
+              "ar": "الأمر ليس مجرد شيء واحد. الزعانف والمقدمة والمحرك، كلها بحاجة إلى الإصلاح. العب المستوى التالي لمساعدة الفريق على إصلاح كل شيء قبل الرحلة التالية.",
+              "hi": "यह सिर्फ एक चीज़ नहीं है। पंख, नाक और इंजन — सभी को ठीक करने की ज़रूरत है। अगली उड़ान से पहले टीम को सब कुछ सही करने में मदद करने के लिए अगला स्तर खेलो।"
+            }
+          ],
+          "trigger": {
+            "type": "before_level",
+            "level": "Common Words - 11"
+          }
+        },
+        {
+          "event_id": 1006,
+          "page_template_id": 4,
+          "story_text": {
+            "en": "On the morning of the competition, dark clouds roll in and strong winds threaten the launch. Play the next two levels to help the team find the safest time to fly.",
+            "fr": "Le matin de la compétition, des nuages sombres arrivent et de forts vents menacent le lancement. Joue les deux prochains niveaux pour aider l'équipe à trouver le moment le plus sûr pour voler.",
+            "tr": "Yarışma sabahı, koyu bulutlar geliyor ve güçlü rüzgarlar fırlatmayı tehdit ediyor. Takımın uçmak için en güvenli zamanı bulmasına yardım etmek için sonraki iki seviyeyi oyna.",
+            "es": "En la mañana de la competencia, nubes oscuras se acercan y fuertes vientos amenazan el lanzamiento. Juega los dos siguientes niveles para ayudar al equipo a encontrar el momento más seguro para volar.",
+            "de": "Am Morgen des Wettbewerbs ziehen dunkle Wolken auf, und starke Winde bedrohen den Start. Spiele die nächsten zwei Level, um dem Team zu helfen, den sichersten Zeitpunkt zum Fliegen zu finden.",
+            "it": "La mattina della competizione, nuvole scure si avvicinano e forti venti minacciano il lancio. Gioca i prossimi due livelli per aiutare la squadra a trovare il momento più sicuro per volare.",
+            "pt": "Na manhã da competição, nuvens escuras se aproximam e ventos fortes ameaçam o lançamento. Jogue os próximos dois níveis para ajudar a equipe a encontrar o momento mais seguro para voar.",
+            "ru": "Утром в день соревнований набегают тёмные тучи, и сильный ветер угрожает срывом запуска. Пройди следующие два уровня, чтобы помочь команде найти самое безопасное время для полёта.",
+            "zh": "比赛当天早上，乌云密布，强风威胁着发射。完成接下来的两关，帮助团队找到最安全的飞行时机。",
+            "ja": "大会当日の朝、暗い雲が押し寄せ、強風が打ち上げを脅かします。次の2つのレベルをプレイして、チームが飛ばすのに最も安全な時間を見つける手伝いをしましょう。",
+            "ko": "대회 아침, 먹구름이 몰려오고 강풍이 발사를 위협해요. 다음 두 레벨을 플레이해서 팀이 가장 안전한 발사 시간을 찾도록 도와주세요.",
+            "ar": "في صباح يوم المسابقة، تتجمع الغيوم الداكنة وتهدد الرياح القوية عملية الإطلاق. العب المستويين التاليين لمساعدة الفريق على إيجاد أأمن وقت للطيران.",
+            "hi": "प्रतियोगिता की सुबह, काले बादल छा जाते हैं और तेज़ हवाएँ प्रक्षेपण के लिए खतरा बन जाती हैं। टीम को उड़ान के लिए सबसे सुरक्षित समय खोजने में मदद करने के लिए अगले दो स्तर खेलो।"
+          },
+          "scene_image": "rocket-6.png",
+          "trigger": {
+            "type": "before_level",
+            "level": "Reminder 1"
+          }
+        },
+        {
+          "event_id": 1007,
+          "page_template_id": 4,
+          "story_text": {
+            "en": "3... 2... 1... liftoff! The rocket soars straight and true, and the team wins the award for Best Teamwork. Thank you for helping them reach the stars!",
+            "fr": "3... 2... 1... décollage ! La fusée s'élève droit et sûr, et l'équipe remporte le prix du Meilleur Esprit d'Équipe. Merci de les avoir aidés à atteindre les étoiles !",
+            "tr": "3... 2... 1... kalkış! Roket dosdoğru ve emin bir şekilde yükseliyor, ve takım En İyi Takım Çalışması ödülünü kazanıyor. Onların yıldızlara ulaşmasına yardım ettiğin için teşekkür ederiz!",
+            "es": "3... 2... 1... ¡despegue! El cohete se eleva recto y firme, y el equipo gana el premio al Mejor Trabajo en Equipo. ¡Gracias por ayudarlos a alcanzar las estrellas!",
+            "de": "3... 2... 1... Abheben! Die Rakete steigt gerade und sicher auf, und das Team gewinnt die Auszeichnung für beste Teamarbeit. Danke, dass du ihnen geholfen hast, die Sterne zu erreichen!",
+            "it": "3... 2... 1... decollo! Il razzo si alza dritto e sicuro, e la squadra vince il premio per il Miglior Lavoro di Squadra. Grazie per averli aiutati a raggiungere le stelle!",
+            "pt": "3... 2... 1... decolagem! O foguete sobe reto e firme, e a equipe vence o prêmio de Melhor Trabalho em Equipe. Obrigado por ajudá-los a alcançar as estrelas!",
+            "ru": "3... 2... 1... старт! Ракета взлетает прямо и уверенно, и команда получает награду за лучшую командную работу. Спасибо за помощь в достижении звёзд!",
+            "zh": "3…2…1…发射！火箭笔直而稳健地升空，团队赢得了最佳团队合作奖。谢谢你帮助他们飞向星辰！",
+            "ja": "3…2…1…発射！ロケットはまっすぐ力強く空へ舞い上がり、チームはベストチームワーク賞を受賞します。彼らが星に届く手伝いをしてくれてありがとう！",
+            "ko": "3…2…1…발사! 로켓이 곧고 힘차게 하늘로 솟아오르고, 팀은 최고의 팀워크 상을 받아요. 그들이 별에 닿도록 도와줘서 고마워요!",
+            "ar": "3... 2... 1... الإقلاع! ينطلق الصاروخ مستقيمًا وثابتًا، ويفوز الفريق بجائزة أفضل عمل جماعي. شكرًا لمساعدتهم في الوصول إلى النجوم!",
+            "hi": "3... 2... 1... उड़ान! रॉकेट सीधा और स्थिर होकर आसमान में उड़ता है, और टीम बेस्ट टीमवर्क का पुरस्कार जीतती है। उन्हें सितारों तक पहुँचाने में मदद करने के लिए धन्यवाद!"
+          },
+          "scene_image": "rocket-7.png",
           "trigger": {
             "type": "after_level",
             "level": "Reminder 2"

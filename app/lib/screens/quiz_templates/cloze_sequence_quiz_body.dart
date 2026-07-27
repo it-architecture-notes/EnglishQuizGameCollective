@@ -3,11 +3,9 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 
 import '../../models/level_config.dart';
+import '../../utils/cloze_blank.dart';
 import '../../widgets/audio_play_button.dart';
 import '../../widgets/translation_reveal_button.dart';
-
-/// Returns true when [token] is a blank marker (2+ underscores, nothing else).
-bool _isBlank(String token) => RegExp(r'^_{2,}$').hasMatch(token);
 
 /// Cloze-sequence quiz: shows the sentence with blank(s) as soon as the
 /// question appears. **Multiple blanks:** fill in order by tapping word tiles
@@ -18,7 +16,6 @@ class ClozeSequenceQuizBody extends StatefulWidget {
     super.key,
     required this.data,
     required this.userLanguage,
-    this.resolvedImagePath,
     this.audioAssetPath,
     required this.resolveAudioExists,
     required this.onPlayQuestionAudio,
@@ -29,7 +26,6 @@ class ClozeSequenceQuizBody extends StatefulWidget {
 
   final ClozeSequenceQuestionData data;
   final String userLanguage;
-  final String? resolvedImagePath;
   final String? audioAssetPath;
   final Future<bool> Function(String path) resolveAudioExists;
   final Future<void> Function(String path) onPlayQuestionAudio;
@@ -75,7 +71,7 @@ class _ClozeSequenceQuizBodyState extends State<ClozeSequenceQuizBody> {
     _tokens = widget.data.sentence.split(' ');
     _blankIndices = [
       for (var i = 0; i < _tokens.length; i++)
-        if (_isBlank(_tokens[i])) i
+        if (isClozeBlankToken(_tokens[i])) i
     ];
     _filled = List.filled(_blankIndices.length, null);
 
@@ -175,16 +171,8 @@ class _ClozeSequenceQuizBodyState extends State<ClozeSequenceQuizBody> {
     if (_failed) return;
     final word = _tiles[tileIndex];
     final state = _tileStates[tileIndex];
-    final multi = widget.data.answers.length > 1;
-
-    if (multi && state == _TileState.correct) {
-      setState(() {
-        _currentBlank = 0;
-        _filled = List.filled(_blankIndices.length, null);
-        _tileStates = List.filled(_tiles.length, _TileState.normal);
-      });
-      return;
-    }
+    // Already-placed correct tiles are inert (no full-reset on re-tap).
+    if (state == _TileState.correct) return;
 
     final expected = widget.data.answers[_currentBlank];
 
@@ -236,39 +224,42 @@ class _ClozeSequenceQuizBodyState extends State<ClozeSequenceQuizBody> {
     for (var i = 0; i < _tokens.length; i++) {
       if (spans.isNotEmpty) spans.add(const TextSpan(text: ' '));
       final t = _tokens[i];
-      if (_isBlank(t)) {
+      if (isClozeBlankToken(t)) {
+        final core = stripClozeBlankAffixes(t);
+        final coreStart = t.indexOf(core);
+        final prefix = coreStart > 0 ? t.substring(0, coreStart) : '';
+        final suffix = t.substring(coreStart + core.length);
         final filled = _filled[blankI];
+        late final String blankText;
+        late final TextStyle blankStyle;
         if (filled != null) {
-          spans.add(TextSpan(
-            text: filled,
-            style: TextStyle(
-              color: _translationPenalized
-                  ? Colors.blue.shade700
-                  : Colors.green.shade700,
-              fontWeight: FontWeight.w700,
-            ),
-          ));
+          blankText = filled;
+          blankStyle = TextStyle(
+            color: _translationPenalized
+                ? Colors.blue.shade700
+                : Colors.green.shade700,
+            fontWeight: FontWeight.w700,
+          );
         } else if (_failed) {
           final alreadyFilled = blankI < _currentBlank;
-          spans.add(TextSpan(
-            text: widget.data.answers[blankI],
-            style: TextStyle(
-              color: alreadyFilled
-                  ? Colors.green.shade700
-                  : Colors.orange.shade700,
-              fontWeight: FontWeight.w700,
-              fontStyle: alreadyFilled ? null : FontStyle.italic,
-            ),
-          ));
+          blankText = widget.data.answers[blankI];
+          blankStyle = TextStyle(
+            color: alreadyFilled
+                ? Colors.green.shade700
+                : Colors.orange.shade700,
+            fontWeight: FontWeight.w700,
+            fontStyle: alreadyFilled ? null : FontStyle.italic,
+          );
         } else {
-          spans.add(TextSpan(
-            text: '_____ (${blankI + 1})',
-            style: TextStyle(
-              color: cs.primary,
-              fontStyle: FontStyle.italic,
-            ),
-          ));
+          blankText = '_____ (${blankI + 1})';
+          blankStyle = TextStyle(
+            color: cs.primary,
+            fontStyle: FontStyle.italic,
+          );
         }
+        if (prefix.isNotEmpty) spans.add(TextSpan(text: prefix));
+        spans.add(TextSpan(text: blankText, style: blankStyle));
+        if (suffix.isNotEmpty) spans.add(TextSpan(text: suffix));
         blankI++;
       } else {
         spans.add(TextSpan(text: t));
@@ -285,7 +276,6 @@ class _ClozeSequenceQuizBodyState extends State<ClozeSequenceQuizBody> {
     final isCorrect = state == _TileState.correct;
     final isWrong = state == _TileState.wrong;
     final isExpected = state == _TileState.expected;
-    final multi = widget.data.answers.length > 1;
 
     Color bg = cs.surfaceContainerHighest;
     Color? fg;
@@ -300,7 +290,7 @@ class _ClozeSequenceQuizBodyState extends State<ClozeSequenceQuizBody> {
       fg = Colors.green.shade900;
     }
 
-    final disabled = _failed || (isCorrect && !multi);
+    final disabled = _failed || isCorrect;
 
     return Stack(
       clipBehavior: Clip.none,
@@ -359,22 +349,6 @@ class _ClozeSequenceQuizBodyState extends State<ClozeSequenceQuizBody> {
           onRevealed: _onTranslationRevealedSingle,
           enabled: !_audioPlaying,
         ),
-        if (widget.resolvedImagePath != null) ...[
-          Center(
-            child: ClipRRect(
-              borderRadius: BorderRadius.circular(8),
-              child: Image.asset(
-                widget.resolvedImagePath!,
-                width: 72,
-                height: 72,
-                fit: BoxFit.cover,
-                errorBuilder: (_, __, ___) =>
-                    const SizedBox(width: 72, height: 72),
-              ),
-            ),
-          ),
-          const SizedBox(height: 8),
-        ],
         Container(
           padding: const EdgeInsets.all(12),
           decoration: BoxDecoration(
@@ -469,22 +443,6 @@ class _ClozeSequenceQuizBodyState extends State<ClozeSequenceQuizBody> {
           onRevealed: _onTranslationRevealed,
           enabled: !_audioPlaying,
         ),
-        if (widget.resolvedImagePath != null) ...[
-          Center(
-            child: ClipRRect(
-              borderRadius: BorderRadius.circular(8),
-              child: Image.asset(
-                widget.resolvedImagePath!,
-                width: 72,
-                height: 72,
-                fit: BoxFit.cover,
-                errorBuilder: (_, __, ___) =>
-                    const SizedBox(width: 72, height: 72),
-              ),
-            ),
-          ),
-          const SizedBox(height: 8),
-        ],
         Container(
           width: double.infinity,
           padding: const EdgeInsets.all(12),

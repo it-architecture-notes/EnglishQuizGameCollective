@@ -5,8 +5,11 @@ import '../../../models/story_config.dart';
 /// Template D — "multi_image_gallery" (`page_template_id` 5)
 ///
 /// Shows [StoryPageConfig.sceneImages] one at a time with a matching caption
-/// from [StoryPageConfig.storyTexts]. Previous / Next navigate; on the last
-/// slide, OK dismisses the overlay (and starts the level for before_level).
+/// from [StoryPageConfig.storyTexts]: `en` as primary line, and when
+/// [languageCode] is not `en`, that locale's string as an italic secondary
+/// line below it (same pattern as [StoryTemplateC]). Previous / Next
+/// navigate; on the last slide, OK dismisses the overlay (and starts the
+/// level for before_level).
 class StoryTemplateD extends StatefulWidget {
   const StoryTemplateD({
     super.key,
@@ -44,18 +47,39 @@ class _StoryTemplateDState extends State<StoryTemplateD> {
   @override
   Widget build(BuildContext context) {
     final images = _images;
+    final theme = Theme.of(context);
+    final englishStyle = theme.textTheme.titleMedium?.copyWith(height: 1.4);
+    final localStyle = theme.textTheme.bodyMedium?.copyWith(
+      color: theme.colorScheme.onSurface.withValues(alpha: 0.6),
+      height: 1.35,
+      fontStyle: FontStyle.italic,
+    );
+
     if (images.isEmpty) {
+      final englishText = widget.page.storyText['en'] ?? '';
+      final localText = widget.languageCode != 'en'
+          ? (widget.page.storyText[widget.languageCode] ?? '')
+          : '';
       return Center(
-        child: Text(
-          widget.page.localizedStoryText(widget.languageCode),
-          textAlign: TextAlign.center,
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Text(englishText, textAlign: TextAlign.center, style: englishStyle),
+            if (localText.isNotEmpty) ...[
+              const SizedBox(height: 12),
+              Text(localText, textAlign: TextAlign.center, style: localStyle),
+            ],
+          ],
         ),
       );
     }
 
-    final caption =
-        widget.page.localizedStoryTextAt(_index, widget.languageCode);
-    final theme = Theme.of(context);
+    final englishCaption = widget.page.englishStoryTextAt(_index);
+    final localCaption = widget.languageCode != 'en'
+        ? widget.page.localizedStoryTextAt(_index, widget.languageCode)
+        : '';
+    final showLocalCaption =
+        localCaption.isNotEmpty && localCaption != englishCaption;
 
     return LayoutBuilder(
       builder: (context, constraints) {
@@ -81,14 +105,25 @@ class _StoryTemplateDState extends State<StoryTemplateD> {
                   ),
                 ),
               ),
-              if (caption.isNotEmpty) ...[
+              if (englishCaption.isNotEmpty) ...[
                 const SizedBox(height: 16),
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 8),
                   child: Text(
-                    caption,
+                    englishCaption,
                     textAlign: TextAlign.center,
-                    style: theme.textTheme.titleMedium?.copyWith(height: 1.4),
+                    style: englishStyle,
+                  ),
+                ),
+              ],
+              if (showLocalCaption) ...[
+                const SizedBox(height: 12),
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 8),
+                  child: Text(
+                    localCaption,
+                    textAlign: TextAlign.center,
+                    style: localStyle,
                   ),
                 ),
               ],

@@ -1,0 +1,125 @@
+╔════════════════════════════════════════════════════════════════════════════════╗
+║                   THE BRIDGE OF WOBBLING WOOD — ML4 STORY FLOW                 ║
+╚════════════════════════════════════════════════════════════════════════════════╝
+
+┌─ EMOTIONAL ARC ──────────────────────────────────────────────────────────────┐
+│                                                                               │
+│  Fear  →  Determination  →  Focus  →  Calm  →  Cleverness  →  Trust  →  Relief │
+│                                                                               │
+│  ✓ Introduced     ✓ First Step  ✓ Reason  ✓ Wind Test  ✓ Shoelace  ✓ Together  │
+│    (Image 1)        (Image 2)    (Img 3)   (Image 4)    (Image 5)  (Img 6)  │
+│                                                                               │
+└───────────────────────────────────────────────────────────────────────────────┘
+
+                              ML4 LEVEL PROGRESSION
+
+            ┏━━━━━━━━━━━━━━━┓
+            ┃  In the      ┃  ← IMAGE 1: bridge-1.png (SETUP)
+            ┃  Kitchen     ┃      "Mia is stranded... help Ben find courage"
+            ┗━━━━━━━━━━━━━━┛
+                   ↓
+        ┌────────────────────┐
+        │ Kitchen Items 1    │
+        │  (Image only)      │
+        └────────────────────┘
+                   ↓
+            ┏━━━━━━━━━━━━━━━┓
+            ┃ Grocery       ┃  ← IMAGE 2: bridge-2.png (CHALLENGE 1)
+            ┃ Shopping      ┃      "Being brave... takes first step"
+            ┗━━━━━━━━━━━━━━┛
+                   ↓
+        ┌────────────────────┐
+        │ Kitchen Items 2    │
+        │  (Image only)      │
+        └────────────────────┘
+                   ↓
+        ┌────────────────────┐
+        │ Grocery List 1     │
+        │  (Image only)      │
+        └────────────────────┘
+                   ↓
+        ┌────────────────────┐
+        │ Grocery List 2     │
+        │  (Image only)      │
+        └────────────────────┘
+                   ↓
+        ┏━━━━━━━━━━━━━━━━━━┓
+        ┃ Common Words - 3  ┃  ← IMAGE 3 & 4: DUAL TEMPLATE (CHALLENGE 2 & 3)
+        ┃  (Vocab)          ┃      Part 1: bridge-3.png (Looking Carefully)
+        ┗━━━━━━━━━━━━━━━━━━┛      Part 2: bridge-4.png (Staying Calm)
+                   ↓
+        ┏━━━━━━━━━━━━━━━━━━┓
+        ┃ Reminder 1        ┃  ← IMAGE 5 & 6: DUAL TEMPLATE (CHALLENGE 4 & 5)
+        ┃ (Quiz Review)     ┃      Part 1: bridge-5.png (Thinking Like Helper)
+        ┗━━━━━━━━━━━━━━━━━━┛      Part 2: bridge-6.png (Working Together)
+                   ↓
+        ┏━━━━━━━━━━━━━━━━━━┓
+        ┃ Reminder 2        ┃
+        ┃ (Quiz Review)     ┃
+        ┗━━━━━━━━━━━━━━━━━━┛
+                   ↓ (after)
+        
+        IMAGE 7: bridge-7.png (FINAL SCENE)
+        "Ben and Mia reach solid ground... Thank you!"
+
+
+╔════════════════════════════════════════════════════════════════════════════════╗
+║                          STORY EVENT STRUCTURE                                 ║
+╠════════════════════════════════════════════════════════════════════════════════╣
+║                                                                                ║
+║  EVENT 1001 (SETUP SLIDE)                                                     ║
+║  ├─ Image: bridge-1.png                                                       ║
+║  ├─ Template: Single (page_template_id: 4)                                    ║
+║  ├─ Trigger: Before "In the Kitchen"                                         ║
+║  └─ Caption: "Mia is stranded... help Ben find courage..."                   ║
+║                                                                                ║
+║  EVENT 1002 (CHALLENGE 1)                                                     ║
+║  ├─ Image: bridge-2.png                                                       ║
+║  ├─ Template: Single (page_template_id: 4)                                    ║
+║  ├─ Trigger: Before "Grocery Shopping"                                        ║
+║  └─ Caption: "Being brave... takes his first step..."                        ║
+║                                                                                ║
+║  EVENT 1003 (CHALLENGE 2 & 3) ← DUAL TEMPLATE                                ║
+║  ├─ Images: bridge-3.png + bridge-4.png                                       ║
+║  ├─ Template: Dual (page_template_id: 5)                                      ║
+║  ├─ Trigger: Before "Common Words - 3"                                        ║
+║  ├─ Caption 1: "Ben studies boards carefully, reasoning..."                  ║
+║  └─ Caption 2: "Strong wind, Ben steadies breathing..."                      ║
+║                                                                                ║
+║  EVENT 1004 (CHALLENGE 4 & 5) ← DUAL TEMPLATE                                ║
+║  ├─ Images: bridge-5.png + bridge-6.png                                       ║
+║  ├─ Template: Dual (page_template_id: 5)                                      ║
+║  ├─ Trigger: Before "Reminder 1"                                              ║
+║  ├─ Caption 1: "Ben reaches Mia, discovers shoelace caught..."               ║
+║  └─ Caption 2: "Board falls away, Ben & Mia hand-in-hand..."                ║
+║                                                                                ║
+║  EVENT 1005 (FINAL SCENE)                                                     ║
+║  ├─ Image: bridge-7.png                                                       ║
+║  ├─ Template: Single (page_template_id: 4)                                    ║
+║  ├─ Trigger: After "Reminder 2"                                               ║
+║  └─ Caption: "Solid ground, celebration, proud smile, thank you..."          ║
+║                                                                                ║
+╚════════════════════════════════════════════════════════════════════════════════╝
+
+                            ASSET REQUIREMENTS SUMMARY
+
+  7 Story Illustrations (1:1 square, high-res)
+  ├─ bridge-1.png (Title/Setup)
+  ├─ bridge-2.png (Challenge 1)
+  ├─ bridge-3.png (Challenge 2)
+  ├─ bridge-4.png (Challenge 3)
+  ├─ bridge-5.png (Challenge 4)
+  ├─ bridge-6.png (Challenge 5)
+  └─ bridge-7.png (Final Scene)
+
+  1 Story Icon (ML4 thumbnail)
+  └─ assets/images/story/bridge-1.png (referenced in story_icon_asset_path)
+
+  Destination: app/assets/images/story/
+  Style: Soft watercolor storybook, dark brown line work, visible brush texture
+
+
+╔════════════════════════════════════════════════════════════════════════════════╗
+║                         CONFIGURATION STATUS: ✅ COMPLETE                      ║
+║                         READY FOR: Illustration Phase                          ║
+╚════════════════════════════════════════════════════════════════════════════════╝

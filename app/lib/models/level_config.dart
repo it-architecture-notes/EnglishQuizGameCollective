@@ -1,5 +1,6 @@
 import 'package:flutter/foundation.dart';
 
+import '../utils/cloze_blank.dart';
 
 /// Parsed `questionData` for [imageQuizTemplate-1].
 class ImageQuestionData {
@@ -42,6 +43,7 @@ class AppearDisappearQuestionData {
     required this.distractors,
     this.displayDuration = 1.0,
     this.introPause = 2.0,
+    this.imageName,
     this.englishToTranslate = const [],
     this.localTranslation = const {},
     this.trOk = false,
@@ -52,6 +54,8 @@ class AppearDisappearQuestionData {
   final double displayDuration;
   /// Pause (seconds) with empty boxes before word reveal starts.
   final double introPause;
+  /// Optional image basename under the level folder. Null = no image.
+  final String? imageName;
   final List<String> englishToTranslate;
   final Map<String, List<String>> localTranslation;
   /// When true, revealing translation does not count as a wrong answer.
@@ -117,6 +121,7 @@ class ConvoQuestionData {
 class SentenceBuilderQuestionData {
   const SentenceBuilderQuestionData({
     required this.correctOrder,
+    this.imageName,
     this.englishToTranslate = const [],
     this.localTranslation = const {},
     this.trOk = false,
@@ -124,6 +129,8 @@ class SentenceBuilderQuestionData {
 
   /// Target sentence token sequence (left-to-right).
   final List<String> correctOrder;
+  /// Optional image basename under the level folder. Null = no image.
+  final String? imageName;
   final List<String> englishToTranslate;
   final Map<String, List<String>> localTranslation;
   /// When true, revealing translation does not count as a wrong answer.
@@ -182,6 +189,7 @@ class GrammarFormQuestionData {
     required this.sentence,
     required this.answer,
     required this.distractors,
+    this.imageName,
     this.englishToTranslate = const [],
     this.localTranslation = const {},
     this.trOk = false,
@@ -190,6 +198,8 @@ class GrammarFormQuestionData {
   final String sentence;
   final String answer;
   final List<String> distractors;
+  /// Optional image basename under the level folder. Null = no image.
+  final String? imageName;
   final List<String> englishToTranslate;
   final Map<String, List<String>> localTranslation;
   /// When true, revealing translation does not count as a wrong answer.
@@ -380,6 +390,13 @@ class LevelConfig {
     return const [];
   }
 
+  /// Optional thumbnail basename from `imageName` or `image_file_name`.
+  static String? _optionalImageName(Map<String, dynamic> data) {
+    final raw = data['imageName'] ?? data['image_file_name'];
+    if (raw is String && raw.trim().isNotEmpty) return raw.trim();
+    return null;
+  }
+
   /// Parses appear/disappear sequence question with flexible choice count.
   static AppearDisappearQuestionData _parseAppearDisappear(
     Map<String, dynamic> data,
@@ -396,29 +413,19 @@ class LevelConfig {
       distractors: distractors,
       displayDuration: (data['display_duration'] as num?)?.toDouble() ?? 1.0,
       introPause: (data['intro_pause'] as num?)?.toDouble() ?? 2.0,
+      imageName: _optionalImageName(data),
       englishToTranslate: _stringList(data['english_to_translate']),
       localTranslation: _stringListMap(data['local_translation']),
       trOk: (data['tr_ok'] as bool?) ?? false,
     );
   }
 
-  /// Strips light wrapping punctuation so `_____.` / `____?` count as blanks.
-  static String _stripClozeBlankAffixes(String raw) {
-    var t = raw.trim();
-    const leading = ' "\'([{«';
-    const trailing = '.,!?;:\'" )]}»\u2026';
-    while (t.isNotEmpty && leading.contains(t[0])) {
-      t = t.substring(1);
-    }
-    while (t.isNotEmpty && trailing.contains(t[t.length - 1])) {
-      t = t.substring(0, t.length - 1);
-    }
-    return t;
-  }
+  /// Strips light wrapping punctuation so `_____.` / `_____!` / `_____?` count as blanks.
+  static String _stripClozeBlankAffixes(String raw) =>
+      stripClozeBlankAffixes(raw);
 
   /// True when a space-delimited token is a blank marker (2+ underscores, optional affixes).
-  static bool _isBlankToken(String s) =>
-      RegExp(r'^_{2,}$').hasMatch(_stripClozeBlankAffixes(s));
+  static bool _isBlankToken(String s) => isClozeBlankToken(s);
 
   /// Counts blanks in an English sentence string.
   static int _countBlanks(String sentence) =>
@@ -452,14 +459,11 @@ class LevelConfig {
         'ClozeSequence: ${answers.length} answers but $blankCount blanks in sentence',
       );
     }
-    final rawName = data['imageName'];
-    final String? imageName =
-        rawName is String && rawName.trim().isNotEmpty ? rawName.trim() : null;
     return ClozeSequenceQuestionData(
       sentence: sentence,
       answers: answers,
       distractors: distractors,
-      imageName: imageName,
+      imageName: _optionalImageName(data),
       englishToTranslate: _stringList(data['english_to_translate']),
       localTranslation: _stringListMap(data['local_translation']),
       trOk: (data['tr_ok'] as bool?) ?? false,
@@ -500,6 +504,7 @@ class LevelConfig {
     }
     return SentenceBuilderQuestionData(
       correctOrder: correctOrder,
+      imageName: _optionalImageName(data),
       englishToTranslate: _stringList(data['english_to_translate']),
       localTranslation: _stringListMap(data['local_translation']),
       trOk: (data['tr_ok'] as bool?) ?? false,
@@ -562,6 +567,7 @@ class LevelConfig {
       sentence: sentence,
       answer: data['answer'] as String? ?? '',
       distractors: distractors,
+      imageName: _optionalImageName(data),
       englishToTranslate: _stringList(data['english_to_translate']),
       localTranslation: _stringListMap(data['local_translation']),
       trOk: (data['tr_ok'] as bool?) ?? false,
