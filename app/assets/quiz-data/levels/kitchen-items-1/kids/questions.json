@@ -1,0 +1,180 @@
+{
+  "levelQuestions": [
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "apron",
+        "wrongAnswers": [
+          "baking-tray",
+          "bowl",
+          "blender"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "baking-tray",
+        "wrongAnswers": [
+          "casserole-dish",
+          "cutting-board",
+          "apron"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-2",
+      "questionData": {
+        "imageName": "blender",
+        "wrongAnswers": [
+          "bowl",
+          "spoon",
+          "strainer"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "bowl",
+        "wrongAnswers": [
+          "glass",
+          "apron",
+          "baking-tray"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "can-opener",
+        "wrongAnswers": [
+          "colander",
+          "strainer",
+          "apron"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-2",
+      "questionData": {
+        "imageName": "colander",
+        "wrongAnswers": [
+          "strainer",
+          "teapot",
+          "bowl"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "casserole-dish",
+        "wrongAnswers": [
+          "baking-tray",
+          "measuring-cup",
+          "apron"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "teapot",
+        "wrongAnswers": [
+          "glass",
+          "bowl",
+          "blender"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-2",
+      "questionData": {
+        "imageName": "cutting-board",
+        "wrongAnswers": [
+          "baking-tray",
+          "colander",
+          "spoon"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "glass",
+        "wrongAnswers": [
+          "bowl",
+          "apron",
+          "baking-tray"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "spoon",
+        "wrongAnswers": [
+          "table-knife",
+          "blender",
+          "coat"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-2",
+      "questionData": {
+        "imageName": "stove",
+        "wrongAnswers": [
+          "toaster-oven",
+          "blender",
+          "colander"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "strainer",
+        "wrongAnswers": [
+          "colander",
+          "can-opener",
+          "apron"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "table-knife",
+        "wrongAnswers": [
+          "apron",
+          "can-opener",
+          "watch"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-2",
+      "questionData": {
+        "imageName": "toaster-oven",
+        "wrongAnswers": [
+          "stove",
+          "baking-tray",
+          "blender"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "measuring-cup",
+        "wrongAnswers": [
+          "glass",
+          "bowl",
+          "spoon"
+        ]
+      }
+    }
+  ]
+}

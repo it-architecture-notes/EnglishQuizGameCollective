@@ -1,0 +1,158 @@
+{
+  "levelQuestions": [
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "bank",
+        "wrongAnswers": [
+          "museum",
+          "pharmacy",
+          "bridge"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "bridge",
+        "wrongAnswers": [
+          "skyscraper",
+          "bank",
+          "cafe"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-2",
+      "questionData": {
+        "imageName": "cafe",
+        "wrongAnswers": [
+          "post-office",
+          "stationery-store",
+          "bridge"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "dry-cleaner",
+        "wrongAnswers": [
+          "furniture-store",
+          "stationery-store",
+          "bank"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-2",
+      "questionData": {
+        "imageName": "fish-market",
+        "wrongAnswers": [
+          "furniture-store",
+          "pharmacy",
+          "skyscraper"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "furniture-store",
+        "wrongAnswers": [
+          "dry-cleaner",
+          "cafe",
+          "bank"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "hair-salon",
+        "wrongAnswers": [
+          "museum",
+          "pharmacy",
+          "bank"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-2",
+      "questionData": {
+        "imageName": "museum",
+        "wrongAnswers": [
+          "bridge",
+          "skyscraper",
+          "hair-salon"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "pharmacy",
+        "wrongAnswers": [
+          "bridge",
+          "furniture-store",
+          "bank"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "post-office",
+        "wrongAnswers": [
+          "fish-market",
+          "stationery-store",
+          "bank"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-2",
+      "questionData": {
+        "imageName": "school",
+        "wrongAnswers": [
+          "skyscraper",
+          "bank",
+          "dry-cleaner"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "skyscraper",
+        "wrongAnswers": [
+          "toy-store",
+          "post-office",
+          "bank"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "stationery-store",
+        "wrongAnswers": [
+          "dry-cleaner",
+          "cafe",
+          "bank"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-2",
+      "questionData": {
+        "imageName": "toy-store",
+        "wrongAnswers": [
+          "hair-salon",
+          "post-office",
+          "stationery-store"
+        ]
+      }
+    }
+  ]
+}

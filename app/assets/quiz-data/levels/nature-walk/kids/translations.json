@@ -1,0 +1,89 @@
+{
+  "translations_list": [
+    {
+      "english_word": "east",
+      "translations": {
+        "tr": "doğu",
+        "es": "este",
+        "fr": "est",
+        "de": "Osten",
+        "it": "est",
+        "pt": "leste",
+        "ru": "восток",
+        "zh": "东",
+        "ja": "東",
+        "ko": "동쪽",
+        "ar": "الشرق",
+        "hi": "पूर्व"
+      }
+    },
+    {
+      "english_word": "west",
+      "translations": {
+        "tr": "batı",
+        "es": "oeste",
+        "fr": "ouest",
+        "de": "Westen",
+        "it": "ovest",
+        "pt": "oeste",
+        "ru": "запад",
+        "zh": "西",
+        "ja": "西",
+        "ko": "서쪽",
+        "ar": "الغرب",
+        "hi": "पश्चिम"
+      }
+    },
+    {
+      "english_word": "north",
+      "translations": {
+        "tr": "kuzey",
+        "es": "norte",
+        "fr": "nord",
+        "de": "Norden",
+        "it": "nord",
+        "pt": "norte",
+        "ru": "север",
+        "zh": "北",
+        "ja": "北",
+        "ko": "북쪽",
+        "ar": "الشمال",
+        "hi": "उत्तर"
+      }
+    },
+    {
+      "english_word": "south",
+      "translations": {
+        "tr": "güney",
+        "es": "sur",
+        "fr": "sud",
+        "de": "Süden",
+        "it": "sud",
+        "pt": "sul",
+        "ru": "юг",
+        "zh": "南",
+        "ja": "南",
+        "ko": "남쪽",
+        "ar": "الجنوب",
+        "hi": "दಕ್ಷಿಣ"
+      }
+    },
+    {
+      "english_word": "calm",
+      "translations": {
+        "tr": "sakin",
+        "es": "tranquilo",
+        "fr": "calme",
+        "de": "ruhig",
+        "it": "calmo",
+        "pt": "calmo",
+        "ru": "спокойный",
+        "zh": "冷静的",
+        "ja": "落ち着いた",
+        "ko": "차분한",
+        "ar": "هادئ",
+        "hi": "शांत"
+      }
+    }
+  ]
+}

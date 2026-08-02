@@ -1,0 +1,169 @@
+{
+  "levelQuestions": [
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "airplane-ticket",
+        "wrongAnswers": [
+          "visa",
+          "call-button",
+          "cockpit"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "call-button",
+        "wrongAnswers": [
+          "control-tower",
+          "onboarding-bridge",
+          "airplane-ticket"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-2",
+      "questionData": {
+        "imageName": "cockpit",
+        "wrongAnswers": [
+          "luggage-tag",
+          "onboarding-bridge",
+          "passport"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "control-tower",
+        "wrongAnswers": [
+          "plane-seats",
+          "call-button",
+          "airplane-ticket"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "luggage-tag",
+        "wrongAnswers": [
+          "security-x-ray",
+          "overhead-bin",
+          "airplane-ticket"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "luggage-trolley",
+        "wrongAnswers": [
+          "airplane-ticket",
+          "security-x-ray",
+          "call-button"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "onboarding-bridge",
+        "wrongAnswers": [
+          "control-tower",
+          "cockpit",
+          "airplane-ticket"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-2",
+      "questionData": {
+        "imageName": "overhead-bin",
+        "wrongAnswers": [
+          "visa",
+          "call-button",
+          "control-tower"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "passport",
+        "wrongAnswers": [
+          "plane-ticket",
+          "tray-table",
+          "airplane-ticket"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "plane-seats",
+        "wrongAnswers": [
+          "tray-table",
+          "control-tower",
+          "airplane-ticket"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "plane-ticket",
+        "wrongAnswers": [
+          "call-button",
+          "passport",
+          "airplane-ticket"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "seatbelt",
+        "wrongAnswers": [
+          "luggage-tag",
+          "visa",
+          "airplane-ticket"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-2",
+      "questionData": {
+        "imageName": "security-x-ray",
+        "wrongAnswers": [
+          "plane-seats",
+          "seatbelt",
+          "visa"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "tray-table",
+        "wrongAnswers": [
+          "plane-ticket",
+          "plane-seats",
+          "airplane-ticket"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "visa",
+        "wrongAnswers": [
+          "tray-table",
+          "airplane-ticket",
+          "call-button"
+        ]
+      }
+    }
+  ]
+}

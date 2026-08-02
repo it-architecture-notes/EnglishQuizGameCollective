@@ -1,0 +1,259 @@
+{
+  "levelQuestions": [
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "shower",
+        "wrongAnswers": [
+          "mirror",
+          "bathtub",
+          "soap"
+        ]
+      }
+    },
+    {
+      "template": "ConvoTemplate-1",
+      "genders": "f-m",
+      "questionData": {
+        "line1": "Do you _____ hands often?",
+        "line2": "I _____ my hands now.",
+        "answer": "wash",
+        "distractors": [
+          "brush",
+          "comb",
+          "take"
+        ]
+      },
+      "audio_file1": "do-you-wash-hands-often-convo",
+      "audio_file2": "i-wash-my-hands-now-convo"
+    },
+    {
+      "template": "AppearDisappear",
+      "genders": "m",
+      "questionData": {
+        "words": "I feel clean.",
+        "distractors": [
+          "dirty",
+          "soap",
+          "towel",
+          "wet"
+        ]
+      },
+      "audio_file": "i-feel-clean-convo"
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "bathtub",
+        "wrongAnswers": [
+          "sink",
+          "towel",
+          "shower"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "sink",
+        "wrongAnswers": [
+          "bathtub",
+          "soap",
+          "shower"
+        ]
+      }
+    },
+    {
+      "template": "WordPairs",
+      "questionData": {
+        "english_words": [
+          "wet",
+          "dry",
+          "hot",
+          "cold"
+        ],
+        "translations": [
+          {
+            "tr": "ıslak",
+            "es": "mojado",
+            "fr": "mouillé",
+            "de": "nass",
+            "it": "bagnato",
+            "pt": "molhado",
+            "ru": "мокрый",
+            "zh": "湿的",
+            "ja": "濡れた",
+            "ko": "젖은",
+            "ar": "مبتل",
+            "hi": "गीला"
+          },
+          {
+            "tr": "kuru",
+            "es": "seco",
+            "fr": "sec",
+            "de": "trocken",
+            "it": "asciutto",
+            "pt": "seco",
+            "ru": "сухой",
+            "zh": "干的",
+            "ja": "乾いた",
+            "ko": "마른",
+            "ar": "جاف",
+            "hi": "सूखा"
+          },
+          {
+            "tr": "sıcak",
+            "es": "caliente",
+            "fr": "chaud",
+            "de": "heiß",
+            "it": "caldo",
+            "pt": "quente",
+            "ru": "горячий",
+            "zh": "热的",
+            "ja": "熱い",
+            "ko": "뜨거운",
+            "ar": "حار",
+            "hi": "गर्म"
+          },
+          {
+            "tr": "soğuk",
+            "es": "frío",
+            "fr": "froid",
+            "de": "kalt",
+            "it": "freddo",
+            "pt": "frio",
+            "ru": "холодный",
+            "zh": "冷的",
+            "ja": "冷たい",
+            "ko": "차가운",
+            "ar": "بارد",
+            "hi": "ठंडा"
+          }
+        ]
+      }
+    },
+    {
+      "template": "ClozeSequence",
+      "genders": "f",
+      "questionData": {
+        "sentence": "She _____ her teeth.",
+        "answers": [
+          "brushes"
+        ],
+        "distractors": [
+          "takes",
+          "puts",
+          "cuts",
+          "dries"
+        ]
+      },
+      "audio_file": "she-brushes-her-teeth-convo"
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "comb",
+        "wrongAnswers": [
+          "hair dryer",
+          "soap",
+          "toothbrush"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-2",
+      "questionData": {
+        "imageName": "towel",
+        "wrongAnswers": [
+          "toothbrush",
+          "comb",
+          "bathtub"
+        ]
+      }
+    },
+    {
+      "template": "DialogueCompletion",
+      "genders": "f-f",
+      "questionData": {
+        "line1": "I am going to shower.",
+        "answer": "Okay! The towel is here.",
+        "distractors": [
+          "Brush your teeth.",
+          "The soap is here.",
+          "The sink is clean."
+        ]
+      },
+      "audio_file1": "i-am-going-to-shower-convo",
+      "audio_file2": "okay-the-towel-is-here-convo"
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "toothbrush",
+        "wrongAnswers": [
+          "comb",
+          "soap",
+          "mirror"
+        ]
+      }
+    },
+    {
+      "template": "ClozeSequence",
+      "genders": "m",
+      "questionData": {
+        "sentence": "I _____ my face.",
+        "answers": [
+          "dry"
+        ],
+        "distractors": [
+          "cook",
+          "brush",
+          "drive",
+          "read"
+        ]
+      },
+      "audio_file": "i-dry-my-face-convo"
+    },
+    {
+      "template": "DialogueCompletion",
+      "genders": "f-m",
+      "questionData": {
+        "line1": "Do you use the mirror?",
+        "answer": "Yes, I do.",
+        "distractors": [
+          "No, I am sleepy.",
+          "Yes, it is big.",
+          "No, I like soap."
+        ]
+      },
+      "audio_file1": "do-you-use-the-mirror-convo",
+      "audio_file2": "yes-i-do-convo"
+    },
+    {
+      "template": "ClozeSequence",
+      "genders": "m",
+      "questionData": {
+        "sentence": "I _____ the bathroom every _____.",
+        "answers": [
+          "clean",
+          "day"
+        ],
+        "distractors": [
+          "cook",
+          "brush",
+          "week",
+          "night"
+        ]
+      },
+      "audio_file": "i-clean-the-bathroom-every-day-convo"
+    },
+    {
+      "template": "SentenceBuilder",
+      "genders": "m",
+      "questionData": {
+        "correct_order": "His hands are very dirty."
+      },
+      "audio_file": "his-hands-are-very-dirty-convo"
+    }
+  ]
+}

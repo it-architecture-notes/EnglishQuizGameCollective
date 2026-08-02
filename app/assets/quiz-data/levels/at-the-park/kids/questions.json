@@ -1,0 +1,258 @@
+{
+  "levelQuestions": [
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "sun",
+        "wrongAnswers": [
+          "cloud",
+          "moon",
+          "star"
+        ]
+      }
+    },
+    {
+      "template": "ConvoTemplate-1",
+      "genders": "f-m",
+      "questionData": {
+        "line1": "Do you want to run?",
+        "line2": "Yes, let us run.",
+        "answer": "run",
+        "distractors": [
+          "walk",
+          "sit",
+          "sleep"
+        ]
+      },
+      "audio_file1": "do-you-want-to-run-convo",
+      "audio_file2": "yes-let-us-run-convo"
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "tree",
+        "wrongAnswers": [
+          "plant",
+          "flower",
+          "cactus"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "fountain",
+        "wrongAnswers": [
+          "pond",
+          "bench",
+          "waterfall"
+        ]
+      }
+    },
+    {
+      "template": "WordPairs",
+      "questionData": {
+        "english_words": [
+          "today",
+          "tomorrow",
+          "yesterday",
+          "now"
+        ],
+        "translations": [
+          {
+            "tr": "bugün",
+            "es": "hoy",
+            "fr": "aujourd'hui",
+            "de": "heute",
+            "it": "oggi",
+            "pt": "hoje",
+            "ru": "сегодня",
+            "zh": "今天",
+            "ja": "今日",
+            "ko": "오늘",
+            "ar": "اليوم",
+            "hi": "आज"
+          },
+          {
+            "tr": "yarın",
+            "es": "mañana",
+            "fr": "demain",
+            "de": "morgen",
+            "it": "domani",
+            "pt": "amanhã",
+            "ru": "завтра",
+            "zh": "明天",
+            "ja": "明日",
+            "ko": "내일",
+            "ar": "غدا",
+            "hi": "कल"
+          },
+          {
+            "tr": "dün",
+            "es": "ayer",
+            "fr": "hier",
+            "de": "gestern",
+            "it": "ieri",
+            "pt": "ontem",
+            "ru": "вчера",
+            "zh": "昨天",
+            "ja": "昨日",
+            "ko": "어제",
+            "ar": "أمس",
+            "hi": "कल"
+          },
+          {
+            "tr": "arada bir",
+            "es": "de vez en cuando",
+            "fr": "de temps à autre",
+            "de": "ab und zu",
+            "it": "ogni tanto",
+            "pt": "de vez em quando",
+            "ru": "время от времени",
+            "zh": "偶尔",
+            "ja": "時々",
+            "ko": "가끔씩",
+            "ar": "من حين لآخر",
+            "hi": "कभी-कभी"
+          }
+        ]
+      }
+    },
+    {
+      "template": "ConvoTemplate-1",
+      "genders": "m-f",
+      "questionData": {
+        "line1": "Can you jump far?",
+        "line2": "Yes, I can jump.",
+        "answer": "jump",
+        "distractors": [
+          "run",
+          "walk",
+          "sit"
+        ]
+      },
+      "audio_file1": "can-you-jump-far-convo",
+      "audio_file2": "yes-i-can-jump-convo"
+    },
+    {
+      "template": "AppearDisappear",
+      "genders": "f",
+      "questionData": {
+        "words": "Children play by the tree.",
+        "distractors": [
+          "book",
+          "ball",
+          "dog",
+          "home"
+        ]
+      },
+      "audio_file": "children-play-by-the-tree-convo"
+    },
+    {
+      "template": "imageQuizTemplate-2",
+      "questionData": {
+        "imageName": "flowers",
+        "wrongAnswers": [
+          "sun",
+          "swing",
+          "grass"
+        ],
+        "answer": "flowers"
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "swing",
+        "wrongAnswers": [
+          "desk",
+          "slide",
+          "bench"
+        ]
+      }
+    },
+    {
+      "template": "SentenceBuilder",
+      "genders": "f",
+      "questionData": {
+        "correct_order": "The squirrel runs fast."
+      },
+      "audio_file": "the-squirrel-runs-fast-convo"
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "grass",
+        "wrongAnswers": [
+          "flower",
+          "bush",
+          "path"
+        ]
+      }
+    },
+    {
+      "template": "ClozeSequence",
+      "genders": "m",
+      "questionData": {
+        "sentence": "Do not _____ too high.",
+        "answer": [
+          "climb"
+        ],
+        "distractors": [
+          "run",
+          "walk",
+          "carry",
+          "push"
+        ]
+      },
+      "audio_file": "do-not-too-high-convo"
+    },
+    {
+      "template": "GrammarForm",
+      "genders": "m",
+      "questionData": {
+        "sentence": "You _____ throw the ball.",
+        "answer": "can",
+        "distractors": [
+          "are",
+          "is",
+          "am"
+        ]
+      }
+    },
+    {
+      "template": "ClozeSequence",
+      "genders": "f",
+      "questionData": {
+        "sentence": "Kids _____ the kite.",
+        "answer": [
+          "watch"
+        ],
+        "distractors": [
+          "catch",
+          "run",
+          "walk",
+          "read"
+        ]
+      },
+      "audio_file": "kids-the-kite-convo"
+    },
+    {
+      "template": "ClozeSequence",
+      "genders": "m",
+      "questionData": {
+        "sentence": "We _____ in the park.",
+        "answer": [
+          "play"
+        ],
+        "distractors": [
+          "sleep",
+          "read",
+          "cook",
+          "wash"
+        ]
+      },
+      "audio_file": "we-in-the-park-convo"
+    }
+  ]
+}

@@ -1,0 +1,38 @@
+{
+  "translations_list": [
+    {
+      "english_word": "to try",
+      "translations": {
+        "tr": "denemek",
+        "es": "probar",
+        "fr": "essayer",
+        "de": "anprobieren",
+        "it": "provare",
+        "pt": "experimentar",
+        "ru": "примерять",
+        "zh": "试穿",
+        "ja": "試す",
+        "ko": "입어 보다",
+        "ar": "يجرّب",
+        "hi": "आज़माना"
+      }
+    },
+    {
+      "english_word": "to wear",
+      "translations": {
+        "tr": "giymek",
+        "es": "llevar",
+        "fr": "porter",
+        "de": "tragen",
+        "it": "indossare",
+        "pt": "usar",
+        "ru": "носить",
+        "zh": "穿",
+        "ja": "着る",
+        "ko": "입다",
+        "ar": "يرتدي",
+        "hi": "पहनना"
+      }
+    }
+  ]
+}

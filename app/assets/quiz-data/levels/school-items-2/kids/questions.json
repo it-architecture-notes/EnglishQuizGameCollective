@@ -1,0 +1,169 @@
+{
+  "levelQuestions": [
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "backpack",
+        "wrongAnswers": [
+          "pencil-case",
+          "lunchbox",
+          "bulletin-board"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "bulletin-board",
+        "wrongAnswers": [
+          "whiteboard",
+          "pin",
+          "backpack"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-2",
+      "questionData": {
+        "imageName": "crayons",
+        "wrongAnswers": [
+          "glue",
+          "eraser",
+          "pencil-case"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "desk-chair",
+        "wrongAnswers": [
+          "ruler",
+          "stapler",
+          "backpack"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "eraser",
+        "wrongAnswers": [
+          "crayons",
+          "glue",
+          "backpack"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-2",
+      "questionData": {
+        "imageName": "glue",
+        "wrongAnswers": [
+          "crayons",
+          "paper-clip",
+          "eraser"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "fountain",
+        "wrongAnswers": [
+          "swing",
+          "lunchbox",
+          "backpack"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "lunchbox",
+        "wrongAnswers": [
+          "backpack",
+          "pencil-case",
+          "bulletin-board"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-2",
+      "questionData": {
+        "imageName": "paper-clip",
+        "wrongAnswers": [
+          "stapler",
+          "glue",
+          "ruler"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "pencil-case",
+        "wrongAnswers": [
+          "ruler",
+          "eraser",
+          "backpack"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "pin",
+        "wrongAnswers": [
+          "bulletin-board",
+          "whiteboard",
+          "backpack"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-2",
+      "questionData": {
+        "imageName": "ruler",
+        "wrongAnswers": [
+          "pencil-case",
+          "stapler",
+          "paper-clip"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "swing",
+        "wrongAnswers": [
+          "fountain",
+          "desk-chair",
+          "backpack"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "whiteboard",
+        "wrongAnswers": [
+          "bulletin-board",
+          "pin",
+          "backpack"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-2",
+      "questionData": {
+        "imageName": "stapler",
+        "wrongAnswers": [
+          "paper-clip",
+          "ruler",
+          "glue"
+        ]
+      }
+    }
+  ]
+}

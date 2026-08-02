@@ -1,50 +1,14 @@
 [
-  {
-    "mainLevel": 1,
-    "title": "Saving a Puppy"
-  },
-  {
-    "mainLevel": 2,
-    "title": "The Great Storm"
-  },
-  {
-    "mainLevel": 3,
-    "title": "Let's Save the Beach!"
-  },
-  {
-    "mainLevel": 4,
-    "title": "The Grumble-Bot 3000"
-  },
-  {
-    "mainLevel": 5,
-    "title": "The Library That Grows"
-  },
-  {
-    "mainLevel": 6,
-    "title": "The Bridge of Wobbling Wood"
-  },
-  {
-    "mainLevel": 7,
-    "title": "The Lantern Through the Fog"
-  },
-  {
-    "mainLevel": 8,
-    "title": "The Dragon of Ember Ridge"
-  },
-  {
-    "mainLevel": 9,
-    "title": "The Mission to Harmony Station"
-  },
-  {
-    "mainLevel": 10,
-    "title": "Isabella & the Gray World"
-  },
-  {
-    "mainLevel": 11,
-    "title": "The Missing Boy"
-  },
-  {
-    "mainLevel": 12,
-    "title": "Countdown to Liftoff"
-  }
+  { "mainLevel": 1, "title": "Main Level 1" },
+  { "mainLevel": 2, "title": "Main Level 2" },
+  { "mainLevel": 3, "title": "Main Level 3" },
+  { "mainLevel": 4, "title": "Main Level 4" },
+  { "mainLevel": 5, "title": "Main Level 5" },
+  { "mainLevel": 6, "title": "Main Level 6" },
+  { "mainLevel": 7, "title": "Main Level 7" },
+  { "mainLevel": 8, "title": "Main Level 8" },
+  { "mainLevel": 9, "title": "Main Level 9" },
+  { "mainLevel": 10, "title": "Main Level 10" },
+  { "mainLevel": 11, "title": "Main Level 11" },
+  { "mainLevel": 12, "title": "Main Level 12" }
 ]

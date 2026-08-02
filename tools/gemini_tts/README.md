@@ -36,11 +36,44 @@ Gemini TTS uses **prebuilt voice names** (see Google’s Gemini TTS docs). Confi
 
 | Variable | Role |
 |----------|------|
-| `GEMINI_TTS_MALE_VOICES` | Male voices. First entry is the default **speaker A** for multi-speaker when `--voice-a` is not passed. If unset, defaults to `Puck`. |
-| `GEMINI_TTS_FEMALE_VOICES` | Female voices. First entry is the default **speaker B** for multi-speaker when `--voice-b` is not passed. If unset, defaults to `Leda`. |
+| `GEMINI_TTS_FLAVOR` | `kids` or `adults` (CLI `--flavor` overrides). Kids mode changes style prompt, default voice pools, output suffix, and questions file preference. |
+| `GEMINI_TTS_MALE_VOICES` | **Adults** male voices. First entry is default speaker A when `--voice-a` is not passed. If unset → `Puck`. |
+| `GEMINI_TTS_FEMALE_VOICES` | **Adults** female voices. First entry is default speaker B when `--voice-b` is not passed. If unset → `Leda`. |
+| `GEMINI_TTS_KIDS_MALE_VOICES` | **Kids** male voices (ignored for adults). If unset → `Puck,Fenrir,Sadachbia,Achird`. |
+| `GEMINI_TTS_KIDS_FEMALE_VOICES` | **Kids** female voices (ignored for adults). If unset → `Leda,Laomedeia,Aoede,Zephyr,Autonoe`. |
+| `GEMINI_TTS_STYLE_PROMPT` | Optional full prompt template; must include `{text}`. Overrides the flavor default style line. |
 | `GEMINI_TTS_VOICE_ROTATE` | If `1` / `true` / `yes`, **single-speaker** jobs that are not using a character-based override cycle through **male list + female list** in order (overrides random selection below). |
 
-**Gender-based voices:** For `ConvoTemplate-1` and `ConvoTemplate-DialogueCompletion`, `character1` is used for **line 1**; `character2` is used for **line 2** (ConvoTemplate-1) or for the **answer** clip (DialogueCompletion). Character ids are matched (case-insensitively) to names in `characterNamePools` in `app/assets/data/config/conversation_characters.json` to decide male vs female. Each clip picks a **random** voice from `GEMINI_TTS_MALE_VOICES` or `GEMINI_TTS_FEMALE_VOICES` accordingly. If a character id does **not** match any pool name, that clip uses a **random** voice from **both** lists combined (male + female).
+### Kids flavor voices (Gemini 2.5 Flash / Pro Preview TTS)
+
+Gemini 2.5 and 3.1 TTS share the same 30 prebuilt voices. There is no dedicated “child” voice ID — kid-friendly results come from **youthful/playful voice picks + a style prompt** (same approach as Google’s 3.1 examples with `Puck`).
+
+**Best kids picks (by Google’s descriptors):**
+
+| Voice | Descriptor | Why for kids |
+|-------|------------|--------------|
+| **Puck** | Upbeat | Strong default; matches Google’s playful-child examples |
+| **Leda** | Youthful | Best female “young” default |
+| **Fenrir** | Excitable | Energetic boy-ish energy |
+| **Laomedeia** | Upbeat | Bright, lively female |
+| **Aoede** | Breezy | Light, friendly |
+| **Zephyr** / **Autonoe** | Bright | Clear, cheerful |
+| **Sadachbia** | Lively | Fun variety in male pool |
+| **Achird** | Friendly | Warm, approachable |
+
+**Also usable:** Achernar (Soft), Vindemiatrix (Gentle), Sulafat (Warm), Callirrhoe / Umbriel (Easy-going).
+
+**Usually avoid for kids clips:** Gacrux (Mature), Algenib (Gravelly), Kore / Orus / Alnilam (Firm), Charon / Rasalgethi (Informative), Sadaltager (Knowledgeable).
+
+Kids style prompt (built-in when `--flavor kids`):
+
+```text
+Say in a young child's high-pitched, playful, clear voice: "{text}"
+```
+
+Adults keep: `Say in a clear, friendly tone for a young learner: "{text}"`.
+
+**Gender-based voices:** For `ConvoTemplate-1` and `DialogueCompletion`, `character1` is used for **line 1**; `character2` is used for **line 2** (ConvoTemplate-1) or for the **answer** clip (DialogueCompletion). Character ids are matched (case-insensitively) to names in `characterNamePools` in `app/assets/data/config/conversation_characters.json` to decide male vs female. Each clip picks a **random** voice from the active flavor’s male/female lists accordingly. If a character id does **not** match any pool name, that clip uses a **random** voice from **both** lists combined.
 
 **Templates without character fields** (image templates, cloze, appear/disappear, etc.): each single-speaker clip gets a **random** voice from the combined male + female lists. Pass **`--voice NAME`** to pin one voice for all such clips instead. **`GEMINI_TTS_VOICE_ROTATE=1`** uses ordered cycling through the combined list instead of random.
 
@@ -53,12 +86,18 @@ From repo root:
 ```bash
 python3 tools/gemini_tts/generate_level_audio.py --level-id waking-up --dry-run
 python3 tools/gemini_tts/generate_level_audio.py --level-id waking-up
+
+# Kids flavor: playful child style + youthful voices → levels/{level}/kids/*.m4a
+# Prefers kids/questions.json (or adults/questions.json) when present
+python3 tools/gemini_tts/generate_level_audio.py --level-id greetings --flavor kids --dry-run
+python3 tools/gemini_tts/generate_level_audio.py --level-id greetings --flavor kids
 ```
 
 Optional flags:
 
+- `--flavor kids|adults` (default: `GEMINI_TTS_FLAVOR` or `adults`)
 - `--workspace-root /absolute/path/to/repo`
-- `--output-suffix TEXT` (inserted before `.m4a`; default empty)
+- `--output-suffix TEXT` (inserted before `.m4a`; default empty — flavor is the folder)
 - `--voice NAME` / `--voice-a NAME` / `--voice-b NAME` (defaults from male/female voice lists — see above)
 - `--bitrate 64` or `--bitrate 96`
 - `--overwrite` (regenerate existing files)
@@ -66,18 +105,23 @@ Optional flags:
 
 ## Output Naming
 
-Generated files follow:
+Generated files go into the flavor subfolder under the level (same place Flutter loads):
 
-`{audio_file_value}{output_suffix}.m4a` (suffix is empty unless you pass `--output-suffix`)
+| Flavor | Path |
+|--------|------|
+| adults | `app/assets/quiz-data/levels/{level_id}/adults/{audio_file}.m4a` |
+| kids | `app/assets/quiz-data/levels/{level_id}/kids/{audio_file}.m4a` |
+
+If `kids/` or `adults/` is missing, the script creates it. Questions are read from `{flavor}/questions.json` when present, else the level-root `questions.json`.
+
+`{audio_file}` comes from the question’s `audio_file` / `audio_file1` / `audio_file2` stem (no `.m4a` in JSON). Keep stems unique within a flavor folder.
+
+Override with `--output-suffix TEXT` if needed (inserted before `.m4a`; default empty).
 
 Example:
 
-`morning_sentence.m4a`
-
-Notes:
-
-- `audio_file_value` is read from the top-level question field `audio_file`.
-- Keep each `audio_file` value unique within a level folder to avoid collisions.
+`greetings/adults/morning_sentence.m4a`  
+`greetings/kids/morning_sentence.m4a`
 
 ## Template Mapping
 

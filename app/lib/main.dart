@@ -2,11 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import 'app_flavor.dart';
+import 'app_theme.dart';
 import 'screens/home_screen.dart';
 
-/// App entry: binds Flutter, locks portrait, and starts Riverpod + [MainApp].
+/// App entry: binds Flutter, reads the flavor, locks portrait, and starts Riverpod + [MainApp].
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
+  AppConfig.init();
   SystemChrome.setPreferredOrientations([
     DeviceOrientation.portraitUp,
   ]);
@@ -25,10 +28,7 @@ class MainApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'English Quiz Game',
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.blue),
-        useMaterial3: true,
-      ),
+      theme: AppTheme.forFlavor(AppConfig.flavor),
       home: const HomeScreen(),
     );
   }

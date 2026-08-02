@@ -1,0 +1,157 @@
+{
+  "translations_list": [
+    {
+      "english_word": "to shop",
+      "translations": {
+        "tr": "alışveriş yapmak",
+        "es": "ir de compras",
+        "fr": "faire du shopping",
+        "de": "einkaufen",
+        "it": "fare acquisti",
+        "pt": "fazer compras",
+        "ru": "делать покупки",
+        "zh": "购物",
+        "ja": "買い物する",
+        "ko": "쇼핑하다",
+        "ar": "يتسوق",
+        "hi": "खरीदारी करना"
+      }
+    },
+    {
+      "english_word": "to buy",
+      "translations": {
+        "tr": "satın almak",
+        "es": "comprar",
+        "fr": "acheter",
+        "de": "kaufen",
+        "it": "comprare",
+        "pt": "comprar",
+        "ru": "покупать",
+        "zh": "买",
+        "ja": "買う",
+        "ko": "사다",
+        "ar": "يشتري",
+        "hi": "खरीदना"
+      }
+    },
+    {
+      "english_word": "how much",
+      "translations": {
+        "tr": "ne kadar",
+        "es": "cuánto",
+        "fr": "combien",
+        "de": "wie viel",
+        "it": "quanto",
+        "pt": "quanto",
+        "ru": "сколько",
+        "zh": "多少",
+        "ja": "いくら",
+        "ko": "얼마",
+        "ar": "كم",
+        "hi": "कितना"
+      }
+    },
+    {
+      "english_word": "receipt",
+      "translations": {
+        "tr": "fiş",
+        "es": "recibo",
+        "fr": "reçu",
+        "de": "Kassenbon",
+        "it": "scontrino",
+        "pt": "recibo",
+        "ru": "чек",
+        "zh": "收据",
+        "ja": "レシート",
+        "ko": "영수증",
+        "ar": "إيصال",
+        "hi": "रसीद"
+      }
+    },
+    {
+      "english_word": "to pay",
+      "translations": {
+        "tr": "ödemek",
+        "es": "pagar",
+        "fr": "payer",
+        "de": "bezahlen",
+        "it": "pagare",
+        "pt": "pagar",
+        "ru": "платить",
+        "zh": "支付",
+        "ja": "支払う",
+        "ko": "지불하다",
+        "ar": "يدفع",
+        "hi": "भुगतान करना"
+      }
+    },
+    {
+      "english_word": "to wait",
+      "translations": {
+        "tr": "beklemek",
+        "es": "esperar",
+        "fr": "attendre",
+        "de": "warten",
+        "it": "aspettare",
+        "pt": "esperar",
+        "ru": "ждать",
+        "zh": "等待",
+        "ja": "待つ",
+        "ko": "기다리다",
+        "ar": "ينتظر",
+        "hi": "इंतज़ार करना"
+      }
+    },
+    {
+      "english_word": "to choose",
+      "translations": {
+        "tr": "seçmek",
+        "es": "elegir",
+        "fr": "choisir",
+        "de": "wählen",
+        "it": "scegliere",
+        "pt": "escolher",
+        "ru": "выбирать",
+        "zh": "选择",
+        "ja": "選ぶ",
+        "ko": "선택하다",
+        "ar": "يختار",
+        "hi": "चुनना"
+      }
+    },
+    {
+      "english_word": "to weigh",
+      "translations": {
+        "tr": "tartmak",
+        "es": "pesar",
+        "fr": "peser",
+        "de": "wiegen",
+        "it": "pesare",
+        "pt": "pesar",
+        "ru": "взвешивать",
+        "zh": "称重",
+        "ja": "量る",
+        "ko": "무게를 재다",
+        "ar": "يزن",
+        "hi": "तौलना"
+      }
+    },
+    {
+      "english_word": "to carry",
+      "translations": {
+        "tr": "taşımak",
+        "es": "llevar",
+        "fr": "porter",
+        "de": "tragen",
+        "it": "portare",
+        "pt": "carregar",
+        "ru": "нести",
+        "zh": "携带",
+        "ja": "運ぶ",
+        "ko": "나르다",
+        "ar": "يحمل",
+        "hi": "ले जाना"
+      }
+    }
+  ]
+}

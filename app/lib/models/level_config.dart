@@ -88,7 +88,7 @@ class ClozeSequenceQuestionData {
 
 /// Parsed `questionData` for [ConvoTemplate-1] (vocabulary or grammar).
 class ConvoQuestionData {
-  const ConvoQuestionData({
+  ConvoQuestionData({
     required this.character1,
     required this.character2,
     required this.line1,
@@ -101,8 +101,10 @@ class ConvoQuestionData {
     this.trOk = false,
   });
 
-  final String character1;
-  final String character2;
+  /// Mutable: blank in JSON means "no character given" — [loadLevelConfig]
+  /// fills it in from [ConversationCharacterPool] after parsing.
+  String character1;
+  String character2;
   /// English dialogue line for speaker 1 (blank may be in line1 or line2).
   final String line1;
   /// English dialogue line for speaker 2; use `___` / cloze-style blank where needed.
@@ -208,7 +210,7 @@ class GrammarFormQuestionData {
 
 /// [DialogueCompletion]: first speaker line + four response options.
 class DialogueCompletionQuestionData {
-  const DialogueCompletionQuestionData({
+  DialogueCompletionQuestionData({
     required this.character1,
     required this.character2,
     required this.line1,
@@ -220,8 +222,10 @@ class DialogueCompletionQuestionData {
     this.trOk = false,
   });
 
-  final String character1;
-  final String character2;
+  /// Mutable: blank in JSON means "no character given" — [loadLevelConfig]
+  /// fills it in from [ConversationCharacterPool] after parsing.
+  String character1;
+  String character2;
   /// English question line (speaker 1); legacy `{"en": "..."}` accepted at parse time.
   final String line1;
   final String answer;
@@ -241,6 +245,7 @@ class LevelQuestion {
     this.audioFile,
     this.audioFile1,
     this.audioFile2,
+    this.genders,
     required this.template,
     this.imageData,
     this.imageQuiz2Data,
@@ -274,6 +279,12 @@ class LevelQuestion {
   /// Optional second clip (top-level JSON). [DialogueCompletion]: correct reply.
   /// [ConvoTemplate-1]: speaker 2 line, blanks filled the same way. Requires [audioFile1] when used.
   final String? audioFile2;
+  /// Voice/art casting code: `"m"`/`"f"` for single-person templates
+  /// (AppearDisappear, ClozeSequence, SentenceBuilder, GrammarForm), or
+  /// `"m-m"`/`"f-m"`/`"m-f"`/`"f-f"` for two-speaker templates
+  /// (ConvoTemplate-1, DialogueCompletion; order = character1-character2).
+  /// Mandatory content for those templates — see `validate_quiz_level_json.py`.
+  final String? genders;
   final String template;
   final ImageQuestionData? imageData;
   final ImageQuizTemplate2Data? imageQuiz2Data;
@@ -664,6 +675,7 @@ class LevelConfig {
       audioFile: json['audio_file'] as String?,
       audioFile1: json['audio_file1'] as String?,
       audioFile2: json['audio_file2'] as String?,
+      genders: json['genders'] as String?,
       template: normalizedTemplate,
       imageData: imageData,
       imageQuiz2Data: imageQuiz2Data,

@@ -1,0 +1,28 @@
+{
+  "translations_list": [
+    {
+      "english_word": "to hear",
+      "translations": {
+        "tr": "duymak", "es": "oír", "fr": "entendre", "de": "hören",
+        "it": "sentire", "pt": "ouvir", "ru": "слышать", "zh": "听见",
+        "ja": "聞く", "ko": "듣다", "ar": "يسمع", "hi": "सुनना"
+      }
+    },
+    {
+      "english_word": "to call",
+      "translations": {
+        "tr": "aramak", "es": "llamar", "fr": "appeler", "de": "anrufen",
+        "it": "chiamare", "pt": "ligar", "ru": "звонить", "zh": "打电话",
+        "ja": "電話する", "ko": "전화하다", "ar": "يتصل", "hi": "फ़ोन करना"
+      }
+    },
+    {
+      "english_word": "home",
+      "translations": {
+        "tr": "ev", "es": "casa", "fr": "maison", "de": "Zuhause",
+        "it": "casa", "pt": "casa", "ru": "дом", "zh": "家",
+        "ja": "家", "ko": "집", "ar": "منزل", "hi": "घर"
+      }
+    }
+  ]
+}

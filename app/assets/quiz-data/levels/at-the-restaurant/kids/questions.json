@@ -1,0 +1,261 @@
+{
+  "levelQuestions": [
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "bill",
+        "wrongAnswers": [
+          "credit-card",
+          "menu",
+          "letter"
+        ]
+      }
+    },
+    {
+      "template": "ConvoTemplate-1",
+      "genders": "f-m",
+      "questionData": {
+        "line1": "What do you want?",
+        "line2": "I want to _____ food.",
+        "answer": "order",
+        "distractors": [
+          "share",
+          "eat",
+          "cook"
+        ]
+      },
+      "audio_file1": "what-do-you-want-convo",
+      "audio_file2": "i-want-to-order-food-convo"
+    },
+    {
+      "template": "ConvoTemplate-1",
+      "genders": "f-m",
+      "questionData": {
+        "line1": "Can we share cake?",
+        "line2": "Yes, let us _____ it.",
+        "answer": "share",
+        "distractors": [
+          "eat",
+          "cook",
+          "order"
+        ]
+      },
+      "audio_file1": "can-we-share-cake-convo",
+      "audio_file2": "yes-let-us-share-it-convo"
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "pie",
+        "wrongAnswers": [
+          "meat",
+          "bill",
+          "pasta"
+        ]
+      }
+    },
+    {
+      "template": "WordPairs",
+      "questionData": {
+        "english_words": [
+          "sweet",
+          "salty",
+          "sour",
+          "spicy"
+        ],
+        "translations": [
+          {
+            "tr": "tatlı",
+            "es": "dulce",
+            "fr": "sucré",
+            "de": "süß",
+            "it": "dolce",
+            "pt": "doce",
+            "ru": "сладкий",
+            "zh": "甜的",
+            "ja": "甘い",
+            "ko": "달콤한",
+            "ar": "حلو",
+            "hi": "मीठा"
+          },
+          {
+            "tr": "tuzlu",
+            "es": "salado",
+            "fr": "salé",
+            "de": "salzig",
+            "it": "salato",
+            "pt": "salgado",
+            "ru": "соленый",
+            "zh": "咸",
+            "ja": "塩辛い",
+            "ko": "짠",
+            "ar": "مالح",
+            "hi": "नमकीन"
+          },
+          {
+            "tr": "ekşi",
+            "es": "agrio",
+            "fr": "aigre",
+            "de": "sauer",
+            "it": "acido",
+            "pt": "azedo",
+            "ru": "кислый",
+            "zh": "酸的",
+            "ja": "酸っぱい",
+            "ko": "시큼한",
+            "ar": "حامِض",
+            "hi": "खट्टा"
+          },
+          {
+            "tr": "baharatlı",
+            "es": "picante",
+            "fr": "épicé",
+            "de": "scharf",
+            "it": "piccante",
+            "pt": "apimentado",
+            "ru": "пряный",
+            "zh": "辛辣的",
+            "ja": "辛い",
+            "ko": "매운",
+            "ar": "حار",
+            "hi": "मसालेदार"
+          }
+        ]
+      }
+    },
+    {
+      "template": "DialogueCompletion",
+      "genders": "m-f",
+      "questionData": {
+        "line1": "Do you like the pie?",
+        "answer": "Yes, it tastes good!",
+        "distractors": [
+          "No, I am tired.",
+          "I read a book.",
+          "It is a big dog."
+        ]
+      },
+      "audio_file1": "do-you-like-the-pie-convo",
+      "audio_file2": "yes-it-tastes-good-convo"
+    },
+    {
+      "template": "AppearDisappear",
+      "genders": "m",
+      "questionData": {
+        "words": "I am full.",
+        "distractors": [
+          "hungry",
+          "tired",
+          "cold",
+          "sad"
+        ]
+      },
+      "audio_file": "i-am-full-convo"
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "meal",
+        "wrongAnswers": [
+          "drink",
+          "dessert",
+          "plate"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-2",
+      "questionData": {
+        "imageName": "menu",
+        "wrongAnswers": [
+          "meal",
+          "tray",
+          "bill"
+        ]
+      }
+    },
+    {
+      "template": "SentenceBuilder",
+      "genders": "m",
+      "questionData": {
+        "correct_order": "The chef cooks soup."
+      },
+      "audio_file": "the-chef-cooks-soup-convo"
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "tray",
+        "wrongAnswers": [
+          "bowl",
+          "plate",
+          "cardboard"
+        ]
+      }
+    },
+    {
+      "template": "ClozeSequence",
+      "genders": "m",
+      "questionData": {
+        "sentence": "The food is _____.",
+        "answer": [
+          "good"
+        ],
+        "distractors": [
+          "cold",
+          "wet",
+          "sad",
+          "bad"
+        ]
+      },
+      "audio_file": "the-food-is-good-convo"
+    },
+    {
+      "template": "GrammarForm",
+      "genders": "f",
+      "questionData": {
+        "sentence": "_____ I have soup?",
+        "answer": "Can",
+        "distractors": [
+          "Do",
+          "Is",
+          "Are"
+        ]
+      }
+    },
+    {
+      "template": "ClozeSequence",
+      "genders": "m",
+      "questionData": {
+        "sentence": "_____ the soup.",
+        "answer": [
+          "Heat"
+        ],
+        "distractors": [
+          "Eat",
+          "Mix",
+          "Wash",
+          "Cut"
+        ]
+      },
+      "audio_file": "heat-the-soup-convo"
+    },
+    {
+      "template": "ClozeSequence",
+      "genders": "m",
+      "questionData": {
+        "sentence": "_____ the soup.",
+        "answer": [
+          "Taste"
+        ],
+        "distractors": [
+          "Heat",
+          "Mix",
+          "Wash",
+          "Cut"
+        ]
+      },
+      "audio_file": "taste-the-soup-convo"
+    }
+  ]
+}

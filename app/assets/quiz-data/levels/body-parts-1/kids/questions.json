@@ -1,0 +1,136 @@
+{
+  "levelQuestions": [
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "arm",
+        "wrongAnswers": [
+          "tongue",
+          "ear",
+          "brain"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "brain",
+        "wrongAnswers": [
+          "hair",
+          "fingernail",
+          "shoulder"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-2",
+      "questionData": {
+        "imageName": "ear",
+        "wrongAnswers": [
+          "eyes",
+          "brain",
+          "neck"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "eyes",
+        "wrongAnswers": [
+          "brain",
+          "shoulder",
+          "knee"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "fingernail",
+        "wrongAnswers": [
+          "arm",
+          "tongue",
+          "brain"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "hair",
+        "wrongAnswers": [
+          "eyes",
+          "tongue",
+          "neck"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-2",
+      "questionData": {
+        "imageName": "head",
+        "wrongAnswers": [
+          "shoulder",
+          "arm",
+          "neck"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "knee",
+        "wrongAnswers": [
+          "eyes",
+          "neck",
+          "head"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "mouth",
+        "wrongAnswers": [
+          "eyes",
+          "knee",
+          "fingernail"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "neck",
+        "wrongAnswers": [
+          "arm",
+          "ear",
+          "head"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-2",
+      "questionData": {
+        "imageName": "shoulder",
+        "wrongAnswers": [
+          "hair",
+          "fingernail",
+          "ear"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "tongue",
+        "wrongAnswers": [
+          "eyes",
+          "hair",
+          "brain"
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,106 @@
+{
+  "translations_list": [
+    {
+      "english_word": "to drive",
+      "translations": {
+        "tr": "sürmek",
+        "es": "conducir",
+        "fr": "conduire",
+        "de": "fahren",
+        "it": "guidare",
+        "pt": "dirigir",
+        "ru": "водить",
+        "zh": "开车",
+        "ja": "運転する",
+        "ko": "운전하다",
+        "ar": "يقود",
+        "hi": "चलाना"
+      }
+    },
+    {
+      "english_word": "dangerous",
+      "translations": {
+        "tr": "tehlikeli",
+        "es": "peligroso",
+        "fr": "dangereux",
+        "de": "gefährlich",
+        "it": "pericoloso",
+        "pt": "perigoso",
+        "ru": "опасный",
+        "zh": "危险的",
+        "ja": "危険な",
+        "ko": "위험한",
+        "ar": "خطير",
+        "hi": "खतरनाक"
+      }
+    },
+    {
+      "english_word": "to speed",
+      "translations": {
+        "tr": "hız yapmak",
+        "es": "ir demasiado rápido",
+        "fr": "rouler trop vite",
+        "de": "zu schnell fahren",
+        "it": "andare troppo veloce",
+        "pt": "andar em excesso de velocidade",
+        "ru": "превышать скорость",
+        "zh": "超速",
+        "ja": "スピードを出す",
+        "ko": "과속하다",
+        "ar": "يتجاوز السرعة",
+        "hi": "तेज़ गति से चलना"
+      }
+    },
+    {
+      "english_word": "ahead",
+      "translations": {
+        "tr": "ileride",
+        "es": "más adelante",
+        "fr": "plus loin",
+        "de": "voraus",
+        "it": "più avanti",
+        "pt": "adiante",
+        "ru": "впереди",
+        "zh": "前方",
+        "ja": "前方",
+        "ko": "앞쪽에",
+        "ar": "في الأمام",
+        "hi": "आगे"
+      }
+    },
+    {
+      "english_word": "to turn",
+      "translations": {
+        "tr": "dönmek",
+        "es": "girar",
+        "fr": "tourner",
+        "de": "abbiegen",
+        "it": "girare",
+        "pt": "virar",
+        "ru": "поворачивать",
+        "zh": "转弯",
+        "ja": "曲がる",
+        "ko": "돌다",
+        "ar": "ينعطف",
+        "hi": "मुड़ना"
+      }
+    },
+    {
+      "english_word": "to stop",
+      "translations": {
+        "tr": "durdurmak",
+        "es": "parar",
+        "fr": "arrêter",
+        "de": "anhalten",
+        "it": "fermare",
+        "pt": "parar",
+        "ru": "остановить",
+        "zh": "停止",
+        "ja": "止める",
+        "ko": "멈추다",
+        "ar": "يتوقف",
+        "hi": "रुकना"
+      }
+    }
+  ]
+}

@@ -1,0 +1,258 @@
+{
+  "levelQuestions": [
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "kiosk",
+        "wrongAnswers": [
+          "table",
+          "bench",
+          "tent"
+        ]
+      }
+    },
+    {
+      "template": "ConvoTemplate-1",
+      "genders": "f-m",
+      "questionData": {
+        "line1": "Where does she work?",
+        "line2": "She _____ vegetables.",
+        "answer": "sells",
+        "distractors": [
+          "goes",
+          "counts",
+          "makes"
+        ]
+      },
+      "audio_file1": "where-does-she-work-convo",
+      "audio_file2": "she-sells-vegetables-convo"
+    },
+    {
+      "template": "imageQuizTemplate-2",
+      "questionData": {
+        "imageName": "basket",
+        "wrongAnswers": [
+          "scale",
+          "chalkboard",
+          "tent"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "chalkboard",
+        "wrongAnswers": [
+          "wooden-board",
+          "wall",
+          "price-tag"
+        ]
+      }
+    },
+    {
+      "template": "WordPairs",
+      "questionData": {
+        "english_words": [
+          "free",
+          "expensive",
+          "cheap",
+          "on sale"
+        ],
+        "translations": [
+          {
+            "tr": "ücretsiz",
+            "es": "gratis",
+            "fr": "gratuit",
+            "de": "kostenlos",
+            "it": "gratuito",
+            "pt": "grátis",
+            "ru": "бесплатный",
+            "zh": "免费的",
+            "ja": "無料",
+            "ko": "무료",
+            "ar": "مجاني",
+            "hi": "मुफ़्त"
+          },
+          {
+            "tr": "pahalı",
+            "es": "caro",
+            "fr": "cher",
+            "de": "teuer",
+            "it": "caro",
+            "pt": "caro",
+            "ru": "дорогой",
+            "zh": "贵的",
+            "ja": "高い",
+            "ko": "비싼",
+            "ar": "غالي",
+            "hi": "महंगा"
+          },
+          {
+            "tr": "ucuz",
+            "es": "barato",
+            "fr": "bon marché",
+            "de": "billig",
+            "it": "economico",
+            "pt": "barato",
+            "ru": "дешевый",
+            "zh": "便宜的",
+            "ja": "安い",
+            "ko": "싼",
+            "ar": "رخيص",
+            "hi": "सस्ता"
+          },
+          {
+            "tr": "satışta",
+            "es": "en oferta",
+            "fr": "en promotion",
+            "de": "im Angebot",
+            "it": "in offerta",
+            "pt": "em promoção",
+            "ru": "со скидкой",
+            "zh": "打折",
+            "ja": "セール中",
+            "ko": "할인 중",
+            "ar": "بسعر مخفض",
+            "hi": "छूट पर"
+          }
+        ]
+      }
+    },
+    {
+      "template": "DialogueCompletion",
+      "genders": "m-f",
+      "questionData": {
+        "line1": "Is this bread fresh?",
+        "answer": "Yes, it is fresh.",
+        "distractors": [
+          "The seller is nice.",
+          "I see the prices.",
+          "This market is busy."
+        ]
+      },
+      "audio_file1": "is-this-bread-fresh-convo",
+      "audio_file2": "yes-it-is-fresh-convo"
+    },
+    {
+      "template": "AppearDisappear",
+      "genders": "f",
+      "questionData": {
+        "words": "The seller says hello.",
+        "distractors": [
+          "fresh",
+          "market",
+          "bread",
+          "he"
+        ]
+      },
+      "audio_file": "the-seller-says-hello-convo"
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "scale",
+        "wrongAnswers": [
+          "basket",
+          "cart",
+          "weight"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "seller",
+        "wrongAnswers": [
+          "giver",
+          "talker",
+          "helper"
+        ]
+      }
+    },
+    {
+      "template": "SentenceBuilder",
+      "genders": "m",
+      "questionData": {
+        "correct_order": "The mango smells sweet."
+      },
+      "audio_file": "the-mango-smells-sweet-convo"
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "tent",
+        "wrongAnswers": [
+          "store",
+          "kiosk",
+          "chalkboard"
+        ]
+      }
+    },
+    {
+      "template": "ClozeSequence",
+      "genders": "m",
+      "questionData": {
+        "sentence": "I _____ the _____.",
+        "distractors": [
+          "count",
+          "look",
+          "smell"
+        ],
+        "answers": [
+          "check",
+          "price"
+        ]
+      },
+      "audio_file": "i-check-the-price-convo"
+    },
+    {
+      "template": "GrammarForm",
+      "genders": "m",
+      "questionData": {
+        "sentence": "The farmer _____ apples.",
+        "answer": "sells",
+        "distractors": [
+          "sell",
+          "sold",
+          "selling"
+        ]
+      }
+    },
+    {
+      "template": "ClozeSequence",
+      "genders": "m",
+      "questionData": {
+        "sentence": "The _____ is _____.",
+        "distractors": [
+          "fresh",
+          "cheap",
+          "popular",
+          "expensive"
+        ],
+        "answers": [
+          "market",
+          "crowded"
+        ]
+      },
+      "audio_file": "the-market-is-crowded-convo"
+    },
+    {
+      "template": "ClozeSequence",
+      "genders": "f",
+      "questionData": {
+        "sentence": "She _____ the _____.",
+        "distractors": [
+          "loads",
+          "carries",
+          "sells",
+          "hides"
+        ],
+        "answers": [
+          "puts",
+          "fruit"
+        ]
+      },
+      "audio_file": "she-puts-the-fruit-convo"
+    }
+  ]
+}

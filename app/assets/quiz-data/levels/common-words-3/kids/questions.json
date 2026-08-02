@@ -1,0 +1,227 @@
+{
+  "levelQuestions": [
+    {
+      "template": "ClozeSequence",
+      "genders": "f",
+      "questionData": {
+        "sentence": "We _____ a fun _____.",
+        "distractors": [
+          "build",
+          "wish"
+        ],
+        "answers": [
+          "make",
+          "game"
+        ]
+      },
+      "audio_file": "we-make-a-fun-game-convo"
+    },
+    {
+      "template": "ClozeSequence",
+      "genders": "f",
+      "questionData": {
+        "sentence": "We _____ the zoo.",
+        "distractors": [
+          "see",
+          "know"
+        ],
+        "answers": [
+          "visit"
+        ]
+      },
+      "audio_file": "we-visit-the-zoo-convo"
+    },
+    {
+      "template": "ClozeSequence",
+      "genders": "f",
+      "questionData": {
+        "sentence": "This _____ is _____.",
+        "distractors": [
+          "sorry",
+          "dry"
+        ],
+        "answers": [
+          "cake",
+          "tasty"
+        ]
+      },
+      "audio_file": "this-cake-is-tasty-convo"
+    },
+    {
+      "template": "GrammarForm",
+      "genders": "m",
+      "questionData": {
+        "sentence": "She is _____ the team.",
+        "answer": "joining",
+        "distractors": [
+          "joins",
+          "joined",
+          "join"
+        ]
+      }
+    },
+    {
+      "template": "AppearDisappear",
+      "genders": "m",
+      "questionData": {
+        "words": "Let's add more sugar to the tea.",
+        "distractors": [
+          "remove",
+          "mix",
+          "pour"
+        ]
+      },
+      "audio_file": "let-s-add-more-sugar-to-the-tea-convo"
+    },
+    {
+      "template": "AppearDisappear",
+      "genders": "m",
+      "questionData": {
+        "words": "I do not forget.",
+        "distractors": [
+          "remember",
+          "ignore",
+          "ruin"
+        ]
+      },
+      "audio_file": "i-do-not-forget-convo"
+    },
+    {
+      "template": "AppearDisappear",
+      "genders": "m",
+      "questionData": {
+        "words": "We play games weekly.",
+        "distractors": [
+          "daily",
+          "yearly",
+          "monthly"
+        ]
+      },
+      "audio_file": "we-play-games-weekly-convo"
+    },
+    {
+      "template": "ConvoTemplate-1",
+      "genders": "m-f",
+      "questionData": {
+        "line1": "Does this sound good?",
+        "line2": "Yes, it _____ great.",
+        "answer": "sounds",
+        "distractors": [
+          "looks",
+          "feels",
+          "seems"
+        ]
+      },
+      "audio_file1": "does-this-sound-good-convo",
+      "audio_file2": "yes-it-sounds-great-convo"
+    },
+    {
+      "template": "ConvoTemplate-1",
+      "genders": "f-m",
+      "questionData": {
+        "line1": "When is game day?",
+        "line2": "It is _____.",
+        "answer": "today",
+        "distractors": [
+          "after",
+          "later",
+          "away"
+        ]
+      },
+      "audio_file1": "when-is-game-day-convo",
+      "audio_file2": "it-is-today-convo"
+    },
+    {
+      "template": "DialogueCompletion",
+      "genders": "f-m",
+      "questionData": {
+        "line1": "How much are tickets?",
+        "answer": "They cost ten dollars.",
+        "distractors": [
+          "They are free.",
+          "They cost twenty dollars.",
+          "They sold out."
+        ]
+      },
+      "audio_file1": "how-much-are-tickets-convo",
+      "audio_file2": "they-cost-ten-dollars-convo"
+    },
+    {
+      "template": "SentenceBuilder",
+      "genders": "f",
+      "questionData": {
+        "correct_order": "We walk by the lake."
+      },
+      "audio_file": "we-walk-by-the-lake-convo"
+    },
+    {
+      "template": "WordPairs",
+      "questionData": {
+        "english_words": [
+          "kind",
+          "smart",
+          "fun",
+          "big"
+        ],
+        "translations": [
+          {
+            "tr": "nazik",
+            "es": "amable",
+            "fr": "gentil",
+            "de": "freundlich",
+            "it": "gentile",
+            "pt": "gentil",
+            "ru": "добрый",
+            "zh": "善良的",
+            "ja": "親切な",
+            "ko": "친절한",
+            "ar": "لطيف",
+            "hi": "दयालु"
+          },
+          {
+            "tr": "akıllı",
+            "es": "inteligente",
+            "fr": "intelligent",
+            "de": "klug",
+            "it": "intelligente",
+            "pt": "inteligente",
+            "ru": "умный",
+            "zh": "聪明的",
+            "ja": "賢い",
+            "ko": "똑똑한",
+            "ar": "ذكي",
+            "hi": "होशियार"
+          },
+          {
+            "tr": "eğlenceli",
+            "es": "divertido",
+            "fr": "amusant",
+            "de": "lustig",
+            "it": "divertente",
+            "pt": "divertido",
+            "ru": "весёлый",
+            "zh": "有趣的",
+            "ja": "楽しい",
+            "ko": "재미있는",
+            "ar": "ممتع",
+            "hi": "मज़ेदार"
+          },
+          {
+            "tr": "büyük",
+            "es": "grande",
+            "fr": "grand",
+            "de": "groß",
+            "it": "grande",
+            "pt": "grande",
+            "ru": "большой",
+            "zh": "大的",
+            "ja": "大きい",
+            "ko": "큰",
+            "ar": "كبير",
+            "hi": "बड़ा"
+          }
+        ]
+      }
+    }
+  ]
+}

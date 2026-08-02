@@ -1,7 +1,6 @@
 word,level,count,levels
 account,,1,at-the-bank
 answer,,1,at-the-school
-attack,,1,common-words-12
 audience,,1,at-the-cinema
 back,,2,"common-words-2,common-words-5"
 bed,,1,in-the-bedroom
@@ -21,7 +20,7 @@ cost,,1,at-the-post-office
 customer,,1,at-the-farmers-market
 damage,,1,at-the-garage
 daughter,,1,family
-day,,3,"at-the-office,at-the-park,greetings"
+day,,4,"at-the-office,at-the-park,greetings/adults,greetings/kids"
 deal,,1,common-words-7
 dream,,1,in-the-bedroom
 end,,1,common-words-2
@@ -52,10 +51,10 @@ mind,,1,common-words-7
 mistake,,1,clothes-shopping
 money,,1,at-the-bank
 month,,1,at-the-office
-morning,,1,greetings
+morning,,2,"greetings/adults,greetings/kids"
 mother,,1,family
 movie,,1,at-the-cinema
-name,,1,greetings
+name,,2,"greetings/adults,greetings/kids"
 need,,1,baby-care
 number,,1,at-the-post-office
 order,,1,at-the-restaurant
@@ -84,7 +83,7 @@ table,,1,in-the-kitchen
 talk,,1,living-room
 team,,1,going-to-sports
 temperature,,1,at-the-hospital
-thanks,,1,greetings
+thanks,,2,"greetings/adults,greetings/kids"
 time,,2,"at-the-airport,basic-sentences"
 today,,1,waking-up
 tomorrow,,2,"at-the-train-station,waking-up"
@@ -119,6 +118,7 @@ argument,,0,
 arm,,0,
 army,,0,
 art,,0,
+attack,,0,
 attention,,0,
 baby,,0,
 background,,0,

@@ -1,0 +1,263 @@
+{
+  "levelQuestions": [
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "luggage",
+        "wrongAnswers": [
+          "backpack",
+          "handbag",
+          "luggage-trolley"
+        ]
+      }
+    },
+    {
+      "template": "ConvoTemplate-1",
+      "genders": "f-m",
+      "questionData": {
+        "line1": "Good morning. I would like to _______, please.",
+        "line2": "Sure, welcome to our hotel. What is your name?",
+        "answer": "check in",
+        "distractors": [
+          "reserve",
+          "book a room",
+          "get a key"
+        ]
+      },
+      "audio_file1": "good-morning-i-would-like-to-check-in-please-convo",
+      "audio_file2": "sure-welcome-to-our-hotel-what-is-your-name-convo"
+    },
+    {
+      "template": "DialogueCompletion",
+      "genders": "f-m",
+      "questionData": {
+        "line1": "Could I request a room with a better view?",
+        "answer": "Let me check what's available for you.",
+        "distractors": [
+          "Sorry, we have no rooms with a view left.",
+          "All our rooms already have the same view.",
+          "You can change rooms tomorrow morning only."
+        ]
+      },
+      "audio_file1": "could-i-request-a-room-with-a-better-view-convo",
+      "audio_file2": "let-me-check-what-s-available-for-you-convo"
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "elevator",
+        "wrongAnswers": [
+          "escalator",
+          "door",
+          "stairs"
+        ]
+      }
+    },
+    {
+      "template": "WordPairs",
+      "questionData": {
+        "english_words": [
+          "noisy",
+          "private",
+          "silent",
+          "amazing"
+        ],
+        "translations": [
+          {
+            "tr": "gürültülü",
+            "es": "ruidoso",
+            "fr": "bruyant",
+            "de": "laut",
+            "it": "rumoroso",
+            "pt": "barulhento",
+            "ru": "шумный",
+            "zh": "吵闹的",
+            "ja": "うるさい",
+            "ko": "시끄러운",
+            "ar": "صاخب",
+            "hi": "शोरगुल वाला"
+          },
+          {
+            "tr": "özel",
+            "es": "privado",
+            "fr": "privé",
+            "de": "privat",
+            "it": "privato",
+            "pt": "privado",
+            "ru": "частный",
+            "zh": "私人的",
+            "ja": "プライベートな",
+            "ko": "사적인",
+            "ar": "خاص",
+            "hi": "निजी"
+          },
+          {
+            "tr": "sessiz",
+            "es": "silencioso",
+            "fr": "silencieux",
+            "de": "still",
+            "it": "silenzioso",
+            "pt": "silencioso",
+            "ru": "тихий",
+            "zh": "安静的",
+            "ja": "静かな",
+            "ko": "조용한",
+            "ar": "صامت",
+            "hi": "शांत"
+          },
+          {
+            "tr": "harika",
+            "es": "increíble",
+            "fr": "incroyable",
+            "de": "unglaublich",
+            "it": "incredibile",
+            "pt": "incrível",
+            "ru": "удивительный",
+            "zh": "惊人的",
+            "ja": "驚くべき",
+            "ko": "놀라운",
+            "ar": "مذهل",
+            "hi": "अद्भुत"
+          }
+        ]
+      }
+    },
+    {
+      "template": "DialogueCompletion",
+      "genders": "m-f",
+      "questionData": {
+        "line1": "Could you bring me another towel, please?",
+        "answer": "Sure, I'll bring one right away.",
+        "distractors": [
+          "Sorry, we don't have any towels left.",
+          "You can pick up a towel at the front desk.",
+          "Housekeeping will come tomorrow morning."
+        ]
+      },
+      "audio_file1": "could-you-bring-me-another-towel-please-convo",
+      "audio_file2": "sure-i-ll-bring-one-right-away-convo"
+    },
+    {
+      "template": "AppearDisappear",
+      "genders": "m",
+      "questionData": {
+        "words": "Please confirm if there is a room available.",
+        "distractors": [
+          "unfortunately",
+          "are",
+          "unavailable",
+          "check"
+        ]
+      },
+      "audio_file": "please-confirm-if-there-is-a-room-available-convo"
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "hair-dryer",
+        "wrongAnswers": [
+          "shampoo",
+          "soap",
+          "towel"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "reception",
+        "wrongAnswers": [
+          "lobby",
+          "restaurant",
+          "bar"
+        ]
+      }
+    },
+    {
+      "template": "SentenceBuilder",
+      "genders": "f",
+      "questionData": {
+        "correct_order": "I have to complain about the noise."
+      },
+      "audio_file": "i-have-to-complain-about-the-noise-convo"
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "hallway",
+        "wrongAnswers": [
+          "lobby",
+          "restaurant",
+          "aisle"
+        ]
+      }
+    },
+    {
+      "template": "ClozeSequence",
+      "genders": "f",
+      "questionData": {
+        "sentence": "I tried to _____ with the manager, but the hotel was _____.",
+        "answer": [
+          "speak",
+          "fully-booked"
+        ],
+        "distractors": [
+          "talk",
+          "busy",
+          "closed",
+          "empty"
+        ]
+      },
+      "audio_file": "i-tried-to-speak-with-the-manager-but-the-hotel-was-fully-booked-convo"
+    },
+    {
+      "template": "GrammarForm",
+      "genders": "f",
+      "questionData": {
+        "sentence": "Were you ______ of renting a car?",
+        "answer": "thinking",
+        "distractors": [
+          "think",
+          "thinks",
+          "thought"
+        ]
+      }
+    },
+    {
+      "template": "ClozeSequence",
+      "genders": "f",
+      "questionData": {
+        "sentence": "Would you like to _____ now, or ______ using the spa?",
+        "answer": [
+          "check out",
+          "continue"
+        ],
+        "distractors": [
+          "book",
+          "count",
+          "relax",
+          "prefer"
+        ]
+      },
+      "audio_file": "would-you-like-to-check-out-now-or-continue-using-the-spa-convo"
+    },
+    {
+      "template": "ClozeSequence",
+      "genders": "m",
+      "questionData": {
+        "sentence": "The staff was ____ and let me ____ an extra hour after checkout.",
+        "answer": [
+          "helpful",
+          "stay"
+        ],
+        "distractors": [
+          "noisy",
+          "leave",
+          "return",
+          "confirm"
+        ]
+      },
+      "audio_file": "the-staff-was-helpful-and-let-me-stay-an-extra-hour-after-checkout-convo"
+    }
+  ]
+}

@@ -1,0 +1,262 @@
+{
+  "levelQuestions": [
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "ball",
+        "wrongAnswers": [
+          "bulb",
+          "bowl",
+          "bat"
+        ]
+      }
+    },
+    {
+      "template": "ConvoTemplate-1",
+      "genders": "f-m",
+      "questionData": {
+        "line1": "Are you going to play?",
+        "line2": "Yes, I am going to _____.",
+        "answer": "play",
+        "distractors": [
+          "plays",
+          "played",
+          "playing"
+        ]
+      },
+      "audio_file1": "are-you-going-to-play-convo",
+      "audio_file2": "yes-i-am-going-to-convo"
+    },
+    {
+      "template": "ConvoTemplate-1",
+      "genders": "f-m",
+      "questionData": {
+        "line1": "Is your team ready?",
+        "line2": "Yes, we are _____.",
+        "answer": "ready",
+        "distractors": [
+          "sad",
+          "cold",
+          "wet"
+        ]
+      },
+      "audio_file1": "is-your-team-ready-convo",
+      "audio_file2": "yes-we-are-convo"
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "skates",
+        "wrongAnswers": [
+          "stakes",
+          "goggles",
+          "helmet"
+        ]
+      }
+    },
+    {
+      "template": "WordPairs",
+      "questionData": {
+        "english_words": [
+          "today",
+          "tomorrow",
+          "yesterday",
+          "now"
+        ],
+        "translations": [
+          {
+            "tr": "bugün",
+            "es": "hoy",
+            "fr": "aujourd'hui",
+            "de": "heute",
+            "it": "oggi",
+            "pt": "hoje",
+            "ru": "сегодня",
+            "zh": "今天",
+            "ja": "今日",
+            "ko": "오늘",
+            "ar": "اليوم",
+            "hi": "आज"
+          },
+          {
+            "tr": "yarın",
+            "es": "mañana",
+            "fr": "demain",
+            "de": "morgen",
+            "it": "domani",
+            "pt": "amanhã",
+            "ru": "завтра",
+            "zh": "明天",
+            "ja": "明日",
+            "ko": "내일",
+            "ar": "غدا",
+            "hi": "कल"
+          },
+          {
+            "tr": "dün",
+            "es": "ayer",
+            "fr": "hier",
+            "de": "gestern",
+            "it": "ieri",
+            "pt": "ontem",
+            "ru": "вчера",
+            "zh": "昨天",
+            "ja": "昨日",
+            "ko": "어제",
+            "ar": "أمس",
+            "hi": "कल"
+          },
+          {
+            "tr": "son",
+            "es": "reciente",
+            "fr": "récent",
+            "de": "kürzlich",
+            "it": "recente",
+            "pt": "recente",
+            "ru": "недавний",
+            "zh": "最近的",
+            "ja": "最近の",
+            "ko": "최근의",
+            "ar": "حديث",
+            "hi": "हाल का"
+          }
+        ]
+      }
+    },
+    {
+      "template": "DialogueCompletion",
+      "genders": "m-f",
+      "questionData": {
+        "line1": "Do you like your coach?",
+        "answer": "Yes, my coach is kind.",
+        "distractors": [
+          "No, I am tired.",
+          "I read a book.",
+          "It is a big dog."
+        ]
+      },
+      "audio_file1": "do-you-like-your-coach-convo",
+      "audio_file2": "yes-my-coach-is-kind-convo"
+    },
+    {
+      "template": "AppearDisappear",
+      "genders": "m",
+      "questionData": {
+        "words": "I run fast.",
+        "distractors": [
+          "walk",
+          "sleep",
+          "read",
+          "cook"
+        ]
+      },
+      "audio_file": "i-run-fast-convo"
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "swimming-pool",
+        "wrongAnswers": [
+          "gym",
+          "park",
+          "beach"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-2",
+      "questionData": {
+        "imageName": "whistle",
+        "wrongAnswers": [
+          "bat",
+          "ball",
+          "skates"
+        ]
+      },
+      "answer": "whistle"
+    },
+    {
+      "template": "SentenceBuilder",
+      "genders": "f",
+      "questionData": {
+        "correct_order": "She hits the ball."
+      },
+      "audio_file": "she-hits-the-ball-convo"
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "goal-post",
+        "wrongAnswers": [
+          "hook",
+          "net",
+          "goal-pole"
+        ]
+      }
+    },
+    {
+      "template": "ClozeSequence",
+      "genders": "m",
+      "questionData": {
+        "sentence": "I can _____ in water.",
+        "answer": [
+          "swim"
+        ],
+        "distractors": [
+          "run",
+          "read",
+          "cook",
+          "wash"
+        ]
+      },
+      "audio_file": "i-can-in-water-convo"
+    },
+    {
+      "template": "GrammarForm",
+      "genders": "f",
+      "questionData": {
+        "sentence": "You can _____ in the pool.",
+        "answer": "swim",
+        "distractors": [
+          "swims",
+          "swam",
+          "swimming"
+        ]
+      }
+    },
+    {
+      "template": "ClozeSequence",
+      "genders": "m",
+      "questionData": {
+        "sentence": "She _____ the ball.",
+        "answer": [
+          "kicked"
+        ],
+        "distractors": [
+          "sees",
+          "makes",
+          "takes",
+          "reads"
+        ]
+      },
+      "audio_file": "she-the-ball-convo"
+    },
+    {
+      "template": "ClozeSequence",
+      "genders": "f",
+      "questionData": {
+        "sentence": "He is _____ and fast.",
+        "answer": [
+          "strong"
+        ],
+        "distractors": [
+          "weak",
+          "sad",
+          "cold",
+          "wet"
+        ]
+      },
+      "audio_file": "he-is-and-fast-convo"
+    }
+  ]
+}

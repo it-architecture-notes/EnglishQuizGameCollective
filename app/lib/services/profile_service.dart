@@ -4,6 +4,7 @@ import 'dart:math';
 import 'package:flutter/services.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+import '../app_flavor.dart';
 import '../models/profile_state.dart';
 import 'quiz_flow_loader.dart';
 import 'quiz_progress_service.dart';
@@ -50,7 +51,8 @@ class ProfileService {
 
   static const String _profileKey = 'user_profile_state';
   static const List<String> _quizTypes = [kQuizGameType];
-  static const String _avatarPrefix = 'assets/images/avatars/';
+  static String get _avatarPrefix =>
+      'assets/images/avatars/${AppConfig.flavorDir}/';
 
   SharedPreferences? _prefs;
   Future<SharedPreferences> get _preferences async =>

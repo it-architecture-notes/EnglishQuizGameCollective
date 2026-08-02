@@ -1,0 +1,191 @@
+{
+  "levelQuestions": [
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "bakery",
+        "wrongAnswers": [
+          "bus-station",
+          "clothing-store",
+          "bookstore"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "bookstore",
+        "wrongAnswers": [
+          "fire-station",
+          "hospital",
+          "bakery"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-2",
+      "questionData": {
+        "imageName": "bus-station",
+        "wrongAnswers": [
+          "bookstore",
+          "factory",
+          "gas-station"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "clothing-store",
+        "wrongAnswers": [
+          "shoe-store",
+          "factory",
+          "bakery"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "escalator",
+        "wrongAnswers": [
+          "bookstore",
+          "police-station",
+          "bakery"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "factory",
+        "wrongAnswers": [
+          "fire-station",
+          "bakery",
+          "bookstore"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-2",
+      "questionData": {
+        "imageName": "fire-station",
+        "wrongAnswers": [
+          "bookstore",
+          "escalator",
+          "gas-station"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "flower-shop",
+        "wrongAnswers": [
+          "shoe-store",
+          "railway-station",
+          "bakery"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "gas-station",
+        "wrongAnswers": [
+          "bookstore",
+          "bus-station",
+          "bakery"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "hospital",
+        "wrongAnswers": [
+          "factory",
+          "gas-station",
+          "bakery"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-2",
+      "questionData": {
+        "imageName": "pet-shop",
+        "wrongAnswers": [
+          "bookstore",
+          "escalator",
+          "flower-shop"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "police-station",
+        "wrongAnswers": [
+          "shoe-store",
+          "escalator",
+          "bakery"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "port",
+        "wrongAnswers": [
+          "bookstore",
+          "pet-shop",
+          "bakery"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "railway-station",
+        "wrongAnswers": [
+          "factory",
+          "bakery",
+          "bookstore"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-2",
+      "questionData": {
+        "imageName": "shoe-store",
+        "wrongAnswers": [
+          "bookstore",
+          "escalator",
+          "flower-shop"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "stadium",
+        "wrongAnswers": [
+          "railway-station",
+          "port",
+          "bakery"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "theatre",
+        "wrongAnswers": [
+          "bookstore",
+          "bus-station",
+          "bakery"
+        ]
+      }
+    }
+  ]
+}

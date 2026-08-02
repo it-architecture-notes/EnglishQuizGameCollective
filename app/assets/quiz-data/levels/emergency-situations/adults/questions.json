@@ -1,0 +1,264 @@
+{
+  "levelQuestions": [
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "smoke",
+        "wrongAnswers": [
+          "water",
+          "wood",
+          "cloud"
+        ]
+      }
+    },
+    {
+      "template": "ConvoTemplate-1",
+      "genders": "f-m",
+      "questionData": {
+        "line1": "Can you _____ us through the storm?",
+        "line2": "Yes, follow me to the nearest shelter.",
+        "answer": "guide",
+        "distractors": [
+          "lead",
+          "show",
+          "take"
+        ]
+      },
+      "audio_file1": "can-you-guide-us-through-the-storm-convo",
+      "audio_file2": "yes-follow-me-to-the-nearest-shelter-convo"
+    },
+    {
+      "template": "ConvoTemplate-1",
+      "genders": "f-m",
+      "questionData": {
+        "line1": "How did they manage to _____ her from the flood?",
+        "line2": "A rescue team used a boat to reach her.",
+        "answer": "save",
+        "distractors": [
+          "help",
+          "find",
+          "pull"
+        ]
+      },
+      "audio_file1": "how-did-they-manage-to-save-her-from-the-flood-convo",
+      "audio_file2": "a-rescue-team-used-a-boat-to-reach-her-convo"
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "direction",
+        "wrongAnswers": [
+          "corner",
+          "distance",
+          "speed"
+        ]
+      }
+    },
+    {
+      "template": "WordPairs",
+      "questionData": {
+        "english_words": [
+          "immediately",
+          "bravely",
+          "serious",
+          "terrible"
+        ],
+        "translations": [
+          {
+            "tr": "hemen",
+            "es": "inmediatamente",
+            "fr": "immédiatement",
+            "de": "sofort",
+            "it": "immediatamente",
+            "pt": "imediatamente",
+            "ru": "немедленно",
+            "zh": "立即",
+            "ja": "すぐに",
+            "ko": "즉시",
+            "ar": "فورًا",
+            "hi": "तुरंत"
+          },
+          {
+            "tr": "cesurca",
+            "es": "valientemente",
+            "fr": "courageusement",
+            "de": "mutig",
+            "it": "coraggiosamente",
+            "pt": "corajosamente",
+            "ru": "храбро",
+            "zh": "勇敢地",
+            "ja": "勇敢に",
+            "ko": "용감하게",
+            "ar": "بشجاعة",
+            "hi": "बहादुरी से"
+          },
+          {
+            "tr": "ciddi",
+            "es": "grave",
+            "fr": "grave",
+            "de": "ernst",
+            "it": "grave",
+            "pt": "sério",
+            "ru": "серьёзный",
+            "zh": "严重的",
+            "ja": "深刻な",
+            "ko": "심각한",
+            "ar": "خطير",
+            "hi": "गंभीर"
+          },
+          {
+            "tr": "korkunç",
+            "es": "horrible",
+            "fr": "terrible",
+            "de": "schlimm",
+            "it": "orribile",
+            "pt": "horrível",
+            "ru": "ужасный",
+            "zh": "可怕的",
+            "ja": "恐ろしい",
+            "ko": "무서운",
+            "ar": "فظيع",
+            "hi": "भयानक"
+          }
+        ]
+      }
+    },
+    {
+      "template": "DialogueCompletion",
+      "genders": "m-f",
+      "questionData": {
+        "line1": "A man fell from a ladder. He is injured. What do we do?",
+        "answer": "Don't move him, call the ambulance",
+        "distractors": [
+          "Move him to the hospital",
+          "Call the police right away.",
+          "Call the fire department"
+        ]
+      },
+      "audio_file1": "a-man-fell-from-a-ladder-he-is-injured-what-do-we-do-convo",
+      "audio_file2": "don-t-move-him-call-the-ambulance-convo"
+    },
+    {
+      "template": "AppearDisappear",
+      "genders": "m",
+      "questionData": {
+        "words": "Volunteers came to support the fire department.",
+        "distractors": [
+          "fight",
+          "refuse",
+          "ignore",
+          "leave"
+        ]
+      },
+      "audio_file": "volunteers-came-to-support-the-fire-department-convo"
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "disaster",
+        "wrongAnswers": [
+          "garden",
+          "kitchen",
+          "office"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "headache",
+        "wrongAnswers": [
+          "fever",
+          "cold",
+          "flu"
+        ]
+      }
+    },
+    {
+      "template": "SentenceBuilder",
+      "genders": "m",
+      "questionData": {
+        "correct_order": "He called an ambulance for urgent assistance."
+      },
+      "audio_file": "he-called-an-ambulance-for-urgent-assistance-convo"
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "siren",
+        "wrongAnswers": [
+          "noise",
+          "warning",
+          "sign"
+        ]
+      }
+    },
+    {
+      "template": "ClozeSequence",
+      "genders": "f",
+      "questionData": {
+        "sentence": "Neighbors called to _____ the fire department, who rushed to _____ within minutes.",
+        "answer": [
+          "alert",
+          "respond"
+        ],
+        "distractors": [
+          "ignore",
+          "delay",
+          "refuse",
+          "forget"
+        ]
+      },
+      "audio_file": "neighbors-called-to-alert-the-fire-department-who-rushed-to-respond-within-minutes-convo"
+    },
+    {
+      "template": "GrammarForm",
+      "genders": "m",
+      "questionData": {
+        "sentence": "_____ slip on the wet floor.",
+        "answer": "do not",
+        "distractors": [
+          "does not",
+          "did not",
+          "doesnt"
+        ]
+      }
+    },
+    {
+      "template": "ClozeSequence",
+      "genders": "f",
+      "questionData": {
+        "sentence": "Officials decided to _____ the area to _____ further injuries.",
+        "answer": [
+          "evacuate",
+          "prevent"
+        ],
+        "distractors": [
+          "ignore",
+          "delay",
+          "refuse",
+          "forget"
+        ]
+      },
+      "audio_file": "officials-decided-to-evacuate-the-area-to-prevent-further-injuries-convo"
+    },
+    {
+      "template": "ClozeSequence",
+      "genders": "f",
+      "questionData": {
+        "sentence": "They rushed to _____ the people as the building continued to _____.",
+        "answer": [
+          "rescue",
+          "burn"
+        ],
+        "distractors": [
+          "cook",
+          "sell",
+          "lock",
+          "paint"
+        ]
+      },
+      "audio_file": "they-rushed-to-rescue-the-people-as-the-building-continued-to-burn-convo"
+    }
+  ]
+}

@@ -1,0 +1,169 @@
+{
+  "levelQuestions": [
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "antacids",
+        "wrongAnswers": [
+          "pain-killer",
+          "sleep-aids",
+          "thermometer"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "blood-pressure-monitor",
+        "wrongAnswers": [
+          "thermometer",
+          "blood-sample",
+          "syringe"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-2",
+      "questionData": {
+        "imageName": "blood-sample",
+        "wrongAnswers": [
+          "syringe",
+          "iv-drip",
+          "thermometer"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "cane",
+        "wrongAnswers": [
+          "walker",
+          "stretcher",
+          "blood-pressure-monitor"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "eye-drops",
+        "wrongAnswers": [
+          "ointment",
+          "hand-sanitizer",
+          "sunscreen"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-2",
+      "questionData": {
+        "imageName": "hand-sanitizer",
+        "wrongAnswers": [
+          "ointment",
+          "eye-drops",
+          "antacids"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "iv-drip",
+        "wrongAnswers": [
+          "syringe",
+          "blood-sample",
+          "stretcher"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "ointment",
+        "wrongAnswers": [
+          "eye-drops",
+          "sunscreen",
+          "hand-sanitizer"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-2",
+      "questionData": {
+        "imageName": "pain-killer",
+        "wrongAnswers": [
+          "antacids",
+          "sleep-aids",
+          "thermometer"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "sleep-aids",
+        "wrongAnswers": [
+          "pain-killer",
+          "antacids",
+          "eye-drops"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "stretcher",
+        "wrongAnswers": [
+          "walker",
+          "cane",
+          "iv-drip"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-2",
+      "questionData": {
+        "imageName": "sunscreen",
+        "wrongAnswers": [
+          "ointment",
+          "hand-sanitizer",
+          "eye-drops"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "syringe",
+        "wrongAnswers": [
+          "blood-sample",
+          "iv-drip",
+          "thermometer"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "thermometer",
+        "wrongAnswers": [
+          "blood-pressure-monitor",
+          "syringe",
+          "pain-killer"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "walker",
+        "wrongAnswers": [
+          "cane",
+          "stretcher",
+          "blood-pressure-monitor"
+        ]
+      }
+    }
+  ]
+}

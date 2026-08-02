@@ -1,0 +1,228 @@
+{
+  "levelQuestions": [
+    {
+      "template": "ClozeSequence",
+      "genders": "m",
+      "questionData": {
+        "sentence": "Yesterday I _____ for the course and then _____ to check the schedule.",
+        "answer": [
+          "signed up",
+          "logged in"
+        ],
+        "distractors": [
+          "registered",
+          "connected"
+        ]
+      },
+      "audio_file": "yesterday-i-signed-up-for-the-course-and-then-logged-in-to-check-the-schedule-convo"
+    },
+    {
+      "template": "ClozeSequence",
+      "genders": "f",
+      "questionData": {
+        "sentence": "After the meeting, I _____ of my email and _____ of the system.",
+        "answer": [
+          "logged out",
+          "signed out"
+        ],
+        "distractors": [
+          "closed",
+          "exited"
+        ]
+      },
+      "audio_file": "after-the-meeting-i-logged-out-of-my-email-and-signed-out-of-the-system-convo"
+    },
+    {
+      "template": "ClozeSequence",
+      "genders": "m",
+      "questionData": {
+        "sentence": "The essay is _____ on Friday, and it should be about _____ music.",
+        "answer": [
+          "due",
+          "classical"
+        ],
+        "distractors": [
+          "ready",
+          "modern"
+        ]
+      },
+      "audio_file": "the-essay-is-due-on-friday-and-it-should-be-about-classical-music-convo"
+    },
+    {
+      "template": "GrammarForm",
+      "genders": "m",
+      "questionData": {
+        "sentence": "I _____ a phone call yesterday, but nobody called.",
+        "answer": "expected",
+        "distractors": [
+          "expect",
+          "expecting",
+          "was expect"
+        ]
+      }
+    },
+    {
+      "template": "AppearDisappear",
+      "genders": "m",
+      "questionData": {
+        "words": "The teacher allowed us to leave early.",
+        "distractors": [
+          "refused",
+          "forced",
+          "stopped"
+        ]
+      },
+      "audio_file": "the-teacher-allowed-us-to-leave-early-convo"
+    },
+    {
+      "template": "AppearDisappear",
+      "genders": "f",
+      "questionData": {
+        "words": "I always back my friends.",
+        "distractors": [
+          "leave",
+          "forget",
+          "blame"
+        ]
+      },
+      "audio_file": "i-always-back-my-friends-convo"
+    },
+    {
+      "template": "AppearDisappear",
+      "genders": "f",
+      "questionData": {
+        "words": "She works as an assistant.",
+        "distractors": [
+          "manager",
+          "driver",
+          "teacher"
+        ]
+      },
+      "audio_file": "she-works-as-an-assistant-convo"
+    },
+    {
+      "template": "ConvoTemplate-1",
+      "genders": "f-m",
+      "questionData": {
+        "line1": "Who designed this building?",
+        "line2": "A famous architect _____ it years ago.",
+        "answer": "designed",
+        "distractors": [
+          "built",
+          "painted",
+          "planned"
+        ]
+      },
+      "audio_file1": "who-designed-this-building-convo",
+      "audio_file2": "a-famous-architect-designed-it-years-ago-convo"
+    },
+    {
+      "template": "ConvoTemplate-1",
+      "genders": "f-m",
+      "questionData": {
+        "line1": "Did it rain a lot last month?",
+        "line2": "Yes, it rained _____ the whole month.",
+        "answer": "throughout",
+        "distractors": [
+          "during",
+          "within",
+          "across"
+        ]
+      },
+      "audio_file1": "did-it-rain-a-lot-last-month-convo",
+      "audio_file2": "yes-it-rained-throughout-the-whole-month-convo"
+    },
+    {
+      "template": "DialogueCompletion",
+      "genders": "m-f",
+      "questionData": {
+        "line1": "Did you make a decision regarding the job offer?",
+        "answer": "Yes, I considered it carefully and said yes.",
+        "distractors": [
+          "No, I completely forgot about it.",
+          "No, I am still waiting for news.",
+          "Yes, I will decide next week."
+        ]
+      },
+      "audio_file1": "did-you-make-a-decision-regarding-the-job-offer-convo",
+      "audio_file2": "yes-i-considered-it-carefully-and-said-yes-convo"
+    },
+    {
+      "template": "SentenceBuilder",
+      "genders": "f",
+      "questionData": {
+        "correct_order": "We send it via email."
+      },
+      "audio_file": "we-send-it-via-email-convo"
+    },
+    {
+      "template": "WordPairs",
+      "questionData": {
+        "english_words": [
+          "funny",
+          "worried",
+          "afraid",
+          "friendly"
+        ],
+        "translations": [
+          {
+            "tr": "funny",
+            "es": "funny",
+            "fr": "funny",
+            "de": "funny",
+            "it": "funny",
+            "pt": "funny",
+            "ru": "funny",
+            "zh": "funny",
+            "ja": "funny",
+            "ko": "funny",
+            "ar": "funny",
+            "hi": "funny"
+          },
+          {
+            "tr": "worried",
+            "es": "worried",
+            "fr": "worried",
+            "de": "worried",
+            "it": "worried",
+            "pt": "worried",
+            "ru": "worried",
+            "zh": "worried",
+            "ja": "worried",
+            "ko": "worried",
+            "ar": "worried",
+            "hi": "worried"
+          },
+          {
+            "tr": "afraid",
+            "es": "afraid",
+            "fr": "afraid",
+            "de": "afraid",
+            "it": "afraid",
+            "pt": "afraid",
+            "ru": "afraid",
+            "zh": "afraid",
+            "ja": "afraid",
+            "ko": "afraid",
+            "ar": "afraid",
+            "hi": "afraid"
+          },
+          {
+            "tr": "friendly",
+            "es": "friendly",
+            "fr": "friendly",
+            "de": "friendly",
+            "it": "friendly",
+            "pt": "friendly",
+            "ru": "friendly",
+            "zh": "friendly",
+            "ja": "friendly",
+            "ko": "friendly",
+            "ar": "friendly",
+            "hi": "friendly"
+          }
+        ]
+      }
+    }
+  ]
+}

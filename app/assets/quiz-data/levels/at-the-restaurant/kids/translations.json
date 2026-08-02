@@ -1,0 +1,55 @@
+{
+  "translations_list": [
+    {
+      "english_word": "order",
+      "translations": {
+        "tr": "sipariş vermek",
+        "es": "pedir",
+        "fr": "commander",
+        "de": "bestellen",
+        "it": "ordinare",
+        "pt": "pedir",
+        "ru": "заказывать",
+        "zh": "点餐",
+        "ja": "注文する",
+        "ko": "주문하다",
+        "ar": "يطلب",
+        "hi": "ऑर्डर करना"
+      }
+    },
+    {
+      "english_word": "share",
+      "translations": {
+        "tr": "paylaşmak",
+        "es": "compartir",
+        "fr": "partager",
+        "de": "teilen",
+        "it": "condividere",
+        "pt": "compartilhar",
+        "ru": "делиться",
+        "zh": "分享",
+        "ja": "分ける",
+        "ko": "나누다",
+        "ar": "يشارك",
+        "hi": "बाँटना"
+      }
+    },
+    {
+      "english_word": "I am full",
+      "translations": {
+        "tr": "tokum",
+        "es": "estoy lleno",
+        "fr": "je suis rassasié",
+        "de": "ich bin satt",
+        "it": "sono pieno",
+        "pt": "estou cheio",
+        "ru": "я сыт",
+        "zh": "我吃饱了",
+        "ja": "お腹いっぱいです",
+        "ko": "배가 불러요",
+        "ar": "أنا شبعان/شبعانة",
+        "hi": "मेरा पेट भर गया है"
+      }
+    }
+  ]
+}

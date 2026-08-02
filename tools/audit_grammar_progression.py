@@ -2,10 +2,23 @@
 """
 Scan all game-flow levels for grammar-progression violations (audit-quiz-level SKILL).
 Outputs markdown report to cursor-claude-common/output/all-levels-grammar-progression-audit.md
+
+The Part 1-4 band model this script checks against is the ADULT grammar
+progression (see cursor-claude-common/skills/audit-quiz-level/SKILL.md) — kids
+content uses its own smaller, ML-independent grammar set instead (see
+cursor-claude-common/skills/simplify-kids-level-content/SKILL.md) and this
+script's Part bands do not apply to it. Defaults to --flavor adults for that
+reason; pass --flavor kids only if you specifically want to see how far kids
+content (which is intentionally simpler) diverges from the adult bands.
+
+Usage:
+  python3 tools/audit_grammar_progression.py
+  python3 tools/audit_grammar_progression.py --flavor kids
 """
 
 from __future__ import annotations
 
+import argparse
 import json
 import re
 from collections import defaultdict
@@ -15,6 +28,25 @@ ROOT = Path(__file__).resolve().parent.parent
 FLOW = ROOT / "app/assets/data/flow/game-flow.json"
 LEVELS = ROOT / "app/assets/quiz-data/levels"
 OUT = ROOT / "cursor-claude-common/output/all-levels-grammar-progression-audit.md"
+
+
+def questions_path(name: str, flavor: str) -> Path:
+    """Prefer {level}/{flavor}/questions.json; fall back to the legacy
+    root {level}/questions.json for any level not (yet) flavor-split."""
+    flavored = LEVELS / name / flavor / "questions.json"
+    if flavored.is_file():
+        return flavored
+    return LEVELS / name / "questions.json"
+
+
+def flow_level_name(entry: dict) -> str | None:
+    """Real levels key on directoryName (schema since the flow-JSON flavor
+    split); reminder entries (kind == "reminder") have no directoryName and
+    aren't standalone levels — skip them."""
+    if entry.get("kind") == "reminder":
+        return None
+    name = entry.get("directoryName") or entry.get("iconImageName")
+    return name if isinstance(name, str) and name.strip() else None
 
 SKIP_TOP_KEYS = frozenset(
     {"template", "character1", "character2", "imageName", "timer_seconds",
@@ -254,18 +286,26 @@ def audit_question(item: dict, qnum: int, level_part: int) -> list[dict]:
 
 
 def main() -> None:
+    p = argparse.ArgumentParser(description=__doc__)
+    p.add_argument("--flavor", choices=("adults", "kids"), default="adults")
+    args = p.parse_args()
+    flavor = args.flavor
+
     flow = json.loads(FLOW.read_text(encoding="utf-8"))
-    flow_map = {e["iconImageName"]: e for e in flow}
+    flow_map = {}
+    for e in flow:
+        name = flow_level_name(e)
+        if name is not None:
+            flow_map[name] = e
 
     all_findings: dict[str, list[dict]] = {}
     stats = defaultdict(lambda: {"levels": 0, "with_q": 0, "high": 0, "low": 0})
 
-    for entry in flow:
+    for name, entry in flow_map.items():
         ml = entry["mainLevel"]
-        name = entry["iconImageName"]
         part = ml_part(ml)
         stats[ml]["levels"] += 1
-        qpath = LEVELS / name / "questions.json"
+        qpath = questions_path(name, flavor)
         if not qpath.is_file():
             continue
         data = json.loads(qpath.read_text(encoding="utf-8"))
@@ -359,11 +399,10 @@ def main() -> None:
 
     # Clean levels
     clean: list[str] = []
-    for entry in flow:
-        name = entry["iconImageName"]
+    for name, entry in flow_map.items():
         if name in all_findings:
             continue
-        qpath = LEVELS / name / "questions.json"
+        qpath = questions_path(name, flavor)
         if qpath.is_file():
             data = json.loads(qpath.read_text(encoding="utf-8"))
             if data.get("levelQuestions"):
@@ -373,8 +412,11 @@ def main() -> None:
     lines.extend(clean if clean else ["_None_"])
     lines.append("")
 
-    OUT.write_text("\n".join(lines), encoding="utf-8")
-    print(f"Wrote {OUT}")
+    out_path = OUT if flavor == "adults" else OUT.with_name(
+        OUT.stem + f"-{flavor}" + OUT.suffix
+    )
+    out_path.write_text("\n".join(lines), encoding="utf-8")
+    print(f"Wrote {out_path}")
     print(f"High-level flags: {len(high_levels)}, total hits: {sum(len(v) for v in all_findings.values())}")
 
 

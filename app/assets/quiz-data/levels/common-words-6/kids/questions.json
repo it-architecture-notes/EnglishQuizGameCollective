@@ -1,0 +1,234 @@
+{
+  "levelQuestions": [
+    {
+      "template": "ClozeSequence",
+      "genders": "m",
+      "questionData": {
+        "sentence": "He _____ the ball.",
+        "answer": [
+          "saw"
+        ],
+        "distractors": [
+          "see",
+          "go",
+          "make",
+          "take"
+        ]
+      },
+      "audio_file": "he-saw-the-ball-convo"
+    },
+    {
+      "template": "ClozeSequence",
+      "genders": "f",
+      "questionData": {
+        "sentence": "I _____ her.",
+        "answer": [
+          "know"
+        ],
+        "distractors": [
+          "read",
+          "write",
+          "sleep",
+          "cook"
+        ]
+      },
+      "audio_file": "i-know-her-convo"
+    },
+    {
+      "template": "ClozeSequence",
+      "genders": "f",
+      "questionData": {
+        "sentence": "I like food.",
+        "answer": [
+          "food"
+        ],
+        "distractors": [
+          "book",
+          "dog",
+          "ball",
+          "home"
+        ]
+      },
+      "audio_file": "i-like-food-convo"
+    },
+    {
+      "template": "GrammarForm",
+      "genders": "m",
+      "questionData": {
+        "sentence": "They _____ a game.",
+        "answer": "made",
+        "distractors": [
+          "make",
+          "did",
+          "do"
+        ]
+      }
+    },
+    {
+      "template": "AppearDisappear",
+      "genders": "f",
+      "questionData": {
+        "words": "We got to the top.",
+        "distractors": [
+          "bottom",
+          "home",
+          "school",
+          "book"
+        ]
+      },
+      "audio_file": "we-got-to-the-top-convo"
+    },
+    {
+      "template": "AppearDisappear",
+      "genders": "f",
+      "questionData": {
+        "words": "She talks to the teacher.",
+        "distractors": [
+          "ball",
+          "dog",
+          "book",
+          "home"
+        ]
+      },
+      "audio_file": "she-talks-to-the-teacher-convo"
+    },
+    {
+      "template": "AppearDisappear",
+      "genders": "m",
+      "questionData": {
+        "words": "This soup is very hot.",
+        "distractors": [
+          "cold",
+          "wet",
+          "sad",
+          "tired"
+        ]
+      },
+      "audio_file": "this-soup-is-very-hot-convo"
+    },
+    {
+      "template": "ConvoTemplate-1",
+      "genders": "f-m",
+      "questionData": {
+        "line1": "Did you see the moon?",
+        "line2": "Yes, I _____ it.",
+        "answer": "saw",
+        "distractors": [
+          "see",
+          "seen",
+          "am see"
+        ]
+      },
+      "audio_file1": "did-you-see-the-moon-convo",
+      "audio_file2": "yes-i-saw-it-convo"
+    },
+    {
+      "template": "ConvoTemplate-1",
+      "genders": "f-m",
+      "questionData": {
+        "line1": "Where did he walk?",
+        "line2": "He walked _____.",
+        "answer": "home",
+        "distractors": [
+          "book",
+          "ball",
+          "dog"
+        ]
+      },
+      "audio_file1": "where-did-he-walk-convo",
+      "audio_file2": "he-walked-home-convo"
+    },
+    {
+      "template": "DialogueCompletion",
+      "genders": "m-f",
+      "questionData": {
+        "line1": "Do you eat breakfast?",
+        "answer": "Yes, I eat fruit.",
+        "distractors": [
+          "No, I am tired.",
+          "I read a book.",
+          "It is a big dog."
+        ]
+      },
+      "audio_file1": "do-you-eat-breakfast-convo",
+      "audio_file2": "yes-i-eat-fruit-convo"
+    },
+    {
+      "template": "SentenceBuilder",
+      "genders": "m",
+      "questionData": {
+        "correct_order": "This book is old."
+      },
+      "audio_file": "this-book-is-old-convo"
+    },
+    {
+      "template": "WordPairs",
+      "questionData": {
+        "english_words": [
+          "big",
+          "small",
+          "happy",
+          "sad"
+        ],
+        "translations": [
+          {
+            "tr": "büyük",
+            "es": "grande",
+            "fr": "grand",
+            "de": "groß",
+            "it": "grande",
+            "pt": "grande",
+            "ru": "большой",
+            "zh": "大的",
+            "ja": "大きい",
+            "ko": "큰",
+            "ar": "كبير",
+            "hi": "बड़ा"
+          },
+          {
+            "tr": "küçük",
+            "es": "pequeño",
+            "fr": "petit",
+            "de": "klein",
+            "it": "piccolo",
+            "pt": "pequeno",
+            "ru": "маленький",
+            "zh": "小的",
+            "ja": "小さい",
+            "ko": "작은",
+            "ar": "صغير",
+            "hi": "छोटा"
+          },
+          {
+            "tr": "mutlu",
+            "es": "feliz",
+            "fr": "heureux",
+            "de": "glücklich",
+            "it": "felice",
+            "pt": "feliz",
+            "ru": "счастливый",
+            "zh": "开心的",
+            "ja": "うれしい",
+            "ko": "행복한",
+            "ar": "سعيد",
+            "hi": "खुश"
+          },
+          {
+            "tr": "üzgün",
+            "es": "triste",
+            "fr": "triste",
+            "de": "traurig",
+            "it": "triste",
+            "pt": "triste",
+            "ru": "грустный",
+            "zh": "伤心的",
+            "ja": "悲しい",
+            "ko": "슬픈",
+            "ar": "حزين",
+            "hi": "उदास"
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,72 @@
+{
+  "translations_list": [
+    {
+      "english_word": "to sell",
+      "translations": {
+        "tr": "satmak",
+        "es": "vender",
+        "fr": "vendre",
+        "de": "verkaufen",
+        "it": "vendere",
+        "pt": "vender",
+        "ru": "продавать",
+        "zh": "出售",
+        "ja": "売る",
+        "ko": "팔다",
+        "ar": "يبيع",
+        "hi": "बेचना"
+      }
+    },
+    {
+      "english_word": "fresh",
+      "translations": {
+        "tr": "taze",
+        "es": "fresco",
+        "fr": "frais",
+        "de": "frisch",
+        "it": "fresco",
+        "pt": "fresco",
+        "ru": "свежий",
+        "zh": "新鲜的",
+        "ja": "新鮮な",
+        "ko": "신선한",
+        "ar": "طازج",
+        "hi": "ताजा"
+      }
+    },
+    {
+      "english_word": "to smell",
+      "translations": {
+        "tr": "koklamak",
+        "es": "oler",
+        "fr": "sentir",
+        "de": "riechen",
+        "it": "annusare",
+        "pt": "cheirar",
+        "ru": "нюхать",
+        "zh": "闻",
+        "ja": "匂いをかぐ",
+        "ko": "냄새를 맡다",
+        "ar": "يشم",
+        "hi": "सूंघना"
+      }
+    },
+    {
+      "english_word": "crowded",
+      "translations": {
+        "tr": "kalabalık",
+        "es": "abarrotado",
+        "fr": "bondé",
+        "de": "überfüllt",
+        "it": "affollato",
+        "pt": "lotado",
+        "ru": "переполненный",
+        "zh": "拥挤的",
+        "ja": "混雑した",
+        "ko": "붐비는",
+        "ar": "مزدحم",
+        "hi": "भीड़भाड़ वाला"
+      }
+    }
+  ]
+}

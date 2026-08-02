@@ -1,0 +1,254 @@
+{
+  "levelQuestions": [
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "tooth",
+        "wrongAnswers": [
+          "bone",
+          "lip",
+          "gum"
+        ]
+      }
+    },
+    {
+      "template": "DialogueCompletion",
+      "genders": "f-m",
+      "questionData": {
+        "line1": "My mouth feels funny.",
+        "answer": "That is okay.",
+        "distractors": [
+          "Run very fast.",
+          "Read a book.",
+          "Play a game."
+        ]
+      },
+      "audio_file1": "my-mouth-feels-funny-convo",
+      "audio_file2": "that-is-okay-convo"
+    },
+    {
+      "template": "ClozeSequence",
+      "genders": "m",
+      "questionData": {
+        "sentence": "My tooth feels _____.",
+        "answer": [
+          "sore"
+        ],
+        "distractors": [
+          "big",
+          "small",
+          "cold"
+        ]
+      },
+      "audio_file": "my-tooth-feels-convo"
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "gauze",
+        "wrongAnswers": [
+          "tissue",
+          "sponge",
+          "tape"
+        ]
+      }
+    },
+    {
+      "template": "ConvoTemplate-1",
+      "genders": "f-m",
+      "questionData": {
+        "line1": "My gums are red.",
+        "line2": "Yes, they look _____.",
+        "answer": "sore",
+        "distractors": [
+          "big",
+          "small",
+          "cold"
+        ]
+      },
+      "audio_file1": "my-gums-are-red-convo",
+      "audio_file2": "yes-they-look-convo"
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "filling",
+        "wrongAnswers": [
+          "extraction",
+          "cleaning",
+          "crown"
+        ]
+      }
+    },
+    {
+      "template": "WordPairs",
+      "questionData": {
+        "english_words": [
+          "white",
+          "yellow",
+          "clean",
+          "sharp"
+        ],
+        "translations": [
+          {
+            "tr": "beyaz",
+            "es": "blanco",
+            "fr": "blanc",
+            "de": "weiß",
+            "it": "bianco",
+            "pt": "branco",
+            "ru": "белый",
+            "zh": "白色的",
+            "ja": "白い",
+            "ko": "하얀",
+            "ar": "أبيض",
+            "hi": "सफ़ेद"
+          },
+          {
+            "tr": "sarı",
+            "es": "amarillo",
+            "fr": "jaune",
+            "de": "gelb",
+            "it": "giallo",
+            "pt": "amarelo",
+            "ru": "жёлтый",
+            "zh": "黄色的",
+            "ja": "黄色い",
+            "ko": "노란",
+            "ar": "أصفر",
+            "hi": "पीला"
+          },
+          {
+            "tr": "temiz",
+            "es": "limpio",
+            "fr": "propre",
+            "de": "sauber",
+            "it": "pulito",
+            "pt": "limpo",
+            "ru": "чистый",
+            "zh": "干净的",
+            "ja": "きれいな",
+            "ko": "깨끗한",
+            "ar": "نظيف",
+            "hi": "साफ़"
+          },
+          {
+            "tr": "keskin",
+            "es": "afilado",
+            "fr": "tranchant",
+            "de": "scharf",
+            "it": "affilato",
+            "pt": "afiado",
+            "ru": "острый",
+            "zh": "锋利的",
+            "ja": "鋭い",
+            "ko": "날카로운",
+            "ar": "حاد",
+            "hi": "तेज़"
+          }
+        ]
+      }
+    },
+    {
+      "template": "DialogueCompletion",
+      "genders": "m-f",
+      "questionData": {
+        "line1": "What do I do?",
+        "answer": "Open your mouth.",
+        "distractors": [
+          "Run very fast.",
+          "Read a book.",
+          "Play a game."
+        ]
+      },
+      "audio_file1": "what-do-i-do-convo",
+      "audio_file2": "open-your-mouth-convo"
+    },
+    {
+      "template": "AppearDisappear",
+      "genders": "m",
+      "questionData": {
+        "words": "My tooth hurts.",
+        "distractors": [
+          "book",
+          "ball",
+          "dog",
+          "home"
+        ]
+      },
+      "audio_file": "my-tooth-hurts-convo"
+    },
+    {
+      "template": "GrammarForm",
+      "genders": "f",
+      "questionData": {
+        "sentence": "He _____ the dentist.",
+        "answer": "sees",
+        "distractors": [
+          "see",
+          "saw",
+          "seeing"
+        ]
+      },
+      "audio_file": "he-the-dentist-convo"
+    },
+    {
+      "template": "ClozeSequence",
+      "genders": "f",
+      "questionData": {
+        "sentence": "The dentist can _____ teeth.",
+        "answer": [
+          "clean"
+        ],
+        "distractors": [
+          "run",
+          "sleep",
+          "read",
+          "cook"
+        ]
+      },
+      "audio_file": "the-dentist-can-teeth-convo"
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "braces",
+        "wrongAnswers": [
+          "metal",
+          "extraction",
+          "correction"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "extraction",
+        "wrongAnswers": [
+          "root-canal",
+          "treatment",
+          "filling"
+        ]
+      }
+    },
+    {
+      "template": "SentenceBuilder",
+      "genders": "f",
+      "questionData": {
+        "correct_order": "My tooth hurts today."
+      },
+      "audio_file": "my-tooth-hurts-today-convo"
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "root-canal",
+        "wrongAnswers": [
+          "extraction",
+          "filling",
+          "braces"
+        ]
+      }
+    }
+  ]
+}

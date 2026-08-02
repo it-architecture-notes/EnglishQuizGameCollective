@@ -1,0 +1,89 @@
+{
+  "translations_list": [
+    {
+      "english_word": "to go down",
+      "translations": {
+        "tr": "to go down",
+        "es": "to go down",
+        "fr": "to go down",
+        "de": "to go down",
+        "it": "to go down",
+        "pt": "to go down",
+        "ru": "to go down",
+        "zh": "to go down",
+        "ja": "to go down",
+        "ko": "to go down",
+        "ar": "to go down",
+        "hi": "to go down"
+      }
+    },
+    {
+      "english_word": "to go up",
+      "translations": {
+        "tr": "to go up",
+        "es": "to go up",
+        "fr": "to go up",
+        "de": "to go up",
+        "it": "to go up",
+        "pt": "to go up",
+        "ru": "to go up",
+        "zh": "to go up",
+        "ja": "to go up",
+        "ko": "to go up",
+        "ar": "to go up",
+        "hi": "to go up"
+      }
+    },
+    {
+      "english_word": "to sit down",
+      "translations": {
+        "tr": "to sit down",
+        "es": "to sit down",
+        "fr": "to sit down",
+        "de": "to sit down",
+        "it": "to sit down",
+        "pt": "to sit down",
+        "ru": "to sit down",
+        "zh": "to sit down",
+        "ja": "to sit down",
+        "ko": "to sit down",
+        "ar": "to sit down",
+        "hi": "to sit down"
+      }
+    },
+    {
+      "english_word": "to win",
+      "translations": {
+        "tr": "to win",
+        "es": "to win",
+        "fr": "to win",
+        "de": "to win",
+        "it": "to win",
+        "pt": "to win",
+        "ru": "to win",
+        "zh": "to win",
+        "ja": "to win",
+        "ko": "to win",
+        "ar": "to win",
+        "hi": "to win"
+      }
+    },
+    {
+      "english_word": "jealous",
+      "translations": {
+        "tr": "jealous",
+        "es": "jealous",
+        "fr": "jealous",
+        "de": "jealous",
+        "it": "jealous",
+        "pt": "jealous",
+        "ru": "jealous",
+        "zh": "jealous",
+        "ja": "jealous",
+        "ko": "jealous",
+        "ar": "jealous",
+        "hi": "jealous"
+      }
+    }
+  ]
+}

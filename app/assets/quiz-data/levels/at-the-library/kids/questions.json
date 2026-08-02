@@ -1,0 +1,261 @@
+{
+  "levelQuestions": [
+    {
+      "template": "imageQuizTemplate-2",
+      "questionData": {
+        "imageName": "book",
+        "wrongAnswers": [
+          "bookmark",
+          "newspaper",
+          "desk"
+        ]
+      }
+    },
+    {
+      "template": "ConvoTemplate-1",
+      "genders": "f-m",
+      "questionData": {
+        "line1": "Can I _____ this book?",
+        "line2": "Yes, you can _____ it.",
+        "answer": "read",
+        "distractors": [
+          "see",
+          "hold",
+          "take"
+        ]
+      },
+      "audio_file1": "can-i-read-this-book-convo",
+      "audio_file2": "yes-you-can-read-it-convo"
+    },
+    {
+      "template": "ClozeSequence",
+      "genders": "f",
+      "questionData": {
+        "sentence": "Can you _____ me find a book?",
+        "answers": [
+          "help",
+          "find"
+        ],
+        "distractors": [
+          "show",
+          "read",
+          "take"
+        ]
+      },
+      "audio_file": "can-you-help-me-find-a-book-convo"
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "desk",
+        "wrongAnswers": [
+          "chair",
+          "counter",
+          "shelf"
+        ]
+      }
+    },
+    {
+      "template": "WordPairs",
+      "questionData": {
+        "english_words": [
+          "long",
+          "short",
+          "quiet",
+          "fun"
+        ],
+        "translations": [
+          {
+            "tr": "uzun",
+            "es": "largo",
+            "fr": "long",
+            "de": "lang",
+            "it": "lungo",
+            "pt": "longo",
+            "ru": "длинный",
+            "zh": "长的",
+            "ja": "長い",
+            "ko": "긴",
+            "ar": "طويل",
+            "hi": "लंबा"
+          },
+          {
+            "tr": "kısa",
+            "es": "corto",
+            "fr": "court",
+            "de": "kurz",
+            "it": "corto",
+            "pt": "curto",
+            "ru": "короткий",
+            "zh": "短的",
+            "ja": "短い",
+            "ko": "짧은",
+            "ar": "قصير",
+            "hi": "छोटा"
+          },
+          {
+            "tr": "sessiz",
+            "es": "silencioso",
+            "fr": "silencieux",
+            "de": "ruhig",
+            "it": "silenzioso",
+            "pt": "silencioso",
+            "ru": "тихий",
+            "zh": "安静的",
+            "ja": "静かな",
+            "ko": "조용한",
+            "ar": "هادئ",
+            "hi": "शांत"
+          },
+          {
+            "tr": "eğlenceli",
+            "es": "divertido",
+            "fr": "amusant",
+            "de": "spaßig",
+            "it": "divertente",
+            "pt": "divertido",
+            "ru": "весёлый",
+            "zh": "有趣的",
+            "ja": "楽しい",
+            "ko": "재미있는",
+            "ar": "ممتع",
+            "hi": "मज़ेदार"
+          }
+        ]
+      }
+    },
+    {
+      "template": "DialogueCompletion",
+      "genders": "m-f",
+      "questionData": {
+        "line1": "Can I take this book?",
+        "answer": "Yes, take it home.",
+        "distractors": [
+          "The book is big.",
+          "Please read it.",
+          "This book is fun."
+        ]
+      },
+      "audio_file1": "can-i-take-this-book-convo",
+      "audio_file2": "yes-take-it-home-convo"
+    },
+    {
+      "template": "AppearDisappear",
+      "genders": "f",
+      "questionData": {
+        "words": "The library is open today.",
+        "distractors": [
+          "open",
+          "closed",
+          "book",
+          "home"
+        ]
+      },
+      "audio_file": "the-library-is-open-today-convo"
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "newspaper",
+        "wrongAnswers": [
+          "magazine",
+          "comic",
+          "pamphlet"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "table-lamp",
+        "wrongAnswers": [
+          "floor lamp",
+          "chandelier",
+          "candle"
+        ]
+      }
+    },
+    {
+      "template": "SentenceBuilder",
+      "genders": "f",
+      "questionData": {
+        "correct_order": "Let's find a book."
+      },
+      "audio_file": "lets-find-a-book-convo"
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "bookmark",
+        "wrongAnswers": [
+          "notebook",
+          "envelope",
+          "letter"
+        ]
+      }
+    },
+    {
+      "template": "ClozeSequence",
+      "genders": "f",
+      "questionData": {
+        "sentence": "My card is _____.",
+        "answers": [
+          "old"
+        ],
+        "distractors": [
+          "new",
+          "big",
+          "fun",
+          "long"
+        ]
+      },
+      "audio_file": "my-card-is-old-convo"
+    },
+    {
+      "template": "GrammarForm",
+      "genders": "f",
+      "questionData": {
+        "sentence": "____ I get a library card please?",
+        "answer": "Can",
+        "distractors": [
+          "Could",
+          "cans",
+          "canning"
+        ]
+      }
+    },
+    {
+      "template": "ClozeSequence",
+      "genders": "f",
+      "questionData": {
+        "sentence": "_____ your card, please.",
+        "answers": [
+          "show"
+        ],
+        "distractors": [
+          "Read",
+          "Find",
+          "Take",
+          "Hold"
+        ]
+      },
+      "audio_file": "show-your-card-please-convo"
+    },
+    {
+      "template": "ConvoTemplate-1",
+      "genders": "m-f",
+      "questionData": {
+        "line1": "I need to _____ this book.",
+        "line2": "Please _____ it here.",
+        "answer": "return",
+        "distractors": [
+          "read",
+          "find",
+          "take"
+        ]
+      },
+      "audio_file1": "i-need-to-return-this-book-convo",
+      "audio_file2": "please-return-it-here-convo"
+    }
+  ]
+}

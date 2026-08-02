@@ -1,11 +1,11 @@
 word,level,count,levels
-am,A1,4,"at-the-restaurant,basic-sentences,greetings,verb-to-be"
-are,A1,3,"basic-sentences,greetings,verb-to-be"
+am,A1,5,"at-the-restaurant,basic-sentences,greetings/adults,greetings/kids,verb-to-be"
+are,A1,4,"basic-sentences,greetings/adults,greetings/kids,verb-to-be"
 be,A1,1,at-the-airport
 can,A1,1,in-the-kitchen
 do,A1,2,"at-the-school,in-the-kitchen"
-have,A1,1,greetings
-is,A1,2,"basic-sentences,greetings"
+have,A1,2,"greetings/adults,greetings/kids"
+is,A1,3,"basic-sentences,greetings/adults,greetings/kids"
 must,A1,1,in-the-kitchen
 will,A1,1,in-the-kitchen
 did,A1,0,

@@ -1,0 +1,228 @@
+{
+  "levelQuestions": [
+    {
+      "template": "ClozeSequence",
+      "genders": "f",
+      "questionData": {
+        "sentence": "I _____ with my _____.",
+        "answer": [
+          "play",
+          "ball"
+        ],
+        "distractors": [
+          "run",
+          "dog"
+        ]
+      },
+      "audio_file": "i-play-with-my-ball-convo"
+    },
+    {
+      "template": "ClozeSequence",
+      "genders": "m",
+      "questionData": {
+        "sentence": "I _____ with my _____.",
+        "answer": [
+          "run",
+          "dog"
+        ],
+        "distractors": [
+          "play",
+          "ball"
+        ]
+      },
+      "audio_file": "i-run-with-my-dog-convo"
+    },
+    {
+      "template": "ClozeSequence",
+      "genders": "f",
+      "questionData": {
+        "sentence": "I _____ my _____ hands.",
+        "answer": [
+          "see",
+          "wet"
+        ],
+        "distractors": [
+          "wash",
+          "dry"
+        ]
+      },
+      "audio_file": "i-see-my-wet-hands-convo"
+    },
+    {
+      "template": "GrammarForm",
+      "genders": "f",
+      "questionData": {
+        "sentence": "I _____ a red ball.",
+        "answer": "want",
+        "distractors": [
+          "wants",
+          "wanting",
+          "to want"
+        ]
+      }
+    },
+    {
+      "template": "AppearDisappear",
+      "genders": "f",
+      "questionData": {
+        "words": "Let's play now.",
+        "distractors": [
+          "run",
+          "jump",
+          "sing"
+        ]
+      },
+      "audio_file": "lets-play-now-convo"
+    },
+    {
+      "template": "AppearDisappear",
+      "genders": "m",
+      "questionData": {
+        "words": "The cat runs home.",
+        "distractors": [
+          "near",
+          "under",
+          "away"
+        ]
+      },
+      "audio_file": "the-cat-runs-home-convo"
+    },
+    {
+      "template": "AppearDisappear",
+      "genders": "m",
+      "questionData": {
+        "words": "He is a doctor.",
+        "distractors": [
+          "teacher",
+          "pilot",
+          "cook"
+        ]
+      },
+      "audio_file": "he-is-a-doctor-convo"
+    },
+    {
+      "template": "ConvoTemplate-1",
+      "genders": "f-m",
+      "questionData": {
+        "line1": "Can I _____ your pen?",
+        "line2": "Yes, here you are.",
+        "answer": "use",
+        "distractors": [
+          "see",
+          "get",
+          "take"
+        ]
+      },
+      "audio_file1": "can-i-use-your-pen-convo",
+      "audio_file2": "yes-here-you-are-convo"
+    },
+    {
+      "template": "ConvoTemplate-1",
+      "genders": "f-m",
+      "questionData": {
+        "line1": "Where do you play?",
+        "line2": "I play _____ home.",
+        "answer": "at",
+        "distractors": [
+          "in",
+          "on",
+          "by"
+        ]
+      },
+      "audio_file1": "where-do-you-play-convo",
+      "audio_file2": "i-play-at-home-convo"
+    },
+    {
+      "template": "DialogueCompletion",
+      "genders": "m-f",
+      "questionData": {
+        "line1": "What is this?",
+        "answer": "It is my red ball.",
+        "distractors": [
+          "It is my wet dog.",
+          "It is my blue pen.",
+          "It is my new book."
+        ]
+      },
+      "audio_file1": "what-is-this-convo",
+      "audio_file2": "it-is-my-red-ball-convo"
+    },
+    {
+      "template": "SentenceBuilder",
+      "genders": "f",
+      "questionData": {
+        "correct_order": "My sister is like me."
+      },
+      "audio_file": "my-sister-is-like-me-convo"
+    },
+    {
+      "template": "WordPairs",
+      "questionData": {
+        "english_words": [
+          "wet",
+          "dry",
+          "hot",
+          "cold"
+        ],
+        "translations": [
+          {
+            "tr": "ıslak",
+            "es": "mojado",
+            "fr": "mouillé",
+            "de": "nass",
+            "it": "bagnato",
+            "pt": "molhado",
+            "ru": "мокрый",
+            "zh": "湿的",
+            "ja": "濡れた",
+            "ko": "젖은",
+            "ar": "مبتل",
+            "hi": "गीला"
+          },
+          {
+            "tr": "kuru",
+            "es": "seco",
+            "fr": "sec",
+            "de": "trocken",
+            "it": "asciutto",
+            "pt": "seco",
+            "ru": "сухой",
+            "zh": "干的",
+            "ja": "乾いた",
+            "ko": "마른",
+            "ar": "جاف",
+            "hi": "सूखा"
+          },
+          {
+            "tr": "sıcak",
+            "es": "caliente",
+            "fr": "chaud",
+            "de": "heiß",
+            "it": "caldo",
+            "pt": "quente",
+            "ru": "горячий",
+            "zh": "热的",
+            "ja": "熱い",
+            "ko": "뜨거운",
+            "ar": "حار",
+            "hi": "गर्म"
+          },
+          {
+            "tr": "soğuk",
+            "es": "frío",
+            "fr": "froid",
+            "de": "kalt",
+            "it": "freddo",
+            "pt": "frio",
+            "ru": "холодный",
+            "zh": "冷的",
+            "ja": "冷たい",
+            "ko": "차가운",
+            "ar": "بارد",
+            "hi": "ठंडा"
+          }
+        ]
+      }
+    }
+  ]
+}

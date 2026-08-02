@@ -1,0 +1,234 @@
+{
+  "levelQuestions": [
+    {
+      "template": "ClozeSequence",
+      "genders": "m",
+      "questionData": {
+        "sentence": "I _____ every day.",
+        "answer": [
+          "play"
+        ],
+        "distractors": [
+          "sleep",
+          "read",
+          "cook",
+          "wash"
+        ]
+      },
+      "audio_file": "i-play-every-day-convo"
+    },
+    {
+      "template": "ClozeSequence",
+      "genders": "m",
+      "questionData": {
+        "sentence": "She _____ her homework.",
+        "answer": [
+          "did"
+        ],
+        "distractors": [
+          "do",
+          "does",
+          "is do",
+          "make"
+        ]
+      },
+      "audio_file": "she-did-her-homework-convo"
+    },
+    {
+      "template": "ClozeSequence",
+      "genders": "m",
+      "questionData": {
+        "sentence": "Be _____ near the road.",
+        "answer": [
+          "careful"
+        ],
+        "distractors": [
+          "loud",
+          "wet",
+          "cold",
+          "sad"
+        ]
+      },
+      "audio_file": "be-careful-near-the-road-convo"
+    },
+    {
+      "template": "GrammarForm",
+      "genders": "m",
+      "questionData": {
+        "sentence": "They _____ the garden.",
+        "answer": "cleaned",
+        "distractors": [
+          "clean",
+          "cleaning",
+          "cleans"
+        ]
+      }
+    },
+    {
+      "template": "AppearDisappear",
+      "genders": "m",
+      "questionData": {
+        "words": "Dinosaurs are big.",
+        "distractors": [
+          "small",
+          "wet",
+          "cold",
+          "sad"
+        ]
+      },
+      "audio_file": "dinosaurs-are-big-convo"
+    },
+    {
+      "template": "AppearDisappear",
+      "genders": "f",
+      "questionData": {
+        "words": "I like this.",
+        "distractors": [
+          "book",
+          "ball",
+          "dog",
+          "home"
+        ]
+      },
+      "audio_file": "i-like-this-convo"
+    },
+    {
+      "template": "AppearDisappear",
+      "genders": "m",
+      "questionData": {
+        "words": "I do not like it.",
+        "distractors": [
+          "book",
+          "ball",
+          "dog",
+          "home"
+        ]
+      },
+      "audio_file": "i-do-not-like-it-convo"
+    },
+    {
+      "template": "ConvoTemplate-1",
+      "genders": "f-m",
+      "questionData": {
+        "line1": "Did she say no?",
+        "line2": "Yes, she _____.",
+        "answer": "did",
+        "distractors": [
+          "do",
+          "does",
+          "is"
+        ]
+      },
+      "audio_file1": "did-she-say-no-convo",
+      "audio_file2": "yes-she-did-convo"
+    },
+    {
+      "template": "ConvoTemplate-1",
+      "genders": "f-m",
+      "questionData": {
+        "line1": "Is this old?",
+        "line2": "No, it is _____.",
+        "answer": "new",
+        "distractors": [
+          "old",
+          "wet",
+          "cold"
+        ]
+      },
+      "audio_file1": "is-this-old-convo",
+      "audio_file2": "no-it-is-new-convo"
+    },
+    {
+      "template": "DialogueCompletion",
+      "genders": "m-f",
+      "questionData": {
+        "line1": "Are you coming to the party?",
+        "answer": "Yes, I am coming.",
+        "distractors": [
+          "No, I am tired.",
+          "I read a book.",
+          "It is a big dog."
+        ]
+      },
+      "audio_file1": "are-you-coming-to-the-party-convo",
+      "audio_file2": "yes-i-am-coming-convo"
+    },
+    {
+      "template": "SentenceBuilder",
+      "genders": "m",
+      "questionData": {
+        "correct_order": "This plan is good."
+      },
+      "audio_file": "this-plan-is-good-convo"
+    },
+    {
+      "template": "WordPairs",
+      "questionData": {
+        "english_words": [
+          "yes",
+          "no",
+          "big",
+          "small"
+        ],
+        "translations": [
+          {
+            "tr": "evet",
+            "es": "sí",
+            "fr": "oui",
+            "de": "ja",
+            "it": "sì",
+            "pt": "sim",
+            "ru": "да",
+            "zh": "是",
+            "ja": "はい",
+            "ko": "네",
+            "ar": "نعم",
+            "hi": "हाँ"
+          },
+          {
+            "tr": "hayır",
+            "es": "no",
+            "fr": "non",
+            "de": "nein",
+            "it": "no",
+            "pt": "não",
+            "ru": "нет",
+            "zh": "不",
+            "ja": "いいえ",
+            "ko": "아니요",
+            "ar": "لا",
+            "hi": "नहीं"
+          },
+          {
+            "tr": "büyük",
+            "es": "grande",
+            "fr": "grand",
+            "de": "groß",
+            "it": "grande",
+            "pt": "grande",
+            "ru": "большой",
+            "zh": "大的",
+            "ja": "大きい",
+            "ko": "큰",
+            "ar": "كبير",
+            "hi": "बड़ा"
+          },
+          {
+            "tr": "küçük",
+            "es": "pequeño",
+            "fr": "petit",
+            "de": "klein",
+            "it": "piccolo",
+            "pt": "pequeno",
+            "ru": "маленький",
+            "zh": "小的",
+            "ja": "小さい",
+            "ko": "작은",
+            "ar": "صغير",
+            "hi": "छोटा"
+          }
+        ]
+      }
+    }
+  ]
+}

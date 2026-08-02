@@ -1,0 +1,72 @@
+{
+  "translations_list": [
+    {
+      "english_word": "plant",
+      "translations": {
+        "tr": "ekmek",
+        "es": "plantar",
+        "fr": "planter",
+        "de": "pflanzen",
+        "it": "piantare",
+        "pt": "plantar",
+        "ru": "сажать",
+        "zh": "种植",
+        "ja": "植える",
+        "ko": "심다",
+        "ar": "يزرع",
+        "hi": "लगाना"
+      }
+    },
+    {
+      "english_word": "pick",
+      "translations": {
+        "tr": "toplamak",
+        "es": "recolectar",
+        "fr": "cueillir",
+        "de": "pflücken",
+        "it": "raccogliere",
+        "pt": "colher",
+        "ru": "собирать",
+        "zh": "采摘",
+        "ja": "摘む",
+        "ko": "따다",
+        "ar": "يقطف",
+        "hi": "तोड़ना"
+      }
+    },
+    {
+      "english_word": "grow",
+      "translations": {
+        "tr": "büyütmek",
+        "es": "cultivar",
+        "fr": "faire pousser",
+        "de": "anbauen",
+        "it": "coltivare",
+        "pt": "cultivar",
+        "ru": "выращивать",
+        "zh": "种植",
+        "ja": "育てる",
+        "ko": "기르다",
+        "ar": "يزرع",
+        "hi": "उगाना"
+      }
+    },
+    {
+      "english_word": "seed",
+      "translations": {
+        "tr": "tohum",
+        "es": "semilla",
+        "fr": "graine",
+        "de": "Samen",
+        "it": "seme",
+        "pt": "semente",
+        "ru": "семя",
+        "zh": "种子",
+        "ja": "種",
+        "ko": "씨앗",
+        "ar": "بذرة",
+        "hi": "बीज"
+      }
+    }
+  ]
+}

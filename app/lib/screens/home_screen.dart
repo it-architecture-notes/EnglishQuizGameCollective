@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import '../app_flavor.dart';
 import '../providers/localization_provider.dart';
 import '../providers/settings_provider.dart';
 import '../services/audio_service.dart' as audio;
@@ -13,12 +14,16 @@ import 'profile_panel_screen.dart';
 import 'settings_panel_content.dart';
 import 'transitions/custom_page_routes.dart';
 
-/// Home screen design colors (light lavender background, purple accent).
+/// Home screen design colors, per flavor (light lavender/purple for adults,
+/// placeholder warm palette for kids pending final palette choice).
 class _HomeColors {
-  static const Color background =
-      Color(0xFFF8F8FF); // Ghost white / light lavender
-  static const Color primary = Color(0xFF6B3AFF); // Vibrant purple
-  static const Color onPrimary = Color(0xFFFFFFFF); // White text & icons
+  static Color get background => AppConfig.isKids
+      ? const Color(0xFFFFFDE7) // placeholder kids seed, TBD
+      : const Color(0xFFF8F8FF); // Ghost white / light lavender
+  static Color get primary => AppConfig.isKids
+      ? const Color(0xFFFF9800) // placeholder kids seed, TBD
+      : const Color(0xFF6B3AFF); // Vibrant purple
+  static const Color onPrimary = Color(0xFFFFFFFF); // White text & icons, both flavors
 }
 
 class HomeScreen extends ConsumerStatefulWidget {

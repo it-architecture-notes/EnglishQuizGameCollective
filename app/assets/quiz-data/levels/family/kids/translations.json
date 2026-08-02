@@ -1,0 +1,124 @@
+{
+  "translations_list": [
+    {
+      "english_word": "boy",
+      "translations": {
+        "tr": "çocuk", "es": "niño", "fr": "garçon", "de": "Junge", "it": "ragazzo", "pt": "menino", "ru": "мальчик", "zh": "男孩", "ja": "男の子", "ko": "소년", "ar": "ولد", "hi": "लड़का"
+      }
+    },
+    {
+      "english_word": "brother",
+      "translations": {
+        "tr": "erkek kardeş", "es": "hermano", "fr": "frère", "de": "Bruder", "it": "fratello", "pt": "irmão", "ru": "брат", "zh": "兄弟", "ja": "兄弟", "ko": "남자 형제", "ar": "أخ", "hi": "भाई"
+      }
+    },
+    {
+      "english_word": "cousin",
+      "translations": {
+        "tr": "kuzen", "es": "primo/a", "fr": "cousin/cousine", "de": "Cousin/Cousine", "it": "cugino/cugina", "pt": "primo/prima", "ru": "двоюродный брат/сестра", "zh": "堂/表兄弟姐妹", "ja": "いとこ", "ko": "사촌", "ar": "ابن/ابنة العم أو الخال", "hi": "चचेरा भाई/बहन"
+      }
+    },
+    {
+      "english_word": "daughter",
+      "translations": {
+        "tr": "kız evlat", "es": "hija", "fr": "fille", "de": "Tochter", "it": "figlia", "pt": "filha", "ru": "дочь", "zh": "女儿", "ja": "娘", "ko": "딸", "ar": "ابنة", "hi": "बेटी"
+      }
+    },
+    {
+      "english_word": "family",
+      "translations": {
+        "tr": "aile", "es": "familia", "fr": "famille", "de": "Familie", "it": "famiglia", "pt": "família", "ru": "семья", "zh": "家庭", "ja": "家族", "ko": "가족", "ar": "عائلة", "hi": "परिवार"
+      }
+    },
+    {
+      "english_word": "father",
+      "translations": {
+        "tr": "baba", "es": "padre", "fr": "père", "de": "Vater", "it": "padre", "pt": "pai", "ru": "отец", "zh": "父亲", "ja": "父親", "ko": "아버지", "ar": "أب", "hi": "पिता"
+      }
+    },
+    {
+      "english_word": "son",
+      "translations": {
+        "tr": "oğul", "es": "hijo", "fr": "fils", "de": "Sohn", "it": "figlio", "pt": "filho", "ru": "сын", "zh": "儿子", "ja": "息子", "ko": "아들", "ar": "ابن", "hi": "बेटा"
+      }
+    },
+    {
+      "english_word": "grandfather",
+      "translations": {
+        "tr": "dede", "es": "abuelo", "fr": "grand-père", "de": "Großvater", "it": "nonno", "pt": "avô", "ru": "дедушка", "zh": "祖父", "ja": "祖父", "ko": "할아버지", "ar": "جد", "hi": "दादा"
+      }
+    },
+    {
+      "english_word": "grandkid",
+      "translations": {
+        "tr": "torun", "es": "nieto/a", "fr": "petit-enfant", "de": "Enkelkind", "it": "nipote", "pt": "neto/a", "ru": "внук/внучка", "zh": "孙辈", "ja": "孫", "ko": "손주", "ar": "حفيد", "hi": "पोता/पोती"
+      }
+    },
+    {
+      "english_word": "grandmother",
+      "translations": {
+        "tr": "büyükanne", "es": "abuela", "fr": "grand-mère", "de": "Großmutter", "it": "nonna", "pt": "avó", "ru": "бабушка", "zh": "祖母", "ja": "祖母", "ko": "할머니", "ar": "جدة", "hi": "दादी"
+      }
+    },
+    {
+      "english_word": "grandparents",
+      "translations": {
+        "tr": "büyükanne ve büyükbaba", "es": "abuelos", "fr": "grands-parents", "de": "Großeltern", "it": "nonni", "pt": "avós", "ru": "бабушка и дедушка", "zh": "祖父母", "ja": "祖父母", "ko": "조부모", "ar": "أجداد", "hi": "दादा-दादी"
+      }
+    },
+    {
+      "english_word": "husband",
+      "translations": {
+        "tr": "koca", "es": "esposo", "fr": "mari", "de": "Ehemann", "it": "marito", "pt": "marido", "ru": "муж", "zh": "丈夫", "ja": "夫", "ko": "남편", "ar": "زوج", "hi": "पति"
+      }
+    },
+    {
+      "english_word": "wife",
+      "translations": {
+        "tr": "eş", "es": "esposa", "fr": "femme", "de": "Ehefrau", "it": "moglie", "pt": "esposa", "ru": "жена", "zh": "妻子", "ja": "妻", "ko": "아내", "ar": "زوجة", "hi": "पत्नी"
+      }
+    },
+    {
+      "english_word": "man",
+      "translations": {
+        "tr": "adam", "es": "hombre", "fr": "homme", "de": "Mann", "it": "uomo", "pt": "homem", "ru": "мужчина", "zh": "男人", "ja": "男性", "ko": "남자", "ar": "رجل", "hi": "आदमी"
+      }
+    },
+    {
+      "english_word": "mother",
+      "translations": {
+        "tr": "anne", "es": "madre", "fr": "mère", "de": "Mutter", "it": "madre", "pt": "mãe", "ru": "мать", "zh": "母亲", "ja": "母親", "ko": "어머니", "ar": "أم", "hi": "माँ"
+      }
+    },
+    {
+      "english_word": "parents",
+      "translations": {
+        "tr": "anne baba", "es": "padres", "fr": "parents", "de": "Eltern", "it": "genitori", "pt": "pais", "ru": "родители", "zh": "父母", "ja": "両親", "ko": "부모", "ar": "والدان", "hi": "माता-पिता"
+      }
+    },
+    {
+      "english_word": "sister",
+      "translations": {
+        "tr": "kız kardeş", "es": "hermana", "fr": "sœur", "de": "Schwester", "it": "sorella", "pt": "irmã", "ru": "сестра", "zh": "姐妹", "ja": "姉妹", "ko": "자매", "ar": "أخت", "hi": "बहन"
+      }
+    },
+    {
+      "english_word": "aunt",
+      "translations": {
+        "tr": "hala/teyze", "es": "tía", "fr": "tante", "de": "Tante", "it": "zia", "pt": "tia", "ru": "тётя", "zh": "阿姨", "ja": "おば", "ko": "이모", "ar": "عمة/خالة", "hi": "चाची/मौसी"
+      }
+    },
+    {
+      "english_word": "uncle",
+      "translations": {
+        "tr": "amca/dayı", "es": "tío", "fr": "oncle", "de": "Onkel", "it": "zio", "pt": "tio", "ru": "дядя", "zh": "叔叔", "ja": "おじ", "ko": "삼촌", "ar": "عم/خال", "hi": "चाचा/मामा"
+      }
+    },
+    {
+      "english_word": "woman",
+      "translations": {
+        "tr": "kadın", "es": "mujer", "fr": "femme", "de": "Frau", "it": "donna", "pt": "mulher", "ru": "женщина", "zh": "女人", "ja": "女性", "ko": "여자", "ar": "امرأة", "hi": "महिला"
+      }
+    }
+  ]
+}

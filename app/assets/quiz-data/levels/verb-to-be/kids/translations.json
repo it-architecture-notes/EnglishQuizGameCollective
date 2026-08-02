@@ -1,0 +1,140 @@
+{
+  "translations_list": [
+    {
+      "english_word": "Who are you?",
+      "translations": {
+        "tr": "Sen kimsin?",
+        "es": "¿Quién eres?",
+        "fr": "Qui es-tu ?",
+        "de": "Wer bist du?",
+        "it": "Chi sei?",
+        "pt": "Quem é você?",
+        "ru": "Кто ты?",
+        "zh": "你是谁？",
+        "ja": "あなたは誰ですか？",
+        "ko": "당신은 누구예요?",
+        "ar": "من أنت؟",
+        "hi": "तुम कौन हो?"
+      }
+    },
+    {
+      "english_word": "Are you ready?",
+      "translations": {
+        "tr": "Hazır mısın?",
+        "es": "¿Estás listo?",
+        "fr": "Es-tu prêt ?",
+        "de": "Bist du bereit?",
+        "it": "Sei pronto?",
+        "pt": "Você está pronto?",
+        "ru": "Ты готов?",
+        "zh": "你准备好了吗？",
+        "ja": "準備はできましたか？",
+        "ko": "준비됐어요?",
+        "ar": "هل أنت مستعد؟",
+        "hi": "क्या तुम तैयार हो?"
+      }
+    },
+    {
+      "english_word": "yes",
+      "translations": {
+        "tr": "evet",
+        "es": "sí",
+        "fr": "oui",
+        "de": "ja",
+        "it": "sì",
+        "pt": "sim",
+        "ru": "да",
+        "zh": "是的",
+        "ja": "はい",
+        "ko": "네",
+        "ar": "نعم",
+        "hi": "हाँ"
+      }
+    },
+    {
+      "english_word": "no",
+      "translations": {
+        "tr": "hayır",
+        "es": "no",
+        "fr": "non",
+        "de": "nein",
+        "it": "no",
+        "pt": "não",
+        "ru": "нет",
+        "zh": "不",
+        "ja": "いいえ",
+        "ko": "아니요",
+        "ar": "لا",
+        "hi": "नहीं"
+      }
+    },
+    {
+      "english_word": "ready",
+      "translations": {
+        "tr": "hazır",
+        "es": "listo",
+        "fr": "prêt",
+        "de": "bereit",
+        "it": "pronto",
+        "pt": "pronto",
+        "ru": "готов",
+        "zh": "准备好了",
+        "ja": "準備完了",
+        "ko": "준비",
+        "ar": "مستعد",
+        "hi": "तैयार"
+      }
+    },
+    {
+      "english_word": "good",
+      "translations": {
+        "tr": "iyi",
+        "es": "bueno",
+        "fr": "bon",
+        "de": "gut",
+        "it": "buono",
+        "pt": "bom",
+        "ru": "хороший",
+        "zh": "好",
+        "ja": "良い",
+        "ko": "좋은",
+        "ar": "جيد",
+        "hi": "अच्छा"
+      }
+    },
+    {
+      "english_word": "best friend",
+      "translations": {
+        "tr": "en iyi arkadaş",
+        "es": "mejor amigo",
+        "fr": "meilleur ami",
+        "de": "bester Freund",
+        "it": "migliore amico",
+        "pt": "melhor amigo",
+        "ru": "лучший друг",
+        "zh": "最好的朋友",
+        "ja": "親友",
+        "ko": "가장 친한 친구",
+        "ar": "أفضل صديق",
+        "hi": "सबसे अच्छा दोस्त"
+      }
+    },
+    {
+      "english_word": "here",
+      "translations": {
+        "tr": "burada",
+        "es": "aquí",
+        "fr": "ici",
+        "de": "hier",
+        "it": "qui",
+        "pt": "aqui",
+        "ru": "здесь",
+        "zh": "这里",
+        "ja": "ここ",
+        "ko": "여기",
+        "ar": "هنا",
+        "hi": "यहाँ"
+      }
+    }
+  ]
+}

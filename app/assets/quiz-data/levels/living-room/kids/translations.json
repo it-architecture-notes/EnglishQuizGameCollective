@@ -1,0 +1,21 @@
+{
+  "translations_list": [
+    {
+      "english_word": "tidy",
+      "translations": {
+        "tr": "düzenli",
+        "es": "ordenado",
+        "fr": "rangé",
+        "de": "ordentlich",
+        "it": "ordinato",
+        "pt": "arrumado",
+        "ru": "аккуратный",
+        "zh": "整洁的",
+        "ja": "きれいな",
+        "ko": "깔끔한",
+        "ar": "مرتب",
+        "hi": "साफ़-सुथरा"
+      }
+    }
+  ]
+}

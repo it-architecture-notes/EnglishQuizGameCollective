@@ -1,3 +1,4 @@
+import '../app_flavor.dart';
 import '../models/quiz_flow.dart';
 import '../models/story_config.dart';
 import '../models/story_progress.dart';
@@ -7,6 +8,8 @@ class StoryTriggerService {
   const StoryTriggerService._();
 
   /// Finds an incomplete before-level story whose trigger matches [levelTitle].
+  /// Returns null immediately when [AppConfig.storiesEnabled] is false, so
+  /// the story overlay route is never pushed for that flavor.
   static StoryPageConfig? findBeforeLevelPage({
     required MainLevelStoryConfig? mainStory,
     required StoryProgressState storyProgress,
@@ -14,6 +17,7 @@ class StoryTriggerService {
     required String levelTitle,
     required Iterable<SubLevelItem> flowSubLevels,
   }) {
+    if (!AppConfig.storiesEnabled) return null;
     if (mainStory == null || levelTitle.isEmpty) return null;
     for (final page in mainStory.storySequences) {
       if (page.trigger.type != StoryTriggerType.beforeLevel) continue;
@@ -32,6 +36,8 @@ class StoryTriggerService {
   }
 
   /// Finds an incomplete after-level story whose trigger matches [levelTitle].
+  /// Returns null immediately when [AppConfig.storiesEnabled] is false, so
+  /// the story overlay route is never pushed for that flavor.
   static StoryPageConfig? findAfterLevelPage({
     required MainLevelStoryConfig? mainStory,
     required StoryProgressState storyProgress,
@@ -39,6 +45,7 @@ class StoryTriggerService {
     required String levelTitle,
     required Iterable<SubLevelItem> flowSubLevels,
   }) {
+    if (!AppConfig.storiesEnabled) return null;
     if (mainStory == null || levelTitle.isEmpty) return null;
     for (final page in mainStory.storySequences) {
       if (page.trigger.type != StoryTriggerType.afterLevel) continue;
@@ -56,6 +63,8 @@ class StoryTriggerService {
     return null;
   }
 
+  /// Returns an empty list immediately when [AppConfig.storiesEnabled] is
+  /// false — no story bookkeeping happens for a flavor that never shows any.
   static List<StoryPageConfig> pagesReadyToMarkCompleted({
     required MainLevelStoryConfig? mainStory,
     required StoryProgressState storyProgress,
@@ -63,6 +72,7 @@ class StoryTriggerService {
     required int mainLevelId,
     required Iterable<SubLevelItem> flowSubLevels,
   }) {
+    if (!AppConfig.storiesEnabled) return const [];
     if (mainStory == null) return const [];
     final byTitle = _itemByTitle(flowSubLevels, mainLevelId);
 

@@ -466,9 +466,9 @@
 			arrange v. A2
 **as adv. A2
 **as conj. A2
-**attack v. A2
+			attack v. A2
 **attend v. A2
-**attractive adj. A2
+			attractive adj. A2
 **available adj. A2
 			average adj. A2
 			average n. A2
@@ -584,7 +584,7 @@
 **deal v. A2
 			decision n. A2
 **deep adj. A2
-**depend v. A2
+			depend v. A2
 **destroy v. A2
 **develop v. A2
 			differently adv. A2
@@ -840,7 +840,7 @@
 			option n. A2
 			ordinary adj. A2
 			organization n. A2
-**organize v. A2
+			organize v. A2
 			original adj. A2
 			ourselves pron. A2
 			oven n. A2
@@ -906,7 +906,7 @@
 			progress v. A2
 **promise n. A2
 **promise v. A2
-**pronounce v. A2
+			pronounce v. A2
 **protect v. A2
 **provide v. A2
 			public adj. A2
@@ -940,17 +940,17 @@
 			recording n. A2
 			recycle v. A2
 **reduce v. A2
-**refer v. A2
+			refer v. A2
 			refrigerator n. A2
 			refuse1 v. A2
 			region n. A2
-**regular adj. A2
+			regular adj. A2
 			relationship n. A2
 **remove v. A2
 **repair v. A2
 **replace v. A2
-**reply n. A2
-**reply v. A2
+			reply n. A2
+			reply v. A2
 **report v. A2
 			reporter n. A2
 **request n. A2
@@ -967,7 +967,7 @@
 **ride n. A2
 			ring1 n. A2
 			ring2 v. A2
-**rise v. A2
+			rise v. A2
 			rock (music) n. A2
 			rock (stone) n. A2
 			role n. A2
@@ -1057,7 +1057,7 @@
 			sort n. A2
 			source n. A2
 			speaker n. A2
-**specific adj. A2
+			specific adj. A2
 			speech n. A2
 **speed n. A2
 			square adj. A2
@@ -1461,12 +1461,12 @@
 			entry n. B1
 			environmental adj. B1
 			episode n. B1
-**equal adj. B1
-**equal v. B1
+			equal adj. B1
+			equal v. B1
 			equally adv. B1
 **escape n. B1
 **escape v. B1
-**essential adj. B1
+			essential adj. B1
 			eventually adv. B1
 **examine v. B1
 **except conj. B1
@@ -1855,7 +1855,7 @@
 			respect n. B1
 			respect v. B1
 			responsibility n. B1
-**responsible adj. B1
+			responsible adj. B1
 			result v. B1
 			retire v. B1
 			retired adj. B1
@@ -2044,7 +2044,7 @@
 **vote n. B1
 **vote v. B1
 **warm v. B1
-			warn v. B1
+**warn v. B1
 			warning n. B1
 			waste adj. B1
 			waste n. B1
@@ -2169,7 +2169,7 @@
 **burn n. B2
 			bush n. B2
 **but prep. B2
-			calculate v. B2
+**calculate v. B2
 **cancel v. B2
 			cancer n. B2
 			capable adj. B2
@@ -2229,7 +2229,7 @@
 			consideration n. B2
 			consistent adj. B2
 			constant adj. B2
-**constantly adv. B2
+			constantly adv. B2
 			construct v. B2
 			construction n. B2
 			contemporary adj. B2
@@ -2280,7 +2280,7 @@
 			decoration n. B2
 			decrease n. B2
 			decrease v. B2
-**deeply adv. B2
+			deeply adv. B2
 			defeat n. B2
 			defeat v. B2
 			defend v. B2
@@ -2348,7 +2348,7 @@
 			enthusiastic adj. B2
 			entire adj. B2
 **entirely adv. B2
-**equal n. B2
+			equal n. B2
 			establish v. B2
 			estate n. B2
 **estimate n. B2
@@ -2690,7 +2690,7 @@
 			regret n. B2
 			regret v. B2
 			regulation n. B2
-**relatively adv. B2
+			relatively adv. B2
 			relevant adj. B2
 			relief n. B2
 			rely v. B2
@@ -2716,7 +2716,7 @@
 			reward v. B2
 			rhythm n. B2
 			rid v. B2
-**rise n. B2
+			rise n. B2
 			root n. B2
 			round n. B2
 			routine adj. B2
@@ -2763,8 +2763,8 @@
 **shelter v. B2
 			shift v. B2
 			ship v. B2
-**shock n. B2
-**shock v. B2
+			shock n. B2
+			shock v. B2
 			shocked adj. B2
 			shooting n. B2
 			shot n. B2

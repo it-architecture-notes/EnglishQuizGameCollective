@@ -1,0 +1,265 @@
+{
+  "levelQuestions": [
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "barn",
+        "wrongAnswers": [
+          "cottage",
+          "house",
+          "water-mill"
+        ]
+      }
+    },
+    {
+      "template": "ConvoTemplate-1",
+      "genders": "f-m",
+      "questionData": {
+        "line1": "Did you _____ the soil deep enough for the seeds?",
+        "line2": "Yes, I _____ it deep enough.",
+        "answer": "dig",
+        "distractors": [
+          "measure",
+          "water",
+          "push"
+        ]
+      },
+      "audio_file1": "did-you-dig-the-soil-deep-enough-for-the-seeds-convo",
+      "audio_file2": "yes-i-dig-it-deep-enough-convo"
+    },
+    {
+      "template": "ConvoTemplate-1",
+      "genders": "f-m",
+      "questionData": {
+        "line1": "The apples look so good! Can we ____ them now?",
+        "line2": "No, but we can _____ them next week.",
+        "answer": "pick",
+        "distractors": [
+          "sell",
+          "gather",
+          "carry"
+        ]
+      },
+      "audio_file1": "the-apples-look-so-good-can-we-pick-them-now-convo",
+      "audio_file2": "no-but-we-can-pick-them-next-week-convo"
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "hose",
+        "wrongAnswers": [
+          "bucket",
+          "water-tap",
+          "water-pipe"
+        ]
+      }
+    },
+    {
+      "template": "WordPairs",
+      "questionData": {
+        "english_words": [
+          "thin",
+          "thick",
+          "top",
+          "bottom"
+        ],
+        "translations": [
+          {
+            "tr": "ince",
+            "es": "delgado",
+            "fr": "mince",
+            "de": "dünn",
+            "it": "sottile",
+            "pt": "fino",
+            "ru": "тонкий",
+            "zh": "薄的",
+            "ja": "薄い",
+            "ko": "얇은",
+            "ar": "رفيع",
+            "hi": "पतला"
+          },
+          {
+            "tr": "kalın",
+            "es": "grueso",
+            "fr": "épais",
+            "de": "dick",
+            "it": "spesso",
+            "pt": "espesso",
+            "ru": "толстый",
+            "zh": "厚的",
+            "ja": "厚い",
+            "ko": "두꺼운",
+            "ar": "سميك",
+            "hi": "मोटा"
+          },
+          {
+            "tr": "üst",
+            "es": "parte superior",
+            "fr": "haut",
+            "de": "oben",
+            "it": "parte superiore",
+            "pt": "parte superior",
+            "ru": "верх",
+            "zh": "顶部",
+            "ja": "上部",
+            "ko": "위쪽",
+            "ar": "أعلى",
+            "hi": "ऊपरी भाग"
+          },
+          {
+            "tr": "alt",
+            "es": "parte inferior",
+            "fr": "bas",
+            "de": "unten",
+            "it": "parte inferiore",
+            "pt": "parte inferior",
+            "ru": "низ",
+            "zh": "底部",
+            "ja": "下部",
+            "ko": "아래쪽",
+            "ar": "أسفل",
+            "hi": "निचला भाग"
+          }
+        ]
+      }
+    },
+    {
+      "template": "DialogueCompletion",
+      "genders": "m-f",
+      "questionData": {
+        "line1": "Which animals do you like most on the farm?",
+        "answer": "I like to ride the horses",
+        "distractors": [
+          "I don't like the cows",
+          "I like to drive the horses",
+          "I cannot like any of them"
+        ]
+      },
+      "audio_file1": "which-animals-do-you-like-most-on-the-farm-convo",
+      "audio_file2": "i-like-to-ride-the-horses-convo"
+    },
+    {
+      "template": "AppearDisappear",
+      "genders": "m",
+      "questionData": {
+        "words": "You need to push hard to move the wheelbarrow.",
+        "distractors": [
+          "lift",
+          "softly",
+          "have",
+          "farm"
+        ]
+      },
+      "audio_file": "you-need-to-push-hard-to-move-the-wheelbarrow-convo"
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "tractor",
+        "wrongAnswers": [
+          "truck",
+          "excavator",
+          "forklift"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-2",
+      "questionData": {
+        "imageName": "shovel",
+        "wrongAnswers": [
+          "rake",
+          "wheelbarrow",
+          "hose"
+        ]
+      }
+    },
+    {
+      "template": "SentenceBuilder",
+      "genders": "f",
+      "questionData": {
+        "correct_order": "Farmers work hard to produce food."
+      },
+      "audio_file": "farmers-work-hard-to-produce-food-convo"
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "wheelbarrow",
+        "wrongAnswers": [
+          "tractor",
+          "carrier",
+          "stroller"
+        ]
+      }
+    },
+    {
+      "template": "ClozeSequence",
+      "genders": "m",
+      "questionData": {
+        "sentence": "We need to _____ a new _____ for the horses.",
+        "answer": [
+          "build",
+          "stable"
+        ],
+        "distractors": [
+          "water",
+          "open",
+          "barn",
+          "road"
+        ]
+      },
+      "audio_file": "we-need-to-build-a-new-stable-for-the-horses-convo"
+    },
+    {
+      "template": "GrammarForm",
+      "genders": "f",
+      "questionData": {
+        "sentence": "They decided to _____ chickens on their small farm.",
+        "answer": "raise",
+        "distractors": [
+          "raises",
+          "raised",
+          "raising"
+        ]
+      },
+      "audio_file": "they-decided-to-raise-chickens-on-their-small-farm-convo"
+    },
+    {
+      "template": "ClozeSequence",
+      "genders": "m",
+      "questionData": {
+        "sentence": "Before you _____ new seeds, you need to _____ out the weeds.",
+        "answer": [
+          "sow",
+          "pull"
+        ],
+        "distractors": [
+          "bury",
+          "push",
+          "grow",
+          "collect"
+        ]
+      },
+      "audio_file": "before-you-sow-new-seeds-you-need-to-pull-out-the-weeds-convo"
+    },
+    {
+      "template": "ClozeSequence",
+      "genders": "m",
+      "questionData": {
+        "sentence": "Farmers work hard to _____ in spring and to _____ in fall.",
+        "answer": [
+          "plant",
+          "harvest"
+        ],
+        "distractors": [
+          "grow",
+          "gather",
+          "grow",
+          "repair"
+        ]
+      },
+      "audio_file": "farmers-work-hard-to-plant-in-spring-and-to-harvest-in-fall-convo"
+    }
+  ]
+}

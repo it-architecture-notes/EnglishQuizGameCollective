@@ -1,0 +1,169 @@
+{
+  "levelQuestions": [
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "beach",
+        "wrongAnswers": [
+          "sand",
+          "stars",
+          "bush"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "bush",
+        "wrongAnswers": [
+          "beach",
+          "hill",
+          "canyon"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-2",
+      "questionData": {
+        "imageName": "canyon",
+        "wrongAnswers": [
+          "bush",
+          "hill",
+          "lake"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "cave",
+        "wrongAnswers": [
+          "leaf",
+          "volcano",
+          "beach"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "hill",
+        "wrongAnswers": [
+          "ocean",
+          "island",
+          "beach"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-2",
+      "questionData": {
+        "imageName": "island",
+        "wrongAnswers": [
+          "moon",
+          "ocean",
+          "sand"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "lake",
+        "wrongAnswers": [
+          "bush",
+          "beach",
+          "canyon"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "leaf",
+        "wrongAnswers": [
+          "hill",
+          "island",
+          "beach"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-2",
+      "questionData": {
+        "imageName": "moon",
+        "wrongAnswers": [
+          "volcano",
+          "bush",
+          "cave"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "mountain",
+        "wrongAnswers": [
+          "rocks",
+          "bush",
+          "beach"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "ocean",
+        "wrongAnswers": [
+          "volcano",
+          "lake",
+          "beach"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-2",
+      "questionData": {
+        "imageName": "rocks",
+        "wrongAnswers": [
+          "island",
+          "leaf",
+          "mountain"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "sand",
+        "wrongAnswers": [
+          "island",
+          "canyon",
+          "beach"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "stars",
+        "wrongAnswers": [
+          "moon",
+          "leaf",
+          "beach"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-2",
+      "questionData": {
+        "imageName": "volcano",
+        "wrongAnswers": [
+          "rocks",
+          "stars",
+          "bush"
+        ]
+      }
+    }
+  ]
+}

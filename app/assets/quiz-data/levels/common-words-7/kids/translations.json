@@ -1,0 +1,21 @@
+{
+  "translations_list": [
+    {
+      "english_word": "careful",
+      "translations": {
+        "tr": "dikkatli",
+        "es": "cuidadoso",
+        "fr": "prudent",
+        "de": "vorsichtig",
+        "it": "attento",
+        "pt": "cuidadoso",
+        "ru": "осторожный",
+        "zh": "小心的",
+        "ja": "注意深い",
+        "ko": "조심하는",
+        "ar": "حذر",
+        "hi": "सावधान"
+      }
+    }
+  ]
+}

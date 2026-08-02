@@ -1,0 +1,123 @@
+{
+  "translations_list": [
+    {
+      "english_word": "to feed",
+      "translations": {
+        "tr": "beslemek",
+        "es": "alimentar",
+        "fr": "nourrir",
+        "de": "füttern",
+        "it": "nutrire",
+        "pt": "alimentar",
+        "ru": "кормить",
+        "zh": "喂养",
+        "ja": "食べさせる",
+        "ko": "먹이다",
+        "ar": "يُطعم",
+        "hi": "खिलाना"
+      }
+    },
+    {
+      "english_word": "to talk",
+      "translations": {
+        "tr": "konuşmak",
+        "es": "hablar",
+        "fr": "parler",
+        "de": "sprechen",
+        "it": "parlare",
+        "pt": "falar",
+        "ru": "разговаривать",
+        "zh": "说话",
+        "ja": "話す",
+        "ko": "말하다",
+        "ar": "يتحدث",
+        "hi": "बात करना"
+      }
+    },
+    {
+      "english_word": "to cry",
+      "translations": {
+        "tr": "ağlamak",
+        "es": "llorar",
+        "fr": "pleurer",
+        "de": "weinen",
+        "it": "piangere",
+        "pt": "chorar",
+        "ru": "плакать",
+        "zh": "哭",
+        "ja": "泣く",
+        "ko": "울다",
+        "ar": "يبكي",
+        "hi": "रोना"
+      }
+    },
+    {
+      "english_word": "to smile",
+      "translations": {
+        "tr": "gülümsemek",
+        "es": "sonreír",
+        "fr": "sourire",
+        "de": "lächeln",
+        "it": "sorridere",
+        "pt": "sorrir",
+        "ru": "улыбаться",
+        "zh": "微笑",
+        "ja": "微笑む",
+        "ko": "미소 짓다",
+        "ar": "يبتسم",
+        "hi": "मुस्कुराना"
+      }
+    },
+    {
+      "english_word": "to hold",
+      "translations": {
+        "tr": "tutmak",
+        "es": "sostener",
+        "fr": "tenir",
+        "de": "halten",
+        "it": "tenere",
+        "pt": "segurar",
+        "ru": "держать",
+        "zh": "抱着",
+        "ja": "抱く",
+        "ko": "안다",
+        "ar": "يمسك",
+        "hi": "धारण करना"
+      }
+    },
+    {
+      "english_word": "to change",
+      "translations": {
+        "tr": "değiştirmek",
+        "es": "cambiar",
+        "fr": "changer",
+        "de": "wechseln",
+        "it": "cambiare",
+        "pt": "mudar",
+        "ru": "менять",
+        "zh": "换",
+        "ja": "変える",
+        "ko": "갈다",
+        "ar": "يغيّر",
+        "hi": "बदलना"
+      }
+    },
+    {
+      "english_word": "to kiss",
+      "translations": {
+        "tr": "öpmek",
+        "es": "besar",
+        "fr": "embrasser",
+        "de": "küssen",
+        "it": "baciare",
+        "pt": "beijar",
+        "ru": "целовать",
+        "zh": "亲吻",
+        "ja": "キスする",
+        "ko": "키스하다",
+        "ar": "يقبّل",
+        "hi": "चूमना"
+      }
+    }
+  ]
+}

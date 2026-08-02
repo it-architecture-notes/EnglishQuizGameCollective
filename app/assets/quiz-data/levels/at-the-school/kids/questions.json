@@ -1,0 +1,257 @@
+{
+  "levelQuestions": [
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "classroom",
+        "wrongAnswers": [
+          "library",
+          "theater",
+          "cafeteria"
+        ]
+      }
+    },
+    {
+      "template": "ConvoTemplate-1",
+      "genders": "m-m",
+      "questionData": {
+        "line1": "What do you want _____?",
+        "line2": "I want _____ new words.",
+        "answer": "to learn",
+        "distractors": [
+          "to read",
+          "to write",
+          "to say"
+        ]
+      },
+      "audio_file1": "what-do-you-want-to-learn-convo",
+      "audio_file2": "i-want-to-learn-new-words-convo"
+    },
+    {
+      "template": "ConvoTemplate-1",
+      "genders": "f-m",
+      "questionData": {
+        "line1": "What do you want to be?",
+        "line2": "I want to _____ kids.",
+        "answer": "teach",
+        "distractors": [
+          "help",
+          "see",
+          "play"
+        ]
+      },
+      "audio_file1": "what-do-you-want-to-be-convo",
+      "audio_file2": "i-want-to-teach-kids-convo"
+    },
+    {
+      "template": "AppearDisappear",
+      "genders": "f",
+      "questionData": {
+        "words": "We read and write in class.",
+        "distractors": [
+          "read",
+          "draw",
+          "play",
+          "homework"
+        ]
+      },
+      "audio_file": "we-read-and-write-in-class-convo"
+    },
+    {
+      "template": "imageQuizTemplate-2",
+      "questionData": {
+        "imageName": "library",
+        "wrongAnswers": [
+          "art-room",
+          "restroom",
+          "bookshelves"
+        ]
+      }
+    },
+    {
+      "template": "ConvoTemplate-1",
+      "genders": "f-m",
+      "questionData": {
+        "line1": "Do you _____ this word?",
+        "line2": "Yes, I _____ it.",
+        "answer": "know",
+        "distractors": [
+          "read",
+          "see",
+          "say"
+        ]
+      },
+      "audio_file1": "do-you-know-this-word-convo",
+      "audio_file2": "yes-i-know-it-convo"
+    },
+    {
+      "template": "WordPairs",
+      "questionData": {
+        "english_words": [
+          "hard",
+          "easy",
+          "right",
+          "wrong"
+        ],
+        "translations": [
+          {
+            "tr": "zor",
+            "es": "difícil",
+            "fr": "difficile",
+            "de": "schwierig",
+            "it": "difficile",
+            "pt": "difícil",
+            "ru": "трудный",
+            "zh": "难的",
+            "ja": "難しい",
+            "ko": "어려운",
+            "ar": "صعب",
+            "hi": "कठिन"
+          },
+          {
+            "tr": "kolay",
+            "es": "fácil",
+            "fr": "facile",
+            "de": "einfach",
+            "it": "facile",
+            "pt": "fácil",
+            "ru": "легкий",
+            "zh": "简单的",
+            "ja": "簡単",
+            "ko": "쉬운",
+            "ar": "سهل",
+            "hi": "आसान"
+          },
+          {
+            "tr": "doğru",
+            "es": "correcto",
+            "fr": "correct",
+            "de": "richtig",
+            "it": "giusto",
+            "pt": "certo",
+            "ru": "верно",
+            "zh": "正确的",
+            "ja": "正しい",
+            "ko": "맞는",
+            "ar": "صحيح",
+            "hi": "सही"
+          },
+          {
+            "tr": "yanlış",
+            "es": "equivocado",
+            "fr": "faux",
+            "de": "falsch",
+            "it": "sbagliato",
+            "pt": "errado",
+            "ru": "неправильный",
+            "zh": "错误的",
+            "ja": "間違っている",
+            "ko": "잘못된",
+            "ar": "خطأ",
+            "hi": "गलत"
+          }
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "cafeteria",
+        "wrongAnswers": [
+          "library",
+          "gym",
+          "restaurant"
+        ]
+      }
+    },
+    {
+      "template": "ClozeSequence",
+      "genders": "m",
+      "questionData": {
+        "sentence": "Please _____ it again!",
+        "answers": [
+          "read"
+        ],
+        "distractors": [
+          "write",
+          "say",
+          "see",
+          "know"
+        ]
+      },
+      "audio_file": "please-read-it-again-convo"
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "science-lab",
+        "wrongAnswers": [
+          "hall",
+          "art-room",
+          "gym"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "playground",
+        "wrongAnswers": [
+          "skater-area",
+          "arena",
+          "kids-area"
+        ]
+      }
+    },
+    {
+      "template": "SentenceBuilder",
+      "genders": "m",
+      "questionData": {
+        "correct_order": "This class is fun."
+      },
+      "audio_file": "this-class-is-fun-convo"
+    },
+    {
+      "template": "AppearDisappear",
+      "genders": "m",
+      "questionData": {
+        "words": "The teacher asks a question.",
+        "distractors": [
+          "hard",
+          "know",
+          "see",
+          "answer"
+        ]
+      },
+      "audio_file": "the-teacher-asks-a-question-convo"
+    },
+    {
+      "template": "GrammarForm",
+      "genders": "m",
+      "questionData": {
+        "sentence": "When do you ____ your homework?",
+        "answer": "do",
+        "distractors": [
+          "does",
+          "did",
+          "doing"
+        ]
+      }
+    },
+    {
+      "template": "DialogueCompletion",
+      "genders": "f-m",
+      "questionData": {
+        "line1": "Who knows this answer?",
+        "answer": "I do! I know it!",
+        "distractors": [
+          "I don't know.",
+          "Please read it.",
+          "He knows it."
+        ]
+      },
+      "audio_file1": "who-knows-this-answer-convo",
+      "audio_file2": "i-do-i-know-it-convo"
+    }
+  ]
+}

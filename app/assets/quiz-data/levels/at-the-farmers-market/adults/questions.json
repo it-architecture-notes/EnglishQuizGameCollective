@@ -1,0 +1,258 @@
+{
+  "levelQuestions": [
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "kiosk",
+        "wrongAnswers": [
+          "table",
+          "bench",
+          "tent"
+        ]
+      }
+    },
+    {
+      "template": "ConvoTemplate-1",
+      "genders": "f-m",
+      "questionData": {
+        "line1": "What does she do at the farmers market?",
+        "line2": "She _____ vegetables.",
+        "answer": "sells",
+        "distractors": [
+          "goes",
+          "counts",
+          "makes"
+        ]
+      },
+      "audio_file1": "what-does-she-do-at-the-farmers-market-convo",
+      "audio_file2": "she-sells-vegetables-convo"
+    },
+    {
+      "template": "imageQuizTemplate-2",
+      "questionData": {
+        "imageName": "basket",
+        "wrongAnswers": [
+          "scale",
+          "chalkboard",
+          "tent"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "chalkboard",
+        "wrongAnswers": [
+          "wooden-board",
+          "wall",
+          "price-tag"
+        ]
+      }
+    },
+    {
+      "template": "WordPairs",
+      "questionData": {
+        "english_words": [
+          "free",
+          "expensive",
+          "cheap",
+          "on sale"
+        ],
+        "translations": [
+          {
+            "tr": "ücretsiz",
+            "es": "gratis",
+            "fr": "gratuit",
+            "de": "kostenlos",
+            "it": "gratuito",
+            "pt": "grátis",
+            "ru": "бесплатный",
+            "zh": "免费的",
+            "ja": "無料",
+            "ko": "무료",
+            "ar": "مجاني",
+            "hi": "मुफ़्त"
+          },
+          {
+            "tr": "pahalı",
+            "es": "caro",
+            "fr": "cher",
+            "de": "teuer",
+            "it": "caro",
+            "pt": "caro",
+            "ru": "дорогой",
+            "zh": "贵的",
+            "ja": "高い",
+            "ko": "비싼",
+            "ar": "غالي",
+            "hi": "महंगा"
+          },
+          {
+            "tr": "ucuz",
+            "es": "barato",
+            "fr": "bon marché",
+            "de": "billig",
+            "it": "economico",
+            "pt": "barato",
+            "ru": "дешевый",
+            "zh": "便宜的",
+            "ja": "安い",
+            "ko": "싼",
+            "ar": "رخيص",
+            "hi": "सस्ता"
+          },
+          {
+            "tr": "satışta",
+            "es": "en oferta",
+            "fr": "en promotion",
+            "de": "im Angebot",
+            "it": "in offerta",
+            "pt": "em promoção",
+            "ru": "со скидкой",
+            "zh": "打折",
+            "ja": "セール中",
+            "ko": "할인 중",
+            "ar": "بسعر مخفض",
+            "hi": "छूट पर"
+          }
+        ]
+      }
+    },
+    {
+      "template": "DialogueCompletion",
+      "genders": "m-f",
+      "questionData": {
+        "line1": "Is this bread fresh today?",
+        "answer": "Yes, it is very fresh.",
+        "distractors": [
+          "The seller is very polite.",
+          "I need to compare the prices first.",
+          "This market is very crowded today."
+        ]
+      },
+      "audio_file1": "is-this-bread-fresh-today-convo",
+      "audio_file2": "yes-it-is-very-fresh-convo"
+    },
+    {
+      "template": "AppearDisappear",
+      "genders": "f",
+      "questionData": {
+        "words": "The seller greets every customer.",
+        "distractors": [
+          "fresh",
+          "market",
+          "bread",
+          "he"
+        ]
+      },
+      "audio_file": "the-seller-greets-every-customer-convo"
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "scale",
+        "wrongAnswers": [
+          "basket",
+          "cart",
+          "weight"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "seller",
+        "wrongAnswers": [
+          "giver",
+          "talker",
+          "helper"
+        ]
+      }
+    },
+    {
+      "template": "SentenceBuilder",
+      "genders": "m",
+      "questionData": {
+        "correct_order": "The ripe mango smells sweet."
+      },
+      "audio_file": "the-ripe-mango-smells-sweet-convo"
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "tent",
+        "wrongAnswers": [
+          "store",
+          "kiosk",
+          "chalkboard"
+        ]
+      }
+    },
+    {
+      "template": "ClozeSequence",
+      "genders": "m",
+      "questionData": {
+        "sentence": "I _____ the ______ before I buy honey.",
+        "answer": [
+          "reduce",
+          "price"
+        ],
+        "distractors": [
+          "count",
+          "look",
+          "smell"
+        ]
+      },
+      "audio_file": "i-reduce-the-price-before-i-buy-honey-convo"
+    },
+    {
+      "template": "GrammarForm",
+      "genders": "m",
+      "questionData": {
+        "sentence": "Farmers are _____ shoppers by setting out samples.",
+        "answer": "welcoming",
+        "distractors": [
+          "welcomes",
+          "welcomed",
+          "welcome"
+        ]
+      }
+    },
+    {
+      "template": "ClozeSequence",
+      "genders": "m",
+      "questionData": {
+        "sentence": "The market is _____ because its _____ produce is so popular.",
+        "answer": [
+          "crowded",
+          "local"
+        ],
+        "distractors": [
+          "fresh",
+          "cheap",
+          "popular",
+          "expensive"
+        ]
+      },
+      "audio_file": "the-market-is-crowded-because-its-local-produce-is-so-popular-convo"
+    },
+    {
+      "template": "ClozeSequence",
+      "genders": "f",
+      "questionData": {
+        "sentence": "She will _____ the boxes and _____ the fruit.",
+        "answer": [
+          "unload",
+          "display"
+        ],
+        "distractors": [
+          "load",
+          "carry",
+          "sell",
+          "hide"
+        ]
+      },
+      "audio_file": "she-will-unload-the-boxes-and-display-the-fruit-convo"
+    }
+  ]
+}

@@ -1,0 +1,265 @@
+{
+  "levelQuestions": [
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "atm",
+        "wrongAnswers": [
+          "teller",
+          "kiosk",
+          "bank-vault"
+        ]
+      }
+    },
+    {
+      "template": "ConvoTemplate-1",
+      "genders": "f-m",
+      "questionData": {
+        "line1": "Why will she go to the bank?",
+        "line2": "She will _____ money.",
+        "answer": "deposit",
+        "distractors": [
+          "check",
+          "balance",
+          "call"
+        ]
+      },
+      "audio_file1": "why-will-she-go-to-the-bank-convo",
+      "audio_file2": "she-will-deposit-money-convo"
+    },
+    {
+      "template": "ConvoTemplate-1",
+      "genders": "f-m",
+      "questionData": {
+        "line1": "I need to ______ some cash.",
+        "line2": "How much do you need?",
+        "answer": "withdraw",
+        "distractors": [
+          "study",
+          "bake",
+          "balance"
+        ]
+      },
+      "audio_file1": "i-need-to-withdraw-some-cash-convo",
+      "audio_file2": "how-much-do-you-need-convo"
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "cheque",
+        "wrongAnswers": [
+          "credit-card",
+          "wallet",
+          "bank-note"
+        ]
+      }
+    },
+    {
+      "template": "WordPairs",
+      "questionData": {
+        "english_words": [
+          "if",
+          "though",
+          "until",
+          "often"
+        ],
+        "translations": [
+          {
+            "tr": "eğer",
+            "es": "si",
+            "fr": "si",
+            "de": "wenn",
+            "it": "se",
+            "pt": "se",
+            "ru": "если",
+            "zh": "如果",
+            "ja": "もし",
+            "ko": "만약",
+            "ar": "إذا",
+            "hi": "अगर"
+          },
+          {
+            "tr": "olmasına rağmen",
+            "es": "aunque",
+            "fr": "bien que",
+            "de": "obwohl",
+            "it": "anche se",
+            "pt": "embora",
+            "ru": "хотя",
+            "zh": "虽然",
+            "ja": "けれども",
+            "ko": "비록 ~일지라도",
+            "ar": "على الرغم من أن",
+            "hi": "हालाँकि"
+          },
+          {
+            "tr": "kadar",
+            "es": "hasta",
+            "fr": "jusqu'à",
+            "de": "bis",
+            "it": "fino a",
+            "pt": "até",
+            "ru": "до",
+            "zh": "直到",
+            "ja": "まで",
+            "ko": "~까지",
+            "ar": "حتى",
+            "hi": "तक"
+          },
+          {
+            "tr": "sıklıkla",
+            "es": "a menudo",
+            "fr": "souvent",
+            "de": "oft",
+            "it": "spesso",
+            "pt": "frequentemente",
+            "ru": "часто",
+            "zh": "经常",
+            "ja": "よく",
+            "ko": "자주",
+            "ar": "غالباً",
+            "hi": "अक्सर"
+          }
+        ]
+      }
+    },
+    {
+      "template": "DialogueCompletion",
+      "genders": "m-f",
+      "questionData": {
+        "line1": "What do you want to do with your $10?",
+        "answer": "I want to save it",
+        "distractors": [
+          "I want to carry it",
+          "How much can I take?",
+          "I already spent it"
+        ]
+      },
+      "audio_file1": "what-do-you-want-to-do-with-your-10-convo",
+      "audio_file2": "i-want-to-save-it-convo"
+    },
+    {
+      "template": "AppearDisappear",
+      "genders": "m",
+      "questionData": {
+        "words": "Sign here and we will lend you money.",
+        "distractors": [
+          "only",
+          "leave",
+          "top",
+          "letter"
+        ]
+      },
+      "audio_file": "sign-here-and-we-will-lend-you-money-convo"
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "teller-clerk",
+        "wrongAnswers": [
+          "person",
+          "customer",
+          "guard"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "wallet",
+        "wrongAnswers": [
+          "cash",
+          "cheque",
+          "credit-card"
+        ]
+      }
+    },
+    {
+      "template": "SentenceBuilder",
+      "genders": "f",
+      "questionData": {
+        "correct_order": "Fill in this form please."
+      },
+      "audio_file": "fill-in-this-form-please-convo"
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "money",
+        "wrongAnswers": [
+          "credit-card",
+          "wallet",
+          "bank-note"
+        ]
+      }
+    },
+    {
+      "template": "ClozeSequence",
+      "genders": "f",
+      "questionData": {
+        "sentence": "The bank will _____ your card _____.",
+        "answer": [
+          "approve",
+          "application"
+        ],
+        "distractors": [
+          "deny",
+          "reject",
+          "savings",
+          "balance"
+        ]
+      },
+      "audio_file": "the-bank-will-approve-your-card-application-convo"
+    },
+    {
+      "template": "GrammarForm",
+      "genders": "m",
+      "questionData": {
+        "sentence": "He _____ his card to the ATM.",
+        "answer": "inserted",
+        "distractors": [
+          "insert",
+          "inserts",
+          "will insert"
+        ]
+      },
+      "audio_file": "he-inserted-his-card-to-the-atm-convo"
+    },
+    {
+      "template": "ClozeSequence",
+      "genders": "m",
+      "questionData": {
+        "sentence": "They wanted to _____ for a _____ loan and the bank _____.",
+        "answer": [
+          "apply",
+          "large",
+          "denied"
+        ],
+        "distractors": [
+          "borrow",
+          "small",
+          "accept"
+        ]
+      },
+      "audio_file": "they-wanted-to-apply-for-a-large-loan-and-the-bank-denied-convo"
+    },
+    {
+      "template": "ClozeSequence",
+      "genders": "m",
+      "questionData": {
+        "sentence": "I want to _____ a new _____ please.",
+        "answer": [
+          "open",
+          "account"
+        ],
+        "distractors": [
+          "close",
+          "borrow",
+          "cash",
+          "report"
+        ]
+      },
+      "audio_file": "i-want-to-open-a-new-account-please-convo"
+    }
+  ]
+}

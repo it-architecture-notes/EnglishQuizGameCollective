@@ -1,0 +1,106 @@
+{
+  "translations_list": [
+    {
+      "english_word": "to play",
+      "translations": {
+        "tr": "oynamak",
+        "es": "jugar",
+        "fr": "jouer",
+        "de": "spielen",
+        "it": "giocare",
+        "pt": "brincar",
+        "ru": "играть",
+        "zh": "玩",
+        "ja": "遊ぶ",
+        "ko": "놀다",
+        "ar": "يلعب",
+        "hi": "खेलना"
+      }
+    },
+    {
+      "english_word": "ball",
+      "translations": {
+        "tr": "top",
+        "es": "pelota",
+        "fr": "ballon",
+        "de": "Ball",
+        "it": "palla",
+        "pt": "bola",
+        "ru": "мяч",
+        "zh": "球",
+        "ja": "ボール",
+        "ko": "공",
+        "ar": "كرة",
+        "hi": "गेंद"
+      }
+    },
+    {
+      "english_word": "to run",
+      "translations": {
+        "tr": "koşmak",
+        "es": "correr",
+        "fr": "courir",
+        "de": "laufen",
+        "it": "correre",
+        "pt": "correr",
+        "ru": "бегать",
+        "zh": "跑",
+        "ja": "走る",
+        "ko": "달리다",
+        "ar": "يركض",
+        "hi": "दौड़ना"
+      }
+    },
+    {
+      "english_word": "dog",
+      "translations": {
+        "tr": "köpek",
+        "es": "perro",
+        "fr": "chien",
+        "de": "Hund",
+        "it": "cane",
+        "pt": "cachorro",
+        "ru": "собака",
+        "zh": "狗",
+        "ja": "犬",
+        "ko": "개",
+        "ar": "كلب",
+        "hi": "कुत्ता"
+      }
+    },
+    {
+      "english_word": "to see",
+      "translations": {
+        "tr": "görmek",
+        "es": "ver",
+        "fr": "voir",
+        "de": "sehen",
+        "it": "vedere",
+        "pt": "ver",
+        "ru": "видеть",
+        "zh": "看",
+        "ja": "見る",
+        "ko": "보다",
+        "ar": "يرى",
+        "hi": "देखना"
+      }
+    },
+    {
+      "english_word": "at",
+      "translations": {
+        "tr": "-de/-da",
+        "es": "en",
+        "fr": "à",
+        "de": "bei",
+        "it": "a",
+        "pt": "em",
+        "ru": "в",
+        "zh": "在",
+        "ja": "で",
+        "ko": "에",
+        "ar": "في",
+        "hi": "पर"
+      }
+    }
+  ]
+}

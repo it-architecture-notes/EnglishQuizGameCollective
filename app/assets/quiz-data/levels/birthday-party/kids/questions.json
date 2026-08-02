@@ -1,0 +1,260 @@
+{
+  "levelQuestions": [
+    {
+      "template": "imageQuizTemplate-2",
+      "questionData": {
+        "imageName": "birthday-cake",
+        "wrongAnswers": [
+          "gift",
+          "ribbon",
+          "banners"
+        ],
+        "answer": "birthday cake"
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "banners",
+        "wrongAnswers": [
+          "streamers",
+          "flags",
+          "posters"
+        ]
+      }
+    },
+    {
+      "template": "ConvoTemplate-1",
+      "genders": "f-f",
+      "questionData": {
+        "line1": "Are you _____ on your birthday?",
+        "line2": "Yes, I am very _____! I love birthdays!",
+        "answer": "happy",
+        "distractors": [
+          "jumping",
+          "crying",
+          "running"
+        ]
+      },
+      "audio_file1": "are-you-happy-on-your-birthday-convo",
+      "audio_file2": "yes-i-am-very-happy-i-love-birthdays-convo"
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "gift",
+        "wrongAnswers": [
+          "envelope",
+          "balloon",
+          "trophy"
+        ]
+      }
+    },
+    {
+      "template": "WordPairs",
+      "questionData": {
+        "english_words": [
+          "big",
+          "small",
+          "fun",
+          "special"
+        ],
+        "translations": [
+          {
+            "tr": "büyük",
+            "es": "grande",
+            "fr": "grand",
+            "de": "groß",
+            "it": "grande",
+            "pt": "grande",
+            "ru": "большой",
+            "zh": "大的",
+            "ja": "大きい",
+            "ko": "큰",
+            "ar": "كبير",
+            "hi": "बड़ा"
+          },
+          {
+            "tr": "küçük",
+            "es": "pequeño",
+            "fr": "petit",
+            "de": "klein",
+            "it": "piccolo",
+            "pt": "pequeno",
+            "ru": "маленький",
+            "zh": "小的",
+            "ja": "小さい",
+            "ko": "작은",
+            "ar": "صغير",
+            "hi": "छोटा"
+          },
+          {
+            "tr": "eğlenceli",
+            "es": "divertido",
+            "fr": "amusant",
+            "de": "spaßig",
+            "it": "divertente",
+            "pt": "divertido",
+            "ru": "весёлый",
+            "zh": "有趣的",
+            "ja": "楽しい",
+            "ko": "재미있는",
+            "ar": "ممتع",
+            "hi": "मज़ेदार"
+          },
+          {
+            "tr": "özel",
+            "es": "especial",
+            "fr": "spécial",
+            "de": "besonders",
+            "it": "speciale",
+            "pt": "especial",
+            "ru": "особенный",
+            "zh": "特别的",
+            "ja": "特別な",
+            "ko": "특별한",
+            "ar": "خاص",
+            "hi": "खास"
+          }
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "clown",
+        "wrongAnswers": [
+          "juggler",
+          "magician",
+          "acrobat"
+        ]
+      }
+    },
+    {
+      "template": "ConvoTemplate-1",
+      "genders": "f-m",
+      "questionData": {
+        "line1": "Do you _____ Sam to play?",
+        "line2": "Yes, I _____ him.",
+        "answer": "invite",
+        "distractors": [
+          "see",
+          "help",
+          "call"
+        ]
+      },
+      "audio_file1": "do-you-invite-sam-to-play-convo",
+      "audio_file2": "yes-i-invite-him-convo"
+    },
+    {
+      "template": "AppearDisappear",
+      "genders": "f",
+      "questionData": {
+        "words": "We play at the party.",
+        "distractors": [
+          "read",
+          "write",
+          "draw",
+          "sing"
+        ]
+      },
+      "audio_file": "we-play-at-the-party-convo"
+    },
+    {
+      "template": "ClozeSequence",
+      "genders": "f",
+      "questionData": {
+        "sentence": "She _____ the candles.",
+        "answers": [
+          "blows"
+        ],
+        "distractors": [
+          "sees",
+          "holds",
+          "gets",
+          "likes"
+        ]
+      },
+      "audio_file": "she-blows-the-candles-convo"
+    },
+    {
+      "template": "SentenceBuilder",
+      "genders": "f",
+      "questionData": {
+        "correct_order": "We have banners here."
+      },
+      "audio_file": "we-have-banners-here-convo"
+    },
+    {
+      "template": "GrammarForm",
+      "genders": "f",
+      "questionData": {
+        "sentence": "She _____ her birthday.",
+        "answer": "has",
+        "distractors": [
+          "have",
+          "had",
+          "having"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "ribbon",
+        "wrongAnswers": [
+          "bow",
+          "string",
+          "tape"
+        ]
+      }
+    },
+    {
+      "template": "DialogueCompletion",
+      "genders": "m-f",
+      "questionData": {
+        "line1": "When do you open gifts?",
+        "answer": "At the party.",
+        "distractors": [
+          "I like gifts.",
+          "The cake is big.",
+          "We sing now."
+        ]
+      },
+      "audio_file1": "when-do-you-open-gifts-convo",
+      "audio_file2": "at-the-party-convo"
+    },
+    {
+      "template": "ClozeSequence",
+      "genders": "m",
+      "questionData": {
+        "sentence": "We _____ Happy Birthday.",
+        "answers": [
+          "sing"
+        ],
+        "distractors": [
+          "read",
+          "write",
+          "play",
+          "draw"
+        ]
+      },
+      "audio_file": "we-sing-happy-birthday-convo"
+    },
+    {
+      "template": "DialogueCompletion",
+      "genders": "m-f",
+      "questionData": {
+        "line1": "Is the party a surprise?",
+        "answer": "Yes, it is!",
+        "distractors": [
+          "The cake is big.",
+          "We sing now.",
+          "I like gifts."
+        ]
+      },
+      "audio_file1": "is-the-party-a-surprise-convo",
+      "audio_file2": "yes-it-is-convo"
+    }
+  ]
+}

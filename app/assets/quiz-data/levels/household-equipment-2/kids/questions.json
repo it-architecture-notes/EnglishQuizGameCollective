@@ -1,0 +1,136 @@
+{
+  "levelQuestions": [
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "batteries",
+        "wrongAnswers": [
+          "screws",
+          "tissue",
+          "broom"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "broom",
+        "wrongAnswers": [
+          "drill",
+          "keychain",
+          "batteries"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-2",
+      "questionData": {
+        "imageName": "bucket",
+        "wrongAnswers": [
+          "dustpan",
+          "mop",
+          "screws"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "drill",
+        "wrongAnswers": [
+          "tissue",
+          "mop",
+          "batteries"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "dustpan",
+        "wrongAnswers": [
+          "drill",
+          "broom",
+          "batteries"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-2",
+      "questionData": {
+        "imageName": "flashlight",
+        "wrongAnswers": [
+          "keychain",
+          "screw",
+          "batteries"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "keychain",
+        "wrongAnswers": [
+          "batteries",
+          "bucket",
+          "broom"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "mop",
+        "wrongAnswers": [
+          "dustpan",
+          "screw",
+          "batteries"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-2",
+      "questionData": {
+        "imageName": "pliers",
+        "wrongAnswers": [
+          "mop",
+          "tissue",
+          "bucket"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "screw",
+        "wrongAnswers": [
+          "broom",
+          "screws",
+          "batteries"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "screws",
+        "wrongAnswers": [
+          "flashlight",
+          "dustpan",
+          "batteries"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-2",
+      "questionData": {
+        "imageName": "tissue",
+        "wrongAnswers": [
+          "screw",
+          "broom",
+          "dustpan"
+        ]
+      }
+    }
+  ]
+}

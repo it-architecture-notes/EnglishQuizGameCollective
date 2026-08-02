@@ -1,0 +1,260 @@
+{
+  "levelQuestions": [
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "ambulance",
+        "wrongAnswers": [
+          "fire-truck",
+          "bus",
+          "emergency-bus"
+        ]
+      }
+    },
+    {
+      "template": "ConvoTemplate-1",
+      "genders": "f-m",
+      "questionData": {
+        "line1": "Did you get hurt?",
+        "line2": "Yes, a little.",
+        "answer": "hurt",
+        "distractors": [
+          "feel",
+          "fall",
+          "lose"
+        ]
+      },
+      "audio_file1": "did-you-get-hurt-convo",
+      "audio_file2": "yes-a-little-convo"
+    },
+    {
+      "template": "ConvoTemplate-1",
+      "genders": "f-m",
+      "questionData": {
+        "line1": "You look sick.",
+        "line2": "My head feels _____.",
+        "answer": "hot",
+        "distractors": [
+          "cold",
+          "wet",
+          "sad"
+        ]
+      },
+      "audio_file1": "you-look-sick-convo",
+      "audio_file2": "my-head-feels-convo"
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "caregiver",
+        "wrongAnswers": [
+          "doctor",
+          "taker",
+          "checker-person"
+        ]
+      }
+    },
+    {
+      "template": "WordPairs",
+      "questionData": {
+        "english_words": [
+          "high",
+          "low",
+          "weak",
+          "strong"
+        ],
+        "translations": [
+          {
+            "tr": "yüksek",
+            "es": "alto",
+            "fr": "haut",
+            "de": "hoch",
+            "it": "alto",
+            "pt": "alto",
+            "ru": "высокий",
+            "zh": "高的",
+            "ja": "高い",
+            "ko": "높은",
+            "ar": "عالي",
+            "hi": "उच्च"
+          },
+          {
+            "tr": "Düşük",
+            "es": "bajo",
+            "fr": "bas",
+            "de": "niedrig",
+            "it": "Basso",
+            "pt": "baixo",
+            "ru": "низкий",
+            "zh": "低的",
+            "ja": "低い",
+            "ko": "낮은",
+            "ar": "قليل",
+            "hi": "कम"
+          },
+          {
+            "tr": "zayıf",
+            "es": "débil",
+            "fr": "faible",
+            "de": "schwach",
+            "it": "Debole",
+            "pt": "fraco",
+            "ru": "слабый",
+            "zh": "虚弱的",
+            "ja": "弱い",
+            "ko": "약한",
+            "ar": "ضعيف",
+            "hi": "कमज़ोर"
+          },
+          {
+            "tr": "güçlü",
+            "es": "fuerte",
+            "fr": "fort",
+            "de": "stark",
+            "it": "forte",
+            "pt": "forte",
+            "ru": "сильный",
+            "zh": "强的",
+            "ja": "強い",
+            "ko": "강한",
+            "ar": "قوي",
+            "hi": "मज़बूत"
+          }
+        ]
+      }
+    },
+    {
+      "template": "ClozeSequence",
+      "genders": "f",
+      "questionData": {
+        "sentence": "Doctors _____ sick people.",
+        "answer": [
+          "help"
+        ],
+        "distractors": [
+          "run",
+          "sleep",
+          "read",
+          "cook"
+        ]
+      },
+      "audio_file": "doctors-sick-people-convo"
+    },
+    {
+      "template": "AppearDisappear",
+      "genders": "m",
+      "questionData": {
+        "words": "The doctor says rest.",
+        "distractors": [
+          "run",
+          "jump",
+          "sing",
+          "dance"
+        ]
+      },
+      "audio_file": "the-doctor-says-rest-convo"
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "crutches",
+        "wrongAnswers": [
+          "walker",
+          "wheelchair",
+          "cane"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "gurney",
+        "wrongAnswers": [
+          "operating-table",
+          "carry-on",
+          "examination-table"
+        ]
+      }
+    },
+    {
+      "template": "SentenceBuilder",
+      "genders": "f",
+      "questionData": {
+        "correct_order": "Take a deep breath."
+      },
+      "audio_file": "take-a-deep-breath-convo"
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "patient",
+        "wrongAnswers": [
+          "weak",
+          "customer",
+          "visitor"
+        ]
+      }
+    },
+    {
+      "template": "ClozeSequence",
+      "genders": "f",
+      "questionData": {
+        "sentence": "The doctor can _____ you.",
+        "answer": [
+          "help"
+        ],
+        "distractors": [
+          "run",
+          "sleep",
+          "read"
+        ]
+      },
+      "audio_file": "the-doctor-can-you-convo"
+    },
+    {
+      "template": "GrammarForm",
+      "genders": "f",
+      "questionData": {
+        "sentence": "The doctor _____ me.",
+        "answer": "helps",
+        "distractors": [
+          "help",
+          "helped",
+          "helping"
+        ]
+      }
+    },
+    {
+      "template": "ClozeSequence",
+      "genders": "m",
+      "questionData": {
+        "sentence": "My arm _____ now.",
+        "answer": [
+          "hurts"
+        ],
+        "distractors": [
+          "help",
+          "sleep",
+          "read",
+          "cook"
+        ]
+      },
+      "audio_file": "my-arm-now-convo"
+    },
+    {
+      "template": "DialogueCompletion",
+      "genders": "m-f",
+      "questionData": {
+        "line1": "Can he go home?",
+        "answer": "Yes, he can go home.",
+        "distractors": [
+          "No, I am tired.",
+          "I read a book.",
+          "It is a big dog."
+        ]
+      },
+      "audio_file1": "can-he-go-home-convo",
+      "audio_file2": "yes-he-can-go-home-convo"
+    }
+  ]
+}

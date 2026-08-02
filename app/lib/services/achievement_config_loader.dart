@@ -2,6 +2,8 @@ import 'dart:convert';
 
 import 'package:flutter/services.dart';
 
+import '../app_flavor.dart';
+
 /// One achievement definition from config.
 class AchievementDefinition {
   const AchievementDefinition({
@@ -41,12 +43,21 @@ class AchievementDefinition {
   }
 }
 
-const String _path = 'assets/data/config/achievements.json';
+const String _adultPath = 'assets/data/config/achievements.json';
+const String _kidsPath = 'assets/data/config/achievements-kids.json';
 
-/// Loads achievement definitions from assets.
+/// Loads achievement definitions from assets. Kids flavor loads
+/// `achievements-kids.json`, falling back to the adult file if missing.
 Future<List<AchievementDefinition>> loadAchievementConfig() async {
+  final path = AppConfig.isKids ? _kidsPath : _adultPath;
   try {
-    final json = await rootBundle.loadString(_path);
+    String json;
+    try {
+      json = await rootBundle.loadString(path);
+    } catch (_) {
+      if (path == _adultPath) rethrow;
+      json = await rootBundle.loadString(_adultPath);
+    }
     final map = jsonDecode(json) as Map<String, dynamic>;
     final list = map['achievements'] as List<dynamic>? ?? [];
     return list

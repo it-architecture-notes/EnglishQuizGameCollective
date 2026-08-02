@@ -1,0 +1,204 @@
+{
+  "levelQuestions": [
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "apple",
+        "wrongAnswers": [
+          "dates",
+          "fig",
+          "avocado"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "avocado",
+        "wrongAnswers": [
+          "apple",
+          "blackberry",
+          "blueberry"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-2",
+      "questionData": {
+        "imageName": "blackberry",
+        "wrongAnswers": [
+          "mango",
+          "pumpkin",
+          "watermelon"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "blueberry",
+        "wrongAnswers": [
+          "apple",
+          "grapefruit",
+          "avocado"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "carrot",
+        "wrongAnswers": [
+          "blueberry",
+          "raspberry",
+          "apple"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-2",
+      "questionData": {
+        "imageName": "cranberry",
+        "wrongAnswers": [
+          "avocado",
+          "blueberry",
+          "dates"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "dates",
+        "wrongAnswers": [
+          "mango",
+          "avocado",
+          "apple"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "fig",
+        "wrongAnswers": [
+          "raspberry",
+          "watermelon",
+          "apple"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-2",
+      "questionData": {
+        "imageName": "grapefruit",
+        "wrongAnswers": [
+          "fig",
+          "mango",
+          "pumpkin"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "lettuce",
+        "wrongAnswers": [
+          "carrot",
+          "mango",
+          "apple"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "mango",
+        "wrongAnswers": [
+          "fig",
+          "apple",
+          "avocado"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-2",
+      "questionData": {
+        "imageName": "pear",
+        "wrongAnswers": [
+          "watermelon",
+          "avocado",
+          "blueberry"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "pumpkin",
+        "wrongAnswers": [
+          "watermelon",
+          "mango",
+          "apple"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "lemon",
+        "wrongAnswers": [
+          "orange",
+          "pineapple",
+          "banana"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "raspberry",
+        "wrongAnswers": [
+          "blackberry",
+          "avocado",
+          "apple"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-2",
+      "questionData": {
+        "imageName": "watermelon",
+        "wrongAnswers": [
+          "cranberry",
+          "fig",
+          "lettuce"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "peach-fruit",
+        "answer": "peach",
+        "wrongAnswers": [
+          "apple",
+          "pear",
+          "apricot"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "olive-fruit",
+        "answer": "olive",
+        "wrongAnswers": [
+          "avocado",
+          "grape",
+          "fig"
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,191 @@
+{
+  "translations_list": [
+    {
+      "english_word": "to set the table",
+      "translations": {
+        "tr": "masayı kurmak",
+        "es": "poner la mesa",
+        "fr": "mettre la table",
+        "de": "den Tisch decken",
+        "it": "apparecchiare la tavola",
+        "pt": "pôr a mesa",
+        "ru": "накрывать на стол",
+        "zh": "摆餐桌",
+        "ja": "テーブルをセットする",
+        "ko": "식탁을 차리다",
+        "ar": "يجهز المائدة",
+        "hi": "मेज़ लगाना"
+      }
+    },
+    {
+      "english_word": "to cook",
+      "translations": {
+        "tr": "yemek pişirmek",
+        "es": "cocinar",
+        "fr": "cuisiner",
+        "de": "kochen",
+        "it": "cucinare",
+        "pt": "cozinhar",
+        "ru": "готовить",
+        "zh": "做饭",
+        "ja": "料理する",
+        "ko": "요리하다",
+        "ar": "يطهو",
+        "hi": "खाना बनाना"
+      }
+    },
+    {
+      "english_word": "to cut",
+      "translations": {
+        "tr": "kesmek",
+        "es": "cortar",
+        "fr": "couper",
+        "de": "schneiden",
+        "it": "tagliare",
+        "pt": "cortar",
+        "ru": "резать",
+        "zh": "切",
+        "ja": "切る",
+        "ko": "자르다",
+        "ar": "يقطع",
+        "hi": "काटना"
+      }
+    },
+    {
+      "english_word": "sharp",
+      "translations": {
+        "tr": "keskin",
+        "es": "afilado",
+        "fr": "tranchant",
+        "de": "scharf",
+        "it": "affilato",
+        "pt": "afiado",
+        "ru": "острый",
+        "zh": "锋利的",
+        "ja": "鋭い",
+        "ko": "날카로운",
+        "ar": "حاد",
+        "hi": "तेज़"
+      }
+    },
+    {
+      "english_word": "to mix",
+      "translations": {
+        "tr": "karıştırmak",
+        "es": "mezclar",
+        "fr": "mélanger",
+        "de": "mischen",
+        "it": "mescolare",
+        "pt": "misturar",
+        "ru": "смешивать",
+        "zh": "搅拌",
+        "ja": "混ぜる",
+        "ko": "섞다",
+        "ar": "يخلط",
+        "hi": "मिलाना"
+      }
+    },
+    {
+      "english_word": "recipe",
+      "translations": {
+        "tr": "tarif",
+        "es": "receta",
+        "fr": "recette",
+        "de": "Rezept",
+        "it": "ricetta",
+        "pt": "receita",
+        "ru": "рецепт",
+        "zh": "食谱",
+        "ja": "レシピ",
+        "ko": "레시피",
+        "ar": "وصفة",
+        "hi": "रेसिपी"
+      }
+    },
+    {
+      "english_word": "to pour",
+      "translations": {
+        "tr": "dökmek",
+        "es": "verter",
+        "fr": "verser",
+        "de": "gießen",
+        "it": "versare",
+        "pt": "despejar",
+        "ru": "наливать",
+        "zh": "倒",
+        "ja": "注ぐ",
+        "ko": "따르다",
+        "ar": "يسكب",
+        "hi": "डालना"
+      }
+    },
+    {
+      "english_word": "to eat",
+      "translations": {
+        "tr": "yemek",
+        "es": "comer",
+        "fr": "manger",
+        "de": "essen",
+        "it": "mangiare",
+        "pt": "comer",
+        "ru": "есть",
+        "zh": "吃",
+        "ja": "食べる",
+        "ko": "먹다",
+        "ar": "يأكل",
+        "hi": "खाना"
+      }
+    },
+    {
+      "english_word": "to drink",
+      "translations": {
+        "tr": "içmek",
+        "es": "beber",
+        "fr": "boire",
+        "de": "trinken",
+        "it": "bere",
+        "pt": "beber",
+        "ru": "пить",
+        "zh": "喝",
+        "ja": "飲む",
+        "ko": "마시다",
+        "ar": "يشرب",
+        "hi": "पीना"
+      }
+    },
+    {
+      "english_word": "slowly",
+      "translations": {
+        "tr": "yavaşça",
+        "es": "lentamente",
+        "fr": "lentement",
+        "de": "langsam",
+        "it": "lentamente",
+        "pt": "lentamente",
+        "ru": "медленно",
+        "zh": "慢慢",
+        "ja": "ゆっくり",
+        "ko": "천천히",
+        "ar": "ببطء",
+        "hi": "धीरे से"
+      }
+    },
+    {
+      "english_word": "to do the dishes",
+      "translations": {
+        "tr": "bulaşıkları yıkamak",
+        "es": "lavar los platos",
+        "fr": "faire la vaisselle",
+        "de": "den Abwasch machen",
+        "it": "lavare i piatti",
+        "pt": "lavar a louça",
+        "ru": "мыть посуду",
+        "zh": "洗碗",
+        "ja": "皿洗いをする",
+        "ko": "설거지하다",
+        "ar": "يغسل الأطباق",
+        "hi": "बर्तन धोना"
+      }
+    }
+  ]
+}

@@ -1,0 +1,273 @@
+{
+  "levelQuestions": [
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "alarm-clock",
+        "answer": "alarm clock",
+        "wrongAnswers": [
+          "nightstand",
+          "blanket",
+          "mattress"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-2",
+      "questionData": {
+        "imageName": "mattress",
+        "wrongAnswers": [
+          "bed",
+          "blanket",
+          "pillow"
+        ],
+        "auto_next_delay": 1.0,
+        "show_correct_on_wrong": false
+      }
+    },
+    {
+      "template": "ClozeSequence",
+      "genders": "f",
+      "questionData": {
+        "sentence": "Time to _____ ! You are _____ for the bus.",
+        "answer": [
+          "get up",
+          "late"
+        ],
+        "distractors": [
+          "look out",
+          "start",
+          "fall"
+        ]
+      },
+      "audio_file": "time-to-get-up-you-are-late-for-the-bus-convo"
+    },
+    {
+      "template": "ClozeSequence",
+      "genders": "m",
+      "questionData": {
+        "sentence": "I ___ my eyes when I ____ in the morning.",
+        "answer": [
+          "open",
+          "wake up"
+        ],
+        "distractors": [
+          "look out",
+          "go to sleep",
+          "have",
+          "find"
+        ]
+      },
+      "audio_file": "i-open-my-eyes-when-i-wake-up-in-the-morning-convo"
+    },
+    {
+      "template": "GrammarForm",
+      "genders": "f",
+      "questionData": {
+        "sentence": "Great job. Now, _____ your arms.",
+        "answer": "stretch",
+        "distractors": [
+          "stretches",
+          "stretched",
+          "stretching"
+        ]
+      }
+    },
+    {
+      "template": "SentenceBuilder",
+      "genders": "m",
+      "questionData": {
+        "correct_order": "I stand up quickly."
+      }
+    },
+    {
+      "template": "DialogueCompletion",
+      "genders": "f-m",
+      "questionData": {
+        "line1": "Are you still in bed?",
+        "answer": "No, I am up now.",
+        "distractors": [
+          "Yes, I like tea.",
+          "No, I am busy.",
+          "Yes, the bed is soft."
+        ]
+      },
+      "audio_file1": "are-you-still-in-bed-convo",
+      "audio_file2": "no-i-am-up-now-convo"
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "blanket",
+        "wrongAnswers": [
+          "pillow",
+          "mattress",
+          "nightstand"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "nightstand",
+        "wrongAnswers": [
+          "alarm clock",
+          "mattress",
+          "pillow"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "bed",
+        "wrongAnswers": [
+          "nightstand",
+          "blanket",
+          "pillow"
+        ]
+      }
+    },
+    {
+      "template": "WordPairs",
+      "questionData": {
+        "english_words": [
+          "today",
+          "tomorrow",
+          "yesterday",
+          "in two days",
+          "two days before"
+        ],
+        "translations": [
+          {
+            "tr": "bugün",
+            "es": "hoy",
+            "fr": "aujourd'hui",
+            "de": "heute",
+            "it": "oggi",
+            "pt": "hoje",
+            "ru": "сегодня",
+            "zh": "今天",
+            "ja": "今日",
+            "ko": "오늘",
+            "ar": "اليوم",
+            "hi": "आज"
+          },
+          {
+            "tr": "yarın",
+            "es": "mañana",
+            "fr": "demain",
+            "de": "morgen",
+            "it": "domani",
+            "pt": "amanhã",
+            "ru": "завтра",
+            "zh": "明天",
+            "ja": "明日",
+            "ko": "내일",
+            "ar": "غدا",
+            "hi": "कल"
+          },
+          {
+            "tr": "dün",
+            "es": "ayer",
+            "fr": "hier",
+            "de": "gestern",
+            "it": "ieri",
+            "pt": "ontem",
+            "ru": "вчера",
+            "zh": "昨天",
+            "ja": "昨日",
+            "ko": "어제",
+            "ar": "أمس",
+            "hi": "कल"
+          },
+          {
+            "tr": "iki gün sonra",
+            "es": "en dos días",
+            "fr": "dans deux jours",
+            "de": "in zwei Tagen",
+            "it": "tra due giorni",
+            "pt": "em dois dias",
+            "ru": "через два дня",
+            "zh": "两天后",
+            "ja": "二日後",
+            "ko": "이틀 후",
+            "ar": "خلال يومين",
+            "hi": "दो दिन में"
+          },
+          {
+            "tr": "iki gün önce",
+            "es": "dos días antes",
+            "fr": "il y a deux jours",
+            "de": "vor zwei Tagen",
+            "it": "due giorni fa",
+            "pt": "dois dias antes",
+            "ru": "два дня назад",
+            "zh": "两天前",
+            "ja": "二日前",
+            "ko": "이틀 전",
+            "ar": "قبل يومين",
+            "hi": "दो दिन पहले"
+          }
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "pillow",
+        "wrongAnswers": [
+          "blanket",
+          "mattress",
+          "bed"
+        ]
+      }
+    },
+    {
+      "template": "ConvoTemplate-1",
+      "genders": "m-f",
+      "questionData": {
+        "line1": "You look so _____ this morning!",
+        "line2": "I know, I'm so _____. I need coffee!",
+        "answer": "sleepy",
+        "distractors": [
+          "happy",
+          "nervous",
+          "ready"
+        ]
+      },
+      "audio_file1": "you-look-so-sleepy-this-morning-convo",
+      "audio_file2": "i-know-i-m-so-sleepy-i-need-coffee-convo"
+    },
+    {
+      "template": "AppearDisappear",
+      "genders": "f",
+      "questionData": {
+        "words": "Wake up early to see the sunrise.",
+        "distractors": [
+          "late",
+          "good",
+          "morning",
+          "fast"
+        ]
+      },
+      "audio_file": "wake-up-early-to-see-the-sunrise-convo"
+    },
+    {
+      "template": "ConvoTemplate-1",
+      "genders": "m-f",
+      "questionData": {
+        "line1": "Can I sleep for five more minutes?",
+        "line2": "No, get up ____!",
+        "answer": "now",
+        "distractors": [
+          "after",
+          "back",
+          "tomorrow"
+        ]
+      },
+      "audio_file1": "can-i-sleep-for-five-more-minutes-convo",
+      "audio_file2": "no-get-up-now-convo"
+    }
+  ]
+}

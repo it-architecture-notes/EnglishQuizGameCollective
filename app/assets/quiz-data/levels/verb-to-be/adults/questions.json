@@ -1,0 +1,279 @@
+{
+  "levelQuestions": [
+    {
+      "template": "ConvoTemplate-1",
+      "genders": "f-m",
+      "questionData": {
+        "character2": "Alex",
+        "line1": "Who are you?",
+        "line2": "I ___ Alex",
+        "answer": "am",
+        "distractors": [
+          "are",
+          "is",
+          "am a"
+        ]
+      },
+      "audio_file1": "who-are-you-convo",
+      "audio_file2": "i-am-alex-convo"
+    },
+    {
+      "template": "ConvoTemplate-1",
+      "genders": "m-m",
+      "questionData": {
+        "line1": "Who ____ your best friend?",
+        "line2": "My best friend ____ Omar",
+        "answer": "is",
+        "distractors": [
+          "are",
+          "am",
+          "be"
+        ]
+      },
+      "audio_file1": "who-is-your-best-friend-convo",
+      "audio_file2": "my-best-friend-is-omar-convo"
+    },
+    {
+      "template": "GrammarForm",
+      "genders": "f",
+      "questionData": {
+        "sentence": "I ___ a teacher",
+        "answer": "am",
+        "distractors": [
+          "is",
+          "are",
+          "be"
+        ]
+      }
+    },
+    {
+      "template": "AppearDisappear",
+      "genders": "m",
+      "questionData": {
+        "words": "Where am I now?",
+        "distractors": [
+          "are",
+          "is",
+          "who",
+          "how",
+          "what"
+        ]
+      },
+      "audio_file": "where-am-i-now-convo"
+    },
+    {
+      "template": "DialogueCompletion",
+      "genders": "f-m",
+      "questionData": {
+        "line1": "Are these your keys?",
+        "answer": "No, they are not",
+        "distractors": [
+          "No, this are not",
+          "Yes, they are not",
+          "Yes, these is my keys"
+        ]
+      },
+      "audio_file1": "are-these-your-keys-convo",
+      "audio_file2": "no-they-are-not-convo"
+    },
+    {
+      "template": "ClozeSequence",
+      "genders": "f",
+      "questionData": {
+        "sentence": "_____ you ____ the United States?",
+        "answer": [
+          "Aren't",
+          "from"
+        ],
+        "distractors": [
+          "Isn't",
+          "Am",
+          "Don't",
+          "be"
+        ]
+      },
+      "audio_file": "arent-you-from-united-states-convo"
+    },
+    {
+      "template": "DialogueCompletion",
+      "genders": "f-m",
+      "questionData": {
+        "line1": "Are you ready?",
+        "answer": "Yes, I am",
+        "distractors": [
+          "Yes, I am not",
+          "Yes, I are",
+          "No, I be"
+        ]
+      },
+      "audio_file1": "are-you-ready-convo",
+      "audio_file2": "yes-i-am-convo"
+    },
+    {
+      "template": "WordPairs",
+      "questionData": {
+        "english_words": [
+          "I",
+          "you",
+          "he/she/it",
+          "they",
+          "we"
+        ],
+        "translations": [
+          {
+            "tr": "ben",
+            "es": "yo",
+            "fr": "je",
+            "de": "ich",
+            "it": "io",
+            "pt": "eu",
+            "ru": "я",
+            "zh": "我",
+            "ja": "私",
+            "ko": "나",
+            "ar": "أنا",
+            "hi": "मैं"
+          },
+          {
+            "tr": "sen",
+            "es": "tú",
+            "fr": "tu",
+            "de": "du",
+            "it": "tu",
+            "pt": "você",
+            "ru": "ты",
+            "zh": "你",
+            "ja": "あなた",
+            "ko": "너",
+            "ar": "أنت",
+            "hi": "आप"
+          },
+          {
+            "tr": "o",
+            "es": "él / ella / eso",
+            "fr": "il / elle / ça",
+            "de": "er / sie / es",
+            "it": "lui / lei / esso",
+            "pt": "ele / ela / isso",
+            "ru": "он / она / оно",
+            "zh": "他 / 她 / 它",
+            "ja": "彼 / 彼女 / それ",
+            "ko": "그 / 그녀 / 그것",
+            "ar": "هو / هي / هو لغير العاقل",
+            "hi": "वह / यह"
+          },
+          {
+            "tr": "onlar",
+            "es": "ellos / ellas",
+            "fr": "ils / elles",
+            "de": "sie",
+            "it": "loro",
+            "pt": "eles / elas",
+            "ru": "они",
+            "zh": "他们 / 她们",
+            "ja": "彼ら / 彼女たち",
+            "ko": "그들",
+            "ar": "هم / هن",
+            "hi": "वे"
+          },
+          {
+            "tr": "biz",
+            "es": "nosotros",
+            "fr": "nous",
+            "de": "wir",
+            "it": "noi",
+            "pt": "nós",
+            "ru": "мы",
+            "zh": "我们",
+            "ja": "私たち",
+            "ko": "우리",
+            "ar": "نحن",
+            "hi": "हम"
+          }
+        ]
+      }
+    },
+    {
+      "template": "ClozeSequence",
+      "genders": "f",
+      "questionData": {
+        "sentence": "I ____ ____ your teacher",
+        "answer": [
+          "am",
+          "not"
+        ],
+        "distractors": [
+          "a",
+          "the",
+          "is",
+          "are",
+          "isn't"
+        ]
+      },
+      "audio_file": "i-am-not-your-teacher-convo"
+    },
+    {
+      "template": "AppearDisappear",
+      "genders": "m",
+      "questionData": {
+        "words": "The book is about a boy.",
+        "distractors": [
+          "are",
+          "am",
+          "they",
+          "be"
+        ]
+      },
+      "audio_file": "the-book-is-about-a-boy-convo"
+    },
+    {
+      "template": "SentenceBuilder",
+      "genders": "f",
+      "questionData": {
+        "correct_order": "They are good people"
+      },
+      "audio_file": "they-are-good-people-convo"
+    },
+    {
+      "template": "ClozeSequence",
+      "genders": "f",
+      "questionData": {
+        "sentence": "Here ___ ____ present for you",
+        "answer": [
+          "is",
+          "a"
+        ],
+        "distractors": [
+          "are",
+          "day",
+          "many",
+          "am"
+        ]
+      },
+      "audio_file": "here-is-a-present-for-you-convo"
+    },
+    {
+      "template": "DialogueCompletion",
+      "genders": "f-m",
+      "questionData": {
+        "line1": "Is Mrs Brown your teacher?",
+        "answer": "No, she is not",
+        "distractors": [
+          "No, she is",
+          "Yes, she is not",
+          "Who does Mrs Brown"
+        ]
+      },
+      "audio_file1": "is-mrs-brown-your-teacher-convo",
+      "audio_file2": "no-she-is-not-convo"
+    },
+    {
+      "template": "SentenceBuilder",
+      "genders": "f",
+      "questionData": {
+        "correct_order": "Isn't England far away?"
+      },
+      "audio_file": "isnt-england-far-away-convo"
+    }
+  ]
+}

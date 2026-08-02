@@ -1,0 +1,163 @@
+{
+  "levelQuestions": [
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "condiments",
+        "wrongAnswers": [
+          "salt-shaker",
+          "pepper",
+          "fries"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "fries",
+        "wrongAnswers": [
+          "soup-bowl",
+          "take-out-box",
+          "soda-can"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-2",
+      "questionData": {
+        "imageName": "glass-of-water",
+        "wrongAnswers": [
+          "soda-can",
+          "jug-pitcher",
+          "ice-cube"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "ice-cube",
+        "wrongAnswers": [
+          "glass-of-water",
+          "soda-can",
+          "straw"
+        ],
+        "answer": "ice cube"
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "jug-pitcher",
+        "wrongAnswers": [
+          "glass-of-water",
+          "soda-can",
+          "soup-bowl"
+        ],
+        "answer": "pitcher"
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "napkin",
+        "wrongAnswers": [
+          "straw",
+          "toothpick",
+          "tip-jar"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "pepper",
+        "wrongAnswers": [
+          "salt-shaker",
+          "condiments",
+          "soup-bowl"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-2",
+      "questionData": {
+        "imageName": "salt-shaker",
+        "wrongAnswers": [
+          "pepper",
+          "condiments",
+          "napkin"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "soda-can",
+        "wrongAnswers": [
+          "glass-of-water",
+          "jug-pitcher",
+          "ice-cube"
+        ],
+        "answer": "soda can"
+      }
+    },
+    {
+      "template": "imageQuizTemplate-2",
+      "questionData": {
+        "imageName": "soup-bowl",
+        "wrongAnswers": [
+          "fries",
+          "take-out-box",
+          "condiments"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "straw",
+        "wrongAnswers": [
+          "condiments",
+          "toothpick",
+          "glass-of-water"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "take-out-box",
+        "wrongAnswers": [
+          "fries",
+          "soup-bowl",
+          "condiments"
+        ],
+        "answer": "take out box"
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "tip-jar",
+        "wrongAnswers": [
+          "condiments",
+          "straw",
+          "toothpick"
+        ],
+        "answer": "tip jar"
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "toothpick",
+        "wrongAnswers": [
+          "straw",
+          "condiments",
+          "tip-jar"
+        ]
+      }
+    }
+  ]
+}

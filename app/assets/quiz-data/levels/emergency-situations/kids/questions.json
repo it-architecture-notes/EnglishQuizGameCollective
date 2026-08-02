@@ -1,0 +1,261 @@
+{
+  "levelQuestions": [
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "smoke",
+        "wrongAnswers": [
+          "water",
+          "wood",
+          "cloud"
+        ]
+      }
+    },
+    {
+      "template": "ConvoTemplate-1",
+      "genders": "f-m",
+      "questionData": {
+        "line1": "Can you show us?",
+        "line2": "Yes, follow me.",
+        "answer": "show",
+        "distractors": [
+          "read",
+          "write",
+          "draw"
+        ]
+      },
+      "audio_file1": "can-you-show-us-convo",
+      "audio_file2": "yes-follow-me-convo"
+    },
+    {
+      "template": "ConvoTemplate-1",
+      "genders": "f-m",
+      "questionData": {
+        "line1": "Can you help her?",
+        "line2": "Yes, I can help.",
+        "answer": "help",
+        "distractors": [
+          "run",
+          "sleep",
+          "read"
+        ]
+      },
+      "audio_file1": "can-you-help-her-convo",
+      "audio_file2": "yes-i-can-help-convo"
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "direction",
+        "wrongAnswers": [
+          "corner",
+          "distance",
+          "speed"
+        ]
+      }
+    },
+    {
+      "template": "WordPairs",
+      "questionData": {
+        "english_words": [
+          "help",
+          "safe",
+          "scared",
+          "careful"
+        ],
+        "translations": [
+          {
+            "tr": "hemen",
+            "es": "inmediatamente",
+            "fr": "immédiatement",
+            "de": "sofort",
+            "it": "immediatamente",
+            "pt": "imediatamente",
+            "ru": "немедленно",
+            "zh": "立即",
+            "ja": "すぐに",
+            "ko": "즉시",
+            "ar": "فورًا",
+            "hi": "तुरंत"
+          },
+          {
+            "tr": "cesurca",
+            "es": "valientemente",
+            "fr": "courageusement",
+            "de": "mutig",
+            "it": "coraggiosamente",
+            "pt": "corajosamente",
+            "ru": "храбро",
+            "zh": "勇敢地",
+            "ja": "勇敢に",
+            "ko": "용감하게",
+            "ar": "بشجاعة",
+            "hi": "बहादुरी से"
+          },
+          {
+            "tr": "ciddi",
+            "es": "grave",
+            "fr": "grave",
+            "de": "ernst",
+            "it": "grave",
+            "pt": "sério",
+            "ru": "серьёзный",
+            "zh": "严重的",
+            "ja": "深刻な",
+            "ko": "심각한",
+            "ar": "خطير",
+            "hi": "गंभीर"
+          },
+          {
+            "tr": "korkunç",
+            "es": "horrible",
+            "fr": "terrible",
+            "de": "schlimm",
+            "it": "orribile",
+            "pt": "horrível",
+            "ru": "ужасный",
+            "zh": "可怕的",
+            "ja": "恐ろしい",
+            "ko": "무서운",
+            "ar": "فظيع",
+            "hi": "भयानक"
+          }
+        ]
+      }
+    },
+    {
+      "template": "DialogueCompletion",
+      "genders": "m-f",
+      "questionData": {
+        "line1": "He fell. What now?",
+        "answer": "Call an ambulance.",
+        "distractors": [
+          "Run very fast.",
+          "Read a book.",
+          "Play a game."
+        ]
+      },
+      "audio_file1": "he-fell-what-now-convo",
+      "audio_file2": "call-an-ambulance-convo"
+    },
+    {
+      "template": "AppearDisappear",
+      "genders": "m",
+      "questionData": {
+        "words": "Firefighters help us.",
+        "distractors": [
+          "run",
+          "sleep",
+          "read",
+          "cook"
+        ]
+      },
+      "audio_file": "firefighters-help-us-convo"
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "disaster",
+        "wrongAnswers": [
+          "garden",
+          "kitchen",
+          "office"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "headache",
+        "wrongAnswers": [
+          "fever",
+          "cold",
+          "flu"
+        ]
+      }
+    },
+    {
+      "template": "SentenceBuilder",
+      "genders": "m",
+      "questionData": {
+        "correct_order": "Call an ambulance now."
+      },
+      "audio_file": "call-an-ambulance-now-convo"
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "siren",
+        "wrongAnswers": [
+          "noise",
+          "warning",
+          "sign"
+        ]
+      }
+    },
+    {
+      "template": "ClozeSequence",
+      "genders": "f",
+      "questionData": {
+        "sentence": "Call the _____ now.",
+        "answer": [
+          "firefighters"
+        ],
+        "distractors": [
+          "teachers",
+          "friends",
+          "players",
+          "dogs"
+        ]
+      },
+      "audio_file": "call-the-now-convo"
+    },
+    {
+      "template": "GrammarForm",
+      "genders": "m",
+      "questionData": {
+        "sentence": "_____ on the wet floor.",
+        "answer": "Do not run",
+        "distractors": [
+          "Runs",
+          "Running",
+          "Ran"
+        ]
+      }
+    },
+    {
+      "template": "ClozeSequence",
+      "genders": "f",
+      "questionData": {
+        "sentence": "People _____ the building.",
+        "answer": [
+          "leave"
+        ],
+        "distractors": [
+          "enter",
+          "read",
+          "sleep",
+          "cook"
+        ]
+      },
+      "audio_file": "people-the-building-convo"
+    },
+    {
+      "template": "ClozeSequence",
+      "genders": "f",
+      "questionData": {
+        "sentence": "The building can _____.",
+        "answer": [
+          "burn"
+        ],
+        "distractors": [
+          "read",
+          "sleep",
+          "cook",
+          "sing"
+        ]
+      },
+      "audio_file": "the-building-can-convo"
+    }
+  ]
+}
