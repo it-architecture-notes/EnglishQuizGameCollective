@@ -1,0 +1,128 @@
+{
+  "levelQuestions": [
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "beige",
+        "wrongAnswers": [
+          "dark-blue",
+          "gold",
+          "blue"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "cyan",
+        "answer": "blue",
+        "wrongAnswers": [
+          "green",
+          "pink",
+          "brown"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "dark-blue",
+        "wrongAnswers": [
+          "peach",
+          "gold",
+          "beige"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "gold",
+        "wrongAnswers": [
+          "beige",
+          "peach",
+          "blue"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "gray",
+        "wrongAnswers": [
+          "gold",
+          "dark-blue",
+          "beige"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "green",
+        "wrongAnswers": [
+          "red",
+          "pink",
+          "brown"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "magenta",
+        "answer": "pink",
+        "wrongAnswers": [
+          "purple",
+          "blue",
+          "brown"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "maroon",
+        "answer": "red",
+        "wrongAnswers": [
+          "blue",
+          "pink",
+          "brown"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "peach",
+        "wrongAnswers": [
+          "green",
+          "dark-blue",
+          "beige"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "turquoise",
+        "wrongAnswers": [
+          "pink",
+          "red",
+          "brown"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "violet",
+        "wrongAnswers": [
+          "blue",
+          "dark-blue",
+          "beige"
+        ]
+      }
+    }
+  ]
+}

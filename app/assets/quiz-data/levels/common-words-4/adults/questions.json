@@ -1,0 +1,228 @@
+{
+  "levelQuestions": [
+    {
+      "template": "ClozeSequence",
+      "genders": "f",
+      "questionData": {
+        "sentence": "If we _____ on a plan, we will _____ the game together.",
+        "answer": [
+          "agree",
+          "win"
+        ],
+        "distractors": [
+          "disagree",
+          "lose"
+        ]
+      },
+      "audio_file": "if-we-agree-on-a-plan-we-will-win-the-game-together-convo"
+    },
+    {
+      "template": "ClozeSequence",
+      "genders": "m",
+      "questionData": {
+        "sentence": "Let's _____ and meet _____ to plan our project.",
+        "answer": [
+          "sit down",
+          "weekly"
+        ],
+        "distractors": [
+          "stand up",
+          "monthly"
+        ]
+      },
+      "audio_file": "lets-sit-down-and-meet-weekly-to-plan-our-project-convo"
+    },
+    {
+      "template": "ClozeSequence",
+      "genders": "f",
+      "questionData": {
+        "sentence": "This _____ tree will _____ soon without water.",
+        "answer": [
+          "ancient",
+          "die"
+        ],
+        "distractors": [
+          "modern",
+          "grow"
+        ]
+      },
+      "audio_file": "this-ancient-tree-will-die-soon-without-water-convo"
+    },
+    {
+      "template": "GrammarForm",
+      "genders": "m",
+      "questionData": {
+        "sentence": "Prices _____ next month because of the shortage.",
+        "answer": "will go up",
+        "distractors": [
+          "go up",
+          "going up",
+          "is going up"
+        ]
+      }
+    },
+    {
+      "template": "AppearDisappear",
+      "genders": "m",
+      "questionData": {
+        "words": "The sun will come out soon.",
+        "distractors": [
+          "rain",
+          "disappear",
+          "hide"
+        ]
+      },
+      "audio_file": "the-sun-will-come-out-soon-convo"
+    },
+    {
+      "template": "AppearDisappear",
+      "genders": "f",
+      "questionData": {
+        "words": "We need to get out now.",
+        "distractors": [
+          "stay",
+          "enter",
+          "arrive"
+        ]
+      },
+      "audio_file": "we-need-to-get-out-now-convo"
+    },
+    {
+      "template": "AppearDisappear",
+      "genders": "f",
+      "questionData": {
+        "words": "This bird is clearly male.",
+        "distractors": [
+          "female",
+          "young",
+          "wild"
+        ]
+      },
+      "audio_file": "this-bird-is-clearly-male-convo"
+    },
+    {
+      "template": "ConvoTemplate-1",
+      "genders": "f-m",
+      "questionData": {
+        "line1": "What will happen to the price?",
+        "line2": "It will _____ after the sale.",
+        "answer": "go down",
+        "distractors": [
+          "rise",
+          "stay",
+          "jump"
+        ]
+      },
+      "audio_file1": "what-will-happen-to-the-price-convo",
+      "audio_file2": "it-will-go-down-after-the-sale-convo"
+    },
+    {
+      "template": "ConvoTemplate-1",
+      "genders": "f-m",
+      "questionData": {
+        "line1": "Why does he look upset?",
+        "line2": "He is a little _____ of your success.",
+        "answer": "jealous",
+        "distractors": [
+          "proud",
+          "angry",
+          "nervous"
+        ]
+      },
+      "audio_file1": "why-does-he-look-upset-convo",
+      "audio_file2": "he-is-a-little-jealous-of-your-success-convo"
+    },
+    {
+      "template": "DialogueCompletion",
+      "genders": "m-f",
+      "questionData": {
+        "line1": "Why is the shop closed today?",
+        "answer": "They will shut down for their yearly repairs this week.",
+        "distractors": [
+          "They are always closed on Sundays.",
+          "They open later on Sundays.",
+          "They will open earlier tomorrow."
+        ]
+      },
+      "audio_file1": "why-is-the-shop-closed-today-convo",
+      "audio_file2": "they-will-shut-down-for-their-yearly-repairs-this-week-convo"
+    },
+    {
+      "template": "SentenceBuilder",
+      "genders": "m",
+      "questionData": {
+        "correct_order": "This old coin is worthless now."
+      },
+      "audio_file": "this-old-coin-is-worthless-now-convo"
+    },
+    {
+      "template": "WordPairs",
+      "questionData": {
+        "english_words": [
+          "tall",
+          "kind",
+          "quick",
+          "rich"
+        ],
+        "translations": [
+          {
+            "tr": "tall",
+            "es": "tall",
+            "fr": "tall",
+            "de": "tall",
+            "it": "tall",
+            "pt": "tall",
+            "ru": "tall",
+            "zh": "tall",
+            "ja": "tall",
+            "ko": "tall",
+            "ar": "tall",
+            "hi": "tall"
+          },
+          {
+            "tr": "kind",
+            "es": "kind",
+            "fr": "kind",
+            "de": "kind",
+            "it": "kind",
+            "pt": "kind",
+            "ru": "kind",
+            "zh": "kind",
+            "ja": "kind",
+            "ko": "kind",
+            "ar": "kind",
+            "hi": "kind"
+          },
+          {
+            "tr": "quick",
+            "es": "quick",
+            "fr": "quick",
+            "de": "quick",
+            "it": "quick",
+            "pt": "quick",
+            "ru": "quick",
+            "zh": "quick",
+            "ja": "quick",
+            "ko": "quick",
+            "ar": "quick",
+            "hi": "quick"
+          },
+          {
+            "tr": "rich",
+            "es": "rich",
+            "fr": "rich",
+            "de": "rich",
+            "it": "rich",
+            "pt": "rich",
+            "ru": "rich",
+            "zh": "rich",
+            "ja": "rich",
+            "ko": "rich",
+            "ar": "rich",
+            "hi": "rich"
+          }
+        ]
+      }
+    }
+  ]
+}

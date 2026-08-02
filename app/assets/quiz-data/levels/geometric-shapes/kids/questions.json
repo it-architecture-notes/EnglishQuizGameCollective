@@ -1,0 +1,92 @@
+{
+  "levelQuestions": [
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "circle",
+        "wrongAnswers": [
+          "square",
+          "star",
+          "heart"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "square",
+        "wrongAnswers": [
+          "circle",
+          "triangle",
+          "star"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "triangle",
+        "wrongAnswers": [
+          "square",
+          "circle",
+          "heart"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "rectangle",
+        "wrongAnswers": [
+          "square",
+          "oval",
+          "star"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "star",
+        "wrongAnswers": [
+          "heart",
+          "circle",
+          "triangle"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "heart",
+        "wrongAnswers": [
+          "star",
+          "oval",
+          "square"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "oval",
+        "wrongAnswers": [
+          "circle",
+          "rectangle",
+          "heart"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "diamond",
+        "wrongAnswers": [
+          "square",
+          "triangle",
+          "star"
+        ]
+      }
+    }
+  ]
+}

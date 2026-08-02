@@ -1,0 +1,202 @@
+{
+  "levelQuestions": [
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "accountant",
+        "wrongAnswers": [
+          "clerk",
+          "dentist",
+          "architect"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "architect",
+        "wrongAnswers": [
+          "hostess",
+          "miner",
+          "accountant"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-2",
+      "questionData": {
+        "imageName": "barber",
+        "wrongAnswers": [
+          "judge",
+          "miner",
+          "paramedic"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "butcher",
+        "wrongAnswers": [
+          "pilot",
+          "barber",
+          "accountant"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "clerk",
+        "wrongAnswers": [
+          "surgeon",
+          "judge",
+          "accountant"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-2",
+      "questionData": {
+        "imageName": "dentist",
+        "wrongAnswers": [
+          "postman",
+          "surgeon",
+          "accountant"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "engineer",
+        "wrongAnswers": [
+          "clerk",
+          "accountant",
+          "architect"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "hostess",
+        "wrongAnswers": [
+          "judge",
+          "dentist",
+          "accountant"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-2",
+      "questionData": {
+        "imageName": "judge",
+        "wrongAnswers": [
+          "barber",
+          "clerk",
+          "engineer"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "librarian",
+        "wrongAnswers": [
+          "postman",
+          "surgeon",
+          "accountant"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "miner",
+        "wrongAnswers": [
+          "taxi-driver",
+          "butcher",
+          "accountant"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-2",
+      "questionData": {
+        "imageName": "nurse",
+        "wrongAnswers": [
+          "judge",
+          "miner",
+          "pilot"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "paramedic",
+        "wrongAnswers": [
+          "dentist",
+          "postman",
+          "accountant"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "pilot",
+        "wrongAnswers": [
+          "judge",
+          "architect",
+          "accountant"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "postman",
+        "wrongAnswers": [
+          "nurse",
+          "engineer",
+          "accountant"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "scientist",
+        "wrongAnswers": [
+          "postman",
+          "nurse",
+          "accountant"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "surgeon",
+        "wrongAnswers": [
+          "accountant",
+          "taxi-driver",
+          "architect"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "taxi-driver",
+        "wrongAnswers": [
+          "butcher",
+          "clerk",
+          "accountant"
+        ]
+      }
+    }
+  ]
+}

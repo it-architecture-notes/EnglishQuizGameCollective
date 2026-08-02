@@ -1,0 +1,265 @@
+{
+  "levelQuestions": [
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "ball",
+        "wrongAnswers": [
+          "bulb",
+          "bowl",
+          "bat"
+        ]
+      }
+    },
+    {
+      "template": "ConvoTemplate-1",
+      "genders": "f-m",
+      "questionData": {
+        "line1": "Are you going to ______ today?",
+        "line2": "Yes, I have ______ at four o'clock.",
+        "answer": "practice",
+        "distractors": [
+          "train",
+          "watch",
+          "listen"
+        ]
+      },
+      "audio_file1": "are-you-going-to-practice-today-convo",
+      "audio_file2": "yes-i-have-practice-at-four-o-clock-convo"
+    },
+    {
+      "template": "ConvoTemplate-1",
+      "genders": "f-m",
+      "questionData": {
+        "line1": "Is your _____ ready for the race tomorrow?",
+        "line2": "Yes, we've been training hard all week!",
+        "answer": "team",
+        "distractors": [
+          "coach",
+          "group",
+          "club"
+        ]
+      },
+      "audio_file1": "is-your-team-ready-for-the-race-tomorrow-convo",
+      "audio_file2": "yes-we-ve-been-training-hard-all-week-convo"
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "skates",
+        "wrongAnswers": [
+          "stakes",
+          "goggles",
+          "helmet"
+        ]
+      }
+    },
+    {
+      "template": "WordPairs",
+      "questionData": {
+        "english_words": [
+          "future",
+          "past",
+          "present",
+          "recent"
+        ],
+        "translations": [
+          {
+            "tr": "gelecek",
+            "es": "futuro",
+            "fr": "futur",
+            "de": "zukünftig",
+            "it": "futuro",
+            "pt": "futuro",
+            "ru": "будущий",
+            "zh": "未来的",
+            "ja": "未来の",
+            "ko": "미래의",
+            "ar": "مستقبلي",
+            "hi": "भविष्य का"
+          },
+          {
+            "tr": "geçmiş",
+            "es": "pasado",
+            "fr": "passé",
+            "de": "vergangen",
+            "it": "passato",
+            "pt": "passado",
+            "ru": "прошлый",
+            "zh": "过去的",
+            "ja": "過去の",
+            "ko": "과거의",
+            "ar": "ماضٍ",
+            "hi": "पिछला"
+          },
+          {
+            "tr": "mevcut",
+            "es": "presente",
+            "fr": "présent",
+            "de": "gegenwärtig",
+            "it": "presente",
+            "pt": "presente",
+            "ru": "настоящий",
+            "zh": "现在的",
+            "ja": "現在の",
+            "ko": "현재의",
+            "ar": "حاضر",
+            "hi": "वر्तमान"
+          },
+          {
+            "tr": "son",
+            "es": "reciente",
+            "fr": "récent",
+            "de": "kürzlich",
+            "it": "recente",
+            "pt": "recente",
+            "ru": "недавний",
+            "zh": "最近的",
+            "ja": "最近の",
+            "ko": "최근의",
+            "ar": "حديث",
+            "hi": "हाल का"
+          }
+        ]
+      }
+    },
+    {
+      "template": "DialogueCompletion",
+      "genders": "m-f",
+      "questionData": {
+        "line1": "Did the new coach help to improve your skills?",
+        "answer": "Definitely, I finally feel ready to compete.",
+        "distractors": [
+          "No, I still need more practice.",
+          "Maybe, but I don't like the coach.",
+          "Yes, but I'm not ready to compete yet."
+        ]
+      },
+      "audio_file1": "did-the-new-coach-help-to-improve-your-skills-convo",
+      "audio_file2": "definitely-i-finally-feel-ready-to-compete-convo"
+    },
+    {
+      "template": "AppearDisappear",
+      "genders": "m",
+      "questionData": {
+        "words": "If you run fast, you will sweat.",
+        "distractors": [
+          "would",
+          "walk",
+          "might",
+          "when"
+        ]
+      },
+      "audio_file": "if-you-run-fast-you-will-sweat-convo"
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "swimming-pool",
+        "wrongAnswers": [
+          "gym",
+          "park",
+          "beach"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-2",
+      "questionData": {
+        "imageName": "whistle",
+        "wrongAnswers": [
+          "bat",
+          "ball",
+          "skates"
+        ]
+      },
+      "answer": "whistle"
+    },
+    {
+      "template": "SentenceBuilder",
+      "genders": "f",
+      "questionData": {
+        "correct_order": "She hit the ball perfectly."
+      },
+      "audio_file": "she-hit-the-ball-perfectly-convo"
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "goal-post",
+        "wrongAnswers": [
+          "hook",
+          "net",
+          "goal-pole"
+        ]
+      }
+    },
+    {
+      "template": "ClozeSequence",
+      "genders": "m",
+      "questionData": {
+        "sentence": "It is ____ to ____ in cold water every morning.",
+        "answer": [
+          "tough",
+          "swim"
+        ],
+        "distractors": [
+          "bake",
+          "lock",
+          "fold",
+          "earn"
+        ]
+      },
+      "audio_file": "it-is-tough-to-swim-in-cold-water-every-morning-convo"
+    },
+    {
+      "template": "GrammarForm",
+      "genders": "f",
+      "questionData": {
+        "sentence": "If you are ready, you can try ______ into the pool.",
+        "answer": "to dive",
+        "distractors": [
+          "dives",
+          "dived",
+          "diving"
+        ]
+      }
+    },
+    {
+      "template": "ClozeSequence",
+      "genders": "m",
+      "questionData": {
+        "sentence": "She wanted to _____ in the final match and to _____ the winning goal.",
+        "answer": [
+          "play",
+          "score"
+        ],
+        "distractors": [
+          "win",
+          "kick",
+          "join",
+          "shoot"
+        ]
+      },
+      "audio_file": "she-wanted-to-play-in-the-final-match-and-to-score-the-winning-goal-convo"
+    },
+    {
+      "template": "ClozeSequence",
+      "genders": "f",
+      "questionData": {
+        "sentence": "He was _____ enough to catch himself before he could ____.",
+        "answer": [
+          "strong",
+          "slip"
+        ],
+        "distractors": [
+          "careful",
+          "fall",
+          "weak",
+          "slide"
+        ]
+      },
+      "audio_file": "he-was-strong-enough-to-catch-himself-before-he-could-slip-convo"
+    }
+  ]
+}

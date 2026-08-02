@@ -886,180 +886,6 @@
           "event_id": 1001,
           "page_template_id": 4,
           "story_text": {
-            "en": "Mia is stuck on an old, shaky bridge! Ben is scared, but he wants to save his little sister. Play the next two levels to help Ben start his brave journey.",
-            "fr": "Mia est coincée sur un vieux pont qui tremble ! Ben a peur, mais il veut sauver sa petite sœur. Joue les deux prochains niveaux pour aider Ben à commencer son courageux voyage.",
-            "tr": "Mia eski ve sallanan bir köprüde mahsur kaldı! Ben korkuyor ama küçük kız kardeşini kurtarmak istiyor. Ben'in cesaret yolculuğuna başlamasına yardım etmek için sonraki iki seviyeyi oyna.",
-            "es": "¡Mia está atrapada en un viejo puente que tiembla! Ben tiene miedo, pero quiere salvar a su hermanita. Juega los dos siguientes niveles para ayudar a Ben a comenzar su valiente aventura.",
-            "de": "Mia sitzt auf einer alten, wackeligen Brücke fest! Ben hat Angst, aber er möchte seine kleine Schwester retten. Spiele die nächsten zwei Level, um Ben auf seiner mutigen Reise zu helfen.",
-            "it": "Mia è bloccata su un vecchio ponte che trema! Ben ha paura, ma vuole salvare la sua sorellina. Gioca i prossimi due livelli per aiutare Ben a iniziare il suo coraggioso viaggio.",
-            "pt": "Mia está presa em uma ponte velha e balançando! Ben está com medo, mas quer salvar sua irmãzinha. Jogue os próximos dois níveis para ajudar Ben a começar sua jornada corajosa.",
-            "ru": "Мия застряла на старом шатком мосту! Бен боится, но хочет спасти свою младшую сестру. Пройди следующие два уровня, чтобы помочь Бену начать его смелый путь.",
-            "zh": "米娅被困在一座摇晃的老桥上！本很害怕，但他想救自己的妹妹。完成接下来的两关，帮助本开始他的勇敢旅程。",
-            "ja": "ミアは古くて揺れる橋の上で動けなくなっています！ベンは怖がっていますが、妹を助けたいと思っています。次の2つのレベルをプレイして、ベンの勇気ある旅の始まりを手伝いましょう。",
-            "ko": "미아가 오래되고 흔들리는 다리에 갇혔어요! 벤은 무섭지만 여동생을 구하고 싶어 해요. 다음 두 레벨을 플레이해서 벤의 용감한 여정을 시작하도록 도와주세요.",
-            "ar": "ميا عالقة على جسر قديم ومهتز! يشعر بن بالخوف، لكنه يريد إنقاذ أخته الصغيرة. العب المستويين التاليين لمساعدة بن على بدء رحلته الشجاعة.",
-            "hi": "मिया एक पुराने और हिलते हुए पुल पर फँस गई है! बेन डरा हुआ है, लेकिन वह अपनी छोटी बहन को बचाना चाहता है। बेन की बहादुरी की यात्रा शुरू करने में मदद करने के लिए अगले दो स्तर खेलो।"
-          },
-          "scene_image": "bridge-1.png",
-          "trigger": {
-            "type": "before_level",
-            "level": "At the Bank"
-          }
-        },
-        {
-          "event_id": 1002,
-          "page_template_id": 4,
-          "story_text": {
-            "en": "Being brave does not mean you are never scared. Ben takes a careful step onto the bridge. Play the next level to help him get closer to Mia.",
-            "fr": "Être courageux ne veut pas dire ne jamais avoir peur. Ben avance prudemment sur le pont. Joue le niveau suivant pour l'aider à se rapprocher de Mia.",
-            "tr": "Cesur olmak hiç korkmamak demek değildir. Ben dikkatlice köprüye bir adım atıyor. Mia'ya yaklaşmasına yardım etmek için sonraki seviyeyi oyna.",
-            "es": "Ser valiente no significa no tener miedo nunca. Ben da un paso con cuidado sobre el puente. Juega el siguiente nivel para ayudarlo a acercarse a Mia.",
-            "de": "Mutig zu sein bedeutet nicht, niemals Angst zu haben. Ben macht vorsichtig einen Schritt auf die Brücke. Spiele das nächste Level, um ihm zu helfen, Mia näher zu kommen.",
-            "it": "Essere coraggiosi non significa non avere mai paura. Ben fa un passo attento sul ponte. Gioca il livello successivo per aiutarlo ad avvicinarsi a Mia.",
-            "pt": "Ser corajoso não significa nunca sentir medo. Ben dá um passo cuidadoso na ponte. Jogue o próximo nível para ajudá-lo a chegar mais perto de Mia.",
-            "ru": "Быть смелым не значит никогда не бояться. Бен осторожно делает шаг на мост. Пройди следующий уровень, чтобы помочь ему приблизиться к Мии.",
-            "zh": "勇敢并不代表永远不会害怕。本小心地踏上桥。完成下一关，帮助他更接近米娅。",
-            "ja": "勇気があるというのは、決して怖くないという意味ではありません。ベンは慎重に橋へ一歩踏み出します。次のレベルをプレイして、ミアに近づくのを手伝いましょう。",
-            "ko": "용감하다는 것은 절대 무섭지 않다는 뜻이 아니에요. 벤은 조심스럽게 다리 위로 한 걸음 내딛어요. 다음 레벨을 플레이해서 미아에게 가까이 가도록 도와주세요.",
-            "ar": "الشجاعة لا تعني أنك لا تشعر بالخوف أبدًا. يأخذ بن خطوة حذرة على الجسر. العب المستوى التالي لمساعدته على الاقتراب من ميا.",
-            "hi": "बहादुर होने का मतलब यह नहीं है कि आपको कभी डर नहीं लगेगा। बेन पुल पर सावधानी से कदम रखता है। मिया के पास पहुँचने में उसकी मदद करने के लिए अगला स्तर खेलो।"
-          },
-          "scene_image": "bridge-2.png",
-          "trigger": {
-            "type": "before_level",
-            "level": "Vegetables 1 - Image only"
-          }
-        },
-        {
-          "event_id": 1003,
-          "page_template_id": 4,
-          "story_text": {
-            "en": "Ben looks carefully at the bridge and chooses the best path forward. Play the next level to help him make the right choice.",
-            "fr": "Ben observe attentivement le pont et choisit le meilleur chemin. Joue le niveau suivant pour l'aider à faire le bon choix.",
-            "tr": "Ben köprüye dikkatlice bakıyor ve ilerlemek için en iyi yolu seçiyor. Doğru seçimi yapmasına yardım etmek için sonraki seviyeyi oyna.",
-            "es": "Ben mira con cuidado el puente y elige el mejor camino. Juega el siguiente nivel para ayudarlo a tomar la decisión correcta.",
-            "de": "Ben schaut sich die Brücke genau an und wählt den besten Weg. Spiele das nächste Level, um ihm bei der richtigen Entscheidung zu helfen.",
-            "it": "Ben osserva attentamente il ponte e sceglie il percorso migliore. Gioca il livello successivo per aiutarlo a fare la scelta giusta.",
-            "pt": "Ben olha a ponte com cuidado e escolhe o melhor caminho. Jogue o próximo nível para ajudá-lo a fazer a escolha certa.",
-            "ru": "Бен внимательно смотрит на мост и выбирает лучший путь вперёд. Пройди следующий уровень, чтобы помочь ему сделать правильный выбор.",
-            "zh": "本仔细观察桥面，选择前进的最佳路线。完成下一关，帮助他做出正确的选择。",
-            "ja": "ベンは橋をよく見て、進むための一番良い道を選びます。次のレベルをプレイして、正しい選択ができるように手伝いましょう。",
-            "ko": "벤은 다리를 자세히 살펴보고 가장 좋은 길을 선택해요. 다음 레벨을 플레이해서 올바른 선택을 하도록 도와주세요.",
-            "ar": "ينظر بن إلى الجسر بعناية ويختار أفضل طريق للتقدم. العب المستوى التالي لمساعدته على اتخاذ القرار الصحيح.",
-            "hi": "बेन पुल को ध्यान से देखता है और आगे बढ़ने के लिए सबसे अच्छा रास्ता चुनता है। सही चुनाव करने में उसकी मदद करने के लिए अगला स्तर खेलो।"
-          },
-          "scene_image": "bridge-3.png",
-          "trigger": {
-            "type": "before_level",
-            "level": "Farm Animals - Image only"
-          }
-        },
-        {
-          "event_id": 1004,
-          "page_template_id": 4,
-          "story_text": {
-            "en": "A strong wind shakes the bridge! Ben takes a deep breath and stays calm. Play the next two levels to help him keep moving forward.",
-            "fr": "Un vent fort fait trembler le pont ! Ben prend une grande respiration et reste calme. Joue les deux prochains niveaux pour l'aider à continuer d'avancer.",
-            "tr": "Güçlü bir rüzgâr köprüyü sallıyor! Ben derin bir nefes alıyor ve sakin kalıyor. İlerlemeye devam etmesine yardım etmek için sonraki iki seviyeyi oyna.",
-            "es": "¡Un viento fuerte sacude el puente! Ben respira profundamente y mantiene la calma. Juega los dos siguientes niveles para ayudarlo a seguir avanzando.",
-            "de": "Ein starker Wind lässt die Brücke wackeln! Ben atmet tief ein und bleibt ruhig. Spiele die nächsten zwei Level, um ihm zu helfen, weiterzugehen.",
-            "it": "Un forte vento scuote il ponte! Ben fa un respiro profondo e rimane calmo. Gioca i prossimi due livelli per aiutarlo a continuare ad andare avanti.",
-            "pt": "Um vento forte balança a ponte! Ben respira fundo e mantém a calma. Jogue os próximos dois níveis para ajudá-lo a continuar avançando.",
-            "ru": "Сильный ветер качает мост! Бен делает глубокий вдох и сохраняет спокойствие. Пройди следующие два уровня, чтобы помочь ему двигаться дальше.",
-            "zh": "一阵大风吹动了桥！本深呼吸，让自己保持冷静。完成接下来的两关，帮助他继续前进。",
-            "ja": "強い風が橋を揺らします！ベンは深呼吸をして落ち着きます。次の2つのレベルをプレイして、前に進み続けるのを手伝いましょう。",
-            "ko": "강한 바람이 다리를 흔들어요! 벤은 깊게 숨을 쉬고 침착함을 유지해요. 다음 두 레벨을 플레이해서 계속 앞으로 나아가도록 도와주세요.",
-            "ar": "تهز رياح قوية الجسر! يأخذ بن نفسًا عميقًا ويبقى هادئًا. العب المستويين التاليين لمساعدته على الاستمرار في التقدم.",
-            "hi": "तेज़ हवा पुल को हिला देती है! बेन गहरी साँस लेता है और शांत रहता है। आगे बढ़ते रहने में उसकी मदद करने के लिए अगले दो स्तर खेलो।"
-          },
-          "scene_image": "bridge-4.png",
-          "trigger": {
-            "type": "before_level",
-            "level": "At the Farm"
-          }
-        },
-        {
-          "event_id": 1005,
-          "page_template_id": 4,
-          "story_text": {
-            "en": "Ben reaches Mia, but her shoelace is stuck. With patience and care, he helps her get free. Play the next level to help them continue together.",
-            "fr": "Ben arrive jusqu'à Mia, mais son lacet est coincé. Avec patience et attention, il l'aide à se libérer. Joue le niveau suivant pour les aider à continuer ensemble.",
-            "tr": "Ben Mia'ya ulaşıyor, ancak ayakkabı bağı takılmış. Sabır ve dikkatle ona kurtulmasına yardım ediyor. Birlikte devam etmelerine yardım etmek için sonraki seviyeyi oyna.",
-            "es": "Ben llega hasta Mia, pero su cordón está atrapado. Con paciencia y cuidado, la ayuda a liberarse. Juega el siguiente nivel para ayudarlos a continuar juntos.",
-            "de": "Ben erreicht Mia, aber ihr Schnürsenkel steckt fest. Mit Geduld und Vorsicht hilft er ihr, sich zu befreien. Spiele das nächste Level, um ihnen zu helfen, gemeinsam weiterzugehen.",
-            "it": "Ben raggiunge Mia, ma il suo laccio è bloccato. Con pazienza e attenzione, la aiuta a liberarsi. Gioca il livello successivo per aiutarli a continuare insieme.",
-            "pt": "Ben chega até Mia, mas o cadarço dela está preso. Com paciência e cuidado, ele a ajuda a se soltar. Jogue o próximo nível para ajudá-los a continuar juntos.",
-            "ru": "Бен добирается до Мии, но её шнурок застрял. С терпением и заботой он помогает ей освободиться. Пройди следующий уровень, чтобы помочь им продолжить путь вместе.",
-            "zh": "本终于到达米娅身边，但她的鞋带被卡住了。本耐心又小心地帮助她脱困。完成下一关，帮助他们一起继续前进。",
-            "ja": "ベンはミアのところに着きましたが、靴ひもが引っかかっています。ベンは優しく手伝って、ミアを助けます。次のレベルをプレイして、二人が一緒に進めるように手伝いましょう。",
-            "ko": "벤이 미아에게 도착했지만 신발끈이 걸려 있어요. 벤은 인내심을 가지고 조심스럽게 미아를 도와줘요. 다음 레벨을 플레이해서 함께 계속 나아가도록 도와주세요.",
-            "ar": "يصل بن إلى ميا، لكن رباط حذائها عالق. بصبر واهتمام يساعدها على التحرر. العب المستوى التالي لمساعدتهما على الاستمرار معًا.",
-            "hi": "बेन मिया तक पहुँच जाता है, लेकिन उसके जूते का फीता फँस गया है। धैर्य और देखभाल से वह उसकी मदद करता है। दोनों को साथ आगे बढ़ने में मदद करने के लिए अगला स्तर खेलो।"
-          },
-          "scene_image": "bridge-5.png",
-          "trigger": {
-            "type": "before_level",
-            "level": "Common Words - 5"
-          }
-        },
-        {
-          "event_id": 1006,
-          "page_template_id": 4,
-          "story_text": {
-            "en": "The bridge is falling apart, but Ben and Mia do not give up. Play the next two levels to help them reach the other side.",
-            "fr": "Le pont se détruit peu à peu, mais Ben et Mia n'abandonnent pas. Joue les deux prochains niveaux pour les aider à atteindre l'autre côté.",
-            "tr": "Köprü parçalanmaya başlıyor ama Ben ve Mia pes etmiyor. Diğer tarafa ulaşmalarına yardım etmek için sonraki iki seviyeyi oyna.",
-            "es": "El puente se está rompiendo, pero Ben y Mia no se rinden. Juega los dos siguientes niveles para ayudarlos a llegar al otro lado.",
-            "de": "Die Brücke zerfällt, aber Ben und Mia geben nicht auf. Spiele die nächsten zwei Level, um ihnen zu helfen, die andere Seite zu erreichen.",
-            "it": "Il ponte sta crollando, ma Ben e Mia non si arrendono. Gioca i prossimi due livelli per aiutarli a raggiungere l'altra parte.",
-            "pt": "A ponte está desmoronando, mas Ben e Mia não desistem. Jogue os próximos dois níveis para ajudá-los a chegar ao outro lado.",
-            "ru": "Мост разрушается, но Бен и Мия не сдаются. Пройди следующие два уровня, чтобы помочь им добраться до другой стороны.",
-            "zh": "桥正在倒塌，但本和米娅没有放弃。完成接下来的两关，帮助他们到达另一边。",
-            "ja": "橋は崩れ始めていますが、ベンとミアはあきらめません。次の2つのレベルをプレイして、二人が向こう側へ渡れるように手伝いましょう。",
-            "ko": "다리가 무너지고 있지만 벤과 미아는 포기하지 않아요. 다음 두 레벨을 플레이해서 반대편에 도착하도록 도와주세요.",
-            "ar": "بدأ الجسر في الانهيار، لكن بن وميا لا يستسلمان. العب المستويين التاليين لمساعدتهما على الوصول إلى الجانب الآخر.",
-            "hi": "पुल टूट रहा है, लेकिन बेन और मिया हार नहीं मानते। उन्हें दूसरी तरफ पहुँचने में मदद करने के लिए अगले दो स्तर खेलो।"
-          },
-          "scene_image": "bridge-6.png",
-          "trigger": {
-            "type": "before_level",
-            "level": "Reminder 1"
-          }
-        },
-        {
-          "event_id": 1007,
-          "page_template_id": 4,
-          "story_text": {
-            "en": "Hooray! Ben and Mia are safe. Ben learns that courage means taking a step even when you are afraid. Thank you for helping them!",
-            "fr": "Hourra ! Ben et Mia sont en sécurité. Ben apprend que le courage, c'est avancer même quand on a peur. Merci de les avoir aidés !",
-            "tr": "Yaşasın! Ben ve Mia güvende. Ben cesaretin korksan bile bir adım atmak olduğunu öğreniyor. Onlara yardım ettiğin için teşekkür ederiz!",
-            "es": "¡Hurra! Ben y Mia están a salvo. Ben aprende que el valor significa dar un paso incluso cuando tienes miedo. ¡Gracias por ayudarlos!",
-            "de": "Hurra! Ben und Mia sind sicher. Ben lernt, dass Mut bedeutet, weiterzugehen, auch wenn man Angst hat. Danke, dass du ihnen geholfen hast!",
-            "it": "Evviva! Ben e Mia sono al sicuro. Ben impara che il coraggio significa fare un passo avanti anche quando hai paura. Grazie per averli aiutati!",
-            "pt": "Viva! Ben e Mia estão seguros. Ben aprende que coragem significa dar um passo mesmo quando sentimos medo. Obrigado por ajudá-los!",
-            "ru": "Ура! Бен и Мия в безопасности. Бен понимает, что смелость — это сделать шаг вперёд, даже когда тебе страшно. Спасибо за помощь!",
-            "zh": "太好了！本和米娅安全了。本明白了，勇气就是即使害怕，也愿意迈出一步。谢谢你帮助他们！",
-            "ja": "やったね！ベンとミアは無事です。ベンは、勇気とは怖くても一歩踏み出すことだと学びました。二人を助けてくれてありがとう！",
-            "ko": "해냈어요! 벤과 미아는 안전해요. 벤은 용기란 두려워도 한 걸음 내딛는 것이라는 것을 배웠어요. 도와줘서 고마워요!",
-            "ar": "رائع! بن وميا بأمان. يتعلم بن أن الشجاعة تعني أن تتقدم خطوة حتى عندما تشعر بالخوف. شكرًا لمساعدتهما!",
-            "hi": "वाह! बेन और मिया सुरक्षित हैं। बेन सीखता है कि बहादुरी का मतलब डर लगने पर भी एक कदम आगे बढ़ाना है। उनकी मदद करने के लिए धन्यवाद!"
-          },
-          "scene_image": "bridge-7.png",
-          "trigger": {
-            "type": "after_level",
-            "level": "Reminder 2"
-          }
-        }
-      ]
-    },
-    {
-      "main_level_id": 7,
-      "story_icon_asset_path": "assets/images/story/PLACEHOLDER-story-icon.png",
-      "story_sequences": [
-        {
-          "event_id": 1001,
-          "page_template_id": 4,
-          "story_text": {
             "en": "Thick fog rolls over the village, and the fishing boats cannot find their way home. Emma remembers her grandfather's stories about the old lighthouse. Play the next two levels to help her begin the journey.",
             "fr": "Un épais brouillard enveloppe le village, et les bateaux de pêche ne retrouvent plus le chemin du retour. Emma se souvient des histoires que son grand-père racontait sur le vieux phare. Joue les deux prochains niveaux pour l'aider à commencer son voyage.",
             "tr": "Köyün üzerine yoğun bir sis çöküyor ve balıkçı tekneleri eve dönüş yolunu bulamıyor. Emma, dedesinin eski deniz feneri hakkındaki hikayelerini hatırlıyor. Yolculuğuna başlamasına yardım etmek için sonraki iki seviyeyi oyna.",
@@ -1077,7 +903,7 @@
           "scene_image": "lantern-1.png",
           "trigger": {
             "type": "before_level",
-            "level": "Fruits 2 - Image only"
+            "level": "Vegetables 1 - Image only"
           }
         },
         {
@@ -1101,7 +927,7 @@
           "scene_image": "lantern-2.png",
           "trigger": {
             "type": "before_level",
-            "level": "Jobs 1 - Image only"
+            "level": "At the Farm"
           }
         },
         {
@@ -1125,7 +951,7 @@
           "scene_image": "lantern-3.png",
           "trigger": {
             "type": "before_level",
-            "level": "At the Restaurant"
+            "level": "Vegetables 2 - Image only"
           }
         },
         {
@@ -1149,7 +975,7 @@
           "scene_image": "lantern-4.png",
           "trigger": {
             "type": "before_level",
-            "level": "Clothes Shopping"
+            "level": "Fruits 2 - Image only"
           }
         },
         {
@@ -1173,7 +999,7 @@
           "scene_image": "lantern-5.png",
           "trigger": {
             "type": "before_level",
-            "level": "Common Words - 6"
+            "level": "Jobs 1 - Image only"
           }
         },
         {
@@ -1227,7 +1053,7 @@
       ]
     },
     {
-      "main_level_id": 8,
+      "main_level_id": 7,
       "story_icon_asset_path": "assets/images/story/PLACEHOLDER-story-icon.png",
       "story_sequences": [
         {
@@ -1251,7 +1077,7 @@
           "scene_image": "dragon-1.png",
           "trigger": {
             "type": "before_level",
-            "level": "Dressing Items 1 - Image only"
+            "level": "At the Restaurant"
           }
         },
         {
@@ -1275,7 +1101,7 @@
           "scene_image": "dragon-2.png",
           "trigger": {
             "type": "before_level",
-            "level": "Jobs 2 - Image only"
+            "level": "Clothes Shopping"
           }
         },
         {
@@ -1299,7 +1125,7 @@
           "scene_image": "dragon-3.png",
           "trigger": {
             "type": "before_level",
-            "level": "Wild Animals 1 - Image only"
+            "level": "Common Words - 6"
           }
         },
         {
@@ -1323,7 +1149,7 @@
           "scene_image": "dragon-4.png",
           "trigger": {
             "type": "before_level",
-            "level": "Wild Animals 2 - Image only"
+            "level": "Dressing Items 2 - Image only"
           }
         },
         {
@@ -1347,7 +1173,7 @@
           "scene_image": "dragon-5.png",
           "trigger": {
             "type": "before_level",
-            "level": "Bird Watching - Image only"
+            "level": "Jobs 2 - Image only"
           }
         },
         {
@@ -1401,7 +1227,7 @@
       ]
     },
     {
-      "main_level_id": 9,
+      "main_level_id": 8,
       "story_icon_asset_path": "assets/images/story/PLACEHOLDER-story-icon.png",
       "story_sequences": [
         {
@@ -1425,7 +1251,7 @@
           "scene_image": "space-1.png",
           "trigger": {
             "type": "before_level",
-            "level": "Living Room"
+            "level": "Wild Animals 1 - Image only"
           }
         },
         {
@@ -1449,7 +1275,7 @@
           "scene_image": "space-2.png",
           "trigger": {
             "type": "before_level",
-            "level": "House Parts - Image only"
+            "level": "Wild Animals 2 - Image only"
           }
         },
         {
@@ -1473,7 +1299,7 @@
           "scene_image": "space-3.png",
           "trigger": {
             "type": "before_level",
-            "level": "Household Equipment 1 - Image only"
+            "level": "Bird Watching - Image only"
           }
         },
         {
@@ -1497,7 +1323,7 @@
           "scene_image": "space-4.png",
           "trigger": {
             "type": "before_level",
-            "level": "Household Equipment 3 - Image only"
+            "level": "Living Room"
           }
         },
         {
@@ -1521,7 +1347,7 @@
           "scene_image": "space-5.png",
           "trigger": {
             "type": "before_level",
-            "level": "Common Words - 8"
+            "level": "Living Room Items - Image only"
           }
         },
         {
@@ -1575,7 +1401,7 @@
       ]
     },
     {
-      "main_level_id": 10,
+      "main_level_id": 9,
       "story_icon_asset_path": "assets/images/story/PLACEHOLDER-story-icon.png",
       "story_sequences": [
         {
@@ -1599,7 +1425,7 @@
           "scene_image": "grayworld-1.png",
           "trigger": {
             "type": "before_level",
-            "level": "At the Hotel"
+            "level": "House Parts - Image only"
           }
         },
         {
@@ -1623,7 +1449,7 @@
           "scene_image": "grayworld-2.png",
           "trigger": {
             "type": "before_level",
-            "level": "Travel Items - Image only"
+            "level": "Household Equipment 2 - Image only"
           }
         },
         {
@@ -1647,7 +1473,7 @@
           "scene_image": "grayworld-3.png",
           "trigger": {
             "type": "before_level",
-            "level": "At the Train Station"
+            "level": "Household Equipment 3 - Image only"
           }
         },
         {
@@ -1671,7 +1497,7 @@
           "scene_image": "grayworld-4.png",
           "trigger": {
             "type": "before_level",
-            "level": "At the Garage"
+            "level": "At the Airport"
           }
         },
         {
@@ -1695,7 +1521,7 @@
           "scene_image": "grayworld-5.png",
           "trigger": {
             "type": "before_level",
-            "level": "Common Words - 9"
+            "level": "Travel Items - Image only"
           }
         },
         {
@@ -1749,7 +1575,7 @@
       ]
     },
     {
-      "main_level_id": 11,
+      "main_level_id": 10,
       "story_icon_asset_path": "assets/images/story/PLACEHOLDER-story-icon.png",
       "story_sequences": [
         {
@@ -1773,7 +1599,7 @@
           "scene_image": "missing-boy-1.png",
           "trigger": {
             "type": "before_level",
-            "level": "Insect World - Image only"
+            "level": "Vehicles - Image only"
           }
         },
         {
@@ -1797,7 +1623,7 @@
           "scene_image": "missing-boy-2.png",
           "trigger": {
             "type": "before_level",
-            "level": "Nature Objects - Image only"
+            "level": "Insect World - Image only"
           }
         },
         {
@@ -1821,7 +1647,7 @@
           "scene_image": "missing-boy-3.png",
           "trigger": {
             "type": "before_level",
-            "level": "Checking the Weather - Image only"
+            "level": "Nature Objects - Image only"
           }
         },
         {
@@ -1845,7 +1671,7 @@
           "scene_image": "missing-boy-4.png",
           "trigger": {
             "type": "before_level",
-            "level": "Common Words - 10"
+            "level": "Checking the Weather - Image only"
           }
         },
         {
@@ -1899,7 +1725,7 @@
       ]
     },
     {
-      "main_level_id": 12,
+      "main_level_id": 11,
       "story_icon_asset_path": "assets/images/story/PLACEHOLDER-story-icon.png",
       "story_sequences": [
         {
@@ -1923,7 +1749,7 @@
           "scene_image": "rocket-1.png",
           "trigger": {
             "type": "before_level",
-            "level": "At the Pharmacy"
+            "level": "Emotions 1 - Image only"
           }
         },
         {
@@ -1947,7 +1773,7 @@
           "scene_image": "rocket-2.png",
           "trigger": {
             "type": "before_level",
-            "level": "Emergency Situations"
+            "level": "Hospital Pharmacy Items - Image only"
           }
         },
         {
@@ -1971,7 +1797,7 @@
           "scene_image": "rocket-3.png",
           "trigger": {
             "type": "before_level",
-            "level": "At the Hospital"
+            "level": "Emergency Situations"
           }
         },
         {
@@ -1995,7 +1821,7 @@
           "scene_image": "rocket-4.png",
           "trigger": {
             "type": "before_level",
-            "level": "Emotions 2 - Image only"
+            "level": "At the Dentist"
           }
         },
         {
@@ -2039,7 +1865,7 @@
           ],
           "trigger": {
             "type": "before_level",
-            "level": "Common Words - 11"
+            "level": "Emotions 2 - Image only"
           }
         },
         {

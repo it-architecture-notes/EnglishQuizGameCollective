@@ -1,0 +1,260 @@
+{
+  "levelQuestions": [
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "conductor",
+        "wrongAnswers": [
+          "ticket-seller",
+          "check-in-counter",
+          "train-driver"
+        ]
+      }
+    },
+    {
+      "template": "ConvoTemplate-1",
+      "genders": "m-f",
+      "questionData": {
+        "line1": "Do they travel by train?",
+        "line2": "Yes, they _____.",
+        "answer": "travel",
+        "distractors": [
+          "cook",
+          "sleep",
+          "drive"
+        ]
+      },
+      "audio_file1": "do-they-travel-by-train-convo",
+      "audio_file2": "yes-they-convo"
+    },
+    {
+      "template": "ConvoTemplate-1",
+      "genders": "f-m",
+      "questionData": {
+        "line1": "How do you go home?",
+        "line2": "I go by _____.",
+        "answer": "train",
+        "distractors": [
+          "boat",
+          "plane",
+          "bus"
+        ]
+      },
+      "audio_file1": "how-do-you-go-home-convo",
+      "audio_file2": "i-go-by-convo"
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "rail-road",
+        "wrongAnswers": [
+          "train",
+          "road",
+          "river"
+        ]
+      }
+    },
+    {
+      "template": "WordPairs",
+      "questionData": {
+        "english_words": [
+          "today",
+          "tomorrow",
+          "yesterday",
+          "now"
+        ],
+        "translations": [
+          {
+            "tr": "bugün",
+            "es": "hoy",
+            "fr": "aujourd'hui",
+            "de": "heute",
+            "it": "oggi",
+            "pt": "hoje",
+            "ru": "сегодня",
+            "zh": "今天",
+            "ja": "今日",
+            "ko": "오늘",
+            "ar": "اليوم",
+            "hi": "आज"
+          },
+          {
+            "tr": "yarın",
+            "es": "mañana",
+            "fr": "demain",
+            "de": "morgen",
+            "it": "domani",
+            "pt": "amanhã",
+            "ru": "завтра",
+            "zh": "明天",
+            "ja": "明日",
+            "ko": "내일",
+            "ar": "غدا",
+            "hi": "कल"
+          },
+          {
+            "tr": "dün",
+            "es": "ayer",
+            "fr": "hier",
+            "de": "gestern",
+            "it": "ieri",
+            "pt": "ontem",
+            "ru": "вчера",
+            "zh": "昨天",
+            "ja": "昨日",
+            "ko": "어제",
+            "ar": "أمس",
+            "hi": "कल"
+          },
+          {
+            "tr": "gelecek haftaya kadar",
+            "es": "hasta la próxima semana",
+            "fr": "jusqu'à la semaine prochaine",
+            "de": "bis nächste Woche",
+            "it": "fino alla prossima settimana",
+            "pt": "até a próxima semana",
+            "ru": "до следующей недели",
+            "zh": "直到下周",
+            "ja": "来週まで",
+            "ko": "다음 주까지",
+            "ar": "حتى الأسبوع المقبل",
+            "hi": "अगले सप्ताह तक"
+          }
+        ]
+      }
+    },
+    {
+      "template": "DialogueCompletion",
+      "genders": "m-m",
+      "questionData": {
+        "line1": "Can we catch the train?",
+        "answer": "Yes, run fast!",
+        "distractors": [
+          "No, I am tired.",
+          "I read a book.",
+          "It is a big dog."
+        ]
+      },
+      "audio_file1": "can-we-catch-the-train-convo",
+      "audio_file2": "yes-run-fast-convo"
+    },
+    {
+      "template": "AppearDisappear",
+      "genders": "f",
+      "questionData": {
+        "words": "Wait for the train.",
+        "distractors": [
+          "run",
+          "jump",
+          "sleep"
+        ]
+      },
+      "audio_file": "wait-for-the-train-convo"
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "wagon",
+        "wrongAnswers": [
+          "trailer",
+          "bus",
+          "platform"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "railroad-crossing",
+        "wrongAnswers": [
+          "barrier",
+          "traffic-light",
+          "guard"
+        ]
+      }
+    },
+    {
+      "template": "SentenceBuilder",
+      "genders": "m",
+      "questionData": {
+        "correct_order": "We wait for the train."
+      },
+      "audio_file": "we-wait-for-the-train-convo"
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "high-speed-train",
+        "wrongAnswers": [
+          "steam-train",
+          "freight-train",
+          "train-on-wheels"
+        ]
+      }
+    },
+    {
+      "template": "ClozeSequence",
+      "genders": "f",
+      "questionData": {
+        "sentence": "He _____ the map here.",
+        "answer": [
+          "put"
+        ],
+        "distractors": [
+          "saw",
+          "made",
+          "took",
+          "read"
+        ]
+      },
+      "audio_file": "he-the-map-here-convo"
+    },
+    {
+      "template": "GrammarForm",
+      "genders": "m",
+      "questionData": {
+        "sentence": "The train _____ fast.",
+        "answer": "is",
+        "distractors": [
+          "are",
+          "am",
+          "be"
+        ]
+      }
+    },
+    {
+      "template": "ClozeSequence",
+      "genders": "f",
+      "questionData": {
+        "sentence": "People _____ the train.",
+        "answer": [
+          "leave"
+        ],
+        "distractors": [
+          "see",
+          "make",
+          "take",
+          "read"
+        ]
+      },
+      "audio_file": "people-the-train-convo"
+    },
+    {
+      "template": "ClozeSequence",
+      "genders": "m",
+      "questionData": {
+        "sentence": "We _____ for the train.",
+        "answer": [
+          "wait"
+        ],
+        "distractors": [
+          "run",
+          "jump",
+          "sleep",
+          "sing"
+        ]
+      },
+      "audio_file": "we-for-the-train-convo"
+    }
+  ]
+}

@@ -1,0 +1,89 @@
+{
+  "translations_list": [
+    {
+      "english_word": "to help",
+      "translations": {
+        "tr": "yardım etmek",
+        "es": "ayudar",
+        "fr": "aider",
+        "de": "helfen",
+        "it": "aiutare",
+        "pt": "ajudar",
+        "ru": "помогать",
+        "zh": "帮助",
+        "ja": "手伝う",
+        "ko": "돕다",
+        "ar": "المساعدة",
+        "hi": "मदद करना"
+      }
+    },
+    {
+      "english_word": "to find",
+      "translations": {
+        "tr": "bulmak",
+        "es": "encontrar",
+        "fr": "trouver",
+        "de": "finden",
+        "it": "trovare",
+        "pt": "encontrar",
+        "ru": "находить",
+        "zh": "找",
+        "ja": "見つける",
+        "ko": "찾다",
+        "ar": "الإيجاد",
+        "hi": "ढूँढना"
+      }
+    },
+    {
+      "english_word": "old",
+      "translations": {
+        "tr": "eski",
+        "es": "viejo",
+        "fr": "vieux",
+        "de": "alt",
+        "it": "vecchio",
+        "pt": "velho",
+        "ru": "старый",
+        "zh": "旧的",
+        "ja": "古い",
+        "ko": "오래된",
+        "ar": "قديم",
+        "hi": "पुराना"
+      }
+    },
+    {
+      "english_word": "to show",
+      "translations": {
+        "tr": "göstermek",
+        "es": "mostrar",
+        "fr": "montrer",
+        "de": "zeigen",
+        "it": "mostrare",
+        "pt": "mostrar",
+        "ru": "показывать",
+        "zh": "出示",
+        "ja": "見せる",
+        "ko": "보여주다",
+        "ar": "الإظهار",
+        "hi": "दिखाना"
+      }
+    },
+    {
+      "english_word": "to return something",
+      "translations": {
+        "tr": "geri vermek",
+        "es": "devolver",
+        "fr": "rendre",
+        "de": "zurückgeben",
+        "it": "restituire",
+        "pt": "devolver",
+        "ru": "возвращать",
+        "zh": "归还",
+        "ja": "返す",
+        "ko": "반납하다",
+        "ar": "يعيد",
+        "hi": "वापस करना"
+      }
+    }
+  ]
+}

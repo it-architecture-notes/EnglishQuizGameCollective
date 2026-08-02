@@ -1,0 +1,228 @@
+{
+  "levelQuestions": [
+    {
+      "template": "ClozeSequence",
+      "genders": "f",
+      "questionData": {
+        "sentence": "If we work together, we will _____ something amazing, and I _____ you'll join us.",
+        "answer": [
+          "create",
+          "hope"
+        ],
+        "distractors": [
+          "build",
+          "wish"
+        ]
+      },
+      "audio_file": "if-we-work-together-we-will-create-something-amazing-and-i-hope-youll-join-us-convo"
+    },
+    {
+      "template": "ClozeSequence",
+      "genders": "f",
+      "questionData": {
+        "sentence": "We are going to _____ the museum tomorrow; can you _____ what we'll see there?",
+        "answer": [
+          "visit",
+          "guess"
+        ],
+        "distractors": [
+          "see",
+          "know"
+        ]
+      },
+      "audio_file": "we-are-going-to-visit-the-museum-tomorrow-can-you-guess-what-well-see-there-convo"
+    },
+    {
+      "template": "ClozeSequence",
+      "genders": "f",
+      "questionData": {
+        "sentence": "You are _____ to try this cake; it's the _____ dessert here.",
+        "answer": [
+          "lucky",
+          "tastiest"
+        ],
+        "distractors": [
+          "sorry",
+          "driest"
+        ]
+      },
+      "audio_file": "you-are-lucky-to-try-this-cake-its-the-tastiest-dessert-here-convo"
+    },
+    {
+      "template": "GrammarForm",
+      "genders": "m",
+      "questionData": {
+        "sentence": "She _____ the team next week.",
+        "answer": "will join",
+        "distractors": [
+          "joins",
+          "joined",
+          "is joining"
+        ]
+      }
+    },
+    {
+      "template": "AppearDisappear",
+      "genders": "m",
+      "questionData": {
+        "words": "Let's add more sugar to the tea.",
+        "distractors": [
+          "remove",
+          "mix",
+          "pour"
+        ]
+      },
+      "audio_file": "lets-add-more-sugar-to-the-tea-convo"
+    },
+    {
+      "template": "AppearDisappear",
+      "genders": "m",
+      "questionData": {
+        "words": "I will never forget this day.",
+        "distractors": [
+          "remember",
+          "ignore",
+          "ruin"
+        ]
+      },
+      "audio_file": "i-will-never-forget-this-day-convo"
+    },
+    {
+      "template": "AppearDisappear",
+      "genders": "m",
+      "questionData": {
+        "words": "We pay our rent monthly.",
+        "distractors": [
+          "daily",
+          "yearly",
+          "weekly"
+        ]
+      },
+      "audio_file": "we-pay-our-rent-monthly-convo"
+    },
+    {
+      "template": "ConvoTemplate-1",
+      "genders": "m-f",
+      "questionData": {
+        "line1": "Does this plan sound good to you?",
+        "line2": "Yes, it _____ great to me.",
+        "answer": "sounds",
+        "distractors": [
+          "looks",
+          "feels",
+          "seems"
+        ]
+      },
+      "audio_file1": "does-this-plan-sound-good-to-you-convo",
+      "audio_file2": "yes-it-sounds-great-to-me-convo"
+    },
+    {
+      "template": "ConvoTemplate-1",
+      "genders": "f-m",
+      "questionData": {
+        "line1": "When will the package arrive?",
+        "line2": "It will arrive _____ three days.",
+        "answer": "within",
+        "distractors": [
+          "after",
+          "during",
+          "without"
+        ]
+      },
+      "audio_file1": "when-will-the-package-arrive-convo",
+      "audio_file2": "it-will-arrive-within-three-days-convo"
+    },
+    {
+      "template": "DialogueCompletion",
+      "genders": "f-m",
+      "questionData": {
+        "line1": "How much do the tickets cost?",
+        "answer": "They cost ten dollars per person; please put down your name on the list.",
+        "distractors": [
+          "They are completely free today.",
+          "They cost twenty dollars total.",
+          "They sold out an hour ago."
+        ]
+      },
+      "audio_file1": "how-much-do-the-tickets-cost-convo",
+      "audio_file2": "they-cost-ten-dollars-per-person-please-put-down-your-name-on-the-list-convo"
+    },
+    {
+      "template": "SentenceBuilder",
+      "genders": "f",
+      "questionData": {
+        "correct_order": "We walk along the beach every day."
+      },
+      "audio_file": "we-walk-along-the-beach-every-day-convo"
+    },
+    {
+      "template": "WordPairs",
+      "questionData": {
+        "english_words": [
+          "poor",
+          "smart",
+          "fine",
+          "main"
+        ],
+        "translations": [
+          {
+            "tr": "poor",
+            "es": "poor",
+            "fr": "poor",
+            "de": "poor",
+            "it": "poor",
+            "pt": "poor",
+            "ru": "poor",
+            "zh": "poor",
+            "ja": "poor",
+            "ko": "poor",
+            "ar": "poor",
+            "hi": "poor"
+          },
+          {
+            "tr": "smart",
+            "es": "smart",
+            "fr": "smart",
+            "de": "smart",
+            "it": "smart",
+            "pt": "smart",
+            "ru": "smart",
+            "zh": "smart",
+            "ja": "smart",
+            "ko": "smart",
+            "ar": "smart",
+            "hi": "smart"
+          },
+          {
+            "tr": "fine",
+            "es": "fine",
+            "fr": "fine",
+            "de": "fine",
+            "it": "fine",
+            "pt": "fine",
+            "ru": "fine",
+            "zh": "fine",
+            "ja": "fine",
+            "ko": "fine",
+            "ar": "fine",
+            "hi": "fine"
+          },
+          {
+            "tr": "main",
+            "es": "main",
+            "fr": "main",
+            "de": "main",
+            "it": "main",
+            "pt": "main",
+            "ru": "main",
+            "zh": "main",
+            "ja": "main",
+            "ko": "main",
+            "ar": "main",
+            "hi": "main"
+          }
+        ]
+      }
+    }
+  ]
+}

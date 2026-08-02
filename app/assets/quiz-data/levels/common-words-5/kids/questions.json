@@ -1,0 +1,234 @@
+{
+  "levelQuestions": [
+    {
+      "template": "ClozeSequence",
+      "genders": "m",
+      "questionData": {
+        "sentence": "I _____ with friends.",
+        "answer": [
+          "play"
+        ],
+        "distractors": [
+          "read",
+          "run",
+          "sing",
+          "sleep"
+        ]
+      },
+      "audio_file": "i-play-with-friends-convo"
+    },
+    {
+      "template": "ClozeSequence",
+      "genders": "f",
+      "questionData": {
+        "sentence": "I _____ a book.",
+        "answer": [
+          "read"
+        ],
+        "distractors": [
+          "write",
+          "draw",
+          "play",
+          "sleep"
+        ]
+      },
+      "audio_file": "i-read-a-book-convo"
+    },
+    {
+      "template": "ClozeSequence",
+      "genders": "m",
+      "questionData": {
+        "sentence": "School is _____ today.",
+        "answer": [
+          "fun"
+        ],
+        "distractors": [
+          "hard",
+          "long",
+          "quiet",
+          "dark"
+        ]
+      },
+      "audio_file": "school-is-fun-today-convo"
+    },
+    {
+      "template": "GrammarForm",
+      "genders": "m",
+      "questionData": {
+        "sentence": "I _____ my dog.",
+        "answer": "feed",
+        "distractors": [
+          "read",
+          "wash",
+          "call"
+        ]
+      }
+    },
+    {
+      "template": "AppearDisappear",
+      "genders": "m",
+      "questionData": {
+        "words": "I help my friend.",
+        "distractors": [
+          "dog",
+          "book",
+          "ball",
+          "home"
+        ]
+      },
+      "audio_file": "i-help-my-friend-convo"
+    },
+    {
+      "template": "AppearDisappear",
+      "genders": "f",
+      "questionData": {
+        "words": "We play after school.",
+        "distractors": [
+          "sleep",
+          "read",
+          "wash",
+          "cook"
+        ]
+      },
+      "audio_file": "we-play-after-school-convo"
+    },
+    {
+      "template": "AppearDisappear",
+      "genders": "f",
+      "questionData": {
+        "words": "My teacher is kind.",
+        "distractors": [
+          "sad",
+          "cold",
+          "wet",
+          "tired"
+        ]
+      },
+      "audio_file": "my-teacher-is-kind-convo"
+    },
+    {
+      "template": "ConvoTemplate-1",
+      "genders": "f-m",
+      "questionData": {
+        "line1": "Who made this?",
+        "line2": "My dad _____ it.",
+        "answer": "made",
+        "distractors": [
+          "make",
+          "do",
+          "did"
+        ]
+      },
+      "audio_file1": "who-made-this-convo",
+      "audio_file2": "my-dad-made-it-convo"
+    },
+    {
+      "template": "ConvoTemplate-1",
+      "genders": "f-m",
+      "questionData": {
+        "line1": "Did it rain today?",
+        "line2": "Yes, it _____.",
+        "answer": "rained",
+        "distractors": [
+          "rain",
+          "rains",
+          "is rain"
+        ]
+      },
+      "audio_file1": "did-it-rain-today-convo",
+      "audio_file2": "yes-it-rained-convo"
+    },
+    {
+      "template": "DialogueCompletion",
+      "genders": "m-f",
+      "questionData": {
+        "line1": "Do you like this game?",
+        "answer": "Yes, it is fun!",
+        "distractors": [
+          "No, I am tired.",
+          "It is a big dog.",
+          "I read a book."
+        ]
+      },
+      "audio_file1": "do-you-like-this-game-convo",
+      "audio_file2": "yes-it-is-fun-convo"
+    },
+    {
+      "template": "SentenceBuilder",
+      "genders": "f",
+      "questionData": {
+        "correct_order": "We send a card."
+      },
+      "audio_file": "we-send-a-card-convo"
+    },
+    {
+      "template": "WordPairs",
+      "questionData": {
+        "english_words": [
+          "funny",
+          "worried",
+          "afraid",
+          "friendly"
+        ],
+        "translations": [
+          {
+            "tr": "funny",
+            "es": "funny",
+            "fr": "funny",
+            "de": "funny",
+            "it": "funny",
+            "pt": "funny",
+            "ru": "funny",
+            "zh": "funny",
+            "ja": "funny",
+            "ko": "funny",
+            "ar": "funny",
+            "hi": "funny"
+          },
+          {
+            "tr": "worried",
+            "es": "worried",
+            "fr": "worried",
+            "de": "worried",
+            "it": "worried",
+            "pt": "worried",
+            "ru": "worried",
+            "zh": "worried",
+            "ja": "worried",
+            "ko": "worried",
+            "ar": "worried",
+            "hi": "worried"
+          },
+          {
+            "tr": "afraid",
+            "es": "afraid",
+            "fr": "afraid",
+            "de": "afraid",
+            "it": "afraid",
+            "pt": "afraid",
+            "ru": "afraid",
+            "zh": "afraid",
+            "ja": "afraid",
+            "ko": "afraid",
+            "ar": "afraid",
+            "hi": "afraid"
+          },
+          {
+            "tr": "friendly",
+            "es": "friendly",
+            "fr": "friendly",
+            "de": "friendly",
+            "it": "friendly",
+            "pt": "friendly",
+            "ru": "friendly",
+            "zh": "friendly",
+            "ja": "friendly",
+            "ko": "friendly",
+            "ar": "friendly",
+            "hi": "friendly"
+          }
+        ]
+      }
+    }
+  ]
+}

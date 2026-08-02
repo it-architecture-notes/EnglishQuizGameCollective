@@ -1,0 +1,225 @@
+{
+  "levelQuestions": [
+    {
+      "template": "ClozeSequence",
+      "genders": "f",
+      "questionData": {
+        "sentence": "I _____ the game.",
+        "answer": [
+          "like"
+        ],
+        "distractors": [
+          "likes",
+          "liked"
+        ]
+      },
+      "audio_file": "i-the-game-convo"
+    },
+    {
+      "template": "ClozeSequence",
+      "genders": "f",
+      "questionData": {
+        "sentence": "Our team _____ today.",
+        "answer": [
+          "played"
+        ],
+        "distractors": [
+          "runs",
+          "reads"
+        ]
+      },
+      "audio_file": "our-team-played-today-convo"
+    },
+    {
+      "template": "ClozeSequence",
+      "genders": "m",
+      "questionData": {
+        "sentence": "He is my _____.",
+        "answer": [
+          "friend"
+        ],
+        "distractors": [
+          "teacher",
+          "father"
+        ]
+      },
+      "audio_file": "he-is-my-convo"
+    },
+    {
+      "template": "GrammarForm",
+      "genders": "m",
+      "questionData": {
+        "sentence": "She _____ about school.",
+        "answer": "worries",
+        "distractors": [
+          "worry",
+          "worried",
+          "worrying"
+        ]
+      }
+    },
+    {
+      "template": "AppearDisappear",
+      "genders": "m",
+      "questionData": {
+        "words": "I read a book.",
+        "distractors": [
+          "run",
+          "jump",
+          "sleep"
+        ]
+      },
+      "audio_file": "i-read-a-book-convo"
+    },
+    {
+      "template": "AppearDisappear",
+      "genders": "f",
+      "questionData": {
+        "words": "We watch a movie.",
+        "distractors": [
+          "run",
+          "jump",
+          "sleep"
+        ]
+      },
+      "audio_file": "we-watch-a-movie-convo"
+    },
+    {
+      "template": "AppearDisappear",
+      "genders": "f",
+      "questionData": {
+        "words": "Today is a good day.",
+        "distractors": [
+          "sad",
+          "cold",
+          "wet"
+        ]
+      },
+      "audio_file": "today-is-a-good-day-convo"
+    },
+    {
+      "template": "ConvoTemplate-1",
+      "genders": "f-m",
+      "questionData": {
+        "line1": "Can you do this puzzle?",
+        "line2": "Yes, I _____.",
+        "answer": "can",
+        "distractors": [
+          "am",
+          "is",
+          "are"
+        ]
+      },
+      "audio_file1": "can-you-do-this-puzzle-convo",
+      "audio_file2": "yes-i-convo"
+    },
+    {
+      "template": "ConvoTemplate-1",
+      "genders": "f-m",
+      "questionData": {
+        "line1": "Did you play today?",
+        "line2": "Yes, I _____.",
+        "answer": "did",
+        "distractors": [
+          "do",
+          "does",
+          "am"
+        ]
+      },
+      "audio_file1": "did-you-play-today-convo",
+      "audio_file2": "yes-i-convo"
+    },
+    {
+      "template": "DialogueCompletion",
+      "genders": "f-m",
+      "questionData": {
+        "line1": "Did your team win?",
+        "answer": "Yes, we won!",
+        "distractors": [
+          "No, I am tired.",
+          "I read a book.",
+          "It is a big dog."
+        ]
+      },
+      "audio_file1": "did-your-team-win-convo",
+      "audio_file2": "yes-we-won-convo"
+    },
+    {
+      "template": "SentenceBuilder",
+      "genders": "f",
+      "questionData": {
+        "correct_order": "I am ready now."
+      },
+      "audio_file": "i-am-ready-now-convo"
+    },
+    {
+      "template": "WordPairs",
+      "questionData": {
+        "english_words": [
+          "good",
+          "bad",
+          "fast",
+          "slow"
+        ],
+        "translations": [
+          {
+            "tr": "absolutely",
+            "es": "absolutely",
+            "fr": "absolutely",
+            "de": "absolutely",
+            "it": "absolutely",
+            "pt": "absolutely",
+            "ru": "absolutely",
+            "zh": "absolutely",
+            "ja": "absolutely",
+            "ko": "absolutely",
+            "ar": "absolutely",
+            "hi": "absolutely"
+          },
+          {
+            "tr": "clearly",
+            "es": "clearly",
+            "fr": "clearly",
+            "de": "clearly",
+            "it": "clearly",
+            "pt": "clearly",
+            "ru": "clearly",
+            "zh": "clearly",
+            "ja": "clearly",
+            "ko": "clearly",
+            "ar": "clearly",
+            "hi": "clearly"
+          },
+          {
+            "tr": "completely",
+            "es": "completely",
+            "fr": "completely",
+            "de": "completely",
+            "it": "completely",
+            "pt": "completely",
+            "ru": "completely",
+            "zh": "completely",
+            "ja": "completely",
+            "ko": "completely",
+            "ar": "completely",
+            "hi": "completely"
+          },
+          {
+            "tr": "obviously",
+            "es": "obviously",
+            "fr": "obviously",
+            "de": "obviously",
+            "it": "obviously",
+            "pt": "obviously",
+            "ru": "obviously",
+            "zh": "obviously",
+            "ja": "obviously",
+            "ko": "obviously",
+            "ar": "obviously",
+            "hi": "obviously"
+          }
+        ]
+      }
+    }
+  ]
+}

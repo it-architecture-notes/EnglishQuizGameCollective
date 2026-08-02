@@ -1,11 +1,6 @@
 [
   {
     "mainLevel": 1,
-    "directoryName": "at-the-airport",
-    "title": "At the Airport"
-  },
-  {
-    "mainLevel": 1,
     "directoryName": "greetings",
     "title": "Greetings"
   },
@@ -47,6 +42,11 @@
     "title": "Reminder 2",
     "kind": "reminder",
     "reminderIndex": 2
+  },
+  {
+    "mainLevel": 2,
+    "directoryName": "bedroom-bathroom-items",
+    "title": "Bedroom & Bathroom Items - Image only"
   },
   {
     "mainLevel": 2,

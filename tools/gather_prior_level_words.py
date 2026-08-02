@@ -43,52 +43,71 @@ def normalize_phrase(text: str) -> str:
 
 
 def load_flow_order(flow_path: Path) -> list[str]:
-    """Return ``iconImageName`` values in game-flow order."""
+    """Return level directory names, in game-flow order."""
     return list(load_flow_entries(flow_path).keys())
 
 
 def load_flow_entries(flow_path: Path) -> dict[str, str]:
-    """Return ``iconImageName`` -> title from game-flow (insertion order)."""
+    """Return level directory name -> title from game-flow (insertion order).
+
+    Real levels key on ``directoryName`` (schema since the "Big Commit
+    Milestone" flow-JSON change). ``reminder`` flow-list entries
+    (``kind: "reminder"``, no ``directoryName``) aren't standalone vocabulary
+    levels and are skipped — they don't have their own questions.json/
+    translations.json to gather words from.
+    """
     data = json.loads(flow_path.read_text(encoding="utf-8"))
     if not isinstance(data, list):
         raise SystemExit(f"Expected JSON array in {flow_path}")
     entries: dict[str, str] = {}
     for entry in data:
-        if isinstance(entry, dict):
-            name = entry.get("iconImageName")
-            if isinstance(name, str) and name.strip():
-                title = entry.get("title")
-                entries[name.strip()] = (
-                    title.strip() if isinstance(title, str) else ""
-                )
+        if not isinstance(entry, dict):
+            continue
+        if entry.get("kind") == "reminder":
+            continue
+        name = entry.get("directoryName") or entry.get("iconImageName")
+        if isinstance(name, str) and name.strip():
+            title = entry.get("title")
+            entries[name.strip()] = (
+                title.strip() if isinstance(title, str) else ""
+            )
     return entries
 
 
-def _dir_with_questions(levels_root: Path, folder_name: str) -> Path | None:
+def _dir_with_questions(levels_root: Path, folder_name: str, flavor: str) -> Path | None:
+    """Prefer ``{folder_name}/{flavor}/questions.json`` (current adults/kids split
+    layout); fall back to ``{folder_name}/questions.json`` directly for any level
+    that hasn't been split (legacy/root layout)."""
     levels_root = levels_root.resolve()
     for base in (levels_root / "implemented", levels_root):
+        flavored = base / folder_name / flavor
+        if (flavored / "questions.json").is_file():
+            return flavored.resolve()
         candidate = base / folder_name
         if (candidate / "questions.json").is_file():
             return candidate.resolve()
     return None
 
 
-def resolve_level_dir(levels_root: Path, icon_name: str) -> Path | None:
-    """Find level folder containing ``questions.json`` for ``iconImageName``."""
+def resolve_level_dir(levels_root: Path, icon_name: str, flavor: str = "adults") -> Path | None:
+    """Find level folder containing ``questions.json`` for ``iconImageName``,
+    preferring the ``flavor`` (``adults``/``kids``) subfolder."""
     icon_name = icon_name.strip()
     levels_root = levels_root.resolve()
 
-    resolved = _dir_with_questions(levels_root, icon_name)
+    resolved = _dir_with_questions(levels_root, icon_name, flavor)
     if resolved is not None:
         return resolved
 
     alias = _FLOW_ICON_DISK_ALIASES.get(icon_name)
     if alias:
-        resolved = _dir_with_questions(levels_root, alias)
+        resolved = _dir_with_questions(levels_root, alias, flavor)
         if resolved is not None:
             return resolved
 
     for p in levels_root.rglob("questions.json"):
+        if p.parent.name == flavor and p.parent.parent.name == icon_name:
+            return p.parent.resolve()
         if p.parent.name == icon_name:
             return p.parent.resolve()
 
@@ -97,9 +116,13 @@ def resolve_level_dir(levels_root: Path, icon_name: str) -> Path | None:
     numbered: list[tuple[int, Path]] = []
     for p in levels_root.rglob("questions.json"):
         parent = p.parent
-        if not parent.name.startswith(prefix):
+        is_flavor_split = parent.name in ("adults", "kids")
+        if is_flavor_split and parent.name != flavor:
             continue
-        suffix = parent.name[len(prefix) :]
+        level_folder_name = parent.parent.name if is_flavor_split else parent.name
+        if not level_folder_name.startswith(prefix):
+            continue
+        suffix = level_folder_name[len(prefix) :]
         if suffix.isdigit():
             numbered.append((int(suffix), parent))
     if numbered:
@@ -118,9 +141,10 @@ def resolve_prior_level_dirs(
     *,
     levels_root: Path,
     flow_path: Path,
+    flavor: str = "adults",
 ) -> tuple[list[tuple[str, Path]], list[str]]:
     """
-    Map prior flow icon names to level folders.
+    Map prior flow icon names to level folders (preferring ``flavor``'s subfolder).
 
     Skips flow entries titled ``… Image only`` when no folder exists (no warning).
     Returns (prior_dirs, missing_icon_names_still_unresolved).
@@ -129,7 +153,7 @@ def resolve_prior_level_dirs(
     prior_dirs: list[tuple[str, Path]] = []
     missing: list[str] = []
     for name in prior_names:
-        level_dir = resolve_level_dir(levels_root, name)
+        level_dir = resolve_level_dir(levels_root, name, flavor)
         if level_dir is None:
             if is_image_only_flow_title(flow_titles.get(name, "")):
                 continue
@@ -270,6 +294,14 @@ def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
         action="store_true",
         help="Print prior level paths and exit (no vocabulary)",
     )
+    p.add_argument(
+        "--flavor",
+        choices=("adults", "kids"),
+        default="adults",
+        help="Read the adults/ or kids/ subfolder's questions.json/translations.json "
+        "(default: adults). Falls back to a level's root files if that flavor "
+        "subfolder doesn't exist yet.",
+    )
     return p.parse_args(argv)
 
 
@@ -302,6 +334,7 @@ def main(argv: list[str] | None = None) -> int:
         prior_names,
         levels_root=levels_root,
         flow_path=flow_path,
+        flavor=args.flavor,
     )
 
     if args.list_levels:

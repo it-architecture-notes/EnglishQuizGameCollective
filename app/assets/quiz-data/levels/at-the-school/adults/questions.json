@@ -1,0 +1,258 @@
+{
+  "levelQuestions": [
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "classroom",
+        "wrongAnswers": [
+          "library",
+          "theater",
+          "cafeteria"
+        ]
+      }
+    },
+    {
+      "template": "ConvoTemplate-1",
+      "genders": "m-m",
+      "questionData": {
+        "line1": "What do you want _____ today?",
+        "line2": "I want _____ new English words.",
+        "answer": "to learn",
+        "distractors": [
+          "to do",
+          "to find",
+          "to speak"
+        ]
+      },
+      "audio_file1": "what-do-you-want-to-learn-today-convo",
+      "audio_file2": "i-want-to-learn-new-english-words-convo"
+    },
+    {
+      "template": "ConvoTemplate-1",
+      "genders": "f-m",
+      "questionData": {
+        "line1": "What do you want to do one day?",
+        "line2": "I want to _____ children at a school.",
+        "answer": "teach",
+        "distractors": [
+          "learn",
+          "study",
+          "speak"
+        ]
+      },
+      "audio_file1": "what-do-you-want-to-do-one-day-convo",
+      "audio_file2": "i-want-to-teach-children-at-a-school-convo"
+    },
+    {
+      "template": "AppearDisappear",
+      "genders": "f",
+      "questionData": {
+        "words": "We study and write in our notebooks.",
+        "distractors": [
+          "read",
+          "listen",
+          "speak",
+          "homework"
+        ]
+      },
+      "audio_file": "we-study-and-write-in-our-notebooks-convo"
+    },
+    {
+      "template": "imageQuizTemplate-2",
+      "questionData": {
+        "imageName": "library",
+        "wrongAnswers": [
+          "art-room",
+          "restroom",
+          "bookshelves"
+        ]
+      }
+    },
+    {
+      "template": "ConvoTemplate-1",
+      "genders": "f-m",
+      "questionData": {
+        "line1": "Do you _____ the question?",
+        "line2": "Yes, I _____ it now.",
+        "answer": "understand",
+        "distractors": [
+          "find",
+          "finish",
+          "need"
+        ]
+      },
+      "audio_file1": "do-you-understand-the-question-convo",
+      "audio_file2": "yes-i-understand-it-now-convo"
+    },
+    {
+      "template": "WordPairs",
+      "questionData": {
+        "english_words": [
+          "difficult",
+          "easy",
+          "right",
+          "wrong"
+        ],
+        "translations": [
+          {
+            "tr": "zor",
+            "es": "difícil",
+            "fr": "difficile",
+            "de": "schwierig",
+            "it": "difficile",
+            "pt": "difícil",
+            "ru": "трудный",
+            "zh": "难的",
+            "ja": "難しい",
+            "ko": "어려운",
+            "ar": "صعب",
+            "hi": "कठिन"
+          },
+          {
+            "tr": "kolay",
+            "es": "fácil",
+            "fr": "facile",
+            "de": "einfach",
+            "it": "facile",
+            "pt": "fácil",
+            "ru": "легкий",
+            "zh": "简单的",
+            "ja": "簡単",
+            "ko": "쉬운",
+            "ar": "سهل",
+            "hi": "आसान"
+          },
+          {
+            "tr": "doğru",
+            "es": "correcto",
+            "fr": "correct",
+            "de": "richtig",
+            "it": "giusto",
+            "pt": "certo",
+            "ru": "верно",
+            "zh": "正确的",
+            "ja": "正しい",
+            "ko": "맞는",
+            "ar": "صحيح",
+            "hi": "सही"
+          },
+          {
+            "tr": "yanlış",
+            "es": "equivocado",
+            "fr": "faux",
+            "de": "falsch",
+            "it": "sbagliato",
+            "pt": "errado",
+            "ru": "неправильный",
+            "zh": "错误的",
+            "ja": "間違っている",
+            "ko": "잘못된",
+            "ar": "خطأ",
+            "hi": "गलत"
+          }
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "cafeteria",
+        "wrongAnswers": [
+          "library",
+          "gym",
+          "restaurant"
+        ]
+      }
+    },
+    {
+      "template": "ClozeSequence",
+      "genders": "m",
+      "questionData": {
+        "sentence": "There is a mistake. Please _____ _____!",
+        "answers": [
+          "read",
+          "again"
+        ],
+        "distractors": [
+          "correct",
+          "very",
+          "stop",
+          "wrong"
+        ]
+      },
+      "audio_file": "there-is-a-mistake-please-read-again-convo"
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "science-lab",
+        "wrongAnswers": [
+          "hall",
+          "art-room",
+          "gym"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "playground",
+        "wrongAnswers": [
+          "skater-area",
+          "arena",
+          "kids-area"
+        ]
+      }
+    },
+    {
+      "template": "SentenceBuilder",
+      "genders": "m",
+      "questionData": {
+        "correct_order": "This lesson is interesting."
+      },
+      "audio_file": "this-lesson-is-interesting-convo"
+    },
+    {
+      "template": "AppearDisappear",
+      "genders": "m",
+      "questionData": {
+        "words": "The teacher asks an easy question.",
+        "distractors": [
+          "difficult",
+          "know",
+          "see",
+          "answer"
+        ]
+      },
+      "audio_file": "the-teacher-asks-an-easy-question-convo"
+    },
+    {
+      "template": "GrammarForm",
+      "genders": "m",
+      "questionData": {
+        "sentence": "When do you ____ your homework?",
+        "answer": "do",
+        "distractors": [
+          "does",
+          "did",
+          "doing"
+        ]
+      }
+    },
+    {
+      "template": "DialogueCompletion",
+      "genders": "f-m",
+      "questionData": {
+        "line1": "Who can answer this question?",
+        "answer": "I can! I know the answer!",
+        "distractors": [
+          "He can't answer it.",
+          "Please open your books.",
+          "I don't find the answer."
+        ]
+      },
+      "audio_file1": "who-can-answer-this-question-convo",
+      "audio_file2": "i-can-i-know-the-answer-convo"
+    }
+  ]
+}

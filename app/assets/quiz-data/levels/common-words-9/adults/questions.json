@@ -1,0 +1,228 @@
+{
+  "levelQuestions": [
+    {
+      "template": "ClozeSequence",
+      "genders": "f",
+      "questionData": {
+        "sentence": "I _____ his apology, even though I still _____ with his decision.",
+        "answer": [
+          "accepted",
+          "disagreed"
+        ],
+        "distractors": [
+          "rejected",
+          "agreed"
+        ]
+      },
+      "audio_file": "i-accepted-his-apology-even-though-i-still-disagreed-with-his-decision-convo"
+    },
+    {
+      "template": "ClozeSequence",
+      "genders": "f",
+      "questionData": {
+        "sentence": "Our team has _____ the champions and _____ their winning streak.",
+        "answer": [
+          "beaten",
+          "destroyed"
+        ],
+        "distractors": [
+          "defeated",
+          "ended"
+        ]
+      },
+      "audio_file": "our-team-has-beaten-the-champions-and-destroyed-their-winning-streak-convo"
+    },
+    {
+      "template": "ClozeSequence",
+      "genders": "m",
+      "questionData": {
+        "sentence": "He looked _____ to me, someone I recognized from before, and I believe he was being fully _____ with us.",
+        "answer": [
+          "familiar",
+          "honest"
+        ],
+        "distractors": [
+          "unusual",
+          "unclear"
+        ]
+      },
+      "audio_file": "he-looked-familiar-to-me-someone-i-recognized-from-before-and-i-believe-he-was-being-fully-honest-with-us-convo"
+    },
+    {
+      "template": "GrammarForm",
+      "genders": "m",
+      "questionData": {
+        "sentence": "She _____ about the exam for the past week.",
+        "answer": "has been worrying",
+        "distractors": [
+          "worries",
+          "worried",
+          "is worrying"
+        ]
+      }
+    },
+    {
+      "template": "AppearDisappear",
+      "genders": "m",
+      "questionData": {
+        "words": "The author has published five books.",
+        "distractors": [
+          "written",
+          "sold",
+          "read"
+        ]
+      },
+      "audio_file": "the-author-has-published-five-books-convo"
+    },
+    {
+      "template": "AppearDisappear",
+      "genders": "f",
+      "questionData": {
+        "words": "We recorded the whole concert.",
+        "distractors": [
+          "filmed",
+          "watched",
+          "missed"
+        ]
+      },
+      "audio_file": "we-recorded-the-whole-concert-convo"
+    },
+    {
+      "template": "AppearDisappear",
+      "genders": "f",
+      "questionData": {
+        "words": "This could possibly be the best day ever.",
+        "distractors": [
+          "certainly",
+          "definitely",
+          "hardly"
+        ]
+      },
+      "audio_file": "this-could-possibly-be-the-best-day-ever-convo"
+    },
+    {
+      "template": "ConvoTemplate-1",
+      "genders": "f-m",
+      "questionData": {
+        "line1": "Have you ever solved a really hard puzzle?",
+        "line2": "Yes, I have _____ several difficult ones.",
+        "answer": "solved",
+        "distractors": [
+          "finished",
+          "tried",
+          "started"
+        ]
+      },
+      "audio_file1": "have-you-ever-solved-a-really-hard-puzzle-convo",
+      "audio_file2": "yes-i-have-solved-several-difficult-ones-convo"
+    },
+    {
+      "template": "ConvoTemplate-1",
+      "genders": "f-m",
+      "questionData": {
+        "line1": "Did everyone vote in the election?",
+        "line2": "Yes, almost everyone _____ early this year.",
+        "answer": "voted",
+        "distractors": [
+          "registered",
+          "waited",
+          "decided"
+        ]
+      },
+      "audio_file1": "did-everyone-vote-in-the-election-convo",
+      "audio_file2": "yes-almost-everyone-voted-early-this-year-convo"
+    },
+    {
+      "template": "DialogueCompletion",
+      "genders": "f-m",
+      "questionData": {
+        "line1": "Was the game fair to both teams?",
+        "answer": "Yes, the referee treated both teams entirely fairly.",
+        "distractors": [
+          "No, one team clearly had an advantage.",
+          "No, the referee made several mistakes.",
+          "Yes, but the crowd was very loud."
+        ]
+      },
+      "audio_file1": "was-the-game-fair-to-both-teams-convo",
+      "audio_file2": "yes-the-referee-treated-both-teams-entirely-fairly-convo"
+    },
+    {
+      "template": "SentenceBuilder",
+      "genders": "f",
+      "questionData": {
+        "correct_order": "I am fully ready now."
+      },
+      "audio_file": "i-am-fully-ready-now-convo"
+    },
+    {
+      "template": "WordPairs",
+      "questionData": {
+        "english_words": [
+          "absolutely",
+          "clearly",
+          "completely",
+          "obviously"
+        ],
+        "translations": [
+          {
+            "tr": "absolutely",
+            "es": "absolutely",
+            "fr": "absolutely",
+            "de": "absolutely",
+            "it": "absolutely",
+            "pt": "absolutely",
+            "ru": "absolutely",
+            "zh": "absolutely",
+            "ja": "absolutely",
+            "ko": "absolutely",
+            "ar": "absolutely",
+            "hi": "absolutely"
+          },
+          {
+            "tr": "clearly",
+            "es": "clearly",
+            "fr": "clearly",
+            "de": "clearly",
+            "it": "clearly",
+            "pt": "clearly",
+            "ru": "clearly",
+            "zh": "clearly",
+            "ja": "clearly",
+            "ko": "clearly",
+            "ar": "clearly",
+            "hi": "clearly"
+          },
+          {
+            "tr": "completely",
+            "es": "completely",
+            "fr": "completely",
+            "de": "completely",
+            "it": "completely",
+            "pt": "completely",
+            "ru": "completely",
+            "zh": "completely",
+            "ja": "completely",
+            "ko": "completely",
+            "ar": "completely",
+            "hi": "completely"
+          },
+          {
+            "tr": "obviously",
+            "es": "obviously",
+            "fr": "obviously",
+            "de": "obviously",
+            "it": "obviously",
+            "pt": "obviously",
+            "ru": "obviously",
+            "zh": "obviously",
+            "ja": "obviously",
+            "ko": "obviously",
+            "ar": "obviously",
+            "hi": "obviously"
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,191 @@
+{
+  "translations_list": [
+    {
+      "english_word": "You are welcome",
+      "translations": {
+        "tr": "Rica ederim",
+        "es": "De nada",
+        "fr": "De rien",
+        "de": "Gern geschehen",
+        "it": "Prego",
+        "pt": "De nada",
+        "ru": "Пожалуйста",
+        "zh": "不客气",
+        "ja": "どういたしまして",
+        "ko": "천만에요",
+        "ar": "على الرحب والسعة",
+        "hi": "कोई बात नहीं"
+      }
+    },
+    {
+      "english_word": "I don't know",
+      "translations": {
+        "tr": "bilmiyorum",
+        "es": "no lo sé",
+        "fr": "je ne sais pas",
+        "de": "Ich weiß es nicht",
+        "it": "Non lo so",
+        "pt": "eu não sei",
+        "ru": "я не знаю",
+        "zh": "我不知道",
+        "ja": "分かりません",
+        "ko": "모르겠어요",
+        "ar": "لا أعرف",
+        "hi": "मुझे नहीं पता"
+      }
+    },
+    {
+      "english_word": "Excuse me",
+      "translations": {
+        "tr": "Affedersiniz",
+        "es": "Perdón",
+        "fr": "Excusez-moi",
+        "de": "Entschuldigung",
+        "it": "Mi scusi",
+        "pt": "Com licença",
+        "ru": "Извините",
+        "zh": "请问",
+        "ja": "すみません",
+        "ko": "실례합니다",
+        "ar": "عفواً",
+        "hi": "माफ़ कीजिए"
+      }
+    },
+    {
+      "english_word": "When",
+      "translations": {
+        "tr": "Ne zaman",
+        "es": "¿Cuándo?",
+        "fr": "Quand",
+        "de": "Wann",
+        "it": "Quando",
+        "pt": "Quando",
+        "ru": "Когда",
+        "zh": "什么时候",
+        "ja": "いつ",
+        "ko": "언제",
+        "ar": "متى",
+        "hi": "कब"
+      }
+    },
+    {
+      "english_word": "for",
+      "translations": {
+        "tr": "için",
+        "es": "para",
+        "fr": "pour",
+        "de": "für",
+        "it": "per",
+        "pt": "para",
+        "ru": "для",
+        "zh": "为",
+        "ja": "に",
+        "ko": "을/를 위한",
+        "ar": "ل",
+        "hi": "के लिए"
+      }
+    },
+    {
+      "english_word": "I am sorry",
+      "translations": {
+        "tr": "Özür dilerim",
+        "es": "Lo siento",
+        "fr": "Je suis désolé",
+        "de": "Es tut mir leid",
+        "it": "Mi dispiace",
+        "pt": "Sinto muito",
+        "ru": "Мне жаль",
+        "zh": "对不起",
+        "ja": "ごめんなさい",
+        "ko": "미안해요",
+        "ar": "أنا آسف",
+        "hi": "मुझे खेद है"
+      }
+    },
+    {
+      "english_word": "where",
+      "translations": {
+        "tr": "nerede",
+        "es": "dónde",
+        "fr": "où",
+        "de": "wo",
+        "it": "dove",
+        "pt": "onde",
+        "ru": "где",
+        "zh": "哪里",
+        "ja": "どこ",
+        "ko": "어디",
+        "ar": "أين",
+        "hi": "कहाँ"
+      }
+    },
+    {
+      "english_word": "What is this?",
+      "translations": {
+        "tr": "Bu nedir?",
+        "es": "¿Qué es esto?",
+        "fr": "Qu'est-ce que c'est ?",
+        "de": "Was ist das?",
+        "it": "Cos'è questo?",
+        "pt": "O que é isso?",
+        "ru": "Что это?",
+        "zh": "这是什么？",
+        "ja": "これは何ですか？",
+        "ko": "이것은 무엇입니까?",
+        "ar": "ما هذا؟",
+        "hi": "यह क्या है?"
+      }
+    },
+    {
+      "english_word": "to like",
+      "translations": {
+        "tr": "sevmek",
+        "es": "gustar",
+        "fr": "aimer",
+        "de": "mögen",
+        "it": "amare",
+        "pt": "gostar",
+        "ru": "нравиться",
+        "zh": "喜欢",
+        "ja": "好きになる",
+        "ko": "좋아하다",
+        "ar": "أن يحب",
+        "hi": "पसंद करना"
+      }
+    },
+    {
+      "english_word": "to go",
+      "translations": {
+        "tr": "gitmek",
+        "es": "ir",
+        "fr": "aller",
+        "de": "gehen",
+        "it": "andare",
+        "pt": "ir",
+        "ru": "идти",
+        "zh": "去",
+        "ja": "行く",
+        "ko": "가다",
+        "ar": "ذهاب",
+        "hi": "जाना"
+      }
+    },
+    {
+      "english_word": "bad",
+      "translations": {
+        "tr": "kötü",
+        "es": "mal",
+        "fr": "mauvais",
+        "de": "schlecht",
+        "it": "cattivo",
+        "pt": "ruim",
+        "ru": "плохой",
+        "zh": "坏的",
+        "ja": "悪い",
+        "ko": "나쁜",
+        "ar": "سيئ",
+        "hi": "बुरा"
+      }
+    }
+  ]
+}

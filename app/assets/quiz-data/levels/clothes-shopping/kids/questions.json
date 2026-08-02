@@ -1,0 +1,261 @@
+{
+  "levelQuestions": [
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "hanger",
+        "wrongAnswers": [
+          "hook",
+          "broom",
+          "closet"
+        ]
+      }
+    },
+    {
+      "template": "ConvoTemplate-1",
+      "genders": "f-m",
+      "questionData": {
+        "line1": "Can I _____ this coat?",
+        "line2": "Yes, you can.",
+        "answer": "try",
+        "distractors": [
+          "buy",
+          "wear",
+          "wash"
+        ]
+      },
+      "audio_file1": "can-i-try-this-coat-convo",
+      "audio_file2": "yes-you-can-convo"
+    },
+    {
+      "template": "ConvoTemplate-1",
+      "genders": "f-m",
+      "questionData": {
+        "line1": "I _____ this jacket.",
+        "line2": "It is on sale.",
+        "answer": "like",
+        "distractors": [
+          "wash",
+          "read",
+          "sleep"
+        ]
+      },
+      "audio_file1": "i-like-this-jacket-convo",
+      "audio_file2": "it-is-on-sale-convo"
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "shoes",
+        "wrongAnswers": [
+          "slippers",
+          "socks",
+          "boots"
+        ]
+      }
+    },
+    {
+      "template": "WordPairs",
+      "questionData": {
+        "english_words": [
+          "nice",
+          "ugly",
+          "loose",
+          "tight"
+        ],
+        "translations": [
+          {
+            "tr": "güzel",
+            "es": "lindo",
+            "fr": "joli",
+            "de": "hübsch",
+            "it": "carino",
+            "pt": "legal",
+            "ru": "приятный",
+            "zh": "好看",
+            "ja": "すてきな",
+            "ko": "멋진",
+            "ar": "لطيف",
+            "hi": "अच्छा"
+          },
+          {
+            "tr": "çirkin",
+            "es": "feo",
+            "fr": "laid",
+            "de": "hässlich",
+            "it": "brutto",
+            "pt": "feio",
+            "ru": "уродливый",
+            "zh": "丑陋的",
+            "ja": "醜い",
+            "ko": "못생긴",
+            "ar": "قبيح",
+            "hi": "कुरूप"
+          },
+          {
+            "tr": "bol",
+            "es": "holgado",
+            "fr": "ample",
+            "de": "locker",
+            "it": "largo",
+            "pt": "folgado",
+            "ru": "свободный",
+            "zh": "宽松的",
+            "ja": "ゆるい",
+            "ko": "헐렁한",
+            "ar": "واسع",
+            "hi": "ढीला"
+          },
+          {
+            "tr": "dar",
+            "es": "ajustado",
+            "fr": "serré",
+            "de": "eng",
+            "it": "stretto",
+            "pt": "apertado",
+            "ru": "тесный",
+            "zh": "紧的",
+            "ja": "きつい",
+            "ko": "꽉 끼는",
+            "ar": "ضيق",
+            "hi": "तंग"
+          }
+        ]
+      }
+    },
+    {
+      "template": "DialogueCompletion",
+      "genders": "m-f",
+      "questionData": {
+        "line1": "Can I try it?",
+        "answer": "Yes, you can.",
+        "distractors": [
+          "No, I am tired.",
+          "I like this book.",
+          "It is a big dog."
+        ]
+      },
+      "audio_file1": "can-i-try-it-convo",
+      "audio_file2": "yes-you-can-convo"
+    },
+    {
+      "template": "AppearDisappear",
+      "genders": "f",
+      "questionData": {
+        "words": "I want nice clothes.",
+        "distractors": [
+          "sad",
+          "wet",
+          "cold",
+          "tired"
+        ]
+      },
+      "audio_file": "i-want-nice-clothes-convo"
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "pants",
+        "wrongAnswers": [
+          "shirt",
+          "dress",
+          "skirt"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-2",
+      "questionData": {
+        "imageName": "jacket",
+        "wrongAnswers": [
+          "pants",
+          "socks",
+          "shoes"
+        ]
+      }
+    },
+    {
+      "template": "SentenceBuilder",
+      "genders": "m",
+      "questionData": {
+        "correct_order": "These shoes fit well."
+      },
+      "audio_file": "these-shoes-fit-well-convo"
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "socks",
+        "wrongAnswers": [
+          "slippers",
+          "boots",
+          "sandals"
+        ]
+      }
+    },
+    {
+      "template": "ClozeSequence",
+      "genders": "f",
+      "questionData": {
+        "sentence": "I cannot _____ it.",
+        "answer": [
+          "buy"
+        ],
+        "distractors": [
+          "read",
+          "wash",
+          "cook",
+          "sleep"
+        ]
+      },
+      "audio_file": "i-cannot-buy-it-convo"
+    },
+    {
+      "template": "GrammarForm",
+      "genders": "m",
+      "questionData": {
+        "sentence": "I _____ this style.",
+        "answer": "like",
+        "distractors": [
+          "likes",
+          "liked",
+          "liking"
+        ]
+      }
+    },
+    {
+      "template": "ClozeSequence",
+      "genders": "f",
+      "questionData": {
+        "sentence": "She can _____ a dress.",
+        "answer": [
+          "wear"
+        ],
+        "distractors": [
+          "eat",
+          "read",
+          "wash",
+          "cook"
+        ]
+      },
+      "audio_file": "she-can-wear-a-dress-convo"
+    },
+    {
+      "template": "ClozeSequence",
+      "genders": "m",
+      "questionData": {
+        "sentence": "I am _____ a gift.",
+        "answer": [
+          "buying"
+        ],
+        "distractors": [
+          "reading",
+          "sleeping",
+          "washing",
+          "cooking"
+        ]
+      },
+      "audio_file": "i-am-buying-a-gift-convo"
+    }
+  ]
+}

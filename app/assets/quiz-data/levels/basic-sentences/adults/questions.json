@@ -1,0 +1,265 @@
+{
+  "levelQuestions": [
+    {
+      "template": "DialogueCompletion",
+      "genders": "f-m",
+      "questionData": {
+        "line1": "Thank you for your help.",
+        "answer": "You are welcome.",
+        "distractors": [
+          "I am sorry.",
+          "That is very hard for me.",
+          "See you later."
+        ]
+      },
+      "audio_file1": "thank-you-for-your-help-convo",
+      "audio_file2": "you-are-welcome-convo"
+    },
+    {
+      "template": "WordPairs",
+      "questionData": {
+        "english_words": [
+          "my",
+          "your",
+          "his/her",
+          "their",
+          "our"
+        ],
+        "translations": [
+          {
+            "tr": "benim",
+            "es": "mi",
+            "fr": "mon",
+            "de": "mein",
+            "it": "mio",
+            "pt": "meu",
+            "ru": "мой",
+            "zh": "我的",
+            "ja": "私の",
+            "ko": "나의",
+            "ar": "ي",
+            "hi": "मेरा"
+          },
+          {
+            "tr": "senin",
+            "es": "tu",
+            "fr": "ton",
+            "de": "dein",
+            "it": "tuo",
+            "pt": "teu",
+            "ru": "твой",
+            "zh": "你的",
+            "ja": "あなたの",
+            "ko": "당신의",
+            "ar": "ك",
+            "hi": "तुम्हारा"
+          },
+          {
+            "tr": "onun",
+            "es": "su",
+            "fr": "son / sa",
+            "de": "sein / ihr",
+            "it": "il suo / la sua",
+            "pt": "dele / dela",
+            "ru": "его / её",
+            "zh": "他 / 她的",
+            "ja": "彼の / 彼女の",
+            "ko": "그의 / 그녀의",
+            "ar": "ـه / ـها",
+            "hi": "उसका / उसकी"
+          },
+          {
+            "tr": "onların",
+            "es": "su",
+            "fr": "leur",
+            "de": "ihr",
+            "it": "loro",
+            "pt": "deles / delas",
+            "ru": "их",
+            "zh": "他们 / 她们的",
+            "ja": "彼らの / 彼女たちの",
+            "ko": "그들의",
+            "ar": "ـهم / ـهن",
+            "hi": "उनका"
+          },
+          {
+            "tr": "bizim",
+            "es": "nuestro",
+            "fr": "notre",
+            "de": "unser",
+            "it": "nostro",
+            "pt": "nosso",
+            "ru": "наш",
+            "zh": "我们的",
+            "ja": "私たちの",
+            "ko": "우리의",
+            "ar": "ـنا",
+            "hi": "हमारा"
+          }
+        ]
+      }
+    },
+    {
+      "template": "DialogueCompletion",
+      "genders": "f-m",
+      "questionData": {
+        "image_file_name": "pencil",
+        "line1": "What is this?",
+        "answer": "This is a pencil",
+        "distractors": [
+          "That is a pencil",
+          "I have a pencil.",
+          "These are pencils."
+        ]
+      },
+      "audio_file1": "what-is-this-convo",
+      "audio_file2": "this-is-a-pencil-convo"
+    },
+    {
+      "template": "DialogueCompletion",
+      "genders": "f-m",
+      "questionData": {
+        "line1": "You are late again!",
+        "answer": "I am sorry.",
+        "distractors": [
+          "I am busy.",
+          "You are welcome.",
+          "I am happy."
+        ]
+      },
+      "audio_file1": "you-are-late-again-convo",
+      "audio_file2": "i-am-sorry-convo"
+    },
+    {
+      "template": "SentenceBuilder",
+      "genders": "m",
+      "questionData": {
+        "correct_order": "I go to school with my friend."
+      },
+      "audio_file": "i-go-to-school-with-my-friend-convo"
+    },
+    {
+      "template": "AppearDisappear",
+      "genders": "f",
+      "questionData": {
+        "words": "I like my mom very much",
+        "distractors": [
+          "see",
+          "want",
+          "know",
+          "help"
+        ]
+      },
+      "audio_file": "i-like-my-mom-very-much-convo"
+    },
+    {
+      "template": "ConvoTemplate-1",
+      "genders": "f-m",
+      "questionData": {
+        "line1": "_____ do we meet?",
+        "line2": "Let's meet at 2 o'clock.",
+        "answer": "When",
+        "distractors": [
+          "Where",
+          "There",
+          "How"
+        ]
+      },
+      "audio_file1": "when-do-we-meet-convo",
+      "audio_file2": "let-s-meet-at-2-o-clock-convo"
+    },
+    {
+      "template": "AppearDisappear",
+      "genders": "f",
+      "audio_file": "where-is-the-bathroom-convo",
+      "questionData": {
+        "words": "Where is the bathroom?",
+        "distractors": [
+          "how",
+          "What",
+          "bedroom",
+          "kitchen"
+        ]
+      }
+    },
+    {
+      "template": "ConvoTemplate-1",
+      "genders": "m-f",
+      "questionData": {
+        "line1": "Is ____ a bus stop near here?",
+        "line2": "____ is no bus stop near here.",
+        "answer": "there",
+        "distractors": [
+          "that",
+          "it",
+          "this"
+        ]
+      },
+      "audio_file1": "is-there-a-bus-stop-near-here-convo",
+      "audio_file2": "there-is-no-bus-stop-near-here-convo"
+    },
+    {
+      "template": "AppearDisappear",
+      "genders": "m",
+      "questionData": {
+        "words": "There are many books in the library",
+        "distractors": [
+          "bookstore",
+          "is",
+          "a",
+          "school"
+        ]
+      },
+      "audio_file": "there-are-many-books-in-the-library-convo"
+    },
+    {
+      "template": "ConvoTemplate-1",
+      "genders": "m-f",
+      "questionData": {
+        "line1": "Excuse me, ____?",
+        "line2": "It is 10 o'clock.",
+        "answer": "What time is it?",
+        "distractors": [
+          "What is this?",
+          "Where is the bathroom?",
+          "What is your name?"
+        ]
+      },
+      "audio_file1": "excuse-me-what-time-is-it-convo",
+      "audio_file2": "it-is-10-o-clock-convo"
+    },
+    {
+      "template": "GrammarForm",
+      "genders": "m",
+      "questionData": {
+        "sentence": "I ___ my dad every day",
+        "answer": [
+          "see"
+        ],
+        "distractors": [
+          "sees",
+          "am see",
+          "are seeing"
+        ]
+      }
+    },
+    {
+      "template": "ClozeSequence",
+      "genders": "m",
+      "questionData": {
+        "sentence": "She _____ the weather is _____.",
+        "answer": [
+          "says",
+          "bad"
+        ],
+        "distractors": [
+          "has",
+          "likes",
+          "good",
+          "cold"
+        ]
+      },
+      "audio_file": "she-says-the-weather-is-bad-convo"
+    }
+  ]
+}

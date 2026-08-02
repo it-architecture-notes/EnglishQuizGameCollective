@@ -1,0 +1,140 @@
+{
+  "translations_list": [
+    {
+      "english_word": "to walk",
+      "translations": {
+        "tr": "yürümek",
+        "es": "caminar",
+        "fr": "marcher",
+        "de": "gehen",
+        "it": "camminare",
+        "pt": "caminhar",
+        "ru": "ходить",
+        "zh": "走路",
+        "ja": "歩く",
+        "ko": "걷다",
+        "ar": "يمشي",
+        "hi": "चलना"
+      }
+    },
+    {
+      "english_word": "to look at",
+      "translations": {
+        "tr": "bakmak",
+        "es": "mirar",
+        "fr": "regarder",
+        "de": "ansehen",
+        "it": "guardare",
+        "pt": "olhar",
+        "ru": "посмотреть",
+        "zh": "看看",
+        "ja": "見る",
+        "ko": "보다",
+        "ar": "ينظر إلى",
+        "hi": "देखना"
+      }
+    },
+    {
+      "english_word": "to come",
+      "translations": {
+        "tr": "gelmek",
+        "es": "venir",
+        "fr": "venir",
+        "de": "kommen",
+        "it": "venire",
+        "pt": "vir",
+        "ru": "прийти",
+        "zh": "来",
+        "ja": "来る",
+        "ko": "오다",
+        "ar": "يأتي",
+        "hi": "आना"
+      }
+    },
+    {
+      "english_word": "to see",
+      "translations": {
+        "tr": "görmek",
+        "es": "ver",
+        "fr": "voir",
+        "de": "sehen",
+        "it": "vedere",
+        "pt": "ver",
+        "ru": "видеть",
+        "zh": "看见",
+        "ja": "見る",
+        "ko": "보다",
+        "ar": "يرى",
+        "hi": "देखना"
+      }
+    },
+    {
+      "english_word": "to turn left",
+      "translations": {
+        "tr": "sola dönmek",
+        "es": "girar a la izquierda",
+        "fr": "tourner à gauche",
+        "de": "nach links abbiegen",
+        "it": "girare a sinistra",
+        "pt": "virar à esquerda",
+        "ru": "повернуть налево",
+        "zh": "向左转",
+        "ja": "左折する",
+        "ko": "좌회전하다",
+        "ar": "ينعطف إلى اليسار",
+        "hi": "बाएँ मुड़ना"
+      }
+    },
+    {
+      "english_word": "to live",
+      "translations": {
+        "tr": "yaşamak",
+        "es": "vivir",
+        "fr": "vivre",
+        "de": "leben",
+        "it": "vivere",
+        "pt": "viver",
+        "ru": "жить",
+        "zh": "住",
+        "ja": "住む",
+        "ko": "살다",
+        "ar": "يعيش",
+        "hi": "रहना"
+      }
+    },
+    {
+      "english_word": "to follow",
+      "translations": {
+        "tr": "takip etmek",
+        "es": "seguir",
+        "fr": "suivre",
+        "de": "folgen",
+        "it": "seguire",
+        "pt": "seguir",
+        "ru": "следовать",
+        "zh": "跟随",
+        "ja": "ついて行く",
+        "ko": "따르다",
+        "ar": "يتبع",
+        "hi": "अनुसरण करना"
+      }
+    },
+    {
+      "english_word": "corner",
+      "translations": {
+        "tr": "köşe",
+        "es": "esquina",
+        "fr": "coin",
+        "de": "Ecke",
+        "it": "angolo",
+        "pt": "esquina",
+        "ru": "угол",
+        "zh": "拐角",
+        "ja": "角",
+        "ko": "모퉁이",
+        "ar": "زاوية",
+        "hi": "कोना"
+      }
+    }
+  ]
+}

@@ -1,0 +1,140 @@
+{
+  "translations_list": [
+    {
+      "english_word": "to wash",
+      "translations": {
+        "tr": "yıkamak",
+        "es": "lavar",
+        "fr": "se laver",
+        "de": "waschen",
+        "it": "lavare",
+        "pt": "lavar",
+        "ru": "мыть",
+        "zh": "洗",
+        "ja": "洗う",
+        "ko": "씻다",
+        "ar": "غسل",
+        "hi": "धोना"
+      }
+    },
+    {
+      "english_word": "to feel",
+      "translations": {
+        "tr": "hissetmek",
+        "es": "sentir",
+        "fr": "sentir",
+        "de": "fühlen",
+        "it": "sentire",
+        "pt": "sentir",
+        "ru": "чувствовать",
+        "zh": "感觉",
+        "ja": "感じる",
+        "ko": "느끼다",
+        "ar": "الشعور",
+        "hi": "महसूस करना"
+      }
+    },
+    {
+      "english_word": "to comb hair",
+      "translations": {
+        "tr": "saç taramak",
+        "es": "peinarse",
+        "fr": "se peigner",
+        "de": "Haare kämmen",
+        "it": "pettinare i capelli",
+        "pt": "pentear o cabelo",
+        "ru": "расчесывать волосы",
+        "zh": "梳头发",
+        "ja": "髪をとかす",
+        "ko": "머리를 빗다",
+        "ar": "تمشيط الشعر",
+        "hi": "बालों में कंघी करना"
+      }
+    },
+    {
+      "english_word": "to brush teeth",
+      "translations": {
+        "tr": "diş fırçalamak",
+        "es": "cepillarse los dientes",
+        "fr": "se brosser les dents",
+        "de": "Zähne putzen",
+        "it": "spazzolarsi i denti",
+        "pt": "escovar os dentes",
+        "ru": "чистить зубы",
+        "zh": "刷牙",
+        "ja": "歯を磨く",
+        "ko": "이를 닦다",
+        "ar": "تنظيف الأسنان",
+        "hi": "दाँत साफ करना"
+      }
+    },
+    {
+      "english_word": "to use",
+      "translations": {
+        "tr": "kullanmak",
+        "es": "usar",
+        "fr": "utiliser",
+        "de": "verwenden",
+        "it": "usare",
+        "pt": "usar",
+        "ru": "использовать",
+        "zh": "使用",
+        "ja": "使う",
+        "ko": "사용하다",
+        "ar": "استخدام",
+        "hi": "उपयोग करना"
+      }
+    },
+    {
+      "english_word": "to clean",
+      "translations": {
+        "tr": "temizlemek",
+        "es": "limpiar",
+        "fr": "nettoyer",
+        "de": "aufräumen",
+        "it": "pulire",
+        "pt": "limpar",
+        "ru": "убирать",
+        "zh": "打扫",
+        "ja": "掃除する",
+        "ko": "청소하다",
+        "ar": "تنظيف",
+        "hi": "साफ़ करना"
+      }
+    },
+    {
+      "english_word": "to dry",
+      "translations": {
+        "tr": "kurulamak",
+        "es": "secar",
+        "fr": "sécher",
+        "de": "trocknen",
+        "it": "asciugare",
+        "pt": "secar",
+        "ru": "вытирать",
+        "zh": "擦干",
+        "ja": "乾かす",
+        "ko": "말리다",
+        "ar": "تجفيف",
+        "hi": "सुखाना"
+      }
+    },
+    {
+      "english_word": "dirty",
+      "translations": {
+        "tr": "kirli",
+        "es": "sucio",
+        "fr": "sale",
+        "de": "schmutzig",
+        "it": "sporco",
+        "pt": "sujo",
+        "ru": "грязный",
+        "zh": "脏",
+        "ja": "汚い",
+        "ko": "더럽다",
+        "ar": "قذر",
+        "hi": "गंदा"
+      }
+    }
+  ]
+}

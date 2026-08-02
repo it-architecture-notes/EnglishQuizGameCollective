@@ -1,0 +1,191 @@
+{
+  "translations_list": [
+    {
+      "english_word": "My name is",
+      "translations": {
+        "tr": "benim adım",
+        "es": "mi nombre es",
+        "fr": "mon nom est",
+        "de": "Mein Name ist",
+        "it": "Il mio nome è",
+        "pt": "Meu nome é",
+        "ru": "Меня зовут",
+        "zh": "我的名字是",
+        "ja": "私の名前は",
+        "ko": "내 이름은",
+        "ar": "اسمي",
+        "hi": "मेरा नाम है"
+      }
+    },
+    {
+      "english_word": "How are you?",
+      "translations": {
+        "tr": "Nasılsın?",
+        "es": "¿Cómo estás?",
+        "fr": "Comment vas-tu ?",
+        "de": "Wie geht es dir?",
+        "it": "Come stai?",
+        "pt": "Como você está?",
+        "ru": "Как твои дела?",
+        "zh": "你好吗？",
+        "ja": "調子はどうですか？",
+        "ko": "잘 지내세요?",
+        "ar": "كيف حالك؟",
+        "hi": "आप कैसे हैं?"
+      }
+    },
+    {
+      "english_word": "How old are you?",
+      "translations": {
+        "tr": "Kaç yaşındasın?",
+        "es": "¿Cuántos años tienes?",
+        "fr": "Quel âge as-tu?",
+        "de": "Wie alt bist du?",
+        "it": "Quanti anni hai?",
+        "pt": "Quantos anos você tem?",
+        "ru": "Сколько тебе лет?",
+        "zh": "你今年多大？",
+        "ja": "何歳ですか？",
+        "ko": "몇 살이에요?",
+        "ar": "كم عمرك؟",
+        "hi": "आपकी आयु कितनी है?"
+      }
+    },
+    {
+      "english_word": "Nice to meet you",
+      "translations": {
+        "tr": "Tanıştığımıza memnun oldum",
+        "es": "Mucho gusto",
+        "fr": "Enchanté",
+        "de": "Freut mich, dich kennenzulernen",
+        "it": "Piacere di conoscerti",
+        "pt": "Prazer em conhecê-lo",
+        "ru": "Приятно познакомиться",
+        "zh": "很高兴认识你",
+        "ja": "はじめまして",
+        "ko": "만나서 반가워요",
+        "ar": "تشرفت بلقائك",
+        "hi": "आपसे मिलकर खुशी हुई"
+      }
+    },
+    {
+      "english_word": "I am fine",
+      "translations": {
+        "tr": "İyiyim",
+        "es": "estoy bien",
+        "fr": "je vais bien",
+        "de": "Mir geht es gut",
+        "it": "Sto bene",
+        "pt": "Estou bem",
+        "ru": "у меня всё хорошо",
+        "zh": "我很好",
+        "ja": "元気です",
+        "ko": "잘 지내요",
+        "ar": "أنا بخير",
+        "hi": "मैं ठीक हूं"
+      }
+    },
+    {
+      "english_word": "Where are you from?",
+      "translations": {
+        "tr": "nerelisin?",
+        "es": "¿de dónde eres?",
+        "fr": "d'où viens-tu ?",
+        "de": "Woher kommst du?",
+        "it": "di dove sei?",
+        "pt": "de onde você é?",
+        "ru": "откуда ты?",
+        "zh": "你来自哪里？",
+        "ja": "どこから来ましたか？",
+        "ko": "어디에서 왔어요?",
+        "ar": "من أين أنت؟",
+        "hi": "आप कहाँ से हैं?"
+      }
+    },
+    {
+      "english_word": "Good morning",
+      "translations": {
+        "tr": "Günaydın",
+        "es": "Buenos días",
+        "fr": "Bonjour",
+        "de": "Guten Morgen",
+        "it": "Buongiorno",
+        "pt": "Bom dia",
+        "ru": "Доброе утро",
+        "zh": "早上好",
+        "ja": "おはようございます",
+        "ko": "좋은 아침이에요",
+        "ar": "صباح الخير",
+        "hi": "सुप्रभात"
+      }
+    },
+    {
+      "english_word": "Have a nice day",
+      "translations": {
+        "tr": "İyi günler",
+        "es": "Que tengas un buen día",
+        "fr": "Passe une bonne journée",
+        "de": "Hab einen schönen Tag",
+        "it": "Buona giornata",
+        "pt": "Tenha um bom dia",
+        "ru": "Хорошего дня",
+        "zh": "祝你今天愉快",
+        "ja": "良い一日を",
+        "ko": "좋은 하루 보내세요",
+        "ar": "أتمنى لك يوماً سعيداً",
+        "hi": "आपका दिन अच्छा हो"
+      }
+    },
+    {
+      "english_word": "please",
+      "translations": {
+        "tr": "lütfen",
+        "es": "por favor",
+        "fr": "s'il vous plaît",
+        "de": "bitte",
+        "it": "per favore",
+        "pt": "por favor",
+        "ru": "пожалуйста",
+        "zh": "请",
+        "ja": "お願いします",
+        "ko": "제발",
+        "ar": "من فضلك",
+        "hi": "कृपया"
+      }
+    },
+    {
+      "english_word": "thank you",
+      "translations": {
+        "tr": "teşekkür ederim",
+        "es": "gracias",
+        "fr": "merci",
+        "de": "Danke",
+        "it": "grazie",
+        "pt": "obrigado",
+        "ru": "спасибо",
+        "zh": "谢谢你",
+        "ja": "ありがとう",
+        "ko": "감사합니다",
+        "ar": "شكرا لك",
+        "hi": "धन्यवाद"
+      }
+    },
+    {
+      "english_word": "see you later",
+      "translations": {
+        "tr": "sonra görüşürüz",
+        "es": "nos vemos luego",
+        "fr": "à plus tard",
+        "de": "Bis später",
+        "it": "ci vediamo dopo",
+        "pt": "vejo você mais tarde",
+        "ru": "увидимся позже",
+        "zh": "稍后见",
+        "ja": "また会いましょう",
+        "ko": "나중에 봐요",
+        "ar": "أراك لاحقا",
+        "hi": "बाद में मिलते हैं"
+      }
+    }
+  ]
+}

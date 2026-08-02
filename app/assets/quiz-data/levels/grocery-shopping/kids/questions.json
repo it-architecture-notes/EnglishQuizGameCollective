@@ -1,0 +1,265 @@
+{
+  "levelQuestions": [
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "cheese",
+        "wrongAnswers": [
+          "flour",
+          "milk",
+          "salt"
+        ]
+      }
+    },
+    {
+      "template": "ConvoTemplate-1",
+      "genders": "m-f",
+      "questionData": {
+        "line1": "Where do you _____?",
+        "line2": "I _____ here.",
+        "answer": "shop",
+        "distractors": [
+          "play",
+          "live",
+          "eat"
+        ]
+      },
+      "audio_file1": "where-do-you-shop-convo",
+      "audio_file2": "i-shop-here-convo"
+    },
+    {
+      "template": "ClozeSequence",
+      "genders": "f",
+      "questionData": {
+        "sentence": "Can I _____ this _____?",
+        "distractors": [
+          "get",
+          "milk",
+          "eat",
+          "food"
+        ],
+        "answers": [
+          "buy",
+          "bread"
+        ]
+      },
+      "audio_file": "can-i-buy-this-bread-convo"
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "milk",
+        "wrongAnswers": [
+          "flour",
+          "sugar",
+          "rice"
+        ]
+      }
+    },
+    {
+      "template": "WordPairs",
+      "questionData": {
+        "english_words": [
+          "heavy",
+          "light",
+          "empty",
+          "full"
+        ],
+        "translations": [
+          {
+            "tr": "ağır",
+            "es": "pesado",
+            "fr": "lourd",
+            "de": "schwer",
+            "it": "pesante",
+            "pt": "pesado",
+            "ru": "тяжелый",
+            "zh": "重的",
+            "ja": "重い",
+            "ko": "무거운",
+            "ar": "ثقيل",
+            "hi": "भारी"
+          },
+          {
+            "tr": "hafif",
+            "es": "ligero",
+            "fr": "léger",
+            "de": "leicht",
+            "it": "leggero",
+            "pt": "leve",
+            "ru": "лёгкий",
+            "zh": "轻的",
+            "ja": "軽い",
+            "ko": "가벼운",
+            "ar": "خفيف",
+            "hi": "हल्का"
+          },
+          {
+            "tr": "boş",
+            "es": "vacío",
+            "fr": "vide",
+            "de": "leer",
+            "it": "vuoto",
+            "pt": "vazio",
+            "ru": "пустой",
+            "zh": "空的",
+            "ja": "空の",
+            "ko": "빈",
+            "ar": "فارغ",
+            "hi": "खाली"
+          },
+          {
+            "tr": "dolu",
+            "es": "lleno",
+            "fr": "plein",
+            "de": "voll",
+            "it": "pieno",
+            "pt": "cheio",
+            "ru": "полный",
+            "zh": "满的",
+            "ja": "いっぱい",
+            "ko": "가득한",
+            "ar": "ممتلئ",
+            "hi": "भरा हुआ"
+          }
+        ]
+      }
+    },
+    {
+      "template": "DialogueCompletion",
+      "genders": "m-f",
+      "questionData": {
+        "line1": "How much is this cheese?",
+        "answer": "It is ten dollars.",
+        "distractors": [
+          "It is ten bags.",
+          "You buy ten stores.",
+          "It opens at ten."
+        ]
+      },
+      "audio_file1": "how-much-is-this-cheese-convo",
+      "audio_file2": "it-is-ten-dollars-convo"
+    },
+    {
+      "template": "AppearDisappear",
+      "genders": "f",
+      "questionData": {
+        "words": "Pay and take your receipt.",
+        "distractors": [
+          "who",
+          "cashier",
+          "enter",
+          "wait"
+        ]
+      },
+      "audio_file": "pay-and-take-your-receipt-convo"
+    },
+    {
+      "template": "imageQuizTemplate-2",
+      "questionData": {
+        "imageName": "sugar",
+        "wrongAnswers": [
+          "salt",
+          "milk",
+          "flour"
+        ],
+        "answer": "sugar"
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "flour",
+        "wrongAnswers": [
+          "flower",
+          "honey",
+          "bread"
+        ]
+      }
+    },
+    {
+      "template": "ClozeSequence",
+      "genders": "f",
+      "questionData": {
+        "sentence": "She _____ a _____ apple.",
+        "distractors": [
+          "eats",
+          "carries",
+          "forgets",
+          "loses"
+        ],
+        "answers": [
+          "chooses",
+          "good"
+        ]
+      },
+      "audio_file": "she-chooses-a-good-apple-convo"
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "salt",
+        "wrongAnswers": [
+          "pepper",
+          "vinegar",
+          "meat"
+        ]
+      }
+    },
+    {
+      "template": "SentenceBuilder",
+      "genders": "f",
+      "questionData": {
+        "correct_order": "Put bags in the car."
+      },
+      "audio_file": "put-bags-in-the-car-convo"
+    },
+    {
+      "template": "GrammarForm",
+      "genders": "m",
+      "questionData": {
+        "sentence": "We _____ in line.",
+        "answer": "wait",
+        "distractors": [
+          "are wait",
+          "waiting",
+          "waits"
+        ]
+      }
+    },
+    {
+      "template": "ClozeSequence",
+      "genders": "f",
+      "questionData": {
+        "sentence": "I _____ the _____.",
+        "distractors": [
+          "try",
+          "pick",
+          "heavy",
+          "price"
+        ],
+        "answers": [
+          "weigh",
+          "fruit"
+        ]
+      },
+      "audio_file": "i-weigh-the-fruit-convo"
+    },
+    {
+      "template": "ConvoTemplate-1",
+      "genders": "f-f",
+      "questionData": {
+        "line1": "These bags are heavy.",
+        "line2": "Sure, I can _____ them.",
+        "answer": "carry",
+        "distractors": [
+          "drop",
+          "sell",
+          "eat"
+        ]
+      },
+      "audio_file1": "these-bags-are-heavy-convo",
+      "audio_file2": "sure-i-can-carry-them-convo"
+    }
+  ]
+}

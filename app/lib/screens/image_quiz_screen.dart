@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import '../../app_flavor.dart';
 import '../../models/guest_animal_conversations.dart';
 import '../../models/level_completion_result.dart';
 import '../../models/level_config.dart';
@@ -427,6 +428,7 @@ class _ImageQuizScreenState extends ConsumerState<ImageQuizScreen>
       final q2Paths = <List<String>>[];
       final convoThumbPaths = <String?>[];
 
+      await _resolveFlavorAudioStarted();
       for (final q in levelCfg.questions) {
         if (q.isSkipPlaceholder) {
           questions.add(q);
@@ -646,6 +648,7 @@ class _ImageQuizScreenState extends ConsumerState<ImageQuizScreen>
       final reminderImageQuiz2PathsById = <String, List<String>>{};
       final validQuestionIds = <String>[];
 
+      await _resolveFlavorAudioStarted();
       for (final questionId in reminderQuestionIds) {
         final (progressKey, questionIndex) =
             parseReminderQuestionId(questionId);
@@ -1487,11 +1490,42 @@ class _ImageQuizScreenState extends ConsumerState<ImageQuizScreen>
     return null;
   }
 
+  /// Builds the audio asset path for [raw]. Uses `{level}/{flavor}/{file}.m4a`
+  /// once that flavor's audio folder has started being populated for this
+  /// level ([_flavorAudioStarted], resolved once in [_loadLevel]); a missing
+  /// individual clip within that folder simply hides (via [_resolveAudioExists]
+  /// downstream), it does not borrow the other flavor's voice. Until the
+  /// flavor's audio folder has any clips at all, falls back to the level's
+  /// root `{level}/{file}.m4a` (today's shared/legacy recordings).
   String? _audioAssetPathForRaw(String? raw) {
     final r = raw?.trim();
     if (r == null || r.isEmpty) return null;
-    final withExt = r.toLowerCase().endsWith('.m4a') ? r : '$r.m4a';
-    return 'quiz-data/levels/${_levelKey(widget.subLevel)}/$withExt';
+    final base = r.toLowerCase().endsWith('.m4a')
+        ? r.substring(0, r.length - 4)
+        : r;
+    final levelKey = _levelKey(widget.subLevel);
+    final dir = _flavorAudioStarted == true
+        ? '$levelKey/${AppConfig.flavorDir}'
+        : levelKey;
+    return 'quiz-data/levels/$dir/$base.m4a';
+  }
+
+  /// Whether this level's `{flavor}/` folder has any `.m4a` clips at all.
+  /// Null until resolved once by [_resolveFlavorAudioStarted] during [_loadLevel].
+  bool? _flavorAudioStarted;
+
+  /// Resolves and caches [_flavorAudioStarted] for the current level. Call
+  /// once during [_loadLevel], before any question widgets that read
+  /// [_audioAssetPathForRaw] are built.
+  Future<void> _resolveFlavorAudioStarted() async {
+    if (_flavorAudioStarted != null) return;
+    final levelKey = _levelKey(widget.subLevel);
+    final prefix =
+        'assets/quiz-data/levels/$levelKey/${AppConfig.flavorDir}/';
+    final manifest = await AssetManifest.loadFromAssetBundle(rootBundle);
+    _flavorAudioStarted = manifest
+        .listAssets()
+        .any((p) => p.startsWith(prefix) && p.toLowerCase().endsWith('.m4a'));
   }
 
   String? _audioAssetPath(LevelQuestion q) =>

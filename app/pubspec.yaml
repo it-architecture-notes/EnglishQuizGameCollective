@@ -29,9 +29,11 @@ flutter:
     - assets/images/backgrounds/tablet_1610/
     - assets/images/buttons/
     - assets/images/characters/
-    - assets/images/avatars/
+    - assets/images/avatars/kids/
+    - assets/images/avatars/adults/
     - assets/images/level-icons/
-    - assets/images/achievements/
+    - assets/images/achievements/kids/
+    - assets/images/achievements/adults/
     - assets/images/story/
     - assets/images/monsters/
     - assets/images/animals/cat/
@@ -50,90 +52,262 @@ flutter:
     - assets/data/flow/
     - assets/data/story/
     - assets/quiz-data/levels/travel-items/
+    - assets/quiz-data/levels/travel-items/adults/
+    - assets/quiz-data/levels/travel-items/kids/
     - assets/quiz-data/levels/basic-sentences/
+    - assets/quiz-data/levels/basic-sentences/adults/
+    - assets/quiz-data/levels/basic-sentences/kids/
+    - assets/quiz-data/levels/bedroom-bathroom-items/
+    - assets/quiz-data/levels/bedroom-bathroom-items/adults/
+    - assets/quiz-data/levels/bedroom-bathroom-items/kids/
     - assets/quiz-data/levels/body-parts-1/
+    - assets/quiz-data/levels/body-parts-1/adults/
+    - assets/quiz-data/levels/body-parts-1/kids/
     - assets/quiz-data/levels/body-parts-2/
+    - assets/quiz-data/levels/body-parts-2/adults/
+    - assets/quiz-data/levels/body-parts-2/kids/
     - assets/quiz-data/levels/colors-1/
+    - assets/quiz-data/levels/colors-1/adults/
+    - assets/quiz-data/levels/colors-1/kids/
     - assets/quiz-data/levels/colors-2/
+    - assets/quiz-data/levels/colors-2/adults/
+    - assets/quiz-data/levels/colors-2/kids/
     - assets/quiz-data/levels/geometric-shapes/
+    - assets/quiz-data/levels/geometric-shapes/adults/
+    - assets/quiz-data/levels/geometric-shapes/kids/
     - assets/quiz-data/levels/verb-to-be/
+    - assets/quiz-data/levels/verb-to-be/adults/
+    - assets/quiz-data/levels/verb-to-be/kids/
     - assets/quiz-data/levels/numbers/
+    - assets/quiz-data/levels/numbers/adults/
+    - assets/quiz-data/levels/numbers/kids/
     - assets/quiz-data/levels/dressing-1/
+    - assets/quiz-data/levels/dressing-1/adults/
+    - assets/quiz-data/levels/dressing-1/kids/
     - assets/quiz-data/levels/dressing-2/
+    - assets/quiz-data/levels/dressing-2/adults/
+    - assets/quiz-data/levels/dressing-2/kids/
     - assets/quiz-data/levels/emotions-1/
+    - assets/quiz-data/levels/emotions-1/adults/
+    - assets/quiz-data/levels/emotions-1/kids/
     - assets/quiz-data/levels/emotions-2/
+    - assets/quiz-data/levels/emotions-2/adults/
+    - assets/quiz-data/levels/emotions-2/kids/
     - assets/quiz-data/levels/farm-animals/
+    - assets/quiz-data/levels/farm-animals/adults/
+    - assets/quiz-data/levels/farm-animals/kids/
     - assets/quiz-data/levels/greetings/
+    - assets/quiz-data/levels/greetings/adults/
+    - assets/quiz-data/levels/greetings/kids/
     - assets/quiz-data/levels/household-equipment-1/
+    - assets/quiz-data/levels/household-equipment-1/adults/
+    - assets/quiz-data/levels/household-equipment-1/kids/
     - assets/quiz-data/levels/household-equipment-2/
+    - assets/quiz-data/levels/household-equipment-2/adults/
+    - assets/quiz-data/levels/household-equipment-2/kids/
     - assets/quiz-data/levels/household-equipment-3/
+    - assets/quiz-data/levels/household-equipment-3/adults/
+    - assets/quiz-data/levels/household-equipment-3/kids/
     - assets/quiz-data/levels/jobs-1/
+    - assets/quiz-data/levels/jobs-1/adults/
+    - assets/quiz-data/levels/jobs-1/kids/
     - assets/quiz-data/levels/jobs-2/
+    - assets/quiz-data/levels/jobs-2/adults/
+    - assets/quiz-data/levels/jobs-2/kids/
     - assets/quiz-data/levels/kitchen-items-1/
+    - assets/quiz-data/levels/kitchen-items-1/adults/
+    - assets/quiz-data/levels/kitchen-items-1/kids/
     - assets/quiz-data/levels/kitchen-items-2/
+    - assets/quiz-data/levels/kitchen-items-2/adults/
+    - assets/quiz-data/levels/kitchen-items-2/kids/
     - assets/quiz-data/levels/living-room/
+    - assets/quiz-data/levels/living-room/adults/
+    - assets/quiz-data/levels/living-room/kids/
     - assets/quiz-data/levels/living-room-items/
+    - assets/quiz-data/levels/living-room-items/adults/
+    - assets/quiz-data/levels/living-room-items/kids/
     - assets/quiz-data/levels/fruits-1/
+    - assets/quiz-data/levels/fruits-1/adults/
+    - assets/quiz-data/levels/fruits-1/kids/
     - assets/quiz-data/levels/fruits-2/
+    - assets/quiz-data/levels/fruits-2/adults/
+    - assets/quiz-data/levels/fruits-2/kids/
     - assets/quiz-data/levels/vegetables-1/
+    - assets/quiz-data/levels/vegetables-1/adults/
+    - assets/quiz-data/levels/vegetables-1/kids/
     - assets/quiz-data/levels/vegetables-2/
+    - assets/quiz-data/levels/vegetables-2/adults/
+    - assets/quiz-data/levels/vegetables-2/kids/
     - assets/quiz-data/levels/school-items-1/
+    - assets/quiz-data/levels/school-items-1/adults/
+    - assets/quiz-data/levels/school-items-1/kids/
     - assets/quiz-data/levels/school-items-2/
+    - assets/quiz-data/levels/school-items-2/adults/
+    - assets/quiz-data/levels/school-items-2/kids/
     - assets/quiz-data/levels/vehicles/
+    - assets/quiz-data/levels/vehicles/adults/
+    - assets/quiz-data/levels/vehicles/kids/
     - assets/quiz-data/levels/wild-animals-1/
+    - assets/quiz-data/levels/wild-animals-1/adults/
+    - assets/quiz-data/levels/wild-animals-1/kids/
     - assets/quiz-data/levels/wild-animals-2/
+    - assets/quiz-data/levels/wild-animals-2/adults/
+    - assets/quiz-data/levels/wild-animals-2/kids/
     - assets/quiz-data/levels/at-the-airport/
+    - assets/quiz-data/levels/at-the-airport/adults/
+    - assets/quiz-data/levels/at-the-airport/kids/
     - assets/quiz-data/levels/at-the-pharmacy/
+    - assets/quiz-data/levels/at-the-pharmacy/adults/
     - assets/quiz-data/levels/grocery-shopping/
+    - assets/quiz-data/levels/grocery-shopping/adults/
+    - assets/quiz-data/levels/grocery-shopping/kids/
     - assets/quiz-data/levels/at-the-farmers-market/
+    - assets/quiz-data/levels/at-the-farmers-market/adults/
+    - assets/quiz-data/levels/at-the-farmers-market/kids/
     - assets/quiz-data/levels/at-the-bank/
+    - assets/quiz-data/levels/at-the-bank/adults/
     - assets/quiz-data/levels/at-the-post-office/
+    - assets/quiz-data/levels/at-the-post-office/adults/
     - assets/quiz-data/levels/baby-care/
+    - assets/quiz-data/levels/baby-care/adults/
+    - assets/quiz-data/levels/baby-care/kids/
     - assets/quiz-data/levels/city-buildings-1/
+    - assets/quiz-data/levels/city-buildings-1/adults/
+    - assets/quiz-data/levels/city-buildings-1/kids/
     - assets/quiz-data/levels/city-buildings-2/
+    - assets/quiz-data/levels/city-buildings-2/adults/
+    - assets/quiz-data/levels/city-buildings-2/kids/
     - assets/quiz-data/levels/insect-world/
+    - assets/quiz-data/levels/insect-world/adults/
+    - assets/quiz-data/levels/insect-world/kids/
     - assets/quiz-data/levels/house-parts/
+    - assets/quiz-data/levels/house-parts/adults/
+    - assets/quiz-data/levels/house-parts/kids/
     - assets/quiz-data/levels/waking-up/
+    - assets/quiz-data/levels/waking-up/adults/
+    - assets/quiz-data/levels/waking-up/kids/
     - assets/quiz-data/levels/at-the-park/
+    - assets/quiz-data/levels/at-the-park/adults/
+    - assets/quiz-data/levels/at-the-park/kids/
     - assets/quiz-data/levels/at-the-dentist/
+    - assets/quiz-data/levels/at-the-dentist/adults/
+    - assets/quiz-data/levels/at-the-dentist/kids/
     - assets/quiz-data/levels/bird-watching/
+    - assets/quiz-data/levels/bird-watching/adults/
+    - assets/quiz-data/levels/bird-watching/kids/
     - assets/quiz-data/levels/at-the-train-station/
+    - assets/quiz-data/levels/at-the-train-station/adults/
+    - assets/quiz-data/levels/at-the-train-station/kids/
     - assets/quiz-data/levels/checking-the-weather/
+    - assets/quiz-data/levels/checking-the-weather/adults/
+    - assets/quiz-data/levels/checking-the-weather/kids/
     - assets/quiz-data/levels/in-the-bedroom/
+    - assets/quiz-data/levels/in-the-bedroom/adults/
+    - assets/quiz-data/levels/in-the-bedroom/kids/
     - assets/quiz-data/levels/in-the-bathroom/
+    - assets/quiz-data/levels/in-the-bathroom/adults/
+    - assets/quiz-data/levels/in-the-bathroom/kids/
     - assets/quiz-data/levels/prepositions/
+    - assets/quiz-data/levels/prepositions/adults/
+    - assets/quiz-data/levels/prepositions/kids/
     - assets/quiz-data/levels/family/
+    - assets/quiz-data/levels/family/adults/
+    - assets/quiz-data/levels/family/kids/
     - assets/quiz-data/levels/common-words-1/
+    - assets/quiz-data/levels/common-words-1/adults/
+    - assets/quiz-data/levels/common-words-1/kids/
     - assets/quiz-data/levels/at-the-school/
+    - assets/quiz-data/levels/at-the-school/adults/
+    - assets/quiz-data/levels/at-the-school/kids/
     - assets/quiz-data/levels/at-the-library/
+    - assets/quiz-data/levels/at-the-library/adults/
+    - assets/quiz-data/levels/at-the-library/kids/
     - assets/quiz-data/levels/birthday-party/
+    - assets/quiz-data/levels/birthday-party/adults/
+    - assets/quiz-data/levels/birthday-party/kids/
     - assets/quiz-data/levels/common-words-2/
+    - assets/quiz-data/levels/common-words-2/adults/
+    - assets/quiz-data/levels/common-words-2/kids/
     - assets/quiz-data/levels/in-the-kitchen/
+    - assets/quiz-data/levels/in-the-kitchen/adults/
+    - assets/quiz-data/levels/in-the-kitchen/kids/
     - assets/quiz-data/levels/grocery-list-1/
+    - assets/quiz-data/levels/grocery-list-1/adults/
+    - assets/quiz-data/levels/grocery-list-1/kids/
     - assets/quiz-data/levels/grocery-list-2/
+    - assets/quiz-data/levels/grocery-list-2/adults/
+    - assets/quiz-data/levels/grocery-list-2/kids/
     - assets/quiz-data/levels/common-words-3/
+    - assets/quiz-data/levels/common-words-3/adults/
+    - assets/quiz-data/levels/common-words-3/kids/
     - assets/quiz-data/levels/walking-in-the-city/
+    - assets/quiz-data/levels/walking-in-the-city/adults/
+    - assets/quiz-data/levels/walking-in-the-city/kids/
     - assets/quiz-data/levels/at-the-cinema/
+    - assets/quiz-data/levels/at-the-cinema/adults/
+    - assets/quiz-data/levels/at-the-cinema/kids/
     - assets/quiz-data/levels/at-the-traffic/
+    - assets/quiz-data/levels/at-the-traffic/adults/
+    - assets/quiz-data/levels/at-the-traffic/kids/
     - assets/quiz-data/levels/common-words-4/
+    - assets/quiz-data/levels/common-words-4/adults/
+    - assets/quiz-data/levels/common-words-4/kids/
     - assets/quiz-data/levels/at-the-farm/
+    - assets/quiz-data/levels/at-the-farm/adults/
+    - assets/quiz-data/levels/at-the-farm/kids/
     - assets/quiz-data/levels/common-words-5/
+    - assets/quiz-data/levels/common-words-5/adults/
+    - assets/quiz-data/levels/common-words-5/kids/
     - assets/quiz-data/levels/at-the-office/
+    - assets/quiz-data/levels/at-the-office/adults/
     - assets/quiz-data/levels/at-the-restaurant/
+    - assets/quiz-data/levels/at-the-restaurant/adults/
+    - assets/quiz-data/levels/at-the-restaurant/kids/
     - assets/quiz-data/levels/restaurant-items/
+    - assets/quiz-data/levels/restaurant-items/adults/
+    - assets/quiz-data/levels/restaurant-items/kids/
     - assets/quiz-data/levels/clothes-shopping/
+    - assets/quiz-data/levels/clothes-shopping/adults/
+    - assets/quiz-data/levels/clothes-shopping/kids/
     - assets/quiz-data/levels/common-words-6/
+    - assets/quiz-data/levels/common-words-6/adults/
+    - assets/quiz-data/levels/common-words-6/kids/
     - assets/quiz-data/levels/nature-walk/
+    - assets/quiz-data/levels/nature-walk/adults/
+    - assets/quiz-data/levels/nature-walk/kids/
     - assets/quiz-data/levels/common-words-7/
+    - assets/quiz-data/levels/common-words-7/adults/
+    - assets/quiz-data/levels/common-words-7/kids/
     - assets/quiz-data/levels/common-words-8/
+    - assets/quiz-data/levels/common-words-8/adults/
+    - assets/quiz-data/levels/common-words-8/kids/
     - assets/quiz-data/levels/at-the-hotel/
+    - assets/quiz-data/levels/at-the-hotel/adults/
     - assets/quiz-data/levels/at-the-garage/
+    - assets/quiz-data/levels/at-the-garage/adults/
     - assets/quiz-data/levels/common-words-9/
+    - assets/quiz-data/levels/common-words-9/adults/
+    - assets/quiz-data/levels/common-words-9/kids/
     - assets/quiz-data/levels/nature-objects/
+    - assets/quiz-data/levels/nature-objects/adults/
+    - assets/quiz-data/levels/nature-objects/kids/
     - assets/quiz-data/levels/going-to-sports/
+    - assets/quiz-data/levels/going-to-sports/adults/
+    - assets/quiz-data/levels/going-to-sports/kids/
     - assets/quiz-data/levels/common-words-10/
+    - assets/quiz-data/levels/common-words-10/adults/
+    - assets/quiz-data/levels/common-words-10/kids/
     - assets/quiz-data/levels/hospital-pharmacy-items/
+    - assets/quiz-data/levels/hospital-pharmacy-items/adults/
+    - assets/quiz-data/levels/hospital-pharmacy-items/kids/
     - assets/quiz-data/levels/emergency-situations/
+    - assets/quiz-data/levels/emergency-situations/adults/
+    - assets/quiz-data/levels/emergency-situations/kids/
     - assets/quiz-data/levels/at-the-hospital/
+    - assets/quiz-data/levels/at-the-hospital/adults/
+    - assets/quiz-data/levels/at-the-hospital/kids/
     - assets/quiz-data/levels/common-words-11/
-    - assets/audio/
+    - assets/quiz-data/levels/common-words-11/adults/
+    - assets/quiz-data/levels/common-words-11/kids/
+    - assets/audio/kids/
+    - assets/audio/adults/

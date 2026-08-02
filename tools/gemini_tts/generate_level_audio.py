@@ -2,10 +2,17 @@
 """Generate per-level quiz audio assets with Gemini TTS.
 
 Development-time only utility:
-- Reads app/assets/quiz-data/levels/{level_id}/questions.json
+- Reads questions from
+    app/assets/quiz-data/levels/{level_id}/{flavor}/questions.json
+  falling back to the level-root questions.json when the flavor folder
+  has not been migrated yet.
 - Generates .m4a for questions with top-level "audio_file", or for
   DialogueCompletion with "audio_file1" (line1) + "audio_file2" (answer)
-- Writes output files into the same level folder
+- Writes into the flavor folder when present (matches Flutter loaders):
+    adults → .../levels/{level_id}/adults/{stem}.m4a
+    kids   → .../levels/{level_id}/kids/{stem}.m4a
+  If the flavor folder is missing, creates it so clips land where the app
+  expects (`image_quiz_screen._audioAssetPathForRaw` / level_config_loader).
 - Does NOT modify questions.json
 
 JSON shapes (aligned with app/lib/models/level_config.dart):
@@ -49,6 +56,20 @@ DEFAULT_VOICE_B = "Leda"
 DEFAULT_BITRATE_KBPS = 96
 SUPPORTED_BITRATES = {64, 96}
 
+# Adults defaults (clear adult/teen learner narration).
+DEFAULT_ADULTS_MALE_VOICES = ("Puck",)
+DEFAULT_ADULTS_FEMALE_VOICES = ("Leda",)
+ADULTS_STYLE_PROMPT = 'Say in a clear, friendly tone for a young learner: "{text}"'
+
+# Kids defaults — Gemini 2.5 TTS prebuilt voices that read youthful / playful
+# (same 30-voice catalog as 3.1 Flash TTS). Prefer these over Mature / Firm / Gravelly.
+# See README "Kids flavor voices".
+DEFAULT_KIDS_MALE_VOICES = ("Puck", "Fenrir", "Sadachbia", "Achird")
+DEFAULT_KIDS_FEMALE_VOICES = ("Leda", "Laomedeia", "Aoede", "Zephyr", "Autonoe")
+KIDS_STYLE_PROMPT = (
+    'Say in a young child\'s high-pitched, playful, clear voice: "{text}"'
+)
+
 # Gemini TTS output in these examples is PCM 24kHz, 16-bit mono.
 PCM_CHANNELS = 1
 PCM_SAMPLE_WIDTH_BYTES = 2
@@ -67,18 +88,58 @@ class GenderVoiceContext:
     female_voices: tuple[str, ...]
 
 
-def _gemini_voice_lists_from_env() -> tuple[list[str], list[str]]:
-    """Comma-separated Gemini prebuilt names from GEMINI_TTS_MALE_VOICES / FEMALE_VOICES."""
+def _normalize_flavor(raw: str | None) -> str:
+    """Return 'kids' or 'adults' (default adults)."""
+    v = (raw or "").strip().lower()
+    if v in ("kids", "kid", "children", "child"):
+        return "kids"
+    return "adults"
+
+
+def _style_prompt_template(flavor: str) -> str:
+    """Optional GEMINI_TTS_STYLE_PROMPT overrides the flavor default (must contain {text})."""
+    custom = os.getenv("GEMINI_TTS_STYLE_PROMPT", "").strip()
+    if custom:
+        if "{text}" not in custom:
+            raise SystemExit(
+                "GEMINI_TTS_STYLE_PROMPT must include the literal placeholder {text}"
+            )
+        return custom
+    return KIDS_STYLE_PROMPT if flavor == "kids" else ADULTS_STYLE_PROMPT
+
+
+def _format_style_prompt(template: str, text: str) -> str:
+    return template.replace("{text}", text)
+
+
+def _gemini_voice_lists_from_env(flavor: str = "adults") -> tuple[list[str], list[str]]:
+    """Resolve male/female Gemini prebuilt voice lists for the active flavor.
+
+    Adults: GEMINI_TTS_MALE_VOICES / GEMINI_TTS_FEMALE_VOICES, else adults defaults.
+    Kids: GEMINI_TTS_KIDS_MALE_VOICES / GEMINI_TTS_KIDS_FEMALE_VOICES, else kids
+    defaults (does not inherit the adults env lists, so a shared .env stays safe).
+    """
+    if flavor == "kids":
+        male = _parse_voice_list(os.getenv("GEMINI_TTS_KIDS_MALE_VOICES", ""))
+        female = _parse_voice_list(os.getenv("GEMINI_TTS_KIDS_FEMALE_VOICES", ""))
+        if not male:
+            male = list(DEFAULT_KIDS_MALE_VOICES)
+        if not female:
+            female = list(DEFAULT_KIDS_FEMALE_VOICES)
+        return male, female
+
     male = _parse_voice_list(os.getenv("GEMINI_TTS_MALE_VOICES", ""))
     female = _parse_voice_list(os.getenv("GEMINI_TTS_FEMALE_VOICES", ""))
     if not male:
-        male = ["Puck"]
+        male = list(DEFAULT_ADULTS_MALE_VOICES)
     if not female:
-        female = ["Leda"]
+        female = list(DEFAULT_ADULTS_FEMALE_VOICES)
     return male, female
 
 
-def load_gender_voice_context(repo_root: Path) -> GenderVoiceContext:
+def load_gender_voice_context(
+    repo_root: Path, flavor: str = "adults"
+) -> GenderVoiceContext:
     """Load character name pools and env male/female Gemini voice lists."""
     path = (
         repo_root
@@ -93,7 +154,10 @@ def load_gender_voice_context(repo_root: Path) -> GenderVoiceContext:
     if path.is_file():
         try:
             raw = json.loads(path.read_text(encoding="utf-8"))
-            pools = raw.get("characterNamePools") or {}
+            # v2 schema: characterNamePools.en.{male,female} (locale-keyed pools
+            # alongside "en"). Authored character1/character2 in questions.json
+            # are always the English name, so gender lookup always uses "en".
+            pools = ((raw.get("characterNamePools") or {}).get("en")) or {}
             male_set = {
                 str(x).strip().lower()
                 for x in (pools.get("male") or [])
@@ -106,7 +170,7 @@ def load_gender_voice_context(repo_root: Path) -> GenderVoiceContext:
             }
         except (OSError, json.JSONDecodeError, TypeError, AttributeError):
             pass
-    m_voices, f_voices = _gemini_voice_lists_from_env()
+    m_voices, f_voices = _gemini_voice_lists_from_env(flavor)
     return GenderVoiceContext(
         male_names=frozenset(male_set),
         female_names=frozenset(female_set),
@@ -131,16 +195,6 @@ def _random_gemini_voice_any_gender(ctx: GenderVoiceContext) -> str:
     return random.choice(combined)
 
 
-def _gemini_voice_for_character(slug: str, ctx: GenderVoiceContext) -> str:
-    """Random Gemini voice: gender lists if slug matches a pool name, else any gender."""
-    gender = _gender_for_character(slug, ctx)
-    if gender == "female":
-        return random.choice(ctx.female_voices)
-    if gender == "male":
-        return random.choice(ctx.male_voices)
-    return _random_gemini_voice_any_gender(ctx)
-
-
 def _gemini_voice_excluding(pool: tuple[str, ...], exclude: str | None) -> str:
     """Pick a random voice from pool, avoiding exclude when the pool has more than one option."""
     if exclude and len(pool) > 1:
@@ -160,6 +214,27 @@ def _gender_from_audio_filename(stem: str) -> str | None:
         return "female"
     if "male" in tokens:
         return "male"
+    return None
+
+
+def _gender_from_genders_field(row: dict[str, Any], slot: int) -> str | None:
+    """Reads the row's mandatory top-level "genders" casting code (e.g. "f-m",
+    or "m"/"f" for single-person templates — see validate_quiz_level_json.py).
+
+    slot 0 = character1 (or the sole slot for single-person templates),
+    slot 1 = character2. This is the authoritative casting signal once
+    character1/character2 are blank (most rows now — see
+    ConversationCharacterPool on the Dart side, which reads the same field).
+    """
+    raw = str(row.get("genders") or "").strip().lower()
+    if not raw:
+        return None
+    parts = raw.split("-")
+    code = parts[slot] if slot < len(parts) else (parts[0] if parts else None)
+    if code == "m":
+        return "male"
+    if code == "f":
+        return "female"
     return None
 
 
@@ -186,7 +261,8 @@ def _env_truthy(name: str) -> bool:
 
 def configure_tts_voices(args: argparse.Namespace) -> None:
     """Resolve Gemini voice defaults from CLI and env (male/female voice lists)."""
-    mlist, flist = _gemini_voice_lists_from_env()
+    flavor = getattr(args, "flavor", "adults")
+    mlist, flist = _gemini_voice_lists_from_env(flavor)
 
     g_voice = args.voice if args.voice is not None else mlist[0]
     g_a = args.voice_a if args.voice_a is not None else mlist[0]
@@ -199,6 +275,7 @@ def configure_tts_voices(args: argparse.Namespace) -> None:
     pool = mlist + flist
     args._gemini_single_voice_pool = pool
     args._gemini_rotate_single = _env_truthy("GEMINI_TTS_VOICE_ROTATE")
+    args._style_prompt_template = _style_prompt_template(flavor)
 
 
 @dataclass(frozen=True)
@@ -229,6 +306,16 @@ def parse_args() -> argparse.Namespace:
         help="Repo root path (defaults to script-relative root)",
     )
     parser.add_argument(
+        "--flavor",
+        default=None,
+        choices=["kids", "adults"],
+        help=(
+            "App flavor: kids uses playful child-style prompts + youthful voice "
+            "defaults and writes under levels/{level}/kids/ "
+            "(default: GEMINI_TTS_FLAVOR or adults)"
+        ),
+    )
+    parser.add_argument(
         "--voice",
         default=None,
         metavar="NAME",
@@ -255,7 +342,10 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument(
         "--output-suffix",
         default=None,
-        help="Suffix added to output filename before .m4a (default: empty)",
+        help=(
+            "Suffix added to output filename before .m4a "
+            "(default: empty — flavor is the kids/ or adults/ folder)"
+        ),
     )
     parser.add_argument(
         "--bitrate",
@@ -283,22 +373,99 @@ def parse_args() -> argparse.Namespace:
     return parser.parse_args()
 
 
-def resolve_paths(args: argparse.Namespace) -> tuple[Path, Path]:
+def resolve_paths(args: argparse.Namespace) -> tuple[Path, Path, Path]:
+    """Return (repo_root, questions_path, level_dir).
+
+    Prefer `{level}/{flavor}/questions.json`, then level-root `questions.json`.
+    `level_dir` is always the level root (never the flavor subfolder).
+    """
     if args.workspace_root:
         repo_root = Path(args.workspace_root).expanduser().resolve()
     else:
         # tools/gemini_tts/generate_level_audio.py -> repo root is parents[2]
         repo_root = Path(__file__).resolve().parents[2]
-    questions_path = (
-        repo_root
-        / "app"
-        / "assets"
-        / "quiz-data"
-        / "levels"
-        / args.level_id
-        / "questions.json"
+    level_dir = (
+        repo_root / "app" / "assets" / "quiz-data" / "levels" / args.level_id
+    ).resolve()
+    flavor = getattr(args, "flavor", "adults")
+    flavor_questions = level_dir / flavor / "questions.json"
+    root_questions = level_dir / "questions.json"
+    if flavor_questions.is_file():
+        questions_path = flavor_questions
+    else:
+        questions_path = root_questions
+    return repo_root, questions_path, level_dir
+
+
+def resolve_flavor_audio_dir(level_dir: Path, flavor: str) -> tuple[Path, bool]:
+    """Return (output_dir, created) for clips of this flavor.
+
+    Prefer existing `level_dir/{flavor}/` (kids or adults). If missing, create
+    it so generated voices match Flutter path
+    `quiz-data/levels/{level}/{flavor}/{stem}.m4a`.
+    """
+    flavor_dir = (level_dir / flavor).resolve()
+    created = False
+    if not flavor_dir.is_dir():
+        flavor_dir.mkdir(parents=True, exist_ok=True)
+        created = True
+    return flavor_dir, created
+
+
+def resolve_output_suffix(output_suffix_arg: str | None) -> str:
+    """Explicit --output-suffix, else empty (folder carries the flavor)."""
+    if output_suffix_arg is not None:
+        return output_suffix_arg
+    return ""
+
+
+def resolve_level_audio_output(
+    output_dir: Path, stem: str, output_suffix: str = ""
+) -> tuple[str, Path]:
+    """Filename + absolute path under the flavor (or output) directory.
+
+    Matches Flutter `_audioAssetPathForRaw`:
+      adults → levels/{level}/adults/{stem}.m4a
+      kids   → levels/{level}/kids/{stem}.m4a
+    """
+    base = stem.strip()
+    if base.lower().endswith(".m4a"):
+        base = base[:-4]
+    # Strip a legacy trailing -kids if present (folder already encodes flavor).
+    if base.endswith("-kids"):
+        base = base[: -len("-kids")]
+    output_filename = f"{base}{output_suffix}.m4a"
+    output_path = output_dir.resolve() / output_filename
+    return output_filename, output_path
+
+
+def _job_for_stem(
+    idx: int,
+    template: str,
+    output_dir: Path,
+    stem: str,
+    output_suffix: str,
+    tts_text: str,
+    speaker_mode: str,
+    speaker_a_name: str | None = None,
+    speaker_b_name: str | None = None,
+    gemini_voice_override: str | None = None,
+) -> CandidateJob:
+    output_filename, output_path = resolve_level_audio_output(
+        output_dir, stem, output_suffix
     )
-    return repo_root, questions_path
+    return CandidateJob(
+        question_index=idx,
+        template=template,
+        audio_file_value=stem,
+        output_filename=output_filename,
+        output_path=output_path,
+        tts_text=tts_text,
+        speaker_mode=speaker_mode,
+        speaker_a_name=speaker_a_name,
+        speaker_b_name=speaker_b_name,
+        gemini_voice_override=gemini_voice_override,
+    )
 
 
 def _str_or_none(value: Any) -> str | None:
@@ -385,37 +552,9 @@ def _join_words(value: Any) -> str | None:
     return " ".join(out) if out else None
 
 
-def _job_for_stem(
-    idx: int,
-    template: str,
-    level_dir: Path,
-    stem: str,
-    output_suffix: str,
-    tts_text: str,
-    speaker_mode: str,
-    speaker_a_name: str | None = None,
-    speaker_b_name: str | None = None,
-    gemini_voice_override: str | None = None,
-) -> CandidateJob:
-    output_filename = f"{stem}{output_suffix}.m4a"
-    output_path = level_dir / output_filename
-    return CandidateJob(
-        question_index=idx,
-        template=template,
-        audio_file_value=stem,
-        output_filename=output_filename,
-        output_path=output_path,
-        tts_text=tts_text,
-        speaker_mode=speaker_mode,
-        speaker_a_name=speaker_a_name,
-        speaker_b_name=speaker_b_name,
-        gemini_voice_override=gemini_voice_override,
-    )
-
-
 def build_jobs_for_question(
     level_id: str,
-    level_dir: Path,
+    output_dir: Path,
     q: dict[str, Any],
     idx: int,
     output_suffix: str,
@@ -437,7 +576,7 @@ def build_jobs_for_question(
                     template=template,
                     audio_file_value="",
                     output_filename=f"_invalid{output_suffix}.m4a",
-                    output_path=level_dir / f"_invalid{output_suffix}.m4a",
+                    output_path=output_dir / f"_invalid{output_suffix}.m4a",
                     tts_text=None,
                     speaker_mode="skip",
                     reason="missing_question_data",
@@ -450,7 +589,7 @@ def build_jobs_for_question(
                     template=template,
                     audio_file_value="",
                     output_filename=f"_invalid{output_suffix}.m4a",
-                    output_path=level_dir / f"_invalid{output_suffix}.m4a",
+                    output_path=output_dir / f"_invalid{output_suffix}.m4a",
                     tts_text=None,
                     speaker_mode="skip",
                     reason="dialogue_completion_requires_audio_file1_and_audio_file2",
@@ -465,23 +604,26 @@ def build_jobs_for_question(
                     template=template,
                     audio_file_value="",
                     output_filename=f"_invalid{output_suffix}.m4a",
-                    output_path=level_dir / f"_invalid{output_suffix}.m4a",
+                    output_path=output_dir / f"_invalid{output_suffix}.m4a",
                     tts_text=None,
                     speaker_mode="skip",
                     reason="dual_dialogue_missing_line1_or_answer",
                 )
             ]
         text_answer = _replace_blanks_with_blank(answer)
-        c1 = _str_or_none(qd.get("character1")) or "mike"
-        c2 = _str_or_none(qd.get("character2")) or "sarah"
-        v1 = (
-            _gemini_voice_for_character(c1, gender_ctx)
-            if gender_ctx is not None
-            else None
-        )
-        # Pick v2 from the correct gender pool, excluding v1 to avoid same voice.
+        c1 = _str_or_none(qd.get("character1"))
+        c2 = _str_or_none(qd.get("character2"))
+        # Precedence: authored character name -> row's "genders" field -> unknown.
         if gender_ctx is not None:
-            gender2 = _gender_for_character(c2, gender_ctx)
+            gender1 = (_gender_for_character(c1, gender_ctx) if c1 else None) or (
+                _gender_from_genders_field(q, 0)
+            )
+            gender2 = (_gender_for_character(c2, gender_ctx) if c2 else None) or (
+                _gender_from_genders_field(q, 1)
+            )
+            v1 = _gemini_voice_for_gender(gender1, gender_ctx) or _random_gemini_voice_any_gender(
+                gender_ctx
+            )
             pool2 = (
                 gender_ctx.female_voices if gender2 == "female"
                 else gender_ctx.male_voices if gender2 == "male"
@@ -489,8 +631,9 @@ def build_jobs_for_question(
             )
             v2 = _gemini_voice_excluding(pool2, v1)
         else:
+            v1 = None
             v2 = None
-        # Filename gender hint overrides character-based voice for each clip.
+        # Filename gender hint overrides character/genders-based voice for each clip.
         if gender_ctx is not None:
             g1 = _gender_from_audio_filename(af1)
             g2 = _gender_from_audio_filename(af2)
@@ -503,7 +646,7 @@ def build_jobs_for_question(
             _job_for_stem(
                 idx,
                 template,
-                level_dir,
+                output_dir,
                 af1,
                 output_suffix,
                 text1,
@@ -513,7 +656,7 @@ def build_jobs_for_question(
             _job_for_stem(
                 idx,
                 template,
-                level_dir,
+                output_dir,
                 af2,
                 output_suffix,
                 text2,
@@ -532,7 +675,7 @@ def build_jobs_for_question(
                     template=template,
                     audio_file_value="",
                     output_filename=f"_invalid{output_suffix}.m4a",
-                    output_path=level_dir / f"_invalid{output_suffix}.m4a",
+                    output_path=output_dir / f"_invalid{output_suffix}.m4a",
                     tts_text=None,
                     speaker_mode="skip",
                     reason="missing_question_data",
@@ -548,7 +691,7 @@ def build_jobs_for_question(
                     template=template,
                     audio_file_value="",
                     output_filename=f"_invalid{output_suffix}.m4a",
-                    output_path=level_dir / f"_invalid{output_suffix}.m4a",
+                    output_path=output_dir / f"_invalid{output_suffix}.m4a",
                     tts_text=None,
                     speaker_mode="skip",
                     reason="convo1_dual_missing_line1_line2_or_answer",
@@ -560,15 +703,19 @@ def build_jobs_for_question(
         line2_resolved = _normalize_spoken_line(
             _replace_blanks_with_answer(line2, answer)
         )
-        c1 = _str_or_none(qd.get("character1")) or "SpeakerA"
-        c2 = _str_or_none(qd.get("character2")) or "SpeakerB"
-        v1 = (
-            _gemini_voice_for_character(c1, gender_ctx)
-            if gender_ctx is not None
-            else None
-        )
+        c1 = _str_or_none(qd.get("character1"))
+        c2 = _str_or_none(qd.get("character2"))
+        # Precedence: authored character name -> row's "genders" field -> unknown.
         if gender_ctx is not None:
-            gender2 = _gender_for_character(c2, gender_ctx)
+            gender1 = (_gender_for_character(c1, gender_ctx) if c1 else None) or (
+                _gender_from_genders_field(q, 0)
+            )
+            gender2 = (_gender_for_character(c2, gender_ctx) if c2 else None) or (
+                _gender_from_genders_field(q, 1)
+            )
+            v1 = _gemini_voice_for_gender(gender1, gender_ctx) or _random_gemini_voice_any_gender(
+                gender_ctx
+            )
             pool2 = (
                 gender_ctx.female_voices if gender2 == "female"
                 else gender_ctx.male_voices if gender2 == "male"
@@ -576,6 +723,7 @@ def build_jobs_for_question(
             )
             v2 = _gemini_voice_excluding(pool2, v1)
         else:
+            v1 = None
             v2 = None
         if gender_ctx is not None:
             g1 = _gender_from_audio_filename(af1)
@@ -588,7 +736,7 @@ def build_jobs_for_question(
             _job_for_stem(
                 idx,
                 template,
-                level_dir,
+                output_dir,
                 af1,
                 output_suffix,
                 text1,
@@ -598,7 +746,7 @@ def build_jobs_for_question(
             _job_for_stem(
                 idx,
                 template,
-                level_dir,
+                output_dir,
                 af2,
                 output_suffix,
                 text2,
@@ -607,7 +755,7 @@ def build_jobs_for_question(
             ),
         ]
 
-    job = build_job(level_id, level_dir, q, idx, output_suffix, gender_ctx)
+    job = build_job(level_id, output_dir, q, idx, output_suffix, gender_ctx)
     override_text = _str_or_none(q.get("audio_file_text"))
     if override_text and job.speaker_mode != "skip":
         job = replace(job, tts_text=override_text)
@@ -616,7 +764,7 @@ def build_jobs_for_question(
 
 def build_job(
     level_id: str,
-    level_dir: Path,
+    output_dir: Path,
     q: dict[str, Any],
     idx: int,
     output_suffix: str,
@@ -624,15 +772,21 @@ def build_job(
 ) -> CandidateJob:
     template = str(q.get("template", "")).strip()
     audio_file_value = _str_or_none(q.get("audio_file")) or ""
-    output_filename = f"{audio_file_value}{output_suffix}.m4a"
-    output_path = level_dir / output_filename
+    output_filename, output_path = resolve_level_audio_output(
+        output_dir,
+        audio_file_value if audio_file_value else "_missing",
+        output_suffix,
+    )
 
-    # Derive a gender-specific voice override from the audio filename if the stem
-    # contains "male" or "female" as a dash-separated token (e.g. "...-male-..." ).
+    # Derive a gender-specific voice override, filename token taking precedence
+    # over the row's "genders" field (single-person templates use slot 0 —
+    # AppearDisappear/ClozeSequence/SentenceBuilder never have character1/2).
     _filename_gender = _gender_from_audio_filename(audio_file_value)
+    _genders_field_gender = _gender_from_genders_field(q, 0)
+    _resolved_single_gender = _filename_gender or _genders_field_gender
     _filename_voice: str | None = (
-        _gemini_voice_for_gender(_filename_gender, gender_ctx)
-        if gender_ctx is not None and _filename_gender is not None
+        _gemini_voice_for_gender(_resolved_single_gender, gender_ctx)
+        if gender_ctx is not None and _resolved_single_gender is not None
         else None
     )
 
@@ -683,16 +837,22 @@ def build_job(
         line2_resolved = _normalize_spoken_line(
             _replace_blanks_with_answer(line2, answer)
         )
-        char1 = _str_or_none(qd.get("character1")) or "SpeakerA"
-        char2 = _str_or_none(qd.get("character2")) or "SpeakerB"
+        char1_name = _str_or_none(qd.get("character1"))
+        char2_name = _str_or_none(qd.get("character2"))
+        char1 = char1_name or "SpeakerA"
+        char2 = char2_name or "SpeakerB"
         text = f"{char1}: {line1_resolved}\n{char2}: {line2_resolved}"
-        mva = (
-            _gemini_voice_for_character(char1, gender_ctx)
-            if gender_ctx is not None
-            else None
-        )
+        # Precedence: authored character name -> row's "genders" field -> unknown.
         if gender_ctx is not None:
-            gender2 = _gender_for_character(char2, gender_ctx)
+            gender1 = (
+                _gender_for_character(char1_name, gender_ctx) if char1_name else None
+            ) or _gender_from_genders_field(q, 0)
+            gender2 = (
+                _gender_for_character(char2_name, gender_ctx) if char2_name else None
+            ) or _gender_from_genders_field(q, 1)
+            mva = _gemini_voice_for_gender(gender1, gender_ctx) or _random_gemini_voice_any_gender(
+                gender_ctx
+            )
             pool2 = (
                 gender_ctx.female_voices if gender2 == "female"
                 else gender_ctx.male_voices if gender2 == "male"
@@ -700,6 +860,7 @@ def build_job(
             )
             mvb = _gemini_voice_excluding(pool2, mva)
         else:
+            mva = None
             mvb = None
         return CandidateJob(
             question_index=idx,
@@ -870,13 +1031,14 @@ def generate_single_speaker_pcm(
     text: str,
     voice: str,
     rate_limiter: _RateLimiter | None = None,
+    style_prompt_template: str = ADULTS_STYLE_PROMPT,
 ) -> bytes:
     def _call() -> Any:
         if rate_limiter is not None:
             rate_limiter.wait()
         return client.models.generate_content(
             model=MODEL_NAME,
-            contents=f'Say in a clear, friendly tone for a young learner: "{text}"',
+            contents=_format_style_prompt(style_prompt_template, text),
             config=types.GenerateContentConfig(
                 response_modalities=["AUDIO"],
                 speech_config=types.SpeechConfig(
@@ -935,11 +1097,25 @@ def ensure_ffmpeg_available() -> None:
 
 def main() -> None:
     args = parse_args()
-    repo_root, questions_path = resolve_paths(args)
-    if not questions_path.is_file():
-        raise SystemExit(f"questions.json not found: {questions_path}")
+    flavor_from_cli = args.flavor is not None
 
+    # Load .env before resolving flavor / voice lists from the environment.
     load_dotenv()
+
+    # Flavor: CLI > GEMINI_TTS_FLAVOR > adults
+    if flavor_from_cli:
+        args.flavor = _normalize_flavor(args.flavor)
+    else:
+        args.flavor = _normalize_flavor(os.getenv("GEMINI_TTS_FLAVOR", "adults"))
+
+    repo_root, questions_path, level_dir = resolve_paths(args)
+    if not questions_path.is_file():
+        raise SystemExit(
+            f"questions.json not found for flavor={args.flavor!r}. "
+            f"Tried {level_dir / args.flavor / 'questions.json'} "
+            f"and {level_dir / 'questions.json'}"
+        )
+
     explicit_gemini_voice = args.voice is not None
     configure_tts_voices(args)
 
@@ -947,13 +1123,18 @@ def main() -> None:
     if not args.dry_run and not google_api_key:
         raise SystemExit("GOOGLE_API_KEY is missing.")
 
-    output_suffix = args.output_suffix if args.output_suffix is not None else ""
+    output_suffix = resolve_output_suffix(args.output_suffix)
+    output_dir, flavor_dir_created = resolve_flavor_audio_dir(
+        level_dir, args.flavor
+    )
 
     rows = parse_questions(questions_path)
-    level_dir = questions_path.parent
     ensure_ffmpeg_available()
 
-    gender_ctx = load_gender_voice_context(repo_root)
+    gender_ctx = load_gender_voice_context(repo_root, args.flavor)
+    style_prompt_template = getattr(
+        args, "_style_prompt_template", _style_prompt_template(args.flavor)
+    )
 
     jobs: list[CandidateJob] = []
     for idx, q in enumerate(rows):
@@ -961,7 +1142,7 @@ def main() -> None:
             continue
         jobs.extend(
             build_jobs_for_question(
-                args.level_id, level_dir, q, idx, output_suffix, gender_ctx
+                args.level_id, output_dir, q, idx, output_suffix, gender_ctx
             )
         )
 
@@ -982,7 +1163,17 @@ def main() -> None:
 
     print(f"Repo root: {repo_root}")
     print(f"Level: {args.level_id}")
+    print(f"Flavor: {args.flavor}")
     print(f"Questions file: {questions_path}")
+    print(f"Level directory: {level_dir}")
+    print(f"Output directory: {output_dir}")
+    if flavor_dir_created:
+        print(f"  (created missing flavor folder: {output_dir})")
+    print(
+        f"Output naming: {args.flavor}/{{stem}}{output_suffix}.m4a "
+        f"(kids → kids/, adults → adults/)"
+    )
+    print(f"Style prompt: {style_prompt_template}")
     print(f"Candidate rows considered: {len(jobs)}")
     print(
         f"Gemini male voices: {list(gender_ctx.male_voices)}  "
@@ -1030,9 +1221,12 @@ def main() -> None:
 
         if args.dry_run:
             print(
-                f"{prefix} DRY-RUN mode={job.speaker_mode} -> {job.output_filename}"
+                f"{prefix} DRY-RUN mode={job.speaker_mode} -> {job.output_path}"
             )
             print(f"  text: {job.tts_text}")
+            print(
+                f"  style: {_format_style_prompt(style_prompt_template, job.tts_text)}"
+            )
             if job.speaker_mode == "multi":
                 va = job.gemini_multi_voice_a or args.voice_a
                 vb = job.gemini_multi_voice_b or args.voice_b
@@ -1052,8 +1246,20 @@ def main() -> None:
                 line_b = lines[1] if len(lines) > 1 else ""
                 line_a = line_a.split(":", 1)[-1].strip() if ":" in line_a else line_a
                 line_b = line_b.split(":", 1)[-1].strip() if ":" in line_b else line_b
-                pcm_a = generate_single_speaker_pcm(client=client, text=line_a, voice=va, rate_limiter=rate_limiter)
-                pcm_b = generate_single_speaker_pcm(client=client, text=line_b, voice=vb, rate_limiter=rate_limiter)
+                pcm_a = generate_single_speaker_pcm(
+                    client=client,
+                    text=line_a,
+                    voice=va,
+                    rate_limiter=rate_limiter,
+                    style_prompt_template=style_prompt_template,
+                )
+                pcm_b = generate_single_speaker_pcm(
+                    client=client,
+                    text=line_b,
+                    voice=vb,
+                    rate_limiter=rate_limiter,
+                    style_prompt_template=style_prompt_template,
+                )
                 pcm_bytes = pcm_a + _silence_pcm(300) + pcm_b
                 pcm_to_m4a_file(
                     pcm_bytes=pcm_bytes,
@@ -1074,6 +1280,7 @@ def main() -> None:
                     text=job.tts_text,
                     voice=voice_use,
                     rate_limiter=rate_limiter,
+                    style_prompt_template=style_prompt_template,
                 )
                 pcm_to_m4a_file(
                     pcm_bytes=pcm_bytes,
@@ -1081,7 +1288,7 @@ def main() -> None:
                     bitrate_kbps=args.bitrate,
                 )
             generated += 1
-            print(f"{prefix} OK wrote {job.output_filename}")
+            print(f"{prefix} OK wrote {job.output_path}")
         except Exception as exc:  # noqa: BLE001
             failed += 1
             print(f"{prefix} FAIL {exc}")

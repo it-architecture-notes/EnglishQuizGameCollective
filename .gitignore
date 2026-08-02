@@ -5,8 +5,11 @@
 /.cursor/plans/
 /.cursor/reference-docs/
 /cursor-claude-common/plans/
+/cursor-claude-common/output/
+/cursor-claude-common/references/distr-references/
 /tools/gemini_tts/.env
 /tools/gemini_tts/.venv/
+__pycache__/
 # -----------------------------------------------------------------------------
 # App (Flutter) – build, tools, IDE, OS
 # -----------------------------------------------------------------------------

@@ -3,10 +3,12 @@ import 'dart:async';
 import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/foundation.dart';
 
-const String _quizMusicAsset = 'audio/quiz_music.mp3';
-const String _clickAsset = 'audio/click.mp3';
-const String _correctAsset = 'audio/correct.mp3';
-const String _wrongAsset = 'audio/wrong.mp3';
+import '../app_flavor.dart';
+
+String get _quizMusicAsset => 'audio/${AppConfig.flavorDir}/quiz_music.mp3';
+String get _clickAsset => 'audio/${AppConfig.flavorDir}/click.mp3';
+String get _correctAsset => 'audio/${AppConfig.flavorDir}/correct.mp3';
+String get _wrongAsset => 'audio/${AppConfig.flavorDir}/wrong.mp3';
 
 AudioPlayer? _musicPlayer;
 AudioPlayer? _sfxPlayer;

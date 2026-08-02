@@ -1,0 +1,265 @@
+{
+  "levelQuestions": [
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "crosswalk",
+        "wrongAnswers": [
+          "sidewalk",
+          "traffic-light",
+          "tunnel"
+        ]
+      }
+    },
+    {
+      "template": "ConvoTemplate-1",
+      "genders": "m-f",
+      "questionData": {
+        "line1": "Do you know how to _____ a car?",
+        "line2": "Yes, I can _____ safely.",
+        "answer": "drive",
+        "distractors": [
+          "walk",
+          "run",
+          "ride"
+        ]
+      },
+      "audio_file1": "do-you-know-how-to-drive-a-car-convo",
+      "audio_file2": "yes-i-can-drive-safely-convo"
+    },
+    {
+      "template": "ConvoTemplate-1",
+      "genders": "f-m",
+      "questionData": {
+        "line1": "The red light is on.",
+        "line2": "I know it is _____.",
+        "answer": "dangerous",
+        "distractors": [
+          "safe",
+          "easy",
+          "careful"
+        ]
+      },
+      "audio_file1": "the-red-light-is-on-convo",
+      "audio_file2": "i-know-it-is-dangerous-convo"
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "road",
+        "wrongAnswers": [
+          "crosswalk",
+          "sidewalk",
+          "tunnel"
+        ]
+      }
+    },
+    {
+      "template": "WordPairs",
+      "questionData": {
+        "english_words": [
+          "stop",
+          "go",
+          "left",
+          "right"
+        ],
+        "translations": [
+          {
+            "tr": "dur",
+            "es": "para",
+            "fr": "arrête",
+            "de": "stopp",
+            "it": "fermati",
+            "pt": "pare",
+            "ru": "стой",
+            "zh": "停",
+            "ja": "止まって",
+            "ko": "멈춰",
+            "ar": "توقف",
+            "hi": "रुको"
+          },
+          {
+            "tr": "git",
+            "es": "ve",
+            "fr": "va",
+            "de": "geh",
+            "it": "vai",
+            "pt": "vá",
+            "ru": "иди",
+            "zh": "走",
+            "ja": "行って",
+            "ko": "가",
+            "ar": "اذهب",
+            "hi": "जाओ"
+          },
+          {
+            "tr": "sol",
+            "es": "izquierda",
+            "fr": "gauche",
+            "de": "links",
+            "it": "sinistra",
+            "pt": "esquerda",
+            "ru": "налево",
+            "zh": "左边",
+            "ja": "左",
+            "ko": "왼쪽",
+            "ar": "يسار",
+            "hi": "बायाँ"
+          },
+          {
+            "tr": "sağ",
+            "es": "derecha",
+            "fr": "droite",
+            "de": "rechts",
+            "it": "destra",
+            "pt": "direita",
+            "ru": "направо",
+            "zh": "右边",
+            "ja": "右",
+            "ko": "오른쪽",
+            "ar": "يمين",
+            "hi": "दायाँ"
+          }
+        ]
+      }
+    },
+    {
+      "template": "DialogueCompletion",
+      "genders": "f-m",
+      "questionData": {
+        "line1": "Which way do we go?",
+        "answer": "Go left, please.",
+        "distractors": [
+          "This road is busy.",
+          "Walk at the crosswalk.",
+          "The light is green."
+        ]
+      },
+      "audio_file1": "which-way-do-we-go-convo",
+      "audio_file2": "go-left-please-convo"
+    },
+    {
+      "template": "AppearDisappear",
+      "genders": "f",
+      "questionData": {
+        "words": "Stop at red lights.",
+        "distractors": [
+          "pause",
+          "swerve",
+          "ride",
+          "speed"
+        ]
+      },
+      "audio_file": "stop-at-red-lights-convo"
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "sidewalk",
+        "wrongAnswers": [
+          "crosswalk",
+          "road",
+          "traffic-light"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "traffic-light",
+        "wrongAnswers": [
+          "crosswalk",
+          "tunnel",
+          "road"
+        ],
+        "correct_order": "Go slow on roads."
+      }
+    },
+    {
+      "template": "SentenceBuilder",
+      "genders": "f",
+      "questionData": {
+        "correct_order": "Go slow on roads."
+      },
+      "audio_file": "go-slow-on-roads-convo"
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "tunnel",
+        "wrongAnswers": [
+          "road",
+          "crosswalk",
+          "traffic-light"
+        ]
+      }
+    },
+    {
+      "template": "ClozeSequence",
+      "genders": "f",
+      "questionData": {
+        "sentence": "_____! A car is _____.",
+        "distractors": [
+          "Go",
+          "turn left",
+          "behind",
+          "later"
+        ],
+        "answers": [
+          "Stop",
+          "ahead"
+        ]
+      },
+      "audio_file": "stop-a-car-is-ahead-convo"
+    },
+    {
+      "template": "GrammarForm",
+      "genders": "f",
+      "questionData": {
+        "sentence": "____ left at the traffic light.",
+        "answer": "Turn",
+        "distractors": [
+          "Turned",
+          "Turns",
+          "Turning"
+        ]
+      }
+    },
+    {
+      "template": "ClozeSequence",
+      "genders": "m",
+      "questionData": {
+        "sentence": "_____ at lights. _____ rules.",
+        "distractors": [
+          "Walk",
+          "Run",
+          "Ignore",
+          "Break"
+        ],
+        "answers": [
+          "Stop",
+          "Follow"
+        ]
+      },
+      "audio_file": "stop-at-lights-follow-rules-convo"
+    },
+    {
+      "template": "ClozeSequence",
+      "genders": "f",
+      "questionData": {
+        "sentence": "I _____ the _____.",
+        "distractors": [
+          "carry",
+          "get",
+          "late",
+          "leave"
+        ],
+        "answers": [
+          "pass",
+          "test"
+        ]
+      },
+      "audio_file": "i-pass-the-test-convo"
+    }
+  ]
+}

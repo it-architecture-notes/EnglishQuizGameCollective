@@ -21,7 +21,7 @@ fly,,1,at-the-airport
 get,,4,"at-the-library,at-the-train-station,common-words-4,waking-up"
 go,,4,"at-the-cinema,basic-sentences,common-words-2,common-words-4"
 grow,,1,at-the-farm
-have,,1,greetings
+have,,2,"greetings/adults,greetings/kids"
 help,,1,at-the-library
 hold,,1,baby-care
 jump,,1,at-the-park
@@ -33,7 +33,7 @@ like,,1,basic-sentences
 live,,1,walking-in-the-city
 look,,3,"clothes-shopping,in-the-bathroom,walking-in-the-city"
 make,,1,in-the-bedroom
-meet,,1,greetings
+meet,,2,"greetings/adults,greetings/kids"
 need,,1,baby-care
 open,,3,"at-the-bank,at-the-dentist,waking-up"
 pay,,1,grocery-shopping
@@ -41,7 +41,7 @@ put,,2,"at-the-train-station,common-words-3"
 read,,1,at-the-school
 run,,1,at-the-park
 say,,1,basic-sentences
-see,,2,"greetings,walking-in-the-city"
+see,,3,"greetings/adults,greetings/kids,walking-in-the-city"
 show,,1,at-the-library
 sing,,1,birthday-party
 sit,,2,"common-words-4,living-room"

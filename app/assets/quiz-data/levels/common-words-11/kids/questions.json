@@ -1,0 +1,225 @@
+{
+  "levelQuestions": [
+    {
+      "template": "ClozeSequence",
+      "genders": "f",
+      "questionData": {
+        "sentence": "Let me _____ my friend.",
+        "answer": [
+          "show"
+        ],
+        "distractors": [
+          "hide",
+          "run"
+        ]
+      },
+      "audio_file": "let-me-my-friend-convo"
+    },
+    {
+      "template": "ClozeSequence",
+      "genders": "f",
+      "questionData": {
+        "sentence": "She _____ a new game.",
+        "answer": [
+          "tried"
+        ],
+        "distractors": [
+          "saw",
+          "made"
+        ]
+      },
+      "audio_file": "she-a-new-game-convo"
+    },
+    {
+      "template": "ClozeSequence",
+      "genders": "m",
+      "questionData": {
+        "sentence": "This game is _____.",
+        "answer": [
+          "special"
+        ],
+        "distractors": [
+          "sad",
+          "cold"
+        ]
+      },
+      "audio_file": "this-game-is-convo"
+    },
+    {
+      "template": "GrammarForm",
+      "genders": "m",
+      "questionData": {
+        "sentence": "I _____ this toy.",
+        "answer": "fixed",
+        "distractors": [
+          "fix",
+          "fixes",
+          "fixing"
+        ]
+      }
+    },
+    {
+      "template": "AppearDisappear",
+      "genders": "m",
+      "questionData": {
+        "words": "He plays with a friend.",
+        "distractors": [
+          "runs",
+          "jumps",
+          "sleeps"
+        ]
+      },
+      "audio_file": "he-plays-with-a-friend-convo"
+    },
+    {
+      "template": "AppearDisappear",
+      "genders": "f",
+      "questionData": {
+        "words": "The player kicks the ball.",
+        "distractors": [
+          "reads",
+          "sleeps",
+          "cooks"
+        ]
+      },
+      "audio_file": "the-player-kicks-the-ball-convo"
+    },
+    {
+      "template": "AppearDisappear",
+      "genders": "f",
+      "questionData": {
+        "words": "This dress fits well.",
+        "distractors": [
+          "sad",
+          "cold",
+          "wet"
+        ]
+      },
+      "audio_file": "this-dress-fits-well-convo"
+    },
+    {
+      "template": "ConvoTemplate-1",
+      "genders": "f-m",
+      "questionData": {
+        "line1": "Did the rabbit hide?",
+        "line2": "Yes, it _____.",
+        "answer": "did",
+        "distractors": [
+          "do",
+          "does",
+          "is"
+        ]
+      },
+      "audio_file1": "did-the-rabbit-hide-convo",
+      "audio_file2": "yes-it-convo"
+    },
+    {
+      "template": "ConvoTemplate-1",
+      "genders": "f-m",
+      "questionData": {
+        "line1": "Did you lock the door?",
+        "line2": "Yes, I _____.",
+        "answer": "did",
+        "distractors": [
+          "do",
+          "does",
+          "am"
+        ]
+      },
+      "audio_file1": "did-you-lock-the-door-convo",
+      "audio_file2": "yes-i-convo"
+    },
+    {
+      "template": "DialogueCompletion",
+      "genders": "m-f",
+      "questionData": {
+        "line1": "Do you carry an umbrella?",
+        "answer": "Yes, it can rain.",
+        "distractors": [
+          "No, I am tired.",
+          "I read a book.",
+          "It is a big dog."
+        ]
+      },
+      "audio_file1": "do-you-carry-an-umbrella-convo",
+      "audio_file2": "yes-it-can-rain-convo"
+    },
+    {
+      "template": "SentenceBuilder",
+      "genders": "m",
+      "questionData": {
+        "correct_order": "She is very good."
+      },
+      "audio_file": "she-is-very-good-convo"
+    },
+    {
+      "template": "WordPairs",
+      "questionData": {
+        "english_words": [
+          "yes",
+          "no",
+          "big",
+          "small"
+        ],
+        "translations": [
+          {
+            "tr": "evet",
+            "es": "sí",
+            "fr": "oui",
+            "de": "ja",
+            "it": "sì",
+            "pt": "sim",
+            "ru": "да",
+            "zh": "是",
+            "ja": "はい",
+            "ko": "네",
+            "ar": "نعم",
+            "hi": "हाँ"
+          },
+          {
+            "tr": "hayır",
+            "es": "no",
+            "fr": "non",
+            "de": "nein",
+            "it": "no",
+            "pt": "não",
+            "ru": "нет",
+            "zh": "不",
+            "ja": "いいえ",
+            "ko": "아니요",
+            "ar": "لا",
+            "hi": "नहीं"
+          },
+          {
+            "tr": "büyük",
+            "es": "grande",
+            "fr": "grand",
+            "de": "groß",
+            "it": "grande",
+            "pt": "grande",
+            "ru": "большой",
+            "zh": "大的",
+            "ja": "大きい",
+            "ko": "큰",
+            "ar": "كبير",
+            "hi": "बड़ा"
+          },
+          {
+            "tr": "küçük",
+            "es": "pequeño",
+            "fr": "petit",
+            "de": "klein",
+            "it": "piccolo",
+            "pt": "pequeno",
+            "ru": "маленький",
+            "zh": "小的",
+            "ja": "小さい",
+            "ko": "작은",
+            "ar": "صغير",
+            "hi": "छोटा"
+          }
+        ]
+      }
+    }
+  ]
+}

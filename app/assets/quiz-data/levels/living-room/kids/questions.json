@@ -1,0 +1,260 @@
+{
+  "levelQuestions": [
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "armchair",
+        "wrongAnswers": [
+          "sofa",
+          "table",
+          "desk"
+        ]
+      }
+    },
+    {
+      "template": "ConvoTemplate-1",
+      "genders": "m-m",
+      "questionData": {
+        "line1": "I like to _____ here.",
+        "line2": "Me too.",
+        "answer": "sit",
+        "distractors": [
+          "sleep",
+          "read",
+          "cook"
+        ]
+      },
+      "audio_file1": "i-like-to-sit-here-convo",
+      "audio_file2": "me-too-convo"
+    },
+    {
+      "template": "DialogueCompletion",
+      "genders": "f-m",
+      "questionData": {
+        "line1": "Your room is big.",
+        "answer": "Thanks! I like it.",
+        "distractors": [
+          "No, I am tired.",
+          "I read a book.",
+          "It is a big dog."
+        ]
+      },
+      "audio_file1": "your-room-is-big-convo",
+      "audio_file2": "thanks-i-like-it-convo"
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "coat-rack",
+        "wrongAnswers": [
+          "umbrella-stand",
+          "hat-stand",
+          "hanging-clothes"
+        ]
+      }
+    },
+    {
+      "template": "WordPairs",
+      "questionData": {
+        "english_words": [
+          "warm",
+          "cool",
+          "simple",
+          "soft"
+        ],
+        "translations": [
+          {
+            "tr": "sıcak",
+            "es": "cálido",
+            "fr": "chaud",
+            "de": "warm",
+            "it": "caldo",
+            "pt": "quente",
+            "ru": "тёплый",
+            "zh": "温暖的",
+            "ja": "暖かい",
+            "ko": "따뜻한",
+            "ar": "دافئ",
+            "hi": "गर्म"
+          },
+          {
+            "tr": "serin",
+            "es": "fresco",
+            "fr": "frais",
+            "de": "kühl",
+            "it": "fresco",
+            "pt": "fresco",
+            "ru": "прохладный",
+            "zh": "凉爽的",
+            "ja": "涼しい",
+            "ko": "시원한",
+            "ar": "بارد",
+            "hi": "ठंडा"
+          },
+          {
+            "tr": "basit",
+            "es": "simple",
+            "fr": "simple",
+            "de": "einfach",
+            "it": "semplice",
+            "pt": "simples",
+            "ru": "простой",
+            "zh": "简单的",
+            "ja": "シンプルな",
+            "ko": "간단한",
+            "ar": "بسيط",
+            "hi": "सरल"
+          },
+          {
+            "tr": "yumuşak",
+            "es": "suave",
+            "fr": "doux",
+            "de": "weich",
+            "it": "morbido",
+            "pt": "macio",
+            "ru": "мягкий",
+            "zh": "柔软的",
+            "ja": "柔らかい",
+            "ko": "부드러운",
+            "ar": "ناعم",
+            "hi": "नरम"
+          }
+        ]
+      }
+    },
+    {
+      "template": "DialogueCompletion",
+      "genders": "m-m",
+      "questionData": {
+        "line1": "Close the window, please.",
+        "answer": "I am closing it.",
+        "distractors": [
+          "I read a book.",
+          "I am tired.",
+          "It is a big dog."
+        ]
+      },
+      "audio_file1": "close-the-window-please-convo",
+      "audio_file2": "i-am-closing-it-convo"
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "bookshelf",
+        "wrongAnswers": [
+          "booklet",
+          "cabinet",
+          "display-case"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "chair",
+        "wrongAnswers": [
+          "stool",
+          "desk",
+          "curtain"
+        ]
+      }
+    },
+    {
+      "template": "ClozeSequence",
+      "genders": "m",
+      "questionData": {
+        "sentence": "The room is _____.",
+        "answer": [
+          "tidy"
+        ],
+        "distractors": [
+          "wet",
+          "cold",
+          "sad",
+          "loud"
+        ]
+      },
+      "audio_file": "the-room-is-tidy-convo"
+    },
+    {
+      "template": "ClozeSequence",
+      "genders": "f",
+      "questionData": {
+        "sentence": "We _____ here.",
+        "answer": [
+          "sit"
+        ],
+        "distractors": [
+          "sleep",
+          "read",
+          "cook",
+          "wash"
+        ]
+      },
+      "audio_file": "we-sit-here-convo"
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "curtains",
+        "wrongAnswers": [
+          "shower",
+          "blinds",
+          "duvet-comforter"
+        ]
+      }
+    },
+    {
+      "template": "AppearDisappear",
+      "genders": "f",
+      "questionData": {
+        "words": "Family rests together.",
+        "distractors": [
+          "book",
+          "ball",
+          "dog",
+          "home"
+        ]
+      },
+      "audio_file": "family-rests-together-convo"
+    },
+    {
+      "template": "ClozeSequence",
+      "genders": "f",
+      "questionData": {
+        "sentence": "I _____ on the sofa.",
+        "answer": [
+          "sit"
+        ],
+        "distractors": [
+          "sleep",
+          "read",
+          "cook",
+          "wash"
+        ]
+      },
+      "audio_file": "i-sit-on-the-sofa-convo"
+    },
+    {
+      "template": "GrammarForm",
+      "genders": "m",
+      "questionData": {
+        "sentence": "I _____ to dad.",
+        "answer": "talk",
+        "distractors": [
+          "talks",
+          "talked",
+          "talking"
+        ]
+      }
+    },
+    {
+      "template": "SentenceBuilder",
+      "genders": "m",
+      "questionData": {
+        "correct_order": "Move the bookshelf now."
+      },
+      "audio_file": "move-the-bookshelf-now-convo"
+    }
+  ]
+}

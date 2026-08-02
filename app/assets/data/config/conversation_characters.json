@@ -1,29 +1,134 @@
 {
-  "version": 1,
+  "version": 2,
   "characterNamePools": {
-    "male": [
-      "Mike",
-      "Alex",
-      "Ben",
-      "Chris",
-      "Daniel",
-      "Ethan",
-      "James",
-      "Leo",
-      "Omar",
-      "Ryan"
-    ],
-    "female": [
-      "Sarah",
-      "Anna",
-      "Beth",
-      "Emma",
-      "Grace",
-      "Lily",
-      "Maya",
-      "Nora",
-      "Olivia",
-      "Sophie"
-    ]
+    "en": {
+      "male": [
+        "Mike", "Alex", "Ben", "Chris", "Daniel", "Ethan", "James", "Leo",
+        "Omar", "Ryan", "Noah", "Sam", "Tom", "John", "Oliver"
+      ],
+      "female": [
+        "Sarah", "Anna", "Beth", "Emma", "Grace", "Lily", "Maya", "Nora",
+        "Olivia", "Sophie", "Mia", "Lena", "Ana"
+      ]
+    },
+    "tr": {
+      "male": [
+        "Mehmet", "Mustafa", "Ahmet", "Ali", "Emre", "Yusuf", "Burak", "Can",
+        "Kaan", "Berk"
+      ],
+      "female": [
+        "Ayşe", "Fatma", "Zeynep", "Elif", "Ece", "Merve", "Selin", "Aylin",
+        "Buse", "Derya"
+      ]
+    },
+    "es": {
+      "male": [
+        "Alejandro", "Pablo", "Daniel", "Javier", "Diego", "Carlos", "Miguel",
+        "Adrián", "Hugo", "Mateo"
+      ],
+      "female": [
+        "Lucía", "María", "Sofía", "Paula", "Valeria", "Elena", "Carmen",
+        "Marta", "Alba", "Sara"
+      ]
+    },
+    "fr": {
+      "male": [
+        "Lucas", "Hugo", "Léo", "Louis", "Gabriel", "Nathan", "Jules", "Adam",
+        "Raphaël", "Arthur"
+      ],
+      "female": [
+        "Emma", "Léa", "Chloé", "Manon", "Camille", "Inès", "Jade", "Louise",
+        "Alice", "Zoé"
+      ]
+    },
+    "de": {
+      "male": [
+        "Maximilian", "Alexander", "Paul", "Leon", "Felix", "Jonas", "Elias",
+        "Lukas", "Finn", "Moritz"
+      ],
+      "female": [
+        "Hannah", "Sophia", "Marie", "Laura", "Julia", "Johanna", "Frieda",
+        "Greta", "Ida", "Clara"
+      ]
+    },
+    "it": {
+      "male": [
+        "Leonardo", "Francesco", "Alessandro", "Lorenzo", "Mattia", "Andrea",
+        "Gabriele", "Riccardo", "Tommaso", "Edoardo"
+      ],
+      "female": [
+        "Sofia", "Giulia", "Aurora", "Alice", "Ginevra", "Giorgia", "Chiara",
+        "Martina", "Beatrice", "Federica"
+      ]
+    },
+    "pt": {
+      "male": [
+        "João", "Miguel", "Tiago", "Rodrigo", "Pedro", "Diego", "Gabriel",
+        "Lucas", "Rafael", "Bruno"
+      ],
+      "female": [
+        "Maria", "Beatriz", "Ana", "Sofia", "Mariana", "Camila", "Julia",
+        "Carolina", "Larissa", "Fernanda"
+      ]
+    },
+    "ru": {
+      "male": [
+        "Ivan", "Dmitri", "Alexei", "Sergei", "Mikhail", "Andrei", "Nikolai",
+        "Pavel", "Artem", "Maxim"
+      ],
+      "female": [
+        "Anastasia", "Maria", "Ekaterina", "Olga", "Svetlana", "Elena",
+        "Natalia", "Irina", "Tatiana", "Yulia"
+      ]
+    },
+    "zh": {
+      "male": [
+        "Wei", "Jun", "Hao", "Ming", "Lei", "Yang", "Feng", "Qiang", "Jie",
+        "Tao"
+      ],
+      "female": [
+        "Mei", "Ling", "Xia", "Fang", "Yan", "Hui", "Xin", "Jing", "Li", "Na"
+      ]
+    },
+    "ja": {
+      "male": [
+        "Haruto", "Yuto", "Sota", "Riku", "Kenji", "Takumi", "Ren", "Daiki",
+        "Hiroshi", "Kazuki"
+      ],
+      "female": [
+        "Yui", "Aoi", "Yuna", "Hina", "Sakura", "Rin", "Akari", "Mio",
+        "Koharu", "Aiko"
+      ]
+    },
+    "ko": {
+      "male": [
+        "Min-jun", "Seo-jun", "Do-yun", "Ha-jun", "Jun-seo", "Jae-min",
+        "Ji-ho", "Woo-jin", "Si-woo", "Yeong-ho"
+      ],
+      "female": [
+        "Seo-yeon", "Ji-woo", "Min-seo", "Ha-eun", "Ye-jin", "Soo-ah",
+        "Da-eun", "Chae-won", "Yoon-seo", "Eun-ji"
+      ]
+    },
+    "ar": {
+      "male": [
+        "Ahmed", "Mohammed", "Ali", "Khalid", "Hassan", "Karim", "Tariq",
+        "Sami", "Yusuf", "Ibrahim"
+      ],
+      "female": [
+        "Fatima", "Aisha", "Layla", "Noor", "Mariam", "Amina", "Yasmin",
+        "Huda", "Rania", "Salma"
+      ]
+    },
+    "hi": {
+      "male": [
+        "Arjun", "Aarav", "Vihaan", "Reyansh", "Aditya", "Rohan", "Karan",
+        "Aryan", "Ishaan", "Krishna"
+      ],
+      "female": [
+        "Ananya", "Diya", "Priya", "Aadhya", "Saanvi", "Isha", "Kavya",
+        "Riya", "Meera", "Pooja"
+      ]
+    }
   }
 }

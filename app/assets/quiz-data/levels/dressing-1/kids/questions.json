@@ -1,0 +1,171 @@
+{
+  "levelQuestions": [
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "belt",
+        "wrongAnswers": [
+          "handbag",
+          "high-heels",
+          "boots"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "boots",
+        "wrongAnswers": [
+          "school-bag",
+          "sweater",
+          "umbrella"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-2",
+      "questionData": {
+        "imageName": "coat",
+        "wrongAnswers": [
+          "ring",
+          "sneakers",
+          "watch"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "earrings",
+        "wrongAnswers": [
+          "coat",
+          "sneakers",
+          "belt"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "handbag",
+        "wrongAnswers": [
+          "ring",
+          "coat",
+          "umbrella"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-2",
+      "questionData": {
+        "imageName": "high-heels",
+        "wrongAnswers": [
+          "handbag",
+          "school-bag",
+          "sweater"
+        ],
+        "answer": "high heels"
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "mittens",
+        "wrongAnswers": [
+          "boots",
+          "coat",
+          "belt"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "ring",
+        "wrongAnswers": [
+          "high-heels",
+          "school-bag",
+          "belt"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-2",
+      "questionData": {
+        "imageName": "school-bag",
+        "wrongAnswers": [
+          "coat",
+          "high-heels",
+          "shirt"
+        ],
+        "answer": "school bag"
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "shirt",
+        "wrongAnswers": [
+          "belt",
+          "mittens",
+          "boots"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "sneakers",
+        "wrongAnswers": [
+          "handbag",
+          "watch",
+          "belt"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-2",
+      "questionData": {
+        "imageName": "sweater",
+        "wrongAnswers": [
+          "belt",
+          "earrings",
+          "mittens"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "vest",
+        "wrongAnswers": [
+          "watch",
+          "sweater",
+          "belt"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "watch",
+        "wrongAnswers": [
+          "earrings",
+          "handbag",
+          "belt"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "bathrobe",
+        "wrongAnswers": [
+          "coat",
+          "vest",
+          "sweater"
+        ]
+      }
+    }
+  ]
+}

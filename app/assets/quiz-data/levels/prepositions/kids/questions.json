@@ -1,0 +1,133 @@
+{
+  "levelQuestions": [
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "above",
+        "wrongAnswers": ["below", "behind", "under"]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "around",
+        "wrongAnswers": ["between", "near", "off"]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-2",
+      "questionData": {
+        "imageName": "in",
+        "wrongAnswers": ["out", "into", "on"]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "behind",
+        "wrongAnswers": ["in-front-of", "beside-next to", "below"]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "below",
+        "wrongAnswers": ["above", "under", "over"]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-2",
+      "questionData": {
+        "imageName": "on",
+        "wrongAnswers": ["off", "in", "under"]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "beside-next to",
+        "answer": "beside / next to",
+        "wrongAnswers": ["between", "near", "around"]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "down",
+        "wrongAnswers": ["up", "over", "off"]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-2",
+      "questionData": {
+        "imageName": "under",
+        "wrongAnswers": ["over", "above", "below"]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "in-front-of",
+        "answer": "in front of",
+        "wrongAnswers": ["behind", "between", "beside-next to"]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "into",
+        "wrongAnswers": ["in", "on-to", "out"]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-2",
+      "questionData": {
+        "imageName": "over",
+        "wrongAnswers": ["under", "below", "above"]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "near",
+        "wrongAnswers": ["beside-next to", "around", "between"]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "off",
+        "wrongAnswers": ["on", "out", "down"]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-2",
+      "questionData": {
+        "imageName": "between",
+        "wrongAnswers": ["beside-next to", "near", "around"]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "on-to",
+        "answer": "onto",
+        "wrongAnswers": ["into", "on", "in"]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "out",
+        "wrongAnswers": ["in", "into", "off"]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "up",
+        "wrongAnswers": ["down", "over", "off"]
+      }
+    }
+  ]
+}

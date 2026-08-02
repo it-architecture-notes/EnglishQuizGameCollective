@@ -1,0 +1,227 @@
+{
+  "levelQuestions": [
+    {
+      "template": "ClozeSequence",
+      "genders": "f",
+      "questionData": {
+        "sentence": "We _____ the _____.",
+        "distractors": [
+          "lose",
+          "play"
+        ],
+        "answers": [
+          "win",
+          "game"
+        ]
+      },
+      "audio_file": "we-win-the-game-convo"
+    },
+    {
+      "template": "ClozeSequence",
+      "genders": "m",
+      "questionData": {
+        "sentence": "Let’s _____ now.",
+        "distractors": [
+          "stand up",
+          "later"
+        ],
+        "answers": [
+          "sit down"
+        ]
+      },
+      "audio_file": "let-s-sit-down-now-convo"
+    },
+    {
+      "template": "ClozeSequence",
+      "genders": "f",
+      "questionData": {
+        "sentence": "This _____ needs _____.",
+        "distractors": [
+          "old",
+          "grow"
+        ],
+        "answers": [
+          "plant",
+          "water"
+        ]
+      },
+      "audio_file": "this-plant-needs-water-convo"
+    },
+    {
+      "template": "GrammarForm",
+      "genders": "m",
+      "questionData": {
+        "sentence": "The price is going _____.",
+        "answer": "up",
+        "distractors": [
+          "down",
+          "fast",
+          "away"
+        ]
+      }
+    },
+    {
+      "template": "AppearDisappear",
+      "genders": "m",
+      "questionData": {
+        "words": "The sun is here.",
+        "distractors": [
+          "rain",
+          "hide",
+          "dark"
+        ]
+      },
+      "audio_file": "the-sun-is-here-convo"
+    },
+    {
+      "template": "AppearDisappear",
+      "genders": "f",
+      "questionData": {
+        "words": "We can go now.",
+        "distractors": [
+          "stay",
+          "enter",
+          "arrive"
+        ]
+      },
+      "audio_file": "we-can-go-now-convo"
+    },
+    {
+      "template": "AppearDisappear",
+      "genders": "f",
+      "questionData": {
+        "words": "This bird is a boy.",
+        "distractors": [
+          "girl",
+          "young",
+          "wild"
+        ]
+      },
+      "audio_file": "this-bird-is-a-boy-convo"
+    },
+    {
+      "template": "ConvoTemplate-1",
+      "genders": "f-m",
+      "questionData": {
+        "line1": "What happens to the price?",
+        "line2": "It is going to _____.",
+        "answer": "go down",
+        "distractors": [
+          "rise",
+          "stay",
+          "jump"
+        ]
+      },
+      "audio_file1": "what-happens-to-the-price-convo",
+      "audio_file2": "it-is-going-to-go-down-convo"
+    },
+    {
+      "template": "ConvoTemplate-1",
+      "genders": "f-m",
+      "questionData": {
+        "line1": "Why is he sad?",
+        "line2": "He is _____ today.",
+        "answer": "jealous",
+        "distractors": [
+          "proud",
+          "angry",
+          "nervous"
+        ]
+      },
+      "audio_file1": "why-is-he-sad-convo",
+      "audio_file2": "he-is-jealous-today-convo"
+    },
+    {
+      "template": "DialogueCompletion",
+      "genders": "m-f",
+      "questionData": {
+        "line1": "Why is the shop closed?",
+        "answer": "The shop is closed today.",
+        "distractors": [
+          "It closes on Sunday.",
+          "It opens later.",
+          "It opens tomorrow."
+        ]
+      },
+      "audio_file1": "why-is-the-shop-closed-convo",
+      "audio_file2": "the-shop-is-closed-today-convo"
+    },
+    {
+      "template": "SentenceBuilder",
+      "genders": "m",
+      "questionData": {
+        "correct_order": "This old coin is small."
+      },
+      "audio_file": "this-old-coin-is-small-convo"
+    },
+    {
+      "template": "WordPairs",
+      "questionData": {
+        "english_words": [
+          "tall",
+          "kind",
+          "quick",
+          "happy"
+        ],
+        "translations": [
+          {
+            "tr": "uzun boylu",
+            "es": "alto",
+            "fr": "grand",
+            "de": "groß",
+            "it": "alto",
+            "pt": "alto",
+            "ru": "высокий",
+            "zh": "高的",
+            "ja": "背が高い",
+            "ko": "키가 큰",
+            "ar": "طويل",
+            "hi": "लंबा"
+          },
+          {
+            "tr": "nazik",
+            "es": "amable",
+            "fr": "gentil",
+            "de": "freundlich",
+            "it": "gentile",
+            "pt": "gentil",
+            "ru": "добрый",
+            "zh": "善良的",
+            "ja": "親切な",
+            "ko": "친절한",
+            "ar": "لطيف",
+            "hi": "दयालु"
+          },
+          {
+            "tr": "hızlı",
+            "es": "rápido",
+            "fr": "rapide",
+            "de": "schnell",
+            "it": "veloce",
+            "pt": "rápido",
+            "ru": "быстрый",
+            "zh": "快的",
+            "ja": "速い",
+            "ko": "빠른",
+            "ar": "سريع",
+            "hi": "तेज़"
+          },
+          {
+            "tr": "mutlu",
+            "es": "feliz",
+            "fr": "heureux",
+            "de": "glücklich",
+            "it": "felice",
+            "pt": "feliz",
+            "ru": "счастливый",
+            "zh": "开心的",
+            "ja": "うれしい",
+            "ko": "행복한",
+            "ar": "سعيد",
+            "hi": "खुश"
+          }
+        ]
+      }
+    }
+  ]
+}

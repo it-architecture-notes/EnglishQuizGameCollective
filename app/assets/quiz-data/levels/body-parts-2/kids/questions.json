@@ -1,0 +1,147 @@
+{
+  "levelQuestions": [
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "ankle",
+        "wrongAnswers": [
+          "chest",
+          "hand",
+          "stomach"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "back",
+        "wrongAnswers": [
+          "foot",
+          "stomach",
+          "muscle"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-2",
+      "questionData": {
+        "imageName": "chest",
+        "wrongAnswers": [
+          "finger",
+          "ankle",
+          "heart"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "elbow",
+        "wrongAnswers": [
+          "leg",
+          "back",
+          "hand"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "face",
+        "wrongAnswers": [
+          "back",
+          "leg",
+          "finger"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "finger",
+        "wrongAnswers": [
+          "nose",
+          "muscle",
+          "foot"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-2",
+      "questionData": {
+        "imageName": "foot",
+        "wrongAnswers": [
+          "muscle",
+          "elbow",
+          "back"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "hand",
+        "wrongAnswers": [
+          "ankle",
+          "nose",
+          "elbow"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "heart",
+        "wrongAnswers": [
+          "face",
+          "back",
+          "elbow"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "leg",
+        "wrongAnswers": [
+          "back",
+          "foot",
+          "face"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-2",
+      "questionData": {
+        "imageName": "muscle",
+        "wrongAnswers": [
+          "hand",
+          "nose",
+          "finger"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "nose",
+        "wrongAnswers": [
+          "chest",
+          "finger",
+          "muscle"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "stomach",
+        "wrongAnswers": [
+          "elbow",
+          "muscle",
+          "face"
+        ]
+      }
+    }
+  ]
+}

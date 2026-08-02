@@ -3,11 +3,26 @@
 Generate tables for one activity level: questions from questions.json and, when
 present, translations from translations.json in the same folder.
 
+Flavor layout (kids / adults): when both ``kids/questions.json`` and
+``adults/questions.json`` exist, output is split into three sections:
+
+  1. **common** — questions that are *exactly* the same JSON object in both
+  2. **adults** — questions only in adults (not an exact match in kids)
+  3. **kids** — questions only in kids (not an exact match in adults)
+
+Legacy root ``questions.json`` is used only when neither flavor folder has a
+questions file. Pass ``…/greetings/kids`` (or ``adults``) to emit that flavor
+only (no common split).
+
 Usage:
   python3 tools/generate_single_level_questions_table.py \\
     app/assets/quiz-data/levels/greetings
 
   python3 tools/generate_single_level_questions_table.py greetings
+
+  # One flavor only
+  python3 tools/generate_single_level_questions_table.py \\
+    app/assets/quiz-data/levels/greetings/kids
 
   # Excel-friendly tab-separated (open in Excel / Google Sheets)
   python3 tools/generate_single_level_questions_table.py \\
@@ -164,6 +179,9 @@ QUESTION_SUMMARY_HEADERS = ["#", "Line 1", "Line 2", "Answer", "Distractors"]
 
 WORD_FREQ_HEADERS = ["word", "count"]
 
+# Flavor subfolders under a level (matches AppConfig.flavorDir / Flutter loaders).
+_FLAVOR_NAMES = ("adults", "kids")
+
 # Per-question keys omitted from HTML word-frequency (metadata / assets).
 _QUESTION_ITEM_WORD_FREQ_SKIP_KEYS = frozenset(
     {"template", "audio_file", "audio_file1", "audio_file2"}
@@ -290,6 +308,47 @@ def collect_word_frequency_rows(questions_json_root: dict) -> list[list[str]]:
 
 def repo_root() -> Path:
     return Path(__file__).resolve().parent.parent
+
+
+def resolve_level_context(level_dir: Path) -> tuple[Path, str | None]:
+    """
+    Map a user path to (level_root, flavor_filter).
+
+    If the path is ``…/{level}/kids`` or ``…/{level}/adults``, return the parent
+    level root and that flavor name. Otherwise return ``level_dir`` and None
+    (include every available flavor / legacy root).
+    """
+    name = level_dir.name
+    if name in _FLAVOR_NAMES:
+        return level_dir.parent, name
+    return level_dir, None
+
+
+def discover_level_sources(
+    level_dir: Path, *, flavor_filter: str | None = None
+) -> list[tuple[str, Path, Path]]:
+    """
+    Return ``[(flavor_label, questions_path, translations_path), …]``.
+
+    ``flavor_label`` is ``\"kids\"``, ``\"adults\"``, or ``\"\"`` for legacy
+    root-only ``questions.json``. Prefer flavor subfolders when either has a
+    questions file; otherwise fall back to the level-root file.
+    """
+    sources: list[tuple[str, Path, Path]] = []
+    for flavor in _FLAVOR_NAMES:
+        if flavor_filter is not None and flavor != flavor_filter:
+            continue
+        q = level_dir / flavor / "questions.json"
+        if q.is_file():
+            sources.append((flavor, q, level_dir / flavor / "translations.json"))
+    if sources:
+        return sources
+    if flavor_filter is not None:
+        return []
+    q = level_dir / "questions.json"
+    if q.is_file():
+        return [("", q, level_dir / "translations.json")]
+    return []
 
 
 def normalize_phrase(text: str) -> str:
@@ -1087,10 +1146,17 @@ def collect_template_count_rows(questions: list) -> list[list[str]]:
     return [[tpl, str(counts[tpl])] for tpl in order]
 
 
-def collect_question_summary_rows(questions: list) -> list[list[str]]:
+def collect_question_summary_rows(
+    questions: list, *, display_indices: list[int] | None = None
+) -> list[list[str]]:
     """Compact rows for HTML summary: #, line1, line2, answer, distractors."""
     rows: list[list[str]] = []
-    for index, item in enumerate(questions, start=1):
+    for i, item in enumerate(questions):
+        index = (
+            display_indices[i]
+            if display_indices is not None and i < len(display_indices)
+            else i + 1
+        )
         if not isinstance(item, dict):
             rows.append([str(index), "(invalid)", "", "", ""])
             continue
@@ -1106,12 +1172,20 @@ def collect_question_summary_rows(questions: list) -> list[list[str]]:
 
 
 def collect_rows(
-    questions: list, translation_words: list[str] | None = None
+    questions: list,
+    translation_words: list[str] | None = None,
+    *,
+    display_indices: list[int] | None = None,
 ) -> list[list[str]]:
     """One data row = seven plain strings (no format-specific escaping)."""
     tw = translation_words or []
     rows: list[list[str]] = []
-    for index, item in enumerate(questions, start=1):
+    for i, item in enumerate(questions):
+        index = (
+            display_indices[i]
+            if display_indices is not None and i < len(display_indices)
+            else i + 1
+        )
         if not isinstance(item, dict):
             rows.append(
                 [str(index), "(invalid)", "(not an object)", "", "", "", ""]
@@ -1148,6 +1222,96 @@ def collect_rows(
             ]
         )
     return rows
+
+
+def question_canon(item: dict) -> str:
+    """Stable JSON for exact question equality across flavors."""
+    return json.dumps(item, sort_keys=True, ensure_ascii=False, separators=(",", ":"))
+
+
+def partition_common_and_flavor_only(
+    adults_questions: list,
+    kids_questions: list,
+) -> tuple[
+    list[tuple[int, dict]],
+    list[tuple[int, dict]],
+    list[tuple[int, dict]],
+]:
+    """
+    Split into (common, adults_only, kids_only).
+
+    Each entry is ``(1-based source index, question dict)``.
+    Common uses the adults copy and adults index; multiset match by exact JSON.
+    """
+    kids_pool: Counter[str] = Counter()
+    for i, q in enumerate(kids_questions, start=1):
+        if not isinstance(q, dict):
+            continue
+        c = question_canon(q)
+        kids_pool[c] += 1
+
+    common: list[tuple[int, dict]] = []
+    adults_only: list[tuple[int, dict]] = []
+    for i, q in enumerate(adults_questions, start=1):
+        if not isinstance(q, dict):
+            adults_only.append((i, q))  # type: ignore[arg-type]
+            continue
+        c = question_canon(q)
+        if kids_pool[c] > 0:
+            kids_pool[c] -= 1
+            common.append((i, q))
+        else:
+            adults_only.append((i, q))
+
+    kids_only: list[tuple[int, dict]] = []
+    adults_pool: Counter[str] = Counter(
+        question_canon(q) for q in adults_questions if isinstance(q, dict)
+    )
+    for i, q in enumerate(kids_questions, start=1):
+        if not isinstance(q, dict):
+            kids_only.append((i, q))  # type: ignore[arg-type]
+            continue
+        c = question_canon(q)
+        if adults_pool[c] > 0:
+            adults_pool[c] -= 1
+        else:
+            kids_only.append((i, q))
+
+    return common, adults_only, kids_only
+
+
+def build_section_payload(
+    flavor_label: str,
+    indexed_questions: list[tuple[int, dict]],
+    *,
+    translation_words: list[str],
+    translations_path: Path | None,
+    include_translations_table: bool,
+    questions_path: Path | None = None,
+) -> dict:
+    """Build a render section from an indexed question list."""
+    questions = [q for _, q in indexed_questions]
+    indices = [idx for idx, _ in indexed_questions]
+    root_for_freq = {"levelQuestions": questions}
+    return {
+        "flavor_label": flavor_label,
+        "questions_path": questions_path,
+        "translations_path": translations_path,
+        "validation_errors": [],
+        "template_count_rows": collect_template_count_rows(questions),
+        "rows": collect_rows(
+            questions, translation_words, display_indices=indices
+        ),
+        "question_summary_rows": collect_question_summary_rows(
+            questions, display_indices=indices
+        ),
+        "trans": (
+            collect_translation_rows(translations_path)
+            if include_translations_table and translations_path is not None
+            else None
+        ),
+        "word_freq_rows": collect_word_frequency_rows(root_for_freq),
+    }
 
 
 def collect_translation_rows(translations_path: Path) -> tuple[list[str], list[list[str]]] | None:
@@ -1199,49 +1363,53 @@ def collect_translation_rows(translations_path: Path) -> tuple[list[str], list[l
 
 def build_markdown(
     level_name: str,
-    template_count_rows: list[list[str]],
-    rows: list[list[str]],
-    trans: tuple[list[str], list[list[str]]] | None,
+    sections: list[dict],
 ) -> str:
-    lines = [
-        f"# {level_name} questions",
-        "",
-        f"## {level_name} — template counts",
-        "",
-        "| " + " | ".join(TEMPLATE_COUNT_HEADERS) + " |",
-        "|" + "|".join(["---"] * len(TEMPLATE_COUNT_HEADERS)) + "|",
-    ]
-    for r in template_count_rows:
-        esc = [escape_md_cell(c) for c in r]
-        lines.append("| " + " | ".join(esc) + " |")
-    lines.extend(
-        [
-            "",
-            f"## {level_name} — questions",
-            "",
-            "| " + " | ".join(TABLE_HEADERS) + " |",
-            "|" + "|".join(["---:"] + ["---"] * (len(TABLE_HEADERS) - 1)) + "|",
-        ]
-    )
-    for r in rows:
-        esc = [escape_md_cell(c) for c in r]
-        lines.append("| " + " | ".join(esc) + " |")
-    lines.append("")
-
-    if trans:
-        th, trows = trans
+    lines = [f"# {level_name} questions", ""]
+    for sec in sections:
+        section_title = _section_heading(level_name, sec["flavor_label"])
         lines.extend(
             [
-                f"## {level_name} — translations",
+                f"## {section_title} — template counts",
                 "",
-                "| " + " | ".join(th) + " |",
-                "|" + "|".join(["---:"] + ["---"] * (len(th) - 1)) + "|",
+                "| " + " | ".join(TEMPLATE_COUNT_HEADERS) + " |",
+                "|" + "|".join(["---"] * len(TEMPLATE_COUNT_HEADERS)) + "|",
             ]
         )
-        for r in trows:
+        for r in sec["template_count_rows"]:
+            esc = [escape_md_cell(c) for c in r]
+            lines.append("| " + " | ".join(esc) + " |")
+        lines.extend(
+            [
+                "",
+                f"## {section_title} — questions",
+                "",
+                "| " + " | ".join(TABLE_HEADERS) + " |",
+                "|" + "|".join(["---:"] + ["---"] * (len(TABLE_HEADERS) - 1)) + "|",
+            ]
+        )
+        if not sec["rows"]:
+            lines.append("| | _(none)_ | | | | | |")
+        for r in sec["rows"]:
             esc = [escape_md_cell(c) for c in r]
             lines.append("| " + " | ".join(esc) + " |")
         lines.append("")
+
+        trans = sec.get("trans")
+        if trans:
+            th, trows = trans
+            lines.extend(
+                [
+                    f"## {section_title} — translations",
+                    "",
+                    "| " + " | ".join(th) + " |",
+                    "|" + "|".join(["---:"] + ["---"] * (len(th) - 1)) + "|",
+                ]
+            )
+            for r in trows:
+                esc = [escape_md_cell(c) for c in r]
+                lines.append("| " + " | ".join(esc) + " |")
+            lines.append("")
 
     return "\n".join(lines)
 
@@ -1250,51 +1418,54 @@ def tsv_cell(value: str) -> str:
     return str(value or "").replace("\t", " ").replace("\r", " ").replace("\n", " ")
 
 
-def build_tsv(
-    template_count_rows: list[list[str]],
-    rows: list[list[str]],
-    trans: tuple[list[str], list[list[str]]] | None,
-) -> str:
-    out_lines = [
-        "\t".join(tsv_cell(h) for h in TEMPLATE_COUNT_HEADERS),
-    ]
-    for r in template_count_rows:
-        out_lines.append("\t".join(tsv_cell(c) for c in r))
-    out_lines.append("")
-    out_lines.append("\t".join(tsv_cell(h) for h in TABLE_HEADERS))
-    for r in rows:
-        out_lines.append("\t".join(tsv_cell(c) for c in r))
-    if trans:
-        th, trows = trans
-        out_lines.append("")
-        out_lines.append("\t".join(tsv_cell(h) for h in th))
-        for r in trows:
+def build_tsv(sections: list[dict]) -> str:
+    out_lines: list[str] = []
+    for i, sec in enumerate(sections):
+        if i:
+            out_lines.append("")
+        label = sec["flavor_label"]
+        out_lines.append(f"# section: {label or 'root'}")
+        out_lines.append("\t".join(tsv_cell(h) for h in TEMPLATE_COUNT_HEADERS))
+        for r in sec["template_count_rows"]:
             out_lines.append("\t".join(tsv_cell(c) for c in r))
+        out_lines.append("")
+        out_lines.append("\t".join(tsv_cell(h) for h in TABLE_HEADERS))
+        for r in sec["rows"]:
+            out_lines.append("\t".join(tsv_cell(c) for c in r))
+        trans = sec.get("trans")
+        if trans:
+            th, trows = trans
+            out_lines.append("")
+            out_lines.append("\t".join(tsv_cell(h) for h in th))
+            for r in trows:
+                out_lines.append("\t".join(tsv_cell(c) for c in r))
     return "\n".join(out_lines) + "\n"
 
 
-def build_csv(
-    template_count_rows: list[list[str]],
-    rows: list[list[str]],
-    trans: tuple[list[str], list[list[str]]] | None,
-) -> str:
+def build_csv(sections: list[dict]) -> str:
     import io
 
     buf = io.StringIO(newline="")
     w = csv.writer(buf)
-    w.writerow(TEMPLATE_COUNT_HEADERS)
-    for r in template_count_rows:
-        w.writerow(r)
-    w.writerow([])
-    w.writerow(TABLE_HEADERS)
-    for r in rows:
-        w.writerow(r)
-    if trans:
-        th, trows = trans
-        w.writerow([])
-        w.writerow(th)
-        for r in trows:
+    for i, sec in enumerate(sections):
+        if i:
+            w.writerow([])
+        label = sec["flavor_label"]
+        w.writerow([f"section: {label or 'root'}"])
+        w.writerow(TEMPLATE_COUNT_HEADERS)
+        for r in sec["template_count_rows"]:
             w.writerow(r)
+        w.writerow([])
+        w.writerow(TABLE_HEADERS)
+        for r in sec["rows"]:
+            w.writerow(r)
+        trans = sec.get("trans")
+        if trans:
+            th, trows = trans
+            w.writerow([])
+            w.writerow(th)
+            for r in trows:
+                w.writerow(r)
     return buf.getvalue()
 
 
@@ -1356,18 +1527,79 @@ def _html_table(
     return f"<table>\n{thead}\n{tbody}\n</table>"
 
 
-def build_html(
-    level_name: str,
-    template_count_rows: list[list[str]],
-    rows: list[list[str]],
-    question_summary_rows: list[list[str]],
-    trans: tuple[list[str], list[list[str]]] | None,
-    word_freq_rows: list[list[str]],
-) -> str:
+def _section_heading(level_name: str, flavor_label: str) -> str:
+    if flavor_label == "common":
+        return f"{level_name} — common (exact match in adults & kids)"
+    if flavor_label == "adults":
+        return f"{level_name} — adults only"
+    if flavor_label == "kids":
+        return f"{level_name} — kids only"
+    if flavor_label:
+        return f"{level_name} — {flavor_label}"
+    return level_name
+
+
+def _html_flavor_section(level_name: str, sec: dict) -> str:
+    label = sec["flavor_label"]
+    section_title = _section_heading(level_name, label)
+    anchor = html.escape(label or "default")
+    empty_note = ""
+    if not sec["rows"]:
+        empty_note = '<p class="empty-note"><em>No questions in this section.</em></p>'
+    tpl_table = _html_table(TEMPLATE_COUNT_HEADERS, sec["template_count_rows"])
+    translate_repeats = repeated_translate_words(sec["rows"])
+    q_table = _html_table(
+        TABLE_HEADERS, sec["rows"], highlight_translate_repeats=translate_repeats
+    )
+    trans_block = ""
+    trans = sec.get("trans")
+    if trans:
+        th, trows = trans
+        trans_table = _html_table(th, trows)
+        trans_block = f"""
+  <h3>Translations</h3>
+  <div class="wrap">
+    {trans_table}
+  </div>
+"""
+    summary_table = _html_table(
+        QUESTION_SUMMARY_HEADERS, sec["question_summary_rows"]
+    )
+    word_freq_table = _html_table(WORD_FREQ_HEADERS, sec["word_freq_rows"])
+    return f"""
+<section class="flavor" id="flavor-{anchor}">
+  <h2>{html.escape(section_title)}</h2>
+  {empty_note}
+  <h3>Questions</h3>
+  <div class="wrap">
+    {q_table}
+  </div>
+{trans_block}
+  <h3>Question summary</h3>
+  <div class="wrap">
+    {summary_table}
+  </div>
+  <h3>Template counts</h3>
+  <div class="wrap template-counts">
+    {tpl_table}
+  </div>
+  <h3>Word frequency (this section; excludes template, audio_file*, WordPairs translations, distractors, wrongAnswers)</h3>
+  <div class="wrap word-frequency">
+    {word_freq_table}
+  </div>
+</section>
+"""
+
+
+def build_html(level_name: str, sections: list[dict]) -> str:
     style = """
     body { font-family: system-ui, -apple-system, Segoe UI, Roboto, sans-serif; margin: 16px; background: #f5f5f5; }
     h1 { font-size: 1.25rem; margin-bottom: 12px; }
-    h2 { font-size: 1.1rem; margin-top: 24px; margin-bottom: 8px; }
+    h2 { font-size: 1.15rem; margin-top: 28px; margin-bottom: 10px; padding-bottom: 6px; border-bottom: 2px solid #bbb; }
+    h3 { font-size: 1.05rem; margin-top: 20px; margin-bottom: 8px; }
+    .nav { margin: 0 0 16px; padding: 10px 12px; background: #fff; border-radius: 8px; box-shadow: 0 1px 3px rgba(0,0,0,.08); font-size: 14px; }
+    .nav a { margin-right: 14px; }
+    .empty-note { color: #666; margin: 0 0 8px; }
     .wrap { overflow-x: auto; background: #fff; padding: 12px; border-radius: 8px; box-shadow: 0 1px 3px rgba(0,0,0,.08); margin-bottom: 16px; }
     table { border-collapse: collapse; width: 100%; font-size: 13px; table-layout: fixed; }
     th, td { border: 1px solid #c8c8c8; padding: 8px 10px; vertical-align: top; text-align: left; word-wrap: break-word; }
@@ -1376,42 +1608,27 @@ def build_html(
     .repeat-word { color: #c62828; font-weight: 600; }
     .wrap.template-counts { max-width: 28rem; }
     .wrap.word-frequency { max-width: 40rem; }
+    section.flavor { margin-bottom: 32px; }
     """
-    tpl_table = _html_table(TEMPLATE_COUNT_HEADERS, template_count_rows)
-    translate_repeats = repeated_translate_words(rows)
-    q_table = _html_table(
-        TABLE_HEADERS, rows, highlight_translate_repeats=translate_repeats
-    )
-    trans_block = ""
-    if trans:
-        th, trows = trans
-        trans_table = _html_table(th, trows)
-        trans_block = f"""
-  <h2>{html.escape(level_name)} — translations</h2>
-  <div class="wrap">
-    {trans_table}
-  </div>
-"""
-    summary_table = _html_table(QUESTION_SUMMARY_HEADERS, question_summary_rows)
-    question_summary_block = f"""
-  <h2>Question summary</h2>
-  <div class="wrap">
-    {summary_table}
-  </div>
-"""
-    template_counts_block = f"""
-  <h2>Template counts</h2>
-  <div class="wrap template-counts">
-    {tpl_table}
-  </div>
-"""
-    word_freq_table = _html_table(WORD_FREQ_HEADERS, word_freq_rows)
-    word_freq_block = f"""
-  <h2>Word frequency (questions.json; excludes template, audio_file*, WordPairs translations, distractors, wrongAnswers)</h2>
-  <div class="wrap word-frequency">
-    {word_freq_table}
-  </div>
-"""
+    nav = ""
+    labeled = [s for s in sections if s.get("flavor_label")]
+    if len(labeled) > 1:
+        def _nav_label(label: str) -> str:
+            return {
+                "common": "common",
+                "adults": "adults only",
+                "kids": "kids only",
+            }.get(label, label)
+
+        links = " · ".join(
+            f'<a href="#flavor-{html.escape(s["flavor_label"])}">'
+            f'{html.escape(_nav_label(s["flavor_label"]))}</a>'
+            f' ({len(s["rows"])})'
+            for s in labeled
+        )
+        nav = f'<nav class="nav">Sections: {links}</nav>'
+
+    body_sections = "".join(_html_flavor_section(level_name, sec) for sec in sections)
     return f"""<!DOCTYPE html>
 <html lang="en">
 <head>
@@ -1422,11 +1639,8 @@ def build_html(
 </head>
 <body>
   <h1>{html.escape(level_name)} — questions</h1>
-  <h2>Questions</h2>
-  <div class="wrap">
-    {q_table}
-  </div>
-{trans_block}{question_summary_block}{template_counts_block}{word_freq_block}
+  {nav}
+{body_sections}
 </body>
 </html>
 """
@@ -1436,31 +1650,100 @@ def extension_for_format(fmt: str) -> str:
     return {"md": "md", "tsv": "tsv", "csv": "csv", "html": "html"}[fmt]
 
 
-def render(
-    fmt: str,
-    level_name: str,
-    template_count_rows: list[list[str]],
-    rows: list[list[str]],
-    question_summary_rows: list[list[str]],
-    trans: tuple[list[str], list[list[str]]] | None,
-    word_freq_rows: list[list[str]],
-) -> str:
+def render(fmt: str, level_name: str, sections: list[dict]) -> str:
     if fmt == "md":
-        return build_markdown(level_name, template_count_rows, rows, trans)
+        return build_markdown(level_name, sections)
     if fmt == "tsv":
-        return build_tsv(template_count_rows, rows, trans)
+        return build_tsv(sections)
     if fmt == "csv":
-        return build_csv(template_count_rows, rows, trans)
+        return build_csv(sections)
     if fmt == "html":
-        return build_html(
-            level_name,
-            template_count_rows,
-            rows,
-            question_summary_rows,
-            trans,
-            word_freq_rows,
-        )
+        return build_html(level_name, sections)
     raise ValueError(fmt)
+
+
+def load_flavor_section(
+    flavor_label: str,
+    questions_path: Path,
+    translations_path: Path,
+) -> dict | None:
+    """
+    Load/validate one questions.json (+ optional translations).
+    Returns a section dict (full flavor), or None on hard load failure.
+    Also stores ``questions`` and ``translation_words`` for later partitioning.
+    """
+    try:
+        with questions_path.open(encoding="utf-8") as f:
+            data = json.load(f)
+    except (OSError, json.JSONDecodeError) as e:
+        print(f"Failed to read {questions_path}: {e}", file=sys.stderr)
+        return None
+
+    questions = data.get("levelQuestions")
+    if not isinstance(questions, list):
+        print(
+            f"Invalid format in {questions_path}: levelQuestions must be an array",
+            file=sys.stderr,
+        )
+        return None
+
+    v_errs = validate_level_questions(questions)
+    translation_words = load_translation_english_words(translations_path)
+    indexed_all: list[tuple[int, dict]] = [
+        (i, q) for i, q in enumerate(questions, start=1) if isinstance(q, dict)
+    ]
+    sec = build_section_payload(
+        flavor_label,
+        indexed_all,
+        translation_words=translation_words,
+        translations_path=translations_path,
+        include_translations_table=True,
+        questions_path=questions_path,
+    )
+    sec["validation_errors"] = v_errs
+    sec["questions"] = questions
+    sec["translation_words"] = translation_words
+    return sec
+
+
+def sections_from_adults_and_kids(
+    adults_sec: dict, kids_sec: dict
+) -> list[dict]:
+    """Build common / adults-only / kids-only sections from two flavor loads."""
+    common, adults_only, kids_only = partition_common_and_flavor_only(
+        adults_sec["questions"], kids_sec["questions"]
+    )
+    common_words = list(
+        dict.fromkeys(
+            adults_sec["translation_words"] + kids_sec["translation_words"]
+        )
+    )
+    return [
+        build_section_payload(
+            "common",
+            common,
+            translation_words=common_words,
+            translations_path=None,
+            include_translations_table=False,
+            questions_path=adults_sec.get("questions_path"),
+        ),
+        build_section_payload(
+            "adults",
+            adults_only,
+            translation_words=adults_sec["translation_words"],
+            translations_path=adults_sec.get("translations_path"),
+            include_translations_table=True,
+            questions_path=adults_sec.get("questions_path"),
+        ),
+        build_section_payload(
+            "kids",
+            kids_only,
+            translation_words=kids_sec["translation_words"],
+            translations_path=kids_sec.get("translations_path"),
+            include_translations_table=True,
+            questions_path=kids_sec.get("questions_path"),
+        ),
+    ]
 
 
 def main() -> int:
@@ -1469,7 +1752,10 @@ def main() -> int:
     parser.add_argument(
         "level_folder",
         type=Path,
-        help="Level directory containing questions.json (e.g. app/assets/quiz-data/levels/greetings or greetings)",
+        help=(
+            "Level directory (e.g. app/assets/quiz-data/levels/greetings or greetings). "
+            "May also be a flavor subfolder (…/greetings/kids) to emit one flavor only."
+        ),
     )
     parser.add_argument(
         "--output-dir",
@@ -1531,46 +1817,54 @@ def main() -> int:
         print(f"Not a directory: {level_dir}", file=sys.stderr)
         return 1
 
-    questions_path = level_dir / "questions.json"
-    translations_path = level_dir / "translations.json"
-    if not questions_path.is_file():
-        print(f"Missing questions.json in {level_dir}", file=sys.stderr)
+    level_root, flavor_filter = resolve_level_context(level_dir)
+    if not level_root.is_dir():
+        print(f"Not a directory: {level_root}", file=sys.stderr)
         return 1
 
-    level_name = level_dir.name
-
-    with questions_path.open(encoding="utf-8") as f:
-        data = json.load(f)
-    questions = data.get("levelQuestions")
-    if not isinstance(questions, list):
-        print(f"Invalid format in {questions_path}: levelQuestions must be an array", file=sys.stderr)
+    sources = discover_level_sources(level_root, flavor_filter=flavor_filter)
+    if not sources:
+        if flavor_filter:
+            print(
+                f"Missing {flavor_filter}/questions.json under {level_root}",
+                file=sys.stderr,
+            )
+        else:
+            print(
+                f"Missing questions.json (root or kids/|adults/) in {level_root}",
+                file=sys.stderr,
+            )
         return 1
 
-    v_errs = validate_level_questions(questions)
-    if v_errs:
-        print(
-            f"Template validation failed for {questions_path} ({len(v_errs)} issue(s)):\n",
-            file=sys.stderr,
-        )
-        for line in v_errs:
-            print(f"  {line}", file=sys.stderr)
+    level_name = level_root.name
+    loaded: list[dict] = []
+    all_errs: list[str] = []
+    for flavor_label, questions_path, translations_path in sources:
+        sec = load_flavor_section(flavor_label, questions_path, translations_path)
+        if sec is None:
+            return 1
+        if sec["validation_errors"]:
+            where = f"{questions_path}"
+            if flavor_label:
+                where = f"{flavor_label} ({questions_path})"
+            all_errs.append(
+                f"Template validation failed for {where} "
+                f"({len(sec['validation_errors'])} issue(s)):"
+            )
+            all_errs.extend(f"  {line}" for line in sec["validation_errors"])
+        loaded.append(sec)
+
+    if all_errs:
+        print("\n".join(all_errs), file=sys.stderr)
         return 1
 
-    template_count_rows = collect_template_count_rows(questions)
-    translation_words = load_translation_english_words(translations_path)
-    rows = collect_rows(questions, translation_words)
-    question_summary_rows = collect_question_summary_rows(questions)
-    trans = collect_translation_rows(translations_path)
-    word_freq_rows = collect_word_frequency_rows(data)
-    body = render(
-        args.format,
-        level_name,
-        template_count_rows,
-        rows,
-        question_summary_rows,
-        trans,
-        word_freq_rows,
-    )
+    by_label = {s["flavor_label"]: s for s in loaded}
+    if "adults" in by_label and "kids" in by_label and flavor_filter is None:
+        sections = sections_from_adults_and_kids(by_label["adults"], by_label["kids"])
+    else:
+        sections = loaded
+
+    body = render(args.format, level_name, sections)
 
     output_dir = args.output_dir if args.output_dir.is_absolute() else (root / args.output_dir)
     output_dir.mkdir(parents=True, exist_ok=True)
@@ -1578,13 +1872,21 @@ def main() -> int:
     output_path = output_dir / f"{level_name}-questions.{ext}"
     output_path.write_text(body, encoding="utf-8")
     print(f"Wrote {output_path}")
-    if trans:
-        print(f"  (includes translations from {translations_path.name})")
-    else:
-        print(f"  (no translations table: missing or empty {translations_path.name})")
+    for sec in sections:
+        label = sec["flavor_label"] or "root"
+        n = len(sec["rows"])
+        trans = sec.get("trans")
+        if label == "common":
+            print(f"  [{label}] {n} exact shared question(s)")
+        elif trans:
+            tpath = sec.get("translations_path")
+            tname = tpath.name if isinstance(tpath, Path) else "translations.json"
+            print(f"  [{label}] {n} question(s); translations={tname}")
+        else:
+            print(f"  [{label}] {n} question(s)")
 
     flow_path = args.flow.resolve()
-    levels_root = level_dir.parent
+    levels_root = level_root.parent
     csv_dir = args.csv_dir.resolve()
 
     if not args.skip_prior_words:

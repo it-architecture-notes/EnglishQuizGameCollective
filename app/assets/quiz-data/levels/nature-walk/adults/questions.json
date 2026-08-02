@@ -1,0 +1,262 @@
+{
+  "levelQuestions": [
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "desert",
+        "wrongAnswers": [
+          "forest",
+          "dessert",
+          "sand"
+        ]
+      }
+    },
+    {
+      "template": "DialogueCompletion",
+      "genders": "f-m",
+      "questionData": {
+        "line1": "Should we stay longer to watch the sky?",
+        "answer": "Definitely—it is amazing.",
+        "distractors": [
+          "No, it is getting too dark.",
+          "I am tired and want to leave now.",
+          "The sky looks cloudy tonight."
+        ]
+      },
+      "audio_file1": "should-we-stay-longer-to-watch-the-sky-convo",
+      "audio_file2": "definitely-it-is-amazing-convo"
+    },
+    {
+      "template": "ConvoTemplate-1",
+      "genders": "f-m",
+      "questionData": {
+        "line1": "Did you notice how the shadows changed while we _____?",
+        "line2": "Yes, they got so long by the end!",
+        "answer": "hiked",
+        "distractors": [
+          "walked",
+          "ran",
+          "climbed"
+        ]
+      },
+      "audio_file1": "did-you-notice-how-the-shadows-changed-while-we-hiked-convo",
+      "audio_file2": "yes-they-got-so-long-by-the-end-convo"
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "forest",
+        "wrongAnswers": [
+          "lake",
+          "river",
+          "sea"
+        ]
+      }
+    },
+    {
+      "template": "WordPairs",
+      "questionData": {
+        "english_words": [
+          "east",
+          "west",
+          "north",
+          "south"
+        ],
+        "translations": [
+          {
+            "tr": "doğu",
+            "es": "este",
+            "fr": "est",
+            "de": "Ost",
+            "it": "est",
+            "pt": "leste",
+            "ru": "восток",
+            "zh": "东方",
+            "ja": "東",
+            "ko": "동쪽",
+            "ar": "شرق",
+            "hi": "पूर्व"
+          },
+          {
+            "tr": "batı",
+            "es": "oeste",
+            "fr": "ouest",
+            "de": "Westen",
+            "it": "ovest",
+            "pt": "oeste",
+            "ru": "запад",
+            "zh": "西方",
+            "ja": "西",
+            "ko": "서쪽",
+            "ar": "الغرب",
+            "hi": "पश्चिम"
+          },
+          {
+            "tr": "kuzey",
+            "es": "norte",
+            "fr": "nord",
+            "de": "Norden",
+            "it": "nord",
+            "pt": "norte",
+            "ru": "север",
+            "zh": "北",
+            "ja": "北",
+            "ko": "북쪽",
+            "ar": "شمال",
+            "hi": "उत्तर"
+          },
+          {
+            "tr": "güney",
+            "es": "sur",
+            "fr": "sud",
+            "de": "Süden",
+            "it": "sud",
+            "pt": "sul",
+            "ru": "юг",
+            "zh": "南",
+            "ja": "南",
+            "ko": "남쪽",
+            "ar": "جنوب",
+            "hi": "दक्षिण"
+          }
+        ]
+      }
+    },
+    {
+      "template": "DialogueCompletion",
+      "genders": "m-f",
+      "questionData": {
+        "line1": "Wow, that is a really big tree! How old do you think it is?",
+        "answer": "It could be hundreds of years old",
+        "distractors": [
+          "It could be too many years",
+          "It is too tall to see the top",
+          "I cannot say for sure yet."
+        ]
+      },
+      "audio_file1": "wow-that-is-a-really-big-tree-how-old-do-you-think-it-is-convo",
+      "audio_file2": "it-could-be-hundreds-of-years-old-convo"
+    },
+    {
+      "template": "AppearDisappear",
+      "genders": "m",
+      "questionData": {
+        "words": "They paused to observe the steep hillside.",
+        "distractors": [
+          "looked",
+          "flat",
+          "valley",
+          "quickly"
+        ]
+      },
+      "audio_file": "they-paused-to-observe-the-steep-hillside-convo"
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "sea",
+        "wrongAnswers": [
+          "lake",
+          "river",
+          "valley"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-2",
+      "questionData": {
+        "imageName": "river",
+        "wrongAnswers": [
+          "sea",
+          "forest",
+          "desert"
+        ]
+      }
+    },
+    {
+      "template": "SentenceBuilder",
+      "genders": "f",
+      "questionData": {
+        "correct_order": "Do not touch the wild plants."
+      },
+      "audio_file": "do-not-touch-the-wild-plants-convo"
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "compass",
+        "wrongAnswers": [
+          "watch",
+          "clock",
+          "map"
+        ]
+      }
+    },
+    {
+      "template": "ClozeSequence",
+      "genders": "m",
+      "questionData": {
+        "sentence": "Please do not _____ — stay ____ when you see an animal.",
+        "answer": [
+          "shout",
+          "calm"
+        ],
+        "distractors": [
+          "noisy",
+          "walk",
+          "quiet",
+          "stand"
+        ]
+      },
+      "audio_file": "please-do-not-shout-—-stay-calm-when-you-see-an-animal-convo"
+    },
+    {
+      "template": "GrammarForm",
+      "genders": "m",
+      "questionData": {
+        "sentence": "The snow _____ and we could see the river again.",
+        "answer": "melted",
+        "distractors": [
+          "melt",
+          "melts",
+          "melting"
+        ]
+      }
+    },
+    {
+      "template": "ClozeSequence",
+      "genders": "f",
+      "questionData": {
+        "sentence": "The explorers _____ a _____, ancient cave.",
+        "answer": [
+          "discovered",
+          "deep"
+        ],
+        "distractors": [
+          "found",
+          "shallow",
+          "narrow",
+          "dark"
+        ]
+      },
+      "audio_file": "the-explorers-discovered-a-deep-ancient-cave-convo"
+    },
+    {
+      "template": "ClozeSequence",
+      "genders": "f",
+      "questionData": {
+        "sentence": "The bear growled ______, and ______ the campers.",
+        "answer": [
+          "suddenly",
+          "scared"
+        ],
+        "distractors": [
+          "slowly",
+          "carefully",
+          "loudly"
+        ]
+      },
+      "audio_file": "the-bear-growled-suddenly-and-scared-the-campers-convo"
+    }
+  ]
+}

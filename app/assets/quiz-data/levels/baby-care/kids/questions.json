@@ -1,0 +1,260 @@
+{
+  "levelQuestions": [
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "diaper",
+        "wrongAnswers": [
+          "bottle",
+          "dress",
+          "food"
+        ]
+      }
+    },
+    {
+      "template": "ConvoTemplate-1",
+      "genders": "f-m",
+      "questionData": {
+        "line1": "Time to _____ the baby?",
+        "line2": "Yes, baby is hungry.",
+        "answer": "feed",
+        "distractors": [
+          "bathe",
+          "rock",
+          "dress"
+        ]
+      },
+      "audio_file1": "time-to-feed-the-baby-convo",
+      "audio_file2": "yes-baby-is-hungry-convo"
+    },
+    {
+      "template": "ConvoTemplate-1",
+      "genders": "f-m",
+      "questionData": {
+        "line1": "I _____ to baby.",
+        "line2": "Does she like it?",
+        "answer": "talk",
+        "distractors": [
+          "sing",
+          "smile",
+          "play"
+        ]
+      },
+      "audio_file1": "i-talk-to-baby-convo",
+      "audio_file2": "does-she-like-it-convo"
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "baby-crib",
+        "wrongAnswers": [
+          "diaper",
+          "baby-mattress",
+          "baby-blanket"
+        ]
+      }
+    },
+    {
+      "template": "WordPairs",
+      "questionData": {
+        "english_words": [
+          "soft",
+          "hard",
+          "gentle",
+          "loud"
+        ],
+        "translations": [
+          {
+            "tr": "yumuşak",
+            "es": "suave",
+            "fr": "doux",
+            "de": "weich",
+            "it": "morbido",
+            "pt": "macio",
+            "ru": "мягкий",
+            "zh": "柔软的",
+            "ja": "柔らかい",
+            "ko": "부드러운",
+            "ar": "ناعم",
+            "hi": "कोमल"
+          },
+          {
+            "tr": "sert",
+            "es": "duro",
+            "fr": "dur",
+            "de": "hart",
+            "it": "duro",
+            "pt": "duro",
+            "ru": "жесткий",
+            "zh": "硬的",
+            "ja": "硬い",
+            "ko": "딱딱한",
+            "ar": "صلب",
+            "hi": "कठोर"
+          },
+          {
+            "tr": "nazik",
+            "es": "tierno",
+            "fr": "tendre",
+            "de": "sanft",
+            "it": "delicato",
+            "pt": "gentil",
+            "ru": "нежный",
+            "zh": "温柔的",
+            "ja": "優しい",
+            "ko": "온화한",
+            "ar": "لطيف",
+            "hi": "सौम्य"
+          },
+          {
+            "tr": "yüksek sesli",
+            "es": "fuerte",
+            "fr": "fort",
+            "de": "laut",
+            "it": "forte",
+            "pt": "barulhento",
+            "ru": "громкий",
+            "zh": "大声",
+            "ja": "うるさい",
+            "ko": "시끄러운",
+            "ar": "عالي",
+            "hi": "ऊँचा स्वर"
+          }
+        ]
+      }
+    },
+    {
+      "template": "DialogueCompletion",
+      "genders": "m-f",
+      "questionData": {
+        "line1": "Is baby hungry?",
+        "answer": "No, she needs a toy.",
+        "distractors": [
+          "Baby is sleeping.",
+          "The room is quiet.",
+          "Grandma is here."
+        ]
+      },
+      "audio_file1": "is-baby-hungry-convo",
+      "audio_file2": "no-she-needs-a-toy-convo"
+    },
+    {
+      "template": "AppearDisappear",
+      "genders": "m",
+      "questionData": {
+        "words": "The baby starts to cry.",
+        "distractors": [
+          "laugh",
+          "play",
+          "sleep"
+        ]
+      },
+      "audio_file": "the-baby-starts-to-cry-convo"
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "feeder",
+        "wrongAnswers": [
+          "bottle",
+          "diaper",
+          "baby-blanket"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-2",
+      "questionData": {
+        "imageName": "pacifier",
+        "wrongAnswers": [
+          "stroller",
+          "diaper",
+          "feeder"
+        ]
+      }
+    },
+    {
+      "template": "SentenceBuilder",
+      "genders": "m",
+      "questionData": {
+        "correct_order": "The baby smiles at Mom."
+      },
+      "audio_file": "the-baby-smiles-at-mom-convo"
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "stroller",
+        "wrongAnswers": [
+          "cart",
+          "sling",
+          "wagon"
+        ]
+      }
+    },
+    {
+      "template": "ClozeSequence",
+      "genders": "f",
+      "questionData": {
+        "sentence": "Dad _____ the baby.",
+        "answer": [
+          "holds"
+        ],
+        "distractors": [
+          "sees",
+          "feeds",
+          "kisses",
+          "calls"
+        ]
+      },
+      "audio_file": "dad-holds-the-baby-convo"
+    },
+    {
+      "template": "GrammarForm",
+      "genders": "f",
+      "questionData": {
+        "sentence": "She _____ to baby.",
+        "answer": "sings",
+        "distractors": [
+          "sing",
+          "singing",
+          "sang"
+        ]
+      }
+    },
+    {
+      "template": "ClozeSequence",
+      "genders": "m",
+      "questionData": {
+        "sentence": "Mom _____ the diaper.",
+        "answer": [
+          "changes"
+        ],
+        "distractors": [
+          "feeds",
+          "holds",
+          "sees",
+          "calls"
+        ]
+      },
+      "audio_file": "mom-changes-the-diaper-convo"
+    },
+    {
+      "template": "ClozeSequence",
+      "genders": "f",
+      "questionData": {
+        "sentence": "Grandma _____ the baby.",
+        "answer": [
+          "kisses"
+        ],
+        "distractors": [
+          "feeds",
+          "holds",
+          "sees",
+          "calls"
+        ]
+      },
+      "audio_file": "grandma-kisses-the-baby-convo"
+    }
+  ]
+}

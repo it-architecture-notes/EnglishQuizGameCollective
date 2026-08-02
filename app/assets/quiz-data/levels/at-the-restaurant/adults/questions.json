@@ -1,0 +1,265 @@
+{
+  "levelQuestions": [
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "bill",
+        "wrongAnswers": [
+          "credit-card",
+          "menu",
+          "letter"
+        ]
+      }
+    },
+    {
+      "template": "ConvoTemplate-1",
+      "genders": "f-m",
+      "questionData": {
+        "line1": "What do you want to _____?",
+        "line2": "I want to _____ the fish, but I can't decide.",
+        "answer": "order",
+        "distractors": [
+          "think",
+          "hide",
+          "write"
+        ]
+      },
+      "audio_file1": "what-do-you-want-to-order-convo",
+      "audio_file2": "i-want-to-order-the-fish-but-i-can-t-decide-convo"
+    },
+    {
+      "template": "ConvoTemplate-1",
+      "genders": "f-m",
+      "questionData": {
+        "line1": "Do you want to _____ a dessert with me?",
+        "line2": "Yes, please. Can we ______ one dessert between two people?",
+        "answer": "share",
+        "distractors": [
+          "carry",
+          "book",
+          "ask"
+        ]
+      },
+      "audio_file1": "do-you-want-to-share-a-dessert-with-me-convo",
+      "audio_file2": "yes-please-can-we-share-one-dessert-between-two-people-convo"
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "pie",
+        "wrongAnswers": [
+          "meat",
+          "bill",
+          "pasta"
+        ]
+      }
+    },
+    {
+      "template": "WordPairs",
+      "questionData": {
+        "english_words": [
+          "sweet",
+          "salty",
+          "sour",
+          "spicy"
+        ],
+        "translations": [
+          {
+            "tr": "tatlı",
+            "es": "dulce",
+            "fr": "sucré",
+            "de": "süß",
+            "it": "dolce",
+            "pt": "doce",
+            "ru": "сладкий",
+            "zh": "甜的",
+            "ja": "甘い",
+            "ko": "달콤한",
+            "ar": "حلو",
+            "hi": "मीठा"
+          },
+          {
+            "tr": "tuzlu",
+            "es": "salado",
+            "fr": "salé",
+            "de": "salzig",
+            "it": "salato",
+            "pt": "salgado",
+            "ru": "соленый",
+            "zh": "咸",
+            "ja": "塩辛い",
+            "ko": "짠",
+            "ar": "مالح",
+            "hi": "नमकीन"
+          },
+          {
+            "tr": "ekşi",
+            "es": "agrio",
+            "fr": "aigre",
+            "de": "sauer",
+            "it": "acido",
+            "pt": "azedo",
+            "ru": "кислый",
+            "zh": "酸的",
+            "ja": "酸っぱい",
+            "ko": "시큼한",
+            "ar": "حامِض",
+            "hi": "खट्टा"
+          },
+          {
+            "tr": "baharatlı",
+            "es": "picante",
+            "fr": "épicé",
+            "de": "scharf",
+            "it": "piccante",
+            "pt": "apimentado",
+            "ru": "пряный",
+            "zh": "辛辣的",
+            "ja": "辛い",
+            "ko": "매운",
+            "ar": "حار",
+            "hi": "मसालेदार"
+          }
+        ]
+      }
+    },
+    {
+      "template": "DialogueCompletion",
+      "genders": "m-f",
+      "questionData": {
+        "line1": "Should we just split the bill evenly?",
+        "answer": "Sure, that works for me!",
+        "distractors": [
+          "No, I'll pay for everything myself.",
+          "Let's skip the tip this time.",
+          "I already paid my share earlier."
+        ]
+      },
+      "audio_file1": "should-we-just-split-the-bill-evenly-convo",
+      "audio_file2": "sure-that-works-for-me-convo"
+    },
+    {
+      "template": "AppearDisappear",
+      "genders": "m",
+      "questionData": {
+        "words": "I am full and I can't eat any more.",
+        "distractors": [
+          "are",
+          "empty",
+          "most",
+          "so"
+        ]
+      },
+      "audio_file": "i-am-full-and-i-can-t-eat-any-more-convo"
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "meal",
+        "wrongAnswers": [
+          "drink",
+          "dessert",
+          "plate"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-2",
+      "questionData": {
+        "imageName": "menu",
+        "wrongAnswers": [
+          "meal",
+          "tray",
+          "bill"
+        ]
+      }
+    },
+    {
+      "template": "SentenceBuilder",
+      "genders": "m",
+      "questionData": {
+        "correct_order": "The chef boils soup for lunch."
+      },
+      "audio_file": "we-boil-soup-for-lunch-convo"
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "tray",
+        "wrongAnswers": [
+          "bowl",
+          "plate",
+          "cardboard"
+        ]
+      }
+    },
+    {
+      "template": "ClozeSequence",
+      "genders": "m",
+      "questionData": {
+        "sentence": "Our waiter was _____, and the food was _____, so we made sure to _____ well.",
+        "answer": [
+          "polite",
+          "delicious",
+          "tip"
+        ],
+        "distractors": [
+          "rude",
+          "tasty",
+          "pay",
+          "leave"
+        ]
+      },
+      "audio_file": "our-waiter-was-polite-and-the-food-was-delicious-so-we-made-sure-to-tip-well-convo"
+    },
+    {
+      "template": "GrammarForm",
+      "genders": "f",
+      "questionData": {
+        "sentence": "_____ you the soup of the day?",
+        "answer": "Can I offer",
+        "distractors": [
+          "offer",
+          "offered",
+          "offering"
+        ]
+      }
+    },
+    {
+      "template": "ClozeSequence",
+      "genders": "m",
+      "questionData": {
+        "sentence": "_____ the soup _____ until it's warm.",
+        "answer": [
+          "heat",
+          "properly"
+        ],
+        "distractors": [
+          "bake",
+          "cooler",
+          "cold",
+          "frozen"
+        ]
+      },
+      "audio_file": "heat-the-soup-properly-until-it-s-warm-convo"
+    },
+    {
+      "template": "ClozeSequence",
+      "genders": "m",
+      "questionData": {
+        "sentence": "The waitress _____ us a sample to _____ before we ordered.",
+        "answer": [
+          "served",
+          "taste"
+        ],
+        "distractors": [
+          "bring",
+          "brought",
+          "offered",
+          "try"
+        ]
+      },
+      "audio_file": "the-waitress-served-us-a-sample-to-taste-before-we-ordered-convo"
+    }
+  ]
+}

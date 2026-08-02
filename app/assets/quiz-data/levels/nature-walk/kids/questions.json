@@ -1,0 +1,260 @@
+{
+  "levelQuestions": [
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "desert",
+        "wrongAnswers": [
+          "forest",
+          "dessert",
+          "sand"
+        ]
+      }
+    },
+    {
+      "template": "DialogueCompletion",
+      "genders": "f-m",
+      "questionData": {
+        "line1": "Can we watch the sky?",
+        "answer": "Yes, it is pretty.",
+        "distractors": [
+          "No, I am tired.",
+          "I read a book.",
+          "It is a big dog."
+        ]
+      },
+      "audio_file1": "can-we-watch-the-sky-convo",
+      "audio_file2": "yes-it-is-pretty-convo"
+    },
+    {
+      "template": "ConvoTemplate-1",
+      "genders": "f-m",
+      "questionData": {
+        "line1": "Did we walk far?",
+        "line2": "Yes, we _____ far.",
+        "answer": "walked",
+        "distractors": [
+          "walk",
+          "walks",
+          "are walk"
+        ]
+      },
+      "audio_file1": "did-we-walk-far-convo",
+      "audio_file2": "yes-we-walked-far-convo"
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "forest",
+        "wrongAnswers": [
+          "lake",
+          "river",
+          "sea"
+        ]
+      }
+    },
+    {
+      "template": "WordPairs",
+      "questionData": {
+        "english_words": [
+          "east",
+          "west",
+          "north",
+          "south"
+        ],
+        "translations": [
+          {
+            "tr": "doğu",
+            "es": "este",
+            "fr": "est",
+            "de": "Ost",
+            "it": "est",
+            "pt": "leste",
+            "ru": "восток",
+            "zh": "东方",
+            "ja": "東",
+            "ko": "동쪽",
+            "ar": "شرق",
+            "hi": "पूर्व"
+          },
+          {
+            "tr": "batı",
+            "es": "oeste",
+            "fr": "ouest",
+            "de": "Westen",
+            "it": "ovest",
+            "pt": "oeste",
+            "ru": "запад",
+            "zh": "西方",
+            "ja": "西",
+            "ko": "서쪽",
+            "ar": "الغرب",
+            "hi": "पश्चिम"
+          },
+          {
+            "tr": "kuzey",
+            "es": "norte",
+            "fr": "nord",
+            "de": "Norden",
+            "it": "nord",
+            "pt": "norte",
+            "ru": "север",
+            "zh": "北",
+            "ja": "北",
+            "ko": "북쪽",
+            "ar": "شمال",
+            "hi": "उत्तर"
+          },
+          {
+            "tr": "güney",
+            "es": "sur",
+            "fr": "sud",
+            "de": "Süden",
+            "it": "sud",
+            "pt": "sul",
+            "ru": "юг",
+            "zh": "南",
+            "ja": "南",
+            "ko": "남쪽",
+            "ar": "جنوب",
+            "hi": "दक्षिण"
+          }
+        ]
+      }
+    },
+    {
+      "template": "DialogueCompletion",
+      "genders": "m-f",
+      "questionData": {
+        "line1": "Is that tree big?",
+        "answer": "Yes, it is very big.",
+        "distractors": [
+          "No, I am tired.",
+          "I read a book.",
+          "It is a big dog."
+        ]
+      },
+      "audio_file1": "is-that-tree-big-convo",
+      "audio_file2": "yes-it-is-very-big-convo"
+    },
+    {
+      "template": "AppearDisappear",
+      "genders": "m",
+      "questionData": {
+        "words": "Look at the hill.",
+        "distractors": [
+          "book",
+          "ball",
+          "dog",
+          "home"
+        ]
+      },
+      "audio_file": "look-at-the-hill-convo"
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "sea",
+        "wrongAnswers": [
+          "lake",
+          "river",
+          "valley"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-2",
+      "questionData": {
+        "imageName": "river",
+        "wrongAnswers": [
+          "sea",
+          "forest",
+          "desert"
+        ]
+      }
+    },
+    {
+      "template": "SentenceBuilder",
+      "genders": "f",
+      "questionData": {
+        "correct_order": "Do not touch plants."
+      },
+      "audio_file": "do-not-touch-plants-convo"
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "compass",
+        "wrongAnswers": [
+          "watch",
+          "clock",
+          "map"
+        ]
+      }
+    },
+    {
+      "template": "ClozeSequence",
+      "genders": "m",
+      "questionData": {
+        "sentence": "Do not _____. Stay calm.",
+        "answer": [
+          "shout"
+        ],
+        "distractors": [
+          "run",
+          "read",
+          "sleep",
+          "cook"
+        ]
+      },
+      "audio_file": "do-not-shout-stay-calm-convo"
+    },
+    {
+      "template": "GrammarForm",
+      "genders": "m",
+      "questionData": {
+        "sentence": "The snow _____ white.",
+        "answer": "is",
+        "distractors": [
+          "are",
+          "am",
+          "be"
+        ]
+      }
+    },
+    {
+      "template": "ClozeSequence",
+      "genders": "f",
+      "questionData": {
+        "sentence": "We _____ a cave.",
+        "answer": [
+          "saw"
+        ],
+        "distractors": [
+          "see",
+          "go",
+          "make",
+          "take"
+        ]
+      },
+      "audio_file": "we-saw-a-cave-convo"
+    },
+    {
+      "template": "ClozeSequence",
+      "genders": "f",
+      "questionData": {
+        "sentence": "The bear is _____.",
+        "answer": [
+          "big"
+        ],
+        "distractors": [
+          "small",
+          "wet",
+          "cold",
+          "sad"
+        ]
+      },
+      "audio_file": "the-bear-is-big-convo"
+    }
+  ]
+}

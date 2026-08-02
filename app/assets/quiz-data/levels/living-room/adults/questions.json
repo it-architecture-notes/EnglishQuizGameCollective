@@ -1,0 +1,263 @@
+{
+  "levelQuestions": [
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "armchair",
+        "wrongAnswers": [
+          "sofa",
+          "table",
+          "desk"
+        ]
+      }
+    },
+    {
+      "template": "ConvoTemplate-1",
+      "genders": "m-m",
+      "questionData": {
+        "line1": "I love to _____ by the window and chat with you.",
+        "line2": "Me too, it's so relaxing.",
+        "answer": "sit",
+        "distractors": [
+          "stand",
+          "cook",
+          "walk"
+        ]
+      },
+      "audio_file1": "i-love-to-sit-by-the-window-and-chat-with-you-convo",
+      "audio_file2": "me-too-it-s-so-relaxing-convo"
+    },
+    {
+      "template": "DialogueCompletion",
+      "genders": "f-m",
+      "questionData": {
+        "line1": "I love how spacious your backyard is.",
+        "answer": "Thanks! It's perfect to host guests for book reading.",
+        "distractors": [
+          "Thanks, but it is too small for guests.",
+          "I prefer reading alone in the living room.",
+          "We never invite guests to the backyard."
+        ]
+      },
+      "audio_file1": "i-love-how-spacious-your-backyard-is-convo",
+      "audio_file2": "thanks-it-s-perfect-to-host-guests-for-book-reading-convo"
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "coat-rack",
+        "wrongAnswers": [
+          "umbrella-stand",
+          "hat-stand",
+          "hanging-clothes"
+        ]
+      }
+    },
+    {
+      "template": "WordPairs",
+      "questionData": {
+        "english_words": [
+          "warm",
+          "cool",
+          "simple",
+          "soft"
+        ],
+        "translations": [
+          {
+            "tr": "sıcak",
+            "es": "cálido",
+            "fr": "chaud",
+            "de": "warm",
+            "it": "caldo",
+            "pt": "quente",
+            "ru": "тёплый",
+            "zh": "温暖的",
+            "ja": "暖かい",
+            "ko": "따뜻한",
+            "ar": "دافئ",
+            "hi": "गर्म"
+          },
+          {
+            "tr": "serin",
+            "es": "fresco",
+            "fr": "frais",
+            "de": "kühl",
+            "it": "fresco",
+            "pt": "fresco",
+            "ru": "прохладный",
+            "zh": "凉爽的",
+            "ja": "涼しい",
+            "ko": "시원한",
+            "ar": "بارد",
+            "hi": "ठंडा"
+          },
+          {
+            "tr": "basit",
+            "es": "simple",
+            "fr": "simple",
+            "de": "einfach",
+            "it": "semplice",
+            "pt": "simples",
+            "ru": "простой",
+            "zh": "简单的",
+            "ja": "シンプルな",
+            "ko": "간단한",
+            "ar": "بسيط",
+            "hi": "सरल"
+          },
+          {
+            "tr": "yumuşak",
+            "es": "suave",
+            "fr": "doux",
+            "de": "weich",
+            "it": "morbido",
+            "pt": "macio",
+            "ru": "мягкий",
+            "zh": "柔软的",
+            "ja": "柔らかい",
+            "ko": "부드러운",
+            "ar": "ناعم",
+            "hi": "नरम"
+          }
+        ]
+      }
+    },
+    {
+      "template": "DialogueCompletion",
+      "genders": "m-m",
+      "questionData": {
+        "line1": "Could you please close the window?",
+        "answer": "I am closing it right now.",
+        "distractors": [
+          "I am cleaning the kitchen now.",
+          "Yes, it's quite cold today.",
+          "The window is already open."
+        ]
+      },
+      "audio_file1": "could-you-please-close-the-window-convo",
+      "audio_file2": "i-am-closing-it-right-now-convo"
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "bookshelf",
+        "wrongAnswers": [
+          "booklet",
+          "cabinet",
+          "display-case"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "chair",
+        "wrongAnswers": [
+          "stool",
+          "desk",
+          "curtain"
+        ]
+      }
+    },
+    {
+      "template": "ClozeSequence",
+      "genders": "m",
+      "questionData": {
+        "sentence": "The living room looked so _____ that she decided to _____ it up.",
+        "answer": [
+          "cluttered",
+          "tidy"
+        ],
+        "distractors": [
+          "messy",
+          "clean",
+          "neat",
+          "wash"
+        ]
+      },
+      "audio_file": "the-living-room-looked-so-cluttered-that-she-decided-to-tidy-it-up-convo"
+    },
+    {
+      "template": "ClozeSequence",
+      "genders": "f",
+      "questionData": {
+        "sentence": "Their living room is ____, so the family loves to ____ there.",
+        "answer": [
+          "cozy",
+          "gather"
+        ],
+        "distractors": [
+          "quickly",
+          "carefully",
+          "swim",
+          "loudly"
+        ]
+      },
+      "audio_file": "their-living-room-is-cozy-so-the-family-loves-to-gather-there-convo"
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "curtains",
+        "wrongAnswers": [
+          "shower",
+          "blinds",
+          "duvet-comforter"
+        ]
+      }
+    },
+    {
+      "template": "AppearDisappear",
+      "genders": "f",
+      "questionData": {
+        "words": "The family relaxes together every evening.",
+        "distractors": [
+          "alone",
+          "living room",
+          "this",
+          "works"
+        ]
+      },
+      "audio_file": "the-family-relaxes-together-every-evening-convo"
+    },
+    {
+      "template": "ClozeSequence",
+      "genders": "f",
+      "questionData": {
+        "sentence": "She likes to ____ and _____ the rain.",
+        "answer": [
+          "lie down",
+          "listen to"
+        ],
+        "distractors": [
+          "ask",
+          "rarely",
+          "cool",
+          "softly"
+        ]
+      },
+      "audio_file": "she-likes-to-lie-down-and-listen-to-the-rain-convo"
+    },
+    {
+      "template": "GrammarForm",
+      "genders": "m",
+      "questionData": {
+        "sentence": "Have you ever _____ to your father about the new job?",
+        "answer": "talked",
+        "distractors": [
+          "will talk",
+          "talking",
+          "talk"
+        ]
+      }
+    },
+    {
+      "template": "SentenceBuilder",
+      "genders": "m",
+      "questionData": {
+        "correct_order": "She moved the bookshelf against the other wall."
+      },
+      "audio_file": "he-waved-to-greet-his-neighbor-convo"
+    }
+  ]
+}

@@ -1,0 +1,209 @@
+{
+  "levelQuestions": [
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "alarm-clock",
+        "answer": "alarm clock",
+        "wrongAnswers": [
+          "nightstand",
+          "blanket",
+          "mattress"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-2",
+      "questionData": {
+        "imageName": "mattress",
+        "wrongAnswers": [
+          "bed",
+          "blanket",
+          "pillow"
+        ],
+        "auto_next_delay": 1.0,
+        "show_correct_on_wrong": false
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "blanket",
+        "wrongAnswers": [
+          "pillow",
+          "mattress",
+          "nightstand"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "nightstand",
+        "wrongAnswers": [
+          "alarm clock",
+          "mattress",
+          "pillow"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "bed",
+        "wrongAnswers": [
+          "nightstand",
+          "blanket",
+          "pillow"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "pillow",
+        "wrongAnswers": [
+          "blanket",
+          "mattress",
+          "bed"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "drawer",
+        "wrongAnswers": [
+          "closet",
+          "baby bed",
+          "table"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "slippers",
+        "wrongAnswers": [
+          "shoes",
+          "mattress",
+          "robe"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "duvet-comforter",
+        "answer": "blanket",
+        "wrongAnswers": [
+          "pillow",
+          "bed",
+          "towel"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "cradle",
+        "answer": "baby bed",
+        "wrongAnswers": [
+          "bed",
+          "table",
+          "drawer"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "pajamas",
+        "answer": "sleep clothes",
+        "wrongAnswers": [
+          "coat",
+          "shoes",
+          "towel"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "wardrobe-or-closet",
+        "answer": "closet",
+        "wrongAnswers": [
+          "drawer",
+          "mirror",
+          "desk"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "shower",
+        "wrongAnswers": [
+          "mirror",
+          "bathtub",
+          "soap"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "bathtub",
+        "wrongAnswers": [
+          "sink",
+          "towel",
+          "shower"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "sink",
+        "wrongAnswers": [
+          "bathtub",
+          "soap",
+          "shower"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "comb",
+        "wrongAnswers": [
+          "hair dryer",
+          "soap",
+          "toothbrush"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-2",
+      "questionData": {
+        "imageName": "towel",
+        "wrongAnswers": [
+          "toothbrush",
+          "comb",
+          "bathtub"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "toothbrush",
+        "wrongAnswers": [
+          "comb",
+          "soap",
+          "mirror"
+        ]
+      }
+    }
+  ]
+}

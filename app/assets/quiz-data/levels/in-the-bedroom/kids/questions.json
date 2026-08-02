@@ -1,0 +1,202 @@
+{
+  "levelQuestions": [
+    {
+      "template": "AppearDisappear",
+      "genders": "m",
+      "questionData": {
+        "words": "She sleeps quietly each night.",
+        "distractors": [
+          "night",
+          "day",
+          "well",
+          "morning"
+        ]
+      },
+      "audio_file": "she-sleeps-quietly-each-night-convo"
+    },
+    {
+      "template": "ClozeSequence",
+      "genders": "f",
+      "questionData": {
+        "sentence": "The room is ____ dark.",
+        "answers": [
+          "too"
+        ],
+        "distractors": [
+          "only",
+          "other",
+          "much"
+        ]
+      },
+      "audio_file": "the-room-is-too-dark-convo"
+    },
+    {
+      "template": "ClozeSequence",
+      "genders": "m",
+      "questionData": {
+        "sentence": "I am _____.",
+        "answers": [
+          "tired"
+        ],
+        "distractors": [
+          "sleep",
+          "eat",
+          "play"
+        ]
+      },
+      "audio_file": "i-am-tired-convo"
+    },
+    {
+      "template": "ConvoTemplate-1",
+      "genders": "f-f",
+      "questionData": {
+        "line1": "Do you _____ every morning?",
+        "line2": "Yes, I do every day.",
+        "answer": "make the bed",
+        "distractors": [
+          "read a book",
+          "play a game",
+          "eat lunch"
+        ]
+      },
+      "audio_file1": "do-you-make-the-bed-every-morning-convo",
+      "audio_file2": "yes-i-do-every-day-convo"
+    },
+    {
+      "template": "ClozeSequence",
+      "genders": "f",
+      "questionData": {
+        "sentence": "The bedroom light is _____.",
+        "answers": [
+          "on"
+        ],
+        "distractors": [
+          "bright",
+          "dark",
+          "late"
+        ]
+      },
+      "audio_file": "the-bedroom-light-is-on-convo"
+    },
+    {
+      "template": "SentenceBuilder",
+      "genders": "m",
+      "questionData": {
+        "correct_order": "This bed is soft."
+      }
+    },
+    {
+      "template": "WordPairs",
+      "questionData": {
+        "english_words": [
+          "to me",
+          "to you",
+          "to him/her",
+          "to us",
+          "to them"
+        ],
+        "translations": [
+          {
+            "tr": "bana",
+            "es": "a mí",
+            "fr": "à moi",
+            "de": "mir",
+            "it": "a me",
+            "pt": "a mim",
+            "ru": "мне",
+            "zh": "给我",
+            "ja": "私に",
+            "ko": "나에게",
+            "ar": "لي",
+            "hi": "मुझे"
+          },
+          {
+            "tr": "sana",
+            "es": "a ti",
+            "fr": "à toi",
+            "de": "dir",
+            "it": "a te",
+            "pt": "a você",
+            "ru": "тебе",
+            "zh": "给你",
+            "ja": "あなたに",
+            "ko": "너에게",
+            "ar": "لك",
+            "hi": "तुम्हें"
+          },
+          {
+            "tr": "ona",
+            "es": "a él / a ella",
+            "fr": "à lui / à elle",
+            "de": "ihm / ihr",
+            "it": "a lui / lei",
+            "pt": "a ele / a ela",
+            "ru": "ему / ей",
+            "zh": "给他/她",
+            "ja": "彼/彼女に",
+            "ko": "그/그녀에게",
+            "ar": "له / لها",
+            "hi": "उसे"
+          },
+          {
+            "tr": "bize",
+            "es": "a nosotros",
+            "fr": "à nous",
+            "de": "uns",
+            "it": "a noi",
+            "pt": "a nós",
+            "ru": "нам",
+            "zh": "给我们",
+            "ja": "私たちに",
+            "ko": "우리에게",
+            "ar": "لنا",
+            "hi": "हमें"
+          },
+          {
+            "tr": "onlara",
+            "es": "a ellos",
+            "fr": "à eux",
+            "de": "ihnen",
+            "it": "a loro",
+            "pt": "a eles",
+            "ru": "им",
+            "zh": "给他们",
+            "ja": "彼らに",
+            "ko": "그들에게",
+            "ar": "لهم",
+            "hi": "उन्हें"
+          }
+        ]
+      }
+    },
+    {
+      "template": "ClozeSequence",
+      "genders": "m",
+      "questionData": {
+        "sentence": "She is _____ at night.",
+        "answers": [
+          "awake"
+        ],
+        "distractors": [
+          "tired",
+          "happy",
+          "ready"
+        ]
+      },
+      "audio_file": "she-is-awake-at-night-convo"
+    },
+    {
+      "template": "GrammarForm",
+      "genders": "f",
+      "questionData": {
+        "sentence": "Do you _____ a lot?",
+        "answer": "dream",
+        "distractors": [
+          "dreams",
+          "dreamed",
+          "dreaming"
+        ]
+      }
+    }
+  ]
+}

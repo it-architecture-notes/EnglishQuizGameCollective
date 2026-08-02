@@ -1,0 +1,180 @@
+{
+  "levelQuestions": [
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "zero",
+        "wrongAnswers": [
+          "one",
+          "two",
+          "three"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "one",
+        "wrongAnswers": [
+          "zero",
+          "two",
+          "seven"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "two",
+        "wrongAnswers": [
+          "one",
+          "three",
+          "eight"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "three",
+        "wrongAnswers": [
+          "two",
+          "four",
+          "nine"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "four",
+        "wrongAnswers": [
+          "three",
+          "five",
+          "ten"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "five",
+        "wrongAnswers": [
+          "four",
+          "six",
+          "eleven"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "six",
+        "wrongAnswers": [
+          "five",
+          "seven",
+          "twelve"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "seven",
+        "wrongAnswers": [
+          "six",
+          "eight",
+          "one"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "eight",
+        "wrongAnswers": [
+          "seven",
+          "nine",
+          "two"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "nine",
+        "wrongAnswers": [
+          "eight",
+          "ten",
+          "three"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "ten",
+        "wrongAnswers": [
+          "nine",
+          "eleven",
+          "four"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "eleven",
+        "wrongAnswers": [
+          "ten",
+          "twelve",
+          "five"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "twelve",
+        "wrongAnswers": [
+          "eleven",
+          "thirteen",
+          "six"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "thirteen",
+        "wrongAnswers": [
+          "twelve",
+          "fourteen",
+          "seven"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "fourteen",
+        "wrongAnswers": [
+          "thirteen",
+          "fifteen",
+          "eight"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "fifteen",
+        "wrongAnswers": [
+          "fourteen",
+          "ten",
+          "nine"
+        ]
+      }
+    }
+  ]
+}

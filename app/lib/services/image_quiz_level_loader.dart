@@ -1,5 +1,7 @@
 import 'package:flutter/services.dart';
 
+import '../app_flavor.dart';
+
 /// Level key = directoryName (folder name under quiz-data/levels/, e.g. "travel-1").
 String imageQuizLevelKey(String directoryName) {
   return directoryName;
@@ -12,18 +14,41 @@ String imageQuizLevelAssetPrefix(String levelKey) {
   return '$_quizImagePrefix$levelKey/';
 }
 
+/// The two flavor subfolder prefixes under a level (`.../kids/`, `.../adults/`),
+/// used to exclude flavor-specific content when scanning the shared root pool.
+List<String> _flavorSubfolderPrefixes(String rootPrefix) =>
+    ['kids', 'adults'].map((f) => '$rootPrefix$f/').toList();
+
 /// Discovers image asset paths for an image quiz level from the bundle.
 /// Returns full asset paths (e.g. assets/quiz-data/levels/travel-1/pilot.png).
-/// Excludes macOS .DS_Store and other non-image metadata files.
+///
+/// Prefers `{levelKey}/{flavor}/` when that subfolder has any images (a
+/// curated, flavor-specific set); otherwise falls back to the level's root
+/// images, excluding both flavor subfolders so they're never double-counted
+/// as generic root vocabulary. Excludes macOS .DS_Store either way.
 Future<List<String>> loadImageQuizLevelAssetPaths(String levelKey) async {
   final manifest = await AssetManifest.loadFromAssetBundle(rootBundle);
-  final prefix = imageQuizLevelAssetPrefix(levelKey);
+  final rootPrefix = imageQuizLevelAssetPrefix(levelKey);
+  final flavorPrefix = '$rootPrefix${AppConfig.flavorDir}/';
   final all = manifest.listAssets();
-  final paths = all
-      .where((String path) => path.startsWith(prefix) && !_isDsStore(path))
+
+  final flavorPaths = all
+      .where((p) => p.startsWith(flavorPrefix) && !_isDsStore(p))
       .toList();
-  paths.sort();
-  return paths;
+  if (flavorPaths.isNotEmpty) {
+    flavorPaths.sort();
+    return flavorPaths;
+  }
+
+  final subfolderPrefixes = _flavorSubfolderPrefixes(rootPrefix);
+  final rootPaths = all
+      .where((p) =>
+          p.startsWith(rootPrefix) &&
+          !_isDsStore(p) &&
+          !subfolderPrefixes.any(p.startsWith))
+      .toList();
+  rootPaths.sort();
+  return rootPaths;
 }
 
 /// Excludes macOS .DS_Store (case-insensitive) so it never appears as an answer.

@@ -1,0 +1,228 @@
+{
+  "levelQuestions": [
+    {
+      "template": "ClozeSequence",
+      "genders": "f",
+      "questionData": {
+        "sentence": "She _____ a picture.",
+        "answer": [
+          "made"
+        ],
+        "distractors": [
+          "saw",
+          "took",
+          "read"
+        ]
+      },
+      "audio_file": "she-made-a-picture-convo"
+    },
+    {
+      "template": "ClozeSequence",
+      "genders": "m",
+      "questionData": {
+        "sentence": "Firefighters _____ us.",
+        "answer": [
+          "help"
+        ],
+        "distractors": [
+          "see",
+          "make",
+          "take"
+        ]
+      },
+      "audio_file": "firefighters-help-us-convo"
+    },
+    {
+      "template": "ClozeSequence",
+      "genders": "m",
+      "questionData": {
+        "sentence": "The firefighter is _____.",
+        "answer": [
+          "brave"
+        ],
+        "distractors": [
+          "sad",
+          "tired",
+          "small"
+        ]
+      },
+      "audio_file": "the-firefighter-is-convo"
+    },
+    {
+      "template": "GrammarForm",
+      "genders": "m",
+      "questionData": {
+        "sentence": "I _____ this game.",
+        "answer": "like",
+        "distractors": [
+          "likes",
+          "liked",
+          "liking"
+        ]
+      }
+    },
+    {
+      "template": "AppearDisappear",
+      "genders": "f",
+      "questionData": {
+        "words": "I count the stars.",
+        "distractors": [
+          "read",
+          "write",
+          "draw"
+        ]
+      },
+      "audio_file": "i-count-the-stars-convo"
+    },
+    {
+      "template": "AppearDisappear",
+      "genders": "f",
+      "questionData": {
+        "words": "She leads the team.",
+        "distractors": [
+          "reads",
+          "writes",
+          "draws"
+        ]
+      },
+      "audio_file": "she-leads-the-team-convo"
+    },
+    {
+      "template": "AppearDisappear",
+      "genders": "f",
+      "questionData": {
+        "words": "This game is fun.",
+        "distractors": [
+          "sad",
+          "cold",
+          "wet"
+        ]
+      },
+      "audio_file": "this-game-is-fun-convo"
+    },
+    {
+      "template": "ConvoTemplate-1",
+      "genders": "f-m",
+      "questionData": {
+        "line1": "Do you sing on stage?",
+        "line2": "Yes, I _____.",
+        "answer": "sing",
+        "distractors": [
+          "sings",
+          "sang",
+          "singing"
+        ]
+      },
+      "audio_file1": "do-you-sing-on-stage-convo",
+      "audio_file2": "yes-i-convo"
+    },
+    {
+      "template": "ConvoTemplate-1",
+      "genders": "f-m",
+      "questionData": {
+        "line1": "Do you like music?",
+        "line2": "Yes, it is _____.",
+        "answer": "good",
+        "distractors": [
+          "sad",
+          "cold",
+          "wet"
+        ]
+      },
+      "audio_file1": "do-you-like-music-convo",
+      "audio_file2": "yes-it-is-convo"
+    },
+    {
+      "template": "DialogueCompletion",
+      "genders": "m-f",
+      "questionData": {
+        "line1": "Can you help me?",
+        "answer": "Yes, I can help.",
+        "distractors": [
+          "No, I am tired.",
+          "I read a book.",
+          "It is a big dog."
+        ]
+      },
+      "audio_file1": "can-you-help-me-convo",
+      "audio_file2": "yes-i-can-help-convo"
+    },
+    {
+      "template": "SentenceBuilder",
+      "genders": "f",
+      "questionData": {
+        "correct_order": "This car is fast."
+      },
+      "audio_file": "this-car-is-fast-convo"
+    },
+    {
+      "template": "WordPairs",
+      "questionData": {
+        "english_words": [
+          "yes",
+          "no",
+          "big",
+          "small"
+        ],
+        "translations": [
+          {
+            "tr": "evet",
+            "es": "sí",
+            "fr": "oui",
+            "de": "ja",
+            "it": "sì",
+            "pt": "sim",
+            "ru": "да",
+            "zh": "是",
+            "ja": "はい",
+            "ko": "네",
+            "ar": "نعم",
+            "hi": "हाँ"
+          },
+          {
+            "tr": "hayır",
+            "es": "no",
+            "fr": "non",
+            "de": "nein",
+            "it": "no",
+            "pt": "não",
+            "ru": "нет",
+            "zh": "不",
+            "ja": "いいえ",
+            "ko": "아니요",
+            "ar": "لا",
+            "hi": "नहीं"
+          },
+          {
+            "tr": "büyük",
+            "es": "grande",
+            "fr": "grand",
+            "de": "groß",
+            "it": "grande",
+            "pt": "grande",
+            "ru": "большой",
+            "zh": "大的",
+            "ja": "大きい",
+            "ko": "큰",
+            "ar": "كبير",
+            "hi": "बड़ा"
+          },
+          {
+            "tr": "küçük",
+            "es": "pequeño",
+            "fr": "petit",
+            "de": "klein",
+            "it": "piccolo",
+            "pt": "pequeno",
+            "ru": "маленький",
+            "zh": "小的",
+            "ja": "小さい",
+            "ko": "작은",
+            "ar": "صغير",
+            "hi": "छोटा"
+          }
+        ]
+      }
+    }
+  ]
+}

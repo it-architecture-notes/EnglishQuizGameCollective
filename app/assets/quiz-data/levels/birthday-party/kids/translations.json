@@ -1,0 +1,89 @@
+{
+  "translations_list": [
+    {
+      "english_word": "happy",
+      "translations": {
+        "tr": "mutlu",
+        "es": "feliz",
+        "fr": "heureux",
+        "de": "glücklich",
+        "it": "felice",
+        "pt": "feliz",
+        "ru": "счастливый",
+        "zh": "快乐的",
+        "ja": "嬉しい",
+        "ko": "행복한",
+        "ar": "سعيد",
+        "hi": "खुश"
+      }
+    },
+    {
+      "english_word": "to invite",
+      "translations": {
+        "tr": "davet etmek",
+        "es": "invitar",
+        "fr": "inviter",
+        "de": "einladen",
+        "it": "invitare",
+        "pt": "convidar",
+        "ru": "приглашать",
+        "zh": "邀请",
+        "ja": "招待する",
+        "ko": "초대하다",
+        "ar": "يدعو",
+        "hi": "आमंत्रित करना"
+      }
+    },
+    {
+      "english_word": "to blow",
+      "translations": {
+        "tr": "üflemek",
+        "es": "soplar",
+        "fr": "souffler",
+        "de": "pusten",
+        "it": "soffiare",
+        "pt": "soprar",
+        "ru": "дуть",
+        "zh": "吹",
+        "ja": "吹く",
+        "ko": "불다",
+        "ar": "نفخ",
+        "hi": "फूंकना"
+      }
+    },
+    {
+      "english_word": "to sing",
+      "translations": {
+        "tr": "şarkı söylemek",
+        "es": "cantar",
+        "fr": "chanter",
+        "de": "singen",
+        "it": "cantare",
+        "pt": "cantar",
+        "ru": "петь",
+        "zh": "唱歌",
+        "ja": "歌う",
+        "ko": "노래하다",
+        "ar": "يغني",
+        "hi": "गाना"
+      }
+    },
+    {
+      "english_word": "surprise",
+      "translations": {
+        "tr": "sürpriz",
+        "es": "sorpresa",
+        "fr": "surprise",
+        "de": "Überraschung",
+        "it": "sorpresa",
+        "pt": "surpresa",
+        "ru": "сюрприз",
+        "zh": "惊喜",
+        "ja": "サプライズ",
+        "ko": "놀라움",
+        "ar": "مفاجأة",
+        "hi": "आश्चर्य"
+      }
+    }
+  ]
+}

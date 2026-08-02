@@ -1,0 +1,262 @@
+{
+  "levelQuestions": [
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "barn",
+        "wrongAnswers": [
+          "cottage",
+          "house",
+          "water-mill"
+        ]
+      }
+    },
+    {
+      "template": "ConvoTemplate-1",
+      "genders": "f-m",
+      "questionData": {
+        "line1": "What do we _____?",
+        "line2": "We _____ seeds.",
+        "answer": "plant",
+        "distractors": [
+          "pick",
+          "feed",
+          "pull"
+        ]
+      },
+      "audio_file1": "what-do-we-plant-convo",
+      "audio_file2": "we-plant-seeds-convo"
+    },
+    {
+      "template": "ConvoTemplate-1",
+      "genders": "f-m",
+      "questionData": {
+        "line1": "Can we _____ apples?",
+        "line2": "Yes, pick them now.",
+        "answer": "pick",
+        "distractors": [
+          "plant",
+          "feed",
+          "wash"
+        ]
+      },
+      "audio_file1": "can-we-pick-apples-convo",
+      "audio_file2": "yes-pick-them-now-convo"
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "hose",
+        "wrongAnswers": [
+          "bucket",
+          "water-tap",
+          "water-pipe"
+        ]
+      }
+    },
+    {
+      "template": "WordPairs",
+      "questionData": {
+        "english_words": [
+          "thin",
+          "thick",
+          "top",
+          "bottom"
+        ],
+        "translations": [
+          {
+            "tr": "ince",
+            "es": "delgado",
+            "fr": "mince",
+            "de": "dünn",
+            "it": "sottile",
+            "pt": "fino",
+            "ru": "тонкий",
+            "zh": "薄的",
+            "ja": "薄い",
+            "ko": "얇은",
+            "ar": "رفيع",
+            "hi": "पतला"
+          },
+          {
+            "tr": "kalın",
+            "es": "grueso",
+            "fr": "épais",
+            "de": "dick",
+            "it": "spesso",
+            "pt": "espesso",
+            "ru": "толстый",
+            "zh": "厚的",
+            "ja": "厚い",
+            "ko": "두꺼운",
+            "ar": "سميك",
+            "hi": "मोटा"
+          },
+          {
+            "tr": "üst",
+            "es": "parte superior",
+            "fr": "haut",
+            "de": "oben",
+            "it": "parte superiore",
+            "pt": "parte superior",
+            "ru": "верх",
+            "zh": "顶部",
+            "ja": "上部",
+            "ko": "위쪽",
+            "ar": "أعلى",
+            "hi": "ऊपरी भाग"
+          },
+          {
+            "tr": "alt",
+            "es": "parte inferior",
+            "fr": "bas",
+            "de": "unten",
+            "it": "parte inferiore",
+            "pt": "parte inferior",
+            "ru": "низ",
+            "zh": "底部",
+            "ja": "下部",
+            "ko": "아래쪽",
+            "ar": "أسفل",
+            "hi": "निचला भाग"
+          }
+        ]
+      }
+    },
+    {
+      "template": "DialogueCompletion",
+      "genders": "m-f",
+      "questionData": {
+        "line1": "What animal do you like?",
+        "answer": "I like the horse.",
+        "distractors": [
+          "I like the dog.",
+          "I like the cat.",
+          "I like the duck."
+        ]
+      },
+      "audio_file1": "what-animal-do-you-like-convo",
+      "audio_file2": "i-like-the-horse-convo"
+    },
+    {
+      "template": "AppearDisappear",
+      "genders": "m",
+      "questionData": {
+        "words": "Push the wheelbarrow.",
+        "distractors": [
+          "pull",
+          "sit",
+          "sleep",
+          "read"
+        ]
+      },
+      "audio_file": "push-the-wheelbarrow-convo"
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "tractor",
+        "wrongAnswers": [
+          "truck",
+          "excavator",
+          "forklift"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-2",
+      "questionData": {
+        "imageName": "shovel",
+        "wrongAnswers": [
+          "rake",
+          "wheelbarrow",
+          "hose"
+        ]
+      }
+    },
+    {
+      "template": "SentenceBuilder",
+      "genders": "f",
+      "questionData": {
+        "correct_order": "Farmers grow food."
+      },
+      "audio_file": "farmers-grow-food-convo"
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "wheelbarrow",
+        "wrongAnswers": [
+          "tractor",
+          "carrier",
+          "stroller"
+        ]
+      }
+    },
+    {
+      "template": "ClozeSequence",
+      "genders": "m",
+      "questionData": {
+        "sentence": "We _____ seeds in soil.",
+        "answer": [
+          "plant"
+        ],
+        "distractors": [
+          "pick",
+          "pull",
+          "feed",
+          "wash"
+        ]
+      },
+      "audio_file": "we-plant-seeds-in-soil-convo"
+    },
+    {
+      "template": "GrammarForm",
+      "genders": "f",
+      "questionData": {
+        "sentence": "They _____ chickens.",
+        "answer": "feed",
+        "distractors": [
+          "plant",
+          "pick",
+          "pull"
+        ]
+      },
+      "audio_file": "they-decided-to-raise-chickens-on-their-small-farm-convo"
+    },
+    {
+      "template": "ClozeSequence",
+      "genders": "m",
+      "questionData": {
+        "sentence": "_____ the weeds now.",
+        "answer": [
+          "pull"
+        ],
+        "distractors": [
+          "plant",
+          "pick",
+          "feed",
+          "wash"
+        ]
+      },
+      "audio_file": "pull-the-weeds-now-convo"
+    },
+    {
+      "template": "ClozeSequence",
+      "genders": "m",
+      "questionData": {
+        "sentence": "Farmers _____ food.",
+        "answer": [
+          "grow"
+        ],
+        "distractors": [
+          "pick",
+          "pull",
+          "feed",
+          "wash"
+        ]
+      },
+      "audio_file": "farmers-grow-food-convo"
+    }
+  ]
+}

@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:scrollable_positioned_list/scrollable_positioned_list.dart';
 
+import '../app_flavor.dart';
 import '../models/level_completion_result.dart';
 import '../models/quiz_flow.dart';
 import '../models/reminder_progress.dart';
@@ -601,8 +602,31 @@ class _LevelsScreenState extends ConsumerState<LevelsScreen> {
     };
   }
 
-  /// Colored title strip for a main level plus optional story shortcut when the first sub-level is unlocked.
+  /// Colored title strip for a main level. Kids gets a story shortcut/teaser
+  /// (unlocked once the first sub-level opens); adults has no story feature
+  /// at all, so it's a plain "Main Level N" label with no icon or unlock gating.
   Widget _buildBanner(BuildContext context, MainLevelMeta meta) {
+    if (!AppConfig.storiesEnabled) {
+      return Container(
+        width: double.infinity,
+        margin: const EdgeInsets.only(top: 16, bottom: 8),
+        padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 16),
+        decoration: BoxDecoration(
+          color: Theme.of(context)
+              .colorScheme
+              .primaryContainer
+              .withValues(alpha: 0.6),
+          borderRadius: BorderRadius.circular(12),
+        ),
+        child: Text(
+          meta.title,
+          style: Theme.of(context).textTheme.titleMedium?.copyWith(
+                fontWeight: FontWeight.w600,
+              ),
+        ),
+      );
+    }
+
     final firstItem = _firstRegularItemForMain(meta.mainLevel);
     final isStoryUnlocked =
         firstItem != null && _isRegularLevelUnlocked(firstItem, _progress);

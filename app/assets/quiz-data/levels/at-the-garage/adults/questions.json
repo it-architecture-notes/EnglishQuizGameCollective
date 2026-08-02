@@ -1,0 +1,265 @@
+{
+  "levelQuestions": [
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "oil",
+        "wrongAnswers": [
+          "fuel-can",
+          "hose",
+          "diesel"
+        ]
+      }
+    },
+    {
+      "template": "ConvoTemplate-1",
+      "genders": "f-m",
+      "questionData": {
+        "line1": "Good morning. My car broke down yesterday.",
+        "line2": "We can _____ it, but I need to check it first. ",
+        "answer": "repair",
+        "distractors": [
+          "wash",
+          "buy",
+          "sell"
+        ]
+      },
+      "audio_file1": "good-morning-my-car-broke-down-yesterday-convo",
+      "audio_file2": "we-can-repair-it-but-i-need-to-check-it-first-convo"
+    },
+    {
+      "template": "ConvoTemplate-1",
+      "genders": "f-m",
+      "questionData": {
+        "line1": "Can you check the _____ from the accident?",
+        "line2": "Sure, I'll see which auto parts are needed.",
+        "answer": "damage",
+        "distractors": [
+          "dent",
+          "scratch",
+          "rust"
+        ]
+      },
+      "audio_file1": "can-you-check-the-damage-from-the-accident-convo",
+      "audio_file2": "sure-ill-see-which-auto-parts-are-needed-convo"
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "wrench",
+        "wrongAnswers": [
+          "screwdriver",
+          "hammer",
+          "pliers"
+        ]
+      }
+    },
+    {
+      "template": "WordPairs",
+      "questionData": {
+        "english_words": [
+          "sometimes",
+          "anymore",
+          "frequently",
+          "rarely"
+        ],
+        "translations": [
+          {
+            "tr": "bazen",
+            "es": "a veces",
+            "fr": "parfois",
+            "de": "manchmal",
+            "it": "a volte",
+            "pt": "às vezes",
+            "ru": "иногда",
+            "zh": "有时",
+            "ja": "時々",
+            "ko": "때때로",
+            "ar": "أحيانا",
+            "hi": "कभी-कभी"
+          },
+          {
+            "tr": "artık",
+            "es": "ya no",
+            "fr": "ne... plus",
+            "de": "nicht mehr",
+            "it": "non più",
+            "pt": "não mais",
+            "ru": "больше не",
+            "zh": "不再",
+            "ja": "もう",
+            "ko": "더 이상",
+            "ar": "لم يعد",
+            "hi": "अब और नहीं"
+          },
+          {
+            "tr": "sıklıkla",
+            "es": "frecuentemente",
+            "fr": "fréquemment",
+            "de": "häufig",
+            "it": "frequentemente",
+            "pt": "frequentemente",
+            "ru": "часто",
+            "zh": "频繁地",
+            "ja": "頻繁に",
+            "ko": "자주",
+            "ar": "بشكل متكرر",
+            "hi": "अक्सर"
+          },
+          {
+            "tr": "nadiren",
+            "es": "raramente",
+            "fr": "rarement",
+            "de": "selten",
+            "it": "raramente",
+            "pt": "raramente",
+            "ru": "редко",
+            "zh": "很少",
+            "ja": "まれに",
+            "ko": "드물게",
+            "ar": "نادرًا",
+            "hi": "शायद ही"
+          }
+        ]
+      }
+    },
+    {
+      "template": "DialogueCompletion",
+      "genders": "m-f",
+      "questionData": {
+        "line1": "Can you install a new tire? I have a flat tire.",
+        "answer": "Sure, give me a few minutes.",
+        "distractors": [
+          "Sorry, we don't have any tires left.",
+          "You need to buy a new tire first.",
+          "The garage closes in ten minutes."
+        ]
+      },
+      "audio_file1": "can-you-install-a-new-tire-i-have-a-flat-tire-convo",
+      "audio_file2": "sure-give-me-a-few-minutes-convo"
+    },
+    {
+      "template": "AppearDisappear",
+      "genders": "f",
+      "questionData": {
+        "words": "Insurance won't always cover the cost of used parts.",
+        "distractors": [
+          "warranty",
+          "include",
+          "every",
+          "signed"
+        ]
+      },
+      "audio_file": "insurance-wont-always-cover-the-cost-of-used-parts-convo"
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "lift",
+        "wrongAnswers": [
+          "wheel-tire",
+          "holder",
+          "screwdriver"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-2",
+      "questionData": {
+        "imageName": "fire-extinguisher",
+        "wrongAnswers": [
+          "wrench",
+          "oil",
+          "battery"
+        ]
+      },
+      "answer": "fire-extinguisher"
+    },
+    {
+      "template": "SentenceBuilder",
+      "genders": "f",
+      "questionData": {
+        "correct_order": "He took time to inspect the brakes."
+      },
+      "audio_file": "he-took-time-to-inspect-the-brakes-convo"
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "wheel-tire",
+        "wrongAnswers": [
+          "scooter",
+          "circle",
+          "trunk"
+        ]
+      }
+    },
+    {
+      "template": "ClozeSequence",
+      "genders": "f",
+      "questionData": {
+        "sentence": "The vehicle had to be _____ before they could _____ working on it.",
+        "answer": [
+          "lifted",
+          "start"
+        ],
+        "distractors": [
+          "raise",
+          "begin",
+          "push",
+          "hold"
+        ]
+      },
+      "audio_file": "the-vehicle-had-to-be-lifted-before-they-could-start-working-on-it-convo"
+    },
+    {
+      "template": "GrammarForm",
+      "genders": "m",
+      "questionData": {
+        "sentence": "The mechanic ____ only replace the battery tomorrow.",
+        "answer": "can",
+        "distractors": [
+          "was",
+          "could be",
+          "do"
+        ]
+      }
+    },
+    {
+      "template": "ClozeSequence",
+      "genders": "f",
+      "questionData": {
+        "sentence": "The mechanic will _____ a _____ after the inspection.",
+        "answer": [
+          "prepare",
+          "price estimate"
+        ],
+        "distractors": [
+          "make",
+          "write",
+          "cost",
+          "quote"
+        ]
+      },
+      "audio_file": "the-mechanic-will-prepare-a-price-estimate-after-the-inspection-convo"
+    },
+    {
+      "template": "ClozeSequence",
+      "genders": "m",
+      "questionData": {
+        "sentence": "She fixed the _____ window _____ on her first try.",
+        "answer": [
+          "broken",
+          "correctly"
+        ],
+        "distractors": [
+          "cracked",
+          "quickly",
+          "slowly",
+          "finally"
+        ]
+      },
+      "audio_file": "she-fixed-the-broken-window-correctly-on-her-first-try-convo"
+    }
+  ]
+}

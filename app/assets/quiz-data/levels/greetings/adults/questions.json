@@ -1,0 +1,263 @@
+{
+  "levelQuestions": [
+    {
+      "template": "ConvoTemplate-1",
+      "genders": "f-m",
+      "questionData": {
+        "character1": "Susan",
+        "line1": "Hello, I am Susan",
+        "line2": "_____ you.",
+        "answer": "Nice to meet",
+        "distractors": [
+          "Good morning",
+          "I am great",
+          "See you later"
+        ],
+        "image_file_name": "nice-to-meet-you"
+      },
+      "audio_file1": "hello-i-am-susan-convo",
+      "audio_file2": "nice-to-meet-you-convo"
+    },
+    {
+      "template": "DialogueCompletion",
+      "genders": "f-m",
+      "audio_file1": "what-is-your-name-convo",
+      "audio_file2": "my-name-is-john-male-convo",
+      "audio_file2_text": "My name is John",
+      "questionData": {
+        "character2": "John",
+        "line1": "What is your name?",
+        "answer": "My name is John",
+        "distractors": [
+          "I am fine, thank you",
+          "I am from Spain",
+          "Nice to see you"
+        ],
+        "image_file_name": "what-is-your-name"
+      }
+    },
+    {
+      "template": "ConvoTemplate-1",
+      "genders": "m-f",
+      "questionData": {
+        "line1": "How are you?",
+        "line2": "_____ , and you?",
+        "answer": "I am fine",
+        "distractors": [
+          "I am John",
+          "Nice to meet you",
+          "Good morning"
+        ],
+        "image_file_name": "how-are-you"
+      },
+      "audio_file1": "how-are-you-convo",
+      "audio_file2": "i-am-fine-and-you-convo"
+    },
+    {
+      "template": "DialogueCompletion",
+      "genders": "f-m",
+      "questionData": {
+        "line1": "Where are you from?",
+        "answer": "I am from the United States",
+        "distractors": [
+          "My name is Mike",
+          "I am fine, thank you.",
+          "Nice to see you"
+        ],
+        "image_file_name": "where-are-you-from"
+      },
+      "audio_file1": "where-are-you-from-convo",
+      "audio_file2": "i-am-from-united-states-convo"
+    },
+    {
+      "template": "DialogueCompletion",
+      "genders": "f-m",
+      "questionData": {
+        "line1": "How old are you?",
+        "answer": "I am 10 years old.",
+        "distractors": [
+          "I are 10 years old.",
+          "I get 10 years.",
+          "I is 10 years old."
+        ],
+        "image_file_name": "how-old-are-you"
+      },
+      "audio_file1": "how-old-are-you-convo",
+      "audio_file2": "i-am-10-years-old-convo"
+    },
+    {
+      "template": "AppearDisappear",
+      "genders": "m",
+      "questionData": {
+        "words": "I am very well, thank you",
+        "distractors": [
+          "good",
+          "nice",
+          "morning",
+          "welcome"
+        ],
+        "imageName": "i-am-very-well"
+      },
+      "audio_file": "i-am-very-well-thank-you-convo"
+    },
+    {
+      "template": "SentenceBuilder",
+      "genders": "f",
+      "questionData": {
+        "correct_order": "Please say hello to Emma.",
+        "imageName": "say-hello-to-emma"
+      },
+      "audio_file": "please-say-hello-to-emma-convo",
+      "audio_file_text": "Please say hello to Emma."
+    },
+    {
+      "template": "DialogueCompletion",
+      "genders": "m-f",
+      "questionData": {
+        "line1": "What is your job?",
+        "answer": "I am a student",
+        "distractors": [
+          "I have a student",
+          "I is a teacher.",
+          "I see an engineer"
+        ],
+        "image_file_name": "what-is-your-job"
+      },
+      "audio_file1": "what-is-your-job-convo",
+      "audio_file2": "i-am-a-student-convo"
+    },
+    {
+      "template": "GrammarForm",
+      "genders": "f",
+      "questionData": {
+        "sentence": "Where ____ she from?",
+        "answer": "is",
+        "distractors": [
+          "am",
+          "are",
+          "be"
+        ],
+        "imageName": "where-is-she-from"
+      }
+    },
+    {
+      "template": "ClozeSequence",
+      "genders": "f",
+      "questionData": {
+        "sentence": "_____ you _____",
+        "answer": [
+          "see",
+          "later"
+        ],
+        "distractors": [
+          "get",
+          "go",
+          "how",
+          "after"
+        ],
+        "imageName": "see-you-later"
+      },
+      "audio_file": "see-you-later"
+    },
+    {
+      "template": "WordPairs",
+      "questionData": {
+        "english_words": [
+          "hello",
+          "goodbye",
+          "thanks",
+          "I am sorry",
+          "welcome"
+        ],
+        "translations": [
+          {
+            "tr": "merhaba",
+            "es": "hola",
+            "fr": "bonjour",
+            "de": "hallo",
+            "it": "ciao",
+            "pt": "olá",
+            "ru": "привет",
+            "zh": "你好",
+            "ja": "こんにちは",
+            "ko": "안녕하세요",
+            "ar": "مرحباً",
+            "hi": "नमस्ते"
+          },
+          {
+            "tr": "hoşça kal",
+            "es": "adiós",
+            "fr": "au revoir",
+            "de": "auf Wiedersehen",
+            "it": "arrivederci",
+            "pt": "adeus",
+            "ru": "до свидания",
+            "zh": "再见",
+            "ja": "さようなら",
+            "ko": "안녕히 가세요",
+            "ar": "وداعاً",
+            "hi": "अलविदा"
+          },
+          {
+            "tr": "teşekkürler",
+            "es": "gracias",
+            "fr": "merci",
+            "de": "danke",
+            "it": "grazie",
+            "pt": "obrigado",
+            "ru": "спасибо",
+            "zh": "谢谢",
+            "ja": "ありがとう",
+            "ko": "고마워요",
+            "ar": "شكراً",
+            "hi": "धन्यवाद"
+          },
+          {
+            "tr": "özür dilerim",
+            "es": "lo siento",
+            "fr": "désolé",
+            "de": "Entschuldigung",
+            "it": "mi dispiace",
+            "pt": "desculpe",
+            "ru": "извините",
+            "zh": "对不起",
+            "ja": "ごめんなさい",
+            "ko": "미안해요",
+            "ar": "آسف",
+            "hi": "माफ़ कीजिए"
+          },
+          {
+            "tr": "hoş geldiniz",
+            "es": "bienvenido",
+            "fr": "bienvenue",
+            "de": "willkommen",
+            "it": "benvenuto",
+            "pt": "bem-vindo",
+            "ru": "добро пожаловать",
+            "zh": "欢迎",
+            "ja": "ようこそ",
+            "ko": "환영합니다",
+            "ar": "أهلاً وسهلاً",
+            "hi": "स्वागत है"
+          }
+        ]
+      }
+    },
+    {
+      "template": "AppearDisappear",
+      "genders": "m",
+      "questionData": {
+        "words": "Have a great day, Alex",
+        "distractors": [
+          "Get",
+          "What",
+          "time",
+          "morning",
+          "everyday"
+        ],
+        "imageName": "have-a-great-day"
+      },
+      "audio_file": "have-a-great-day-alex-convo"
+    }
+  ]
+}

@@ -150,14 +150,17 @@ def render_table_for_level(level_name: str, questions: list) -> str:
     return "\n".join(lines)
 
 
-def collect_levels(levels_root: Path) -> list[tuple[str, Path]]:
+def collect_levels(levels_root: Path, flavor: str) -> list[tuple[str, Path]]:
+    """Prefer {level}/{flavor}/questions.json; fall back to the legacy root
+    {level}/questions.json for any level not (yet) flavor-split."""
     out: list[tuple[str, Path]] = []
     if not levels_root.is_dir():
         return out
     for p in sorted(levels_root.iterdir(), key=lambda x: x.name.casefold()):
         if not p.is_dir():
             continue
-        qj = p / "questions.json"
+        flavored = p / flavor / "questions.json"
+        qj = flavored if flavored.is_file() else p / "questions.json"
         if qj.is_file():
             out.append((p.name, qj))
     return out
@@ -239,10 +242,17 @@ def main() -> int:
         help="Directory containing level subfolders with questions.json",
     )
     ap.add_argument(
+        "--flavor",
+        choices=("adults", "kids"),
+        default="adults",
+        help="Read {level}/{flavor}/questions.json (default: adults)",
+    )
+    ap.add_argument(
         "--output",
         type=Path,
-        default=root / "cursor-claude-common/output/global-questions.md",
-        help="Markdown file to write",
+        default=None,
+        help="Markdown file to write (default: cursor-claude-common/output/"
+        "global-questions.md, or global-questions-kids.md for --flavor kids)",
     )
     ap.add_argument(
         "--dry-run",
@@ -251,7 +261,12 @@ def main() -> int:
     )
     args = ap.parse_args()
 
-    levels = collect_levels(args.levels_root)
+    output = args.output
+    if output is None:
+        suffix = "" if args.flavor == "adults" else f"-{args.flavor}"
+        output = root / f"cursor-claude-common/output/global-questions{suffix}.md"
+
+    levels = collect_levels(args.levels_root, args.flavor)
     if not levels:
         print("No levels found under", args.levels_root, file=sys.stderr)
         return 1
@@ -274,7 +289,7 @@ def main() -> int:
         sys.stdout.write(level_blob)
         return 0
 
-    out_path: Path = args.output
+    out_path: Path = output
     preamble = default_preamble()
     old_sections: list[tuple[str, str]] = []
     if out_path.is_file():

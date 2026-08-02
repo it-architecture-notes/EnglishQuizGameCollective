@@ -1,0 +1,236 @@
+{
+  "levelQuestions": [
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "boy",
+        "wrongAnswers": [
+          "mother",
+          "uncle",
+          "girl"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "brother",
+        "wrongAnswers": [
+          "woman",
+          "father",
+          "sister"
+        ]
+      }
+    },
+    {
+      "template": "ClozeSequence",
+      "genders": "m",
+      "questionData": {
+        "sentence": "_____ is my aunt's child.",
+        "answer": [
+          "cousin"
+        ],
+        "distractors": [
+          "daughter",
+          "son",
+          "brother"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "daughter",
+        "wrongAnswers": [
+          "family",
+          "parents",
+          "boy"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "family",
+        "wrongAnswers": [
+          "grandmother",
+          "brother",
+          "girl"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "father",
+        "wrongAnswers": [
+          "sister",
+          "grandparents",
+          "mother"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "son",
+        "wrongAnswers": [
+          "daughter",
+          "cousin",
+          "sister"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "grandfather",
+        "wrongAnswers": [
+          "boy",
+          "aunt",
+          "father"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "grandkid",
+        "wrongAnswers": [
+          "father",
+          "grandfather",
+          "girl"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "grandmother",
+        "wrongAnswers": [
+          "mother",
+          "uncle",
+          "sister"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "grandparents",
+        "wrongAnswers": [
+          "woman",
+          "family",
+          "parents"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "husband",
+        "wrongAnswers": [
+          "wife",
+          "brother",
+          "man"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "wife",
+        "wrongAnswers": [
+          "husband",
+          "sister",
+          "woman"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "man",
+        "wrongAnswers": [
+          "boy",
+          "grandfather",
+          "woman"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "mother",
+        "wrongAnswers": [
+          "daughter",
+          "parents",
+          "father"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "parents",
+        "wrongAnswers": [
+          "grandkid",
+          "brother",
+          "family"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "sister",
+        "wrongAnswers": [
+          "parents",
+          "grandmother",
+          "brother"
+        ]
+      }
+    },
+    {
+      "template": "ClozeSequence",
+      "genders": "f",
+      "questionData": {
+        "sentence": "My _____ is my mother's sister.",
+        "answer": [
+          "aunt"
+        ],
+        "distractors": [
+          "uncle",
+          "cousin",
+          "daughter"
+        ]
+      }
+    },
+    {
+      "template": "ClozeSequence",
+      "genders": "m",
+      "questionData": {
+        "sentence": "My _____ is my father's brother.",
+        "answer": [
+          "uncle"
+        ],
+        "distractors": [
+          "aunt",
+          "cousin",
+          "brother"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "woman",
+        "wrongAnswers": [
+          "father",
+          "grandfather",
+          "brother"
+        ]
+      }
+    }
+  ]
+}

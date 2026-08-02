@@ -1,0 +1,270 @@
+{
+  "levelQuestions": [
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "plate",
+        "wrongAnswers": [
+          "bowl",
+          "cup",
+          "glass"
+        ]
+      }
+    },
+    {
+      "template": "ConvoTemplate-1",
+      "genders": "m-f",
+      "questionData": {
+        "line1": "Can you _____ now?",
+        "line2": "Yes, I can _____.",
+        "answer": "set the table",
+        "distractors": [
+          "wash",
+          "read",
+          "open"
+        ]
+      },
+      "audio_file1": "can-you-set-the-table-now-convo",
+      "audio_file2": "yes-i-can-set-the-table-convo"
+    },
+    {
+      "template": "ConvoTemplate-1",
+      "genders": "f-f",
+      "questionData": {
+        "line1": "Can you _____ eggs?",
+        "line2": "Yes, I can _____ now.",
+        "answer": "cook",
+        "distractors": [
+          "eat",
+          "wash",
+          "mix"
+        ]
+      },
+      "audio_file1": "can-you-cook-eggs-convo",
+      "audio_file2": "yes-i-can-cook-now-convo"
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "dish-soap",
+        "wrongAnswers": [
+          "hand-soap",
+          "dish-rack",
+          "hand-blender"
+        ]
+      }
+    },
+    {
+      "template": "WordPairs",
+      "questionData": {
+        "english_words": [
+          "I do it",
+          "I can do it",
+          "I like it",
+          "I see it"
+        ],
+        "translations": [
+          {
+            "tr": "Ben yaparım",
+            "es": "Lo hago",
+            "fr": "Je le fais",
+            "de": "Ich mache es",
+            "it": "Lo faccio",
+            "pt": "Eu faço isso",
+            "ru": "Я делаю это",
+            "zh": "我做",
+            "ja": "やります",
+            "ko": "나는 그것을 해",
+            "ar": "أنا أفعل ذلك",
+            "hi": "मैं यह करता हूँ"
+          },
+          {
+            "tr": "Bunu yapabilirim",
+            "es": "Puedo hacerlo",
+            "fr": "Je peux le faire",
+            "de": "Ich kann es tun",
+            "it": "Posso farlo",
+            "pt": "Eu posso fazer isso",
+            "ru": "Я могу это сделать",
+            "zh": "我能做到",
+            "ja": "できます",
+            "ko": "나는 그것을 할 수 있어",
+            "ar": "أستطيع فعل ذلك",
+            "hi": "मैं यह कर सकता हूँ"
+          },
+          {
+            "tr": "Bundan hoşlanırım",
+            "es": "Me gusta",
+            "fr": "Je l’aime",
+            "de": "Ich mag es",
+            "it": "Mi piace",
+            "pt": "Eu gosto disso",
+            "ru": "Мне это нравится",
+            "zh": "我喜欢它",
+            "ja": "これが好きです",
+            "ko": "나는 그것을 좋아해",
+            "ar": "أنا أحبه",
+            "hi": "मुझे यह पसंद है"
+          },
+          {
+            "tr": "Onu görüyorum",
+            "es": "Lo veo",
+            "fr": "Je le vois",
+            "de": "Ich sehe es",
+            "it": "Lo vedo",
+            "pt": "Eu vejo isso",
+            "ru": "Я это вижу",
+            "zh": "我看见它",
+            "ja": "それが見えます",
+            "ko": "나는 그것을 봐",
+            "ar": "أنا أراه",
+            "hi": "मैं इसे देखता हूँ"
+          }
+        ]
+      }
+    },
+    {
+      "template": "ClozeSequence",
+      "genders": "m",
+      "questionData": {
+        "sentence": "He _____ a _____ apple.",
+        "answers": [
+          "cuts",
+          "sharp"
+        ],
+        "distractors": [
+          "has",
+          "likes",
+          "sees",
+          "eats"
+        ]
+      },
+      "audio_file": "he-cuts-a-sharp-apple-convo"
+    },
+    {
+      "template": "ClozeSequence",
+      "genders": "f",
+      "questionData": {
+        "sentence": "We _____ the _____.",
+        "answers": [
+          "mix",
+          "flour"
+        ],
+        "distractors": [
+          "cut",
+          "wash",
+          "read",
+          "open"
+        ]
+      },
+      "audio_file": "we-mix-the-flour-convo"
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "frying-pan",
+        "wrongAnswers": [
+          "coffee-mug",
+          "dish-rack",
+          "dish-soap"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "funnel",
+        "wrongAnswers": [
+          "spoon",
+          "colander",
+          "strainer"
+        ]
+      }
+    },
+    {
+      "template": "ClozeSequence",
+      "genders": "m",
+      "questionData": {
+        "sentence": "Follow the _____ and _____ juice.",
+        "answers": [
+          "recipe",
+          "pour"
+        ],
+        "distractors": [
+          "cut",
+          "mix",
+          "wash",
+          "cook"
+        ]
+      },
+      "audio_file": "follow-the-recipe-and-pour-juice-convo"
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "grater",
+        "wrongAnswers": [
+          "strainer",
+          "cutter",
+          "table-knife"
+        ]
+      }
+    },
+    {
+      "template": "AppearDisappear",
+      "genders": "m",
+      "questionData": {
+        "words": "She cuts a cucumber.",
+        "distractors": [
+          "full",
+          "tired",
+          "you",
+          "are"
+        ]
+      },
+      "audio_file": "she-cuts-a-cucumber-convo"
+    },
+    {
+      "template": "GrammarForm",
+      "genders": "f",
+      "questionData": {
+        "sentence": "Let’s ____ dinner at the table.",
+        "answer": "eat",
+        "distractors": [
+          "eats",
+          "to eat",
+          "eating"
+        ]
+      }
+    },
+    {
+      "template": "DialogueCompletion",
+      "genders": "f-f",
+      "questionData": {
+        "line1": "Can I drink tea?",
+        "answer": "Yes, drink it slowly.",
+        "distractors": [
+          "I make tea.",
+          "Tea is green.",
+          "The mug is here."
+        ]
+      },
+      "audio_file1": "can-i-drink-tea-convo",
+      "audio_file2": "yes-drink-it-slowly-convo"
+    },
+    {
+      "template": "AppearDisappear",
+      "genders": "f",
+      "questionData": {
+        "words": "Who does the dishes?",
+        "distractors": [
+          "there",
+          "which",
+          "plates",
+          "clean"
+        ]
+      },
+      "audio_file": "who-does-the-dishes-convo"
+    }
+  ]
+}

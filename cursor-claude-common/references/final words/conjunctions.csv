@@ -9,7 +9,7 @@ since,A1,1,at-the-train-station
 though,A1,1,at-the-bank
 until,A1,2,"at-the-bank,at-the-train-station"
 when,A1,1,basic-sentences
-where,A1,2,"basic-sentences,greetings"
+where,A1,3,"basic-sentences,greetings/adults,greetings/kids"
 while,A1,2,"at-the-park,at-the-train-station"
 before,A2,1,waking-up
 except,A2,1,at-the-traffic

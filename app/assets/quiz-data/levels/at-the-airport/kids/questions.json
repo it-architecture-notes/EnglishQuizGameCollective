@@ -1,0 +1,262 @@
+{
+  "levelQuestions": [
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "plane",
+        "wrongAnswers": [
+          "car",
+          "boat",
+          "train"
+        ]
+      }
+    },
+    {
+      "template": "ClozeSequence",
+      "genders": "f",
+      "questionData": {
+        "sentence": "The plane is going to _____.",
+        "answer": [
+          "fly"
+        ],
+        "distractors": [
+          "land",
+          "drive",
+          "walk"
+        ],
+        "imageName": "plane-take-off"
+      },
+      "audio_file": "the-plane-is-going-to-convo"
+    },
+    {
+      "template": "ClozeSequence",
+      "genders": "f",
+      "questionData": {
+        "sentence": "The plane is going to _____.",
+        "answer": [
+          "land"
+        ],
+        "distractors": [
+          "fly",
+          "jump",
+          "sleep"
+        ],
+        "imageName": "plane-departs-lands"
+      },
+      "audio_file": "the-plane-is-going-to-convo"
+    },
+    {
+      "template": "ClozeSequence",
+      "genders": "f",
+      "questionData": {
+        "sentence": "The plane is _____.",
+        "answer": [
+          "late"
+        ],
+        "distractors": [
+          "happy",
+          "small",
+          "green"
+        ],
+        "imageName": "plane-late"
+      },
+      "audio_file": "the-plane-is-convo"
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "pilot",
+        "wrongAnswers": [
+          "passenger",
+          "driver",
+          "teacher"
+        ]
+      }
+    },
+    {
+      "template": "ConvoTemplate-1",
+      "genders": "f-m",
+      "questionData": {
+        "line1": "Can you _____ my bag?",
+        "line2": "Yes, I can.",
+        "answer": "carry",
+        "distractors": [
+          "eat",
+          "sleep",
+          "sing"
+        ],
+        "image_file_name": "carry-bag"
+      },
+      "audio_file1": "can-you-my-bag-convo",
+      "audio_file2": "yes-i-can-convo"
+    },
+    {
+      "template": "DialogueCompletion",
+      "genders": "f-m",
+      "questionData": {
+        "line1": "Is the plane late?",
+        "answer": "No, it is on time.",
+        "distractors": [
+          "Yes, it is my bag.",
+          "The plane is big.",
+          "I am hungry."
+        ],
+        "image_file_name": "flight-cancelled"
+      },
+      "audio_file1": "is-the-plane-late-convo",
+      "audio_file2": "no-it-is-on-time-convo"
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "suitcase",
+        "wrongAnswers": [
+          "box",
+          "chair",
+          "ball"
+        ]
+      }
+    },
+    {
+      "template": "WordPairs",
+      "questionData": {
+        "english_words": [
+          "excited",
+          "sad",
+          "angry",
+          "scared"
+        ],
+        "translations": [
+          {
+            "tr": "heyecanlı",
+            "es": "entusiasmado",
+            "fr": "enthousiaste",
+            "de": "aufgeregt",
+            "it": "entusiasta",
+            "pt": "entusiasmado",
+            "ru": "взволнованный",
+            "zh": "兴奋的",
+            "ja": "興奮した",
+            "ko": "흥분한",
+            "ar": "متحمس",
+            "hi": "उत्साहित"
+          },
+          {
+            "tr": "üzgün",
+            "es": "triste",
+            "fr": "triste",
+            "de": "traurig",
+            "it": "triste",
+            "pt": "triste",
+            "ru": "грустный",
+            "zh": "伤心的",
+            "ja": "悲しい",
+            "ko": "슬픈",
+            "ar": "حزين",
+            "hi": "उदास"
+          },
+          {
+            "tr": "sinirli",
+            "es": "enojado",
+            "fr": "en colère",
+            "de": "wütend",
+            "it": "arrabbiato",
+            "pt": "zangado",
+            "ru": "злой",
+            "zh": "生气的",
+            "ja": "怒っている",
+            "ko": "화난",
+            "ar": "غاضب",
+            "hi": "गुस्से में"
+          },
+          {
+            "tr": "korkmuş",
+            "es": "asustado",
+            "fr": "effrayé",
+            "de": "verängstigt",
+            "it": "spaventato",
+            "pt": "assustado",
+            "ru": "испуганный",
+            "zh": "害怕的",
+            "ja": "怖がっている",
+            "ko": "무서운",
+            "ar": "خائف",
+            "hi": "डरा हुआ"
+          }
+        ]
+      }
+    },
+    {
+      "template": "DialogueCompletion",
+      "genders": "m-f",
+      "questionData": {
+        "line1": "Is the plane here?",
+        "answer": "Yes, it is here.",
+        "distractors": [
+          "The cat is by the door.",
+          "I like red shoes.",
+          "The dog is sleeping."
+        ],
+        "image_file_name": "flight-on-time-hurry"
+      },
+      "audio_file1": "is-the-plane-here-convo",
+      "audio_file2": "yes-it-is-here-convo"
+    },
+    {
+      "template": "AppearDisappear",
+      "genders": "f",
+      "questionData": {
+        "words": "I wait for my plane.",
+        "distractors": [
+          "run",
+          "jump",
+          "sleep"
+        ],
+        "imageName": "waiting-at-airport"
+      },
+      "audio_file": "i-wait-for-my-plane-convo"
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "backpack",
+        "wrongAnswers": [
+          "umbrella",
+          "hat",
+          "shoe"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "traveler",
+        "wrongAnswers": [
+          "waiter",
+          "driver",
+          "teacher"
+        ]
+      }
+    },
+    {
+      "template": "SentenceBuilder",
+      "genders": "f",
+      "questionData": {
+        "correct_order": "My plane is late.",
+        "imageName": "flight-delayed"
+      },
+      "audio_file": "my-plane-is-late-convo"
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "clock",
+        "wrongAnswers": [
+          "door",
+          "window",
+          "table"
+        ]
+      }
+    }
+  ]
+}
