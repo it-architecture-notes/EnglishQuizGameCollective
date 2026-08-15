@@ -3,8 +3,8 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 
 import '../../models/level_config.dart';
+import '../../widgets/answer_palette.dart';
 import '../../widgets/audio_play_button.dart';
-import '../../widgets/translation_reveal_button.dart';
 
 /// Sentence tokens only, shuffled on tiles; tap in [SentenceBuilderQuestionData.correctOrder].
 /// Uses a random permutation of sentence positions so duplicate words are unambiguous.
@@ -20,6 +20,7 @@ class SentenceBuilderQuizBody extends StatefulWidget {
     required this.onPlayCorrect,
     required this.onPlayWrong,
     required this.onOutcome,
+    this.onNextTileRendered,
   });
 
   final SentenceBuilderQuestionData data;
@@ -31,6 +32,7 @@ class SentenceBuilderQuizBody extends StatefulWidget {
   final VoidCallback onPlayCorrect;
   final VoidCallback onPlayWrong;
   final void Function(bool correct) onOutcome;
+  final void Function(int expectedIndex, List<GlobalKey> tileKeys)? onNextTileRendered;
 
   @override
   State<SentenceBuilderQuizBody> createState() =>
@@ -51,6 +53,7 @@ class _SentenceBuilderQuizBodyState extends State<SentenceBuilderQuizBody> {
   bool _translationPenalized = false;
   int? _wrongGridIndex;
   final Map<int, int> _cellToStep = {};
+  late final List<GlobalKey> _tileKeys;
   bool _completed = false;
   bool _audioPlaying = false;
 
@@ -61,6 +64,7 @@ class _SentenceBuilderQuizBodyState extends State<SentenceBuilderQuizBody> {
     super.initState();
     _sentence = List<String>.from(_target);
     final n = _sentence.length;
+    _tileKeys = List.generate(n, (_) => GlobalKey());
     _perm = List.generate(n, (i) => i)..shuffle(Random());
     if (n > 1) {
       var guard = 0;
@@ -73,6 +77,20 @@ class _SentenceBuilderQuizBodyState extends State<SentenceBuilderQuizBody> {
       _slots.add(null);
       _slotFromPlayer.add(false);
     }
+    _reportNextTile();
+  }
+
+  void _reportNextTile() {
+    if (_tapProgress >= _sentence.length) return;
+    // `_tapProgress` is a position in the *target sentence*, not a cell index into the
+    // shuffled grid — the tile actually showing that word is wherever `_perm` maps to it.
+    // `_perm` holds each sentence position exactly once, so this is unambiguous even when
+    // the sentence repeats a word (unlike a plain word-string lookup would be).
+    final expectedIndex = _perm.indexOf(_tapProgress);
+    if (expectedIndex < 0) return;
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      if (mounted) widget.onNextTileRendered?.call(expectedIndex, _tileKeys);
+    });
   }
 
   bool _isIdentityPerm(List<int> p) {
@@ -124,6 +142,7 @@ class _SentenceBuilderQuizBodyState extends State<SentenceBuilderQuizBody> {
           _completed = true;
         }
       });
+      _reportNextTile();
       if (_tapProgress >= _sentence.length) {
         widget.onPlayCorrect();
         await _playAudio();
@@ -168,13 +187,6 @@ class _SentenceBuilderQuizBodyState extends State<SentenceBuilderQuizBody> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
-        TranslationRevealButton(
-          englishItems: widget.data.englishToTranslate,
-          localItems: widget.data.localTranslation,
-          userLanguage: widget.userLanguage,
-          onRevealed: _onTranslationRevealed,
-          enabled: !_audioPlaying,
-        ),
         if (widget.audioAssetPath != null)
           FutureBuilder<bool>(
             future: widget.resolveAudioExists(widget.audioAssetPath!),
@@ -204,38 +216,38 @@ class _SentenceBuilderQuizBodyState extends State<SentenceBuilderQuizBody> {
             final fromPlayer = i < _slotFromPlayer.length && _slotFromPlayer[i];
             return AnimatedContainer(
               duration: const Duration(milliseconds: 180),
-              constraints: const BoxConstraints(minWidth: 56, minHeight: 36),
-              padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 6),
+              constraints: const BoxConstraints(minHeight: 36, minWidth: 64),
+              padding: const EdgeInsets.symmetric(horizontal: 4, vertical: 4),
               decoration: BoxDecoration(
-                color: word != null
-                    ? (fromPlayer
-                        ? cs.primaryContainer
-                        : cs.surfaceContainerHighest.withValues(alpha: 0.45))
-                    : cs.surfaceContainerHighest.withValues(alpha: 0.35),
-                borderRadius: BorderRadius.circular(8),
-                border: Border.all(
-                  color: fromPlayer
-                      ? cs.primary
-                      : cs.outline.withValues(alpha: 0.7),
-                  width: fromPlayer ? 2 : 1,
-                ),
-              ),
-              child: Center(
-                child: Text(
-                  word ?? '___',
-                  style: theme.textTheme.bodyMedium?.copyWith(
-                    fontWeight: FontWeight.w600,
-                    fontStyle: word == null ? FontStyle.italic : null,
+                border: Border(
+                  bottom: BorderSide(
+                    color: fromPlayer ? AnswerPalette.correctBorder : cs.outline,
+                    width: fromPlayer ? 2.5 : 1.5,
                   ),
                 ),
               ),
+              child: Center(
+                child: word == null
+                    ? const SizedBox.shrink()
+                    : Text(
+                        word,
+                        style: theme.textTheme.bodyMedium?.copyWith(
+                          fontWeight: FontWeight.w800,
+                          color: fromPlayer ? AnswerPalette.correctFg : null,
+                        ),
+                      ),
+              ),
             );
-          }),
+            }),
         ),
         const SizedBox(height: 12),
         Expanded(
-          child: SingleChildScrollView(
-            child: Wrap(
+          child: LayoutBuilder(
+            builder: (context, constraints) => SingleChildScrollView(
+              child: ConstrainedBox(
+                constraints: BoxConstraints(minHeight: constraints.maxHeight),
+                child: Center(
+                  child: Wrap(
               alignment: WrapAlignment.center,
               spacing: 8,
               runSpacing: 8,
@@ -249,20 +261,22 @@ class _SentenceBuilderQuizBodyState extends State<SentenceBuilderQuizBody> {
 
                 return Material(
                   color: isWrong
-                      ? Colors.red.shade100
+                      ? AnswerPalette.wrongBg
                       : tapped
                           ? (_translationPenalized
-                              ? Colors.blue.shade100
-                              : Colors.green.shade100)
-                          : cs.surfaceContainerHighest,
+                              ? AnswerPalette.revealedBg
+                              : AnswerPalette.correctBg)
+                          : AnswerPalette.neutralBg,
                   borderRadius: BorderRadius.circular(10),
+                  key: _tileKeys[i],
                   child: InkWell(
                     onTap: disabled ? null : () => _onGridTap(i),
                     borderRadius: BorderRadius.circular(10),
                     child: ConstrainedBox(
                       constraints: const BoxConstraints(
                         minWidth: 72,
-                        minHeight: 44,
+                        minHeight: 52,
+                        maxHeight: 68,
                       ),
                       child: Stack(
                         alignment: Alignment.center,
@@ -278,12 +292,12 @@ class _SentenceBuilderQuizBodyState extends State<SentenceBuilderQuizBody> {
                               style: theme.textTheme.bodyMedium?.copyWith(
                                 fontWeight: FontWeight.w600,
                                 color: isWrong
-                                    ? Colors.red.shade900
+                                    ? AnswerPalette.wrongFg
                                     : tapped
                                         ? (_translationPenalized
-                                            ? Colors.blue.shade900
-                                            : Colors.green.shade900)
-                                        : null,
+                                            ? AnswerPalette.revealedFg
+                                            : AnswerPalette.correctFg)
+                                        : AnswerPalette.neutralFg,
                               ),
                             ),
                           ),
@@ -294,8 +308,8 @@ class _SentenceBuilderQuizBodyState extends State<SentenceBuilderQuizBody> {
                               child: CircleAvatar(
                                 radius: 10,
                                 backgroundColor: _translationPenalized
-                                    ? Colors.blue.shade700
-                                    : Colors.green.shade700,
+                                    ? AnswerPalette.revealedBorder
+                                    : AnswerPalette.correctBorder,
                                 child: Text(
                                   '$step',
                                   style: const TextStyle(
@@ -312,6 +326,9 @@ class _SentenceBuilderQuizBodyState extends State<SentenceBuilderQuizBody> {
                   ),
                 );
               }),
+                  ),
+                ),
+              ),
             ),
           ),
         ),

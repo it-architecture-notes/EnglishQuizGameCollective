@@ -52,7 +52,7 @@
       "audio_file": "be-careful-near-the-road-convo"
     },
     {
-      "template": "GrammarForm",
+      "template": "ClozeSequence",
       "genders": "m",
       "questionData": {
         "sentence": "They _____ the garden.",

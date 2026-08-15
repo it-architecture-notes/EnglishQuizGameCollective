@@ -48,7 +48,7 @@
       "audio_file": "this-plant-needs-water-convo"
     },
     {
-      "template": "GrammarForm",
+      "template": "ClozeSequence",
       "genders": "m",
       "questionData": {
         "sentence": "The price is going _____.",

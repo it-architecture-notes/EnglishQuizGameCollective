@@ -49,7 +49,7 @@
       "audio_file": "you-are-lucky-to-try-this-cake-its-the-tastiest-dessert-here-convo"
     },
     {
-      "template": "GrammarForm",
+      "template": "ClozeSequence",
       "genders": "m",
       "questionData": {
         "sentence": "She _____ the team next week.",

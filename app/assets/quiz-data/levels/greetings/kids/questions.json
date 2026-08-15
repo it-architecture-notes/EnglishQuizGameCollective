@@ -127,7 +127,7 @@
       "audio_file2": "yes-i-am-convo"
     },
     {
-      "template": "GrammarForm",
+      "template": "ClozeSequence",
       "genders": "m",
       "questionData": {
         "sentence": "Where ____ she from?",

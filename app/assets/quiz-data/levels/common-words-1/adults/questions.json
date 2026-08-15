@@ -49,7 +49,7 @@
       "audio_file": "it-is-brave-to-tell-the-truth-even-against-popular-opinion-convo"
     },
     {
-      "template": "GrammarForm",
+      "template": "ClozeSequence",
       "genders": "f",
       "questionData": {
         "sentence": "I _____ to tell you something important without waiting any longer.",

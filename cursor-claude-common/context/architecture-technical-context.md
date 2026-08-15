@@ -53,3 +53,48 @@ app/assets/
     └── grammar-quiz/                ← [json] one file per level (empty, future)
 
 All asset paths are registered in `pubspec.yaml` under `flutter: assets:`.
+
+## VideoConversation audio clips: extracted from the source video, not TTS
+
+For the `VideoConversation` template (e.g. `greetings/adults`), each question's `audio_file1`
+(setup) / `audio_file2` (confirm) `.m4a` clips are **not** Gemini-TTS output — they are sliced
+directly out of the level's own video file's embedded audio track (e.g. `greetings1.mp4`, which
+has its own real AAC audio stream), at that question's own `start_at`/`pause_at`/`answer_until`
+timestamps from `questions.json`. This was confirmed on 2026-08-12 by re-extracting the same time
+range from the source `.mp4` with `ffmpeg` and comparing silence timing against the shipped
+`.m4a` — they matched to the millisecond.
+
+There is **no committed script** for this in `tools/` — `tools/gemini_tts/generate_level_audio.py`
+has no `VideoConversation` case at all, and `tools/gather_adults_mixed_audio_texts.py` only dumps
+text, not audio. The repo root has a `.venv` (untracked) with `pydub` + `google` (Gemini SDK) +
+`deep_translator` installed, left over from whichever prior session built these clips — that's the
+toolset to reach for, but the extraction itself doesn't need pydub; a plain `ffmpeg` cut works and
+is what was used for the fix below. No script currently formalizes this per-level, so it's a
+manual per-question `ffmpeg` step until one exists.
+
+**Manual re-cut recipe** (used to fix `greetings/adults` question 1, which had a boundary artifact
+— see below):
+
+```bash
+SRC=app/assets/quiz-data/levels/greetings/adults/greetings1.mp4
+ffmpeg -y -i "$SRC" -vn -ss <start_at> -to <boundary> -c:a aac -b:a 132k -ar 44100 -ac 2 <out>-setup.m4a
+ffmpeg -y -i "$SRC" -vn -ss <boundary> -to <answer_until> -c:a aac -b:a 132k -ar 44100 -ac 2 <out>-confirm.m4a
+```
+
+`<boundary>` starts as `pause_at` from `questions.json`, but the actual spoken line in the video
+doesn't always end exactly at `pause_at` — the speaker's voice can trail a bit past it. Diagnose a
+suspect clip with:
+
+```bash
+ffmpeg -i clip.m4a -af silencedetect=noise=-30dB:d=0.03 -f null - 2>&1 | grep -i silence
+```
+
+A clean clip is silent starting at `t=0`; if a confirm clip instead shows a short sound burst
+*before* the first silence gap (e.g. `silence_start: 0.086`, not `0`), that's the previous
+speaker's trailing audio bleeding across the cut — nudge `<boundary>` later (past where that burst
+ends) and re-cut both files from the same source with the new boundary, which makes setup longer
+and confirm shorter by the same amount. `greetings1-q1-setup.m4a`/`-confirm.m4a` were fixed this
+way: boundary moved from `0.9s` to `0.99s` (setup 0.900s→0.990s, confirm 1.300s→1.210s), which
+fully cleared an ~86ms artifact. Note `pause_at` in `questions.json` still says `00:00.90` for that
+question — the video will still visually freeze there while the (now slightly longer) setup audio
+finishes ~90ms after the freeze; only update `pause_at` too if tighter audio/frame sync matters.

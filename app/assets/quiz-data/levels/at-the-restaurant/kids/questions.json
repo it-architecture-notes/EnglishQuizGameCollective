@@ -211,7 +211,7 @@
       "audio_file": "the-food-is-good-convo"
     },
     {
-      "template": "GrammarForm",
+      "template": "ClozeSequence",
       "genders": "f",
       "questionData": {
         "sentence": "_____ I have soup?",

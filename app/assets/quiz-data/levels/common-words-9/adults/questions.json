@@ -49,7 +49,7 @@
       "audio_file": "he-looked-familiar-to-me-someone-i-recognized-from-before-and-i-believe-he-was-being-fully-honest-with-us-convo"
     },
     {
-      "template": "GrammarForm",
+      "template": "ClozeSequence",
       "genders": "m",
       "questionData": {
         "sentence": "She _____ about the exam for the past week.",

@@ -226,7 +226,7 @@
       "audio_file": "the-teacher-asks-a-question-convo"
     },
     {
-      "template": "GrammarForm",
+      "template": "ClozeSequence",
       "genders": "m",
       "questionData": {
         "sentence": "When do you ____ your homework?",

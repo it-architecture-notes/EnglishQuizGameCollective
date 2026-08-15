@@ -208,7 +208,7 @@
       "audio_file": "do-not-too-high-convo"
     },
     {
-      "template": "GrammarForm",
+      "template": "ClozeSequence",
       "genders": "m",
       "questionData": {
         "sentence": "You _____ throw the ball.",

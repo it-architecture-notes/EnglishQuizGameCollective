@@ -211,7 +211,7 @@
       "audio_file": "dad-holds-the-baby-up-and-she-starts-to-happily-laugh-convo"
     },
     {
-      "template": "GrammarForm",
+      "template": "ClozeSequence",
       "genders": "f",
       "questionData": {
         "sentence": "She _____ the song until the baby falls asleep.",

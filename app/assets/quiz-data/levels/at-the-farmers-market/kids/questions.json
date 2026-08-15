@@ -206,7 +206,7 @@
       "audio_file": "i-check-the-price-convo"
     },
     {
-      "template": "GrammarForm",
+      "template": "ClozeSequence",
       "genders": "m",
       "questionData": {
         "sentence": "The farmer _____ apples.",

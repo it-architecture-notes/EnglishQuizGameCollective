@@ -212,7 +212,7 @@
       "audio_file": "the-doctor-can-you-convo"
     },
     {
-      "template": "GrammarForm",
+      "template": "ClozeSequence",
       "genders": "f",
       "questionData": {
         "sentence": "The doctor _____ me.",

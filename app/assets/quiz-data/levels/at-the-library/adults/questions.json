@@ -213,7 +213,7 @@
       "audio_file": "my-library-card-is-expired-i-need-to-renew-it-soon-convo"
     },
     {
-      "template": "GrammarForm",
+      "template": "ClozeSequence",
       "genders": "f",
       "questionData": {
         "sentence": "____ I get a library card please?",

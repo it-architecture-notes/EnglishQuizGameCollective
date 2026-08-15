@@ -239,7 +239,7 @@
       "audio_file": "she-likes-to-lie-down-and-listen-to-the-rain-convo"
     },
     {
-      "template": "GrammarForm",
+      "template": "ClozeSequence",
       "genders": "m",
       "questionData": {
         "sentence": "Have you ever _____ to your father about the new job?",

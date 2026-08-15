@@ -215,7 +215,7 @@
       "audio_file": "put-bags-in-the-car-convo"
     },
     {
-      "template": "GrammarForm",
+      "template": "ClozeSequence",
       "genders": "m",
       "questionData": {
         "sentence": "We _____ in line.",

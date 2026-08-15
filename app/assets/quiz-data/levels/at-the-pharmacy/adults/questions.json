@@ -71,7 +71,7 @@
       "audio_file": "you-have-exactly-two-remaining-refills-on-this-treatment-convo"
     },
     {
-      "template": "GrammarForm",
+      "template": "ClozeSequence",
       "genders": "m",
       "questionData": {
         "sentence": "My cold ____ bad, but the medicine helped.",

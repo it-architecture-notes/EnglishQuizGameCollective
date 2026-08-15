@@ -180,7 +180,7 @@
       "audio_file": "i-have-been-feeling-some-sensitivity-on-the-lower-left-convo"
     },
     {
-      "template": "GrammarForm",
+      "template": "ClozeSequence",
       "genders": "f",
       "questionData": {
         "sentence": "He _____ an appointment after the painful swelling started.",

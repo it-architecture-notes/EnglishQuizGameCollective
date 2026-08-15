@@ -210,7 +210,7 @@
       "audio_file": "dad-holds-the-baby-convo"
     },
     {
-      "template": "GrammarForm",
+      "template": "ClozeSequence",
       "genders": "f",
       "questionData": {
         "sentence": "She _____ to baby.",

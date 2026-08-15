@@ -212,7 +212,7 @@
       "audio_file": "my-card-is-old-convo"
     },
     {
-      "template": "GrammarForm",
+      "template": "ClozeSequence",
       "genders": "f",
       "questionData": {
         "sentence": "____ I get a library card please?",

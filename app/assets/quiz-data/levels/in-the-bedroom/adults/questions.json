@@ -193,7 +193,7 @@
       "audio_file": "she-lies-down-awake-for-hours-before-finally-falling-asleep-convo"
     },
     {
-      "template": "GrammarForm",
+      "template": "ClozeSequence",
       "genders": "f",
       "questionData": {
         "sentence": "Do you _____ a lot?",

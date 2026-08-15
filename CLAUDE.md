@@ -52,7 +52,6 @@ Monster attack animation applies **only** to `imageQuizTemplate-1` and `imageQui
 | `AppearDisappear` | `appear_disappear_quiz_body.dart` |
 | `SentenceBuilder` | `sentence_builder_quiz_body.dart` |
 | `WordPairs` | `word_pairs_quiz_body.dart` |
-| `GrammarForm` | `grammar_form_quiz_body.dart` |
 | `DialogueCompletion` | `dialogue_completion_quiz_body.dart` |
 
 **Translation:** The global Translate toggle is removed. Per-question `translation` / `line1_translation` / `line2_translation` / `answer_translation` maps in JSON show auxiliary text automatically when `userLanguage != 'en'`. `AppearDisappear` keeps its `translation` at the top level of the question object (sibling to `questionData`). ClozeSequence and WordPairs have no translation support.
@@ -101,5 +100,7 @@ For full rules refer to `cursor-claude-common/rules/rules.md`. Key points:
 - One issue at a time. Present a plan first, wait for approval before implementing.
 - Never work on `main` — always use a feature branch.
 - Never commit unless explicitly asked.
+- This is a shared, concurrently edited worktree. Never use `git checkout --`, `git restore`, `git reset`, `git clean`, or broad file overwrites to undo work. Treat all uncommitted changes as user/other-agent work, re-read files immediately before editing, and follow the mandatory shared-worktree and bulk-transformation rules in `cursor-claude-common/rules/rules.md`.
 - Consult `app/codebase_signatures.md` before reading full files to save context.
 - No tests, no over-engineering, no speculative features.
+- **Never use `git checkout --`, `git restore`, `git reset`, `git clean`, or a broad overwrite to undo your own mistake.** Repair only your exact hunks with a targeted patch. Even a whole-file restore can erase concurrent edits and requires explicit user approval identifying the file and known loss. Never target a parent directory. See `cursor-claude-common/rules/rules.md` for the incident and mandatory preflight/backup rules.

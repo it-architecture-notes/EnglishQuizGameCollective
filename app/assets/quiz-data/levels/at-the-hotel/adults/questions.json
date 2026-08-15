@@ -211,7 +211,7 @@
       "audio_file": "i-tried-to-speak-with-the-manager-but-the-hotel-was-fully-booked-convo"
     },
     {
-      "template": "GrammarForm",
+      "template": "ClozeSequence",
       "genders": "f",
       "questionData": {
         "sentence": "Were you ______ of renting a car?",

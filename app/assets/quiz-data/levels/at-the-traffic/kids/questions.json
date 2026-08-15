@@ -213,7 +213,7 @@
       "audio_file": "stop-a-car-is-ahead-convo"
     },
     {
-      "template": "GrammarForm",
+      "template": "ClozeSequence",
       "genders": "f",
       "questionData": {
         "sentence": "____ left at the traffic light.",

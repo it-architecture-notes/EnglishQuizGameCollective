@@ -211,7 +211,7 @@
       "audio_file": "we-plant-seeds-in-soil-convo"
     },
     {
-      "template": "GrammarForm",
+      "template": "ClozeSequence",
       "genders": "f",
       "questionData": {
         "sentence": "They _____ chickens.",

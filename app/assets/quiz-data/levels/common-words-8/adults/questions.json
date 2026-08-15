@@ -49,7 +49,7 @@
       "audio_file": "he-was-seriously-injured-during-his-previous-job-as-a-firefighter-convo"
     },
     {
-      "template": "GrammarForm",
+      "template": "ClozeSequence",
       "genders": "m",
       "questionData": {
         "sentence": "I _____ this project for three years now.",

@@ -49,7 +49,7 @@
       "audio_file": "please-watch-the-road-closely-and-hold-the-wheel-strongly-convo"
     },
     {
-      "template": "GrammarForm",
+      "template": "ClozeSequence",
       "genders": "f",
       "questionData": {
         "sentence": "They _____ this house for over twenty years.",

@@ -102,6 +102,23 @@ Optional flags:
 - `--bitrate 64` or `--bitrate 96`
 - `--overwrite` (regenerate existing files)
 - `--question 3` (only one question index)
+- `--measure-reference /path/to/level-video.mp4` (measures that file's integrated loudness
+  with ffmpeg and masters generated clips to match it — prefer this over `--target-lufs`
+  whenever the clips will sit next to other real audio, e.g. a level's own video)
+- `--target-lufs -12.0` (manual mastering target; ignored if `--measure-reference` is given;
+  default is a generic `-12.0` LUFS fallback)
+
+### Why mastering matters
+
+Raw Gemini TTS output is unprocessed PCM — no gain, EQ, compression, or loudness
+normalization — so it reads as noticeably weaker/more distant than professionally mixed
+audio (e.g. dialogue extracted straight from a level's own video, which typically sits
+around -9 to -12 LUFS). Every generated clip now goes through a fixed mastering chain
+before AAC encoding (gentle 80Hz high-pass, a small ~3kHz presence boost, light
+compression, loudness normalization to the resolved target, and a -1 dBTP limiter) —
+level and tonal balance only, clip duration/timing is unaffected. The style prompts also
+ask for a close-mic, dry, no-reverb delivery, since Gemini's TTS does take natural-language
+steering on recording character, not just tone.
 
 ## Output Naming
 

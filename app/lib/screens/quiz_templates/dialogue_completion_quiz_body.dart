@@ -4,14 +4,19 @@ import 'package:flutter/material.dart';
 
 import '../../models/level_config.dart';
 import '../../widgets/audio_play_button.dart';
-import '../../widgets/translation_reveal_button.dart';
+import '../../widgets/mcq_pill_answer_button.dart';
 
-/// First line of dialogue + four full-sentence replies.
+/// Image + first speaker line + four full-sentence replies. Visually mirrors
+/// `VideoConversationQuizBody`'s `DialogueCompletion` answer_type: an image capped at 45% of
+/// the available height, a white answer panel pulled up over its bottom edge, [data.line1] as
+/// the bold prompt, then the same [McqPillAnswerButton] pills — the only structural difference
+/// is a static [imagePath] here instead of a shared video controller.
 class DialogueCompletionQuizBody extends StatefulWidget {
   const DialogueCompletionQuizBody({
     super.key,
     required this.data,
     required this.userLanguage,
+    this.imagePath,
     this.audio1Path,
     this.audio2Path,
     required this.resolveAudioExists,
@@ -19,10 +24,15 @@ class DialogueCompletionQuizBody extends StatefulWidget {
     required this.onPlayCorrect,
     required this.onPlayWrong,
     required this.onOutcome,
+    this.onOptionButtonsRendered,
   });
 
   final DialogueCompletionQuestionData data;
   final String userLanguage;
+
+  /// Resolved asset path for [DialogueCompletionQuestionData.imageName], or null if the question
+  /// has no image (the image block is skipped entirely, not shown as a broken placeholder).
+  final String? imagePath;
   final String? audio1Path;
   final String? audio2Path;
   final Future<bool> Function(String path) resolveAudioExists;
@@ -30,6 +40,13 @@ class DialogueCompletionQuizBody extends StatefulWidget {
   final VoidCallback onPlayCorrect;
   final VoidCallback onPlayWrong;
   final void Function(bool correct) onOutcome;
+
+  /// Optional, purely additive: fires once, the first time the four reply buttons render, with
+  /// the correct option's index and a [GlobalKey] per button — lets a caller (the tutorial
+  /// overlay) measure exactly where the correct button is on screen. Does not affect scoring,
+  /// locking, or any other existing behavior.
+  final void Function(int correctIndex, List<GlobalKey> buttonKeys)?
+      onOptionButtonsRendered;
 
   @override
   State<DialogueCompletionQuizBody> createState() =>
@@ -48,6 +65,8 @@ class _DialogueCompletionQuizBodyState
   bool _audio1Scheduled = false;
   bool? _bothAudiosOk;
   bool _answeredWrong = false;
+  List<GlobalKey> _optionButtonKeys = const [];
+  bool _reportedOptionButtons = false;
 
   @override
   void initState() {
@@ -55,6 +74,7 @@ class _DialogueCompletionQuizBodyState
     final d = widget.data;
     _options = [d.answer, ...d.distractors]..shuffle(Random());
     _correctIndex = _options.indexOf(d.answer);
+    _optionButtonKeys = List.generate(_options.length, (_) => GlobalKey());
     WidgetsBinding.instance.addPostFrameCallback((_) => _primeAudio());
   }
 
@@ -171,97 +191,165 @@ class _DialogueCompletionQuizBodyState
 
   @override
   Widget build(BuildContext context) {
-    final theme = Theme.of(context);
-    final cs = theme.colorScheme;
-    final line = widget.data.line1;
-    final lang = widget.userLanguage;
+    if (!_reportedOptionButtons &&
+        widget.onOptionButtonsRendered != null &&
+        _correctIndex != null) {
+      _reportedOptionButtons = true;
+      WidgetsBinding.instance.addPostFrameCallback((_) {
+        if (!mounted) return;
+        widget.onOptionButtonsRendered!(_correctIndex!, _optionButtonKeys);
+      });
+    }
+
+    final answerWidth = min(MediaQuery.sizeOf(context).width * 0.87, 560.0);
+    final hasImage = widget.imagePath != null;
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
-        TranslationRevealButton(
-          englishItems: widget.data.englishToTranslate,
-          localItems: widget.data.localTranslation,
-          userLanguage: lang,
-          onRevealed: _onTranslationRevealed,
-          enabled: !(_audio1Playing || _audio2Playing),
-        ),
-        Text(
-          widget.data.character1,
-          style: theme.textTheme.labelLarge?.copyWith(
-            color: cs.primary,
-            fontWeight: FontWeight.w700,
-          ),
-        ),
-        const SizedBox(height: 6),
-        Container(
-          width: double.infinity,
-          padding: const EdgeInsets.all(12),
-          decoration: BoxDecoration(
-            color: cs.surfaceContainerHighest,
-            borderRadius: BorderRadius.circular(12),
-          ),
-          child: Text(
-            line,
-            style: theme.textTheme.bodyLarge,
-          ),
-        ),
-        if (widget.audio1Path != null && _bothAudiosOk == true)
-          Row(
-            mainAxisAlignment: MainAxisAlignment.end,
-            children: [
-              AudioPlayButton(
-                isPlaying: _audio1Playing || _audio2Playing,
-                onPressed: !(_locked && !_answeredWrong)
-                    ? _playAudioManual
-                    : null,
-              ),
-            ],
-          ),
-        const SizedBox(height: 8),
-        Text(
-          widget.data.character2,
-          style: theme.textTheme.labelLarge?.copyWith(
-            color: cs.tertiary,
-            fontWeight: FontWeight.w600,
-          ),
-        ),
-        const SizedBox(height: 12),
-        ...List.generate(_options.length, (i) {
-          final opt = _options[i];
-          final isSel = _selectedIndex == i;
-          final isCor = _locked && i == _correctIndex;
-          Color? bg;
-          Color? fg;
-          if (_locked) {
-            if (isCor) {
-              bg = _translationPenalized
-                  ? Colors.blue.shade600
-                  : Colors.green.shade600;
-              fg = Colors.white;
-            } else if (isSel && !isCor) {
-              bg = Colors.red.shade600;
-              fg = Colors.white;
-            }
-          }
-          return Padding(
-            padding: const EdgeInsets.only(bottom: 10),
-            child: SizedBox(
-              width: double.infinity,
-              child: ElevatedButton(
-                onPressed: (_locked || _audio1Playing || _audio2Playing) ? null : () => _onTap(i),
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: bg,
-                  foregroundColor: fg,
-                  disabledBackgroundColor: bg,
-                  disabledForegroundColor: fg,
-                  minimumSize: const Size(48, 48),
+        if (hasImage)
+          LayoutBuilder(
+            builder: (context, constraints) {
+              final maxHeight = constraints.maxHeight.isFinite
+                  ? constraints.maxHeight * 0.45
+                  : constraints.maxWidth;
+              return Center(
+                child: ClipRRect(
+                  borderRadius: BorderRadius.circular(18),
+                  child: ConstrainedBox(
+                    constraints: BoxConstraints(
+                      maxHeight: maxHeight,
+                      maxWidth: constraints.maxWidth,
+                    ),
+                    child: Image.asset(
+                      widget.imagePath!,
+                      fit: BoxFit.contain,
+                      errorBuilder: (_, __, ___) => Container(
+                        color: Colors.grey.shade300,
+                        padding: const EdgeInsets.all(24),
+                        child: const Icon(Icons.image_not_supported, size: 48),
+                      ),
+                    ),
+                  ),
                 ),
-                child: Text(opt, textAlign: TextAlign.center),
+              );
+            },
+          ),
+        // Pulled up over the bottom edge of the image (negative translate, not a layout gap),
+        // matching VideoConversationQuizBody's overlap — see that file for why Transform is used
+        // instead of a negative margin.
+        Transform.translate(
+          offset: Offset(0, hasImage ? -18 : 0),
+          child: Center(
+            child: SizedBox(
+              width: MediaQuery.sizeOf(context).width,
+              child: Container(
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: hasImage
+                      ? const BorderRadius.vertical(top: Radius.circular(24))
+                      : null,
+                ),
+                padding: const EdgeInsets.fromLTRB(16, 14, 16, 8),
+                child: Center(
+                  child: SizedBox(
+                    width: answerWidth,
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.stretch,
+                      children: [
+                        Text(
+                          widget.data.line1,
+                          textAlign: TextAlign.center,
+                          style: Theme.of(context).textTheme.titleLarge?.copyWith(
+                                color: const Color(0xFF171A1F),
+                                fontWeight: FontWeight.w700,
+                                fontSize: 22,
+                              ),
+                        ),
+                        if (widget.audio1Path != null && _bothAudiosOk == true)
+                          Align(
+                            alignment: Alignment.centerRight,
+                            child: AudioPlayButton(
+                              isPlaying: _audio1Playing || _audio2Playing,
+                              onPressed: !(_locked && !_answeredWrong)
+                                  ? _playAudioManual
+                                  : null,
+                            ),
+                          ),
+                      ],
+                    ),
+                  ),
+                ),
               ),
             ),
-          );
-        }),
+          ),
+        ),
+        // Fills the available height and spaces buttons evenly (mirrors
+        // VideoConversationQuizBody) instead of top-aligning them, which left a large empty gap
+        // above the Next button. SingleChildScrollView stays as the last-resort fallback for
+        // whatever still doesn't fit (long translations, large accessibility text scale).
+        Expanded(
+          child: Container(
+            color: Colors.white,
+            // LayoutBuilder must wrap SingleChildScrollView, not sit inside it — see
+            // VideoConversationQuizBody for why (a LayoutBuilder inside a scroll view reads an
+            // unbounded/infinite maxHeight, which fed into ConstrainedBox(minHeight: ...) would
+            // force infinite height instead of "fill the real available space").
+            child: LayoutBuilder(
+              builder: (context, answerConstraints) {
+                return SingleChildScrollView(
+                  child: Align(
+                    alignment: Alignment.topCenter,
+                    child: Padding(
+                      padding: const EdgeInsets.only(top: 8),
+                      child: SizedBox(
+                        width: answerWidth,
+                        child: ConstrainedBox(
+                          constraints: BoxConstraints(
+                            minHeight: answerConstraints.maxHeight,
+                          ),
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: List.generate(_options.length, (i) {
+                              final opt = _options[i];
+                              final isSel = _selectedIndex == i;
+                              final isCor = _locked && i == _correctIndex;
+                              final isWrongPick = _locked && isSel && !isCor;
+                              final state = isCor
+                                  ? (_translationPenalized
+                                      ? McqAnswerState.revealed
+                                      : McqAnswerState.correct)
+                                  : isWrongPick
+                                      ? McqAnswerState.wrong
+                                      : McqAnswerState.neutral;
+                              return Padding(
+                                key: _optionButtonKeys.length > i
+                                    ? _optionButtonKeys[i]
+                                    : null,
+                                padding: EdgeInsets.only(
+                                  bottom: i == _options.length - 1 ? 0 : 12,
+                                ),
+                                child: McqPillAnswerButton(
+                                  label: opt,
+                                  state: state,
+                                  onTap: (_locked ||
+                                          _audio1Playing ||
+                                          _audio2Playing)
+                                      ? null
+                                      : () => _onTap(i),
+                                ),
+                              );
+                            }),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                );
+              },
+            ),
+          ),
+        ),
       ],
     );
   }

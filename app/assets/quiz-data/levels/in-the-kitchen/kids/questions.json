@@ -225,7 +225,7 @@
       "audio_file": "she-cuts-a-cucumber-convo"
     },
     {
-      "template": "GrammarForm",
+      "template": "ClozeSequence",
       "genders": "f",
       "questionData": {
         "sentence": "Let’s ____ dinner at the table.",

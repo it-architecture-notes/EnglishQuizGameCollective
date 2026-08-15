@@ -213,7 +213,7 @@
       "audio_file": "she-couldn-t-afford-the-jacket-so-she-decided-to-return-it-after-buying-it-by-mistake-convo"
     },
     {
-      "template": "GrammarForm",
+      "template": "ClozeSequence",
       "genders": "m",
       "questionData": {
         "sentence": "I think you _____ this style.",

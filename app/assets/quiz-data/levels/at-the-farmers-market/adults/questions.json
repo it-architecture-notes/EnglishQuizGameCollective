@@ -206,7 +206,7 @@
       "audio_file": "i-reduce-the-price-before-i-buy-honey-convo"
     },
     {
-      "template": "GrammarForm",
+      "template": "ClozeSequence",
       "genders": "m",
       "questionData": {
         "sentence": "Farmers are _____ shoppers by setting out samples.",

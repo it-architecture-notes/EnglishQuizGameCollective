@@ -177,7 +177,7 @@
       "audio_file2": "no-i-hate-scary-films-convo"
     },
     {
-      "template": "GrammarForm",
+      "template": "ClozeSequence",
       "genders": "f",
       "questionData": {
         "sentence": "We _____ out to the cinema instead of staying home.",

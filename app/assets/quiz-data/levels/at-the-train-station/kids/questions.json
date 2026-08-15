@@ -210,7 +210,7 @@
       "audio_file": "he-the-map-here-convo"
     },
     {
-      "template": "GrammarForm",
+      "template": "ClozeSequence",
       "genders": "m",
       "questionData": {
         "sentence": "The train _____ fast.",

@@ -211,7 +211,7 @@
       "audio_file": "i-cannot-buy-it-convo"
     },
     {
-      "template": "GrammarForm",
+      "template": "ClozeSequence",
       "genders": "m",
       "questionData": {
         "sentence": "I _____ this style.",

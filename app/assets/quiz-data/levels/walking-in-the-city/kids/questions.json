@@ -226,7 +226,7 @@
       "audio_file": "she-comes-to-see-convo"
     },
     {
-      "template": "GrammarForm",
+      "template": "ClozeSequence",
       "genders": "f",
       "questionData": {
         "sentence": "Do you ____ far from here?",

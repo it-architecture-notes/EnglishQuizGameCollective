@@ -113,7 +113,7 @@ Future<void> playQuestionAudio(String assetPath) async {
       if (!completer.isCompleted) completer.complete();
     });
     try {
-      await player.play(AssetSource(assetPath));
+      await _startQuestionAudioPlayback(player, assetPath);
     } catch (e, st) {
       sub.cancel();
       if (!completer.isCompleted) completer.completeError(e, st);
@@ -123,6 +123,51 @@ Future<void> playQuestionAudio(String assetPath) async {
   } catch (e, st) {
     if (e.toString().contains('AbortError')) return;
     debugPrint('AudioService.playQuestionAudio: $e\n$st');
+  }
+}
+
+/// Starts a question clip and completes as soon as the platform reports that playback
+/// has begun. This is intentionally separate from [playQuestionAudio], whose Future
+/// completes when the clip ends.
+Future<void> startQuestionAudio(String assetPath) async {
+  final player = _ttsPlayerInstance();
+  try {
+    try {
+      await player.stop();
+    } catch (_) {}
+    await player.setReleaseMode(ReleaseMode.release);
+    await _startQuestionAudioPlayback(player, assetPath);
+  } catch (e, st) {
+    if (e.toString().contains('AbortError')) return;
+    debugPrint('AudioService.startQuestionAudio: $e\n$st');
+  }
+}
+
+Future<void> _startQuestionAudioPlayback(
+  AudioPlayer player,
+  String assetPath,
+) async {
+  final started = Completer<void>();
+  late final StreamSubscription<PlayerState> sub;
+  sub = player.onPlayerStateChanged.listen((state) {
+    if (state == PlayerState.playing && !started.isCompleted) {
+      debugPrint(
+        'Question audio started: ${DateTime.now().millisecondsSinceEpoch} ms '
+        '(asset: $assetPath)',
+      );
+      started.complete();
+      sub.cancel();
+    }
+  });
+  try {
+    await player.play(AssetSource(assetPath));
+    await started.future.timeout(
+      const Duration(seconds: 2),
+      onTimeout: () {},
+    );
+  } finally {
+    if (!started.isCompleted) started.complete();
+    await sub.cancel();
   }
 }
 

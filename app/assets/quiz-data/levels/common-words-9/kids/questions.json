@@ -46,7 +46,7 @@
       "audio_file": "he-is-my-convo"
     },
     {
-      "template": "GrammarForm",
+      "template": "ClozeSequence",
       "genders": "m",
       "questionData": {
         "sentence": "She _____ about school.",

@@ -48,7 +48,7 @@
       "audio_file": "this-cake-is-tasty-convo"
     },
     {
-      "template": "GrammarForm",
+      "template": "ClozeSequence",
       "genders": "m",
       "questionData": {
         "sentence": "She is _____ the team.",

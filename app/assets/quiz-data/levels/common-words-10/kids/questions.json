@@ -46,7 +46,7 @@
       "audio_file": "hold-the-wheel-convo"
     },
     {
-      "template": "GrammarForm",
+      "template": "ClozeSequence",
       "genders": "f",
       "questionData": {
         "sentence": "They _____ this house.",

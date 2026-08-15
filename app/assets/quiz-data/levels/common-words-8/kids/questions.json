@@ -49,7 +49,7 @@
       "audio_file": "the-firefighter-is-convo"
     },
     {
-      "template": "GrammarForm",
+      "template": "ClozeSequence",
       "genders": "m",
       "questionData": {
         "sentence": "I _____ this game.",

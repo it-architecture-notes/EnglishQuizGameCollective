@@ -34,7 +34,7 @@
       "audio_file": "i-open-my-eyes-convo"
     },
     {
-      "template": "GrammarForm",
+      "template": "ClozeSequence",
       "genders": "f",
       "questionData": {
         "sentence": "Please _____ your arms now.",

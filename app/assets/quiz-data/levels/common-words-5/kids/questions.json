@@ -52,7 +52,7 @@
       "audio_file": "school-is-fun-today-convo"
     },
     {
-      "template": "GrammarForm",
+      "template": "ClozeSequence",
       "genders": "m",
       "questionData": {
         "sentence": "I _____ my dog.",

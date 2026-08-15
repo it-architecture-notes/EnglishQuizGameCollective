@@ -34,7 +34,7 @@
       "audio_file2": "my-best-friend-is-omar-convo"
     },
     {
-      "template": "GrammarForm",
+      "template": "ClozeSequence",
       "genders": "f",
       "questionData": {
         "sentence": "I ___ a student",

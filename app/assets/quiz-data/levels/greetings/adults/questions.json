@@ -1,152 +1,206 @@
 {
+  "tutorial": {
+    "enabled": true,
+    "showIntro": true,
+    "steps": {
+      "VideoConversation:DialogueCompletion": {
+        "messageKey": "tutorial_video_dialogue_completion",
+        "target": "video_answer",
+        "characterAsset": "assets/images/characters/guide-1.png"
+      },
+      "VideoConversation:SentenceBuilder": {
+        "messageKey": "tutorial_video_sentence_builder",
+        "target": "sentence_builder_tile",
+        "characterAsset": "assets/images/characters/guide-2.png"
+      },
+      "VideoConversation:AppearDisappear": {
+        "messageKey": "tutorial_video_appear_disappear",
+        "target": "sequence_tile",
+        "characterAsset": "assets/images/characters/guide-3.png"
+      },
+      "VideoConversation:ClozeSequence": {
+        "messageKey": "tutorial_video_cloze",
+        "target": "cloze_choice",
+        "characterAsset": "assets/images/characters/guide-4.png"
+      },
+      "WordPairs": {
+        "messageKey": "tutorial_word_pairs",
+        "target": "word_pairs_tile",
+        "characterAsset": "assets/images/characters/guide-5.png"
+      }
+    }
+  },
   "levelQuestions": [
     {
-      "template": "ConvoTemplate-1",
-      "genders": "f-m",
-      "questionData": {
-        "character1": "Susan",
-        "line1": "Hello, I am Susan",
-        "line2": "_____ you.",
-        "answer": "Nice to meet",
-        "distractors": [
-          "Good morning",
-          "I am great",
-          "See you later"
-        ],
-        "image_file_name": "nice-to-meet-you"
-      },
-      "audio_file1": "hello-i-am-susan-convo",
-      "audio_file2": "nice-to-meet-you-convo"
+      "template":"Chapter",
+      "displayImage":"level-video"
     },
     {
-      "template": "DialogueCompletion",
-      "genders": "f-m",
-      "audio_file1": "what-is-your-name-convo",
-      "audio_file2": "my-name-is-john-male-convo",
-      "audio_file2_text": "My name is John",
+      "template": "VideoConversation",
+      "videoFile": "greetings1",
+      "start_at": "00:00.0",
+      "pause_at": "00:00.90",
+      "answer_until": "00:02.2",
+      "pronouncedConvoUntilPause": ["Good morning!"],
+      "audio_file1": "greetings1-q1-setup",
+      "audio_file2": "greetings1-q1-confirm",
       "questionData": {
-        "character2": "John",
-        "line1": "What is your name?",
-        "answer": "My name is John",
+        "answer_type": "DialogueCompletion",
+        "answer": "Good morning",
         "distractors": [
-          "I am fine, thank you",
-          "I am from Spain",
-          "Nice to see you"
-        ],
-        "image_file_name": "what-is-your-name"
+          "Good afternoon",
+          "Good night",
+          "See you later"
+        ]
       }
     },
     {
-      "template": "ConvoTemplate-1",
-      "genders": "m-f",
+      "template": "VideoConversation",
+      "videoFile": "greetings1",
+      "start_at": "00:02.2",
+      "pause_at": "00:04.15",
+      "answer_until": "00:05.75",
+      "pronouncedConvoUntilPause": ["I am Susan. What is your name?"],
+      "audio_file1": "greetings1-q2-setup",
+      "audio_file2": "greetings1-q2-confirm",
       "questionData": {
-        "line1": "How are you?",
-        "line2": "_____ , and you?",
-        "answer": "I am fine",
-        "distractors": [
-          "I am John",
-          "Nice to meet you",
-          "Good morning"
-        ],
-        "image_file_name": "how-are-you"
-      },
-      "audio_file1": "how-are-you-convo",
-      "audio_file2": "i-am-fine-and-you-convo"
+        "answer_type": "SentenceBuilder",
+        "correct_order": "My name is John."
+      }
     },
     {
-      "template": "DialogueCompletion",
-      "genders": "f-m",
+      "template": "VideoConversation",
+      "videoFile": "greetings1",
+      "start_at": "00:05.75",
+      "pause_at": "00:10.3",
+      "answer_until": "00:10.3",
+      "pronouncedConvoUntilPause": ["Nice to meet you, John. How are you?"],
+      "audio_file1": "greetings1-q3-setup",
       "questionData": {
-        "line1": "Where are you from?",
-        "answer": "I am from the United States",
-        "distractors": [
-          "My name is Mike",
-          "I am fine, thank you.",
-          "Nice to see you"
-        ],
-        "image_file_name": "where-are-you-from"
-      },
-      "audio_file1": "where-are-you-from-convo",
-      "audio_file2": "i-am-from-united-states-convo"
-    },
-    {
-      "template": "DialogueCompletion",
-      "genders": "f-m",
-      "questionData": {
-        "line1": "How old are you?",
-        "answer": "I am 10 years old.",
-        "distractors": [
-          "I are 10 years old.",
-          "I get 10 years.",
-          "I is 10 years old."
-        ],
-        "image_file_name": "how-old-are-you"
-      },
-      "audio_file1": "how-old-are-you-convo",
-      "audio_file2": "i-am-10-years-old-convo"
-    },
-    {
-      "template": "AppearDisappear",
-      "genders": "m",
-      "questionData": {
-        "words": "I am very well, thank you",
+        "answer_type": "AppearDisappear",
+        "words": "I am fine, thank you. And you?",
         "distractors": [
           "good",
-          "nice",
+          "welcome",
           "morning",
-          "welcome"
-        ],
-        "imageName": "i-am-very-well"
-      },
-      "audio_file": "i-am-very-well-thank-you-convo"
-    },
-    {
-      "template": "SentenceBuilder",
-      "genders": "f",
-      "questionData": {
-        "correct_order": "Please say hello to Emma.",
-        "imageName": "say-hello-to-emma"
-      },
-      "audio_file": "please-say-hello-to-emma-convo",
-      "audio_file_text": "Please say hello to Emma."
-    },
-    {
-      "template": "DialogueCompletion",
-      "genders": "m-f",
-      "questionData": {
-        "line1": "What is your job?",
-        "answer": "I am a student",
-        "distractors": [
-          "I have a student",
-          "I is a teacher.",
-          "I see an engineer"
-        ],
-        "image_file_name": "what-is-your-job"
-      },
-      "audio_file1": "what-is-your-job-convo",
-      "audio_file2": "i-am-a-student-convo"
-    },
-    {
-      "template": "GrammarForm",
-      "genders": "f",
-      "questionData": {
-        "sentence": "Where ____ she from?",
-        "answer": "is",
-        "distractors": [
-          "am",
-          "are",
-          "be"
-        ],
-        "imageName": "where-is-she-from"
+          "please"
+        ]
       }
     },
     {
-      "template": "ClozeSequence",
-      "genders": "f",
+      "template": "VideoConversation",
+      "videoFile": "greetings1",
+      "start_at": "00:10.3",
+      "pause_at": "00:13.25",
+      "answer_until": "00:14.8",
+      "pronouncedConvoUntilPause": ["I am fine too. Where are you from?"],
+      "audio_file1": "greetings1-q4-setup",
+      "audio_file2": "greetings1-q4-confirm",
       "questionData": {
-        "sentence": "_____ you _____",
+        "answer_type": "ClozeSequence",
+        "sentence": "I _____ _____ the United States.",
         "answer": [
+          "am",
+          "from"
+        ],
+        "distractors": [
+          "later",
+          "fine",
+          "thank",
+          "night"
+        ]
+      }
+    },
+    {
+      "template": "VideoConversation",
+      "videoFile": "greetings1",
+      "start_at": "00:14.8",
+      "pause_at": "00:15.8",
+      "answer_until": "00:17.05",
+      "pronouncedConvoUntilPause": ["What do you do?"],
+      "audio_file1": "greetings1-q5-setup",
+      "audio_file2": "greetings1-q5-confirm",
+      "questionData": {
+        "answer_type": "DialogueCompletion",
+        "answer": "I am a student.",
+        "distractors": [
+          "I have a student.",
+          "I is a teacher.",
+          "I see an engineer."
+        ]
+      }
+    },
+    {
+      "template": "VideoConversation",
+      "videoFile": "greetings1",
+      "start_at": "00:17.05",
+      "pause_at": "00:21.9",
+      "answer_until": "00:21.9",
+      "pronouncedConvoUntilPause": ["Oh, nice! John, this is my friend Emma."],
+      "audio_file1": "greetings1-q6-setup",
+      "questionData": {
+        "answer_type": "AppearDisappear",
+        "words": "Nice to meet you, Emma",
+        "distractors": [
+          "good",
+          "welcome",
+          "morning",
+          "please"
+        ]
+      }
+    },
+    {
+      "template": "VideoConversation",
+      "videoFile": "greetings1",
+      "start_at": "00:21.9",
+      "pause_at": "00:23.55",
+      "answer_until": "00:23.55",
+      "pronouncedConvoUntilPause": ["Nice to meet you, Emma."],
+      "audio_file1": "greetings1-q7-setup",
+      "questionData": {
+        "answer_type": "AppearDisappear",
+        "words": "Nice to meet you too, John!",
+        "distractors": [
+          "good",
           "see",
+          "morning",
+          "later"
+        ]
+      }
+    },
+    {
+      "template": "VideoConversation",
+      "videoFile": "greetings1",
+      "start_at": "00:23.55",
+      "pause_at": "00:24.95",
+      "answer_until": "00:26.65",
+      "pronouncedConvoUntilPause": ["Have a great day, John!"],
+      "audio_file1": "greetings1-q8-setup",
+      "audio_file2": "greetings1-q8-confirm",
+      "questionData": {
+        "answer_type": "DialogueCompletion",
+        "answer": "Thank you, Susan. You too!",
+        "distractors": [
+          "See you later, Susan.",
+          "Nice to meet you, Susan.",
+          "Good morning, Susan."
+        ]
+      }
+    },
+    {
+      "template": "VideoConversation",
+      "videoFile": "greetings1",
+      "start_at": "00:26.65",
+      "pause_at": "00:27.8",
+      "answer_until": "00:29.3",
+      "pronouncedConvoUntilPause": ["See you later, John!"],
+      "audio_file1": "greetings1-q9-setup",
+      "audio_file2": "greetings1-q9-confirm",
+      "questionData": {
+        "answer_type": "ClozeSequence",
+        "sentence": "_____ you _____, Susan.",
+        "answer": [
+          "See",
           "later"
         ],
         "distractors": [
@@ -154,10 +208,45 @@
           "go",
           "how",
           "after"
+        ]
+      }
+    },
+    {
+      "template":"Chapter",
+      "displayImage":"image-questions"
+    },
+    {
+      "template": "DialogueCompletion",
+      "genders": "f-m",
+      "questionData": {
+        "line1": "How old are you?",
+      "answer": "I am 20 years old.",
+      "distractors": [
+        "I are 20 years old.",
+        "I get 20 years.",
+        "I is 20 years old."
         ],
-        "imageName": "see-you-later"
+        "image_file_name": "how-old-are-you"
       },
-      "audio_file": "see-you-later"
+      "audio_file1": "how-old-are-you-adult-convo",
+      "audio_file2": "i-am-20-years-old-adult-convo"
+    },
+    {
+      "template": "ConvoTemplate-1",
+      "genders": "m-f",
+      "audio_file1": "where-is-she-from-john-convo",
+      "audio_file2": "she-is-from-japan-susan-convo",
+      "questionData": {
+        "line1": "Where _____ she from?",
+        "line2": "She _____ from Japan.",
+        "answer": "is",
+        "distractors": [
+          "am",
+          "are",
+          "be"
+        ],
+        "image_file_name": "where-is-she-from"
+      }
     },
     {
       "template": "WordPairs",
@@ -242,22 +331,6 @@
           }
         ]
       }
-    },
-    {
-      "template": "AppearDisappear",
-      "genders": "m",
-      "questionData": {
-        "words": "Have a great day, Alex",
-        "distractors": [
-          "Get",
-          "What",
-          "time",
-          "morning",
-          "everyday"
-        ],
-        "imageName": "have-a-great-day"
-      },
-      "audio_file": "have-a-great-day-alex-convo"
     }
   ]
 }

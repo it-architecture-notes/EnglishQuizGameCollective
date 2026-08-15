@@ -207,7 +207,7 @@
       "audio_file": "lets-schedule-a-meeting-to-discuss-the-new-project-timeline-convo"
     },
     {
-      "template": "GrammarForm",
+      "template": "ClozeSequence",
       "genders": "m",
       "questionData": {
         "sentence": "He _____ the project before asking for a salary raise.",

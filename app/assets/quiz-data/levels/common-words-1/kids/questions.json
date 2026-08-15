@@ -49,7 +49,7 @@
       "audio_file": "i-see-my-wet-hands-convo"
     },
     {
-      "template": "GrammarForm",
+      "template": "ClozeSequence",
       "genders": "f",
       "questionData": {
         "sentence": "I _____ a red ball.",

@@ -6,7 +6,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 /// Stores: language ([getLanguage]/[setLanguage]), music on/off ([getMusicOn]/[setMusicOn]),
 /// sound/FX on/off ([getSoundFxOn]/[setSoundFxOn]), show-all-levels preview
 /// ([getShowAllLevels]/[setShowAllLevels]), and test mode ([getTestModeOn]/[setTestModeOn]).
-/// Defaults: language "en", music on, sound/FX on, show-all-levels off, test mode off.
+/// Defaults: language "en", music off, sound/FX off, show-all-levels off, test mode off.
 class AppSettingsService {
   AppSettingsService._();
 
@@ -44,7 +44,7 @@ class AppSettingsService {
   static Future<bool> getMusicOn() async {
     try {
       final prefs = await _preferences;
-      return prefs.getBool(_musicKey) ?? true;
+      return prefs.getBool(_musicKey) ?? false;
     } catch (e, st) {
       debugPrint('AppSettingsService.getMusicOn: $e\n$st');
       return true;
@@ -63,7 +63,7 @@ class AppSettingsService {
   static Future<bool> getSoundFxOn() async {
     try {
       final prefs = await _preferences;
-      return prefs.getBool(_soundFxKey) ?? true;
+      return prefs.getBool(_soundFxKey) ?? false;
     } catch (e, st) {
       debugPrint('AppSettingsService.getSoundFxOn: $e\n$st');
       return true;

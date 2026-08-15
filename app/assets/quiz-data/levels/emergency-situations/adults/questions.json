@@ -212,7 +212,7 @@
       "audio_file": "neighbors-called-to-alert-the-fire-department-who-rushed-to-respond-within-minutes-convo"
     },
     {
-      "template": "GrammarForm",
+      "template": "ClozeSequence",
       "genders": "m",
       "questionData": {
         "sentence": "_____ slip on the wet floor.",

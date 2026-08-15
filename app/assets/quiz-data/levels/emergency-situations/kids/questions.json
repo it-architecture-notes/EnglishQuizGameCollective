@@ -211,7 +211,7 @@
       "audio_file": "call-the-now-convo"
     },
     {
-      "template": "GrammarForm",
+      "template": "ClozeSequence",
       "genders": "m",
       "questionData": {
         "sentence": "_____ on the wet floor.",

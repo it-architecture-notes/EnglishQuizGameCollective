@@ -229,7 +229,7 @@
       "audio_file2": "it-is-10-o-clock-convo"
     },
     {
-      "template": "GrammarForm",
+      "template": "ClozeSequence",
       "genders": "m",
       "questionData": {
         "sentence": "I ___ my dad every day",

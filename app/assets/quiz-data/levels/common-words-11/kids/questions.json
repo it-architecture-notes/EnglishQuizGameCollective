@@ -46,7 +46,7 @@
       "audio_file": "this-game-is-convo"
     },
     {
-      "template": "GrammarForm",
+      "template": "ClozeSequence",
       "genders": "m",
       "questionData": {
         "sentence": "I _____ this toy.",

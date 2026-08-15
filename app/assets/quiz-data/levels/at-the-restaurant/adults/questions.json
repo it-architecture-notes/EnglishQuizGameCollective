@@ -213,7 +213,7 @@
       "audio_file": "our-waiter-was-polite-and-the-food-was-delicious-so-we-made-sure-to-tip-well-convo"
     },
     {
-      "template": "GrammarForm",
+      "template": "ClozeSequence",
       "genders": "f",
       "questionData": {
         "sentence": "_____ you the soup of the day?",

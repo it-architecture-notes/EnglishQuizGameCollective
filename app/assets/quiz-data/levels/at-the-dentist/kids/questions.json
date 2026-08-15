@@ -179,7 +179,7 @@
       "audio_file": "my-tooth-hurts-convo"
     },
     {
-      "template": "GrammarForm",
+      "template": "ClozeSequence",
       "genders": "f",
       "questionData": {
         "sentence": "He _____ the dentist.",

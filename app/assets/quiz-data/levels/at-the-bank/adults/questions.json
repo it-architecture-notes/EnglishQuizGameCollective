@@ -212,7 +212,7 @@
       "audio_file": "the-bank-will-approve-your-card-application-convo"
     },
     {
-      "template": "GrammarForm",
+      "template": "ClozeSequence",
       "genders": "m",
       "questionData": {
         "sentence": "He _____ his card to the ATM.",

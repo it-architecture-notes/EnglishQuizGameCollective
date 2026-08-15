@@ -56,10 +56,21 @@ DEFAULT_VOICE_B = "Leda"
 DEFAULT_BITRATE_KBPS = 96
 SUPPORTED_BITRATES = {64, 96}
 
+# Raw Gemini PCM output is unmastered — no gain, EQ, compression, or normalization —
+# so it reads as noticeably weaker/more distant than professionally mixed source audio
+# (e.g. dialogue extracted from a level's own video). DEFAULT_TARGET_LUFS is a generic
+# fallback only; prefer --measure-reference (or a manually measured --target-lufs) so a
+# level's TTS clips actually match the loudness of whatever audio they'll sit next to.
+DEFAULT_TARGET_LUFS = -12.0
+
 # Adults defaults (clear adult/teen learner narration).
 DEFAULT_ADULTS_MALE_VOICES = ("Puck",)
 DEFAULT_ADULTS_FEMALE_VOICES = ("Leda",)
-ADULTS_STYLE_PROMPT = 'Say in a clear, friendly tone for a young learner: "{text}"'
+ADULTS_STYLE_PROMPT = (
+    "Say in a clear, warm, friendly tone for a young learner: close-miked studio voice, "
+    "dry, clear and present, with consistent volume; no room reverb, distant ambience, "
+    'or breathy delivery: "{text}"'
+)
 
 # Kids defaults — Gemini 2.5 TTS prebuilt voices that read youthful / playful
 # (same 30-voice catalog as 3.1 Flash TTS). Prefer these over Mature / Firm / Gravelly.
@@ -67,10 +78,13 @@ ADULTS_STYLE_PROMPT = 'Say in a clear, friendly tone for a young learner: "{text
 DEFAULT_KIDS_MALE_VOICES = ("Puck", "Fenrir", "Sadachbia", "Achird")
 DEFAULT_KIDS_FEMALE_VOICES = ("Leda", "Laomedeia", "Aoede", "Zephyr", "Autonoe")
 KIDS_STYLE_PROMPT = (
-    'Say in a young child\'s high-pitched, playful, clear voice: "{text}"'
+    "Say in a young child's high-pitched, playful, clear voice: close-miked studio "
+    "voice, dry, clear and present, with consistent volume; no room reverb, distant "
+    'ambience, or breathy delivery: "{text}"'
 )
 
-# Gemini TTS output in these examples is PCM 24kHz, 16-bit mono.
+# Gemini TTS output in these examples is PCM 24kHz, 16-bit mono. It is converted to
+# 44.1kHz stereo at the final encode so it matches the level's extracted dialogue format.
 PCM_CHANNELS = 1
 PCM_SAMPLE_WIDTH_BYTES = 2
 PCM_SAMPLE_RATE = 24_000
@@ -353,6 +367,28 @@ def parse_args() -> argparse.Namespace:
         default=DEFAULT_BITRATE_KBPS,
         choices=sorted(SUPPORTED_BITRATES),
         help="M4A bitrate in kbps",
+    )
+    parser.add_argument(
+        "--target-lufs",
+        type=float,
+        default=None,
+        metavar="LUFS",
+        help=(
+            "Master generated clips to this integrated loudness (e.g. -12.0). "
+            "Ignored if --measure-reference is given. "
+            f"Default: {DEFAULT_TARGET_LUFS} LUFS (generic fallback — measuring the "
+            "actual source you're matching is preferred)."
+        ),
+    )
+    parser.add_argument(
+        "--measure-reference",
+        default=None,
+        metavar="PATH",
+        help=(
+            "Audio/video file (e.g. the level's own .mp4) to measure integrated "
+            "loudness from; generated clips are mastered to that measured value "
+            "instead of --target-lufs/the default."
+        ),
     )
     parser.add_argument(
         "--dry-run",
@@ -1055,7 +1091,132 @@ def generate_single_speaker_pcm(
     return extract_pcm_bytes(response)
 
 
-def pcm_to_m4a_file(pcm_bytes: bytes, output_path: Path, bitrate_kbps: int) -> None:
+def mastering_filter_chain(target_lufs: float) -> str:
+    """ffmpeg -af chain applied to raw Gemini PCM before AAC encode.
+
+    Order: gentle low-end cleanup -> small presence boost -> light compression (~2-4dB of
+    gain reduction on typical clips at these settings — verified empirically against real
+    Gemini output; threshold/ratio here matter, a threshold set too far below the clip's
+    own mean level compresses continuously and reduces far more than intended) -> a
+    pre-loudnorm limiter -> loudness normalization to [target_lufs] -> true-peak limiter
+    safety net.
+
+    The pre-loudnorm limiter matters more than it looks: some Gemini clips have a single
+    hot transient (measured up to +4 dBTP on real output, i.e. already past digital full
+    scale) that `loudnorm` alone reacts to by *attenuating the entire clip* to protect that
+    one spike, undershooting the target by many dB even though the rest of the clip is
+    otherwise quiet. Taming spikes to -6dBTP first before loudnorm ever measures the signal
+    fixed this in practice — verified across 4 real clips, all landed within ~0.8 LUFS of
+    target afterward vs. one that barely moved at all beforehand.
+
+    None of these filters change *pitch* or *content* — only level and tonal balance — but
+    note the AAC encode step immediately after this (fixed frame size) rounds output
+    duration to the nearest encoder frame regardless of whether any filter runs at all
+    (confirmed: a zero-filter re-encode of an existing clip drifts by the same ~10ms as one
+    that goes through this chain). That quantization is a property of AAC, not something
+    these filters add, and already applied equally to every clip this pipeline has ever
+    produced.
+    """
+    return (
+        "highpass=f=80,"
+        "equalizer=f=3000:t=q:w=2:g=3,"
+        "acompressor=threshold=-14dB:ratio=2.0:attack=10:release=100:makeup=2,"
+        "alimiter=limit=0.501:attack=5:release=50,"
+        f"loudnorm=I={target_lufs}:TP=-1.5:LRA=7,"
+        "alimiter=limit=0.891:attack=5:release=50"
+    )
+
+
+def measure_integrated_lufs(audio_path: Path) -> float:
+    """Runs ffmpeg's loudnorm filter in measure-only mode over [audio_path] (which may be
+    the level's own video file — ffmpeg reads its audio track directly) and returns the
+    measured integrated loudness in LUFS, for use as --target-lufs so generated clips
+    match whatever real audio they'll sit next to instead of a generic hard-coded value.
+
+    Strips silence before measuring (`silenceremove`) so gaps between lines don't dilute
+    the result toward "quieter than the dialogue actually is" — verified against
+    `greetings1.mp4`: whole-file measurement read -11.88 LUFS vs -11.23 LUFS with silence
+    stripped first. Not a full replacement for picking a genuinely representative
+    dialogue-only clip by hand, but a reasonable default when just pointing at a whole
+    video/audio file.
+    """
+    result = subprocess.run(
+        [
+            "ffmpeg",
+            "-hide_banner",
+            "-i",
+            str(audio_path),
+            "-af",
+            "silenceremove=start_periods=1:start_threshold=-35dB:start_silence=0.1:"
+            "stop_periods=-1:stop_threshold=-35dB:stop_silence=0.1,"
+            "loudnorm=print_format=json",
+            "-f",
+            "null",
+            "-",
+        ],
+        capture_output=True,
+        text=True,
+        check=True,
+    )
+    stderr = result.stderr
+    json_start = stderr.rfind("{")
+    json_end = stderr.rfind("}")
+    if json_start == -1 or json_end == -1:
+        raise RuntimeError(f"Could not parse loudnorm measurement output for {audio_path}")
+    measured = json.loads(stderr[json_start : json_end + 1])
+    # `framelog=verbose` on the filter alone does NOT surface per-frame M:/S:/I: lines —
+    # they're logged at ffmpeg's "verbose" log level, which the CLI's default ("info")
+    # suppresses. Confirmed empirically: without -loglevel verbose here, this always
+    # silently returned zero matches (no crash, just never actually reported anything).
+    short_term_result = subprocess.run(
+        [
+            "ffmpeg",
+            "-hide_banner",
+            "-loglevel",
+            "verbose",
+            "-i",
+            str(audio_path),
+            "-af",
+            "silenceremove=start_periods=1:start_threshold=-35dB:start_silence=0.1:"
+            "stop_periods=-1:stop_threshold=-35dB:stop_silence=0.1,ebur128=framelog=verbose",
+            "-f",
+            "null",
+            "-",
+        ],
+        capture_output=True,
+        text=True,
+        check=True,
+    )
+    # Real frame lines look like "... M: -12.3 S: -13.8   I: -11.0 LUFS ...": M/S/I share one
+    # trailing "LUFS" label, it doesn't follow S: directly — a regex requiring "LUFS" right
+    # after the S: number (as originally written) never matches. -120.7 is ebur128's "not
+    # enough data yet for a 3s window" sentinel for the first ~3s of audio; filtered out.
+    short_term_values = [
+        float(match)
+        for match in re.findall(r"S:\s*(-?\d+\.?\d*)", short_term_result.stderr)
+        if float(match) > -70
+    ]
+    if short_term_values:
+        print(
+            f"  Reference short-term speech loudness: "
+            f"{max(short_term_values):.2f} to {min(short_term_values):.2f} LUFS"
+        )
+    true_peak = float(measured["input_tp"])
+    if true_peak > -1.0:
+        print(
+            f"  Note: reference true peak is {true_peak:.1f} dBTP (hotter than the -1.0 "
+            "dBTP limiter target) — that's expected for the reference, generated clips "
+            "are still capped at -1 dBTP regardless."
+        )
+    return float(measured["input_i"])
+
+
+def pcm_to_m4a_file(
+    pcm_bytes: bytes,
+    output_path: Path,
+    bitrate_kbps: int,
+    target_lufs: float = DEFAULT_TARGET_LUFS,
+) -> None:
     with tempfile.NamedTemporaryFile(suffix=".wav", delete=False) as tmp:
         tmp_wav_path = Path(tmp.name)
     try:
@@ -1064,6 +1225,10 @@ def pcm_to_m4a_file(pcm_bytes: bytes, output_path: Path, bitrate_kbps: int) -> N
             wf.setsampwidth(PCM_SAMPLE_WIDTH_BYTES)
             wf.setframerate(PCM_SAMPLE_RATE)
             wf.writeframes(pcm_bytes)
+
+        input_duration = len(pcm_bytes) / (
+            PCM_CHANNELS * PCM_SAMPLE_WIDTH_BYTES * PCM_SAMPLE_RATE
+        )
 
         output_path.parent.mkdir(parents=True, exist_ok=True)
         subprocess.run(
@@ -1075,6 +1240,12 @@ def pcm_to_m4a_file(pcm_bytes: bytes, output_path: Path, bitrate_kbps: int) -> N
                 "error",
                 "-i",
                 str(tmp_wav_path),
+                "-af",
+                mastering_filter_chain(target_lufs),
+                "-ar",
+                "44100",
+                "-ac",
+                "2",
                 "-c:a",
                 "aac",
                 "-b:a",
@@ -1083,6 +1254,27 @@ def pcm_to_m4a_file(pcm_bytes: bytes, output_path: Path, bitrate_kbps: int) -> N
             ],
             check=True,
         )
+        probe = subprocess.run(
+            [
+                "ffprobe",
+                "-v",
+                "error",
+                "-show_entries",
+                "format=duration",
+                "-of",
+                "default=noprint_wrappers=1:nokey=1",
+                str(output_path),
+            ],
+            capture_output=True,
+            text=True,
+            check=True,
+        )
+        output_duration = float(probe.stdout.strip())
+        if abs(output_duration - input_duration) > 0.03:
+            raise RuntimeError(
+                f"Audio duration changed unexpectedly: input={input_duration:.4f}s, "
+                f"output={output_duration:.4f}s"
+            )
     finally:
         if tmp_wav_path.exists():
             tmp_wav_path.unlink(missing_ok=True)
@@ -1131,6 +1323,22 @@ def main() -> None:
     rows = parse_questions(questions_path)
     ensure_ffmpeg_available()
 
+    if args.measure_reference:
+        target_lufs = measure_integrated_lufs(Path(args.measure_reference))
+        print(
+            f"Measured reference loudness: {target_lufs:.1f} LUFS "
+            f"(from {args.measure_reference})"
+        )
+    elif args.target_lufs is not None:
+        target_lufs = args.target_lufs
+    else:
+        target_lufs = DEFAULT_TARGET_LUFS
+        print(
+            f"No --target-lufs/--measure-reference given, using generic default "
+            f"{target_lufs} LUFS — pass --measure-reference <video/audio> to match a "
+            "specific source instead."
+        )
+
     gender_ctx = load_gender_voice_context(repo_root, args.flavor)
     style_prompt_template = getattr(
         args, "_style_prompt_template", _style_prompt_template(args.flavor)
@@ -1174,6 +1382,7 @@ def main() -> None:
         f"(kids → kids/, adults → adults/)"
     )
     print(f"Style prompt: {style_prompt_template}")
+    print(f"Mastering target: {target_lufs:.1f} LUFS (TP -1.5 dBTP, limiter -1 dBTP)")
     print(f"Candidate rows considered: {len(jobs)}")
     print(
         f"Gemini male voices: {list(gender_ctx.male_voices)}  "
@@ -1265,6 +1474,7 @@ def main() -> None:
                     pcm_bytes=pcm_bytes,
                     output_path=job.output_path,
                     bitrate_kbps=args.bitrate,
+                    target_lufs=target_lufs,
                 )
             else:
                 voice_use = job.gemini_voice_override
@@ -1286,6 +1496,7 @@ def main() -> None:
                     pcm_bytes=pcm_bytes,
                     output_path=job.output_path,
                     bitrate_kbps=args.bitrate,
+                    target_lufs=target_lufs,
                 )
             generated += 1
             print(f"{prefix} OK wrote {job.output_path}")

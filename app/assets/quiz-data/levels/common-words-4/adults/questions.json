@@ -49,7 +49,7 @@
       "audio_file": "this-ancient-tree-will-die-soon-without-water-convo"
     },
     {
-      "template": "GrammarForm",
+      "template": "ClozeSequence",
       "genders": "m",
       "questionData": {
         "sentence": "Prices _____ next month because of the shortage.",

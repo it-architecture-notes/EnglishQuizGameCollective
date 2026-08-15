@@ -187,7 +187,7 @@
       "audio_file": "we-decorate-the-room-with-banners-convo"
     },
     {
-      "template": "GrammarForm",
+      "template": "ClozeSequence",
       "genders": "f",
       "questionData": {
         "sentence": "She _____ her birthday every year in June.",

@@ -212,7 +212,7 @@
       "audio_file": "we-need-to-build-a-new-stable-for-the-horses-convo"
     },
     {
-      "template": "GrammarForm",
+      "template": "ClozeSequence",
       "genders": "f",
       "questionData": {
         "sentence": "They decided to _____ chickens on their small farm.",

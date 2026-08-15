@@ -213,7 +213,7 @@
       "audio_file": "it-is-tough-to-swim-in-cold-water-every-morning-convo"
     },
     {
-      "template": "GrammarForm",
+      "template": "ClozeSequence",
       "genders": "f",
       "questionData": {
         "sentence": "If you are ready, you can try ______ into the pool.",

@@ -36,7 +36,7 @@
       "audio_file": "i-open-my-eyes-when-i-wake-up-in-the-morning-convo"
     },
     {
-      "template": "GrammarForm",
+      "template": "ClozeSequence",
       "genders": "f",
       "questionData": {
         "sentence": "Great job. Now, _____ your arms.",

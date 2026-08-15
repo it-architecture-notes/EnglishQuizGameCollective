@@ -209,7 +209,7 @@
       "audio_file": "don-t-climb-too-high-or-you-might-fall-convo"
     },
     {
-      "template": "GrammarForm",
+      "template": "ClozeSequence",
       "genders": "m",
       "questionData": {
         "sentence": "You ________ the ball far so the dog gets some exercise.",

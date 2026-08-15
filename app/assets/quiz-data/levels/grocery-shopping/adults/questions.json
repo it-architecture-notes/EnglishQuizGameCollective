@@ -215,7 +215,7 @@
       "audio_file": "please-load-the-bags-into-the-car-convo"
     },
     {
-      "template": "GrammarForm",
+      "template": "ClozeSequence",
       "genders": "m",
       "questionData": {
         "sentence": "We ____ in the checkout line.",

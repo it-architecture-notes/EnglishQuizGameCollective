@@ -212,7 +212,7 @@
       "audio_file": "slow-down-there-is-an-accident-ahead-convo"
     },
     {
-      "template": "GrammarForm",
+      "template": "ClozeSequence",
       "genders": "f",
       "questionData": {
         "sentence": "____ left at the traffic light.",

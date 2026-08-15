@@ -3,7 +3,8 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 
 import '../../models/level_config.dart';
-import '../../widgets/translation_reveal_button.dart';
+import '../../widgets/answer_palette.dart';
+import '../../widgets/audio_play_button.dart';
 
 enum _Phase { revealing, clearing, interaction }
 
@@ -19,6 +20,7 @@ class AppearDisappearQuizBody extends StatefulWidget {
     required this.onPlayCorrect,
     required this.onPlayWrong,
     required this.onOutcome,
+    this.onNextTileRendered,
   });
 
   final AppearDisappearQuestionData data;
@@ -29,6 +31,7 @@ class AppearDisappearQuizBody extends StatefulWidget {
   final VoidCallback onPlayCorrect;
   final VoidCallback onPlayWrong;
   final void Function(bool correct) onOutcome;
+  final void Function(int expectedIndex, List<GlobalKey> tileKeys)? onNextTileRendered;
 
   @override
   State<AppearDisappearQuizBody> createState() =>
@@ -49,7 +52,9 @@ class _AppearDisappearQuizBodyState extends State<AppearDisappearQuizBody> {
   int? _wrongGridIndex;
   final Set<int> _correctGridIndices = {};
   final Map<int, int> _gridIndexToStep = {};
+  late final List<GlobalKey> _tileKeys;
   bool _completed = false;
+  bool _audioPlaying = false;
 
   List<String> get _sentence => widget.data.words;
 
@@ -59,6 +64,7 @@ class _AppearDisappearQuizBodyState extends State<AppearDisappearQuizBody> {
     final combined = [...widget.data.words, ...widget.data.distractors]
       ..shuffle(Random());
     _shuffledChoices = combined;
+    _tileKeys = List.generate(_shuffledChoices.length, (_) => GlobalKey());
     for (var i = 0; i < _sentence.length; i++) {
       _interactionSlots.add(null);
       _slotFromPlayer.add(false);
@@ -84,6 +90,31 @@ class _AppearDisappearQuizBodyState extends State<AppearDisappearQuizBody> {
     setState(() {
       _phase = _Phase.interaction;
       _interactionEnabled = true;
+    });
+    _reportNextTile();
+  }
+
+  Future<void> _playAudio() async {
+    final p = widget.audioAssetPath;
+    if (p == null) return;
+    final ok = await widget.resolveAudioExists(p);
+    if (!ok || !mounted) return;
+    setState(() => _audioPlaying = true);
+    try {
+      await widget.onPlayQuestionAudio(p);
+    } finally {
+      if (mounted) setState(() => _audioPlaying = false);
+    }
+  }
+
+  void _reportNextTile() {
+    if (!_interactionEnabled || _tapProgress >= _sentence.length) return;
+    final index = _shuffledChoices.indexWhere(
+      (word) => word == _sentence[_tapProgress] && !_correctGridIndices.contains(_shuffledChoices.indexOf(word)),
+    );
+    if (index < 0) return;
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      if (mounted) widget.onNextTileRendered?.call(_tapProgress, _tileKeys);
     });
   }
 
@@ -124,6 +155,7 @@ class _AppearDisappearQuizBodyState extends State<AppearDisappearQuizBody> {
         _gridIndexToStep.clear();
         _wrongGridIndex = null;
       });
+      _reportNextTile();
       return;
     }
     final word = _shuffledChoices[gridIndex];
@@ -136,6 +168,7 @@ class _AppearDisappearQuizBodyState extends State<AppearDisappearQuizBody> {
         _gridIndexToStep[gridIndex] = _tapProgress + 1;
         _tapProgress++;
       });
+      _reportNextTile();
       if (_tapProgress >= _sentence.length) {
         _completed = true;
         widget.onPlayCorrect();
@@ -177,41 +210,37 @@ class _AppearDisappearQuizBodyState extends State<AppearDisappearQuizBody> {
 
         return AnimatedContainer(
           duration: const Duration(milliseconds: 180),
-          constraints: const BoxConstraints(minWidth: 56, minHeight: 36),
-          padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 6),
+          constraints: const BoxConstraints(minHeight: 36, minWidth: 64),
+          padding: const EdgeInsets.symmetric(horizontal: 4, vertical: 4),
           decoration: BoxDecoration(
-            color: word != null
-                ? (isReveal
-                    ? cs.primaryContainer.withValues(alpha: 0.65)
-                    : fromPlayer
-                        ? cs.primaryContainer
-                        : cs.surfaceContainerHighest.withValues(alpha: 0.45))
-                : cs.surfaceContainerHighest.withValues(alpha: 0.35),
-            borderRadius: BorderRadius.circular(8),
-            border: Border.all(
-              color: isReveal && word != null
-                  ? cs.primary.withValues(alpha: 0.5)
-                  : fromPlayer
-                      ? cs.primary
-                      : cs.outline.withValues(alpha: 0.7),
-              width: fromPlayer ? 2 : 1,
+            border: Border(
+              bottom: BorderSide(
+                color: (isReveal || fromPlayer)
+                    ? AnswerPalette.correctBorder
+                    : cs.outline,
+                width: (isReveal || fromPlayer) ? 2.5 : 1.5,
+              ),
             ),
           ),
           child: Center(
             child: AnimatedSwitcher(
               duration: const Duration(milliseconds: 160),
-              child: Text(
-                word ?? '___',
-                key: ValueKey(word ?? '_empty_$i'),
-                style: theme.textTheme.bodyMedium?.copyWith(
-                  fontWeight: FontWeight.w600,
-                  fontStyle: word == null ? FontStyle.italic : null,
-                ),
-              ),
+              child: word == null
+                  ? const SizedBox.shrink()
+                  : Text(
+                      word,
+                      key: ValueKey(word),
+                      style: theme.textTheme.bodyMedium?.copyWith(
+                        fontWeight: FontWeight.w800,
+                        color: isReveal || fromPlayer
+                            ? AnswerPalette.correctFg
+                            : null,
+                      ),
+                    ),
             ),
           ),
         );
-      }),
+        }),
     );
   }
 
@@ -222,17 +251,33 @@ class _AppearDisappearQuizBodyState extends State<AppearDisappearQuizBody> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
-        TranslationRevealButton(
-          englishItems: widget.data.englishToTranslate,
-          localItems: widget.data.localTranslation,
-          userLanguage: widget.userLanguage,
-          onRevealed: _onTranslationRevealed,
-        ),
+        if (widget.audioAssetPath != null)
+          FutureBuilder<bool>(
+            future: widget.resolveAudioExists(widget.audioAssetPath!),
+            builder: (context, snap) {
+              if (snap.connectionState != ConnectionState.done || snap.data != true) {
+                return const SizedBox.shrink();
+              }
+              return Row(
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: [
+                  AudioPlayButton(
+                    isPlaying: _audioPlaying,
+                    onPressed: _failed && !_audioPlaying ? _playAudio : null,
+                  ),
+                ],
+              );
+            },
+          ),
         _buildBoxRow(theme, cs),
         const SizedBox(height: 12),
         Expanded(
-          child: SingleChildScrollView(
-            child: Wrap(
+          child: LayoutBuilder(
+            builder: (context, constraints) => SingleChildScrollView(
+              child: ConstrainedBox(
+                constraints: BoxConstraints(minHeight: constraints.maxHeight),
+                child: Center(
+                  child: Wrap(
               spacing: 8,
               runSpacing: 8,
               children: List.generate(_shuffledChoices.length, (i) {
@@ -244,15 +289,20 @@ class _AppearDisappearQuizBodyState extends State<AppearDisappearQuizBody> {
                 final orderLabel = _gridIndexToStep[i];
 
                 return ConstrainedBox(
-                  constraints: const BoxConstraints(minWidth: 90, minHeight: 44),
+                  key: _tileKeys[i],
+                  constraints: const BoxConstraints(
+                    minWidth: 90,
+                    minHeight: 52,
+                    maxHeight: 68,
+                  ),
                   child: Material(
                     color: isWrong
-                        ? Colors.red.shade100
+                        ? AnswerPalette.wrongBg
                         : isCorrectTile
                             ? (_translationPenalized
-                                ? Colors.blue.shade100
-                                : Colors.green.shade100)
-                            : cs.surfaceContainerHighest,
+                                ? AnswerPalette.revealedBg
+                                : AnswerPalette.correctBg)
+                            : AnswerPalette.neutralBg,
                     borderRadius: BorderRadius.circular(10),
                     child: InkWell(
                       onTap: disabled ? null : () => _onGridTap(i),
@@ -271,12 +321,12 @@ class _AppearDisappearQuizBodyState extends State<AppearDisappearQuizBody> {
                               style: theme.textTheme.bodyMedium?.copyWith(
                                 fontWeight: FontWeight.w600,
                                 color: isWrong
-                                    ? Colors.red.shade900
+                                    ? AnswerPalette.wrongFg
                                     : isCorrectTile
                                         ? (_translationPenalized
-                                            ? Colors.blue.shade900
-                                            : Colors.green.shade900)
-                                        : null,
+                                            ? AnswerPalette.revealedFg
+                                            : AnswerPalette.correctFg)
+                                        : AnswerPalette.neutralFg,
                               ),
                             ),
                           ),
@@ -287,8 +337,8 @@ class _AppearDisappearQuizBodyState extends State<AppearDisappearQuizBody> {
                               child: CircleAvatar(
                                 radius: 10,
                                 backgroundColor: _translationPenalized
-                                    ? Colors.blue.shade700
-                                    : Colors.green.shade700,
+                                    ? AnswerPalette.revealedBorder
+                                    : AnswerPalette.correctBorder,
                                 child: Text(
                                   '$orderLabel',
                                   style: const TextStyle(
@@ -305,6 +355,9 @@ class _AppearDisappearQuizBodyState extends State<AppearDisappearQuizBody> {
                   ),
                 );
               }),
+                  ),
+                ),
+              ),
             ),
           ),
         ),

@@ -212,7 +212,7 @@
       "audio_file": "i-can-in-water-convo"
     },
     {
-      "template": "GrammarForm",
+      "template": "ClozeSequence",
       "genders": "f",
       "questionData": {
         "sentence": "You can _____ in the pool.",

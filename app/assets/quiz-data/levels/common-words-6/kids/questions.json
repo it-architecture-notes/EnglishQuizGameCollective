@@ -52,7 +52,7 @@
       "audio_file": "i-like-food-convo"
     },
     {
-      "template": "GrammarForm",
+      "template": "ClozeSequence",
       "genders": "m",
       "questionData": {
         "sentence": "They _____ a game.",

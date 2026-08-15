@@ -186,7 +186,7 @@
       "audio_file": "we-have-banners-here-convo"
     },
     {
-      "template": "GrammarForm",
+      "template": "ClozeSequence",
       "genders": "f",
       "questionData": {
         "sentence": "She _____ her birthday.",

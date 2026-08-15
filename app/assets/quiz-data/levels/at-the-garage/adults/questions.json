@@ -213,7 +213,7 @@
       "audio_file": "the-vehicle-had-to-be-lifted-before-they-could-start-working-on-it-convo"
     },
     {
-      "template": "GrammarForm",
+      "template": "ClozeSequence",
       "genders": "m",
       "questionData": {
         "sentence": "The mechanic ____ only replace the battery tomorrow.",

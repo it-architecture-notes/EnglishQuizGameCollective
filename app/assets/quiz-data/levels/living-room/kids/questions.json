@@ -236,7 +236,7 @@
       "audio_file": "i-sit-on-the-sofa-convo"
     },
     {
-      "template": "GrammarForm",
+      "template": "ClozeSequence",
       "genders": "m",
       "questionData": {
         "sentence": "I _____ to dad.",

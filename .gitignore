@@ -63,3 +63,4 @@ app/ios/**/*.perspectivev3
 *.log
 *.pyc
 *.swp
+/tmp/

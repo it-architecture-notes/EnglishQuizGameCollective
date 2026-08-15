@@ -214,7 +214,7 @@
       "audio_file": "it-took-weeks-to-treat-the-injury-before-he-could-recover-completely-convo"
     },
     {
-      "template": "GrammarForm",
+      "template": "ClozeSequence",
       "genders": "f",
       "questionData": {
         "sentence": "The doctor _____ the patient carefully yesterday.",

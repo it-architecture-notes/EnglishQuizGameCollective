@@ -186,7 +186,7 @@
       "audio_file": "she-is-awake-at-night-convo"
     },
     {
-      "template": "GrammarForm",
+      "template": "ClozeSequence",
       "genders": "f",
       "questionData": {
         "sentence": "Do you _____ a lot?",

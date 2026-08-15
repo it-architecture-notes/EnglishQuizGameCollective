@@ -242,7 +242,7 @@
       "audio_file": "he-put-the-railway-map-on-the-table-to-plan-the-route-convo"
     },
     {
-      "template": "GrammarForm",
+      "template": "ClozeSequence",
       "genders": "m",
       "questionData": {
         "sentence": "Trains _____ be fast on this line before the engineering works started.",

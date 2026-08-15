@@ -210,7 +210,7 @@
       "audio_file": "do-not-shout-stay-calm-convo"
     },
     {
-      "template": "GrammarForm",
+      "template": "ClozeSequence",
       "genders": "m",
       "questionData": {
         "sentence": "The snow _____ white.",

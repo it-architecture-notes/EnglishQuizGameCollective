@@ -211,7 +211,7 @@
       "audio_file": "please-do-not-shout-—-stay-calm-when-you-see-an-animal-convo"
     },
     {
-      "template": "GrammarForm",
+      "template": "ClozeSequence",
       "genders": "m",
       "questionData": {
         "sentence": "The snow _____ and we could see the river again.",
