@@ -18,23 +18,6 @@
       }
     },
     {
-      "english_word": "I don't know",
-      "translations": {
-        "tr": "bilmiyorum",
-        "es": "no lo sé",
-        "fr": "je ne sais pas",
-        "de": "Ich weiß es nicht",
-        "it": "Non lo so",
-        "pt": "eu não sei",
-        "ru": "я не знаю",
-        "zh": "我不知道",
-        "ja": "分かりません",
-        "ko": "모르겠어요",
-        "ar": "لا أعرف",
-        "hi": "मुझे नहीं पता"
-      }
-    },
-    {
       "english_word": "Excuse me",
       "translations": {
         "tr": "Affedersiniz",
@@ -52,6 +35,193 @@
       }
     },
     {
+      "english_word": "I don't know",
+      "translations": {
+        "tr": "bilmiyorum",
+        "es": "no lo sé",
+        "fr": "je ne sais pas",
+        "de": "Ich weiß es nicht",
+        "it": "Non lo so",
+        "pt": "eu não sei",
+        "ru": "я не знаю",
+        "zh": "我不知道",
+        "ja": "分かりません",
+        "ko": "모르겠어요",
+        "ar": "لا أعرف",
+        "hi": "मुझे नहीं पता"
+      }
+    },
+    {
+      "english_word": "What is this?",
+      "translations": {
+        "tr": "Bu nedir?",
+        "es": "¿Qué es esto?",
+        "fr": "Qu'est-ce que c'est ?",
+        "de": "Was ist das?",
+        "it": "Cos'è questo?",
+        "pt": "O que é isso?",
+        "ru": "Что это?",
+        "zh": "这是什么？",
+        "ja": "これは何ですか？",
+        "ko": "이것은 무엇입니까?",
+        "ar": "ما هذا؟",
+        "hi": "यह क्या है?"
+      }
+    },
+    {
+      "english_word": "This is",
+      "translations": {
+        "tr": "<TBD>",
+        "es": "<TBD>",
+        "fr": "<TBD>",
+        "de": "<TBD>",
+        "it": "<TBD>",
+        "pt": "<TBD>",
+        "ru": "<TBD>",
+        "zh": "<TBD>",
+        "ja": "<TBD>",
+        "ko": "<TBD>",
+        "ar": "<TBD>",
+        "hi": "<TBD>"
+      }
+    },
+    {
+      "english_word": "These are",
+      "translations": {
+        "tr": "<TBD>",
+        "es": "<TBD>",
+        "fr": "<TBD>",
+        "de": "<TBD>",
+        "it": "<TBD>",
+        "pt": "<TBD>",
+        "ru": "<TBD>",
+        "zh": "<TBD>",
+        "ja": "<TBD>",
+        "ko": "<TBD>",
+        "ar": "<TBD>",
+        "hi": "<TBD>"
+      }
+    },
+    {
+      "english_word": "There is",
+      "translations": {
+        "tr": "<TBD>",
+        "es": "<TBD>",
+        "fr": "<TBD>",
+        "de": "<TBD>",
+        "it": "<TBD>",
+        "pt": "<TBD>",
+        "ru": "<TBD>",
+        "zh": "<TBD>",
+        "ja": "<TBD>",
+        "ko": "<TBD>",
+        "ar": "<TBD>",
+        "hi": "<TBD>"
+      }
+    },
+    {
+      "english_word": "There are",
+      "translations": {
+        "tr": "<TBD>",
+        "es": "<TBD>",
+        "fr": "<TBD>",
+        "de": "<TBD>",
+        "it": "<TBD>",
+        "pt": "<TBD>",
+        "ru": "<TBD>",
+        "zh": "<TBD>",
+        "ja": "<TBD>",
+        "ko": "<TBD>",
+        "ar": "<TBD>",
+        "hi": "<TBD>"
+      }
+    },
+    {
+      "english_word": "It is not",
+      "translations": {
+        "tr": "<TBD>",
+        "es": "<TBD>",
+        "fr": "<TBD>",
+        "de": "<TBD>",
+        "it": "<TBD>",
+        "pt": "<TBD>",
+        "ru": "<TBD>",
+        "zh": "<TBD>",
+        "ja": "<TBD>",
+        "ko": "<TBD>",
+        "ar": "<TBD>",
+        "hi": "<TBD>"
+      }
+    },
+    {
+      "english_word": "They are not",
+      "translations": {
+        "tr": "<TBD>",
+        "es": "<TBD>",
+        "fr": "<TBD>",
+        "de": "<TBD>",
+        "it": "<TBD>",
+        "pt": "<TBD>",
+        "ru": "<TBD>",
+        "zh": "<TBD>",
+        "ja": "<TBD>",
+        "ko": "<TBD>",
+        "ar": "<TBD>",
+        "hi": "<TBD>"
+      }
+    },
+    {
+      "english_word": "whose",
+      "translations": {
+        "tr": "<TBD>",
+        "es": "<TBD>",
+        "fr": "<TBD>",
+        "de": "<TBD>",
+        "it": "<TBD>",
+        "pt": "<TBD>",
+        "ru": "<TBD>",
+        "zh": "<TBD>",
+        "ja": "<TBD>",
+        "ko": "<TBD>",
+        "ar": "<TBD>",
+        "hi": "<TBD>"
+      }
+    },
+    {
+      "english_word": "mine",
+      "translations": {
+        "tr": "<TBD>",
+        "es": "<TBD>",
+        "fr": "<TBD>",
+        "de": "<TBD>",
+        "it": "<TBD>",
+        "pt": "<TBD>",
+        "ru": "<TBD>",
+        "zh": "<TBD>",
+        "ja": "<TBD>",
+        "ko": "<TBD>",
+        "ar": "<TBD>",
+        "hi": "<TBD>"
+      }
+    },
+    {
+      "english_word": "Who",
+      "translations": {
+        "tr": "<TBD>",
+        "es": "<TBD>",
+        "fr": "<TBD>",
+        "de": "<TBD>",
+        "it": "<TBD>",
+        "pt": "<TBD>",
+        "ru": "<TBD>",
+        "zh": "<TBD>",
+        "ja": "<TBD>",
+        "ko": "<TBD>",
+        "ar": "<TBD>",
+        "hi": "<TBD>"
+      }
+    },
+    {
       "english_word": "When",
       "translations": {
         "tr": "Ne zaman",
@@ -66,6 +236,91 @@
         "ko": "언제",
         "ar": "متى",
         "hi": "कब"
+      }
+    },
+    {
+      "english_word": "Are you ready?",
+      "translations": {
+        "tr": "Hazır mısın?",
+        "es": "¿Estás listo?",
+        "fr": "Es-tu prêt ?",
+        "de": "Bist du bereit?",
+        "it": "Sei pronto?",
+        "pt": "Você está pronto?",
+        "ru": "Ты готов?",
+        "zh": "你准备好了吗？",
+        "ja": "準備はできましたか？",
+        "ko": "준비됐어요?",
+        "ar": "هل أنت مستعد؟",
+        "hi": "क्या तुम तैयार हो?"
+      }
+    },
+    {
+      "english_word": "here",
+      "translations": {
+        "tr": "burada",
+        "es": "aquí",
+        "fr": "ici",
+        "de": "hier",
+        "it": "qui",
+        "pt": "aqui",
+        "ru": "здесь",
+        "zh": "这里",
+        "ja": "ここ",
+        "ko": "여기",
+        "ar": "هنا",
+        "hi": "यहाँ"
+      }
+    },
+    {
+      "english_word": "now",
+      "translations": {
+        "tr": "şimdi",
+        "es": "ahora",
+        "fr": "maintenant",
+        "de": "jetzt",
+        "it": "ora",
+        "pt": "agora",
+        "ru": "сейчас",
+        "zh": "现在",
+        "ja": "今",
+        "ko": "지금",
+        "ar": "الآن",
+        "hi": "अभी"
+      }
+    },
+    {
+      "english_word": "to go",
+      "translations": {
+        "tr": "gitmek",
+        "es": "ir",
+        "fr": "aller",
+        "de": "gehen",
+        "it": "andare",
+        "pt": "ir",
+        "ru": "идти",
+        "zh": "去",
+        "ja": "行く",
+        "ko": "가다",
+        "ar": "ذهاب",
+        "hi": "जाना"
+      }
+    },
+    {
+      "english_word": "to like",
+      "translations": {
+        "tr": "sevmek",
+        "es": "gustar",
+        "fr": "aimer",
+        "de": "mögen",
+        "it": "amare",
+        "pt": "gostar",
+        "ru": "нравиться",
+        "zh": "喜欢",
+        "ja": "好きになる",
+        "ko": "좋아하다",
+        "ar": "أن يحب",
+        "hi": "पसंद करना"
       }
     },
     {
@@ -120,139 +375,20 @@
       }
     },
     {
-      "english_word": "at 2 o'clock",
+      "english_word": "look at",
       "translations": {
-        "tr": "saat 2'de",
-        "es": "a las 2 en punto",
-        "fr": "à 14 heures",
-        "de": "um 2 Uhr",
-        "it": "alle 2 in punto",
-        "pt": "às 2 horas",
-        "ru": "в 2 часа",
-        "zh": "2点钟",
-        "ja": "2時に",
-        "ko": "2시에",
-        "ar": "في الساعة الثانية",
-        "hi": "2 बजे"
-      }
-    },
-    {
-      "english_word": "I am sorry",
-      "translations": {
-        "tr": "Özür dilerim",
-        "es": "Lo siento",
-        "fr": "Je suis désolé",
-        "de": "Es tut mir leid",
-        "it": "Mi dispiace",
-        "pt": "Sinto muito",
-        "ru": "Мне жаль",
-        "zh": "对不起",
-        "ja": "ごめんなさい",
-        "ko": "미안해요",
-        "ar": "أنا آسف",
-        "hi": "मुझे खेद है"
-      }
-    },
-    {
-      "english_word": "where",
-      "translations": {
-        "tr": "nerede",
-        "es": "dónde",
-        "fr": "où",
-        "de": "wo",
-        "it": "dove",
-        "pt": "onde",
-        "ru": "где",
-        "zh": "哪里",
-        "ja": "どこ",
-        "ko": "어디",
-        "ar": "أين",
-        "hi": "कहाँ"
-      }
-    },
-    {
-      "english_word": "What is this?",
-      "translations": {
-        "tr": "Bu nedir?",
-        "es": "¿Qué es esto?",
-        "fr": "Qu'est-ce que c'est ?",
-        "de": "Was ist das?",
-        "it": "Cos'è questo?",
-        "pt": "O que é isso?",
-        "ru": "Что это?",
-        "zh": "这是什么？",
-        "ja": "これは何ですか？",
-        "ko": "이것은 무엇입니까?",
-        "ar": "ما هذا؟",
-        "hi": "यह क्या है?"
-      }
-    },
-    {
-      "english_word": "to like",
-      "translations": {
-        "tr": "sevmek",
-        "es": "gustar",
-        "fr": "aimer",
-        "de": "mögen",
-        "it": "amare",
-        "pt": "gostar",
-        "ru": "нравиться",
-        "zh": "喜欢",
-        "ja": "好きになる",
-        "ko": "좋아하다",
-        "ar": "أن يحب",
-        "hi": "पसंद करना"
-      }
-    },
-    {
-      "english_word": "to go",
-      "translations": {
-        "tr": "gitmek",
-        "es": "ir",
-        "fr": "aller",
-        "de": "gehen",
-        "it": "andare",
-        "pt": "ir",
-        "ru": "идти",
-        "zh": "去",
-        "ja": "行く",
-        "ko": "가다",
-        "ar": "ذهاب",
-        "hi": "जाना"
-      }
-    },
-    {
-      "english_word": "to say",
-      "translations": {
-        "tr": "söylemek",
-        "es": "decir",
-        "fr": "dire",
-        "de": "sagen",
-        "it": "dire",
-        "pt": "dizer",
-        "ru": "сказать",
-        "zh": "说",
-        "ja": "言う",
-        "ko": "말하다",
-        "ar": "أن يقول",
-        "hi": "कहना"
-      }
-    },
-    {
-      "english_word": "bad",
-      "translations": {
-        "tr": "kötü",
-        "es": "mal",
-        "fr": "mauvais",
-        "de": "schlecht",
-        "it": "cattivo",
-        "pt": "ruim",
-        "ru": "плохой",
-        "zh": "坏的",
-        "ja": "悪い",
-        "ko": "나쁜",
-        "ar": "سيئ",
-        "hi": "बुरा"
+        "tr": "<TBD>",
+        "es": "<TBD>",
+        "fr": "<TBD>",
+        "de": "<TBD>",
+        "it": "<TBD>",
+        "pt": "<TBD>",
+        "ru": "<TBD>",
+        "zh": "<TBD>",
+        "ja": "<TBD>",
+        "ko": "<TBD>",
+        "ar": "<TBD>",
+        "hi": "<TBD>"
       }
     }
   ]

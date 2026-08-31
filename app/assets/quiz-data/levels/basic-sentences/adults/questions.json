@@ -1,19 +1,276 @@
 {
   "levelQuestions": [
     {
-      "template": "DialogueCompletion",
+      "template": "SentenceBuilder",
       "genders": "f-m",
+      "audio_file1": "whose-coat-is-this-convo",
+      "audio_file2": "i-dont-know-it-is-not-mine-convo",
       "questionData": {
-        "line1": "Thank you for your help.",
+        "line1": "Whose coat is this?",
+        "correct_order": "I don't know. It is not mine.",
+        "image_file_name": "whose-coat-is-this",
+        "teaching_targets": [
+          "whose",
+          "I don't know",
+          "It is not",
+          "mine"
+        ]
+      }
+    },
+    {
+      "template": "ClozeSequence",
+      "genders": "m-f",
+      "audio_file1": "are-these-your-tickets-convo",
+      "audio_file2": "they-are-not-these-are-for-our-friends-convo",
+      "questionData": {
+        "line1": "Are these your tickets?",
+        "sentence": "No, _____ _____ not. These are _____ our friends.",
+        "answer": [
+          "they",
+          "are",
+          "for"
+        ],
+        "distractors": [
+          "those",
+          "from",
+          "with",
+          "about"
+        ],
+        "image_file_name": "are-these-your-tickets",
+        "teaching_targets": [
+          "They are not",
+          "These are",
+          "for"
+        ]
+      }
+    },
+    {
+      "template": "VideoConversation",
+      "videoFile": "basic-sentences1",
+      "start_at": "00:00.0",
+      "pause_at": "00:02.3",
+      "answer_until": "00:04.0",
+      "audio_file1": "basic-sentences1-q1-setup",
+      "audio_file2": "basic-sentences1-q1-confirm",
+      "questionData": {
+        "answer_type": "DialogueCompletion",
+        "answer": "It is nine o'clock.",
+        "distractors": [
+          "They are nine o'clock.",
+          "It are nine o'clock.",
+          "There are nine o'clock."
+        ],
+        "teaching_targets": [
+          "Excuse me",
+          "what time is it?"
+        ]
+      }
+    },
+    {
+      "template": "VideoConversation",
+      "videoFile": "basic-sentences1",
+      "start_at": "00:04.0",
+      "pause_at": "00:06.9",
+      "answer_until": "00:10.3",
+      "audio_file1": "basic-sentences1-q2-setup",
+      "audio_file2": "basic-sentences1-q2-confirm",
+      "questionData": {
+        "answer_type": "ClozeSequence",
+        "sentence": "Yes, _____ _____. And there _____ many taxis nearby.",
+        "answer": [
+          "there",
+          "is",
+          "are"
+        ],
+        "distractors": [
+          "here",
+          "am",
+          "be"
+        ],
+        "teaching_targets": [
+          "There is",
+          "There are",
+          "here",
+          "to go"
+        ]
+      }
+    },
+    {
+      "template": "VideoConversation",
+      "videoFile": "basic-sentences1",
+      "start_at": "00:10.3",
+      "pause_at": "00:14.9",
+      "answer_until": "00:16.5",
+      "audio_file1": "basic-sentences1-q3-setup",
+      "audio_file2": "basic-sentences1-q3-confirm",
+      "questionData": {
+        "answer_type": "DialogueCompletion",
+        "answer": "What is this?",
+        "distractors": [
+          "What are these?",
+          "Where is this?",
+          "Who is this?"
+        ],
+        "teaching_targets": [
+          "When",
+          "look at",
+          "What is this?"
+        ]
+      }
+    },
+    {
+      "template": "VideoConversation",
+      "videoFile": "basic-sentences1",
+      "start_at": "00:16.5",
+      "pause_at": "00:18.5",
+      "answer_until": "00:18.5",
+      "audio_file1": "basic-sentences1-q4-setup",
+      "questionData": {
+        "answer_type": "AppearDisappear",
+        "words": "This is the train schedule.",
+        "distractors": [
+          "These",
+          "are",
+          "not"
+        ],
+        "teaching_targets": [
+          "This is"
+        ]
+      }
+    },
+    {
+      "template": "VideoConversation",
+      "videoFile": "basic-sentences1",
+      "start_at": "00:18.5",
+      "pause_at": "00:19.4",
+      "answer_until": "00:21.5",
+      "audio_file1": "basic-sentences1-q5-setup",
+      "audio_file2": "basic-sentences1-q5-confirm",
+      "questionData": {
+        "answer_type": "DialogueCompletion",
+        "answer": "No problem.",
+        "distractors": [
+          "It is not mine.",
+          "There are many taxis.",
+          "This is the train schedule."
+        ],
+        "teaching_targets": []
+      }
+    },
+    {
+      "template": "VideoConversation",
+      "videoFile": "basic-sentences2",
+      "start_at": "00:00.0",
+      "pause_at": "00:02.5",
+      "answer_until": "00:05.4",
+      "audio_file1": "basic-sentences2-q1-setup",
+      "audio_file2": "basic-sentences2-q1-confirm",
+      "questionData": {
+        "answer_type": "ClozeSequence",
+        "sentence": "_____ _____ _____. Who is coming with us?",
+        "answer": [
+          "I",
+          "am",
+          "ready"
+        ],
+        "distractors": [
+          "are",
+          "is",
+          "be"
+        ],
+        "teaching_targets": [
+          "Are you ready?",
+          "to go",
+          "Who",
+          "with"
+        ]
+      }
+    },
+    {
+      "template": "VideoConversation",
+      "videoFile": "basic-sentences2",
+      "start_at": "00:05.4",
+      "pause_at": "00:12.9",
+      "answer_until": "00:12.9",
+      "audio_file1": "basic-sentences2-q2-setup",
+      "questionData": {
+        "answer_type": "AppearDisappear",
+        "words": "This is a gift for them. They will like it.",
+        "distractors": [
+          "these",
+          "are",
+          "with"
+        ],
+        "teaching_targets": [
+          "now",
+          "to like"
+        ]
+      }
+    },
+    {
+      "template": "VideoConversation",
+      "videoFile": "basic-sentences2",
+      "start_at": "00:12.9",
+      "pause_at": "00:14.8",
+      "answer_until": "00:16.3",
+      "audio_file1": "basic-sentences2-q3-setup",
+      "audio_file2": "basic-sentences2-q3-confirm",
+      "questionData": {
+        "answer_type": "DialogueCompletion",
         "answer": "You are welcome.",
         "distractors": [
-          "I am sorry.",
-          "That is very hard for me.",
-          "See you later."
+          "I am ready.",
+          "There is a note.",
+          "No, it is not mine."
+        ],
+        "teaching_targets": [
+          "You are welcome"
         ]
-      },
-      "audio_file1": "thank-you-for-your-help-convo",
-      "audio_file2": "you-are-welcome-convo"
+      }
+    },
+    {
+      "template": "SentenceBuilder",
+      "genders": "f-m",
+      "audio_file1": "whose-coat-is-this-convo",
+      "audio_file2": "i-dont-know-it-is-not-mine-convo",
+      "questionData": {
+        "line1": "Whose coat is this?",
+        "correct_order": "I don't know. It is not mine.",
+        "image_file_name": "whose-coat-is-this",
+        "teaching_targets": [
+          "whose",
+          "I don't know",
+          "It is not",
+          "mine"
+        ]
+      }
+    },
+    {
+      "template": "ClozeSequence",
+      "genders": "m-f",
+      "audio_file1": "are-these-your-tickets-convo",
+      "audio_file2": "they-are-not-these-are-for-our-friends-convo",
+      "questionData": {
+        "line1": "Are these your tickets?",
+        "sentence": "No, _____ _____ not. These are _____ our friends.",
+        "answer": [
+          "they",
+          "are",
+          "for"
+        ],
+        "distractors": [
+          "those",
+          "from",
+          "with",
+          "about"
+        ],
+        "image_file_name": "are-these-your-tickets",
+        "teaching_targets": [
+          "They are not",
+          "These are",
+          "for"
+        ]
+      }
     },
     {
       "template": "WordPairs",
@@ -96,170 +353,106 @@
             "ar": "ـنا",
             "hi": "हमारा"
           }
-        ]
-      }
-    },
-    {
-      "template": "DialogueCompletion",
-      "genders": "f-m",
-      "questionData": {
-        "image_file_name": "pencil",
-        "line1": "What is this?",
-        "answer": "This is a pencil",
-        "distractors": [
-          "That is a pencil",
-          "I have a pencil.",
-          "These are pencils."
-        ]
-      },
-      "audio_file1": "what-is-this-convo",
-      "audio_file2": "this-is-a-pencil-convo"
-    },
-    {
-      "template": "DialogueCompletion",
-      "genders": "f-m",
-      "questionData": {
-        "line1": "You are late again!",
-        "answer": "I am sorry.",
-        "distractors": [
-          "I am busy.",
-          "You are welcome.",
-          "I am happy."
-        ]
-      },
-      "audio_file1": "you-are-late-again-convo",
-      "audio_file2": "i-am-sorry-convo"
-    },
-    {
-      "template": "SentenceBuilder",
-      "genders": "m",
-      "questionData": {
-        "correct_order": "I go to school with my friend."
-      },
-      "audio_file": "i-go-to-school-with-my-friend-convo"
-    },
-    {
-      "template": "AppearDisappear",
-      "genders": "f",
-      "questionData": {
-        "words": "I like my mom very much",
-        "distractors": [
-          "see",
-          "want",
-          "know",
-          "help"
-        ]
-      },
-      "audio_file": "i-like-my-mom-very-much-convo"
-    },
-    {
-      "template": "ConvoTemplate-1",
-      "genders": "f-m",
-      "questionData": {
-        "line1": "_____ do we meet?",
-        "line2": "Let's meet at 2 o'clock.",
-        "answer": "When",
-        "distractors": [
-          "Where",
-          "There",
-          "How"
-        ]
-      },
-      "audio_file1": "when-do-we-meet-convo",
-      "audio_file2": "let-s-meet-at-2-o-clock-convo"
-    },
-    {
-      "template": "AppearDisappear",
-      "genders": "f",
-      "audio_file": "where-is-the-bathroom-convo",
-      "questionData": {
-        "words": "Where is the bathroom?",
-        "distractors": [
-          "how",
-          "What",
-          "bedroom",
-          "kitchen"
-        ]
-      }
-    },
-    {
-      "template": "ConvoTemplate-1",
-      "genders": "m-f",
-      "questionData": {
-        "line1": "Is ____ a bus stop near here?",
-        "line2": "____ is no bus stop near here.",
-        "answer": "there",
-        "distractors": [
-          "that",
-          "it",
-          "this"
-        ]
-      },
-      "audio_file1": "is-there-a-bus-stop-near-here-convo",
-      "audio_file2": "there-is-no-bus-stop-near-here-convo"
-    },
-    {
-      "template": "AppearDisappear",
-      "genders": "m",
-      "questionData": {
-        "words": "There are many books in the library",
-        "distractors": [
-          "bookstore",
-          "is",
-          "a",
-          "school"
-        ]
-      },
-      "audio_file": "there-are-many-books-in-the-library-convo"
-    },
-    {
-      "template": "ConvoTemplate-1",
-      "genders": "m-f",
-      "questionData": {
-        "line1": "Excuse me, ____?",
-        "line2": "It is 10 o'clock.",
-        "answer": "What time is it?",
-        "distractors": [
-          "What is this?",
-          "Where is the bathroom?",
-          "What is your name?"
-        ]
-      },
-      "audio_file1": "excuse-me-what-time-is-it-convo",
-      "audio_file2": "it-is-10-o-clock-convo"
-    },
-    {
-      "template": "ClozeSequence",
-      "genders": "m",
-      "questionData": {
-        "sentence": "I ___ my dad every day",
-        "answer": [
-          "see"
         ],
-        "distractors": [
-          "sees",
-          "am see",
-          "are seeing"
+        "teaching_targets": [
+          "my",
+          "your",
+          "his/her",
+          "their",
+          "our"
         ]
       }
     },
     {
-      "template": "ClozeSequence",
-      "genders": "m",
+      "template": "WordPairs",
       "questionData": {
-        "sentence": "She _____ the weather is _____.",
-        "answer": [
-          "says",
-          "bad"
+        "english_words": [
+          "I",
+          "you",
+          "he/she/it",
+          "they",
+          "we"
         ],
-        "distractors": [
-          "has",
-          "likes",
-          "good",
-          "cold"
+        "translations": [
+          {
+            "tr": "ben",
+            "es": "yo",
+            "fr": "je",
+            "de": "ich",
+            "it": "io",
+            "pt": "eu",
+            "ru": "я",
+            "zh": "我",
+            "ja": "私",
+            "ko": "나",
+            "ar": "أنا",
+            "hi": "मैं"
+          },
+          {
+            "tr": "sen",
+            "es": "tú",
+            "fr": "tu",
+            "de": "du",
+            "it": "tu",
+            "pt": "você",
+            "ru": "ты",
+            "zh": "你",
+            "ja": "あなた",
+            "ko": "너",
+            "ar": "أنت",
+            "hi": "आप"
+          },
+          {
+            "tr": "o",
+            "es": "él / ella / eso",
+            "fr": "il / elle / ça",
+            "de": "er / sie / es",
+            "it": "lui / lei / esso",
+            "pt": "ele / ela / isso",
+            "ru": "он / она / оно",
+            "zh": "他 / 她 / 它",
+            "ja": "彼 / 彼女 / それ",
+            "ko": "그 / 그녀 / 그것",
+            "ar": "هو / هي / هو لغير العاقل",
+            "hi": "वह / यह"
+          },
+          {
+            "tr": "onlar",
+            "es": "ellos / ellas",
+            "fr": "ils / elles",
+            "de": "sie",
+            "it": "loro",
+            "pt": "eles / elas",
+            "ru": "они",
+            "zh": "他们 / 她们",
+            "ja": "彼ら / 彼女たち",
+            "ko": "그들",
+            "ar": "هم / هن",
+            "hi": "वे"
+          },
+          {
+            "tr": "biz",
+            "es": "nosotros",
+            "fr": "nous",
+            "de": "wir",
+            "it": "noi",
+            "pt": "nós",
+            "ru": "мы",
+            "zh": "我们",
+            "ja": "私たち",
+            "ko": "우리",
+            "ar": "نحن",
+            "hi": "हम"
+          }
+        ],
+        "teaching_targets": [
+          "I",
+          "you",
+          "he/she/it",
+          "they",
+          "we"
         ]
-      },
-      "audio_file": "she-says-the-weather-is-bad-convo"
+      }
     }
   ]
 }

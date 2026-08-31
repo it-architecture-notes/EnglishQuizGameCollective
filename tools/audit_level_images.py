@@ -22,7 +22,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 LEVELS_DIR = ROOT / "app" / "assets" / "quiz-data" / "levels"
-OUTPUT = ROOT / "cursor-claude-common" / "output" / "image-folder-audit.md"
+OUTPUT = ROOT / "all-ai-common" / "output" / "image-folder-audit.md"
 
 IMAGE_SUFFIXES = {".png", ".jpg", ".jpeg", ".webp"}
 FLAVORS = ("adults", "kids")

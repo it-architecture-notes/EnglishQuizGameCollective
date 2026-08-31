@@ -78,11 +78,11 @@ def main() -> int:
     root = repo_root()
     default_oxford = (
         root
-        / "cursor-claude-common/references/remove-word-list-references/3000 words oxford.txt"
+        / "all-ai-common/references/remove-word-list-references/3000 words oxford.txt"
     )
     default_nouns = (
         root
-        / "cursor-claude-common/references/remove-word-list-references/300 noun words.json"
+        / "all-ai-common/references/remove-word-list-references/300 noun words.json"
     )
 
     p = argparse.ArgumentParser(description=__doc__)

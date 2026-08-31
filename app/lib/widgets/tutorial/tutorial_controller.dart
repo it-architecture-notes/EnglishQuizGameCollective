@@ -25,6 +25,7 @@ class TutorialController extends ChangeNotifier {
   final String tutorialId;
 
   bool _loaded = false;
+  bool _disposed = false;
 
   String? _activeStepKey;
   final Set<String> _shownStepKeys = {};
@@ -40,8 +41,15 @@ class TutorialController extends ChangeNotifier {
       : config.steps[_activeStepKey]!.characterAsset;
 
   Future<void> load() async {
+    if (_disposed) return;
     _loaded = true;
     notifyListeners();
+  }
+
+  @override
+  void dispose() {
+    _disposed = true;
+    super.dispose();
   }
 
   bool get _shouldRun => config.enabled && _loaded;
@@ -64,7 +72,16 @@ class TutorialController extends ChangeNotifier {
     final completer = Completer<void>();
     _beforePlaybackCompleter = completer;
     _activeStepKey = stepKey;
-    notifyListeners();
+    // Deferred: this is called from VideoConversationQuizBody.initState()'s pre-await
+    // prefix, which runs synchronously while that widget is being mounted inside its
+    // parent LayoutBuilder's build/layout callback. A synchronous notifyListeners() here
+    // reaches the tutorial overlay's AnimatedBuilder (elsewhere in the tree, not an
+    // ancestor of the mounting widget) and throws "setState() called during build".
+    // Posting it one frame later keeps the state change (_activeStepKey, above) instant
+    // but pushes the rebuild past the current build phase.
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      if (!_disposed) notifyListeners();
+    });
     return completer.future;
   }
 

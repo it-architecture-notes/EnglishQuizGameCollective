@@ -43,6 +43,7 @@ class AppearDisappearQuestionData {
   const AppearDisappearQuestionData({
     required this.words,
     required this.distractors,
+    this.line1,
     this.displayDuration = 1.0,
     this.introPause = 2.0,
     this.imageName,
@@ -53,6 +54,9 @@ class AppearDisappearQuestionData {
 
   final List<String> words;
   final List<String> distractors;
+
+  /// Optional conversational prompt shown above the recall sentence.
+  final String? line1;
   final double displayDuration;
 
   /// Pause (seconds) with empty boxes before word reveal starts.
@@ -74,6 +78,7 @@ class ClozeSequenceQuestionData {
     required this.answers,
     required this.distractors,
     this.imageName,
+    this.line1,
     this.englishToTranslate = const [],
     this.localTranslation = const {},
     this.trOk = false,
@@ -86,6 +91,11 @@ class ClozeSequenceQuestionData {
 
   /// Optional image basename under the level folder. Null = no image.
   final String? imageName;
+
+  /// Optional spoken prompt line shown above the sentence (e.g. an image question's opening
+  /// line, "Are these your tickets?"). Null for the common case of a bare cloze sentence with
+  /// no separate prompt — most ClozeSequence rows across the app don't set this.
+  final String? line1;
   final List<String> englishToTranslate;
   final Map<String, List<String>> localTranslation;
 
@@ -135,6 +145,7 @@ class SentenceBuilderQuestionData {
   const SentenceBuilderQuestionData({
     required this.correctOrder,
     this.imageName,
+    this.line1,
     this.englishToTranslate = const [],
     this.localTranslation = const {},
     this.trOk = false,
@@ -145,6 +156,10 @@ class SentenceBuilderQuestionData {
 
   /// Optional image basename under the level folder. Null = no image.
   final String? imageName;
+
+  /// Optional spoken prompt line shown above the tile grid (e.g. an image question's opening
+  /// line, "Whose coat is this?"). Null for the common case of no separate prompt.
+  final String? line1;
   final List<String> englishToTranslate;
   final Map<String, List<String>> localTranslation;
 
@@ -284,7 +299,6 @@ class VideoConversationQuestionData {
     required this.startAt,
     required this.pauseAt,
     this.answerUntil,
-    this.pronouncedConvoUntilPause = const [],
     this.choiceData,
     this.sequenceData,
     this.clozeData,
@@ -297,9 +311,6 @@ class VideoConversationQuestionData {
   /// Timestamp where the post-pause answer/confirmation line ends.
   final Duration? answerUntil;
 
-  /// Lines spoken in the video up to (or, for a listen-then-recall round, including) the pause —
-  /// shown as a "conversation so far" reference once the answer panel appears.
-  final List<String> pronouncedConvoUntilPause;
   final VideoChoiceAnswerData? choiceData;
   final VideoSequenceAnswerData? sequenceData;
   final VideoClozeAnswerData? clozeData;
@@ -568,9 +579,14 @@ class LevelConfig {
         'AppearDisappear expects at least 1 target word',
       );
     }
+    final rawLine1 = data['line1'];
+    final line1 = rawLine1 is String && rawLine1.trim().isNotEmpty
+        ? rawLine1.trim()
+        : null;
     return AppearDisappearQuestionData(
       words: words,
       distractors: distractors,
+      line1: line1,
       displayDuration: (data['display_duration'] as num?)?.toDouble() ?? 1.0,
       introPause: (data['intro_pause'] as num?)?.toDouble() ?? 2.0,
       imageName: _optionalImageName(data),
@@ -619,11 +635,16 @@ class LevelConfig {
         'ClozeSequence: ${answers.length} answers but $blankCount blanks in sentence',
       );
     }
+    final rawLine1 = data['line1'];
+    final line1 = rawLine1 is String && rawLine1.trim().isNotEmpty
+        ? rawLine1.trim()
+        : null;
     return ClozeSequenceQuestionData(
       sentence: sentence,
       answers: answers,
       distractors: distractors,
       imageName: _optionalImageName(data),
+      line1: line1,
       englishToTranslate: _stringList(data['english_to_translate']),
       localTranslation: _stringListMap(data['local_translation']),
       trOk: (data['tr_ok'] as bool?) ?? false,
@@ -663,9 +684,14 @@ class LevelConfig {
         'SentenceBuilder: correct_order must have at least 2 tokens',
       );
     }
+    final rawLine1 = data['line1'];
+    final line1 = rawLine1 is String && rawLine1.trim().isNotEmpty
+        ? rawLine1.trim()
+        : null;
     return SentenceBuilderQuestionData(
       correctOrder: correctOrder,
       imageName: _optionalImageName(data),
+      line1: line1,
       englishToTranslate: _stringList(data['english_to_translate']),
       localTranslation: _stringListMap(data['local_translation']),
       trOk: (data['tr_ok'] as bool?) ?? false,
@@ -748,8 +774,8 @@ class LevelConfig {
     );
   }
 
-  /// Parses [VideoConversation]: `videoFile`/`start_at`/`pause_at`/`pronouncedConvoUntilPause`
-  /// live at the row root (not inside `questionData`); `questionData.answer_type` selects
+  /// Parses [VideoConversation]: `videoFile`/`start_at`/`pause_at` live at the row root (not
+  /// inside `questionData`); `questionData.answer_type` selects
   /// exactly one of [VideoChoiceAnswerData]/[VideoSequenceAnswerData]/[VideoClozeAnswerData].
   static VideoConversationQuestionData _parseVideoConversation(
     Map<String, dynamic> json,
@@ -769,8 +795,6 @@ class LevelConfig {
     final answerUntil = json['answer_until'] is String
         ? _parseTimestamp(json['answer_until'] as String)
         : null;
-    final pronouncedConvoUntilPause =
-        _stringList(json['pronouncedConvoUntilPause']);
 
     final answerType = data['answer_type'] as String? ?? '';
     VideoChoiceAnswerData? choiceData;
@@ -820,7 +844,6 @@ class LevelConfig {
       startAt: startAt,
       pauseAt: pauseAt,
       answerUntil: answerUntil,
-      pronouncedConvoUntilPause: pronouncedConvoUntilPause,
       choiceData: choiceData,
       sequenceData: sequenceData,
       clozeData: clozeData,

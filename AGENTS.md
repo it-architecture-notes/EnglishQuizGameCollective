@@ -1,7 +1,7 @@
 # Agent instructions
 
 This repository uses a shared worktree that may be edited concurrently by the user, Claude,
-Cursor, and Codex. Before making changes, read `cursor-claude-common/rules/rules.md` completely
+Codex, and Antigravity. Before making changes, read `all-ai-common/rules/rules.md` completely
 and inspect `git status --short`.
 
 ## Non-destructive shared-worktree rules
@@ -19,4 +19,4 @@ and inspect `git status --short`.
   stop on any unexpected path or large rewrite.
 
 The canonical detailed rules, including the 2026-08-15 data-loss incident and required recovery
-precautions, are in `cursor-claude-common/rules/rules.md` and take precedence over this summary.
+precautions, are in `all-ai-common/rules/rules.md` and take precedence over this summary.

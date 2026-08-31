@@ -311,6 +311,8 @@ flutter:
     - assets/quiz-data/levels/common-words-11/
     - assets/quiz-data/levels/common-words-11/adults/
     - assets/quiz-data/levels/common-words-11/kids/
+    - assets/quiz-data/levels/testing-responsive-design/
+    - assets/quiz-data/levels/testing-responsive-design/adults/
     - assets/audio/kids/
     - assets/audio/adults/
 

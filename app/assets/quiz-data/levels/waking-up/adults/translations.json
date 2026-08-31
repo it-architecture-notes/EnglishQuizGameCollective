@@ -105,7 +105,7 @@
     {
       "english_word": "to stretch",
       "translations": {
-        "tr": "esnemek",
+        "tr": "gerinmek",
         "es": "estirarse",
         "fr": "s'étirer",
         "de": "sich strecken",
@@ -137,20 +137,20 @@
       }
     },
     {
-      "english_word": "now",
+      "english_word": "to ring",
       "translations": {
-        "tr": "şimdi",
-        "es": "ahora",
-        "fr": "maintenant",
-        "de": "jetzt",
-        "it": "ora",
-        "pt": "agora",
-        "ru": "сейчас",
-        "zh": "现在",
-        "ja": "今",
-        "ko": "지금",
-        "ar": "الآن",
-        "hi": "अभी"
+        "tr": "çalmak",
+        "es": "sonar",
+        "fr": "sonner",
+        "de": "klingeln",
+        "it": "suonare",
+        "pt": "tocar",
+        "ru": "звонить",
+        "zh": "响",
+        "ja": "鳴る",
+        "ko": "울리다",
+        "ar": "يرن",
+        "hi": "बजना"
       }
     },
     {
@@ -175,10 +175,10 @@
       "translations": {
         "tr": "ayağa kalkmak",
         "es": "ponerse de pie",
-        "fr": "se lever",
-        "de": "aufstehen",
-        "it": "alzarsi",
-        "pt": "levantar-se",
+        "fr": "se mettre debout",
+        "de": "sich erheben",
+        "it": "mettersi in piedi",
+        "pt": "pôr-se de pé",
         "ru": "встать",
         "zh": "站起来",
         "ja": "立ち上がる",
@@ -202,6 +202,57 @@
         "ko": "빨리",
         "ar": "بسرعة",
         "hi": "जल्दी से"
+      }
+    },
+    {
+      "english_word": "get ready",
+      "translations": {
+        "tr": "hazırlanmak",
+        "es": "prepararse",
+        "fr": "se préparer",
+        "de": "sich fertig machen",
+        "it": "prepararsi",
+        "pt": "preparar-se",
+        "ru": "готовиться",
+        "zh": "准备好",
+        "ja": "準備する",
+        "ko": "준비하다",
+        "ar": "الاستعداد",
+        "hi": "तैयार होना"
+      }
+    },
+    {
+      "english_word": "never",
+      "translations": {
+        "tr": "asla",
+        "es": "nunca",
+        "fr": "jamais",
+        "de": "nie",
+        "it": "mai",
+        "pt": "nunca",
+        "ru": "никогда",
+        "zh": "从不",
+        "ja": "決して〜ない",
+        "ko": "절대",
+        "ar": "أبدا",
+        "hi": "कभी नहीं"
+      }
+    },
+    {
+      "english_word": "Good Night",
+      "translations": {
+        "tr": "İyi geceler",
+        "es": "Buenas noches",
+        "fr": "Bonne nuit",
+        "de": "Gute Nacht",
+        "it": "Buonanotte",
+        "pt": "Boa noite",
+        "ru": "Спокойной ночи",
+        "zh": "晚安",
+        "ja": "おやすみなさい",
+        "ko": "안녕히 주무세요",
+        "ar": "تصبح على خير",
+        "hi": "शुभ रात्रि"
       }
     }
   ]

@@ -26,17 +26,32 @@ class McqPillAnswerButton extends StatelessWidget {
     required this.label,
     required this.state,
     required this.onTap,
+    this.fontSize,
+    this.minHeight,
+    this.maxHeight,
+    this.width,
   });
 
   final String label;
   final McqAnswerState state;
   final VoidCallback? onTap;
 
+  /// Optional per-call overrides used by templates that run their own content-driven
+  /// shrink/grow logic (e.g. `DialogueCompletionQuizBody`). Defaulting to the static values
+  /// below keeps every other caller's rendering byte-identical.
+  final double? fontSize;
+  final double? minHeight;
+  final double? maxHeight;
+  final double? width;
+
   // Deliberately above Material's bare 48pt minimum touch target — a chunkier button reads as
   // "filled in" rather than sparse, and paired with centering (not spaceEvenly) the parent
   // Column, less leftover space needs absorbing as gaps between buttons in the first place.
   static const _minHeight = 52.0;
   static const _maxHeight = 72.0;
+  static const _cornerRadius = 16.0;
+  static const wrongStateIconSize = 26.0;
+  static const wrongStateIconGap = 6.0;
 
   @override
   Widget build(BuildContext context) {
@@ -56,12 +71,15 @@ class McqPillAnswerButton extends StatelessWidget {
       border = AnswerPalette.revealedBorder;
       fg = AnswerPalette.revealedFg;
     }
+    final effectiveMinHeight = minHeight ?? _minHeight;
+    final effectiveMaxHeight = maxHeight ?? _maxHeight;
+    final effectiveFontSize = fontSize ?? 18.0;
     return SizedBox(
-      width: double.infinity,
+      width: width ?? double.infinity,
       child: ConstrainedBox(
-        constraints: const BoxConstraints(
-          minHeight: _minHeight,
-          maxHeight: _maxHeight,
+        constraints: BoxConstraints(
+          minHeight: effectiveMinHeight,
+          maxHeight: effectiveMaxHeight,
         ),
         child: ElevatedButton(
           onPressed: onTap,
@@ -71,46 +89,52 @@ class McqPillAnswerButton extends StatelessWidget {
             side: BorderSide(color: border),
             disabledBackgroundColor: bg,
             disabledForegroundColor: fg,
-            minimumSize: const Size(48, _minHeight),
+            minimumSize: Size(48, effectiveMinHeight),
             padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 8),
             shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(22),
+              borderRadius: BorderRadius.circular(_cornerRadius),
             ),
             elevation: 0,
             shadowColor: Colors.transparent,
-            textStyle:
-                const TextStyle(fontSize: 18, fontWeight: FontWeight.w500),
+            textStyle: TextStyle(
+              fontSize: effectiveFontSize,
+              fontWeight: FontWeight.w500,
+            ),
           ),
           child: state == McqAnswerState.wrong
-              ? SizedBox(
-                  width: double.infinity,
-                  child: Stack(
-                    alignment: Alignment.center,
-                    children: [
-                      Text(
+              ? Row(
+                  mainAxisSize: MainAxisSize.max,
+                  children: [
+                    Container(
+                      width: wrongStateIconSize,
+                      height: wrongStateIconSize,
+                      decoration: const BoxDecoration(
+                        color: AnswerPalette.wrongBorder,
+                        shape: BoxShape.circle,
+                      ),
+                      child: const Icon(
+                        Icons.close,
+                        size: 18,
+                        color: Colors.white,
+                      ),
+                    ),
+                    const SizedBox(width: wrongStateIconGap),
+                    // Centers within the space left after the icon+gap, rather than the full
+                    // button width, so the icon can never overlap the label — the previous
+                    // Stack(alignment: center) + Align(centerLeft) overlay assumed generous
+                    // leftover space around short centered text, which held for full-width
+                    // buttons but breaks once a button is sized tightly to its own text (the
+                    // shared-width-from-widest-option rule in DialogueCompletionQuizBody has
+                    // zero such slack by construction).
+                    Expanded(
+                      child: Text(
                         label,
                         textAlign: TextAlign.center,
                         maxLines: 2,
                         overflow: TextOverflow.ellipsis,
                       ),
-                      Align(
-                        alignment: Alignment.centerLeft,
-                        child: Container(
-                          width: 26,
-                          height: 26,
-                          decoration: const BoxDecoration(
-                            color: AnswerPalette.wrongBorder,
-                            shape: BoxShape.circle,
-                          ),
-                          child: const Icon(
-                            Icons.close,
-                            size: 18,
-                            color: Colors.white,
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
+                    ),
+                  ],
                 )
               : Text(
                   label,

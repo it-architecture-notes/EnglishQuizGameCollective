@@ -4,12 +4,23 @@
 /.claude/plans/
 /.cursor/plans/
 /.cursor/reference-docs/
-/cursor-claude-common/plans/
-/cursor-claude-common/output/
-/cursor-claude-common/references/distr-references/
+/all-ai-common/plans/
+/all-ai-common/output/
+/all-ai-common/references/distr-references/
 /tools/gemini_tts/.env
 /tools/gemini_tts/.venv/
 __pycache__/
+# Image files outside app/ are scratch/reference-only, never shipped assets.
+*.png
+*.jpg
+*.jpeg
+*.gif
+*.webp
+!/app/**/*.png
+!/app/**/*.jpg
+!/app/**/*.jpeg
+!/app/**/*.gif
+!/app/**/*.webp
 # -----------------------------------------------------------------------------
 # App (Flutter) – build, tools, IDE, OS
 # -----------------------------------------------------------------------------

@@ -1,156 +1,79 @@
 {
   "levelQuestions": [
     {
-      "template": "ClozeSequence",
-      "genders": "f",
+      "template": "VideoConversation",
+      "videoFile": "waking-up1",
+      "start_at": "00:00.0",
+      "pause_at": "00:03.3",
+      "answer_until": "00:05.4",
+      "audio_file1": "waking-up1-q1-setup",
+      "audio_file2": "waking-up1-q1-confirm",
       "questionData": {
-        "sentence": "Time to _____ ! You are _____ for the bus.",
+        "answer_type": "ClozeSequence",
+        "sentence": "I don't want to _____.",
         "answer": [
-          "get up",
-          "late"
-        ],
-        "distractors": [
-          "look out",
-          "start",
-          "fall"
-        ]
-      },
-      "audio_file": "time-to-get-up-you-are-late-for-the-bus-convo"
-    },
-    {
-      "template": "ClozeSequence",
-      "genders": "m",
-      "questionData": {
-        "sentence": "I ___ my eyes when I ____ in the morning.",
-        "answer": [
-          "open",
           "wake up"
         ],
         "distractors": [
-          "look out",
-          "go to sleep",
-          "have",
-          "find"
-        ]
-      },
-      "audio_file": "i-open-my-eyes-when-i-wake-up-in-the-morning-convo"
-    },
-    {
-      "template": "ClozeSequence",
-      "genders": "f",
-      "questionData": {
-        "sentence": "Great job. Now, _____ your arms.",
-        "answer": "stretch",
-        "distractors": [
-          "stretches",
-          "stretched",
-          "stretching"
+          "sleep",
+          "stand up",
+          "stretch"
         ]
       }
     },
     {
-      "template": "SentenceBuilder",
-      "genders": "m",
+      "template": "VideoConversation",
+      "videoFile": "waking-up1",
+      "start_at": "00:05.4",
+      "pause_at": "00:08.3",
+      "answer_until": "00:10.2",
+      "audio_file1": "waking-up1-q2-setup",
+      "audio_file2": "waking-up1-q2-confirm",
       "questionData": {
-        "correct_order": "I stand up quickly."
+        "answer_type": "DialogueCompletion",
+        "answer": "But I want to sleep.",
+        "distractors": [
+          "But I want to stand up.",
+          "But I want to open the window.",
+          "But I want to stretch."
+        ]
       }
     },
     {
-      "template": "DialogueCompletion",
-      "genders": "f-m",
+      "template": "VideoConversation",
+      "videoFile": "waking-up1",
+      "start_at": "00:10.2",
+      "pause_at": "00:12.6",
+      "answer_until": "00:12.6",
+      "audio_file1": "waking-up1-q3-setup",
       "questionData": {
-        "line1": "Are you still in bed?",
-        "answer": "No, I am up now.",
+        "answer_type": "AppearDisappear",
+        "words": "Please get ready quickly. You are late.",
         "distractors": [
-          "Yes, I like tea.",
-          "No, I am busy.",
-          "Yes, the bed is soft."
+          "early",
+          "slowly",
+          "now"
         ]
-      },
-      "audio_file1": "are-you-still-in-bed-convo",
-      "audio_file2": "no-i-am-up-now-convo"
+      }
     },
     {
-      "template": "WordPairs",
+      "template": "VideoConversation",
+      "videoFile": "waking-up1",
+      "start_at": "00:12.6",
+      "pause_at": "00:15.8",
+      "answer_until": "00:22.1",
+      "audio_file1": "waking-up1-q4-setup",
+      "audio_file2": "waking-up1-q4-confirm",
       "questionData": {
-        "english_words": [
-          "today",
-          "tomorrow",
-          "yesterday",
-          "in two days",
-          "two days before"
+        "answer_type": "ClozeSequence",
+        "sentence": "Good. Please _____ the curtains and the window.",
+        "answer": [
+          "open"
         ],
-        "translations": [
-          {
-            "tr": "bugün",
-            "es": "hoy",
-            "fr": "aujourd'hui",
-            "de": "heute",
-            "it": "oggi",
-            "pt": "hoje",
-            "ru": "сегодня",
-            "zh": "今天",
-            "ja": "今日",
-            "ko": "오늘",
-            "ar": "اليوم",
-            "hi": "आज"
-          },
-          {
-            "tr": "yarın",
-            "es": "mañana",
-            "fr": "demain",
-            "de": "morgen",
-            "it": "domani",
-            "pt": "amanhã",
-            "ru": "завтра",
-            "zh": "明天",
-            "ja": "明日",
-            "ko": "내일",
-            "ar": "غدا",
-            "hi": "कल"
-          },
-          {
-            "tr": "dün",
-            "es": "ayer",
-            "fr": "hier",
-            "de": "gestern",
-            "it": "ieri",
-            "pt": "ontem",
-            "ru": "вчера",
-            "zh": "昨天",
-            "ja": "昨日",
-            "ko": "어제",
-            "ar": "أمس",
-            "hi": "कल"
-          },
-          {
-            "tr": "iki gün sonra",
-            "es": "en dos días",
-            "fr": "dans deux jours",
-            "de": "in zwei Tagen",
-            "it": "tra due giorni",
-            "pt": "em dois dias",
-            "ru": "через два дня",
-            "zh": "两天后",
-            "ja": "二日後",
-            "ko": "이틀 후",
-            "ar": "خلال يومين",
-            "hi": "दो दिन में"
-          },
-          {
-            "tr": "iki gün önce",
-            "es": "dos días antes",
-            "fr": "il y a deux jours",
-            "de": "vor zwei Tagen",
-            "it": "due giorni fa",
-            "pt": "dois dias antes",
-            "ru": "два дня назад",
-            "zh": "两天前",
-            "ja": "二日前",
-            "ko": "이틀 전",
-            "ar": "قبل يومين",
-            "hi": "दो दिन पहले"
-          }
+        "distractors": [
+          "close",
+          "stand",
+          "stretch"
         ]
       }
     },
@@ -158,47 +81,93 @@
       "template": "ConvoTemplate-1",
       "genders": "m-f",
       "questionData": {
-        "line1": "You look so _____ this morning!",
-        "line2": "I know, I'm so _____. I need coffee!",
-        "answer": "sleepy",
+        "line1": "Are you up yet?",
+        "line2": "No, I'm _____ in bed.",
+        "image_file_name": "still-in-bed",
+        "answer": "still",
         "distractors": [
-          "happy",
-          "nervous",
-          "ready"
+          "quickly",
+          "already",
+          "sleepy"
         ]
       },
-      "audio_file1": "you-look-so-sleepy-this-morning-convo",
-      "audio_file2": "i-know-i-m-so-sleepy-i-need-coffee-convo"
+      "audio_file1": "are-you-up-yet-convo",
+      "audio_file2": "no-im-still-in-bed-convo"
+    },
+    {
+      "template": "SentenceBuilder",
+      "genders": "f",
+      "audio_file1": "why-are-you-never-late-convo",
+      "audio_file2": "i-wake-up-early-convo",
+      "questionData": {
+        "line1": "Why are you never late?",
+        "imageName": "wake-up-early",
+        "correct_order": "I wake up early."
+      }
     },
     {
       "template": "AppearDisappear",
       "genders": "f",
+      "audio_file1": "you-look-exhausted-want-some-coffee-convo",
+      "audio_file2": "i-feel-so-sleepy-this-morning-convo",
       "questionData": {
-        "words": "Wake up early to see the sunrise.",
+        "line1": "You look exhausted. Want some coffee?",
+        "imageName": "sleepy-coffee",
+        "words": "I feel so sleepy this morning.",
         "distractors": [
-          "late",
-          "good",
-          "morning",
-          "fast"
+          "tired",
+          "awake",
+          "active"
         ]
-      },
-      "audio_file": "wake-up-early-to-see-the-sunrise-convo"
+      }
     },
     {
-      "template": "ConvoTemplate-1",
+      "template": "DialogueCompletion",
       "genders": "m-f",
+      "audio_file1": "its-already-late-are-you-still-sleeping-convo",
+      "audio_file2": "okay-im-getting-up-now-convo",
       "questionData": {
-        "line1": "Can I sleep for five more minutes?",
-        "line2": "No, get up ____!",
-        "answer": "now",
+        "line1": "It's already late, are you still sleeping?",
+        "image_file_name": "getting-up-now",
+        "answer": "Okay, I'm getting up now.",
         "distractors": [
-          "after",
-          "back",
-          "tomorrow"
+          "Okay, I'm going to sleep.",
+          "Okay, I'm opening the window.",
+          "Okay, I'm stretching."
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-2",
+      "questionData": {
+        "answer": "Good Night",
+        "imageName": "night",
+        "wrongAnswers": [
+          "good-morning",
+          "afternoon",
+          "noon"
         ]
       },
-      "audio_file1": "can-i-sleep-for-five-more-minutes-convo",
-      "audio_file2": "no-get-up-now-convo"
+      "audio_file": "good-night"
+    },
+    {
+      "template": "ClozeSequence",
+      "genders": "f",
+      "audio_file1": "i-still-feel-sleepy-convo",
+      "audio_file2": "sure-im-opening-the-window-convo",
+      "questionData": {
+        "line1": "I still feel sleepy.",
+        "imageName": "opening-window",
+        "sentence": "Sure, I am _____ the window.",
+        "answer": [
+          "opening"
+        ],
+        "distractors": [
+          "open",
+          "opens",
+          "to open"
+        ]
+      }
     }
   ]
 }

@@ -1,4 +1,15 @@
-[
+[  
+  
+  {
+    "mainLevel": 1,
+    "directoryName": "waking-up",
+    "title": "Waking Up"
+  },
+  {
+    "mainLevel": 1,
+    "directoryName": "testing-responsive-design",
+    "title": "Testing - Responsive Design"
+  },
   {
     "mainLevel": 1,
     "directoryName": "greetings",
@@ -6,13 +17,8 @@
   },
   {
     "mainLevel": 1,
-    "directoryName": "verb-to-be",
-    "title": "Verb - To Be"
-  },
-  {
-    "mainLevel": 1,
     "directoryName": "basic-sentences",
-    "title": "Basic Sentences-1"
+    "title": "Basic Sentences"
   },
   {
     "mainLevel": 1,

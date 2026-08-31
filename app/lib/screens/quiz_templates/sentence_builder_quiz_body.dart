@@ -3,8 +3,195 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 
 import '../../models/level_config.dart';
+import '../../services/question_layout_budget.dart';
 import '../../widgets/answer_palette.dart';
 import '../../widgets/audio_play_button.dart';
+import '../../widgets/debug_layout_box.dart';
+import '../../widgets/standard_question_media.dart';
+
+/// Remainder height fraction dedicated to the prompt bubble area (`line1 != null`). Flat 24%
+/// on every tier (developer-directed) — was previously tier-varying (18%-26%); now derived as
+/// the 100% remainder after the slot/tile-bank flat shares below.
+const Map<QuestionLayoutTier, double> _sentenceBuilderPromptShare = {
+  QuestionLayoutTier.phoneUltraTall: 0.24,
+  QuestionLayoutTier.phoneSuperTall: 0.24,
+  QuestionLayoutTier.phoneFlagship: 0.24,
+  QuestionLayoutTier.phoneTransition: 0.24,
+  QuestionLayoutTier.phoneClassic2to1: 0.24,
+  QuestionLayoutTier.phone16to9: 0.24,
+  QuestionLayoutTier.tablet16to9: 0.24,
+  QuestionLayoutTier.tablet16to10: 0.24,
+  QuestionLayoutTier.tablet3to2: 0.24,
+  QuestionLayoutTier.tablet4to3: 0.24,
+};
+
+/// Remainder height fraction dedicated to the Sentence Assembly Slot Area (`line1 != null`).
+/// Flat 30% on every tier (developer-directed) — was previously tier-varying (25%-28%).
+const Map<QuestionLayoutTier, double> _sentenceBuilderSlotShare = {
+  QuestionLayoutTier.phoneUltraTall: 0.30,
+  QuestionLayoutTier.phoneSuperTall: 0.30,
+  QuestionLayoutTier.phoneFlagship: 0.30,
+  QuestionLayoutTier.phoneTransition: 0.30,
+  QuestionLayoutTier.phoneClassic2to1: 0.30,
+  QuestionLayoutTier.phone16to9: 0.30,
+  QuestionLayoutTier.tablet16to9: 0.30,
+  QuestionLayoutTier.tablet16to10: 0.30,
+  QuestionLayoutTier.tablet3to2: 0.30,
+  QuestionLayoutTier.tablet4to3: 0.30,
+};
+
+/// Remainder height fraction dedicated to the Word Tile Choice Bank (`line1 != null`).
+/// Flat 46% on every tier (developer-directed) — was previously tier-varying (49%-54%).
+const Map<QuestionLayoutTier, double> _sentenceBuilderTileBankShare = {
+  QuestionLayoutTier.phoneUltraTall: 0.46,
+  QuestionLayoutTier.phoneSuperTall: 0.46,
+  QuestionLayoutTier.phoneFlagship: 0.46,
+  QuestionLayoutTier.phoneTransition: 0.46,
+  QuestionLayoutTier.phoneClassic2to1: 0.46,
+  QuestionLayoutTier.phone16to9: 0.46,
+  QuestionLayoutTier.tablet16to9: 0.46,
+  QuestionLayoutTier.tablet16to10: 0.46,
+  QuestionLayoutTier.tablet3to2: 0.46,
+  QuestionLayoutTier.tablet4to3: 0.46,
+};
+
+typedef _RowPreset = ({double height, double fontSize});
+
+/// Discrete tile presets keyed by row count (index 0 = 1 row, 1 = 2 rows, 2 = 3 rows — the
+/// agreed max before a question is considered content-design debt). Height is pinned to the
+/// 44px touch-target floor only at 3 rows; 1-row/2-row get real headroom that scales with each
+/// tier's actual available tile-bank budget (verified against `QuestionLayoutBudget` real
+/// per-tier remainder heights, not guessed) — tablets get meaningfully larger, comfortable
+/// tiles instead of settling for the phone-safe size.
+const Map<QuestionLayoutTier, List<_RowPreset>> _sentenceBuilderTilePresets = {
+  QuestionLayoutTier.phone16to9: [
+    (height: 52, fontSize: 15),
+    (height: 48, fontSize: 14),
+    (height: 44, fontSize: 12),
+  ],
+  QuestionLayoutTier.phoneClassic2to1: [
+    (height: 52, fontSize: 15),
+    (height: 48, fontSize: 14),
+    (height: 44, fontSize: 12),
+  ],
+  QuestionLayoutTier.phoneTransition: [
+    (height: 52, fontSize: 15),
+    (height: 48, fontSize: 14),
+    (height: 44, fontSize: 12),
+  ],
+  QuestionLayoutTier.phoneFlagship: [
+    (height: 54, fontSize: 16),
+    (height: 49, fontSize: 14),
+    (height: 44, fontSize: 12),
+  ],
+  QuestionLayoutTier.phoneSuperTall: [
+    (height: 56, fontSize: 16),
+    (height: 50, fontSize: 15),
+    (height: 44, fontSize: 13),
+  ],
+  QuestionLayoutTier.phoneUltraTall: [
+    (height: 58, fontSize: 17),
+    (height: 51, fontSize: 15),
+    (height: 44, fontSize: 13),
+  ],
+  QuestionLayoutTier.tablet4to3: [
+    (height: 60, fontSize: 19),
+    (height: 52, fontSize: 17),
+    (height: 44, fontSize: 15),
+  ],
+  QuestionLayoutTier.tablet3to2: [
+    (height: 62, fontSize: 20),
+    (height: 54, fontSize: 18),
+    (height: 44, fontSize: 16),
+  ],
+  QuestionLayoutTier.tablet16to10: [
+    (height: 64, fontSize: 21),
+    (height: 55, fontSize: 18),
+    (height: 44, fontSize: 16),
+  ],
+  QuestionLayoutTier.tablet16to9: [
+    (height: 66, fontSize: 22),
+    (height: 56, fontSize: 19),
+    (height: 44, fontSize: 17),
+  ],
+};
+
+/// Discrete slot presets keyed by row count (index 0 = 1 row, 1 = 2 rows — the agreed max).
+/// Slots aren't independently tappable (just display targets the learner fills by tapping
+/// tiles), so they don't share the 44px touch-target floor the way tiles do; heights scale
+/// down further than tiles on compact phones.
+const Map<QuestionLayoutTier, List<_RowPreset>> _sentenceBuilderSlotPresets = {
+  QuestionLayoutTier.phone16to9: [
+    (height: 44, fontSize: 14),
+    (height: 34, fontSize: 12),
+  ],
+  QuestionLayoutTier.phoneClassic2to1: [
+    (height: 44, fontSize: 14),
+    (height: 34, fontSize: 12),
+  ],
+  QuestionLayoutTier.phoneTransition: [
+    (height: 45, fontSize: 14),
+    (height: 35, fontSize: 12),
+  ],
+  QuestionLayoutTier.phoneFlagship: [
+    (height: 48, fontSize: 15),
+    (height: 39, fontSize: 12),
+  ],
+  QuestionLayoutTier.phoneSuperTall: [
+    (height: 50, fontSize: 15),
+    (height: 43, fontSize: 13),
+  ],
+  QuestionLayoutTier.phoneUltraTall: [
+    (height: 52, fontSize: 16),
+    (height: 47, fontSize: 13),
+  ],
+  QuestionLayoutTier.tablet4to3: [
+    (height: 54, fontSize: 18),
+    (height: 48, fontSize: 15),
+  ],
+  QuestionLayoutTier.tablet3to2: [
+    (height: 60, fontSize: 19),
+    (height: 58, fontSize: 16),
+  ],
+  QuestionLayoutTier.tablet16to10: [
+    (height: 64, fontSize: 20),
+    (height: 62, fontSize: 16),
+  ],
+  QuestionLayoutTier.tablet16to9: [
+    (height: 68, fontSize: 21),
+    (height: 66, fontSize: 17),
+  ],
+};
+
+/// Row gap as a percentage of the currently active row height, not a flat px constant — so
+/// spacing scales with element size the same way height/font do, instead of a tiny gap looking
+/// lost between large tablet tiles or a relatively huge gap cramping small phone tiles.
+double _sentenceBuilderRowGap(double rowHeight) =>
+    (rowHeight * 0.15).roundToDouble();
+
+/// Cell horizontal padding and minimum width, derived from the active row height — same
+/// reasoning as the gap: a smaller preset (more rows) needs proportionally tighter padding and
+/// a smaller minimum width, or shrinking the font/height for more rows achieves nothing (the
+/// cells still can't pack any more densely per row than the largest preset did). This is used
+/// identically for measurement (`_resolvePreset`) and for the real rendered cell (`_buildTile`)
+/// — the two must never diverge, that mismatch was the root cause of an earlier session bug.
+({double minWidth, double horizontalPadding}) _sentenceBuilderCellMetrics(
+    double height) {
+  return (minWidth: height * 1.3, horizontalPadding: height * 0.5);
+}
+
+/// Result of resolving a component (tiles or slots) against its discrete preset ladder: which
+/// preset applies, and how many extra px of height the live content still needs beyond what the
+/// nominal box real provides (0 unless the real measured content doesn't fit — either because
+/// it exceeded the ladder's row cap, or because real chrome left less room than assumed — in
+/// which case the size stays frozen at the resolved preset and the box grows instead, the
+/// cascade-extension case).
+typedef _PresetResolution = ({
+  double height,
+  double fontSize,
+  int rows,
+  double shortfallHeight,
+});
 
 /// Sentence tokens only, shuffled on tiles; tap in [SentenceBuilderQuestionData.correctOrder].
 /// Uses a random permutation of sentence positions so duplicate words are unambiguous.
@@ -14,25 +201,39 @@ class SentenceBuilderQuizBody extends StatefulWidget {
     required this.data,
     required this.strings,
     required this.userLanguage,
-    this.audioAssetPath,
+    this.imagePath,
+    this.audio1Path,
+    this.audio2Path,
     required this.resolveAudioExists,
     required this.onPlayQuestionAudio,
     required this.onPlayCorrect,
     required this.onPlayWrong,
     required this.onOutcome,
     this.onNextTileRendered,
+    this.debugShowLayoutBounds = false,
   });
 
   final SentenceBuilderQuestionData data;
   final Map<String, String> strings;
   final String userLanguage;
-  final String? audioAssetPath;
+  final String? imagePath;
+
+  /// True only inside the `testing-responsive-design` level — draws a visible outline + label
+  /// around every major layout box so box boundaries/percentages can be visually audited.
+  final bool debugShowLayoutBounds;
+
+  /// Setup clip for [SentenceBuilderQuestionData.line1] — plays automatically before the learner answers.
+  final String? audio1Path;
+
+  /// Confirm clip played after the learner answers.
+  final String? audio2Path;
   final Future<bool> Function(String path) resolveAudioExists;
   final Future<void> Function(String path) onPlayQuestionAudio;
   final VoidCallback onPlayCorrect;
   final VoidCallback onPlayWrong;
   final void Function(bool correct) onOutcome;
-  final void Function(int expectedIndex, List<GlobalKey> tileKeys)? onNextTileRendered;
+  final void Function(int expectedIndex, List<GlobalKey> tileKeys)?
+      onNextTileRendered;
 
   @override
   State<SentenceBuilderQuizBody> createState() =>
@@ -56,12 +257,22 @@ class _SentenceBuilderQuizBodyState extends State<SentenceBuilderQuizBody> {
   late final List<GlobalKey> _tileKeys;
   bool _completed = false;
   bool _audioPlaying = false;
+  bool _audio1Playing = false;
+  bool _audio1Scheduled = false;
+  bool _setupAudioComplete = true;
 
   List<String> get _target => widget.data.correctOrder;
+
+  bool get _isDualAudio =>
+      widget.audio1Path != null && widget.audio2Path != null;
 
   @override
   void initState() {
     super.initState();
+    if (widget.audio1Path != null) {
+      _setupAudioComplete = false;
+      WidgetsBinding.instance.addPostFrameCallback((_) => _primeAudio1());
+    }
     _sentence = List<String>.from(_target);
     final n = _sentence.length;
     _tileKeys = List.generate(n, (_) => GlobalKey());
@@ -81,15 +292,17 @@ class _SentenceBuilderQuizBodyState extends State<SentenceBuilderQuizBody> {
   }
 
   void _reportNextTile() {
-    if (_tapProgress >= _sentence.length) return;
-    // `_tapProgress` is a position in the *target sentence*, not a cell index into the
-    // shuffled grid — the tile actually showing that word is wherever `_perm` maps to it.
-    // `_perm` holds each sentence position exactly once, so this is unambiguous even when
-    // the sentence repeats a word (unlike a plain word-string lookup would be).
+    if (_tapProgress >= _sentence.length || _failed || _completed) {
+      return;
+    }
     final expectedIndex = _perm.indexOf(_tapProgress);
-    if (expectedIndex < 0) return;
+    if (expectedIndex < 0 || expectedIndex >= _tileKeys.length) {
+      return;
+    }
     WidgetsBinding.instance.addPostFrameCallback((_) {
-      if (mounted) widget.onNextTileRendered?.call(expectedIndex, _tileKeys);
+      if (mounted) {
+        widget.onNextTileRendered?.call(expectedIndex, _tileKeys);
+      }
     });
   }
 
@@ -122,7 +335,7 @@ class _SentenceBuilderQuizBodyState extends State<SentenceBuilderQuizBody> {
       _tapProgress = _sentence.length;
     });
     widget.onPlayWrong();
-    await _playAudio();
+    await _playOutcomeAudio();
     if (!mounted) return;
     widget.onOutcome(false);
   }
@@ -145,7 +358,7 @@ class _SentenceBuilderQuizBodyState extends State<SentenceBuilderQuizBody> {
       _reportNextTile();
       if (_tapProgress >= _sentence.length) {
         widget.onPlayCorrect();
-        await _playAudio();
+        await _playOutcomeAudio();
         if (!mounted) return;
         widget.onOutcome(true);
       }
@@ -156,17 +369,63 @@ class _SentenceBuilderQuizBodyState extends State<SentenceBuilderQuizBody> {
         for (var i = _tapProgress; i < _sentence.length; i++) {
           _slots[i] = _sentence[i];
           _slotFromPlayer[i] = false;
+          // Mark expected step badges on remaining unplaced tiles
+          for (var cell = 0; cell < _perm.length; cell++) {
+            if (_perm[cell] == i && !_usedCellIndices.contains(cell)) {
+              _cellToStep[cell] = i + 1;
+              break;
+            }
+          }
         }
       });
       widget.onPlayWrong();
-      await _playAudio();
+      await _playOutcomeAudio();
       if (!mounted) return;
       widget.onOutcome(false);
     }
   }
 
-  Future<void> _playAudio() async {
-    final p = widget.audioAssetPath;
+  Future<void> _primeAudio1() async {
+    if (_audio1Scheduled) return;
+    _audio1Scheduled = true;
+    final p = widget.audio1Path;
+    if (p == null) return;
+    final ok = await widget.resolveAudioExists(p);
+    if (!ok || !mounted) {
+      if (mounted) setState(() => _setupAudioComplete = true);
+      return;
+    }
+    await Future<void>.delayed(const Duration(milliseconds: 500));
+    if (!mounted) return;
+    setState(() => _audio1Playing = true);
+    try {
+      await widget.onPlayQuestionAudio(p);
+    } finally {
+      if (mounted) {
+        setState(() {
+          _audio1Playing = false;
+          _setupAudioComplete = true;
+        });
+      }
+    }
+  }
+
+  Future<void> _replayAudio1() async {
+    final p = widget.audio1Path;
+    if (p == null || _audio1Playing) return;
+    final ok = await widget.resolveAudioExists(p);
+    if (!ok || !mounted) return;
+    setState(() => _audio1Playing = true);
+    try {
+      await widget.onPlayQuestionAudio(p);
+    } finally {
+      if (mounted) setState(() => _audio1Playing = false);
+    }
+  }
+
+  Future<void> _playOutcomeAudio() async {
+    if (!_isDualAudio) return;
+    final p = widget.audio2Path;
     if (p == null) return;
     final ok = await widget.resolveAudioExists(p);
     if (!ok || !mounted) return;
@@ -178,161 +437,813 @@ class _SentenceBuilderQuizBodyState extends State<SentenceBuilderQuizBody> {
     }
   }
 
-  @override
-  Widget build(BuildContext context) {
-    final theme = Theme.of(context);
-    final cs = theme.colorScheme;
-    final n = _perm.length;
+  double _promptNeededHeight(
+    double fontSize,
+    double maxWidth,
+    String text,
+  ) {
+    final style = TextStyle(
+      fontWeight: FontWeight.w700,
+      fontSize: fontSize,
+      height: 1.2,
+      fontFamily: 'Inter',
+    );
+    final textMaxWidth = max(0.0, maxWidth - 23.0);
+    final painter = TextPainter(
+      text: TextSpan(text: text, style: style),
+      textDirection: Directionality.of(context),
+      textScaler: MediaQuery.textScalerOf(context),
+    )..layout(maxWidth: textMaxWidth);
+    return painter.height + 19;
+  }
 
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.stretch,
-      children: [
-        if (widget.audioAssetPath != null)
-          FutureBuilder<bool>(
-            future: widget.resolveAudioExists(widget.audioAssetPath!),
-            builder: (context, snap) {
-              if (snap.connectionState != ConnectionState.done ||
-                  snap.data != true) {
-                return const SizedBox.shrink();
-              }
-              return Row(
-                mainAxisAlignment: MainAxisAlignment.end,
-                children: [
-                  AudioPlayButton(
-                    isPlaying: _audioPlaying,
-                    onPressed: (!_completed && !_failed) ? null : _playAudio,
-                  ),
-                ],
-              );
-            },
-          ),
-        const SizedBox(height: 4),
-        Wrap(
-          alignment: WrapAlignment.center,
-          spacing: 6,
-          runSpacing: 6,
-          children: List.generate(_sentence.length, (i) {
-            final word = _slots[i];
-            final fromPlayer = i < _slotFromPlayer.length && _slotFromPlayer[i];
-            return AnimatedContainer(
-              duration: const Duration(milliseconds: 180),
-              constraints: const BoxConstraints(minHeight: 36, minWidth: 64),
-              padding: const EdgeInsets.symmetric(horizontal: 4, vertical: 4),
-              decoration: BoxDecoration(
-                border: Border(
-                  bottom: BorderSide(
-                    color: fromPlayer ? AnswerPalette.correctBorder : cs.outline,
-                    width: fromPlayer ? 2.5 : 1.5,
-                  ),
+  int _estimateWrapRows({
+    required List<String?> items,
+    required double availableWidth,
+    required double spacing,
+    required double minItemWidth,
+    required double horizontalPadding,
+    required double fontSize,
+    required FontWeight fontWeight,
+  }) {
+    if (items.isEmpty || availableWidth <= 0) return 0;
+    final direction = Directionality.of(context);
+    final textScaler = MediaQuery.textScalerOf(context);
+    var rows = 1;
+    var usedWidth = 0.0;
+    for (final item in items) {
+      final textWidth = item == null
+          ? 0.0
+          : (TextPainter(
+              text: TextSpan(
+                text: item,
+                style: TextStyle(
+                  fontFamily: 'Inter',
+                  fontSize: fontSize,
+                  fontWeight: fontWeight,
                 ),
               ),
-              child: Center(
-                child: word == null
-                    ? const SizedBox.shrink()
-                    : Text(
+              textDirection: direction,
+              textScaler: textScaler,
+            )..layout())
+              .width;
+      final itemWidth = max(
+        minItemWidth,
+        item == null ? minItemWidth : textWidth + horizontalPadding,
+      );
+      if (usedWidth > 0 && usedWidth + spacing + itemWidth > availableWidth) {
+        rows++;
+        usedWidth = itemWidth;
+      } else {
+        usedWidth =
+            usedWidth == 0 ? itemWidth : usedWidth + spacing + itemWidth;
+      }
+    }
+    return rows;
+  }
+
+  /// Resolves a component (tiles or slots) against its discrete preset ladder by measuring the
+  /// **real live content** — the actual `_perm`-ordered tiles or the actual current `_slots`
+  /// state — at each preset's real font size, stepping up the ladder until the content fits
+  /// within that preset's row cap. This replaces the old shuffle-safe worst-case estimate: that
+  /// was needed when the box was a *fixed* size the content had to be forced into (so a
+  /// different shuffle order could need more rows than a fixed box allowed, causing scroll).
+  /// Now the box adapts to whatever row count the live content actually needs (discrete preset
+  /// up to the cap, then cascade extension beyond it), so measuring the exact live order is
+  /// correct, not risky — there's no fixed target for a different order to overflow.
+  ///
+  /// `availableHeight` is the component's real content-area height (nominal box height minus
+  /// its own chrome — outer padding etc. — not just the raw per-tier percentage). The shortfall
+  /// is computed directly from real measured rows against that real height, rather than trusted
+  /// to match hand-derived preset numbers exactly — a preset can be *within* its row cap and
+  /// still need a few px of cascade extension if real chrome eats into the nominal box more
+  /// than assumed; this reports that correctly instead of silently scrolling.
+  /// [fontSizeOverride], when given, is measured (and returned) in place of each preset's own
+  /// `fontSize` — used by the slot resolver so slot text renders at the exact same size as the
+  /// resolved tile font instead of its own independent size ladder. The preset's `height`
+  /// column is still used unmodified (slot/tile chrome heights can legitimately differ), only
+  /// the font dimension is unified.
+  _PresetResolution _resolvePreset({
+    required List<String?> items,
+    required List<_RowPreset> presets,
+    required double availableWidth,
+    required double availableHeight,
+    required FontWeight fontWeight,
+    double? fontSizeOverride,
+  }) {
+    for (var i = 0; i < presets.length; i++) {
+      final preset = presets[i];
+      final fontSize = fontSizeOverride ?? preset.fontSize;
+      final metrics = _sentenceBuilderCellMetrics(preset.height);
+      final rows = _estimateWrapRows(
+        items: items,
+        availableWidth: availableWidth,
+        spacing: _sentenceBuilderRowGap(preset.height),
+        minItemWidth: metrics.minWidth,
+        horizontalPadding: metrics.horizontalPadding,
+        fontSize: fontSize,
+        fontWeight: fontWeight,
+      );
+      if (rows <= i + 1) {
+        final needed = rows * preset.height +
+            (rows - 1) * _sentenceBuilderRowGap(preset.height);
+        return (
+          height: preset.height,
+          fontSize: fontSize,
+          rows: rows,
+          shortfallHeight: max(0.0, needed - availableHeight),
+        );
+      }
+    }
+    // Exceeded the ladder's row cap entirely: freeze at the last (smallest) preset.
+    final maxPreset = presets.last;
+    final maxFontSize = fontSizeOverride ?? maxPreset.fontSize;
+    final maxMetrics = _sentenceBuilderCellMetrics(maxPreset.height);
+    final actualRows = _estimateWrapRows(
+      items: items,
+      availableWidth: availableWidth,
+      spacing: _sentenceBuilderRowGap(maxPreset.height),
+      minItemWidth: maxMetrics.minWidth,
+      horizontalPadding: maxMetrics.horizontalPadding,
+      fontSize: maxFontSize,
+      fontWeight: fontWeight,
+    );
+    final needed = actualRows * maxPreset.height +
+        (actualRows - 1) * _sentenceBuilderRowGap(maxPreset.height);
+    return (
+      height: maxPreset.height,
+      fontSize: maxFontSize,
+      rows: actualRows,
+      shortfallHeight: max(0.0, needed - availableHeight),
+    );
+  }
+
+  /// EXPERIMENTAL — scoped to `tablet4to3` tile box only, developer-directed prototype.
+  ///
+  /// Unlike [_resolvePreset] (a fixed 3-entry table picked by row count), this searches a
+  /// continuous font-size ladder — expressed as a percentage of the tier's reference tile
+  /// height, not an absolute px table — trying 1 row first at the biggest sizes and only
+  /// dropping to more rows once the floor size is reached:
+  ///   1 row:  50% → 45% → 40% → 35%
+  ///   2 rows: 30% → 25%
+  ///   3 rows: 25% (floor — no further shrink)
+  /// If even 3 rows at the floor can't fit the real content, this returns a real
+  /// `shortfallHeight` exactly like [_resolvePreset]'s "exceeded the ladder" branch — which
+  /// already feeds the existing media-cascade-extension pipeline, so "cascade extend" beyond
+  /// this ladder is not new logic, just this function being honest about not fitting.
+  ///
+  /// The box `tileBankHeight` itself is untouched by this — same fixed per-tier percentage as
+  /// before. Only what happens *inside* that box (font size, tile height, row count) adapts.
+  _PresetResolution _resolveTileFillPreset({
+    required List<String?> items,
+    required double availableWidth,
+    required double availableHeight,
+    required FontWeight fontWeight,
+  }) {
+    const referenceTileHeight =
+        60.0; // tablet4to3's existing 1-row preset height
+    const ladder = <(int rows, double pct)>[
+      (1, 0.50),
+      (1, 0.45),
+      (1, 0.40),
+      (1, 0.35),
+      (2, 0.30),
+      (2, 0.25),
+      (3, 0.25),
+    ];
+
+    ({double fontSize, double height}) sizingFor(double pct) {
+      final fontSize = referenceTileHeight * pct;
+      final height =
+          max(44.0, fontSize + 40.0); // touch-target floor, generous padding
+      return (fontSize: fontSize, height: height);
+    }
+
+    for (final step in ladder) {
+      final sizing = sizingFor(step.$2);
+      final metrics = _sentenceBuilderCellMetrics(sizing.height);
+      final rows = _estimateWrapRows(
+        items: items,
+        availableWidth: availableWidth,
+        spacing: _sentenceBuilderRowGap(sizing.height),
+        minItemWidth: metrics.minWidth,
+        horizontalPadding: metrics.horizontalPadding,
+        fontSize: sizing.fontSize,
+        fontWeight: fontWeight,
+      );
+      if (rows <= step.$1) {
+        final needed = rows * sizing.height +
+            (rows - 1) * _sentenceBuilderRowGap(sizing.height);
+        return (
+          height: sizing.height,
+          fontSize: sizing.fontSize,
+          rows: rows,
+          shortfallHeight: max(0.0, needed - availableHeight),
+        );
+      }
+    }
+
+    // Exceeded the ladder (would need a 4th row even at the 25% floor) — freeze at the floor
+    // and report the real shortfall so the existing cascade-extension pipeline absorbs it.
+    final sizing = sizingFor(0.25);
+    final metrics = _sentenceBuilderCellMetrics(sizing.height);
+    final actualRows = _estimateWrapRows(
+      items: items,
+      availableWidth: availableWidth,
+      spacing: _sentenceBuilderRowGap(sizing.height),
+      minItemWidth: metrics.minWidth,
+      horizontalPadding: metrics.horizontalPadding,
+      fontSize: sizing.fontSize,
+      fontWeight: fontWeight,
+    );
+    final needed = actualRows * sizing.height +
+        (actualRows - 1) * _sentenceBuilderRowGap(sizing.height);
+    return (
+      height: sizing.height,
+      fontSize: sizing.fontSize,
+      rows: actualRows,
+      shortfallHeight: max(0.0, needed - availableHeight),
+    );
+  }
+
+  Widget _buildBubble({
+    required Widget child,
+  }) {
+    final colorScheme = Theme.of(context).colorScheme;
+    final bgColor = colorScheme.surfaceContainerHighest;
+    final borderColor = colorScheme.outlineVariant;
+
+    return Container(
+      padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 8),
+      decoration: BoxDecoration(
+        color: bgColor,
+        borderRadius: const BorderRadius.only(
+          topLeft: Radius.circular(12),
+          topRight: Radius.circular(12),
+          bottomLeft: Radius.circular(4),
+          bottomRight: Radius.circular(12),
+        ),
+        border: Border.all(color: borderColor, width: 1.5),
+      ),
+      child: child,
+    );
+  }
+
+  Widget _buildTile(
+    int index, {
+    required double fontSize,
+    required double minHeight,
+    required double maxHeight,
+  }) {
+    final metrics = _sentenceBuilderCellMetrics(minHeight);
+    final word = _wordAtCell(index);
+    final disabled = _failed ||
+        _completed ||
+        _usedCellIndices.contains(index) ||
+        !_setupAudioComplete ||
+        _audioPlaying ||
+        _audio1Playing;
+    final isWrong = _failed && _wrongGridIndex == index;
+    final step = _cellToStep[index];
+    final tapped = _usedCellIndices.contains(index);
+
+    final Color bg;
+    final Color border;
+    final Color fg;
+
+    if (isWrong) {
+      bg = AnswerPalette.wrongBg;
+      border = AnswerPalette.wrongBorder;
+      fg = AnswerPalette.wrongFg;
+    } else if (tapped) {
+      bg = _translationPenalized
+          ? AnswerPalette.revealedBg
+          : AnswerPalette.correctBg;
+      border = _translationPenalized
+          ? AnswerPalette.revealedBorder
+          : AnswerPalette.correctBorder;
+      fg = _translationPenalized
+          ? AnswerPalette.revealedFg
+          : AnswerPalette.correctFg;
+    } else {
+      bg = AnswerPalette.neutralBg;
+      border = AnswerPalette.neutralBorder;
+      fg = AnswerPalette.neutralFg;
+    }
+
+    return Material(
+      color: bg,
+      shape: StadiumBorder(side: BorderSide(color: border)),
+      key: _tileKeys[index],
+      child: InkWell(
+        onTap: disabled ? null : () => _onGridTap(index),
+        customBorder: StadiumBorder(side: BorderSide(color: border)),
+        child: ConstrainedBox(
+          constraints: BoxConstraints(
+            minWidth: metrics.minWidth,
+            minHeight: minHeight,
+            maxHeight: maxHeight,
+          ),
+          child: Stack(
+            alignment: Alignment.center,
+            children: [
+              Padding(
+                // `metrics.horizontalPadding` is the *total* (both sides) added to text width
+                // in the measurement pass — halve it here since `symmetric` applies per side,
+                // so measurement and render agree on the same real footprint.
+                padding: EdgeInsets.symmetric(
+                  horizontal: metrics.horizontalPadding / 2,
+                  vertical: metrics.horizontalPadding * 0.35,
+                ),
+                child: Row(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    if (isWrong) ...[
+                      Icon(Icons.close, size: 14, color: border),
+                      const SizedBox(width: 4),
+                    ],
+                    Flexible(
+                      child: Text(
                         word,
-                        style: theme.textTheme.bodyMedium?.copyWith(
-                          fontWeight: FontWeight.w800,
-                          color: fromPlayer ? AnswerPalette.correctFg : null,
+                        textAlign: TextAlign.center,
+                        maxLines: 1,
+                        overflow: TextOverflow.ellipsis,
+                        style: TextStyle(
+                          fontFamily: 'Inter',
+                          fontSize: fontSize,
+                          fontWeight: FontWeight.w600,
+                          color: fg,
                         ),
                       ),
+                    ),
+                  ],
+                ),
               ),
-            );
-            }),
-        ),
-        const SizedBox(height: 12),
-        Expanded(
-          child: LayoutBuilder(
-            builder: (context, constraints) => SingleChildScrollView(
-              child: ConstrainedBox(
-                constraints: BoxConstraints(minHeight: constraints.maxHeight),
-                child: Center(
-                  child: Wrap(
-              alignment: WrapAlignment.center,
-              spacing: 8,
-              runSpacing: 8,
-              children: List.generate(n, (i) {
-                final word = _wordAtCell(i);
-                final disabled =
-                    _failed || _completed || _usedCellIndices.contains(i);
-                final isWrong = _failed && _wrongGridIndex == i;
-                final step = _cellToStep[i];
-                final tapped = _usedCellIndices.contains(i);
-
-                return Material(
-                  color: isWrong
-                      ? AnswerPalette.wrongBg
-                      : tapped
-                          ? (_translationPenalized
-                              ? AnswerPalette.revealedBg
-                              : AnswerPalette.correctBg)
-                          : AnswerPalette.neutralBg,
-                  borderRadius: BorderRadius.circular(10),
-                  key: _tileKeys[i],
-                  child: InkWell(
-                    onTap: disabled ? null : () => _onGridTap(i),
-                    borderRadius: BorderRadius.circular(10),
-                    child: ConstrainedBox(
-                      constraints: const BoxConstraints(
-                        minWidth: 72,
-                        minHeight: 52,
-                        maxHeight: 68,
+              if (step != null && step > 0)
+                Positioned(
+                  top: 2,
+                  right: 2,
+                  child: CircleAvatar(
+                    radius: 10,
+                    backgroundColor: border,
+                    child: Text(
+                      '$step',
+                      style: const TextStyle(
+                        fontSize: 11,
+                        color: Colors.white,
+                        fontWeight: FontWeight.w700,
                       ),
-                      child: Stack(
-                        alignment: Alignment.center,
-                        children: [
-                          Padding(
-                            padding: const EdgeInsets.symmetric(
-                              horizontal: 8,
-                              vertical: 8,
-                            ),
-                            child: Text(
-                              word,
-                              textAlign: TextAlign.center,
-                              style: theme.textTheme.bodyMedium?.copyWith(
-                                fontWeight: FontWeight.w600,
-                                color: isWrong
-                                    ? AnswerPalette.wrongFg
-                                    : tapped
-                                        ? (_translationPenalized
-                                            ? AnswerPalette.revealedFg
-                                            : AnswerPalette.correctFg)
-                                        : AnswerPalette.neutralFg,
+                    ),
+                  ),
+                ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+
+  void revealTranslation() => _onTranslationRevealed();
+
+  String? _lastLayoutLogKey;
+
+  @override
+  Widget build(BuildContext context) {
+    final hasLine1 = widget.data.line1 != null;
+    final hasImage = widget.imagePath != null;
+    final budget = QuestionLayoutBudget.of(context);
+    final answerWidth =
+        budget.answerWidthForAvailable(MediaQuery.sizeOf(context).width);
+
+    return LayoutBuilder(
+      builder: (context, bodyConstraints) {
+        final mediaWidthLimit =
+            budget.mediaWidthForAvailable(bodyConstraints.maxWidth);
+        final mediaHeight = hasImage
+            ? min(
+                mediaWidthLimit,
+                budget.mediaHeightForAvailable(bodyConstraints.maxHeight),
+              )
+            : 0.0;
+        final remainderHeight = max(
+          0.0,
+          bodyConstraints.maxHeight - mediaHeight,
+        );
+
+        final promptHeight = hasLine1
+            ? remainderHeight * _sentenceBuilderPromptShare[budget.tier]!
+            : 0.0;
+        final slotHeight = hasLine1
+            ? remainderHeight * _sentenceBuilderSlotShare[budget.tier]!
+            : remainderHeight * 0.38;
+        final tileBankHeight = hasLine1
+            ? remainderHeight * _sentenceBuilderTileBankShare[budget.tier]!
+            : remainderHeight * 0.62;
+
+        // Prompt sizing
+        final promptWrapWidth =
+            answerWidth - (widget.audio1Path != null ? 56 : 0);
+        final promptTextBudget = max(0.0, promptHeight - 28.0);
+
+        // Resolve tiles and slots against their discrete preset ladders, measuring the real
+        // live content (actual `_perm` tile order, actual current `_slots` fill state) — the
+        // box adapts to whatever row count that content needs instead of the content being
+        // forced into a fixed box, so there's no risk in measuring the true live order.
+        // Real content-area height: nominal box minus the Wrap's own outer padding (`vertical:
+        // 4` on each side = 8px), so the shortfall check compares against what's actually left
+        // for rows, not the full nominal box.
+        // `tablet4to3` only: developer-directed prototype trying a fill-the-box, continuous
+        // font-percentage ladder instead of the fixed 3-entry table every other tier still
+        // uses below. Scoped narrowly so this experiment can't affect any other device tier.
+        final tilePreset = budget.tier == QuestionLayoutTier.tablet4to3
+            ? _resolveTileFillPreset(
+                items:
+                    List<String?>.generate(_perm.length, (i) => _wordAtCell(i)),
+                availableWidth: answerWidth - 32,
+                availableHeight: max(0.0, tileBankHeight - 8.0),
+                fontWeight: FontWeight.w600,
+              )
+            : _resolvePreset(
+                items:
+                    List<String?>.generate(_perm.length, (i) => _wordAtCell(i)),
+                presets: _sentenceBuilderTilePresets[budget.tier]!,
+                availableWidth: answerWidth - 32,
+                availableHeight: max(0.0, tileBankHeight - 8.0),
+                fontWeight: FontWeight.w600,
+              );
+        final tileFontSize = tilePreset.fontSize;
+
+        // Slot text renders at the exact same size as the resolved tile font (developer ask:
+        // tiles, slots, and dialog all share one text size) — `fontSizeOverride` measures and
+        // returns `tileFontSize` instead of the slot ladder's own font column, while still
+        // using the slot ladder's own height column (slot chrome height can legitimately
+        // differ from tile chrome height) and non-bold weight (`w600`, matching tiles — only
+        // the dialog/prompt stays bold).
+        final slotPreset = _resolvePreset(
+          items: _slots,
+          presets: _sentenceBuilderSlotPresets[budget.tier]!,
+          availableWidth: answerWidth - 24,
+          availableHeight: max(0.0, slotHeight - 8.0),
+          fontWeight: FontWeight.w600,
+          fontSizeOverride: tileFontSize,
+        );
+        // Same formula used for measurement and render, at the preset that actually resolved
+        // (not the ladder's first rung) — an empty-slot placeholder for whichever preset won.
+        final emptySlotWidth =
+            _sentenceBuilderCellMetrics(slotPreset.height).minWidth;
+
+        final slotFontSize = slotPreset.fontSize;
+
+        // Dialog text renders at the exact same size as tiles/slots (developer ask: all three
+        // share one text size, only dialog is bold) — its own box height is whatever that
+        // shared font actually needs, not a separately profiled min/max.
+        final dialogFontSize = tileFontSize;
+        final promptNeeded = hasLine1
+            ? _promptNeededHeight(
+                dialogFontSize, promptWrapWidth, widget.data.line1!)
+            : 0.0;
+        final shortfallPrompt =
+            hasLine1 ? max(0.0, promptNeeded - promptTextBudget) : 0.0;
+
+        final shortfallSlots = slotPreset.shortfallHeight;
+        final shortfallTiles = tilePreset.shortfallHeight;
+
+        // Cascading extension: whichever of prompt/slots/tiles needs more room than its
+        // nominal box borrows it from media. Media is always rendered at its full, fixed
+        // `mediaHeight` — it is never shrunk. The prompt card (the box actually adjacent to
+        // media in the Stack) grows to cover the borrowed amount instead, painted on top of
+        // the still-full-height media; downstream slot/tile boxes get their own extra room
+        // from the space freed in the Column. Extension is only capped at the full media
+        // height (it can be covered up to 100% if content genuinely needs it) — how much of
+        // the media ends up covered is a content-authoring concern, not a hard code floor.
+        final totalShortfall =
+            shortfallPrompt + shortfallSlots + shortfallTiles;
+        final extensionCap = hasImage ? mediaHeight : 0.0;
+        final totalExtension = min(totalShortfall, extensionCap);
+        // Accounting height only — how much of the container's reserved space is *not*
+        // covered by the prompt card. The media widget itself always renders at the full
+        // `mediaHeight` regardless of this value.
+        final mediaVisibleHeight =
+            hasImage ? mediaHeight - totalExtension : 0.0;
+        final promptCardHeight = promptHeight + shortfallPrompt;
+        final slotHeightFinal = slotHeight + shortfallSlots;
+        final tileBankHeightFinal = tileBankHeight + shortfallTiles;
+
+        final layoutLogKey = [
+          bodyConstraints.maxWidth,
+          bodyConstraints.maxHeight,
+          mediaHeight,
+          promptHeight,
+          shortfallPrompt,
+          slotHeightFinal,
+          tileBankHeightFinal,
+          dialogFontSize,
+          tileFontSize,
+          slotFontSize,
+          budget.tier,
+        ].join('|');
+
+        if (_lastLayoutLogKey != layoutLogKey) {
+          _lastLayoutLogKey = layoutLogKey;
+          debugPrint(
+            '[QuestionLayout][SentenceBuilder] '
+            'tier=${budget.tier.name} '
+            'localBody=${bodyConstraints.maxWidth.toStringAsFixed(1)}x'
+            '${bodyConstraints.maxHeight.toStringAsFixed(1)}px '
+            'media=${mediaWidthLimit.toStringAsFixed(1)}x'
+            '${mediaVisibleHeight.toStringAsFixed(1)}px '
+            'promptBox=${answerWidth.toStringAsFixed(1)}x'
+            '${promptHeight.toStringAsFixed(1)}px '
+            'promptShortfall=${shortfallPrompt.toStringAsFixed(1)}px '
+            'slotBox=${answerWidth.toStringAsFixed(1)}x'
+            '${slotHeightFinal.toStringAsFixed(1)}px slotRows=${slotPreset.rows} '
+            'tileBox=${answerWidth.toStringAsFixed(1)}x'
+            '${tileBankHeightFinal.toStringAsFixed(1)}px tileRows=${tilePreset.rows} '
+            'promptText=${dialogFontSize.toStringAsFixed(1)}px '
+            'tileText=${tileFontSize.toStringAsFixed(1)}px '
+            'slotText=${slotFontSize.toStringAsFixed(1)}px '
+            'hasLine1=$hasLine1 '
+            'image=$hasImage',
+          );
+          // Content-authoring signal: the design's row caps (3 tiles / 2 slots) are meant to be
+          // a ceiling real questions never reach — this fires whenever content needed the
+          // cascade at all, so it shows up during content review rather than only when someone
+          // happens to notice the answer area looks cramped.
+          if (shortfallSlots > 0 || shortfallTiles > 0) {
+            debugPrint(
+              '[QuestionLayout][SentenceBuilder][Warning] content exceeded its normal row cap '
+              '(slotRows=${slotPreset.rows}/2 tileRows=${tilePreset.rows}/3) — consider '
+              'shortening this question; cascade extension is absorbing '
+              '${(shortfallSlots + shortfallTiles).toStringAsFixed(1)}px.',
+            );
+          }
+          // Severe case: even the cascade couldn't fully absorb the shortfall (media exhausted
+          // down to its safety floor) — this is the one case where the answer area's own
+          // last-resort scroll can still engage. Should be rare-to-never with real content.
+          if (totalShortfall > extensionCap) {
+            debugPrint(
+              '[QuestionLayout][SentenceBuilder][Warning] shortfall '
+              '(${totalShortfall.toStringAsFixed(1)}px) exceeds available media extension '
+              '(${extensionCap.toStringAsFixed(1)}px) — this question needs shortening, the '
+              'answer area will scroll.',
+            );
+          }
+        }
+
+        final promptStyle = TextStyle(
+          color: const Color(0xFF171A1F),
+          fontWeight: FontWeight.w700,
+          fontSize: dialogFontSize,
+          height: 1.2,
+          fontFamily: 'Inter',
+        );
+
+        return Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: [
+            if (hasImage || hasLine1)
+              SizedBox(
+                height: mediaVisibleHeight + promptCardHeight,
+                child: Stack(
+                  clipBehavior: Clip.none,
+                  children: [
+                    if (hasImage)
+                      Positioned(
+                        // Media always renders at its full, fixed `mediaHeight` — never
+                        // shrunk. When the prompt card below grows past its nominal size,
+                        // this container is shorter than `mediaHeight + promptCardHeight`,
+                        // so the card (painted after media, on top) covers the bottom
+                        // portion of the media rather than the media itself shrinking.
+                        top: 0,
+                        left: 0,
+                        right: 0,
+                        height: mediaHeight,
+                        child: DebugLayoutBox(
+                          enabled: widget.debugShowLayoutBounds,
+                          label: 'media',
+                          child: StandardQuestionMedia(
+                            availableBodyHeight: bodyConstraints.maxHeight,
+                            aspectRatio: 1,
+                            heightOverride: mediaHeight,
+                            widthOverride: mediaWidthLimit,
+                            child: Image.asset(
+                              widget.imagePath!,
+                              fit: BoxFit.contain,
+                              errorBuilder: (_, __, ___) => ColoredBox(
+                                color: Colors.grey.shade300,
+                                child: const Center(
+                                  child:
+                                      Icon(Icons.image_not_supported, size: 48),
+                                ),
                               ),
                             ),
                           ),
-                          if (step != null)
-                            Positioned(
-                              top: 2,
-                              right: 2,
-                              child: CircleAvatar(
-                                radius: 10,
-                                backgroundColor: _translationPenalized
-                                    ? AnswerPalette.revealedBorder
-                                    : AnswerPalette.correctBorder,
-                                child: Text(
-                                  '$step',
-                                  style: const TextStyle(
-                                    fontSize: 11,
-                                    color: Colors.white,
-                                    fontWeight: FontWeight.w700,
+                        ),
+                      ),
+                    if (hasLine1)
+                      Positioned(
+                        left: 0,
+                        right: 0,
+                        bottom: 0,
+                        height: promptCardHeight,
+                        child: DebugLayoutBox(
+                          enabled: widget.debugShowLayoutBounds,
+                          label: 'prompt',
+                          color: Colors.orange,
+                          child: Container(
+                            decoration: BoxDecoration(
+                              color: Colors.white,
+                              borderRadius: hasImage
+                                  ? const BorderRadius.vertical(
+                                      top: Radius.circular(24))
+                                  : null,
+                            ),
+                            padding: EdgeInsets.fromLTRB(
+                              16,
+                              hasImage ? 18.0 : 14.0,
+                              16,
+                              8,
+                            ),
+                            child: Center(
+                              child: SizedBox(
+                                width: answerWidth,
+                                child: Align(
+                                  alignment: Alignment.centerLeft,
+                                  child: Row(
+                                    mainAxisSize: MainAxisSize.min,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.center,
+                                    children: [
+                                      if (widget.audio1Path != null) ...[
+                                        AudioPlayButton(
+                                          isPlaying: _audio1Playing,
+                                          onPressed: () => _replayAudio1(),
+                                        ),
+                                        const SizedBox(width: 8),
+                                      ],
+                                      Flexible(
+                                        child: _buildBubble(
+                                          child: Text(
+                                            widget.data.line1!,
+                                            style: promptStyle,
+                                          ),
+                                        ),
+                                      ),
+                                    ],
                                   ),
                                 ),
                               ),
                             ),
-                        ],
+                          ),
+                        ),
                       ),
+                  ],
+                ),
+              ),
+            Expanded(
+              child: Container(
+                color: Colors.white,
+                child: Center(
+                  child: SizedBox(
+                    width: answerWidth,
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.stretch,
+                      children: [
+                        // Zone 2: Sentence Assembly Slot Area (Target Bank)
+                        SizedBox(
+                          height: slotHeightFinal,
+                          child: DebugLayoutBox(
+                            enabled: widget.debugShowLayoutBounds,
+                            label: 'slot',
+                            color: Colors.teal,
+                            child: Center(
+                              child: SingleChildScrollView(
+                                child: Padding(
+                                  padding: const EdgeInsets.symmetric(
+                                      horizontal: 12, vertical: 4),
+                                  child: Wrap(
+                                    alignment: WrapAlignment.center,
+                                    spacing: _sentenceBuilderRowGap(
+                                        slotPreset.height),
+                                    runSpacing: _sentenceBuilderRowGap(
+                                        slotPreset.height),
+                                    children:
+                                        List.generate(_sentence.length, (i) {
+                                      final word = _slots[i];
+                                      final fromPlayer =
+                                          i < _slotFromPlayer.length &&
+                                              _slotFromPlayer[i];
+                                      final slotMetrics =
+                                          _sentenceBuilderCellMetrics(
+                                              slotPreset.height);
+                                      final slot = AnimatedContainer(
+                                        duration:
+                                            const Duration(milliseconds: 180),
+                                        width: word == null
+                                            ? emptySlotWidth
+                                            : null,
+                                        height: slotPreset.height,
+                                        padding: EdgeInsets.symmetric(
+                                            horizontal:
+                                                slotMetrics.horizontalPadding /
+                                                    2,
+                                            vertical: 4),
+                                        decoration: BoxDecoration(
+                                          color: word != null
+                                              ? (_translationPenalized
+                                                  ? AnswerPalette.revealedBg
+                                                  : AnswerPalette.correctBg)
+                                              : Colors.white,
+                                          border: Border.all(
+                                            color: word != null
+                                                ? (_translationPenalized
+                                                    ? AnswerPalette
+                                                        .revealedBorder
+                                                    : AnswerPalette
+                                                        .correctBorder)
+                                                : AnswerPalette.neutralBorder,
+                                            width: 1.5,
+                                          ),
+                                          borderRadius:
+                                              BorderRadius.circular(18),
+                                        ),
+                                        child: Center(
+                                          child: word == null
+                                              ? const SizedBox(
+                                                  width: 36,
+                                                  height: 12,
+                                                )
+                                              : Text(
+                                                  word,
+                                                  style: TextStyle(
+                                                    fontFamily: 'Inter',
+                                                    fontSize: slotFontSize,
+                                                    fontWeight: FontWeight.w600,
+                                                    fontStyle: fromPlayer
+                                                        ? null
+                                                        : FontStyle.italic,
+                                                    color: _translationPenalized
+                                                        ? AnswerPalette
+                                                            .revealedFg
+                                                        : AnswerPalette
+                                                            .correctFg,
+                                                  ),
+                                                ),
+                                        ),
+                                      );
+                                      return word == null
+                                          ? slot
+                                          : IntrinsicWidth(child: slot);
+                                    }),
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ),
+                        ),
+                        // Zone 3: Word Tile Choice Bank (Scrambled Source)
+                        Expanded(
+                          child: DebugLayoutBox(
+                            enabled: widget.debugShowLayoutBounds,
+                            label: 'tileBank',
+                            color: Colors.green,
+                            child: Center(
+                              child: SingleChildScrollView(
+                                child: Padding(
+                                  padding: const EdgeInsets.symmetric(
+                                      horizontal: 12, vertical: 4),
+                                  child: Wrap(
+                                    alignment: WrapAlignment.center,
+                                    crossAxisAlignment:
+                                        WrapCrossAlignment.center,
+                                    spacing: _sentenceBuilderRowGap(
+                                        tilePreset.height),
+                                    runSpacing: _sentenceBuilderRowGap(
+                                        tilePreset.height),
+                                    children: List.generate(
+                                      _perm.length,
+                                      (i) => _buildTile(
+                                        i,
+                                        fontSize: tileFontSize,
+                                        minHeight: tilePreset.height,
+                                        maxHeight: tilePreset.height,
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ),
+                        ),
+                      ],
                     ),
-                  ),
-                );
-              }),
                   ),
                 ),
               ),
             ),
-          ),
-        ),
-      ],
+          ],
+        );
+      },
     );
   }
 }

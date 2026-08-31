@@ -222,7 +222,7 @@ def main() -> int:
     parser.add_argument(
         "--output",
         type=Path,
-        default=root / "cursor-claude-common/output/global-game-word-frequency-big_scope.csv",
+        default=root / "all-ai-common/output/global-game-word-frequency-big_scope.csv",
         help="Output CSV path (default includes 'big_scope' in the filename)",
     )
     args = parser.parse_args()

@@ -230,7 +230,7 @@ def main() -> int:
     root = repo_root()
     default_oxford = (
         root
-        / "cursor-claude-common/references/remove-word-list-references/3000 words oxford.txt"
+        / "all-ai-common/references/remove-word-list-references/3000 words oxford.txt"
     )
 
     if len(sys.argv) > 1 and sys.argv[1] in ("-h", "--help"):

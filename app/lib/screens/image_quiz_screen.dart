@@ -23,13 +23,16 @@ import '../../services/image_asset_resolver.dart';
 import '../../services/image_quiz_level_loader.dart';
 import '../../services/level_config_loader.dart';
 import '../../services/profile_service.dart';
+import '../../services/question_layout_budget.dart';
 import '../../services/quiz_progress_service.dart';
 import '../../services/reminder_progress_service.dart';
 import '../../services/test_data_service.dart';
 import '../../widgets/audio_play_button.dart';
+import '../../widgets/debug_layout_box.dart';
 import '../../widgets/level_translations_view.dart';
 import '../../widgets/image_quiz_template2_audio_controls.dart';
 import '../../widgets/mcq_pill_answer_button.dart';
+import '../../widgets/standard_question_media.dart';
 import '../../widgets/tutorial/tutorial_controller.dart';
 import '../../widgets/tutorial/tutorial_overlay.dart';
 import 'quiz_templates/appear_disappear_quiz_body.dart';
@@ -73,6 +76,218 @@ const bool _kMonsterLaneEnabled = false;
 /// Image templates that show the guest animal / monster lane and count toward monster pressure.
 bool _isMonsterEligibleImageTemplate(String template) =>
     template == 'imageQuizTemplate-1' || template == 'imageQuizTemplate-2';
+
+typedef _ImageQuiz2Preset = ({
+  double promptFontSize,
+  double promptRowHeight,
+  double maxCardWidth,
+  double maxCardHeight,
+  double gridGap,
+});
+
+/// Per-tier caps for `imageQuizTemplate-2`'s prompt row and 2x2 image-card grid — these are
+/// upper bounds, not fixed absolute sizes. The final prompt font size is fixed (never shrinks;
+/// truncation is logged instead, see `[QuestionLayout][ImageQuizTemplate2][Warning]`), but the
+/// card width/height are clamped against the real `LayoutBuilder` constraints at render time so
+/// unexpected viewport sizes, insets, or split-screen can never overflow — per Codex's review in
+/// the pipe. Independent copy from `_imageQuiz1ButtonPresets`/`_imageQuiz2Presets` siblings, per
+/// the 12-template-independence rule.
+const Map<QuestionLayoutTier, _ImageQuiz2Preset> _imageQuiz2Presets = {
+  QuestionLayoutTier.phoneUltraTall: (
+    promptFontSize: 25.0,
+    promptRowHeight: 120.0,
+    maxCardWidth: 162.0,
+    maxCardHeight: 158.0,
+    gridGap: 14.0,
+  ),
+  QuestionLayoutTier.phoneSuperTall: (
+    promptFontSize: 25.0,
+    promptRowHeight: 120.0,
+    maxCardWidth: 172.0,
+    maxCardHeight: 164.0,
+    gridGap: 14.0,
+  ),
+  QuestionLayoutTier.phoneFlagship: (
+    promptFontSize: 24.0,
+    promptRowHeight: 110.0,
+    maxCardWidth: 164.0,
+    maxCardHeight: 152.0,
+    gridGap: 14.0,
+  ),
+  QuestionLayoutTier.phoneTransition: (
+    promptFontSize: 23.5,
+    promptRowHeight: 104.0,
+    maxCardWidth: 162.0,
+    maxCardHeight: 146.0,
+    gridGap: 12.0,
+  ),
+  QuestionLayoutTier.phoneClassic2to1: (
+    promptFontSize: 22.5,
+    promptRowHeight: 96.0,
+    maxCardWidth: 150.0,
+    maxCardHeight: 136.0,
+    gridGap: 12.0,
+  ),
+  QuestionLayoutTier.phone16to9: (
+    promptFontSize: 22.0,
+    promptRowHeight: 90.0,
+    maxCardWidth: 154.0,
+    maxCardHeight: 130.0,
+    gridGap: 12.0,
+  ),
+  QuestionLayoutTier.tablet16to9: (
+    promptFontSize: 28.0,
+    promptRowHeight: 130.0,
+    maxCardWidth: 230.0,
+    maxCardHeight: 190.0,
+    gridGap: 16.0,
+  ),
+  QuestionLayoutTier.tablet16to10: (
+    promptFontSize: 30.0,
+    promptRowHeight: 140.0,
+    maxCardWidth: 240.0,
+    maxCardHeight: 200.0,
+    gridGap: 16.0,
+  ),
+  QuestionLayoutTier.tablet3to2: (
+    promptFontSize: 32.0,
+    promptRowHeight: 150.0,
+    maxCardWidth: 250.0,
+    maxCardHeight: 210.0,
+    gridGap: 18.0,
+  ),
+  QuestionLayoutTier.tablet4to3: (
+    promptFontSize: 32.0,
+    promptRowHeight: 150.0,
+    maxCardWidth: 250.0,
+    maxCardHeight: 210.0,
+    gridGap: 18.0,
+  ),
+};
+
+// Share of the post-media remainder given to the dialogue box (the rest goes to the 2x2 answer
+// grid, computed independently — see `_buildConvo1Panel`). Values match the table agreed by
+// Claude/Codex/Antigravity in the pipe; local to ConvoTemplate-1, not shared with
+// DialogueCompletion's own remainder split, per the 12-template-independence rule.
+double _convo1DialogueShareOfRemainder(QuestionLayoutTier tier) {
+  switch (tier) {
+    case QuestionLayoutTier.phoneUltraTall:
+      return 0.54;
+    case QuestionLayoutTier.phoneSuperTall:
+      return 0.54;
+    case QuestionLayoutTier.phoneFlagship:
+      return 0.52;
+    case QuestionLayoutTier.phoneTransition:
+      return 0.53;
+    case QuestionLayoutTier.phoneClassic2to1:
+      return 0.54;
+    case QuestionLayoutTier.phone16to9:
+      return 0.56;
+    case QuestionLayoutTier.tablet16to9:
+      return 0.60;
+    case QuestionLayoutTier.tablet16to10:
+      return 0.60;
+    case QuestionLayoutTier.tablet3to2:
+      return 0.62;
+    case QuestionLayoutTier.tablet4to3:
+      return 0.63;
+  }
+}
+
+/// Fixed per-tier answer-button text size — buttons assume single-line content per the
+/// Section D authoring rule, so no min/max/solving, just a lookup. Same values as
+/// DialogueCompletion's `_textSizeForTier` but kept as an independent local copy.
+const Map<QuestionLayoutTier, double> _convo1ButtonTextSizeForTier = {
+  QuestionLayoutTier.phoneUltraTall: 18,
+  QuestionLayoutTier.phoneSuperTall: 18,
+  QuestionLayoutTier.phoneFlagship: 18,
+  QuestionLayoutTier.phoneTransition: 18,
+  QuestionLayoutTier.phoneClassic2to1: 18,
+  QuestionLayoutTier.phone16to9: 18,
+  QuestionLayoutTier.tablet16to9: 20,
+  QuestionLayoutTier.tablet16to10: 20,
+  QuestionLayoutTier.tablet3to2: 21,
+  QuestionLayoutTier.tablet4to3: 22,
+};
+
+/// Grid row gap / preferred bottom padding as a percentage of the resolved button height, not
+/// a flat px constant — same pattern `SentenceBuilder` already uses (`_sentenceBuilderRowGap`),
+/// so spacing scales with the tier's actual button size instead of staying fixed regardless of
+/// device. Takes `buttonPreset.oneLineHeight` (the tier's nominal preset, known before content
+/// measurement) rather than the final content-driven `buttonRowHeight`, to avoid a circular
+/// dependency (the gap itself is needed to compute `cellWidth`, which feeds into
+/// `buttonRowHeight`).
+double _convo1GridGap(double buttonHeight) =>
+    (buttonHeight * 0.15).roundToDouble();
+const double _convo1ButtonMinTouchTarget = 44.0;
+
+typedef _Convo1ButtonPreset = ({
+  double oneLineHeight,
+  double twoLineHeight,
+});
+
+// ConvoTemplate-1 keeps one fixed button height for the whole 2x2 grid. The
+// selected row-count preset is based on the tallest answer, including room for
+// the wrong-state icon; it is never calculated independently per button.
+const Map<QuestionLayoutTier, _Convo1ButtonPreset> _convo1ButtonPresets = {
+  QuestionLayoutTier.phoneUltraTall: (oneLineHeight: 52, twoLineHeight: 64),
+  QuestionLayoutTier.phoneSuperTall: (oneLineHeight: 50, twoLineHeight: 62),
+  QuestionLayoutTier.phoneFlagship: (oneLineHeight: 48, twoLineHeight: 60),
+  QuestionLayoutTier.phoneTransition: (oneLineHeight: 45, twoLineHeight: 58),
+  QuestionLayoutTier.phoneClassic2to1: (oneLineHeight: 44, twoLineHeight: 56),
+  QuestionLayoutTier.phone16to9: (oneLineHeight: 44, twoLineHeight: 56),
+  QuestionLayoutTier.tablet16to9: (oneLineHeight: 62, twoLineHeight: 76),
+  QuestionLayoutTier.tablet16to10: (oneLineHeight: 60, twoLineHeight: 74),
+  QuestionLayoutTier.tablet3to2: (oneLineHeight: 58, twoLineHeight: 72),
+  QuestionLayoutTier.tablet4to3: (oneLineHeight: 54, twoLineHeight: 68),
+};
+
+/// Fixed per-tier answer-button text size for standalone `imageQuizTemplate-1`'s 2x2 grid —
+/// independent copy of the same shape as `_convo1ButtonTextSizeForTier`, per the
+/// 12-template-independence rule (values happen to match; kept as a separate table so either
+/// can be tuned later without affecting the other).
+const Map<QuestionLayoutTier, double> _imageQuiz1ButtonTextSizeForTier = {
+  QuestionLayoutTier.phoneUltraTall: 18,
+  QuestionLayoutTier.phoneSuperTall: 18,
+  QuestionLayoutTier.phoneFlagship: 18,
+  QuestionLayoutTier.phoneTransition: 18,
+  QuestionLayoutTier.phoneClassic2to1: 18,
+  QuestionLayoutTier.phone16to9: 18,
+  QuestionLayoutTier.tablet16to9: 20,
+  QuestionLayoutTier.tablet16to10: 20,
+  QuestionLayoutTier.tablet3to2: 21,
+  QuestionLayoutTier.tablet4to3: 22,
+};
+
+/// Grid row gap as a percentage of the resolved button height — same pattern as
+/// `_convo1GridGap`/`_sentenceBuilderRowGap`, not a flat px constant.
+double _imageQuiz1GridGap(double buttonHeight) =>
+    (buttonHeight * 0.15).roundToDouble();
+const double _imageQuiz1ButtonMinTouchTarget = 44.0;
+
+typedef _ImageQuiz1ButtonPreset = ({
+  double oneLineHeight,
+  double twoLineHeight,
+});
+
+// Standalone `imageQuizTemplate-1` keeps one fixed button height for the whole 2x2 grid,
+// selected from the tallest answer (including room for the wrong-state icon) — never
+// calculated independently per button. 99% of production answers are single words, but real
+// sentence-length answers exist (audited), so the 2-line preset and beyond-cap freeze-and-grow
+// (+20px per extra line) both matter, not just a theoretical safety net.
+const Map<QuestionLayoutTier, _ImageQuiz1ButtonPreset>
+    _imageQuiz1ButtonPresets = {
+  QuestionLayoutTier.phoneUltraTall: (oneLineHeight: 52, twoLineHeight: 64),
+  QuestionLayoutTier.phoneSuperTall: (oneLineHeight: 50, twoLineHeight: 62),
+  QuestionLayoutTier.phoneFlagship: (oneLineHeight: 48, twoLineHeight: 60),
+  QuestionLayoutTier.phoneTransition: (oneLineHeight: 45, twoLineHeight: 58),
+  QuestionLayoutTier.phoneClassic2to1: (oneLineHeight: 44, twoLineHeight: 56),
+  QuestionLayoutTier.phone16to9: (oneLineHeight: 44, twoLineHeight: 56),
+  QuestionLayoutTier.tablet16to9: (oneLineHeight: 62, twoLineHeight: 76),
+  QuestionLayoutTier.tablet16to10: (oneLineHeight: 60, twoLineHeight: 74),
+  QuestionLayoutTier.tablet3to2: (oneLineHeight: 58, twoLineHeight: 72),
+  QuestionLayoutTier.tablet4to3: (oneLineHeight: 54, twoLineHeight: 68),
+};
 
 /// Maps cumulative wrong answers on [monsterEligibleImageTemplate] questions to step 0..4.
 /// If the level has at most 6 such questions, advance every wrong. If more than 6, use a
@@ -167,6 +382,7 @@ class _ImageQuizScreenState extends ConsumerState<ImageQuizScreen>
   bool _endedEarlyTestMode = false;
   bool _answerLocked = false;
   bool _convo1TranslationPenalized = false;
+  String? _convo1LastLayoutLogKey;
   bool _showNext = false;
   bool _reviewingMistakes = false;
   int _initialQuestionCount = 0;
@@ -282,13 +498,42 @@ class _ImageQuizScreenState extends ConsumerState<ImageQuizScreen>
     return _questionAssetPaths.length;
   }
 
-  /// 1-based index shown in the header (“Question N / M”).
-  int get _displayQuestionIndexOneBased => _currentIndex + 1;
+  /// The ordered question list backing the current play session, when one is available as
+  /// [LevelQuestion]s (image-quiz-config-only paths have no [LevelQuestion] list and no Chapter
+  /// cards, so they fall back to the raw counts below).
+  List<LevelQuestion>? get _activeLevelQuestions {
+    if (_allQuestions.isNotEmpty) return _allQuestions;
+    if (_convoQuestions.isNotEmpty) return _convoQuestions;
+    return null;
+  }
 
-  /// Denominator for the header; in reminder mode uses the initial batch size.
+  /// 1-based index shown in the header (“Question N / M”). Chapter cards are interstitial, not
+  /// real questions — they still occupy a slot in [_questionCount] (that denominator also drives
+  /// the [_correctCount] star-rate ratio, so it must keep including them), but the header should
+  /// count only real questions the learner has reached, or a Chapter card would visibly shift the
+  /// numbering by one for every card before it (e.g. reading "2 / N" on what is actually the
+  /// first real question, if a Chapter card sits at index 0).
+  int get _displayQuestionIndexOneBased {
+    final list = _activeLevelQuestions;
+    if (list == null) return _currentIndex + 1;
+    final end = _currentIndex.clamp(0, list.length - 1);
+    var count = 0;
+    for (var i = 0; i <= end; i++) {
+      if (!list[i].isChapter) count++;
+    }
+    // On (or before) a leading Chapter card, no real question has been reached yet — show "1"
+    // rather than "0", matching what the learner is about to start.
+    return count == 0 ? 1 : count;
+  }
+
+  /// Denominator for the header; in reminder mode uses the initial batch size. Otherwise counts
+  /// only non-Chapter questions — see [_displayQuestionIndexOneBased].
   int get _displayQuestionTotal {
     if (_isReminder) return _initialQuestionCount;
-    return _questionCount;
+    final list = _activeLevelQuestions;
+    if (list == null) return _questionCount;
+    final nonChapterCount = list.where((q) => !q.isChapter).length;
+    return nonChapterCount == 0 ? _questionCount : nonChapterCount;
   }
 
   /// AppBar counter text ("Q N / M" or the reminder "Reviewing Mistakes" label). Null outside
@@ -956,6 +1201,13 @@ class _ImageQuizScreenState extends ConsumerState<ImageQuizScreen>
       _monsterEligibleQuestionCount > 0 &&
       _currentQuestionIsMonsterEligible();
 
+  /// True only inside the `testing-responsive-design` level — draws a visible outline + label
+  /// around every major layout box (media, prompt/dialogue, tile-bank, slot, answer-grid,
+  /// action region) across every template, so box boundaries/percentages can be visually
+  /// audited from a screenshot. Never true for real player-facing levels.
+  bool get _debugShowLayoutBounds =>
+      widget.subLevel.directoryName == 'testing-responsive-design';
+
   /// Restarts the pie countdown and monster idle loop for the current image question.
   void _startTimer() {
     if (!_kMonsterLaneEnabled) return;
@@ -977,7 +1229,8 @@ class _ImageQuizScreenState extends ConsumerState<ImageQuizScreen>
   void _onTimerExpired() {
     if (_answerLocked) return;
     _timerController.stop();
-    final soundFxOn = ref.read(settingsProvider).valueOrNull?.soundFxOn ?? true;
+    final soundFxOn =
+        ref.read(settingsProvider).valueOrNull?.soundFxOn ?? false;
     audio.playWrong(soundFxOn: soundFxOn);
     final questionId = _currentQuestionId;
     if (_isReminder) {
@@ -1204,7 +1457,8 @@ class _ImageQuizScreenState extends ConsumerState<ImageQuizScreen>
   Future<void> _triggerConvo1TranslationPenalty(LevelQuestion q) async {
     if (_answerLocked) return;
     if (q.convoData?.trOk ?? false) return;
-    final soundFxOn = ref.read(settingsProvider).valueOrNull?.soundFxOn ?? true;
+    final soundFxOn =
+        ref.read(settingsProvider).valueOrNull?.soundFxOn ?? false;
     audio.playWrong(soundFxOn: soundFxOn);
     final questionId = _currentQuestionId;
     if (_isReminder) {
@@ -1273,7 +1527,8 @@ class _ImageQuizScreenState extends ConsumerState<ImageQuizScreen>
         ? renderedQuestion?.convoData?.answer ?? ''
         : _correctAnswer();
     final isCorrect = option == correct;
-    final soundFxOn = ref.read(settingsProvider).valueOrNull?.soundFxOn ?? true;
+    final soundFxOn =
+        ref.read(settingsProvider).valueOrNull?.soundFxOn ?? false;
     final cq = _currentConvoLevelQuestion;
     if (cq != null && _convo1UsesDualAudio(cq)) {
       final p1 = _audioAssetPathForRaw(cq.audioFile1);
@@ -1840,14 +2095,25 @@ class _ImageQuizScreenState extends ConsumerState<ImageQuizScreen>
         audio.startQuizMusic(musicOn: true);
       }
     });
-    final soundFxOn = ref.read(settingsProvider).valueOrNull?.soundFxOn ?? true;
+    final soundFxOn =
+        ref.read(settingsProvider).valueOrNull?.soundFxOn ?? false;
     final strings =
         ref.watch(currentLocalizedStringsProvider).valueOrNull ?? {};
     final userLanguage =
         ref.watch(settingsProvider).valueOrNull?.language ?? 'en';
     final headerCounterText = _headerCounterText(strings);
+    final usesStandardShell = _usesStandardQuestionShell;
+    final standardProfile = StandardQuestionLayoutProfile.of(context);
     final scaffold = Scaffold(
       appBar: AppBar(
+        toolbarHeight: usesStandardShell ? standardProfile.headerHeight : null,
+        // Smaller than the app-wide 24sp AppBar title (app_theme.dart) — this header sits in the
+        // device-fixed, percentage-height quiz header band (7-9% of usable height on phones),
+        // which the global size crowds; scoped to this screen only so other screens (levels,
+        // profile, settings) keep the standard title size.
+        titleTextStyle: Theme.of(context).appBarTheme.titleTextStyle?.copyWith(
+              fontSize: 18,
+            ),
         title: Text(widget.subLevel.title),
         leading: IconButton(
           icon: const Icon(Icons.close),
@@ -2156,27 +2422,52 @@ class _ImageQuizScreenState extends ConsumerState<ImageQuizScreen>
     return viewport.height < 900 || scaledBodySize > 16.01;
   }
 
+  bool get _usesStandardQuestionShell {
+    if (_phase != _Phase.playing) return false;
+    final question = _currentLevelQuestion;
+    return question != null &&
+        !question.isChapter &&
+        question.template != 'WordPairs' &&
+        (question.isImageTemplate || _isConvoMode);
+  }
+
   Widget _buildQuestionActionRegion({
     required bool soundFxOn,
     required bool isLast,
   }) {
+    final standardProfile = StandardQuestionLayoutProfile.of(context);
+    final usesStandardShell = _usesStandardQuestionShell;
     final compact = _usesCompactQuestionActionRegion(context);
-    final buttonHeight = compact ? kMinTouchTarget : kMinTouchTarget + 8;
-    final verticalPadding = compact ? 4.0 : 8.0;
-    return Padding(
-      padding: EdgeInsets.symmetric(horizontal: 16, vertical: verticalPadding),
-      child: SizedBox(
-        width: double.infinity,
-        height: buttonHeight,
-        child: _showNext
-            ? FilledButton(
-                onPressed: () {
-                  audio.playClick(soundFxOn: soundFxOn);
-                  _goNext();
-                },
-                child: Text(isLast ? 'FINISH' : 'NEXT'),
-              )
-            : const SizedBox.shrink(),
+    final buttonHeight = usesStandardShell
+        ? standardProfile.actionButtonHeight
+        : compact
+            ? kMinTouchTarget
+            : kMinTouchTarget + 8;
+    final verticalPadding = usesStandardShell
+        ? standardProfile.actionVerticalPadding
+        : compact
+            ? 4.0
+            : 8.0;
+    return DebugLayoutBox(
+      enabled: _debugShowLayoutBounds,
+      label: 'action',
+      color: Colors.purple,
+      child: Padding(
+        padding:
+            EdgeInsets.symmetric(horizontal: 16, vertical: verticalPadding),
+        child: SizedBox(
+          width: double.infinity,
+          height: buttonHeight,
+          child: _showNext
+              ? FilledButton(
+                  onPressed: () {
+                    audio.playClick(soundFxOn: soundFxOn);
+                    _goNext();
+                  },
+                  child: Text(isLast ? 'FINISH' : 'NEXT'),
+                )
+              : const SizedBox.shrink(),
+        ),
       ),
     );
   }
@@ -2200,347 +2491,617 @@ class _ImageQuizScreenState extends ConsumerState<ImageQuizScreen>
     final q = _currentLevelQuestion;
     final isLast = _currentIndex + 1 >= _questionCount;
 
-    return Column(
-      children: [
-        if (isTemplate2 && iq2 != null && q != null) ...[
+    return LayoutBuilder(
+      builder: (context, bodyConstraints) => Column(
+        children: [
+          // Everything above the action region is wrapped in Expanded so it fills the leftover
+          // body height and the action region below always resolves to the true bottom of the
+          // screen — same placement mechanism `_buildConvoPlaying` uses for every other template.
           Expanded(
-            flex: 1,
-            child: Padding(
-              padding: const EdgeInsets.all(16),
-              child: Center(
-                child: Column(
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    Text(
-                      _nounLabelFromImageStem(iq2.correctAnswerStem),
-                      style:
-                          Theme.of(context).textTheme.headlineSmall?.copyWith(
-                                fontWeight: FontWeight.w800,
-                              ),
-                      textAlign: TextAlign.center,
-                    ),
-                    ImageQuizTemplate2AudioControls(
-                      key: ValueKey(
-                        'iq2-audio-${q.questionId ?? _currentIndex}',
-                      ),
-                      assetPath: _audioAssetPath(q),
-                      resolveExists: _resolveAudioExists,
-                    ),
-                  ],
-                ),
-              ),
-            ),
-          ),
-        ] else
-          Expanded(
-            flex: 1,
-            child: Center(
-              child: ConstrainedBox(
-                constraints: BoxConstraints(
-                  maxHeight: MediaQuery.sizeOf(context).height * 0.25,
-                  maxWidth: MediaQuery.sizeOf(context).width * 0.5,
-                ),
-                child: Image.asset(
-                  path,
-                  fit: BoxFit.contain,
-                  errorBuilder: (_, __, ___) => Container(
-                    color: Colors.grey.shade300,
-                    child: const Icon(Icons.image_not_supported, size: 64),
-                  ),
-                ),
-              ),
-            ),
-          ),
-        // Speech bubbles + monster lane — only for templates that use monster pressure
-        if (_showMonsterLaneForCurrentQuestion) ...[
-          if (_showNext && _bubbleConversation != null)
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 16),
-              child: Row(
-                crossAxisAlignment: CrossAxisAlignment.end,
-                children: [
-                  Expanded(
-                    child: _SpeechBubble(
-                      _bubbleConversation!.guest,
-                      maxWidth: 160,
-                    ),
-                  ),
-                  const SizedBox(width: 8),
-                  Expanded(
-                    child: _SpeechBubble(
-                      _bubbleConversation!.attacker,
-                      maxWidth: 160,
-                    ),
-                  ),
-                ],
-              ),
-            ),
-          // Guest animal + monster (jumps stone to stone) + step stones below
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 4),
-            child: LayoutBuilder(
-              builder: (context, constraints) {
-                const animalSize = 72.0;
-                const monsterSize = 72.0;
-                const stoneSize = 20.0;
-                const stoneRowHeight = 26.0;
-                const gap = 8.0;
-                final totalWidth = constraints.maxWidth;
-
-                // Monster center range: starts above rightmost stone, ends above leftmost stone
-                final maxMonsterCenter = totalWidth - monsterSize / 2;
-                final minMonsterCenter = animalSize + gap + monsterSize / 2;
-                final range = maxMonsterCenter - minMonsterCenter;
-
-                // Stone i=0 is rightmost (step-0 landing), i=3 is leftmost (step-3 landing)
-                // Monster center at step k aligns with stone k center
-                final step = _monsterStep.clamp(0, 3);
-                final monsterCenter = maxMonsterCenter - step * (range / 3);
-                final monsterLeft = monsterCenter - monsterSize / 2;
-
-                const pieTimerSize = 40.0;
-                const pieTimerGap = 6.0;
-                const monsterTop = pieTimerSize + pieTimerGap;
-
-                return SizedBox(
-                  height: monsterTop + monsterSize + stoneRowHeight,
-                  child: Stack(
-                    children: [
-                      // Animal — fixed at left, aligned with monster
-                      Positioned(
-                        left: 0,
-                        top: monsterTop,
-                        child: _animalImage(),
-                      ),
-                      // Monster — moves stone to stone with wind behind it
-                      AnimatedPositioned(
-                        duration: const Duration(milliseconds: 500),
-                        curve: Curves.easeInOut,
-                        left: monsterLeft,
-                        top: monsterTop,
-                        child: Stack(
-                          clipBehavior: Clip.none,
-                          children: [
-                            Positioned.fill(
-                              child: AnimatedBuilder(
-                                animation: _windController,
-                                builder: (context, _) => CustomPaint(
-                                  painter: _WindPainter(_windController.value),
-                                  size: const Size(72, 72),
-                                ),
-                              ),
-                            ),
-                            // Pie countdown timer — centered above monster, moves with it
-                            Positioned(
-                              top: -(pieTimerSize + pieTimerGap),
-                              left: (monsterSize - pieTimerSize) / 2,
-                              child: AnimatedBuilder(
-                                animation: _timerController,
-                                builder: (context, _) {
-                                  final remaining =
-                                      1.0 - _timerController.value;
-                                  final color = Color.lerp(
-                                      Colors.red, Colors.green, remaining)!;
-                                  return CustomPaint(
-                                    size: Size(pieTimerSize, pieTimerSize),
-                                    painter: _PieTimerPainter(
-                                      progress: remaining,
-                                      color: color,
+            child: Column(
+              children: [
+                if (isTemplate2 && iq2 != null && q != null) ...[
+                  Builder(
+                    builder: (context) {
+                      final budget = QuestionLayoutBudget.of(context);
+                      final preset = _imageQuiz2Presets[budget.tier]!;
+                      final label =
+                          _nounLabelFromImageStem(iq2.correctAnswerStem);
+                      return DebugLayoutBox(
+                        enabled: _debugShowLayoutBounds,
+                        label: 'prompt',
+                        child: SizedBox(
+                          height: preset.promptRowHeight,
+                          child: Padding(
+                            padding: const EdgeInsets.symmetric(
+                                horizontal: 16, vertical: 8),
+                            child: LayoutBuilder(
+                              builder: (context, promptConstraints) {
+                                // Font size is fixed per tier and never shrinks — if a label would
+                                // truncate at maxLines:1, that's logged rather than silently
+                                // hidden. Real risk, not hypothetical: `_nounLabelFromImageStem`
+                                // title-cases hyphenated stems into multi-word labels (e.g.
+                                // "blood-pressure-monitor" → "Blood Pressure Monitor"), and the
+                                // `imageQuizTemplate-1` content audit found compound answers of
+                                // that same shape in production.
+                                final painter = TextPainter(
+                                  text: TextSpan(
+                                    text: label,
+                                    style: TextStyle(
+                                      fontSize: preset.promptFontSize,
+                                      fontWeight: FontWeight.w800,
                                     ),
+                                  ),
+                                  textDirection: TextDirection.ltr,
+                                  maxLines: 1,
+                                  textScaler: MediaQuery.textScalerOf(context),
+                                )..layout(maxWidth: promptConstraints.maxWidth);
+                                if (painter.didExceedMaxLines) {
+                                  debugPrint(
+                                    '[QuestionLayout][ImageQuizTemplate2][Warning] '
+                                    'label truncated at maxLines=1 '
+                                    '(tier=${budget.tier.name}, '
+                                    'fontSize=${preset.promptFontSize.toStringAsFixed(1)}px, '
+                                    'maxWidth=${promptConstraints.maxWidth.toStringAsFixed(1)}px): '
+                                    '"$label"',
                                   );
-                                },
-                              ),
-                            ),
-                            // Idle attack loop: scale up 10% + lunge left 10% of size
-                            AnimatedBuilder(
-                              animation: _monsterIdleController,
-                              builder: (context, child) {
-                                final t = CurvedAnimation(
-                                  parent: _monsterIdleController,
-                                  curve: Curves.easeInOut,
-                                ).value;
-                                return Transform.translate(
-                                  offset: Offset(-monsterSize * 0.10 * t, 0),
-                                  child: Transform.scale(
-                                    scale: 1.0 + 0.10 * t,
-                                    child: child,
+                                }
+                                return Center(
+                                  child: Column(
+                                    mainAxisSize: MainAxisSize.min,
+                                    children: [
+                                      Text(
+                                        label,
+                                        style: TextStyle(
+                                          fontSize: preset.promptFontSize,
+                                          fontWeight: FontWeight.w800,
+                                          color: Theme.of(context)
+                                              .textTheme
+                                              .headlineSmall
+                                              ?.color,
+                                        ),
+                                        maxLines: 1,
+                                        overflow: TextOverflow.ellipsis,
+                                        textAlign: TextAlign.center,
+                                      ),
+                                      const SizedBox(height: 6),
+                                      ImageQuizTemplate2AudioControls(
+                                        key: ValueKey(
+                                          'iq2-audio-${q.questionId ?? _currentIndex}',
+                                        ),
+                                        assetPath: _audioAssetPath(q),
+                                        resolveExists: _resolveAudioExists,
+                                      ),
+                                    ],
                                   ),
                                 );
                               },
-                              child: _monsterImage(),
-                            ),
-                          ],
-                        ),
-                      ),
-                      // Step stones — individually positioned to align with monster landing spots
-                      // i=0 rightmost (green) → i=3 leftmost (red); grey when consumed
-                      ...List.generate(4, (i) {
-                        const stoneColors = [
-                          Colors.green,
-                          Colors.yellow,
-                          Colors.orange,
-                          Colors.red,
-                        ];
-                        final stoneCenter = maxMonsterCenter - i * (range / 3);
-                        final stoneLeft = stoneCenter - stoneSize / 2;
-                        final consumed = i < _monsterStep;
-                        return Positioned(
-                          bottom: 0,
-                          left: stoneLeft,
-                          child: AnimatedContainer(
-                            duration: const Duration(milliseconds: 300),
-                            width: stoneSize,
-                            height: stoneSize,
-                            decoration: BoxDecoration(
-                              color: consumed
-                                  ? Colors.grey.shade300
-                                  : stoneColors[i],
-                              borderRadius: BorderRadius.circular(4),
                             ),
                           ),
-                        );
-                      }),
-                    ],
-                  ),
-                );
-              },
-            ),
-          ),
-        ],
-        if (isTemplate2 && iq2 != null && paths4 != null)
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 16),
-            child: GridView.count(
-              shrinkWrap: true,
-              physics: const NeverScrollableScrollPhysics(),
-              crossAxisCount: 2,
-              crossAxisSpacing: 12,
-              mainAxisSpacing: 12,
-              childAspectRatio: 1.1,
-              children: List.generate(4, (i) {
-                final option = _currentOptions[i];
-                final assetPath =
-                    _assetPathForImageQuiz2Stem(iq2, paths4, option);
-                final isCorrect = option == _correctAnswer();
-                final isSelected = _selectedIndex == i;
-                // Same as imageQuizTemplate-1 MCQ: correct cell turns green when locked; wrong pick turns red.
-                final showGreen = _answerLocked && isCorrect;
-                final showRed = _answerLocked && isSelected && !isCorrect;
-                return Material(
-                  color: showGreen
-                      ? Colors.green.shade200
-                      : showRed
-                          ? Colors.red.shade200
-                          : Theme.of(context)
-                              .colorScheme
-                              .surfaceContainerHighest,
-                  borderRadius: BorderRadius.circular(12),
-                  clipBehavior: Clip.antiAlias,
-                  child: InkWell(
-                    onTap: _answerLocked
-                        ? null
-                        : () {
-                            audio.playClick(soundFxOn: soundFxOn);
-                            _onAnswerTap(i);
-                          },
-                    child: assetPath != null
-                        ? Padding(
-                            padding: const EdgeInsets.all(8),
-                            child: Image.asset(
-                              assetPath,
-                              fit: BoxFit.contain,
-                              errorBuilder: (_, __, ___) => const Icon(
-                                Icons.image_not_supported,
-                                size: 48,
-                              ),
-                            ),
-                          )
-                        : const Icon(Icons.image_not_supported),
-                  ),
-                );
-              }),
-            ),
-          )
-        else
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 16),
-            child: Column(
-              children: List.generate(4, (i) {
-                final option = _currentOptions[i];
-                final isCorrect = option == _correctAnswer();
-                final isSelected = _selectedIndex == i;
-                Color? bgColor;
-                Color? fgColor;
-                if (_answerLocked) {
-                  if (isCorrect) {
-                    bgColor = Colors.green.shade600;
-                    fgColor = Colors.white;
-                  } else if (isSelected && !isCorrect) {
-                    bgColor = Colors.red.shade600;
-                    fgColor = Colors.white;
-                  }
-                }
-                final buttonStyle = bgColor != null
-                    ? ElevatedButton.styleFrom(
-                        backgroundColor: bgColor,
-                        foregroundColor: fgColor,
-                        surfaceTintColor: Colors.transparent,
-                        disabledBackgroundColor: bgColor,
-                        disabledForegroundColor: fgColor,
-                        minimumSize: Size(
-                          kMinTouchTarget,
-                          kMinTouchTarget,
                         ),
-                      )
-                    : ElevatedButton.styleFrom(
-                        minimumSize: Size(
-                          kMinTouchTarget,
-                          kMinTouchTarget,
-                        ),
-                        disabledBackgroundColor: Colors.grey.shade300,
-                        disabledForegroundColor: Colors.grey.shade800,
-                        surfaceTintColor: Colors.transparent,
                       );
-                return Padding(
-                  padding: const EdgeInsets.only(bottom: 12),
-                  child: SizedBox(
-                    width: double.infinity,
-                    child: ElevatedButton(
-                      onPressed: _answerLocked
-                          ? null
-                          : () {
-                              audio.playClick(soundFxOn: soundFxOn);
-                              _onAnswerTap(i);
-                            },
-                      style: buttonStyle,
+                    },
+                  ),
+                ] else
+                  // Media + answer grid share one Stack so the grid can extend upward and cover
+                  // the media from below, the same cascade mechanism `ConvoTemplate-1` uses —
+                  // simplified to a single growing box, since this template has no separate
+                  // dialogue panel to split the extension budget with. The media itself is always
+                  // rendered at its fixed per-tier size and never resized.
+                  Expanded(
+                    child: LayoutBuilder(
+                      builder: (context, stackConstraints) {
+                        final budget = QuestionLayoutBudget.of(context);
+                        final mediaWidthLimit = budget
+                            .mediaWidthForAvailable(stackConstraints.maxWidth);
+                        final mediaHeight = budget.mediaHeightForAvailable(
+                          stackConstraints.maxHeight,
+                        );
+                        final remainderHeight = max(
+                          0.0,
+                          stackConstraints.maxHeight - mediaHeight,
+                        );
+
+                        final answerWidth = budget
+                            .answerWidthForAvailable(stackConstraints.maxWidth);
+                        final buttonFontSize =
+                            _imageQuiz1ButtonTextSizeForTier[budget.tier]!;
+                        final preset = _imageQuiz1ButtonPresets[budget.tier]!;
+                        final imageQuiz1GridGap =
+                            _imageQuiz1GridGap(preset.oneLineHeight);
+                        final cellWidth =
+                            max(1.0, (answerWidth - imageQuiz1GridGap) / 2);
+                        final buttonTextWidth = max(1.0, cellWidth - 48.0);
+                        final maxAnswerLines = _currentOptions
+                            .take(4)
+                            .map((option) => _convo1LineCount(
+                                  option,
+                                  fontSize: buttonFontSize,
+                                  maxWidth: buttonTextWidth,
+                                  fontWeight: FontWeight.w500,
+                                ))
+                            .fold<int>(1, max);
+                        final buttonRowHeight = max(
+                          _imageQuiz1ButtonMinTouchTarget,
+                          maxAnswerLines <= 1
+                              ? preset.oneLineHeight
+                              : preset.twoLineHeight +
+                                  max(0, maxAnswerLines - 2) * 20.0,
+                        );
+                        final measuredGridHeight =
+                            buttonRowHeight * 2 + imageQuiz1GridGap;
+
+                        // Fallback cascade: the grid grows upward over the media only once it no
+                        // longer fits the normal remainder budget (3+ wrapped answer lines).
+                        final gridShortfall =
+                            max(0.0, measuredGridHeight - remainderHeight);
+                        final gridExtension = min(gridShortfall, mediaHeight);
+                        final gridHeightFinal = remainderHeight + gridExtension;
+                        final gridNeedsScroll =
+                            gridShortfall > gridExtension + 0.1;
+
+                        if (maxAnswerLines > 2) {
+                          debugPrint(
+                            '[QuestionLayout][ImageQuizTemplate-1][Warning] '
+                            'content exceeded standard line cap '
+                            '(answerLines=$maxAnswerLines) — cascade extension '
+                            'is absorbing ${gridExtension.toStringAsFixed(1)}px.',
+                          );
+                        }
+                        if (gridNeedsScroll) {
+                          debugPrint(
+                            '[QuestionLayout][ImageQuizTemplate-1][Fallback] '
+                            'answer content exceeds the media-cascade safety '
+                            'cap; answerRegionScroll=true.',
+                          );
+                        }
+
+                        Widget cell(int i) {
+                          final option = _currentOptions[i];
+                          final isCorrect = option == _correctAnswer();
+                          final isSelected = _selectedIndex == i;
+                          final state = _answerLocked && isCorrect
+                              ? McqAnswerState.correct
+                              : _answerLocked && isSelected && !isCorrect
+                                  ? McqAnswerState.wrong
+                                  : McqAnswerState.neutral;
+                          return Expanded(
+                            child: McqPillAnswerButton(
+                              label: option,
+                              state: state,
+                              width: cellWidth,
+                              minHeight: buttonRowHeight,
+                              maxHeight: buttonRowHeight,
+                              fontSize: buttonFontSize,
+                              onTap: _answerLocked
+                                  ? null
+                                  : () {
+                                      audio.playClick(soundFxOn: soundFxOn);
+                                      _onAnswerTap(i);
+                                    },
+                            ),
+                          );
+                        }
+
+                        return SizedBox(
+                          height: stackConstraints.maxHeight,
+                          child: Stack(
+                            clipBehavior: Clip.none,
+                            children: [
+                              // Media container keeps the same fixed-per-tier footprint every
+                              // other redesigned template uses. The picture itself renders at
+                              // half-width × half-height (a quarter of that footprint's area),
+                              // centered, cropped to fill exactly via `BoxFit.cover` — a
+                              // deliberate "smaller picture in a same-size frame" look,
+                              // developer-specified.
+                              Positioned(
+                                top: 0,
+                                left: 0,
+                                right: 0,
+                                height: mediaHeight,
+                                child: DebugLayoutBox(
+                                  enabled: _debugShowLayoutBounds,
+                                  label: 'media',
+                                  child: StandardQuestionMedia(
+                                    availableBodyHeight:
+                                        stackConstraints.maxHeight,
+                                    aspectRatio: 1,
+                                    heightOverride: mediaHeight,
+                                    widthOverride: mediaWidthLimit,
+                                    // `StandardQuestionMedia` can shrink the actual rendered box
+                                    // below `widthOverride` via its own aspect-ratio-driven fit
+                                    // logic — reading real constraints here (rather than assuming
+                                    // `mediaWidthLimit`/`mediaHeight` directly) guarantees "half
+                                    // width × half height" is always relative to the frame that's
+                                    // actually drawn, not the pre-shrink input values.
+                                    child: LayoutBuilder(
+                                      builder: (context, mediaBoxConstraints) =>
+                                          Center(
+                                        child: SizedBox(
+                                          width:
+                                              mediaBoxConstraints.maxWidth / 2,
+                                          height:
+                                              mediaBoxConstraints.maxHeight / 2,
+                                          child: Image.asset(
+                                            path,
+                                            fit: BoxFit.cover,
+                                            errorBuilder: (_, __, ___) =>
+                                                Container(
+                                              color: Colors.grey.shade300,
+                                              child: const Icon(
+                                                  Icons.image_not_supported,
+                                                  size: 64),
+                                            ),
+                                          ),
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                              ),
+                              // Answer grid: normally sits directly below the media with no
+                              // overlap. Only when a wrapped answer needs more room than the
+                              // remainder budget does it grow upward and cover the media from
+                              // below — signaled by the rounded white card, matching the same
+                              // "cascade covers media" treatment used elsewhere.
+                              Positioned(
+                                left: 0,
+                                right: 0,
+                                bottom: 0,
+                                height: gridHeightFinal,
+                                child: DebugLayoutBox(
+                                  enabled: _debugShowLayoutBounds,
+                                  label: 'grid',
+                                  color: Colors.blue,
+                                  child: DecoratedBox(
+                                    decoration: BoxDecoration(
+                                      color: gridExtension > 0
+                                          ? Colors.white
+                                          : Colors.transparent,
+                                      borderRadius: gridExtension > 0
+                                          ? const BorderRadius.vertical(
+                                              top: Radius.circular(24))
+                                          : null,
+                                    ),
+                                    child: Padding(
+                                      padding: const EdgeInsets.symmetric(
+                                          horizontal: 16, vertical: 8),
+                                      child: SingleChildScrollView(
+                                        physics: gridNeedsScroll
+                                            ? const BouncingScrollPhysics()
+                                            : const NeverScrollableScrollPhysics(),
+                                        child: Center(
+                                          child: SizedBox(
+                                            width: answerWidth,
+                                            child: Column(
+                                              mainAxisSize: MainAxisSize.min,
+                                              children: [
+                                                Row(children: [
+                                                  cell(0),
+                                                  SizedBox(
+                                                      width: imageQuiz1GridGap),
+                                                  cell(1)
+                                                ]),
+                                                SizedBox(
+                                                    height: imageQuiz1GridGap),
+                                                Row(children: [
+                                                  cell(2),
+                                                  SizedBox(
+                                                      width: imageQuiz1GridGap),
+                                                  cell(3)
+                                                ]),
+                                              ],
+                                            ),
+                                          ),
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                        );
+                      },
+                    ),
+                  ),
+                // Speech bubbles + monster lane — only for templates that use monster pressure
+                if (_showMonsterLaneForCurrentQuestion) ...[
+                  if (_showNext && _bubbleConversation != null)
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 16),
+                      child: Row(
+                        crossAxisAlignment: CrossAxisAlignment.end,
+                        children: [
+                          Expanded(
+                            child: _SpeechBubble(
+                              _bubbleConversation!.guest,
+                              maxWidth: 160,
+                            ),
+                          ),
+                          const SizedBox(width: 8),
+                          Expanded(
+                            child: _SpeechBubble(
+                              _bubbleConversation!.attacker,
+                              maxWidth: 160,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  // Guest animal + monster (jumps stone to stone) + step stones below
+                  Padding(
+                    padding:
+                        const EdgeInsets.symmetric(horizontal: 16, vertical: 4),
+                    child: LayoutBuilder(
+                      builder: (context, constraints) {
+                        const animalSize = 72.0;
+                        const monsterSize = 72.0;
+                        const stoneSize = 20.0;
+                        const stoneRowHeight = 26.0;
+                        const gap = 8.0;
+                        final totalWidth = constraints.maxWidth;
+
+                        // Monster center range: starts above rightmost stone, ends above leftmost stone
+                        final maxMonsterCenter = totalWidth - monsterSize / 2;
+                        final minMonsterCenter =
+                            animalSize + gap + monsterSize / 2;
+                        final range = maxMonsterCenter - minMonsterCenter;
+
+                        // Stone i=0 is rightmost (step-0 landing), i=3 is leftmost (step-3 landing)
+                        // Monster center at step k aligns with stone k center
+                        final step = _monsterStep.clamp(0, 3);
+                        final monsterCenter =
+                            maxMonsterCenter - step * (range / 3);
+                        final monsterLeft = monsterCenter - monsterSize / 2;
+
+                        const pieTimerSize = 40.0;
+                        const pieTimerGap = 6.0;
+                        const monsterTop = pieTimerSize + pieTimerGap;
+
+                        return SizedBox(
+                          height: monsterTop + monsterSize + stoneRowHeight,
+                          child: Stack(
+                            children: [
+                              // Animal — fixed at left, aligned with monster
+                              Positioned(
+                                left: 0,
+                                top: monsterTop,
+                                child: _animalImage(),
+                              ),
+                              // Monster — moves stone to stone with wind behind it
+                              AnimatedPositioned(
+                                duration: const Duration(milliseconds: 500),
+                                curve: Curves.easeInOut,
+                                left: monsterLeft,
+                                top: monsterTop,
+                                child: Stack(
+                                  clipBehavior: Clip.none,
+                                  children: [
+                                    Positioned.fill(
+                                      child: AnimatedBuilder(
+                                        animation: _windController,
+                                        builder: (context, _) => CustomPaint(
+                                          painter: _WindPainter(
+                                              _windController.value),
+                                          size: const Size(72, 72),
+                                        ),
+                                      ),
+                                    ),
+                                    // Pie countdown timer — centered above monster, moves with it
+                                    Positioned(
+                                      top: -(pieTimerSize + pieTimerGap),
+                                      left: (monsterSize - pieTimerSize) / 2,
+                                      child: AnimatedBuilder(
+                                        animation: _timerController,
+                                        builder: (context, _) {
+                                          final remaining =
+                                              1.0 - _timerController.value;
+                                          final color = Color.lerp(Colors.red,
+                                              Colors.green, remaining)!;
+                                          return CustomPaint(
+                                            size: Size(
+                                                pieTimerSize, pieTimerSize),
+                                            painter: _PieTimerPainter(
+                                              progress: remaining,
+                                              color: color,
+                                            ),
+                                          );
+                                        },
+                                      ),
+                                    ),
+                                    // Idle attack loop: scale up 10% + lunge left 10% of size
+                                    AnimatedBuilder(
+                                      animation: _monsterIdleController,
+                                      builder: (context, child) {
+                                        final t = CurvedAnimation(
+                                          parent: _monsterIdleController,
+                                          curve: Curves.easeInOut,
+                                        ).value;
+                                        return Transform.translate(
+                                          offset: Offset(
+                                              -monsterSize * 0.10 * t, 0),
+                                          child: Transform.scale(
+                                            scale: 1.0 + 0.10 * t,
+                                            child: child,
+                                          ),
+                                        );
+                                      },
+                                      child: _monsterImage(),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                              // Step stones — individually positioned to align with monster landing spots
+                              // i=0 rightmost (green) → i=3 leftmost (red); grey when consumed
+                              ...List.generate(4, (i) {
+                                const stoneColors = [
+                                  Colors.green,
+                                  Colors.yellow,
+                                  Colors.orange,
+                                  Colors.red,
+                                ];
+                                final stoneCenter =
+                                    maxMonsterCenter - i * (range / 3);
+                                final stoneLeft = stoneCenter - stoneSize / 2;
+                                final consumed = i < _monsterStep;
+                                return Positioned(
+                                  bottom: 0,
+                                  left: stoneLeft,
+                                  child: AnimatedContainer(
+                                    duration: const Duration(milliseconds: 300),
+                                    width: stoneSize,
+                                    height: stoneSize,
+                                    decoration: BoxDecoration(
+                                      color: consumed
+                                          ? Colors.grey.shade300
+                                          : stoneColors[i],
+                                      borderRadius: BorderRadius.circular(4),
+                                    ),
+                                  ),
+                                );
+                              }),
+                            ],
+                          ),
+                        );
+                      },
+                    ),
+                  ),
+                ],
+                if (isTemplate2 && iq2 != null && paths4 != null)
+                  // Fills whatever height remains after the fixed-height prompt row above (real
+                  // remainder, not a MediaQuery screen-fraction guess) — same "Expanded fills
+                  // leftover body height" mechanism used everywhere else in this method. Card
+                  // width/height are capped per-tier but always clamped against the real
+                  // constraints measured here, so they can never overflow regardless of viewport
+                  // size, insets, or split-screen — per Codex's review in the pipe.
+                  Expanded(
+                    child: DebugLayoutBox(
+                      enabled: _debugShowLayoutBounds,
+                      label: 'grid',
+                      color: Colors.blue,
                       child: Padding(
-                        padding: const EdgeInsets.symmetric(vertical: 6),
-                        child: Text(
-                          option,
-                          textAlign: TextAlign.center,
-                          maxLines: 5,
-                          overflow: TextOverflow.ellipsis,
-                          style: fgColor != null
-                              ? Theme.of(context)
-                                  .textTheme
-                                  .titleMedium
-                                  ?.copyWith(
-                                    color: fgColor,
-                                    fontWeight: FontWeight.w600,
-                                  )
-                              : Theme.of(context).textTheme.titleMedium,
+                        padding: const EdgeInsets.symmetric(
+                            horizontal: 16, vertical: 8),
+                        child: Builder(
+                          builder: (context) {
+                            final budget = QuestionLayoutBudget.of(context);
+                            final preset = _imageQuiz2Presets[budget.tier]!;
+                            return LayoutBuilder(
+                              builder: (context, gridConstraints) {
+                                final availableWidth =
+                                    budget.mediaWidthForAvailable(
+                                        gridConstraints.maxWidth);
+                                final widthCap = max(
+                                  1.0,
+                                  (availableWidth - preset.gridGap) / 2,
+                                );
+                                final heightCap = max(
+                                  1.0,
+                                  (gridConstraints.maxHeight - preset.gridGap) /
+                                      2,
+                                );
+                                final cardWidth =
+                                    min(preset.maxCardWidth, widthCap);
+                                final cardHeight =
+                                    min(preset.maxCardHeight, heightCap);
+
+                                Widget card(int i) {
+                                  final option = _currentOptions[i];
+                                  final assetPath = _assetPathForImageQuiz2Stem(
+                                      iq2, paths4, option);
+                                  final isCorrect = option == _correctAnswer();
+                                  final isSelected = _selectedIndex == i;
+                                  // Same as imageQuizTemplate-1 MCQ: correct cell turns green when
+                                  // locked; wrong pick turns red.
+                                  final showGreen = _answerLocked && isCorrect;
+                                  final showRed =
+                                      _answerLocked && isSelected && !isCorrect;
+                                  return SizedBox(
+                                    width: cardWidth,
+                                    height: cardHeight,
+                                    child: Material(
+                                      color: showGreen
+                                          ? Colors.green.shade200
+                                          : showRed
+                                              ? Colors.red.shade200
+                                              : Theme.of(context)
+                                                  .colorScheme
+                                                  .surfaceContainerHighest,
+                                      borderRadius: BorderRadius.circular(12),
+                                      clipBehavior: Clip.antiAlias,
+                                      child: InkWell(
+                                        onTap: _answerLocked
+                                            ? null
+                                            : () {
+                                                audio.playClick(
+                                                    soundFxOn: soundFxOn);
+                                                _onAnswerTap(i);
+                                              },
+                                        child: assetPath != null
+                                            ? Padding(
+                                                padding:
+                                                    const EdgeInsets.all(8),
+                                                child: Image.asset(
+                                                  assetPath,
+                                                  fit: BoxFit.contain,
+                                                  errorBuilder: (_, __, ___) =>
+                                                      const Icon(
+                                                    Icons.image_not_supported,
+                                                    size: 48,
+                                                  ),
+                                                ),
+                                              )
+                                            : const Icon(
+                                                Icons.image_not_supported),
+                                      ),
+                                    ),
+                                  );
+                                }
+
+                                return Center(
+                                  child: SingleChildScrollView(
+                                    // Defensive last-resort only — card dimensions are already
+                                    // clamped to `gridConstraints` above, so this should never
+                                    // actually need to scroll.
+                                    physics:
+                                        const NeverScrollableScrollPhysics(),
+                                    child: SizedBox(
+                                      width: cardWidth * 2 + preset.gridGap,
+                                      child: Column(
+                                        mainAxisSize: MainAxisSize.min,
+                                        children: [
+                                          Row(children: [
+                                            card(0),
+                                            SizedBox(width: preset.gridGap),
+                                            card(1),
+                                          ]),
+                                          SizedBox(height: preset.gridGap),
+                                          Row(children: [
+                                            card(2),
+                                            SizedBox(width: preset.gridGap),
+                                            card(3),
+                                          ]),
+                                        ],
+                                      ),
+                                    ),
+                                  ),
+                                );
+                              },
+                            );
+                          },
                         ),
                       ),
                     ),
                   ),
-                );
-              }),
+              ],
             ),
           ),
-        // Reserve the action region before it appears. Compact profiles return the reclaimed
-        // height to answer controls while preserving the 48px touch-target floor.
-        _buildQuestionActionRegion(soundFxOn: soundFxOn, isLast: isLast),
-      ],
+          // Reserve the action region before it appears. Compact profiles return the reclaimed
+          // height to answer controls while preserving the 48px touch-target floor.
+          _buildQuestionActionRegion(soundFxOn: soundFxOn, isLast: isLast),
+        ],
+      ),
     );
   }
 
@@ -2772,62 +3333,65 @@ class _ImageQuizScreenState extends ConsumerState<ImageQuizScreen>
     final isLast = _currentIndex + 1 >= _questionCount;
 
     final heroImagePath = _resolvedClozeImagePath();
+    final rendersOwnMedia = q.template == 'VideoConversation' ||
+        q.template == 'DialogueCompletion' ||
+        q.template == 'ConvoTemplate-1' ||
+        q.template == 'ClozeSequence' ||
+        q.template == 'SentenceBuilder' ||
+        q.template == 'AppearDisappear';
+    final usesStandardQuestionShell = q.template != 'WordPairs';
 
     return Column(
       children: [
-        // DialogueCompletion, ConvoTemplate-1, and ClozeSequence render their own image
-        // internally (see _buildConvo1Panel / DialogueCompletionQuizBody / ClozeSequenceQuizBody)
-        // as part of the video-style overlapping answer panel, so they skip this generic
-        // small-centered-thumbnail block entirely rather than showing the image twice.
-        if (heroImagePath != null &&
-            q.template != 'DialogueCompletion' &&
-            q.template != 'ConvoTemplate-1' &&
-            q.template != 'ClozeSequence')
-          Expanded(
-            flex: 1,
-            child: Center(
-              child: ConstrainedBox(
-                constraints: BoxConstraints(
-                  maxHeight: MediaQuery.sizeOf(context).height * 0.25,
-                  maxWidth: MediaQuery.sizeOf(context).width * 0.5,
-                ),
-                child: Image.asset(
-                  heroImagePath,
-                  fit: BoxFit.contain,
-                  errorBuilder: (_, __, ___) => Container(
-                    color: Colors.grey.shade300,
-                    child: const Icon(Icons.image_not_supported, size: 64),
-                  ),
-                ),
-              ),
-            ),
-          ),
         Expanded(
-          flex: (heroImagePath != null &&
-                  q.template != 'DialogueCompletion' &&
-                  q.template != 'ConvoTemplate-1' &&
-                  q.template != 'ClozeSequence')
-              ? 2
-              : 1,
           child: Padding(
-            // VideoConversation, DialogueCompletion, ConvoTemplate-1, and ClozeSequence get a
-            // tighter margin than other convo templates — the image/video is meant to be the
-            // dominant element, so a little less surrounding padding lets it render larger for
-            // the same screen size.
-            padding: (q.template == 'VideoConversation' ||
-                    q.template == 'DialogueCompletion' ||
-                    q.template == 'ConvoTemplate-1' ||
-                    q.template == 'ClozeSequence')
+            padding: usesStandardQuestionShell
                 ? const EdgeInsets.symmetric(horizontal: 6, vertical: 4)
                 : const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
-            child: q.template == 'ConvoTemplate-1'
-                ? Builder(
-                    builder: (context) {
-                      _scheduleConvo1DualLine1IfNeeded(q);
-                      return _buildConvo1Panel(q, userLanguage, soundFxOn);
-                    },
-                  )
-                : _buildConvoQuestionBody(q, userLanguage, soundFxOn, strings),
+            child: LayoutBuilder(
+              builder: (context, bodyConstraints) {
+                final questionBody = q.template == 'ConvoTemplate-1'
+                    ? Builder(
+                        builder: (context) {
+                          _scheduleConvo1DualLine1IfNeeded(q);
+                          return _buildConvo1Panel(
+                            q,
+                            userLanguage,
+                            soundFxOn,
+                          );
+                        },
+                      )
+                    : _buildConvoQuestionBody(
+                        q,
+                        userLanguage,
+                        soundFxOn,
+                        strings,
+                      );
+                if (heroImagePath == null || rendersOwnMedia) {
+                  return questionBody;
+                }
+                return Column(
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
+                  children: [
+                    StandardQuestionMedia(
+                      availableBodyHeight: bodyConstraints.maxHeight,
+                      aspectRatio: 1,
+                      child: Image.asset(
+                        heroImagePath,
+                        fit: BoxFit.contain,
+                        errorBuilder: (_, __, ___) => ColoredBox(
+                          color: Colors.grey.shade300,
+                          child: const Center(
+                            child: Icon(Icons.image_not_supported, size: 48),
+                          ),
+                        ),
+                      ),
+                    ),
+                    Expanded(child: questionBody),
+                  ],
+                );
+              },
+            ),
           ),
         ),
         _buildQuestionActionRegion(soundFxOn: soundFxOn, isLast: isLast),
@@ -2881,13 +3445,16 @@ class _ImageQuizScreenState extends ConsumerState<ImageQuizScreen>
           key: ValueKey('ad-${_currentQuestionId ?? '$_currentIndex'}'),
           data: q.appearDisappearData!,
           userLanguage: userLanguage,
-          audioAssetPath: _audioAssetPath(q),
+          imagePath: _resolvedClozeImagePath(),
+          audio1Path: _audioAssetPathForRaw(q.audioFile1),
+          audio2Path: _audioAssetPathForRaw(q.audioFile2),
           resolveAudioExists: _resolveAudioExists,
           onPlayQuestionAudio: (path) => audio.playQuestionAudio(path),
           onPlayCorrect: () => audio.playCorrect(soundFxOn: soundFxOn),
           onPlayWrong: () => audio.playWrong(soundFxOn: soundFxOn),
           onOutcome: (correct) => _handleInteractiveConvoOutcome(q, correct),
           onNextTileRendered: (_, __) => _maybeShowTutorialFor(q),
+          debugShowLayoutBounds: _debugShowLayoutBounds,
         );
       case 'ClozeSequence':
         return ClozeSequenceQuizBody(
@@ -2895,13 +3462,15 @@ class _ImageQuizScreenState extends ConsumerState<ImageQuizScreen>
           data: q.clozeSequenceData!,
           userLanguage: userLanguage,
           imagePath: _resolvedClozeImagePath(),
-          audioAssetPath: _audioAssetPath(q),
+          audio1Path: _audioAssetPathForRaw(q.audioFile1),
+          audio2Path: _audioAssetPathForRaw(q.audioFile2),
           resolveAudioExists: _resolveAudioExists,
           onPlayQuestionAudio: (path) => audio.playQuestionAudio(path),
           onPlayCorrect: () => audio.playCorrect(soundFxOn: soundFxOn),
           onPlayWrong: () => audio.playWrong(soundFxOn: soundFxOn),
           onOutcome: (correct) => _handleInteractiveConvoOutcome(q, correct),
           onNextChoiceRendered: (_, __) => _maybeShowTutorialFor(q),
+          debugShowLayoutBounds: _debugShowLayoutBounds,
         );
       case 'SentenceBuilder':
         return SentenceBuilderQuizBody(
@@ -2909,13 +3478,16 @@ class _ImageQuizScreenState extends ConsumerState<ImageQuizScreen>
           data: q.sentenceBuilderData!,
           strings: strings,
           userLanguage: userLanguage,
-          audioAssetPath: _audioAssetPath(q),
+          imagePath: _resolvedClozeImagePath(),
+          audio1Path: _audioAssetPathForRaw(q.audioFile1),
+          audio2Path: _audioAssetPathForRaw(q.audioFile2),
           resolveAudioExists: _resolveAudioExists,
           onPlayQuestionAudio: (path) => audio.playQuestionAudio(path),
           onPlayCorrect: () => audio.playCorrect(soundFxOn: soundFxOn),
           onPlayWrong: () => audio.playWrong(soundFxOn: soundFxOn),
           onOutcome: (correct) => _handleInteractiveConvoOutcome(q, correct),
           onNextTileRendered: (_, __) => _maybeShowTutorialFor(q),
+          debugShowLayoutBounds: _debugShowLayoutBounds,
         );
       case 'WordPairs':
         return WordPairsQuizBody(
@@ -2927,6 +3499,7 @@ class _ImageQuizScreenState extends ConsumerState<ImageQuizScreen>
           onPlayWrong: () => audio.playWrong(soundFxOn: soundFxOn),
           onOutcome: (correct) => _handleInteractiveConvoOutcome(q, correct),
           onGuideTargetRendered: (_) => _maybeShowTutorialFor(q),
+          debugShowLayoutBounds: _debugShowLayoutBounds,
         );
       case 'DialogueCompletion':
         return DialogueCompletionQuizBody(
@@ -2942,6 +3515,7 @@ class _ImageQuizScreenState extends ConsumerState<ImageQuizScreen>
           onPlayWrong: () => audio.playWrong(soundFxOn: soundFxOn),
           onOutcome: (correct) => _handleInteractiveConvoOutcome(q, correct),
           onOptionButtonsRendered: (_, __) => _maybeShowTutorialFor(q),
+          debugShowLayoutBounds: _debugShowLayoutBounds,
         );
       case 'VideoConversation':
         final previousIsVideo = _currentIndex > 0 &&
@@ -2968,6 +3542,7 @@ class _ImageQuizScreenState extends ConsumerState<ImageQuizScreen>
             return _tutorialController?.showBeforePlayback(stepKey) ??
                 Future<void>.value();
           },
+          debugShowLayoutBounds: _debugShowLayoutBounds,
         );
       default:
         if (q.isSkipPlaceholder) {
@@ -3139,11 +3714,31 @@ class _ImageQuizScreenState extends ConsumerState<ImageQuizScreen>
     );
   }
 
-  /// ConvoTemplate-1 body: image capped at 45% of the available height, a white answer panel
-  /// pulled up over its bottom edge (mirroring VideoConversationQuizBody / DialogueCompletion —
-  /// see those for why `Transform.translate` rather than a negative margin), the two dialogue
-  /// bubbles as the "prompt" in place of a single line, then the 4 pill answer buttons top-
-  /// aligned and scrollable below. No character names or avatars anywhere in this panel.
+  /// ConvoTemplate-1 body: shared regular-question media frame, a white answer panel pulled up
+  /// over its bottom edge, the two dialogue bubbles as the prompt, then the 4 answer buttons.
+  /// No character names or avatars appear in this panel.
+  int _convo1LineCount(
+    String text, {
+    required double fontSize,
+    required double maxWidth,
+    required FontWeight fontWeight,
+  }) {
+    final painter = TextPainter(
+      text: TextSpan(
+        text: text,
+        style: TextStyle(
+          fontFamily: 'Inter',
+          fontSize: fontSize,
+          fontWeight: fontWeight,
+          height: 1.2,
+        ),
+      ),
+      textDirection: Directionality.of(context),
+      textScaler: MediaQuery.textScalerOf(context),
+    )..layout(maxWidth: max(1.0, maxWidth));
+    return max(1, painter.computeLineMetrics().length);
+  }
+
   Widget _buildConvo1Panel(
     LevelQuestion q,
     String userLanguage,
@@ -3151,147 +3746,484 @@ class _ImageQuizScreenState extends ConsumerState<ImageQuizScreen>
   ) {
     final heroImagePath = _resolvedClozeImagePath();
     final hasImage = heroImagePath != null;
-    final answerWidth = min(MediaQuery.sizeOf(context).width * 0.87, 560.0);
+    final convoBudget = QuestionLayoutBudget.of(context);
+    final answerWidth =
+        convoBudget.answerWidthForAvailable(MediaQuery.sizeOf(context).width);
 
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.stretch,
-      children: [
-        if (hasImage)
-          LayoutBuilder(
-            builder: (context, constraints) {
-              final maxHeight = constraints.maxHeight.isFinite
-                  ? constraints.maxHeight * 0.65
-                  : constraints.maxWidth;
-              return Center(
-                child: ClipRRect(
-                  borderRadius: BorderRadius.circular(18),
-                  child: ConstrainedBox(
-                    constraints: BoxConstraints(
-                      maxHeight: maxHeight,
-                      maxWidth: constraints.maxWidth,
+    return LayoutBuilder(
+      builder: (context, bodyConstraints) {
+        final convoMediaWidthLimit =
+            convoBudget.mediaWidthForAvailable(bodyConstraints.maxWidth);
+        final mediaHeight = hasImage
+            ? min(
+                convoMediaWidthLimit,
+                convoBudget.mediaHeightForAvailable(bodyConstraints.maxHeight),
+              )
+            : 0.0;
+        final remainderHeight = max(
+          0.0,
+          bodyConstraints.maxHeight - mediaHeight,
+        );
+        final dialogueHeight =
+            remainderHeight * _convo1DialogueShareOfRemainder(convoBudget.tier);
+        final gridHeight = max(0.0, remainderHeight - dialogueHeight);
+
+        final buttonFontSize = _convo1ButtonTextSizeForTier[convoBudget.tier]!;
+        final buttonPreset = _convo1ButtonPresets[convoBudget.tier]!;
+        final convo1GridGap = _convo1GridGap(buttonPreset.oneLineHeight);
+        final cellWidth = max(1.0, (answerWidth - convo1GridGap) / 2);
+        final buttonTextWidth = max(1.0, cellWidth - 48.0);
+        final maxAnswerLines = _currentOptions
+            .map((option) => _convo1LineCount(
+                  option,
+                  fontSize: buttonFontSize,
+                  maxWidth: buttonTextWidth,
+                  fontWeight: FontWeight.w500,
+                ))
+            .fold<int>(1, max);
+        final buttonRowHeight = max(
+          _convo1ButtonMinTouchTarget,
+          maxAnswerLines <= 1
+              ? buttonPreset.oneLineHeight
+              : buttonPreset.twoLineHeight + max(0, maxAnswerLines - 2) * 20.0,
+        );
+        final measuredGridHeight = buttonRowHeight * 2 + convo1GridGap;
+        final buttonShortfall = max(0.0, measuredGridHeight - gridHeight);
+
+        // Both dialogue lines use the same fixed hierarchy size, derived only after the
+        // answer preset is selected. The dialogue card may extend upward when its measured
+        // content needs more than its nominal row-count allocation.
+        final bubbleFontSize = buttonFontSize * 1.1;
+        final bubbleWrapWidth = answerWidth - 56;
+        final dialogueContentHeight = _convo1BubbleNeededHeight(
+          q.convoData!,
+          bubbleFontSize,
+          bubbleWrapWidth,
+        );
+        final dialogueTextBudget = max(0.0, dialogueHeight - 28.0);
+        final dialogueShortfall =
+            max(0.0, dialogueContentHeight - dialogueTextBudget);
+        final dialogueLine1Count = _convo1LineCount(
+          q.convoData!.line1,
+          fontSize: bubbleFontSize,
+          maxWidth: bubbleWrapWidth - 23.0,
+          fontWeight: FontWeight.w700,
+        );
+        final dialogueLine2Count = _convo1LineCount(
+          q.convoData!.line2,
+          fontSize: bubbleFontSize,
+          maxWidth: bubbleWrapWidth - 23.0,
+          fontWeight: FontWeight.w700,
+        );
+        // Keep the media widget full-size. The parent footprint is reduced by the cascade amount
+        // so the dialogue/grid can cover the media from above without resizing the media.
+        final extensionCap = hasImage ? mediaHeight : 0.0;
+        final totalShortfall = dialogueShortfall + buttonShortfall;
+        final dialogueExtension = min(dialogueShortfall, extensionCap);
+        final totalExtension = min(totalShortfall, extensionCap);
+        final bubbleResult = (
+          fontSize: bubbleFontSize,
+          overflow: max(0.0, totalShortfall - extensionCap),
+        );
+        final dialogueCardHeight = dialogueHeight + dialogueExtension;
+        // Spend the media-cascade budget on the grid only after the dialogue has received its
+        // required extension. If the remaining shortfall cannot be absorbed without covering the
+        // whole media frame, keep the grid at the largest safe height and let the answer region
+        // (and only that region) use the last-resort scroll fallback.
+        final gridExtension = min(
+          buttonShortfall,
+          max(0.0, extensionCap - dialogueExtension),
+        );
+        final gridHeightFinal = gridHeight + gridExtension;
+        final gridNeedsScroll = buttonShortfall > gridExtension + 0.1;
+        final gridBottomPadding = min(
+          convo1GridGap,
+          max(0.0, gridHeightFinal - convo1GridGap - measuredGridHeight),
+        );
+
+        if (maxAnswerLines > 2 ||
+            dialogueLine1Count > 2 ||
+            dialogueLine2Count > 2) {
+          debugPrint(
+            '[QuestionLayout][ConvoTemplate-1][Warning] '
+            'content exceeded standard line cap '
+            '(answerLines=$maxAnswerLines, '
+            'line1Lines=$dialogueLine1Count, line2Lines=$dialogueLine2Count) '
+            '— cascade extension is absorbing ${totalExtension.toStringAsFixed(1)}px.',
+          );
+        }
+        if (bubbleResult.overflow > 0.1 || gridNeedsScroll) {
+          debugPrint(
+            '[QuestionLayout][ConvoTemplate-1][Fallback] '
+            'answer content exceeds the media-cascade safety cap; '
+            'answerRegionScroll=true overflow='
+            '${bubbleResult.overflow.toStringAsFixed(1)}px',
+          );
+        }
+
+        final convo1LayoutLogKey = [
+          bodyConstraints.maxWidth,
+          bodyConstraints.maxHeight,
+          mediaHeight,
+          totalExtension,
+          dialogueHeight,
+          dialogueExtension,
+          gridHeight,
+          gridBottomPadding,
+          bubbleResult.fontSize,
+          buttonFontSize,
+          buttonRowHeight,
+          convoBudget.tier,
+        ].join('|');
+        if (_convo1LastLayoutLogKey != convo1LayoutLogKey) {
+          _convo1LastLayoutLogKey = convo1LayoutLogKey;
+          // Explicit per-line breakdown, developer ask — both lines are driven by the exact same
+          // `bubbleResult.fontSize`/`FontWeight.w700` (from `_buildConvoDialogueBubbles`'s shared
+          // `TextStyle` instance), printed separately here so that can be checked directly in the
+          // log instead of taken on trust.
+          final revealAnswerForLog = _answerLocked ? q.convoData!.answer : null;
+          final blankInLine1ForLog =
+              q.convoData!.line1.contains(_kBlankPattern);
+          final line1ForLog = revealAnswerForLog == null
+              ? q.convoData!.line1
+              : q.convoData!.line1
+                  .replaceAll(_kBlankPattern, revealAnswerForLog);
+          final line2ForLog = revealAnswerForLog == null
+              ? q.convoData!.line2
+              : q.convoData!.line2
+                  .replaceAll(_kBlankPattern, revealAnswerForLog);
+          debugPrint(
+            '[QuestionLayout][ConvoTemplate-1] '
+            'tier=${convoBudget.tier.name} '
+            'localBody=${bodyConstraints.maxWidth.toStringAsFixed(1)}x'
+            '${bodyConstraints.maxHeight.toStringAsFixed(1)}px '
+            'media=${convoMediaWidthLimit.toStringAsFixed(1)}x'
+            '${mediaHeight.toStringAsFixed(1)}px '
+            'dialogueBox=${answerWidth.toStringAsFixed(1)}x'
+            '${dialogueHeight.toStringAsFixed(1)}px '
+            'dialogueExtension=${dialogueExtension.toStringAsFixed(1)}px '
+            'totalExtension=${totalExtension.toStringAsFixed(1)}px '
+            'answerLines=$maxAnswerLines '
+            'gridBox=${answerWidth.toStringAsFixed(1)}x'
+            '${gridHeight.toStringAsFixed(1)}px '
+            'gridBottomPadding=${gridBottomPadding.toStringAsFixed(1)}px '
+            'bubbleText=${bubbleResult.fontSize.toStringAsFixed(1)}px '
+            'line1FontSize=${bubbleResult.fontSize.toStringAsFixed(1)}px '
+            'line1Weight=w700 '
+            'line1HasBlank=$blankInLine1ForLog '
+            'line1="$line1ForLog" '
+            'line2FontSize=${bubbleResult.fontSize.toStringAsFixed(1)}px '
+            'line2Weight=w700 '
+            'line2HasBlank=${!blankInLine1ForLog} '
+            'line2="$line2ForLog" '
+            'buttonText=${buttonFontSize.toStringAsFixed(1)}px '
+            'buttonRowHeight=${buttonRowHeight.toStringAsFixed(1)}px '
+            'bubbleVsButtonRatio='
+            '${(bubbleResult.fontSize / buttonFontSize).toStringAsFixed(2)}x '
+            'image=$hasImage',
+          );
+        }
+
+        return Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: [
+            SizedBox(
+              height:
+                  max(0.0, mediaHeight - totalExtension) + dialogueCardHeight,
+              child: Stack(
+                clipBehavior: Clip.none,
+                children: [
+                  if (hasImage)
+                    Positioned(
+                      top: 0,
+                      left: 0,
+                      right: 0,
+                      height: mediaHeight,
+                      child: DebugLayoutBox(
+                        enabled: _debugShowLayoutBounds,
+                        label: 'media',
+                        child: StandardQuestionMedia(
+                          availableBodyHeight: bodyConstraints.maxHeight,
+                          aspectRatio: 1,
+                          heightOverride: mediaHeight,
+                          widthOverride: convoMediaWidthLimit,
+                          child: Image.asset(
+                            heroImagePath,
+                            fit: BoxFit.contain,
+                            errorBuilder: (_, __, ___) => ColoredBox(
+                              color: Colors.grey.shade300,
+                              child: const Center(
+                                child:
+                                    Icon(Icons.image_not_supported, size: 48),
+                              ),
+                            ),
+                          ),
+                        ),
+                      ),
                     ),
-                    child: Image.asset(
-                      heroImagePath,
-                      fit: BoxFit.contain,
-                      errorBuilder: (_, __, ___) => Container(
-                        color: Colors.grey.shade300,
-                        padding: const EdgeInsets.all(24),
-                        child: const Icon(Icons.image_not_supported, size: 48),
+                  // Dialogue card: normally a fixed device-tier share of the remainder — only
+                  // the bubble font size adapts. If content still doesn't fit even at the tier's
+                  // minimum readability size, `dialogueExtension` grows this card upward over
+                  // the image instead of shrinking text further, capped so it can never fully
+                  // cover the image.
+                  Positioned(
+                    left: 0,
+                    right: 0,
+                    bottom: 0,
+                    height: dialogueCardHeight,
+                    child: DebugLayoutBox(
+                      enabled: _debugShowLayoutBounds,
+                      label: 'dialogue',
+                      color: Colors.orange,
+                      child: Container(
+                        decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: hasImage
+                              ? const BorderRadius.vertical(
+                                  top: Radius.circular(24))
+                              : null,
+                        ),
+                        padding: const EdgeInsets.fromLTRB(16, 20, 16, 8),
+                        // SingleChildScrollView is pure insurance against a measurement drifting a
+                        // few px from real font-metric rendering — the bisected font size and
+                        // `dialogueExtension` are already solved to fit, so this should never
+                        // actually need to scroll.
+                        child: SingleChildScrollView(
+                          child: Center(
+                            child: SizedBox(
+                              width: answerWidth,
+                              child: Row(
+                                crossAxisAlignment: CrossAxisAlignment.center,
+                                children: [
+                                  Expanded(
+                                    child: _buildConvoDialogueBubbles(
+                                      q.convoData!,
+                                      fontSize: bubbleResult.fontSize,
+                                    ),
+                                  ),
+                                  const SizedBox(width: 8),
+                                  SizedBox(
+                                    width: 48,
+                                    child: _convo1AudioControls(q),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ),
+                        ),
                       ),
                     ),
                   ),
-                ),
-              );
-            },
-          ),
-        Transform.translate(
-          offset: Offset(0, hasImage ? -18 : 0),
-          child: Center(
-            child: SizedBox(
-              width: MediaQuery.sizeOf(context).width,
-              child: Container(
-                decoration: BoxDecoration(
+                ],
+              ),
+            ),
+            // Answer grid: fixed device-tier share of the remainder, divided evenly among the
+            // 2x2 buttons — always the same place/size regardless of content, so buttons never
+            // scroll and never lose space to dialogue-card extension.
+            SizedBox(
+              height: gridHeightFinal,
+              child: DebugLayoutBox(
+                enabled: _debugShowLayoutBounds,
+                label: 'grid',
+                color: Colors.blue,
+                child: Container(
                   color: Colors.white,
-                  borderRadius: hasImage
-                      ? const BorderRadius.vertical(top: Radius.circular(24))
-                      : null,
-                ),
-                padding: const EdgeInsets.fromLTRB(16, 20, 16, 8),
-                child: Center(
-                  child: SizedBox(
-                    width: answerWidth,
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.stretch,
-                      children: [
-                        Row(
-                          crossAxisAlignment: CrossAxisAlignment.center,
+                  child: SingleChildScrollView(
+                    physics: gridNeedsScroll
+                        ? const BouncingScrollPhysics()
+                        : const NeverScrollableScrollPhysics(),
+                    child: Center(
+                      child: SizedBox(
+                        width: answerWidth,
+                        child: Column(
                           children: [
-                            Expanded(
-                              child: _buildConvoDialogueBubbles(q.convoData!),
+                            Row(
+                              children: [
+                                Expanded(
+                                  child: _buildConvoAnswerButton(
+                                    0,
+                                    q,
+                                    soundFxOn,
+                                    fontSize: buttonFontSize,
+                                    height: buttonRowHeight,
+                                    width: cellWidth,
+                                  ),
+                                ),
+                                const SizedBox(width: 12),
+                                Expanded(
+                                  child: _buildConvoAnswerButton(
+                                    1,
+                                    q,
+                                    soundFxOn,
+                                    fontSize: buttonFontSize,
+                                    height: buttonRowHeight,
+                                    width: cellWidth,
+                                  ),
+                                ),
+                              ],
                             ),
-                            const SizedBox(width: 8),
-                            SizedBox(
-                              width: 48,
-                              child: _convo1AudioControls(q),
+                            SizedBox(height: convo1GridGap),
+                            Row(
+                              children: [
+                                Expanded(
+                                  child: _buildConvoAnswerButton(
+                                    2,
+                                    q,
+                                    soundFxOn,
+                                    fontSize: buttonFontSize,
+                                    height: buttonRowHeight,
+                                    width: cellWidth,
+                                  ),
+                                ),
+                                const SizedBox(width: 12),
+                                Expanded(
+                                  child: _buildConvoAnswerButton(
+                                    3,
+                                    q,
+                                    soundFxOn,
+                                    fontSize: buttonFontSize,
+                                    height: buttonRowHeight,
+                                    width: cellWidth,
+                                  ),
+                                ),
+                              ],
                             ),
+                            SizedBox(height: gridBottomPadding),
                           ],
                         ),
-                      ],
+                      ),
                     ),
                   ),
                 ),
               ),
             ),
-          ),
-        ),
-        // Fills the available height and spaces the two button rows evenly (mirrors
-        // VideoConversationQuizBody / DialogueCompletionQuizBody) instead of top-aligning the
-        // 2x2 grid, which left a large empty gap above the Next button. SingleChildScrollView
-        // stays as the last-resort fallback for whatever still doesn't fit.
-        Expanded(
-          child: Container(
-            color: Colors.white,
-            // LayoutBuilder must wrap SingleChildScrollView, not sit inside it — see
-            // VideoConversationQuizBody for why (a LayoutBuilder inside a scroll view reads an
-            // unbounded/infinite maxHeight, which fed into ConstrainedBox(minHeight: ...) would
-            // force infinite height instead of "fill the real available space").
-            child: LayoutBuilder(
-              builder: (context, answerConstraints) {
-                return SingleChildScrollView(
-                  child: Align(
-                    alignment: Alignment.topCenter,
-                    child: Padding(
-                      padding: const EdgeInsets.only(top: 8),
-                      child: SizedBox(
-                        width: answerWidth,
-                        child: ConstrainedBox(
-                          constraints: BoxConstraints(
-                            minHeight: answerConstraints.maxHeight,
-                          ),
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Row(
-                                children: [
-                                  Expanded(
-                                      child: _buildConvoAnswerButton(
-                                          0, q, soundFxOn)),
-                                  const SizedBox(width: 12),
-                                  Expanded(
-                                      child: _buildConvoAnswerButton(
-                                          1, q, soundFxOn)),
-                                ],
-                              ),
-                              const SizedBox(height: 12),
-                              Row(
-                                children: [
-                                  Expanded(
-                                      child: _buildConvoAnswerButton(
-                                          2, q, soundFxOn)),
-                                  const SizedBox(width: 12),
-                                  Expanded(
-                                      child: _buildConvoAnswerButton(
-                                          3, q, soundFxOn)),
-                                ],
-                              ),
-                            ],
-                          ),
-                        ),
-                      ),
-                    ),
-                  ),
-                );
-              },
-            ),
-          ),
-        ),
-      ],
+          ],
+        );
+      },
     );
+  }
+
+  /// Min/regular/max bubble text size per tier — `regular` = button size × 1.10 (developer's
+  /// ask: dialogue lines read 10% bigger than answer buttons). `min` is a real readability
+  /// floor (never crossed — the dialogue box extends over the image instead, see
+  /// `_buildConvo1Panel`), `max` a growth cap on spacious devices with short content.
+  ({double min, double regular, double max}) _convo1BubbleTextProfile(
+    QuestionLayoutTier tier,
+  ) {
+    switch (tier) {
+      case QuestionLayoutTier.phoneUltraTall:
+      case QuestionLayoutTier.phoneSuperTall:
+        return (min: 15, regular: 20, max: 22);
+      case QuestionLayoutTier.phoneFlagship:
+        return (min: 14, regular: 20, max: 21);
+      case QuestionLayoutTier.phoneTransition:
+      case QuestionLayoutTier.phoneClassic2to1:
+        return (min: 15, regular: 20, max: 22);
+      case QuestionLayoutTier.phone16to9:
+        return (min: 16, regular: 20, max: 22);
+      case QuestionLayoutTier.tablet16to9:
+      case QuestionLayoutTier.tablet16to10:
+        return (min: 18, regular: 22, max: 27);
+      case QuestionLayoutTier.tablet3to2:
+        return (min: 19, regular: 23, max: 29);
+      case QuestionLayoutTier.tablet4to3:
+        return (min: 20, regular: 24, max: 31);
+    }
+  }
+
+  double _convo1BubbleNeededHeight(
+    ConvoQuestionData q,
+    double fontSize,
+    double maxWidth,
+  ) {
+    final answer = _answerLocked ? q.answer : null;
+    final line1 =
+        answer == null ? q.line1 : q.line1.replaceAll(_kBlankPattern, answer);
+    final line2 =
+        answer == null ? q.line2 : q.line2.replaceAll(_kBlankPattern, answer);
+    final style = Theme.of(context).textTheme.titleMedium?.copyWith(
+              fontSize: fontSize,
+              height: 1.2,
+              fontFamily: 'Inter',
+            ) ??
+        TextStyle(fontSize: fontSize, height: 1.2, fontFamily: 'Inter');
+    final textMaxWidth = max(0.0, maxWidth - 23.0);
+    // Whichever line holds the blank renders as RichText with a styled nested span for "_____ "
+    // (bold, colored, letterSpacing: 1 — see `_buildBubbleText`), not as one flat run of plain
+    // text. Measuring it as plain text understates its real width (no letterSpacing), which can
+    // under-count how many lines it actually wraps to — mirror the same span structure here so
+    // the estimate matches what's actually painted, not an approximation of it.
+    double lineHeight(String text) {
+      final InlineSpan span;
+      if (text.contains(_kBlank)) {
+        final parts = text.split(_kBlank);
+        final children = <InlineSpan>[];
+        for (var i = 0; i < parts.length; i++) {
+          if (parts[i].isNotEmpty) children.add(TextSpan(text: parts[i]));
+          if (i < parts.length - 1) {
+            children.add(
+              TextSpan(
+                text: '_____ ',
+                style: style.copyWith(
+                    fontWeight: FontWeight.w700, letterSpacing: 1),
+              ),
+            );
+          }
+        }
+        span = TextSpan(style: style, children: children);
+      } else {
+        span = TextSpan(text: text, style: style);
+      }
+      final painter = TextPainter(
+        text: span,
+        textDirection: Directionality.of(context),
+        textScaler: MediaQuery.textScalerOf(context),
+      )..layout(maxWidth: textMaxWidth);
+      return painter.height + 19;
+    }
+
+    return lineHeight(line1) + 10 + lineHeight(line2);
+  }
+
+  /// Largest bubble font size in `[min, max]` whose combined two-bubble height fits
+  /// `dialogueHeight`, found by continuous bisection (not a 3-value snap) — mirrors
+  /// `DialogueCompletionQuizBody`'s `_solveFontSizeForBox` shape, kept local since each
+  /// template owns its own independent sizing logic. Also returns `overflow`: 0 if the chosen
+  /// size fits, or how far even `min` exceeds `dialogueHeight` otherwise — the caller uses this
+  /// to extend the dialogue box upward over the image rather than shrinking further.
+  ({double fontSize, double overflow}) _convo1BubbleFontSizeForBox(
+    ConvoQuestionData q,
+    QuestionLayoutTier tier,
+    double maxWidth,
+    double dialogueHeight,
+  ) {
+    final profile = _convo1BubbleTextProfile(tier);
+    final neededAtMax = _convo1BubbleNeededHeight(q, profile.max, maxWidth);
+    if (neededAtMax <= dialogueHeight) {
+      return (fontSize: profile.max, overflow: 0.0);
+    }
+    final neededAtMin = _convo1BubbleNeededHeight(q, profile.min, maxWidth);
+    if (neededAtMin > dialogueHeight) {
+      return (fontSize: profile.min, overflow: neededAtMin - dialogueHeight);
+    }
+    var lo = profile.min, hi = profile.max;
+    for (var i = 0; i < 16; i++) {
+      final mid = (lo + hi) / 2;
+      if (_convo1BubbleNeededHeight(q, mid, maxWidth) <= dialogueHeight) {
+        lo = mid;
+      } else {
+        hi = mid;
+      }
+    }
+    return (fontSize: lo, overflow: 0.0);
   }
 
   /// Image-backed ConvoTemplate-1 dialogue presentation: speech bubbles only, without the
   /// character names and portrait circles used by the older conversation layout.
-  Widget _buildConvoDialogueBubbles(ConvoQuestionData q) {
+  Widget _buildConvoDialogueBubbles(
+    ConvoQuestionData q, {
+    double fontSize = 20,
+  }) {
     final blankInLine1 = q.line1.contains(_kBlankPattern);
     // Always reveal the *correct* word once locked, never whichever option the learner tapped —
     // filling the blank with a wrong pick (e.g. "am") read as the game accepting it, since
@@ -3305,18 +4237,32 @@ class _ImageQuizScreenState extends ConsumerState<ImageQuizScreen>
         ? q.line2
         : q.line2.replaceAll(_kBlankPattern, revealAnswer);
 
+    // Built once and passed to both bubbles as the same object — line1/line2 must never render
+    // at different sizes (developer report: Q3 showed a visible mismatch). This removes any
+    // possibility of the two bubbles' styles diverging, even though both already received the
+    // same `fontSize` double before this change; constructing one shared `TextStyle` instance
+    // makes that guarantee explicit rather than relying on two separate, identically-argued
+    // `Theme.of(context).textTheme.titleMedium?.copyWith(...)` calls staying in sync.
+    final bubbleStyle = Theme.of(context).textTheme.titleMedium?.copyWith(
+              fontSize: fontSize,
+              height: 1.2,
+            ) ??
+        TextStyle(fontSize: fontSize, height: 1.2);
+
     return Column(
       children: [
         _buildDialogueBubble(
           text: line1,
           isActive: blankInLine1,
           alignRight: false,
+          style: bubbleStyle,
         ),
         const SizedBox(height: 10),
         _buildDialogueBubble(
           text: line2,
           isActive: !blankInLine1,
           alignRight: true,
+          style: bubbleStyle,
         ),
       ],
     );
@@ -3379,11 +4325,17 @@ class _ImageQuizScreenState extends ConsumerState<ImageQuizScreen>
     );
   }
 
-  /// Rounded bubble around dialogue text with alignment for left/right speakers.
+  /// Rounded bubble around dialogue text with alignment for left/right speakers. `style`, when
+  /// given, takes precedence over `fontSize` — callers that must guarantee two bubbles render
+  /// at byte-identical size (`ConvoTemplate-1`'s `_buildConvoDialogueBubbles`) pass the exact
+  /// same `TextStyle` instance to both, rather than relying on two separate calls with a
+  /// matching-but-separately-constructed style.
   Widget _buildDialogueBubble({
     required String text,
     required bool isActive,
     required bool alignRight,
+    double fontSize = 20,
+    TextStyle? style,
   }) {
     final colorScheme = Theme.of(context).colorScheme;
     // Keep both dialogue lines visually consistent; the active missing word is
@@ -3403,20 +4355,30 @@ class _ImageQuizScreenState extends ConsumerState<ImageQuizScreen>
         ),
         border: Border.all(color: borderColor, width: 1.5),
       ),
-      child: _buildBubbleText(text, isActive: isActive),
+      child: _buildBubbleText(
+        text,
+        isActive: isActive,
+        fontSize: fontSize,
+        style: style,
+      ),
     );
   }
 
   /// Renders convo line text with blank highlighting when that side holds the missing word.
-  Widget _buildBubbleText(String text, {required bool isActive}) {
-    if (!text.contains(_kBlank)) {
-      return Text(
-        text,
-        style: Theme.of(context).textTheme.titleMedium?.copyWith(
-              fontSize: 20,
+  /// `style` (when given) is used as-is for the base text; `fontSize` alone is the legacy path.
+  Widget _buildBubbleText(
+    String text, {
+    required bool isActive,
+    double fontSize = 20,
+    TextStyle? style,
+  }) {
+    final baseStyle = style ??
+        Theme.of(context).textTheme.titleMedium?.copyWith(
+              fontSize: fontSize,
               height: 1.2,
-            ),
-      );
+            );
+    if (!text.contains(_kBlank)) {
+      return Text(text, style: baseStyle);
     }
     final parts = text.split(_kBlank);
     final spans = <InlineSpan>[];
@@ -3428,30 +4390,40 @@ class _ImageQuizScreenState extends ConsumerState<ImageQuizScreen>
             alignment: PlaceholderAlignment.middle,
             child: Text(
               '_____ ',
-              style: Theme.of(context).textTheme.titleMedium?.copyWith(
-                    fontSize: 20,
-                    color: Theme.of(context).colorScheme.primary,
-                    fontWeight: FontWeight.w700,
-                    letterSpacing: 1,
-                  ),
+              style: baseStyle?.copyWith(
+                color: Theme.of(context).colorScheme.primary,
+                fontWeight: FontWeight.w700,
+                letterSpacing: 1,
+              ),
             ),
           ),
         );
       }
     }
     return RichText(
+      // Unlike `Text`, `RichText` does not automatically read the ambient text scale from
+      // `MediaQuery` — it must be passed explicitly, or it silently renders at 1.0x regardless
+      // of the device's accessibility text-size setting. This was the actual bug behind the
+      // developer's "second bubble looks bigger" report: whichever line has no blank renders
+      // via plain `Text` (auto-scaled), the line with the blank renders via this `RichText`
+      // (previously unscaled) — at any ambient scale above 1.0 the two would visibly diverge
+      // even though `baseStyle`'s `fontSize` was already provably identical between them.
+      textScaler: MediaQuery.textScalerOf(context),
       text: TextSpan(
-        style: Theme.of(context).textTheme.titleMedium?.copyWith(
-              fontSize: 20,
-              height: 1.2,
-            ),
+        style: baseStyle,
         children: spans,
       ),
     );
   }
 
   Widget _buildConvoAnswerButton(
-      int optionIndex, LevelQuestion q, bool soundFxOn) {
+    int optionIndex,
+    LevelQuestion q,
+    bool soundFxOn, {
+    double? fontSize,
+    double? height,
+    double? width,
+  }) {
     final option = _currentOptions[optionIndex];
     final correct = _convoAnswer(q) ?? '';
     final isCorrect = option == correct;
@@ -3479,6 +4451,10 @@ class _ImageQuizScreenState extends ConsumerState<ImageQuizScreen>
     return McqPillAnswerButton(
       label: option,
       state: state,
+      fontSize: fontSize,
+      minHeight: height,
+      maxHeight: height,
+      width: width,
       onTap: busy
           ? null
           : () {

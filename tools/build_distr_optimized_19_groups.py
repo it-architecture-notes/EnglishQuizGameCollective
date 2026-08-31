@@ -17,8 +17,8 @@ from dataclasses import dataclass, field
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
-REF_DIR = ROOT / "cursor-claude-common/references/final words"
-DIST_DIR = ROOT / "cursor-claude-common/references/distr-references"
+REF_DIR = ROOT / "all-ai-common/references/final words"
+DIST_DIR = ROOT / "all-ai-common/references/distr-references"
 OUTPUT_DIST4 = DIST_DIR / "dist-optimized-19.txt"
 OUTPUT_EQUAL_COMPARE = DIST_DIR / "dist-equal-weight-comparison.txt"
 

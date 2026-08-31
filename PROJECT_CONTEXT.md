@@ -236,9 +236,9 @@ Display: up to `min(3, min(english_to_translate.length, local_translation.length
 | `app/lib/services/level_config_loader.dart` | Loads per-level `questions.json` |
 | `app/assets/data/flow/game-flow.json` | 60 sub-levels, 12 main levels |
 | `app/assets/data/settings/localization.json` | All UI strings (en/fr/es/tr) |
-| `cursor-claude-common/context/active-progress-context.md` | Current active issue |
-| `cursor-claude-common/context/page-designs-and-templates.md` | Per-template UX and JSON schema reference |
-| `cursor-claude-common/rules/rules.md` | Project development rules |
+| `all-ai-common/context/active-progress-context.md` | Current active issue |
+| `all-ai-common/context/page-designs-and-templates.md` | Per-template UX and JSON schema reference |
+| `all-ai-common/rules/rules.md` | Project development rules |
 | `app/codebase_signatures.md` | Class/method signatures — read before pulling full files |
 
 ---

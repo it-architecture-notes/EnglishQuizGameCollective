@@ -42,7 +42,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
     final isTablet = bucket.isTablet;
     final strings = ref.watch(currentLocalizedStringsProvider).valueOrNull ?? {};
     final settings = ref.watch(settingsProvider).valueOrNull;
-    final soundFxOn = settings?.soundFxOn ?? true;
+    final soundFxOn = settings?.soundFxOn ?? false;
 
     return Scaffold(
       backgroundColor: _HomeColors.background,

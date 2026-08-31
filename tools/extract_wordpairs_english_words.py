@@ -8,7 +8,7 @@ since every level is flavor-split now; no root questions.json exists anymore).
 For each question with `template` `WordPairs` or legacy `ConvoTemplate-WordPairs`,
 reads `questionData.english_words` (array of strings). Empty strings are skipped.
 
-Output CSV (default: `cursor-claude-common/output/wordpairs-english-words-by-level.csv`):
+Output CSV (default: `all-ai-common/output/wordpairs-english-words-by-level.csv`):
   english_word,level,flavor
 
 Rows are sorted by level, then flavor, then english_word (case-insensitive).
@@ -117,7 +117,7 @@ def main() -> int:
     parser.add_argument(
         "--output",
         type=Path,
-        default=root / "cursor-claude-common/output/wordpairs-english-words-by-level.csv",
+        default=root / "all-ai-common/output/wordpairs-english-words-by-level.csv",
         help="Output CSV path",
     )
     parser.add_argument(

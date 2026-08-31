@@ -14,7 +14,7 @@ disable-model-invocation: true
 
 Use the canonical project instructions at:
 
-`cursor-claude-common/skills/redistribute-level-vocabulary/SKILL.md`
+`all-ai-common/skills/redistribute-level-vocabulary/SKILL.md`
 
 Read that file before running the workflow. It defines the recursive chain cap,
 included/skipped levels, word ownership map, relevance scoring, report template,

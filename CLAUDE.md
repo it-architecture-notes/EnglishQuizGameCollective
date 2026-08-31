@@ -80,7 +80,7 @@ app/assets/
 
 ## Context Management Workflow
 
-Development progress is tracked in `cursor-claude-common/context/` (shared with Cursor):
+Development progress is tracked in `all-ai-common/context/` (shared by all AI agents):
 
 - `active-progress-context.md` — the **single** active issue; developer adds issues here directly
 - `progress-context-archive.md` — summarized completed items (most recent first)
@@ -89,18 +89,18 @@ Development progress is tracked in `cursor-claude-common/context/` (shared with 
 - `page-designs-and-templates.md` — per-template UX and JSON schema reference
 - `story-templates-and-design.md` — story overlay templates (`page_template_id`, layouts A/B/C, story JSON)
 
-Plans live in `cursor-claude-common/plans/`. Rules live in `cursor-claude-common/rules/rules.md`.
+Plans live in `all-ai-common/plans/`. Rules live in `all-ai-common/rules/rules.md`.
 
 When an issue is completed and accepted it is archived in both archive files above.
 
 ## Key Rules
 
-For full rules refer to `cursor-claude-common/rules/rules.md`. Key points:
+For full rules refer to `all-ai-common/rules/rules.md`. Key points:
 
 - One issue at a time. Present a plan first, wait for approval before implementing.
 - Never work on `main` — always use a feature branch.
 - Never commit unless explicitly asked.
-- This is a shared, concurrently edited worktree. Never use `git checkout --`, `git restore`, `git reset`, `git clean`, or broad file overwrites to undo work. Treat all uncommitted changes as user/other-agent work, re-read files immediately before editing, and follow the mandatory shared-worktree and bulk-transformation rules in `cursor-claude-common/rules/rules.md`.
+- This is a shared, concurrently edited worktree. Never use `git checkout --`, `git restore`, `git reset`, `git clean`, or broad file overwrites to undo work. Treat all uncommitted changes as user/other-agent work, re-read files immediately before editing, and follow the mandatory shared-worktree and bulk-transformation rules in `all-ai-common/rules/rules.md`.
 - Consult `app/codebase_signatures.md` before reading full files to save context.
 - No tests, no over-engineering, no speculative features.
-- **Never use `git checkout --`, `git restore`, `git reset`, `git clean`, or a broad overwrite to undo your own mistake.** Repair only your exact hunks with a targeted patch. Even a whole-file restore can erase concurrent edits and requires explicit user approval identifying the file and known loss. Never target a parent directory. See `cursor-claude-common/rules/rules.md` for the incident and mandatory preflight/backup rules.
+- **Never use `git checkout --`, `git restore`, `git reset`, `git clean`, or a broad overwrite to undo your own mistake.** Repair only your exact hunks with a targeted patch. Even a whole-file restore can erase concurrent edits and requires explicit user approval identifying the file and known loss. Never target a parent directory. See `all-ai-common/rules/rules.md` for the incident and mandatory preflight/backup rules.

@@ -701,6 +701,91 @@ def build_jobs_for_question(
             ),
         ]
 
+    # SentenceBuilder / AppearDisappear / ClozeSequence image questions with a spoken setup line:
+    # two clips — line1 (the asked question), then the graded content (correct_order
+    # for SentenceBuilder, words for AppearDisappear, blanks-filled sentence for ClozeSequence). Same shape as
+    # DialogueCompletion's line1+answer pair, just under a different template name.
+    if template in ("SentenceBuilder", "AppearDisappear", "ClozeSequence") and af1 and af2:
+        qd = q.get("questionData")
+        if not isinstance(qd, dict):
+            return [
+                CandidateJob(
+                    question_index=idx,
+                    template=template,
+                    audio_file_value="",
+                    output_filename=f"_invalid{output_suffix}.m4a",
+                    output_path=output_dir / f"_invalid{output_suffix}.m4a",
+                    tts_text=None,
+                    speaker_mode="skip",
+                    reason="missing_question_data",
+                )
+            ]
+        line1 = _localized_en(qd.get("line1"))
+        if template == "SentenceBuilder":
+            text_answer = _join_words(qd.get("correct_order"))
+        elif template == "AppearDisappear":
+            text_answer = _join_words(qd.get("words"))
+        else:
+            sentence_en = _localized_en(qd.get("sentence"))
+            text_answer = (
+                _cloze_sequence_tts_text(sentence_en, qd) if sentence_en else None
+            )
+        if not line1 or not text_answer:
+            return [
+                CandidateJob(
+                    question_index=idx,
+                    template=template,
+                    audio_file_value="",
+                    output_filename=f"_invalid{output_suffix}.m4a",
+                    output_path=output_dir / f"_invalid{output_suffix}.m4a",
+                    tts_text=None,
+                    speaker_mode="skip",
+                    reason="dual_setup_missing_line1_or_answer",
+                )
+            ]
+        if gender_ctx is not None:
+            g1 = _gender_from_audio_filename(af1)
+            g2 = _gender_from_audio_filename(af2)
+            v1 = (
+                _gemini_voice_for_gender(g1, gender_ctx)
+                or _gemini_voice_for_gender(_gender_from_genders_field(q, 0), gender_ctx)
+                or _random_gemini_voice_any_gender(gender_ctx)
+            )
+            v2 = (
+                _gemini_voice_for_gender(g2, gender_ctx)
+                or _gemini_voice_for_gender(_gender_from_genders_field(q, 1), gender_ctx)
+                or _gemini_voice_excluding(
+                    tuple(list(gender_ctx.male_voices) + list(gender_ctx.female_voices)), v1
+                )
+            )
+        else:
+            v1 = None
+            v2 = None
+        text1 = _str_or_none(q.get("audio_file1_text")) or line1
+        text2 = _str_or_none(q.get("audio_file2_text")) or text_answer
+        return [
+            _job_for_stem(
+                idx,
+                template,
+                output_dir,
+                af1,
+                output_suffix,
+                text1,
+                "single",
+                gemini_voice_override=v1,
+            ),
+            _job_for_stem(
+                idx,
+                template,
+                output_dir,
+                af2,
+                output_suffix,
+                text2,
+                "single",
+                gemini_voice_override=v2,
+            ),
+        ]
+
     # ConvoTemplate-1: two single-speaker clips (line1 / line2, blanks filled with answer).
     if template == "ConvoTemplate-1" and af1 and af2:
         qd = q.get("questionData")
@@ -1270,7 +1355,12 @@ def pcm_to_m4a_file(
             check=True,
         )
         output_duration = float(probe.stdout.strip())
-        if abs(output_duration - input_duration) > 0.03:
+        # AAC's fixed frame size rounds output duration to the nearest encoder frame
+        # regardless of filtering (see mastering_filter_chain docstring); this grows with
+        # clip length, not just a flat ~10ms, so a longer multi-second line can legitimately
+        # land ~0.1s off. 0.15s still easily catches a real bug (e.g. an accidental speed
+        # change or truncation), which would drift by far more than that.
+        if abs(output_duration - input_duration) > 0.15:
             raise RuntimeError(
                 f"Audio duration changed unexpectedly: input={input_duration:.4f}s, "
                 f"output={output_duration:.4f}s"

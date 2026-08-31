@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
 Scan quiz level JSON and refresh `count` + `levels` columns in the CSV files under
-`cursor-claude-common/references/final words/`.
+`all-ai-common/references/final words/`.
 
 Counted sources (per level folder — each word/phrase contributes at most once per level):
   questions.json
@@ -565,7 +565,7 @@ def main() -> int:
     parser.add_argument(
         "--csv-dir",
         type=Path,
-        default=root / "cursor-claude-common/references/final words",
+        default=root / "all-ai-common/references/final words",
         help="Folder with word*.csv files",
     )
     parser.add_argument(
@@ -573,7 +573,7 @@ def main() -> int:
         action="store_true",
         help="Print actions without writing files",
     )
-    ref_default = root / "cursor-claude-common/references/remove-word-list-references"
+    ref_default = root / "all-ai-common/references/remove-word-list-references"
     parser.add_argument(
         "--oxford-txt",
         type=Path,

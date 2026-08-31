@@ -10,11 +10,11 @@ Use this when authoring or extending **`app/assets/quiz-data/levels/{level-id}/q
 
 ## Goals
 
-1. **Template mix** — Prefer a **variety** of supported templates (image quizzes, convo templates, cloze, dialogue completion, etc.). Do **not** use only one template unless the user explicitly asks for an image-only or single-template level. Consult `CLAUDE.md` / `cursor-claude-common/context/page-designs-and-templates.md` for valid `template` strings and JSON shapes.
+1. **Template mix** — Prefer a **variety** of supported templates (image quizzes, convo templates, cloze, dialogue completion, etc.). Do **not** use only one template unless the user explicitly asks for an image-only or single-template level. Consult `CLAUDE.md` / `all-ai-common/context/page-designs-and-templates.md` for valid `template` strings and JSON shapes.
 
 2. **Thematic fit** — Questions should match the **level name and setting** (e.g. a **library** level: borrowing, reading, quiet rules, book-related vocabulary; a **grocery** level: food, prices, carts). Prefer domain-relevant wording over generic fillers.
 
-3. **Vocabulary source** — Prefer words from **`cursor-claude-common/references/final words/*.csv`**. Treat **earlier curriculum / lower-numbered or “beginner” levels** in the flow as **simpler vocabulary**; harder levels can use a wider range from the same CSVs when appropriate.
+3. **Vocabulary source** — Prefer words from **`all-ai-common/references/final words/*.csv`**. Treat **earlier curriculum / lower-numbered or “beginner” levels** in the flow as **simpler vocabulary**; harder levels can use a wider range from the same CSVs when appropriate.
 
 4. **Word reuse vs relevance** — Prefer **less‑repeated** words from the lists when several choices fit equally well. If a **more common** word is **clearly better** for the theme, choose it (e.g. in a library level, **read** beats **purchase**).
 

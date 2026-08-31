@@ -66,7 +66,7 @@ class AppSettingsService {
       return prefs.getBool(_soundFxKey) ?? false;
     } catch (e, st) {
       debugPrint('AppSettingsService.getSoundFxOn: $e\n$st');
-      return true;
+      return false;
     }
   }
 

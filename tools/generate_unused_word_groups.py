@@ -14,8 +14,8 @@ from dataclasses import dataclass
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
-REF_DIR = ROOT / "cursor-claude-common/references/final words"
-OUTPUT = ROOT / "cursor-claude-common/output/unused-words-groups.txt"
+REF_DIR = ROOT / "all-ai-common/references/final words"
+OUTPUT = ROOT / "all-ai-common/output/unused-words-groups.txt"
 
 CEFR_ORDER = {"A1": 0, "A2": 1, "B1": 2, "B2": 3, "C1": 4, "C2": 5, "": 9}
 

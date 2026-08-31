@@ -37,12 +37,12 @@ Usage:
     app/assets/quiz-data/levels/greetings --format html
 
 Output (default --format html):
-  cursor-claude-common/output/<level-name>-questions.<ext>
-  cursor-claude-common/output/prior-words-by-type.md
+  all-ai-common/output/<level-name>-questions.<ext>
+  all-ai-common/output/prior-words-by-type.md
     (always this filename; overwritten for the selected level — prior flow
     vocabulary grouped by verb / adjective / adverb / etc.)
 
-Also refreshes ``cursor-claude-common/references/final words/*.csv`` (including
+Also refreshes ``all-ai-common/references/final words/*.csv`` (including
 ``langeek-500-most-common-nouns.csv``, and ``common-verbs.csv``) and marks the Oxford 3000 list — same as
 ``tools/update_final_word_counts_from_levels.py``. Use ``--skip-final-words`` to
 skip that step.
@@ -1760,7 +1760,7 @@ def main() -> int:
     parser.add_argument(
         "--output-dir",
         type=Path,
-        default=root / "cursor-claude-common/output",
+        default=root / "all-ai-common/output",
         help="Directory for output file",
     )
     parser.add_argument(
@@ -1778,7 +1778,7 @@ def main() -> int:
     parser.add_argument(
         "--csv-dir",
         type=Path,
-        default=root / "cursor-claude-common/references/final words",
+        default=root / "all-ai-common/references/final words",
         help="Final-word CSV folder used to classify prior words by type",
     )
     parser.add_argument(
@@ -1799,7 +1799,7 @@ def main() -> int:
     parser.add_argument(
         "--oxford-txt",
         type=Path,
-        default=root / "cursor-claude-common/references/remove-word-list-references/3000 words oxford.txt",
+        default=root / "all-ai-common/references/remove-word-list-references/3000 words oxford.txt",
         help="Oxford word list to mark when refreshing final-word references",
     )
     parser.add_argument(

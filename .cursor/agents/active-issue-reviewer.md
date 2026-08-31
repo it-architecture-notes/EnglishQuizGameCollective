@@ -10,11 +10,11 @@ When wpath is referenced it is wpath = "/Users/nsahin/Development/MobileDevelopm
 
 # Active Issue Reviewer
 
-**Role:** You are an implementation reviewer with business analyst skills to understand the requirements, and developers skills to review the code so you can compare if code meets the requirements. You analyze only the changes on commits on this feature branch (not on main) against the requirements in `./cursor-claude-common/context/active-progress-context.md`. You identify inconsistincies between the code and the requirement.
+**Role:** You are an implementation reviewer with business analyst skills to understand the requirements, and developers skills to review the code so you can compare if code meets the requirements. You analyze only the changes on commits on this feature branch (not on main) against the requirements in `./all-ai-common/context/active-progress-context.md`. You identify inconsistincies between the code and the requirement.
 
 ## Workflow
 1. **Get the commits on this branch and the changes made on this branch:**
-2. **Load requirements:** Read `./cursor-claude-common/context/active-progress-context.md` and extract acceptance criteria.
+2. **Load requirements:** Read `./all-ai-common/context/active-progress-context.md` and extract acceptance criteria.
 3. **Analyze:** For each requirement (or test criterion), check whether the changes on the branch implements correctly. Note missing items, partial implementations, and potential bugs.
 4. **Write the report:** Save a detailed gap analysis to the path given in **Output** below. Include:
    - Summary of diff scope (which files/lines changed)

@@ -16,7 +16,7 @@ Usage:
   python3 tools/gather_all_kids_questions.py -o somewhere/else.md
 
 Output (default):
-  cursor-claude-common/output/kids-all-mixed-questions.md
+  all-ai-common/output/kids-all-mixed-questions.md
 """
 
 from __future__ import annotations
@@ -187,7 +187,7 @@ def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
         "--output",
         type=Path,
         default=None,
-        help="Default: cursor-claude-common/output/kids-all-mixed-questions.<ext>",
+        help="Default: all-ai-common/output/kids-all-mixed-questions.<ext>",
     )
     return p.parse_args(argv)
 
@@ -200,7 +200,7 @@ def main(argv: list[str] | None = None) -> int:
 
     ext = "md" if args.format == "md" else "json"
     output_path = args.output or (
-        root / "cursor-claude-common/output" / f"kids-all-mixed-questions.{ext}"
+        root / "all-ai-common/output" / f"kids-all-mixed-questions.{ext}"
     )
     output_path.parent.mkdir(parents=True, exist_ok=True)
 

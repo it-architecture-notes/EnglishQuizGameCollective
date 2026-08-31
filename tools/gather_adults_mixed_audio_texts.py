@@ -16,7 +16,7 @@ Usage:
   python3 tools/gather_adults_mixed_audio_texts.py -o somewhere/else.md
 
 Output (default):
-  cursor-claude-common/output/adults-mixed-audio-base-texts.md
+  all-ai-common/output/adults-mixed-audio-base-texts.md
 """
 
 from __future__ import annotations
@@ -336,7 +336,7 @@ def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
         "--output",
         type=Path,
         default=None,
-        help="Default: cursor-claude-common/output/adults-mixed-audio-base-texts.<ext>",
+        help="Default: all-ai-common/output/adults-mixed-audio-base-texts.<ext>",
     )
     return p.parse_args(argv)
 
@@ -349,7 +349,7 @@ def main(argv: list[str] | None = None) -> int:
 
     ext = "md" if args.format == "md" else "json"
     output_path = args.output or (
-        root / "cursor-claude-common/output" / f"adults-mixed-audio-base-texts.{ext}"
+        root / "all-ai-common/output" / f"adults-mixed-audio-base-texts.{ext}"
     )
     output_path.parent.mkdir(parents=True, exist_ok=True)
 

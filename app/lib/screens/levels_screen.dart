@@ -783,7 +783,7 @@ class _LevelsScreenState extends ConsumerState<LevelsScreen> {
     if (!mounted || data == null) return;
     final strings = ref.read(currentLocalizedStringsProvider).valueOrNull ?? {};
     final lang = ref.read(settingsProvider).valueOrNull?.language ?? 'en';
-    final soundFxOn = ref.read(settingsProvider).valueOrNull?.soundFxOn ?? true;
+    final soundFxOn = ref.read(settingsProvider).valueOrNull?.soundFxOn ?? false;
     final mq = MediaQuery.of(context);
     final listH = (mq.size.height * 0.5).clamp(200.0, 420.0);
 
@@ -991,7 +991,7 @@ class _LevelsScreenState extends ConsumerState<LevelsScreen> {
                 ),
                 onPressed: () {
                   final soundFxOn =
-                      ref.read(settingsProvider).valueOrNull?.soundFxOn ?? true;
+                      ref.read(settingsProvider).valueOrNull?.soundFxOn ?? false;
                   audio.playClick(soundFxOn: soundFxOn);
                   _showLevelWordsDialog(subLevelItem);
                 },

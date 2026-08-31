@@ -4,32 +4,300 @@ import 'package:flutter/material.dart';
 import 'package:video_player/video_player.dart';
 
 import '../../models/level_config.dart';
+import '../../services/question_layout_budget.dart';
 import '../../utils/cloze_blank.dart';
 import '../../widgets/answer_palette.dart';
+import '../../widgets/debug_layout_box.dart';
 import '../../widgets/mcq_pill_answer_button.dart';
+import '../../widgets/standard_question_media.dart';
+
+typedef _RowPreset = ({double height, double fontSize});
+typedef _VideoChoicePreset = ({double height, double fontSize, double gap});
+typedef _VideoClozePreset = ({
+  double sentenceFontSize,
+  List<_RowPreset> tilePresets,
+  double tileGap,
+});
+
+/// MCQ Pill button presets per tier, indexed by option count (`4` = the original nominal
+/// size; `3`/`2` scale up since fewer, larger buttons use the room better — same low-end
+/// ergonomics as `DialogueCompletion`'s per-count button ladder). Resolved via
+/// `_resolveChoicePreset`, which clamps to `[2, 4]` — a 5th+ option freezes at the 4-option
+/// size and the shortfall is absorbed by the existing cascade budget, same as the `[Warning]`
+/// path already logs.
+const Map<QuestionLayoutTier, Map<int, _VideoChoicePreset>>
+    _videoChoicePresets = {
+  QuestionLayoutTier.phoneUltraTall: {
+    4: (height: 52.0, fontSize: 16.0, gap: 12.0),
+    3: (height: 56.0, fontSize: 17.0, gap: 12.0),
+    2: (height: 60.0, fontSize: 18.0, gap: 12.0),
+  },
+  QuestionLayoutTier.phoneSuperTall: {
+    4: (height: 50.0, fontSize: 16.0, gap: 12.0),
+    3: (height: 54.0, fontSize: 17.0, gap: 12.0),
+    2: (height: 58.0, fontSize: 18.0, gap: 12.0),
+  },
+  QuestionLayoutTier.phoneFlagship: {
+    4: (height: 48.0, fontSize: 15.5, gap: 10.0),
+    3: (height: 52.0, fontSize: 16.5, gap: 10.0),
+    2: (height: 56.0, fontSize: 17.5, gap: 10.0),
+  },
+  QuestionLayoutTier.phoneTransition: {
+    4: (height: 48.0, fontSize: 15.0, gap: 10.0),
+    3: (height: 52.0, fontSize: 16.0, gap: 10.0),
+    2: (height: 56.0, fontSize: 17.0, gap: 10.0),
+  },
+  QuestionLayoutTier.phoneClassic2to1: {
+    4: (height: 46.0, fontSize: 15.0, gap: 10.0),
+    3: (height: 50.0, fontSize: 16.0, gap: 10.0),
+    2: (height: 54.0, fontSize: 17.0, gap: 10.0),
+  },
+  QuestionLayoutTier.phone16to9: {
+    4: (height: 44.0, fontSize: 14.5, gap: 8.0),
+    3: (height: 48.0, fontSize: 15.5, gap: 8.0),
+    2: (height: 52.0, fontSize: 16.5, gap: 8.0),
+  },
+  QuestionLayoutTier.tablet16to9: {
+    4: (height: 58.0, fontSize: 18.0, gap: 14.0),
+    3: (height: 62.0, fontSize: 19.0, gap: 14.0),
+    2: (height: 66.0, fontSize: 20.0, gap: 14.0),
+  },
+  QuestionLayoutTier.tablet16to10: {
+    4: (height: 60.0, fontSize: 18.0, gap: 14.0),
+    3: (height: 64.0, fontSize: 19.0, gap: 14.0),
+    2: (height: 68.0, fontSize: 20.0, gap: 14.0),
+  },
+  QuestionLayoutTier.tablet3to2: {
+    4: (height: 62.0, fontSize: 19.0, gap: 16.0),
+    3: (height: 66.0, fontSize: 20.0, gap: 16.0),
+    2: (height: 70.0, fontSize: 21.0, gap: 16.0),
+  },
+  QuestionLayoutTier.tablet4to3: {
+    4: (height: 64.0, fontSize: 19.0, gap: 16.0),
+    3: (height: 68.0, fontSize: 20.0, gap: 16.0),
+    2: (height: 72.0, fontSize: 21.0, gap: 16.0),
+  },
+};
+
+/// Resolves the button preset for the actual option count, clamped to `[2, 4]` — covers the
+/// low end (fewer options get bigger, more ergonomic buttons) and the high end (5+ options
+/// freeze at the 4-option size rather than growing further; the cascade absorbs the rest).
+_VideoChoicePreset _resolveChoicePreset(
+    QuestionLayoutTier tier, int optionCount) {
+  return _videoChoicePresets[tier]![optionCount.clamp(2, 4)]!;
+}
+
+/// Choice tile presets (3 ladders) for SentenceBuilder and AppearDisappear.
+const Map<QuestionLayoutTier, List<_RowPreset>> _videoTilePresets = {
+  QuestionLayoutTier.phoneUltraTall: [
+    (height: 46.0, fontSize: 16.0),
+    (height: 42.0, fontSize: 15.0),
+    (height: 38.0, fontSize: 14.0),
+  ],
+  QuestionLayoutTier.phoneSuperTall: [
+    (height: 44.0, fontSize: 16.0),
+    (height: 40.0, fontSize: 15.0),
+    (height: 36.0, fontSize: 14.0),
+  ],
+  QuestionLayoutTier.phoneFlagship: [
+    (height: 44.0, fontSize: 15.5),
+    (height: 40.0, fontSize: 14.5),
+    (height: 36.0, fontSize: 13.5),
+  ],
+  QuestionLayoutTier.phoneTransition: [
+    (height: 42.0, fontSize: 15.0),
+    (height: 38.0, fontSize: 14.0),
+    (height: 34.0, fontSize: 13.0),
+  ],
+  QuestionLayoutTier.phoneClassic2to1: [
+    (height: 42.0, fontSize: 15.0),
+    (height: 38.0, fontSize: 14.0),
+    (height: 34.0, fontSize: 13.0),
+  ],
+  QuestionLayoutTier.phone16to9: [
+    (height: 40.0, fontSize: 14.0),
+    (height: 36.0, fontSize: 13.0),
+    (height: 32.0, fontSize: 12.0),
+  ],
+  QuestionLayoutTier.tablet16to9: [
+    (height: 52.0, fontSize: 18.0),
+    (height: 46.0, fontSize: 16.5),
+    (height: 42.0, fontSize: 15.0),
+  ],
+  QuestionLayoutTier.tablet16to10: [
+    (height: 54.0, fontSize: 18.0),
+    (height: 48.0, fontSize: 17.0),
+    (height: 42.0, fontSize: 15.5),
+  ],
+  QuestionLayoutTier.tablet3to2: [
+    (height: 56.0, fontSize: 19.0),
+    (height: 50.0, fontSize: 17.5),
+    (height: 44.0, fontSize: 16.0),
+  ],
+  QuestionLayoutTier.tablet4to3: [
+    (height: 56.0, fontSize: 19.0),
+    (height: 50.0, fontSize: 17.5),
+    (height: 44.0, fontSize: 16.0),
+  ],
+};
+
+/// Slot row presets (2 ladders) for SentenceBuilder and AppearDisappear.
+const Map<QuestionLayoutTier, List<_RowPreset>> _videoSlotPresets = {
+  QuestionLayoutTier.phoneUltraTall: [
+    (height: 44.0, fontSize: 16.0),
+    (height: 38.0, fontSize: 14.5),
+  ],
+  QuestionLayoutTier.phoneSuperTall: [
+    (height: 42.0, fontSize: 16.0),
+    (height: 36.0, fontSize: 14.0),
+  ],
+  QuestionLayoutTier.phoneFlagship: [
+    (height: 42.0, fontSize: 15.5),
+    (height: 36.0, fontSize: 14.0),
+  ],
+  QuestionLayoutTier.phoneTransition: [
+    (height: 40.0, fontSize: 15.0),
+    (height: 34.0, fontSize: 13.0),
+  ],
+  QuestionLayoutTier.phoneClassic2to1: [
+    (height: 40.0, fontSize: 15.0),
+    (height: 34.0, fontSize: 13.0),
+  ],
+  QuestionLayoutTier.phone16to9: [
+    (height: 38.0, fontSize: 14.0),
+    (height: 32.0, fontSize: 12.0),
+  ],
+  QuestionLayoutTier.tablet16to9: [
+    (height: 50.0, fontSize: 18.0),
+    (height: 44.0, fontSize: 16.0),
+  ],
+  QuestionLayoutTier.tablet16to10: [
+    (height: 52.0, fontSize: 18.0),
+    (height: 44.0, fontSize: 16.0),
+  ],
+  QuestionLayoutTier.tablet3to2: [
+    (height: 54.0, fontSize: 19.0),
+    (height: 46.0, fontSize: 16.5),
+  ],
+  QuestionLayoutTier.tablet4to3: [
+    (height: 54.0, fontSize: 19.0),
+    (height: 46.0, fontSize: 16.5),
+  ],
+};
+
+/// Cloze sequence presets per tier.
+const Map<QuestionLayoutTier, _VideoClozePreset> _videoClozePresets = {
+  QuestionLayoutTier.phoneUltraTall: (
+    sentenceFontSize: 17.5,
+    tilePresets: [
+      (height: 44.0, fontSize: 15.5),
+      (height: 38.0, fontSize: 14.0),
+    ],
+    tileGap: 8.0,
+  ),
+  QuestionLayoutTier.phoneSuperTall: (
+    sentenceFontSize: 17.0,
+    tilePresets: [
+      (height: 42.0, fontSize: 15.0),
+      (height: 36.0, fontSize: 13.5),
+    ],
+    tileGap: 8.0,
+  ),
+  QuestionLayoutTier.phoneFlagship: (
+    sentenceFontSize: 16.5,
+    tilePresets: [
+      (height: 42.0, fontSize: 15.0),
+      (height: 36.0, fontSize: 13.5),
+    ],
+    tileGap: 8.0,
+  ),
+  QuestionLayoutTier.phoneTransition: (
+    sentenceFontSize: 16.0,
+    tilePresets: [
+      (height: 40.0, fontSize: 14.5),
+      (height: 34.0, fontSize: 13.0),
+    ],
+    tileGap: 6.0,
+  ),
+  QuestionLayoutTier.phoneClassic2to1: (
+    sentenceFontSize: 16.0,
+    tilePresets: [
+      (height: 40.0, fontSize: 14.5),
+      (height: 34.0, fontSize: 13.0),
+    ],
+    tileGap: 6.0,
+  ),
+  QuestionLayoutTier.phone16to9: (
+    sentenceFontSize: 15.0,
+    tilePresets: [
+      (height: 38.0, fontSize: 13.5),
+      (height: 32.0, fontSize: 12.0),
+    ],
+    tileGap: 6.0,
+  ),
+  QuestionLayoutTier.tablet16to9: (
+    sentenceFontSize: 20.0,
+    tilePresets: [
+      (height: 50.0, fontSize: 17.5),
+      (height: 42.0, fontSize: 15.5),
+    ],
+    tileGap: 10.0,
+  ),
+  QuestionLayoutTier.tablet16to10: (
+    sentenceFontSize: 20.0,
+    tilePresets: [
+      (height: 52.0, fontSize: 18.0),
+      (height: 44.0, fontSize: 16.0),
+    ],
+    tileGap: 10.0,
+  ),
+  QuestionLayoutTier.tablet3to2: (
+    sentenceFontSize: 21.0,
+    tilePresets: [
+      (height: 54.0, fontSize: 19.0),
+      (height: 46.0, fontSize: 16.5),
+    ],
+    tileGap: 12.0,
+  ),
+  QuestionLayoutTier.tablet4to3: (
+    sentenceFontSize: 21.0,
+    tilePresets: [
+      (height: 54.0, fontSize: 19.0),
+      (height: 46.0, fontSize: 16.5),
+    ],
+    tileGap: 12.0,
+  ),
+};
+
+({double minWidth, double horizontalPadding}) _videoTileCellMetrics(
+    double height) {
+  if (height >= 50) return (minWidth: 78.0, horizontalPadding: 24.0);
+  if (height >= 44) return (minWidth: 70.0, horizontalPadding: 20.0);
+  if (height >= 38) return (minWidth: 62.0, horizontalPadding: 16.0);
+  return (minWidth: 54.0, horizontalPadding: 14.0);
+}
+
+double _videoRowGap(double height) {
+  if (height >= 50) return 10.0;
+  if (height >= 42) return 8.0;
+  return 6.0;
+}
+
+typedef _PresetResolution = ({
+  double height,
+  double fontSize,
+  int rows,
+  double shortfallHeight,
+});
 
 /// DEBUG ONLY. Flip to `true` to bypass all question-pausing and just let the shared
-/// [VideoPlayerController] play straight through to the end of the file — no answer panel
-/// ever appears, the level just sits on the first `VideoConversation` question while the
-/// video (hopefully) keeps running to completion. Use this to isolate whether a playback
-/// stall is coming from our own pause/seek/resume logic or from the `video_player` plugin
-/// itself: if it still stalls with this on, the bug is in the plugin/platform, not our code.
-/// Logs position once per second to the console so a stall is visible without watching the
-/// screen. Must be `false` before shipping.
+/// [VideoPlayerController] play straight through to the end of the file.
 const bool kDebugPlayVideoConversationToEndWithoutPausing = false;
 
 /// Plays `[data.startAt, data.pauseAt]` of the level's shared video, pauses right at
 /// [VideoConversationQuestionData.pauseAt], then renders whichever of [VideoConversationQuestionData.choiceData]
 /// / [VideoConversationQuestionData.sequenceData] / [VideoConversationQuestionData.clozeData] is set as the
-/// answer panel. Correct answer resumes playback (the next line plays as confirmation and doubles as the
-/// lead-in to the next `VideoConversation` row); wrong answer locks the panel and leaves the video paused,
-/// mirroring every other convo template's `onOutcome`/Next-button contract.
-///
-/// [controller] is owned by the parent screen and shared across every `VideoConversation` row in the
-/// level (one asset, one decoder) rather than being created fresh per question — consecutive rows chain
-/// `start_at(N+1) == pause_at(N)`, so the same controller just keeps playing straight through each
-/// question-widget swap instead of stuttering on a fresh re-init every round. Null means the asset
-/// couldn't be resolved; the widget then skips straight to the answer panel with no video.
+/// answer panel. Correct answer resumes playback; wrong answer locks the panel and leaves the video paused.
 class VideoConversationQuizBody extends StatefulWidget {
   const VideoConversationQuizBody({
     super.key,
@@ -46,48 +314,30 @@ class VideoConversationQuizBody extends StatefulWidget {
     this.onPlayQuestionAudio,
     this.onStartQuestionAudio,
     this.waitForTutorial,
+    this.debugShowLayoutBounds = false,
   });
 
   final VideoConversationQuestionData data;
   final VideoPlayerController? controller;
 
+  /// True only inside the `testing-responsive-design` level — draws a visible outline + label
+  /// around every major layout box so box boundaries/percentages can be visually audited.
+  final bool debugShowLayoutBounds;
+
   /// True when the previous question used the same shared video controller.
-  /// Continuation rows must not seek, since browser video seeking may land on an
-  /// earlier keyframe and replay the previous line.
   final bool continueExistingPlayback;
   final VoidCallback onPlayCorrect;
   final VoidCallback onPlayWrong;
   final void Function(bool correct) onOutcome;
 
-  /// Audio for the line(s) spoken during `[data.startAt, data.pauseAt]` — played in parallel
-  /// with the (now permanently muted) video as it plays that segment, since the embedded track
-  /// can't be trusted to stop precisely at a runtime pause point without bleeding into the next
-  /// line. Null means this question has no separately-extracted setup clip yet (silent for now).
   final String? setupAudioPath;
-
-  /// Audio for the confirmation line spoken after a correct answer, played in parallel with the
-  /// video resuming. Null for answer types with nothing to confirm (e.g. `AppearDisappear`,
-  /// where the line was already heard during the setup clip) or not yet extracted.
   final String? confirmAudioPath;
 
-  /// Required whenever [setupAudioPath]/[confirmAudioPath] are non-null.
   final Future<void> Function(String path)? onPlayQuestionAudio;
   final Future<void> Function(String path)? onStartQuestionAudio;
   final Future<void> Function()? waitForTutorial;
-
-  /// Optional, purely additive: fires once, the first time the choice buttons (answer_type
-  /// `DialogueCompletion`) actually render, with the index of the correct option and a
-  /// [GlobalKey] per button so a caller (the tutorial overlay) can measure exactly where the
-  /// correct button is on screen. Never fires for other answer_types (nothing to report). Does
-  /// not affect scoring, locking, or any other existing behavior — purely a read of already-public
-  /// render info, reported outward.
   final void Function(int correctIndex, List<GlobalKey> buttonKeys)?
       onChoiceButtonsRendered;
-
-  /// Optional, purely additive: mirrors [onChoiceButtonsRendered] but for the tile-based answer
-  /// types (`SentenceBuilder` / `AppearDisappear` / `ClozeSequence`) — fires once, the first time
-  /// the tile-choice grid renders, with the index (within [tileKeys]) of the first tile the
-  /// learner needs to tap and a [GlobalKey] per tile.
   final void Function(int expectedIndex, List<GlobalKey> tileKeys)?
       onNextTileRendered;
 
@@ -100,26 +350,26 @@ class _VideoConversationQuizBodyState extends State<VideoConversationQuizBody> {
   bool _paused = false;
   bool _pauseHandled = false;
   bool _listenerAttached = false;
-  int? _debugLastLoggedSecond;
+  int _debugLastLoggedSecond = -1;
 
-  // Choice-panel state (answer_type: DialogueCompletion).
-  late List<String> _choiceOptions;
-  int? _choiceCorrectIndex;
-  int? _choiceSelectedIndex;
+  // MCQ state
+  late final List<String> _choiceOptions;
+  late final int? _choiceCorrectIndex;
+  late final List<GlobalKey> _choiceButtonKeys;
   bool _choiceLocked = false;
-  List<GlobalKey> _choiceButtonKeys = const [];
+  int? _choiceSelectedIndex;
   bool _reportedChoiceButtons = false;
 
-  // Shared tap-in-order tile state (answer_type: SentenceBuilder / AppearDisappear / ClozeSequence).
-  List<String> _tileTarget = const [];
-  List<String> _tileChoices = const [];
-  List<GlobalKey> _tileChoiceKeys = const [];
+  // Tile / Sequence / Cloze state
+  late final List<String> _tileTarget;
+  late final List<String> _tileChoices;
+  late final List<String?> _tileSlots;
+  late final List<GlobalKey> _tileChoiceKeys;
   int _tapProgress = 0;
-  List<String?> _tileSlots = const [];
   final Set<int> _tileUsedIndices = {};
   final Map<int, int> _tileStepOf = {};
-  int? _tileWrongIndex;
   bool _tileFailed = false;
+  int? _tileWrongIndex;
   bool _tileCompleted = false;
 
   @override
@@ -130,11 +380,6 @@ class _VideoConversationQuizBodyState extends State<VideoConversationQuizBody> {
     _attachAndPlay();
   }
 
-  /// Reports the next tile the learner needs to tap to [widget.onNextTileRendered], keyed off
-  /// [_tapProgress] — called again after every correct tap (mirroring the standalone
-  /// `SentenceBuilderQuizBody`/`AppearDisappearQuizBody`'s `_reportNextTile()`) so the guide's
-  /// hand actually advances tile-by-tile instead of freezing on the first one. No-op once the
-  /// sequence is complete/failed (the outcome callback ends this question either way).
   void _reportTileTarget() {
     if (widget.onNextTileRendered == null) return;
     if (!_paused) return;
@@ -162,35 +407,42 @@ class _VideoConversationQuizBodyState extends State<VideoConversationQuizBody> {
       _choiceCorrectIndex = _choiceOptions.indexOf(d.choiceData!.answer);
       _choiceButtonKeys =
           List.generate(_choiceOptions.length, (_) => GlobalKey());
+      _tileTarget = const [];
+      _tileChoices = const [];
+      _tileSlots = [];
+      _tileChoiceKeys = const [];
     } else if (d.sequenceData != null) {
+      _choiceOptions = const [];
+      _choiceCorrectIndex = null;
+      _choiceButtonKeys = const [];
       _tileTarget = d.sequenceData!.targetSentence.split(' ');
       _tileChoices = [..._tileTarget, ...d.sequenceData!.distractors]
         ..shuffle(Random());
       _tileSlots = List<String?>.filled(_tileTarget.length, null);
       _tileChoiceKeys = List.generate(_tileChoices.length, (_) => GlobalKey());
     } else if (d.clozeData != null) {
+      _choiceOptions = const [];
+      _choiceCorrectIndex = null;
+      _choiceButtonKeys = const [];
       _tileTarget = d.clozeData!.answers;
       _tileChoices = [...d.clozeData!.answers, ...d.clozeData!.distractors]
         ..shuffle(Random());
       _tileSlots = List<String?>.filled(_tileTarget.length, null);
       _tileChoiceKeys = List.generate(_tileChoices.length, (_) => GlobalKey());
+    } else {
+      _choiceOptions = const [];
+      _choiceCorrectIndex = null;
+      _choiceButtonKeys = const [];
+      _tileTarget = const [];
+      _tileChoices = const [];
+      _tileSlots = [];
+      _tileChoiceKeys = const [];
     }
   }
 
-  /// Attaches to the parent-owned [widget.controller]. Only seeks when the controller's current
-  /// position is genuinely *behind* [VideoConversationQuestionData.startAt] (a fresh/cold controller,
-  /// e.g. the very first question) — on the normal chained-continuation path the controller has
-  /// already played past `startAt` on its own (it kept playing during the auto-advance delay between
-  /// questions), and seeking backward there would rewind and restart playback mid-stream, which can
-  /// leave some `video_player` backends stuck never resuming (previously always seeking on any drift
-  /// caused exactly this: the question got permanently stuck on the loading spinner). Any failure
-  /// (missing/corrupt asset, decoder error) falls back to showing the answer panel immediately rather
-  /// than leaving the question stuck.
   Future<void> _attachAndPlay() async {
     final controller = widget.controller;
     if (widget.waitForTutorial != null) {
-      // Consecutive video questions share a controller. Stop it before showing
-      // the blocking guide so the next line cannot play underneath the guide.
       if (controller != null &&
           controller.value.isInitialized &&
           controller.value.isPlaying) {
@@ -213,22 +465,11 @@ class _VideoConversationQuizBodyState extends State<VideoConversationQuizBody> {
         await controller.seekTo(widget.data.startAt);
       }
       if (!mounted) return;
-      // Show the (paused) first frame before starting playback, so audio doesn't start before
-      // anything is visible on screen. Deliberately a fixed timer, not `endOfFrame`: on the
-      // continuing-playback path (question 2+) neither await above actually suspends (already
-      // initialized, already past startAt), so this runs synchronously inside initState with
-      // nothing else in the convo phase requesting a new frame — `endOfFrame` waited on a frame
-      // that might never get scheduled and hung forever (this is what caused the freeze). A
-      // timer always resolves regardless of frame scheduling.
       setState(() {});
       await Future<void>.delayed(const Duration(milliseconds: 50));
       if (!mounted) return;
       controller.addListener(_onPositionChanged);
       _listenerAttached = true;
-      // Only call play() if it isn't already playing — on the continuing-playback path
-      // (question 2+), the previous question's correct-answer resume already started it, and a
-      // redundant play() call here on video_player_web has been observed to reset position back
-      // toward the start instead of being a harmless no-op like it is on native platforms.
       if (!controller.value.isPlaying) {
         final setupPath = widget.setupAudioPath;
         final startAudio = widget.onStartQuestionAudio;
@@ -253,8 +494,6 @@ class _VideoConversationQuizBodyState extends State<VideoConversationQuizBody> {
     }
   }
 
-  /// Fire-and-forget: plays [widget.setupAudioPath] in parallel with the (muted) video as it
-  /// plays `[data.startAt, data.pauseAt]`. No-op if there's no clip for this question yet.
   void _playSetupAudio() {
     final path = widget.setupAudioPath;
     final play = widget.onPlayQuestionAudio;
@@ -262,9 +501,6 @@ class _VideoConversationQuizBodyState extends State<VideoConversationQuizBody> {
     play(path);
   }
 
-  /// Fire-and-forget: plays [widget.confirmAudioPath] in parallel with the video resuming after
-  /// a correct answer. No-op if there's no clip for this question yet (e.g. `AppearDisappear`,
-  /// where the line was already heard during the setup clip).
   void _playConfirmAudio() {
     final path = widget.confirmAudioPath;
     final play = widget.onPlayQuestionAudio;
@@ -295,26 +531,12 @@ class _VideoConversationQuizBodyState extends State<VideoConversationQuizBody> {
         : widget.data.pauseAt;
     if (controller.value.position >= target) {
       _pauseHandled = true;
-      // Stop listening before our own pause/seek below — we don't need further position
-      // notifications for this question, and it avoids any re-entrant calls while we're
-      // mid-transition (on top of the _pauseHandled guard above).
       controller.removeListener(_onPositionChanged);
       _listenerAttached = false;
       _pauseThenReveal(controller);
     }
   }
 
-  /// Pauses at the (possibly slightly overshot) crossing point. Deliberately does **not** also
-  /// `seekTo(target)` to correct that overshoot — a prior version did, but on the web platform
-  /// `video_player_web`'s `seekTo()` Future can resolve before the browser has actually finished
-  /// applying the seek internally (it doesn't reliably wait for the native `seeked` event). That
-  /// gave false confidence: we'd think playback was parked exactly at `target`, but the browser
-  /// might not have committed the seek yet, and the subsequent `play()` (on tapping an answer)
-  /// could then resume from a stale position — observed in practice as full lines replaying from
-  /// the start of the video instead of continuing from the pause point. A little overshoot bleed
-  /// into the next line's audio (mitigated at the data level via tight `pause_at` tuning in
-  /// questions.json) is a smaller problem than that. Still awaits `pause()` itself before
-  /// revealing the answer panel, so a fast tap can't call `play()` while pause is still in flight.
   Future<void> _pauseThenReveal(VideoPlayerController controller) async {
     try {
       await controller.pause();
@@ -323,13 +545,6 @@ class _VideoConversationQuizBodyState extends State<VideoConversationQuizBody> {
     }
     if (mounted) {
       setState(() => _paused = true);
-      // Call directly, not wrapped in another addPostFrameCallback: `_reportTileTarget()`
-      // already schedules its own single post-frame callback internally. Wrapping it in a
-      // second one here meant the actual report only fired on some *later* frame — and since
-      // nothing else in this phase (video paused, nothing animating) requests a new frame, it
-      // could sit pending indefinitely until an unrelated event (e.g. a mouse-move hover
-      // repaint) happened to trigger one. That's why the guide hand only appeared after
-      // dragging the mouse instead of right when the video paused.
       _reportTileTarget();
     }
   }
@@ -344,8 +559,9 @@ class _VideoConversationQuizBodyState extends State<VideoConversationQuizBody> {
 
   @override
   void dispose() {
-    if (_listenerAttached)
+    if (_listenerAttached) {
       widget.controller?.removeListener(_onPositionChanged);
+    }
     super.dispose();
   }
 
@@ -402,163 +618,379 @@ class _VideoConversationQuizBodyState extends State<VideoConversationQuizBody> {
     }
   }
 
+  int _estimateWrapRows({
+    required List<String?> items,
+    required double availableWidth,
+    required double spacing,
+    required double minItemWidth,
+    required double horizontalPadding,
+    required double fontSize,
+    required FontWeight fontWeight,
+  }) {
+    if (items.isEmpty || availableWidth <= 0) return 0;
+    final direction = Directionality.of(context);
+    final textScaler = MediaQuery.textScalerOf(context);
+    var rows = 1;
+    var usedWidth = 0.0;
+    for (final item in items) {
+      final textWidth = item == null
+          ? 0.0
+          : (TextPainter(
+              text: TextSpan(
+                text: item,
+                style: TextStyle(
+                  fontFamily: 'Inter',
+                  fontSize: fontSize,
+                  fontWeight: fontWeight,
+                ),
+              ),
+              textDirection: direction,
+              textScaler: textScaler,
+            )..layout())
+              .width;
+      final itemWidth = max(
+        minItemWidth,
+        item == null ? minItemWidth : textWidth + horizontalPadding,
+      );
+      if (usedWidth > 0 && usedWidth + spacing + itemWidth > availableWidth) {
+        rows++;
+        usedWidth = itemWidth;
+      } else {
+        usedWidth =
+            usedWidth == 0 ? itemWidth : usedWidth + spacing + itemWidth;
+      }
+    }
+    return rows;
+  }
+
+  _PresetResolution _resolvePreset({
+    required List<String?> items,
+    required List<_RowPreset> presets,
+    required double availableWidth,
+    required double availableHeight,
+    required FontWeight fontWeight,
+  }) {
+    for (var i = 0; i < presets.length; i++) {
+      final preset = presets[i];
+      final metrics = _videoTileCellMetrics(preset.height);
+      final rows = _estimateWrapRows(
+        items: items,
+        availableWidth: availableWidth,
+        spacing: _videoRowGap(preset.height),
+        minItemWidth: metrics.minWidth,
+        horizontalPadding: metrics.horizontalPadding,
+        fontSize: preset.fontSize,
+        fontWeight: fontWeight,
+      );
+      if (rows <= i + 1) {
+        final needed =
+            rows * preset.height + (rows - 1) * _videoRowGap(preset.height);
+        return (
+          height: preset.height,
+          fontSize: preset.fontSize,
+          rows: rows,
+          shortfallHeight: max(0.0, needed - availableHeight),
+        );
+      }
+    }
+    final maxPreset = presets.last;
+    final maxMetrics = _videoTileCellMetrics(maxPreset.height);
+    final actualRows = _estimateWrapRows(
+      items: items,
+      availableWidth: availableWidth,
+      spacing: _videoRowGap(maxPreset.height),
+      minItemWidth: maxMetrics.minWidth,
+      horizontalPadding: maxMetrics.horizontalPadding,
+      fontSize: maxPreset.fontSize,
+      fontWeight: fontWeight,
+    );
+    final needed = actualRows * maxPreset.height +
+        (actualRows - 1) * _videoRowGap(maxPreset.height);
+    return (
+      height: maxPreset.height,
+      fontSize: maxPreset.fontSize,
+      rows: actualRows,
+      shortfallHeight: max(0.0, needed - availableHeight),
+    );
+  }
+
+  double _measureClozeSentenceHeight(
+    String sentence,
+    double fontSize,
+    double availableWidth,
+  ) {
+    if (sentence.isEmpty || availableWidth <= 0) return 0.0;
+    final painter = TextPainter(
+      text: TextSpan(
+        text: sentence,
+        style: TextStyle(
+          fontFamily: 'Inter',
+          fontSize: fontSize,
+          fontWeight: FontWeight.w600,
+        ),
+      ),
+      textDirection: Directionality.of(context),
+      textScaler: MediaQuery.textScalerOf(context),
+    )..layout(maxWidth: availableWidth);
+    return painter.height + 16.0;
+  }
+
+  int _measureMaxButtonLines(
+    List<String> options,
+    double fontSize,
+    double buttonWidth,
+  ) {
+    final textMaxWidth = max(1.0, buttonWidth - 48.0);
+    final direction = Directionality.of(context);
+    final textScaler = MediaQuery.textScalerOf(context);
+    var maxLines = 1;
+    for (final opt in options) {
+      final painter = TextPainter(
+        text: TextSpan(
+          text: opt,
+          style: TextStyle(
+            fontFamily: 'Inter',
+            fontSize: fontSize,
+            fontWeight: FontWeight.w600,
+          ),
+        ),
+        textDirection: direction,
+        textScaler: textScaler,
+      )..layout(maxWidth: textMaxWidth);
+      if (painter.computeLineMetrics().length > maxLines) {
+        maxLines = painter.computeLineMetrics().length;
+      }
+    }
+    return maxLines;
+  }
+
   @override
   Widget build(BuildContext context) {
     final controller = widget.controller;
     final hasVideo = controller != null && controller.value.isInitialized;
-    // Sized from the video's own aspect ratio (whatever the source file actually is) rather
-    // than a hard-coded guess, so a 16:9 clip today or a square/portrait one later both come
-    // out right with no layout change. Before the controller reports its real ratio, assume
-    // square for the loading placeholder — closer to most conversation clips than 16:9 and
-    // avoids a visible reflow the instant the real video attaches.
     final aspectRatio = hasVideo ? controller.value.aspectRatio : 1.0;
-    // 87% of screen width on a phone, but capped at 560pt so it doesn't keep growing on a
-    // tablet — full-bleed-style buttons at ~87% of an iPad's width would turn into oversized
-    // horizontal pills with the same (phone-sized) font, not a genuinely tablet-tuned layout.
-    // Capping here at least keeps proportions sane; typography and the tutorial guide remain
-    // separate concerns from the media profile calculated below.
-    final answerPanelWidth = min(
-      MediaQuery.sizeOf(context).width * 0.87,
-      560.0,
-    );
+    final layoutBudget = QuestionLayoutBudget.of(context);
+
     return LayoutBuilder(
       builder: (context, bodyConstraints) {
-        final viewport = MediaQuery.sizeOf(context);
-        final isTablet = viewport.shortestSide >= 600;
+        final mediaHeight =
+            layoutBudget.mediaHeightForAvailable(bodyConstraints.maxHeight);
+        final mediaWidthLimit =
+            layoutBudget.mediaWidthForAvailable(bodyConstraints.maxWidth);
+        final answerWidth = layoutBudget
+            .answerWidthForAvailable(MediaQuery.sizeOf(context).width);
+        final remainderHeight =
+            max(0.0, bodyConstraints.maxHeight - mediaHeight);
 
-        // One deterministic media box per viewport profile. It deliberately does not inspect
-        // the current answer type or item count, so DialogueCompletion, SentenceBuilder,
-        // AppearDisappear, and ClozeSequence cannot make the continuous video jump in size
-        // between questions.
-        //
-        // Phones aim for the full width available inside the page padding and stop at 45% of
-        // the full viewport height. Tablets use a centered 80%-width column, may use up to 55%
-        // of viewport height, and stop growing at 700 logical pixels. Both profiles reserve the
-        // normal four-choice answer stack (4 x 52 plus 3 x 12, with a small top allowance)
-        // before assigning height to media. If an exceptionally short viewport cannot provide
-        // both that reserve and the media floor, the media floor wins and the existing answer
-        // scroller remains the final safety valve.
-        final widthFraction = isTablet ? 0.80 : 1.0;
-        final heightFraction = isTablet ? 0.55 : 0.45;
-        final widthLimit = bodyConstraints.maxWidth * widthFraction;
-        final viewportHeightLimit = viewport.height * heightFraction;
-        final absoluteHeightLimit = isTablet ? 700.0 : double.infinity;
-        final compactActionRegion = viewport.height < 900 ||
-            MediaQuery.textScalerOf(context).scale(16) > 16.01;
-        // A compact action region returns 16px to this body. Add that gain to the answer reserve
-        // so the video cannot consume it and grow; the reclaimed height belongs to buttons,
-        // tiles, and the sentence/slot region.
-        final normalAnswerReserve = 252.0 + (compactActionRegion ? 16.0 : 0.0);
-        const mediaAnswerGap = 4.0;
-        final budgetHeightLimit = bodyConstraints.maxHeight.isFinite
-            ? max(
-                0.0,
-                bodyConstraints.maxHeight -
-                    normalAnswerReserve -
-                    mediaAnswerGap)
-            : double.infinity;
-        final mediaFloor = isTablet ? 280.0 : 180.0;
-        final effectiveBudgetLimit =
-            budgetHeightLimit < mediaFloor ? mediaFloor : budgetHeightLimit;
+        // Compute shortfalls and cascade extension per answer type
+        var totalShortfall = 0.0;
+        var buttonHeight = 48.0;
+        var buttonFontSize = 15.0;
+        var buttonGap = 10.0;
 
-        var videoWidth = widthLimit;
-        var videoHeight = videoWidth / aspectRatio;
-        final heightLimit = min(
-          min(viewportHeightLimit, absoluteHeightLimit),
-          effectiveBudgetLimit,
-        );
-        if (videoHeight > heightLimit) {
-          videoHeight = heightLimit;
-          videoWidth = videoHeight * aspectRatio;
+        _PresetResolution? slotPreset;
+        _PresetResolution? tilePreset;
+        _VideoClozePreset? clozePreset;
+        var clozeSentenceHeight = 0.0;
+
+        if (_paused) {
+          if (widget.data.choiceData != null) {
+            final preset =
+                _resolveChoicePreset(layoutBudget.tier, _choiceOptions.length);
+            buttonFontSize = preset.fontSize;
+            buttonGap = preset.gap;
+            final maxLines = _measureMaxButtonLines(
+                _choiceOptions, buttonFontSize, answerWidth);
+            buttonHeight = maxLines > 1
+                ? max(preset.height + (maxLines - 1) * 20.0, preset.height)
+                : preset.height;
+            final totalButtonsHeight = _choiceOptions.length * buttonHeight +
+                max(0, _choiceOptions.length - 1) * buttonGap +
+                16.0;
+            totalShortfall = max(0.0, totalButtonsHeight - remainderHeight);
+
+            if (_choiceOptions.length > 4) {
+              debugPrint(
+                '[QuestionLayout][VideoConversation][Warning] options count (${_choiceOptions.length}) exceeded nominal cap of 4.',
+              );
+            }
+          } else if (widget.data.clozeData != null) {
+            clozePreset = _videoClozePresets[layoutBudget.tier]!;
+            final clozeBudget = remainderHeight * 0.45;
+            final tileBudget = remainderHeight * 0.55;
+            clozeSentenceHeight = _measureClozeSentenceHeight(
+              widget.data.clozeData!.sentence,
+              clozePreset.sentenceFontSize,
+              answerWidth,
+            );
+            final shortfallCloze = max(0.0, clozeSentenceHeight - clozeBudget);
+            tilePreset = _resolvePreset(
+              items: _tileChoices,
+              presets: clozePreset.tilePresets,
+              availableWidth: answerWidth - 24.0,
+              availableHeight: max(0.0, tileBudget - 16.0),
+              fontWeight: FontWeight.w600,
+            );
+            totalShortfall = shortfallCloze + tilePreset.shortfallHeight;
+
+            if (tilePreset.rows > 2) {
+              debugPrint(
+                '[QuestionLayout][VideoConversation][Warning] cloze tiles exceeded nominal 2-row cap (rows=${tilePreset.rows}).',
+              );
+            }
+          } else {
+            // Sequence / SentenceBuilder / AppearDisappear
+            final slotBudget = remainderHeight * 0.38;
+            final tileBudget = remainderHeight * 0.62;
+            slotPreset = _resolvePreset(
+              items: _tileSlots,
+              presets: _videoSlotPresets[layoutBudget.tier]!,
+              availableWidth: answerWidth - 24.0,
+              availableHeight: max(0.0, slotBudget - 16.0),
+              fontWeight: FontWeight.w800,
+            );
+            tilePreset = _resolvePreset(
+              items: _tileChoices,
+              presets: _videoTilePresets[layoutBudget.tier]!,
+              availableWidth: answerWidth - 32.0,
+              availableHeight: max(0.0, tileBudget - 16.0),
+              fontWeight: FontWeight.w600,
+            );
+            totalShortfall =
+                slotPreset.shortfallHeight + tilePreset.shortfallHeight;
+
+            if (slotPreset.rows > 2 || tilePreset.rows > 3) {
+              debugPrint(
+                '[QuestionLayout][VideoConversation][Warning] sequence content exceeded row cap (slots=${slotPreset.rows}/2, tiles=${tilePreset.rows}/3).',
+              );
+            }
+          }
+
+          if (totalShortfall > mediaHeight) {
+            debugPrint(
+              '[QuestionLayout][VideoConversation][Severe] shortfall (${totalShortfall.toStringAsFixed(1)}px) exceeds available media extension (${mediaHeight.toStringAsFixed(1)}px) — answer area will scroll.',
+            );
+          }
         }
+
+        final cascadeExtension = min(totalShortfall, mediaHeight);
+        final mediaVisibleHeight = max(0.0, mediaHeight - cascadeExtension);
 
         return Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            Center(
-              child: ClipRRect(
-                borderRadius: BorderRadius.circular(18),
-                child: SizedBox(
-                  width: videoWidth,
-                  height: videoHeight,
-                  child: hasVideo
-                      ? VideoPlayer(controller)
-                      : ColoredBox(
-                          color: Theme.of(context)
-                              .colorScheme
-                              .surfaceContainerHighest,
-                          child:
-                              const Center(child: CircularProgressIndicator()),
+            // Fixed media container: renders fixed media underneath while contracting bounding box
+            SizedBox(
+              height: mediaVisibleHeight,
+              child: Stack(
+                clipBehavior: Clip.none,
+                children: [
+                  Positioned(
+                    top: 0,
+                    left: 0,
+                    right: 0,
+                    height: mediaHeight,
+                    child: DebugLayoutBox(
+                      enabled: widget.debugShowLayoutBounds,
+                      label: 'media',
+                      child: StandardQuestionMedia(
+                        availableBodyHeight: bodyConstraints.maxHeight,
+                        aspectRatio: aspectRatio,
+                        heightOverride: min(
+                          mediaWidthLimit / aspectRatio,
+                          mediaHeight,
                         ),
-                ),
+                        widthOverride: mediaWidthLimit,
+                        child: hasVideo
+                            ? VideoPlayer(controller)
+                            : ColoredBox(
+                                color: Theme.of(context)
+                                    .colorScheme
+                                    .surfaceContainerHighest,
+                                child: _paused
+                                    ? const SizedBox.shrink()
+                                    : const Center(
+                                        child: CircularProgressIndicator()),
+                              ),
+                      ),
+                    ),
+                  ),
+                ],
               ),
             ),
-            if (_paused) ...[
-              // The instructional CTA is provided by the tutorial guide. Keep
-              // the answer area directly below the video so the tiles/buttons get
-              // the vertical space previously occupied by the repeated prompt.
-              // The only Expanded left in this Column, so it claims all height the (intrinsically
-              // sized) video and prompt above didn't use. Content sizes itself (min-height buttons,
-              // up to 2 lines of text) rather than a height computed by dividing available space —
-              // that division assumed 1-line English text, which breaks for longer translations or a
-              // larger system font-scale setting. Top-aligned + scrollable is the fallback for
-              // whatever that content doesn't fit, instead of clipping or overflowing.
+            if (_paused)
               Expanded(
-                child: Container(
-                  color: Colors.white,
-                  // LayoutBuilder wraps SingleChildScrollView, not the other way round:
-                  // SingleChildScrollView gives its child unbounded constraints along the scroll
-                  // axis (it needs the child's natural size to know how much there is to scroll),
-                  // so a LayoutBuilder placed *inside* it would read maxHeight as infinite — feeding
-                  // that into ConstrainedBox(minHeight: ...) below would force infinite height
-                  // instead of "fill the real available space." Capturing the real, bounded height
-                  // out here first and only applying it inside the scroll view is what makes
-                  // fill-when-short-but-scroll-when-tall actually work.
-                  child: LayoutBuilder(
-                    builder: (context, answerConstraints) {
-                      final content = widget.data.choiceData != null
-                          ? _buildChoicePanel()
-                          : _buildTilePanel(
-                              context,
-                              cloze: widget.data.clozeData,
-                            );
-                      return SingleChildScrollView(
-                        child: Align(
-                          alignment: Alignment.topCenter,
-                          child: Padding(
-                            padding: const EdgeInsets.only(top: 8),
-                            child: SizedBox(
-                              width: answerPanelWidth,
-                              child: ConstrainedBox(
-                                constraints: BoxConstraints(
-                                  minHeight: answerConstraints.maxHeight,
+                child: DebugLayoutBox(
+                  enabled: widget.debugShowLayoutBounds,
+                  label: 'answer',
+                  color: Colors.blue,
+                  child: Container(
+                    color: Colors.white,
+                    child: LayoutBuilder(
+                      builder: (context, answerConstraints) {
+                        final content = widget.data.choiceData != null
+                            ? _buildChoicePanel(
+                                answerWidth: answerWidth,
+                                buttonHeight: buttonHeight,
+                                fontSize: buttonFontSize,
+                                gap: buttonGap,
+                              )
+                            : widget.data.clozeData != null
+                                ? _buildClozePanel(
+                                    context: context,
+                                    cloze: widget.data.clozeData!,
+                                    clozePreset: clozePreset!,
+                                    tilePreset: tilePreset!,
+                                    answerWidth: answerWidth,
+                                  )
+                                : _buildSequencePanel(
+                                    context: context,
+                                    slotPreset: slotPreset!,
+                                    tilePreset: tilePreset!,
+                                    answerWidth: answerWidth,
+                                  );
+
+                        return SingleChildScrollView(
+                          child: Align(
+                            alignment: Alignment.center,
+                            child: Padding(
+                              padding: const EdgeInsets.symmetric(
+                                  horizontal: 12, vertical: 8),
+                              child: SizedBox(
+                                width: answerWidth,
+                                child: ConstrainedBox(
+                                  constraints: BoxConstraints(
+                                    minHeight:
+                                        answerConstraints.maxHeight - 16.0,
+                                  ),
+                                  child: content,
                                 ),
-                                child: content,
                               ),
                             ),
                           ),
-                        ),
-                      );
-                    },
+                        );
+                      },
+                    ),
                   ),
                 ),
               ),
-            ],
           ],
         );
       },
     );
   }
 
-  /// MCQ buttons — see [McqPillAnswerButton] for why they're sized by content, not by dividing
-  /// available space by the option count.
-  Widget _buildChoicePanel() {
+  Widget _buildChoicePanel({
+    required double answerWidth,
+    required double buttonHeight,
+    required double fontSize,
+    required double gap,
+  }) {
     if (!_reportedChoiceButtons && widget.onChoiceButtonsRendered != null) {
       _reportedChoiceButtons = true;
       WidgetsBinding.instance.addPostFrameCallback((_) {
         if (!mounted || _choiceCorrectIndex == null) return;
-        widget.onChoiceButtonsRendered!(
-            _choiceCorrectIndex!, _choiceButtonKeys);
+        widget.onChoiceButtonsRendered!(_choiceCorrectIndex, _choiceButtonKeys);
       });
     }
     return Column(
@@ -576,11 +1008,15 @@ class _VideoConversationQuizBodyState extends State<VideoConversationQuizBody> {
         return Padding(
           key: _choiceButtonKeys[i],
           padding: EdgeInsets.only(
-            bottom: i == _choiceOptions.length - 1 ? 0 : 12,
+            bottom: i == _choiceOptions.length - 1 ? 0 : gap,
           ),
           child: McqPillAnswerButton(
             label: _choiceOptions[i],
             state: state,
+            width: answerWidth,
+            minHeight: buttonHeight,
+            maxHeight: buttonHeight,
+            fontSize: fontSize,
             onTap: _choiceLocked ? null : () => _onChoiceTap(i),
           ),
         );
@@ -588,14 +1024,11 @@ class _VideoConversationQuizBodyState extends State<VideoConversationQuizBody> {
     );
   }
 
-  /// Renders [cloze]'s sentence with each blank token replaced inline by its slot's current
-  /// content (from [_tileSlots]) — underscores while empty, the tapped word in green once
-  /// filled, or (once [_tileFailed]) the correct word for every still-empty blank shown in
-  /// orange, mirroring the standalone `ClozeSequenceQuizBody`'s `_buildSentenceSpans`. Replaces
-  /// the old plain-text sentence + separate tile-slot row, which visually disconnected the
-  /// answer from where it actually belongs in the sentence.
   List<InlineSpan> _buildClozeSentenceSpans(
-      ThemeData theme, VideoClozeAnswerData cloze) {
+    ThemeData theme,
+    VideoClozeAnswerData cloze,
+    double fontSize,
+  ) {
     final cs = theme.colorScheme;
     final tokens = cloze.sentence.split(' ');
     final spans = <InlineSpan>[];
@@ -615,16 +1048,21 @@ class _VideoConversationQuizBodyState extends State<VideoConversationQuizBody> {
           final userFilled = blankI < _tapProgress;
           blankText = filled;
           blankStyle = TextStyle(
-            // Revealed correct answers remain green; red is reserved for the
-            // distractor tile that the learner selected incorrectly.
+            fontFamily: 'Inter',
+            fontSize: fontSize,
             color: AnswerPalette.correctFg,
             fontWeight: FontWeight.w700,
             fontStyle: userFilled ? null : FontStyle.italic,
           );
         } else {
           blankText = '_____';
-          blankStyle =
-              TextStyle(color: cs.primary, fontStyle: FontStyle.italic);
+          blankStyle = TextStyle(
+            fontFamily: 'Inter',
+            fontSize: fontSize,
+            color: cs.primary,
+            fontStyle: FontStyle.italic,
+            fontWeight: FontWeight.w700,
+          );
         }
         if (prefix.isNotEmpty) spans.add(TextSpan(text: prefix));
         spans.add(TextSpan(text: blankText, style: blankStyle));
@@ -637,171 +1075,224 @@ class _VideoConversationQuizBodyState extends State<VideoConversationQuizBody> {
     return spans;
   }
 
-  Widget _buildTilePanel(BuildContext context, {VideoClozeAnswerData? cloze}) {
+  Widget _buildClozePanel({
+    required BuildContext context,
+    required VideoClozeAnswerData cloze,
+    required _VideoClozePreset clozePreset,
+    required _PresetResolution tilePreset,
+    required double answerWidth,
+  }) {
     final theme = Theme.of(context);
-    // Adaptive on content volume, not on answer_type or video size: the video stays the same
-    // size across every question in a level regardless of which one is showing (it's one
-    // continuous asset chained across consecutive rows — resizing it per-question would make
-    // playback visibly jump in size question to question, which is worse than a tighter tile
-    // grid). A question with a long word-bank *and* a large tile-choice set (recall-type
-    // AppearDisappear rounds especially) genuinely needs more of the shared space than a short
-    // one — so only the tiles/word-bank compact themselves, and only when there's enough content
-    // to actually warrant it.
-    final itemCount = _tileTarget.length + _tileChoices.length;
-    final compact = itemCount > 8;
-    final slotHeight = compact ? 30.0 : 36.0;
-    final slotPadding = compact
-        ? const EdgeInsets.symmetric(horizontal: 10, vertical: 4)
-        : const EdgeInsets.symmetric(horizontal: 14, vertical: 6);
-    final tileMinHeight = compact ? 40.0 : 52.0;
-    final tileMaxHeight = compact ? 52.0 : 68.0;
-    final tilePadding = compact
-        ? const EdgeInsets.symmetric(horizontal: 10, vertical: 6)
-        : const EdgeInsets.symmetric(horizontal: 14, vertical: 10);
-    final wrapSpacing = compact ? 6.0 : 8.0;
-    final tileTextStyle =
-        compact ? theme.textTheme.bodySmall : theme.textTheme.bodyMedium;
+    final tileMetrics = _videoTileCellMetrics(tilePreset.height);
+    final gap = _videoRowGap(tilePreset.height);
 
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
-        if (cloze != null)
-          Padding(
-            padding: const EdgeInsets.only(bottom: 12),
-            child: Text.rich(
-              TextSpan(
-                style: theme.textTheme.bodyLarge,
-                children: _buildClozeSentenceSpans(theme, cloze),
+        Padding(
+          padding: const EdgeInsets.only(bottom: 16.0),
+          child: Text.rich(
+            TextSpan(
+              style: TextStyle(
+                fontFamily: 'Inter',
+                fontSize: clozePreset.sentenceFontSize,
+                fontWeight: FontWeight.w600,
+                color: theme.colorScheme.onSurface,
               ),
-              textAlign: TextAlign.center,
+              children: _buildClozeSentenceSpans(
+                  theme, cloze, clozePreset.sentenceFontSize),
             ),
-          )
-        else ...[
-          Wrap(
-            alignment: WrapAlignment.center,
-            spacing: 6,
-            runSpacing: 6,
-            children: List.generate(_tileTarget.length, (i) {
-              final word = _tileSlots[i];
-              final filled = word != null;
-              final slot = AnimatedContainer(
-                duration: const Duration(milliseconds: 180),
-                height: slotHeight,
-                width: filled ? null : 56,
-                padding: slotPadding,
-                decoration: BoxDecoration(
-                  color: filled ? AnswerPalette.correctBg : Colors.white,
-                  border: Border.all(
-                    color: filled
-                        ? AnswerPalette.correctBorder
-                        : AnswerPalette.neutralBorder,
-                    width: filled ? 1.5 : 1,
-                  ),
-                  borderRadius: BorderRadius.circular(18),
-                ),
-                child: Center(
-                  child: word == null
-                      ? const SizedBox.shrink()
-                      : Text(
-                          word,
-                          style: tileTextStyle?.copyWith(
-                            fontWeight: FontWeight.w700,
-                            color: AnswerPalette.correctFg,
-                          ),
-                        ),
-                ),
-              );
-              return word == null ? slot : IntrinsicWidth(child: slot);
-            }),
+            textAlign: TextAlign.center,
           ),
-          SizedBox(height: compact ? 8 : 12),
-        ],
+        ),
         Wrap(
           alignment: WrapAlignment.center,
-          spacing: wrapSpacing,
-          runSpacing: wrapSpacing,
+          crossAxisAlignment: WrapCrossAlignment.center,
+          spacing: gap,
+          runSpacing: gap,
           children: List.generate(_tileChoices.length, (i) {
-            final word = _tileChoices[i];
-            final disabled =
-                _tileFailed || _tileCompleted || _tileUsedIndices.contains(i);
-            final isWrong = _tileFailed && _tileWrongIndex == i;
-            final isCorrectTile = _tileUsedIndices.contains(i);
-            final step = _tileStepOf[i];
-            var tileBg = AnswerPalette.neutralBg;
-            var tileBorder = AnswerPalette.neutralBorder;
-            var tileFg = AnswerPalette.neutralFg;
-            if (isWrong) {
-              tileBg = AnswerPalette.wrongBg;
-              tileBorder = AnswerPalette.wrongBorder;
-              tileFg = AnswerPalette.wrongFg;
-            } else if (isCorrectTile) {
-              tileBg = AnswerPalette.correctBg;
-              tileBorder = AnswerPalette.correctBorder;
-              tileFg = AnswerPalette.correctFg;
-            }
-            return Material(
-              key: _tileChoiceKeys.length > i ? _tileChoiceKeys[i] : null,
-              color: tileBg,
-              shape: StadiumBorder(side: BorderSide(color: tileBorder)),
-              child: InkWell(
-                onTap: disabled ? null : () => _onTileTap(i),
-                customBorder:
-                    StadiumBorder(side: BorderSide(color: tileBorder)),
-                child: ConstrainedBox(
-                  constraints: BoxConstraints(
-                    minWidth: 72,
-                    minHeight: tileMinHeight,
-                    maxHeight: tileMaxHeight,
-                  ),
-                  child: Stack(
-                    alignment: Alignment.center,
-                    children: [
-                      Padding(
-                        padding: tilePadding,
-                        child: Row(
-                          mainAxisSize: MainAxisSize.min,
-                          children: [
-                            if (isWrong) ...[
-                              Icon(Icons.close, size: 14, color: tileBorder),
-                              const SizedBox(width: 4),
-                            ],
-                            Text(
-                              word,
-                              textAlign: TextAlign.center,
-                              style: tileTextStyle?.copyWith(
-                                fontWeight: FontWeight.w600,
-                                color: tileFg,
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                      if (isCorrectTile && step != null)
-                        Positioned(
-                          top: 2,
-                          right: 2,
-                          child: CircleAvatar(
-                            radius: 10,
-                            backgroundColor: AnswerPalette.correctBorder,
-                            child: Text(
-                              '$step',
-                              style: const TextStyle(
-                                color: Colors.white,
-                                fontSize: 11,
-                                fontWeight: FontWeight.bold,
-                              ),
-                            ),
-                          ),
-                        ),
-                    ],
-                  ),
-                ),
-              ),
+            return _buildTile(
+              i,
+              fontSize: tilePreset.fontSize,
+              height: tilePreset.height,
+              metrics: tileMetrics,
             );
           }),
         ),
       ],
+    );
+  }
+
+  Widget _buildSequencePanel({
+    required BuildContext context,
+    required _PresetResolution slotPreset,
+    required _PresetResolution tilePreset,
+    required double answerWidth,
+  }) {
+    final slotMetrics = _videoTileCellMetrics(slotPreset.height);
+    final tileMetrics = _videoTileCellMetrics(tilePreset.height);
+    final slotGap = _videoRowGap(slotPreset.height);
+    final tileGap = _videoRowGap(tilePreset.height);
+
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.center,
+      crossAxisAlignment: CrossAxisAlignment.stretch,
+      children: [
+        Wrap(
+          alignment: WrapAlignment.center,
+          crossAxisAlignment: WrapCrossAlignment.center,
+          spacing: slotGap,
+          runSpacing: slotGap,
+          children: List.generate(_tileTarget.length, (i) {
+            final word = _tileSlots[i];
+            final filled = word != null;
+            final slot = AnimatedContainer(
+              duration: const Duration(milliseconds: 180),
+              height: slotPreset.height,
+              width: filled ? null : slotMetrics.minWidth,
+              padding: EdgeInsets.symmetric(
+                horizontal: slotMetrics.horizontalPadding / 2,
+                vertical: 4,
+              ),
+              decoration: BoxDecoration(
+                color: filled ? AnswerPalette.correctBg : Colors.white,
+                border: Border.all(
+                  color: filled
+                      ? AnswerPalette.correctBorder
+                      : AnswerPalette.neutralBorder,
+                  width: filled ? 1.5 : 1,
+                ),
+                borderRadius: BorderRadius.circular(18),
+              ),
+              child: Center(
+                child: word == null
+                    ? const SizedBox.shrink()
+                    : Text(
+                        word,
+                        style: TextStyle(
+                          fontFamily: 'Inter',
+                          fontSize: slotPreset.fontSize,
+                          fontWeight: FontWeight.w700,
+                          color: AnswerPalette.correctFg,
+                        ),
+                      ),
+              ),
+            );
+            return filled ? IntrinsicWidth(child: slot) : slot;
+          }),
+        ),
+        const SizedBox(height: 16.0),
+        Wrap(
+          alignment: WrapAlignment.center,
+          crossAxisAlignment: WrapCrossAlignment.center,
+          spacing: tileGap,
+          runSpacing: tileGap,
+          children: List.generate(_tileChoices.length, (i) {
+            return _buildTile(
+              i,
+              fontSize: tilePreset.fontSize,
+              height: tilePreset.height,
+              metrics: tileMetrics,
+            );
+          }),
+        ),
+      ],
+    );
+  }
+
+  Widget _buildTile(
+    int index, {
+    required double fontSize,
+    required double height,
+    required ({double minWidth, double horizontalPadding}) metrics,
+  }) {
+    final word = _tileChoices[index];
+    final disabled =
+        _tileFailed || _tileCompleted || _tileUsedIndices.contains(index);
+    final isWrong = _tileFailed && _tileWrongIndex == index;
+    final isCorrectTile = _tileUsedIndices.contains(index);
+    final step = _tileStepOf[index];
+
+    final Color bg;
+    final Color border;
+    final Color fg;
+    if (isWrong) {
+      bg = AnswerPalette.wrongBg;
+      border = AnswerPalette.wrongBorder;
+      fg = AnswerPalette.wrongFg;
+    } else if (isCorrectTile) {
+      bg = AnswerPalette.correctBg;
+      border = AnswerPalette.correctBorder;
+      fg = AnswerPalette.correctFg;
+    } else {
+      bg = AnswerPalette.neutralBg;
+      border = AnswerPalette.neutralBorder;
+      fg = AnswerPalette.neutralFg;
+    }
+
+    return Material(
+      key: _tileChoiceKeys.length > index ? _tileChoiceKeys[index] : null,
+      color: bg,
+      shape: StadiumBorder(side: BorderSide(color: border)),
+      child: InkWell(
+        onTap: disabled ? null : () => _onTileTap(index),
+        customBorder: StadiumBorder(side: BorderSide(color: border)),
+        child: ConstrainedBox(
+          constraints: BoxConstraints(
+            minWidth: metrics.minWidth,
+            minHeight: height,
+            maxHeight: height,
+          ),
+          child: Stack(
+            alignment: Alignment.center,
+            children: [
+              Padding(
+                padding: EdgeInsets.symmetric(
+                  horizontal: metrics.horizontalPadding / 2,
+                  vertical: 4,
+                ),
+                child: Row(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    if (isWrong) ...[
+                      Icon(Icons.close, size: 14, color: border),
+                      const SizedBox(width: 4),
+                    ],
+                    Text(
+                      word,
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                        fontFamily: 'Inter',
+                        fontSize: fontSize,
+                        fontWeight: FontWeight.w600,
+                        color: fg,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              if (isCorrectTile && step != null)
+                Positioned(
+                  top: 2,
+                  right: 2,
+                  child: CircleAvatar(
+                    radius: 10,
+                    backgroundColor: AnswerPalette.correctBorder,
+                    child: Text(
+                      '$step',
+                      style: const TextStyle(
+                        color: Colors.white,
+                        fontSize: 11,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ),
+                ),
+            ],
+          ),
+        ),
+      ),
     );
   }
 }

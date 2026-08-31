@@ -1,10 +1,10 @@
 #!/usr/bin/env python3
 """
-Build markdown tables (same shape as cursor-claude-common/output/global-questions.md)
+Build markdown tables (same shape as all-ai-common/output/global-questions.md)
 from quiz level JSON files.
 
 Default: scans app/assets/quiz-data/levels/*/questions.json, writes
-cursor-claude-common/output/global-questions.md.
+all-ai-common/output/global-questions.md.
 
 Any existing ## <level-folder-name> section is replaced; other ## sections
 (e.g. manual notes) are kept after the generated level blocks.
@@ -251,7 +251,7 @@ def main() -> int:
         "--output",
         type=Path,
         default=None,
-        help="Markdown file to write (default: cursor-claude-common/output/"
+        help="Markdown file to write (default: all-ai-common/output/"
         "global-questions.md, or global-questions-kids.md for --flavor kids)",
     )
     ap.add_argument(
@@ -264,7 +264,7 @@ def main() -> int:
     output = args.output
     if output is None:
         suffix = "" if args.flavor == "adults" else f"-{args.flavor}"
-        output = root / f"cursor-claude-common/output/global-questions{suffix}.md"
+        output = root / f"all-ai-common/output/global-questions{suffix}.md"
 
     levels = collect_levels(args.levels_root, args.flavor)
     if not levels:

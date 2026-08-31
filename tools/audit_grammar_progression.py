@@ -1,12 +1,12 @@
 #!/usr/bin/env python3
 """
 Scan all game-flow levels for grammar-progression violations (audit-quiz-level SKILL).
-Outputs markdown report to cursor-claude-common/output/all-levels-grammar-progression-audit.md
+Outputs markdown report to all-ai-common/output/all-levels-grammar-progression-audit.md
 
 The Part 1-4 band model this script checks against is the ADULT grammar
-progression (see cursor-claude-common/skills/audit-quiz-level/SKILL.md) — kids
+progression (see all-ai-common/skills/audit-quiz-level/SKILL.md) — kids
 content uses its own smaller, ML-independent grammar set instead (see
-cursor-claude-common/skills/simplify-kids-level-content/SKILL.md) and this
+all-ai-common/skills/simplify-kids-level-content/SKILL.md) and this
 script's Part bands do not apply to it. Defaults to --flavor adults for that
 reason; pass --flavor kids only if you specifically want to see how far kids
 content (which is intentionally simpler) diverges from the adult bands.
@@ -27,7 +27,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent.parent
 FLOW = ROOT / "app/assets/data/flow/game-flow.json"
 LEVELS = ROOT / "app/assets/quiz-data/levels"
-OUT = ROOT / "cursor-claude-common/output/all-levels-grammar-progression-audit.md"
+OUT = ROOT / "all-ai-common/output/all-levels-grammar-progression-audit.md"
 
 
 def questions_path(name: str, flavor: str) -> Path:

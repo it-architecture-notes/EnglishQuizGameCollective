@@ -1,0 +1,399 @@
+{
+  "levelQuestions": [
+    {
+      "template": "SentenceBuilder",
+      "audio_file1": "test-audio-line-1",
+      "audio_file2": "test-audio-line-2-or-answer",
+      "questionData": {
+        "line1": "What are you doing?",
+        "correct_order": "I am reading a book",
+        "image_file_name": "test-placeholder-sentence-builder"
+      }
+    },
+    {
+      "template": "SentenceBuilder",
+      "audio_file1": "test-audio-line-1",
+      "audio_file2": "test-audio-line-2-or-answer",
+      "questionData": {
+        "line1": "What does she do every day?",
+        "correct_order": "She likes to read books at home every single day",
+        "image_file_name": "test-placeholder-sentence-builder"
+      }
+    },
+    {
+      "template": "AppearDisappear",
+      "audio_file1": "test-audio-line-1",
+      "audio_file2": "test-audio-line-2-or-answer",
+      "questionData": {
+        "line1": "Listen and remember this sentence.",
+        "words": "I go to school every morning",
+        "distractors": [
+          "went",
+          "goes",
+          "yesterday"
+        ],
+        "image_file_name": "test-placeholder-appear-disappear"
+      }
+    },
+    {
+      "template": "AppearDisappear",
+      "audio_file1": "test-audio-line-1",
+      "audio_file2": "test-audio-line-2-or-answer",
+      "questionData": {
+        "line1": "What does she usually do on weekends?",
+        "words": "She likes to read books at home",
+        "distractors": [
+          "liked",
+          "reads",
+          "tomorrow"
+        ],
+        "image_file_name": "test-placeholder-appear-disappear"
+      }
+    },
+    {
+      "template": "AppearDisappear",
+      "audio_file1": "test-audio-line-1",
+      "questionData": {
+        "words": "They are playing in the park",
+        "distractors": [
+          "play",
+          "played",
+          "tonight"
+        ],
+        "image_file_name": "test-placeholder-appear-disappear"
+      }
+    },
+    {
+      "template": "ClozeSequence",
+      "audio_file1": "test-audio-line-1",
+      "audio_file2": "test-audio-line-2-or-answer",
+      "questionData": {
+        "sentence": "I _____ a student at this school.",
+        "answer": [
+          "am"
+        ],
+        "distractors": [
+          "is",
+          "are",
+          "be"
+        ],
+        "image_file_name": "test-placeholder-cloze-sequence"
+      }
+    },
+    {
+      "template": "ClozeSequence",
+      "audio_file1": "test-audio-line-1",
+      "audio_file2": "test-audio-line-2-or-answer",
+      "questionData": {
+        "sentence": "There _____ many people at the party.",
+        "answer": [
+          "were"
+        ],
+        "distractors": [
+          "was",
+          "is",
+          "are"
+        ],
+        "image_file_name": "test-placeholder-cloze-sequence"
+      }
+    },
+    {
+      "template": "ClozeSequence",
+      "audio_file1": "test-audio-line-1",
+      "audio_file2": "test-audio-line-2-or-answer",
+      "questionData": {
+        "sentence": "She _____ to the store yesterday.",
+        "answer": [
+          "went"
+        ],
+        "distractors": [
+          "go",
+          "goes",
+          "going"
+        ],
+        "image_file_name": "test-placeholder-cloze-sequence"
+      }
+    },
+    {
+      "template": "WordPairs",
+      "questionData": {
+        "english_words": [
+          "red",
+          "blue",
+          "green",
+          "yellow"
+        ],
+        "translations": [
+          { "tr": "kırmızı" },
+          { "tr": "mavi" },
+          { "tr": "yeşil" },
+          { "tr": "sarı" }
+        ]
+      }
+    },
+    {
+      "template": "WordPairs",
+      "questionData": {
+        "english_words": [
+          "mother",
+          "father",
+          "sister",
+          "brother"
+        ],
+        "translations": [
+          { "tr": "anne" },
+          { "tr": "baba" },
+          { "tr": "kız kardeş" },
+          { "tr": "erkek kardeş" }
+        ]
+      }
+    },
+    {
+      "template": "WordPairs",
+      "questionData": {
+        "english_words": [
+          "Monday",
+          "Tuesday",
+          "Wednesday",
+          "Thursday"
+        ],
+        "translations": [
+          { "tr": "Pazartesi" },
+          { "tr": "Salı" },
+          { "tr": "Çarşamba" },
+          { "tr": "Perşembe" }
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "test-placeholder-image-quiz-1",
+        "answer": "a red apple",
+        "wrongAnswers": [
+          "a green pear",
+          "a yellow banana",
+          "an orange"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "test-placeholder-image-quiz-1",
+        "answer": "walking to school",
+        "wrongAnswers": [
+          "running home",
+          "riding a bike",
+          "waiting for the bus"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "test-placeholder-image-quiz-1",
+        "answer": "a cup of coffee",
+        "wrongAnswers": [
+          "a glass of water",
+          "a cup of tea",
+          "a bottle of juice"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-2",
+      "audio_file": "test-audio-line-1",
+      "questionData": {
+        "imageName": "test-placeholder-image-quiz-2-correct",
+        "answer": "coffee cup",
+        "wrongAnswers": [
+          "test-placeholder-image-quiz-2-wrong-a",
+          "test-placeholder-image-quiz-2-wrong-b",
+          "test-placeholder-image-quiz-2-wrong-c"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-2",
+      "audio_file": "test-audio-line-1",
+      "questionData": {
+        "imageName": "test-placeholder-image-quiz-2-correct",
+        "answer": "backpack",
+        "wrongAnswers": [
+          "test-placeholder-image-quiz-2-wrong-a",
+          "test-placeholder-image-quiz-2-wrong-b",
+          "test-placeholder-image-quiz-2-wrong-c"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-2",
+      "audio_file": "test-audio-line-1",
+      "questionData": {
+        "imageName": "test-placeholder-image-quiz-2-correct",
+        "answer": "bus station",
+        "wrongAnswers": [
+          "test-placeholder-image-quiz-2-wrong-a",
+          "test-placeholder-image-quiz-2-wrong-b",
+          "test-placeholder-image-quiz-2-wrong-c"
+        ]
+      }
+    },
+    {
+      "template": "ConvoTemplate-1",
+      "audio_file1": "test-audio-line-1",
+      "audio_file2": "test-audio-line-2-or-answer",
+      "questionData": {
+        "character1": "test_char_a",
+        "character2": "test_char_b",
+        "line1": "Excuse me, what time is it?",
+        "line2": "It is _____ o'clock.",
+        "answer": "nine",
+        "distractors": [
+          "ten",
+          "eight",
+          "two"
+        ],
+        "image_file_name": "test-placeholder-convo-template-1"
+      }
+    },
+    {
+      "template": "ConvoTemplate-1",
+      "audio_file1": "test-audio-line-1",
+      "audio_file2": "test-audio-line-2-or-answer",
+      "questionData": {
+        "character1": "test_char_a",
+        "character2": "test_char_b",
+        "line1": "Is there a bus station here?",
+        "line2": "Yes, there _____ one nearby.",
+        "answer": "is",
+        "distractors": [
+          "are",
+          "was",
+          "be"
+        ],
+        "image_file_name": "test-placeholder-convo-template-1"
+      }
+    },
+    {
+      "template": "ConvoTemplate-1",
+      "audio_file1": "test-audio-line-1",
+      "audio_file2": "test-audio-line-2-or-answer",
+      "questionData": {
+        "character1": "test_char_a",
+        "character2": "test_char_b",
+        "line1": "What is this?",
+        "line2": "This is the train _____.",
+        "answer": "schedule",
+        "distractors": [
+          "ticket",
+          "map",
+          "sign"
+        ],
+        "image_file_name": "test-placeholder-convo-template-1"
+      }
+    },
+    {
+      "template": "DialogueCompletion",
+      "audio_file1": "test-audio-line-1",
+      "audio_file2": "test-audio-line-2-or-answer",
+      "questionData": {
+        "line1": "How are you today?",
+        "answer": "I am fine, thank you.",
+        "distractors": [
+          "I am late again.",
+          "I am not hungry.",
+          "I am going home."
+        ],
+        "image_file_name": "test-placeholder-dialogue-completion"
+      }
+    },
+    {
+      "template": "DialogueCompletion",
+      "audio_file1": "test-audio-line-1",
+      "audio_file2": "test-audio-line-2-or-answer",
+      "questionData": {
+        "line1": "Can you help me with this?",
+        "answer": "Sure, I would be happy to.",
+        "distractors": [
+          "No, I am busy now.",
+          "Maybe next time.",
+          "I don't know how."
+        ],
+        "image_file_name": "test-placeholder-dialogue-completion"
+      }
+    },
+    {
+      "template": "DialogueCompletion",
+      "audio_file1": "test-audio-line-1",
+      "audio_file2": "test-audio-line-2-or-answer",
+      "questionData": {
+        "line1": "Where is the nearest bank?",
+        "answer": "It is just around the corner.",
+        "distractors": [
+          "It closed an hour ago.",
+          "I have never been there.",
+          "It is very far away."
+        ],
+        "image_file_name": "test-placeholder-dialogue-completion"
+      }
+    },
+    {
+      "template": "VideoConversation",
+      "videoFile": "testing-responsive-design",
+      "start_at": "00:00.0",
+      "pause_at": "00:02.0",
+      "answer_until": "00:03.0",
+      "audio_file1": "test-audio-line-1",
+      "audio_file2": "test-audio-line-2-or-answer",
+      "questionData": {
+        "answer_type": "DialogueCompletion",
+        "answer": "It is nine o'clock.",
+        "distractors": [
+          "It is ten o'clock.",
+          "It is early.",
+          "It is late."
+        ]
+      }
+    },
+    {
+      "template": "VideoConversation",
+      "videoFile": "testing-responsive-design",
+      "start_at": "00:03.0",
+      "pause_at": "00:05.0",
+      "answer_until": "00:06.0",
+      "audio_file1": "test-audio-line-1",
+      "audio_file2": "test-audio-line-2-or-answer",
+      "questionData": {
+        "answer_type": "ClozeSequence",
+        "sentence": "Yes, there _____ a station nearby.",
+        "answer": [
+          "is"
+        ],
+        "distractors": [
+          "are",
+          "was",
+          "were"
+        ]
+      }
+    },
+    {
+      "template": "VideoConversation",
+      "videoFile": "testing-responsive-design",
+      "start_at": "00:06.0",
+      "pause_at": "00:08.0",
+      "answer_until": "00:09.0",
+      "audio_file1": "test-audio-line-1",
+      "questionData": {
+        "answer_type": "AppearDisappear",
+        "words": "This is the train schedule",
+        "distractors": [
+          "was",
+          "are",
+          "that"
+        ]
+      }
+    }
+  ]
+}

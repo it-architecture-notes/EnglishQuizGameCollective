@@ -173,7 +173,7 @@ class _QuizRunnerScreenState extends ConsumerState<QuizRunnerScreen> {
 
   /// App bar close: aborts the runner with `completed: false` after playing click feedback.
   void _popToLevels(BuildContext context) {
-    final soundFxOn = ref.read(settingsProvider).valueOrNull?.soundFxOn ?? true;
+    final soundFxOn = ref.read(settingsProvider).valueOrNull?.soundFxOn ?? false;
     audio.playClick(soundFxOn: soundFxOn);
     Navigator.of(context).pop(LevelCompletionResult(
       ordinalLevelIndex: widget.ordinalLevelIndex,
