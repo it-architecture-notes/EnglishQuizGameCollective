@@ -1,16 +1,11 @@
 [  
-  
-  {
+
+{
     "mainLevel": 1,
-    "directoryName": "waking-up",
-    "title": "Waking Up"
+    "directoryName": "walking-in-the-city",
+    "title": "City Walk"
   },
-  {
-    "mainLevel": 1,
-    "directoryName": "testing-responsive-design",
-    "title": "Testing - Responsive Design"
-  },
-  {
+{
     "mainLevel": 1,
     "directoryName": "greetings",
     "title": "Greetings"

@@ -2,6 +2,22 @@ import 'package:flutter/foundation.dart';
 
 import '../utils/cloze_blank.dart';
 
+/// Parses `question_enter_audio` / `question_exit_correct_audio` / `question_exit_wrong_audio`:
+/// a plain string (one clip), an array of strings (clips played sequentially), or the literal
+/// string `"none"` (returns `[]` — the "explicitly nothing" sentinel, distinct from `null` for
+/// an absent field). Returns `null` when [raw] itself is absent/not a recognized shape.
+List<String>? _parseAudioCue(dynamic raw) {
+  if (raw == null) return null;
+  if (raw is String) {
+    if (raw.trim().toLowerCase() == 'none') return const [];
+    return [raw];
+  }
+  if (raw is List) {
+    return raw.map((e) => e.toString()).toList();
+  }
+  return null;
+}
+
 /// Parsed `questionData` for [imageQuizTemplate-1].
 class ImageQuestionData {
   const ImageQuestionData({
@@ -333,8 +349,9 @@ class LevelQuestion {
   const LevelQuestion({
     this.questionId,
     this.audioFile,
-    this.audioFile1,
-    this.audioFile2,
+    this.questionEnterAudio,
+    this.questionExitCorrectAudio,
+    this.questionExitWrongAudio,
     this.genders,
     required this.template,
     this.imageData,
@@ -365,13 +382,32 @@ class LevelQuestion {
   final String? questionId;
   final String? audioFile;
 
-  /// Optional first clip (top-level JSON). [DialogueCompletion]: question line.
-  /// [ConvoTemplate-1]: speaker 1 line, blanks filled with [ConvoQuestionData.answer] in the asset.
-  final String? audioFile1;
+  /// Optional (top-level JSON `question_enter_audio`: a string, an array of strings played
+  /// sequentially, or the literal string `"none"`). Plays once, automatically, the first time
+  /// this question is presented, and is replayable on demand via the audio icon before
+  /// answering. `null` means the field was absent — nothing plays and the audio icon is
+  /// disabled pre-answer. An empty list means the literal `"none"` was given.
+  final List<String>? questionEnterAudio;
 
-  /// Optional second clip (top-level JSON). [DialogueCompletion]: correct reply.
-  /// [ConvoTemplate-1]: speaker 2 line, blanks filled the same way. Requires [audioFile1] when used.
-  final String? audioFile2;
+  /// Optional (top-level JSON `question_exit_correct_audio`: string, array, or `"none"`).
+  /// Plays automatically after a correct answer, before advancing — `null`/absent and an
+  /// empty list (`"none"`) both mean nothing plays and the app advances immediately.
+  /// [DialogueCompletion]: correct reply. [ConvoTemplate-1]: speaker 2 line.
+  final List<String>? questionExitCorrectAudio;
+
+  /// Optional (top-level JSON `question_exit_wrong_audio`: string, array, or `"none"`). Plays
+  /// automatically after a wrong answer, before the Next button appears (and is what the audio
+  /// icon replays after a wrong answer). `null` means the field was absent — use
+  /// [effectiveExitWrongAudio] instead of this raw getter, which falls back to
+  /// [questionExitCorrectAudio]. An empty list means the literal `"none"` was given, which
+  /// suppresses that fallback entirely — nothing plays and the icon is disabled post-wrong.
+  final List<String>? questionExitWrongAudio;
+
+  /// [questionExitWrongAudio] if the field was present (including explicit `"none"`, which
+  /// stays `[]` — no further fallback); otherwise falls back to [questionExitCorrectAudio].
+  /// This is what actually plays (or is targeted by the audio icon) after a wrong answer.
+  List<String>? get effectiveExitWrongAudio =>
+      questionExitWrongAudio ?? questionExitCorrectAudio;
 
   /// Voice/art casting code: `"m"`/`"f"` for single-person templates
   /// (AppearDisappear, ClozeSequence, SentenceBuilder), or
@@ -396,6 +432,11 @@ class LevelQuestion {
 
   /// True for the passive [Chapter] interstitial (no answer, no scoring gate).
   bool get isChapter => template == 'Chapter';
+
+
+  /// True when this row needs the shared [VideoPlayerController] to remain active.
+  bool get hasVideoPlayback =>
+      videoConversationData != null;
 }
 
 /// One entry in [LevelTutorialConfig.steps]: which localized message and character portrait to
@@ -787,9 +828,9 @@ class LevelConfig {
     }
     final startAt = _parseTimestamp(json['start_at'] as String? ?? '');
     final pauseAt = _parseTimestamp(json['pause_at'] as String? ?? '');
-    if (startAt >= pauseAt) {
+    if (startAt > pauseAt) {
       throw FormatException(
-        'VideoConversation: start_at ($startAt) must be before pause_at ($pauseAt)',
+        'VideoConversation: start_at ($startAt) must be before or equal to pause_at ($pauseAt)',
       );
     }
     final answerUntil = json['answer_until'] is String
@@ -850,7 +891,6 @@ class LevelConfig {
     );
   }
 
-  /// Dispatches one `levelQuestions[]` element to the correct parser based on `template`.
   static LevelQuestion _parseQuestion(Map<String, dynamic> json) {
     final template = json['template'] as String? ?? '';
     if (template == 'Chapter') {
@@ -921,8 +961,11 @@ class LevelConfig {
     return LevelQuestion(
       questionId: json['questionId'] as String?,
       audioFile: json['audio_file'] as String?,
-      audioFile1: json['audio_file1'] as String?,
-      audioFile2: json['audio_file2'] as String?,
+      questionEnterAudio: _parseAudioCue(json['question_enter_audio']),
+      questionExitCorrectAudio:
+          _parseAudioCue(json['question_exit_correct_audio']),
+      questionExitWrongAudio:
+          _parseAudioCue(json['question_exit_wrong_audio']),
       genders: json['genders'] as String?,
       template: normalizedTemplate,
       imageData: imageData,

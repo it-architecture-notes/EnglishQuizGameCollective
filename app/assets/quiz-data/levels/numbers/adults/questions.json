@@ -48,7 +48,7 @@
     {
       "template": "imageQuizTemplate-1",
       "questionData": {
-        "imageName": "sixty-nine",
+        "imageName": "sixty-eight",
         "wrongAnswers": [
           "ninety-three",
           "twelve",
@@ -59,10 +59,10 @@
     {
       "template": "imageQuizTemplate-1",
       "questionData": {
-        "imageName": "ninety-eight",
+        "imageName": "ninety-seven",
         "wrongAnswers": [
           "eighty-nine",
-          "ninety-seven",
+          "ninety-six",
           "sixty-eight"
         ]
       }
@@ -83,20 +83,20 @@
       "questionData": {
         "imageName": "thirty-six",
         "wrongAnswers": [
-          "forty-seven",
+          "forty-nine",
           "fifty-eight",
-          "sixty-nine"
+          "sixty-eight"
         ]
       }
     },
     {
       "template": "imageQuizTemplate-1",
       "questionData": {
-        "imageName": "forty-seven",
+        "imageName": "forty-nine",
         "wrongAnswers": [
           "thirty-six",
           "forty-eight",
-          "sixty-nine"
+          "sixty-eight"
         ]
       }
     },

@@ -50,7 +50,7 @@ def flow_level_name(entry: dict) -> str | None:
 
 SKIP_TOP_KEYS = frozenset(
     {"template", "character1", "character2", "imageName", "timer_seconds",
-     "audio_file", "audio_file1", "audio_file2"}
+     "audio_file", "question_repeat_audio", "question_exit_correct_audio"}
 )
 
 # Base-form homographs excluded from irregular-past scan

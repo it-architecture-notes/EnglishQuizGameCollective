@@ -60,7 +60,7 @@ Questions table columns:
     content-word overlap (e.g. "to ask a question" ↔ "Teacher asks an easy question");
     for **WordPairs**, all `english_words` that have an embedded `translations` row;
     excludes distractors and wrongAnswers
-  - Audio: top-level audio_file, audio_file1, audio_file2 when present
+  - Audio: top-level audio_file, question_repeat_audio, question_exit_correct_audio when present
 
 Template summary: a small table with one row per template supported by the game
 (`_KNOWN_TEMPLATES` / `level_config.dart`), and how many questions in this level
@@ -79,7 +79,7 @@ wrongAnswers from questionData; empty when a template has none).
 
 HTML only: after template counts, a **Word frequency** table for strings in
 `questions.json` except: each question’s `template` and `audio_file` /
-`audio_file1` / `audio_file2` fields, `questionData.translations` (**WordPairs**
+`question_repeat_audio` / `question_exit_correct_audio` fields, `questionData.translations` (**WordPairs**
 only), `questionData.distractors`, and `questionData.wrongAnswers`. Other strings
 use the same token rule as
 `tools/update_final_word_counts_from_levels.py` (`[a-z0-9]+(?:[-'][a-z0-9]+)*`,
@@ -184,7 +184,7 @@ _FLAVOR_NAMES = ("adults", "kids")
 
 # Per-question keys omitted from HTML word-frequency (metadata / assets).
 _QUESTION_ITEM_WORD_FREQ_SKIP_KEYS = frozenset(
-    {"template", "audio_file", "audio_file1", "audio_file2"}
+    {"template", "audio_file", "question_repeat_audio", "question_exit_correct_audio"}
 )
 
 # questionData keys omitted from HTML word-frequency (wrong options).
@@ -249,7 +249,7 @@ def _count_blanks(sentence: str) -> int:
 def collect_word_frequency_rows(questions_json_root: dict) -> list[list[str]]:
     """
     String values under questions.json, tokenized (lowercased), except each
-    question’s `template`, `audio_file` / `audio_file1` / `audio_file2`, and in
+    question’s `template`, `audio_file` / `question_repeat_audio` / `question_exit_correct_audio`, and in
     questionData: translations (WordPairs only), distractors, wrongAnswers.
     Rows sorted by count descending, then word.
     """
@@ -622,11 +622,11 @@ def validate_question_shape(index: int, item: dict) -> list[str]:
         )
         return errs
 
-    a1 = _nonempty_str(item.get("audio_file1"))
-    a2 = _nonempty_str(item.get("audio_file2"))
+    a1 = _nonempty_str(item.get("question_repeat_audio"))
+    a2 = _nonempty_str(item.get("question_exit_correct_audio"))
     if bool(a1) != bool(a2):
         errs.append(
-            f"{prefix}: `audio_file1` and `audio_file2` must both be non-empty "
+            f"{prefix}: `question_repeat_audio` and `question_exit_correct_audio` must both be non-empty "
             "or both omitted (paired split-audio fields)"
         )
 
@@ -1119,7 +1119,7 @@ def english_translate_cell(
 def audio_files_cell(item: dict) -> str:
     """Top-level audio basenames (sibling to template), only keys that exist and are non-empty."""
     segments: list[str] = []
-    for key in ("audio_file", "audio_file1", "audio_file2"):
+    for key in ("audio_file", "question_repeat_audio", "question_exit_correct_audio"):
         val = item.get(key)
         if val is None:
             continue

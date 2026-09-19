@@ -389,11 +389,29 @@ class _ImageQuizScreenState extends ConsumerState<ImageQuizScreen>
   int? _selectedIndex; // 0..3 index into current options
   bool _convoTtsPlaying = false;
 
-  /// [ConvoTemplate-1] with `audio_file1` + `audio_file2`: auto-play line 1 once per question.
-  String? _convo1DualPrimedKey;
-  bool _convo1DualA1Playing = false;
-  bool _convo1DualA2Playing = false;
-  bool _convo1PostAnswerAudioPlaying = false;
+  /// [ConvoTemplate-1]: auto-plays `question_enter_audio` once per question.
+  String? _convo1EnterPrimedKey;
+  bool _convo1AudioPlaying = false;
+
+  /// True once the learner has interacted with the current question in any way (tile tap,
+  /// answer button, audio icon, "Listen Again") — hides the footer guide hint for the rest of
+  /// this question. Reset alongside [_answerLocked] whenever a new question starts.
+  bool _footerGuideDismissed = false;
+
+  /// Question key whose answer-controls tutorial signal is already queued for the end of the
+  /// current frame. Controls can report that they rendered from inside a LayoutBuilder, so the
+  /// signal must not mutate this screen or the tutorial controller during build.
+  String? _tutorialSignalQueuedForQuestionKey;
+
+  /// `'${questionId}#${index}'` of the question the blocking tutorial overlay was last shown
+  /// on, if any — the footer guide hint never shows on that same question (the overlay already
+  /// delivered that guidance), only on later questions of the same step key.
+  String? _overlayShownForQuestionKey;
+
+  /// True once this question's answer controls (buttons/tiles) have actually rendered — same
+  /// signal the tutorial overlay uses. The footer guide hint waits for this too, instead of
+  /// appearing as soon as the question starts (before video/entry-audio finish).
+  bool _answerControlsRendered = false;
   List<String> _currentOptions = [];
   DateTime? _quizStartTime;
 
@@ -466,6 +484,26 @@ class _ImageQuizScreenState extends ConsumerState<ImageQuizScreen>
     return _convoQuestions.isNotEmpty || _convoByQuestionId.isNotEmpty;
   }
 
+  /// The row immediately before the current one, resolved the same three ways
+  /// [_currentConvoLevelQuestion] is (plain level, reminder, or pure convo list) — used by
+  /// `VideoConversation`'s continueExistingPlayback check. `_allQuestions` is only populated
+  /// for a plain (non-reminder) level playthrough, so reminder mode must fall back to
+  /// `_currentQuestionIds`/`_convoByQuestionId` instead of indexing the empty list directly.
+  LevelQuestion? get _previousConvoLevelQuestion {
+    if (_currentIndex <= 0) return null;
+    if (_allQuestions.isNotEmpty) {
+      final i = _currentIndex - 1;
+      return i < _allQuestions.length ? _allQuestions[i] : null;
+    }
+    if (_isReminder) {
+      final i = _currentIndex - 1;
+      if (i < 0 || i >= _currentQuestionIds.length) return null;
+      return _convoByQuestionId[_currentQuestionIds[i]];
+    }
+    final i = _currentIndex - 1;
+    return i < _convoQuestions.length ? _convoQuestions[i] : null;
+  }
+
   /// The structured row for the active convo question, or null during pure image prompts.
   LevelQuestion? get _currentConvoLevelQuestion {
     if (_allQuestions.isNotEmpty) {
@@ -490,7 +528,9 @@ class _ImageQuizScreenState extends ConsumerState<ImageQuizScreen>
 
   /// Number of questions in this run (unified list, reminder IDs, legacy image-only, or convo-only).
   int get _questionCount {
-    if (_allQuestions.isNotEmpty) return _allQuestions.length;
+    if (_allQuestions.isNotEmpty) {
+      return _allQuestions.where((q) => true).length;
+    }
     if (_isReminder) return _currentQuestionIds.length;
     if (_convoQuestions.isNotEmpty || _convoByQuestionId.isNotEmpty)
       return _convoQuestions.length;
@@ -532,7 +572,8 @@ class _ImageQuizScreenState extends ConsumerState<ImageQuizScreen>
     if (_isReminder) return _initialQuestionCount;
     final list = _activeLevelQuestions;
     if (list == null) return _questionCount;
-    final nonChapterCount = list.where((q) => !q.isChapter).length;
+    final nonChapterCount =
+        list.where((q) => !q.isChapter).length;
     return nonChapterCount == 0 ? _questionCount : nonChapterCount;
   }
 
@@ -845,21 +886,25 @@ class _ImageQuizScreenState extends ConsumerState<ImageQuizScreen>
       // the first-run Chrome decoder startup race from the video widget.
       final firstVideoQuestion =
           orderedQuestions.cast<LevelQuestion?>().firstWhere(
-                (q) => q?.videoConversationData != null,
+                (q) => q?.hasVideoPlayback == true,
                 orElse: () => null,
               );
       if (firstVideoQuestion != null) {
-        final firstVideoPath = _videoAssetPathForRaw(
-          firstVideoQuestion.videoConversationData!.videoFile,
-        );
+        final firstVideoFile =
+            firstVideoQuestion.videoConversationData?.videoFile;
+        final firstVideoPath = _videoAssetPathForRaw(firstVideoFile);
         final controller = _videoControllerFor(firstVideoPath);
         if (controller != null && !controller.value.isInitialized) {
           await controller.initialize();
-          await controller
-              .seekTo(firstVideoQuestion.videoConversationData!.startAt);
+          final startAt = firstVideoQuestion.videoConversationData!.startAt;
+          await controller.seekTo(startAt);
         }
-        final firstAudioPath =
-            _audioAssetPathForRaw(firstVideoQuestion.audioFile1);
+        final firstAudioCue = firstVideoQuestion.questionEnterAudio;
+        final firstAudioRaw =
+            (firstAudioCue != null && firstAudioCue.isNotEmpty)
+                ? firstAudioCue.first
+                : null;
+        final firstAudioPath = _audioAssetPathForRaw(firstAudioRaw);
         if (firstAudioPath != null) {
           await _resolveAudioExists(firstAudioPath);
         }
@@ -900,7 +945,9 @@ class _ImageQuizScreenState extends ConsumerState<ImageQuizScreen>
           _questionQuiz2Paths = orderedQ2Paths;
           _questionConvoThumbPaths = orderedConvoThumbPaths;
           _currentQuestionIds = questionIds;
-          _initialQuestionCount = orderedQuestions.length;
+          _initialQuestionCount = orderedQuestions
+              .where((q) => true)
+              .length;
           _monsterEligibleQuestionCount = monsterEligibleCount;
           _guestAnimal = guestAnimal;
           _selectedMonster = selectedMonster;
@@ -1026,7 +1073,8 @@ class _ImageQuizScreenState extends ConsumerState<ImageQuizScreen>
                   q.clozeSequenceData != null ||
                   q.sentenceBuilderData != null ||
                   q.dialogueCompletionData != null ||
-                  q.wordPairsData != null)) {
+                  q.wordPairsData != null ||
+                  q.videoConversationData != null)) {
             convoByQuestionId[questionId] = q;
             final thumbStem = _optionalConvoThumbStem(q);
             if (thumbStem != null) {
@@ -1457,6 +1505,7 @@ class _ImageQuizScreenState extends ConsumerState<ImageQuizScreen>
   Future<void> _triggerConvo1TranslationPenalty(LevelQuestion q) async {
     if (_answerLocked) return;
     if (q.convoData?.trOk ?? false) return;
+    _dismissFooterGuide();
     final soundFxOn =
         ref.read(settingsProvider).valueOrNull?.soundFxOn ?? false;
     audio.playWrong(soundFxOn: soundFxOn);
@@ -1473,40 +1522,23 @@ class _ImageQuizScreenState extends ConsumerState<ImageQuizScreen>
       _convo1TranslationPenalized = true;
       _showNext = false;
     });
-    if (_convo1UsesDualAudio(q)) {
-      final p1 = _audioAssetPathForRaw(q.audioFile1);
-      final p2 = _audioAssetPathForRaw(q.audioFile2);
-      if (p1 != null && p2 != null) {
-        final ok1 = await _resolveAudioExists(p1);
-        final ok2 = await _resolveAudioExists(p2);
-        if (ok1 && ok2) {
-          final startIndex = _currentIndex;
-          final startQuestionId = _currentQuestionId;
-          bool sameQuestion() =>
-              mounted &&
-              _currentIndex == startIndex &&
-              _currentQuestionId == startQuestionId;
-          final caseA = !_convo1Line1HasCloze(q) && _convo1Line2HasCloze(q);
-          setState(() => _convo1PostAnswerAudioPlaying = true);
-          if (!caseA) {
-            setState(() => _convo1DualA1Playing = true);
-            try {
-              await audio.playQuestionAudio(p1);
-            } finally {
-              if (mounted) setState(() => _convo1DualA1Playing = false);
-            }
-            if (!sameQuestion()) return;
-          }
-          setState(() => _convo1DualA2Playing = true);
-          try {
-            await audio.playQuestionAudio(p2);
-          } finally {
-            if (mounted) setState(() => _convo1DualA2Playing = false);
-          }
-          if (!sameQuestion()) return;
-          setState(() => _convo1PostAnswerAudioPlaying = false);
-        }
+    final outcomeCue = _convo1OutcomeCue(q, correct: false);
+    if (q.template == 'ConvoTemplate-1' &&
+        outcomeCue != null &&
+        outcomeCue.isNotEmpty) {
+      final startIndex = _currentIndex;
+      final startQuestionId = _currentQuestionId;
+      bool sameQuestion() =>
+          mounted &&
+          _currentIndex == startIndex &&
+          _currentQuestionId == startQuestionId;
+      setState(() => _convo1AudioPlaying = true);
+      try {
+        await _playAudioCue(outcomeCue);
+      } finally {
+        if (mounted) setState(() => _convo1AudioPlaying = false);
       }
+      if (!sameQuestion()) return;
     }
     if (!mounted) return;
     setState(() => _showNext = true);
@@ -1521,6 +1553,7 @@ class _ImageQuizScreenState extends ConsumerState<ImageQuizScreen>
       return;
     }
     if (!_isConvoMode) _timerController.stop();
+    _dismissFooterGuide();
     final option = _currentOptions[optionIndex];
     final renderedQuestion = _currentConvoLevelQuestion;
     final correct = renderedQuestion?.template == 'ConvoTemplate-1'
@@ -1530,43 +1563,22 @@ class _ImageQuizScreenState extends ConsumerState<ImageQuizScreen>
     final soundFxOn =
         ref.read(settingsProvider).valueOrNull?.soundFxOn ?? false;
     final cq = _currentConvoLevelQuestion;
-    if (cq != null && _convo1UsesDualAudio(cq)) {
-      final p1 = _audioAssetPathForRaw(cq.audioFile1);
-      final p2 = _audioAssetPathForRaw(cq.audioFile2);
-      final dualReady = p1 != null &&
-          p2 != null &&
-          await _resolveAudioExists(p1) &&
-          await _resolveAudioExists(p2);
-      final line1HasCloze = _convo1Line1HasCloze(cq);
-      final line2HasCloze = _convo1Line2HasCloze(cq);
-      final caseA = !line1HasCloze && line2HasCloze;
-      final playBoth = !caseA;
+    if (cq != null && cq.template == 'ConvoTemplate-1') {
+      final outcomeCue = _convo1OutcomeCue(cq, correct: isCorrect);
+      final dualReady = outcomeCue != null && outcomeCue.isNotEmpty;
 
-      Future<void> playClip(String path, {required bool line1}) async {
+      Future<void> playClip(List<String> cue) async {
         if (!mounted) return;
-        setState(() {
-          if (line1) {
-            _convo1DualA1Playing = true;
-          } else {
-            _convo1DualA2Playing = true;
-          }
-        });
+        setState(() => _convo1AudioPlaying = true);
         try {
-          await audio.playQuestionAudio(path);
+          await _playAudioCue(cue);
         } finally {
-          if (mounted) {
-            setState(() {
-              if (line1) {
-                _convo1DualA1Playing = false;
-              } else {
-                _convo1DualA2Playing = false;
-              }
-            });
-          }
+          if (mounted) setState(() => _convo1AudioPlaying = false);
         }
       }
 
       if (dualReady) {
+        final p2 = outcomeCue;
         final startIndex = _currentIndex;
         final startQuestionId = _currentQuestionId;
         bool sameQuestion() =>
@@ -1583,15 +1595,9 @@ class _ImageQuizScreenState extends ConsumerState<ImageQuizScreen>
             _correctCount++;
             _showNext = false;
             _bubbleConversation = null;
-            _convo1PostAnswerAudioPlaying = true;
           });
-          if (playBoth) {
-            await playClip(p1, line1: true);
-            if (!sameQuestion()) return;
-          }
-          await playClip(p2, line1: false);
+          await playClip(p2);
           if (!sameQuestion()) return;
-          setState(() => _convo1PostAnswerAudioPlaying = false);
           Future.delayed(
             Duration(
               milliseconds:
@@ -1620,18 +1626,10 @@ class _ImageQuizScreenState extends ConsumerState<ImageQuizScreen>
           _answerLocked = true;
           _selectedIndex = optionIndex;
           _showNext = false;
-          _convo1PostAnswerAudioPlaying = true;
         });
-        if (playBoth) {
-          await playClip(p1, line1: true);
-          if (!sameQuestion()) return;
-        }
-        await playClip(p2, line1: false);
+        await playClip(p2);
         if (!sameQuestion()) return;
-        setState(() {
-          _convo1PostAnswerAudioPlaying = false;
-          _showNext = true;
-        });
+        setState(() => _showNext = true);
         return;
       }
     }
@@ -1719,7 +1717,10 @@ class _ImageQuizScreenState extends ConsumerState<ImageQuizScreen>
       });
       return;
     }
-    if (_currentIndex + 1 >= _questionCount) {
+    final reachedEnd = _allQuestions.isNotEmpty
+        ? _currentIndex + 1 >= _allQuestions.length
+        : _currentIndex + 1 >= _questionCount;
+    if (reachedEnd) {
       if (_isReminder && _nextReviewQuestionIds.isNotEmpty) {
         final nextQuestionIds = List<String>.from(_nextReviewQuestionIds)
           ..shuffle(Random());
@@ -1734,12 +1735,12 @@ class _ImageQuizScreenState extends ConsumerState<ImageQuizScreen>
           _currentIndex = 0;
           _answerLocked = false;
           _showNext = false;
+          _footerGuideDismissed = false;
+          _answerControlsRendered = false;
           _selectedIndex = null;
           _convo1TranslationPenalized = false;
-          _convo1PostAnswerAudioPlaying = false;
-          _convo1DualPrimedKey = null;
-          _convo1DualA1Playing = false;
-          _convo1DualA2Playing = false;
+          _convo1EnterPrimedKey = null;
+          _convo1AudioPlaying = false;
           _bubbleConversation = null;
           _currentOptions = _buildOptions();
           _reviewingMistakes = true;
@@ -1762,12 +1763,12 @@ class _ImageQuizScreenState extends ConsumerState<ImageQuizScreen>
       _currentIndex++;
       _answerLocked = false;
       _showNext = false;
+      _footerGuideDismissed = false;
+      _answerControlsRendered = false;
       _selectedIndex = null;
       _convo1TranslationPenalized = false;
-      _convo1PostAnswerAudioPlaying = false;
-      _convo1DualPrimedKey = null;
-      _convo1DualA1Playing = false;
-      _convo1DualA2Playing = false;
+      _convo1EnterPrimedKey = null;
+      _convo1AudioPlaying = false;
       _bubbleConversation = null;
       _currentOptions = _buildOptions();
       _convoTtsPlaying = false;
@@ -1784,7 +1785,7 @@ class _ImageQuizScreenState extends ConsumerState<ImageQuizScreen>
         // Moving off VideoConversation questions entirely (this level's video segment is
         // done) — stop the shared controller so its audio doesn't keep playing in the
         // background under a question that no longer shows it on screen.
-        if (nq.videoConversationData == null) {
+        if (!nq.hasVideoPlayback) {
           _videoConversationController?.pause();
         }
       }
@@ -1831,7 +1832,8 @@ class _ImageQuizScreenState extends ConsumerState<ImageQuizScreen>
   /// and no `.m4a` one — see [_audioExtensionByBase]. `audioplayers` (used for
   /// all playback here and for the music/SFX clips, which already ship as
   /// `.mp3`) plays either format identically; this just decides which file on
-  /// disk a bare `audio_file`/`audio_file1`/`audio_file2` name resolves to.
+  /// disk a bare `audio_file`/`question_repeat_audio`/`question_exit_correct_audio` name
+  /// resolves to.
   String? _audioAssetPathForRaw(String? raw) {
     final r = raw?.trim();
     if (r == null || r.isEmpty) return null;
@@ -1851,6 +1853,28 @@ class _ImageQuizScreenState extends ConsumerState<ImageQuizScreen>
         : levelKey;
     final ext = explicitExt ?? _audioExtensionByBase[base] ?? 'm4a';
     return 'quiz-data/levels/$dir/$base.$ext';
+  }
+
+  /// Resolves each raw clip name in [raw] to an asset path, dropping any that fail to
+  /// resolve. Preserves `null` (field absent) vs. `[]` (explicit `"none"`, or every entry
+  /// failed to resolve) — see [LevelQuestion.questionEnterAudio] for the sentinel contract.
+  List<String>? _resolvedAudioCue(List<String>? raw) {
+    if (raw == null) return null;
+    final resolved = <String>[];
+    for (final r in raw) {
+      final p = _audioAssetPathForRaw(r);
+      if (p != null) resolved.add(p);
+    }
+    return resolved;
+  }
+
+  /// Plays every clip in [cue] in sequence, awaiting each before starting the next. No-op for
+  /// `null`/empty (absent field or explicit `"none"`).
+  Future<void> _playAudioCue(List<String>? cue) async {
+    if (cue == null || cue.isEmpty) return;
+    for (final path in cue) {
+      await audio.playQuestionAudio(path);
+    }
   }
 
   /// Whether this level's `{flavor}/` folder has any `.m4a`/`.mp3` clips at all.
@@ -1949,9 +1973,17 @@ class _ImageQuizScreenState extends ConsumerState<ImageQuizScreen>
       return _videoConversationController;
     }
     _videoConversationController?.dispose();
-    final controller = VideoPlayerController.asset(assetPath);
+    final controller = VideoPlayerController.asset(
+      assetPath,
+      // Without this, Android's ExoPlayer claims exclusive audio focus while the video is
+      // actively playing (even muted) and silences the separately-triggered question-audio
+      // player for the same duration — audio only came through once the video paused and
+      // released focus. `mixWithOthers` stops the video from requesting exclusive focus at all.
+      videoPlayerOptions: VideoPlayerOptions(mixWithOthers: true),
+    );
     // Muted permanently: spoken lines are driven by separately-triggered, precisely-trimmed
-    // audio clips (`audio_file1`/`audio_file2`, played via VideoConversationQuizBody) instead of
+    // audio clips (`question_repeat_audio`/`question_exit_correct_audio`, played via
+    // VideoConversationQuizBody) instead of
     // this video's own embedded track. The embedded track's audio can't be cut off precisely at
     // a runtime pause point (async pause + buffered-audio overrun let it bleed into the next
     // line), whereas a trimmed clip file simply has nothing left to play past its own end.
@@ -1961,12 +1993,15 @@ class _ImageQuizScreenState extends ConsumerState<ImageQuizScreen>
     return controller;
   }
 
-  bool _convo1UsesDualAudio(LevelQuestion q) {
-    if (q.template != 'ConvoTemplate-1') return false;
-    final a1 = q.audioFile1?.trim() ?? '';
-    final a2 = q.audioFile2?.trim() ?? '';
-    return a1.isNotEmpty && a2.isNotEmpty;
-  }
+  /// Resolved [LevelQuestion.questionEnterAudio] for a `ConvoTemplate-1` question.
+  List<String>? _convo1EnterCue(LevelQuestion q) =>
+      _resolvedAudioCue(q.questionEnterAudio);
+
+  /// Resolved outcome clip for a `ConvoTemplate-1` question: [correct] selects between
+  /// [LevelQuestion.questionExitCorrectAudio] and [LevelQuestion.effectiveExitWrongAudio].
+  List<String>? _convo1OutcomeCue(LevelQuestion q, {required bool correct}) =>
+      _resolvedAudioCue(
+          correct ? q.questionExitCorrectAudio : q.effectiveExitWrongAudio);
 
   bool _convo1AnswerWasCorrect(LevelQuestion q) {
     if (q.template != 'ConvoTemplate-1' || !_answerLocked) return false;
@@ -1976,36 +2011,28 @@ class _ImageQuizScreenState extends ConsumerState<ImageQuizScreen>
     return ans != null && _currentOptions[idx] == ans;
   }
 
-  bool _convo1Line1HasCloze(LevelQuestion q) =>
-      q.convoData?.line1.contains(_kBlankPattern) ?? false;
-
-  bool _convo1Line2HasCloze(LevelQuestion q) =>
-      q.convoData?.line2.contains(_kBlankPattern) ?? false;
-
-  void _scheduleConvo1DualLine1IfNeeded(LevelQuestion q) {
-    if (!_convo1UsesDualAudio(q)) return;
-    if (_convo1Line1HasCloze(q)) return;
+  /// Auto-plays [LevelQuestion.questionEnterAudio] once per question, the first time this
+  /// `ConvoTemplate-1` question is presented. Purely data-driven: whether/what plays is
+  /// entirely up to the JSON author (a string, an array, `"none"`, or the field left absent).
+  void _scheduleConvo1EnterIfNeeded(LevelQuestion q) {
+    if (q.template != 'ConvoTemplate-1') return;
     final key = '${_currentQuestionId ?? ''}#$_currentIndex';
     WidgetsBinding.instance.addPostFrameCallback((_) {
       if (!mounted) return;
-      if (_convo1DualPrimedKey == key) return;
-      _convo1DualPrimedKey = key;
+      if (_convo1EnterPrimedKey == key) return;
+      _convo1EnterPrimedKey = key;
       Future.delayed(const Duration(milliseconds: 500), () async {
         if (!mounted) return;
         final cur = _currentConvoLevelQuestion;
-        if (cur == null || !_convo1UsesDualAudio(cur)) return;
-        final p1 = _audioAssetPathForRaw(cur.audioFile1);
-        final p2 = _audioAssetPathForRaw(cur.audioFile2);
-        if (p1 == null || p2 == null) return;
-        if (!await _resolveAudioExists(p1) || !await _resolveAudioExists(p2)) {
-          return;
-        }
+        if (cur == null || cur.template != 'ConvoTemplate-1') return;
+        final cue = _convo1EnterCue(cur);
+        if (cue == null || cue.isEmpty) return;
         if (!mounted) return;
-        setState(() => _convo1DualA1Playing = true);
+        setState(() => _convo1AudioPlaying = true);
         try {
-          await audio.playQuestionAudio(p1);
+          await _playAudioCue(cue);
         } finally {
-          if (mounted) setState(() => _convo1DualA1Playing = false);
+          if (mounted) setState(() => _convo1AudioPlaying = false);
         }
       });
     });
@@ -2099,6 +2126,12 @@ class _ImageQuizScreenState extends ConsumerState<ImageQuizScreen>
         ref.read(settingsProvider).valueOrNull?.soundFxOn ?? false;
     final strings =
         ref.watch(currentLocalizedStringsProvider).valueOrNull ?? {};
+    // Tutorial guide text (overlay + footer hint) is always English, regardless of the
+    // learner's selected app language — this is instructional chrome sitting directly next to
+    // English lesson content, and switching it to the UI language read as a confusing
+    // part-English-part-other-language page.
+    final englishStrings =
+        ref.watch(localizedStringsProvider('en')).valueOrNull ?? {};
     final userLanguage =
         ref.watch(settingsProvider).valueOrNull?.language ?? 'en';
     final headerCounterText = _headerCounterText(strings);
@@ -2153,7 +2186,7 @@ class _ImageQuizScreenState extends ConsumerState<ImageQuizScreen>
       children: [
         scaffold,
         Positioned.fill(
-          child: TutorialOverlay(controller: tutorial, strings: strings),
+          child: TutorialOverlay(controller: tutorial, strings: englishStrings),
         ),
       ],
     );
@@ -2303,32 +2336,6 @@ class _ImageQuizScreenState extends ConsumerState<ImageQuizScreen>
     return _config.autoAdvanceDelaySeconds;
   }
 
-  /// For the last [VideoConversation] row in the run (the next question isn't also a video
-  /// row), let the shared controller's remaining tail play out as a proper closing beat before
-  /// advancing — a fixed short delay would cut the video off mid-sentence right as the screen
-  /// switches to an unrelated (non-video) question. Capped so an unusually long unused tail
-  /// can't stall the level.
-  double _videoEndingDelaySeconds(LevelQuestion q) {
-    final data = q.videoConversationData;
-    final controller = _videoConversationController;
-    if (data == null || controller == null)
-      return _config.autoAdvanceDelaySeconds;
-    final nextIndex = _currentIndex + 1;
-    final hasNextVideoRow = nextIndex < _allQuestions.length &&
-        _allQuestions[nextIndex].videoConversationData != null;
-    if (hasNextVideoRow && data.answerUntil != null) {
-      final answerRemaining =
-          (data.answerUntil! - data.pauseAt).inMilliseconds / 1000.0;
-      return answerRemaining.clamp(0.0, 6.0);
-    }
-    if (hasNextVideoRow) return _config.autoAdvanceDelaySeconds;
-    final duration = controller.value.duration;
-    if (duration <= Duration.zero) return _config.autoAdvanceDelaySeconds;
-    final end = data.answerUntil ?? duration;
-    final remaining = (end - data.pauseAt).inMilliseconds / 1000.0;
-    return remaining.clamp(_config.autoAdvanceDelaySeconds, 6.0);
-  }
-
   /// Continue button on a [Chapter] card. Not a real question — no achievement tracking, no
   /// reminder wrong-answer bookkeeping, no wrong path at all (there's nothing to get wrong).
   /// Still increments [_correctCount] alongside advancing so this row can never lower the
@@ -2352,8 +2359,13 @@ class _ImageQuizScreenState extends ConsumerState<ImageQuizScreen>
       }
       AchievementService.instance.recordAnswer(true);
       final delaySec = switch (q.template) {
+        // Both already await their own real completion signal inside the widget
+        // (DialogueCompletion's confirm clip; VideoConversation's exit-correct clip or,
+        // absent that, holding the video to its own answer_until) before calling
+        // onOutcome — an extra delay here would just stack on top and let the video run
+        // unsupervised past where the next question expects it to start.
         'DialogueCompletion' => 0.0,
-        'VideoConversation' => _videoEndingDelaySeconds(q),
+        'VideoConversation' => 0.0,
         _ => _config.autoAdvanceDelaySeconds,
       };
       setState(() => _correctCount++);
@@ -2382,34 +2394,31 @@ class _ImageQuizScreenState extends ConsumerState<ImageQuizScreen>
     }
   }
 
+  /// Plays [LevelQuestion.effectiveExitWrongAudio] (`question_exit_wrong_audio` if given,
+  /// else falling back to `question_exit_correct_audio`; explicit `"none"` suppresses this
+  /// entirely) and waits for it to finish before the Next button appears. Applies uniformly
+  /// across every template. For [VideoConversation], the (permanently muted) video resumes for
+  /// the duration of this audio and pauses again after — same visual continuity as a correct
+  /// answer — except for the AppearDisappear/recall sub-type, which has no further video content
+  /// to show past the pause point and stays paused.
   Future<void> _waitForWrongAnswerAudio(LevelQuestion q) async {
-    final data = q.videoConversationData;
-    final controller = _videoConversationController;
-    if (q.template != 'VideoConversation' || data == null || controller == null)
-      return;
-    // AppearDisappear already played the target line before recall; a wrong answer should not
-    // replay that line automatically. The learner can use its manual replay control instead.
-    if (data.sequenceData?.isRecall == true) return;
+    final cue = _resolvedAudioCue(q.effectiveExitWrongAudio);
+    if (cue == null || cue.isEmpty) return;
+    final isVideoRecall = q.videoConversationData?.sequenceData?.isRecall == true;
+    final controller =
+        q.template == 'VideoConversation' && !isVideoRecall
+            ? _videoConversationController
+            : null;
     try {
-      // Keep the (permanently muted, see _videoControllerFor) video moving forward for visual
-      // continuity regardless of where the confirm audio comes from.
-      unawaited(controller.play());
-      final confirmPath = _audioAssetPathForRaw(q.audioFile2);
-      if (confirmPath != null) {
-        // The confirm line now lives in its own precisely-trimmed clip (played the same way
-        // VideoConversationQuizBody._resumeVideo does for a *correct* answer) instead of the
-        // video's own (muted) track, so await that clip directly rather than polling position —
-        // polling would just wait through in silence now that the track has no audio.
-        await audio.playQuestionAudio(confirmPath);
-      } else {
-        final end = data.answerUntil ?? controller.value.duration;
-        while (mounted && controller.value.position < end) {
-          await Future<void>.delayed(const Duration(milliseconds: 40));
-        }
+      if (controller != null) {
+        unawaited(controller.play());
       }
-      await controller.pause();
+      await _playAudioCue(cue);
+      if (controller != null) {
+        await controller.pause();
+      }
     } catch (_) {
-      // A platform video failure should not leave the learner without a Next button.
+      // A platform audio failure should not leave the learner without a Next button.
     }
   }
 
@@ -2448,6 +2457,10 @@ class _ImageQuizScreenState extends ConsumerState<ImageQuizScreen>
         : compact
             ? 4.0
             : 8.0;
+    final convoQuestion = _currentConvoLevelQuestion;
+    final footerGuideText = _showNext || convoQuestion == null
+        ? null
+        : _footerGuideTextFor(convoQuestion);
     return DebugLayoutBox(
       enabled: _debugShowLayoutBounds,
       label: 'action',
@@ -2466,7 +2479,20 @@ class _ImageQuizScreenState extends ConsumerState<ImageQuizScreen>
                   },
                   child: Text(isLast ? 'FINISH' : 'NEXT'),
                 )
-              : const SizedBox.shrink(),
+              : footerGuideText != null
+                  ? Center(
+                      child: Text(
+                        footerGuideText,
+                        textAlign: TextAlign.center,
+                        maxLines: 2,
+                        overflow: TextOverflow.ellipsis,
+                        style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                              color: const Color(0xFF6E7787),
+                              fontWeight: FontWeight.w500,
+                            ),
+                      ),
+                    )
+                  : const SizedBox.shrink(),
         ),
       ),
     );
@@ -2489,7 +2515,11 @@ class _ImageQuizScreenState extends ConsumerState<ImageQuizScreen>
     final iq2 = d2;
     final paths4 = four;
     final q = _currentLevelQuestion;
-    final isLast = _currentIndex + 1 >= _questionCount;
+    final isLast = _allQuestions.isNotEmpty
+        ? !_allQuestions
+            .skip(_currentIndex + 1)
+            .any((item) => true)
+        : _currentIndex + 1 >= _questionCount;
 
     return LayoutBuilder(
       builder: (context, bodyConstraints) => Column(
@@ -3330,7 +3360,11 @@ class _ImageQuizScreenState extends ConsumerState<ImageQuizScreen>
         : (_initialQuestionCount <= 0
             ? 0.0
             : (_currentIndex + 1) / _initialQuestionCount);
-    final isLast = _currentIndex + 1 >= _questionCount;
+    final isLast = _allQuestions.isNotEmpty
+        ? !_allQuestions
+            .skip(_currentIndex + 1)
+            .any((item) => true)
+        : _currentIndex + 1 >= _questionCount;
 
     final heroImagePath = _resolvedClozeImagePath();
     final rendersOwnMedia = q.template == 'VideoConversation' ||
@@ -3353,7 +3387,7 @@ class _ImageQuizScreenState extends ConsumerState<ImageQuizScreen>
                 final questionBody = q.template == 'ConvoTemplate-1'
                     ? Builder(
                         builder: (context) {
-                          _scheduleConvo1DualLine1IfNeeded(q);
+                          _scheduleConvo1EnterIfNeeded(q);
                           return _buildConvo1Panel(
                             q,
                             userLanguage,
@@ -3423,13 +3457,64 @@ class _ImageQuizScreenState extends ConsumerState<ImageQuizScreen>
     return q.template;
   }
 
-  /// Shows this question's tutorial guide (if configured and not already shown this level entry)
-  /// once its answer controls have rendered. Called from every template's "controls rendered"
-  /// callback — see call sites in [_buildConvoQuestionBody] and [_buildConvoAnswerButton].
+  /// Queues this question's tutorial signal for after the current frame. The callback is invoked
+  /// by template render callbacks and by `_buildConvoAnswerButton`, both of which can run while a
+  /// LayoutBuilder is building. Deferring the signal avoids setState/notifyListeners during build
+  /// while preserving the once-per-question guide and footer state.
   void _maybeShowTutorialFor(LevelQuestion q) {
     final stepKey = _tutorialStepKeyFor(q);
     if (stepKey == null) return;
-    _tutorialController?.maybeShowFor(stepKey);
+    final questionKey = '${_currentQuestionId ?? ''}#$_currentIndex';
+    if (_tutorialSignalQueuedForQuestionKey == questionKey) return;
+    _tutorialSignalQueuedForQuestionKey = questionKey;
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      _tutorialSignalQueuedForQuestionKey = null;
+      if (!mounted) return;
+      final currentQuestionKey = '${_currentQuestionId ?? ''}#$_currentIndex';
+      if (currentQuestionKey != questionKey) return;
+      final justShown = _tutorialController?.maybeShowFor(stepKey) ?? false;
+      if (justShown || !_answerControlsRendered) {
+        setState(() {
+          _answerControlsRendered = true;
+          if (justShown) {
+            _overlayShownForQuestionKey = questionKey;
+          }
+        });
+      }
+    });
+  }
+
+  /// Marks the current question as interacted-with — hides the footer guide hint. Wired to
+  /// every tap entry point (answer buttons, tiles, audio icon, "Listen Again") across every
+  /// template except `WordPairs`. Idempotent and cheap to call from every tap.
+  void _dismissFooterGuide() {
+    if (_footerGuideDismissed) return;
+    setState(() => _footerGuideDismissed = true);
+  }
+
+  /// The footer guide hint text for the current question, or null if none should show: no
+  /// configured tutorial step for this template, the learner already interacted with this
+  /// question, the question is already answered (`_showNext`), or this exact question is the
+  /// one the blocking overlay was shown on (avoid showing the same guidance twice).
+  String? _footerGuideTextFor(LevelQuestion q) {
+    if (q.template == 'WordPairs') return null;
+    if (!_answerControlsRendered || _footerGuideDismissed || _showNext) {
+      return null;
+    }
+    final stepKey = _tutorialStepKeyFor(q);
+    if (stepKey == null) return null;
+    final currentQuestionKey = '${_currentQuestionId ?? ''}#$_currentIndex';
+    if (_overlayShownForQuestionKey == currentQuestionKey) return null;
+    final controller = _tutorialController;
+    if (controller == null) return null;
+    final messageKey = controller.messageKeyFor(stepKey);
+    if (messageKey == null) return null;
+    // Always English — see the englishStrings comment in build() for why the guide text
+    // doesn't follow the learner's selected app language.
+    final englishStrings =
+        ref.watch(localizedStringsProvider('en')).valueOrNull ?? {};
+    final text = englishStrings[messageKey];
+    return (text == null || text.isEmpty) ? null : text;
   }
 
   /// Picks the correct child widget for the active convo template (including interactive mini-games).
@@ -3446,13 +3531,14 @@ class _ImageQuizScreenState extends ConsumerState<ImageQuizScreen>
           data: q.appearDisappearData!,
           userLanguage: userLanguage,
           imagePath: _resolvedClozeImagePath(),
-          audio1Path: _audioAssetPathForRaw(q.audioFile1),
-          audio2Path: _audioAssetPathForRaw(q.audioFile2),
-          resolveAudioExists: _resolveAudioExists,
+          enterAudioCue: _resolvedAudioCue(q.questionEnterAudio),
+          exitCorrectAudioCue: _resolvedAudioCue(q.questionExitCorrectAudio),
+          exitWrongAudioCue: _resolvedAudioCue(q.effectiveExitWrongAudio),
           onPlayQuestionAudio: (path) => audio.playQuestionAudio(path),
           onPlayCorrect: () => audio.playCorrect(soundFxOn: soundFxOn),
           onPlayWrong: () => audio.playWrong(soundFxOn: soundFxOn),
           onOutcome: (correct) => _handleInteractiveConvoOutcome(q, correct),
+          onUserInteracted: _dismissFooterGuide,
           onNextTileRendered: (_, __) => _maybeShowTutorialFor(q),
           debugShowLayoutBounds: _debugShowLayoutBounds,
         );
@@ -3462,13 +3548,14 @@ class _ImageQuizScreenState extends ConsumerState<ImageQuizScreen>
           data: q.clozeSequenceData!,
           userLanguage: userLanguage,
           imagePath: _resolvedClozeImagePath(),
-          audio1Path: _audioAssetPathForRaw(q.audioFile1),
-          audio2Path: _audioAssetPathForRaw(q.audioFile2),
-          resolveAudioExists: _resolveAudioExists,
+          enterAudioCue: _resolvedAudioCue(q.questionEnterAudio),
+          exitCorrectAudioCue: _resolvedAudioCue(q.questionExitCorrectAudio),
+          exitWrongAudioCue: _resolvedAudioCue(q.effectiveExitWrongAudio),
           onPlayQuestionAudio: (path) => audio.playQuestionAudio(path),
           onPlayCorrect: () => audio.playCorrect(soundFxOn: soundFxOn),
           onPlayWrong: () => audio.playWrong(soundFxOn: soundFxOn),
           onOutcome: (correct) => _handleInteractiveConvoOutcome(q, correct),
+          onUserInteracted: _dismissFooterGuide,
           onNextChoiceRendered: (_, __) => _maybeShowTutorialFor(q),
           debugShowLayoutBounds: _debugShowLayoutBounds,
         );
@@ -3479,13 +3566,14 @@ class _ImageQuizScreenState extends ConsumerState<ImageQuizScreen>
           strings: strings,
           userLanguage: userLanguage,
           imagePath: _resolvedClozeImagePath(),
-          audio1Path: _audioAssetPathForRaw(q.audioFile1),
-          audio2Path: _audioAssetPathForRaw(q.audioFile2),
-          resolveAudioExists: _resolveAudioExists,
+          enterAudioCue: _resolvedAudioCue(q.questionEnterAudio),
+          exitCorrectAudioCue: _resolvedAudioCue(q.questionExitCorrectAudio),
+          exitWrongAudioCue: _resolvedAudioCue(q.effectiveExitWrongAudio),
           onPlayQuestionAudio: (path) => audio.playQuestionAudio(path),
           onPlayCorrect: () => audio.playCorrect(soundFxOn: soundFxOn),
           onPlayWrong: () => audio.playWrong(soundFxOn: soundFxOn),
           onOutcome: (correct) => _handleInteractiveConvoOutcome(q, correct),
+          onUserInteracted: _dismissFooterGuide,
           onNextTileRendered: (_, __) => _maybeShowTutorialFor(q),
           debugShowLayoutBounds: _debugShowLayoutBounds,
         );
@@ -3507,41 +3595,39 @@ class _ImageQuizScreenState extends ConsumerState<ImageQuizScreen>
           data: q.dialogueCompletionData!,
           userLanguage: userLanguage,
           imagePath: _resolvedClozeImagePath(),
-          audio1Path: _audioAssetPathForRaw(q.audioFile1),
-          audio2Path: _audioAssetPathForRaw(q.audioFile2),
-          resolveAudioExists: _resolveAudioExists,
+          enterAudioCue: _resolvedAudioCue(q.questionEnterAudio),
+          exitCorrectAudioCue: _resolvedAudioCue(q.questionExitCorrectAudio),
+          exitWrongAudioCue: _resolvedAudioCue(q.effectiveExitWrongAudio),
           onPlayQuestionAudio: (path) => audio.playQuestionAudio(path),
           onPlayCorrect: () => audio.playCorrect(soundFxOn: soundFxOn),
           onPlayWrong: () => audio.playWrong(soundFxOn: soundFxOn),
           onOutcome: (correct) => _handleInteractiveConvoOutcome(q, correct),
+          onUserInteracted: _dismissFooterGuide,
           onOptionButtonsRendered: (_, __) => _maybeShowTutorialFor(q),
           debugShowLayoutBounds: _debugShowLayoutBounds,
         );
       case 'VideoConversation':
-        final previousIsVideo = _currentIndex > 0 &&
-            _allQuestions[_currentIndex - 1].videoConversationData != null;
+        final previous = _previousConvoLevelQuestion;
+        final previousVideoFile = previous?.videoConversationData?.videoFile;
+        final continuesSameVideo = previous?.hasVideoPlayback == true &&
+            previousVideoFile == q.videoConversationData!.videoFile;
         return VideoConversationQuizBody(
           key: ValueKey('vc-${_currentQuestionId ?? '$_currentIndex'}'),
           data: q.videoConversationData!,
           controller: _videoControllerFor(
             _videoAssetPathForRaw(q.videoConversationData!.videoFile),
           ),
-          continueExistingPlayback: previousIsVideo,
+          continueExistingPlayback: continuesSameVideo,
           onPlayCorrect: () => audio.playCorrect(soundFxOn: soundFxOn),
           onPlayWrong: () => audio.playWrong(soundFxOn: soundFxOn),
           onOutcome: (correct) => _handleInteractiveConvoOutcome(q, correct),
+          onUserInteracted: _dismissFooterGuide,
           onChoiceButtonsRendered: (_, __) => _maybeShowTutorialFor(q),
           onNextTileRendered: (_, __) => _maybeShowTutorialFor(q),
-          setupAudioPath: _audioAssetPathForRaw(q.audioFile1),
-          confirmAudioPath: _audioAssetPathForRaw(q.audioFile2),
+          exitCorrectAudioCue: _resolvedAudioCue(q.questionExitCorrectAudio),
+          enterAudioCue: _resolvedAudioCue(q.questionEnterAudio),
           onPlayQuestionAudio: (path) => audio.playQuestionAudio(path),
           onStartQuestionAudio: (path) => audio.startQuestionAudio(path),
-          waitForTutorial: () {
-            final stepKey = _tutorialStepKeyFor(q);
-            if (stepKey == null) return Future<void>.value();
-            return _tutorialController?.showBeforePlayback(stepKey) ??
-                Future<void>.value();
-          },
           debugShowLayoutBounds: _debugShowLayoutBounds,
         );
       default:
@@ -3587,95 +3673,46 @@ class _ImageQuizScreenState extends ConsumerState<ImageQuizScreen>
   }
 
   Widget _convo1AudioControls(LevelQuestion q) {
-    if (_convo1UsesDualAudio(q)) {
-      final p1 = _audioAssetPathForRaw(q.audioFile1);
-      final p2 = _audioAssetPathForRaw(q.audioFile2);
-      final dualBusy = _convo1DualA1Playing || _convo1DualA2Playing;
-      return FutureBuilder<List<bool>>(
-        key: ValueKey('convo1-dual-audio-${q.questionId ?? _currentIndex}'),
-        future: Future.wait([
-          p1 != null ? _resolveAudioExists(p1) : Future.value(false),
-          p2 != null ? _resolveAudioExists(p2) : Future.value(false),
-        ]),
-        builder: (context, snap) {
-          final ok1 = snap.data != null && snap.data![0];
-          final ok2 = snap.data != null && snap.data![1];
-          if (p1 == null || p2 == null) return const SizedBox.shrink();
-          if (snap.connectionState != ConnectionState.done || !ok1 || !ok2) {
-            return const SizedBox.shrink();
+    if (q.template == 'ConvoTemplate-1') {
+      final enterCue = _convo1EnterCue(q);
+      final wrongCue = _convo1OutcomeCue(q, correct: false);
+      final hasAnyAudio =
+          (enterCue != null && enterCue.isNotEmpty) ||
+              (wrongCue != null && wrongCue.isNotEmpty);
+      if (hasAnyAudio) {
+        final isCorrect = _convo1AnswerWasCorrect(q);
+        final isWrongAnswered = _answerLocked && !isCorrect;
+        final beforeAnswer = !_answerLocked;
+        // Enter pre-answer, the (already-effective) wrong cue post-wrong; nothing once
+        // answered correctly (the question is about to advance).
+        final activeCue =
+            beforeAnswer ? enterCue : (isWrongAnswered ? wrongCue : null);
+        final allowPress = activeCue != null && activeCue.isNotEmpty;
+
+        Future<void> playActiveCue() async {
+          if (activeCue == null || activeCue.isEmpty || !mounted) return;
+          _dismissFooterGuide();
+          setState(() => _convo1AudioPlaying = true);
+          try {
+            await _playAudioCue(activeCue);
+          } finally {
+            if (mounted) setState(() => _convo1AudioPlaying = false);
           }
-          final line1HasCloze = _convo1Line1HasCloze(q);
-          final line2HasCloze = _convo1Line2HasCloze(q);
-          final caseA = !line1HasCloze && line2HasCloze;
-          final isCorrect = _convo1AnswerWasCorrect(q);
-          final isWrongAnswered = _answerLocked && !isCorrect;
-          final beforeAnswer = !_answerLocked;
+        }
 
-          Future<void> playClip(String path, {required bool line1}) async {
-            if (!mounted) return;
-            setState(() {
-              if (line1) {
-                _convo1DualA1Playing = true;
-              } else {
-                _convo1DualA2Playing = true;
-              }
-            });
-            try {
-              await audio.playQuestionAudio(path);
-            } finally {
-              if (mounted) {
-                setState(() {
-                  if (line1) {
-                    _convo1DualA1Playing = false;
-                  } else {
-                    _convo1DualA2Playing = false;
-                  }
-                });
-              }
-            }
-          }
-
-          final allowPress = beforeAnswer ? caseA : isWrongAnswered;
-
-          return Padding(
-            padding: const EdgeInsets.symmetric(vertical: 4),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                AudioPlayButton(
-                  isPlaying: dualBusy || _convo1PostAnswerAudioPlaying,
-                  onPressed: (!ok1 || !ok2 || !allowPress)
-                      ? null
-                      : () async {
-                          if (beforeAnswer) {
-                            await playClip(p1, line1: true);
-                            return;
-                          }
-                          final startIndex = _currentIndex;
-                          final startQuestionId = _currentQuestionId;
-                          bool sameQuestion() =>
-                              mounted &&
-                              _currentIndex == startIndex &&
-                              _currentQuestionId == startQuestionId;
-                          setState(() => _convo1PostAnswerAudioPlaying = true);
-                          try {
-                            await playClip(p1, line1: true);
-                            if (!sameQuestion()) return;
-                            await playClip(p2, line1: false);
-                          } finally {
-                            if (sameQuestion()) {
-                              setState(() {
-                                _convo1PostAnswerAudioPlaying = false;
-                              });
-                            }
-                          }
-                        },
-                ),
-              ],
-            ),
-          );
-        },
-      );
+        return Padding(
+          padding: const EdgeInsets.symmetric(vertical: 4),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              AudioPlayButton(
+                isPlaying: _convo1AudioPlaying,
+                onPressed: allowPress ? () => playActiveCue() : null,
+              ),
+            ],
+          ),
+        );
+      }
     }
     final path = _audioAssetPath(q);
     if (path == null) return const SizedBox.shrink();
@@ -4442,11 +4479,7 @@ class _ImageQuizScreenState extends ConsumerState<ImageQuizScreen>
                 ? McqAnswerState.wrong
                 : McqAnswerState.neutral;
 
-    final busy = _answerLocked ||
-        _convoTtsPlaying ||
-        _convo1DualA1Playing ||
-        _convo1DualA2Playing ||
-        _convo1PostAnswerAudioPlaying;
+    final busy = _answerLocked || _convoTtsPlaying || _convo1AudioPlaying;
 
     return McqPillAnswerButton(
       label: option,

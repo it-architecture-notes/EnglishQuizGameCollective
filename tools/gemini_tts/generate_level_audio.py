@@ -7,7 +7,7 @@ Development-time only utility:
   falling back to the level-root questions.json when the flavor folder
   has not been migrated yet.
 - Generates .m4a for questions with top-level "audio_file", or for
-  DialogueCompletion with "audio_file1" (line1) + "audio_file2" (answer)
+  DialogueCompletion with "question_enter_audio" (line1) + "question_exit_correct_audio" (answer)
 - Writes into the flavor folder when present (matches Flutter loaders):
     adults → .../levels/{level_id}/adults/{stem}.m4a
     kids   → .../levels/{level_id}/kids/{stem}.m4a
@@ -23,9 +23,9 @@ JSON shapes (aligned with app/lib/models/level_config.dart):
 - DialogueCompletion: `line1` is a plain English string (legacy
   `{"en": ...}` still read). Optional `english_to_translate` / `local_translation`
   are not used for TTS.
-- ConvoTemplate-1: optional split clips — top-level `audio_file1` + `audio_file2`
-  (both required together). Spoken text is each line after blanks are filled with
-  `answer`, same as the single-file multi-speaker script path.
+- ConvoTemplate-1: optional split clips — top-level `question_enter_audio` +
+  `question_exit_correct_audio` (both required together). Spoken text is each line after
+  blanks are filled with `answer`, same as the single-file multi-speaker script path.
 """
 
 from __future__ import annotations
@@ -599,8 +599,8 @@ def build_jobs_for_question(
     """Returns one or more TTS jobs for a single levelQuestions row."""
     template = str(q.get("template", "")).strip()
     audio_file = _str_or_none(q.get("audio_file")) or ""
-    af1 = _str_or_none(q.get("audio_file1"))
-    af2 = _str_or_none(q.get("audio_file2"))
+    af1 = _str_or_none(q.get("question_enter_audio"))
+    af2 = _str_or_none(q.get("question_exit_correct_audio"))
 
     # DialogueCompletion: always two clips — line1, then answer (with blanks filled).
     if template == "DialogueCompletion":
@@ -628,7 +628,7 @@ def build_jobs_for_question(
                     output_path=output_dir / f"_invalid{output_suffix}.m4a",
                     tts_text=None,
                     speaker_mode="skip",
-                    reason="dialogue_completion_requires_audio_file1_and_audio_file2",
+                    reason="dialogue_completion_requires_question_enter_audio_and_question_exit_correct_audio",
                 )
             ]
         line1 = _localized_en(qd.get("line1"))
@@ -676,8 +676,8 @@ def build_jobs_for_question(
             v1 = _gemini_voice_for_gender(g1, gender_ctx) or v1
             v2 = _gemini_voice_for_gender(g2, gender_ctx) or v2
         # Optional top-level text overrides for each clip.
-        text1 = _str_or_none(q.get("audio_file1_text")) or line1
-        text2 = _str_or_none(q.get("audio_file2_text")) or text_answer
+        text1 = _str_or_none(q.get("question_enter_audio_text")) or line1
+        text2 = _str_or_none(q.get("question_exit_correct_audio_text")) or text_answer
         return [
             _job_for_stem(
                 idx,
@@ -761,8 +761,8 @@ def build_jobs_for_question(
         else:
             v1 = None
             v2 = None
-        text1 = _str_or_none(q.get("audio_file1_text")) or line1
-        text2 = _str_or_none(q.get("audio_file2_text")) or text_answer
+        text1 = _str_or_none(q.get("question_enter_audio_text")) or line1
+        text2 = _str_or_none(q.get("question_exit_correct_audio_text")) or text_answer
         return [
             _job_for_stem(
                 idx,
@@ -779,6 +779,124 @@ def build_jobs_for_question(
                 template,
                 output_dir,
                 af2,
+                output_suffix,
+                text2,
+                "single",
+                gemini_voice_override=v2,
+            ),
+        ]
+
+    # ConvoTemplate-1 "Case B": line1 itself carries the blank, so nothing can play
+    # pre-answer without giving the answer away. question_enter_audio is "none" (or
+    # absent) and question_exit_correct_audio is a 2-element array [line1Clip, line2Clip]
+    # meant to play together, in order, after answering. Generate one single-speaker
+    # clip per array element (same voice-routing rules as the af1/af2 dual path below).
+    raw_exit_correct = q.get("question_exit_correct_audio")
+    af1_is_none_literal = af1 is not None and af1.strip().lower() == "none"
+    if (
+        template == "ConvoTemplate-1"
+        and (not af1 or af1_is_none_literal)
+        and isinstance(raw_exit_correct, list)
+    ):
+        qd = q.get("questionData")
+        if not isinstance(qd, dict):
+            return [
+                CandidateJob(
+                    question_index=idx,
+                    template=template,
+                    audio_file_value="",
+                    output_filename=f"_invalid{output_suffix}.m4a",
+                    output_path=output_dir / f"_invalid{output_suffix}.m4a",
+                    tts_text=None,
+                    speaker_mode="skip",
+                    reason="missing_question_data",
+                )
+            ]
+        stems = [_str_or_none(v) for v in raw_exit_correct]
+        if len(stems) != 2 or any(s is None for s in stems):
+            return [
+                CandidateJob(
+                    question_index=idx,
+                    template=template,
+                    audio_file_value="",
+                    output_filename=f"_invalid{output_suffix}.m4a",
+                    output_path=output_dir / f"_invalid{output_suffix}.m4a",
+                    tts_text=None,
+                    speaker_mode="skip",
+                    reason="convo1_exit_array_must_have_exactly_two_string_stems",
+                )
+            ]
+        bf1, bf2 = stems[0], stems[1]
+        line1 = _localized_en(qd.get("line1"))
+        line2 = _localized_en(qd.get("line2"))
+        answer = _str_or_none(qd.get("answer"))
+        if not line1 or not line2 or not answer:
+            return [
+                CandidateJob(
+                    question_index=idx,
+                    template=template,
+                    audio_file_value="",
+                    output_filename=f"_invalid{output_suffix}.m4a",
+                    output_path=output_dir / f"_invalid{output_suffix}.m4a",
+                    tts_text=None,
+                    speaker_mode="skip",
+                    reason="convo1_dual_missing_line1_line2_or_answer",
+                )
+            ]
+        line1_resolved = _normalize_spoken_line(
+            _replace_blanks_with_answer(line1, answer)
+        )
+        line2_resolved = _normalize_spoken_line(
+            _replace_blanks_with_answer(line2, answer)
+        )
+        c1 = _str_or_none(qd.get("character1"))
+        c2 = _str_or_none(qd.get("character2"))
+        if gender_ctx is not None:
+            gender1 = (_gender_for_character(c1, gender_ctx) if c1 else None) or (
+                _gender_from_genders_field(q, 0)
+            )
+            gender2 = (_gender_for_character(c2, gender_ctx) if c2 else None) or (
+                _gender_from_genders_field(q, 1)
+            )
+            v1 = _gemini_voice_for_gender(gender1, gender_ctx) or _random_gemini_voice_any_gender(
+                gender_ctx
+            )
+            pool2 = (
+                gender_ctx.female_voices if gender2 == "female"
+                else gender_ctx.male_voices if gender2 == "male"
+                else tuple(list(gender_ctx.male_voices) + list(gender_ctx.female_voices))
+            )
+            v2 = _gemini_voice_excluding(pool2, v1)
+            g1 = _gender_from_audio_filename(bf1)
+            g2 = _gender_from_audio_filename(bf2)
+            v1 = _gemini_voice_for_gender(g1, gender_ctx) or v1
+            v2 = _gemini_voice_for_gender(g2, gender_ctx) or v2
+        else:
+            v1 = None
+            v2 = None
+        raw_exit_text = q.get("question_exit_correct_audio_text")
+        if isinstance(raw_exit_text, list) and len(raw_exit_text) == 2:
+            text1 = _str_or_none(raw_exit_text[0]) or line1_resolved
+            text2 = _str_or_none(raw_exit_text[1]) or line2_resolved
+        else:
+            text1 = line1_resolved
+            text2 = line2_resolved
+        return [
+            _job_for_stem(
+                idx,
+                template,
+                output_dir,
+                bf1,
+                output_suffix,
+                text1,
+                "single",
+                gemini_voice_override=v1,
+            ),
+            _job_for_stem(
+                idx,
+                template,
+                output_dir,
+                bf2,
                 output_suffix,
                 text2,
                 "single",
@@ -851,8 +969,8 @@ def build_jobs_for_question(
             g2 = _gender_from_audio_filename(af2)
             v1 = _gemini_voice_for_gender(g1, gender_ctx) or v1
             v2 = _gemini_voice_for_gender(g2, gender_ctx) or v2
-        text1 = _str_or_none(q.get("audio_file1_text")) or line1_resolved
-        text2 = _str_or_none(q.get("audio_file2_text")) or line2_resolved
+        text1 = _str_or_none(q.get("question_enter_audio_text")) or line1_resolved
+        text2 = _str_or_none(q.get("question_exit_correct_audio_text")) or line2_resolved
         return [
             _job_for_stem(
                 idx,

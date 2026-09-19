@@ -32,17 +32,20 @@
   },
   "levelQuestions": [
     {
-      "template":"Chapter",
-      "displayImage":"level-video"
+      "template": "Chapter",
+      "displayImage": "level-video"
     },
+    
     {
       "template": "VideoConversation",
       "videoFile": "greetings1",
       "start_at": "00:00.0",
       "pause_at": "00:00.90",
       "answer_until": "00:02.2",
-      "audio_file1": "greetings1-q1-setup",
-      "audio_file2": "greetings1-q1-confirm",
+      "question_enter_audio": "greetings1-q1-setup",
+      "question_enter_audio_text": "Good morning",
+      "question_exit_correct_audio": "greetings1-q1-confirm",
+      "question_exit_correct_audio_text": "Good morning",
       "questionData": {
         "answer_type": "DialogueCompletion",
         "answer": "Good morning",
@@ -59,8 +62,10 @@
       "start_at": "00:02.2",
       "pause_at": "00:04.15",
       "answer_until": "00:05.75",
-      "audio_file1": "greetings1-q2-setup",
-      "audio_file2": "greetings1-q2-confirm",
+      "question_enter_audio": "greetings1-q2-setup",
+      "question_enter_audio_text": "I am Susan. What is your name?",
+      "question_exit_correct_audio": "greetings1-q2-confirm",
+      "question_exit_correct_audio_text": "My name is John.",
       "questionData": {
         "answer_type": "SentenceBuilder",
         "correct_order": "My name is John."
@@ -72,7 +77,10 @@
       "start_at": "00:05.75",
       "pause_at": "00:10.3",
       "answer_until": "00:10.3",
-      "audio_file1": "greetings1-q3-setup",
+      "question_enter_audio": "greetings1-q3-setup-full",
+      "question_enter_audio_text": "Nice to meet you John, how are you? I'm fine thank you. And you?",
+      "question_exit_correct_audio": "greetings1-q3-setup",
+      "question_exit_correct_audio_text": "I'm fine, thank you. And you?",
       "questionData": {
         "answer_type": "AppearDisappear",
         "words": "I am fine, thank you. And you?",
@@ -90,8 +98,10 @@
       "start_at": "00:10.3",
       "pause_at": "00:13.25",
       "answer_until": "00:14.8",
-      "audio_file1": "greetings1-q4-setup",
-      "audio_file2": "greetings1-q4-confirm",
+      "question_enter_audio": "greetings1-q4-setup",
+      "question_enter_audio_text": "I'm fine too. Where are you from?",
+      "question_exit_correct_audio": "greetings1-q4-confirm",
+      "question_exit_correct_audio_text": "I'm from the United States.",
       "questionData": {
         "answer_type": "ClozeSequence",
         "sentence": "I _____ _____ the United States.",
@@ -113,8 +123,10 @@
       "start_at": "00:14.8",
       "pause_at": "00:15.8",
       "answer_until": "00:17.05",
-      "audio_file1": "greetings1-q5-setup",
-      "audio_file2": "greetings1-q5-confirm",
+      "question_enter_audio": "greetings1-q5-setup",
+      "question_enter_audio_text": "What do you do?",
+      "question_exit_correct_audio": "greetings1-q5-confirm",
+      "question_exit_correct_audio_text": "I'm a student.",
       "questionData": {
         "answer_type": "DialogueCompletion",
         "answer": "I am a student.",
@@ -131,7 +143,10 @@
       "start_at": "00:17.05",
       "pause_at": "00:21.9",
       "answer_until": "00:21.9",
-      "audio_file1": "greetings1-q6-setup",
+      "question_enter_audio": "greetings1-q6-setup-full",
+      "question_enter_audio_text": "Oh nice. John, this is my friend Emma. Nice to meet you Emma.",
+      "question_exit_correct_audio": "greetings1-q6-setup",
+      "question_exit_correct_audio_text": "Nice to meet you, Emma.",
       "questionData": {
         "answer_type": "AppearDisappear",
         "words": "Nice to meet you, Emma",
@@ -149,7 +164,10 @@
       "start_at": "00:21.9",
       "pause_at": "00:23.55",
       "answer_until": "00:23.55",
-      "audio_file1": "greetings1-q7-setup",
+      "question_enter_audio": "greetings1-q7-setup",
+      "question_enter_audio_text": "Nice to meet you too John.",
+      "question_exit_correct_audio": "greetings1-q7-setup",
+      "question_exit_correct_audio_text": "Nice to meet you too John.",
       "questionData": {
         "answer_type": "AppearDisappear",
         "words": "Nice to meet you too, John!",
@@ -167,8 +185,10 @@
       "start_at": "00:23.55",
       "pause_at": "00:24.95",
       "answer_until": "00:26.65",
-      "audio_file1": "greetings1-q8-setup",
-      "audio_file2": "greetings1-q8-confirm",
+      "question_enter_audio": "greetings1-q8-setup",
+      "question_enter_audio_text": "Have a great day John.",
+      "question_exit_correct_audio": "greetings1-q8-confirm",
+      "question_exit_correct_audio_text": "Thank you Susan, you too.",
       "questionData": {
         "answer_type": "DialogueCompletion",
         "answer": "Thank you, Susan. You too!",
@@ -185,8 +205,10 @@
       "start_at": "00:26.65",
       "pause_at": "00:27.8",
       "answer_until": "00:29.3",
-      "audio_file1": "greetings1-q9-setup",
-      "audio_file2": "greetings1-q9-confirm",
+      "question_enter_audio": "greetings1-q9-setup",
+      "question_enter_audio_text": "See you later John.",
+      "question_exit_correct_audio": "greetings1-q9-confirm",
+      "question_exit_correct_audio_text": "See you later Susan.",
       "questionData": {
         "answer_type": "ClozeSequence",
         "sentence": "_____ you _____, Susan.",
@@ -203,30 +225,141 @@
       }
     },
     {
-      "template":"Chapter",
-      "displayImage":"image-questions"
+      "template": "VideoConversation",
+      "videoFile": "greetings2",
+      "start_at": "00:00.00",
+      "pause_at": "00:02.30",
+      "answer_until": "00:03.68",
+      "question_enter_audio": "greetings2-q1-bridge",
+      "question_enter_audio_text": "Hello! Hi!",
+      "question_exit_correct_audio": "greetings2-q1-confirm",
+      "question_exit_correct_audio_text": "How's it going?",
+      "questionData": {
+        "answer_type": "DialogueCompletion",
+        "answer": "How's it going?",
+        "distractors": [
+          "I live in this neighborhood.",
+          "I am also 17 years old.",
+          "See you next time, bye."
+        ]
+      }
+    },
+    {
+      "template": "VideoConversation",
+      "videoFile": "greetings2",
+      "start_at": "00:03.68",
+      "pause_at": "00:06.83",
+      "answer_until": "00:09.37",
+      "question_enter_audio": "greetings2-q2-setup",
+      "question_enter_audio_text": "Not bad. Do you live around here?",
+      "question_exit_correct_audio": "greetings2-q2-confirm",
+      "question_exit_correct_audio_text": "Yes, I live in this neighborhood.",
+      "questionData": {
+        "answer_type": "ClozeSequence",
+        "sentence": "Yes, I _____ in this _____.",
+        "answer": [
+          "live",
+          "neighborhood"
+        ],
+        "distractors": [
+          "work",
+          "city",
+          "study",
+          "country"
+        ]
+      }
+    },
+    {
+      "template": "VideoConversation",
+      "videoFile": "greetings2",
+      "start_at": "00:09.37",
+      "pause_at": "00:12.42",
+      "answer_until": "00:14.53",
+      "question_enter_audio": "greetings2-q3-setup",
+      "question_enter_audio_text": "Nice to meet you. How old are you?",
+      "question_exit_correct_audio": "greetings2-q3-confirm",
+      "question_exit_correct_audio_text": "I am 17 years old.",
+      "questionData": {
+        "answer_type": "DialogueCompletion",
+        "answer": "I am 17 years old.",
+        "distractors": [
+          "I are 17 years old.",
+          "I get 17 years.",
+          "I is 17 years old."
+        ]
+      }
+    },
+    {
+      "template": "VideoConversation",
+      "videoFile": "greetings2",
+      "start_at": "00:14.53",
+      "pause_at": "00:19.04",
+      "answer_until": "00:19.04",
+      "question_enter_audio": "greetings2-q4-setup-full",
+      "question_enter_audio_text": "How about you? I am also 17 years old.",
+      "question_exit_correct_audio": "greetings2-q4-setup",
+      "question_exit_correct_audio_text": "I am also 17 years old.",
+      "questionData": {
+        "answer_type": "AppearDisappear",
+        "words": "I am also 17 years old.",
+        "distractors": [
+          "too",
+          "only",
+          "about",
+          "here"
+        ]
+      }
+    },
+    {
+      "template": "VideoConversation",
+      "videoFile": "greetings2",
+      "start_at": "00:19.04",
+      "pause_at": "00:21.84",
+      "answer_until": "00:24.71",
+      "question_enter_audio": "greetings2-q5-setup",
+      "question_enter_audio_text": "I need to go, take care.",
+      "question_exit_correct_audio": "greetings2-q5-confirm",
+      "question_exit_correct_audio_text": "See you next time, bye.",
+      "questionData": {
+        "answer_type": "DialogueCompletion",
+        "answer": "See you next time, bye.",
+        "distractors": [
+          "I live in this neighborhood.",
+          "I am also 17 years old.",
+          "How old are you?"
+        ]
+      }
+    },
+    {
+      "template": "Chapter",
+      "displayImage": "image-questions"
     },
     {
       "template": "DialogueCompletion",
       "genders": "f-m",
       "questionData": {
         "line1": "How old are you?",
-      "answer": "I am 20 years old.",
-      "distractors": [
-        "I are 20 years old.",
-        "I get 20 years.",
-        "I is 20 years old."
+        "answer": "I am 20 years old.",
+        "distractors": [
+          "I are 20 years old.",
+          "I get 20 years.",
+          "I is 20 years old."
         ],
         "image_file_name": "how-old-are-you"
       },
-      "audio_file1": "how-old-are-you-adult-convo",
-      "audio_file2": "i-am-20-years-old-adult-convo"
+      "question_enter_audio": "how-old-are-you-adult-convo",
+      "question_enter_audio_text": "How old are you?",
+      "question_exit_correct_audio": "i-am-20-years-old-adult-convo",
+      "question_exit_correct_audio_text": "I am 20 years old."
     },
     {
       "template": "ConvoTemplate-1",
       "genders": "m-f",
-      "audio_file1": "where-is-she-from-john-convo",
-      "audio_file2": "she-is-from-japan-susan-convo",
+      "question_enter_audio": "none",
+      "question_exit_correct_audio": [
+        "where-is-she-from-john-convo",
+        "she-is-from-japan-susan-convo"
+      ],
       "questionData": {
         "line1": "Where _____ she from?",
         "line2": "She _____ from Japan.",

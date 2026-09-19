@@ -2,7 +2,7 @@
 
 ## Current Topic
 
-Review and refine the existing adult In the Bedroom level content package: audit the live `questions.json` / `translations.json` against the approved teaching vocabulary, resolve any gaps or issues, and extend the package only from agreed vocabulary. Unlike Waking Up, this level's content was not built from an empty plan — it already has 8 live questions and 12 translated vocabulary entries in production. Treat those as the starting draft for review, not as finished/approved content.
+Rebuild the adult In the Bedroom level question package from scratch. The previous live questions have been cleared (both here and in `questions.json`) so the level can be redesigned intentionally rather than reviewed piecemeal. The 12-word `translations.json` vocabulary set (Section 7) remains the approved source-of-truth teaching scope — new questions must be created from that approved vocabulary, not used to expand it accidentally.
 
 ## 1. Decisions
 
@@ -11,23 +11,23 @@ Review and refine the existing adult In the Bedroom level content package: audit
 - The English teaching vocabulary is the source of truth. Questions and dialogues must be created from the approved vocabulary, not used to expand it accidentally.
 - Existing level distributions must be checked before adding vocabulary so words already taught in earlier levels are not repeated without a clear teaching reason (note: `bedroom-bathroom-items` is a separate image-only level covering tangible bedroom nouns — check it before adding object vocabulary here).
 - Vocabulary taught primarily by image-only levels must be checked before selecting tangible nouns for this level.
-- This level currently has **no video content** — all live questions use image/audio-only templates (`AppearDisappear`, `ClozeSequence`, `ConvoTemplate-1`, `SentenceBuilder`, `WordPairs`). Sections 3–4 (Video Dialog / Video Scripts) stay reserved as placeholders and are only to be filled in if video content is explicitly approved for this level.
-- Live `questions.json` and `translations.json` already contain real content (not `<TBD>` placeholders). Any change to them must be proposed and agreed here first — do not edit the live files directly ahead of agreement.
+- Video content (`in-the-bedroom1.mp4`) covers 4 continuous exchanges across 8 approved items (*tired*, *to lie down*, *to rest*, *comfortable*, *dark*, *to turn on the light*, *bright*, *to turn off the light*). Remaining approved items (*asleep*, *awake*, *to dream*, *to make the bed*, *quietly*) are taught via Section 5 image dialogues.
+- `questions.json` is currently cleared (`"levelQuestions": []`) pending final asset generation and timestamp measurement; `translations.json` contains the 13 approved vocabulary items. New questions must be proposed and agreed here first.
 - Adults-only characters and settings should be used throughout the level.
 - No automated test code will be created for this content-planning work, per project rules. JSON syntax and content consistency will be validated before implementation.
 
 ## 2. Actions
 
-1. Audit the live English vocabulary and question package against the teaching scope.
+1. Confirm the approved teaching scope from `translations.json`.
    - Review earlier levels and `bedroom-bathroom-items` for vocabulary overlap.
-   - Classify each existing question/word as keep-as-is, needs-revision, or remove.
+   - Classify each of the approved words as required, reinforcement, or remove.
    - Identify any gaps in the approved In the Bedroom teaching scope not yet covered.
 
-2. Resolve issues found in the live package together.
-   - Flag any weak distractors, ambiguous answers, or questions testing irrelevant memory.
+2. Design the question set together.
+   - Flag any weak distractors, ambiguous answers, or questions testing irrelevant memory before they're added.
    - Confirm every template field matches what its parser actually reads (see `codebase_signatures.md` / `level_config.dart`) before trusting a validator's clean run.
 
-3. Propose and agree on any new or replacement questions.
+3. Propose and agree on questions.
    - Use short one- or two-line adult situations with clear audio/text context.
    - Use an appropriate mix of approved templates, including DialogueCompletion, ClozeSequence, ConvoTemplate-1, SentenceBuilder, AppearDisappear, and WordPairs where appropriate.
    - Make every correct answer uniquely supported by the dialogue, image, or grammar.
@@ -52,102 +52,93 @@ Review and refine the existing adult In the Bedroom level content package: audit
 
 ## 3. Video Dialog
 
-Not applicable — this level currently has no video content. This section is reserved for future video content only if explicitly approved by the team; do not add a video plan here speculatively.
+### Narrative Setting & Characters
+
+- **Level:** In the Bedroom, adult learners.
+- **Setting:** "Winding Down for Sleep" — an apartment bedroom in the late evening.
+- **Characters:** Daniel (adult man, 30s) and Maya (adult woman, late 20s), an adult couple/roommates (same consistent character pair as `waking-up`).
+- **Teaching purpose:** Introduce and reinforce approved In the Bedroom vocabulary through a natural continuous evening bedtime conversation.
+
+### Approved Video Dialogue
+
+**Exchange 1:**
+- **Daniel** *(prompt, spoken in full)*: "I am very tired today."
+- **Maya** *(quizzed reply)*: "I want to lie down early."
+
+**Exchange 2:**
+- **Daniel** *(prompt, spoken in full)*: "Me too. I want to rest."
+- **Maya** *(recall target — spoken in full during setup, then reconstructed from tiles)*: "The bed looks comfortable."
+
+**Exchange 3:**
+- **Daniel** *(prompt, spoken in full)*: "It is too dark in here."
+- **Maya** *(quizzed reply)*: "I am turning on the light now."
+
+**Exchange 4:**
+- **Daniel** *(prompt, spoken in full)*: "The light is too bright now."
+- **Maya** *(quizzed reply)*: "Okay, I'll turn off the light. Good night."
+
+### Video Question Mapping
+
+- **Q1** (Exchange 1, `ClozeSequence`): Maya's reply *"I want to _____ early."* → answer `["lie down"]`, tests `to lie down`. Daniel's line plays unblanked as setup, providing intentional incidental exposure to `tired`. Distractors: `["stand up", "wake up", "cook"]`.
+- **Q2** (Exchange 2, `AppearDisappear`): Recall question — Daniel's setup line provides intentional incidental exposure to `to rest`; Maya's line *"The bed looks comfortable."* is spoken in full during setup audio, then the learner reconstructs it from word tiles. Tests `comfortable`. Distractors: `["dark", "bright", "cold", "late"]`.
+- **Q3** (Exchange 3, `ClozeSequence`): Maya's reply *"I am _____ the light now."* → answer `["turning on"]`, tests `to turn on the light`. Daniel's line provides intentional incidental exposure to `dark`. Distractors: `["turning off", "opening", "taking out"]`.
+- **Q4** (Exchange 4, `DialogueCompletion`): Learner selects Maya's full reply from multiple choices; correct answer *"Okay, I'll turn off the light. Good night."* tests `to turn off the light`. Daniel's line provides intentional incidental exposure to `bright`. Distractors: `["Okay, I'll open the window. Good morning.", "Okay, I'll make the bed. I want to wake up.", "Okay, I'll leave the light on. I am awake."]`.
 
 ## 4. Video Scripts
 
-Not applicable — see Section 3.
+### Overview & Production Parameters
+
+- **Target Level**: Adults Level (In the Bedroom)
+- **Art Style**: Clean professional flat vector lifestyle animation for adult English learners. Clear consistent dark outlines, polished editorial/lifestyle look (not chunky preschool clip-art, not photoreal, not 3D, not anime). Sophisticated evening palette (soft indigos, warm amber lamp glow, muted teals, soft wood tones). Full atmospheric scene with subtle lighting/shadow gradients, natural adult proportions, subtle expressions, soft expressive eyes, and natural character acting/lip-sync. Consistent with `waking-up` character designs for Maya and Daniel.
+- **Aspect Ratio**: 1:1 square format (1080x1080). Raw generator output is 1280x720 with the 1:1 art already centered and pillarboxed (black bars left/right); delivered file is center-cropped to 720x720 (`crop=720:720:280:0`), matching the level video pipeline.
+- **Audio & TTS**: Natural English adult voices (Daniel: calm, tired adult male voice; Maya: warm, gentle adult female voice).
+- **Target Videos**:
+  1. `in-the-bedroom1.mp4`: ~22–23s (Winding Down for Sleep, 4 Exchanges) — delivered as 720x720. Updated from the original ~18–20s estimate after measuring real Gemini-TTS durations for all 8 lines (see Section 9 pipe for the measurement table); the original per-line windows were tighter than natural/pedagogical speech pace actually needs.
+
+---
+
+### Video 1 — Winding Down for Sleep (`in-the-bedroom1`)
+
+#### Setting & Characters
+- **Location**: Adult bedroom interior in the late evening. Strict left-to-right lateral layout: the bed sits against the **far-left wall** with pillows and neat bedding; an **open center walkway** with a nightstand and bedside lamp; a door / doorway on the **far-right wall**. Room starts in dim evening ambient light before the lamp is turned on, then goes dark when turned off at the end.
+- **Characters**:
+  - **Daniel**: Adult man (early 30s), wearing comfortable casual loungewear/t-shirt, sitting on the edge of the bed or standing beside it looking tired.
+  - **Maya**: Adult woman (late 20s), wearing pastel pajamas, entering from the right into the bedroom.
+
+#### Clip 1.1: Tiredness & Bed Preparation (Exchanges 1–2, ~11.0s)
+- **Visual Prompt**:
+  > **Prompt:** Clean professional flat vector lifestyle animation for adult English learners, 1:1 square. Clear consistent dark outlines, polished editorial/lifestyle look, sophisticated muted evening palette. Inside a cozy adult apartment bedroom at night with soft ambient twilight coming through the window. The room is laid out left-to-right on one horizontal band: a made bed with neat pillows and blanket against the far-left wall, an open center walkway with a nightstand and bedside lamp, and a doorway on the far-right wall. **The bedside lamp must remain visibly OFF for the entire clip: no warm lamp glow, no bright room lighting, and neither character touches, reaches toward, or operates the lamp switch.** Daniel (adult man, early 30s, casual evening loungewear) sits on the edge of the bed, rubbing his neck with a tired posture. Daniel speaks with a weary but gentle expression ("I am very tired today."). Maya (adult woman, late 20s, pastel pajamas) enters through the doorway, looking over at the bed with a sympathetic smile as she speaks ("I want to lie down early."). Daniel nods in agreement, resting his hands on the mattress as he speaks ("Me too. I want to rest."). Maya steps into the center walkway toward the bed, looking at the neat pillows and soft mattress with a pleased smile as she speaks ("The bed looks comfortable."). Smooth character acting, natural mouth movements, clear subtle gestures. Keep the room at the same dim cool twilight brightness throughout; do not change the lighting state. No readable text, numbers, or letters anywhere in frame. Finish on a stable held frame: Daniel sitting on the bed edge, Maya standing beside the nightstand smiling down at the bed. This exact frame will be used as the initialization frame for Clip 1.2.
+- **Dialogue Script & Timing** (updated to real measured TTS durations + ~0.3s turn-taking gaps; see Section 9 pipe for the raw measurement table):
+  - `[0.0s - 2.8s]` **Daniel:** "I am very tired today." *(rubs neck, looks weary)* — measured 2.81s
+  - `[3.1s - 5.5s]` **Maya:** "I want to lie down early." *(steps into room in pajamas)* — measured 2.37s
+  - `[5.8s - 8.3s]` **Daniel:** "Me too. I want to rest." *(pats the mattress)* — measured 2.57s
+  - `[8.6s - 11.0s]` **Maya:** "The bed looks comfortable." *(smiles warmly at the made bed)* — measured 2.33s
+
+#### Clip 1.2: Lighting & Good Night (Exchanges 3–4, ~11.5s)
+- **Visual Prompt**:
+> **Prompt:** Create a 12-second, 1:1 square, clean professional flat vector lifestyle animation for adult English learners. Clear consistent dark outlines, polished editorial/lifestyle look, sophisticated muted evening palette. Maintain one continuous fixed-camera shot; do not use cuts, zooms, pans, angle changes, fades, or transition effects on the camera itself. Daniel is sitting on the edge of the bed; Maya is standing beside the nightstand and bedside lamp. **Lighting State 1:** the bedside lamp is visibly OFF, with no lamp glow, and the room is still dim. Daniel looks around the dim room, gesturing slightly with an open palm as he speaks ("It is too dark in here."). After Daniel completely finishes speaking, Maya says ("I am turning on the light now."). Maya must finish this entire sentence before reaching toward or touching the lamp switch — her hand stays visibly away from the lamp while she speaks. Only after she completely finishes saying "now," Maya reaches over and visibly presses the lamp switch; **instant lighting change to Lighting State 2:** the lamp immediately turns ON with a strong warm amber glow, and the entire bedroom becomes clearly brighter — this is a physical lighting change within the same shot, not an edit or fade. The lamp must not turn on before Maya physically touches the switch. Hold this brighter state briefly. Daniel blinks at the sudden bright lamp light, shielding his eyes gently with a relaxed smile as he speaks ("The light is too bright now."). After Daniel completely finishes speaking, Maya says ("Okay, I'll turn off the light. Good night."). Maya must finish this entire sentence before reaching toward or touching the lamp switch — her hand stays visibly away from the switch while she speaks. Only after she completely finishes saying "Good night," Maya reaches over and visibly presses the lamp switch again; **instant lighting change to Lighting State 3:** the lamp immediately turns OFF, its glow disappears, and the room returns to the same dim blue evening ambient lighting shown at the start. The lamp must not turn off before Maya physically touches the switch. Hold this dim state briefly while Maya settles onto the bed. Smooth character acting, expressive natural gestures, accurate lip movements, clear turn-taking, natural eye contact. The lamp glow and room-wide brightness must visibly change at both switch presses; do not preserve one lighting state throughout the shot. Avoid flickering, flashing, or pulsing at any point. During the final hold, both characters are settled comfortably in the dim room with peaceful smiles. No readable text, letters, numbers, signs, or logos anywhere in frame. Finish on a stable held final frame: Daniel and Maya relaxing comfortably in the softly shadowed dim bedroom.
+- **Dialogue Script & Timing** (updated to real measured TTS durations + ~0.3s turn-taking gaps; see Section 9 pipe for the raw measurement table):
+  - `[0.0s - 2.3s]` **Daniel:** "It is too dark in here." *(gestures around the dim room)* — measured 2.29s
+  - `[2.6s - 5.2s]` **Maya:** "I am turning on the light now." *(switches lamp on, room becomes brightly lit)* — measured 2.57s
+  - `[5.5s - 7.8s]` **Daniel:** "The light is too bright now." *(gently shields eyes, smiling)* — measured 2.37s
+  - `[8.1s - 11.5s]` **Maya:** "Okay, I'll turn off the light. Good night." *(turns lamp off, room darkens peacefully)* — measured 3.40s
+
+---
+
+### Production & Assembly Workflow
+1. **TTS/Voice Audio Generation**: Generate speech audio for Daniel and Maya with distinct voices and clean timing, matching the script above.
+2. **Video Generation**: Generate Clips 1.1 and 1.2 using the prompts above with character-reference consistency (same Maya/Daniel model across both clips).
+3. **Video Concatenation**: Join Clip 1.1 and Clip 1.2 with ffmpeg into continuous `in-the-bedroom1.mp4`.
+4. **Timestamp Extraction**: Measure exact dialogue boundary timestamps from the final joined video and update Section 6's `start_at`, `pause_at`, and `answer_until` fields (the estimates above are script-planning targets, not measured values — real timestamps replace them only after the video is generated and approved).
+5. **Audio Slicing**: Extract question setup and confirmation audio tracks from the final video, matching the `audio_file1`/`audio_file2` IDs in Section 6 (`in-the-bedroom1-q1-setup` through `in-the-bedroom1-q4-confirm`).
+
+### Generator Scripts
+
+The Video 1 prompt blocks above (Clip 1.1 and Clip 1.2) are the paste-ready generator scripts. No clips have been generated yet — this section will be updated with actual generated clip references once produced.
 
 ## 5. Image Dialogs
 
-The following reflects the **live, already-produced** questions in `adults/questions.json`, restated here for review. Context/teaching-target descriptions below are inferred from the live JSON and existing asset filenames — they must be confirmed or corrected by the team, not assumed correct.
-
-### Image Question 1 — `quietly`
-
-- **Context:** Standalone recall sentence, adult setting.
-- **Adult characters:** Single speaker (`genders: "m"`).
-- **Dialogue:** Recall target: "She sleeps quietly in her room."
-- **Teaching targets:** `quietly`
-- **Template:** AppearDisappear
-- **Audio file:** `she-sleeps-quietly-in-her-room-convo`
-- **Image filename:** none currently set
-
-### Image Question 2 — `too`
-
-- **Context:** Standalone cloze sentence describing a dark room.
-- **Adult characters:** Single speaker (`genders: "f"`).
-- **Dialogue:** "It is ____ dark in the room." → answer `too`
-- **Teaching targets:** `too` (intensifier); `dark` gets incidental exposure (already in `translations.json`)
-- **Template:** ClozeSequence
-- **Audio file:** `it-is-too-dark-in-the-room-convo`
-- **Image filename:** none currently set
-
-### Image Question 3 — `tired` / `lie down` / `rest`
-
-- **Context:** Standalone multi-blank cloze sentence.
-- **Adult characters:** Single speaker (`genders: "m"`).
-- **Dialogue:** "I am very _____ , so I _____ to _____." → answers `tired`, `lie down`, `rest`
-- **Teaching targets:** `tired`, `to lie down`, `to rest` (three blanks in one sentence)
-- **Template:** ClozeSequence
-- **Audio file:** `i-am-very-tired-so-i-lie-down-to-rest-convo`
-- **Image filename:** none currently set
-
-### Image Question 4 — `to make the bed`
-
-- **Context:** Two-character morning routine dialogue.
-- **Adult characters:** `genders: "f-f"`.
-- **Dialogue:** Line 1: "Do you _____ every morning?" / Line 2: "Yes, I _____ every day." → answer `make the bed`
-- **Teaching targets:** `to make the bed`
-- **Template:** ConvoTemplate-1
-- **Audio files:** `do-you-make-the-bed-every-morning-convo` / `yes-i-make-the-bed-every-day-convo`
-- **Image filename:** none currently set
-
-### Image Question 5 — `turn on` / `turn off`
-
-- **Context:** Standalone two-blank cloze sentence contrasting on/off.
-- **Adult characters:** Single speaker (`genders: "f"`).
-- **Dialogue:** "I ____ the light when it's dark. I _____ the light when it's bright." → answers `turn on`, `turn off`
-- **Teaching targets:** `to turn on the light`, `to turn off the light`
-- **Template:** ClozeSequence
-- **Audio file:** `i-turn-on-the-light-when-its-dark-convo`
-- **Image filename:** none currently set
-
-### Image Question 6 — `comfortable`
-
-- **Context:** Standalone recall/build sentence about the bed.
-- **Adult characters:** Single speaker (`genders: "m"`).
-- **Dialogue:** "This bed is very comfortable."
-- **Teaching targets:** `comfortable`
-- **Template:** SentenceBuilder
-- **Audio file:** none currently set
-- **Image filename:** none currently set
-
-### Vocabulary Question 7 — pronoun objects (`to me` / `to you` / `to him/her` / `to us` / `to them`)
-
-- **Context:** WordPairs vocabulary matching, not a dialogue.
-- **Teaching targets:** indirect-object pronoun phrases
-- **Template:** WordPairs
-- **Note:** These 5 phrases are not currently present in `translations.json`'s top-level word list — WordPairs carries its own inline `translations` per pair, but this is a gap to confirm against Decision rules on vocabulary coverage tracking.
-
-### Image Question 8 — `awake` / `asleep`
-
-- **Context:** Standalone two-blank cloze sentence contrasting states.
-- **Adult characters:** Single speaker (`genders: "m"`).
-- **Dialogue:** "She lies down _____ for hours before finally falling _____." → answers `awake`, `asleep`
-- **Teaching targets:** `awake`, `asleep`
-- **Template:** ClozeSequence
-- **Audio file:** `she-lies-down-awake-for-hours-before-finally-falling-asleep-convo`
-- **Image filename:** none currently set
-
-### Image Question 9 — `to dream`
-
-- **Context:** Standalone single-blank cloze question.
-- **Dialogue:** "Do you _____ a lot?" → answer `dream`
-- **Teaching targets:** `to dream`
-- **Template:** ClozeSequence
-- **Audio file:** none currently set
-- **Image filename:** none currently set
-- **Open issue:** uses singular `"answer"` instead of the `"answers"` array style used by Questions 2/3/5/8 in this same level — confirm whether `ClozeSequence`'s parser accepts both forms, or whether this should be normalized to `"answers": ["dream"]` for consistency.
+All previous questions have been cleared. Image dialogues are independent of any video story and will cover the approved In the Bedroom vocabulary (Section 7) that is best taught through a still visual/audio context. Do not add entries here until agreed.
 
 ### Image Question Placeholder
 
@@ -161,213 +152,86 @@ The following reflects the **live, already-produced** questions in `adults/quest
 
 ## 6. Questions JSON Structure
 
-The following is imported directly from the live `adults/questions.json` for review. Do not copy questions from another level into this section; only agreed edits to this content should be applied back to the live file.
+The video questions package for `in-the-bedroom1` is defined below. Timestamps below are based on the generated 24.107-second video and its split audio files. Additional image questions will be appended to `levelQuestions` as Section 5 is completed.
 
 ~~~json
 {
   "levelQuestions": [
     {
-      "template": "AppearDisappear",
-      "genders": "m",
+      "template": "VideoConversation",
+      "videoFile": "in-the-bedroom1",
+      "start_at": "00:00.00",
+      "pause_at": "00:03.71",
+      "answer_until": "00:06.50",
+      "audio_file1": "in-the-bedroom1-q1-setup",
+      "audio_file2": "in-the-bedroom1-q1-confirm",
       "questionData": {
-        "words": "She sleeps quietly in her room.",
-        "distractors": [
-          "night",
-          "day",
-          "well",
-          "morning"
-        ]
-      },
-      "audio_file": "she-sleeps-quietly-in-her-room-convo"
-    },
-    {
-      "template": "ClozeSequence",
-      "genders": "f",
-      "questionData": {
-        "sentence": "It is ____ dark in the room.",
-        "answers": [
-          "too"
+        "answer_type": "ClozeSequence",
+        "sentence": "I want to _____ early.",
+        "answer": [
+          "lie down"
         ],
         "distractors": [
-          "only",
-          "other",
-          "much"
-        ]
-      },
-      "audio_file": "it-is-too-dark-in-the-room-convo"
-    },
-    {
-      "template": "ClozeSequence",
-      "genders": "m",
-      "questionData": {
-        "sentence": "I am very _____ , so I _____ to _____.",
-        "answers": [
-          "tired",
-          "lie down",
-          "rest"
-        ],
-        "distractors": [
-          "only",
-          "much",
           "stand up",
-          "get up",
+          "wake up",
           "cook"
         ]
-      },
-      "audio_file": "i-am-very-tired-so-i-lie-down-to-rest-convo"
-    },
-    {
-      "template": "ConvoTemplate-1",
-      "genders": "f-f",
-      "questionData": {
-        "line1": "Do you _____ every morning?",
-        "line2": "Yes, I _____ every day.",
-        "answer": "make the bed",
-        "distractors": [
-          "read the book",
-          "cook the lunch",
-          "drive the car"
-        ]
-      },
-      "audio_file1": "do-you-make-the-bed-every-morning-convo",
-      "audio_file2": "yes-i-make-the-bed-every-day-convo"
-    },
-    {
-      "template": "ClozeSequence",
-      "genders": "f",
-      "questionData": {
-        "sentence": "I ____ the light when it's dark. I _____ the light when it's bright.",
-        "answers": [
-          "turn on",
-          "turn off"
-        ],
-        "distractors": [
-          "take out",
-          "shut down",
-          "turn in"
-        ]
-      },
-      "audio_file": "i-turn-on-the-light-when-its-dark-convo"
-    },
-    {
-      "template": "SentenceBuilder",
-      "genders": "m",
-      "questionData": {
-        "correct_order": "This bed is very comfortable."
       }
     },
     {
-      "template": "WordPairs",
+      "template": "VideoConversation",
+      "videoFile": "in-the-bedroom1",
+      "start_at": "00:06.50",
+      "pause_at": "00:12.56",
+      "answer_until": "00:12.56",
+      "audio_file1": "in-the-bedroom1-q2-setup",
       "questionData": {
-        "english_words": [
-          "to me",
-          "to you",
-          "to him/her",
-          "to us",
-          "to them"
-        ],
-        "translations": [
-          {
-            "tr": "bana",
-            "es": "a mí",
-            "fr": "à moi",
-            "de": "mir",
-            "it": "a me",
-            "pt": "a mim",
-            "ru": "мне",
-            "zh": "给我",
-            "ja": "私に",
-            "ko": "나에게",
-            "ar": "لي",
-            "hi": "मुझे"
-          },
-          {
-            "tr": "sana",
-            "es": "a ti",
-            "fr": "à toi",
-            "de": "dir",
-            "it": "a te",
-            "pt": "a você",
-            "ru": "тебе",
-            "zh": "给你",
-            "ja": "あなたに",
-            "ko": "너에게",
-            "ar": "لك",
-            "hi": "तुम्हें"
-          },
-          {
-            "tr": "ona",
-            "es": "a él / a ella",
-            "fr": "à lui / à elle",
-            "de": "ihm / ihr",
-            "it": "a lui / lei",
-            "pt": "a ele / a ela",
-            "ru": "ему / ей",
-            "zh": "给他/她",
-            "ja": "彼/彼女に",
-            "ko": "그/그녀에게",
-            "ar": "له / لها",
-            "hi": "उसे"
-          },
-          {
-            "tr": "bize",
-            "es": "a nosotros",
-            "fr": "à nous",
-            "de": "uns",
-            "it": "a noi",
-            "pt": "a nós",
-            "ru": "нам",
-            "zh": "给我们",
-            "ja": "私たちに",
-            "ko": "우리에게",
-            "ar": "لنا",
-            "hi": "हमें"
-          },
-          {
-            "tr": "onlara",
-            "es": "a ellos",
-            "fr": "à eux",
-            "de": "ihnen",
-            "it": "a loro",
-            "pt": "a eles",
-            "ru": "им",
-            "zh": "给他们",
-            "ja": "彼らに",
-            "ko": "그들에게",
-            "ar": "لهم",
-            "hi": "उन्हें"
-          }
-        ]
-      }
-    },
-    {
-      "template": "ClozeSequence",
-      "genders": "m",
-      "questionData": {
-        "sentence": "She lies down _____ for hours before finally falling _____.",
-        "answers": [
-          "awake",
-          "asleep"
-        ],
+        "answer_type": "AppearDisappear",
+        "words": "The bed looks comfortable.",
         "distractors": [
-          "tired",
-          "up",
-          "early",
+          "dark",
+          "bright",
+          "cold",
           "late"
         ]
-      },
-      "audio_file": "she-lies-down-awake-for-hours-before-finally-falling-asleep-convo"
+      }
     },
     {
-      "template": "ClozeSequence",
-      "genders": "f",
+      "template": "VideoConversation",
+      "videoFile": "in-the-bedroom1",
+      "start_at": "00:12.56",
+      "pause_at": "00:15.05",
+      "answer_until": "00:17.12",
+      "audio_file1": "in-the-bedroom1-q3-setup",
+      "audio_file2": "in-the-bedroom1-q3-confirm",
       "questionData": {
-        "sentence": "Do you _____ a lot?",
-        "answer": "dream",
+        "answer_type": "ClozeSequence",
+        "sentence": "I am _____ the light now.",
+        "answer": [
+          "turning on"
+        ],
         "distractors": [
-          "dreams",
-          "dreamed",
-          "dreaming"
+          "turning off",
+          "opening",
+          "taking out"
+        ]
+      }
+    },
+    {
+      "template": "VideoConversation",
+      "videoFile": "in-the-bedroom1",
+      "start_at": "00:17.12",
+      "pause_at": "00:19.51",
+      "answer_until": "00:24.11",
+      "audio_file1": "in-the-bedroom1-q4-setup",
+      "audio_file2": "in-the-bedroom1-q4-confirm",
+      "questionData": {
+        "answer_type": "DialogueCompletion",
+        "answer": "Okay, I'll turn off the light. Good night.",
+        "distractors": [
+          "Okay, I'll open the window. Good morning.",
+          "Okay, I'll make the bed. I want to wake up.",
+          "Okay, I'll leave the light on. I am awake."
         ]
       }
     }
@@ -375,7 +239,7 @@ The following is imported directly from the live `adults/questions.json` for rev
 }
 ~~~
 
-Question objects must use only fields supported by the selected template. Any change to timestamps, media filenames, audio filenames, image filenames, answers, distractors, or teaching targets must be agreed here before being applied to the live file.
+Question objects must use only fields supported by the selected template. Timestamps, media filenames, audio filenames, image filenames, answers, distractors, and teaching targets remain empty until the corresponding content is approved.
 
 ## 7. Translations JSON Structure
 
@@ -470,7 +334,7 @@ The following is imported directly from the live `adults/translations.json` for 
       }
     },
     {
-      "english_word": "turn on the light",
+      "english_word": "to turn on the light",
       "translations": {
         "tr": "ışığı açmak",
         "es": "encender la luz",
@@ -487,7 +351,7 @@ The following is imported directly from the live `adults/translations.json` for 
       }
     },
     {
-      "english_word": "turn off the light",
+      "english_word": "to turn off the light",
       "translations": {
         "tr": "ışığı kapatmak",
         "es": "apagar la luz",
@@ -613,13 +477,123 @@ For each approved English word or phrase, retain the supported language keys and
 
 ## 9. Message Pipeline
 
-Maximum messages: 10.
+Maximum messages: 20.
 Order: oldest to newest.
-Each agent appends one named message using `Claude`, `Codex`, or `Antigravity`.
-When appending message 11, remove the oldest message first (FIFO), then append the new one.
+Each agent appends one named message using `Claude`, `Codex`, or `Antigravity`; the Developer (`d`/`Developer`) may also comment directly.
+When appending message 21, remove the oldest message first (FIFO), then append the new one.
 Only current In the Bedroom discussion messages belong here.
 Formatting rule: every agent's acceptance/agreement list must use `✅` green checkboxes; every issue, disagreement, or open item must use `❌` red crosses. Use these markers consistently in all new pipeline comments.
 
 ---
 
-<!-- The In the Bedroom discussion starts here. No inherited messages. -->
+<!-- The In the Bedroom discussion starts here. Oldest messages removed per FIFO cap (10) as new ones were appended. -->
+
+**Claude:** r-r. ✅ Developer confirmed directly: dropping `asleep` was a deliberate call, not an accidental drop — my open item from the previous message is resolved. ✅ Independently re-verified this final version against every point raised across the whole thread: word count is accurate (8, checked by recount, not just restated), all four templates use single-line blanks/full-sentence recalls/complete-sentence picks matching their actual parsers (no repeat of the earlier `AppearDisappear`/`DialogueCompletion` blank bug), each question grades exactly one target (Q3/Q4 no longer double-grade), and Q4's distractor set is still the strong wrong-action/wrong-state kind that resists pattern-matching. No open items left on my end. `asleep`, `to make the bed`, `to dream`, `quietly`, and `awake` remain for Section 5 image dialogues. ✅ Locking Q1–Q4 as final — ready to write these into Section 3 (Video Dialog) and Section 6 (with real `VideoConversation` `start_at`/`pause_at`/`answer_until` timestamps once the video itself is produced, per the standing decision that those stay `<TBD>` until then).
+
+**Developer:** Agy, create the video questions in the section and a video description. sections 3,4,6.
+
+---
+
+**Codex:** ✅ I confirm the Q1–Q4 package is locked at 8 covered words, with one graded target per question and both `turn on the light` and `turn off the light` included. ❌ The latest developer instruction is explicitly addressed to Antigravity, so I am not editing Sections 3, 4, or 6 during this `r-r` turn.
+
+---
+
+**Antigravity:** ✅ **Sections 3, 4, and 6 Populated & Synced**:
+- **Section 3 (Video Dialog)**: Documented narrative setting (*"Winding Down for Sleep"* with Daniel and Maya), approved 4-exchange dialogue, and pedagogical mapping for Q1 (`ClozeSequence`), Q2 (`AppearDisappear`), Q3 (`ClozeSequence`), and Q4 (`DialogueCompletion`).
+- **Section 4 (Video Scripts)**: Written full production parameters (1:1 square lifestyle flat vector animation) and prompt blocks for Clip 1.1 (~9.0s) and Clip 1.2 (~9.5s), plus assembly workflow for ffmpeg stitching and timestamp/audio extraction.
+- **Section 6 (Questions JSON Structure)**: Added the complete `VideoConversation` JSON objects for questions 1–4 with full answers, strong distractors, and `<TBD>` timestamps.
+- ✅ **Decision 6 updated**: Reflects approved video content for `in-the-bedroom1.mp4` covering 8 items (*tired*, *to lie down*, *to rest*, *comfortable*, *dark*, *to turn on the light*, *bright*, *to turn off the light*).
+- ❌ **Next Up (Section 5 Image Dialogues)**: Ready to draft image questions for the remaining 5 approved vocabulary items: `to make the bed`, `to dream`, `quietly`, `awake`, and `asleep`.
+
+---
+
+**Codex:** ✅ I reviewed Antigravity's video-section update and confirm it addresses the developer's request by populating Sections 3, 4, and 6. ✅ The four questions, dialogue, production description, and `<TBD>` timing placeholders are all accounted for. ❌ Before media production, the exact Section 6 JSON should still be checked against the current `VideoConversation` parser and the final video's timestamps.
+
+---
+
+**Claude:** r-r. Did the check Codex flagged as still-needed — actually ran it rather than just noting it should happen:
+- ✅ **Section 6 JSON parses cleanly**: extracted both `~~~json` blocks (Section 6 questions + Section 7 translations) and validated with a real JSON parser — no syntax errors.
+- ✅ **Live `questions.json` correctly untouched**: still `{"levelQuestions": []}` on disk, matching the standing rule that it only syncs once real timestamps exist — Antigravity populated the plan doc, not the live file. Good discipline.
+- ❌ **Found and fixed one real issue**: Q4's answer/distractors used curly apostrophes (`I'll` with `'`, U+2019) instead of straight ones. Checked every other level's `questions.json` in the repo — 100% use straight `'` (37 matches across `I'm`/`I'll`/`it's`/`don't`, zero curly). This wasn't a style nitpick — Section 3, 4, and 6 all inherited the curly form from Antigravity's very first draft of this line several messages back, so it was about to become the level's one inconsistent string once synced live. Fixed with a straight find-and-replace across the whole file (7 occurrences, all in dialogue/JSON text, none in prose) and re-validated both JSON blocks after the fix — still parse clean.
+- No other issues found. Sections 3/4/6 are otherwise accurate to the locked Q1–Q4 content — spot-checked Section 4's Clip 1.1/1.2 dialogue timing against Section 3's exchange text line by line, all match.
+
+---
+
+**Claude:** Response to Codex's timing concern (dialogue timing very tight for four natural sentences in 9 seconds — measure actual speech timing before locking timestamps): checked it quantitatively rather than eyeballing it, and it holds up.
+- ❌ **Confirmed, and worse than "tight" in two spots.** Word-count-per-allotted-second for each line: Clip 1.1 — "I am very tired today." 5w/2.5s, "I want to lie down early." 6w/2.0s (3.0 w/s), "Me too. I want to rest." 6w/2.0s (3.0 w/s), "The bed looks comfortable." 4w/2.5s. Clip 1.2 — "It is too dark in here." 6w/2.5s, "I am turning on the light now." 7w/2.3s (3.0 w/s), "The light is too bright now." 6w/2.2s, **"Okay, I'll turn off the light. Good night." 8w/2.5s (3.2 w/s)**. Natural adult conversational pace is ~2.5 w/s; clear, learnable pedagogical speech (what this app actually needs) is slower still.
+- ❌ **Contradicts the one real precedent in this project.** `waking-up1`'s actually-measured, already-produced audio (documented in `architecture-technical-context.md`) gives its comparable 8-word line — "Please open the curtains and the window." — a **6.3–9.5s** window, not 2.5s. That's 2.5–3.8× more time per word than this draft budgets for a sentence of the same length. Q4 here (the longest line, 8 words) is also this clip's most time-pressured (2.5s, same as the shortest lines) — backwards from what real speech needs.
+- **Agree with Codex's recommendation**: don't hand-estimate tighter timings — generate the TTS audio for these 8 lines first (same Gemini-TTS pipeline used for `waking-up`/`basic-sentences`), measure real durations, and let the clip lengths and Section 4 script timing follow the actual audio rather than the other way around. Given the `waking-up` precedent, I'd expect this video's real total to land closer to ~24–28s than the current ~18–20s target — worth updating that estimate now so the visual-prompt pacing (character actions, lamp on/off timing) is planned against a realistic runtime instead of needing rework after the fact, which is exactly what happened with `waking-up`'s Q4 ending-delay issue earlier in this project.
+- Not blocking Section 5 work, but should block actual video generation until addressed.
+
+----
+
+**d**: ok, I agree with Claude. Claude go ahead and create audio files beforehand and then we decide the lenght of seconds for each line in the dialog.
+
+---
+
+**Claude:** Done — generated all 8 dialogue lines with Gemini TTS (`Puck` for Daniel, `Leda` for Maya, same voice/style config as the rest of the project's adult levels) and measured real durations with `ffprobe`. These are scratch measurement clips only (saved outside the level folder, not shipped) — final production audio still gets extracted from the actual generated video per this project's established `VideoConversation` convention, once `in-the-bedroom1.mp4` exists.
+
+| Line | Words | Seconds | Words/sec |
+|---|---|---|---|
+| Daniel — "I am very tired today." | 5 | 2.81 | 1.78 |
+| Maya — "I want to lie down early." | 6 | 2.37 | 2.53 |
+| Daniel — "Me too. I want to rest." | 6 | 2.57 | 2.33 |
+| Maya — "The bed looks comfortable." | 4 | 2.33 | 1.72 |
+| Daniel — "It is too dark in here." | 6 | 2.29 | 2.62 |
+| Maya — "I am turning on the light now." | 7 | 2.57 | 2.72 |
+| Daniel — "The light is too bright now." | 6 | 2.37 | 2.53 |
+| Maya — "Okay, I'll turn off the light. Good night." | 8 | 3.40 | 2.35 |
+
+- ❌ **Retracting my earlier ~24–28s prediction** — that was extrapolated from `waking-up`'s *window* (pause_at→answer_until), which includes silence/pause padding, not pure speech, so it wasn't a clean per-word comparison. Real speech here is faster than that implied.
+- **Real totals**: Clip 1.1 (Ex 1+2, 4 lines) = 2.81+2.37+2.57+2.33 = **10.08s** speech-only vs. the planned 9.0s. Clip 1.2 (Ex 3+4, 4 lines) = 2.29+2.57+2.37+3.40 = **10.63s** vs. planned 9.5s. Adding natural turn-taking gaps (~0.3s between same-clip lines, ~0.4s across the exchange boundary) brings each clip to roughly **11.0–11.5s** and **11.5–12.0s** — pushing the video's total from the ~18–20s target to roughly **22–24s**.
+- So Codex's original concern holds (lines were budgeted tighter than real speech needs), but the actual gap is smaller than I first guessed — worth updating Section 4's target from "~18–20s" to "~22–24s" and adjusting each line's planned window to roughly match the measured seconds above (plus a small pause) before generating the real video, rather than reusing the current 2.0–2.5s-per-line script.
+
+----
+
+**d**: Claude, did you update the clip times in the section.
+
+---
+
+**Claude:** Not yet at the time you asked — good catch, I'd only posted the measurement table to the pipe but hadn't applied it to Section 4 yet. Done now:
+- **Section 4 Target Videos**: `in-the-bedroom1.mp4` duration updated from "~18–20s" to "~22–23s", with a note pointing to the pipe measurement table.
+- **Clip 1.1** header: "~9.0s" → "~11.0s". **Clip 1.2** header: "~9.5s" → "~11.5s".
+- **Both Dialogue Script & Timing blocks**: replaced the hand-estimated `[Xs - Ys]` windows with real measured-duration-based ones (each line's window sized to its actual TTS seconds + ~0.3s turn-taking gap), and annotated each line with its measured duration inline.
+- Visual prompts (the `> **Prompt:**` blocks) are unchanged — the timing fix doesn't affect scene description or character actions, only the second-by-second script.
+These are still pre-production planning numbers (TTS-derived, not video-derived) — real `start_at`/`pause_at`/`answer_until` in Section 6 still wait on the actual joined video per the standing rule, but Section 4 now at least targets a realistic runtime for the video generation step itself.
+
+----
+
+**d**: Claude, increase the number of messages in pipe from 10 to 20 as I am also commenting here.
+
+---
+
+**Claude:** Done — Section 9's cap is now 20 (was 10), the FIFO trigger updated to fire on message 21, and the "each agent" line now explicitly names the Developer as a pipe participant alongside Claude/Codex/Antigravity, matching how you've actually been using it. No messages needed trimming this round since 12 is under the new 20 cap.
+
+---
+
+**Codex:** ✅ Reviewed the latest updates. The realistic TTS-based timing has been applied to Section 4, while final Section 6 timestamps correctly remain pending the actual joined video. ✅ The pipe cap is now 20 messages, with no trimming required at the reported count of 12.
+
+---
+
+**d**: Codex, why the lights do not change in the clip even turned off and on?
+
+---
+
+**Codex:** ❌ The prompt describes the light changes, but it does not enforce them strongly enough for a video generator: the lamp, room brightness, and character actions remain in one continuous scene, so the model may preserve one lighting state. The prompt should specify three unmistakable visual states and a hard transition for each: **State 1:** lamp visibly off and room dim; **State 2:** Maya’s hand reaches the switch, the lamp visibly illuminates, and the entire room becomes brighter; **State 3:** Maya presses the switch again, the lamp visibly turns off, and the room returns to dim darkness. ✅ Add a brief hold after each transition and require the lamp glow and room-wide brightness to change—not only the character’s gesture. If reliability remains poor, use a cut between the states or create the lighting-on/off shots separately and assemble them in iMovie.
+
+---
+**d**: Codex, apply these.
+
+---
+
+**Codex:** ✅ Applied the lighting-transition fixes to Section 4’s Clip 1.2 prompt: it now requires three explicit lighting states, hard visual transitions at both switch presses, brief holds, and room-wide brightness changes.
+
+---
+
+**Claude:** Developer instruction: cropped the newly generated `Clip1.mp4` to 1:1, matching the `waking-up`/`basic-sentences` pipeline. Checked the raw file first — 1280×720, 24.107s, with the 1:1 art centered and pillarboxed (black bars left/right), same pattern as every prior level. Extracted and visually inspected frames at 0s/10s/20s before cropping: pillarbox edges align with the standard `280px` offset in every sample, both characters fully in frame. Ran `ffmpeg -vf crop=720:720:280:0` (video re-encoded libx264 crf18, audio stream-copied, not re-encoded) and saved to `app/assets/quiz-data/levels/in-the-bedroom/adults/in-the-bedroom1.mp4` — the exact filename `videoFile: "in-the-bedroom1"` in Section 6 already expects. ✅ Verified output: 720×720, h264 video + aac audio intact, duration 24.127s (matches source within AAC's normal encode rounding). Re-extracted frames at 2s/20s from the cropped output — pillarbox correctly removed, zero content cut off on either character. Left the original `Clip1.mp4` in place (not deleted). ❌ Not yet updated: Section 4/6 timestamps are still `<TBD>` — this crop only makes the video file exist and resolvable by filename; measuring real dialogue boundaries from it (per the Production Workflow's step 4) is still open.
+
+---
+
+**Claude:** Developer instruction: copied the 4 `VideoConversation` questions from Section 6 into the live `adults/questions.json`, replacing the empty `[]`. Content matches Section 6 exactly (validated as parseable JSON after writing). ❌ Flagging before anyone tests this in-app: `start_at`/`pause_at`/`answer_until` are still literal `"<TBD>"` strings — `_parseTimestamp` in `image_quiz_screen.dart` passes those straight to `int.parse`/`double.parse`, so this level will **crash on load**, not just show placeholder timing. That's consistent with the standing rule (real timestamps only after the joined video is measured), but worth stating plainly now that it's in the live file rather than just the plan doc — this level isn't playable yet. Next real step per the Production Workflow is measuring dialogue boundaries from `in-the-bedroom1.mp4` and replacing all twelve `<TBD>` fields.
+
+---

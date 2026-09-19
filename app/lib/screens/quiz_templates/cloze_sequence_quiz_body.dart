@@ -107,13 +107,14 @@ class ClozeSequenceQuizBody extends StatefulWidget {
     required this.data,
     required this.userLanguage,
     this.imagePath,
-    this.audio1Path,
-    this.audio2Path,
-    required this.resolveAudioExists,
+    this.enterAudioCue,
+    this.exitCorrectAudioCue,
+    this.exitWrongAudioCue,
     required this.onPlayQuestionAudio,
     required this.onPlayCorrect,
     required this.onPlayWrong,
     required this.onOutcome,
+    this.onUserInteracted,
     this.onNextChoiceRendered,
     this.debugShowLayoutBounds = false,
   });
@@ -129,17 +130,27 @@ class ClozeSequenceQuizBody extends StatefulWidget {
   /// no image (the image block is skipped entirely, not shown as a broken placeholder).
   final String? imagePath;
 
-  /// Setup clip for [ClozeSequenceQuestionData.line1] — plays automatically before the learner
-  /// answers, mirroring [DialogueCompletionQuizBody]'s `audio1Path`.
-  final String? audio1Path;
+  /// Clips played in sequence, automatically, the first time this question is presented — and
+  /// replayable via the audio icon any time before answering. `null`/empty disables the icon
+  /// pre-answer.
+  final List<String>? enterAudioCue;
 
-  /// Confirm clip played after the learner answers.
-  final String? audio2Path;
-  final Future<bool> Function(String path) resolveAudioExists;
+  /// Clips played in sequence after a correct answer, before advancing.
+  final List<String>? exitCorrectAudioCue;
+
+  /// Clips played in sequence after a wrong answer (already resolved with the
+  /// `question_exit_correct_audio` fallback applied by the caller) — also what the audio icon
+  /// replays once the question has been answered wrong. `null`/empty disables the icon
+  /// post-wrong.
+  final List<String>? exitWrongAudioCue;
   final Future<void> Function(String path) onPlayQuestionAudio;
   final VoidCallback onPlayCorrect;
   final VoidCallback onPlayWrong;
   final void Function(bool correct) onOutcome;
+
+  /// Fired on the very first interaction with this question (tile tap, MCQ button, translation
+  /// reveal, or audio icon press) — used to hide the footer guide hint.
+  final VoidCallback? onUserInteracted;
   final void Function(int expectedIndex, List<GlobalKey> choiceKeys)?
       onNextChoiceRendered;
 
@@ -178,16 +189,40 @@ class _ClozeSequenceQuizBodyState extends State<ClozeSequenceQuizBody> {
       ? _buttonLocked
       : _failed || _currentBlank >= widget.data.answers.length;
 
-  /// True when [ClozeSequenceQuestionData.line1] has its own setup/confirm clip pair — an image
-  /// question with a spoken prompt line, not the common bare-sentence case. See
-  /// [DialogueCompletionQuizBody] for the pattern this mirrors.
-  bool get _isDualAudio =>
-      widget.audio1Path != null && widget.audio2Path != null;
+  bool get _isAnswered => _singleBlank ? _buttonLocked : _concluded;
+
+  bool get _isWrong => _singleBlank
+      ? (_buttonLocked && _buttonSelectedIndex != _buttonCorrectIndex)
+      : _failed;
+
+  /// What the audio icon plays right now: [enterAudioCue] before answering, the
+  /// (already-effective) [exitWrongAudioCue] once answered wrong, nothing once answered
+  /// correctly (the question is about to advance).
+  List<String>? get _manualAudioCue =>
+      !_isAnswered ? widget.enterAudioCue : (_isWrong ? widget.exitWrongAudioCue : null);
+
+  bool get _hasManualAudio {
+    final cue = _manualAudioCue;
+    return cue != null && cue.isNotEmpty;
+  }
+
+  /// True if the audio icon could ever be relevant for this question (enter pre-answer, or
+  /// exit-wrong post-wrong) — used to reserve layout space regardless of the current phase, so
+  /// the icon appearing/disappearing doesn't shift other content.
+  bool get _hasAnyAudioIcon =>
+      (widget.enterAudioCue != null && widget.enterAudioCue!.isNotEmpty) ||
+      (widget.exitWrongAudioCue != null && widget.exitWrongAudioCue!.isNotEmpty);
+
+  Future<void> _playCue(List<String> cue) async {
+    for (final path in cue) {
+      await widget.onPlayQuestionAudio(path);
+    }
+  }
 
   @override
   void initState() {
     super.initState();
-    if (widget.audio1Path != null) {
+    if (widget.enterAudioCue != null && widget.enterAudioCue!.isNotEmpty) {
       _setupAudioComplete = false;
       WidgetsBinding.instance.addPostFrameCallback((_) => _primeAudio1());
     }
@@ -235,15 +270,13 @@ class _ClozeSequenceQuizBodyState extends State<ClozeSequenceQuizBody> {
     });
   }
 
-  /// Fire-and-forget: plays [audio1Path] shortly after mount, before the learner answers —
+  /// Fire-and-forget: plays [enterAudioCue] shortly after mount, before the learner answers —
   /// same 500ms-then-play pattern as [DialogueCompletionQuizBody]'s `_primeAudio`.
   Future<void> _primeAudio1() async {
     if (_audio1Scheduled) return;
     _audio1Scheduled = true;
-    final p = widget.audio1Path;
-    if (p == null) return;
-    final ok = await widget.resolveAudioExists(p);
-    if (!ok || !mounted) {
+    final cue = widget.enterAudioCue;
+    if (cue == null || cue.isEmpty || !mounted) {
       if (mounted) setState(() => _setupAudioComplete = true);
       return;
     }
@@ -251,7 +284,7 @@ class _ClozeSequenceQuizBodyState extends State<ClozeSequenceQuizBody> {
     if (!mounted) return;
     setState(() => _audio1Playing = true);
     try {
-      await widget.onPlayQuestionAudio(p);
+      await _playCue(cue);
     } finally {
       if (mounted) {
         setState(() {
@@ -262,32 +295,27 @@ class _ClozeSequenceQuizBodyState extends State<ClozeSequenceQuizBody> {
     }
   }
 
-  /// Manual replay of [audio1Path] via the on-screen button — unlike [_primeAudio1], not gated
-  /// by [_audio1Scheduled], so it works after the initial auto-play too.
+  /// Manual replay via the on-screen button — plays [_manualAudioCue] (enter pre-answer,
+  /// exit-wrong once answered wrong).
   Future<void> _replayAudio1() async {
-    final p = widget.audio1Path;
-    if (p == null || _audio1Playing) return;
-    final ok = await widget.resolveAudioExists(p);
-    if (!ok || !mounted) return;
+    final cue = _manualAudioCue;
+    if (cue == null || cue.isEmpty || _audio1Playing) return;
+    widget.onUserInteracted?.call();
     setState(() => _audio1Playing = true);
     try {
-      await widget.onPlayQuestionAudio(p);
+      await _playCue(cue);
     } finally {
       if (mounted) setState(() => _audio1Playing = false);
     }
   }
 
-  /// Plays the outcome clip after the learner answers: [audio2Path] in dual mode (an image
-  /// question with its own setup/confirm pair).
+  /// Plays [exitCorrectAudioCue] after a correct answer, before advancing.
   Future<void> _playOutcomeAudio() async {
-    if (!_isDualAudio) return;
-    final p = widget.audio2Path;
-    if (p == null) return;
-    final ok = await widget.resolveAudioExists(p);
-    if (!ok || !mounted) return;
+    final cue = widget.exitCorrectAudioCue;
+    if (cue == null || cue.isEmpty) return;
     setState(() => _audioPlaying = true);
     try {
-      await widget.onPlayQuestionAudio(p);
+      await _playCue(cue);
     } finally {
       if (mounted) setState(() => _audioPlaying = false);
     }
@@ -295,14 +323,13 @@ class _ClozeSequenceQuizBodyState extends State<ClozeSequenceQuizBody> {
 
   Future<void> _onTranslationRevealedSingle() async {
     if (_buttonLocked || widget.data.trOk) return;
+    widget.onUserInteracted?.call();
     setState(() {
       _buttonLocked = true;
       _translationPenalized = true;
       _filled[0] = widget.data.answers.first;
     });
     widget.onPlayWrong();
-    await _playOutcomeAudio();
-    if (!mounted) return;
     widget.onOutcome(false);
   }
 
@@ -313,6 +340,7 @@ class _ClozeSequenceQuizBodyState extends State<ClozeSequenceQuizBody> {
     }
     if (_failed || widget.data.trOk) return;
     if (_currentBlank >= widget.data.answers.length) return;
+    widget.onUserInteracted?.call();
     final newFilled = List<String?>.from(_filled);
     final newTileStates = List<_TileState>.from(_tileStates);
     for (var b = _currentBlank; b < widget.data.answers.length; b++) {
@@ -333,13 +361,12 @@ class _ClozeSequenceQuizBodyState extends State<ClozeSequenceQuizBody> {
       _currentBlank = widget.data.answers.length;
     });
     widget.onPlayWrong();
-    await _playOutcomeAudio();
-    if (!mounted) return;
     widget.onOutcome(false);
   }
 
   Future<void> _onSingleButtonTap(int i) async {
     if (_buttonLocked) return;
+    widget.onUserInteracted?.call();
     final ok = _buttonOptions[i] == widget.data.answers.first;
     setState(() {
       _buttonLocked = true;
@@ -353,8 +380,6 @@ class _ClozeSequenceQuizBodyState extends State<ClozeSequenceQuizBody> {
       widget.onOutcome(true);
     } else {
       widget.onPlayWrong();
-      await _playOutcomeAudio();
-      if (!mounted) return;
       widget.onOutcome(false);
     }
   }
@@ -365,6 +390,7 @@ class _ClozeSequenceQuizBodyState extends State<ClozeSequenceQuizBody> {
     final state = _tileStates[tileIndex];
     // Already-placed correct tiles are inert (no full-reset on re-tap).
     if (state == _TileState.correct) return;
+    widget.onUserInteracted?.call();
 
     final expected = widget.data.answers[_currentBlank];
 
@@ -411,8 +437,6 @@ class _ClozeSequenceQuizBodyState extends State<ClozeSequenceQuizBody> {
         _filled = newFilled;
       });
       widget.onPlayWrong();
-      await _playOutcomeAudio();
-      if (!mounted) return;
       widget.onOutcome(false);
     }
   }
@@ -604,48 +628,6 @@ class _ClozeSequenceQuizBodyState extends State<ClozeSequenceQuizBody> {
     );
   }
 
-  /// Dialogue text is tied to the answer text for this question. The normal and
-  /// maximum dialogue size is exactly 1.10x the answer size; it may only become
-  /// smaller when the dialogue box cannot fit the text at that size.
-  ({double min, double regular, double max}) _clozeBubbleTextProfile(
-    QuestionLayoutTier tier,
-    double answerFontSize,
-  ) {
-    final regular = answerFontSize * 1.10;
-    double tierMinimum;
-    switch (tier) {
-      case QuestionLayoutTier.phoneUltraTall:
-      case QuestionLayoutTier.phoneSuperTall:
-        tierMinimum = 15;
-        break;
-      case QuestionLayoutTier.phoneFlagship:
-        tierMinimum = 14;
-        break;
-      case QuestionLayoutTier.phoneTransition:
-      case QuestionLayoutTier.phoneClassic2to1:
-        tierMinimum = 15;
-        break;
-      case QuestionLayoutTier.phone16to9:
-        tierMinimum = 16;
-        break;
-      case QuestionLayoutTier.tablet16to9:
-      case QuestionLayoutTier.tablet16to10:
-        tierMinimum = 18;
-        break;
-      case QuestionLayoutTier.tablet3to2:
-        tierMinimum = 19;
-        break;
-      case QuestionLayoutTier.tablet4to3:
-        tierMinimum = 20;
-        break;
-    }
-    return (
-      min: min(tierMinimum, regular),
-      regular: regular,
-      max: regular,
-    );
-  }
-
   double _clozeNeededHeight(
     double fontSize,
     double maxWidth,
@@ -687,33 +669,6 @@ class _ClozeSequenceQuizBodyState extends State<ClozeSequenceQuizBody> {
     } else {
       return measureSentence();
     }
-  }
-
-  ({double fontSize, double overflow}) _clozeBubbleFontSizeForBox(
-    QuestionLayoutTier tier,
-    double maxWidth,
-    double dialogueHeight,
-    double answerFontSize,
-  ) {
-    final profile = _clozeBubbleTextProfile(tier, answerFontSize);
-    final neededAtMax = _clozeNeededHeight(profile.max, maxWidth);
-    if (neededAtMax <= dialogueHeight) {
-      return (fontSize: profile.max, overflow: 0.0);
-    }
-    final neededAtMin = _clozeNeededHeight(profile.min, maxWidth);
-    if (neededAtMin > dialogueHeight) {
-      return (fontSize: profile.min, overflow: neededAtMin - dialogueHeight);
-    }
-    var lo = profile.min, hi = profile.max;
-    for (var i = 0; i < 16; i++) {
-      final mid = (lo + hi) / 2;
-      if (_clozeNeededHeight(mid, maxWidth) <= dialogueHeight) {
-        lo = mid;
-      } else {
-        hi = mid;
-      }
-    }
-    return (fontSize: lo, overflow: 0.0);
   }
 
   /// Greedy left-to-right row packing that mirrors how `Wrap` actually lays tiles out (same
@@ -768,38 +723,6 @@ class _ClozeSequenceQuizBodyState extends State<ClozeSequenceQuizBody> {
     final rowsDescending =
         _clozeTileRowCountForOrder(descending, fontSize, maxWidth, tier);
     return max(rowsAscending, rowsDescending);
-  }
-
-  /// Shrink-to-fit solve for tile text size: the largest size (down to the tier floor) that
-  /// packs every tile into the available `gridHeight` without needing the answer area's
-  /// last-resort scroll. Mirrors `_clozeBubbleFontSizeForBox`'s bisection shape.
-  double _clozeTileFontSizeForBox(
-    QuestionLayoutTier tier,
-    double maxWidth,
-    double availableHeight,
-  ) {
-    final profile = _clozeTileTextProfile(tier);
-    final tileGap = _clozeTileGapFor(tier);
-    double neededHeightForRows(int rows) =>
-        rows * _clozeSequenceButtonMinTouchTarget + (rows - 1) * tileGap;
-
-    final rowsAtMax = _clozeTileRowCount(profile.max, maxWidth, tier);
-    if (neededHeightForRows(rowsAtMax) <= availableHeight) return profile.max;
-
-    final rowsAtMin = _clozeTileRowCount(profile.min, maxWidth, tier);
-    if (neededHeightForRows(rowsAtMin) > availableHeight) return profile.min;
-
-    var lo = profile.min, hi = profile.max;
-    for (var i = 0; i < 10; i++) {
-      final mid = (lo + hi) / 2;
-      final rows = _clozeTileRowCount(mid, maxWidth, tier);
-      if (neededHeightForRows(rows) <= availableHeight) {
-        lo = mid;
-      } else {
-        hi = mid;
-      }
-    }
-    return lo;
   }
 
   Widget _buildBubble({
@@ -892,21 +815,33 @@ class _ClozeSequenceQuizBodyState extends State<ClozeSequenceQuizBody> {
             _clozeSequenceButtonTextSizeForTier[budget.tier]!;
         final tileFontSize = _singleBlank
             ? 0.0
-            : _clozeTileFontSizeForBox(
-                budget.tier,
+            : questionTileTextSizeFor(budget.tier);
+        final tileHeight = _singleBlank ? 0.0 : questionTileHeightFor(budget);
+        final tileRows = _singleBlank
+            ? 0
+            : _clozeTileRowCount(
+                tileFontSize,
                 max(0.0, answerWidth - 32.0),
-                max(0.0, gridHeight - 16.0),
+                budget.tier,
               );
+        final tileNeededHeight = _singleBlank
+            ? 0.0
+            : tileRows * tileHeight +
+                max(0, tileRows - 1) * _clozeTileGapFor(budget.tier) +
+                16.0;
         final answerFontSize = _singleBlank ? buttonFontSize : tileFontSize;
 
         final bubbleWrapWidth =
-            answerWidth - (widget.audio1Path != null ? 56 : 0);
+            answerWidth - (_hasAnyAudioIcon ? 56 : 0);
         final dialogueTextBudget = max(0.0, dialogueHeight - 20.0 - 8.0);
-        final bubbleResult = _clozeBubbleFontSizeForBox(
-          budget.tier,
+        final sentenceFontSize = questionSentenceTextSizeFor(budget.tier);
+        final sentenceNeededHeight = _clozeNeededHeight(
+          sentenceFontSize,
           bubbleWrapWidth,
-          dialogueTextBudget,
-          answerFontSize,
+        );
+        final bubbleResult = (
+          fontSize: sentenceFontSize,
+          overflow: max(0.0, sentenceNeededHeight - dialogueTextBudget),
         );
 
         // Media is always rendered at its full, fixed `mediaHeight` — never
@@ -914,7 +849,13 @@ class _ClozeSequenceQuizBodyState extends State<ClozeSequenceQuizBody> {
         // full media height; there is no baseline overlap floor.
         final extensionCap = hasImage ? mediaHeight : 0.0;
         final dialogueExtension = min(bubbleResult.overflow, extensionCap);
+        final tileExtension = min(
+          max(0.0, tileNeededHeight - gridHeight),
+          max(0.0, extensionCap - dialogueExtension),
+        );
+        final totalExtension = dialogueExtension + tileExtension;
         final dialogueCardHeight = dialogueHeight + dialogueExtension;
+        final gridHeightFinal = gridHeight + tileExtension;
 
         final numRows = max(1, (_buttonOptions.length / 2).ceil());
         final clozeGridGap = _clozeSequenceGridGap(
@@ -938,7 +879,7 @@ class _ClozeSequenceQuizBodyState extends State<ClozeSequenceQuizBody> {
           mediaHeight,
           dialogueHeight,
           dialogueExtension,
-          gridHeight,
+          gridHeightFinal,
           gridBottomPadding,
           bubbleResult.fontSize,
           buttonFontSize,
@@ -985,7 +926,8 @@ class _ClozeSequenceQuizBodyState extends State<ClozeSequenceQuizBody> {
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
             SizedBox(
-              height: mediaHeight + dialogueHeight,
+              height: (hasImage ? mediaHeight - totalExtension : 0.0) +
+                  dialogueHeight,
               child: Stack(
                 children: [
                   if (hasImage)
@@ -1060,14 +1002,15 @@ class _ClozeSequenceQuizBodyState extends State<ClozeSequenceQuizBody> {
                                                 ),
                                               ),
                                             ),
-                                            if (widget.audio1Path != null) ...[
+                                            if (_hasAnyAudioIcon) ...[
                                               const SizedBox(width: 8),
                                               SizedBox(
                                                 width: 48,
                                                 child: AudioPlayButton(
                                                   isPlaying: _audio1Playing,
-                                                  onPressed: () =>
-                                                      _replayAudio1(),
+                                                  onPressed: _hasManualAudio
+                                                      ? () => _replayAudio1()
+                                                      : null,
                                                 ),
                                               ),
                                             ],
@@ -1121,7 +1064,7 @@ class _ClozeSequenceQuizBodyState extends State<ClozeSequenceQuizBody> {
               ),
             ),
             SizedBox(
-              height: gridHeight,
+              height: gridHeightFinal,
               child: DebugLayoutBox(
                 enabled: widget.debugShowLayoutBounds,
                 label: 'grid',
@@ -1135,7 +1078,7 @@ class _ClozeSequenceQuizBodyState extends State<ClozeSequenceQuizBody> {
                           ? SingleChildScrollView(
                               child: ConstrainedBox(
                                 constraints: BoxConstraints(
-                                  minHeight: gridHeight,
+                                  minHeight: gridHeightFinal,
                                 ),
                                 child: Column(
                                   mainAxisAlignment: MainAxisAlignment.center,
@@ -1191,10 +1134,8 @@ class _ClozeSequenceQuizBodyState extends State<ClozeSequenceQuizBody> {
                                         (i) => _buildTile(
                                           i,
                                           theme,
-                                          minHeight:
-                                              _clozeSequenceButtonMinTouchTarget,
-                                          maxHeight:
-                                              _clozeSequenceButtonMinTouchTarget,
+                                          minHeight: tileHeight,
+                                          maxHeight: tileHeight,
                                           fontSize: tileFontSize,
                                         ),
                                       ),

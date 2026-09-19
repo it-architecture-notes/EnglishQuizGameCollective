@@ -271,13 +271,14 @@ class AppearDisappearQuizBody extends StatefulWidget {
     required this.data,
     required this.userLanguage,
     this.imagePath,
-    this.audio1Path,
-    this.audio2Path,
-    required this.resolveAudioExists,
+    this.enterAudioCue,
+    this.exitCorrectAudioCue,
+    this.exitWrongAudioCue,
     required this.onPlayQuestionAudio,
     required this.onPlayCorrect,
     required this.onPlayWrong,
     required this.onOutcome,
+    this.onUserInteracted,
     this.onNextTileRendered,
     this.debugShowLayoutBounds = false,
   });
@@ -289,13 +290,29 @@ class AppearDisappearQuizBody extends StatefulWidget {
   /// True only inside the `testing-responsive-design` level — draws a visible outline + label
   /// around every major layout box so box boundaries/percentages can be visually audited.
   final bool debugShowLayoutBounds;
-  final String? audio1Path;
-  final String? audio2Path;
-  final Future<bool> Function(String path) resolveAudioExists;
+
+  /// Clips played in sequence during the initial reveal (and replayable via the audio icon any
+  /// time before answering) — the answer becomes visible in the slots the instant this sequence
+  /// *starts* playing, not after it ends. `null`/empty disables the icon pre-answer and skips
+  /// straight to the reveal hold with nothing spoken.
+  final List<String>? enterAudioCue;
+
+  /// Clips played in sequence after a correct answer, before advancing.
+  final List<String>? exitCorrectAudioCue;
+
+  /// Clips played in sequence after a wrong answer (already resolved with the
+  /// `question_exit_correct_audio` fallback applied by the caller) — also what the audio icon
+  /// replays once the question has been answered wrong. `null`/empty disables the icon
+  /// post-wrong.
+  final List<String>? exitWrongAudioCue;
   final Future<void> Function(String path) onPlayQuestionAudio;
   final VoidCallback onPlayCorrect;
   final VoidCallback onPlayWrong;
   final void Function(bool correct) onOutcome;
+
+  /// Fired on the very first interaction with this question (grid tap, translation reveal, or
+  /// audio icon press) — used to hide the footer guide hint.
+  final VoidCallback? onUserInteracted;
   final void Function(int expectedIndex, List<GlobalKey> tileKeys)?
       onNextTileRendered;
 
@@ -347,38 +364,28 @@ class _AppearDisappearQuizBodyState extends State<AppearDisappearQuizBody> {
     });
   }
 
-  /// Two reveal shapes, both developer-specified:
-  /// - **No `line1`** (single-audio type): `audio1` narrates the answer (`words`) directly. The
-  ///   answer becomes visible in the slots the moment `audio1` *starts* playing (not after it
-  ///   ends), so the learner sees and hears it together.
-  /// - **`line1` present** (dual-audio type): `line1` is shown from the start (unconditionally,
-  ///   via `hasLine1` — not gated by this sequence) while `audio1` narrates it with the answer
-  ///   still hidden; once `audio1` finishes, `audio2` narrates the answer and the answer becomes
-  ///   visible the moment `audio2` starts playing.
+  /// Plays [enterAudioCue] in sequence — the answer becomes visible in the slots the instant
+  /// the sequence *starts* (not after it ends), so the learner sees and hears it together. With
+  /// no enter audio, the answer is revealed immediately and the reveal hold still runs (so the
+  /// learner gets a moment to read it silently).
   ///
-  /// Either way, once revealed the answer stays up through the narrating audio plus a short
-  /// extra hold (not tied to audio duration — a flat per-word timer, same as before), then
-  /// hides, then interaction is enabled.
+  /// Either way, once revealed the answer stays up for a flat per-word hold (not tied to audio
+  /// duration), then hides, then interaction is enabled.
   Future<void> _runRevealSequence() async {
     if (_audio1Scheduled) return;
     _audio1Scheduled = true;
-    final hasLine1 = widget.data.line1 != null;
 
-    if (hasLine1) {
-      await _playNarration(widget.audio1Path,
-          setPlaying: (v) => _audio1Playing = v);
-      if (!mounted) return;
-      await _playNarration(
-        widget.audio2Path,
-        setPlaying: (v) => _audio2Playing = v,
-        revealOnStart: true,
-      );
+    final cue = widget.enterAudioCue;
+    if (cue == null || cue.isEmpty) {
+      if (mounted) setState(() => _revealAnswer = true);
     } else {
-      await _playNarration(
-        widget.audio1Path,
-        setPlaying: (v) => _audio1Playing = v,
-        revealOnStart: true,
-      );
+      if (mounted) setState(() => _revealAnswer = true);
+      setState(() => _audio1Playing = true);
+      try {
+        await _playCue(cue);
+      } finally {
+        if (mounted) setState(() => _audio1Playing = false);
+      }
     }
     if (!mounted) return;
 
@@ -399,54 +406,52 @@ class _AppearDisappearQuizBodyState extends State<AppearDisappearQuizBody> {
     _reportNextTile();
   }
 
-  /// Awaits [path]'s existence check and playback (no-op if null or missing). When
-  /// [revealOnStart] is true, `_revealAnswer` flips true the instant playback actually begins
-  /// (or immediately, if there's no audio to wait for at all) — not after it ends.
-  Future<void> _playNarration(
-    String? path, {
-    required void Function(bool) setPlaying,
-    bool revealOnStart = false,
-  }) async {
-    if (path == null) {
-      if (revealOnStart && mounted) setState(() => _revealAnswer = true);
-      return;
-    }
-    final exists = await widget.resolveAudioExists(path);
-    if (!mounted) return;
-    if (!exists) {
-      if (revealOnStart) setState(() => _revealAnswer = true);
-      return;
-    }
-    setState(() {
-      setPlaying(true);
-      if (revealOnStart) _revealAnswer = true;
-    });
-    try {
+  Future<void> _playCue(List<String> cue) async {
+    for (final path in cue) {
       await widget.onPlayQuestionAudio(path);
-    } finally {
-      if (mounted) setState(() => setPlaying(false));
     }
   }
 
-  Future<void> _playAudio1() async {
-    final p = widget.audio1Path;
-    if (p == null || _audio1Playing) return;
-    if (!await widget.resolveAudioExists(p) || !mounted) return;
+  bool get _isAnswered => _failed || _completed;
+
+  /// What the audio icon plays right now: [enterAudioCue] before answering, the
+  /// (already-effective) [exitWrongAudioCue] once answered wrong, nothing once answered
+  /// correctly (the question is about to advance).
+  List<String>? get _manualAudioCue => !_isAnswered
+      ? widget.enterAudioCue
+      : (_failed ? widget.exitWrongAudioCue : null);
+
+  bool get _hasManualAudio {
+    final cue = _manualAudioCue;
+    return cue != null && cue.isNotEmpty;
+  }
+
+  /// True if the audio icon could ever be relevant for this question (enter pre-answer, or
+  /// exit-wrong post-wrong) — used to reserve layout space regardless of the current phase.
+  bool get _hasAnyAudioIcon =>
+      (widget.enterAudioCue != null && widget.enterAudioCue!.isNotEmpty) ||
+      (widget.exitWrongAudioCue != null && widget.exitWrongAudioCue!.isNotEmpty);
+
+  /// Manual replay via the on-screen button — plays [_manualAudioCue].
+  Future<void> _playManualAudio() async {
+    final cue = _manualAudioCue;
+    if (cue == null || cue.isEmpty || _audio1Playing) return;
+    widget.onUserInteracted?.call();
     setState(() => _audio1Playing = true);
     try {
-      await widget.onPlayQuestionAudio(p);
+      await _playCue(cue);
     } finally {
       if (mounted) setState(() => _audio1Playing = false);
     }
   }
 
-  Future<void> _playAudio2() async {
-    final p = widget.audio2Path;
-    if (p == null || _audio2Playing) return;
-    if (!await widget.resolveAudioExists(p) || !mounted) return;
+  /// Plays [exitCorrectAudioCue] after a correct answer, before advancing.
+  Future<void> _playOutcomeAudio() async {
+    final cue = widget.exitCorrectAudioCue;
+    if (cue == null || cue.isEmpty) return;
     setState(() => _audio2Playing = true);
     try {
-      await widget.onPlayQuestionAudio(p);
+      await _playCue(cue);
     } finally {
       if (mounted) setState(() => _audio2Playing = false);
     }
@@ -469,6 +474,7 @@ class _AppearDisappearQuizBodyState extends State<AppearDisappearQuizBody> {
     if (_failed || _completed || !_interactionEnabled || widget.data.trOk) {
       return;
     }
+    widget.onUserInteracted?.call();
     setState(() {
       _failed = true;
       _translationPenalized = true;
@@ -489,13 +495,12 @@ class _AppearDisappearQuizBodyState extends State<AppearDisappearQuizBody> {
       _tapProgress = _sentence.length;
     });
     widget.onPlayWrong();
-    await _playAudio2();
-    if (!mounted) return;
     widget.onOutcome(false);
   }
 
   Future<void> _onGridTap(int gridIndex) async {
     if (!_interactionEnabled || _completed || _failed) return;
+    widget.onUserInteracted?.call();
     if (_correctGridIndices.contains(gridIndex) && _tapProgress > 0) {
       setState(() {
         _tapProgress = 0;
@@ -524,7 +529,7 @@ class _AppearDisappearQuizBodyState extends State<AppearDisappearQuizBody> {
       if (_tapProgress >= _sentence.length) {
         _completed = true;
         widget.onPlayCorrect();
-        await _playAudio2();
+        await _playOutcomeAudio();
         if (!mounted) return;
         widget.onOutcome(true);
       }
@@ -538,8 +543,6 @@ class _AppearDisappearQuizBodyState extends State<AppearDisappearQuizBody> {
         }
       });
       widget.onPlayWrong();
-      await _playAudio2();
-      if (!mounted) return;
       widget.onOutcome(false);
     }
   }
@@ -622,7 +625,29 @@ class _AppearDisappearQuizBodyState extends State<AppearDisappearQuizBody> {
     required double availableHeight,
     required FontWeight fontWeight,
     double? fontSizeOverride,
+    double? fixedHeight,
+    double? fixedFontSize,
   }) {
+    if (fixedHeight != null && fixedFontSize != null) {
+      final metrics = _appearDisappearCellMetrics(fixedHeight);
+      final rows = _estimateWrapRows(
+        items: items,
+        availableWidth: availableWidth,
+        spacing: _appearDisappearRowGap(fixedHeight),
+        minItemWidth: metrics.minWidth,
+        horizontalPadding: metrics.horizontalPadding,
+        fontSize: fixedFontSize,
+        fontWeight: fontWeight,
+      );
+      final needed = rows * fixedHeight +
+          (rows - 1) * _appearDisappearRowGap(fixedHeight);
+      return (
+        height: fixedHeight,
+        fontSize: fixedFontSize,
+        rows: rows,
+        shortfallHeight: max(0.0, needed - availableHeight),
+      );
+    }
     for (var i = 0; i < presets.length; i++) {
       final preset = presets[i];
       final fontSize = fontSizeOverride ?? preset.fontSize;
@@ -810,8 +835,7 @@ class _AppearDisappearQuizBodyState extends State<AppearDisappearQuizBody> {
             : remainderHeight * 0.62;
 
         final promptPreset = _appearDisappearPromptPresets[budget.tier]!;
-        final promptWrapWidth = answerWidth -
-            (widget.audio1Path != null || widget.audio2Path != null ? 56 : 0);
+        final promptWrapWidth = answerWidth - (_hasAnyAudioIcon ? 56 : 0);
         final promptTextBudget = max(
           0.0,
           promptHeight -
@@ -834,27 +858,25 @@ class _AppearDisappearQuizBodyState extends State<AppearDisappearQuizBody> {
           availableWidth: answerWidth - 32,
           availableHeight: max(0.0, tileBankHeight - 8.0),
           fontWeight: FontWeight.w600,
+          fixedHeight: questionTileHeightFor(budget),
+          fixedFontSize: questionTileTextSizeFor(budget.tier),
         );
-        // Slot and dialog text render at the exact same size as the resolved tile font
-        // (developer-directed parity with `SentenceBuilder`: tiles, slots, and dialog all
-        // share one text size, only dialog is bold). Slot keeps its own height ladder (chrome
-        // height can legitimately differ) and non-bold weight (`w600`, matching tiles).
+        // Slot dimensions and text use the shared device metric, independent of row count.
         final slotPreset = _resolvePreset(
-          items: displaySlots,
+          items: List<String?>.from(_sentence),
           presets: _appearDisappearSlotPresets[budget.tier]!,
           availableWidth: answerWidth - 24,
           availableHeight: max(0.0, slotHeight - 8.0),
           fontWeight: FontWeight.w600,
-          fontSizeOverride: tilePreset.fontSize,
+          fixedHeight: questionSlotHeightFor(budget),
+          fixedFontSize: questionSlotTextSizeFor(budget.tier),
         );
         final emptySlotWidth =
             _appearDisappearCellMetrics(slotPreset.height).minWidth;
 
         final tileFontSize = tilePreset.fontSize;
         final slotFontSize = slotPreset.fontSize;
-        // Dialog/prompt text renders at the exact same size as tiles/slots (developer ask:
-        // all three share one text size, only dialog is bold).
-        final dialogFontSize = tileFontSize;
+        final dialogFontSize = questionSentenceTextSizeFor(budget.tier);
 
         final promptNeeded = hasLine1
             ? _promptNeededHeight(
@@ -1011,17 +1033,15 @@ class _AppearDisappearQuizBodyState extends State<AppearDisappearQuizBody> {
                                         ),
                                       ),
                                     ),
-                                    if (widget.audio1Path != null ||
-                                        widget.audio2Path != null) ...[
+                                    if (_hasAnyAudioIcon) ...[
                                       const SizedBox(width: 8),
                                       AudioPlayButton(
                                         isPlaying:
                                             _audio1Playing || _audio2Playing,
-                                        onPressed: _audio1Playing
+                                        onPressed: (_audio1Playing ||
+                                                !_hasManualAudio)
                                             ? null
-                                            : (_failed || _completed)
-                                                ? () => _playAudio2()
-                                                : () => _playAudio1(),
+                                            : () => _playManualAudio(),
                                       ),
                                     ],
                                   ],

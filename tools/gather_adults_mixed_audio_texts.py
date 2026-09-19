@@ -159,11 +159,11 @@ def extract_audio_texts(row: dict) -> dict | None:
     }
 
     af = _str_or_none(row.get("audio_file"))
-    af1 = _str_or_none(row.get("audio_file1"))
-    af2 = _str_or_none(row.get("audio_file2"))
+    af1 = _str_or_none(row.get("question_repeat_audio"))
+    af2 = _str_or_none(row.get("question_exit_correct_audio"))
     af_text = _str_or_none(row.get("audio_file_text"))
-    af1_text = _str_or_none(row.get("audio_file1_text"))
-    af2_text = _str_or_none(row.get("audio_file2_text"))
+    af1_text = _str_or_none(row.get("question_repeat_audio_text"))
+    af2_text = _str_or_none(row.get("question_exit_correct_audio_text"))
 
     if template == "ConvoTemplate-1":
         line1 = _localized_en(qd.get("line1")) or ""

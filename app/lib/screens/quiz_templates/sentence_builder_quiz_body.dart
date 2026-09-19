@@ -202,13 +202,14 @@ class SentenceBuilderQuizBody extends StatefulWidget {
     required this.strings,
     required this.userLanguage,
     this.imagePath,
-    this.audio1Path,
-    this.audio2Path,
-    required this.resolveAudioExists,
+    this.enterAudioCue,
+    this.exitCorrectAudioCue,
+    this.exitWrongAudioCue,
     required this.onPlayQuestionAudio,
     required this.onPlayCorrect,
     required this.onPlayWrong,
     required this.onOutcome,
+    this.onUserInteracted,
     this.onNextTileRendered,
     this.debugShowLayoutBounds = false,
   });
@@ -222,16 +223,27 @@ class SentenceBuilderQuizBody extends StatefulWidget {
   /// around every major layout box so box boundaries/percentages can be visually audited.
   final bool debugShowLayoutBounds;
 
-  /// Setup clip for [SentenceBuilderQuestionData.line1] — plays automatically before the learner answers.
-  final String? audio1Path;
+  /// Clips played in sequence, automatically, the first time this question is presented — and
+  /// replayable via the audio icon any time before answering. `null`/empty disables the icon
+  /// pre-answer.
+  final List<String>? enterAudioCue;
 
-  /// Confirm clip played after the learner answers.
-  final String? audio2Path;
-  final Future<bool> Function(String path) resolveAudioExists;
+  /// Clips played in sequence after a correct answer, before advancing.
+  final List<String>? exitCorrectAudioCue;
+
+  /// Clips played in sequence after a wrong answer (already resolved with the
+  /// `question_exit_correct_audio` fallback applied by the caller) — also what the audio icon
+  /// replays once the question has been answered wrong. `null`/empty disables the icon
+  /// post-wrong.
+  final List<String>? exitWrongAudioCue;
   final Future<void> Function(String path) onPlayQuestionAudio;
   final VoidCallback onPlayCorrect;
   final VoidCallback onPlayWrong;
   final void Function(bool correct) onOutcome;
+
+  /// Fired on the very first interaction with this question (tile tap, translation reveal, or
+  /// audio icon press) — used to hide the footer guide hint.
+  final VoidCallback? onUserInteracted;
   final void Function(int expectedIndex, List<GlobalKey> tileKeys)?
       onNextTileRendered;
 
@@ -263,13 +275,35 @@ class _SentenceBuilderQuizBodyState extends State<SentenceBuilderQuizBody> {
 
   List<String> get _target => widget.data.correctOrder;
 
-  bool get _isDualAudio =>
-      widget.audio1Path != null && widget.audio2Path != null;
+  bool get _isAnswered => _failed || _completed;
+
+  /// What the audio icon plays right now: [enterAudioCue] before answering, the
+  /// (already-effective) [exitWrongAudioCue] once answered wrong, nothing once answered
+  /// correctly (the question is about to advance).
+  List<String>? get _manualAudioCue =>
+      !_isAnswered ? widget.enterAudioCue : (_failed ? widget.exitWrongAudioCue : null);
+
+  bool get _hasManualAudio {
+    final cue = _manualAudioCue;
+    return cue != null && cue.isNotEmpty;
+  }
+
+  /// True if the audio icon could ever be relevant for this question (enter pre-answer, or
+  /// exit-wrong post-wrong) — used to reserve layout space regardless of the current phase.
+  bool get _hasAnyAudioIcon =>
+      (widget.enterAudioCue != null && widget.enterAudioCue!.isNotEmpty) ||
+      (widget.exitWrongAudioCue != null && widget.exitWrongAudioCue!.isNotEmpty);
+
+  Future<void> _playCue(List<String> cue) async {
+    for (final path in cue) {
+      await widget.onPlayQuestionAudio(path);
+    }
+  }
 
   @override
   void initState() {
     super.initState();
-    if (widget.audio1Path != null) {
+    if (widget.enterAudioCue != null && widget.enterAudioCue!.isNotEmpty) {
       _setupAudioComplete = false;
       WidgetsBinding.instance.addPostFrameCallback((_) => _primeAudio1());
     }
@@ -317,6 +351,7 @@ class _SentenceBuilderQuizBodyState extends State<SentenceBuilderQuizBody> {
 
   Future<void> _onTranslationRevealed() async {
     if (_failed || _completed || widget.data.trOk) return;
+    widget.onUserInteracted?.call();
     setState(() {
       _failed = true;
       _translationPenalized = true;
@@ -335,13 +370,12 @@ class _SentenceBuilderQuizBodyState extends State<SentenceBuilderQuizBody> {
       _tapProgress = _sentence.length;
     });
     widget.onPlayWrong();
-    await _playOutcomeAudio();
-    if (!mounted) return;
     widget.onOutcome(false);
   }
 
   Future<void> _onGridTap(int cellIndex) async {
     if (_completed || _failed || _usedCellIndices.contains(cellIndex)) return;
+    widget.onUserInteracted?.call();
     final sentencePos = _perm[cellIndex];
     final expectedPos = _tapProgress;
     if (sentencePos == expectedPos) {
@@ -379,8 +413,6 @@ class _SentenceBuilderQuizBodyState extends State<SentenceBuilderQuizBody> {
         }
       });
       widget.onPlayWrong();
-      await _playOutcomeAudio();
-      if (!mounted) return;
       widget.onOutcome(false);
     }
   }
@@ -388,10 +420,8 @@ class _SentenceBuilderQuizBodyState extends State<SentenceBuilderQuizBody> {
   Future<void> _primeAudio1() async {
     if (_audio1Scheduled) return;
     _audio1Scheduled = true;
-    final p = widget.audio1Path;
-    if (p == null) return;
-    final ok = await widget.resolveAudioExists(p);
-    if (!ok || !mounted) {
+    final cue = widget.enterAudioCue;
+    if (cue == null || cue.isEmpty || !mounted) {
       if (mounted) setState(() => _setupAudioComplete = true);
       return;
     }
@@ -399,7 +429,7 @@ class _SentenceBuilderQuizBodyState extends State<SentenceBuilderQuizBody> {
     if (!mounted) return;
     setState(() => _audio1Playing = true);
     try {
-      await widget.onPlayQuestionAudio(p);
+      await _playCue(cue);
     } finally {
       if (mounted) {
         setState(() {
@@ -411,27 +441,23 @@ class _SentenceBuilderQuizBodyState extends State<SentenceBuilderQuizBody> {
   }
 
   Future<void> _replayAudio1() async {
-    final p = widget.audio1Path;
-    if (p == null || _audio1Playing) return;
-    final ok = await widget.resolveAudioExists(p);
-    if (!ok || !mounted) return;
+    final cue = _manualAudioCue;
+    if (cue == null || cue.isEmpty || _audio1Playing) return;
+    widget.onUserInteracted?.call();
     setState(() => _audio1Playing = true);
     try {
-      await widget.onPlayQuestionAudio(p);
+      await _playCue(cue);
     } finally {
       if (mounted) setState(() => _audio1Playing = false);
     }
   }
 
   Future<void> _playOutcomeAudio() async {
-    if (!_isDualAudio) return;
-    final p = widget.audio2Path;
-    if (p == null) return;
-    final ok = await widget.resolveAudioExists(p);
-    if (!ok || !mounted) return;
+    final cue = widget.exitCorrectAudioCue;
+    if (cue == null || cue.isEmpty) return;
     setState(() => _audioPlaying = true);
     try {
-      await widget.onPlayQuestionAudio(p);
+      await _playCue(cue);
     } finally {
       if (mounted) setState(() => _audioPlaying = false);
     }
@@ -530,7 +556,29 @@ class _SentenceBuilderQuizBodyState extends State<SentenceBuilderQuizBody> {
     required double availableHeight,
     required FontWeight fontWeight,
     double? fontSizeOverride,
+    double? fixedHeight,
+    double? fixedFontSize,
   }) {
+    if (fixedHeight != null && fixedFontSize != null) {
+      final metrics = _sentenceBuilderCellMetrics(fixedHeight);
+      final rows = _estimateWrapRows(
+        items: items,
+        availableWidth: availableWidth,
+        spacing: _sentenceBuilderRowGap(fixedHeight),
+        minItemWidth: metrics.minWidth,
+        horizontalPadding: metrics.horizontalPadding,
+        fontSize: fixedFontSize,
+        fontWeight: fontWeight,
+      );
+      final needed = rows * fixedHeight +
+          (rows - 1) * _sentenceBuilderRowGap(fixedHeight);
+      return (
+        height: fixedHeight,
+        fontSize: fixedFontSize,
+        rows: rows,
+        shortfallHeight: max(0.0, needed - availableHeight),
+      );
+    }
     for (var i = 0; i < presets.length; i++) {
       final preset = presets[i];
       final fontSize = fontSizeOverride ?? preset.fontSize;
@@ -573,94 +621,6 @@ class _SentenceBuilderQuizBodyState extends State<SentenceBuilderQuizBody> {
     return (
       height: maxPreset.height,
       fontSize: maxFontSize,
-      rows: actualRows,
-      shortfallHeight: max(0.0, needed - availableHeight),
-    );
-  }
-
-  /// EXPERIMENTAL — scoped to `tablet4to3` tile box only, developer-directed prototype.
-  ///
-  /// Unlike [_resolvePreset] (a fixed 3-entry table picked by row count), this searches a
-  /// continuous font-size ladder — expressed as a percentage of the tier's reference tile
-  /// height, not an absolute px table — trying 1 row first at the biggest sizes and only
-  /// dropping to more rows once the floor size is reached:
-  ///   1 row:  50% → 45% → 40% → 35%
-  ///   2 rows: 30% → 25%
-  ///   3 rows: 25% (floor — no further shrink)
-  /// If even 3 rows at the floor can't fit the real content, this returns a real
-  /// `shortfallHeight` exactly like [_resolvePreset]'s "exceeded the ladder" branch — which
-  /// already feeds the existing media-cascade-extension pipeline, so "cascade extend" beyond
-  /// this ladder is not new logic, just this function being honest about not fitting.
-  ///
-  /// The box `tileBankHeight` itself is untouched by this — same fixed per-tier percentage as
-  /// before. Only what happens *inside* that box (font size, tile height, row count) adapts.
-  _PresetResolution _resolveTileFillPreset({
-    required List<String?> items,
-    required double availableWidth,
-    required double availableHeight,
-    required FontWeight fontWeight,
-  }) {
-    const referenceTileHeight =
-        60.0; // tablet4to3's existing 1-row preset height
-    const ladder = <(int rows, double pct)>[
-      (1, 0.50),
-      (1, 0.45),
-      (1, 0.40),
-      (1, 0.35),
-      (2, 0.30),
-      (2, 0.25),
-      (3, 0.25),
-    ];
-
-    ({double fontSize, double height}) sizingFor(double pct) {
-      final fontSize = referenceTileHeight * pct;
-      final height =
-          max(44.0, fontSize + 40.0); // touch-target floor, generous padding
-      return (fontSize: fontSize, height: height);
-    }
-
-    for (final step in ladder) {
-      final sizing = sizingFor(step.$2);
-      final metrics = _sentenceBuilderCellMetrics(sizing.height);
-      final rows = _estimateWrapRows(
-        items: items,
-        availableWidth: availableWidth,
-        spacing: _sentenceBuilderRowGap(sizing.height),
-        minItemWidth: metrics.minWidth,
-        horizontalPadding: metrics.horizontalPadding,
-        fontSize: sizing.fontSize,
-        fontWeight: fontWeight,
-      );
-      if (rows <= step.$1) {
-        final needed = rows * sizing.height +
-            (rows - 1) * _sentenceBuilderRowGap(sizing.height);
-        return (
-          height: sizing.height,
-          fontSize: sizing.fontSize,
-          rows: rows,
-          shortfallHeight: max(0.0, needed - availableHeight),
-        );
-      }
-    }
-
-    // Exceeded the ladder (would need a 4th row even at the 25% floor) — freeze at the floor
-    // and report the real shortfall so the existing cascade-extension pipeline absorbs it.
-    final sizing = sizingFor(0.25);
-    final metrics = _sentenceBuilderCellMetrics(sizing.height);
-    final actualRows = _estimateWrapRows(
-      items: items,
-      availableWidth: availableWidth,
-      spacing: _sentenceBuilderRowGap(sizing.height),
-      minItemWidth: metrics.minWidth,
-      horizontalPadding: metrics.horizontalPadding,
-      fontSize: sizing.fontSize,
-      fontWeight: fontWeight,
-    );
-    final needed = actualRows * sizing.height +
-        (actualRows - 1) * _sentenceBuilderRowGap(sizing.height);
-    return (
-      height: sizing.height,
-      fontSize: sizing.fontSize,
       rows: actualRows,
       shortfallHeight: max(0.0, needed - availableHeight),
     );
@@ -842,50 +802,38 @@ class _SentenceBuilderQuizBodyState extends State<SentenceBuilderQuizBody> {
 
         // Prompt sizing
         final promptWrapWidth =
-            answerWidth - (widget.audio1Path != null ? 56 : 0);
+            answerWidth - (_hasAnyAudioIcon ? 56 : 0);
         final promptTextBudget = max(0.0, promptHeight - 28.0);
 
-        // Resolve tiles and slots against their discrete preset ladders, measuring the real
-        // live content (actual `_perm` tile order, actual current `_slots` fill state) — the
-        // box adapts to whatever row count that content needs instead of the content being
-        // forced into a fixed box, so there's no risk in measuring the true live order.
+        // Resolve tiles from their fixed question geometry. Resolve slots from the complete
+        // target sentence rather than the currently filled values so a short answer cannot
+        // collapse the slot group and move the tile bank during a tap.
         // Real content-area height: nominal box minus the Wrap's own outer padding (`vertical:
         // 4` on each side = 8px), so the shortfall check compares against what's actually left
         // for rows, not the full nominal box.
         // `tablet4to3` only: developer-directed prototype trying a fill-the-box, continuous
         // font-percentage ladder instead of the fixed 3-entry table every other tier still
         // uses below. Scoped narrowly so this experiment can't affect any other device tier.
-        final tilePreset = budget.tier == QuestionLayoutTier.tablet4to3
-            ? _resolveTileFillPreset(
-                items:
-                    List<String?>.generate(_perm.length, (i) => _wordAtCell(i)),
-                availableWidth: answerWidth - 32,
-                availableHeight: max(0.0, tileBankHeight - 8.0),
-                fontWeight: FontWeight.w600,
-              )
-            : _resolvePreset(
-                items:
-                    List<String?>.generate(_perm.length, (i) => _wordAtCell(i)),
-                presets: _sentenceBuilderTilePresets[budget.tier]!,
-                availableWidth: answerWidth - 32,
-                availableHeight: max(0.0, tileBankHeight - 8.0),
-                fontWeight: FontWeight.w600,
-              );
+        final tilePreset = _resolvePreset(
+          items: List<String?>.generate(_perm.length, (i) => _wordAtCell(i)),
+          presets: _sentenceBuilderTilePresets[budget.tier]!,
+          availableWidth: answerWidth - 32,
+          availableHeight: max(0.0, tileBankHeight - 8.0),
+          fontWeight: FontWeight.w600,
+          fixedHeight: questionTileHeightFor(budget),
+          fixedFontSize: questionTileTextSizeFor(budget.tier),
+        );
         final tileFontSize = tilePreset.fontSize;
 
-        // Slot text renders at the exact same size as the resolved tile font (developer ask:
-        // tiles, slots, and dialog all share one text size) — `fontSizeOverride` measures and
-        // returns `tileFontSize` instead of the slot ladder's own font column, while still
-        // using the slot ladder's own height column (slot chrome height can legitimately
-        // differ from tile chrome height) and non-bold weight (`w600`, matching tiles — only
-        // the dialog/prompt stays bold).
+        // Slot dimensions and text use the shared device metric, independent of row count.
         final slotPreset = _resolvePreset(
-          items: _slots,
+          items: List<String?>.from(_sentence),
           presets: _sentenceBuilderSlotPresets[budget.tier]!,
           availableWidth: answerWidth - 24,
           availableHeight: max(0.0, slotHeight - 8.0),
           fontWeight: FontWeight.w600,
-          fontSizeOverride: tileFontSize,
+          fixedHeight: questionSlotHeightFor(budget),
+          fixedFontSize: questionSlotTextSizeFor(budget.tier),
         );
         // Same formula used for measurement and render, at the preset that actually resolved
         // (not the ladder's first rung) — an empty-slot placeholder for whichever preset won.
@@ -894,10 +842,7 @@ class _SentenceBuilderQuizBodyState extends State<SentenceBuilderQuizBody> {
 
         final slotFontSize = slotPreset.fontSize;
 
-        // Dialog text renders at the exact same size as tiles/slots (developer ask: all three
-        // share one text size, only dialog is bold) — its own box height is whatever that
-        // shared font actually needs, not a separately profiled min/max.
-        final dialogFontSize = tileFontSize;
+        final dialogFontSize = questionSentenceTextSizeFor(budget.tier);
         final promptNeeded = hasLine1
             ? _promptNeededHeight(
                 dialogFontSize, promptWrapWidth, widget.data.line1!)
@@ -1074,10 +1019,12 @@ class _SentenceBuilderQuizBodyState extends State<SentenceBuilderQuizBody> {
                                     crossAxisAlignment:
                                         CrossAxisAlignment.center,
                                     children: [
-                                      if (widget.audio1Path != null) ...[
+                                      if (_hasAnyAudioIcon) ...[
                                         AudioPlayButton(
                                           isPlaying: _audio1Playing,
-                                          onPressed: () => _replayAudio1(),
+                                          onPressed: _hasManualAudio
+                                              ? () => _replayAudio1()
+                                              : null,
                                         ),
                                         const SizedBox(width: 8),
                                       ],
