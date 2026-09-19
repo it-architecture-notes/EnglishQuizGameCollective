@@ -119,7 +119,15 @@ Future<void> playQuestionAudio(String assetPath) async {
       if (!completer.isCompleted) completer.completeError(e, st);
       rethrow;
     }
-    return completer.future;
+    // Safety timeout: audioplayers on iOS/macOS sometimes drops onPlayerComplete for short clips.
+    // If we wait forever, the UI gets stuck. We timeout after a reasonable maximum duration.
+    return completer.future.timeout(
+      const Duration(seconds: 15),
+      onTimeout: () {
+        sub.cancel();
+        if (!completer.isCompleted) completer.complete();
+      },
+    );
   } catch (e, st) {
     if (e.toString().contains('AbortError')) return;
     debugPrint('AudioService.playQuestionAudio: $e\n$st');

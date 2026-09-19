@@ -7,7 +7,9 @@
       "pause_at": "00:03.3",
       "answer_until": "00:05.4",
       "audio_file1": "waking-up1-q1-setup",
+      "audio_file1_text": "Good morning! The alarm is ringing!",
       "audio_file2": "waking-up1-q1-confirm",
+      "audio_file2_text": "I don't want to wake up.",
       "questionData": {
         "answer_type": "ClozeSequence",
         "sentence": "I don't want to _____.",
@@ -28,7 +30,9 @@
       "pause_at": "00:08.3",
       "answer_until": "00:10.2",
       "audio_file1": "waking-up1-q2-setup",
+      "audio_file1_text": "Come on. It's time to get up.",
       "audio_file2": "waking-up1-q2-confirm",
+      "audio_file2_text": "But I want to sleep.",
       "questionData": {
         "answer_type": "DialogueCompletion",
         "answer": "But I want to sleep.",
@@ -46,6 +50,7 @@
       "pause_at": "00:12.6",
       "answer_until": "00:12.6",
       "audio_file1": "waking-up1-q3-setup",
+      "audio_file1_text": "Please get ready quickly. You are late.",
       "questionData": {
         "answer_type": "AppearDisappear",
         "words": "Please get ready quickly. You are late.",
@@ -63,7 +68,9 @@
       "pause_at": "00:15.8",
       "answer_until": "00:22.1",
       "audio_file1": "waking-up1-q4-setup",
+      "audio_file1_text": "Okay, I'm standing up and stretching.",
       "audio_file2": "waking-up1-q4-confirm",
+      "audio_file2_text": "Good. Please open the curtains and the window.",
       "questionData": {
         "answer_type": "ClozeSequence",
         "sentence": "Good. Please _____ the curtains and the window.",
@@ -166,6 +173,90 @@
           "open",
           "opens",
           "to open"
+        ]
+      }
+    },
+    {
+      "template": "WordPairs",
+      "questionData": {
+        "english_words": [
+          "today",
+          "tomorrow",
+          "yesterday",
+          "in two days",
+          "two days before"
+        ],
+        "translations": [
+          {
+            "tr": "bugün",
+            "es": "hoy",
+            "fr": "aujourd'hui",
+            "de": "heute",
+            "it": "oggi",
+            "pt": "hoje",
+            "ru": "сегодня",
+            "zh": "今天",
+            "ja": "今日",
+            "ko": "오늘",
+            "ar": "اليوم",
+            "hi": "आज"
+          },
+          {
+            "tr": "yarın",
+            "es": "mañana",
+            "fr": "demain",
+            "de": "morgen",
+            "it": "domani",
+            "pt": "amanhã",
+            "ru": "завтра",
+            "zh": "明天",
+            "ja": "明日",
+            "ko": "내일",
+            "ar": "غدا",
+            "hi": "कल"
+          },
+          {
+            "tr": "dün",
+            "es": "ayer",
+            "fr": "hier",
+            "de": "gestern",
+            "it": "ieri",
+            "pt": "ontem",
+            "ru": "вчера",
+            "zh": "昨天",
+            "ja": "昨日",
+            "ko": "어제",
+            "ar": "أمس",
+            "hi": "कल"
+          },
+          {
+            "tr": "iki gün sonra",
+            "es": "en dos días",
+            "fr": "dans deux jours",
+            "de": "in zwei Tagen",
+            "it": "tra due giorni",
+            "pt": "em dois dias",
+            "ru": "через два дня",
+            "zh": "两天后",
+            "ja": "二日後",
+            "ko": "이틀 후",
+            "ar": "خلال يومين",
+            "hi": "दो दिन में"
+          },
+          {
+            "tr": "iki gün önce",
+            "es": "dos días antes",
+            "fr": "il y a deux jours",
+            "de": "vor zwei Tagen",
+            "it": "due giorni fa",
+            "pt": "dois dias antes",
+            "ru": "два дня назад",
+            "zh": "两天前",
+            "ja": "二日前",
+            "ko": "이틀 전",
+            "ar": "قبل يومين",
+            "hi": "दो दिन पहले"
+          }
         ]
       }
     }

@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter/widgets.dart';
 
 /// Two-stage device classification for the fixed header/media/footer quiz layout, kept
@@ -142,41 +144,133 @@ class QuestionLayoutBudget {
       ({double header, double media, double footer})> _fractionsForTier = {
     QuestionLayoutTier.phoneUltraTall: (
       header: 0.070,
-      media: 0.380,
+      media: 0.460,
       footer: 0.085
     ),
     QuestionLayoutTier.phoneSuperTall: (
       header: 0.075,
-      media: 0.400,
+      media: 0.480,
       footer: 0.095
     ),
     QuestionLayoutTier.phoneFlagship: (
       header: 0.080,
-      media: 0.420,
+      media: 0.500,
       footer: 0.080
     ),
     QuestionLayoutTier.phoneTransition: (
       header: 0.085,
-      media: 0.390,
+      media: 0.470,
       footer: 0.100
     ),
     QuestionLayoutTier.phoneClassic2to1: (
       header: 0.090,
-      media: 0.380,
+      media: 0.460,
       footer: 0.100
     ),
-    QuestionLayoutTier.phone16to9: (header: 0.090, media: 0.350, footer: 0.100),
+    QuestionLayoutTier.phone16to9: (header: 0.090, media: 0.430, footer: 0.100),
     QuestionLayoutTier.tablet16to9: (
       header: 0.075,
-      media: 0.360,
+      media: 0.440,
       footer: 0.085
     ),
     QuestionLayoutTier.tablet16to10: (
       header: 0.070,
-      media: 0.400,
+      media: 0.480,
       footer: 0.080
     ),
-    QuestionLayoutTier.tablet3to2: (header: 0.065, media: 0.420, footer: 0.075),
-    QuestionLayoutTier.tablet4to3: (header: 0.060, media: 0.440, footer: 0.070),
+    QuestionLayoutTier.tablet3to2: (header: 0.065, media: 0.500, footer: 0.075),
+    QuestionLayoutTier.tablet4to3: (header: 0.060, media: 0.520, footer: 0.070),
   };
 }
+
+/// Shared interaction metrics for tile-based questions. Heights scale with the safe usable
+/// viewport; text sizes stay fixed for the device tier so wrapping into more rows never makes
+/// the controls smaller.
+const Map<QuestionLayoutTier, double> _tileHeightFractions = {
+  QuestionLayoutTier.phoneUltraTall: 0.057,
+  QuestionLayoutTier.phoneSuperTall: 0.057,
+  QuestionLayoutTier.phoneFlagship: 0.057,
+  QuestionLayoutTier.phoneTransition: 0.057,
+  QuestionLayoutTier.phoneClassic2to1: 0.057,
+  QuestionLayoutTier.phone16to9: 0.057,
+  QuestionLayoutTier.tablet16to9: 0.0475,
+  QuestionLayoutTier.tablet16to10: 0.0494,
+  QuestionLayoutTier.tablet3to2: 0.05415,
+  QuestionLayoutTier.tablet4to3: 0.05795,
+};
+
+const Map<QuestionLayoutTier, double> _slotHeightFractions = {
+  QuestionLayoutTier.phoneUltraTall: 0.052,
+  QuestionLayoutTier.phoneSuperTall: 0.052,
+  QuestionLayoutTier.phoneFlagship: 0.052,
+  QuestionLayoutTier.phoneTransition: 0.052,
+  QuestionLayoutTier.phoneClassic2to1: 0.052,
+  QuestionLayoutTier.phone16to9: 0.052,
+  QuestionLayoutTier.tablet16to9: 0.041,
+  QuestionLayoutTier.tablet16to10: 0.044,
+  QuestionLayoutTier.tablet3to2: 0.052,
+  QuestionLayoutTier.tablet4to3: 0.055,
+};
+
+/// Floor for [questionTileHeightFor]/[questionSlotHeightFor] — on the smallest phone reference
+/// (e.g. iPhone SE-class), the raw fraction dips below this app's established minimum tappable
+/// size (`_clozeSequenceButtonMinTouchTarget`/`_convo1ButtonMinTouchTarget`/
+/// `_imageQuiz1ButtonMinTouchTarget`, all 44.0) — this clamp keeps tile/slot height from ever
+/// going below that same floor, matching every other answer-choice control in the app.
+const double _questionCellMinHeight = 44.0;
+
+const Map<QuestionLayoutTier, double> _tileTextSizes = {
+  QuestionLayoutTier.phoneUltraTall: 16.0,
+  QuestionLayoutTier.phoneSuperTall: 16.0,
+  QuestionLayoutTier.phoneFlagship: 16.0,
+  QuestionLayoutTier.phoneTransition: 16.0,
+  QuestionLayoutTier.phoneClassic2to1: 16.0,
+  QuestionLayoutTier.phone16to9: 16.0,
+  QuestionLayoutTier.tablet16to9: 20.0,
+  QuestionLayoutTier.tablet16to10: 20.0,
+  QuestionLayoutTier.tablet3to2: 20.0,
+  QuestionLayoutTier.tablet4to3: 20.0,
+};
+
+const Map<QuestionLayoutTier, double> _slotTextSizes = {
+  QuestionLayoutTier.phoneUltraTall: 15.0,
+  QuestionLayoutTier.phoneSuperTall: 15.0,
+  QuestionLayoutTier.phoneFlagship: 15.0,
+  QuestionLayoutTier.phoneTransition: 15.0,
+  QuestionLayoutTier.phoneClassic2to1: 15.0,
+  QuestionLayoutTier.phone16to9: 15.0,
+  QuestionLayoutTier.tablet16to9: 20.0,
+  QuestionLayoutTier.tablet16to10: 20.0,
+  QuestionLayoutTier.tablet3to2: 20.0,
+  QuestionLayoutTier.tablet4to3: 20.0,
+};
+
+const Map<QuestionLayoutTier, double> _sentenceTextSizes = {
+  QuestionLayoutTier.phoneUltraTall: 16.0,
+  QuestionLayoutTier.phoneSuperTall: 16.0,
+  QuestionLayoutTier.phoneFlagship: 16.0,
+  QuestionLayoutTier.phoneTransition: 16.0,
+  QuestionLayoutTier.phoneClassic2to1: 16.0,
+  QuestionLayoutTier.phone16to9: 16.0,
+  QuestionLayoutTier.tablet16to9: 20.0,
+  QuestionLayoutTier.tablet16to10: 20.0,
+  QuestionLayoutTier.tablet3to2: 20.0,
+  QuestionLayoutTier.tablet4to3: 20.0,
+};
+
+double questionTileHeightFor(QuestionLayoutBudget budget) => max(
+      _questionCellMinHeight,
+      budget.usableHeight * _tileHeightFractions[budget.tier]!,
+    );
+
+double questionSlotHeightFor(QuestionLayoutBudget budget) => max(
+      _questionCellMinHeight,
+      budget.usableHeight * _slotHeightFractions[budget.tier]!,
+    );
+
+double questionTileTextSizeFor(QuestionLayoutTier tier) => _tileTextSizes[tier]!;
+
+double questionSlotTextSizeFor(QuestionLayoutTier tier) => _slotTextSizes[tier]!;
+
+double questionSentenceTextSizeFor(QuestionLayoutTier tier) =>
+    _sentenceTextSizes[tier]!;

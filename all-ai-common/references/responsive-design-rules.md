@@ -19,16 +19,16 @@ A) Shared layout principles
 
        | Tier | Aspect (H/W) | Header | Media | Footer | Remainder |
        |---|---:|---:|---:|---:|---:|
-       | `phoneUltraTall` | ≥2.30 | 7.0% | 38.0% | 8.5% | 46.5% |
-       | `phoneSuperTall` | 2.18–2.30 | 7.5% | 40.0% | 9.5% | 43.0% |
-       | `phoneFlagship` | 2.10–2.18 | 8.0% | 42.0% | 10.0% | 40.0% |
-       | `phoneTransition` | 1.95–2.10 | 8.5% | 39.0% | 10.0% | 42.5% |
-       | `phoneClassic2to1` | 1.85–1.95 | 9.0% | 38.0% | 10.0% | 43.0% |
-       | `phone16to9` | 1.70–1.85 (fallback below) | 9.0% | 35.0% | 10.0% | 46.0% |
-       | `tablet16to9` | ≥1.65 | 7.5% | 36.0% | 8.5% | 48.0% |
-       | `tablet16to10` | 1.55–1.65 | 7.0% | 40.0% | 8.0% | 45.0% |
-       | `tablet3to2` | 1.40–1.55 | 6.5% | 42.0% | 7.5% | 44.0% |
-       | `tablet4to3` | <1.40 (fallback) | 6.0% | 44.0% | 7.0% | 43.0% |
+       | `phoneUltraTall` | ≥2.30 | 7.0% | 46.0% | 8.5% | 38.5% |
+       | `phoneSuperTall` | 2.18–2.30 | 7.5% | 48.0% | 9.5% | 35.0% |
+       | `phoneFlagship` | 2.10–2.18 | 8.0% | 50.0% | 8.0% | 34.0% |
+       | `phoneTransition` | 1.95–2.10 | 8.5% | 47.0% | 10.0% | 34.5% |
+       | `phoneClassic2to1` | 1.85–1.95 | 9.0% | 46.0% | 10.0% | 35.0% |
+       | `phone16to9` | 1.70–1.85 (fallback below) | 9.0% | 43.0% | 10.0% | 38.0% |
+       | `tablet16to9` | ≥1.65 | 7.5% | 44.0% | 8.5% | 40.0% |
+       | `tablet16to10` | 1.55–1.65 | 7.0% | 48.0% | 8.0% | 37.0% |
+       | `tablet3to2` | 1.40–1.55 | 6.5% | 50.0% | 7.5% | 36.0% |
+       | `tablet4to3` | <1.40 (fallback) | 6.0% | 52.0% | 7.0% | 35.0% |
 
      - Media height and width are both computed from the real, locally measured `LayoutBuilder` constraints for the widget actually rendering them (`bodyConstraints.maxHeight`/`.maxWidth`), never from `MediaQuery` directly — a widget's real assigned space can be smaller than the full app window (nested inside this shell's own header/body/footer composition, or an actual split-screen/multi-window pane), and `MediaQuery` alone cannot see that. Header height is the sole exception: a `Scaffold` `AppBar`'s height is decided before its body's `LayoutBuilder` ever runs, so it structurally has to come from `MediaQuery`; that residual exposure is intentionally closed at the OS-config level (disabling multi-window) rather than in layout code.
      - Tablet media width is additionally capped at 560 logical pixels regardless of tier, so a wide-screen tablet cannot stretch a percentage-sized square media frame into something oversized or distorted.

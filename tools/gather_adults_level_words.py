@@ -345,8 +345,10 @@ def format_markdown_level_view(levels: list[LevelVocabulary], search_filter: str
 
         order_str = f"#{lvl.flow_order}" if lvl.flow_order else ""
         lines.append(f"### {order_str} {lvl.title} (`{lvl.directory_name}`)\n")
-        lines.append(f"- **Translations ({len(trans_list)})**: " + (", ".join(f"`{w}`" for w in trans_list) if trans_list else "*none*"))
-        lines.append(f"- **WordPairs ({len(wp_list)})**: " + (", ".join(f"`{w}`" for w in wp_list) if wp_list else "*none*"))
+        lines.append(f"#### Translations ({len(trans_list)})")
+        lines.append("- " + (", ".join(f"`{w}`" for w in trans_list) if trans_list else "*none*"))
+        lines.append(f"#### WordPairs ({len(wp_list)})")
+        lines.append("- " + (", ".join(f"`{w}`" for w in wp_list) if wp_list else "*none*"))
         lines.append("")
 
     return "\n".join(lines)

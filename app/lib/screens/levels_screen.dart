@@ -6,6 +6,7 @@ import 'package:scrollable_positioned_list/scrollable_positioned_list.dart';
 
 import '../app_flavor.dart';
 import '../models/level_completion_result.dart';
+import '../models/level_config.dart';
 import '../models/quiz_flow.dart';
 import '../models/reminder_progress.dart';
 import '../models/story_config.dart';
@@ -17,10 +18,10 @@ import '../services/level_config_loader.dart';
 import '../services/quiz_flow_loader.dart';
 import '../services/quiz_progress_service.dart';
 import '../services/reminder_progress_service.dart';
+import '../services/reminder_question_builder.dart';
 import '../services/story_config_loader.dart';
 import '../services/story_progress_service.dart';
 import '../services/story_trigger_service.dart';
-import '../widgets/level_translations_view.dart';
 import 'quiz_runner_screen.dart';
 import 'story/story_overlay_screen.dart';
 import 'transitions/custom_page_routes.dart';
@@ -94,9 +95,6 @@ class _LevelsScreenState extends ConsumerState<LevelsScreen> {
     templatesById: {},
   );
   StoryProgressState _storyProgress = const StoryProgressState();
-
-  /// Levels with `translations.json` (for Words button on map when completed + stars).
-  Set<String> _levelsWithTranslations = {};
 
   /// Row index (in the fully-rendered layout row list) to align at the top of
   /// the viewport on the next list build. Set to the just-played level on return
@@ -398,22 +396,6 @@ class _LevelsScreenState extends ConsumerState<LevelsScreen> {
         anchorOrdinal: anchorOrdinal,
       );
 
-      var levelsWithTranslations = <String>{};
-      final uiLang = ref.read(settingsProvider).valueOrNull?.language ?? 'en';
-      if (uiLang != 'en') {
-        for (final item in allItems) {
-          if (item is SubLevelItem && !item.sub.isReminder) {
-            final stars = progress.levels[item.progressKey]?.highestStars ?? 0;
-            if (stars >= 1) {
-              final d = await loadLevelTranslations(item.sub.directoryName);
-              if (d != null) {
-                levelsWithTranslations.add(item.sub.directoryName);
-              }
-            }
-          }
-        }
-      }
-
       if (mounted) {
         setState(() {
           _items = allItems;
@@ -425,7 +407,6 @@ class _LevelsScreenState extends ConsumerState<LevelsScreen> {
           _initialScrollIndex = startAt;
           _listReloadToken++;
           _loading = false;
-          _levelsWithTranslations = levelsWithTranslations;
         });
       }
     } catch (e, st) {
@@ -742,18 +723,6 @@ class _LevelsScreenState extends ConsumerState<LevelsScreen> {
         ? 0
         : _progress.levels[subLevelItem.progressKey]?.highestStars ?? 0;
 
-    // Words: gap from icon to screen left vs right; larger left gap → button on right.
-    final iconLeftScreen = 16 + leftOffset + 4;
-    final iconRightScreen = iconLeftScreen + iconSize;
-    final leftGap = iconLeftScreen;
-    final rightGap = width - iconRightScreen;
-    final wordsOnRight = leftGap > rightGap;
-    final showWords = !isReminder &&
-        !isLocked &&
-        stars >= 1 &&
-        (ref.read(settingsProvider).valueOrNull?.language ?? 'en') != 'en' &&
-        _levelsWithTranslations.contains(subLevelItem.sub.directoryName);
-
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 4),
       child: Row(
@@ -768,59 +737,10 @@ class _LevelsScreenState extends ConsumerState<LevelsScreen> {
               isLocked: isLocked,
               stars: stars,
               isCompletedReminder: isCompletedReminder,
-              showWordsButton: showWords,
-              wordsOnRight: wordsOnRight,
             ),
           ),
         ],
       ),
-    );
-  }
-
-  /// Fade popup with the same translations table as end-of-level sheet.
-  Future<void> _showLevelWordsDialog(SubLevelItem item) async {
-    final data = await loadLevelTranslations(item.sub.directoryName);
-    if (!mounted || data == null) return;
-    final strings = ref.read(currentLocalizedStringsProvider).valueOrNull ?? {};
-    final lang = ref.read(settingsProvider).valueOrNull?.language ?? 'en';
-    final soundFxOn = ref.read(settingsProvider).valueOrNull?.soundFxOn ?? false;
-    final mq = MediaQuery.of(context);
-    final listH = (mq.size.height * 0.5).clamp(200.0, 420.0);
-
-    if (!mounted) return;
-    await showGeneralDialog<void>(
-      context: context,
-      barrierDismissible: true,
-      transitionDuration: const Duration(milliseconds: 220),
-      transitionBuilder: (ctx, animation, secChild, child) {
-        return FadeTransition(
-          opacity: CurvedAnimation(
-            parent: animation,
-            curve: Curves.easeOut,
-          ),
-          child: child,
-        );
-      },
-      pageBuilder: (ctx, anim, sec) {
-        return AlertDialog(
-          contentPadding: const EdgeInsets.all(20),
-          content: SizedBox(
-            width: math.min(360, mq.size.width - 48),
-            child: LevelTranslationsView(
-              entries: data.entries,
-              userLanguage: lang,
-              title: strings['translations_page_title'] ??
-                  'Words Used In This Level',
-              primaryLabel: strings['ok'] ?? 'OK',
-              listViewportHeight: listH,
-              onPrimary: () {
-                audio.playClick(soundFxOn: soundFxOn);
-                Navigator.of(ctx).pop();
-              },
-            ),
-          ),
-        );
-      },
     );
   }
 
@@ -832,8 +752,6 @@ class _LevelsScreenState extends ConsumerState<LevelsScreen> {
     required bool isLocked,
     required int stars,
     required bool isCompletedReminder,
-    required bool showWordsButton,
-    required bool wordsOnRight,
   }) {
     final sub = subLevelItem.sub;
     final iconPath = 'assets/images/level-icons/${sub.iconImageName}.png';
@@ -975,29 +893,6 @@ class _LevelsScreenState extends ConsumerState<LevelsScreen> {
               ),
             ),
           ),
-          // Gap-based placement: more space on left of icon → Words on the right of cell.
-          if (showWordsButton)
-            Positioned(
-              top: 0,
-              left: wordsOnRight ? null : 0,
-              right: wordsOnRight ? 0 : null,
-              child: TextButton(
-                style: TextButton.styleFrom(
-                  padding:
-                      const EdgeInsets.symmetric(horizontal: 4, vertical: 0),
-                  minimumSize: Size.zero,
-                  tapTargetSize: MaterialTapTargetSize.shrinkWrap,
-                  visualDensity: VisualDensity.compact,
-                ),
-                onPressed: () {
-                  final soundFxOn =
-                      ref.read(settingsProvider).valueOrNull?.soundFxOn ?? false;
-                  audio.playClick(soundFxOn: soundFxOn);
-                  _showLevelWordsDialog(subLevelItem);
-                },
-                child: const Text('Words', style: TextStyle(fontSize: 11)),
-              ),
-            ),
         ],
       ),
     );
@@ -1007,33 +902,52 @@ class _LevelsScreenState extends ConsumerState<LevelsScreen> {
   // Quiz navigation
   // ---------------------------------------------------------------------------
 
-  /// Loads each regular sub-level’s `questions.json` to count rows for reminder question generation.
-  Future<Map<String, int>> _buildRegularQuestionCountsForMain(
+  /// Loads each regular sub-level's `questions.json` and classifies every answerable question
+  /// into the four reminder groups (standalone / image / WordPairs / video-by-video-file).
+  Future<MainLevelReminderPool> _buildMainLevelReminderPool(
       int mainLevel) async {
-    final counts = <String, int>{};
+    final pool = MainLevelReminderPool();
     final regularItems =
         _regularSubLevels.where((item) => item.sub.mainLevel == mainLevel);
     for (final item in regularItems) {
       final sub = item.sub;
+      List<LevelQuestion> questions;
       try {
         final cfg = await loadLevelConfig(sub.directoryName);
-        counts[item.progressKey] = cfg.questions.length;
+        questions = cfg.questions;
       } catch (_) {
-        counts[item.progressKey] = 10;
+        continue;
+      }
+      for (var i = 0; i < questions.length; i++) {
+        final q = questions[i];
+        if (q.isChapter || q.isSkipPlaceholder) continue;
+        final id = buildReminderQuestionId(item.progressKey, i);
+        if (q.template == 'VideoConversation') {
+          final videoFile = q.videoConversationData?.videoFile ?? '';
+          final key = '${item.progressKey}::$videoFile';
+          pool.videoGroups.putIfAbsent(key, () => <String>[]).add(id);
+        } else if (q.template == 'imageQuizTemplate-1' ||
+            q.template == 'imageQuizTemplate-2') {
+          pool.imageIds.add(id);
+        } else if (q.template == 'WordPairs') {
+          pool.wordPairsIds.add(id);
+        } else {
+          pool.standaloneIds.add(id);
+        }
       }
     }
-    return counts;
+    return pool;
   }
 
   /// Ensures reminder 1 has a non-empty ID list by sampling wrong answers across that main level’s quizzes.
   Future<void> _ensureReminderQuestionsGenerated(int mainLevel) async {
     final reminderState = _reminderProgress.reminderState(mainLevel, 1);
     if (reminderState.questionIds.isNotEmpty) return;
-    final counts = await _buildRegularQuestionCountsForMain(mainLevel);
+    final pool = await _buildMainLevelReminderPool(mainLevel);
     final updated =
         await ReminderProgressService.instance.generateReminderQuestions(
       mainLevel: mainLevel,
-      questionCountByProgressKey: counts,
+      pool: pool,
     );
     if (!mounted) return;
     setState(() {

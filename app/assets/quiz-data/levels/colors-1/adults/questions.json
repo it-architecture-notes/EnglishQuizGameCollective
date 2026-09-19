@@ -7,7 +7,7 @@
         "wrongAnswers": [
           "blue",
           "brown",
-          "olive"
+          "green"
         ]
       }
     },
@@ -18,7 +18,7 @@
         "wrongAnswers": [
           "black",
           "brown",
-          "olive"
+          "green"
         ]
       }
     },
@@ -29,14 +29,14 @@
         "wrongAnswers": [
           "black",
           "blue",
-          "olive"
+          "green"
         ]
       }
     },
     {
       "template": "imageQuizTemplate-1",
       "questionData": {
-        "imageName": "olive",
+        "imageName": "green",
         "wrongAnswers": [
           "black",
           "blue",
@@ -95,7 +95,7 @@
         "wrongAnswers": [
           "brown",
           "yellow",
-          "olive"
+          "green"
         ]
       }
     },

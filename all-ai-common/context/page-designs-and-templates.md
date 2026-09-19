@@ -76,9 +76,14 @@ Every question object (regardless of template) may carry these **top-level** aud
 
 | Field | Description |
 |-------|-------------|
-| `audio_file` | Basename (no extension) of the audio asset played when the question appears. Used by most templates. |
-| `audio_file1` | **DialogueCompletion** — audio for the question line. **ConvoTemplate-1** — optional first clip (speaker 1 line, blanks filled in the asset); use with `audio_file2`. |
-| `audio_file2` | **DialogueCompletion** — audio for the correct answer. **ConvoTemplate-1** — optional second clip (speaker 2 line, blanks filled); requires `audio_file1`. |
+| `audio_file` | Basename (no extension) of the audio asset played when the question appears. Used by `imageQuizTemplate-1`/`imageQuizTemplate-2` and as a legacy single-clip option for `ConvoTemplate-1`. |
+| `question_enter_audio` | Plays once, automatically, the first time the question is presented. Also what the audio icon plays (repeatable) before the learner answers. Absent → nothing auto-plays and the icon is disabled pre-answer. |
+| `question_exit_correct_audio` | Plays automatically after a **correct** answer, before advancing. Absent or the literal string `"none"` → nothing plays, advances immediately. |
+| `question_exit_wrong_audio` | Plays automatically after a **wrong** answer, before the Next button appears (Next waits for it) — and is what the audio icon replays post-wrong. **Absent** → falls back to `question_exit_correct_audio` (wrong answers hear the correct-answer line by default). Explicit `"none"` → suppresses that fallback entirely; nothing plays, icon disabled post-wrong. |
+
+Each of the three `question_*_audio` fields accepts a **plain string** (one clip), an **array of strings** (clips played in sequence, each awaited before the next starts), or the literal string `"none"`. `_text` companions (`question_enter_audio_text`, etc., same string/array shape) exist only for the Gemini TTS generation tooling — the app never reads them.
+
+This 3-field model is universal — every interactive template uses it (DialogueCompletion, ClozeSequence, SentenceBuilder, AppearDisappear, ConvoTemplate-1, and every `VideoConversation` `answer_type`) **except** `WordPairs`, which has no audio fields at all. See `VideoConversation` below for the one template-specific exception to the fallback rule (its AppearDisappear/recall sub-type's "Listen Again" control).
 
 ---
 
@@ -131,7 +136,7 @@ Rendered in **convo playing** layout inside `ImageQuizScreen`: typically **dialo
 - **Purpose:** Classic **two-speaker dialogue** + **4 MCQ buttons** for vocab or grammar.
 - **Design:** Two-column character layout with localized speech bubbles; one shuffled row of four text buttons below; locked-state coloring after answer.
 - **Player action:** Read the exchange, tap the correct option.
-- **Audio:** `audio_file` (top-level) — one clip for the whole exchange (legacy). **Or** `audio_file1` + `audio_file2` (both required together): clip 1 = speaker 1 line, clip 2 = speaker 2 line, each recorded with blanks **filled** using the correct `answer` (matches Gemini script). App auto-plays clip 1 on appear, plays clip 2 after a **correct** MCQ tap; replay icons when assets exist (line 2 replay only after correct).
+- **Audio:** `audio_file` (top-level) — one clip for the whole exchange (legacy). **Or** the standard `question_enter_audio` / `question_exit_correct_audio` / `question_exit_wrong_audio` fields: enter auto-plays once on appear and is icon-repeatable pre-answer; the outcome cue (correct or effective-wrong) plays after the MCQ tap and is icon-repeatable post-wrong. No more per-question "caseA" heuristics — if a question's exchange should be heard as two lines together, put both clips in one field's array (e.g. `question_exit_correct_audio: [line1Clip, line2Clip]`); the app just plays whatever's in the array, in order.
 - **Translation:** `english_to_translate` / `local_translation` arrays inside `questionData`.
 
 | questionData field | Required | Description |
@@ -227,7 +232,7 @@ Rendered in **convo playing** layout inside `ImageQuizScreen`: typically **dialo
 - **Purpose:** **Choose the reply** — first speaker’s line is shown; player picks the correct response from 4 full-sentence options.
 - **Design:** `DialogueCompletionQuizBody`: character header + optional thumbnail + question line + 4 shuffled sentence buttons; auto-plays question-line audio after 500 ms.
 - **Player action:** Tap the best continuation.
-- **Audio:** `audio_file1` (question line) and `audio_file2` (correct answer) — both top-level on the question object.
+- **Audio:** standard `question_enter_audio` (question line, auto-plays on appear + icon-repeatable pre-answer) and `question_exit_correct_audio` (correct answer, plays after a correct tap). A wrong tap plays `question_exit_wrong_audio` if set, else falls back to `question_exit_correct_audio` (so by default the learner hears the correct line either way) — handled externally by `image_quiz_screen.dart`, not inside this widget.
 - **Translation:** `english_to_translate` / `local_translation` arrays inside `questionData`.
 
 | questionData field | Required | Description |
@@ -240,6 +245,46 @@ Rendered in **convo playing** layout inside `ImageQuizScreen`: typically **dialo
 | `image_file_name` | optional | Asset basename for a 72×72 thumbnail above the dialogue |
 | `english_to_translate` | optional | Array of English words/sentences for the translation panel |
 | `local_translation` | optional | Array of translated strings aligned by index |
+
+### `VideoConversation`
+
+- **Purpose:** An animated video clip pauses at a scripted beat and the learner answers one of four embedded mini-games — `DialogueCompletion` (MCQ), `ClozeSequence` (MCQ or tile-fill), `SentenceBuilder` (tile-build), or `AppearDisappear` (recall/tile-build) — then the video (muted) resumes while a separately-triggered audio clip plays the spoken line, before handing off to the next row.
+- **Widget:** `VideoConversationQuizBody` (`video_conversation_quiz_body.dart`).
+- **Shared controller:** one `VideoPlayerController` per `videoFile`, memoized by asset path (`_videoControllerFor` in `image_quiz_screen.dart`) — reused across every consecutive row that shares the same `videoFile`, disposed and recreated only when the asset path changes (e.g. moving from one video segment to the next within a level).
+
+**Row fields** (in addition to the standard `question_enter_audio`/`question_exit_correct_audio`/`question_exit_wrong_audio` — see above):
+
+| Field | Description |
+|-------|-------------|
+| `videoFile` | Asset basename (no extension) of the shared video, resolved per-level. |
+| `start_at` / `pause_at` / `answer_until` | `MM:SS.ss` timestamps. Video plays `start_at → pause_at`, pauses, reveals the answer UI. After answering, video resumes and plays `pause_at → answer_until` (recall/`AppearDisappear` excepted — see below). |
+| `questionData.answer_type` | One of `DialogueCompletion` / `ClozeSequence` / `SentenceBuilder` / `AppearDisappear` — selects which mini-game renders and which shape `questionData` needs (see that template's own section above for the field list; `AppearDisappear` sets `sequenceData.isRecall = true`, the others don't). |
+
+**Sync rule — what plays together, and when it's actually guaranteed:**
+- The **first** row of a level (or the first row after the shared video's `videoFile` changes) gets a **true synced start**: `startQuestionAudio()` resolves the instant the platform reports playback has begun (not when it ends — that's the whole reason a separate `startQuestionAudio` exists next to `playQuestionAudio`), and `controller.play()` fires immediately after. Video and `question_enter_audio` start within the same frame.
+- Every **subsequent** row's entry sync depends entirely on what the **immediately preceding row** left the shared controller doing, not on template type:
+  - If the preceding row was **not** `AppearDisappear`/recall: its correct-answer path (`_resumeVideo()`) calls `controller.play()` and never explicitly re-pauses — video keeps rolling continuously into the next row's mount. That next row then finds `controller.value.isPlaying == true`, skips the synced-start path, and instead fires its own `question_enter_audio` via the **unsynced**, fire-and-forget `_playSetupAudio()` — approximately timed (after a fixed 50ms delay plus mount overhead), not hard-synced to the video's position. In practice this stays imperceptibly close **only if** every prior row's real audio duration matches its declared `pause_at`→`answer_until` window; a mismatch (rare, but see `q4`/`greetings1` for a 90ms real-world example) compounds forward.
+  - If the preceding row **was** `AppearDisappear`/recall: `_resumeVideo()` skips `controller.play()` entirely (see below), so the video is genuinely paused when the next row mounts → that row gets the **true synced start** again, same guarantee as the level's first row.
+  - A wrong answer on a non-recall row explicitly re-pauses the video after its (fallback) exit-wrong audio finishes (`_waitForWrongAnswerAudio` in `image_quiz_screen.dart`), so the row *after* a wrong answer also gets a true synced start — unlike the row after a *correct* answer on the same template.
+- **`AppearDisappear`/recall rows never resume the video at all**, regardless of answer outcome — there's nothing new to show past the pause point (the muted track has no fresh content), and letting it free-run would race unsupervised into the next row's territory before that row's own pause-position listener attaches. Content for these rows should set `pause_at == answer_until` (zero forward-play window) — `greetings1`/`greetings2`'s `q3`/`q6`/`q7`/`v2-q4` all do this. The video only starts moving again once the *following* row explicitly starts it.
+- **Tutorial guide**: shows once per `"VideoConversation:<answer_type>"` step key per level entry (shared with the level's `"tutorial"` config — same step key format as the standalone templates use their own template name), triggered the moment the answer controls (buttons/tiles) actually render — i.e. after the video pauses, not before it starts. See "Tutorial guide overlay" below.
+- **`AppearDisappear`'s "Listen Again" button** (shown once, pre-answer, while paused) is the one template-specific exception to the standard field semantics: it **only ever plays `question_exit_correct_audio`** — never `question_enter_audio`, no fallback, nothing if that field is unset. If a question has only one recorded line, point both `question_enter_audio` and `question_exit_correct_audio` at the same clip.
+
+**Cross-file transitions:** when a level chains two video files back to back (e.g. `greetings1` → `greetings2`), the shared controller is disposed and a fresh one created for the new asset — the new file's first row always gets the true synced start, exactly like the level's very first row, regardless of what the previous file's last row did.
+
+---
+
+## Tutorial guide overlay (`widgets/tutorial/`)
+
+- **Purpose:** A one-time, blocking "here's how this works" character + speech-bubble overlay, shown the first time the player reaches each configured template/answer-type, driven by the level JSON's root `"tutorial"` block (`steps` keyed by template name or `"VideoConversation:<answer_type>"`).
+- **Controller:** `TutorialController` (`tutorial_controller.dart`) — in-memory only (`_shownStepKeys`), rebuilt fresh every level entry (not persisted across playthroughs).
+- **Trigger:** `maybeShowFor(stepKey)`, called from every template's "answer controls rendered" callback (`onChoiceButtonsRendered` / `onNextTileRendered` / `onNextChoiceRendered` / `onGuideTargetRendered` / `onOptionButtonsRendered` — wired in `image_quiz_screen.dart`'s `_buildConvoQuestionBody`). Shows once per step key per level entry; every later question of the same step key is a no-op. There is **no** "show before playback" path any more — a prior design that blocked video/audio before the question even started was removed; the guide always waits for the answer UI to actually be on screen, for every template including `VideoConversation`.
+- **Blocking:** the overlay is a full-screen opaque `Material` painted above the whole Scaffold — swallows every tap except its own OK button.
+- **Dismiss:** OK button (`TutorialController.confirmActive`) or `_goNext()` (`dismissActive`, when moving to the next question).
+- **Footer guide hint:** a lighter, non-blocking companion — the same step's `messageKey` text also renders in the footer (`_buildQuestionActionRegion` in `image_quiz_screen.dart`, the same slot the Next button occupies) on **every** question of an applicable template, every time — not gated by "once per level" the way the overlay is. Applies to every template except `WordPairs`. Timing/lifecycle:
+  - Appears only once `_answerControlsRendered` is true (same "controls rendered" signal as the overlay) — never before the question's own entry audio/video has actually presented its answer UI.
+  - Disappears on the learner's **first interaction of any kind** — tile tap, MCQ button, translation reveal, audio icon, "Listen Again" — wired via an `onUserInteracted` callback added to every interactive template widget.
+  - Suppressed entirely (not just "while overlay visible") on the **one specific question** where the blocking overlay actually fired for that step key — tracked via `_overlayShownForQuestionKey`, compared by `'${questionId}#${index}'` — so it doesn't reappear on that same question the instant OK is tapped. Later questions of the same step key (where the overlay won't show again) get the footer hint normally.
 
 ---
 

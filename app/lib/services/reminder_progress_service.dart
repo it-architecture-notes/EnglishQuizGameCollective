@@ -56,12 +56,12 @@ class ReminderProgressService {
 
   Future<ReminderProgressData> generateReminderQuestions({
     required int mainLevel,
-    required Map<String, int> questionCountByProgressKey,
+    required MainLevelReminderPool pool,
   }) async {
     final current = await loadProgress();
     final split = ReminderQuestionBuilder.build(
       wrongAnswerCounters: current.wrongAnswerCounters,
-      questionCountByProgressKey: questionCountByProgressKey,
+      pool: pool,
     );
     final remindersByMainLevel =
         Map<int, List<ReminderLevelState>>.from(current.remindersByMainLevel);

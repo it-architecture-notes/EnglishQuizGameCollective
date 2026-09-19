@@ -254,6 +254,23 @@
         "ar": "across",
         "hi": "across"
       }
+    },
+    {
+      "english_word": "to greet",
+      "translations": {
+        "tr": "selamlamak",
+        "es": "saludar",
+        "fr": "saluer",
+        "de": "begrüßen",
+        "it": "salutare",
+        "pt": "cumprimentar",
+        "ru": "приветствовать",
+        "zh": "问候",
+        "ja": "挨拶する",
+        "ko": "인사하다",
+        "ar": "يحيي",
+        "hi": "अभिवादन करना"
+      }
     }
   ]
 }

@@ -94,8 +94,10 @@ class DialogueCompletionQuestionData extends Object
 class LevelQuestion extends Object
   get questionId
   get audioFile
-  get audioFile1
-  get audioFile2
+  get questionEnterAudio
+  get questionExitCorrectAudio
+  get questionExitWrongAudio
+  get effectiveExitWrongAudio
   get template
   get imageData
   get imageQuiz2Data
@@ -913,8 +915,9 @@ class DialogueCompletionQuizBody extends StatefulWidget
     State<DialogueCompletionQuizBody> createState()
   get data
   get userLanguage
-  get audio1Path
-  get audio2Path
+  get enterAudioCue
+  get exitCorrectAudioCue
+  get exitWrongAudioCue
   get resolvedImagePath
   get resolveAudioExists
   get onPlayQuestionAudio

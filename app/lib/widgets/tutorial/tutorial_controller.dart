@@ -1,5 +1,3 @@
-import 'dart:async';
-
 import 'package:flutter/material.dart';
 
 import '../../models/level_config.dart';
@@ -29,7 +27,6 @@ class TutorialController extends ChangeNotifier {
 
   String? _activeStepKey;
   final Set<String> _shownStepKeys = {};
-  Completer<void>? _beforePlaybackCompleter;
 
   bool get isReady => _loaded;
 
@@ -54,44 +51,26 @@ class TutorialController extends ChangeNotifier {
 
   bool get _shouldRun => config.enabled && _loaded;
 
+  /// The `messageKey` configured for [stepKey], regardless of whether its guide has been shown
+  /// yet — for the always-on footer hint, which is independent of the once-per-level overlay.
+  String? messageKeyFor(String stepKey) => config.steps[stepKey]?.messageKey;
+
   /// Shows this step's guide the first time it's called for [stepKey] in this level entry;
-  /// a no-op on every subsequent call for the same key (see class doc).
-  void maybeShowFor(String stepKey) {
-    if (!_shouldRun || !_shownStepKeys.add(stepKey)) return;
-    if (!config.steps.containsKey(stepKey)) return;
+  /// a no-op on every subsequent call for the same key (see class doc). Returns true exactly
+  /// when this call is the one that shows it, so the caller can suppress other guidance
+  /// (e.g. a footer hint) on this specific question — not just while the overlay is visible.
+  bool maybeShowFor(String stepKey) {
+    if (!_shouldRun || !_shownStepKeys.add(stepKey)) return false;
+    if (!config.steps.containsKey(stepKey)) return false;
     _activeStepKey = stepKey;
     notifyListeners();
-  }
-
-  Future<void> showBeforePlayback(String stepKey) {
-    if (!_shouldRun || _shownStepKeys.contains(stepKey)) {
-      return Future<void>.value();
-    }
-    if (!config.steps.containsKey(stepKey)) return Future<void>.value();
-    _shownStepKeys.add(stepKey);
-    final completer = Completer<void>();
-    _beforePlaybackCompleter = completer;
-    _activeStepKey = stepKey;
-    // Deferred: this is called from VideoConversationQuizBody.initState()'s pre-await
-    // prefix, which runs synchronously while that widget is being mounted inside its
-    // parent LayoutBuilder's build/layout callback. A synchronous notifyListeners() here
-    // reaches the tutorial overlay's AnimatedBuilder (elsewhere in the tree, not an
-    // ancestor of the mounting widget) and throws "setState() called during build".
-    // Posting it one frame later keeps the state change (_activeStepKey, above) instant
-    // but pushes the rebuild past the current build phase.
-    WidgetsBinding.instance.addPostFrameCallback((_) {
-      if (!_disposed) notifyListeners();
-    });
-    return completer.future;
+    return true;
   }
 
   void confirmActive() {
     if (_activeStepKey == null) return;
-    final completer = _beforePlaybackCompleter;
-    _beforePlaybackCompleter = null;
     _activeStepKey = null;
     notifyListeners();
-    if (completer != null && !completer.isCompleted) completer.complete();
   }
 
   /// Called once per answered question (from `_handleInteractiveConvoOutcome`), regardless of

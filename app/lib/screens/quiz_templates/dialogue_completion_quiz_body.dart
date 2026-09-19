@@ -486,13 +486,14 @@ class DialogueCompletionQuizBody extends StatefulWidget {
     required this.data,
     required this.userLanguage,
     this.imagePath,
-    this.audio1Path,
-    this.audio2Path,
-    required this.resolveAudioExists,
+    this.enterAudioCue,
+    this.exitCorrectAudioCue,
+    this.exitWrongAudioCue,
     required this.onPlayQuestionAudio,
     required this.onPlayCorrect,
     required this.onPlayWrong,
     required this.onOutcome,
+    this.onUserInteracted,
     this.onOptionButtonsRendered,
     this.debugShowLayoutBounds = false,
   });
@@ -505,13 +506,28 @@ class DialogueCompletionQuizBody extends StatefulWidget {
   final bool debugShowLayoutBounds;
 
   final String? imagePath;
-  final String? audio1Path;
-  final String? audio2Path;
-  final Future<bool> Function(String path) resolveAudioExists;
+
+  /// Clips played in sequence, automatically, the first time this question is presented — and
+  /// replayable via the audio icon any time before answering. `null`/empty disables the icon
+  /// pre-answer.
+  final List<String>? enterAudioCue;
+
+  /// Clips played in sequence after a correct answer, before advancing.
+  final List<String>? exitCorrectAudioCue;
+
+  /// Clips played in sequence after a wrong answer (already resolved with the
+  /// `question_exit_correct_audio` fallback applied by the caller) — also what the audio icon
+  /// replays once the question has been answered wrong. `null`/empty disables the icon
+  /// post-wrong.
+  final List<String>? exitWrongAudioCue;
   final Future<void> Function(String path) onPlayQuestionAudio;
   final VoidCallback onPlayCorrect;
   final VoidCallback onPlayWrong;
   final void Function(bool correct) onOutcome;
+
+  /// Fired on the very first interaction with this question (button tap, translation reveal,
+  /// or audio icon press) — used to hide the footer guide hint.
+  final VoidCallback? onUserInteracted;
 
   final void Function(int correctIndex, List<GlobalKey> buttonKeys)?
       onOptionButtonsRendered;
@@ -531,12 +547,37 @@ class _DialogueCompletionQuizBodyState
   bool _audio1Playing = false;
   bool _audio2Playing = false;
   bool _audio1Scheduled = false;
-  bool? _bothAudiosOk;
   bool _setupAudioComplete = true;
   bool _answeredWrong = false;
   List<GlobalKey> _optionButtonKeys = const [];
   bool _reportedOptionButtons = false;
   String? _lastLayoutLogKey;
+
+  bool get _isAnswered => _locked;
+
+  /// What the audio icon plays right now: [enterAudioCue] before answering, the
+  /// (already-effective) [exitWrongAudioCue] once answered wrong, nothing once answered
+  /// correctly (the question is about to advance).
+  List<String>? get _manualAudioCue => !_isAnswered
+      ? widget.enterAudioCue
+      : (_answeredWrong ? widget.exitWrongAudioCue : null);
+
+  bool get _hasManualAudio {
+    final cue = _manualAudioCue;
+    return cue != null && cue.isNotEmpty;
+  }
+
+  /// True if the audio icon could ever be relevant for this question (enter pre-answer, or
+  /// exit-wrong post-wrong) — used to reserve layout space regardless of the current phase.
+  bool get _hasAnyAudioIcon =>
+      (widget.enterAudioCue != null && widget.enterAudioCue!.isNotEmpty) ||
+      (widget.exitWrongAudioCue != null && widget.exitWrongAudioCue!.isNotEmpty);
+
+  Future<void> _playCue(List<String> cue) async {
+    for (final path in cue) {
+      await widget.onPlayQuestionAudio(path);
+    }
+  }
 
   @override
   void initState() {
@@ -545,22 +586,24 @@ class _DialogueCompletionQuizBodyState
     _options = [d.answer, ...d.distractors]..shuffle(Random());
     _correctIndex = _options.indexOf(d.answer);
     _optionButtonKeys = List.generate(_options.length, (_) => GlobalKey());
-    _setupAudioComplete = widget.audio1Path == null;
+    _setupAudioComplete =
+        widget.enterAudioCue == null || widget.enterAudioCue!.isEmpty;
     WidgetsBinding.instance.addPostFrameCallback((_) => _primeAudio());
   }
 
   @override
   void didUpdateWidget(covariant DialogueCompletionQuizBody oldWidget) {
     super.didUpdateWidget(oldWidget);
-    if (oldWidget.audio1Path != widget.audio1Path ||
-        oldWidget.audio2Path != widget.audio2Path) {
+    if (oldWidget.enterAudioCue != widget.enterAudioCue ||
+        oldWidget.exitCorrectAudioCue != widget.exitCorrectAudioCue ||
+        oldWidget.exitWrongAudioCue != widget.exitWrongAudioCue) {
       setState(() {
         _audio1Scheduled = false;
         _locked = false;
         _selectedIndex = null;
         _answeredWrong = false;
-        _bothAudiosOk = null;
-        _setupAudioComplete = widget.audio1Path == null;
+        _setupAudioComplete =
+            widget.enterAudioCue == null || widget.enterAudioCue!.isEmpty;
         _audio1Playing = false;
         _audio2Playing = false;
       });
@@ -569,21 +612,15 @@ class _DialogueCompletionQuizBodyState
   }
 
   Future<void> _primeAudio() async {
-    final p1 = widget.audio1Path;
-    final p2 = widget.audio2Path;
-    final ok1 = p1 != null && await widget.resolveAudioExists(p1);
-    final ok2 = p2 != null && await widget.resolveAudioExists(p2);
-    final bothOk = ok1 && ok2;
-    if (!mounted) return;
-    setState(() => _bothAudiosOk = bothOk);
     if (_audio1Scheduled) return;
     _audio1Scheduled = true;
-    if (ok1) {
+    final cue = widget.enterAudioCue;
+    if (cue != null && cue.isNotEmpty) {
       await Future<void>.delayed(const Duration(milliseconds: 500));
       if (!mounted) return;
       setState(() => _audio1Playing = true);
       try {
-        await widget.onPlayQuestionAudio(p1);
+        await _playCue(cue);
       } finally {
         if (mounted) {
           setState(() {
@@ -601,50 +638,33 @@ class _DialogueCompletionQuizBodyState
 
   Future<void> _onTranslationRevealed() async {
     if (_locked || widget.data.trOk) return;
+    widget.onUserInteracted?.call();
     setState(() {
       _locked = true;
       _translationPenalized = true;
       _answeredWrong = true;
     });
     widget.onPlayWrong();
-    if (_bothAudiosOk == true) {
-      final p2 = widget.audio2Path;
-      if (p2 != null) {
-        setState(() => _audio2Playing = true);
-        try {
-          await widget.onPlayQuestionAudio(p2);
-        } finally {
-          if (mounted) setState(() => _audio2Playing = false);
-        }
-      }
-    }
-    if (!mounted) return;
+    // The exit-wrong line (if any) is played by the caller, external to this widget, after
+    // onOutcome(false) — mirrors VideoConversation's wrong-answer handling.
     widget.onOutcome(false);
   }
 
   Future<void> _playAudioManual() async {
-    if (_bothAudiosOk != true) return;
-    final p1 = widget.audio1Path;
-    final p2 = widget.audio2Path;
-    if (p1 == null || p2 == null) return;
+    final cue = _manualAudioCue;
+    if (cue == null || cue.isEmpty || _audio1Playing) return;
+    widget.onUserInteracted?.call();
     setState(() => _audio1Playing = true);
     try {
-      await widget.onPlayQuestionAudio(p1);
+      await _playCue(cue);
     } finally {
       if (mounted) setState(() => _audio1Playing = false);
-    }
-    if (!mounted) return;
-    if (!_answeredWrong) return;
-    setState(() => _audio2Playing = true);
-    try {
-      await widget.onPlayQuestionAudio(p2);
-    } finally {
-      if (mounted) setState(() => _audio2Playing = false);
     }
   }
 
   Future<void> _onTap(int i) async {
     if (_locked) return;
+    widget.onUserInteracted?.call();
     final ok = _options[i] == widget.data.answer;
     setState(() {
       _locked = true;
@@ -653,17 +673,19 @@ class _DialogueCompletionQuizBodyState
     });
     if (ok) {
       widget.onPlayCorrect();
+      final cue = widget.exitCorrectAudioCue;
+      if (cue != null && cue.isNotEmpty) {
+        setState(() => _audio2Playing = true);
+        try {
+          await _playCue(cue);
+        } finally {
+          if (mounted) setState(() => _audio2Playing = false);
+        }
+      }
     } else {
       widget.onPlayWrong();
-    }
-    final p2 = widget.audio2Path;
-    if (_bothAudiosOk == true && p2 != null) {
-      setState(() => _audio2Playing = true);
-      try {
-        await widget.onPlayQuestionAudio(p2);
-      } finally {
-        if (mounted) setState(() => _audio2Playing = false);
-      }
+      // The exit-wrong line (if any) is played by the caller, external to this widget, after
+      // onOutcome(false) — mirrors VideoConversation's wrong-answer handling.
     }
     if (!mounted) return;
     widget.onOutcome(ok);
@@ -843,8 +865,7 @@ class _DialogueCompletionQuizBodyState
               )
             : 0.0;
 
-        final hasAudioButton =
-            widget.audio1Path != null && _bothAudiosOk == true;
+        final hasAudioButton = _hasAnyAudioIcon;
         final availableRemainderHeight = max(
           0.0,
           bodyConstraints.maxHeight - mediaHeight,
@@ -984,12 +1005,11 @@ class _DialogueCompletionQuizBodyState
                                         ),
                                   ),
                                 ),
-                                if (widget.audio1Path != null &&
-                                    _bothAudiosOk == true) ...[
+                                if (_hasAnyAudioIcon) ...[
                                   const SizedBox(width: 8),
                                   AudioPlayButton(
                                     isPlaying: _audio1Playing || _audio2Playing,
-                                    onPressed: !(_locked && !_answeredWrong)
+                                    onPressed: _hasManualAudio
                                         ? _playAudioManual
                                         : null,
                                   ),

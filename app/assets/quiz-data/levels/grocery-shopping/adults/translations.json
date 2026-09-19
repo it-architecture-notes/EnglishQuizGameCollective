@@ -254,6 +254,91 @@
         "ar": "يحمل",
         "hi": "ले जाना"
       }
+    },
+    {
+      "english_word": "quality",
+      "translations": {
+        "tr": "kalite",
+        "es": "calidad",
+        "fr": "qualité",
+        "de": "Qualität",
+        "it": "qualità",
+        "pt": "qualidade",
+        "ru": "качество",
+        "zh": "质量",
+        "ja": "品質",
+        "ko": "품질",
+        "ar": "جودة",
+        "hi": "गुणवत्ता"
+      }
+    },
+    {
+      "english_word": "to cost",
+      "translations": {
+        "tr": "mal olmak",
+        "es": "costar",
+        "fr": "coûter",
+        "de": "kosten",
+        "it": "costare",
+        "pt": "custar",
+        "ru": "стоить",
+        "zh": "花费",
+        "ja": "かかる",
+        "ko": "들다",
+        "ar": "يكلف",
+        "hi": "लागत होना"
+      }
+    },
+    {
+      "english_word": "discount",
+      "translations": {
+        "tr": "indirim",
+        "es": "descuento",
+        "fr": "réduction",
+        "de": "Rabatt",
+        "it": "sconto",
+        "pt": "desconto",
+        "ru": "скидка",
+        "zh": "折扣",
+        "ja": "割引",
+        "ko": "할인",
+        "ar": "خصم",
+        "hi": "छूट"
+      }
+    },
+    {
+      "english_word": "to afford",
+      "translations": {
+        "tr": "karşılayabilmek",
+        "es": "permitirse",
+        "fr": "se permettre",
+        "de": "sich leisten",
+        "it": "permettersi",
+        "pt": "poder pagar",
+        "ru": "позволить себе",
+        "zh": "负担得起",
+        "ja": "余裕がある",
+        "ko": "여유가 있다",
+        "ar": "يتحمل",
+        "hi": "खर्च उठाना"
+      }
+    },
+    {
+      "english_word": "enough",
+      "translations": {
+        "tr": "yeterli",
+        "es": "suficiente",
+        "fr": "suffisant",
+        "de": "genug",
+        "it": "sufficiente",
+        "pt": "suficiente",
+        "ru": "достаточно",
+        "zh": "足够",
+        "ja": "十分な",
+        "ko": "충분한",
+        "ar": "كافٍ",
+        "hi": "पर्याप्त"
+      }
     }
   ]
 }

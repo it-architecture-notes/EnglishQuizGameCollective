@@ -1,5 +1,348 @@
 {
   "levelQuestions": [
+
+    {
+      "template": "VideoConversation",
+      "videoFile": "grocery-shopping1",
+      "start_at": "00:00.00",
+      "pause_at": "00:01.95",
+      "answer_until": "00:01.95",
+      "audio_file1": "grocery-shopping1-q1-setup",
+      "audio_file1_text": "Are you ready to shop for the week?",
+      "questionData": {
+        "answer_type": "AppearDisappear",
+        "words": "Are you ready to shop for the week?",
+        "distractors": [
+          "buy",
+          "month",
+          "today",
+          "now"
+        ],
+        "teaching_targets": [
+          "to shop"
+        ]
+      }
+    },
+    {
+      "template": "VideoConversation",
+      "videoFile": "grocery-shopping1",
+      "start_at": "00:01.95",
+      "pause_at": "00:01.95",
+      "answer_until": "00:04.85",
+      "audio_file2": "grocery-shopping1-q1-confirm",
+      "audio_file2_text": "Yes, I need to buy rice and pasta.",
+      "questionData": {
+        "answer_type": "DialogueCompletion",
+        "answer": "Yes, I need to buy rice and pasta.",
+        "distractors": [
+          "Yes, I need to sell some vegetables.",
+          "No, I already have everything.",
+          "Yes, I want to return this milk."
+        ],
+        "teaching_targets": [
+          "to buy"
+        ]
+      }
+    },
+    {
+      "template": "VideoConversation",
+      "videoFile": "grocery-shopping1",
+      "start_at": "00:04.85",
+      "pause_at": "00:05.75",
+      "answer_until": "00:07.90",
+      "audio_file2": "grocery-shopping1-q2-confirm",
+      "audio_file2_text": "Let's compare the brands and prices first.",
+      "questionData": {
+        "answer_type": "ClozeSequence",
+        "sentence": "Let's _____ the _____ and prices first.",
+        "answer": [
+          "compare",
+          "brands"
+        ],
+        "distractors": [
+          "choose",
+          "carry",
+          "calculate",
+          "weigh"
+        ],
+        "teaching_targets": [
+          "to compare",
+          "brand"
+        ]
+      }
+    },
+    {
+      "template": "VideoConversation",
+      "videoFile": "grocery-shopping1",
+      "start_at": "00:07.90",
+      "pause_at": "00:08.35",
+      "answer_until": "00:10.30",
+      "audio_file2": "grocery-shopping1-q3-setup",
+      "audio_file2_text": "Good idea. How much rice do we need?",
+      "questionData": {
+        "answer_type": "ClozeSequence",
+        "sentence": "Good idea. _____ _____ rice do we need?",
+        "answer": [
+          "How",
+          "much"
+        ],
+        "distractors": [
+          "many",
+          "often",
+          "long",
+          "far"
+        ],
+        "teaching_targets": [
+          "how much"
+        ]
+      }
+    },
+    {
+      "template": "VideoConversation",
+      "videoFile": "grocery-shopping1",
+      "start_at": "00:10.30",
+      "pause_at": "00:11.90",
+      "answer_until": "00:15.60",
+      "audio_file2": "grocery-shopping1-q4-setup",
+      "audio_file2_text": "We need two large bags. Each one weighs five kilograms.",
+      "questionData": {
+        "answer_type": "ClozeSequence",
+        "sentence": "We need two large bags. Each one _____ five kilograms.",
+        "answer": [
+          "weighs"
+        ],
+        "distractors": [
+          "weigh",
+          "weight",
+          "carries",
+          "calculates"
+        ],
+        "teaching_targets": [
+          "to weigh"
+        ]
+      }
+    },
+    {
+      "template": "VideoConversation",
+      "videoFile": "grocery-shopping1",
+      "start_at": "00:15.60",
+      "pause_at": "00:16.05",
+      "answer_until": "00:17.55",
+      "audio_file2": "grocery-shopping1-q4-confirm",
+      "audio_file2_text": "I can't carry both bags.",
+      "questionData": {
+        "answer_type": "SentenceBuilder",
+        "correct_order": "I can't carry both bags.",
+        "teaching_targets": [
+          "to carry"
+        ]
+      }
+    },
+    {
+      "template": "VideoConversation",
+      "videoFile": "grocery-shopping1",
+      "start_at": "00:17.55",
+      "pause_at": "00:17.90",
+      "answer_until": "00:21.45",
+      "audio_file2": "grocery-shopping1-q5-confirm",
+      "audio_file2_text": "I'll help you carry them, and I'll pay by credit card.",
+      "questionData": {
+        "answer_type": "ClozeSequence",
+        "sentence": "I'll help you _____ them, and I'll _____ by credit card.",
+        "answer": [
+          "carry",
+          "pay"
+        ],
+        "distractors": [
+          "compare",
+          "choose",
+          "weigh",
+          "calculate"
+        ],
+        "teaching_targets": [
+          "to carry",
+          "to pay"
+        ]
+      }
+    },
+    {
+      "template": "VideoConversation",
+      "videoFile": "grocery-shopping2",
+      "start_at": "00:00.00",
+      "pause_at": "00:02.90",
+      "answer_until": "00:02.90",
+      "audio_file1": "grocery-shopping2-q1-setup",
+      "audio_file1_text": "I'd like to return this large bag of rice for a refund.",
+      "questionData": {
+        "answer_type": "AppearDisappear",
+        "words": "I'd like to return this large bag of rice for a refund.",
+        "distractors": [
+          "small",
+          "exchange",
+          "buy"
+        ]
+      }
+    },
+    {
+      "template": "VideoConversation",
+      "videoFile": "grocery-shopping2",
+      "start_at": "00:02.90",
+      "pause_at": "00:02.90",
+      "answer_until": "00:05.15",
+      "audio_file2": "grocery-shopping2-q1-confirm",
+      "audio_file2_text": "Please wait here at the checkout.",
+      "questionData": {
+        "answer_type": "DialogueCompletion",
+        "answer": "Please wait here at the checkout.",
+        "distractors": [
+          "Please pay at the counter.",
+          "Please carry your bags.",
+          "Please choose another item."
+        ],
+        "teaching_targets": [
+          "to wait",
+          "checkout"
+        ]
+      }
+    },
+    {
+      "template": "VideoConversation",
+      "videoFile": "grocery-shopping2",
+      "start_at": "00:05.15",
+      "pause_at": "00:06.80",
+      "answer_until": "00:08.45",
+      "audio_file2": "grocery-shopping2-q2-confirm",
+      "audio_file2_text": "Can I choose another bag instead?",
+      "questionData": {
+        "answer_type": "SentenceBuilder",
+        "correct_order": "Can I choose another bag instead?",
+        "teaching_targets": [
+          "to choose"
+        ]
+      }
+    },
+    {
+      "template": "VideoConversation",
+      "videoFile": "grocery-shopping2",
+      "start_at": "00:08.45",
+      "pause_at": "00:08.95",
+      "answer_until": "00:11.95",
+      "audio_file2": "grocery-shopping2-q3-confirm",
+      "audio_file2_text": "Yes, but I need your receipt to calculate the price difference.",
+      "questionData": {
+        "answer_type": "ClozeSequence",
+        "sentence": "Yes, but I need your _____ to _____ the price difference.",
+        "answer": [
+          "receipt",
+          "calculate"
+        ],
+        "distractors": [
+          "weight",
+          "choose",
+          "weigh",
+          "checkout"
+        ],
+        "teaching_targets": [
+          "receipt",
+          "to calculate"
+        ]
+      }
+    },
+    {
+      "template": "VideoConversation",
+      "videoFile": "grocery-shopping2",
+      "start_at": "00:11.95",
+      "pause_at": "00:12.35",
+      "answer_until": "00:13.86",
+      "audio_file2": "grocery-shopping2-q4-setup",
+      "audio_file2_text": "Do you also need to check the weight?",
+      "questionData": {
+        "answer_type": "SentenceBuilder",
+        "correct_order": "Do you also need to check the weight?",
+        "teaching_targets": [
+          "weight"
+        ]
+      }
+    },
+    {
+      "template": "VideoConversation",
+      "videoFile": "grocery-shopping2",
+      "start_at": "00:13.86",
+      "pause_at": "00:16.20",
+      "answer_until": "00:16.20",
+      "audio_file1": "grocery-shopping2-q4-confirm",
+      "audio_file1_text": "Yes. Please load the bag onto the scale.",
+      "questionData": {
+        "answer_type": "AppearDisappear",
+        "words": "Yes. Please load the bag onto the scale.",
+        "distractors": [
+          "carry",
+          "pay",
+          "wait"
+        ],
+        "teaching_targets": [
+          "to load"
+        ]
+      }
+    },
+    {
+      "template": "VideoConversation",
+      "videoFile": "grocery-shopping2",
+      "start_at": "00:16.20",
+      "pause_at": "00:19.45",
+      "answer_until": "00:24.15",
+      "audio_file1": "grocery-shopping2-q5-setup",
+      "audio_file1_text": "How much does the new bag cost?",
+      "audio_file2": "grocery-shopping2-q5-confirm",
+      "audio_file2_text": "Its quality is better. It costs two dollars more, but you save one dollar with the discount.",
+      "questionData": {
+        "answer_type": "ClozeSequence",
+        "sentence": "Its _____ is better. It _____ two dollars more, but you save one dollar with the _____.",
+        "answer": [
+          "quality",
+          "costs",
+          "discount"
+        ],
+        "distractors": [
+          "weight",
+          "pays",
+          "receipt",
+          "price"
+        ],
+        "teaching_targets": [
+          "quality",
+          "to cost",
+          "discount"
+        ]
+      }
+    },
+    {
+      "template": "VideoConversation",
+      "videoFile": "grocery-shopping2",
+      "start_at": "00:24.15",
+      "pause_at": "00:24.65",
+      "answer_until": "00:27.10",
+      "audio_file2": "grocery-shopping2-q6-confirm",
+      "audio_file2_text": "I think I can afford it. I have enough money.",
+      "questionData": {
+        "answer_type": "ClozeSequence",
+        "sentence": "I think I can _____ it. I have _____ money.",
+        "answer": [
+          "afford",
+          "enough"
+        ],
+        "distractors": [
+          "pay",
+          "much",
+          "calculate",
+          "spend"
+        ],
+        "teaching_targets": [
+          "to afford",
+          "enough"
+        ]
+      }
+    },
     {
       "template": "imageQuizTemplate-1",
       "questionData": {
@@ -10,40 +353,6 @@
           "salt"
         ]
       }
-    },
-    {
-      "template": "ConvoTemplate-1",
-      "genders": "m-f",
-      "questionData": {
-        "line1": "Where do you _____?",
-        "line2": "I _____ at the grocery store.",
-        "answer": "shop",
-        "distractors": [
-          "take",
-          "live",
-          "eat"
-        ]
-      },
-      "audio_file1": "where-do-you-shop-convo",
-      "audio_file2": "i-shop-at-the-grocery-store-convo"
-    },
-    {
-      "template": "ClozeSequence",
-      "genders": "f",
-      "questionData": {
-        "sentence": "Can I ____ this ____ at the checkout?",
-        "answer": [
-          "buy",
-          "brand"
-        ],
-        "distractors": [
-          "move",
-          "milk",
-          "eat",
-          "store"
-        ]
-      },
-      "audio_file": "can-i-buy-this-brand-at-the-checkout-convo"
     },
     {
       "template": "imageQuizTemplate-1",
@@ -126,35 +435,6 @@
       }
     },
     {
-      "template": "DialogueCompletion",
-      "genders": "m-f",
-      "questionData": {
-        "line1": "How much is this cheese?",
-        "answer": "It costs ten dollars.",
-        "distractors": [
-          "It weighs ten bags.",
-          "You buy ten stores.",
-          "It opens at ten o'clock."
-        ]
-      },
-      "audio_file1": "how-much-is-this-cheese-convo",
-      "audio_file2": "it-costs-ten-dollars-convo"
-    },
-    {
-      "template": "AppearDisappear",
-      "genders": "f",
-      "questionData": {
-        "words": "Please pay and take your receipt.",
-        "distractors": [
-          "who",
-          "pay",
-          "cashier",
-          "enter"
-        ]
-      },
-      "audio_file": "please-pay-and-take-your-receipt-convo"
-    },
-    {
       "template": "imageQuizTemplate-2",
       "questionData": {
         "imageName": "sugar",
@@ -178,24 +458,6 @@
       }
     },
     {
-      "template": "ClozeSequence",
-      "genders": "f",
-      "questionData": {
-        "sentence": "She must _____ the best deal after she _____ the total cost.",
-        "answer": [
-          "choose",
-          "calculates"
-        ],
-        "distractors": [
-          "eat",
-          "carry",
-          "forgets",
-          "loses"
-        ]
-      },
-      "audio_file": "she-must-choose-the-best-deal-after-she-calculates-the-total-cost-convo"
-    },
-    {
       "template": "imageQuizTemplate-1",
       "questionData": {
         "imageName": "salt",
@@ -205,62 +467,6 @@
           "meat"
         ]
       }
-    },
-    {
-      "template": "SentenceBuilder",
-      "genders": "f",
-      "questionData": {
-        "correct_order": "Please load the bags into the car."
-      },
-      "audio_file": "please-load-the-bags-into-the-car-convo"
-    },
-    {
-      "template": "ClozeSequence",
-      "genders": "m",
-      "questionData": {
-        "sentence": "We ____ in the checkout line.",
-        "answer": "wait",
-        "distractors": [
-          "are waiting",
-          "waiting",
-          "waits"
-        ]
-      }
-    },
-    {
-      "template": "ClozeSequence",
-      "genders": "f",
-      "questionData": {
-        "sentence": "I _____ the olive oil bottles to _____ the _____.",
-        "answer": [
-          "weigh",
-          "compare",
-          "weights"
-        ],
-        "distractors": [
-          "try",
-          "pick",
-          "heavy",
-          "price"
-        ]
-      },
-      "audio_file": "i-weigh-the-olive-oil-bottles-to-compare-the-weights-convo"
-    },
-    {
-      "template": "ConvoTemplate-1",
-      "genders": "f-f",
-      "questionData": {
-        "line1": "These bags are heavy. Can you _____ them?",
-        "line2": "Sure, I can _____ them to the car.",
-        "answer": "carry",
-        "distractors": [
-          "drop",
-          "sell",
-          "eat"
-        ]
-      },
-      "audio_file1": "these-bags-are-heavy-can-you-carry-them-convo",
-      "audio_file2": "sure-i-can-carry-them-to-the-car-convo"
     }
   ]
 }

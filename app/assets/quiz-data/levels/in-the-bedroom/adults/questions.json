@@ -1,93 +1,90 @@
 {
   "levelQuestions": [
     {
-      "template": "AppearDisappear",
-      "genders": "m",
+      "template": "VideoConversation",
+      "videoFile": "in-the-bedroom1",
+      "start_at": "00:00.00",
+      "pause_at": "00:03.71",
+      "answer_until": "00:06.50",
+      "audio_file1": "in-the-bedroom1-q1-setup",
+      "audio_file1_text": "I am very tired today.",
+      "audio_file2": "in-the-bedroom1-q1-confirm",
+      "audio_file2_text": "I want to lie down early.",
       "questionData": {
-        "words": "She sleeps quietly in her room.",
-        "distractors": [
-          "night",
-          "day",
-          "well",
-          "morning"
-        ]
-      },
-      "audio_file": "she-sleeps-quietly-in-her-room-convo"
-    },
-    {
-      "template": "ClozeSequence",
-      "genders": "f",
-      "questionData": {
-        "sentence": "It is ____ dark in the room.",
-        "answers": [
-          "too"
+        "answer_type": "ClozeSequence",
+        "sentence": "I want to _____ early.",
+        "answer": [
+          "lie down"
         ],
         "distractors": [
-          "only",
-          "other",
-          "much"
-        ]
-      },
-      "audio_file": "it-is-too-dark-in-the-room-convo"
-    },
-    {
-      "template": "ClozeSequence",
-      "genders": "m",
-      "questionData": {
-        "sentence": "I am very _____ , so I _____ to _____.",
-        "answers": [
-          "tired",
-          "lie down",
-          "rest"
-        ],
-        "distractors": [
-          "only",
-          "much",
           "stand up",
-          "get up",
+          "wake up",
           "cook"
         ]
-      },
-      "audio_file": "i-am-very-tired-so-i-lie-down-to-rest-convo"
+      }
     },
     {
-      "template": "ConvoTemplate-1",
-      "genders": "f-f",
+      "template": "VideoConversation",
+      "videoFile": "in-the-bedroom1",
+      "start_at": "00:06.50",
+      "pause_at": "00:12.56",
+      "answer_until": "00:12.56",
+      "question_enter_audio": "in-the-bedroom1-q2-setup-full",
+      "question_enter_audio_text": "Me too. I want to rest. The bed looks comfortable.",
+      "audio_file1": "in-the-bedroom1-q2-setup",
+      "audio_file1_text": "The bed looks comfortable.",
       "questionData": {
-        "line1": "Do you _____ every morning?",
-        "line2": "Yes, I _____ every day.",
-        "answer": "make the bed",
+        "answer_type": "AppearDisappear",
+        "words": "The bed looks comfortable.",
         "distractors": [
-          "read the book",
-          "cook the lunch",
-          "drive the car"
+          "dark",
+          "bright",
+          "cold",
+          "late"
         ]
-      },
-      "audio_file1": "do-you-make-the-bed-every-morning-convo",
-      "audio_file2": "yes-i-make-the-bed-every-day-convo"
+      }
     },
     {
-      "template": "ClozeSequence",
-      "genders": "f",
+      "template": "VideoConversation",
+      "videoFile": "in-the-bedroom1",
+      "start_at": "00:12.56",
+      "pause_at": "00:15.05",
+      "answer_until": "00:17.12",
+      "audio_file1": "in-the-bedroom1-q3-setup",
+      "audio_file1_text": "It is too dark in here.",
+      "audio_file2": "in-the-bedroom1-q3-confirm",
+      "audio_file2_text": "I am turning on the light now.",
       "questionData": {
-        "sentence": "I ____ the light when it's dark. I _____ the light when it's bright.",
-        "answers": [
-          "turn on",
-          "turn off"
+        "answer_type": "ClozeSequence",
+        "sentence": "I am _____ the light now.",
+        "answer": [
+          "turning on"
         ],
         "distractors": [
-          "take out",
-          "shut down",
-          "turn in"
+          "turning off",
+          "opening",
+          "taking out"
         ]
-      },
-      "audio_file": "i-turn-on-the-light-when-its-dark-convo"
+      }
     },
     {
-      "template": "SentenceBuilder",
-      "genders": "m",
+      "template": "VideoConversation",
+      "videoFile": "in-the-bedroom1",
+      "start_at": "00:17.12",
+      "pause_at": "00:19.51",
+      "answer_until": "00:24.11",
+      "audio_file1": "in-the-bedroom1-q4-setup",
+      "audio_file1_text": "The light is too bright now.",
+      "audio_file2": "in-the-bedroom1-q4-confirm",
+      "audio_file2_text": "Okay, I'll turn off the light. Good night.",
       "questionData": {
-        "correct_order": "This bed is very comfortable."
+        "answer_type": "DialogueCompletion",
+        "answer": "Okay, I'll turn off the light. Good night.",
+        "distractors": [
+          "Okay, I'll open the window. Good morning.",
+          "Okay, I'll make the bed. I want to wake up.",
+          "Okay, I'll leave the light on. I am awake."
+        ]
       }
     },
     {
@@ -171,37 +168,6 @@
             "ar": "لهم",
             "hi": "उन्हें"
           }
-        ]
-      }
-    },
-    {
-      "template": "ClozeSequence",
-      "genders": "m",
-      "questionData": {
-        "sentence": "She lies down _____ for hours before finally falling _____.",
-        "answers": [
-          "awake",
-          "asleep"
-        ],
-        "distractors": [
-          "tired",
-          "up",
-          "early",
-          "late"
-        ]
-      },
-      "audio_file": "she-lies-down-awake-for-hours-before-finally-falling-asleep-convo"
-    },
-    {
-      "template": "ClozeSequence",
-      "genders": "f",
-      "questionData": {
-        "sentence": "Do you _____ a lot?",
-        "answer": "dream",
-        "distractors": [
-          "dreams",
-          "dreamed",
-          "dreaming"
         ]
       }
     }
