@@ -1,0 +1,425 @@
+{
+  "levelQuestions": [
+    {
+      "template": "VideoConversation",
+      "videoFile": "at-the-farmers-market1",
+      "start_at": "00:00.00",
+      "pause_at": "00:03.20",
+      "answer_until": "00:07.20",
+      "audio_file1": "at-the-farmers-market1-q1-setup",
+      "audio_file1_text": "Good morning. The market is crowded today.",
+      "audio_file2": "at-the-farmers-market1-q1-confirm",
+      "audio_file2_text": "Hello. We usually get many customers early in the morning.",
+      "questionData": {
+        "answer_type": "ClozeSequence",
+        "sentence": "Hello. We _____ get many _____ early in the morning.",
+        "answer": [
+          "usually",
+          "customers"
+        ],
+        "distractors": [
+          "often",
+          "rarely",
+          "shoppers",
+          "visitors"
+        ]
+      }
+    },
+    {
+      "template": "VideoConversation",
+      "videoFile": "at-the-farmers-market1",
+      "start_at": "00:07.20",
+      "pause_at": "00:09.60",
+      "answer_until": "00:09.60",
+      "audio_file1": "at-the-farmers-market1-q2-setup",
+      "audio_file1_text": "Do you grow all of these vegetables yourself?",
+      "questionData": {
+        "answer_type": "AppearDisappear",
+        "words": "Do you grow all of these vegetables yourself?",
+        "distractors": [
+          "sell",
+          "buy",
+          "carry",
+          "wash"
+        ]
+      }
+    },
+    {
+      "template": "VideoConversation",
+      "videoFile": "at-the-farmers-market1",
+      "start_at": "00:09.60",
+      "pause_at": "00:12.00",
+      "answer_until": "00:14.89",
+      "audio_file1": "at-the-farmers-market1-q3-setup",
+      "audio_file1_text": "Yes. They are all local and fresh.",
+      "audio_file2": "at-the-farmers-market1-q3-confirm",
+      "audio_file2_text": "I can give you a sample.",
+      "questionData": {
+        "answer_type": "SentenceBuilder",
+        "correct_order": "I can give you a sample."
+      }
+    },
+    {
+      "template": "VideoConversation",
+      "videoFile": "at-the-farmers-market1",
+      "start_at": "00:14.89",
+      "pause_at": "00:14.89",
+      "answer_until": "00:18.09",
+      "audio_file2": "at-the-farmers-market1-q4-confirm",
+      "audio_file2_text": "These tomatoes look ripe. Could you weigh out one kilogram for me, please?",
+      "questionData": {
+        "answer_type": "ClozeSequence",
+        "sentence": "These tomatoes look _____. Could you _____ out one kilogram for me, please?",
+        "answer": [
+          "ripe",
+          "weigh"
+        ],
+        "distractors": [
+          "fresh",
+          "cut",
+          "wash",
+          "check"
+        ]
+      }
+    },
+    {
+      "template": "VideoConversation",
+      "videoFile": "at-the-farmers-market1",
+      "start_at": "00:18.09",
+      "pause_at": "00:21.49",
+      "answer_until": "00:23.29",
+      "audio_file1": "at-the-farmers-market1-q5-setup",
+      "audio_file1_text": "Here you are. The total cost is four dollars.",
+      "audio_file2": "at-the-farmers-market1-q5-confirm",
+      "audio_file2_text": "What else do you sell?",
+      "questionData": {
+        "answer_type": "DialogueCompletion",
+        "answer": "What else do you sell?",
+        "distractors": [
+          "How much is this bag?",
+          "Can I pay by card?",
+          "Where is the exit?"
+        ]
+      }
+    },
+    {
+      "template": "VideoConversation",
+      "videoFile": "at-the-farmers-market1",
+      "start_at": "00:22.80",
+      "pause_at": "00:25.50",
+      "answer_until": "00:28.20",
+      "question_enter_audio": "at-the-farmers-market1-q6-confirm",
+      "question_enter_audio_text": "I sell apples by weight, too.I'll give you a discount if you buy in bulk",
+      "audio_file1": "at-the-farmers-market1-q6-partial",
+      "audio_file1_text": "I'll give you a discount if you buy in bulk.",
+      "questionData": {
+        "answer_type": "AppearDisappear",
+        "words": "I will give you a discount if you buy in bulk",
+        "distractors": [
+          "sell",
+          "buy",
+          "carry",
+          "wash"
+        ]
+      }
+    },
+    {
+      "template": "VideoConversation",
+      "videoFile": "at-the-farmers-market2",
+      "start_at": "00:00.00",
+      "pause_at": "00:02.50",
+      "answer_until": "00:04.70",
+      "audio_file1": "at-the-farmers-market2-q1-setup",
+      "audio_file1_text": "These peaches are popular this season.",
+      "audio_file2": "at-the-farmers-market2-q1-confirm",
+      "audio_file2_text": "I can smell them from here.",
+      "questionData": {
+        "answer_type": "ClozeSequence",
+        "sentence": "I can _____ them from here.",
+        "answer": [
+          "smell"
+        ],
+        "distractors": [
+          "see",
+          "touch",
+          "taste",
+          "hear"
+        ]
+      }
+    },
+    {
+      "template": "VideoConversation",
+      "videoFile": "at-the-farmers-market2",
+      "start_at": "00:04.70",
+      "pause_at": "00:04.70",
+      "answer_until": "00:07.50",
+      "audio_file2": "at-the-farmers-market2-q2-confirm",
+      "audio_file2_text": "They were probably harvested today.",
+      "questionData": {
+        "answer_type": "ClozeSequence",
+        "sentence": "They were probably _____ today.",
+        "answer": [
+          "harvested"
+        ],
+        "distractors": [
+          "picked",
+          "sold",
+          "washed",
+          "grown"
+        ]
+      }
+    },
+    {
+      "template": "VideoConversation",
+      "videoFile": "at-the-farmers-market2",
+      "start_at": "00:07.50",
+      "pause_at": "00:11.10",
+      "answer_until": "00:12.47",
+      "audio_file1": "at-the-farmers-market2-q3-confirm",
+      "audio_file1_text": "Yes. I picked them before I came to the market.",
+      "questionData": {
+        "answer_type": "AppearDisappear",
+        "words": "Yes. I picked them before I came to the market.",
+        "distractors": [
+          "sold",
+          "bought",
+          "carried",
+          "washed"
+        ]
+      }
+    },
+    {
+      "template": "VideoConversation",
+      "videoFile": "at-the-farmers-market2",
+      "start_at": "00:12.47",
+      "pause_at": "00:14.11",
+      "answer_until": "00:17.94",
+      "audio_file1": "at-the-farmers-market2-q4-setup",
+      "audio_file1_text": "Can we choose the big ones?",
+      "audio_file2": "at-the-farmers-market2-q4-confirm",
+      "audio_file2_text": "I'm sorry, but you have to buy a whole small basket.",
+      "questionData": {
+        "answer_type": "SentenceBuilder",
+        "correct_order": "I'm sorry, but you have to buy a whole small basket."
+      }
+    },
+    {
+      "template": "VideoConversation",
+      "videoFile": "at-the-farmers-market2",
+      "start_at": "00:17.94",
+      "pause_at": "00:19.95",
+      "answer_until": "00:23.23",
+      "audio_file1": "at-the-farmers-market2-q5-setup",
+      "audio_file1_text": "Why are the peaches expensive this year?",
+      "audio_file2": "at-the-farmers-market2-q5-confirm",
+      "audio_file2_text": "Demand is high, but not enough peaches were grown.",
+      "questionData": {
+        "answer_type": "ClozeSequence",
+        "sentence": "_____ is high, but not enough peaches were _____.",
+        "answer": [
+          "Demand",
+          "grown"
+        ],
+        "distractors": [
+          "Supply",
+          "sold",
+          "picked",
+          "washed"
+        ]
+      }
+    },
+    {
+      "template": "ClozeSequence",
+      "audio_file1": "at-the-farmers-market-dialog3-line1",
+      "audio_file2": "at-the-farmers-market-dialog3-line2",
+      "questionData": {
+        "line1": "What do the vendors do?",
+        "imageName": "seller",
+        "sentence": "They _____ _____ of herbs and _____ them in crates.",
+        "answers": [
+          "unload",
+          "bunches",
+          "display"
+        ],
+        "distractors": [
+          "sell",
+          "boxes",
+          "carry",
+          "hide"
+        ]
+      }
+    },
+    {
+      "template": "AppearDisappear",
+      "audio_file1": "at-the-farmers-market-dialog4-line1",
+      "audio_file2": "at-the-farmers-market-dialog4-line2",
+      "questionData": {
+        "line1": "Two dollars a kilogram is a good deal.",
+        "imageName": "scale",
+        "words": "Farmers are supplying a lot of produce this year.",
+        "distractors": [
+          "selling",
+          "growing",
+          "buying",
+          "using"
+        ]
+      }
+    },
+    {
+      "template": "ClozeSequence",
+      "audio_file1": "at-the-farmers-market-dialog5-line1",
+      "audio_file2": "at-the-farmers-market-dialog5-line2",
+      "questionData": {
+        "line1": "These strawberries look great. Are they locally grown?",
+        "imageName": "basket",
+        "sentence": "Yes. They were locally _____ and _____ _____ this morning.",
+        "answers": [
+          "grown",
+          "freshly",
+          "picked"
+        ],
+        "distractors": [
+          "sold",
+          "recently",
+          "washed",
+          "frozen"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "kiosk",
+        "wrongAnswers": [
+          "table",
+          "bench",
+          "tent"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-2",
+      "questionData": {
+        "imageName": "basket",
+        "wrongAnswers": [
+          "scale",
+          "chalkboard",
+          "tent"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "chalkboard",
+        "wrongAnswers": [
+          "wooden-board",
+          "wall",
+          "price-tag"
+        ]
+      }
+    },
+    {
+      "template": "WordPairs",
+      "questionData": {
+        "english_words": [
+          "free",
+          "expensive",
+          "cheap",
+          "on sale"
+        ],
+        "translations": [
+          {
+            "tr": "\u00fccretsiz",
+            "es": "gratis",
+            "fr": "gratuit",
+            "de": "kostenlos",
+            "it": "gratuito",
+            "pt": "gr\u00e1tis",
+            "ru": "\u0431\u0435\u0441\u043f\u043b\u0430\u0442\u043d\u044b\u0439",
+            "zh": "\u514d\u8d39\u7684",
+            "ja": "\u7121\u6599",
+            "ko": "\ubb34\ub8cc",
+            "ar": "\u0645\u062c\u0627\u0646\u064a",
+            "hi": "\u092e\u0941\u092b\u093c\u094d\u0924"
+          },
+          {
+            "tr": "pahal\u0131",
+            "es": "caro",
+            "fr": "cher",
+            "de": "teuer",
+            "it": "caro",
+            "pt": "caro",
+            "ru": "\u0434\u043e\u0440\u043e\u0433\u043e\u0439",
+            "zh": "\u8d35\u7684",
+            "ja": "\u9ad8\u3044",
+            "ko": "\ube44\uc2fc",
+            "ar": "\u063a\u0627\u0644\u064a",
+            "hi": "\u092e\u0939\u0902\u0917\u093e"
+          },
+          {
+            "tr": "ucuz",
+            "es": "barato",
+            "fr": "bon march\u00e9",
+            "de": "billig",
+            "it": "economico",
+            "pt": "barato",
+            "ru": "\u0434\u0435\u0448\u0435\u0432\u044b\u0439",
+            "zh": "\u4fbf\u5b9c\u7684",
+            "ja": "\u5b89\u3044",
+            "ko": "\uc2fc",
+            "ar": "\u0631\u062e\u064a\u0635",
+            "hi": "\u0938\u0938\u094d\u0924\u093e"
+          },
+          {
+            "tr": "sat\u0131\u015fta",
+            "es": "en oferta",
+            "fr": "en promotion",
+            "de": "im Angebot",
+            "it": "in offerta",
+            "pt": "em promo\u00e7\u00e3o",
+            "ru": "\u0441\u043e \u0441\u043a\u0438\u0434\u043a\u043e\u0439",
+            "zh": "\u6253\u6298",
+            "ja": "\u30bb\u30fc\u30eb\u4e2d",
+            "ko": "\ud560\uc778 \uc911",
+            "ar": "\u0628\u0633\u0639\u0631 \u0645\u062e\u0641\u0636",
+            "hi": "\u091b\u0942\u091f \u092a\u0930"
+          }
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "scale",
+        "wrongAnswers": [
+          "basket",
+          "cart",
+          "weight"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "seller",
+        "wrongAnswers": [
+          "giver",
+          "talker",
+          "helper"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "tent",
+        "wrongAnswers": [
+          "store",
+          "kiosk",
+          "chalkboard"
+        ]
+      }
+    }
+  ]
+}

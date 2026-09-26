@@ -13,10 +13,11 @@
     },
     {
       "template": "ConvoTemplate-1",
-      "genders": "f-m",
       "questionData": {
-        "line1": "Time to _____ the baby?",
-        "line2": "Yes, baby is hungry.",
+        "character1": "Sarah",
+        "character2": "Daniel",
+        "line1": "Is it time to _____ the baby again?",
+        "line2": "Yes, she eats every three hours.",
         "answer": "feed",
         "distractors": [
           "bathe",
@@ -24,23 +25,24 @@
           "dress"
         ]
       },
-      "audio_file1": "time-to-feed-the-baby-convo",
-      "audio_file2": "yes-baby-is-hungry-convo"
+      "audio_file1": "is-it-time-to-feed-the-baby-again-convo",
+      "audio_file2": "yes-she-eats-every-three-hours-convo"
     },
     {
       "template": "ConvoTemplate-1",
-      "genders": "f-m",
       "questionData": {
-        "line1": "I _____ to baby.",
+        "character1": "Beth",
+        "character2": "Alex",
+        "line1": "I always _____ to her at bedtime.",
         "line2": "Does she like it?",
-        "answer": "talk",
+        "answer": "whisper",
         "distractors": [
-          "sing",
-          "smile",
-          "play"
+          "shout",
+          "cry",
+          "ask"
         ]
       },
-      "audio_file1": "i-talk-to-baby-convo",
+      "audio_file1": "i-always-whisper-to-her-at-bedtime-convo",
       "audio_file2": "does-she-like-it-convo"
     },
     {
@@ -125,31 +127,31 @@
     },
     {
       "template": "DialogueCompletion",
-      "genders": "m-f",
       "questionData": {
-        "line1": "Is baby hungry?",
-        "answer": "No, she needs a toy.",
+        "character1": "Omar",
+        "character2": "Lily",
+        "line1": "The baby is not sleeping. Is she hungry?",
+        "answer": "No, she just needs her pacifier.",
         "distractors": [
-          "Baby is sleeping.",
-          "The room is quiet.",
-          "Grandma is here."
+          "She always sleeps at this time.",
+          "The room is very quiet tonight.",
+          "Grandma is coming to visit later."
         ]
       },
-      "audio_file1": "is-baby-hungry-convo",
-      "audio_file2": "no-she-needs-a-toy-convo"
+      "audio_file1": "the-baby-is-not-sleeping-is-she-hungry-convo",
+      "audio_file2": "no-she-just-needs-her-pacifier-convo"
     },
     {
       "template": "AppearDisappear",
-      "genders": "m",
       "questionData": {
-        "words": "The baby starts to cry.",
+        "words": "The newborn baby starts to cry.",
         "distractors": [
-          "laugh",
-          "play",
-          "sleep"
+          "crawl",
+          "quickly",
+          "this"
         ]
       },
-      "audio_file": "the-baby-starts-to-cry-convo"
+      "audio_file": "the-newborn-baby-starts-to-cry-convo"
     },
     {
       "template": "imageQuizTemplate-1",
@@ -175,11 +177,10 @@
     },
     {
       "template": "SentenceBuilder",
-      "genders": "m",
       "questionData": {
-        "correct_order": "The baby smiles at Mom."
+        "correct_order": "The baby smiles at her mother."
       },
-      "audio_file": "the-baby-smiles-at-mom-convo"
+      "audio_file": "the-baby-smiles-at-her-mother-convo"
     },
     {
       "template": "imageQuizTemplate-1",
@@ -194,67 +195,67 @@
     },
     {
       "template": "ClozeSequence",
-      "genders": "f",
       "questionData": {
-        "sentence": "Dad _____ the baby.",
+        "sentence": "Dad _____ the baby up and she starts to happily _____.",
         "answer": [
-          "holds"
+          "holds",
+          "laugh"
         ],
         "distractors": [
-          "sees",
-          "feeds",
-          "kisses",
-          "calls"
+          "cry",
+          "drops",
+          "rocks",
+          "yells"
         ]
       },
-      "audio_file": "dad-holds-the-baby-convo"
+      "audio_file": "dad-holds-the-baby-up-and-she-starts-to-happily-laugh-convo"
     },
     {
-      "template": "ClozeSequence",
-      "genders": "f",
+      "template": "GrammarForm",
       "questionData": {
-        "sentence": "She _____ to baby.",
-        "answer": "sings",
+        "sentence": "She _____ the song until the baby falls asleep.",
+        "answer": "repeats",
         "distractors": [
-          "sing",
-          "singing",
-          "sang"
+          "repeat",
+          "repeating",
+          "repeated"
         ]
       }
     },
     {
       "template": "ClozeSequence",
-      "genders": "m",
       "questionData": {
-        "sentence": "Mom _____ the diaper.",
+        "sentence": "Mom _____ the baby's diaper _____ so she does not wake up.",
         "answer": [
-          "changes"
+          "changes",
+          "gently"
         ],
         "distractors": [
-          "feeds",
-          "holds",
-          "sees",
-          "calls"
+          "happy",
+          "yesterday",
+          "careful",
+          "loud"
         ]
       },
-      "audio_file": "mom-changes-the-diaper-convo"
+      "audio_file": "mom-changes-the-baby-s-diaper-gently-so-she-does-not-wake-up-convo"
     },
     {
       "template": "ClozeSequence",
-      "genders": "f",
       "questionData": {
-        "sentence": "Grandma _____ the baby.",
+        "sentence": "Grandma _____ the baby's _____ little cheeks.",
         "answer": [
-          "kisses"
+          "kisses",
+          "pretty"
         ],
         "distractors": [
-          "feeds",
-          "holds",
-          "sees",
-          "calls"
+          "yells",
+          "throws",
+          "tall",
+          "loud",
+          "new"
         ]
       },
-      "audio_file": "grandma-kisses-the-baby-convo"
+      "audio_file": "grandma-kisses-the-baby-s-pretty-little-cheeks-convo"
     }
   ]
 }

@@ -13,34 +13,36 @@
     },
     {
       "template": "DialogueCompletion",
-      "genders": "f-m",
       "questionData": {
-        "line1": "Can we watch the sky?",
-        "answer": "Yes, it is pretty.",
+        "character1": "Sarah",
+        "character2": "Daniel",
+        "line1": "Should we stay longer to watch the sky?",
+        "answer": "Definitely—it is amazing.",
         "distractors": [
-          "No, I am tired.",
-          "I read a book.",
-          "It is a big dog."
+          "No, it is getting too dark.",
+          "I am tired and want to leave now.",
+          "The sky looks cloudy tonight."
         ]
       },
-      "audio_file1": "can-we-watch-the-sky-convo",
-      "audio_file2": "yes-it-is-pretty-convo"
+      "audio_file1": "should-we-stay-longer-to-watch-the-sky-convo",
+      "audio_file2": "definitely-it-is-amazing-convo"
     },
     {
       "template": "ConvoTemplate-1",
-      "genders": "f-m",
       "questionData": {
-        "line1": "Did we walk far?",
-        "line2": "Yes, we _____ far.",
-        "answer": "walked",
+        "character1": "Beth",
+        "character2": "Alex",
+        "line1": "Did you notice how the shadows changed while we _____?",
+        "line2": "Yes, they got so long by the end!",
+        "answer": "hiked",
         "distractors": [
-          "walk",
-          "walks",
-          "are walk"
+          "walked",
+          "ran",
+          "climbed"
         ]
       },
-      "audio_file1": "did-we-walk-far-convo",
-      "audio_file2": "yes-we-walked-far-convo"
+      "audio_file1": "did-you-notice-how-the-shadows-changed-while-we-hiked-convo",
+      "audio_file2": "yes-they-got-so-long-by-the-end-convo"
     },
     {
       "template": "imageQuizTemplate-1",
@@ -124,32 +126,32 @@
     },
     {
       "template": "DialogueCompletion",
-      "genders": "m-f",
       "questionData": {
-        "line1": "Is that tree big?",
-        "answer": "Yes, it is very big.",
+        "character1": "Omar",
+        "character2": "Lily",
+        "line1": "Wow, that is a really big tree! How old do you think it is?",
+        "answer": "It could be hundreds of years old",
         "distractors": [
-          "No, I am tired.",
-          "I read a book.",
-          "It is a big dog."
+          "It could be too many years",
+          "It is too tall to see the top",
+          "I cannot say for sure yet."
         ]
       },
-      "audio_file1": "is-that-tree-big-convo",
-      "audio_file2": "yes-it-is-very-big-convo"
+      "audio_file1": "wow-that-is-a-really-big-tree-how-old-do-you-think-it-is-convo",
+      "audio_file2": "it-could-be-hundreds-of-years-old-convo"
     },
     {
       "template": "AppearDisappear",
-      "genders": "m",
       "questionData": {
-        "words": "Look at the hill.",
+        "words": "They paused to observe the steep hillside.",
         "distractors": [
-          "book",
-          "ball",
-          "dog",
-          "home"
+          "looked",
+          "flat",
+          "valley",
+          "quickly"
         ]
       },
-      "audio_file": "look-at-the-hill-convo"
+      "audio_file": "they-paused-to-observe-the-steep-hillside-convo"
     },
     {
       "template": "imageQuizTemplate-1",
@@ -175,11 +177,10 @@
     },
     {
       "template": "SentenceBuilder",
-      "genders": "f",
       "questionData": {
-        "correct_order": "Do not touch plants."
+        "correct_order": "Do not touch the wild plants."
       },
-      "audio_file": "do-not-touch-plants-convo"
+      "audio_file": "do-not-touch-the-wild-plants-convo"
     },
     {
       "template": "imageQuizTemplate-1",
@@ -194,67 +195,65 @@
     },
     {
       "template": "ClozeSequence",
-      "genders": "m",
       "questionData": {
-        "sentence": "Do not _____. Stay calm.",
+        "sentence": "Please do not _____ — stay ____ when you see an animal.",
         "answer": [
-          "shout"
+          "shout",
+          "calm"
         ],
         "distractors": [
-          "run",
-          "read",
-          "sleep",
-          "cook"
+          "noisy",
+          "walk",
+          "quiet",
+          "stand"
         ]
       },
-      "audio_file": "do-not-shout-stay-calm-convo"
+      "audio_file": "please-do-not-shout-—-stay-calm-when-you-see-an-animal-convo"
     },
     {
-      "template": "ClozeSequence",
-      "genders": "m",
+      "template": "GrammarForm",
       "questionData": {
-        "sentence": "The snow _____ white.",
-        "answer": "is",
+        "sentence": "The snow _____ and we could see the river again.",
+        "answer": "melted",
         "distractors": [
-          "are",
-          "am",
-          "be"
+          "melt",
+          "melts",
+          "melting"
         ]
       }
     },
     {
       "template": "ClozeSequence",
-      "genders": "f",
       "questionData": {
-        "sentence": "We _____ a cave.",
+        "sentence": "The explorers _____ a _____, ancient cave.",
         "answer": [
-          "saw"
+          "discovered",
+          "deep"
         ],
         "distractors": [
-          "see",
-          "go",
-          "make",
-          "take"
+          "found",
+          "shallow",
+          "narrow",
+          "dark"
         ]
       },
-      "audio_file": "we-saw-a-cave-convo"
+      "audio_file": "the-explorers-discovered-a-deep-ancient-cave-convo"
     },
     {
       "template": "ClozeSequence",
-      "genders": "f",
       "questionData": {
-        "sentence": "The bear is _____.",
+        "sentence": "The bear growled ______, and ______ the campers.",
         "answer": [
-          "big"
+          "suddenly",
+          "scared"
         ],
         "distractors": [
-          "small",
-          "wet",
-          "cold",
-          "sad"
+          "slowly",
+          "carefully",
+          "loudly"
         ]
       },
-      "audio_file": "the-bear-is-big-convo"
+      "audio_file": "the-bear-growled-suddenly-and-scared-the-campers-convo"
     }
   ]
 }

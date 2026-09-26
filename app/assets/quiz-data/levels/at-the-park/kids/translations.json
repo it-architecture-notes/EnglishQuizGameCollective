@@ -1,3 +1,225 @@
 {
-  "translations_list": []
+  "translations_list": [
+    {
+      "english_word": "beautiful",
+      "translations": {
+        "tr": "güzel",
+        "es": "hermoso",
+        "fr": "beau",
+        "de": "schön",
+        "it": "bello",
+        "pt": "bonito",
+        "ru": "красивый",
+        "zh": "美丽的",
+        "ja": "美しい",
+        "ko": "아름다운",
+        "ar": "جميل",
+        "hi": "सुन्दर"
+      }
+    },
+    {
+      "english_word": "to jog",
+      "translations": {
+        "tr": "koşmak / jogging yapmak",
+        "es": "trotar",
+        "fr": "faire du jogging",
+        "de": "joggen",
+        "it": "fare jogging",
+        "pt": "correr levemente",
+        "ru": "бегать трусцой",
+        "zh": "慢跑",
+        "ja": "ジョギングする",
+        "ko": "조깅하다",
+        "ar": "يجري",
+        "hi": "धीरे दौड़ना"
+      }
+    },
+    {
+      "english_word": "to jump",
+      "translations": {
+        "tr": "atlamak",
+        "es": "saltar",
+        "fr": "sauter",
+        "de": "springen",
+        "it": "saltare",
+        "pt": "pular",
+        "ru": "прыгать",
+        "zh": "跳",
+        "ja": "ジャンプする",
+        "ko": "점프하다",
+        "ar": "يقفز",
+        "hi": "कूदना"
+      }
+    },
+    {
+      "english_word": "to chase",
+      "translations": {
+        "tr": "kovalamak",
+        "es": "perseguir",
+        "fr": "chasser",
+        "de": "jagen",
+        "it": "inseguire",
+        "pt": "perseguir",
+        "ru": "преследовать",
+        "zh": "追逐",
+        "ja": "追いかける",
+        "ko": "쫓다",
+        "ar": "يطارد",
+        "hi": "पीछा करना"
+      }
+    },
+    {
+      "english_word": "to swing",
+      "translations": {
+        "tr": "sallanmak",
+        "es": "columpiarse",
+        "fr": "se balancer",
+        "de": "schaukeln",
+        "it": "dondolarsi",
+        "pt": "balançar",
+        "ru": "качаться",
+        "zh": "荡秋千",
+        "ja": "ブランコに乗る",
+        "ko": "그네를 타다",
+        "ar": "يتأرجح",
+        "hi": "झूलना"
+      }
+    },
+    {
+      "english_word": "to run away",
+      "translations": {
+        "tr": "kaçmak",
+        "es": "huir",
+        "fr": "s'enfuir",
+        "de": "weglaufen",
+        "it": "scappare",
+        "pt": "fugir",
+        "ru": "убежать",
+        "zh": "逃跑",
+        "ja": "逃げる",
+        "ko": "도망치다",
+        "ar": "يهرب",
+        "hi": "भाग जाना"
+      }
+    },
+    {
+      "english_word": "to climb",
+      "translations": {
+        "tr": "tırmanmak",
+        "es": "escalar",
+        "fr": "grimper",
+        "de": "klettern",
+        "it": "arrampicarsi",
+        "pt": "escalar",
+        "ru": "взбираться",
+        "zh": "攀登",
+        "ja": "登る",
+        "ko": "오르다",
+        "ar": "يتسلق",
+        "hi": "चढ़ना"
+      }
+    },
+    {
+      "english_word": "to fall",
+      "translations": {
+        "tr": "düşmek",
+        "es": "caer",
+        "fr": "tomber",
+        "de": "fallen",
+        "it": "cadere",
+        "pt": "cair",
+        "ru": "падать",
+        "zh": "掉下",
+        "ja": "落ちる",
+        "ko": "떨어지다",
+        "ar": "يسقط",
+        "hi": "गिरना"
+      }
+    },
+    {
+      "english_word": "to throw",
+      "translations": {
+        "tr": "atmak",
+        "es": "lanzar",
+        "fr": "jeter",
+        "de": "werfen",
+        "it": "lanciare",
+        "pt": "jogar",
+        "ru": "бросить",
+        "zh": "扔",
+        "ja": "投げる",
+        "ko": "던지다",
+        "ar": "يرمي",
+        "hi": "फेंकना"
+      }
+    },
+    {
+      "english_word": "kite",
+      "translations": {
+        "tr": "uçurtma",
+        "es": "cometa",
+        "fr": "cerf-volant",
+        "de": "Drachen",
+        "it": "aquilone",
+        "pt": "pipa",
+        "ru": "воздушный змей",
+        "zh": "风筝",
+        "ja": "凧",
+        "ko": "연",
+        "ar": "طائرة ورقية",
+        "hi": "पतंग"
+      }
+    },
+    {
+      "english_word": "line",
+      "translations": {
+        "tr": "çizgi",
+        "es": "línea",
+        "fr": "ligne",
+        "de": "Linie",
+        "it": "linea",
+        "pt": "linha",
+        "ru": "линия",
+        "zh": "线",
+        "ja": "線",
+        "ko": "선",
+        "ar": "خط",
+        "hi": "रेखा"
+      }
+    },
+    {
+      "english_word": "to picnic",
+      "translations": {
+        "tr": "piknik yapmak",
+        "es": "hacer un picnic",
+        "fr": "faire un pique-nique",
+        "de": "picknicken",
+        "it": "fare un picnic",
+        "pt": "fazer um piquenique",
+        "ru": "устраивать пикник",
+        "zh": "野餐",
+        "ja": "ピクニックをする",
+        "ko": "피크닉을 하다",
+        "ar": "يتنزه",
+        "hi": "पिकनिक मनाना"
+      }
+    },
+    {
+      "english_word": "outdoors",
+      "translations": {
+        "tr": "açık havada",
+        "es": "al aire libre",
+        "fr": "en plein air",
+        "de": "im Freien",
+        "it": "all'aperto",
+        "pt": "ao ar livre",
+        "ru": "на улице",
+        "zh": "在户外",
+        "ja": "屋外で",
+        "ko": "야외에서",
+        "ar": "في الهواء الطلق",
+        "hi": "बाहर"
+      }
+    }
+  ]
 }

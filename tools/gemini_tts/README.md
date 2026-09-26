@@ -36,7 +36,7 @@ Gemini TTS uses **prebuilt voice names** (see Google’s Gemini TTS docs). Confi
 
 | Variable | Role |
 |----------|------|
-| `GEMINI_TTS_FLAVOR` | `kids` or `adults` (CLI `--flavor` overrides). Kids mode changes style prompt, default voice pools, output suffix, and questions file preference. |
+| `GEMINI_TTS_FLAVOR` | `kids` or `adults-intermediate` (CLI `--flavor` overrides). Kids mode changes style prompt, default voice pools, output suffix, and questions file preference. |
 | `GEMINI_TTS_MALE_VOICES` | **Adults** male voices. First entry is default speaker A when `--voice-a` is not passed. If unset → `Puck`. |
 | `GEMINI_TTS_FEMALE_VOICES` | **Adults** female voices. First entry is default speaker B when `--voice-b` is not passed. If unset → `Leda`. |
 | `GEMINI_TTS_KIDS_MALE_VOICES` | **Kids** male voices (ignored for adults). If unset → `Puck,Fenrir,Sadachbia,Achird`. |
@@ -71,7 +71,7 @@ Kids style prompt (built-in when `--flavor kids`):
 Say in a young child's high-pitched, playful, clear voice: "{text}"
 ```
 
-Adults keep: `Say in a clear, friendly tone for a young learner: "{text}"`.
+Adults use: `Say in a clear, friendly tone: "{text}"`.
 
 **Gender-based voices:** For `ConvoTemplate-1` and `DialogueCompletion`, `character1` is used for **line 1**; `character2` is used for **line 2** (ConvoTemplate-1) or for the **answer** clip (DialogueCompletion). Character ids are matched (case-insensitively) to names in `characterNamePools` in `app/assets/data/config/conversation_characters.json` to decide male vs female. Each clip picks a **random** voice from the active flavor’s male/female lists accordingly. If a character id does **not** match any pool name, that clip uses a **random** voice from **both** lists combined.
 
@@ -88,14 +88,14 @@ python3 tools/gemini_tts/generate_level_audio.py --level-id waking-up --dry-run
 python3 tools/gemini_tts/generate_level_audio.py --level-id waking-up
 
 # Kids flavor: playful child style + youthful voices → levels/{level}/kids/*.m4a
-# Prefers kids/questions.json (or adults/questions.json) when present
+# Prefers kids/questions.json (or adults-intermediate/questions.json) when present
 python3 tools/gemini_tts/generate_level_audio.py --level-id greetings --flavor kids --dry-run
 python3 tools/gemini_tts/generate_level_audio.py --level-id greetings --flavor kids
 ```
 
 Optional flags:
 
-- `--flavor kids|adults` (default: `GEMINI_TTS_FLAVOR` or `adults`)
+- `--flavor kids|adults-intermediate` (default: `GEMINI_TTS_FLAVOR` or `adults-intermediate`)
 - `--workspace-root /absolute/path/to/repo`
 - `--output-suffix TEXT` (inserted before `.m4a`; default empty — flavor is the folder)
 - `--voice NAME` / `--voice-a NAME` / `--voice-b NAME` (defaults from male/female voice lists — see above)
@@ -126,10 +126,10 @@ Generated files go into the flavor subfolder under the level (same place Flutter
 
 | Flavor | Path |
 |--------|------|
-| adults | `app/assets/quiz-data/levels/{level_id}/adults/{audio_file}.m4a` |
+| adults-intermediate | `app/assets/quiz-data/levels/{level_id}/adults-intermediate/{audio_file}.m4a` |
 | kids | `app/assets/quiz-data/levels/{level_id}/kids/{audio_file}.m4a` |
 
-If `kids/` or `adults/` is missing, the script creates it. Questions are read from `{flavor}/questions.json` when present, else the level-root `questions.json`.
+If `kids/` or `adults-intermediate/` is missing, the script creates it. Questions are read from `{flavor}/questions.json` when present, else the level-root `questions.json`.
 
 `{audio_file}` comes from the question’s `audio_file` / `audio_file1` / `audio_file2` stem (no `.m4a` in JSON). Keep stems unique within a flavor folder.
 
@@ -137,7 +137,7 @@ Override with `--output-suffix TEXT` if needed (inserted before `.m4a`; default 
 
 Example:
 
-`greetings/adults/morning_sentence.m4a`  
+`greetings/adults-intermediate/morning_sentence.m4a`  
 `greetings/kids/morning_sentence.m4a`
 
 ## Template Mapping

@@ -35,7 +35,7 @@ app/assets/quiz-data/levels/{directoryName}/
 | Flavor | Folder | Style |
 |--------|--------|--------|
 | **kids** | `{directoryName}/kids/` | Playful cartoon clip-art on **white** |
-| **adults** | `{directoryName}/adults/` | Richer **flat lifestyle illustration** (adult scenes, atmosphere) |
+| **adults** | `{directoryName}/adults-intermediate/` | Richer **flat lifestyle illustration** (adult scenes, atmosphere) |
 
 - Always confirm which flavor(s) to generate (`kids`, `adults`, or both).
 - Read stems from that flavor’s `questions.json`.
@@ -203,7 +203,7 @@ If an older kids asset still has a black background, **regenerate** it.
 ## Adults flavor — style
 
 Richer **flat lifestyle illustration** for adult learners — the look used for
-`greetings/adults/` time-of-day scenes (coffee/dawn skyline, office plaza at noon,
+`greetings/adults-intermediate/` time-of-day scenes (coffee/dawn skyline, office plaza at noon,
 desk + autumn window, night canal with lamps). **Visually distinct from kids**
 clip-art. Do not produce Disney teens, cute mascots, or bland single-object icons.
 
@@ -314,7 +314,7 @@ Generate with Cursor `GenerateImage`:
 
 1. Confirm flavor(s): `kids`, `adults`, or both
 2. Confirm target folder(s):
-   `app/assets/quiz-data/levels/{directoryName}/kids/` and/or `…/adults/`
+   `app/assets/quiz-data/levels/{directoryName}/kids/` and/or `…/adults-intermediate/`
 3. List stems from that flavor’s `questions.json` (`imageName`, `wrongAnswers` for
    template-2 tiles, optional convo `imageName` / `image_file_name`)
 4. Note any **named recurring characters** for identity consistency in this pack

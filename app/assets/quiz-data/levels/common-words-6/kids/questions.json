@@ -2,231 +2,121 @@
   "levelQuestions": [
     {
       "template": "ClozeSequence",
-      "genders": "m",
       "questionData": {
-        "sentence": "He _____ the ball.",
-        "answer": [
-          "saw"
-        ],
-        "distractors": [
-          "see",
-          "go",
-          "make",
-          "take"
-        ]
+        "sentence": "He _____ the accident but it still _____ some damage.",
+        "answer": ["avoided", "caused"],
+        "distractors": ["prevented", "made"]
       },
-      "audio_file": "he-saw-the-ball-convo"
+      "audio_file": "he-avoided-the-accident-but-it-still-caused-some-damage-convo"
     },
     {
       "template": "ClozeSequence",
-      "genders": "f",
       "questionData": {
-        "sentence": "I _____ her.",
-        "answer": [
-          "know"
-        ],
-        "distractors": [
-          "read",
-          "write",
-          "sleep",
-          "cook"
-        ]
+        "sentence": "I did not _____ it was her until I _____ her voice.",
+        "answer": ["realize", "recognized"],
+        "distractors": ["notice", "remember"]
       },
-      "audio_file": "i-know-her-convo"
+      "audio_file": "i-did-not-realize-it-was-her-until-i-recognized-her-voice-convo"
     },
     {
       "template": "ClozeSequence",
-      "genders": "f",
       "questionData": {
-        "sentence": "I like food.",
-        "answer": [
-          "food"
-        ],
-        "distractors": [
-          "book",
-          "dog",
-          "ball",
-          "home"
-        ]
+        "sentence": "She chose tea _____ of coffee, and she found it _____ tasty.",
+        "answer": ["instead", "rather"],
+        "distractors": ["despite", "hardly"]
       },
-      "audio_file": "i-like-food-convo"
+      "audio_file": "she-chose-tea-instead-of-coffee-and-she-found-it-rather-tasty-convo"
     },
     {
-      "template": "ClozeSequence",
-      "genders": "m",
+      "template": "GrammarForm",
       "questionData": {
-        "sentence": "They _____ a game.",
-        "answer": "made",
-        "distractors": [
-          "make",
-          "did",
-          "do"
-        ]
+        "sentence": "They _____ a new app last year.",
+        "answer": "developed",
+        "distractors": ["develop", "developing", "will develop"]
       }
     },
     {
       "template": "AppearDisappear",
-      "genders": "f",
       "questionData": {
-        "words": "We got to the top.",
-        "distractors": [
-          "bottom",
-          "home",
-          "school",
-          "book"
-        ]
+        "words": "We finally reached the top.",
+        "distractors": ["left", "missed", "avoided"]
       },
-      "audio_file": "we-got-to-the-top-convo"
+      "audio_file": "we-finally-reached-the-top-convo"
     },
     {
       "template": "AppearDisappear",
-      "genders": "f",
       "questionData": {
-        "words": "She talks to the teacher.",
-        "distractors": [
-          "ball",
-          "dog",
-          "book",
-          "home"
-        ]
+        "words": "She reported the problem yesterday.",
+        "distractors": ["ignored", "hid", "forgot"]
       },
-      "audio_file": "she-talks-to-the-teacher-convo"
+      "audio_file": "she-reported-the-problem-yesterday-convo"
     },
     {
       "template": "AppearDisappear",
-      "genders": "m",
       "questionData": {
-        "words": "This soup is very hot.",
-        "distractors": [
-          "cold",
-          "wet",
-          "sad",
-          "tired"
-        ]
+        "words": "This soup is extremely spicy.",
+        "distractors": ["slightly", "barely", "mildly"]
       },
-      "audio_file": "this-soup-is-very-hot-convo"
+      "audio_file": "this-soup-is-extremely-spicy-convo"
     },
     {
       "template": "ConvoTemplate-1",
-      "genders": "f-m",
       "questionData": {
-        "line1": "Did you see the moon?",
-        "line2": "Yes, I _____ it.",
-        "answer": "saw",
-        "distractors": [
-          "see",
-          "seen",
-          "am see"
-        ]
+        "character1": "Sarah",
+        "character2": "Daniel",
+        "line1": "Did the moon appear last night?",
+        "line2": "Yes, it _____ around midnight.",
+        "answer": "appeared",
+        "distractors": ["shone", "rose", "vanished"]
       },
-      "audio_file1": "did-you-see-the-moon-convo",
-      "audio_file2": "yes-i-saw-it-convo"
+      "audio_file1": "did-the-moon-appear-last-night-convo",
+      "audio_file2": "yes-it-appeared-around-midnight-convo"
     },
     {
       "template": "ConvoTemplate-1",
-      "genders": "f-m",
       "questionData": {
-        "line1": "Where did he walk?",
-        "line2": "He walked _____.",
-        "answer": "home",
-        "distractors": [
-          "book",
-          "ball",
-          "dog"
-        ]
+        "character1": "Beth",
+        "character2": "Alex",
+        "line1": "Which way did he walk?",
+        "line2": "He walked _____ the exit.",
+        "answer": "towards",
+        "distractors": ["away", "beside", "around"]
       },
-      "audio_file1": "where-did-he-walk-convo",
-      "audio_file2": "he-walked-home-convo"
+      "audio_file1": "which-way-did-he-walk-convo",
+      "audio_file2": "he-walked-towards-the-exit-convo"
     },
     {
       "template": "DialogueCompletion",
-      "genders": "m-f",
       "questionData": {
-        "line1": "Do you eat breakfast?",
-        "answer": "Yes, I eat fruit.",
+        "character1": "Omar",
+        "character2": "Lily",
+        "line1": "Did the hotel provide breakfast?",
+        "answer": "Yes, they provided fresh fruit, plus coffee.",
         "distractors": [
-          "No, I am tired.",
-          "I read a book.",
-          "It is a big dog."
+          "No, we had to buy food outside.",
+          "No, the hotel was fully booked.",
+          "Yes, but only on weekends."
         ]
       },
-      "audio_file1": "do-you-eat-breakfast-convo",
-      "audio_file2": "yes-i-eat-fruit-convo"
+      "audio_file1": "did-the-hotel-provide-breakfast-convo",
+      "audio_file2": "yes-they-provided-fresh-fruit-plus-coffee-convo"
     },
     {
       "template": "SentenceBuilder",
-      "genders": "m",
       "questionData": {
-        "correct_order": "This book is old."
+        "correct_order": "This old book is worth a lot."
       },
-      "audio_file": "this-book-is-old-convo"
+      "audio_file": "this-old-book-is-worth-a-lot-convo"
     },
     {
       "template": "WordPairs",
       "questionData": {
-        "english_words": [
-          "big",
-          "small",
-          "happy",
-          "sad"
-        ],
+        "english_words": ["unhealthy", "useful", "wonderful", "false"],
         "translations": [
-          {
-            "tr": "büyük",
-            "es": "grande",
-            "fr": "grand",
-            "de": "groß",
-            "it": "grande",
-            "pt": "grande",
-            "ru": "большой",
-            "zh": "大的",
-            "ja": "大きい",
-            "ko": "큰",
-            "ar": "كبير",
-            "hi": "बड़ा"
-          },
-          {
-            "tr": "küçük",
-            "es": "pequeño",
-            "fr": "petit",
-            "de": "klein",
-            "it": "piccolo",
-            "pt": "pequeno",
-            "ru": "маленький",
-            "zh": "小的",
-            "ja": "小さい",
-            "ko": "작은",
-            "ar": "صغير",
-            "hi": "छोटा"
-          },
-          {
-            "tr": "mutlu",
-            "es": "feliz",
-            "fr": "heureux",
-            "de": "glücklich",
-            "it": "felice",
-            "pt": "feliz",
-            "ru": "счастливый",
-            "zh": "开心的",
-            "ja": "うれしい",
-            "ko": "행복한",
-            "ar": "سعيد",
-            "hi": "खुश"
-          },
-          {
-            "tr": "üzgün",
-            "es": "triste",
-            "fr": "triste",
-            "de": "traurig",
-            "it": "triste",
-            "pt": "triste",
-            "ru": "грустный",
-            "zh": "伤心的",
-            "ja": "悲しい",
-            "ko": "슬픈",
-            "ar": "حزين",
-            "hi": "उदास"
-          }
+          {"tr": "unhealthy", "es": "unhealthy", "fr": "unhealthy", "de": "unhealthy", "it": "unhealthy", "pt": "unhealthy", "ru": "unhealthy", "zh": "unhealthy", "ja": "unhealthy", "ko": "unhealthy", "ar": "unhealthy", "hi": "unhealthy"},
+          {"tr": "useful", "es": "useful", "fr": "useful", "de": "useful", "it": "useful", "pt": "useful", "ru": "useful", "zh": "useful", "ja": "useful", "ko": "useful", "ar": "useful", "hi": "useful"},
+          {"tr": "wonderful", "es": "wonderful", "fr": "wonderful", "de": "wonderful", "it": "wonderful", "pt": "wonderful", "ru": "wonderful", "zh": "wonderful", "ja": "wonderful", "ko": "wonderful", "ar": "wonderful", "hi": "wonderful"},
+          {"tr": "false", "es": "false", "fr": "false", "de": "false", "it": "false", "pt": "false", "ru": "false", "zh": "false", "ja": "false", "ko": "false", "ar": "false", "hi": "false"}
         ]
       }
     }

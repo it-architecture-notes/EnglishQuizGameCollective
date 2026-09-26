@@ -13,19 +13,20 @@
     },
     {
       "template": "ConvoTemplate-1",
-      "genders": "f-m",
       "questionData": {
-        "line1": "Do you want to run?",
-        "line2": "Yes, let us run.",
-        "answer": "run",
+        "character1": "Sarah",
+        "character2": "Daniel",
+        "line1": "Do you want to _____ with me this morning?",
+        "line2": "Sure, the park looks so beautiful right now.",
+        "answer": "jog",
         "distractors": [
           "walk",
-          "sit",
-          "sleep"
+          "run",
+          "sit"
         ]
       },
-      "audio_file1": "do-you-want-to-run-convo",
-      "audio_file2": "yes-let-us-run-convo"
+      "audio_file1": "do-you-want-to-jog-with-me-this-morning-convo",
+      "audio_file2": "sure-the-park-looks-so-beautiful-right-now-convo"
     },
     {
       "template": "imageQuizTemplate-1",
@@ -53,53 +54,53 @@
       "template": "WordPairs",
       "questionData": {
         "english_words": [
-          "today",
-          "tomorrow",
-          "yesterday",
-          "now"
+          "everyday",
+          "once a day",
+          "twice a week",
+          "once in a while"
         ],
         "translations": [
           {
-            "tr": "bugün",
-            "es": "hoy",
-            "fr": "aujourd'hui",
-            "de": "heute",
-            "it": "oggi",
-            "pt": "hoje",
-            "ru": "сегодня",
-            "zh": "今天",
-            "ja": "今日",
-            "ko": "오늘",
-            "ar": "اليوم",
-            "hi": "आज"
+            "tr": "her gün",
+            "es": "cada día",
+            "fr": "tous les jours",
+            "de": "täglich",
+            "it": "ogni giorno",
+            "pt": "diariamente",
+            "ru": "каждый день",
+            "zh": "每天",
+            "ja": "毎日",
+            "ko": "매일",
+            "ar": "كل يوم",
+            "hi": "हर दिन"
           },
           {
-            "tr": "yarın",
-            "es": "mañana",
-            "fr": "demain",
-            "de": "morgen",
-            "it": "domani",
-            "pt": "amanhã",
-            "ru": "завтра",
-            "zh": "明天",
-            "ja": "明日",
-            "ko": "내일",
-            "ar": "غدا",
-            "hi": "कल"
+            "tr": "günde bir kez",
+            "es": "una vez al día",
+            "fr": "une fois par jour",
+            "de": "einmal am Tag",
+            "it": "una volta al giorno",
+            "pt": "uma vez por dia",
+            "ru": "один раз в день",
+            "zh": "每天一次",
+            "ja": "1日1回",
+            "ko": "하루에 한 번",
+            "ar": "مرة واحدة في اليوم",
+            "hi": "दिन में एक बार"
           },
           {
-            "tr": "dün",
-            "es": "ayer",
-            "fr": "hier",
-            "de": "gestern",
-            "it": "ieri",
-            "pt": "ontem",
-            "ru": "вчера",
-            "zh": "昨天",
-            "ja": "昨日",
-            "ko": "어제",
-            "ar": "أمس",
-            "hi": "कल"
+            "tr": "haftada iki kez",
+            "es": "dos veces por semana",
+            "fr": "deux fois par semaine",
+            "de": "zweimal pro Woche",
+            "it": "due volte a settimana",
+            "pt": "duas vezes por semana",
+            "ru": "два раза в неделю",
+            "zh": "每周两次",
+            "ja": "週に2回",
+            "ko": "일주일에 두 번",
+            "ar": "مرتين في الأسبوع",
+            "hi": "सप्ताह में दो बार"
           },
           {
             "tr": "arada bir",
@@ -120,33 +121,33 @@
     },
     {
       "template": "ConvoTemplate-1",
-      "genders": "m-f",
       "questionData": {
-        "line1": "Can you jump far?",
-        "line2": "Yes, I can jump.",
+        "character1": "Omar",
+        "character2": "Lily",
+        "line1": "How far can you _____ from that line?",
+        "line2": "I think I can make it past the bench!",
         "answer": "jump",
         "distractors": [
           "run",
           "walk",
-          "sit"
+          "hop"
         ]
       },
-      "audio_file1": "can-you-jump-far-convo",
-      "audio_file2": "yes-i-can-jump-convo"
+      "audio_file1": "how-far-can-you-jump-from-that-line-convo",
+      "audio_file2": "i-think-i-can-make-it-past-the-bench-convo"
     },
     {
       "template": "AppearDisappear",
-      "genders": "f",
       "questionData": {
-        "words": "Children play by the tree.",
+        "words": "The children swing near the big tree.",
         "distractors": [
-          "book",
-          "ball",
-          "dog",
-          "home"
+          "branch",
+          "playing",
+          "fun",
+          "sign"
         ]
       },
-      "audio_file": "children-play-by-the-tree-convo"
+      "audio_file": "the-children-swing-near-the-big-tree-convo"
     },
     {
       "template": "imageQuizTemplate-2",
@@ -173,11 +174,10 @@
     },
     {
       "template": "SentenceBuilder",
-      "genders": "f",
       "questionData": {
-        "correct_order": "The squirrel runs fast."
+        "correct_order": "The squirrel ran away from me."
       },
-      "audio_file": "the-squirrel-runs-fast-convo"
+      "audio_file": "the-squirrel-ran-away-from-me-convo"
     },
     {
       "template": "imageQuizTemplate-1",
@@ -192,11 +192,11 @@
     },
     {
       "template": "ClozeSequence",
-      "genders": "m",
       "questionData": {
-        "sentence": "Do not _____ too high.",
+        "sentence": "Don't _____ too high or you might _____!",
         "answer": [
-          "climb"
+          "climb",
+          "fall"
         ],
         "distractors": [
           "run",
@@ -205,54 +205,53 @@
           "push"
         ]
       },
-      "audio_file": "do-not-too-high-convo"
+      "audio_file": "don-t-climb-too-high-or-you-might-fall-convo"
     },
     {
-      "template": "ClozeSequence",
-      "genders": "m",
+      "template": "GrammarForm",
       "questionData": {
-        "sentence": "You _____ throw the ball.",
-        "answer": "can",
+        "sentence": "You ________ the ball far so the dog gets some exercise.",
+        "answer": "should throw",
         "distractors": [
-          "are",
-          "is",
-          "am"
+          "throw",
+          "throws",
+          "throwing"
         ]
       }
     },
     {
       "template": "ClozeSequence",
-      "genders": "f",
       "questionData": {
-        "sentence": "Kids _____ the kite.",
+        "sentence": "The kids loved to _____ the _____ as it flew across the field.",
         "answer": [
-          "watch"
+          "chase",
+          "kite"
         ],
         "distractors": [
           "catch",
+          "ball",
           "run",
-          "walk",
-          "read"
+          "bird"
         ]
       },
-      "audio_file": "kids-the-kite-convo"
+      "audio_file": "the-kids-loved-to-chase-the-kite-as-it-flew-across-the-field-convo"
     },
     {
       "template": "ClozeSequence",
-      "genders": "m",
       "questionData": {
-        "sentence": "We _____ in the park.",
+        "sentence": "It's fun to _____ _____ with friends during summer.",
         "answer": [
-          "play"
+          "picnic",
+          "outdoors"
         ],
         "distractors": [
-          "sleep",
-          "read",
-          "cook",
-          "wash"
+          "play",
+          "indoors",
+          "inside",
+          "walk"
         ]
       },
-      "audio_file": "we-in-the-park-convo"
+      "audio_file": "its-fun-to-picnic-outdoors-with-friends-during-summer-convo"
     }
   ]
 }

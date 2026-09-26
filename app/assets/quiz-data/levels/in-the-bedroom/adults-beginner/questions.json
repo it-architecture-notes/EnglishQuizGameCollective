@@ -1,0 +1,286 @@
+{
+  "levelQuestions": [
+    {
+      "template": "VideoConversation",
+      "videoFile": "in-the-bedroom1",
+      "start_at": "00:00.0",
+      "pause_at": "00:02.02",
+      "answer_until": "00:02.02",
+      "question_enter_audio": "in-the-bedroom1-q1-setup",
+      "question_enter_audio_text": "It is too dark in here.",
+      "question_exit_correct_audio": "in-the-bedroom1-q1-setup",
+      "question_exit_correct_audio_text": "It is too dark in here.",
+      "questionData": {
+        "answer_type": "AppearDisappear",
+        "words": "It is too dark in here.",
+        "distractors": [
+          "bright",
+          "cold",
+          "loud"
+        ]
+      }
+    },
+    {
+      "template": "VideoConversation",
+      "videoFile": "in-the-bedroom1",
+      "start_at": "00:02.02",
+      "pause_at": "00:02.02",
+      "answer_until": "00:04.34",
+      "question_enter_audio": "none",
+      "question_exit_correct_audio": "in-the-bedroom1-q2-confirm",
+      "question_exit_correct_audio_text": "I am turning on the light now.",
+      "questionData": {
+        "answer_type": "SentenceBuilder",
+        "correct_order": "I am turning on the light now."
+      }
+    },
+    {
+      "template": "VideoConversation",
+      "videoFile": "in-the-bedroom1",
+      "start_at": "00:04.34",
+      "pause_at": "00:06.50",
+      "answer_until": "00:08.69",
+      "question_enter_audio": "in-the-bedroom1-q3-setup",
+      "question_enter_audio_text": "Oh, it is too bright!",
+      "question_exit_correct_audio": "in-the-bedroom1-q3-confirm",
+      "question_exit_correct_audio_text": "Okay, I am turning it off.",
+      "questionData": {
+        "answer_type": "ClozeSequence",
+        "sentence": "Okay, I am _____ it _____.",
+        "answer": [
+          "turning",
+          "off"
+        ],
+        "distractors": [
+          "turn",
+          "opening",
+          "closing"
+        ]
+      }
+    },
+    {
+      "template": "VideoConversation",
+      "videoFile": "in-the-bedroom1",
+      "start_at": "00:08.69",
+      "pause_at": "00:08.69",
+      "answer_until": "00:08.69",
+      "question_enter_audio": "in-the-bedroom1-q3-pause-setup",
+      "question_enter_audio_text": "Why is he turning the light off?",
+      "question_exit_correct_audio": "in-the-bedroom1-q3-pause-confirm",
+      "question_exit_correct_audio_text": "Because it is too bright.",
+      "genders": "m-f",
+      "questionData": {
+        "answer_type": "pausedDialogueCompletion",
+        "line1": "Why is he turning the light off?",
+        "answer": "Because it is too bright.",
+        "distractors": [
+          "Because it is too dark.",
+          "Because it is too cold.",
+          "Because he is tired."
+        ]
+      }
+    },
+    {
+      "template": "VideoConversation",
+      "videoFile": "in-the-bedroom1",
+      "start_at": "00:08.69",
+      "pause_at": "00:10.21",
+      "answer_until": "00:11.94",
+      "question_enter_audio": "in-the-bedroom1-q4-setup",
+      "question_enter_audio_text": "Are you tired?",
+      "question_exit_correct_audio": "in-the-bedroom1-q4-confirm",
+      "question_exit_correct_audio_text": "I am not very tired.",
+      "questionData": {
+        "answer_type": "SentenceBuilder",
+        "correct_order": "I am not very tired."
+      }
+    },
+    {
+      "template": "VideoConversation",
+      "videoFile": "in-the-bedroom1",
+      "start_at": "00:11.94",
+      "pause_at": "00:14.55",
+      "answer_until": "00:14.55",
+      "question_enter_audio": "in-the-bedroom1-q5-setup",
+      "question_enter_audio_text": "I really want to lie down and sleep.",
+      "question_exit_correct_audio": "in-the-bedroom1-q5-setup",
+      "question_exit_correct_audio_text": "I really want to lie down and sleep.",
+      "questionData": {
+        "answer_type": "AppearDisappear",
+        "words": "I really want to lie down and sleep.",
+        "distractors": [
+          "stand",
+          "shower",
+          "eat",
+          "read"
+        ]
+      }
+    },
+    {
+      "template": "VideoConversation",
+      "videoFile": "in-the-bedroom1",
+      "start_at": "00:14.55",
+      "pause_at": "00:16.86",
+      "answer_until": "00:19.49",
+      "question_enter_audio": "in-the-bedroom1-q6-setup",
+      "question_enter_audio_text": "Okay, are you going to bed right now?",
+      "question_exit_correct_audio": "in-the-bedroom1-q6-confirm",
+      "question_exit_correct_audio_text": "Yes. The bed looks very comfortable.",
+      "questionData": {
+        "answer_type": "SentenceBuilder",
+        "correct_order": "Yes. The bed looks very comfortable."
+      }
+    },
+    {
+      "template": "VideoConversation",
+      "videoFile": "in-the-bedroom1",
+      "start_at": "00:19.49",
+      "pause_at": "00:19.49",
+      "answer_until": "00:19.49",
+      "question_enter_audio": "in-the-bedroom1-q6-pause-setup",
+      "question_enter_audio_text": "What is she doing?",
+      "question_exit_correct_audio": "in-the-bedroom1-q6-pause-confirm",
+      "question_exit_correct_audio_text": "She is going to bed right now.",
+      "genders": "m-f",
+      "questionData": {
+        "answer_type": "pausedClozeSequence",
+        "line1": "What is she doing?",
+        "sentence": "She is _____ to _____ right now.",
+        "answer": [
+          "going",
+          "bed"
+        ],
+        "distractors": [
+          "walking",
+          "coming",
+          "shower",
+          "sleep"
+        ]
+      }
+    },
+    {
+      "template": "ConvoTemplate-1",
+      "genders": "m-f",
+      "question_enter_audio": "none",
+      "question_exit_correct_audio": [
+        "do-you-dream-every-night-convo",
+        "yes-i-dream-about-having-a-dog-convo"
+      ],
+      "questionData": {
+        "line1": "Do you _____ every night?",
+        "line2": "Yes, I _____ about having a dog.",
+        "image_file_name": "dreaming-about-a-dog",
+        "answer": "dream",
+        "distractors": [
+          "sleep",
+          "wake",
+          "rest"
+        ]
+      }
+    },
+    {
+      "template": "ClozeSequence",
+      "genders": "f",
+      "question_enter_audio": "is-she-awake-convo",
+      "question_exit_correct_audio": "she-is-awake-but-resting-quietly-convo",
+      "questionData": {
+        "line1": "Is she awake?",
+        "image_file_name": "awake-resting-quietly",
+        "sentence": "She is awake but _____ _____.",
+        "answer": [
+          "resting",
+          "quietly"
+        ],
+        "distractors": [
+          "sleeping",
+          "loudly",
+          "quickly"
+        ]
+      }
+    },
+    {
+      "template": "WordPairs",
+      "questionData": {
+        "english_words": [
+          "to me",
+          "to you",
+          "to him/her",
+          "to us",
+          "to them"
+        ],
+        "translations": [
+          {
+            "tr": "bana",
+            "es": "a mí",
+            "fr": "à moi",
+            "de": "mir",
+            "it": "a me",
+            "pt": "a mim",
+            "ru": "мне",
+            "zh": "给我",
+            "ja": "私に",
+            "ko": "나에게",
+            "ar": "لي",
+            "hi": "मुझे"
+          },
+          {
+            "tr": "sana",
+            "es": "a ti",
+            "fr": "à toi",
+            "de": "dir",
+            "it": "a te",
+            "pt": "a você",
+            "ru": "тебе",
+            "zh": "给你",
+            "ja": "あなたに",
+            "ko": "너에게",
+            "ar": "لك",
+            "hi": "तुम्हें"
+          },
+          {
+            "tr": "ona",
+            "es": "a él / a ella",
+            "fr": "à lui / à elle",
+            "de": "ihm / ihr",
+            "it": "a lui / lei",
+            "pt": "a ele / a ela",
+            "ru": "ему / ей",
+            "zh": "给他/她",
+            "ja": "彼/彼女に",
+            "ko": "그/그녀에게",
+            "ar": "له / لها",
+            "hi": "उसे"
+          },
+          {
+            "tr": "bize",
+            "es": "a nosotros",
+            "fr": "à nous",
+            "de": "uns",
+            "it": "a noi",
+            "pt": "a nós",
+            "ru": "нам",
+            "zh": "给我们",
+            "ja": "私たちに",
+            "ko": "우리에게",
+            "ar": "لنا",
+            "hi": "हमें"
+          },
+          {
+            "tr": "onlara",
+            "es": "a ellos",
+            "fr": "à eux",
+            "de": "ihnen",
+            "it": "a loro",
+            "pt": "a eles",
+            "ru": "им",
+            "zh": "给他们",
+            "ja": "彼らに",
+            "ko": "그들에게",
+            "ar": "لهم",
+            "hi": "उन्हें"
+          }
+        ]
+      }
+    }
+  ]
+}

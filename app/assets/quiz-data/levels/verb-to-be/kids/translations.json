@@ -18,6 +18,23 @@
       }
     },
     {
+      "english_word": "I am a teacher",
+      "translations": {
+        "tr": "Ben bir öğretmenim",
+        "es": "Soy profesor",
+        "fr": "Je suis professeur",
+        "de": "Ich bin Lehrer",
+        "it": "Sono un insegnante",
+        "pt": "Eu sou professor",
+        "ru": "Я учитель",
+        "zh": "我是一名老师",
+        "ja": "私は教師です",
+        "ko": "나는 선생님이에요",
+        "ar": "أنا مُدَرِّس",
+        "hi": "मैं एक शिक्षक हूँ"
+      }
+    },
+    {
       "english_word": "Are you ready?",
       "translations": {
         "tr": "Hazır mısın?",
@@ -134,6 +151,23 @@
         "ko": "여기",
         "ar": "هنا",
         "hi": "यहाँ"
+      }
+    },
+    {
+      "english_word": "about",
+      "translations": {
+        "tr": "hakkında",
+        "es": "sobre",
+        "fr": "sur",
+        "de": "über",
+        "it": "su",
+        "pt": "sobre",
+        "ru": "о",
+        "zh": "关于",
+        "ja": "について",
+        "ko": "에 대해",
+        "ar": "عن",
+        "hi": "के बारे में"
       }
     }
   ]

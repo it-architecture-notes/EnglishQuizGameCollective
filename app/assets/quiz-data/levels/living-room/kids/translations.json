@@ -1,20 +1,258 @@
 {
   "translations_list": [
     {
-      "english_word": "tidy",
+      "english_word": "to sit",
       "translations": {
-        "tr": "düzenli",
-        "es": "ordenado",
-        "fr": "rangé",
-        "de": "ordentlich",
-        "it": "ordinato",
-        "pt": "arrumado",
-        "ru": "аккуратный",
-        "zh": "整洁的",
-        "ja": "きれいな",
-        "ko": "깔끔한",
-        "ar": "مرتب",
-        "hi": "साफ़-सुथरा"
+        "tr": "oturmak",
+        "es": "sentarse",
+        "fr": "s'asseoir",
+        "de": "sitzen",
+        "it": "sedersi",
+        "pt": "sentar",
+        "ru": "сидеть",
+        "zh": "坐",
+        "ja": "座る",
+        "ko": "앉다",
+        "ar": "يجلس",
+        "hi": "बैठना"
+      }
+    },
+    {
+      "english_word": "to chat",
+      "translations": {
+        "tr": "sohbet etmek",
+        "es": "charlar",
+        "fr": "bavarder",
+        "de": "plaudern",
+        "it": "chiacchierare",
+        "pt": "conversar",
+        "ru": "болтать",
+        "zh": "聊天",
+        "ja": "おしゃべりする",
+        "ko": "수다 떨다",
+        "ar": "يدردش",
+        "hi": "गपशप करना"
+      }
+    },
+    {
+      "english_word": "me too",
+      "translations": {
+        "tr": "ben de",
+        "es": "yo también",
+        "fr": "moi aussi",
+        "de": "ich auch",
+        "it": "anch'io",
+        "pt": "eu também",
+        "ru": "я тоже",
+        "zh": "我也是",
+        "ja": "私も",
+        "ko": "나도",
+        "ar": "أنا أيضاً",
+        "hi": "मैं भी"
+      }
+    },
+    {
+      "english_word": "spacious",
+      "translations": {
+        "tr": "ferah",
+        "es": "espacioso",
+        "fr": "spacieux",
+        "de": "geräumig",
+        "it": "spazioso",
+        "pt": "espaçoso",
+        "ru": "просторный",
+        "zh": "宽敞的",
+        "ja": "広い",
+        "ko": "넓은",
+        "ar": "واسع",
+        "hi": "विशाल"
+      }
+    },
+    {
+      "english_word": "to host",
+      "translations": {
+        "tr": "misafir etmek",
+        "es": "recibir",
+        "fr": "recevoir",
+        "de": "Gäste empfangen",
+        "it": "ospitare",
+        "pt": "receber",
+        "ru": "принимать гостей",
+        "zh": "招待",
+        "ja": "もてなす",
+        "ko": "초대하다",
+        "ar": "يستضيف",
+        "hi": "मेज़बानी करना"
+      }
+    },
+    {
+      "english_word": "to listen to",
+      "translations": {
+        "tr": "dinlemek",
+        "es": "escuchar",
+        "fr": "écouter",
+        "de": "zuhören",
+        "it": "ascoltare",
+        "pt": "ouvir",
+        "ru": "слушать",
+        "zh": "听",
+        "ja": "聞く",
+        "ko": "듣다",
+        "ar": "يستمع إلى",
+        "hi": "सुनना"
+      }
+    },
+    {
+      "english_word": "cozy",
+      "translations": {
+        "tr": "samimi",
+        "es": "acogedor",
+        "fr": "douillet",
+        "de": "gemütlich",
+        "it": "accogliente",
+        "pt": "aconchegante",
+        "ru": "уютный",
+        "zh": "温馨舒适的",
+        "ja": "居心地の良い",
+        "ko": "아늑한",
+        "ar": "مريح",
+        "hi": "आरामदायक"
+      }
+    },
+    {
+      "english_word": "to gather",
+      "translations": {
+        "tr": "toplanmak",
+        "es": "reunirse",
+        "fr": "se réunir",
+        "de": "sich versammeln",
+        "it": "riunirsi",
+        "pt": "reunir-se",
+        "ru": "собираться",
+        "zh": "聚集",
+        "ja": "集まる",
+        "ko": "모이다",
+        "ar": "يتجمع",
+        "hi": "इकट्ठा होना"
+      }
+    },
+    {
+      "english_word": "to close",
+      "translations": {
+        "tr": "kapatmak",
+        "es": "cerrar",
+        "fr": "fermer",
+        "de": "schließen",
+        "it": "chiudere",
+        "pt": "fechar",
+        "ru": "закрывать",
+        "zh": "关闭",
+        "ja": "閉じる",
+        "ko": "닫다",
+        "ar": "يغلق",
+        "hi": "बंद करना"
+      }
+    },
+    {
+      "english_word": "cluttered",
+      "translations": {
+        "tr": "dağınık",
+        "es": "desordenado",
+        "fr": "en désordre",
+        "de": "unordentlich",
+        "it": "disordinato",
+        "pt": "bagunçado",
+        "ru": "захламлённый",
+        "zh": "杂乱的",
+        "ja": "散らかった",
+        "ko": "어질러진",
+        "ar": "فوضوي",
+        "hi": "बिखरा हुआ"
+      }
+    },
+    {
+      "english_word": "to tidy",
+      "translations": {
+        "tr": "toparlamak",
+        "es": "ordenar",
+        "fr": "ranger",
+        "de": "aufräumen",
+        "it": "riordinare",
+        "pt": "arrumar",
+        "ru": "прибирать",
+        "zh": "整理",
+        "ja": "片付ける",
+        "ko": "정리하다",
+        "ar": "يرتب",
+        "hi": "साफ़ करना"
+      }
+    },
+    {
+      "english_word": "to relax",
+      "translations": {
+        "tr": "rahatlamak",
+        "es": "relajarse",
+        "fr": "se détendre",
+        "de": "sich entspannen",
+        "it": "rilassarsi",
+        "pt": "relaxar",
+        "ru": "расслабиться",
+        "zh": "放松",
+        "ja": "リラックスする",
+        "ko": "쉬다",
+        "ar": "يسترخي",
+        "hi": "आराम करना"
+      }
+    },
+    {
+      "english_word": "to talk",
+      "translations": {
+        "tr": "konuşmak",
+        "es": "hablar",
+        "fr": "parler",
+        "de": "reden",
+        "it": "parlare",
+        "pt": "falar",
+        "ru": "говорить",
+        "zh": "说话",
+        "ja": "話す",
+        "ko": "이야기하다",
+        "ar": "يتحدث",
+        "hi": "बात करना"
+      }
+    },
+    {
+      "english_word": "to wave",
+      "translations": {
+        "tr": "el sallamak",
+        "es": "saludar con la mano",
+        "fr": "faire un signe de la main",
+        "de": "winken",
+        "it": "salutare con la mano",
+        "pt": "acenar",
+        "ru": "махать",
+        "zh": "挥手",
+        "ja": "手を振る",
+        "ko": "손을 흔들다",
+        "ar": "يلوّح",
+        "hi": "हाथ हिलाना"
+      }
+    },
+    {
+      "english_word": "to move",
+      "translations": {
+        "tr": "taşımak",
+        "es": "mover",
+        "fr": "déplacer",
+        "de": "bewegen",
+        "it": "spostare",
+        "pt": "mover",
+        "ru": "перемещать",
+        "zh": "移动",
+        "ja": "動かす",
+        "ko": "옮기다",
+        "ar": "تحريك",
+        "hi": "हिलाना"
       }
     }
   ]

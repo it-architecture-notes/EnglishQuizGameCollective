@@ -47,7 +47,7 @@ Widget _harness({required Key boundaryKey}) {
   );
   return ProviderScope(
     child: MaterialApp(
-      theme: AppTheme.forFlavor(AppFlavor.adults),
+      theme: AppTheme.forFlavor(AppFlavor.adultsIntermediate),
       home: RepaintBoundary(
         key: boundaryKey,
         child: ImageQuizScreen(

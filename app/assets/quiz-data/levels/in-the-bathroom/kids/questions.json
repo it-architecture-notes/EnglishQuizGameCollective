@@ -1,11 +1,24 @@
 {
   "levelQuestions": [
+    
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "shower",
+        "wrongAnswers": [
+          "mirror",
+          "bathtub",
+          "soap"
+        ]
+      }
+    },
     {
       "template": "ConvoTemplate-1",
-      "genders": "f-m",
       "questionData": {
-        "line1": "Do you _____ hands often?",
-        "line2": "I _____ my hands now.",
+        "character1": "Beth",
+        "character2": "Chris",
+        "line1": "When do you usually _____ your hands?",
+        "line2": "I usually _____ my hands before eating.",
         "answer": "wash",
         "distractors": [
           "brush",
@@ -13,14 +26,13 @@
           "take"
         ]
       },
-      "audio_file1": "do-you-wash-hands-often-convo",
-      "audio_file2": "i-wash-my-hands-now-convo"
+      "audio_file1": "when-do-you-usually-wash-your-hands-convo",
+      "audio_file2": "i-usually-wash-my-hands-before-eating-convo"
     },
     {
       "template": "AppearDisappear",
-      "genders": "m",
       "questionData": {
-        "words": "I feel clean.",
+        "words": "I feel clean after a long shower.",
         "distractors": [
           "dirty",
           "soap",
@@ -28,7 +40,29 @@
           "wet"
         ]
       },
-      "audio_file": "i-feel-clean-convo"
+      "audio_file": "i-feel-clean-after-a-long-shower-convo"
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "bathtub",
+        "wrongAnswers": [
+          "sink",
+          "towel",
+          "shower"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "sink",
+        "wrongAnswers": [
+          "bathtub",
+          "razor",
+          "shower"
+        ]
+      }
     },
     {
       "template": "WordPairs",
@@ -101,10 +135,10 @@
     },
     {
       "template": "ClozeSequence",
-      "genders": "f",
       "questionData": {
-        "sentence": "She _____ her teeth.",
+        "sentence": "She ____ her hair and then ____ her teeth.",
         "answers": [
+          "combs",
           "brushes"
         ],
         "distractors": [
@@ -114,29 +148,63 @@
           "dries"
         ]
       },
-      "audio_file": "she-brushes-her-teeth-convo"
+      "audio_file": "she-combs-her-hair-and-then-brushes-her-teeth-convo"
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "comb",
+        "wrongAnswers": [
+          "hair dryer",
+          "razor",
+          "toothbrush"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-2",
+      "questionData": {
+        "imageName": "towel",
+        "wrongAnswers": [
+          "toothbrush",
+          "comb",
+          "bathtub"
+        ]
+      }
     },
     {
       "template": "DialogueCompletion",
-      "genders": "f-f",
       "questionData": {
-        "line1": "I am going to shower.",
-        "answer": "Okay! The towel is here.",
+        "character1": "Grace",
+        "character2": "Nora",
+        "line1": "I take a shower now.",
+        "answer": "Okay! The towel is on the sink.",
         "distractors": [
-          "Brush your teeth.",
-          "The soap is here.",
-          "The sink is clean."
+          "Brush your teeth carefully.",
+          "The soap is next to the sink.",
+          "It smells very fresh in here."
         ]
       },
-      "audio_file1": "i-am-going-to-shower-convo",
-      "audio_file2": "okay-the-towel-is-here-convo"
+      "audio_file1": "im-going-to-take-a-shower-convo",
+      "audio_file2": "okay-the-towel-is-on-the-sink-convo"
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "toothbrush",
+        "wrongAnswers": [
+          "comb",
+          "razor",
+          "mirror"
+        ]
+      }
     },
     {
       "template": "ClozeSequence",
-      "genders": "m",
       "questionData": {
-        "sentence": "I _____ my face.",
+        "sentence": "I _____ a towel to _____ my face.",
         "answers": [
+          "use",
           "dry"
         ],
         "distractors": [
@@ -146,44 +214,43 @@
           "read"
         ]
       },
-      "audio_file": "i-dry-my-face-convo"
+      "audio_file": "i-use-a-towel-to-dry-my-face-convo"
     },
     {
       "template": "DialogueCompletion",
-      "genders": "f-m",
       "questionData": {
-        "line1": "Do you use the mirror?",
-        "answer": "Yes, I do.",
+        "character1": "Beth",
+        "character2": "Chris",
+        "line1": "Do you look in the mirror every morning?",
+        "answer": "Yes, I look in it after a shower.",
         "distractors": [
-          "No, I am sleepy.",
-          "Yes, it is big.",
-          "No, I like soap."
+          "No, I never brush my hair.",
+          "Yes, I clean it every week.",
+          "No, I do not see my towel."
         ]
       },
-      "audio_file1": "do-you-use-the-mirror-convo",
-      "audio_file2": "yes-i-do-convo"
+      "audio_file1": "do-you-look-in-the-mirror-every-morning-convo",
+      "audio_file2": "yes-i-look-in-it-after-a-shower-convo"
     },
     {
       "template": "ClozeSequence",
-      "genders": "m",
       "questionData": {
-        "sentence": "I _____ the bathroom every _____.",
+        "sentence": "I _____ the bathroom _____ to keep it tidy.",
         "answers": [
           "clean",
-          "day"
+          "regularly"
         ],
         "distractors": [
           "cook",
           "brush",
-          "week",
-          "night"
+          "today",
+          "slowly"
         ]
       },
-      "audio_file": "i-clean-the-bathroom-every-day-convo"
+      "audio_file": "i-clean-the-bathroom-regularly-to-keep-it-tidy-convo"
     },
     {
       "template": "SentenceBuilder",
-      "genders": "m",
       "questionData": {
         "correct_order": "His hands are very dirty."
       },

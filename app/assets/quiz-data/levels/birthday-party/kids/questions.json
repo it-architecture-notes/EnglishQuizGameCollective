@@ -25,8 +25,9 @@
     },
     {
       "template": "ConvoTemplate-1",
-      "genders": "f-f",
       "questionData": {
+        "character1": "Beth",
+        "character2": "Emma",
         "line1": "Are you _____ on your birthday?",
         "line2": "Yes, I am very _____! I love birthdays!",
         "answer": "happy",
@@ -132,69 +133,67 @@
     },
     {
       "template": "ConvoTemplate-1",
-      "genders": "f-m",
       "questionData": {
-        "line1": "Do you _____ Sam to play?",
-        "line2": "Yes, I _____ him.",
+        "character1": "Sarah",
+        "character2": "Omar",
+        "line1": "Do you _____ Tom to your birthday party?",
+        "line2": "Yes, I always _____ him to my parties.",
         "answer": "invite",
         "distractors": [
-          "see",
-          "help",
-          "call"
+          "call",
+          "visit",
+          "follow"
         ]
       },
-      "audio_file1": "do-you-invite-sam-to-play-convo",
-      "audio_file2": "yes-i-invite-him-convo"
+      "audio_file1": "do-you-invite-tom-to-your-birthday-party-convo",
+      "audio_file2": "yes-i-always-invite-him-to-my-parties-convo"
     },
     {
       "template": "AppearDisappear",
-      "genders": "f",
       "questionData": {
-        "words": "We play at the party.",
+        "words": "Everyone enjoys the birthday party.",
         "distractors": [
-          "read",
-          "write",
-          "draw",
-          "sing"
+          "leaves",
+          "forgets",
+          "cries",
+          "walks"
         ]
       },
-      "audio_file": "we-play-at-the-party-convo"
+      "audio_file": "everyone-enjoys-the-birthday-party-convo"
     },
     {
       "template": "ClozeSequence",
-      "genders": "f",
       "questionData": {
-        "sentence": "She _____ the candles.",
+        "sentence": "She _____ out the candles and _____ a wish.",
         "answers": [
-          "blows"
+          "blows",
+          "makes"
         ],
         "distractors": [
+          "breaks",
+          "reads",
           "sees",
-          "holds",
-          "gets",
-          "likes"
+          "opens"
         ]
       },
-      "audio_file": "she-blows-the-candles-convo"
+      "audio_file": "she-blows-out-the-candles-and-makes-a-wish-convo"
     },
     {
       "template": "SentenceBuilder",
-      "genders": "f",
       "questionData": {
-        "correct_order": "We have banners here."
+        "correct_order": "We decorate the room with banners."
       },
-      "audio_file": "we-have-banners-here-convo"
+      "audio_file": "we-decorate-the-room-with-banners-convo"
     },
     {
-      "template": "ClozeSequence",
-      "genders": "f",
+      "template": "GrammarForm",
       "questionData": {
-        "sentence": "She _____ her birthday.",
-        "answer": "has",
+        "sentence": "She _____ her birthday every year in June.",
+        "answer": "celebrates",
         "distractors": [
-          "have",
-          "had",
-          "having"
+          "celebrate",
+          "celebrated",
+          "celebrating"
         ]
       }
     },
@@ -211,50 +210,52 @@
     },
     {
       "template": "DialogueCompletion",
-      "genders": "m-f",
       "questionData": {
-        "line1": "When do you open gifts?",
-        "answer": "At the party.",
+        "character1": "Chris",
+        "character2": "Grace",
+        "line1": "When do you unwrap your gifts at the party?",
+        "answer": "After I blow out the candles.",
         "distractors": [
-          "I like gifts.",
-          "The cake is big.",
-          "We sing now."
+          "I don't like birthday parties.",
+          "The cake has lots of candles on it.",
+          "We dance together after dinner."
         ]
       },
-      "audio_file1": "when-do-you-open-gifts-convo",
-      "audio_file2": "at-the-party-convo"
+      "audio_file1": "when-do-you-unwrap-your-gifts-at-the-party-convo",
+      "audio_file2": "after-i-blow-out-the-candles-convo"
     },
     {
       "template": "ClozeSequence",
-      "genders": "m",
       "questionData": {
-        "sentence": "We _____ Happy Birthday.",
+        "sentence": "We always _____ Happy Birthday and _____ together at the party.",
         "answers": [
-          "sing"
+          "sing",
+          "dance"
         ],
         "distractors": [
-          "read",
-          "write",
-          "play",
-          "draw"
+          "quickly",
+          "loudly",
+          "carefully",
+          "yesterday"
         ]
       },
-      "audio_file": "we-sing-happy-birthday-convo"
+      "audio_file": "we-always-sing-happy-birthday-and-dance-together-at-the-party-convo"
     },
     {
       "template": "DialogueCompletion",
-      "genders": "m-f",
       "questionData": {
-        "line1": "Is the party a surprise?",
-        "answer": "Yes, it is!",
+        "character1": "Mike",
+        "character2": "Lily",
+        "line1": "Does Emma know about her birthday party?",
+        "answer": "No! It is a complete surprise for her.",
         "distractors": [
-          "The cake is big.",
-          "We sing now.",
-          "I like gifts."
+          "We need more balloons for the room.",
+          "She is not at the party yet.",
+          "The party is tomorrow evening."
         ]
       },
-      "audio_file1": "is-the-party-a-surprise-convo",
-      "audio_file2": "yes-it-is-convo"
+      "audio_file1": "does-emma-know-about-her-birthday-party-convo",
+      "audio_file2": "no-it-is-a-complete-surprise-for-her-convo"
     }
   ]
 }

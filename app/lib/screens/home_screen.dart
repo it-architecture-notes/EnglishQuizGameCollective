@@ -132,7 +132,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
     );
   }
 
-  /// Bottom icon row opening profile, achievements, friends, and settings overlays.
+  /// Bottom icon row opening profile, achievements, friends (kids only), and settings overlays.
   Widget _buildBottomNav(Map<String, String> strings, bool soundFxOn) {
     void withClick(VoidCallback action) {
       audio.playClick(soundFxOn: soundFxOn);
@@ -150,8 +150,9 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
           ),
           _navItem(Icons.emoji_events, strings['nav_trophies'] ?? 'Trophies',
               () => withClick(() => _showAchievementsPanel(strings))),
-          _navItem(Icons.favorite, strings['nav_friends'] ?? 'Friends',
-              () => withClick(() => _showFriendsPanel(strings))),
+          if (AppConfig.isKids)
+            _navItem(Icons.favorite, strings['nav_friends'] ?? 'Friends',
+                () => withClick(() => _showFriendsPanel(strings))),
           _navItem(Icons.settings, strings['nav_settings'] ?? 'Settings',
               () => withClick(() => _showSettingsPanel(strings))),
         ],

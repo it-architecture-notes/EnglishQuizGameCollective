@@ -7,7 +7,7 @@ The Part 1-4 band model this script checks against is the ADULT grammar
 progression (see all-ai-common/skills/audit-quiz-level/SKILL.md) — kids
 content uses its own smaller, ML-independent grammar set instead (see
 all-ai-common/skills/simplify-kids-level-content/SKILL.md) and this
-script's Part bands do not apply to it. Defaults to --flavor adults for that
+script's Part bands do not apply to it. Defaults to --flavor adults-intermediate for that
 reason; pass --flavor kids only if you specifically want to see how far kids
 content (which is intentionally simpler) diverges from the adult bands.
 
@@ -25,7 +25,7 @@ from collections import defaultdict
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
-FLOW = ROOT / "app/assets/data/flow/game-flow.json"
+FLOW = ROOT / "app/assets/data/flow/game-flow-adults-intermediate.json"
 LEVELS = ROOT / "app/assets/quiz-data/levels"
 OUT = ROOT / "all-ai-common/output/all-levels-grammar-progression-audit.md"
 
@@ -287,7 +287,7 @@ def audit_question(item: dict, qnum: int, level_part: int) -> list[dict]:
 
 def main() -> None:
     p = argparse.ArgumentParser(description=__doc__)
-    p.add_argument("--flavor", choices=("adults", "kids"), default="adults")
+    p.add_argument("--flavor", choices=("adults-intermediate", "kids"), default="adults-intermediate")
     args = p.parse_args()
     flavor = args.flavor
 
@@ -412,7 +412,7 @@ def main() -> None:
     lines.extend(clean if clean else ["_None_"])
     lines.append("")
 
-    out_path = OUT if flavor == "adults" else OUT.with_name(
+    out_path = OUT if flavor == "adults-intermediate" else OUT.with_name(
         OUT.stem + f"-{flavor}" + OUT.suffix
     )
     out_path.write_text("\n".join(lines), encoding="utf-8")

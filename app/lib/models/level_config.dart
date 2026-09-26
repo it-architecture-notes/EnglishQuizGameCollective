@@ -98,9 +98,11 @@ class ClozeSequenceQuestionData {
     this.englishToTranslate = const [],
     this.localTranslation = const {},
     this.trOk = false,
+    this.noOrder = false,
   });
 
-  /// English sentence with 2+ underscore blank markers (e.g. `_____`).
+  /// Main sentence with underscore blank markers (e.g. `_____`). It may have no blanks when
+  /// [line1] contains the question's only blank(s).
   final String sentence;
   final List<String> answers;
   final List<String> distractors;
@@ -109,14 +111,20 @@ class ClozeSequenceQuestionData {
   final String? imageName;
 
   /// Optional spoken prompt line shown above the sentence (e.g. an image question's opening
-  /// line, "Are these your tickets?"). Null for the common case of a bare cloze sentence with
-  /// no separate prompt — most ClozeSequence rows across the app don't set this.
+  /// line, "Are these your tickets?"). It may contain blank markers; those blanks are answered
+  /// before the blanks in [sentence]. Null for the common case of a bare cloze sentence.
   final String? line1;
   final List<String> englishToTranslate;
   final Map<String, List<String>> localTranslation;
 
   /// When true, revealing translation does not count as a wrong answer.
   final bool trOk;
+
+  /// When true, [answers] may be supplied to the blanks in any order — e.g. "clean" and
+  /// "relaxed" for "I feel _____ and _____ after the bath." are each accepted at whichever
+  /// blank the learner fills first, since both orderings are valid English. When false
+  /// (default), each blank only accepts its own positional answer.
+  final bool noOrder;
 }
 
 /// Parsed `questionData` for [ConvoTemplate-1] (vocabulary or grammar).
@@ -300,15 +308,73 @@ class VideoClozeAnswerData {
     required this.distractors,
   });
 
-  /// English sentence with 1+ underscore blank markers (e.g. `_____`).
+  /// Main sentence with underscore blank markers (e.g. `_____`). It may have no blanks when
+  /// [line1] contains the question's only blank(s).
   final String sentence;
   final List<String> answers;
   final List<String> distractors;
 }
 
+/// [VideoConversation] answer_type `pausedDialogueCompletion`: the video is frozen for the
+/// whole row (`start_at == pause_at == answer_until`) and never resumes; the question renders
+/// like the standalone `DialogueCompletion` template, using the frozen frame as its media
+/// instead of a static image. Deliberately isolated from [VideoChoiceAnswerData] (the non-paused
+/// video `DialogueCompletion`) and from standalone `DialogueCompletionQuestionData` — no
+/// `character1`/`character2`/`image_file_name`, and [line1] (the on-screen prompt, since there's
+/// no video motion to carry it) is optional, matching every standalone template's own line1.
+class PausedChoiceAnswerData {
+  const PausedChoiceAnswerData({
+    this.line1,
+    required this.answer,
+    required this.distractors,
+  });
+
+  final String? line1;
+  final String answer;
+  final List<String> distractors;
+}
+
+/// [VideoConversation] answer_type `pausedSentenceBuilder`: frozen-video counterpart of the
+/// standalone `SentenceBuilder` template (unscramble only — no decoy tiles, matching standalone
+/// semantics exactly, unlike the non-paused video `SentenceBuilder`/`AppearDisappear` which do
+/// support optional `distractors` via [VideoSequenceAnswerData]).
+class PausedSequenceAnswerData {
+  const PausedSequenceAnswerData({
+    this.line1,
+    required this.targetSentence,
+  });
+
+  final String? line1;
+  final String targetSentence;
+}
+
+/// [VideoConversation] answer_type `pausedClozeSequence`: frozen-video counterpart of the
+/// standalone `ClozeSequence` template.
+class PausedClozeAnswerData {
+  const PausedClozeAnswerData({
+    this.line1,
+    required this.sentence,
+    required this.answers,
+    required this.distractors,
+    this.noOrder = false,
+  });
+
+  final String? line1;
+
+  /// English sentence with 1+ underscore blank markers (e.g. `_____`).
+  final String sentence;
+  final List<String> answers;
+  final List<String> distractors;
+
+  /// See [ClozeSequenceQuestionData.noOrder] — same order-agnostic blank-filling behavior for
+  /// the frozen-video counterpart.
+  final bool noOrder;
+}
+
 /// Parsed row for template [VideoConversation]: a video clip `[startAt, pauseAt]` that pauses
 /// right when the learner must supply the next line, answered via exactly one of
-/// [choiceData] / [sequenceData] / [clozeData] depending on `answer_type`.
+/// [choiceData] / [sequenceData] / [clozeData] / [pausedChoiceData] / [pausedSequenceData] /
+/// [pausedClozeData] depending on `answer_type`.
 class VideoConversationQuestionData {
   const VideoConversationQuestionData({
     required this.videoFile,
@@ -318,6 +384,9 @@ class VideoConversationQuestionData {
     this.choiceData,
     this.sequenceData,
     this.clozeData,
+    this.pausedChoiceData,
+    this.pausedSequenceData,
+    this.pausedClozeData,
   });
 
   final String videoFile;
@@ -330,6 +399,20 @@ class VideoConversationQuestionData {
   final VideoChoiceAnswerData? choiceData;
   final VideoSequenceAnswerData? sequenceData;
   final VideoClozeAnswerData? clozeData;
+
+  /// Paused-video answer types — video never plays during this row (see [PausedChoiceAnswerData]
+  /// doc). Exactly one of these three is set instead of the three fields above.
+  final PausedChoiceAnswerData? pausedChoiceData;
+  final PausedSequenceAnswerData? pausedSequenceData;
+  final PausedClozeAnswerData? pausedClozeData;
+
+  /// True for any of the three paused answer_types — the shared video must never be resumed for
+  /// this row (regardless of answer outcome), same rule as `AppearDisappear`/recall but for a
+  /// different reason (the video never played in the first place, not "nothing new to show").
+  bool get isPaused =>
+      pausedChoiceData != null ||
+      pausedSequenceData != null ||
+      pausedClozeData != null;
 }
 
 /// Parsed row for template [Chapter]: a passive, non-quiz interstitial card — just an image and
@@ -344,6 +427,38 @@ class ChapterQuestionData {
   final String displayImage;
 }
 
+/// What the footer hint text (shown below the question, until it's answered) should say about
+/// the *kind* of interaction expected. Optional top-level JSON field `footer_intent`; when
+/// absent, [LevelQuestion.effectiveFooterIntent] derives a default from the template/answer_type
+/// (see there) — `ask` is never a default, it must always be set explicitly.
+enum FooterIntent {
+  /// Default for everything except `AppearDisappear`/recall: a question was asked and the
+  /// player must respond. No footer text of its own (the ordinary case needs no extra hint).
+  respond,
+
+  /// The player's own line *is* a question (e.g. building/picking "What is your name?") — must
+  /// be set explicitly, never a default. Footer: "Ask a question".
+  ask,
+
+  /// Default for standalone `AppearDisappear` and video `AppearDisappear`/recall rows: the line
+  /// was already spoken once and the player reconstructs it from memory. Footer: "Repeat what
+  /// you heard".
+  repeat;
+
+  static FooterIntent? tryParse(String? raw) {
+    switch (raw) {
+      case 'respond':
+        return FooterIntent.respond;
+      case 'ask':
+        return FooterIntent.ask;
+      case 'repeat':
+        return FooterIntent.repeat;
+      default:
+        return null;
+    }
+  }
+}
+
 /// One entry in `levelQuestions`.
 class LevelQuestion {
   const LevelQuestion({
@@ -353,6 +468,7 @@ class LevelQuestion {
     this.questionExitCorrectAudio,
     this.questionExitWrongAudio,
     this.genders,
+    this.footerIntent,
     required this.template,
     this.imageData,
     this.imageQuiz2Data,
@@ -415,6 +531,10 @@ class LevelQuestion {
   /// (ConvoTemplate-1, DialogueCompletion; order = character1-character2).
   /// Mandatory content for those templates — see `validate_quiz_level_json.py`.
   final String? genders;
+
+  /// Optional top-level JSON `footer_intent` (`"respond"`/`"ask"`/`"repeat"`) — see
+  /// [FooterIntent]. Use [effectiveFooterIntent] to read this with its default applied.
+  final FooterIntent? footerIntent;
   final String template;
   final ImageQuestionData? imageData;
   final ImageQuizTemplate2Data? imageQuiz2Data;
@@ -427,16 +547,27 @@ class LevelQuestion {
   final VideoConversationQuestionData? videoConversationData;
   final ChapterQuestionData? chapterData;
 
+  /// [footerIntent] if set explicitly; otherwise defaults to [FooterIntent.repeat] for
+  /// standalone `AppearDisappear` and for video `AppearDisappear`/recall rows, [FooterIntent.
+  /// respond] for everything else. [FooterIntent.ask] is never a default — content must set it.
+  FooterIntent get effectiveFooterIntent {
+    if (footerIntent != null) return footerIntent!;
+    if (template == 'AppearDisappear') return FooterIntent.repeat;
+    if (template == 'VideoConversation' &&
+        videoConversationData?.sequenceData?.isRecall == true) {
+      return FooterIntent.repeat;
+    }
+    return FooterIntent.respond;
+  }
+
   /// True when this question uses an image-mode template (imageQuizTemplate-*).
   bool get isImageTemplate => template.startsWith('imageQuizTemplate');
 
   /// True for the passive [Chapter] interstitial (no answer, no scoring gate).
   bool get isChapter => template == 'Chapter';
 
-
   /// True when this row needs the shared [VideoPlayerController] to remain active.
-  bool get hasVideoPlayback =>
-      videoConversationData != null;
+  bool get hasVideoPlayback => videoConversationData != null;
 }
 
 /// One entry in [LevelTutorialConfig.steps]: which localized message and character portrait to
@@ -670,16 +801,17 @@ class LevelConfig {
       answers = const [];
     }
     final distractors = _stringList(data['distractors']);
-    final blankCount = _countBlanks(sentence);
-    if (blankCount != answers.length) {
-      throw FormatException(
-        'ClozeSequence: ${answers.length} answers but $blankCount blanks in sentence',
-      );
-    }
     final rawLine1 = data['line1'];
     final line1 = rawLine1 is String && rawLine1.trim().isNotEmpty
         ? rawLine1.trim()
         : null;
+    final blankCount =
+        _countBlanks(sentence) + (line1 == null ? 0 : _countBlanks(line1));
+    if (blankCount != answers.length) {
+      throw FormatException(
+        'ClozeSequence: ${answers.length} answers but $blankCount blanks across line1 and sentence',
+      );
+    }
     return ClozeSequenceQuestionData(
       sentence: sentence,
       answers: answers,
@@ -689,6 +821,7 @@ class LevelConfig {
       englishToTranslate: _stringList(data['english_to_translate']),
       localTranslation: _stringListMap(data['local_translation']),
       trOk: (data['tr_ok'] as bool?) ?? false,
+      noOrder: (data['no_order'] as bool?) ?? false,
     );
   }
 
@@ -841,6 +974,9 @@ class LevelConfig {
     VideoChoiceAnswerData? choiceData;
     VideoSequenceAnswerData? sequenceData;
     VideoClozeAnswerData? clozeData;
+    PausedChoiceAnswerData? pausedChoiceData;
+    PausedSequenceAnswerData? pausedSequenceData;
+    PausedClozeAnswerData? pausedClozeData;
     switch (answerType) {
       case 'DialogueCompletion':
         choiceData = VideoChoiceAnswerData(
@@ -874,6 +1010,46 @@ class LevelConfig {
           distractors: _stringList(data['distractors']),
         );
         break;
+      case 'pausedDialogueCompletion':
+        pausedChoiceData = PausedChoiceAnswerData(
+          line1: data['line1'] as String?,
+          answer: data['answer'] as String? ?? '',
+          distractors: _stringList(data['distractors']),
+        );
+        break;
+      case 'pausedSentenceBuilder':
+        pausedSequenceData = PausedSequenceAnswerData(
+          line1: data['line1'] as String?,
+          targetSentence:
+              _wordsFromArrayOrSentence(data['correct_order']).join(' '),
+        );
+        break;
+      case 'pausedClozeSequence':
+        final rawPausedAnswer = data['answer'] ?? data['answers'];
+        final pausedAnswers = rawPausedAnswer is List
+            ? rawPausedAnswer.map((e) => e.toString()).toList()
+            : <String>[];
+        final rawPausedLine1 = data['line1'];
+        final pausedLine1 =
+            rawPausedLine1 is String && rawPausedLine1.trim().isNotEmpty
+                ? rawPausedLine1.trim()
+                : null;
+        final pausedSentence = (data['sentence'] as String? ?? '').trim();
+        final pausedBlankCount = _countBlanks(pausedSentence) +
+            (pausedLine1 == null ? 0 : _countBlanks(pausedLine1));
+        if (pausedBlankCount != pausedAnswers.length) {
+          throw FormatException(
+            'VideoConversation pausedClozeSequence: ${pausedAnswers.length} answers but $pausedBlankCount blanks across line1 and sentence',
+          );
+        }
+        pausedClozeData = PausedClozeAnswerData(
+          line1: pausedLine1,
+          sentence: pausedSentence,
+          answers: pausedAnswers,
+          distractors: _stringList(data['distractors']),
+          noOrder: (data['no_order'] as bool?) ?? false,
+        );
+        break;
       default:
         throw FormatException(
           'VideoConversation: unknown answer_type "$answerType"',
@@ -888,6 +1064,9 @@ class LevelConfig {
       choiceData: choiceData,
       sequenceData: sequenceData,
       clozeData: clozeData,
+      pausedChoiceData: pausedChoiceData,
+      pausedSequenceData: pausedSequenceData,
+      pausedClozeData: pausedClozeData,
     );
   }
 
@@ -967,6 +1146,7 @@ class LevelConfig {
       questionExitWrongAudio:
           _parseAudioCue(json['question_exit_wrong_audio']),
       genders: json['genders'] as String?,
+      footerIntent: FooterIntent.tryParse(json['footer_intent'] as String?),
       template: normalizedTemplate,
       imageData: imageData,
       imageQuiz2Data: imageQuiz2Data,

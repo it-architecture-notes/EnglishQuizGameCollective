@@ -46,7 +46,7 @@ Also consult:
 
 | Resource | Path |
 |----------|------|
-| Level order | `app/assets/data/flow/game-flow.json` |
+| Level order | `app/assets/data/flow/game-flow-adults-intermediate.json` |
 | Final word CSVs (6 files) | `all-ai-common/references/final words/` |
 | Oxford 3000 (secondary) | `all-ai-common/references/remove-word-list-references/3000 words oxford.txt` |
 | LanGeek common nouns (secondary) | `all-ai-common/references/remove-word-list-references/langeek-500-most-common-nouns.txt` |
@@ -60,7 +60,7 @@ Also consult:
 ### 1. Orient
 
 1. Read `questions.json` and `translations.json` for the target level.
-2. Find the level's position in `game-flow.json` — note its index. Call it **N**.
+2. Find the level's position in `game-flow-adults-intermediate.json` — note its index. Call it **N**.
 3. Note the **current translation entries**: every `english_word` in
    `translations.json` plus every `english_words` item in WordPairs questions.
    These are already covered — do not suggest them as candidates.
@@ -116,7 +116,7 @@ re-added to this level's translations.
 
 ### 4. Find misplaced later-level words
 
-1. List level ids at flow positions **N+1 … end** from `game-flow.json`.
+1. List level ids at flow positions **N+1 … end** from `game-flow-adults-intermediate.json`.
 2. For each later level, read `translations.json` (`english_word` entries) and
    `english_words` from WordPairs in `questions.json`. Quick scan:
 

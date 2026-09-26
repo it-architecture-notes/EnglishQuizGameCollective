@@ -6,114 +6,118 @@
         "imageName": "plane",
         "wrongAnswers": [
           "car",
-          "boat",
-          "train"
+          "airship",
+          "plain"
         ]
       }
     },
     {
       "template": "ClozeSequence",
-      "genders": "f",
       "questionData": {
-        "sentence": "The plane is going to _____.",
+        "sentence": "He was nervous as the plane began to _____ on his first time to _____.",
         "answer": [
+          "take off",
           "fly"
         ],
         "distractors": [
           "land",
+          "leave",
           "drive",
-          "walk"
+          "ride"
         ],
         "imageName": "plane-take-off"
       },
-      "audio_file": "the-plane-is-going-to-convo"
+      "audio_file": "he-was-nervous-as-the-plane-began-to-take-off-on-his-first-time-to-fly-convo"
     },
     {
       "template": "ClozeSequence",
-      "genders": "f",
       "questionData": {
-        "sentence": "The plane is going to _____.",
+        "sentence": "The plane _______ from gate C4 and ______ in London in 2 hours.",
         "answer": [
-          "land"
+          "departs",
+          "lands"
         ],
         "distractors": [
-          "fly",
-          "jump",
-          "sleep"
+          "flies",
+          "shows",
+          "comes"
         ],
         "imageName": "plane-departs-lands"
       },
-      "audio_file": "the-plane-is-going-to-convo"
+      "audio_file": "the-plane-departs-from-gate-c4-and-lands-in-london-in-2-hours-convo"
     },
     {
       "template": "ClozeSequence",
-      "genders": "f",
       "questionData": {
-        "sentence": "The plane is _____.",
+        "sentence": "The airline had to _____ that the flight would be _____.",
         "answer": [
+          "announce",
           "late"
         ],
         "distractors": [
-          "happy",
-          "small",
-          "green"
+          "report",
+          "say",
+          "early",
+          "cancel"
         ],
-        "imageName": "plane-late"
+        "imageName": "flight-announce-late"
       },
-      "audio_file": "the-plane-is-convo"
+      "audio_file": "the-airline-had-to-announce-that-the-flight-would-be-late-convo"
     },
     {
       "template": "imageQuizTemplate-1",
       "questionData": {
-        "imageName": "pilot",
+        "imageName": "customs-officer",
         "wrongAnswers": [
-          "passenger",
-          "driver",
-          "teacher"
+          "security-guard",
+          "airport-attendant",
+          "pilot"
         ]
       }
     },
     {
       "template": "ConvoTemplate-1",
-      "genders": "f-m",
       "questionData": {
-        "line1": "Can you _____ my bag?",
-        "line2": "Yes, I can.",
-        "answer": "carry",
+        "character1": "Emma",
+        "character2": "Chris",
+        "line1": "Do I need to _____ my bags myself?",
+        "line2": "No, they'll be transferred automatically.",
+        "answer": "transfer",
         "distractors": [
-          "eat",
-          "sleep",
-          "sing"
+          "carry",
+          "move",
+          "send"
         ],
-        "image_file_name": "carry-bag"
+        "image_file_name": "transfer-bags"
       },
-      "audio_file1": "can-you-my-bag-convo",
-      "audio_file2": "yes-i-can-convo"
+      "audio_file1": "do-i-need-to-transfer-my-bags-myself-convo",
+      "audio_file2": "no-they-ll-be-transferred-automatically-convo"
     },
     {
       "template": "DialogueCompletion",
-      "genders": "f-m",
       "questionData": {
-        "line1": "Is the plane late?",
-        "answer": "No, it is on time.",
+        "character1": "Beth",
+        "character2": "Alex",
+        "line1": "What if they cancel the flight?",
+        "answer": "Then the airline will rebook every passenger on the next flight.",
         "distractors": [
-          "Yes, it is my bag.",
-          "The plane is big.",
-          "I am hungry."
+          "Then we will wait at the gate for one hour.",
+          "Then every passenger must find a new hotel.",
+          "Then the airline will cancel the next flight too."
         ],
-        "image_file_name": "flight-cancelled"
+        "image_file_name": "cancel-flight-rebook"
       },
-      "audio_file1": "is-the-plane-late-convo",
-      "audio_file2": "no-it-is-on-time-convo"
+      "audio_file1": "what-if-they-cancel-the-flight-convo",
+      "audio_file2": "then-the-airline-will-rebook-every-passenger-on-the-next-flight-convo"
     },
     {
       "template": "imageQuizTemplate-1",
       "questionData": {
-        "imageName": "suitcase",
+        "imageName": "check-in-counter",
         "wrongAnswers": [
-          "box",
-          "chair",
-          "ball"
+          "security-check",
+          "baggage-claim",
+          "boarding-pass"
         ]
       }
     },
@@ -124,7 +128,7 @@
           "excited",
           "sad",
           "angry",
-          "scared"
+          "rude"
         ],
         "translations": [
           {
@@ -153,7 +157,7 @@
             "ja": "悲しい",
             "ko": "슬픈",
             "ar": "حزين",
-            "hi": "उदास"
+            "hi": "दुखी"
           },
           {
             "tr": "sinirli",
@@ -170,60 +174,61 @@
             "hi": "गुस्से में"
           },
           {
-            "tr": "korkmuş",
-            "es": "asustado",
-            "fr": "effrayé",
-            "de": "verängstigt",
-            "it": "spaventato",
-            "pt": "assustado",
-            "ru": "испуганный",
-            "zh": "害怕的",
-            "ja": "怖がっている",
-            "ko": "무서운",
-            "ar": "خائف",
-            "hi": "डरा हुआ"
+            "tr": "kaba",
+            "es": "grosero",
+            "fr": "impoli",
+            "de": "unhöflich",
+            "it": "maleducato",
+            "pt": "grosseiro",
+            "ru": "грубый",
+            "zh": "粗鲁的",
+            "ja": "失礼な",
+            "ko": "무례한",
+            "ar": "وقح",
+            "hi": "असभ्य"
           }
         ]
       }
     },
     {
       "template": "DialogueCompletion",
-      "genders": "m-f",
       "questionData": {
-        "line1": "Is the plane here?",
-        "answer": "Yes, it is here.",
+        "character1": "Omar",
+        "character2": "Lily",
+        "line1": "Is the flight on time?",
+        "answer": "Yes, it leaves now. Hurry up!",
         "distractors": [
-          "The cat is by the door.",
-          "I like red shoes.",
-          "The dog is sleeping."
+          "The cafe is next to gate B4.",
+          "I do not have your passport.",
+          "Security opens at six o'clock."
         ],
         "image_file_name": "flight-on-time-hurry"
       },
-      "audio_file1": "is-the-plane-here-convo",
-      "audio_file2": "yes-it-is-here-convo"
+      "audio_file1": "is-the-flight-on-time-convo",
+      "audio_file2": "yes-it-leaves-now-hurry-up-convo"
     },
     {
       "template": "AppearDisappear",
-      "genders": "f",
       "questionData": {
-        "words": "I wait for my plane.",
+        "words": "My connecting flight has a two-hour layover.",
         "distractors": [
-          "run",
-          "jump",
-          "sleep"
+          "direct",
+          "short",
+          "arriving",
+          "cancel"
         ],
-        "imageName": "waiting-at-airport"
+        "imageName": "connecting-flight-layover"
       },
-      "audio_file": "i-wait-for-my-plane-convo"
+      "audio_file": "my-connecting-flight-has-a-two-hour-layover-convo"
     },
     {
       "template": "imageQuizTemplate-1",
       "questionData": {
-        "imageName": "backpack",
+        "imageName": "security-check",
         "wrongAnswers": [
-          "umbrella",
-          "hat",
-          "shoe"
+          "baggage-claim",
+          "boarding-pass",
+          "customs-officer"
         ]
       }
     },
@@ -232,29 +237,28 @@
       "questionData": {
         "imageName": "traveler",
         "wrongAnswers": [
+          "visitor",
           "waiter",
-          "driver",
-          "teacher"
+          "driver"
         ]
       }
     },
     {
       "template": "SentenceBuilder",
-      "genders": "f",
       "questionData": {
-        "correct_order": "My plane is late.",
+        "correct_order": "My flight was delayed.",
         "imageName": "flight-delayed"
       },
-      "audio_file": "my-plane-is-late-convo"
+      "audio_file": "my-flight-was-delayed-convo"
     },
     {
       "template": "imageQuizTemplate-1",
       "questionData": {
-        "imageName": "clock",
+        "imageName": "baggage-carousel",
         "wrongAnswers": [
-          "door",
-          "window",
-          "table"
+          "baggage-claiming",
+          "boarding-pass",
+          "customs-officer"
         ]
       }
     }

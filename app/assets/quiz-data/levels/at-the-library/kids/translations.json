@@ -1,6 +1,40 @@
 {
   "translations_list": [
     {
+      "english_word": "to renew",
+      "translations": {
+        "tr": "yenilemek",
+        "es": "renovar",
+        "fr": "renouveler",
+        "de": "verlängern",
+        "it": "rinnovare",
+        "pt": "renovar",
+        "ru": "продлевать",
+        "zh": "续借",
+        "ja": "延長する",
+        "ko": "연장하다",
+        "ar": "التجديد",
+        "hi": "नवीनीकरण करना"
+      }
+    },
+    {
+      "english_word": "available",
+      "translations": {
+        "tr": "mevcut",
+        "es": "disponible",
+        "fr": "disponible",
+        "de": "verfügbar",
+        "it": "disponibile",
+        "pt": "disponível",
+        "ru": "доступный",
+        "zh": "可借",
+        "ja": "借りられる",
+        "ko": "대출 가능",
+        "ar": "متاح",
+        "hi": "उपलब्ध"
+      }
+    },
+    {
       "english_word": "to help",
       "translations": {
         "tr": "yardım etmek",
@@ -35,20 +69,71 @@
       }
     },
     {
-      "english_word": "old",
+      "english_word": "to borrow",
       "translations": {
-        "tr": "eski",
-        "es": "viejo",
-        "fr": "vieux",
-        "de": "alt",
-        "it": "vecchio",
-        "pt": "velho",
-        "ru": "старый",
-        "zh": "旧的",
-        "ja": "古い",
-        "ko": "오래된",
-        "ar": "قديم",
-        "hi": "पुराना"
+        "tr": "ödünç almak",
+        "es": "pedir prestado",
+        "fr": "emprunter",
+        "de": "ausleihen",
+        "it": "prendere in prestito",
+        "pt": "pegar emprestado",
+        "ru": "брать на дом",
+        "zh": "借阅",
+        "ja": "借りる",
+        "ko": "빌리다",
+        "ar": "الاستعارة",
+        "hi": "उधार लेना"
+      }
+    },
+    {
+      "english_word": "closed",
+      "translations": {
+        "tr": "kapalı",
+        "es": "cerrado",
+        "fr": "fermé",
+        "de": "geschlossen",
+        "it": "chiuso",
+        "pt": "fechado",
+        "ru": "закрытый",
+        "zh": "闭馆的",
+        "ja": "閉まっている",
+        "ko": "닫힌",
+        "ar": "مغلق",
+        "hi": "बंद"
+      }
+    },
+    {
+      "english_word": "to search",
+      "translations": {
+        "tr": "aramak",
+        "es": "buscar",
+        "fr": "rechercher",
+        "de": "suchen",
+        "it": "cercare",
+        "pt": "pesquisar",
+        "ru": "искать",
+        "zh": "搜索",
+        "ja": "検索する",
+        "ko": "검색하다",
+        "ar": "البحث",
+        "hi": "खोजना"
+      }
+    },
+    {
+      "english_word": "expired",
+      "translations": {
+        "tr": "süresi dolmuş",
+        "es": "vencido",
+        "fr": "expiré",
+        "de": "abgelaufen",
+        "it": "scaduto",
+        "pt": "expirado",
+        "ru": "просроченный",
+        "zh": "过期的",
+        "ja": "期限切れの",
+        "ko": "만료된",
+        "ar": "منتهي الصلاحية",
+        "hi": "समाप्त हो चुका"
       }
     },
     {
@@ -66,6 +151,40 @@
         "ko": "보여주다",
         "ar": "الإظهار",
         "hi": "दिखाना"
+      }
+    },
+    {
+      "english_word": "to reserve",
+      "translations": {
+        "tr": "ayırtmak",
+        "es": "reservar",
+        "fr": "réserver",
+        "de": "reservieren",
+        "it": "prenotare",
+        "pt": "reservar",
+        "ru": "бронировать",
+        "zh": "预约",
+        "ja": "予約する",
+        "ko": "예약하다",
+        "ar": "يحجز",
+        "hi": "आरक्षित करना"
+      }
+    },
+    {
+      "english_word": "to get",
+      "translations": {
+        "tr": "edinmek",
+        "es": "obtener",
+        "fr": "obtenir",
+        "de": "bekommen",
+        "it": "ottenere",
+        "pt": "obter",
+        "ru": "получить",
+        "zh": "领取",
+        "ja": "取得する",
+        "ko": "얻다",
+        "ar": "الحصول على",
+        "hi": "प्राप्त करना"
       }
     },
     {

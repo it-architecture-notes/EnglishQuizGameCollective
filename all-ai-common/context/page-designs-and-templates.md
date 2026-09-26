@@ -272,6 +272,21 @@ Rendered in **convo playing** layout inside `ImageQuizScreen`: typically **dialo
 
 **Cross-file transitions:** when a level chains two video files back to back (e.g. `greetings1` → `greetings2`), the shared controller is disposed and a fresh one created for the new asset — the new file's first row always gets the true synced start, exactly like the level's very first row, regardless of what the previous file's last row did.
 
+### `VideoConversation` — paused answer_types (`pausedDialogueCompletion` / `pausedSentenceBuilder` / `pausedClozeSequence`)
+
+- **Purpose:** ask an extra question at a video pause point **without** any video motion for that question — `start_at == pause_at == answer_until` always (zero-length window; never played, never resumed by this row). The frozen video frame is used as the media in place of a static image, and the question otherwise looks and behaves exactly like its standalone counterpart (layout, audio autoplay/replay rules), not like the synced video answer_types above.
+- **Widgets:** `PausedDialogueCompletionQuizBody` / `PausedSentenceBuilderQuizBody` / `PausedClozeSequenceQuizBody` (`paused_dialogue_completion_quiz_body.dart` / `paused_sentence_builder_quiz_body.dart` / `paused_cloze_sequence_quiz_body.dart`) — each a deliberately separate, self-contained file (not a shared variant of `VideoConversationQuizBody` or of the standalone widget), reusing the same shared `VideoPlayerController` as the level's other `VideoConversation` rows (seeked to `start_at` and left paused, never played).
+- **Data shapes** (all fields live directly in `questionData`, alongside `answer_type`): deliberately isolated from both the standalone `*QuestionData` classes and the non-paused video answer_type classes — no `character1`/`character2`/`image_file_name`/`imageName` (the frozen frame is the only media), and `line1` (the on-screen prompt, since there's no video motion to carry it) is always **optional**, matching every standalone template's own `line1`.
+
+| `answer_type` | Fields | Notes |
+|---|---|---|
+| `pausedDialogueCompletion` | `line1` (optional), `answer`, `distractors` | Mirrors standalone `DialogueCompletion` minus character/image fields. |
+| `pausedSentenceBuilder` | `line1` (optional), `correct_order` | Mirrors standalone `SentenceBuilder` — unscramble only, no `distractors` field (matches standalone semantics; unlike the non-paused video `SentenceBuilder`, which does support optional decoy `distractors`). |
+| `pausedClozeSequence` | `line1` (optional), `sentence`, `answer`/`answers`, `distractors` | Mirrors standalone `ClozeSequence`. |
+
+- **Audio:** standard `question_enter_audio`/`question_exit_correct_audio`/`question_exit_wrong_audio` at the row's top level, same as every other row — but timed like a **standalone** question (simple ~500ms-delay autoplay + replayable icon), not synced to video playback (there's nothing to sync to).
+- **No tutorial guide steps** for these three — the guide already shown for the non-paused `VideoConversation:<answer_type>` steps earlier in the level covers them.
+
 ---
 
 ## Tutorial guide overlay (`widgets/tutorial/`)

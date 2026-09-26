@@ -1,0 +1,364 @@
+{
+  "levelQuestions": [
+    {
+      "template": "VideoConversation",
+      "videoFile": "in-the-bathroom1",
+      "start_at": "00:00.00",
+      "pause_at": "00:02.61",
+      "answer_until": "00:02.61",
+      "question_enter_audio": "in-the-bathroom1-q1-setup",
+      "question_enter_audio_text": "I want you to take a shower.",
+      "question_exit_correct_audio": "in-the-bathroom1-q1-setup",
+      "question_exit_correct_audio_text": "I want you to take a shower.",
+      "questionData": {
+        "answer_type": "AppearDisappear",
+        "words": "I want you to take a shower.",
+        "distractors": [
+          "need",
+          "go",
+          "make",
+          "have"
+        ]
+      }
+    },
+    {
+      "template": "VideoConversation",
+      "videoFile": "in-the-bathroom1",
+      "start_at": "00:02.61",
+      "pause_at": "00:02.61",
+      "answer_until": "00:05.15",
+      "question_enter_audio": "none",
+      "question_exit_correct_audio": "in-the-bathroom1-q2-confirm",
+      "question_exit_correct_audio_text": "But I am not dirty.",
+      "questionData": {
+        "answer_type": "SentenceBuilder",
+        "correct_order": "But I am not dirty."
+      }
+    },
+    {
+      "template": "VideoConversation",
+      "videoFile": "in-the-bathroom1",
+      "start_at": "00:05.15",
+      "pause_at": "00:05.15",
+      "answer_until": "00:05.15",
+      "question_enter_audio": "none",
+      "question_exit_correct_audio": [
+        "in-the-bathroom1-q2-pause-setup",
+        "in-the-bathroom1-q2-pause-confirm"
+      ],
+      "question_exit_correct_audio_text": [
+        "Does he want to take a shower?",
+        "No, he doesn't."
+      ],
+      "genders": "f-m",
+      "questionData": {
+        "answer_type": "pausedClozeSequence",
+        "line1": "Does he _____ to take a shower?",
+        "sentence": "No, he _____.",
+        "answer": [
+          "want",
+          "doesn't"
+        ],
+        "distractors": [
+          "wants",
+          "don't",
+          "is",
+          "not"
+        ]
+      }
+    },
+    {
+      "template": "VideoConversation",
+      "videoFile": "in-the-bathroom1",
+      "start_at": "00:05.15",
+      "pause_at": "00:05.15",
+      "answer_until": "00:07.99",
+      "question_enter_audio": "none",
+      "question_exit_correct_audio": "in-the-bathroom1-q3-confirm",
+      "question_exit_correct_audio_text": "Just look in the mirror.",
+      "footer_intent": "ask",
+      "questionData": {
+        "answer_type": "ClozeSequence",
+        "sentence": "Just _____ _____ the mirror.",
+        "answer": [
+          "look",
+          "in"
+        ],
+        "distractors": [
+          "see",
+          "at",
+          "watch",
+          "on"
+        ]
+      }
+    },
+    {
+      "template": "VideoConversation",
+      "videoFile": "in-the-bathroom1",
+      "start_at": "00:07.99",
+      "pause_at": "00:07.99",
+      "answer_until": "00:07.99",
+      "question_enter_audio": "in-the-bathroom1-q4-pause-setup",
+      "question_enter_audio_text": "What does mom think?",
+      "question_exit_correct_audio": "in-the-bathroom1-q4-pause-confirm",
+      "question_exit_correct_audio_text": "The child is dirty.",
+      "genders": "f-m",
+      "questionData": {
+        "answer_type": "pausedDialogueCompletion",
+        "line1": "What does mom think?",
+        "answer": "The child is dirty.",
+        "distractors": [
+          "The child is clean.",
+          "The mirror is dirty.",
+          "The child is tired."
+        ]
+      }
+    },
+    {
+      "template": "VideoConversation",
+      "videoFile": "in-the-bathroom1",
+      "start_at": "00:07.99",
+      "pause_at": "00:13.12",
+      "answer_until": "00:18.40",
+      "question_enter_audio": "in-the-bathroom1-q6-setup",
+      "question_enter_audio_text": "I can just wash my hands and use soap.",
+      "question_exit_correct_audio": "in-the-bathroom1-q5-confirm",
+      "question_exit_correct_audio_text": "No, you need to clean your body.",
+      "questionData": {
+        "answer_type": "SentenceBuilder",
+        "correct_order": "No, you need to clean your body."
+      }
+    },
+    {
+      "template": "VideoConversation",
+      "videoFile": "in-the-bathroom1",
+      "start_at": "00:18.40",
+      "pause_at": "00:18.40",
+      "answer_until": "00:18.40",
+      "question_enter_audio": "in-the-bathroom1-q6-pause-setup",
+      "question_enter_audio_text": "What does he want to do?",
+      "question_exit_correct_audio": "in-the-bathroom1-q6-pause-confirm",
+      "question_exit_correct_audio_text": "Wash his hands and use soap.",
+      "genders": "f-m",
+      "questionData": {
+        "answer_type": "pausedDialogueCompletion",
+        "line1": "What does he want to do?",
+        "answer": "Wash his hands and use soap.",
+        "distractors": [
+          "Clean his whole body.",
+          "Look in the mirror.",
+          "Comb his hair."
+        ]
+      }
+    },
+    {
+      "template": "VideoConversation",
+      "videoFile": "in-the-bathroom1",
+      "start_at": "00:18.40",
+      "pause_at": "00:25.94",
+      "answer_until": "00:29.16",
+      "question_enter_audio": "in-the-bathroom1-q9-setup",
+      "question_enter_audio_text": "Okay, do I comb my hair too?",
+      "question_exit_correct_audio": "in-the-bathroom1-q7-confirm",
+      "question_exit_correct_audio_text": "Yes, you are going to comb your hair too.",
+      "questionData": {
+        "answer_type": "SentenceBuilder",
+        "correct_order": "Yes, you are going to comb your hair too."
+      }
+    },
+    {
+      "template": "ConvoTemplate-1",
+      "genders": "f-m",
+      "question_enter_audio": "none",
+      "question_exit_correct_audio": [
+        "when-do-you-usually-wash-your-hands-convo",
+        "i-usually-wash-my-hands-before-eating-convo"
+      ],
+      "question_exit_correct_audio_text": [
+        "When do you usually wash your hands?",
+        "I usually wash my hands before eating."
+      ],
+      "questionData": {
+        "image_file_name": "wash-hands-before",
+        "line1": "When do you usually _____ your hands?",
+        "line2": "I usually _____ my hands before eating.",
+        "answer": "wash",
+        "distractors": [
+          "brush",
+          "comb",
+          "take"
+        ]
+      }
+    },
+    {
+      "template": "DialogueCompletion",
+      "genders": "f-f",
+      "question_enter_audio": "im-going-to-take-a-shower-convo",
+      "question_enter_audio_text": "I'm going to take a shower.",
+      "question_exit_correct_audio": "okay-the-towel-is-on-the-sink-convo",
+      "question_exit_correct_audio_text": "Okay! The towel is on the sink.",
+      "questionData": {
+        "line1": "I'm going to take a shower.",
+        "answer": "Okay! The towel is on the sink.",
+        "image_file_name": "towel-sink",
+        "distractors": [
+          "Brush your teeth carefully.",
+          "The soap is next to the sink.",
+          "It smells very fresh in here."
+        ]
+      }
+    },
+    {
+      "template": "ClozeSequence",
+      "genders": "m",
+      "question_exit_correct_audio": "i-use-a-towel-to-dry-my-face-convo",
+      "question_exit_correct_audio_text": "I use a towel to dry my face.",
+      "questionData": {
+        "image_file_name":"use-towel",
+        "sentence": "I _____ a towel to _____ my face.",
+        "answers": [
+          "use",
+          "dry"
+        ],
+        "distractors": [
+          "cook",
+          "brush",
+          "drive",
+          "read"
+        ]
+      }
+    },
+    {
+      "template": "ClozeSequence",
+      "genders": "f",
+      "question_exit_correct_audio": "i-clean-the-bathroom-regularly-to-keep-it-tidy-convo",
+      "question_exit_correct_audio_text": "I clean the bathroom regularly to keep it tidy.",
+      "questionData": {
+        "image_file_name":"clean-bathroom",
+        "sentence": "I _____ the bathroom _____ to keep it tidy.",
+        "answers": [
+          "clean",
+          "regularly"
+        ],
+        "distractors": [
+          "cook",
+          "brush",
+          "today",
+          "slowly"
+        ]
+      }
+    },
+    {
+      "template": "ClozeSequence",
+      "genders": "m-m",
+      "question_enter_audio": "what-do-they-do-when-they-wake-up-convo",
+      "question_enter_audio_text": "What do they do when they wake up?",
+      "question_exit_correct_audio": "they-comb-their-hair-and-then-brush-their-teeth-convo",
+      "question_exit_correct_audio_text": "They comb their hair and then brush their teeth.",
+      "questionData": {
+        "line1": "What do they do when they wake up?",
+        "image_file_name": "combing-hair-and-brushing-teeth",
+        "sentence": "They _____ their hair and then _____ their teeth.",
+        "answer": [
+          "comb",
+          "brush"
+        ],
+        "distractors": [
+          "takes",
+          "puts",
+          "cuts",
+          "dries"
+        ]
+      }
+    },
+    {
+      "template": "ClozeSequence",
+      "genders": "f",
+      "question_exit_correct_audio": "i-feel-clean-and-relaxed-after-the-bath-convo",
+      "question_exit_correct_audio_text": "I feel clean and relaxed after the bath.",
+      "questionData": {
+        "image_file_name": "relaxed-after-bath",
+        "sentence": "I _____ clean and _____ after the bath.",
+        "answers": [
+          "feel",
+          "relaxed"
+        ],
+        "distractors": [
+          "dirty",
+          "take",
+          "hungry",
+          "wake up"
+        ]
+      }
+    },
+    {
+      "template": "WordPairs",
+      "questionData": {
+        "english_words": [
+          "wet",
+          "dry",
+          "hot",
+          "cold"
+        ],
+        "translations": [
+          {
+            "tr": "\u0131slak",
+            "es": "mojado",
+            "fr": "mouill\u00e9",
+            "de": "nass",
+            "it": "bagnato",
+            "pt": "molhado",
+            "ru": "\u043c\u043e\u043a\u0440\u044b\u0439",
+            "zh": "\u6e7f\u7684",
+            "ja": "\u6fe1\u308c\u305f",
+            "ko": "\uc816\uc740",
+            "ar": "\u0645\u0628\u062a\u0644",
+            "hi": "\u0917\u0940\u0932\u093e"
+          },
+          {
+            "tr": "kuru",
+            "es": "seco",
+            "fr": "sec",
+            "de": "trocken",
+            "it": "asciutto",
+            "pt": "seco",
+            "ru": "\u0441\u0443\u0445\u043e\u0439",
+            "zh": "\u5e72\u7684",
+            "ja": "\u4e7e\u3044\u305f",
+            "ko": "\ub9c8\ub978",
+            "ar": "\u062c\u0627\u0641",
+            "hi": "\u0938\u0942\u0916\u093e"
+          },
+          {
+            "tr": "s\u0131cak",
+            "es": "caliente",
+            "fr": "chaud",
+            "de": "hei\u00df",
+            "it": "caldo",
+            "pt": "quente",
+            "ru": "\u0433\u043e\u0440\u044f\u0447\u0438\u0439",
+            "zh": "\u70ed\u7684",
+            "ja": "\u71b1\u3044",
+            "ko": "\ub728\uac70\uc6b4",
+            "ar": "\u062d\u0627\u0631",
+            "hi": "\u0917\u0930\u094d\u092e"
+          },
+          {
+            "tr": "so\u011fuk",
+            "es": "fr\u00edo",
+            "fr": "froid",
+            "de": "kalt",
+            "it": "freddo",
+            "pt": "frio",
+            "ru": "\u0445\u043e\u043b\u043e\u0434\u043d\u044b\u0439",
+            "zh": "\u51b7\u7684",
+            "ja": "\u51b7\u305f\u3044",
+            "ko": "\ucc28\uac00\uc6b4",
+            "ar": "\u0628\u0627\u0631\u062f",
+            "hi": "\u0920\u0902\u0921\u093e"
+          }
+        ]
+      }
+    }
+  ]
+}

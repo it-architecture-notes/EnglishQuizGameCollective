@@ -49,7 +49,7 @@ void main() {
     await tester.pumpWidget(MediaQuery(
       data: const MediaQueryData(size: Size(378, 701), textScaler: TextScaler.noScaling),
       child: MaterialApp(
-        theme: AppTheme.forFlavor(AppFlavor.adults),
+        theme: AppTheme.forFlavor(AppFlavor.adultsIntermediate),
         home: Scaffold(
           body: SafeArea(
             child: Builder(builder: (context) {

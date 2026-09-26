@@ -13,35 +13,37 @@
     },
     {
       "template": "ConvoTemplate-1",
-      "genders": "f-m",
       "questionData": {
-        "line1": "What do you want?",
-        "line2": "I want to _____ food.",
+        "character1": "Sarah",
+        "character2": "Daniel",
+        "line1": "What do you want to _____?",
+        "line2": "I want to _____ the fish, but I can't decide.",
         "answer": "order",
         "distractors": [
-          "share",
-          "eat",
-          "cook"
+          "think",
+          "hide",
+          "write"
         ]
       },
-      "audio_file1": "what-do-you-want-convo",
-      "audio_file2": "i-want-to-order-food-convo"
+      "audio_file1": "what-do-you-want-to-order-convo",
+      "audio_file2": "i-want-to-order-the-fish-but-i-can-t-decide-convo"
     },
     {
       "template": "ConvoTemplate-1",
-      "genders": "f-m",
       "questionData": {
-        "line1": "Can we share cake?",
-        "line2": "Yes, let us _____ it.",
+        "character1": "Beth",
+        "character2": "Alex",
+        "line1": "Do you want to _____ a dessert with me?",
+        "line2": "Yes, please. Can we ______ one dessert between two people?",
         "answer": "share",
         "distractors": [
-          "eat",
-          "cook",
-          "order"
+          "carry",
+          "book",
+          "ask"
         ]
       },
-      "audio_file1": "can-we-share-cake-convo",
-      "audio_file2": "yes-let-us-share-it-convo"
+      "audio_file1": "do-you-want-to-share-a-dessert-with-me-convo",
+      "audio_file2": "yes-please-can-we-share-one-dessert-between-two-people-convo"
     },
     {
       "template": "imageQuizTemplate-1",
@@ -125,32 +127,32 @@
     },
     {
       "template": "DialogueCompletion",
-      "genders": "m-f",
       "questionData": {
-        "line1": "Do you like the pie?",
-        "answer": "Yes, it tastes good!",
+        "character1": "Omar",
+        "character2": "Lily",
+        "line1": "Should we just split the bill evenly?",
+        "answer": "Sure, that works for me!",
         "distractors": [
-          "No, I am tired.",
-          "I read a book.",
-          "It is a big dog."
+          "No, I'll pay for everything myself.",
+          "Let's skip the tip this time.",
+          "I already paid my share earlier."
         ]
       },
-      "audio_file1": "do-you-like-the-pie-convo",
-      "audio_file2": "yes-it-tastes-good-convo"
+      "audio_file1": "should-we-just-split-the-bill-evenly-convo",
+      "audio_file2": "sure-that-works-for-me-convo"
     },
     {
       "template": "AppearDisappear",
-      "genders": "m",
       "questionData": {
-        "words": "I am full.",
+        "words": "I am full and I can't eat any more.",
         "distractors": [
-          "hungry",
-          "tired",
-          "cold",
-          "sad"
+          "are",
+          "empty",
+          "most",
+          "so"
         ]
       },
-      "audio_file": "i-am-full-convo"
+      "audio_file": "i-am-full-and-i-can-t-eat-any-more-convo"
     },
     {
       "template": "imageQuizTemplate-1",
@@ -176,11 +178,10 @@
     },
     {
       "template": "SentenceBuilder",
-      "genders": "m",
       "questionData": {
-        "correct_order": "The chef cooks soup."
+        "correct_order": "The chef boils soup for lunch."
       },
-      "audio_file": "the-chef-cooks-soup-convo"
+      "audio_file": "we-boil-soup-for-lunch-convo"
     },
     {
       "template": "imageQuizTemplate-1",
@@ -195,67 +196,67 @@
     },
     {
       "template": "ClozeSequence",
-      "genders": "m",
       "questionData": {
-        "sentence": "The food is _____.",
+        "sentence": "Our waiter was _____, and the food was _____, so we made sure to _____ well.",
         "answer": [
-          "good"
+          "polite",
+          "delicious",
+          "tip"
         ],
         "distractors": [
-          "cold",
-          "wet",
-          "sad",
-          "bad"
+          "rude",
+          "tasty",
+          "pay",
+          "leave"
         ]
       },
-      "audio_file": "the-food-is-good-convo"
+      "audio_file": "our-waiter-was-polite-and-the-food-was-delicious-so-we-made-sure-to-tip-well-convo"
     },
     {
-      "template": "ClozeSequence",
-      "genders": "f",
+      "template": "GrammarForm",
       "questionData": {
-        "sentence": "_____ I have soup?",
-        "answer": "Can",
+        "sentence": "_____ you the soup of the day?",
+        "answer": "Can I offer",
         "distractors": [
-          "Do",
-          "Is",
-          "Are"
+          "offer",
+          "offered",
+          "offering"
         ]
       }
     },
     {
       "template": "ClozeSequence",
-      "genders": "m",
       "questionData": {
-        "sentence": "_____ the soup.",
+        "sentence": "_____ the soup _____ until it's warm.",
         "answer": [
-          "Heat"
+          "heat",
+          "properly"
         ],
         "distractors": [
-          "Eat",
-          "Mix",
-          "Wash",
-          "Cut"
+          "bake",
+          "cooler",
+          "cold",
+          "frozen"
         ]
       },
-      "audio_file": "heat-the-soup-convo"
+      "audio_file": "heat-the-soup-properly-until-it-s-warm-convo"
     },
     {
       "template": "ClozeSequence",
-      "genders": "m",
       "questionData": {
-        "sentence": "_____ the soup.",
+        "sentence": "The waitress _____ us a sample to _____ before we ordered.",
         "answer": [
-          "Taste"
+          "served",
+          "taste"
         ],
         "distractors": [
-          "Heat",
-          "Mix",
-          "Wash",
-          "Cut"
+          "bring",
+          "brought",
+          "offered",
+          "try"
         ]
       },
-      "audio_file": "taste-the-soup-convo"
+      "audio_file": "the-waitress-served-us-a-sample-to-taste-before-we-ordered-convo"
     }
   ]
 }

@@ -1,5 +1,6 @@
 {
   "levelQuestions": [
+    
     {
       "template": "imageQuizTemplate-1",
       "questionData": {
@@ -24,16 +25,15 @@
     },
     {
       "template": "ClozeSequence",
-      "genders": "m",
       "questionData": {
-        "sentence": "_____ is my aunt's child.",
+        "sentence": "_____ is the daughter or son of uncle or aunt.",
         "answer": [
           "cousin"
         ],
-        "distractors": [
-          "daughter",
-          "son",
-          "brother"
+        "wrongAnswers": [
+          "grandkid",
+          "sibling",
+          "daughter"
         ]
       }
     },
@@ -55,7 +55,7 @@
         "wrongAnswers": [
           "grandmother",
           "brother",
-          "girl"
+          "group"
         ]
       }
     },
@@ -75,7 +75,7 @@
       "questionData": {
         "imageName": "son",
         "wrongAnswers": [
-          "daughter",
+          "grandkid",
           "cousin",
           "sister"
         ]
@@ -88,7 +88,7 @@
         "wrongAnswers": [
           "boy",
           "aunt",
-          "father"
+          "old father"
         ]
       }
     },
@@ -110,7 +110,7 @@
         "wrongAnswers": [
           "mother",
           "uncle",
-          "sister"
+          "old mother"
         ]
       }
     },
@@ -121,7 +121,7 @@
         "wrongAnswers": [
           "woman",
           "family",
-          "parents"
+          "group"
         ]
       }
     },
@@ -193,13 +193,12 @@
     },
     {
       "template": "ClozeSequence",
-      "genders": "f",
       "questionData": {
-        "sentence": "My _____ is my mother's sister.",
+        "sentence": "_____ is the sister of father or mother.",
         "answer": [
           "aunt"
         ],
-        "distractors": [
+        "wrongAnswers": [
           "uncle",
           "cousin",
           "daughter"
@@ -208,16 +207,15 @@
     },
     {
       "template": "ClozeSequence",
-      "genders": "m",
       "questionData": {
-        "sentence": "My _____ is my father's brother.",
+        "sentence": "_____ is the brother of father or mother.",
         "answer": [
           "uncle"
         ],
-        "distractors": [
+        "wrongAnswers": [
           "aunt",
           "cousin",
-          "brother"
+          "sibling"
         ]
       }
     },
@@ -228,7 +226,7 @@
         "wrongAnswers": [
           "father",
           "grandfather",
-          "brother"
+          "gentleman"
         ]
       }
     }

@@ -2,222 +2,121 @@
   "levelQuestions": [
     {
       "template": "ClozeSequence",
-      "genders": "f",
       "questionData": {
-        "sentence": "The dog can _____ here.",
-        "answer": [
-          "run"
-        ],
-        "distractors": [
-          "sleep",
-          "read"
-        ]
+        "sentence": "The thief managed to _____ from the police and _____ in an old building.",
+        "answer": ["escape", "hide"],
+        "distractors": ["run", "disappear"]
       },
-      "audio_file": "the-dog-can-here-convo"
+      "audio_file": "the-thief-managed-to-escape-from-the-police-and-hide-in-an-old-building-convo"
     },
     {
       "template": "ClozeSequence",
-      "genders": "m",
       "questionData": {
-        "sentence": "Dark clouds _____ rain.",
-        "answer": [
-          "show"
-        ],
-        "distractors": [
-          "read",
-          "sleep"
-        ]
+        "sentence": "Experts have _____ heavy rain, so they _____ to the dark clouds as proof.",
+        "answer": ["predicted", "point"],
+        "distractors": ["expected", "refer"]
       },
-      "audio_file": "dark-clouds-rain-convo"
+      "audio_file": "experts-have-predicted-heavy-rain-so-they-point-to-the-dark-clouds-as-proof-convo"
     },
     {
       "template": "ClozeSequence",
-      "genders": "m",
       "questionData": {
-        "sentence": "Hold the wheel _____.",
-        "answer": [
-          "tight"
-        ],
-        "distractors": [
-          "soft",
-          "wet"
-        ]
+        "sentence": "Please watch the road _____ , and hold the wheel _____ .",
+        "answer": ["closely", "strongly"],
+        "distractors": ["loosely", "gently"]
       },
-      "audio_file": "hold-the-wheel-convo"
+      "audio_file": "please-watch-the-road-closely-and-hold-the-wheel-strongly-convo"
     },
     {
-      "template": "ClozeSequence",
-      "genders": "f",
+      "template": "GrammarForm",
       "questionData": {
-        "sentence": "They _____ this house.",
-        "answer": "like",
-        "distractors": [
-          "likes",
-          "liked",
-          "liking"
-        ]
+        "sentence": "They _____ this house for over twenty years.",
+        "answer": "have owned",
+        "distractors": ["own", "owned", "are owning"]
       }
     },
     {
       "template": "AppearDisappear",
-      "genders": "m",
       "questionData": {
-        "words": "Cold weather hurts plants.",
-        "distractors": [
-          "helps",
-          "sees",
-          "makes"
-        ]
+        "words": "The frost killed all the plants.",
+        "distractors": ["damaged", "hurt", "weakened"]
       },
-      "audio_file": "cold-weather-hurts-plants-convo"
+      "audio_file": "the-frost-killed-all-the-plants-convo"
     },
     {
       "template": "AppearDisappear",
-      "genders": "m",
       "questionData": {
-        "words": "She puts the vase here.",
-        "distractors": [
-          "runs",
-          "jumps",
-          "sleeps"
-        ]
+        "words": "She placed the vase on the shelf.",
+        "distractors": ["put", "left", "moved"]
       },
-      "audio_file": "she-puts-the-vase-here-convo"
+      "audio_file": "she-placed-the-vase-on-the-shelf-convo"
     },
     {
       "template": "AppearDisappear",
-      "genders": "f",
       "questionData": {
-        "words": "Reading is fun.",
-        "distractors": [
-          "sad",
-          "cold",
-          "wet"
-        ]
+        "words": "Reading is her primary hobby.",
+        "distractors": ["secondary", "occasional", "difficult"]
       },
-      "audio_file": "reading-is-fun-convo"
+      "audio_file": "reading-is-her-primary-hobby-convo"
     },
     {
       "template": "ConvoTemplate-1",
-      "genders": "m-f",
       "questionData": {
-        "line1": "Do you like tea?",
-        "line2": "Yes, I _____ tea.",
-        "answer": "like",
-        "distractors": [
-          "likes",
-          "liked",
-          "liking"
-        ]
+        "character1": "Omar",
+        "character2": "Lily",
+        "line1": "Would you like tea or coffee?",
+        "line2": "I _____ coffee, thank you.",
+        "answer": "prefer",
+        "distractors": ["like", "want", "need"]
       },
-      "audio_file1": "do-you-like-tea-convo",
-      "audio_file2": "yes-i-tea-convo"
+      "audio_file1": "would-you-like-tea-or-coffee-convo",
+      "audio_file2": "i-prefer-coffee-thank-you-convo"
     },
     {
       "template": "ConvoTemplate-1",
-      "genders": "f-m",
       "questionData": {
-        "line1": "Did you finish?",
-        "line2": "Yes, I _____.",
-        "answer": "did",
-        "distractors": [
-          "do",
-          "does",
-          "am"
-        ]
+        "character1": "Beth",
+        "character2": "Alex",
+        "line1": "How did you finish so quickly?",
+        "line2": "I don't know, I _____ managed it.",
+        "answer": "somehow",
+        "distractors": ["barely", "hardly", "rarely"]
       },
-      "audio_file1": "did-you-finish-convo",
-      "audio_file2": "yes-i-convo"
+      "audio_file1": "how-did-you-finish-so-quickly-convo",
+      "audio_file2": "i-dont-know-i-somehow-managed-it-convo"
     },
     {
       "template": "DialogueCompletion",
-      "genders": "f-m",
       "questionData": {
-        "line1": "Is the game long?",
-        "answer": "No, it is short.",
+        "character1": "Sarah",
+        "character2": "Daniel",
+        "line1": "How long will the meeting take?",
+        "answer": "It should naturally last about one hour.",
         "distractors": [
-          "No, I am tired.",
-          "I read a book.",
-          "It is a big dog."
+          "It already finished an hour ago.",
+          "It was cancelled this morning.",
+          "It starts again tomorrow."
         ]
       },
-      "audio_file1": "is-the-game-long-convo",
-      "audio_file2": "no-it-is-short-convo"
+      "audio_file1": "how-long-will-the-meeting-take-convo",
+      "audio_file2": "it-should-naturally-last-about-one-hour-convo"
     },
     {
       "template": "SentenceBuilder",
-      "genders": "m",
       "questionData": {
-        "correct_order": "She wears good shoes."
+        "correct_order": "She wore proper shoes today."
       },
-      "audio_file": "she-wears-good-shoes-convo"
+      "audio_file": "she-wore-proper-shoes-today-convo"
     },
     {
       "template": "WordPairs",
       "questionData": {
-        "english_words": [
-          "yes",
-          "no",
-          "big",
-          "small"
-        ],
+        "english_words": ["generally", "mostly", "impossible", "independent"],
         "translations": [
-          {
-            "tr": "evet",
-            "es": "sí",
-            "fr": "oui",
-            "de": "ja",
-            "it": "sì",
-            "pt": "sim",
-            "ru": "да",
-            "zh": "是",
-            "ja": "はい",
-            "ko": "네",
-            "ar": "نعم",
-            "hi": "हाँ"
-          },
-          {
-            "tr": "hayır",
-            "es": "no",
-            "fr": "non",
-            "de": "nein",
-            "it": "no",
-            "pt": "não",
-            "ru": "нет",
-            "zh": "不",
-            "ja": "いいえ",
-            "ko": "아니요",
-            "ar": "لا",
-            "hi": "नहीं"
-          },
-          {
-            "tr": "büyük",
-            "es": "grande",
-            "fr": "grand",
-            "de": "groß",
-            "it": "grande",
-            "pt": "grande",
-            "ru": "большой",
-            "zh": "大的",
-            "ja": "大きい",
-            "ko": "큰",
-            "ar": "كبير",
-            "hi": "बड़ा"
-          },
-          {
-            "tr": "küçük",
-            "es": "pequeño",
-            "fr": "petit",
-            "de": "klein",
-            "it": "piccolo",
-            "pt": "pequeno",
-            "ru": "маленький",
-            "zh": "小的",
-            "ja": "小さい",
-            "ko": "작은",
-            "ar": "صغير",
-            "hi": "छोटा"
-          }
+          {"tr": "generally", "es": "generally", "fr": "generally", "de": "generally", "it": "generally", "pt": "generally", "ru": "generally", "zh": "generally", "ja": "generally", "ko": "generally", "ar": "generally", "hi": "generally"},
+          {"tr": "mostly", "es": "mostly", "fr": "mostly", "de": "mostly", "it": "mostly", "pt": "mostly", "ru": "mostly", "zh": "mostly", "ja": "mostly", "ko": "mostly", "ar": "mostly", "hi": "mostly"},
+          {"tr": "impossible", "es": "impossible", "fr": "impossible", "de": "impossible", "it": "impossible", "pt": "impossible", "ru": "impossible", "zh": "impossible", "ja": "impossible", "ko": "impossible", "ar": "impossible", "hi": "impossible"},
+          {"tr": "independent", "es": "independent", "fr": "independent", "de": "independent", "it": "independent", "pt": "independent", "ru": "independent", "zh": "independent", "ja": "independent", "ko": "independent", "ar": "independent", "hi": "independent"}
         ]
       }
     }

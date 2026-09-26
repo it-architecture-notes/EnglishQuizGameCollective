@@ -16,39 +16,56 @@ class QuizFlowData {
   final List<MainLevelMeta> mainLevels;
 }
 
-const String _subLevelsPathAdult = 'assets/data/flow/game-flow.json';
+const String _subLevelsPathAdultsIntermediate =
+    'assets/data/flow/game-flow-adults-intermediate.json';
+const String _subLevelsPathAdultsBeginner =
+    'assets/data/flow/game-flow-adults-beginner.json';
 const String _subLevelsPathKids = 'assets/data/flow/game-flow-kids.json';
-const String _mainLevelsPathAdult =
-    'assets/data/flow/game-flow-main-levels.json';
+const String _mainLevelsPathAdultsIntermediate =
+    'assets/data/flow/game-flow-main-levels-adults-intermediate.json';
+const String _mainLevelsPathAdultsBeginner =
+    'assets/data/flow/game-flow-main-levels-adults-beginner.json';
 const String _mainLevelsPathKids =
     'assets/data/flow/game-flow-main-levels-kids.json';
 
-/// Loads a flavor's flow asset, falling back to the adult file only when the
-/// kids file is missing (kids has fewer/regrouped main levels; adults has no
-/// fallback — same asymmetric pattern as `achievement_config_loader.dart`).
-Future<String> _loadFlavoredAsset(String adultPath, String kidsPath) async {
-  final path = AppConfig.isKids ? kidsPath : adultPath;
+/// Loads the active flavor's flow asset, falling back to the adults-intermediate file
+/// only when the flavor-specific file is missing/unreadable — same asymmetric pattern
+/// for `kids` and `adults-beginner`, both smaller/newer flavors than the
+/// adults-intermediate baseline. `adults-intermediate` has no fallback of its own.
+Future<String> _loadFlavoredAsset(String flavorPath, String fallbackPath) async {
   try {
-    return await rootBundle.loadString(path);
+    return await rootBundle.loadString(flavorPath);
   } catch (e) {
-    if (path == adultPath) {
-      throw Exception('Failed to load $path: $e');
+    if (flavorPath == fallbackPath) {
+      throw Exception('Failed to load $flavorPath: $e');
     }
     try {
-      return await rootBundle.loadString(adultPath);
+      return await rootBundle.loadString(fallbackPath);
     } catch (e2) {
-      throw Exception('Failed to load $kidsPath or $adultPath: $e2');
+      throw Exception('Failed to load $flavorPath or $fallbackPath: $e2');
     }
   }
 }
 
+String _subLevelsPathForFlavor() => switch (AppConfig.flavor) {
+      AppFlavor.kids => _subLevelsPathKids,
+      AppFlavor.adultsBeginner => _subLevelsPathAdultsBeginner,
+      AppFlavor.adultsIntermediate => _subLevelsPathAdultsIntermediate,
+    };
+
+String _mainLevelsPathForFlavor() => switch (AppConfig.flavor) {
+      AppFlavor.kids => _mainLevelsPathKids,
+      AppFlavor.adultsBeginner => _mainLevelsPathAdultsBeginner,
+      AppFlavor.adultsIntermediate => _mainLevelsPathAdultsIntermediate,
+    };
+
 /// Loads sub-level ordering and main-level banner metadata for the level map UI.
 /// Called from [LevelsScreen._loadData] whenever the map needs fresh flow configuration.
 Future<QuizFlowData> loadGameFlow() async {
-  final subLevelsJson =
-      await _loadFlavoredAsset(_subLevelsPathAdult, _subLevelsPathKids);
-  final mainLevelsJson =
-      await _loadFlavoredAsset(_mainLevelsPathAdult, _mainLevelsPathKids);
+  final subLevelsJson = await _loadFlavoredAsset(
+      _subLevelsPathForFlavor(), _subLevelsPathAdultsIntermediate);
+  final mainLevelsJson = await _loadFlavoredAsset(
+      _mainLevelsPathForFlavor(), _mainLevelsPathAdultsIntermediate);
 
   final List<dynamic> subList = jsonDecode(subLevelsJson) as List<dynamic>;
   final List<dynamic> mainList = jsonDecode(mainLevelsJson) as List<dynamic>;

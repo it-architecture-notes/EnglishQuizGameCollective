@@ -13,35 +13,37 @@
     },
     {
       "template": "ConvoTemplate-1",
-      "genders": "f-m",
       "questionData": {
-        "line1": "Are you going to play?",
-        "line2": "Yes, I am going to _____.",
-        "answer": "play",
+        "character1": "Beth",
+        "character2": "Alex",
+        "line1": "Are you going to ______ today?",
+        "line2": "Yes, I have ______ at four o'clock.",
+        "answer": "practice",
         "distractors": [
-          "plays",
-          "played",
-          "playing"
+          "train",
+          "watch",
+          "listen"
         ]
       },
-      "audio_file1": "are-you-going-to-play-convo",
-      "audio_file2": "yes-i-am-going-to-convo"
+      "audio_file1": "are-you-going-to-practice-today-convo",
+      "audio_file2": "yes-i-have-practice-at-four-o-clock-convo"
     },
     {
       "template": "ConvoTemplate-1",
-      "genders": "f-m",
       "questionData": {
-        "line1": "Is your team ready?",
-        "line2": "Yes, we are _____.",
-        "answer": "ready",
+        "character1": "Sarah",
+        "character2": "Daniel",
+        "line1": "Is your _____ ready for the race tomorrow?",
+        "line2": "Yes, we've been training hard all week!",
+        "answer": "team",
         "distractors": [
-          "sad",
-          "cold",
-          "wet"
+          "coach",
+          "group",
+          "club"
         ]
       },
-      "audio_file1": "is-your-team-ready-convo",
-      "audio_file2": "yes-we-are-convo"
+      "audio_file1": "is-your-team-ready-for-the-race-tomorrow-convo",
+      "audio_file2": "yes-we-ve-been-training-hard-all-week-convo"
     },
     {
       "template": "imageQuizTemplate-1",
@@ -58,53 +60,53 @@
       "template": "WordPairs",
       "questionData": {
         "english_words": [
-          "today",
-          "tomorrow",
-          "yesterday",
-          "now"
+          "future",
+          "past",
+          "present",
+          "recent"
         ],
         "translations": [
           {
-            "tr": "bugün",
-            "es": "hoy",
-            "fr": "aujourd'hui",
-            "de": "heute",
-            "it": "oggi",
-            "pt": "hoje",
-            "ru": "сегодня",
-            "zh": "今天",
-            "ja": "今日",
-            "ko": "오늘",
-            "ar": "اليوم",
-            "hi": "आज"
+            "tr": "gelecek",
+            "es": "futuro",
+            "fr": "futur",
+            "de": "zukünftig",
+            "it": "futuro",
+            "pt": "futuro",
+            "ru": "будущий",
+            "zh": "未来的",
+            "ja": "未来の",
+            "ko": "미래의",
+            "ar": "مستقبلي",
+            "hi": "भविष्य का"
           },
           {
-            "tr": "yarın",
-            "es": "mañana",
-            "fr": "demain",
-            "de": "morgen",
-            "it": "domani",
-            "pt": "amanhã",
-            "ru": "завтра",
-            "zh": "明天",
-            "ja": "明日",
-            "ko": "내일",
-            "ar": "غدا",
-            "hi": "कल"
+            "tr": "geçmiş",
+            "es": "pasado",
+            "fr": "passé",
+            "de": "vergangen",
+            "it": "passato",
+            "pt": "passado",
+            "ru": "прошлый",
+            "zh": "过去的",
+            "ja": "過去の",
+            "ko": "과거의",
+            "ar": "ماضٍ",
+            "hi": "पिछला"
           },
           {
-            "tr": "dün",
-            "es": "ayer",
-            "fr": "hier",
-            "de": "gestern",
-            "it": "ieri",
-            "pt": "ontem",
-            "ru": "вчера",
-            "zh": "昨天",
-            "ja": "昨日",
-            "ko": "어제",
-            "ar": "أمس",
-            "hi": "कल"
+            "tr": "mevcut",
+            "es": "presente",
+            "fr": "présent",
+            "de": "gegenwärtig",
+            "it": "presente",
+            "pt": "presente",
+            "ru": "настоящий",
+            "zh": "现在的",
+            "ja": "現在の",
+            "ko": "현재의",
+            "ar": "حاضر",
+            "hi": "वر्तमान"
           },
           {
             "tr": "son",
@@ -125,32 +127,32 @@
     },
     {
       "template": "DialogueCompletion",
-      "genders": "m-f",
       "questionData": {
-        "line1": "Do you like your coach?",
-        "answer": "Yes, my coach is kind.",
+        "character1": "Omar",
+        "character2": "Lily",
+        "line1": "Did the new coach help to improve your skills?",
+        "answer": "Definitely, I finally feel ready to compete.",
         "distractors": [
-          "No, I am tired.",
-          "I read a book.",
-          "It is a big dog."
+          "No, I still need more practice.",
+          "Maybe, but I don't like the coach.",
+          "Yes, but I'm not ready to compete yet."
         ]
       },
-      "audio_file1": "do-you-like-your-coach-convo",
-      "audio_file2": "yes-my-coach-is-kind-convo"
+      "audio_file1": "did-the-new-coach-help-to-improve-your-skills-convo",
+      "audio_file2": "definitely-i-finally-feel-ready-to-compete-convo"
     },
     {
       "template": "AppearDisappear",
-      "genders": "m",
       "questionData": {
-        "words": "I run fast.",
+        "words": "If you run fast, you will sweat.",
         "distractors": [
+          "would",
           "walk",
-          "sleep",
-          "read",
-          "cook"
+          "might",
+          "when"
         ]
       },
-      "audio_file": "i-run-fast-convo"
+      "audio_file": "if-you-run-fast-you-will-sweat-convo"
     },
     {
       "template": "imageQuizTemplate-1",
@@ -177,11 +179,10 @@
     },
     {
       "template": "SentenceBuilder",
-      "genders": "f",
       "questionData": {
-        "correct_order": "She hits the ball."
+        "correct_order": "She hit the ball perfectly."
       },
-      "audio_file": "she-hits-the-ball-convo"
+      "audio_file": "she-hit-the-ball-perfectly-convo"
     },
     {
       "template": "imageQuizTemplate-1",
@@ -196,67 +197,66 @@
     },
     {
       "template": "ClozeSequence",
-      "genders": "m",
       "questionData": {
-        "sentence": "I can _____ in water.",
+        "sentence": "It is ____ to ____ in cold water every morning.",
         "answer": [
+          "tough",
           "swim"
         ],
         "distractors": [
-          "run",
-          "read",
-          "cook",
-          "wash"
+          "bake",
+          "lock",
+          "fold",
+          "earn"
         ]
       },
-      "audio_file": "i-can-in-water-convo"
+      "audio_file": "it-is-tough-to-swim-in-cold-water-every-morning-convo"
     },
     {
-      "template": "ClozeSequence",
-      "genders": "f",
+      "template": "GrammarForm",
       "questionData": {
-        "sentence": "You can _____ in the pool.",
-        "answer": "swim",
+        "sentence": "If you are ready, you can try ______ into the pool.",
+        "answer": "to dive",
         "distractors": [
-          "swims",
-          "swam",
-          "swimming"
+          "dives",
+          "dived",
+          "diving"
         ]
       }
     },
     {
       "template": "ClozeSequence",
-      "genders": "m",
       "questionData": {
-        "sentence": "She _____ the ball.",
+        "sentence": "She wanted to _____ in the final match and to _____ the winning goal.",
         "answer": [
-          "kicked"
+          "play",
+          "score"
         ],
         "distractors": [
-          "sees",
-          "makes",
-          "takes",
-          "reads"
+          "win",
+          "kick",
+          "join",
+          "shoot"
         ]
       },
-      "audio_file": "she-the-ball-convo"
+      "audio_file": "she-wanted-to-play-in-the-final-match-and-to-score-the-winning-goal-convo"
     },
     {
       "template": "ClozeSequence",
-      "genders": "f",
       "questionData": {
-        "sentence": "He is _____ and fast.",
+        "sentence": "He was _____ enough to catch himself before he could ____.",
         "answer": [
-          "strong"
+          "strong",
+          "slip"
         ],
         "distractors": [
+          "careful",
+          "fall",
           "weak",
-          "sad",
-          "cold",
-          "wet"
+          "slide"
         ]
       },
-      "audio_file": "he-is-and-fast-convo"
+      "audio_file": "he-was-strong-enough-to-catch-himself-before-he-could-slip-convo"
     }
   ]
 }

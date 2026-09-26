@@ -3,15 +3,15 @@
 Generate tables for one activity level: questions from questions.json and, when
 present, translations from translations.json in the same folder.
 
-Flavor layout (kids / adults): when both ``kids/questions.json`` and
-``adults/questions.json`` exist, output is split into three sections:
+Flavor layout (kids / adults-intermediate): when both ``kids/questions.json`` and
+``adults-intermediate/questions.json`` exist, output is split into three sections:
 
   1. **common** — questions that are *exactly* the same JSON object in both
-  2. **adults** — questions only in adults (not an exact match in kids)
-  3. **kids** — questions only in kids (not an exact match in adults)
+  2. **adults-intermediate** — questions only in adults-intermediate (not an exact match in kids)
+  3. **kids** — questions only in kids (not an exact match in adults-intermediate)
 
 Legacy root ``questions.json`` is used only when neither flavor folder has a
-questions file. Pass ``…/greetings/kids`` (or ``adults``) to emit that flavor
+questions file. Pass ``…/greetings/kids`` (or ``adults-intermediate``) to emit that flavor
 only (no common split).
 
 Usage:
@@ -180,7 +180,7 @@ QUESTION_SUMMARY_HEADERS = ["#", "Line 1", "Line 2", "Answer", "Distractors"]
 WORD_FREQ_HEADERS = ["word", "count"]
 
 # Flavor subfolders under a level (matches AppConfig.flavorDir / Flutter loaders).
-_FLAVOR_NAMES = ("adults", "kids")
+_FLAVOR_NAMES = ("adults-intermediate", "kids")
 
 # Per-question keys omitted from HTML word-frequency (metadata / assets).
 _QUESTION_ITEM_WORD_FREQ_SKIP_KEYS = frozenset(
@@ -314,7 +314,7 @@ def resolve_level_context(level_dir: Path) -> tuple[Path, str | None]:
     """
     Map a user path to (level_root, flavor_filter).
 
-    If the path is ``…/{level}/kids`` or ``…/{level}/adults``, return the parent
+    If the path is ``…/{level}/kids`` or ``…/{level}/adults-intermediate``, return the parent
     level root and that flavor name. Otherwise return ``level_dir`` and None
     (include every available flavor / legacy root).
     """
@@ -330,7 +330,7 @@ def discover_level_sources(
     """
     Return ``[(flavor_label, questions_path, translations_path), …]``.
 
-    ``flavor_label`` is ``\"kids\"``, ``\"adults\"``, or ``\"\"`` for legacy
+    ``flavor_label`` is ``\"kids\"``, ``\"adults-intermediate\"``, or ``\"\"`` for legacy
     root-only ``questions.json``. Prefer flavor subfolders when either has a
     questions file; otherwise fall back to the level-root file.
     """
@@ -743,15 +743,17 @@ def validate_question_shape(index: int, item: dict) -> list[str]:
                     answers = [raw_ans.strip()]
                 else:
                     answers = []
-                blank_count = _count_blanks(sentence)
+                raw_line1 = qd.get("line1")
+                line1 = raw_line1.strip() if isinstance(raw_line1, str) else ""
+                blank_count = _count_blanks(sentence) + _count_blanks(line1)
                 if blank_count == 0:
                     errs.append(
-                        f"{prefix} (ClozeSequence): sentence must contain at least one blank token "
+                        f"{prefix} (ClozeSequence): line1 or sentence must contain at least one blank token "
                         "like `_____` or `_____.` / `____?` (space-delimited; optional .!? after underscores)"
                     )
                 elif blank_count != len(answers):
                     errs.append(
-                        f"{prefix} (ClozeSequence): {len(answers)} answer(s) but {blank_count} blank(s) in sentence"
+                        f"{prefix} (ClozeSequence): {len(answers)} answer(s) but {blank_count} blank(s) across line1 and sentence"
                     )
         dist = _string_list(qd.get("distractors"))
         if not dist:
@@ -1529,9 +1531,9 @@ def _html_table(
 
 def _section_heading(level_name: str, flavor_label: str) -> str:
     if flavor_label == "common":
-        return f"{level_name} — common (exact match in adults & kids)"
-    if flavor_label == "adults":
-        return f"{level_name} — adults only"
+        return f"{level_name} — common (exact match in adults-intermediate & kids)"
+    if flavor_label == "adults-intermediate":
+        return f"{level_name} — adults-intermediate only"
     if flavor_label == "kids":
         return f"{level_name} — kids only"
     if flavor_label:
@@ -1616,7 +1618,7 @@ def build_html(level_name: str, sections: list[dict]) -> str:
         def _nav_label(label: str) -> str:
             return {
                 "common": "common",
-                "adults": "adults only",
+                "adults-intermediate": "adults-intermediate only",
                 "kids": "kids only",
             }.get(label, label)
 
@@ -1728,7 +1730,7 @@ def sections_from_adults_and_kids(
             questions_path=adults_sec.get("questions_path"),
         ),
         build_section_payload(
-            "adults",
+            "adults-intermediate",
             adults_only,
             translation_words=adults_sec["translation_words"],
             translations_path=adults_sec.get("translations_path"),
@@ -1772,8 +1774,8 @@ def main() -> int:
     parser.add_argument(
         "--flow",
         type=Path,
-        default=root / "app/assets/data/flow/game-flow.json",
-        help="Game flow JSON for prior-vocabulary report (default: game-flow.json)",
+        default=root / "app/assets/data/flow/game-flow-adults-intermediate.json",
+        help="Game flow JSON for prior-vocabulary report (default: game-flow-adults-intermediate.json)",
     )
     parser.add_argument(
         "--csv-dir",
@@ -1831,7 +1833,7 @@ def main() -> int:
             )
         else:
             print(
-                f"Missing questions.json (root or kids/|adults/) in {level_root}",
+                f"Missing questions.json (root or kids/|adults-intermediate/) in {level_root}",
                 file=sys.stderr,
             )
         return 1
@@ -1859,8 +1861,8 @@ def main() -> int:
         return 1
 
     by_label = {s["flavor_label"]: s for s in loaded}
-    if "adults" in by_label and "kids" in by_label and flavor_filter is None:
-        sections = sections_from_adults_and_kids(by_label["adults"], by_label["kids"])
+    if "adults-intermediate" in by_label and "kids" in by_label and flavor_filter is None:
+        sections = sections_from_adults_and_kids(by_label["adults-intermediate"], by_label["kids"])
     else:
         sections = loaded
 

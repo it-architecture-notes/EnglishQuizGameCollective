@@ -39,6 +39,9 @@ import 'quiz_templates/appear_disappear_quiz_body.dart';
 import 'quiz_templates/chapter_card_body.dart';
 import 'quiz_templates/cloze_sequence_quiz_body.dart';
 import 'quiz_templates/dialogue_completion_quiz_body.dart';
+import 'quiz_templates/paused_cloze_sequence_quiz_body.dart';
+import 'quiz_templates/paused_dialogue_completion_quiz_body.dart';
+import 'quiz_templates/paused_sentence_builder_quiz_body.dart';
 import 'quiz_templates/sentence_builder_quiz_body.dart';
 import 'quiz_templates/video_conversation_quiz_body.dart';
 import 'quiz_templates/word_pairs_quiz_body.dart';
@@ -453,6 +456,17 @@ class _ImageQuizScreenState extends ConsumerState<ImageQuizScreen>
   List<String?> _questionConvoThumbPaths = [];
   final Map<String, bool> _audioExistsCache = {};
 
+  /// Global intro-card choices, indexed by the order in which distinct videos appear in the
+  /// level (Clip 1, Clip 2, ...).
+  final Map<int, List<String>> _videoIntroCardPathsByOrdinal = {};
+  final List<String> _imageIntroCardPaths = [];
+  final Map<String, String> _selectedVideoIntroCardByVideo = {};
+  final Set<String> _shownVideoIntroVideos = {};
+  bool _imageIntroShown = false;
+  String? _activeVideoIntroPath;
+  String? _activeVideoIntroVideo;
+  String? _activeImageIntroPath;
+
   /// Level-wide timer override from `timer_seconds` in `questions.json` root. Null = use global config.
   int? _levelTimerSeconds;
 
@@ -467,6 +481,108 @@ class _ImageQuizScreenState extends ConsumerState<ImageQuizScreen>
 
   /// Asset-bundle prefix key for resolving images under this sub-level’s folder.
   static String _levelKey(SubLevel sub) => imageQuizLevelKey(sub.directoryName);
+
+  Future<void> _loadVideoIntroCardPaths() async {
+    final manifest = await AssetManifest.loadFromAssetBundle(rootBundle);
+    const prefix = 'assets/images/video-intro-cards/';
+    final assets = manifest
+        .listAssets()
+        .where((path) => path.startsWith(prefix) && path.endsWith('.png'))
+        .toList(growable: false);
+    for (var ordinal = 1; ordinal <= 2; ordinal++) {
+      final folder = 'clip$ordinal/';
+      _videoIntroCardPathsByOrdinal[ordinal] = assets
+          .where((path) => path.startsWith('$prefix$folder'))
+          .toList(growable: false);
+    }
+    _imageIntroCardPaths
+      ..clear()
+      ..addAll(
+        assets
+            .where((path) => path.startsWith('${prefix}image/'))
+            .toList(growable: false),
+      );
+  }
+
+  void _prepareVideoIntroOrdinals(List<LevelQuestion> questions) {
+    _videoIntroOrdinalByFile.clear();
+    var nextOrdinal = 1;
+    for (final question in questions) {
+      final videoFile = question.videoConversationData?.videoFile;
+      if (videoFile == null || videoFile.isEmpty) continue;
+      _videoIntroOrdinalByFile.putIfAbsent(videoFile, () => nextOrdinal++);
+    }
+  }
+
+  final Map<String, int> _videoIntroOrdinalByFile = {};
+
+  String? _videoIntroPathForIndex(int index) {
+    if (_isReminder || index < 0 || index >= _allQuestions.length) return null;
+    final videoFile = _allQuestions[index].videoConversationData?.videoFile;
+    if (videoFile == null || videoFile.isEmpty) return null;
+    if (_shownVideoIntroVideos.contains(videoFile)) return null;
+    final ordinal = _videoIntroOrdinalByFile[videoFile];
+    if (ordinal == null) return null;
+    final choices = _videoIntroCardPathsByOrdinal[ordinal] ?? const [];
+    if (choices.isEmpty) return null;
+    final selected = _selectedVideoIntroCardByVideo.putIfAbsent(
+      videoFile,
+      () => choices[Random().nextInt(choices.length)],
+    );
+    _shownVideoIntroVideos.add(videoFile);
+    _activeVideoIntroVideo = videoFile;
+    return selected;
+  }
+
+  /// Chooses one image-question card before the first question with an image that follows a
+  /// video segment — either an `imageQuizTemplate-*` row (resolved via [_questionImagePaths])
+  /// or a standalone convo/interactive row carrying its own thumbnail image (`image_file_name`,
+  /// resolved via [_questionConvoThumbPaths]; e.g. `ConvoTemplate-1`, `ClozeSequence`). Image-only
+  /// levels and reminder sessions do not show this interstitial.
+  String? _imageIntroPathForIndex(int index) {
+    if (_isReminder ||
+        _imageIntroShown ||
+        index < 0 ||
+        index >= _allQuestions.length) {
+      return null;
+    }
+    final question = _allQuestions[index];
+    if (question.isSkipPlaceholder || question.isChapter) return null;
+    final hasImage = question.isImageTemplate
+        ? (index < _questionImagePaths.length &&
+            (_questionImagePaths[index]?.isNotEmpty ?? false))
+        : (index < _questionConvoThumbPaths.length &&
+            (_questionConvoThumbPaths[index]?.isNotEmpty ?? false));
+    if (!hasImage || _imageIntroCardPaths.isEmpty) {
+      return null;
+    }
+    final hasVideoBefore =
+        _allQuestions.take(index).any((question) => question.hasVideoPlayback);
+    if (!hasVideoBefore) return null;
+    _imageIntroShown = true;
+    return _imageIntroCardPaths[Random().nextInt(_imageIntroCardPaths.length)];
+  }
+
+  void _advancePastVideoIntro() {
+    if (_activeVideoIntroPath == null) return;
+    setState(() {
+      _activeVideoIntroPath = null;
+      _activeVideoIntroVideo = null;
+    });
+  }
+
+  void _advancePastImageIntro() {
+    if (_activeImageIntroPath == null) return;
+    setState(() => _activeImageIntroPath = null);
+    if (_allQuestions.isNotEmpty &&
+        _currentIndex < _allQuestions.length &&
+        _allQuestions[_currentIndex].isImageTemplate &&
+        !_allQuestions[_currentIndex].isSkipPlaceholder) {
+      _timerController.duration =
+          Duration(seconds: _timerSecondsForCurrentQuestion());
+      _startTimer();
+    }
+  }
 
   /// True when this route is the reminder replay flow rather than a normal sub-level.
   bool get _isReminder => widget.reminderMode;
@@ -572,8 +688,7 @@ class _ImageQuizScreenState extends ConsumerState<ImageQuizScreen>
     if (_isReminder) return _initialQuestionCount;
     final list = _activeLevelQuestions;
     if (list == null) return _questionCount;
-    final nonChapterCount =
-        list.where((q) => !q.isChapter).length;
+    final nonChapterCount = list.where((q) => !q.isChapter).length;
     return nonChapterCount == 0 ? _questionCount : nonChapterCount;
   }
 
@@ -873,6 +988,8 @@ class _ImageQuizScreenState extends ConsumerState<ImageQuizScreen>
         for (final i in displayOrder)
           buildReminderQuestionId(widget.progressKey, i)
       ];
+      await _loadVideoIntroCardPaths();
+      _prepareVideoIntroOrdinals(orderedQuestions);
       final monsterEligibleCount = questions
           .where(
             (q) =>
@@ -945,9 +1062,7 @@ class _ImageQuizScreenState extends ConsumerState<ImageQuizScreen>
           _questionQuiz2Paths = orderedQ2Paths;
           _questionConvoThumbPaths = orderedConvoThumbPaths;
           _currentQuestionIds = questionIds;
-          _initialQuestionCount = orderedQuestions
-              .where((q) => true)
-              .length;
+          _initialQuestionCount = orderedQuestions.where((q) => true).length;
           _monsterEligibleQuestionCount = monsterEligibleCount;
           _guestAnimal = guestAnimal;
           _selectedMonster = selectedMonster;
@@ -963,6 +1078,10 @@ class _ImageQuizScreenState extends ConsumerState<ImageQuizScreen>
           _quizStartTime = DateTime.now();
           _currentOptions = _buildOptions();
         });
+        final firstVideoIntroPath = _videoIntroPathForIndex(0);
+        if (firstVideoIntroPath != null && mounted) {
+          setState(() => _activeVideoIntroPath = firstVideoIntroPath);
+        }
         // Start timer only for image questions (first question might be vocab)
         if (orderedQuestions.isNotEmpty &&
             !orderedQuestions.first.isSkipPlaceholder &&
@@ -1759,6 +1878,11 @@ class _ImageQuizScreenState extends ConsumerState<ImageQuizScreen>
       });
       return;
     }
+    final nextVideoIntroPath = _videoIntroPathForIndex(_currentIndex + 1);
+    final nextImageIntroPath = _imageIntroPathForIndex(_currentIndex + 1);
+    if (nextVideoIntroPath != null) {
+      _videoConversationController?.pause();
+    }
     setState(() {
       _currentIndex++;
       _answerLocked = false;
@@ -1772,11 +1896,16 @@ class _ImageQuizScreenState extends ConsumerState<ImageQuizScreen>
       _bubbleConversation = null;
       _currentOptions = _buildOptions();
       _convoTtsPlaying = false;
+      _activeVideoIntroPath = nextVideoIntroPath;
+      if (nextVideoIntroPath == null) _activeVideoIntroVideo = null;
+      _activeImageIntroPath = nextImageIntroPath;
     });
     if (_allQuestions.isNotEmpty) {
       if (_currentIndex < _allQuestions.length) {
         final nq = _allQuestions[_currentIndex];
-        if (nq.isImageTemplate && !nq.isSkipPlaceholder) {
+        if (nq.isImageTemplate &&
+            !nq.isSkipPlaceholder &&
+            nextImageIntroPath == null) {
           _timerController.duration = Duration(
             seconds: _timerSecondsForCurrentQuestion(),
           );
@@ -1970,8 +2099,18 @@ class _ImageQuizScreenState extends ConsumerState<ImageQuizScreen>
   VideoPlayerController? _videoControllerFor(String? assetPath) {
     if (assetPath == null) return null;
     if (_videoConversationControllerAssetPath == assetPath) {
+      debugPrint(
+        '[VideoDebug] _videoControllerFor: reusing controller for $assetPath, '
+        'pos=${_videoConversationController?.value.position} '
+        'isPlaying=${_videoConversationController?.value.isPlaying}',
+      );
       return _videoConversationController;
     }
+    debugPrint(
+      '[VideoDebug] _videoControllerFor: NEW controller for $assetPath '
+      '(previous path=$_videoConversationControllerAssetPath, '
+      'previous pos=${_videoConversationController?.value.position})',
+    );
     _videoConversationController?.dispose();
     final controller = VideoPlayerController.asset(
       assetPath,
@@ -2126,12 +2265,6 @@ class _ImageQuizScreenState extends ConsumerState<ImageQuizScreen>
         ref.read(settingsProvider).valueOrNull?.soundFxOn ?? false;
     final strings =
         ref.watch(currentLocalizedStringsProvider).valueOrNull ?? {};
-    // Tutorial guide text (overlay + footer hint) is always English, regardless of the
-    // learner's selected app language — this is instructional chrome sitting directly next to
-    // English lesson content, and switching it to the UI language read as a confusing
-    // part-English-part-other-language page.
-    final englishStrings =
-        ref.watch(localizedStringsProvider('en')).valueOrNull ?? {};
     final userLanguage =
         ref.watch(settingsProvider).valueOrNull?.language ?? 'en';
     final headerCounterText = _headerCounterText(strings);
@@ -2186,7 +2319,7 @@ class _ImageQuizScreenState extends ConsumerState<ImageQuizScreen>
       children: [
         scaffold,
         Positioned.fill(
-          child: TutorialOverlay(controller: tutorial, strings: englishStrings),
+          child: TutorialOverlay(controller: tutorial, strings: strings),
         ),
       ],
     );
@@ -2399,14 +2532,17 @@ class _ImageQuizScreenState extends ConsumerState<ImageQuizScreen>
   /// entirely) and waits for it to finish before the Next button appears. Applies uniformly
   /// across every template. For [VideoConversation], the (permanently muted) video resumes for
   /// the duration of this audio and pauses again after — same visual continuity as a correct
-  /// answer — except for the AppearDisappear/recall sub-type, which has no further video content
-  /// to show past the pause point and stays paused.
+  /// answer — except for the AppearDisappear/recall sub-type (no further video content past the
+  /// pause point) and the paused answer_types (video never played for this row at all), both of
+  /// which stay paused regardless of outcome.
   Future<void> _waitForWrongAnswerAudio(LevelQuestion q) async {
     final cue = _resolvedAudioCue(q.effectiveExitWrongAudio);
     if (cue == null || cue.isEmpty) return;
-    final isVideoRecall = q.videoConversationData?.sequenceData?.isRecall == true;
+    final isVideoRecall =
+        q.videoConversationData?.sequenceData?.isRecall == true;
+    final isPausedVideo = q.videoConversationData?.isPaused == true;
     final controller =
-        q.template == 'VideoConversation' && !isVideoRecall
+        q.template == 'VideoConversation' && !isVideoRecall && !isPausedVideo
             ? _videoConversationController
             : null;
     try {
@@ -2460,7 +2596,9 @@ class _ImageQuizScreenState extends ConsumerState<ImageQuizScreen>
     final convoQuestion = _currentConvoLevelQuestion;
     final footerGuideText = _showNext || convoQuestion == null
         ? null
-        : _footerGuideTextFor(convoQuestion);
+        : (_isGuideOverlayQuestion(convoQuestion)
+            ? null
+            : _interactionFooterTextFor(convoQuestion));
     return DebugLayoutBox(
       enabled: _debugShowLayoutBounds,
       label: 'action',
@@ -2504,6 +2642,17 @@ class _ImageQuizScreenState extends ConsumerState<ImageQuizScreen>
     Map<String, String> strings,
     String userLanguage,
   ) {
+    if (_activeImageIntroPath != null) {
+      return Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+        child: ChapterCardBody(
+          key: ValueKey('image-intro-$_currentIndex'),
+          imagePathFuture: Future<String?>.value(_activeImageIntroPath),
+          continueLabel: strings['next'] ?? 'Next',
+          onContinue: _advancePastImageIntro,
+        ),
+      );
+    }
     final path = _allQuestions.isNotEmpty
         ? (_currentIndex < _questionImagePaths.length
             ? _questionImagePaths[_currentIndex] ?? ''
@@ -2516,9 +2665,7 @@ class _ImageQuizScreenState extends ConsumerState<ImageQuizScreen>
     final paths4 = four;
     final q = _currentLevelQuestion;
     final isLast = _allQuestions.isNotEmpty
-        ? !_allQuestions
-            .skip(_currentIndex + 1)
-            .any((item) => true)
+        ? !_allQuestions.skip(_currentIndex + 1).any((item) => true)
         : _currentIndex + 1 >= _questionCount;
 
     return LayoutBuilder(
@@ -3332,6 +3479,29 @@ class _ImageQuizScreenState extends ConsumerState<ImageQuizScreen>
       bool soundFxOn, Map<String, String> strings, String userLanguage) {
     final q = _currentConvoLevelQuestion;
     if (q == null) return const Center(child: CircularProgressIndicator());
+    if (_activeVideoIntroPath != null) {
+      return Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+        child: ChapterCardBody(
+          key: ValueKey(
+              'video-intro-${_activeVideoIntroVideo ?? '$_currentIndex'}'),
+          imagePathFuture: Future<String?>.value(_activeVideoIntroPath),
+          continueLabel: strings['next'] ?? 'Next',
+          onContinue: _advancePastVideoIntro,
+        ),
+      );
+    }
+    if (_activeImageIntroPath != null) {
+      return Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+        child: ChapterCardBody(
+          key: ValueKey('image-intro-$_currentIndex'),
+          imagePathFuture: Future<String?>.value(_activeImageIntroPath),
+          continueLabel: strings['next'] ?? 'Next',
+          onContinue: _advancePastImageIntro,
+        ),
+      );
+    }
     if (q.isSkipPlaceholder) {
       WidgetsBinding.instance.addPostFrameCallback((_) {
         if (!mounted) return;
@@ -3361,9 +3531,7 @@ class _ImageQuizScreenState extends ConsumerState<ImageQuizScreen>
             ? 0.0
             : (_currentIndex + 1) / _initialQuestionCount);
     final isLast = _allQuestions.isNotEmpty
-        ? !_allQuestions
-            .skip(_currentIndex + 1)
-            .any((item) => true)
+        ? !_allQuestions.skip(_currentIndex + 1).any((item) => true)
         : _currentIndex + 1 >= _questionCount;
 
     final heroImagePath = _resolvedClozeImagePath();
@@ -3492,29 +3660,41 @@ class _ImageQuizScreenState extends ConsumerState<ImageQuizScreen>
     setState(() => _footerGuideDismissed = true);
   }
 
-  /// The footer guide hint text for the current question, or null if none should show: no
-  /// configured tutorial step for this template, the learner already interacted with this
-  /// question, the question is already answered (`_showNext`), or this exact question is the
-  /// one the blocking overlay was shown on (avoid showing the same guidance twice).
-  String? _footerGuideTextFor(LevelQuestion q) {
-    if (q.template == 'WordPairs') return null;
-    if (!_answerControlsRendered || _footerGuideDismissed || _showNext) {
-      return null;
-    }
+  /// True when [q] is the one specific question instance where the tutorial guide overlay
+  /// appeared this level entry — currently showing, or already dismissed via its OK button.
+  /// The guide is once-per-answer-type per level entry (see [TutorialController]), so this is
+  /// true for at most one question per configured answer type; every later question of that
+  /// same type never got the overlay and is not suppressed here. No footer message of any kind
+  /// shows on this exact instance — the overlay (or its aftermath) already said everything.
+  bool _isGuideOverlayQuestion(LevelQuestion q) {
     final stepKey = _tutorialStepKeyFor(q);
-    if (stepKey == null) return null;
+    if (stepKey == null) return false;
+    if (_tutorialController?.messageKeyFor(stepKey) == null) return false;
     final currentQuestionKey = '${_currentQuestionId ?? ''}#$_currentIndex';
-    if (_overlayShownForQuestionKey == currentQuestionKey) return null;
-    final controller = _tutorialController;
-    if (controller == null) return null;
-    final messageKey = controller.messageKeyFor(stepKey);
-    if (messageKey == null) return null;
-    // Always English — see the englishStrings comment in build() for why the guide text
-    // doesn't follow the learner's selected app language.
+    return _overlayShownForQuestionKey == currentQuestionKey;
+  }
+
+  /// Fallback footer text for [q.effectiveFooterIntent] — shown whenever there's no active
+  /// tutorial guide hint, for as long as the question is unanswered (unlike the tutorial hint,
+  /// this one is not dismissed by the learner's first interaction; it persists until answered,
+  /// right or wrong — the wrong-answer feedback phase must not change it). `respond` (the
+  /// ordinary default) has no text of its own. Always English, regardless of the learner's
+  /// selected app language — this is instructional chrome, not lesson content. Never shown for
+  /// a paused video question — the video never plays for those rows, so there's nothing to
+  /// "respond"/"ask"/"repeat" to.
+  String? _interactionFooterTextFor(LevelQuestion q) {
+    if (q.template == 'WordPairs') return null;
+    if (!_answerControlsRendered) return null;
+    if (q.videoConversationData?.isPaused == true) return null;
     final englishStrings =
         ref.watch(localizedStringsProvider('en')).valueOrNull ?? {};
-    final text = englishStrings[messageKey];
-    return (text == null || text.isEmpty) ? null : text;
+    return switch (q.effectiveFooterIntent) {
+      FooterIntent.ask => englishStrings['footer_intent_ask'] ?? 'Ask question',
+      FooterIntent.repeat =>
+        englishStrings['footer_intent_repeat'] ?? 'Repeat again',
+      FooterIntent.respond =>
+        englishStrings['footer_intent_respond'] ?? 'Respond correctly',
+    };
   }
 
   /// Picks the correct child widget for the active convo template (including interactive mini-games).
@@ -3607,10 +3787,78 @@ class _ImageQuizScreenState extends ConsumerState<ImageQuizScreen>
           debugShowLayoutBounds: _debugShowLayoutBounds,
         );
       case 'VideoConversation':
+        final vcData = q.videoConversationData!;
+        if (vcData.pausedChoiceData != null) {
+          return PausedDialogueCompletionQuizBody(
+            key: ValueKey('pdc-${_currentQuestionId ?? '$_currentIndex'}'),
+            data: vcData.pausedChoiceData!,
+            controller: _videoControllerFor(
+              _videoAssetPathForRaw(vcData.videoFile),
+            ),
+            startAt: vcData.startAt,
+            enterAudioCue: _resolvedAudioCue(q.questionEnterAudio),
+            exitCorrectAudioCue: _resolvedAudioCue(q.questionExitCorrectAudio),
+            exitWrongAudioCue: _resolvedAudioCue(q.effectiveExitWrongAudio),
+            onPlayQuestionAudio: (path) => audio.playQuestionAudio(path),
+            onPlayCorrect: () => audio.playCorrect(soundFxOn: soundFxOn),
+            onPlayWrong: () => audio.playWrong(soundFxOn: soundFxOn),
+            onOutcome: (correct) => _handleInteractiveConvoOutcome(q, correct),
+            onUserInteracted: _dismissFooterGuide,
+            onOptionButtonsRendered: (_, __) => _maybeShowTutorialFor(q),
+            debugShowLayoutBounds: _debugShowLayoutBounds,
+          );
+        }
+        if (vcData.pausedSequenceData != null) {
+          return PausedSentenceBuilderQuizBody(
+            key: ValueKey('psb-${_currentQuestionId ?? '$_currentIndex'}'),
+            data: vcData.pausedSequenceData!,
+            controller: _videoControllerFor(
+              _videoAssetPathForRaw(vcData.videoFile),
+            ),
+            startAt: vcData.startAt,
+            enterAudioCue: _resolvedAudioCue(q.questionEnterAudio),
+            exitCorrectAudioCue: _resolvedAudioCue(q.questionExitCorrectAudio),
+            exitWrongAudioCue: _resolvedAudioCue(q.effectiveExitWrongAudio),
+            onPlayQuestionAudio: (path) => audio.playQuestionAudio(path),
+            onPlayCorrect: () => audio.playCorrect(soundFxOn: soundFxOn),
+            onPlayWrong: () => audio.playWrong(soundFxOn: soundFxOn),
+            onOutcome: (correct) => _handleInteractiveConvoOutcome(q, correct),
+            onUserInteracted: _dismissFooterGuide,
+            onNextTileRendered: (_, __) => _maybeShowTutorialFor(q),
+            debugShowLayoutBounds: _debugShowLayoutBounds,
+          );
+        }
+        if (vcData.pausedClozeData != null) {
+          return PausedClozeSequenceQuizBody(
+            key: ValueKey('pcs-${_currentQuestionId ?? '$_currentIndex'}'),
+            data: vcData.pausedClozeData!,
+            controller: _videoControllerFor(
+              _videoAssetPathForRaw(vcData.videoFile),
+            ),
+            startAt: vcData.startAt,
+            enterAudioCue: _resolvedAudioCue(q.questionEnterAudio),
+            exitCorrectAudioCue: _resolvedAudioCue(q.questionExitCorrectAudio),
+            exitWrongAudioCue: _resolvedAudioCue(q.effectiveExitWrongAudio),
+            onPlayQuestionAudio: (path) => audio.playQuestionAudio(path),
+            onPlayCorrect: () => audio.playCorrect(soundFxOn: soundFxOn),
+            onPlayWrong: () => audio.playWrong(soundFxOn: soundFxOn),
+            onOutcome: (correct) => _handleInteractiveConvoOutcome(q, correct),
+            onUserInteracted: _dismissFooterGuide,
+            onNextChoiceRendered: (_, __) => _maybeShowTutorialFor(q),
+            debugShowLayoutBounds: _debugShowLayoutBounds,
+          );
+        }
         final previous = _previousConvoLevelQuestion;
         final previousVideoFile = previous?.videoConversationData?.videoFile;
         final continuesSameVideo = previous?.hasVideoPlayback == true &&
-            previousVideoFile == q.videoConversationData!.videoFile;
+            previous?.videoConversationData?.isPaused != true &&
+            previousVideoFile == vcData.videoFile;
+        debugPrint(
+          '[VideoDebug] dispatch VideoConversation: videoFile=${vcData.videoFile} '
+          'startAt=${vcData.startAt} previousVideoFile=$previousVideoFile '
+          'previousIsPaused=${previous?.videoConversationData?.isPaused} '
+          'continuesSameVideo=$continuesSameVideo',
+        );
         return VideoConversationQuizBody(
           key: ValueKey('vc-${_currentQuestionId ?? '$_currentIndex'}'),
           data: q.videoConversationData!,
@@ -3676,9 +3924,8 @@ class _ImageQuizScreenState extends ConsumerState<ImageQuizScreen>
     if (q.template == 'ConvoTemplate-1') {
       final enterCue = _convo1EnterCue(q);
       final wrongCue = _convo1OutcomeCue(q, correct: false);
-      final hasAnyAudio =
-          (enterCue != null && enterCue.isNotEmpty) ||
-              (wrongCue != null && wrongCue.isNotEmpty);
+      final hasAnyAudio = (enterCue != null && enterCue.isNotEmpty) ||
+          (wrongCue != null && wrongCue.isNotEmpty);
       if (hasAnyAudio) {
         final isCorrect = _convo1AnswerWasCorrect(q);
         final isWrongAnswered = _answerLocked && !isCorrect;
@@ -3760,16 +4007,20 @@ class _ImageQuizScreenState extends ConsumerState<ImageQuizScreen>
     required double maxWidth,
     required FontWeight fontWeight,
   }) {
-    final painter = TextPainter(
-      text: TextSpan(
-        text: text,
-        style: TextStyle(
-          fontFamily: 'Inter',
+    final style = Theme.of(context).textTheme.titleMedium?.copyWith(
           fontSize: fontSize,
           fontWeight: fontWeight,
           height: 1.2,
-        ),
-      ),
+          fontFamily: 'Inter',
+        ) ??
+        TextStyle(
+          fontSize: fontSize,
+          fontWeight: fontWeight,
+          height: 1.2,
+          fontFamily: 'Inter',
+        );
+    final painter = TextPainter(
+      text: _convo1BubbleSpan(text, style),
       textDirection: Directionality.of(context),
       textScaler: MediaQuery.textScalerOf(context),
     )..layout(maxWidth: max(1.0, maxWidth));
@@ -3784,11 +4035,18 @@ class _ImageQuizScreenState extends ConsumerState<ImageQuizScreen>
     final heroImagePath = _resolvedClozeImagePath();
     final hasImage = heroImagePath != null;
     final convoBudget = QuestionLayoutBudget.of(context);
-    final answerWidth =
-        convoBudget.answerWidthForAvailable(MediaQuery.sizeOf(context).width);
 
     return LayoutBuilder(
       builder: (context, bodyConstraints) {
+        // Must come from the LayoutBuilder's real local constraints, not MediaQuery's screen
+        // width — the body has its own horizontal padding (see the Padding wrapping this whole
+        // question), so the screen width is wider than what's actually available here. Using
+        // the screen width made every downstream text-wrap estimate (bubble line counts,
+        // needed dialogue height) assume more room than the bubbles actually render into,
+        // silently under-counting wrapped lines and never triggering the dialogue card's
+        // upward extension — the box then genuinely overflowed at render time instead.
+        final answerWidth =
+            convoBudget.answerWidthForAvailable(bodyConstraints.maxWidth);
         final convoMediaWidthLimit =
             convoBudget.mediaWidthForAvailable(bodyConstraints.maxWidth);
         final mediaHeight = hasImage
@@ -3831,7 +4089,14 @@ class _ImageQuizScreenState extends ConsumerState<ImageQuizScreen>
         // answer preset is selected. The dialogue card may extend upward when its measured
         // content needs more than its nominal row-count allocation.
         final bubbleFontSize = buttonFontSize * 1.1;
-        final bubbleWrapWidth = answerWidth - 56;
+        // The dialogue card's own Container (below) has 16px left/right padding — unlike the
+        // grid card, which has none — so the real width available inside it is 32px narrower
+        // than `answerWidth`. Every dialogue-side width/wrap calculation must go through this,
+        // not `answerWidth` directly, or the wrap estimate silently assumes more room than the
+        // bubbles actually render into (developer-confirmed: this was under-counting wrapped
+        // lines and letting real content overflow into the scroll fallback).
+        final dialogueCardContentWidth = max(0.0, answerWidth - 32);
+        final bubbleWrapWidth = dialogueCardContentWidth - 56;
         final dialogueContentHeight = _convo1BubbleNeededHeight(
           q.convoData!,
           bubbleFontSize,
@@ -3938,11 +4203,27 @@ class _ImageQuizScreenState extends ConsumerState<ImageQuizScreen>
             '${mediaHeight.toStringAsFixed(1)}px '
             'dialogueBox=${answerWidth.toStringAsFixed(1)}x'
             '${dialogueHeight.toStringAsFixed(1)}px '
+            'dialogueCardHeight=${dialogueCardHeight.toStringAsFixed(1)}px '
+            'dialogueCardPadding=LTRB(16,20,16,8) '
+            'extensionCap=${extensionCap.toStringAsFixed(1)}px '
+            'dialogueContentHeight=${dialogueContentHeight.toStringAsFixed(1)}px '
+            'dialogueTextBudget=${dialogueTextBudget.toStringAsFixed(1)}px '
+            'dialogueShortfall=${dialogueShortfall.toStringAsFixed(1)}px '
             'dialogueExtension=${dialogueExtension.toStringAsFixed(1)}px '
             'totalExtension=${totalExtension.toStringAsFixed(1)}px '
+            'dialogueCardContentWidth=${dialogueCardContentWidth.toStringAsFixed(1)}px '
+            'bubbleWrapWidth=${bubbleWrapWidth.toStringAsFixed(1)}px '
+            'bubbleBoxPadding=HV(10,8) bubbleGap=10.0px '
+            'line1Lines=$dialogueLine1Count line2Lines=$dialogueLine2Count '
             'answerLines=$maxAnswerLines '
             'gridBox=${answerWidth.toStringAsFixed(1)}x'
             '${gridHeight.toStringAsFixed(1)}px '
+            'gridHeightFinal=${gridHeightFinal.toStringAsFixed(1)}px '
+            'measuredGridHeight=${measuredGridHeight.toStringAsFixed(1)}px '
+            'gridExtension=${gridExtension.toStringAsFixed(1)}px '
+            'buttonShortfall=${buttonShortfall.toStringAsFixed(1)}px '
+            'buttonRowHeight=${buttonRowHeight.toStringAsFixed(1)}px '
+            'convo1GridGap=${convo1GridGap.toStringAsFixed(1)}px '
             'gridBottomPadding=${gridBottomPadding.toStringAsFixed(1)}px '
             'bubbleText=${bubbleResult.fontSize.toStringAsFixed(1)}px '
             'line1FontSize=${bubbleResult.fontSize.toStringAsFixed(1)}px '
@@ -4028,7 +4309,7 @@ class _ImageQuizScreenState extends ConsumerState<ImageQuizScreen>
                         child: SingleChildScrollView(
                           child: Center(
                             child: SizedBox(
-                              width: answerWidth,
+                              width: dialogueCardContentWidth,
                               child: Row(
                                 crossAxisAlignment: CrossAxisAlignment.center,
                                 children: [
@@ -4191,26 +4472,7 @@ class _ImageQuizScreenState extends ConsumerState<ImageQuizScreen>
     // under-count how many lines it actually wraps to — mirror the same span structure here so
     // the estimate matches what's actually painted, not an approximation of it.
     double lineHeight(String text) {
-      final InlineSpan span;
-      if (text.contains(_kBlank)) {
-        final parts = text.split(_kBlank);
-        final children = <InlineSpan>[];
-        for (var i = 0; i < parts.length; i++) {
-          if (parts[i].isNotEmpty) children.add(TextSpan(text: parts[i]));
-          if (i < parts.length - 1) {
-            children.add(
-              TextSpan(
-                text: '_____ ',
-                style: style.copyWith(
-                    fontWeight: FontWeight.w700, letterSpacing: 1),
-              ),
-            );
-          }
-        }
-        span = TextSpan(style: style, children: children);
-      } else {
-        span = TextSpan(text: text, style: style);
-      }
+      final span = _convo1BubbleSpan(text, style);
       final painter = TextPainter(
         text: span,
         textDirection: Directionality.of(context),
@@ -4220,6 +4482,36 @@ class _ImageQuizScreenState extends ConsumerState<ImageQuizScreen>
     }
 
     return lineHeight(line1) + 10 + lineHeight(line2);
+  }
+
+  /// Shared span construction for ConvoTemplate-1 dialogue text. The line-count/height
+  /// estimator and the rendered RichText must use the same blank representation; otherwise a
+  /// WidgetSpan can wrap differently from the TextSpan used by the estimator and the card's
+  /// scroll fallback engages before the upward extension is calculated correctly.
+  InlineSpan _convo1BubbleSpan(String text, TextStyle baseStyle) {
+    if (!text.contains(_kBlank)) {
+      return TextSpan(text: text, style: baseStyle);
+    }
+    final parts = text.split(_kBlank);
+    final children = <InlineSpan>[];
+    for (var i = 0; i < parts.length; i++) {
+      if (parts[i].isNotEmpty) {
+        children.add(TextSpan(text: parts[i]));
+      }
+      if (i < parts.length - 1) {
+        children.add(
+          TextSpan(
+            text: '_____ ',
+            style: baseStyle.copyWith(
+              color: Theme.of(context).colorScheme.primary,
+              fontWeight: FontWeight.w700,
+              letterSpacing: 1,
+            ),
+          ),
+        );
+      }
+    }
+    return TextSpan(style: baseStyle, children: children);
   }
 
   /// Largest bubble font size in `[min, max]` whose combined two-bubble height fits
@@ -4413,29 +4705,10 @@ class _ImageQuizScreenState extends ConsumerState<ImageQuizScreen>
         Theme.of(context).textTheme.titleMedium?.copyWith(
               fontSize: fontSize,
               height: 1.2,
-            );
+            ) ??
+        TextStyle(fontSize: fontSize, height: 1.2);
     if (!text.contains(_kBlank)) {
       return Text(text, style: baseStyle);
-    }
-    final parts = text.split(_kBlank);
-    final spans = <InlineSpan>[];
-    for (var i = 0; i < parts.length; i++) {
-      if (parts[i].isNotEmpty) spans.add(TextSpan(text: parts[i]));
-      if (i < parts.length - 1) {
-        spans.add(
-          WidgetSpan(
-            alignment: PlaceholderAlignment.middle,
-            child: Text(
-              '_____ ',
-              style: baseStyle?.copyWith(
-                color: Theme.of(context).colorScheme.primary,
-                fontWeight: FontWeight.w700,
-                letterSpacing: 1,
-              ),
-            ),
-          ),
-        );
-      }
     }
     return RichText(
       // Unlike `Text`, `RichText` does not automatically read the ambient text scale from
@@ -4446,10 +4719,7 @@ class _ImageQuizScreenState extends ConsumerState<ImageQuizScreen>
       // (previously unscaled) — at any ambient scale above 1.0 the two would visibly diverge
       // even though `baseStyle`'s `fontSize` was already provably identical between them.
       textScaler: MediaQuery.textScalerOf(context),
-      text: TextSpan(
-        style: baseStyle,
-        children: spans,
-      ),
+      text: _convo1BubbleSpan(text, baseStyle),
     );
   }
 

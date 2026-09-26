@@ -69,6 +69,23 @@
       }
     },
     {
+      "english_word": "breakfast",
+      "translations": {
+        "tr": "kahvaltı",
+        "es": "desayuno",
+        "fr": "petit déjeuner",
+        "de": "Frühstück",
+        "it": "colazione",
+        "pt": "café da manhã",
+        "ru": "завтрак",
+        "zh": "早餐",
+        "ja": "朝食",
+        "ko": "아침 식사",
+        "ar": "الفطور",
+        "hi": "नाश्ता"
+      }
+    },
+    {
       "english_word": "to mix",
       "translations": {
         "tr": "karıştırmak",
@@ -83,6 +100,23 @@
         "ko": "섞다",
         "ar": "يخلط",
         "hi": "मिलाना"
+      }
+    },
+    {
+      "english_word": "to bake",
+      "translations": {
+        "tr": "pişirmek",
+        "es": "hornear",
+        "fr": "faire cuire",
+        "de": "backen",
+        "it": "cuocere",
+        "pt": "assar",
+        "ru": "печь",
+        "zh": "烘烤",
+        "ja": "焼く",
+        "ko": "굽다",
+        "ar": "يخبز",
+        "hi": "सेंकना"
       }
     },
     {
@@ -117,6 +151,23 @@
         "ko": "따르다",
         "ar": "يسكب",
         "hi": "डालना"
+      }
+    },
+    {
+      "english_word": "to slice",
+      "translations": {
+        "tr": "dilimlemek",
+        "es": "rebanar",
+        "fr": "trancher",
+        "de": "in Scheiben schneiden",
+        "it": "affettare",
+        "pt": "fatiar",
+        "ru": "нарезать",
+        "zh": "切片",
+        "ja": "薄切りにする",
+        "ko": "썰다",
+        "ar": "يقطع شرائح",
+        "hi": "टुकड़े काटना"
       }
     },
     {

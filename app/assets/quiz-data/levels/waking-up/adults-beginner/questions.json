@@ -1,0 +1,314 @@
+{
+  "levelQuestions": [
+    {
+      "template": "VideoConversation",
+      "videoFile": "waking-up1",
+      "start_at": "00:00.0",
+      "pause_at": "00:03.3",
+      "answer_until": "00:05.4",
+      "question_enter_audio": "waking-up1-q1-setup",
+      "question_enter_audio_text": "Good morning! The alarm is ringing!",
+      "question_exit_correct_audio": "waking-up1-q1-confirm",
+      "question_exit_correct_audio_text": "I don't want to wake up.",
+      "questionData": {
+        "answer_type": "ClozeSequence",
+        "sentence": "I don't want to _____.",
+        "answer": [
+          "wake up"
+        ],
+        "distractors": [
+          "sleep",
+          "stand up",
+          "stretch"
+        ]
+      }
+    },
+    {
+      "template": "VideoConversation",
+      "videoFile": "waking-up1",
+      "start_at": "00:05.4",
+      "pause_at": "00:08.3",
+      "answer_until": "00:10.2",
+      "question_enter_audio": "waking-up1-q2-setup",
+      "question_enter_audio_text": "Come on. It's time to get up.",
+      "question_exit_correct_audio": "waking-up1-q2-confirm",
+      "question_exit_correct_audio_text": "But I want to sleep.",
+      "questionData": {
+        "answer_type": "DialogueCompletion",
+        "answer": "But I want to sleep.",
+        "distractors": [
+          "But I want to stand up.",
+          "But I want to open the window.",
+          "But I want to stretch."
+        ]
+      }
+    },
+    {
+      "template": "VideoConversation",
+      "videoFile": "waking-up1",
+      "start_at": "00:10.2",
+      "pause_at": "00:10.2",
+      "answer_until": "00:10.2",
+      "question_enter_audio": "waking-up1-q3-pause-setup",
+      "question_enter_audio_text": "Why doesn't she wake up?",
+      "question_exit_correct_audio": "waking-up1-q3-pause-confirm",
+      "question_exit_correct_audio_text": "Because she is sleepy.",
+      "genders": "m-f",
+      "questionData": {
+        "answer_type": "pausedDialogueCompletion",
+        "line1": "Why doesn't she wake up?",
+        "answer": "Because she is sleepy.",
+        "distractors": [
+          "Because she is cooking breakfast.",
+          "Because she is outside.",
+          "Because she likes coffee."
+        ]
+      }
+    },
+    {
+      "template": "VideoConversation",
+      "videoFile": "waking-up1",
+      "start_at": "00:10.2",
+      "pause_at": "00:12.6",
+      "answer_until": "00:12.6",
+      "question_enter_audio": "waking-up1-q3-setup",
+      "question_enter_audio_text": "Please get ready quickly. You are late.",
+      "question_exit_correct_audio": "waking-up1-q3-setup",
+      "question_exit_correct_audio_text": "Please get ready quickly. You are late.",
+      "questionData": {
+        "answer_type": "AppearDisappear",
+        "words": "Please get ready quickly. You are late.",
+        "distractors": [
+          "early",
+          "slowly",
+          "now"
+        ]
+      }
+    },
+    {
+      "template": "VideoConversation",
+      "videoFile": "waking-up1",
+      "start_at": "00:12.6",
+      "pause_at": "00:15.8",
+      "answer_until": "00:22.1",
+      "question_enter_audio": "waking-up1-q4-setup",
+      "question_enter_audio_text": "Okay, I'm standing up and stretching.",
+      "question_exit_correct_audio": "waking-up1-q4-confirm",
+      "question_exit_correct_audio_text": "Good. Please open the curtains and the window.",
+      "questionData": {
+        "answer_type": "ClozeSequence",
+        "sentence": "Good. Please _____ the curtains and the window.",
+        "answer": [
+          "open"
+        ],
+        "distractors": [
+          "close",
+          "stand",
+          "stretch"
+        ]
+      }
+    },
+    {
+      "template": "VideoConversation",
+      "videoFile": "waking-up1",
+      "start_at": "00:22.1",
+      "pause_at": "00:22.1",
+      "answer_until": "00:22.1",
+      "question_enter_audio": "waking-up1-q5-pause-setup",
+      "question_enter_audio_text": "What is she doing?",
+      "question_exit_correct_audio": "waking-up1-q5-pause-confirm",
+      "question_exit_correct_audio_text": "She is standing up and stretching.",
+      "genders": "m-f",
+      "questionData": {
+        "line1": "What is she doing?",
+        "answer_type": "pausedClozeSequence",
+        "sentence": "She is _____ and _____.",
+        "answer": [
+          "standing up",
+          "stretching"
+        ],
+        "distractors": [
+          "sleeping",
+          "sitting down",
+          "waking up"
+        ]
+      }
+    },
+    {
+      "template": "ConvoTemplate-1",
+      "genders": "m-f",
+      "questionData": {
+        "line1": "Are you up yet?",
+        "line2": "No, I'm _____ in bed.",
+        "image_file_name": "still-in-bed",
+        "answer": "still",
+        "distractors": [
+          "quickly",
+          "already",
+          "sleepy"
+        ]
+      },
+      "question_enter_audio": "are-you-up-yet-convo",
+      "question_exit_correct_audio": "no-im-still-in-bed-convo"
+    },
+    {
+      "template": "SentenceBuilder",
+      "genders": "f",
+      "question_enter_audio": "why-are-you-never-late-convo",
+      "question_exit_correct_audio": "i-wake-up-early-convo",
+      "questionData": {
+        "line1": "Why are you never late?",
+        "imageName": "wake-up-early",
+        "correct_order": "I wake up early."
+      }
+    },
+    {
+      "template": "AppearDisappear",
+      "genders": "f",
+      "question_enter_audio": "you-look-exhausted-want-some-coffee-convo",
+      "question_exit_correct_audio": "i-feel-so-sleepy-this-morning-convo",
+      "questionData": {
+        "line1": "You look exhausted. Want some coffee?",
+        "imageName": "sleepy-coffee",
+        "words": "I feel so sleepy this morning.",
+        "distractors": [
+          "tired",
+          "awake",
+          "active"
+        ]
+      }
+    },
+    {
+      "template": "DialogueCompletion",
+      "genders": "m-f",
+      "question_enter_audio": "its-already-late-are-you-still-sleeping-convo",
+      "question_exit_correct_audio": "okay-im-getting-up-now-convo",
+      "questionData": {
+        "line1": "It's already late, are you still sleeping?",
+        "image_file_name": "getting-up-now",
+        "answer": "Okay, I'm getting up now.",
+        "distractors": [
+          "Okay, I'm going to sleep.",
+          "Okay, I'm opening the window.",
+          "Okay, I'm stretching."
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-2",
+      "questionData": {
+        "answer": "Good Night",
+        "imageName": "night",
+        "wrongAnswers": [
+          "good-morning",
+          "afternoon",
+          "noon"
+        ]
+      },
+      "question_enter_audio": "good-night"
+    },
+    {
+      "template": "ClozeSequence",
+      "genders": "f",
+      "question_enter_audio": "i-still-feel-sleepy-convo",
+      "question_exit_correct_audio": "sure-im-opening-the-window-convo",
+      "questionData": {
+        "line1": "I still feel sleepy.",
+        "imageName": "opening-window",
+        "sentence": "Sure, I am _____ the window.",
+        "answer": [
+          "opening"
+        ],
+        "distractors": [
+          "open",
+          "opens",
+          "to open"
+        ]
+      }
+    },
+    {
+      "template": "WordPairs",
+      "questionData": {
+        "english_words": [
+          "today",
+          "tomorrow",
+          "yesterday",
+          "in two days",
+          "two days before"
+        ],
+        "translations": [
+          {
+            "tr": "bugün",
+            "es": "hoy",
+            "fr": "aujourd'hui",
+            "de": "heute",
+            "it": "oggi",
+            "pt": "hoje",
+            "ru": "сегодня",
+            "zh": "今天",
+            "ja": "今日",
+            "ko": "오늘",
+            "ar": "اليوم",
+            "hi": "आज"
+          },
+          {
+            "tr": "yarın",
+            "es": "mañana",
+            "fr": "demain",
+            "de": "morgen",
+            "it": "domani",
+            "pt": "amanhã",
+            "ru": "завтра",
+            "zh": "明天",
+            "ja": "明日",
+            "ko": "내일",
+            "ar": "غدا",
+            "hi": "कल"
+          },
+          {
+            "tr": "dün",
+            "es": "ayer",
+            "fr": "hier",
+            "de": "gestern",
+            "it": "ieri",
+            "pt": "ontem",
+            "ru": "вчера",
+            "zh": "昨天",
+            "ja": "昨日",
+            "ko": "어제",
+            "ar": "أمس",
+            "hi": "कल"
+          },
+          {
+            "tr": "iki gün sonra",
+            "es": "en dos días",
+            "fr": "dans deux jours",
+            "de": "in zwei Tagen",
+            "it": "tra due giorni",
+            "pt": "em dois dias",
+            "ru": "через два дня",
+            "zh": "两天后",
+            "ja": "二日後",
+            "ko": "이틀 후",
+            "ar": "خلال يومين",
+            "hi": "दो दिन में"
+          },
+          {
+            "tr": "iki gün önce",
+            "es": "dos días antes",
+            "fr": "il y a deux jours",
+            "de": "vor zwei Tagen",
+            "it": "due giorni fa",
+            "pt": "dois dias antes",
+            "ru": "два дня назад",
+            "zh": "两天前",
+            "ja": "二日前",
+            "ko": "이틀 전",
+            "ar": "قبل يومين",
+            "hi": "दो दिन पहले"
+          }
+        ]
+      }
+    }
+  ]
+}

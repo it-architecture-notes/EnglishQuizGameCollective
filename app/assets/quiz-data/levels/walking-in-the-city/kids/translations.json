@@ -35,6 +35,23 @@
       }
     },
     {
+      "english_word": "to wander around",
+      "translations": {
+        "tr": "etrafta dolaşmak",
+        "es": "deambular",
+        "fr": "se promener",
+        "de": "herumwandern",
+        "it": "girare per",
+        "pt": "vaguear",
+        "ru": "бродить",
+        "zh": "闲逛",
+        "ja": "ぶらぶらする",
+        "ko": "돌아다니다",
+        "ar": "يتجول",
+        "hi": "इधर-उधर घूमना"
+      }
+    },
+    {
       "english_word": "to come",
       "translations": {
         "tr": "gelmek",
@@ -86,6 +103,40 @@
       }
     },
     {
+      "english_word": "to leave the house",
+      "translations": {
+        "tr": "evden çıkmak",
+        "es": "salir de la casa",
+        "fr": "quitter la maison",
+        "de": "das Haus verlassen",
+        "it": "uscire di casa",
+        "pt": "sair de casa",
+        "ru": "выйти из дома",
+        "zh": "离开家",
+        "ja": "家を出る",
+        "ko": "집을 나서다",
+        "ar": "مغادرة المنزل",
+        "hi": "घर से निकलना"
+      }
+    },
+    {
+      "english_word": "in a rush",
+      "translations": {
+        "tr": "aceleyle",
+        "es": "con prisa",
+        "fr": "pressé",
+        "de": "in Eile",
+        "it": "di fretta",
+        "pt": "com pressa",
+        "ru": "в спешке",
+        "zh": "匆忙",
+        "ja": "急いで",
+        "ko": "서두르는",
+        "ar": "على عجل",
+        "hi": "जल्दी में"
+      }
+    },
+    {
       "english_word": "to live",
       "translations": {
         "tr": "yaşamak",
@@ -120,6 +171,23 @@
       }
     },
     {
+      "english_word": "to cross",
+      "translations": {
+        "tr": "geçmek",
+        "es": "cruzar",
+        "fr": "traverser",
+        "de": "überqueren",
+        "it": "attraversare",
+        "pt": "atravessar",
+        "ru": "пересекать",
+        "zh": "穿过",
+        "ja": "渡る",
+        "ko": "건너다",
+        "ar": "يعبر",
+        "hi": "पार करना"
+      }
+    },
+    {
       "english_word": "corner",
       "translations": {
         "tr": "köşe",
@@ -134,6 +202,23 @@
         "ko": "모퉁이",
         "ar": "زاوية",
         "hi": "कोना"
+      }
+    },
+    {
+      "english_word": "city",
+      "translations": {
+        "tr": "şehir",
+        "es": "ciudad",
+        "fr": "ville",
+        "de": "Stadt",
+        "it": "città",
+        "pt": "cidade",
+        "ru": "город",
+        "zh": "城市",
+        "ja": "都市",
+        "ko": "도시",
+        "ar": "مدينة",
+        "hi": "शहर"
       }
     }
   ]

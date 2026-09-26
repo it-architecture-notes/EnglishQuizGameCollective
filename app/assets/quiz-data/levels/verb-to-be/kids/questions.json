@@ -2,8 +2,8 @@
   "levelQuestions": [
     {
       "template": "ConvoTemplate-1",
-      "genders": "f-m",
       "questionData": {
+        "character1": "Emma",
         "character2": "Alex",
         "line1": "Who are you?",
         "line2": "I ___ Alex",
@@ -19,8 +19,9 @@
     },
     {
       "template": "ConvoTemplate-1",
-      "genders": "m-m",
       "questionData": {
+        "character1": "Omar",
+        "character2": "John",
         "line1": "Who ____ your best friend?",
         "line2": "My best friend ____ Omar",
         "answer": "is",
@@ -34,10 +35,9 @@
       "audio_file2": "my-best-friend-is-omar-convo"
     },
     {
-      "template": "ClozeSequence",
-      "genders": "f",
+      "template": "GrammarForm",
       "questionData": {
-        "sentence": "I ___ a student",
+        "sentence": "I ___ a teacher",
         "answer": "am",
         "distractors": [
           "is",
@@ -48,7 +48,6 @@
     },
     {
       "template": "AppearDisappear",
-      "genders": "m",
       "questionData": {
         "words": "Where am I now?",
         "distractors": [
@@ -63,24 +62,24 @@
     },
     {
       "template": "DialogueCompletion",
-      "genders": "f-m",
       "questionData": {
-        "line1": "Are these your friends?",
+        "character1": "Grace",
+        "character2": "Mike",
+        "line1": "Are these your keys?",
         "answer": "No, they are not",
         "distractors": [
           "No, this are not",
           "Yes, they are not",
-          "Yes, these is my friends"
+          "Yes, these is my keys"
         ]
       },
-      "audio_file1": "are-these-your-friends-convo",
+      "audio_file1": "are-these-your-keys-convo",
       "audio_file2": "no-they-are-not-convo"
     },
     {
       "template": "ClozeSequence",
-      "genders": "f",
       "questionData": {
-        "sentence": "_____ you ____ Japan?",
+        "sentence": "_____ you ____ the United States?",
         "answer": [
           "Aren't",
           "from"
@@ -92,12 +91,13 @@
           "be"
         ]
       },
-      "audio_file": "arent-you-from-japan-convo"
+      "audio_file": "arent-you-from-united-states-convo"
     },
     {
       "template": "DialogueCompletion",
-      "genders": "f-m",
       "questionData": {
+        "character1": "Olivia",
+        "character2": "Ryan",
         "line1": "Are you ready?",
         "answer": "Yes, I am",
         "distractors": [
@@ -195,7 +195,6 @@
     },
     {
       "template": "ClozeSequence",
-      "genders": "f",
       "questionData": {
         "sentence": "I ____ ____ your teacher",
         "answer": [
@@ -214,9 +213,8 @@
     },
     {
       "template": "AppearDisappear",
-      "genders": "m",
       "questionData": {
-        "words": "The book is good.",
+        "words": "The book is about a boy.",
         "distractors": [
           "are",
           "am",
@@ -224,11 +222,10 @@
           "be"
         ]
       },
-      "audio_file": "the-book-is-good-convo"
+      "audio_file": "the-book-is-about-a-boy-convo"
     },
     {
       "template": "SentenceBuilder",
-      "genders": "f",
       "questionData": {
         "correct_order": "They are good people"
       },
@@ -236,9 +233,8 @@
     },
     {
       "template": "ClozeSequence",
-      "genders": "f",
       "questionData": {
-        "sentence": "Here ___ ____ present.",
+        "sentence": "Here ___ ____ present for you",
         "answer": [
           "is",
           "a"
@@ -250,12 +246,13 @@
           "am"
         ]
       },
-      "audio_file": "here-is-a-present-convo"
+      "audio_file": "here-is-a-present-for-you-convo"
     },
     {
       "template": "DialogueCompletion",
-      "genders": "f-m",
       "questionData": {
+        "character1": "Lily",
+        "character2": "Leo",
         "line1": "Is Mrs Brown your teacher?",
         "answer": "No, she is not",
         "distractors": [
@@ -269,11 +266,10 @@
     },
     {
       "template": "SentenceBuilder",
-      "genders": "f",
       "questionData": {
-        "correct_order": "Is your friend happy?"
+        "correct_order": "Isn't England far away?"
       },
-      "audio_file": "is-your-friend-happy-convo"
+      "audio_file": "isnt-england-far-away-convo"
     }
   ]
 }

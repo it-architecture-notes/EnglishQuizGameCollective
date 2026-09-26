@@ -2,224 +2,121 @@
   "levelQuestions": [
     {
       "template": "ClozeSequence",
-      "genders": "f",
       "questionData": {
-        "sentence": "We _____ a fun _____.",
-        "distractors": [
-          "build",
-          "wish"
-        ],
-        "answers": [
-          "make",
-          "game"
-        ]
+        "sentence": "If we work together, we will _____ something amazing, and I _____ you'll join us.",
+        "answer": ["create", "hope"],
+        "distractors": ["build", "wish"]
       },
-      "audio_file": "we-make-a-fun-game-convo"
+      "audio_file": "if-we-work-together-we-will-create-something-amazing-and-i-hope-youll-join-us-convo"
     },
     {
       "template": "ClozeSequence",
-      "genders": "f",
       "questionData": {
-        "sentence": "We _____ the zoo.",
-        "distractors": [
-          "see",
-          "know"
-        ],
-        "answers": [
-          "visit"
-        ]
+        "sentence": "We are going to _____ the museum tomorrow; can you _____ what we'll see there?",
+        "answer": ["visit", "guess"],
+        "distractors": ["see", "know"]
       },
-      "audio_file": "we-visit-the-zoo-convo"
+      "audio_file": "we-are-going-to-visit-the-museum-tomorrow-can-you-guess-what-well-see-there-convo"
     },
     {
       "template": "ClozeSequence",
-      "genders": "f",
       "questionData": {
-        "sentence": "This _____ is _____.",
-        "distractors": [
-          "sorry",
-          "dry"
-        ],
-        "answers": [
-          "cake",
-          "tasty"
-        ]
+        "sentence": "You are _____ to try this cake; it's the _____ dessert here.",
+        "answer": ["lucky", "tastiest"],
+        "distractors": ["sorry", "driest"]
       },
-      "audio_file": "this-cake-is-tasty-convo"
+      "audio_file": "you-are-lucky-to-try-this-cake-its-the-tastiest-dessert-here-convo"
     },
     {
-      "template": "ClozeSequence",
-      "genders": "m",
+      "template": "GrammarForm",
       "questionData": {
-        "sentence": "She is _____ the team.",
-        "answer": "joining",
-        "distractors": [
-          "joins",
-          "joined",
-          "join"
-        ]
+        "sentence": "She _____ the team next week.",
+        "answer": "will join",
+        "distractors": ["joins", "joined", "is joining"]
       }
     },
     {
       "template": "AppearDisappear",
-      "genders": "m",
       "questionData": {
         "words": "Let's add more sugar to the tea.",
-        "distractors": [
-          "remove",
-          "mix",
-          "pour"
-        ]
+        "distractors": ["remove", "mix", "pour"]
       },
-      "audio_file": "let-s-add-more-sugar-to-the-tea-convo"
+      "audio_file": "lets-add-more-sugar-to-the-tea-convo"
     },
     {
       "template": "AppearDisappear",
-      "genders": "m",
       "questionData": {
-        "words": "I do not forget.",
-        "distractors": [
-          "remember",
-          "ignore",
-          "ruin"
-        ]
+        "words": "I will never forget this day.",
+        "distractors": ["remember", "ignore", "ruin"]
       },
-      "audio_file": "i-do-not-forget-convo"
+      "audio_file": "i-will-never-forget-this-day-convo"
     },
     {
       "template": "AppearDisappear",
-      "genders": "m",
       "questionData": {
-        "words": "We play games weekly.",
-        "distractors": [
-          "daily",
-          "yearly",
-          "monthly"
-        ]
+        "words": "We pay our rent monthly.",
+        "distractors": ["daily", "yearly", "weekly"]
       },
-      "audio_file": "we-play-games-weekly-convo"
+      "audio_file": "we-pay-our-rent-monthly-convo"
     },
     {
       "template": "ConvoTemplate-1",
-      "genders": "m-f",
       "questionData": {
-        "line1": "Does this sound good?",
-        "line2": "Yes, it _____ great.",
+        "character1": "Omar",
+        "character2": "Lily",
+        "line1": "Does this plan sound good to you?",
+        "line2": "Yes, it _____ great to me.",
         "answer": "sounds",
-        "distractors": [
-          "looks",
-          "feels",
-          "seems"
-        ]
+        "distractors": ["looks", "feels", "seems"]
       },
-      "audio_file1": "does-this-sound-good-convo",
-      "audio_file2": "yes-it-sounds-great-convo"
+      "audio_file1": "does-this-plan-sound-good-to-you-convo",
+      "audio_file2": "yes-it-sounds-great-to-me-convo"
     },
     {
       "template": "ConvoTemplate-1",
-      "genders": "f-m",
       "questionData": {
-        "line1": "When is game day?",
-        "line2": "It is _____.",
-        "answer": "today",
-        "distractors": [
-          "after",
-          "later",
-          "away"
-        ]
+        "character1": "Mia",
+        "character2": "Noah",
+        "line1": "When will the package arrive?",
+        "line2": "It will arrive _____ three days.",
+        "answer": "within",
+        "distractors": ["after", "during", "without"]
       },
-      "audio_file1": "when-is-game-day-convo",
-      "audio_file2": "it-is-today-convo"
+      "audio_file1": "when-will-the-package-arrive-convo",
+      "audio_file2": "it-will-arrive-within-three-days-convo"
     },
     {
       "template": "DialogueCompletion",
-      "genders": "f-m",
       "questionData": {
-        "line1": "How much are tickets?",
-        "answer": "They cost ten dollars.",
+        "character1": "Emma",
+        "character2": "Chris",
+        "line1": "How much do the tickets cost?",
+        "answer": "They cost ten dollars per person; please put down your name on the list.",
         "distractors": [
-          "They are free.",
-          "They cost twenty dollars.",
-          "They sold out."
+          "They are completely free today.",
+          "They cost twenty dollars total.",
+          "They sold out an hour ago."
         ]
       },
-      "audio_file1": "how-much-are-tickets-convo",
-      "audio_file2": "they-cost-ten-dollars-convo"
+      "audio_file1": "how-much-do-the-tickets-cost-convo",
+      "audio_file2": "they-cost-ten-dollars-per-person-please-put-down-your-name-on-the-list-convo"
     },
     {
       "template": "SentenceBuilder",
-      "genders": "f",
       "questionData": {
-        "correct_order": "We walk by the lake."
+        "correct_order": "We walk along the beach every day."
       },
-      "audio_file": "we-walk-by-the-lake-convo"
+      "audio_file": "we-walk-along-the-beach-every-day-convo"
     },
     {
       "template": "WordPairs",
       "questionData": {
-        "english_words": [
-          "kind",
-          "smart",
-          "fun",
-          "big"
-        ],
+        "english_words": ["poor", "smart", "fine", "main"],
         "translations": [
-          {
-            "tr": "nazik",
-            "es": "amable",
-            "fr": "gentil",
-            "de": "freundlich",
-            "it": "gentile",
-            "pt": "gentil",
-            "ru": "добрый",
-            "zh": "善良的",
-            "ja": "親切な",
-            "ko": "친절한",
-            "ar": "لطيف",
-            "hi": "दयालु"
-          },
-          {
-            "tr": "akıllı",
-            "es": "inteligente",
-            "fr": "intelligent",
-            "de": "klug",
-            "it": "intelligente",
-            "pt": "inteligente",
-            "ru": "умный",
-            "zh": "聪明的",
-            "ja": "賢い",
-            "ko": "똑똑한",
-            "ar": "ذكي",
-            "hi": "होशियार"
-          },
-          {
-            "tr": "eğlenceli",
-            "es": "divertido",
-            "fr": "amusant",
-            "de": "lustig",
-            "it": "divertente",
-            "pt": "divertido",
-            "ru": "весёлый",
-            "zh": "有趣的",
-            "ja": "楽しい",
-            "ko": "재미있는",
-            "ar": "ممتع",
-            "hi": "मज़ेदार"
-          },
-          {
-            "tr": "büyük",
-            "es": "grande",
-            "fr": "grand",
-            "de": "groß",
-            "it": "grande",
-            "pt": "grande",
-            "ru": "большой",
-            "zh": "大的",
-            "ja": "大きい",
-            "ko": "큰",
-            "ar": "كبير",
-            "hi": "बड़ा"
-          }
+          {"tr": "poor", "es": "poor", "fr": "poor", "de": "poor", "it": "poor", "pt": "poor", "ru": "poor", "zh": "poor", "ja": "poor", "ko": "poor", "ar": "poor", "hi": "poor"},
+          {"tr": "smart", "es": "smart", "fr": "smart", "de": "smart", "it": "smart", "pt": "smart", "ru": "smart", "zh": "smart", "ja": "smart", "ko": "smart", "ar": "smart", "hi": "smart"},
+          {"tr": "fine", "es": "fine", "fr": "fine", "de": "fine", "it": "fine", "pt": "fine", "ru": "fine", "zh": "fine", "ja": "fine", "ko": "fine", "ar": "fine", "hi": "fine"},
+          {"tr": "main", "es": "main", "fr": "main", "de": "main", "it": "main", "pt": "main", "ru": "main", "zh": "main", "ja": "main", "ko": "main", "ar": "main", "hi": "main"}
         ]
       }
     }

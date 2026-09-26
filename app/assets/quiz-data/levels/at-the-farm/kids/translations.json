@@ -1,9 +1,213 @@
 {
   "translations_list": [
     {
-      "english_word": "plant",
+      "english_word": "to grow",
       "translations": {
-        "tr": "ekmek",
+        "tr": "yetiştirmek",
+        "es": "cultivar",
+        "fr": "cultiver",
+        "de": "anbauen",
+        "it": "coltivare",
+        "pt": "cultivar",
+        "ru": "выращивать",
+        "zh": "种植",
+        "ja": "育てる",
+        "ko": "재배하다",
+        "ar": "يزرع",
+        "hi": "उगाना"
+      }
+    },
+    {
+      "english_word": "to dig",
+      "translations": {
+        "tr": "kazmak",
+        "es": "cavar",
+        "fr": "creuser",
+        "de": "graben",
+        "it": "scavare",
+        "pt": "cavar",
+        "ru": "копать",
+        "zh": "挖",
+        "ja": "掘る",
+        "ko": "파다",
+        "ar": "يحفر",
+        "hi": "खोदना"
+      }
+    },
+    {
+      "english_word": "soil",
+      "translations": {
+        "tr": "toprak",
+        "es": "suelo",
+        "fr": "sol",
+        "de": "Boden",
+        "it": "terreno",
+        "pt": "solo",
+        "ru": "почва",
+        "zh": "土壤",
+        "ja": "土",
+        "ko": "흙",
+        "ar": "تربة",
+        "hi": "मिट्टी"
+      }
+    },
+    {
+      "english_word": "to pick apples",
+      "translations": {
+        "tr": "elma toplamak",
+        "es": "recoger manzanas",
+        "fr": "cueillir des pommes",
+        "de": "Äpfel pflücken",
+        "it": "raccogliere mele",
+        "pt": "colher maçãs",
+        "ru": "собирать яблоки",
+        "zh": "摘苹果",
+        "ja": "リンゴを摘む",
+        "ko": "사과를 따다",
+        "ar": "يقطف التفاح",
+        "hi": "सेब तोड़ना"
+      }
+    },
+    {
+      "english_word": "to ride a horse",
+      "translations": {
+        "tr": "ata binmek",
+        "es": "montar a caballo",
+        "fr": "monter à cheval",
+        "de": "reiten",
+        "it": "andare a cavallo",
+        "pt": "andar a cavalo",
+        "ru": "ездить верхом",
+        "zh": "骑马",
+        "ja": "馬に乗る",
+        "ko": "말을 타다",
+        "ar": "يركب الخيل",
+        "hi": "घुड़सवारी करना"
+      }
+    },
+    {
+      "english_word": "to push",
+      "translations": {
+        "tr": "itmek",
+        "es": "empujar",
+        "fr": "pousser",
+        "de": "schieben",
+        "it": "spingere",
+        "pt": "empurrar",
+        "ru": "толкать",
+        "zh": "推动",
+        "ja": "押す",
+        "ko": "밀다",
+        "ar": "يدفع",
+        "hi": "धक्का देना"
+      }
+    },
+    {
+      "english_word": "to produce",
+      "translations": {
+        "tr": "üretmek",
+        "es": "producir",
+        "fr": "produire",
+        "de": "herstellen",
+        "it": "produrre",
+        "pt": "produzir",
+        "ru": "производить",
+        "zh": "生产",
+        "ja": "生産する",
+        "ko": "생산하다",
+        "ar": "ينتج",
+        "hi": "उत्पादन करना"
+      }
+    },
+    {
+      "english_word": "to build",
+      "translations": {
+        "tr": "inşa etmek",
+        "es": "construir",
+        "fr": "construire",
+        "de": "bauen",
+        "it": "costruire",
+        "pt": "construir",
+        "ru": "строить",
+        "zh": "建造",
+        "ja": "建てる",
+        "ko": "짓다",
+        "ar": "يبني",
+        "hi": "बनाना"
+      }
+    },
+    {
+      "english_word": "stable",
+      "translations": {
+        "tr": "ahır",
+        "es": "establo",
+        "fr": "écurie",
+        "de": "Stall",
+        "it": "stalla",
+        "pt": "estábulo",
+        "ru": "конюшня",
+        "zh": "马厩",
+        "ja": "厩舎",
+        "ko": "마구간",
+        "ar": "إسطبل",
+        "hi": "अस्तबल"
+      }
+    },
+    {
+      "english_word": "to pull",
+      "translations": {
+        "tr": "çekmek",
+        "es": "tirar",
+        "fr": "tirer",
+        "de": "ziehen",
+        "it": "tirare",
+        "pt": "puxar",
+        "ru": "тянуть",
+        "zh": "拉",
+        "ja": "引っ張る",
+        "ko": "당기다",
+        "ar": "يسحب",
+        "hi": "खींचना"
+      }
+    },
+    {
+      "english_word": "to raise",
+      "translations": {
+        "tr": "yetiştirmek",
+        "es": "criar",
+        "fr": "élever",
+        "de": "aufziehen",
+        "it": "allevare",
+        "pt": "criar",
+        "ru": "выращивать",
+        "zh": "饲养",
+        "ja": "育てる",
+        "ko": "기르다",
+        "ar": "يربي",
+        "hi": "पालना"
+      }
+    },
+    {
+      "english_word": "to sow",
+      "translations": {
+        "tr": "tohum ekmek",
+        "es": "sembrar",
+        "fr": "semer",
+        "de": "säen",
+        "it": "seminare",
+        "pt": "semear",
+        "ru": "сеять",
+        "zh": "播种",
+        "ja": "種をまく",
+        "ko": "씨를 뿌리다",
+        "ar": "يزرع البذور",
+        "hi": "बीज बोना"
+      }
+    },
+    {
+      "english_word": "to plant",
+      "translations": {
+        "tr": "dikmek",
         "es": "plantar",
         "fr": "planter",
         "de": "pflanzen",
@@ -18,54 +222,20 @@
       }
     },
     {
-      "english_word": "pick",
+      "english_word": "to harvest",
       "translations": {
-        "tr": "toplamak",
-        "es": "recolectar",
-        "fr": "cueillir",
-        "de": "pflücken",
+        "tr": "hasat etmek",
+        "es": "cosechar",
+        "fr": "récolter",
+        "de": "ernten",
         "it": "raccogliere",
         "pt": "colher",
-        "ru": "собирать",
-        "zh": "采摘",
-        "ja": "摘む",
-        "ko": "따다",
-        "ar": "يقطف",
-        "hi": "तोड़ना"
-      }
-    },
-    {
-      "english_word": "grow",
-      "translations": {
-        "tr": "büyütmek",
-        "es": "cultivar",
-        "fr": "faire pousser",
-        "de": "anbauen",
-        "it": "coltivare",
-        "pt": "cultivar",
-        "ru": "выращивать",
-        "zh": "种植",
-        "ja": "育てる",
-        "ko": "기르다",
-        "ar": "يزرع",
-        "hi": "उगाना"
-      }
-    },
-    {
-      "english_word": "seed",
-      "translations": {
-        "tr": "tohum",
-        "es": "semilla",
-        "fr": "graine",
-        "de": "Samen",
-        "it": "seme",
-        "pt": "semente",
-        "ru": "семя",
-        "zh": "种子",
-        "ja": "種",
-        "ko": "씨앗",
-        "ar": "بذرة",
-        "hi": "बीज"
+        "ru": "собирать урожай",
+        "zh": "收割",
+        "ja": "収穫する",
+        "ko": "수확하다",
+        "ar": "يحصد",
+        "hi": "फसल काटना"
       }
     }
   ]

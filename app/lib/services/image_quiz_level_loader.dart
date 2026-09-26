@@ -14,10 +14,13 @@ String imageQuizLevelAssetPrefix(String levelKey) {
   return '$_quizImagePrefix$levelKey/';
 }
 
-/// The two flavor subfolder prefixes under a level (`.../kids/`, `.../adults/`),
-/// used to exclude flavor-specific content when scanning the shared root pool.
+/// The flavor subfolder prefixes under a level (`.../kids/`, `.../adults-intermediate/`,
+/// `.../adults-beginner/`), used to exclude flavor-specific content when scanning the
+/// shared root pool.
 List<String> _flavorSubfolderPrefixes(String rootPrefix) =>
-    ['kids', 'adults'].map((f) => '$rootPrefix$f/').toList();
+    ['kids', 'adults-intermediate', 'adults-beginner']
+        .map((f) => '$rootPrefix$f/')
+        .toList();
 
 /// Discovers image asset paths for an image quiz level from the bundle.
 /// Returns full asset paths (e.g. assets/quiz-data/levels/travel-1/pilot.png).

@@ -1,3 +1,259 @@
 {
-  "translations_list": []
+  "translations_list": [
+    {
+      "english_word": "hurt",
+      "translations": {
+        "tr": "acımak",
+        "es": "doler",
+        "fr": "faire mal",
+        "de": "wehtun",
+        "it": "fare male",
+        "pt": "doer",
+        "ru": "болеть",
+        "zh": "疼",
+        "ja": "痛む",
+        "ko": "아프다",
+        "ar": "يؤلم",
+        "hi": "दर्द होना"
+      }
+    },
+    {
+      "english_word": "to admit to hospital",
+      "translations": {
+        "tr": "hastaneye yatmak",
+        "es": "ingresar al hospital",
+        "fr": "hospitaliser",
+        "de": "ins Krankenhaus einweisen",
+        "it": "ricoverare in ospedale",
+        "pt": "internar no hospital",
+        "ru": "госпитализировать",
+        "zh": "住院",
+        "ja": "入院させる",
+        "ko": "입원시키다",
+        "ar": "يُدخل المستشفى",
+        "hi": "अस्पताल में भर्ती करना"
+      }
+    },
+    {
+      "english_word": "sick",
+      "translations": {
+        "tr": "hasta",
+        "es": "enfermo",
+        "fr": "malade",
+        "de": "krank",
+        "it": "malato",
+        "pt": "doente",
+        "ru": "больной",
+        "zh": "生病的",
+        "ja": "病気",
+        "ko": "아프다",
+        "ar": "مريض",
+        "hi": "बीमार"
+      }
+    },
+    {
+      "english_word": "to check",
+      "translations": {
+        "tr": "kontrol etmek",
+        "es": "comprobar",
+        "fr": "vérifier",
+        "de": "überprüfen",
+        "it": "controllare",
+        "pt": "verificar",
+        "ru": "проверить",
+        "zh": "检查",
+        "ja": "確認する",
+        "ko": "확인하다",
+        "ar": "يتحقق",
+        "hi": "जाँच करना"
+      }
+    },
+    {
+      "english_word": "temperature",
+      "translations": {
+        "tr": "ateş",
+        "es": "temperatura",
+        "fr": "température",
+        "de": "Temperatur",
+        "it": "temperatura",
+        "pt": "temperatura",
+        "ru": "температура",
+        "zh": "体温",
+        "ja": "体温",
+        "ko": "체온",
+        "ar": "درجة الحرارة",
+        "hi": "तापमान"
+      }
+    },
+    {
+      "english_word": "to care",
+      "translations": {
+        "tr": "bakmak / ilgilenmek",
+        "es": "cuidar",
+        "fr": "soigner / prendre soin",
+        "de": "sich kümmern / pflegen",
+        "it": "prendersi cura",
+        "pt": "cuidar",
+        "ru": "заботиться",
+        "zh": "照顾",
+        "ja": "世話をする",
+        "ko": "돌보다",
+        "ar": "يعتني",
+        "hi": "देखभाल करना"
+      }
+    },
+    {
+      "english_word": "careful",
+      "translations": {
+        "tr": "dikkatli",
+        "es": "cuidado",
+        "fr": "prudent",
+        "de": "vorsichtig",
+        "it": "attento",
+        "pt": "cuidado",
+        "ru": "осторожный",
+        "zh": "小心",
+        "ja": "注意深い",
+        "ko": "조심하다",
+        "ar": "حذر",
+        "hi": "सावधान"
+      }
+    },
+    {
+      "english_word": "to measure",
+      "translations": {
+        "tr": "ölçmek",
+        "es": "medir",
+        "fr": "mesurer",
+        "de": "messen",
+        "it": "misurare",
+        "pt": "medir",
+        "ru": "измерять",
+        "zh": "测量",
+        "ja": "測る",
+        "ko": "측정하다",
+        "ar": "يقيس",
+        "hi": "मापना"
+      }
+    },
+    {
+      "english_word": "to breathe",
+      "translations": {
+        "tr": "nefes almak",
+        "es": "respirar",
+        "fr": "respirer",
+        "de": "atmen",
+        "it": "respirare",
+        "pt": "respirar",
+        "ru": "дышать",
+        "zh": "呼吸",
+        "ja": "呼吸する",
+        "ko": "숨 쉬다",
+        "ar": "يتنفس",
+        "hi": "सांस लेना"
+      }
+    },
+    {
+      "english_word": "to recover",
+      "translations": {
+        "tr": "iyileşmek",
+        "es": "recuperarse",
+        "fr": "guérir",
+        "de": "genesen",
+        "it": "guarire",
+        "pt": "recuperar-se",
+        "ru": "выздороветь",
+        "zh": "康复",
+        "ja": "回復する",
+        "ko": "회복하다",
+        "ar": "يتعافى",
+        "hi": "ठीक होना"
+      }
+    },
+    {
+      "english_word": "to treat",
+      "translations": {
+        "tr": "tedavi etmek",
+        "es": "tratar",
+        "fr": "traiter",
+        "de": "behandeln",
+        "it": "curare",
+        "pt": "tratar",
+        "ru": "лечить",
+        "zh": "治疗",
+        "ja": "治療する",
+        "ko": "치료하다",
+        "ar": "يعالج",
+        "hi": "इलाज करना"
+      }
+    },
+    {
+      "english_word": "to examine",
+      "translations": {
+        "tr": "muayene etmek",
+        "es": "examinar",
+        "fr": "examiner",
+        "de": "untersuchen",
+        "it": "esaminare",
+        "pt": "examinar",
+        "ru": "осматривать",
+        "zh": "检查",
+        "ja": "診察する",
+        "ko": "검사하다",
+        "ar": "يفحص",
+        "hi": "जाँच करना"
+      }
+    },
+    {
+      "english_word": "to describe",
+      "translations": {
+        "tr": "tarif etmek",
+        "es": "describir",
+        "fr": "décrire",
+        "de": "beschreiben",
+        "it": "descrivere",
+        "pt": "descrever",
+        "ru": "описать",
+        "zh": "描述",
+        "ja": "説明する",
+        "ko": "설명하다",
+        "ar": "يصف",
+        "hi": "वर्णन करना"
+      }
+    },
+    {
+      "english_word": "pain",
+      "translations": {
+        "tr": "ağrı",
+        "es": "dolor",
+        "fr": "douleur",
+        "de": "Schmerz",
+        "it": "dolore",
+        "pt": "dor",
+        "ru": "боль",
+        "zh": "疼痛",
+        "ja": "痛み",
+        "ko": "통증",
+        "ar": "ألم",
+        "hi": "दर्द"
+      }
+    },
+    {
+      "english_word": "to discharge",
+      "translations": {
+        "tr": "taburcu etmek",
+        "es": "dar de alta",
+        "fr": "donner son congé",
+        "de": "entlassen",
+        "it": "dimettere",
+        "pt": "dar alta",
+        "ru": "выписать",
+        "zh": "出院",
+        "ja": "退院させる",
+        "ko": "퇴원시키다",
+        "ar": "يُخرج من المستشفى",
+        "hi": "अस्पताल से छुट्टी देना"
+      }
+    }
+  ]
 }

@@ -161,6 +161,8 @@ class ClozeSequenceQuizBody extends StatefulWidget {
 enum _TileState { normal, correct, wrong, expected }
 
 class _ClozeSequenceQuizBodyState extends State<ClozeSequenceQuizBody> {
+  late List<String> _line1Tokens;
+  late List<int> _line1BlankIndices;
   late List<String> _tokens;
   late List<int> _blankIndices;
   late List<String> _tiles;
@@ -226,12 +228,21 @@ class _ClozeSequenceQuizBodyState extends State<ClozeSequenceQuizBody> {
       _setupAudioComplete = false;
       WidgetsBinding.instance.addPostFrameCallback((_) => _primeAudio1());
     }
+    final line1 = widget.data.line1;
+    _line1Tokens = line1 == null ? <String>[] : line1.split(' ');
+    _line1BlankIndices = [
+      for (var i = 0; i < _line1Tokens.length; i++)
+        if (isClozeBlankToken(_line1Tokens[i])) i
+    ];
     _tokens = widget.data.sentence.split(' ');
     _blankIndices = [
       for (var i = 0; i < _tokens.length; i++)
         if (isClozeBlankToken(_tokens[i])) i
     ];
-    _filled = List.filled(_blankIndices.length, null);
+    _filled = List.filled(
+      _line1BlankIndices.length + _blankIndices.length,
+      null,
+    );
 
     if (_singleBlank) {
       final a = widget.data.answers.first;
@@ -261,13 +272,26 @@ class _ClozeSequenceQuizBodyState extends State<ClozeSequenceQuizBody> {
     }
     final expected = _singleBlank
         ? _buttonCorrectIndex
-        : _tiles.indexOf(widget.data.answers[_currentBlank]);
+        : widget.data.noOrder
+            ? _firstRemainingTileIndex()
+            : _tiles.indexOf(widget.data.answers[_currentBlank]);
     if (expected < 0 || expected >= _choiceKeys.length) {
       return;
     }
     WidgetsBinding.instance.addPostFrameCallback((_) {
       if (mounted) widget.onNextChoiceRendered?.call(expected, _choiceKeys);
     });
+  }
+
+  /// no_order tutorial-highlight target: the first not-yet-placed tile whose word is still
+  /// among the remaining (unfilled) answers, since any of them is a valid next tap.
+  int _firstRemainingTileIndex() {
+    final remaining = widget.data.answers.sublist(_currentBlank);
+    for (var t = 0; t < _tiles.length; t++) {
+      if (_tileStates[t] == _TileState.correct) continue;
+      if (remaining.contains(_tiles[t])) return t;
+    }
+    return -1;
   }
 
   /// Fire-and-forget: plays [enterAudioCue] shortly after mount, before the learner answers —
@@ -392,9 +416,15 @@ class _ClozeSequenceQuizBodyState extends State<ClozeSequenceQuizBody> {
     if (state == _TileState.correct) return;
     widget.onUserInteracted?.call();
 
-    final expected = widget.data.answers[_currentBlank];
+    // no_order: any not-yet-filled answer is accepted at the current blank, not just the one
+    // positionally assigned to it — e.g. "clean" and "relaxed" are each valid regardless of
+    // which one the learner taps first, since both orderings read as correct English.
+    final remainingAnswers = widget.data.answers.sublist(_currentBlank);
+    final matched = widget.data.noOrder
+        ? remainingAnswers.contains(word)
+        : word == remainingAnswers.first;
 
-    if (word == expected) {
+    if (matched) {
       setState(() {
         _tileStates[tileIndex] = _TileState.correct;
         _filled[_currentBlank] = word;
@@ -444,13 +474,15 @@ class _ClozeSequenceQuizBodyState extends State<ClozeSequenceQuizBody> {
   /// Revealed correct answers always render in the same correct-green (italic when
   /// revealed-not-by-the-learner rather than a separate color), instead of the old
   /// green-vs-orange distinction.
-  List<InlineSpan> _buildSentenceSpans(
+  List<InlineSpan> _buildLineSpans(
     ThemeData theme, {
+    required List<String> tokens,
+    required int blankOffset,
     TextStyle? baseStyle,
   }) {
     final cs = theme.colorScheme;
     final spans = <InlineSpan>[];
-    var blankI = 0;
+    var lineBlankI = 0;
     final defaultStyle = baseStyle ??
         theme.textTheme.titleMedium?.copyWith(
           color: const Color(0xFF171A1F),
@@ -459,14 +491,15 @@ class _ClozeSequenceQuizBodyState extends State<ClozeSequenceQuizBody> {
           fontFamily: 'Inter',
         );
 
-    for (var i = 0; i < _tokens.length; i++) {
+    for (var i = 0; i < tokens.length; i++) {
       if (spans.isNotEmpty) spans.add(const TextSpan(text: ' '));
-      final t = _tokens[i];
+      final t = tokens[i];
       if (isClozeBlankToken(t)) {
         final core = stripClozeBlankAffixes(t);
         final coreStart = t.indexOf(core);
         final prefix = coreStart > 0 ? t.substring(0, coreStart) : '';
         final suffix = t.substring(coreStart + core.length);
+        final blankI = blankOffset + lineBlankI;
         final filled = _filled[blankI];
         late final String blankText;
         late final TextStyle blankStyle;
@@ -495,13 +528,35 @@ class _ClozeSequenceQuizBodyState extends State<ClozeSequenceQuizBody> {
         if (suffix.isNotEmpty) {
           spans.add(TextSpan(text: suffix, style: defaultStyle));
         }
-        blankI++;
+        lineBlankI++;
       } else {
         spans.add(TextSpan(text: t, style: defaultStyle));
       }
     }
     return spans;
   }
+
+  List<InlineSpan> _buildLine1Spans(
+    ThemeData theme, {
+    TextStyle? baseStyle,
+  }) =>
+      _buildLineSpans(
+        theme,
+        tokens: _line1Tokens,
+        blankOffset: 0,
+        baseStyle: baseStyle,
+      );
+
+  List<InlineSpan> _buildSentenceSpans(
+    ThemeData theme, {
+    TextStyle? baseStyle,
+  }) =>
+      _buildLineSpans(
+        theme,
+        tokens: _tokens,
+        blankOffset: _line1BlankIndices.length,
+        baseStyle: baseStyle,
+      );
 
   /// Mirrors `VideoConversationQuizBody._buildTilePanel`'s word-tile styling: stadium pill,
   /// shared [AnswerPalette], leading "x" on a wrong tap, step badge on a correct/expected tile.
@@ -641,10 +696,15 @@ class _ClozeSequenceQuizBodyState extends State<ClozeSequenceQuizBody> {
     );
     final textMaxWidth = max(0.0, maxWidth - 23.0);
 
-    double measureSentence() {
+    double measureLine(List<String> tokens, int blankOffset) {
       final span = TextSpan(
         style: style,
-        children: _buildSentenceSpans(Theme.of(context), baseStyle: style),
+        children: _buildLineSpans(
+          Theme.of(context),
+          tokens: tokens,
+          blankOffset: blankOffset,
+          baseStyle: style,
+        ),
       );
       final painter = TextPainter(
         text: span,
@@ -654,21 +714,10 @@ class _ClozeSequenceQuizBodyState extends State<ClozeSequenceQuizBody> {
       return painter.height + 19;
     }
 
-    double measurePlain(String text) {
-      final span = TextSpan(text: text, style: style);
-      final painter = TextPainter(
-        text: span,
-        textDirection: Directionality.of(context),
-        textScaler: MediaQuery.textScalerOf(context),
-      )..layout(maxWidth: textMaxWidth);
-      return painter.height + 19;
-    }
-
-    if (line1 != null) {
-      return measurePlain(line1) + 10 + measureSentence();
-    } else {
-      return measureSentence();
-    }
+    final sentenceHeight = measureLine(_tokens, _line1BlankIndices.length);
+    return line1 != null
+        ? measureLine(_line1Tokens, 0) + 10 + sentenceHeight
+        : sentenceHeight;
   }
 
   /// Greedy left-to-right row packing that mirrors how `Wrap` actually lays tiles out (same
@@ -790,11 +839,16 @@ class _ClozeSequenceQuizBodyState extends State<ClozeSequenceQuizBody> {
     final theme = Theme.of(context);
     final hasImage = widget.imagePath != null;
     final budget = QuestionLayoutBudget.of(context);
-    final answerWidth =
-        budget.answerWidthForAvailable(MediaQuery.sizeOf(context).width);
 
     return LayoutBuilder(
       builder: (context, bodyConstraints) {
+        // Must come from the LayoutBuilder's real local constraints, not MediaQuery's screen
+        // width — the question body has its own horizontal padding, so the screen width is
+        // wider than what's actually available here. Using the screen width would make every
+        // downstream text-wrap estimate assume more room than tiles/slots actually render
+        // into, under-counting wrapped rows and letting real content silently overflow.
+        final answerWidth =
+            budget.answerWidthForAvailable(bodyConstraints.maxWidth);
         final mediaWidthLimit =
             budget.mediaWidthForAvailable(bodyConstraints.maxWidth);
         final mediaHeight = hasImage
@@ -831,8 +885,14 @@ class _ClozeSequenceQuizBodyState extends State<ClozeSequenceQuizBody> {
                 16.0;
         final answerFontSize = _singleBlank ? buttonFontSize : tileFontSize;
 
+        // The dialogue card's own Container below has 16px left/right padding (unlike the grid
+        // box, which has none), so the real width available inside it is 32px narrower than
+        // `answerWidth` — the wrap estimate must use this, or it silently assumes more room than
+        // the sentence text actually renders into, under-counting wrapped lines and letting real
+        // content overflow into the scroll fallback.
+        final dialogueCardContentWidth = max(0.0, answerWidth - 32);
         final bubbleWrapWidth =
-            answerWidth - (_hasAnyAudioIcon ? 56 : 0);
+            dialogueCardContentWidth - (_hasAnyAudioIcon ? 56 : 0);
         final dialogueTextBudget = max(0.0, dialogueHeight - 20.0 - 8.0);
         final sentenceFontSize = questionSentenceTextSizeFor(budget.tier);
         final sentenceNeededHeight = _clozeNeededHeight(
@@ -901,6 +961,7 @@ class _ClozeSequenceQuizBodyState extends State<ClozeSequenceQuizBody> {
             '${mediaHeight.toStringAsFixed(1)}px '
             'dialogueBox=${answerWidth.toStringAsFixed(1)}x'
             '${dialogueHeight.toStringAsFixed(1)}px '
+            'dialogueCardContentWidth=${dialogueCardContentWidth.toStringAsFixed(1)}px '
             'dialogueExtension=${dialogueExtension.toStringAsFixed(1)}px '
             'gridBox=${answerWidth.toStringAsFixed(1)}x'
             '${gridHeight.toStringAsFixed(1)}px '
@@ -979,7 +1040,7 @@ class _ClozeSequenceQuizBodyState extends State<ClozeSequenceQuizBody> {
                         child: SingleChildScrollView(
                           child: Center(
                             child: SizedBox(
-                              width: answerWidth,
+                              width: dialogueCardContentWidth,
                               child: widget.data.line1 != null
                                   ? Column(
                                       crossAxisAlignment:
@@ -995,9 +1056,18 @@ class _ClozeSequenceQuizBodyState extends State<ClozeSequenceQuizBody> {
                                                 alignment: Alignment.centerLeft,
                                                 child: _buildBubble(
                                                   alignRight: false,
-                                                  child: Text(
-                                                    widget.data.line1!,
-                                                    style: sharedStyle,
+                                                  child: RichText(
+                                                    textScaler:
+                                                        MediaQuery.textScalerOf(
+                                                            context),
+                                                    text: TextSpan(
+                                                      style: sharedStyle,
+                                                      children:
+                                                          _buildLine1Spans(
+                                                        theme,
+                                                        baseStyle: sharedStyle,
+                                                      ),
+                                                    ),
                                                   ),
                                                 ),
                                               ),

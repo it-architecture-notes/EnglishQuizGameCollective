@@ -120,6 +120,74 @@
       }
     },
     {
+      "english_word": "interesting",
+      "translations": {
+        "tr": "ilginç",
+        "es": "interesante",
+        "fr": "intéressant",
+        "de": "interessant",
+        "it": "interessante",
+        "pt": "interessante",
+        "ru": "интересный",
+        "zh": "有趣的",
+        "ja": "面白い",
+        "ko": "흥미로운",
+        "ar": "مثير للاهتمام",
+        "hi": "दिलचस्प"
+      }
+    },
+    {
+      "english_word": "to study",
+      "translations": {
+        "tr": "çalışmak",
+        "es": "estudiar",
+        "fr": "étudier",
+        "de": "lernen",
+        "it": "studiare",
+        "pt": "estudar",
+        "ru": "изучать",
+        "zh": "学习",
+        "ja": "勉強する",
+        "ko": "공부하다",
+        "ar": "الدراسة",
+        "hi": "पढ़ाई करना"
+      }
+    },
+    {
+      "english_word": "to ask a question",
+      "translations": {
+        "tr": "soru sormak",
+        "es": "hacer una pregunta",
+        "fr": "poser une question",
+        "de": "eine Frage stellen",
+        "it": "fare una domanda",
+        "pt": "fazer uma pergunta",
+        "ru": "задать вопрос",
+        "zh": "问一个问题",
+        "ja": "質問する",
+        "ko": "질문하다",
+        "ar": "طرح سؤال",
+        "hi": "प्रश्न पूछना"
+      }
+    },
+    {
+      "english_word": "to understand",
+      "translations": {
+        "tr": "anlamak",
+        "es": "entender",
+        "fr": "comprendre",
+        "de": "verstehen",
+        "it": "capire",
+        "pt": "entender",
+        "ru": "понимать",
+        "zh": "理解",
+        "ja": "理解する",
+        "ko": "이해하다",
+        "ar": "الفهم",
+        "hi": "समझना"
+      }
+    },
+    {
       "english_word": "to do homework",
       "translations": {
         "tr": "ödev yapmak",

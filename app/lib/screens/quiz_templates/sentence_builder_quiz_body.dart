@@ -772,11 +772,16 @@ class _SentenceBuilderQuizBodyState extends State<SentenceBuilderQuizBody> {
     final hasLine1 = widget.data.line1 != null;
     final hasImage = widget.imagePath != null;
     final budget = QuestionLayoutBudget.of(context);
-    final answerWidth =
-        budget.answerWidthForAvailable(MediaQuery.sizeOf(context).width);
 
     return LayoutBuilder(
       builder: (context, bodyConstraints) {
+        // Must come from the LayoutBuilder's real local constraints, not MediaQuery's screen
+        // width — the question body has its own horizontal padding, so the screen width is
+        // wider than what's actually available here. Using the screen width would make every
+        // downstream text-wrap estimate assume more room than tiles/slots actually render
+        // into, under-counting wrapped rows and letting real content silently overflow.
+        final answerWidth =
+            budget.answerWidthForAvailable(bodyConstraints.maxWidth);
         final mediaWidthLimit =
             budget.mediaWidthForAvailable(bodyConstraints.maxWidth);
         final mediaHeight = hasImage
@@ -800,9 +805,14 @@ class _SentenceBuilderQuizBodyState extends State<SentenceBuilderQuizBody> {
             ? remainderHeight * _sentenceBuilderTileBankShare[budget.tier]!
             : remainderHeight * 0.62;
 
-        // Prompt sizing
+        // Prompt sizing. The prompt card's own Container below has 16px left/right padding
+        // (unlike the slot/tile boxes, which have none), so the real width available inside it
+        // is 32px narrower than `answerWidth` — every prompt-side width/wrap calculation must
+        // go through this, or the wrap estimate silently assumes more room than the prompt text
+        // actually renders into, under-counting wrapped lines and letting real content overflow.
+        final promptCardContentWidth = max(0.0, answerWidth - 32);
         final promptWrapWidth =
-            answerWidth - (_hasAnyAudioIcon ? 56 : 0);
+            promptCardContentWidth - (_hasAnyAudioIcon ? 56 : 0);
         final promptTextBudget = max(0.0, promptHeight - 28.0);
 
         // Resolve tiles from their fixed question geometry. Resolve slots from the complete
@@ -899,6 +909,7 @@ class _SentenceBuilderQuizBodyState extends State<SentenceBuilderQuizBody> {
             '${mediaVisibleHeight.toStringAsFixed(1)}px '
             'promptBox=${answerWidth.toStringAsFixed(1)}x'
             '${promptHeight.toStringAsFixed(1)}px '
+            'promptCardContentWidth=${promptCardContentWidth.toStringAsFixed(1)}px '
             'promptShortfall=${shortfallPrompt.toStringAsFixed(1)}px '
             'slotBox=${answerWidth.toStringAsFixed(1)}x'
             '${slotHeightFinal.toStringAsFixed(1)}px slotRows=${slotPreset.rows} '
@@ -1011,7 +1022,7 @@ class _SentenceBuilderQuizBodyState extends State<SentenceBuilderQuizBody> {
                             ),
                             child: Center(
                               child: SizedBox(
-                                width: answerWidth,
+                                width: promptCardContentWidth,
                                 child: Align(
                                   alignment: Alignment.centerLeft,
                                   child: Row(

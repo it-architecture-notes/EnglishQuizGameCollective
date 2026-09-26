@@ -13,10 +13,11 @@
     },
     {
       "template": "ConvoTemplate-1",
-      "genders": "f-m",
       "questionData": {
-        "line1": "Did you get hurt?",
-        "line2": "Yes, a little.",
+        "character1": "Sarah",
+        "character2": "Daniel",
+        "line1": "Did you get _____ in the accident?",
+        "line2": "A little, but they didn't need to admit me to the hospital.",
         "answer": "hurt",
         "distractors": [
           "feel",
@@ -24,24 +25,25 @@
           "lose"
         ]
       },
-      "audio_file1": "did-you-get-hurt-convo",
-      "audio_file2": "yes-a-little-convo"
+      "audio_file1": "did-you-get-hurt-in-the-accident-convo",
+      "audio_file2": "a-little-but-they-didn-t-need-to-admit-me-to-the-hospital-convo"
     },
     {
       "template": "ConvoTemplate-1",
-      "genders": "f-m",
       "questionData": {
-        "line1": "You look sick.",
-        "line2": "My head feels _____.",
-        "answer": "hot",
+        "character1": "Beth",
+        "character2": "Alex",
+        "line1": "You look sick. Let me _____ your temperature.",
+        "line2": "Okay. Is my temperature high?",
+        "answer": "check",
         "distractors": [
-          "cold",
-          "wet",
-          "sad"
+          "feel",
+          "tell",
+          "count"
         ]
       },
-      "audio_file1": "you-look-sick-convo",
-      "audio_file2": "my-head-feels-convo"
+      "audio_file1": "you-look-sick-let-me-check-your-temperature-convo",
+      "audio_file2": "okay-is-my-temperature-high-convo"
     },
     {
       "template": "imageQuizTemplate-1",
@@ -125,34 +127,33 @@
     },
     {
       "template": "ClozeSequence",
-      "genders": "f",
       "questionData": {
-        "sentence": "Doctors _____ sick people.",
+        "sentence": "She learned to _____ for patients, including how to _____ blood pressure correctly.",
         "answer": [
-          "help"
+          "care",
+          "measure"
         ],
         "distractors": [
-          "run",
-          "sleep",
-          "read",
-          "cook"
+          "careless",
+          "rest",
+          "tell",
+          "call"
         ]
       },
-      "audio_file": "doctors-sick-people-convo"
+      "audio_file": "she-learned-to-care-for-patients-including-how-to-measure-blood-pressure-correctly-convo"
     },
     {
       "template": "AppearDisappear",
-      "genders": "m",
       "questionData": {
-        "words": "The doctor says rest.",
+        "words": "The doctor said I need to rest in bed.",
         "distractors": [
-          "run",
-          "jump",
-          "sing",
-          "dance"
+          "asked",
+          "have",
+          "nurse",
+          "wait"
         ]
       },
-      "audio_file": "the-doctor-says-rest-convo"
+      "audio_file": "the-doctor-said-i-need-to-rest-in-bed-convo"
     },
     {
       "template": "imageQuizTemplate-1",
@@ -178,11 +179,10 @@
     },
     {
       "template": "SentenceBuilder",
-      "genders": "f",
       "questionData": {
-        "correct_order": "Take a deep breath."
+        "correct_order": "Please breathe deeply and try to relax."
       },
-      "audio_file": "take-a-deep-breath-convo"
+      "audio_file": "please-breathe-deeply-and-try-to-relax-convo"
     },
     {
       "template": "imageQuizTemplate-1",
@@ -197,64 +197,64 @@
     },
     {
       "template": "ClozeSequence",
-      "genders": "f",
       "questionData": {
-        "sentence": "The doctor can _____ you.",
+        "sentence": "It took weeks to _____ the injury before he could _____ completely.",
         "answer": [
-          "help"
+          "treat",
+          "recover"
         ],
         "distractors": [
-          "run",
-          "sleep",
-          "read"
+          "visit",
+          "send",
+          "rest"
         ]
       },
-      "audio_file": "the-doctor-can-you-convo"
+      "audio_file": "it-took-weeks-to-treat-the-injury-before-he-could-recover-completely-convo"
     },
     {
-      "template": "ClozeSequence",
-      "genders": "f",
+      "template": "GrammarForm",
       "questionData": {
-        "sentence": "The doctor _____ me.",
-        "answer": "helps",
+        "sentence": "The doctor _____ the patient carefully yesterday.",
+        "answer": "examined",
         "distractors": [
-          "help",
-          "helped",
-          "helping"
+          "examine",
+          "examines",
+          "examining"
         ]
       }
     },
     {
       "template": "ClozeSequence",
-      "genders": "m",
       "questionData": {
-        "sentence": "My arm _____ now.",
+        "sentence": "Can you _____ the _____ in your arm?",
         "answer": [
-          "hurts"
+          "describe",
+          "pain"
         ],
         "distractors": [
-          "help",
-          "sleep",
-          "read",
-          "cook"
+          "safe",
+          "quickly",
+          "normal",
+          "visit"
         ]
       },
-      "audio_file": "my-arm-now-convo"
+      "audio_file": "can-you-describe-the-pain-in-your-arm-convo"
     },
     {
       "template": "DialogueCompletion",
-      "genders": "m-f",
       "questionData": {
-        "line1": "Can he go home?",
-        "answer": "Yes, he can go home.",
+        "character1": "Omar",
+        "character2": "Lily",
+        "line1": "When will he be able to leave?",
+        "answer": "The doctor plans to discharge him this afternoon.",
         "distractors": [
-          "No, I am tired.",
-          "I read a book.",
-          "It is a big dog."
+          "He needs to stay for another week.",
+          "The doctor wants to examine him again.",
+          "His treatment will begin this afternoon."
         ]
       },
-      "audio_file1": "can-he-go-home-convo",
-      "audio_file2": "yes-he-can-go-home-convo"
+      "audio_file1": "when-will-he-be-able-to-leave-convo",
+      "audio_file2": "the-doctor-plans-to-discharge-him-this-afternoon-convo"
     }
   ]
 }

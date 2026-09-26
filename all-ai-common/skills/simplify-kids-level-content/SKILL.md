@@ -2,7 +2,7 @@
 name: simplify-kids-level-content
 description: >-
   Simplify a level's kids/questions.json and kids/translations.json — currently
-  identical copies of the adults content — down to simple, kid-appropriate
+  identical copies of the adults-intermediate content — down to simple, kid-appropriate
   vocabulary and a small fixed grammar set. Use when the user asks to simplify,
   de-duplicate, or child-ify kids content for one or more levels, or asks about
   kids vocabulary/grammar rules.
@@ -13,22 +13,22 @@ disable-model-invocation: true
 
 Unlike `redistribute-level-vocabulary`, this skill **edits** `kids/questions.json`
 and `kids/translations.json` directly — it is not report-only. Every level's
-`adults/` files stay untouched; this only ever touches the `kids/` copy.
+`adults-intermediate/` files stay untouched; this only ever touches the `kids/` copy.
 
 ## Scope
 
 Every level under `app/assets/quiz-data/levels/{level}/kids/` that still has
-`kids/questions.json` byte-identical (or near-identical) to `adults/questions.json`.
-Process levels in `game-flow.json` order (`directoryName`, skipping `kind:
+`kids/questions.json` byte-identical (or near-identical) to `adults-intermediate/questions.json`.
+Process levels in `game-flow-adults-intermediate.json` order (`directoryName`, skipping `kind:
 "reminder"` entries) so the "already taught to kids" word ledger builds up
 correctly as you go — a later level must not reuse a word before an earlier
 level has introduced it.
 
 Reference inputs:
-- `app/assets/data/flow/game-flow.json` — ordered level list (`directoryName`)
+- `app/assets/data/flow/game-flow-adults-intermediate.json` — ordered level list (`directoryName`)
 - `app/assets/quiz-data/levels/{level}/kids/questions.json` / `translations.json`
   — the files this skill edits
-- `app/assets/quiz-data/levels/{level}/adults/questions.json` — original content;
+- `app/assets/quiz-data/levels/{level}/adults-intermediate/questions.json` — original content;
   the starting point for each kids row, never edited by this skill
 - `all-ai-common/references/final words/*.csv` — word, POS, CEFR level,
   frequency columns; **A1 entries are the primary simple-word source pool**
@@ -135,7 +135,7 @@ substitute word is already known (no new translation row) or genuinely new
 ### 2. Read the level's current kids content
 
 Read `kids/questions.json` and `kids/translations.json` (at this point,
-identical or near-identical to `adults/`). For each row:
+identical or near-identical to `adults-intermediate/`). For each row:
 
 - Flag vocabulary outside the kids-simple band (uncommon words, adult-register
   words, low-frequency irregulars).
@@ -210,7 +210,7 @@ After a batch of levels (not one level per message), report:
 
 ## Do Not
 
-- Do not touch `adults/questions.json` or `adults/translations.json`.
+- Do not touch `adults-intermediate/questions.json` or `adults-intermediate/translations.json`.
 - Do not touch `template` or `genders` on any row.
 - Do not add a `translations.json` row for a word already in the kids ledger.
 - Do not use `WordPairs` reuse (rule 4) as license to reuse non-WordPairs

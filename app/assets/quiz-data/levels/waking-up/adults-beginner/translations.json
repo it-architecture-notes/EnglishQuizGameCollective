@@ -1,0 +1,259 @@
+{
+  "translations_list": [
+    {
+      "english_word": "to get up",
+      "translations": {
+        "tr": "kalkmak",
+        "es": "levantarse",
+        "fr": "se lever",
+        "de": "aufstehen",
+        "it": "alzarsi",
+        "pt": "levantar-se",
+        "ru": "вставать",
+        "zh": "起床",
+        "ja": "起きる",
+        "ko": "일어나다",
+        "ar": "النهوض",
+        "hi": "उठना"
+      }
+    },
+    {
+      "english_word": "to wake up",
+      "translations": {
+        "tr": "uyanmak",
+        "es": "despertarse",
+        "fr": "se réveiller",
+        "de": "aufwachen",
+        "it": "svegliarsi",
+        "pt": "acordar",
+        "ru": "проснуться",
+        "zh": "醒来",
+        "ja": "目を覚ます",
+        "ko": "잠에서 깨다",
+        "ar": "الاستيقاظ",
+        "hi": "जागना"
+      }
+    },
+    {
+      "english_word": "to open",
+      "translations": {
+        "tr": "açmak",
+        "es": "abrir",
+        "fr": "ouvrir",
+        "de": "öffnen",
+        "it": "aprire",
+        "pt": "abrir",
+        "ru": "открыть",
+        "zh": "打开",
+        "ja": "開く",
+        "ko": "열다",
+        "ar": "فتح",
+        "hi": "खोलना"
+      }
+    },
+    {
+      "english_word": "to sleep",
+      "translations": {
+        "tr": "uyumak",
+        "es": "dormir",
+        "fr": "dormir",
+        "de": "schlafen",
+        "it": "dormire",
+        "pt": "dormir",
+        "ru": "спать",
+        "zh": "睡觉",
+        "ja": "寝る",
+        "ko": "잠을 자다",
+        "ar": "النوم",
+        "hi": "सोना"
+      }
+    },
+    {
+      "english_word": "early",
+      "translations": {
+        "tr": "erken",
+        "es": "temprano",
+        "fr": "tôt",
+        "de": "früh",
+        "it": "presto",
+        "pt": "cedo",
+        "ru": "рано",
+        "zh": "早",
+        "ja": "早く",
+        "ko": "일찍",
+        "ar": "في وقت مبكر",
+        "hi": "जल्दी"
+      }
+    },
+    {
+      "english_word": "still",
+      "translations": {
+        "tr": "hâlâ",
+        "es": "todavía",
+        "fr": "encore",
+        "de": "noch",
+        "it": "ancora",
+        "pt": "ainda",
+        "ru": "всё ещё",
+        "zh": "仍然",
+        "ja": "まだ",
+        "ko": "아직도",
+        "ar": "لا يزال",
+        "hi": "अभी भी"
+      }
+    },
+    {
+      "english_word": "to stretch",
+      "translations": {
+        "tr": "gerinmek",
+        "es": "estirarse",
+        "fr": "s'étirer",
+        "de": "sich strecken",
+        "it": "stirarsi",
+        "pt": "alongar-se",
+        "ru": "потягиваться",
+        "zh": "伸展",
+        "ja": "ストレッチする",
+        "ko": "스트레칭하다",
+        "ar": "يتمدد",
+        "hi": "अंगड़ाई लेना"
+      }
+    },
+    {
+      "english_word": "late",
+      "translations": {
+        "tr": "geç",
+        "es": "tarde",
+        "fr": "en retard",
+        "de": "spät",
+        "it": "in ritardo",
+        "pt": "atrasado",
+        "ru": "поздно",
+        "zh": "迟到",
+        "ja": "遅い",
+        "ko": "늦은",
+        "ar": "متأخر",
+        "hi": "देर से"
+      }
+    },
+    {
+      "english_word": "to ring",
+      "translations": {
+        "tr": "çalmak",
+        "es": "sonar",
+        "fr": "sonner",
+        "de": "klingeln",
+        "it": "suonare",
+        "pt": "tocar",
+        "ru": "звонить",
+        "zh": "响",
+        "ja": "鳴る",
+        "ko": "울리다",
+        "ar": "يرن",
+        "hi": "बजना"
+      }
+    },
+    {
+      "english_word": "sleepy",
+      "translations": {
+        "tr": "uykulu",
+        "es": "somnoliento",
+        "fr": "somnolent",
+        "de": "schläfrig",
+        "it": "assonnato",
+        "pt": "sonolento",
+        "ru": "сонный",
+        "zh": "困倦",
+        "ja": "眠い",
+        "ko": "졸린",
+        "ar": "نعسان",
+        "hi": "नींद में"
+      }
+    },
+    {
+      "english_word": "to stand up",
+      "translations": {
+        "tr": "ayağa kalkmak",
+        "es": "ponerse de pie",
+        "fr": "se mettre debout",
+        "de": "sich erheben",
+        "it": "mettersi in piedi",
+        "pt": "pôr-se de pé",
+        "ru": "встать",
+        "zh": "站起来",
+        "ja": "立ち上がる",
+        "ko": "일어서다",
+        "ar": "الوقوف",
+        "hi": "खड़ा होना"
+      }
+    },
+    {
+      "english_word": "quickly",
+      "translations": {
+        "tr": "hızlıca",
+        "es": "rápidamente",
+        "fr": "rapidement",
+        "de": "schnell",
+        "it": "rapidamente",
+        "pt": "rapidamente",
+        "ru": "быстро",
+        "zh": "快速地",
+        "ja": "すぐに",
+        "ko": "빨리",
+        "ar": "بسرعة",
+        "hi": "जल्दी से"
+      }
+    },
+    {
+      "english_word": "get ready",
+      "translations": {
+        "tr": "hazırlanmak",
+        "es": "prepararse",
+        "fr": "se préparer",
+        "de": "sich fertig machen",
+        "it": "prepararsi",
+        "pt": "preparar-se",
+        "ru": "готовиться",
+        "zh": "准备好",
+        "ja": "準備する",
+        "ko": "준비하다",
+        "ar": "الاستعداد",
+        "hi": "तैयार होना"
+      }
+    },
+    {
+      "english_word": "never",
+      "translations": {
+        "tr": "asla",
+        "es": "nunca",
+        "fr": "jamais",
+        "de": "nie",
+        "it": "mai",
+        "pt": "nunca",
+        "ru": "никогда",
+        "zh": "从不",
+        "ja": "決して〜ない",
+        "ko": "절대",
+        "ar": "أبدا",
+        "hi": "कभी नहीं"
+      }
+    },
+    {
+      "english_word": "Good Night",
+      "translations": {
+        "tr": "İyi geceler",
+        "es": "Buenas noches",
+        "fr": "Bonne nuit",
+        "de": "Gute Nacht",
+        "it": "Buonanotte",
+        "pt": "Boa noite",
+        "ru": "Спокойной ночи",
+        "zh": "晚安",
+        "ja": "おやすみなさい",
+        "ko": "안녕히 주무세요",
+        "ar": "تصبح على خير",
+        "hi": "शुभ रात्रि"
+      }
+    }
+  ]
+}

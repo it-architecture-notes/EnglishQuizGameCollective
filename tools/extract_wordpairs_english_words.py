@@ -3,7 +3,7 @@
 Collect every `english_words` entry from `WordPairs` questions in level JSON.
 
 Scans all `questions.json` files under `app/assets/quiz-data/levels/` (recursive
-— this picks up both `{level}/adults/questions.json` and `{level}/kids/questions.json`,
+— this picks up both `{level}/adults-intermediate/questions.json` and `{level}/kids/questions.json`,
 since every level is flavor-split now; no root questions.json exists anymore).
 For each question with `template` `WordPairs` or legacy `ConvoTemplate-WordPairs`,
 reads `questionData.english_words` (array of strings). Empty strings are skipped.
@@ -13,7 +13,7 @@ Output CSV (default: `all-ai-common/output/wordpairs-english-words-by-level.csv`
 
 Rows are sorted by level, then flavor, then english_word (case-insensitive).
 `level` is the flavor-split folder's parent (e.g. `at-the-farm`, not
-`at-the-farm/adults`) — use `flavor` to distinguish adults vs kids rows, or
+`at-the-farm/adults-intermediate`) — use `flavor` to distinguish adults-intermediate vs kids rows, or
 pass --flavor to only scan one.
 
 Usage:
@@ -31,7 +31,7 @@ import sys
 from pathlib import Path
 
 _WORD_PAIRS_TEMPLATE_IDS = frozenset({"WordPairs", "ConvoTemplate-WordPairs"})
-_FLAVORS = ("adults", "kids")
+_FLAVORS = ("adults-intermediate", "kids")
 
 
 def repo_root() -> Path:

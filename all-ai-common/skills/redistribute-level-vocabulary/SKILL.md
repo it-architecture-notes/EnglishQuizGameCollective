@@ -20,7 +20,7 @@ levels. Do not edit JSON unless the user separately approves a concrete swap.
 Default start: `waking-up`.
 
 Included levels:
-- Standard mixed levels at or after the start level in `app/assets/data/flow/game-flow.json`
+- Standard mixed levels at or after the start level in `app/assets/data/flow/game-flow-adults-intermediate.json`
 - Levels with text vocabulary in `translations.json` and/or `WordPairs`
 
 Excluded levels:
@@ -30,7 +30,7 @@ Excluded levels:
 - Reminder/story/non-quiz flow entries
 
 Reference inputs:
-- `app/assets/data/flow/game-flow.json` — ordered flat list of all flow entries with `mainLevel`, `iconImageName`, and `title`
+- `app/assets/data/flow/game-flow-adults-intermediate.json` — ordered flat list of all flow entries with `mainLevel`, `iconImageName`, and `title`
 - `app/assets/quiz-data/levels/{level-id}/questions.json` — question templates and taught words per level
 - `app/assets/quiz-data/levels/{level-id}/translations.json` — tracked vocabulary per level
 - `all-ai-common/references/final words/` — CSV files with columns: word, POS, CEFR level, frequency count; use for A1/A2 classification and unused-word pool
@@ -137,7 +137,7 @@ reason in plain language.
 
 ### 1. Build the ordered worklist
 
-1. Read `game-flow.json`.
+1. Read `game-flow-adults-intermediate.json`.
 2. Find the start level, default `waking-up`. The start level itself is the first
    target — include it, do not skip it.
 3. List every flow entry at or after the start level that is a standard mixed level.
@@ -162,7 +162,7 @@ For all quiz levels, record each consumed word:
 | owner level | level folder / flow id |
 | owner kind | standard / medley / before-scope / later-scope |
 | source | translations / WordPairs |
-| flow index and mainLevel | `game-flow.json` |
+| flow index and mainLevel | `game-flow-adults-intermediate.json` |
 
 Also build an unused reference pool from final-word CSVs and Oxford 3000 entries
 minus all consumed words across all levels. Keep POS, CEFR level, and frequency

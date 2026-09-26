@@ -13,8 +13,9 @@
     },
     {
       "template": "ConvoTemplate-1",
-      "genders": "m-f",
       "questionData": {
+        "character1": "Daniel",
+        "character2": "Sarah",
         "line1": "Do you know how to _____ a car?",
         "line2": "Yes, I can _____ safely.",
         "answer": "drive",
@@ -29,10 +30,11 @@
     },
     {
       "template": "ConvoTemplate-1",
-      "genders": "f-m",
       "questionData": {
-        "line1": "The red light is on.",
-        "line2": "I know it is _____.",
+        "character1": "Beth",
+        "character2": "Omar",
+        "line1": "Don't cross the road when the traffic light is red.",
+        "line2": "I know it's ______.",
         "answer": "dangerous",
         "distractors": [
           "safe",
@@ -40,8 +42,8 @@
           "careful"
         ]
       },
-      "audio_file1": "the-red-light-is-on-convo",
-      "audio_file2": "i-know-it-is-dangerous-convo"
+      "audio_file1": "don-t-cross-the-road-when-the-traffic-light-is-red-convo",
+      "audio_file2": "i-know-it-s-dangerous-convo"
     },
     {
       "template": "imageQuizTemplate-1",
@@ -58,91 +60,91 @@
       "template": "WordPairs",
       "questionData": {
         "english_words": [
-          "stop",
-          "go",
-          "left",
-          "right"
+          "but",
+          "except",
+          "or",
+          "because"
         ],
         "translations": [
           {
-            "tr": "dur",
-            "es": "para",
-            "fr": "arrête",
-            "de": "stopp",
-            "it": "fermati",
-            "pt": "pare",
-            "ru": "стой",
-            "zh": "停",
-            "ja": "止まって",
-            "ko": "멈춰",
-            "ar": "توقف",
-            "hi": "रुको"
+            "tr": "ancak",
+            "es": "pero",
+            "fr": "mais",
+            "de": "aber",
+            "it": "ma",
+            "pt": "mas",
+            "ru": "но",
+            "zh": "但是",
+            "ja": "しかし",
+            "ko": "하지만",
+            "ar": "لكن",
+            "hi": "लेकिन"
           },
           {
-            "tr": "git",
-            "es": "ve",
-            "fr": "va",
-            "de": "geh",
-            "it": "vai",
-            "pt": "vá",
-            "ru": "иди",
-            "zh": "走",
-            "ja": "行って",
-            "ko": "가",
-            "ar": "اذهب",
-            "hi": "जाओ"
+            "tr": "hariç",
+            "es": "excepto",
+            "fr": "sauf",
+            "de": "außer",
+            "it": "tranne",
+            "pt": "exceto",
+            "ru": "кроме",
+            "zh": "除了",
+            "ja": "～を除いて",
+            "ko": "제외하고",
+            "ar": "باستثناء",
+            "hi": "को छोड़कर"
           },
           {
-            "tr": "sol",
-            "es": "izquierda",
-            "fr": "gauche",
-            "de": "links",
-            "it": "sinistra",
-            "pt": "esquerda",
-            "ru": "налево",
-            "zh": "左边",
-            "ja": "左",
-            "ko": "왼쪽",
-            "ar": "يسار",
-            "hi": "बायाँ"
+            "tr": "veya",
+            "es": "o",
+            "fr": "ou",
+            "de": "oder",
+            "it": "o",
+            "pt": "ou",
+            "ru": "или",
+            "zh": "或者",
+            "ja": "または",
+            "ko": "또는",
+            "ar": "أو",
+            "hi": "या"
           },
           {
-            "tr": "sağ",
-            "es": "derecha",
-            "fr": "droite",
-            "de": "rechts",
-            "it": "destra",
-            "pt": "direita",
-            "ru": "направо",
-            "zh": "右边",
-            "ja": "右",
-            "ko": "오른쪽",
-            "ar": "يمين",
-            "hi": "दायाँ"
+            "tr": "çünkü",
+            "es": "porque",
+            "fr": "parce que",
+            "de": "weil",
+            "it": "perché",
+            "pt": "porque",
+            "ru": "потому что",
+            "zh": "因为",
+            "ja": "なぜなら",
+            "ko": "왜냐하면",
+            "ar": "لأن",
+            "hi": "क्योंकि"
           }
         ]
       }
     },
     {
       "template": "DialogueCompletion",
-      "genders": "f-m",
       "questionData": {
-        "line1": "Which way do we go?",
-        "answer": "Go left, please.",
+        "character1": "Lily",
+        "character2": "Alex",
+        "line1": "Which lane can we stay in?",
+        "answer": "Stay in the left lane, please.",
         "distractors": [
-          "This road is busy.",
-          "Walk at the crosswalk.",
-          "The light is green."
+          "This road is very busy.",
+          "Slow down at the crosswalk.",
+          "The light is green now."
         ]
       },
-      "audio_file1": "which-way-do-we-go-convo",
-      "audio_file2": "go-left-please-convo"
+      "audio_file1": "which-lane-should-we-stay-in-convo",
+      "audio_file2": "stay-in-the-left-lane-please-convo"
     },
     {
       "template": "AppearDisappear",
-      "genders": "f",
       "questionData": {
-        "words": "Stop at red lights.",
+        "words": "You must brake when you see a red light.",
         "distractors": [
           "pause",
           "swerve",
@@ -150,7 +152,7 @@
           "speed"
         ]
       },
-      "audio_file": "stop-at-red-lights-convo"
+      "audio_file": "you-must-brake-when-you-see-a-red-light-convo"
     },
     {
       "template": "imageQuizTemplate-1",
@@ -171,17 +173,15 @@
           "crosswalk",
           "tunnel",
           "road"
-        ],
-        "correct_order": "Go slow on roads."
+        ]
       }
     },
     {
       "template": "SentenceBuilder",
-      "genders": "f",
       "questionData": {
-        "correct_order": "Go slow on roads."
+        "correct_order": "Do not speed on this road."
       },
-      "audio_file": "go-slow-on-roads-convo"
+      "audio_file": "do-not-speed-on-this-road-convo"
     },
     {
       "template": "imageQuizTemplate-1",
@@ -196,25 +196,23 @@
     },
     {
       "template": "ClozeSequence",
-      "genders": "f",
       "questionData": {
-        "sentence": "_____! A car is _____.",
+        "sentence": "_____, there is an accident _____.",
+        "answer": [
+          "slow down",
+          "ahead"
+        ],
         "distractors": [
-          "Go",
+          "speed up",
           "turn left",
           "behind",
           "later"
-        ],
-        "answers": [
-          "Stop",
-          "ahead"
         ]
       },
-      "audio_file": "stop-a-car-is-ahead-convo"
+      "audio_file": "slow-down-there-is-an-accident-ahead-convo"
     },
     {
-      "template": "ClozeSequence",
-      "genders": "f",
+      "template": "GrammarForm",
       "questionData": {
         "sentence": "____ left at the traffic light.",
         "answer": "Turn",
@@ -227,39 +225,37 @@
     },
     {
       "template": "ClozeSequence",
-      "genders": "m",
       "questionData": {
-        "sentence": "_____ at lights. _____ rules.",
-        "distractors": [
-          "Walk",
-          "Run",
-          "Ignore",
-          "Break"
+        "sentence": "_____ at the crosswalk and always _____ the rules.",
+        "answer": [
+          "stop",
+          "obey"
         ],
-        "answers": [
-          "Stop",
-          "Follow"
+        "distractors": [
+          "walk",
+          "run",
+          "ignore",
+          "break"
         ]
       },
-      "audio_file": "stop-at-lights-follow-rules-convo"
+      "audio_file": "stop-at-the-crosswalk-and-always-obey-the-rules-convo"
     },
     {
       "template": "ClozeSequence",
-      "genders": "f",
       "questionData": {
-        "sentence": "I _____ the _____.",
+        "sentence": "You must not ____ the traffic test. You will _____ it.",
+        "answer": [
+          "fail",
+          "pass"
+        ],
         "distractors": [
           "carry",
           "get",
           "late",
           "leave"
-        ],
-        "answers": [
-          "pass",
-          "test"
         ]
       },
-      "audio_file": "i-pass-the-test-convo"
+      "audio_file": "you-should-not-fail-the-traffic-test-you-have-to-pass-it-convo"
     }
   ]
 }

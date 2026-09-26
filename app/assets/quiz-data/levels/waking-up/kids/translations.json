@@ -1,6 +1,40 @@
 {
   "translations_list": [
     {
+      "english_word": "to get up",
+      "translations": {
+        "tr": "kalkmak",
+        "es": "levantarse",
+        "fr": "se lever",
+        "de": "aufstehen",
+        "it": "alzarsi",
+        "pt": "levantar-se",
+        "ru": "вставать",
+        "zh": "起床",
+        "ja": "起きる",
+        "ko": "일어나다",
+        "ar": "النهوض",
+        "hi": "उठना"
+      }
+    },
+    {
+      "english_word": "to wake up",
+      "translations": {
+        "tr": "uyanmak",
+        "es": "despertarse",
+        "fr": "se réveiller",
+        "de": "aufwachen",
+        "it": "svegliarsi",
+        "pt": "acordar",
+        "ru": "проснуться",
+        "zh": "醒来",
+        "ja": "目を覚ます",
+        "ko": "잠에서 깨다",
+        "ar": "الاستيقاظ",
+        "hi": "जागना"
+      }
+    },
+    {
       "english_word": "to open",
       "translations": {
         "tr": "açmak",

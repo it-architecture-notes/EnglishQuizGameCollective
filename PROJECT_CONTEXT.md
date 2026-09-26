@@ -234,7 +234,7 @@ Display: up to `min(3, min(english_to_translate.length, local_translation.length
 | `app/lib/models/level_config.dart` | All question data classes and JSON parsers |
 | `app/lib/screens/quiz_runner_screen.dart` | Phase-splits questions, dispatches to quiz screen |
 | `app/lib/services/level_config_loader.dart` | Loads per-level `questions.json` |
-| `app/assets/data/flow/game-flow.json` | 60 sub-levels, 12 main levels |
+| `app/assets/data/flow/game-flow-adults-intermediate.json` | 60 sub-levels, 12 main levels |
 | `app/assets/data/settings/localization.json` | All UI strings (en/fr/es/tr) |
 | `all-ai-common/context/active-progress-context.md` | Current active issue |
 | `all-ai-common/context/page-designs-and-templates.md` | Per-template UX and JSON schema reference |

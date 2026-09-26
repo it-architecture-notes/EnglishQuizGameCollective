@@ -13,49 +13,50 @@
     },
     {
       "template": "ConvoTemplate-1",
-      "genders": "m-m",
       "questionData": {
-        "line1": "What do you want _____?",
-        "line2": "I want _____ new words.",
+        "character1": "Omar",
+        "character2": "Oliver",
+        "line1": "What do you want _____ today?",
+        "line2": "I want _____ new English words.",
         "answer": "to learn",
         "distractors": [
-          "to read",
-          "to write",
-          "to say"
+          "to do",
+          "to find",
+          "to speak"
         ]
       },
-      "audio_file1": "what-do-you-want-to-learn-convo",
-      "audio_file2": "i-want-to-learn-new-words-convo"
+      "audio_file1": "what-do-you-want-to-learn-today-convo",
+      "audio_file2": "i-want-to-learn-new-english-words-convo"
     },
     {
       "template": "ConvoTemplate-1",
-      "genders": "f-m",
       "questionData": {
-        "line1": "What do you want to be?",
-        "line2": "I want to _____ kids.",
+        "character1": "Grace",
+        "character2": "Mike",
+        "line1": "What do you want to do one day?",
+        "line2": "I want to _____ children at a school.",
         "answer": "teach",
         "distractors": [
-          "help",
-          "see",
-          "play"
+          "learn",
+          "study",
+          "speak"
         ]
       },
-      "audio_file1": "what-do-you-want-to-be-convo",
-      "audio_file2": "i-want-to-teach-kids-convo"
+      "audio_file1": "what-do-you-want-to-do-one-day-convo",
+      "audio_file2": "i-want-to-teach-children-at-a-school-convo"
     },
     {
       "template": "AppearDisappear",
-      "genders": "f",
       "questionData": {
-        "words": "We read and write in class.",
+        "words": "We study and write in our notebooks.",
         "distractors": [
           "read",
-          "draw",
-          "play",
+          "listen",
+          "speak",
           "homework"
         ]
       },
-      "audio_file": "we-read-and-write-in-class-convo"
+      "audio_file": "we-study-and-write-in-our-notebooks-convo"
     },
     {
       "template": "imageQuizTemplate-2",
@@ -70,25 +71,26 @@
     },
     {
       "template": "ConvoTemplate-1",
-      "genders": "f-m",
       "questionData": {
-        "line1": "Do you _____ this word?",
-        "line2": "Yes, I _____ it.",
-        "answer": "know",
+        "character1": "Beth",
+        "character2": "Ethan",
+        "line1": "Do you _____ the question?",
+        "line2": "Yes, I _____ it now.",
+        "answer": "understand",
         "distractors": [
-          "read",
-          "see",
-          "say"
+          "find",
+          "finish",
+          "need"
         ]
       },
-      "audio_file1": "do-you-know-this-word-convo",
-      "audio_file2": "yes-i-know-it-convo"
+      "audio_file1": "do-you-understand-the-question-convo",
+      "audio_file2": "yes-i-understand-it-now-convo"
     },
     {
       "template": "WordPairs",
       "questionData": {
         "english_words": [
-          "hard",
+          "difficult",
           "easy",
           "right",
           "wrong"
@@ -166,20 +168,20 @@
     },
     {
       "template": "ClozeSequence",
-      "genders": "m",
       "questionData": {
-        "sentence": "Please _____ it again!",
+        "sentence": "There is a mistake. Please _____ _____!",
         "answers": [
-          "read"
+          "read",
+          "again"
         ],
         "distractors": [
-          "write",
-          "say",
-          "see",
-          "know"
+          "correct",
+          "very",
+          "stop",
+          "wrong"
         ]
       },
-      "audio_file": "please-read-it-again-convo"
+      "audio_file": "there-is-a-mistake-please-read-again-convo"
     },
     {
       "template": "imageQuizTemplate-1",
@@ -205,29 +207,26 @@
     },
     {
       "template": "SentenceBuilder",
-      "genders": "m",
       "questionData": {
-        "correct_order": "This class is fun."
+        "correct_order": "This lesson is interesting."
       },
-      "audio_file": "this-class-is-fun-convo"
+      "audio_file": "this-lesson-is-interesting-convo"
     },
     {
       "template": "AppearDisappear",
-      "genders": "m",
       "questionData": {
-        "words": "The teacher asks a question.",
+        "words": "The teacher asks an easy question.",
         "distractors": [
-          "hard",
+          "difficult",
           "know",
           "see",
           "answer"
         ]
       },
-      "audio_file": "the-teacher-asks-a-question-convo"
+      "audio_file": "the-teacher-asks-an-easy-question-convo"
     },
     {
-      "template": "ClozeSequence",
-      "genders": "m",
+      "template": "GrammarForm",
       "questionData": {
         "sentence": "When do you ____ your homework?",
         "answer": "do",
@@ -240,18 +239,19 @@
     },
     {
       "template": "DialogueCompletion",
-      "genders": "f-m",
       "questionData": {
-        "line1": "Who knows this answer?",
-        "answer": "I do! I know it!",
+        "character1": "Grace",
+        "character2": "Mike",
+        "line1": "Who can answer this question?",
+        "answer": "I can! I know the answer!",
         "distractors": [
-          "I don't know.",
-          "Please read it.",
-          "He knows it."
+          "He can't answer it.",
+          "Please open your books.",
+          "I don't find the answer."
         ]
       },
-      "audio_file1": "who-knows-this-answer-convo",
-      "audio_file2": "i-do-i-know-it-convo"
+      "audio_file1": "who-can-answer-this-question-convo",
+      "audio_file2": "i-can-i-know-the-answer-convo"
     }
   ]
 }

@@ -1,10 +1,20 @@
 {
   "levelQuestions": [
     {
-      "template": "AppearDisappear",
-      "genders": "m",
+      "template": "imageQuizTemplate-1",
       "questionData": {
-        "words": "She sleeps quietly each night.",
+        "imageName": "drawer",
+        "wrongAnswers": [
+          "wardrobe",
+          "cradle",
+          "nightstand"
+        ]
+      }
+    },
+    {
+      "template": "AppearDisappear",
+      "questionData": {
+        "words": "She sleeps quietly in her room.",
         "distractors": [
           "night",
           "day",
@@ -12,13 +22,12 @@
           "morning"
         ]
       },
-      "audio_file": "she-sleeps-quietly-each-night-convo"
+      "audio_file": "she-sleeps-quietly-in-her-room-convo"
     },
     {
       "template": "ClozeSequence",
-      "genders": "f",
       "questionData": {
-        "sentence": "The room is ____ dark.",
+        "sentence": "It is ____ dark in the room.",
         "answers": [
           "too"
         ],
@@ -28,61 +37,97 @@
           "much"
         ]
       },
-      "audio_file": "the-room-is-too-dark-convo"
+      "audio_file": "it-is-too-dark-in-the-room-convo"
     },
     {
       "template": "ClozeSequence",
-      "genders": "m",
       "questionData": {
-        "sentence": "I am _____.",
+        "sentence": "I am very _____ , so I _____ to _____.",
         "answers": [
-          "tired"
+          "tired",
+          "lie down",
+          "rest"
         ],
         "distractors": [
-          "sleep",
-          "eat",
-          "play"
+          "only",
+          "much",
+          "stand up",
+          "get up",
+          "cook"
         ]
       },
-      "audio_file": "i-am-tired-convo"
+      "audio_file": "i-am-very-tired-so-i-lie-down-to-rest-convo"
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "slippers",
+        "wrongAnswers": [
+          "shoes",
+          "mattress",
+          "robe"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "duvet-comforter",
+        "wrongAnswers": [
+          "pillow-case",
+          "mattress",
+          "blanket"
+        ]
+      }
     },
     {
       "template": "ConvoTemplate-1",
-      "genders": "f-f",
       "questionData": {
+        "character1": "Sarah",
+        "character2": "Emma",
         "line1": "Do you _____ every morning?",
-        "line2": "Yes, I do every day.",
+        "line2": "Yes, I _____ every day.",
         "answer": "make the bed",
         "distractors": [
-          "read a book",
-          "play a game",
-          "eat lunch"
+          "read the book",
+          "cook the lunch",
+          "drive the car"
         ]
       },
       "audio_file1": "do-you-make-the-bed-every-morning-convo",
-      "audio_file2": "yes-i-do-every-day-convo"
+      "audio_file2": "yes-i-make-the-bed-every-day-convo"
     },
     {
       "template": "ClozeSequence",
-      "genders": "f",
       "questionData": {
-        "sentence": "The bedroom light is _____.",
+        "sentence": "I ____ the light when it's dark. I _____ the light when it's bright.",
         "answers": [
-          "on"
+          "turn on",
+          "turn off"
         ],
         "distractors": [
-          "bright",
-          "dark",
-          "late"
+          "take out",
+          "shut down",
+          "turn in"
         ]
       },
-      "audio_file": "the-bedroom-light-is-on-convo"
+      "audio_file": "i-turn-on-the-light-when-its-dark-convo"
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "cradle",
+        "wrongAnswers": [
+          "mattress",
+          "nightstand",
+          "drawer"
+        ]
+      }
     },
     {
       "template": "SentenceBuilder",
-      "genders": "m",
       "questionData": {
-        "correct_order": "This bed is soft."
+        "correct_order": "This bed is very comfortable."
       }
     },
     {
@@ -170,24 +215,46 @@
       }
     },
     {
-      "template": "ClozeSequence",
-      "genders": "m",
+      "template": "imageQuizTemplate-1",
       "questionData": {
-        "sentence": "She is _____ at night.",
-        "answers": [
-          "awake"
-        ],
-        "distractors": [
-          "tired",
-          "happy",
-          "ready"
+        "imageName": "pajamas",
+        "wrongAnswers": [
+          "robe",
+          "slippers",
+          "towel"
         ]
-      },
-      "audio_file": "she-is-awake-at-night-convo"
+      }
     },
     {
       "template": "ClozeSequence",
-      "genders": "f",
+      "questionData": {
+        "sentence": "She lies down _____ for hours before finally falling _____.",
+        "answers": [
+          "awake",
+          "asleep"
+        ],
+        "distractors": [
+          "tired",
+          "up",
+          "early",
+          "late"
+        ]
+      },
+      "audio_file": "she-lies-down-awake-for-hours-before-finally-falling-asleep-convo"
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "wardrobe-or-closet",
+        "wrongAnswers": [
+          "drawer",
+          "mirror",
+          "desk"
+        ]
+      }
+    },
+    {
+      "template": "GrammarForm",
       "questionData": {
         "sentence": "Do you _____ a lot?",
         "answer": "dream",

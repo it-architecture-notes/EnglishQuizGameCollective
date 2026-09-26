@@ -1,16 +1,16 @@
 {
   "translations_list": [
     {
-      "english_word": "order",
+      "english_word": "to order",
       "translations": {
         "tr": "sipariş vermek",
-        "es": "pedir",
+        "es": "ordenar",
         "fr": "commander",
         "de": "bestellen",
         "it": "ordinare",
-        "pt": "pedir",
-        "ru": "заказывать",
-        "zh": "点餐",
+        "pt": "encomendar",
+        "ru": "заказать",
+        "zh": "订购",
         "ja": "注文する",
         "ko": "주문하다",
         "ar": "يطلب",
@@ -18,7 +18,7 @@
       }
     },
     {
-      "english_word": "share",
+      "english_word": "to share",
       "translations": {
         "tr": "paylaşmak",
         "es": "compartir",
@@ -26,12 +26,46 @@
         "de": "teilen",
         "it": "condividere",
         "pt": "compartilhar",
-        "ru": "делиться",
+        "ru": "поделиться",
         "zh": "分享",
-        "ja": "分ける",
-        "ko": "나누다",
+        "ja": "共有する",
+        "ko": "공유하다",
         "ar": "يشارك",
-        "hi": "बाँटना"
+        "hi": "साझा करना"
+      }
+    },
+    {
+      "english_word": "split the bill",
+      "translations": {
+        "tr": "hesabı bölmek",
+        "es": "dividir la cuenta",
+        "fr": "partager l'addition",
+        "de": "die Rechnung teilen",
+        "it": "dividere il conto",
+        "pt": "dividir a conta",
+        "ru": "разделить счёт",
+        "zh": "平分账单",
+        "ja": "割り勘にする",
+        "ko": "계산을 나누다",
+        "ar": "تقاسم الفاتورة",
+        "hi": "बिल बाँटना"
+      }
+    },
+    {
+      "english_word": "to serve",
+      "translations": {
+        "tr": "servis etmek",
+        "es": "servir",
+        "fr": "servir",
+        "de": "servieren",
+        "it": "servire",
+        "pt": "servir",
+        "ru": "подавать",
+        "zh": "上菜",
+        "ja": "出す",
+        "ko": "서빙하다",
+        "ar": "يقدّم",
+        "hi": "परोसना"
       }
     },
     {
@@ -40,8 +74,8 @@
         "tr": "tokum",
         "es": "estoy lleno",
         "fr": "je suis rassasié",
-        "de": "ich bin satt",
-        "it": "sono pieno",
+        "de": "Ich bin satt",
+        "it": "Sono pieno",
         "pt": "estou cheio",
         "ru": "я сыт",
         "zh": "我吃饱了",
@@ -49,6 +83,159 @@
         "ko": "배가 불러요",
         "ar": "أنا شبعان/شبعانة",
         "hi": "मेरा पेट भर गया है"
+      }
+    },
+    {
+      "english_word": "polite",
+      "translations": {
+        "tr": "kibar",
+        "es": "educado",
+        "fr": "poli",
+        "de": "höflich",
+        "it": "educato",
+        "pt": "educado",
+        "ru": "вежливый",
+        "zh": "有礼貌的",
+        "ja": "丁寧な",
+        "ko": "정중한",
+        "ar": "مهذب",
+        "hi": "विनम्र"
+      }
+    },
+    {
+      "english_word": "delicious",
+      "translations": {
+        "tr": "lezzetli",
+        "es": "delicioso",
+        "fr": "délicieux",
+        "de": "köstlich",
+        "it": "delizioso",
+        "pt": "delicioso",
+        "ru": "вкусный",
+        "zh": "好吃",
+        "ja": "おいしい",
+        "ko": "맛있다",
+        "ar": "لذيذ",
+        "hi": "स्वादिष्ट"
+      }
+    },
+    {
+      "english_word": "to tip",
+      "translations": {
+        "tr": "bahşiş vermek",
+        "es": "dar propina",
+        "fr": "donner un pourboire",
+        "de": "Trinkgeld geben",
+        "it": "lasciare la mancia",
+        "pt": "dar gorjeta",
+        "ru": "оставить чаевые",
+        "zh": "给小费",
+        "ja": "チップを渡す",
+        "ko": "팁을 주다",
+        "ar": "يعطي إكرامية",
+        "hi": "टिप देना"
+      }
+    },
+    {
+      "english_word": "to offer",
+      "translations": {
+        "tr": "sunmak",
+        "es": "ofrecer",
+        "fr": "proposer",
+        "de": "anbieten",
+        "it": "offrire",
+        "pt": "oferecer",
+        "ru": "предложить",
+        "zh": "提供",
+        "ja": "勧める",
+        "ko": "권하다",
+        "ar": "يعرض",
+        "hi": "पेश करना"
+      }
+    },
+    {
+      "english_word": "to heat",
+      "translations": {
+        "tr": "ısıtmak",
+        "es": "calentar",
+        "fr": "chauffer",
+        "de": "erhitzen",
+        "it": "riscaldare",
+        "pt": "aquecer",
+        "ru": "нагревать",
+        "zh": "加热",
+        "ja": "加熱する",
+        "ko": "가열하다",
+        "ar": "يسخن",
+        "hi": "गरम करना"
+      }
+    },
+    {
+      "english_word": "properly",
+      "translations": {
+        "tr": "düzgünce",
+        "es": "correctamente",
+        "fr": "correctement",
+        "de": "richtig",
+        "it": "correttamente",
+        "pt": "adequadamente",
+        "ru": "правильно",
+        "zh": "适当地",
+        "ja": "きちんと",
+        "ko": "제대로",
+        "ar": "بشكل صحيح",
+        "hi": "ठीक से"
+      }
+    },
+    {
+      "english_word": "to taste",
+      "translations": {
+        "tr": "tatmak",
+        "es": "saborear",
+        "fr": "goûter",
+        "de": "schmecken",
+        "it": "assaggiare",
+        "pt": "saborear",
+        "ru": "пробовать",
+        "zh": "品尝",
+        "ja": "味を見る",
+        "ko": "맛을 보다",
+        "ar": "يتذوق",
+        "hi": "स्वाद लेना"
+      }
+    },
+    {
+      "english_word": "to boil",
+      "translations": {
+        "tr": "kaynatmak",
+        "es": "hervir",
+        "fr": "faire bouillir",
+        "de": "kochen",
+        "it": "bollire",
+        "pt": "ferver",
+        "ru": "кипятить",
+        "zh": "煮沸",
+        "ja": "沸かす",
+        "ko": "끓이다",
+        "ar": "يغلي",
+        "hi": "उबालना"
+      }
+    },
+    {
+      "english_word": "lunch",
+      "translations": {
+        "tr": "öğle yemeği",
+        "es": "almuerzo",
+        "fr": "déjeuner",
+        "de": "Mittagessen",
+        "it": "pranzo",
+        "pt": "almoço",
+        "ru": "обед",
+        "zh": "午餐",
+        "ja": "昼食",
+        "ko": "점심",
+        "ar": "غداء",
+        "hi": "दोपहर का भोजन"
       }
     }
   ]

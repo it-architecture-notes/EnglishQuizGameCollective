@@ -18,6 +18,23 @@
       }
     },
     {
+      "english_word": "to watch",
+      "translations": {
+        "tr": "izlemek",
+        "es": "ver",
+        "fr": "regarder",
+        "de": "anschauen",
+        "it": "guardare",
+        "pt": "assistir",
+        "ru": "смотреть",
+        "zh": "观看",
+        "ja": "観る",
+        "ko": "보다",
+        "ar": "يشاهد",
+        "hi": "देखना"
+      }
+    },
+    {
       "english_word": "movie",
       "translations": {
         "tr": "film",
@@ -52,6 +69,23 @@
       }
     },
     {
+      "english_word": "audience",
+      "translations": {
+        "tr": "seyirci",
+        "es": "público",
+        "fr": "public",
+        "de": "Publikum",
+        "it": "pubblico",
+        "pt": "público",
+        "ru": "зрители",
+        "zh": "观众",
+        "ja": "観客",
+        "ko": "관객",
+        "ar": "الجمهور",
+        "hi": "दर्शक"
+      }
+    },
+    {
       "english_word": "subtitles",
       "translations": {
         "tr": "altyazı",
@@ -69,6 +103,40 @@
       }
     },
     {
+      "english_word": "to enter",
+      "translations": {
+        "tr": "girmek",
+        "es": "entrar",
+        "fr": "entrer",
+        "de": "eintreten",
+        "it": "entrare",
+        "pt": "entrar",
+        "ru": "входить",
+        "zh": "进入",
+        "ja": "入る",
+        "ko": "들어가다",
+        "ar": "يدخل",
+        "hi": "प्रवेश करना"
+      }
+    },
+    {
+      "english_word": "to miss",
+      "translations": {
+        "tr": "kaçırmak",
+        "es": "perder",
+        "fr": "rater",
+        "de": "verpassen",
+        "it": "perdere",
+        "pt": "perder",
+        "ru": "пропустить",
+        "zh": "错过",
+        "ja": "見逃す",
+        "ko": "놓치다",
+        "ar": "يفوت",
+        "hi": "चूकना"
+      }
+    },
+    {
       "english_word": "to clap",
       "translations": {
         "tr": "alkışlamak",
@@ -83,6 +151,23 @@
         "ko": "박수 치다",
         "ar": "يصفق",
         "hi": "ताली बजाना"
+      }
+    },
+    {
+      "english_word": "to recommend",
+      "translations": {
+        "tr": "tavsiye etmek",
+        "es": "recomendar",
+        "fr": "recommander",
+        "de": "empfehlen",
+        "it": "consigliare",
+        "pt": "recomendar",
+        "ru": "рекомендовать",
+        "zh": "推荐",
+        "ja": "勧める",
+        "ko": "추천하다",
+        "ar": "يوصي",
+        "hi": "सिफारिश करना"
       }
     },
     {
@@ -120,6 +205,23 @@
       }
     },
     {
+      "english_word": "to go out",
+      "translations": {
+        "tr": "dışarı çıkmak",
+        "es": "salir",
+        "fr": "sortir",
+        "de": "ausgehen",
+        "it": "uscire",
+        "pt": "sair",
+        "ru": "выходить",
+        "zh": "外出",
+        "ja": "外出する",
+        "ko": "외출하다",
+        "ar": "يخرج",
+        "hi": "बाहर जाना"
+      }
+    },
+    {
       "english_word": "to book",
       "translations": {
         "tr": "rezervasyon yapmak",
@@ -134,6 +236,23 @@
         "ko": "예약하다",
         "ar": "يحجز",
         "hi": "बुक करना"
+      }
+    },
+    {
+      "english_word": "easily",
+      "translations": {
+        "tr": "kolayca",
+        "es": "fácilmente",
+        "fr": "facilement",
+        "de": "leicht",
+        "it": "facilmente",
+        "pt": "facilmente",
+        "ru": "легко",
+        "zh": "容易地",
+        "ja": "簡単に",
+        "ko": "쉽게",
+        "ar": "بسهولة",
+        "hi": "आसानी से"
       }
     }
   ]

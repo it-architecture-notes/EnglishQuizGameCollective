@@ -214,7 +214,7 @@ Widget buildTestHarness({
       textScaler: TextScaler.noScaling,
     ),
     child: MaterialApp(
-      theme: AppTheme.forFlavor(AppFlavor.adults),
+      theme: AppTheme.forFlavor(AppFlavor.adultsIntermediate),
       home: Scaffold(
         body: SafeArea(
           child: VideoConversationQuizBody(

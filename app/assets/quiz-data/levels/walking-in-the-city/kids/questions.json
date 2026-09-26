@@ -13,8 +13,9 @@
     },
     {
       "template": "ConvoTemplate-1",
-      "genders": "f-m",
       "questionData": {
+        "character1": "Emma",
+        "character2": "Leo",
         "line1": "Do you want to _____ to the park?",
         "line2": "Yes! Is it far?",
         "answer": "walk",
@@ -29,8 +30,9 @@
     },
     {
       "template": "ConvoTemplate-1",
-      "genders": "m-f",
       "questionData": {
+        "character1": "Alex",
+        "character2": "Nora",
         "line1": "_____ at the buildings!",
         "line2": "Yes, they are wonderful.",
         "answer": "look",
@@ -51,13 +53,6 @@
           "barn",
           "tower",
           "fire-station"
-        ],
-        "line1": "We have time to play.",
-        "answer": "Let’s walk around town.",
-        "distractors": [
-          "Let’s wait for a bus.",
-          "Let’s see the map.",
-          "My shoes are wet."
         ]
       }
     },
@@ -132,24 +127,24 @@
     },
     {
       "template": "DialogueCompletion",
-      "genders": "f-f",
       "questionData": {
-        "line1": "We have time to play.",
-        "answer": "Let’s walk around town.",
+        "character1": "Emma",
+        "character2": "Anna",
+        "line1": "We have free time this afternoon.",
+        "answer": "Let's wander around the city.",
         "distractors": [
-          "Let’s wait for a bus.",
-          "Let’s see the map.",
-          "My shoes are wet."
+          "Let's wait here for the bus.",
+          "Let's look at the map quickly.",
+          "My shoes are still wet."
         ]
       },
-      "audio_file1": "we-have-time-to-play-convo",
-      "audio_file2": "let-s-walk-around-town-convo"
+      "audio_file1": "we-have-free-time-this-afternoon-convo",
+      "audio_file2": "lets-wander-around-the-city-convo"
     },
     {
       "template": "AppearDisappear",
-      "genders": "m",
       "questionData": {
-        "words": "Turn left at the corner.",
+        "words": "Turn left at the next intersection.",
         "distractors": [
           "go",
           "leave",
@@ -157,7 +152,7 @@
           "straight"
         ]
       },
-      "audio_file": "turn-left-at-the-corner-convo"
+      "audio_file": "turn-left-at-the-next-intersection-convo"
     },
     {
       "template": "imageQuizTemplate-1",
@@ -178,23 +173,15 @@
           "bench",
           "tree",
           "fountain"
-        ],
-        "line1": "Let’s go this way.",
-        "answer": "Okay, follow me.",
-        "distractors": [
-          "Leave me here.",
-          "Look at it.",
-          "See you later."
         ]
       }
     },
     {
       "template": "SentenceBuilder",
-      "genders": "f",
       "questionData": {
-        "correct_order": "He leaves home fast."
+        "correct_order": "He leaves the house in a rush."
       },
-      "audio_file": "he-leaves-home-fast-convo"
+      "audio_file": "he-leaves-the-house-in-a-rush-convo"
     },
     {
       "template": "imageQuizTemplate-1",
@@ -209,10 +196,9 @@
     },
     {
       "template": "ClozeSequence",
-      "genders": "f",
       "questionData": {
-        "sentence": "She _____ to _____.",
-        "answers": [
+        "sentence": "She _____ here every weekend to ____ the lake.",
+        "answer": [
           "comes",
           "see"
         ],
@@ -223,11 +209,10 @@
           "start"
         ]
       },
-      "audio_file": "she-comes-to-see-convo"
+      "audio_file": "she-comes-here-every-weekend-to-see-the-lake-convo"
     },
     {
-      "template": "ClozeSequence",
-      "genders": "f",
+      "template": "GrammarForm",
       "questionData": {
         "sentence": "Do you ____ far from here?",
         "answer": "live",
@@ -240,8 +225,9 @@
     },
     {
       "template": "DialogueCompletion",
-      "genders": "f-f",
       "questionData": {
+        "character1": "Olivia",
+        "character2": "Sophie",
         "line1": "Let’s go this way.",
         "answer": "Ok, follow me.",
         "distractors": [
@@ -250,26 +236,25 @@
           "See you later."
         ]
       },
-      "audio_file1": "let-s-go-this-way-convo",
+      "audio_file1": "lets-go-this-way-convo",
       "audio_file2": "ok-follow-me-convo"
     },
     {
       "template": "ClozeSequence",
-      "genders": "m",
       "questionData": {
-        "sentence": "She _____ at the _____.",
-        "answers": [
-          "waits",
+        "sentence": "She waits to _____ at the _____ before the light turns green.",
+        "answer": [
+          "cross",
           "corner"
         ],
         "distractors": [
-          "turns",
-          "walks",
+          "turn",
+          "wait",
           "street",
           "step"
         ]
       },
-      "audio_file": "she-waits-at-the-corner-convo"
+      "audio_file": "she-waited-to-cross-at-the-corner-before-the-light-turned-green-convo"
     }
   ]
 }

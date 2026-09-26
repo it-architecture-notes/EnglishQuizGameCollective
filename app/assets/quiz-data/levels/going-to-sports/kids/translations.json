@@ -1,3 +1,242 @@
 {
-  "translations_list": []
+  "translations_list": [
+    {
+      "english_word": "to practice",
+      "translations": {
+        "tr": "pratik yapmak",
+        "es": "practicar",
+        "fr": "pratiquer",
+        "de": "üben",
+        "it": "esercitarsi",
+        "pt": "praticar",
+        "ru": "практиковаться",
+        "zh": "练习",
+        "ja": "練習する",
+        "ko": "연습하다",
+        "ar": "يمارس",
+        "hi": "अभ्यास करना"
+      }
+    },
+    {
+      "english_word": "team",
+      "translations": {
+        "tr": "takım",
+        "es": "equipo",
+        "fr": "équipe",
+        "de": "Team",
+        "it": "squadra",
+        "pt": "equipe",
+        "ru": "команда",
+        "zh": "队伍",
+        "ja": "チーム",
+        "ko": "팀",
+        "ar": "فريق",
+        "hi": "टीम"
+      }
+    },
+    {
+      "english_word": "to improve",
+      "translations": {
+        "tr": "geliştirmek",
+        "es": "mejorar",
+        "fr": "améliorer",
+        "de": "verbessern",
+        "it": "migliorare",
+        "pt": "melhorar",
+        "ru": "улучшить",
+        "zh": "改善",
+        "ja": "改善する",
+        "ko": "개선하다",
+        "ar": "يحسن",
+        "hi": "सुधार करना"
+      }
+    },
+    {
+      "english_word": "to compete",
+      "translations": {
+        "tr": "yarışmak",
+        "es": "competir",
+        "fr": "concourir",
+        "de": "wetteifern",
+        "it": "competere",
+        "pt": "competir",
+        "ru": "соревноваться",
+        "zh": "比赛",
+        "ja": "競争する",
+        "ko": "경쟁하다",
+        "ar": "يتنافس",
+        "hi": "प्रतिस्पर्धा करना"
+      }
+    },
+    {
+      "english_word": "to sweat",
+      "translations": {
+        "tr": "terlemek",
+        "es": "sudar",
+        "fr": "transpirer",
+        "de": "schwitzen",
+        "it": "sudare",
+        "pt": "suar",
+        "ru": "потеть",
+        "zh": "出汗",
+        "ja": "汗をかく",
+        "ko": "땀을 흘리다",
+        "ar": "يتعرق",
+        "hi": "पसीना आना"
+      }
+    },
+    {
+      "english_word": "to hit",
+      "translations": {
+        "tr": "vurmak",
+        "es": "golpear",
+        "fr": "frapper",
+        "de": "schlagen",
+        "it": "colpire",
+        "pt": "acertar",
+        "ru": "ударить",
+        "zh": "打",
+        "ja": "打つ",
+        "ko": "치다",
+        "ar": "يضرب",
+        "hi": "मारना"
+      }
+    },
+    {
+      "english_word": "tough",
+      "translations": {
+        "tr": "zor",
+        "es": "difícil",
+        "fr": "difficile",
+        "de": "schwierig",
+        "it": "duro",
+        "pt": "difícil",
+        "ru": "трудный",
+        "zh": "困难的",
+        "ja": "大変な",
+        "ko": "힘든",
+        "ar": "صعب",
+        "hi": "कठिन"
+      }
+    },
+    {
+      "english_word": "to swim",
+      "translations": {
+        "tr": "yüzmek",
+        "es": "nadar",
+        "fr": "nager",
+        "de": "schwimmen",
+        "it": "nuotare",
+        "pt": "nadar",
+        "ru": "плавать",
+        "zh": "游泳",
+        "ja": "泳ぐ",
+        "ko": "수영하다",
+        "ar": "يسبح",
+        "hi": "तैरना"
+      }
+    },
+    {
+      "english_word": "to dive",
+      "translations": {
+        "tr": "dalmak",
+        "es": "bucear",
+        "fr": "plonger",
+        "de": "tauchen",
+        "it": "tuffarsi",
+        "pt": "mergulhar",
+        "ru": "нырять",
+        "zh": "跳水",
+        "ja": "飛び込む",
+        "ko": "다이빙하다",
+        "ar": "يغوص",
+        "hi": "गोता लगाना"
+      }
+    },
+    {
+      "english_word": "to play",
+      "translations": {
+        "tr": "oynamak",
+        "es": "jugar",
+        "fr": "jouer",
+        "de": "spielen",
+        "it": "giocare",
+        "pt": "jogar",
+        "ru": "играть",
+        "zh": "玩",
+        "ja": "遊ぶ",
+        "ko": "놀다",
+        "ar": "يلعب",
+        "hi": "खेलना"
+      }
+    },
+    {
+      "english_word": "to score",
+      "translations": {
+        "tr": "gol atmak",
+        "es": "anotar",
+        "fr": "marquer",
+        "de": "punkten",
+        "it": "segnare",
+        "pt": "marcar",
+        "ru": "забить",
+        "zh": "得分",
+        "ja": "得点する",
+        "ko": "득점하다",
+        "ar": "يسجل",
+        "hi": "स्कोर करना"
+      }
+    },
+    {
+      "english_word": "to slip",
+      "translations": {
+        "tr": "kaymak",
+        "es": "resbalar",
+        "fr": "glisser",
+        "de": "ausrutschen",
+        "it": "scivolare",
+        "pt": "escorregar",
+        "ru": "поскользнуться",
+        "zh": "滑倒",
+        "ja": "滑る",
+        "ko": "미끄러지다",
+        "ar": "ينزلق",
+        "hi": "फिसलना"
+      }
+    },
+    {
+      "english_word": "strong",
+      "translations": {
+        "tr": "güçlü",
+        "es": "fuerte",
+        "fr": "fort",
+        "de": "stark",
+        "it": "forte",
+        "pt": "forte",
+        "ru": "сильный",
+        "zh": "强壮的",
+        "ja": "強い",
+        "ko": "강한",
+        "ar": "قوي",
+        "hi": "मजबूत"
+      }
+    },
+    {
+      "english_word": "race",
+      "translations": {
+        "tr": "yarış",
+        "es": "carrera",
+        "fr": "course",
+        "de": "Rennen",
+        "it": "gara",
+        "pt": "corrida",
+        "ru": "гонка",
+        "zh": "比赛",
+        "ja": "レース",
+        "ko": "경주",
+        "ar": "سباق",
+        "hi": "दौड़"
+      }
+    }
+  ]
 }

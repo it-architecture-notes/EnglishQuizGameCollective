@@ -35,6 +35,40 @@
       }
     },
     {
+      "english_word": "to enjoy",
+      "translations": {
+        "tr": "keyif almak",
+        "es": "disfrutar",
+        "fr": "profiter de",
+        "de": "genießen",
+        "it": "godersi",
+        "pt": "desfrutar",
+        "ru": "наслаждаться",
+        "zh": "享受",
+        "ja": "楽しむ",
+        "ko": "즐기다",
+        "ar": "يستمتع",
+        "hi": "आनंद लेना"
+      }
+    },
+    {
+      "english_word": "together",
+      "translations": {
+        "tr": "birlikte",
+        "es": "juntos",
+        "fr": "ensemble",
+        "de": "zusammen",
+        "it": "insieme",
+        "pt": "juntos",
+        "ru": "вместе",
+        "zh": "一起",
+        "ja": "一緒に",
+        "ko": "함께",
+        "ar": "معاً",
+        "hi": "एक साथ"
+      }
+    },
+    {
       "english_word": "to blow",
       "translations": {
         "tr": "üflemek",
@@ -49,6 +83,74 @@
         "ko": "불다",
         "ar": "نفخ",
         "hi": "फूंकना"
+      }
+    },
+    {
+      "english_word": "to wish",
+      "translations": {
+        "tr": "dilemek",
+        "es": "desear",
+        "fr": "souhaiter",
+        "de": "wünschen",
+        "it": "esprimere un desiderio",
+        "pt": "desejar",
+        "ru": "загадать желание",
+        "zh": "许愿",
+        "ja": "願う",
+        "ko": "소원을 빌다",
+        "ar": "يتمنى",
+        "hi": "इच्छा करना"
+      }
+    },
+    {
+      "english_word": "to decorate",
+      "translations": {
+        "tr": "süslemek",
+        "es": "decorar",
+        "fr": "décorer",
+        "de": "dekorieren",
+        "it": "decorare",
+        "pt": "decorar",
+        "ru": "украшать",
+        "zh": "装饰",
+        "ja": "飾る",
+        "ko": "장식하다",
+        "ar": "يزين",
+        "hi": "सजाना"
+      }
+    },
+    {
+      "english_word": "to celebrate",
+      "translations": {
+        "tr": "kutlamak",
+        "es": "celebrar",
+        "fr": "fêter",
+        "de": "feiern",
+        "it": "festeggiare",
+        "pt": "celebrar",
+        "ru": "отмечать",
+        "zh": "庆祝",
+        "ja": "お祝いする",
+        "ko": "기념하다",
+        "ar": "يحتفل",
+        "hi": "मनाना"
+      }
+    },
+    {
+      "english_word": "to unwrap gifts",
+      "translations": {
+        "tr": "hediyeleri açmak",
+        "es": "desenvolver regalos",
+        "fr": "déballer les cadeaux",
+        "de": "Geschenke auspacken",
+        "it": "scartare i regali",
+        "pt": "desembrulhar os presentes",
+        "ru": "разворачивать подарки",
+        "zh": "拆礼物",
+        "ja": "プレゼントを開ける",
+        "ko": "선물을 풀다",
+        "ar": "يفتح الهدايا",
+        "hi": "उपहार खोलना"
       }
     },
     {
@@ -83,6 +185,23 @@
         "ko": "놀라움",
         "ar": "مفاجأة",
         "hi": "आश्चर्य"
+      }
+    },
+    {
+      "english_word": "to dance",
+      "translations": {
+        "tr": "dans etmek",
+        "es": "bailar",
+        "fr": "danse",
+        "de": "tanzen",
+        "it": "ballare",
+        "pt": "dançar",
+        "ru": "танцевать",
+        "zh": "跳舞",
+        "ja": "踊る",
+        "ko": "춤추다",
+        "ar": "يرقص",
+        "hi": "नृत्य करना"
       }
     }
   ]

@@ -1,0 +1,93 @@
+[
+  {
+    "mainLevel": 1,
+    "directoryName": "greetings",
+    "title": "Greetings"
+  },
+  {
+    "mainLevel": 1,
+    "directoryName": "basic-sentences",
+    "title": "Basic Sentences"
+  },
+  {
+    "mainLevel": 1,
+    "directoryName": "colors-shapes",
+    "title": "Colors and Shapes - Image",
+    "iconImageName": "colors-1"
+  },
+  {
+    "mainLevel": 1,
+    "directoryName": "numbers",
+    "title": "Numbers"
+  },
+  {
+    "mainLevel": 1,
+    "iconImageName": "reminder",
+    "title": "Reminder 1",
+    "kind": "reminder",
+    "reminderIndex": 1
+  },
+  {
+    "mainLevel": 1,
+    "iconImageName": "reminder",
+    "title": "Reminder 2",
+    "kind": "reminder",
+    "reminderIndex": 2
+  },
+  {
+    "mainLevel": 2,
+    "directoryName": "bedroom-bathroom-items",
+    "title": "Bedroom & Bathroom Items - Image only",
+    "iconImageName": "in-the-bedroom"
+  },
+  {
+    "mainLevel": 2,
+    "directoryName": "in-the-bedroom",
+    "title": "In the Bedroom"
+  },
+  {
+    "mainLevel": 2,
+    "directoryName": "waking-up",
+    "title": "Waking Up"
+  },
+  {
+    "mainLevel": 2,
+    "directoryName": "in-the-bathroom",
+    "title": "In the Bathroom"
+  },
+  {
+    "mainLevel": 2,
+    "directoryName": "prepositions",
+    "title": "Prepositions"
+  },
+  {
+    "mainLevel": 2,
+    "directoryName": "colors-2",
+    "title": "Colors 2 - Image only",
+    "iconImageName": "colors-1"
+  },
+  {
+    "mainLevel": 2,
+    "directoryName": "family",
+    "title": "Family"
+  },
+  {
+    "mainLevel": 2,
+    "directoryName": "common-words-1",
+    "title": "Common Words - 1"
+  },
+  {
+    "mainLevel": 2,
+    "iconImageName": "reminder",
+    "title": "Reminder 1",
+    "kind": "reminder",
+    "reminderIndex": 1
+  },
+  {
+    "mainLevel": 2,
+    "iconImageName": "reminder",
+    "title": "Reminder 2",
+    "kind": "reminder",
+    "reminderIndex": 2
+  }
+]

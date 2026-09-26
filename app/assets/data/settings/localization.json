@@ -57,8 +57,8 @@
     "title_video_conversation": "Watch and answer",
     "translations_page_title": "Words Used In This Level",
     "tutorial_video_choice": "Tap the correct answer.",
-    "tutorial_video_dialogue_completion": "Listen to the conversation, then choose the correct reply.",
-    "tutorial_video_sentence_builder": "Build your reply by tapping the words in the correct order.",
+    "tutorial_video_dialogue_completion": "Choose the correct answer.",
+    "tutorial_video_sentence_builder": "Tap the words in the correct order.",
     "tutorial_video_appear_disappear": "Remember the words you hear, then tap them in the same order.",
     "tutorial_video_cloze": "Complete the sentence by choosing the missing words.",
     "tutorial_dialogue_completion": "Choose the correct reply to the question.",
@@ -71,7 +71,10 @@
     "tutorial_cloze": "Choose the word that completes the sentence.",
     "tutorial_choice_answer": "Tap the correct answer.",
     "tutorial_grammar_choice": "Tap the word that completes the sentence correctly.",
-    "tutorial_word_pairs": "Match each word with its translation."
+    "tutorial_word_pairs": "Match each word with its translation.",
+    "footer_intent_ask": "Ask question",
+    "footer_intent_repeat": "Repeat again",
+    "footer_intent_respond": "Respond correctly"
   },
   "fr": {
     "settings_title": "Paramètres",
@@ -131,7 +134,7 @@
     "translations_page_title": "Mots utilisés dans ce niveau",
     "tutorial_video_choice": "Appuyez sur la bonne réponse.",
     "tutorial_video_dialogue_completion": "Choisissez la bonne réponse.",
-    "tutorial_video_sentence_builder": "Construisez la phrase en appuyant sur les mots dans le bon ordre.",
+    "tutorial_video_sentence_builder": "Appuyez sur les mots dans le bon ordre.",
     "tutorial_video_appear_disappear": "Mémorisez les mots, puis appuyez dessus dans le même ordre.",
     "tutorial_video_cloze": "Complétez la phrase en choisissant les mots manquants.",
     "tutorial_dialogue_completion": "Choisissez la bonne réponse à la question.",
@@ -144,7 +147,9 @@
     "tutorial_cloze": "Choisissez le mot qui complète la phrase.",
     "tutorial_choice_answer": "Appuyez sur la bonne réponse.",
     "tutorial_grammar_choice": "Appuyez sur le mot qui complète correctement la phrase.",
-    "tutorial_word_pairs": "Appuyez sur un mot, puis sur sa correspondance de l'autre côté."
+    "tutorial_word_pairs": "Appuyez sur un mot, puis sur sa correspondance de l'autre côté.",
+    "footer_intent_ask": "Pose une question",
+    "footer_intent_repeat": "Répète ce que tu as entendu"
   },
   "es": {
     "settings_title": "Ajustes",
@@ -204,7 +209,7 @@
     "translations_page_title": "Palabras usadas en este nivel",
     "tutorial_video_choice": "Toca la respuesta correcta.",
     "tutorial_video_dialogue_completion": "Elige la respuesta correcta.",
-    "tutorial_video_sentence_builder": "Construye la oración tocando las palabras en el orden correcto.",
+    "tutorial_video_sentence_builder": "Toca las palabras en el orden correcto.",
     "tutorial_video_appear_disappear": "Memoriza las palabras y tócalas en el mismo orden.",
     "tutorial_video_cloze": "Completa la oración eligiendo las palabras que faltan.",
     "tutorial_dialogue_completion": "Elige la respuesta correcta a la pregunta.",
@@ -217,7 +222,9 @@
     "tutorial_cloze": "Elige la palabra que completa la oración.",
     "tutorial_choice_answer": "Toca la respuesta correcta.",
     "tutorial_grammar_choice": "Toca la palabra que completa correctamente la oración.",
-    "tutorial_word_pairs": "Toca una palabra y luego su pareja en el otro lado."
+    "tutorial_word_pairs": "Toca una palabra y luego su pareja en el otro lado.",
+    "footer_intent_ask": "Haz una pregunta",
+    "footer_intent_repeat": "Repite lo que escuchaste"
   },
   "tr": {
     "settings_title": "Ayarlar",
@@ -277,7 +284,7 @@
     "translations_page_title": "Bu Seviyede Kullanılan Kelimeler",
     "tutorial_video_choice": "Doğru cevaba dokun.",
     "tutorial_video_dialogue_completion": "Doğru cevabı seçin.",
-    "tutorial_video_sentence_builder": "Kelimelere doğru sırayla dokunarak cümleyi oluşturun.",
+    "tutorial_video_sentence_builder": "Kelimelere doğru sırayla dokunun.",
     "tutorial_video_appear_disappear": "Kelimeleri hatırlayın, sonra aynı sırayla dokunun.",
     "tutorial_video_cloze": "Eksik kelimeleri seçerek cümleyi tamamlayın.",
     "tutorial_dialogue_completion": "Sorunun doğru yanıtını seçin.",
@@ -290,6 +297,8 @@
     "tutorial_cloze": "Cümleyi tamamlayan kelimeyi seçin.",
     "tutorial_choice_answer": "Doğru cevaba dokunun.",
     "tutorial_grammar_choice": "Cümleyi doğru tamamlayan kelimeye dokunun.",
-    "tutorial_word_pairs": "Bir kelimeye dokunun, sonra diğer taraftaki eşine dokunun."
+    "tutorial_word_pairs": "Bir kelimeye dokunun, sonra diğer taraftaki eşine dokunun.",
+    "footer_intent_ask": "Bir soru sor",
+    "footer_intent_repeat": "Duyduğunu tekrarla"
   }
 }

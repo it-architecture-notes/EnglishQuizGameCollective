@@ -16,8 +16,9 @@
   },
   {
     "mainLevel": 1,
-    "directoryName": "colors-1",
-    "title": "Colors - Image only"
+    "directoryName": "colors-shapes",
+    "title": "Colors - Image only",
+    "iconImageName": "colors-1"
   },
   {
     "mainLevel": 1,
@@ -46,7 +47,8 @@
   {
     "mainLevel": 2,
     "directoryName": "bedroom-bathroom-items",
-    "title": "Bedroom & Bathroom Items - Image only"
+    "title": "Bedroom & Bathroom Items - Image only",
+    "iconImageName": "in-the-bedroom"
   },
   {
     "mainLevel": 2,

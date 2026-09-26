@@ -52,7 +52,7 @@ class ProfileService {
   static const String _profileKey = 'user_profile_state';
   static const List<String> _quizTypes = [kQuizGameType];
   static String get _avatarPrefix =>
-      'assets/images/avatars/${AppConfig.flavorDir}/';
+      'assets/images/avatars/${AppConfig.sharedAssetFlavorDir}/';
 
   SharedPreferences? _prefs;
   Future<SharedPreferences> get _preferences async =>

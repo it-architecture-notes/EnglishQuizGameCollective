@@ -9,7 +9,7 @@ metadata:
 ---
 
 `VideoConversation` question clips (`audio_file1` setup / `audio_file2` confirm, e.g. in
-`greetings/adults/questions.json`) are sliced directly out of the level's video file's own AAC
+`greetings/adults-intermediate/questions.json`) are sliced directly out of the level's video file's own AAC
 audio track (e.g. `greetings1.mp4`) at that question's `start_at`/`pause_at`/`answer_until`
 timestamps — confirmed 2026-08-12 by re-extracting the same range from the `.mp4` and matching
 silence timing to the shipped `.m4a` down to the millisecond. They are **not** Gemini TTS output,

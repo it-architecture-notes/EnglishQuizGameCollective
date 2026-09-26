@@ -35,6 +35,23 @@
       }
     },
     {
+      "english_word": "brand",
+      "translations": {
+        "tr": "marka",
+        "es": "marca",
+        "fr": "marque",
+        "de": "Marke",
+        "it": "marca",
+        "pt": "marca",
+        "ru": "бренд",
+        "zh": "品牌",
+        "ja": "ブランド",
+        "ko": "브랜드",
+        "ar": "ماركة",
+        "hi": "ब्रांड"
+      }
+    },
+    {
       "english_word": "how much",
       "translations": {
         "tr": "ne kadar",
@@ -86,6 +103,40 @@
       }
     },
     {
+      "english_word": "checkout",
+      "translations": {
+        "tr": "kasa",
+        "es": "caja",
+        "fr": "caisse",
+        "de": "Kasse",
+        "it": "cassa",
+        "pt": "caixa",
+        "ru": "касса",
+        "zh": "收银台",
+        "ja": "レジ",
+        "ko": "계산대",
+        "ar": "الكاشير",
+        "hi": "कैश काउंटर"
+      }
+    },
+    {
+      "english_word": "to load",
+      "translations": {
+        "tr": "yüklemek",
+        "es": "cargar",
+        "fr": "charger",
+        "de": "laden",
+        "it": "caricare",
+        "pt": "carregar",
+        "ru": "грузить",
+        "zh": "装",
+        "ja": "積む",
+        "ko": "싣다",
+        "ar": "يحمّل",
+        "hi": "लादना"
+      }
+    },
+    {
       "english_word": "to wait",
       "translations": {
         "tr": "beklemek",
@@ -120,6 +171,40 @@
       }
     },
     {
+      "english_word": "to calculate",
+      "translations": {
+        "tr": "hesaplamak",
+        "es": "calcular",
+        "fr": "calculer",
+        "de": "berechnen",
+        "it": "calcolare",
+        "pt": "calcular",
+        "ru": "вычислять",
+        "zh": "计算",
+        "ja": "計算する",
+        "ko": "계산하다",
+        "ar": "يحسب",
+        "hi": "गणना करना"
+      }
+    },
+    {
+      "english_word": "to compare",
+      "translations": {
+        "tr": "karşılaştırmak",
+        "es": "comparar",
+        "fr": "comparer",
+        "de": "vergleichen",
+        "it": "confrontare",
+        "pt": "comparar",
+        "ru": "сравнивать",
+        "zh": "比较",
+        "ja": "比較する",
+        "ko": "비교하다",
+        "ar": "يقارن",
+        "hi": "तुलना करना"
+      }
+    },
+    {
       "english_word": "to weigh",
       "translations": {
         "tr": "tartmak",
@@ -134,6 +219,23 @@
         "ko": "무게를 재다",
         "ar": "يزن",
         "hi": "तौलना"
+      }
+    },
+    {
+      "english_word": "weight",
+      "translations": {
+        "tr": "ağırlık",
+        "es": "peso",
+        "fr": "poids",
+        "de": "Gewicht",
+        "it": "peso",
+        "pt": "peso",
+        "ru": "вес",
+        "zh": "重量",
+        "ja": "重さ",
+        "ko": "무게",
+        "ar": "وزن",
+        "hi": "वज़न"
       }
     },
     {

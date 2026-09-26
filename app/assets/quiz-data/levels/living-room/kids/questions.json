@@ -13,34 +13,36 @@
     },
     {
       "template": "ConvoTemplate-1",
-      "genders": "m-m",
       "questionData": {
-        "line1": "I like to _____ here.",
-        "line2": "Me too.",
+        "character1": "Omar",
+        "character2": "Ryan",
+        "line1": "I love to _____ by the window and chat with you.",
+        "line2": "Me too, it's so relaxing.",
         "answer": "sit",
         "distractors": [
-          "sleep",
-          "read",
-          "cook"
+          "stand",
+          "cook",
+          "walk"
         ]
       },
-      "audio_file1": "i-like-to-sit-here-convo",
-      "audio_file2": "me-too-convo"
+      "audio_file1": "i-love-to-sit-by-the-window-and-chat-with-you-convo",
+      "audio_file2": "me-too-it-s-so-relaxing-convo"
     },
     {
       "template": "DialogueCompletion",
-      "genders": "f-m",
       "questionData": {
-        "line1": "Your room is big.",
-        "answer": "Thanks! I like it.",
+        "character1": "Olivia",
+        "character2": "Ethan",
+        "line1": "I love how spacious your backyard is.",
+        "answer": "Thanks! It's perfect to host guests for book reading.",
         "distractors": [
-          "No, I am tired.",
-          "I read a book.",
-          "It is a big dog."
+          "Thanks, but it is too small for guests.",
+          "I prefer reading alone in the living room.",
+          "We never invite guests to the backyard."
         ]
       },
-      "audio_file1": "your-room-is-big-convo",
-      "audio_file2": "thanks-i-like-it-convo"
+      "audio_file1": "i-love-how-spacious-your-backyard-is-convo",
+      "audio_file2": "thanks-it-s-perfect-to-host-guests-for-book-reading-convo"
     },
     {
       "template": "imageQuizTemplate-1",
@@ -124,18 +126,19 @@
     },
     {
       "template": "DialogueCompletion",
-      "genders": "m-m",
       "questionData": {
-        "line1": "Close the window, please.",
-        "answer": "I am closing it.",
+        "character1": "Ben",
+        "character2": "James",
+        "line1": "Could you please close the window?",
+        "answer": "I am closing it right now.",
         "distractors": [
-          "I read a book.",
-          "I am tired.",
-          "It is a big dog."
+          "I am cleaning the kitchen now.",
+          "Yes, it's quite cold today.",
+          "The window is already open."
         ]
       },
-      "audio_file1": "close-the-window-please-convo",
-      "audio_file2": "i-am-closing-it-convo"
+      "audio_file1": "could-you-please-close-the-window-convo",
+      "audio_file2": "i-am-closing-it-right-now-convo"
     },
     {
       "template": "imageQuizTemplate-1",
@@ -161,37 +164,37 @@
     },
     {
       "template": "ClozeSequence",
-      "genders": "m",
       "questionData": {
-        "sentence": "The room is _____.",
+        "sentence": "The living room looked so _____ that she decided to _____ it up.",
         "answer": [
+          "cluttered",
           "tidy"
         ],
         "distractors": [
-          "wet",
-          "cold",
-          "sad",
-          "loud"
-        ]
-      },
-      "audio_file": "the-room-is-tidy-convo"
-    },
-    {
-      "template": "ClozeSequence",
-      "genders": "f",
-      "questionData": {
-        "sentence": "We _____ here.",
-        "answer": [
-          "sit"
-        ],
-        "distractors": [
-          "sleep",
-          "read",
-          "cook",
+          "messy",
+          "clean",
+          "neat",
           "wash"
         ]
       },
-      "audio_file": "we-sit-here-convo"
+      "audio_file": "the-living-room-looked-so-cluttered-that-she-decided-to-tidy-it-up-convo"
+    },
+    {
+      "template": "ClozeSequence",
+      "questionData": {
+        "sentence": "Their living room is ____, so the family loves to ____ there.",
+        "answer": [
+          "cozy",
+          "gather"
+        ],
+        "distractors": [
+          "quickly",
+          "carefully",
+          "swim",
+          "loudly"
+        ]
+      },
+      "audio_file": "their-living-room-is-cozy-so-the-family-loves-to-gather-there-convo"
     },
     {
       "template": "imageQuizTemplate-1",
@@ -206,55 +209,52 @@
     },
     {
       "template": "AppearDisappear",
-      "genders": "f",
       "questionData": {
-        "words": "Family rests together.",
+        "words": "The family relaxes together every evening.",
         "distractors": [
-          "book",
-          "ball",
-          "dog",
-          "home"
+          "alone",
+          "living room",
+          "this",
+          "works"
         ]
       },
-      "audio_file": "family-rests-together-convo"
+      "audio_file": "the-family-relaxes-together-every-evening-convo"
     },
     {
       "template": "ClozeSequence",
-      "genders": "f",
       "questionData": {
-        "sentence": "I _____ on the sofa.",
+        "sentence": "She likes to ____ and _____ the rain.",
         "answer": [
-          "sit"
+          "lie down",
+          "listen to"
         ],
         "distractors": [
-          "sleep",
-          "read",
-          "cook",
-          "wash"
+          "ask",
+          "rarely",
+          "cool",
+          "softly"
         ]
       },
-      "audio_file": "i-sit-on-the-sofa-convo"
+      "audio_file": "she-likes-to-lie-down-and-listen-to-the-rain-convo"
     },
     {
-      "template": "ClozeSequence",
-      "genders": "m",
+      "template": "GrammarForm",
       "questionData": {
-        "sentence": "I _____ to dad.",
-        "answer": "talk",
+        "sentence": "Have you ever _____ to your father about the new job?",
+        "answer": "talked",
         "distractors": [
-          "talks",
-          "talked",
-          "talking"
+          "will talk",
+          "talking",
+          "talk"
         ]
       }
     },
     {
       "template": "SentenceBuilder",
-      "genders": "m",
       "questionData": {
-        "correct_order": "Move the bookshelf now."
+        "correct_order": "She moved the bookshelf against the other wall."
       },
-      "audio_file": "move-the-bookshelf-now-convo"
+      "audio_file": "he-waved-to-greet-his-neighbor-convo"
     }
   ]
 }

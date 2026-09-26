@@ -487,6 +487,10 @@ class _VideoConversationQuizBodyState extends State<VideoConversationQuizBody> {
   bool _tileCompleted = false;
   bool _listenAgainConsumed = false;
   bool _listenAgainPlaying = false;
+  // A shared controller can be initialized while its native surface is still at 0:00
+  // during a paused-row -> normal-row handoff. Keep the surface detached until this
+  // row's authored start position has been established.
+  bool _frameReady = false;
 
   bool get _isAppearDisappear => widget.data.sequenceData?.isRecall == true;
 
@@ -578,12 +582,29 @@ class _VideoConversationQuizBodyState extends State<VideoConversationQuizBody> {
         await controller.initialize();
       }
       if (!mounted) return;
-      if (!widget.continueExistingPlayback &&
-          controller.value.position < widget.data.startAt) {
+      // A normal row after a paused-video row must always begin at its authored timestamp.
+      // The shared controller may still hold stale position state from the frozen frame, so
+      // checking only whether it is earlier than startAt is not sufficient.
+      debugPrint(
+        '[VideoDebug] attach: startAt=${widget.data.startAt} pauseAt=${widget.data.pauseAt} '
+        'answerUntil=${widget.data.answerUntil} continueExistingPlayback=${widget.continueExistingPlayback} '
+        'controllerPosBefore=${controller.value.position} isPlayingBefore=${controller.value.isPlaying}',
+      );
+      if (!widget.continueExistingPlayback) {
         await controller.seekTo(widget.data.startAt);
+        debugPrint(
+          '[VideoDebug] seekTo(${widget.data.startAt}) done, controllerPosAfter=${controller.value.position}',
+        );
+      } else {
+        debugPrint(
+          '[VideoDebug] skipped seek (continueExistingPlayback=true), controllerPos=${controller.value.position}',
+        );
       }
       if (!mounted) return;
-      setState(() {});
+      // The first build may have occurred while the reused native player was still
+      // displaying its default 0:00 frame. Only attach/render it after the seek (or
+      // the intentional continuation handoff) is complete.
+      setState(() => _frameReady = true);
       await Future<void>.delayed(const Duration(milliseconds: 50));
       if (!mounted) return;
       controller.addListener(_onPositionChanged);
@@ -603,7 +624,13 @@ class _VideoConversationQuizBodyState extends State<VideoConversationQuizBody> {
           _playSetupAudio();
         }
         if (!mounted) return;
-        if (!controller.value.isPlaying) await controller.play();
+        if (!controller.value.isPlaying) {
+          debugPrint(
+            '[VideoDebug] PLAY (fresh start) at pos=${controller.value.position} '
+            'target pauseAt=${widget.data.pauseAt}',
+          );
+          await controller.play();
+        }
         debugPrint(
           'Video conversation started: ${DateTime.now().millisecondsSinceEpoch} ms '
           '(asset: ${controller.dataSource})',
@@ -613,6 +640,9 @@ class _VideoConversationQuizBodyState extends State<VideoConversationQuizBody> {
         // question (e.g. that question's answer_until == its own pause_at, so it never
         // re-paused) — there's no "start" to sync with, but this question's own entry
         // audio still needs to play.
+        debugPrint(
+          '[VideoDebug] already playing on attach (no play() call), pos=${controller.value.position}',
+        );
         _playSetupAudio();
       }
     } catch (e) {
@@ -640,7 +670,6 @@ class _VideoConversationQuizBodyState extends State<VideoConversationQuizBody> {
     unawaited(_playCue(cue));
   }
 
-
   void _onPositionChanged() {
     final controller = widget.controller;
     if (controller == null) return;
@@ -666,13 +695,23 @@ class _VideoConversationQuizBodyState extends State<VideoConversationQuizBody> {
       _pauseHandled = true;
       controller.removeListener(_onPositionChanged);
       _listenerAttached = false;
+      debugPrint(
+        '[VideoDebug] position listener hit target: pos=${controller.value.position} '
+        'target=$target pauseAt=${widget.data.pauseAt}',
+      );
       _pauseThenReveal(controller);
     }
   }
 
   Future<void> _pauseThenReveal(VideoPlayerController controller) async {
     try {
+      debugPrint(
+        '[VideoDebug] PAUSE (reached pauseAt) at pos=${controller.value.position}',
+      );
       await controller.pause();
+      debugPrint(
+        '[VideoDebug] PAUSE done, posAfter=${controller.value.position}',
+      );
     } catch (e, st) {
       debugPrint('[VideoConversation] pause failed: $e\n$st');
     }
@@ -690,37 +729,65 @@ class _VideoConversationQuizBodyState extends State<VideoConversationQuizBody> {
   /// video gets its authored time to keep rolling forward with nothing spoken over it.
   Future<void> _resumeVideo() async {
     final controller = widget.controller;
+    debugPrint(
+      '[VideoDebug] _resumeVideo enter: pos=${controller?.value.position} '
+      'isAppearDisappear=$_isAppearDisappear answerUntil=${widget.data.answerUntil} '
+      'exitCorrectAudioCue=${widget.exitCorrectAudioCue}',
+    );
     // AppearDisappear/recall: nothing new to show past the pause point (the muted track
     // has no fresh content), so the video stays paused — matches the wrong-answer path in
     // image_quiz_screen.dart's _waitForWrongAnswerAudio. Resuming here would let the video
     // free-run, unsupervised (no position listener attached again until the next question
     // mounts), straight into the next question's own video segment before it's ready.
-    if (!_isAppearDisappear) {
-      final playFuture = controller?.play().catchError((Object e, StackTrace st) {
-        debugPrint(
-            '[VideoConversation] controller.play() (resume) failed: $e\n$st');
-      });
-      if (playFuture != null) unawaited(playFuture);
+    if (_isAppearDisappear) {
+      debugPrint('[VideoDebug] _resumeVideo: AppearDisappear, staying paused, returning');
+      return;
     }
+    debugPrint('[VideoDebug] PLAY (resume) at pos=${controller?.value.position}');
+    final playFuture = controller?.play().catchError((Object e, StackTrace st) {
+      debugPrint(
+          '[VideoConversation] controller.play() (resume) failed: $e\n$st');
+    });
+    if (playFuture != null) unawaited(playFuture);
     final cue = widget.exitCorrectAudioCue;
     if (cue != null && cue.isNotEmpty) {
       await _playCue(cue);
-      return;
+    } else if (controller != null) {
+      // No explicit answer_until: let the video play out to its own natural end instead of
+      // cutting immediately — matters most for the last VideoConversation row in a run, where
+      // there's no next question to hand off to and an abrupt cut would read as mid-sentence.
+      final duration = controller.value.duration;
+      final end = widget.data.answerUntil ??
+          (duration > Duration.zero ? duration : widget.data.pauseAt);
+      while (mounted && controller.value.position < end) {
+        await Future<void>.delayed(const Duration(milliseconds: 40));
+      }
     }
-    if (controller == null || _isAppearDisappear) return;
-    // No explicit answer_until: let the video play out to its own natural end instead of
-    // cutting immediately — matters most for the last VideoConversation row in a run, where
-    // there's no next question to hand off to and an abrupt cut would read as mid-sentence.
-    final duration = controller.value.duration;
-    final end = widget.data.answerUntil ??
-        (duration > Duration.zero ? duration : widget.data.pauseAt);
-    while (mounted && controller.value.position < end) {
-      await Future<void>.delayed(const Duration(milliseconds: 40));
+    debugPrint(
+      '[VideoDebug] _resumeVideo after audio/wait: pos=${controller?.value.position} '
+      'isPlaying=${controller?.value.isPlaying}',
+    );
+    // Always leave the video explicitly paused before returning — nothing else re-pauses it
+    // (the pause-detection listener already detached itself when this question's own pause
+    // point was first reached), and the next question's setup assumes the shared controller
+    // is sitting still at (approximately) this question's answer_until, not still rolling
+    // forward unsupervised until whatever mounts next happens to notice and correct it.
+    try {
+      debugPrint('[VideoDebug] PAUSE (end of resume) at pos=${controller?.value.position}');
+      await controller?.pause();
+      debugPrint('[VideoDebug] PAUSE (end of resume) done, posAfter=${controller?.value.position}');
+    } catch (e, st) {
+      debugPrint(
+          '[VideoConversation] controller.pause() (resume) failed: $e\n$st');
     }
   }
 
   @override
   void dispose() {
+    debugPrint(
+      '[VideoDebug] dispose: pos=${widget.controller?.value.position} '
+      'isPlaying=${widget.controller?.value.isPlaying} listenerAttached=$_listenerAttached',
+    );
     if (_listenerAttached) {
       widget.controller?.removeListener(_onPositionChanged);
     }
@@ -1091,21 +1158,22 @@ class _VideoConversationQuizBodyState extends State<VideoConversationQuizBody> {
   }
 
   ({double height, int lines}) _measureClozeSentence(
-    String sentence,
+    VideoClozeAnswerData cloze,
     double fontSize,
     double availableWidth,
   ) {
-    if (sentence.isEmpty || availableWidth <= 0) {
+    if (cloze.sentence.isEmpty || availableWidth <= 0) {
       return (height: 0.0, lines: 0);
     }
+    final theme = Theme.of(context);
     final painter = TextPainter(
       text: TextSpan(
-        text: sentence,
         style: TextStyle(
           fontFamily: 'Inter',
           fontSize: fontSize,
           fontWeight: FontWeight.w600,
         ),
+        children: _buildClozeSentenceSpans(theme, cloze, fontSize),
       ),
       textDirection: Directionality.of(context),
       textScaler: MediaQuery.textScalerOf(context),
@@ -1148,7 +1216,8 @@ class _VideoConversationQuizBodyState extends State<VideoConversationQuizBody> {
   @override
   Widget build(BuildContext context) {
     final controller = widget.controller;
-    final hasVideo = controller != null && controller.value.isInitialized;
+    final hasVideo =
+        _frameReady && controller != null && controller.value.isInitialized;
     final aspectRatio = hasVideo ? controller.value.aspectRatio : 1.0;
     final layoutBudget = QuestionLayoutBudget.of(context);
 
@@ -1160,6 +1229,9 @@ class _VideoConversationQuizBodyState extends State<VideoConversationQuizBody> {
             layoutBudget.mediaWidthForAvailable(bodyConstraints.maxWidth);
         final answerWidth =
             layoutBudget.answerWidthForAvailable(bodyConstraints.maxWidth);
+        // The answer panel below has 12px horizontal padding on each side. Keep all answer
+        // measurement and rendering decisions on the same inner width.
+        final answerContentWidth = max(0.0, answerWidth - 24.0);
         final remainderHeight =
             max(0.0, bodyConstraints.maxHeight - mediaHeight);
 
@@ -1193,7 +1265,7 @@ class _VideoConversationQuizBodyState extends State<VideoConversationQuizBody> {
             buttonFontSize = preset.fontSize;
             buttonGap = preset.gap;
             final maxLines = _measureMaxButtonLines(
-                _choiceOptions, buttonFontSize, answerWidth);
+                _choiceOptions, buttonFontSize, answerContentWidth);
             buttonHeight = maxLines > 1
                 ? max(preset.height + (maxLines - 1) * 20.0, preset.height)
                 : preset.height;
@@ -1210,9 +1282,9 @@ class _VideoConversationQuizBodyState extends State<VideoConversationQuizBody> {
           } else if (widget.data.clozeData != null) {
             clozePreset = _videoClozePresets[layoutBudget.tier]!;
             final sentenceMeasurement = _measureClozeSentence(
-              widget.data.clozeData!.sentence,
+              widget.data.clozeData!,
               questionSentenceTextSizeFor(layoutBudget.tier),
-              answerWidth,
+              answerContentWidth,
             );
             clozeSentenceHeight = sentenceMeasurement.height;
             clozeSentenceLines = sentenceMeasurement.lines;
@@ -1223,7 +1295,7 @@ class _VideoConversationQuizBodyState extends State<VideoConversationQuizBody> {
             final initialTilePreset = _resolvePreset(
               items: _tileChoices,
               presets: clozePreset.tilePresets,
-              availableWidth: answerWidth - 24.0,
+              availableWidth: answerContentWidth,
               availableHeight: answerContentHeight * 0.55,
               fontWeight: FontWeight.w600,
               fixedHeight: questionTileHeightFor(layoutBudget),
@@ -1243,7 +1315,7 @@ class _VideoConversationQuizBodyState extends State<VideoConversationQuizBody> {
             tilePreset = _resolvePreset(
               items: _tileChoices,
               presets: clozePreset.tilePresets,
-              availableWidth: answerWidth - 24.0,
+              availableWidth: answerContentWidth,
               availableHeight: tileBudget,
               fontWeight: FontWeight.w600,
               fixedHeight: questionTileHeightFor(layoutBudget),
@@ -1449,7 +1521,7 @@ class _VideoConversationQuizBodyState extends State<VideoConversationQuizBody> {
                       builder: (context, answerConstraints) {
                         final content = widget.data.choiceData != null
                             ? _buildChoicePanel(
-                                answerWidth: answerWidth,
+                                answerWidth: answerContentWidth,
                                 buttonHeight: buttonHeight,
                                 fontSize: buttonFontSize,
                                 gap: buttonGap,
@@ -1460,7 +1532,7 @@ class _VideoConversationQuizBodyState extends State<VideoConversationQuizBody> {
                                     cloze: widget.data.clozeData!,
                                     clozePreset: clozePreset!,
                                     tilePreset: tilePreset!,
-                                    answerWidth: answerWidth,
+                                    answerWidth: answerContentWidth,
                                     sentenceFontSize:
                                         questionSentenceTextSizeFor(
                                             layoutBudget.tier),
@@ -1809,9 +1881,8 @@ class _VideoConversationQuizBodyState extends State<VideoConversationQuizBody> {
     final isWrong = _tileFailed && _tileWrongIndex == index;
     final isCorrectTile = _tileUsedIndices.contains(index);
     final isRevealed = _tileRevealedStepOf.containsKey(index);
-    final step = isCorrectTile
-        ? _tileStepOf[index]
-        : _tileRevealedStepOf[index];
+    final step =
+        isCorrectTile ? _tileStepOf[index] : _tileRevealedStepOf[index];
 
     final Color bg;
     final Color border;

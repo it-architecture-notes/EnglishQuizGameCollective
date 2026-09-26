@@ -1,5 +1,6 @@
 import 'dart:math';
 
+import 'package:flutter/foundation.dart' show listEquals;
 import 'package:flutter/material.dart';
 
 import '../../models/level_config.dart';
@@ -458,6 +459,7 @@ class _DialogueCompletionLayout {
     required this.measuredButtonsHeight,
     required this.buttonSpacing,
     required this.promptToButtonsGap,
+    required this.line1WrapWidth,
   });
 
   final double line1FontSize;
@@ -473,6 +475,10 @@ class _DialogueCompletionLayout {
   final double measuredButtonsHeight;
   final double buttonSpacing;
   final double promptToButtonsGap;
+
+  /// Real available width inside the prompt card, after its fixed 32px horizontal padding —
+  /// logged alongside `buttonWidth` so both boxes' actual content widths can be compared.
+  final double line1WrapWidth;
 }
 
 /// Image + first speaker line + four full-sentence replies. Visually mirrors
@@ -594,9 +600,14 @@ class _DialogueCompletionQuizBodyState
   @override
   void didUpdateWidget(covariant DialogueCompletionQuizBody oldWidget) {
     super.didUpdateWidget(oldWidget);
-    if (oldWidget.enterAudioCue != widget.enterAudioCue ||
-        oldWidget.exitCorrectAudioCue != widget.exitCorrectAudioCue ||
-        oldWidget.exitWrongAudioCue != widget.exitWrongAudioCue) {
+    // Every list here (`_resolvedAudioCue` in image_quiz_screen.dart) is rebuilt fresh on every
+    // parent rebuild, even when its contents haven't changed — a plain `!=` compares by identity
+    // and would treat every unrelated parent rebuild (e.g. dismissing the footer guide from
+    // pressing the manual audio button) as "the cues changed", wrongly resetting `_locked` and
+    // replaying the enter cue mid-question. Compare by content instead.
+    if (!listEquals(oldWidget.enterAudioCue, widget.enterAudioCue) ||
+        !listEquals(oldWidget.exitCorrectAudioCue, widget.exitCorrectAudioCue) ||
+        !listEquals(oldWidget.exitWrongAudioCue, widget.exitWrongAudioCue)) {
       setState(() {
         _audio1Scheduled = false;
         _locked = false;
@@ -714,10 +725,17 @@ class _DialogueCompletionQuizBodyState
     final nominalPromptHeight = availableHeight * remainderSplit.prompt;
     final nominalButtonsHeight = availableHeight * remainderSplit.buttons;
 
+    // The button column below is wrapped in `Padding(horizontal: gaps.containerHorizontalPadding)`
+    // — both the shared button width and its text-wrap measurement must account for that or they
+    // assume more room than the buttons actually render into, same class of bug as the prompt
+    // card: under-counting wrapped lines and letting real content overflow into scroll.
+    final buttonAreaWidth =
+        max(0.0, answerWidth - gaps.containerHorizontalPadding * 2);
+
     // 1. Measure all reply buttons to determine shared button height
     final buttonContentWidth = max(
       0.0,
-      answerWidth -
+      buttonAreaWidth -
           buttonPreset.horizontalPadding -
           McqPillAnswerButton.wrongStateIconSize -
           McqPillAnswerButton.wrongStateIconGap,
@@ -755,15 +773,21 @@ class _DialogueCompletionQuizBodyState
     final measuredButtonsTotalHeight =
         measuredButtonsHeight + gaps.promptToButtonsGap;
 
-    final buttonWidth = answerWidth;
+    final buttonWidth = buttonAreaWidth;
 
     // 2. Measure Dialogue / line1 Prompt Card
     final line1FontSize = buttonPreset.fontSize * 1.1;
+    // The prompt card's own Container (below) has a fixed 16px left/right padding regardless of
+    // tier — `promptPreset.cardPaddingHorizontal` (14–24, tier-varying) doesn't actually match
+    // that literal render padding, so subtracting it under-corrected the real available width on
+    // several tiers. Use the real fixed 32px instead, matching what the Container actually
+    // renders — otherwise the wrap estimate assumes more room than line1 renders into,
+    // under-counting wrapped lines and letting real content overflow into the scroll fallback.
     final line1WrapWidth = max(
       0.0,
       answerWidth -
           (hasAudioButton ? promptPreset.audioSpeakerSize + 8.0 : 0.0) -
-          promptPreset.cardPaddingHorizontal,
+          32.0,
     );
 
     final line1TextHeight = _measureWrappedHeight(
@@ -833,6 +857,7 @@ class _DialogueCompletionQuizBodyState
       measuredButtonsHeight: measuredButtonsHeight,
       buttonSpacing: gaps.buttonSpacing,
       promptToButtonsGap: gaps.promptToButtonsGap,
+      line1WrapWidth: line1WrapWidth,
     );
   }
 
@@ -850,12 +875,17 @@ class _DialogueCompletionQuizBodyState
 
     final hasImage = widget.imagePath != null;
     final dcBudget = QuestionLayoutBudget.of(context);
-    final answerWidth =
-        dcBudget.answerWidthForAvailable(MediaQuery.sizeOf(context).width);
 
     return LayoutBuilder(
       builder: (context, bodyConstraints) {
         final budget = QuestionLayoutBudget.of(context);
+        // Must come from the LayoutBuilder's real local constraints, not MediaQuery's screen
+        // width — the question body has its own horizontal padding, so the screen width is
+        // wider than what's actually available here. Using the screen width would make every
+        // downstream text-wrap estimate assume more room than options/bubbles actually render
+        // into, under-counting wrapped lines and letting real content silently overflow.
+        final answerWidth =
+            dcBudget.answerWidthForAvailable(bodyConstraints.maxWidth);
         final mediaWidthLimit =
             budget.mediaWidthForAvailable(bodyConstraints.maxWidth);
         final mediaHeight = hasImage
@@ -910,6 +940,7 @@ class _DialogueCompletionQuizBodyState
             'localBody=${bodyConstraints.maxWidth.toStringAsFixed(1)}x${bodyConstraints.maxHeight.toStringAsFixed(1)}px '
             'media=${mediaWidthLimit.toStringAsFixed(1)}x${mediaHeight.toStringAsFixed(1)}px '
             'promptCard=${answerWidth.toStringAsFixed(1)}x${layout.promptCardHeight.toStringAsFixed(1)}px '
+            'line1WrapWidth=${layout.line1WrapWidth.toStringAsFixed(1)}px '
             'promptExtension=${layout.promptExtension.toStringAsFixed(1)}px '
             'buttonsHeight=${layout.measuredButtonsHeight.toStringAsFixed(1)}px '
             'button=${layout.buttonWidth.toStringAsFixed(1)}x${layout.buttonHeight.toStringAsFixed(1)}px '
@@ -987,7 +1018,7 @@ class _DialogueCompletionQuizBodyState
                         ),
                         child: Center(
                           child: SizedBox(
-                            width: answerWidth,
+                            width: max(0.0, answerWidth - 32.0),
                             child: Row(
                               crossAxisAlignment: CrossAxisAlignment.center,
                               children: [

@@ -14,7 +14,7 @@ import 'conversation_character_pool.dart';
 /// Tries `{directoryName}/{flavor}/questions.json` first (e.g. `greetings/kids/questions.json`)
 /// and falls back to the level's root `questions.json` if that level hasn't
 /// been migrated to a flavor-specific folder yet. Applies to both flavors —
-/// a level with no `adults/` subfolder still resolves via its root file.
+/// a level with no `adults-intermediate/` subfolder still resolves via its root file.
 Future<LevelConfig> loadLevelConfig(String directoryName) async {
   final base = 'assets/quiz-data/levels/$directoryName';
   final flavorPath = '$base/${AppConfig.flavorDir}/questions.json';

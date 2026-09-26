@@ -1,3 +1,225 @@
 {
-  "translations_list": []
+  "translations_list": [
+    {
+      "english_word": "to fly",
+      "translations": {
+        "tr": "uçmak",
+        "es": "volar",
+        "fr": "voler",
+        "de": "fliegen",
+        "it": "volare",
+        "pt": "voar",
+        "ru": "летать",
+        "zh": "飞翔",
+        "ja": "飛ぶ",
+        "ko": "날다",
+        "ar": "يطير",
+        "hi": "उड़ना"
+      }
+    },
+    {
+      "english_word": "to take off",
+      "translations": {
+        "tr": "kalkmak",
+        "es": "despegar",
+        "fr": "décoller",
+        "de": "abheben",
+        "it": "decollare",
+        "pt": "decolar",
+        "ru": "взлетать",
+        "zh": "起飞",
+        "ja": "離陸する",
+        "ko": "이륙하다",
+        "ar": "يُقلع",
+        "hi": "उड़ान भरना"
+      }
+    },
+    {
+      "english_word": "to depart",
+      "translations": {
+        "tr": "ayrılmak",
+        "es": "partir",
+        "fr": "partir",
+        "de": "abreisen",
+        "it": "partire",
+        "pt": "partir",
+        "ru": "уйти",
+        "zh": "离开",
+        "ja": "出発する",
+        "ko": "출발하다",
+        "ar": "يغادر",
+        "hi": "प्रस्थान करना"
+      }
+    },
+    {
+      "english_word": "to land",
+      "translations": {
+        "tr": "inmek",
+        "es": "aterrizar",
+        "fr": "atterrir",
+        "de": "landen",
+        "it": "atterrare",
+        "pt": "pousar",
+        "ru": "приземлиться",
+        "zh": "着陆",
+        "ja": "着陸する",
+        "ko": "착륙하다",
+        "ar": "يهبط",
+        "hi": "उतरना"
+      }
+    },
+    {
+      "english_word": "to announce",
+      "translations": {
+        "tr": "duyurmak",
+        "es": "anunciar",
+        "fr": "annoncer",
+        "de": "ankündigen",
+        "it": "annunciare",
+        "pt": "anunciar",
+        "ru": "объявить",
+        "zh": "宣布",
+        "ja": "アナウンスする",
+        "ko": "발표하다",
+        "ar": "يُعلن",
+        "hi": "घोषणा करना"
+      }
+    },
+    {
+      "english_word": "to be late",
+      "translations": {
+        "tr": "geç kalmak",
+        "es": "llegar tarde",
+        "fr": "être en retard",
+        "de": "zu spät kommen",
+        "it": "essere in ritardo",
+        "pt": "estar atrasado",
+        "ru": "опаздывать",
+        "zh": "迟到",
+        "ja": "遅刻する",
+        "ko": "늦다",
+        "ar": "يتأخر",
+        "hi": "देर होना"
+      }
+    },
+    {
+      "english_word": "to transfer",
+      "translations": {
+        "tr": "aktarmak",
+        "es": "transferir",
+        "fr": "transférer",
+        "de": "umladen",
+        "it": "trasferire",
+        "pt": "transferir",
+        "ru": "перевозить",
+        "zh": "转运",
+        "ja": "移す",
+        "ko": "옮기다",
+        "ar": "ينقل",
+        "hi": "स्थानांतरित करना"
+      }
+    },
+    {
+      "english_word": "to cancel",
+      "translations": {
+        "tr": "iptal etmek",
+        "es": "cancelar",
+        "fr": "annuler",
+        "de": "stornieren",
+        "it": "annullare",
+        "pt": "cancelar",
+        "ru": "отменить",
+        "zh": "取消",
+        "ja": "キャンセルする",
+        "ko": "취소하다",
+        "ar": "يلغي",
+        "hi": "रद्द करना"
+      }
+    },
+    {
+      "english_word": "passenger",
+      "translations": {
+        "tr": "yolcu",
+        "es": "pasajero",
+        "fr": "passager",
+        "de": "Passagier",
+        "it": "passeggero",
+        "pt": "passageiro",
+        "ru": "пассажир",
+        "zh": "乘客",
+        "ja": "乗客",
+        "ko": "승객",
+        "ar": "راكب",
+        "hi": "यात्री"
+      }
+    },
+    {
+      "english_word": "on time",
+      "translations": {
+        "tr": "zamanında",
+        "es": "a tiempo",
+        "fr": "à l'heure",
+        "de": "pünktlich",
+        "it": "in tempo",
+        "pt": "na hora certa",
+        "ru": "вовремя",
+        "zh": "准时",
+        "ja": "時間通りに",
+        "ko": "정시에",
+        "ar": "في الوقت المحدد",
+        "hi": "समय पर"
+      }
+    },
+    {
+      "english_word": "to delay",
+      "translations": {
+        "tr": "gecikmek",
+        "es": "retrasar",
+        "fr": "être retardé",
+        "de": "verzögern",
+        "it": "ritardare",
+        "pt": "atrasar",
+        "ru": "задерживаться",
+        "zh": "延误",
+        "ja": "遅れる",
+        "ko": "지연되다",
+        "ar": "يؤخر",
+        "hi": "देरी होना"
+      }
+    },
+    {
+      "english_word": "connecting flight",
+      "translations": {
+        "tr": "aktarmalı uçuş",
+        "es": "vuelo de conexión",
+        "fr": "vol de correspondance",
+        "de": "Anschlussflug",
+        "it": "volo di coincidenza",
+        "pt": "voo de conexão",
+        "ru": "стыковочный рейс",
+        "zh": "转机航班",
+        "ja": "乗り継ぎ便",
+        "ko": "환승편",
+        "ar": "رحلة ترانزيت",
+        "hi": "कनेक्टिंग फ़्लाइट"
+      }
+    },
+    {
+      "english_word": "layover",
+      "translations": {
+        "tr": "aktarma süresi",
+        "es": "escala",
+        "fr": "escale",
+        "de": "Zwischenstopp",
+        "it": "scalo",
+        "pt": "escala",
+        "ru": "стыковка",
+        "zh": "中途停留",
+        "ja": "乗り継ぎ時間",
+        "ko": "환승 대기",
+        "ar": "توقف",
+        "hi": "लंबा इंतज़ार"
+      }
+    }
+  ]
 }

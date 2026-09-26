@@ -13,36 +13,36 @@
     },
     {
       "template": "ConvoTemplate-1",
-      "genders": "f-m",
       "questionData": {
-        "line1": "Can I _____ this book?",
-        "line2": "Yes, you can _____ it.",
-        "answer": "read",
+        "character1": "Beth",
+        "character2": "Alex",
+        "line1": "Is this copy _____ to borrow?",
+        "line2": "Yes, this copy is _____.",
+        "answer": "available",
         "distractors": [
-          "see",
-          "hold",
-          "take"
+          "buy",
+          "cancel",
+          "print"
         ]
       },
-      "audio_file1": "can-i-read-this-book-convo",
-      "audio_file2": "yes-you-can-read-it-convo"
+      "audio_file1": "is-this-copy-available-to-borrow-convo",
+      "audio_file2": "yes-this-copy-is-available-convo"
     },
     {
       "template": "ClozeSequence",
-      "genders": "f",
       "questionData": {
-        "sentence": "Can you _____ me find a book?",
+        "sentence": "Excuse me, could you _____ me _____ a book?",
         "answers": [
           "help",
           "find"
         ],
         "distractors": [
-          "show",
+          "buy",
           "read",
-          "take"
+          "borrow"
         ]
       },
-      "audio_file": "can-you-help-me-find-a-book-convo"
+      "audio_file": "excuse-me-could-you-help-me-find-a-book-convo"
     },
     {
       "template": "imageQuizTemplate-1",
@@ -62,7 +62,7 @@
           "long",
           "short",
           "quiet",
-          "fun"
+          "boring"
         ],
         "translations": [
           {
@@ -108,50 +108,50 @@
             "hi": "शांत"
           },
           {
-            "tr": "eğlenceli",
-            "es": "divertido",
-            "fr": "amusant",
-            "de": "spaßig",
-            "it": "divertente",
-            "pt": "divertido",
-            "ru": "весёлый",
-            "zh": "有趣的",
-            "ja": "楽しい",
-            "ko": "재미있는",
-            "ar": "ممتع",
-            "hi": "मज़ेदार"
+            "tr": "sıkıcı",
+            "es": "aburrido",
+            "fr": "ennuyeux",
+            "de": "langweilig",
+            "it": "noioso",
+            "pt": "entediante",
+            "ru": "скучный",
+            "zh": "无聊的",
+            "ja": "退屈な",
+            "ko": "지루한",
+            "ar": "ممل",
+            "hi": "उबाऊ"
           }
         ]
       }
     },
     {
       "template": "DialogueCompletion",
-      "genders": "m-f",
       "questionData": {
-        "line1": "Can I take this book?",
-        "answer": "Yes, take it home.",
+        "character1": "Omar",
+        "character2": "Lily",
+        "line1": "How long can I keep this book?",
+        "answer": "You can borrow it for three weeks.",
         "distractors": [
-          "The book is big.",
-          "Please read it.",
-          "This book is fun."
+          "The book is on the top shelf.",
+          "Please show your library card.",
+          "This book is very long."
         ]
       },
-      "audio_file1": "can-i-take-this-book-convo",
-      "audio_file2": "yes-take-it-home-convo"
+      "audio_file1": "how-long-can-i-keep-this-book-convo",
+      "audio_file2": "you-can-borrow-it-for-three-weeks-convo"
     },
     {
       "template": "AppearDisappear",
-      "genders": "f",
       "questionData": {
-        "words": "The library is open today.",
+        "words": "Is the library closed on Sundays?",
         "distractors": [
           "open",
-          "closed",
-          "book",
-          "home"
+          "Saturday",
+          "when",
+          "there"
         ]
       },
-      "audio_file": "the-library-is-open-today-convo"
+      "audio_file": "is-the-library-closed-on-sundays-convo"
     },
     {
       "template": "imageQuizTemplate-1",
@@ -177,11 +177,10 @@
     },
     {
       "template": "SentenceBuilder",
-      "genders": "f",
       "questionData": {
-        "correct_order": "Let's find a book."
+        "correct_order": "Let me search our catalogue."
       },
-      "audio_file": "lets-find-a-book-convo"
+      "audio_file": "let-me-search-our-catalogue-convo"
     },
     {
       "template": "imageQuizTemplate-1",
@@ -196,24 +195,23 @@
     },
     {
       "template": "ClozeSequence",
-      "genders": "f",
       "questionData": {
-        "sentence": "My card is _____.",
+        "sentence": "My library card is _____. I need to _____ it soon.",
         "answers": [
-          "old"
+          "expired",
+          "renew"
         ],
         "distractors": [
-          "new",
-          "big",
-          "fun",
-          "long"
+          "cancel",
+          "print",
+          "borrow",
+          "search"
         ]
       },
-      "audio_file": "my-card-is-old-convo"
+      "audio_file": "my-library-card-is-expired-i-need-to-renew-it-soon-convo"
     },
     {
-      "template": "ClozeSequence",
-      "genders": "f",
+      "template": "GrammarForm",
       "questionData": {
         "sentence": "____ I get a library card please?",
         "answer": "Can",
@@ -226,36 +224,36 @@
     },
     {
       "template": "ClozeSequence",
-      "genders": "f",
       "questionData": {
-        "sentence": "_____ your card, please.",
+        "sentence": "She needs to _____ her card to reserve books.",
         "answers": [
           "show"
         ],
         "distractors": [
-          "Read",
-          "Find",
-          "Take",
-          "Hold"
+          "hide",
+          "cancel",
+          "replace",
+          "forget"
         ]
       },
-      "audio_file": "show-your-card-please-convo"
+      "audio_file": "she-needs-to-show-her-card-to-reserve-books-convo"
     },
     {
       "template": "ConvoTemplate-1",
-      "genders": "m-f",
       "questionData": {
-        "line1": "I need to _____ this book.",
-        "line2": "Please _____ it here.",
+        "character1": "Sam",
+        "character2": "Lily",
+        "line1": "This book is due today. I need to _____ it.",
+        "line2": "Yes, please _____ it to the library.",
         "answer": "return",
         "distractors": [
-          "read",
-          "find",
-          "take"
+          "buy",
+          "search",
+          "show"
         ]
       },
-      "audio_file1": "i-need-to-return-this-book-convo",
-      "audio_file2": "please-return-it-here-convo"
+      "audio_file1": "this-book-is-due-today-i-need-to-return-it-convo",
+      "audio_file2": "yes-please-return-it-to-the-library-convo"
     }
   ]
 }

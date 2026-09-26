@@ -9,12 +9,165 @@
         "de": "anprobieren",
         "it": "provare",
         "pt": "experimentar",
-        "ru": "примерять",
+        "ru": "примерить",
         "zh": "试穿",
-        "ja": "試す",
-        "ko": "입어 보다",
-        "ar": "يجرّب",
-        "hi": "आज़माना"
+        "ja": "試着する",
+        "ko": "입어보다",
+        "ar": "يجرب",
+        "hi": "पहनकर देखना"
+      }
+    },
+    {
+      "english_word": "to spend",
+      "translations": {
+        "tr": "harcamak",
+        "es": "gastar",
+        "fr": "dépenser",
+        "de": "ausgeben",
+        "it": "spendere",
+        "pt": "gastar",
+        "ru": "тратить",
+        "zh": "花费",
+        "ja": "使う",
+        "ko": "지출하다",
+        "ar": "ينفق",
+        "hi": "खर्च करना"
+      }
+    },
+    {
+      "english_word": "discount",
+      "translations": {
+        "tr": "indirim",
+        "es": "descuento",
+        "fr": "remise",
+        "de": "Rabatt",
+        "it": "sconto",
+        "pt": "desconto",
+        "ru": "скидка",
+        "zh": "折扣",
+        "ja": "割引",
+        "ko": "할인",
+        "ar": "خصم",
+        "hi": "छूट"
+      }
+    },
+    {
+      "english_word": "to remove",
+      "translations": {
+        "tr": "kaldırmak",
+        "es": "quitar",
+        "fr": "retirer",
+        "de": "entfernen",
+        "it": "rimuovere",
+        "pt": "remover",
+        "ru": "удалить",
+        "zh": "取下",
+        "ja": "取り除く",
+        "ko": "제거하다",
+        "ar": "يزيل",
+        "hi": "हटाना"
+      }
+    },
+    {
+      "english_word": "to dress",
+      "translations": {
+        "tr": "giyinmek",
+        "es": "vestirse",
+        "fr": "s'habiller",
+        "de": "sich anziehen",
+        "it": "vestirsi",
+        "pt": "vestir-se",
+        "ru": "одеваться",
+        "zh": "穿衣服",
+        "ja": "服を着る",
+        "ko": "옷을 입다",
+        "ar": "يَلبَس",
+        "hi": "कपड़े पहनना"
+      }
+    },
+    {
+      "english_word": "to fit",
+      "translations": {
+        "tr": "uymak",
+        "es": "encajar",
+        "fr": "convenir / aller bien",
+        "de": "passen",
+        "it": "calzare (vestiti)",
+        "pt": "caber",
+        "ru": "подходить",
+        "zh": "适合",
+        "ja": "フィットする",
+        "ko": "적합하다",
+        "ar": "يناسب",
+        "hi": "फिट होना"
+      }
+    },
+    {
+      "english_word": "to return an item",
+      "translations": {
+        "tr": "bir ürünü iade etmek",
+        "es": "devolver un artículo",
+        "fr": "rendre un article",
+        "de": "einen Artikel zurückgeben",
+        "it": "restituire un articolo",
+        "pt": "devolver um item",
+        "ru": "вернуть товар",
+        "zh": "退还商品",
+        "ja": "商品を返品する",
+        "ko": "물건을 반품하다",
+        "ar": "إرجاع سلعة",
+        "hi": "सामान वापस करना"
+      }
+    },
+    {
+      "english_word": "to afford",
+      "translations": {
+        "tr": "gücü yetmek",
+        "es": "poder pagar",
+        "fr": "se permettre",
+        "de": "sich leisten können",
+        "it": "permettersi",
+        "pt": "poder pagar",
+        "ru": "позволить себе",
+        "zh": "买得起",
+        "ja": "余裕がある",
+        "ko": "여유가 있다",
+        "ar": "يستطيع تحمل تكلفة",
+        "hi": "खर्च उठा पाना"
+      }
+    },
+    {
+      "english_word": "by mistake",
+      "translations": {
+        "tr": "yanlışlıkla",
+        "es": "por error",
+        "fr": "par erreur",
+        "de": "aus Versehen",
+        "it": "per errore",
+        "pt": "por engano",
+        "ru": "по ошибке",
+        "zh": "不小心地",
+        "ja": "間違えて",
+        "ko": "실수로",
+        "ar": "بالخطأ",
+        "hi": "गलती से"
+      }
+    },
+    {
+      "english_word": "fitting room",
+      "translations": {
+        "tr": "deneme kabini",
+        "es": "probador",
+        "fr": "cabine d'essayage",
+        "de": "Umkleidekabine",
+        "it": "camerino",
+        "pt": "provador",
+        "ru": "примерочная",
+        "zh": "试衣间",
+        "ja": "試着室",
+        "ko": "탈의실",
+        "ar": "غرفة القياس",
+        "hi": "ट्रायल रूम"
       }
     },
     {
@@ -32,6 +185,74 @@
         "ko": "입다",
         "ar": "يرتدي",
         "hi": "पहनना"
+      }
+    },
+    {
+      "english_word": "to match",
+      "translations": {
+        "tr": "uymak",
+        "es": "combinar con",
+        "fr": "assortir",
+        "de": "passen zu",
+        "it": "abbinare",
+        "pt": "combinar com",
+        "ru": "сочетаться",
+        "zh": "搭配",
+        "ja": "合わせる",
+        "ko": "어울리다",
+        "ar": "يتناسق مع",
+        "hi": "मेल खाना"
+      }
+    },
+    {
+      "english_word": "to look for",
+      "translations": {
+        "tr": "bir şeyi aramak",
+        "es": "buscar",
+        "fr": "chercher",
+        "de": "suchen",
+        "it": "cercare",
+        "pt": "procurar",
+        "ru": "искать",
+        "zh": "寻找",
+        "ja": "探す",
+        "ko": "찾다",
+        "ar": "يبحث عن",
+        "hi": "ढूँढना"
+      }
+    },
+    {
+      "english_word": "perfect",
+      "translations": {
+        "tr": "mükemmel",
+        "es": "perfecto",
+        "fr": "parfait",
+        "de": "perfekt",
+        "it": "perfetto",
+        "pt": "perfeito",
+        "ru": "идеальный",
+        "zh": "完美的",
+        "ja": "完璧な",
+        "ko": "완벽한",
+        "ar": "مثالي",
+        "hi": "उत्तम"
+      }
+    },
+    {
+      "english_word": "to love",
+      "translations": {
+        "tr": "sevmek",
+        "es": "amar",
+        "fr": "aimer",
+        "de": "lieben",
+        "it": "amare",
+        "pt": "amar",
+        "ru": "любить",
+        "zh": "爱",
+        "ja": "愛する",
+        "ko": "사랑하다",
+        "ar": "يحب",
+        "hi": "प्यार करना"
       }
     }
   ]

@@ -52,6 +52,23 @@
       }
     },
     {
+      "english_word": "to lie down",
+      "translations": {
+        "tr": "uzanmak",
+        "es": "acostarse",
+        "fr": "s'allonger",
+        "de": "sich hinlegen",
+        "it": "sdraiarsi",
+        "pt": "deitar-se",
+        "ru": "лечь",
+        "zh": "躺下",
+        "ja": "横になる",
+        "ko": "눕다",
+        "ar": "يستلقي",
+        "hi": "लेटना"
+      }
+    },
+    {
       "english_word": "to rest",
       "translations": {
         "tr": "dinlenmek",
@@ -66,6 +83,40 @@
         "ko": "쉬다",
         "ar": "يرتاح",
         "hi": "आराम करना"
+      }
+    },
+    {
+      "english_word": "turn on the light",
+      "translations": {
+        "tr": "ışığı açmak",
+        "es": "encender la luz",
+        "fr": "allumer la lumière",
+        "de": "das Licht einschalten",
+        "it": "accendere la luce",
+        "pt": "acender a luz",
+        "ru": "включить свет",
+        "zh": "开灯",
+        "ja": "電気をつける",
+        "ko": "불을 켜다",
+        "ar": "تشغيل الضوء",
+        "hi": "लाइट चालू करना"
+      }
+    },
+    {
+      "english_word": "turn off the light",
+      "translations": {
+        "tr": "ışığı kapatmak",
+        "es": "apagar la luz",
+        "fr": "éteindre la lumière",
+        "de": "das Licht ausschalten",
+        "it": "spegnere la luce",
+        "pt": "apagar a luz",
+        "ru": "выключить свет",
+        "zh": "关灯",
+        "ja": "電気を消す",
+        "ko": "불을 끄다",
+        "ar": "إطفاء الضوء",
+        "hi": "लाइट बंद करना"
       }
     },
     {
@@ -134,6 +185,23 @@
         "ko": "깨어있는",
         "ar": "مستيقظ",
         "hi": "जागा हुआ"
+      }
+    },
+    {
+      "english_word": "asleep",
+      "translations": {
+        "tr": "uykuda",
+        "es": "dormido",
+        "fr": "endormi",
+        "de": "schlafend",
+        "it": "addormentato",
+        "pt": "adormecido",
+        "ru": "спящий",
+        "zh": "睡着",
+        "ja": "眠っている",
+        "ko": "잠든",
+        "ar": "نائم",
+        "hi": "सोया हुआ"
       }
     },
     {

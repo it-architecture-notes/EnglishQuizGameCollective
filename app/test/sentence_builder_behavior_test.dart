@@ -21,7 +21,7 @@ void main() {
     String? audio2Path,
   }) {
     return MaterialApp(
-      theme: AppTheme.forFlavor(AppFlavor.adults),
+      theme: AppTheme.forFlavor(AppFlavor.adultsIntermediate),
       home: Scaffold(
         body: SentenceBuilderQuizBody(
           data: data,

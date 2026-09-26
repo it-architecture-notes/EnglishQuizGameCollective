@@ -13,35 +13,37 @@
     },
     {
       "template": "ConvoTemplate-1",
-      "genders": "f-m",
       "questionData": {
-        "line1": "Can you show us?",
-        "line2": "Yes, follow me.",
-        "answer": "show",
+        "character1": "Beth",
+        "character2": "Alex",
+        "line1": "Can you _____ us through the storm?",
+        "line2": "Yes, follow me to the nearest shelter.",
+        "answer": "guide",
         "distractors": [
-          "read",
-          "write",
-          "draw"
+          "lead",
+          "show",
+          "take"
         ]
       },
-      "audio_file1": "can-you-show-us-convo",
-      "audio_file2": "yes-follow-me-convo"
+      "audio_file1": "can-you-guide-us-through-the-storm-convo",
+      "audio_file2": "yes-follow-me-to-the-nearest-shelter-convo"
     },
     {
       "template": "ConvoTemplate-1",
-      "genders": "f-m",
       "questionData": {
-        "line1": "Can you help her?",
-        "line2": "Yes, I can help.",
-        "answer": "help",
+        "character1": "Sarah",
+        "character2": "Daniel",
+        "line1": "How did they manage to _____ her from the flood?",
+        "line2": "A rescue team used a boat to reach her.",
+        "answer": "save",
         "distractors": [
-          "run",
-          "sleep",
-          "read"
+          "help",
+          "find",
+          "pull"
         ]
       },
-      "audio_file1": "can-you-help-her-convo",
-      "audio_file2": "yes-i-can-help-convo"
+      "audio_file1": "how-did-they-manage-to-save-her-from-the-flood-convo",
+      "audio_file2": "a-rescue-team-used-a-boat-to-reach-her-convo"
     },
     {
       "template": "imageQuizTemplate-1",
@@ -58,10 +60,10 @@
       "template": "WordPairs",
       "questionData": {
         "english_words": [
-          "help",
-          "safe",
-          "scared",
-          "careful"
+          "immediately",
+          "bravely",
+          "serious",
+          "terrible"
         ],
         "translations": [
           {
@@ -125,32 +127,32 @@
     },
     {
       "template": "DialogueCompletion",
-      "genders": "m-f",
       "questionData": {
-        "line1": "He fell. What now?",
-        "answer": "Call an ambulance.",
+        "character1": "Omar",
+        "character2": "Lily",
+        "line1": "A man fell from a ladder. He is injured. What do we do?",
+        "answer": "Don't move him, call the ambulance",
         "distractors": [
-          "Run very fast.",
-          "Read a book.",
-          "Play a game."
+          "Move him to the hospital",
+          "Call the police right away.",
+          "Call the fire department"
         ]
       },
-      "audio_file1": "he-fell-what-now-convo",
-      "audio_file2": "call-an-ambulance-convo"
+      "audio_file1": "a-man-fell-from-a-ladder-he-is-injured-what-do-we-do-convo",
+      "audio_file2": "don-t-move-him-call-the-ambulance-convo"
     },
     {
       "template": "AppearDisappear",
-      "genders": "m",
       "questionData": {
-        "words": "Firefighters help us.",
+        "words": "Volunteers came to support the fire department.",
         "distractors": [
-          "run",
-          "sleep",
-          "read",
-          "cook"
+          "fight",
+          "refuse",
+          "ignore",
+          "leave"
         ]
       },
-      "audio_file": "firefighters-help-us-convo"
+      "audio_file": "volunteers-came-to-support-the-fire-department-convo"
     },
     {
       "template": "imageQuizTemplate-1",
@@ -176,11 +178,10 @@
     },
     {
       "template": "SentenceBuilder",
-      "genders": "m",
       "questionData": {
-        "correct_order": "Call an ambulance now."
+        "correct_order": "He called an ambulance for urgent assistance."
       },
-      "audio_file": "call-an-ambulance-now-convo"
+      "audio_file": "he-called-an-ambulance-for-urgent-assistance-convo"
     },
     {
       "template": "imageQuizTemplate-1",
@@ -195,67 +196,66 @@
     },
     {
       "template": "ClozeSequence",
-      "genders": "f",
       "questionData": {
-        "sentence": "Call the _____ now.",
+        "sentence": "Neighbors called to _____ the fire department, who rushed to _____ within minutes.",
         "answer": [
-          "firefighters"
+          "alert",
+          "respond"
         ],
         "distractors": [
-          "teachers",
-          "friends",
-          "players",
-          "dogs"
+          "ignore",
+          "delay",
+          "refuse",
+          "forget"
         ]
       },
-      "audio_file": "call-the-now-convo"
+      "audio_file": "neighbors-called-to-alert-the-fire-department-who-rushed-to-respond-within-minutes-convo"
     },
     {
-      "template": "ClozeSequence",
-      "genders": "m",
+      "template": "GrammarForm",
       "questionData": {
-        "sentence": "_____ on the wet floor.",
-        "answer": "Do not run",
+        "sentence": "_____ slip on the wet floor.",
+        "answer": "do not",
         "distractors": [
-          "Runs",
-          "Running",
-          "Ran"
+          "does not",
+          "did not",
+          "doesnt"
         ]
       }
     },
     {
       "template": "ClozeSequence",
-      "genders": "f",
       "questionData": {
-        "sentence": "People _____ the building.",
+        "sentence": "Officials decided to _____ the area to _____ further injuries.",
         "answer": [
-          "leave"
+          "evacuate",
+          "prevent"
         ],
         "distractors": [
-          "enter",
-          "read",
-          "sleep",
-          "cook"
+          "ignore",
+          "delay",
+          "refuse",
+          "forget"
         ]
       },
-      "audio_file": "people-the-building-convo"
+      "audio_file": "officials-decided-to-evacuate-the-area-to-prevent-further-injuries-convo"
     },
     {
       "template": "ClozeSequence",
-      "genders": "f",
       "questionData": {
-        "sentence": "The building can _____.",
+        "sentence": "They rushed to _____ the people as the building continued to _____.",
         "answer": [
+          "rescue",
           "burn"
         ],
         "distractors": [
-          "read",
-          "sleep",
           "cook",
-          "sing"
+          "sell",
+          "lock",
+          "paint"
         ]
       },
-      "audio_file": "the-building-can-convo"
+      "audio_file": "they-rushed-to-rescue-the-people-as-the-building-continued-to-burn-convo"
     }
   ]
 }

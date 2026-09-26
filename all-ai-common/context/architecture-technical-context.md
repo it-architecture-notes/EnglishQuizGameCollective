@@ -56,7 +56,7 @@ All asset paths are registered in `pubspec.yaml` under `flutter: assets:`.
 
 ## VideoConversation audio clips: extracted from the source video, not TTS
 
-For the `VideoConversation` template (e.g. `greetings/adults`), each question's `audio_file1`
+For the `VideoConversation` template (e.g. `greetings/adults-intermediate`), each question's `audio_file1`
 (setup) / `audio_file2` (confirm) `.m4a` clips are **not** Gemini-TTS output — they are sliced
 directly out of the level's own video file's embedded audio track (e.g. `greetings1.mp4`, which
 has its own real AAC audio stream), at that question's own `start_at`/`pause_at`/`answer_until`
@@ -72,11 +72,12 @@ toolset to reach for, but the extraction itself doesn't need pydub; a plain `ffm
 is what was used for the fix below. No script currently formalizes this per-level, so it's a
 manual per-question `ffmpeg` step until one exists.
 
-**Manual re-cut recipe** (used to fix `greetings/adults` question 1, which had a boundary artifact
-— see below):
+**Manual re-cut recipe** (used to fix `greetings/adults-intermediate` question 1, which had a
+boundary artifact — see below; folder was `greetings/adults/` at the time of the original fix,
+renamed to `adults-intermediate/` afterward):
 
 ```bash
-SRC=app/assets/quiz-data/levels/greetings/adults/greetings1.mp4
+SRC=app/assets/quiz-data/levels/greetings/adults-intermediate/greetings1.mp4
 ffmpeg -y -i "$SRC" -vn -ss <start_at> -to <boundary> -c:a aac -b:a 132k -ar 44100 -ac 2 <out>-setup.m4a
 ffmpeg -y -i "$SRC" -vn -ss <boundary> -to <answer_until> -c:a aac -b:a 132k -ar 44100 -ac 2 <out>-confirm.m4a
 ```

@@ -5,7 +5,6 @@ import 'package:flutter/material.dart';
 import '../../models/level_config.dart';
 import '../../services/question_layout_budget.dart';
 import '../../widgets/answer_palette.dart';
-import '../../widgets/audio_play_button.dart';
 import '../../widgets/debug_layout_box.dart';
 import '../../widgets/standard_question_media.dart';
 
@@ -262,6 +261,54 @@ typedef _PresetResolution = ({
   double shortfallHeight,
 });
 
+/// "Listen Again" button sizing — same proportions as `VideoConversation`'s AppearDisappear/
+/// recall sub-type, duplicated locally per this codebase's convention of self-contained
+/// per-template layout tables.
+typedef _ListenAgainPreset = ({double widthFraction});
+
+const Map<QuestionLayoutTier, _ListenAgainPreset> _listenAgainPresets = {
+  QuestionLayoutTier.phoneUltraTall: (widthFraction: 0.48),
+  QuestionLayoutTier.phoneSuperTall: (widthFraction: 0.47),
+  QuestionLayoutTier.phoneFlagship: (widthFraction: 0.46),
+  QuestionLayoutTier.phoneTransition: (widthFraction: 0.45),
+  QuestionLayoutTier.phoneClassic2to1: (widthFraction: 0.44),
+  QuestionLayoutTier.phone16to9: (widthFraction: 0.43),
+  QuestionLayoutTier.tablet16to9: (widthFraction: 0.38),
+  QuestionLayoutTier.tablet16to10: (widthFraction: 0.37),
+  QuestionLayoutTier.tablet3to2: (widthFraction: 0.36),
+  QuestionLayoutTier.tablet4to3: (widthFraction: 0.35),
+};
+
+const Map<QuestionLayoutTier, double> _listenAgainSlotsGapFractions = {
+  QuestionLayoutTier.phoneUltraTall: 0.055,
+  QuestionLayoutTier.phoneSuperTall: 0.052,
+  QuestionLayoutTier.phoneFlagship: 0.050,
+  QuestionLayoutTier.phoneTransition: 0.048,
+  QuestionLayoutTier.phoneClassic2to1: 0.046,
+  QuestionLayoutTier.phone16to9: 0.044,
+  QuestionLayoutTier.tablet16to9: 0.050,
+  QuestionLayoutTier.tablet16to10: 0.052,
+  QuestionLayoutTier.tablet3to2: 0.054,
+  QuestionLayoutTier.tablet4to3: 0.056,
+};
+
+double _listenAgainButtonHeightFor(QuestionLayoutBudget budget) =>
+    questionSlotHeightFor(budget);
+
+double _listenAgainButtonWidthFor(
+    QuestionLayoutBudget budget, double answerWidth) {
+  final preset = _listenAgainPresets[budget.tier]!;
+  return min(answerWidth, max(120.0, answerWidth * preset.widthFraction));
+}
+
+double _listenAgainSlotsGapFor(
+  QuestionLayoutBudget budget,
+  double heightAfterButton,
+) {
+  final fraction = _listenAgainSlotsGapFractions[budget.tier]!;
+  return max(8.0, heightAfterButton * fraction);
+}
+
 enum _Phase { revealing, clearing, interaction }
 
 /// Words visible immediately → audio plays → 500 ms after audio → words clear → recall.
@@ -337,9 +384,9 @@ class _AppearDisappearQuizBodyState extends State<AppearDisappearQuizBody> {
   final Map<int, int> _gridIndexToStep = {};
   late final List<GlobalKey> _tileKeys;
   bool _completed = false;
-  bool _audio1Playing = false;
-  bool _audio2Playing = false;
   bool _audio1Scheduled = false;
+  bool _listenAgainConsumed = false;
+  bool _listenAgainPlaying = false;
 
   /// True while the answer should be visible in the slots during the reveal sequence — set the
   /// moment the narrating audio actually *starts* playing (not after it ends), so the learner
@@ -380,12 +427,7 @@ class _AppearDisappearQuizBodyState extends State<AppearDisappearQuizBody> {
       if (mounted) setState(() => _revealAnswer = true);
     } else {
       if (mounted) setState(() => _revealAnswer = true);
-      setState(() => _audio1Playing = true);
-      try {
-        await _playCue(cue);
-      } finally {
-        if (mounted) setState(() => _audio1Playing = false);
-      }
+      await _playCue(cue);
     }
     if (!mounted) return;
 
@@ -414,47 +456,47 @@ class _AppearDisappearQuizBodyState extends State<AppearDisappearQuizBody> {
 
   bool get _isAnswered => _failed || _completed;
 
-  /// What the audio icon plays right now: [enterAudioCue] before answering, the
-  /// (already-effective) [exitWrongAudioCue] once answered wrong, nothing once answered
-  /// correctly (the question is about to advance).
-  List<String>? get _manualAudioCue => !_isAnswered
-      ? widget.enterAudioCue
-      : (_failed ? widget.exitWrongAudioCue : null);
+  /// True once [exitCorrectAudioCue] exists to replay — same precondition `VideoConversation`'s
+  /// AppearDisappear/recall sub-type uses for its own "Listen Again" button.
+  bool get _canListenAgain =>
+      widget.exitCorrectAudioCue != null &&
+      widget.exitCorrectAudioCue!.isNotEmpty;
 
-  bool get _hasManualAudio {
-    final cue = _manualAudioCue;
-    return cue != null && cue.isNotEmpty;
-  }
+  /// Shown only during the interaction phase, before the learner has tapped anything and before
+  /// it's already been used once — matches `VideoConversation`'s recall-type button exactly:
+  /// on-demand only, never shown again after either a tile tap or a `Listen Again` tap.
+  bool get _showListenAgain =>
+      _interactionEnabled &&
+      !_isAnswered &&
+      _canListenAgain &&
+      !_listenAgainConsumed;
 
-  /// True if the audio icon could ever be relevant for this question (enter pre-answer, or
-  /// exit-wrong post-wrong) — used to reserve layout space regardless of the current phase.
-  bool get _hasAnyAudioIcon =>
-      (widget.enterAudioCue != null && widget.enterAudioCue!.isNotEmpty) ||
-      (widget.exitWrongAudioCue != null && widget.exitWrongAudioCue!.isNotEmpty);
-
-  /// Manual replay via the on-screen button — plays [_manualAudioCue].
-  Future<void> _playManualAudio() async {
-    final cue = _manualAudioCue;
-    if (cue == null || cue.isEmpty || _audio1Playing) return;
-    widget.onUserInteracted?.call();
-    setState(() => _audio1Playing = true);
-    try {
-      await _playCue(cue);
-    } finally {
-      if (mounted) setState(() => _audio1Playing = false);
-    }
-  }
-
-  /// Plays [exitCorrectAudioCue] after a correct answer, before advancing.
-  Future<void> _playOutcomeAudio() async {
+  /// Replays [exitCorrectAudioCue] — the same isolated target-sentence clip `VideoConversation`'s
+  /// recall sub-type uses, not [enterAudioCue] (which already played once, unprompted, during the
+  /// reveal). One-shot: consumed immediately so the button can't be tapped twice, and tile taps
+  /// stay blocked until playback finishes (`_listenAgainPlaying`) so the two audios never overlap.
+  Future<void> _onListenAgainTap() async {
     final cue = widget.exitCorrectAudioCue;
-    if (cue == null || cue.isEmpty) return;
-    setState(() => _audio2Playing = true);
+    if (!_showListenAgain || cue == null || cue.isEmpty) return;
+    widget.onUserInteracted?.call();
+    setState(() {
+      _listenAgainConsumed = true;
+      _listenAgainPlaying = true;
+    });
     try {
       await _playCue(cue);
     } finally {
-      if (mounted) setState(() => _audio2Playing = false);
+      if (mounted) setState(() => _listenAgainPlaying = false);
     }
+  }
+
+  /// Plays [exitWrongAudioCue] right after a wrong tap — matches `VideoConversation`'s exit-wrong
+  /// audio, which always plays automatically (not gated behind a manual icon like the old
+  /// standalone behavior was).
+  Future<void> _playWrongOutcomeAudio() async {
+    final cue = widget.exitWrongAudioCue;
+    if (cue == null || cue.isEmpty) return;
+    await _playCue(cue);
   }
 
   void _reportNextTile() {
@@ -479,6 +521,7 @@ class _AppearDisappearQuizBodyState extends State<AppearDisappearQuizBody> {
       _failed = true;
       _translationPenalized = true;
       _wrongGridIndex = null;
+      _listenAgainConsumed = true;
       for (var pos = _tapProgress; pos < _sentence.length; pos++) {
         final word = _sentence[pos];
         for (var gi = 0; gi < _shuffledChoices.length; gi++) {
@@ -495,14 +538,22 @@ class _AppearDisappearQuizBodyState extends State<AppearDisappearQuizBody> {
       _tapProgress = _sentence.length;
     });
     widget.onPlayWrong();
+    await _playWrongOutcomeAudio();
+    if (!mounted) return;
     widget.onOutcome(false);
   }
 
   Future<void> _onGridTap(int gridIndex) async {
-    if (!_interactionEnabled || _completed || _failed) return;
+    if (!_interactionEnabled ||
+        _completed ||
+        _failed ||
+        _listenAgainPlaying) {
+      return;
+    }
     widget.onUserInteracted?.call();
     if (_correctGridIndices.contains(gridIndex) && _tapProgress > 0) {
       setState(() {
+        _listenAgainConsumed = true;
         _tapProgress = 0;
         for (var i = 0; i < _interactionSlots.length; i++) {
           _interactionSlots[i] = null;
@@ -519,6 +570,7 @@ class _AppearDisappearQuizBodyState extends State<AppearDisappearQuizBody> {
     final expected = _sentence[_tapProgress];
     if (word == expected) {
       setState(() {
+        _listenAgainConsumed = true;
         _interactionSlots[_tapProgress] = word;
         _slotFromPlayer[_tapProgress] = true;
         _correctGridIndices.add(gridIndex);
@@ -529,20 +581,36 @@ class _AppearDisappearQuizBodyState extends State<AppearDisappearQuizBody> {
       if (_tapProgress >= _sentence.length) {
         _completed = true;
         widget.onPlayCorrect();
-        await _playOutcomeAudio();
-        if (!mounted) return;
         widget.onOutcome(true);
       }
     } else {
       setState(() {
+        _listenAgainConsumed = true;
         _failed = true;
         _wrongGridIndex = gridIndex;
-        for (var i = _tapProgress; i < _sentence.length; i++) {
-          _interactionSlots[i] = _sentence[i];
-          _slotFromPlayer[i] = false;
+        for (var pos = _tapProgress; pos < _sentence.length; pos++) {
+          final w = _sentence[pos];
+          _interactionSlots[pos] = w;
+          _slotFromPlayer[pos] = false;
+          for (var gi = 0; gi < _shuffledChoices.length; gi++) {
+            if (_shuffledChoices[gi] == w &&
+                !_correctGridIndices.contains(gi) &&
+                !_gridIndexToStep.containsKey(gi)) {
+              // The wrongly-tapped tile itself is eligible here too — it still shows its
+              // own future-position badge (styled wrong, i.e. red, not the correct-tile
+              // tint) if its word happens to match a later position in the sentence.
+              _gridIndexToStep[gi] = pos + 1;
+              if (gi != gridIndex) {
+                _correctGridIndices.add(gi);
+              }
+              break;
+            }
+          }
         }
       });
       widget.onPlayWrong();
+      await _playWrongOutcomeAudio();
+      if (!mounted) return;
       widget.onOutcome(false);
     }
   }
@@ -705,6 +773,7 @@ class _AppearDisappearQuizBodyState extends State<AppearDisappearQuizBody> {
     final disabled = _failed ||
         _completed ||
         !_interactionEnabled ||
+        _listenAgainPlaying ||
         _correctGridIndices.contains(index);
     final isWrong = _failed && _wrongGridIndex == index;
     final isCorrectTile = _correctGridIndices.contains(index);
@@ -778,7 +847,7 @@ class _AppearDisappearQuizBodyState extends State<AppearDisappearQuizBody> {
                   ],
                 ),
               ),
-              if (isCorrectTile && orderLabel != null)
+              if (orderLabel != null)
                 Positioned(
                   top: 2,
                   right: 2,
@@ -806,15 +875,19 @@ class _AppearDisappearQuizBodyState extends State<AppearDisappearQuizBody> {
 
   @override
   Widget build(BuildContext context) {
-    final cs = Theme.of(context).colorScheme;
     final hasLine1 = widget.data.line1 != null;
     final hasImage = widget.imagePath != null;
     final budget = QuestionLayoutBudget.of(context);
-    final answerWidth =
-        budget.answerWidthForAvailable(MediaQuery.sizeOf(context).width);
 
     return LayoutBuilder(
       builder: (context, bodyConstraints) {
+        // Must come from the LayoutBuilder's real local constraints, not MediaQuery's screen
+        // width — the question body has its own horizontal padding, so the screen width is
+        // wider than what's actually available here. Using the screen width would make every
+        // downstream text-wrap estimate assume more room than tiles/slots actually render
+        // into, under-counting wrapped rows and letting real content silently overflow.
+        final answerWidth =
+            budget.answerWidthForAvailable(bodyConstraints.maxWidth);
         final mediaWidthLimit =
             budget.mediaWidthForAvailable(bodyConstraints.maxWidth);
         final mediaHeight = hasImage
@@ -835,7 +908,13 @@ class _AppearDisappearQuizBodyState extends State<AppearDisappearQuizBody> {
             : remainderHeight * 0.62;
 
         final promptPreset = _appearDisappearPromptPresets[budget.tier]!;
-        final promptWrapWidth = answerWidth - (_hasAnyAudioIcon ? 56 : 0);
+        // The prompt card's own Container below has 16px left/right padding (unlike the
+        // slot/tile boxes, which have none), so the real width available inside it is 32px
+        // narrower than `answerWidth` — the wrap estimate must use this, or it silently assumes
+        // more room than the prompt text actually renders into, under-counting wrapped lines and
+        // letting real content overflow into the scroll fallback.
+        final promptCardContentWidth = max(0.0, answerWidth - 32);
+        final promptWrapWidth = promptCardContentWidth;
         final promptTextBudget = max(
           0.0,
           promptHeight -
@@ -851,12 +930,27 @@ class _AppearDisappearQuizBodyState extends State<AppearDisappearQuizBody> {
           return _revealAnswer ? _sentence[i] : null;
         });
 
+        // "Listen Again" sits above the tile bank, reducing the space available to it —
+        // matches `VideoConversation`'s recall-type layout, which reserves the same block
+        // from its answer area before resolving the tile ladder.
+        final listenAgainButtonHeight =
+            _showListenAgain ? _listenAgainButtonHeightFor(budget) : 0.0;
+        final listenAgainButtonWidth =
+            _listenAgainButtonWidthFor(budget, answerWidth);
+        final listenAgainGap = _showListenAgain
+            ? _listenAgainSlotsGapFor(
+                budget, max(0.0, tileBankHeight - listenAgainButtonHeight))
+            : 0.0;
+        final listenAgainBlockHeight =
+            _showListenAgain ? listenAgainButtonHeight + listenAgainGap : 0.0;
+
         final tilePreset = _resolvePreset(
           items: List<String?>.generate(
               _shuffledChoices.length, (i) => _shuffledChoices[i]),
           presets: _appearDisappearTilePresets[budget.tier]!,
           availableWidth: answerWidth - 32,
-          availableHeight: max(0.0, tileBankHeight - 8.0),
+          availableHeight:
+              max(0.0, tileBankHeight - listenAgainBlockHeight - 8.0),
           fontWeight: FontWeight.w600,
           fixedHeight: questionTileHeightFor(budget),
           fixedFontSize: questionTileTextSizeFor(budget.tier),
@@ -928,6 +1022,7 @@ class _AppearDisappearQuizBodyState extends State<AppearDisappearQuizBody> {
             '${mediaVisibleHeight.toStringAsFixed(1)}px '
             'promptBox=${answerWidth.toStringAsFixed(1)}x'
             '${promptCardHeight.toStringAsFixed(1)}px '
+            'promptCardContentWidth=${promptCardContentWidth.toStringAsFixed(1)}px '
             'promptShortfall=${shortfallPrompt.toStringAsFixed(1)}px '
             'slotBox=${answerWidth.toStringAsFixed(1)}x'
             '${slotHeightFinal.toStringAsFixed(1)}px slotRows=${slotPreset.rows} '
@@ -1018,33 +1113,15 @@ class _AppearDisappearQuizBodyState extends State<AppearDisappearQuizBody> {
                             ),
                             child: Center(
                               child: SizedBox(
-                                width: answerWidth,
-                                child: Row(
-                                  crossAxisAlignment: CrossAxisAlignment.center,
-                                  children: [
-                                    Expanded(
-                                      child: Text(
-                                        widget.data.line1!,
-                                        textAlign: TextAlign.center,
-                                        style: TextStyle(
-                                          color: const Color(0xFF171A1F),
-                                          fontWeight: FontWeight.w700,
-                                          fontSize: dialogFontSize,
-                                        ),
-                                      ),
-                                    ),
-                                    if (_hasAnyAudioIcon) ...[
-                                      const SizedBox(width: 8),
-                                      AudioPlayButton(
-                                        isPlaying:
-                                            _audio1Playing || _audio2Playing,
-                                        onPressed: (_audio1Playing ||
-                                                !_hasManualAudio)
-                                            ? null
-                                            : () => _playManualAudio(),
-                                      ),
-                                    ],
-                                  ],
+                                width: promptCardContentWidth,
+                                child: Text(
+                                  widget.data.line1!,
+                                  textAlign: TextAlign.center,
+                                  style: TextStyle(
+                                    color: const Color(0xFF171A1F),
+                                    fontWeight: FontWeight.w700,
+                                    fontSize: dialogFontSize,
+                                  ),
                                 ),
                               ),
                             ),
@@ -1067,6 +1144,37 @@ class _AppearDisappearQuizBodyState extends State<AppearDisappearQuizBody> {
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.stretch,
                         children: [
+                          if (_showListenAgain) ...[
+                            Align(
+                              alignment: Alignment.center,
+                              child: SizedBox(
+                                width: listenAgainButtonWidth,
+                                height: listenAgainButtonHeight,
+                                child: ElevatedButton(
+                                  onPressed: _onListenAgainTap,
+                                  style: ElevatedButton.styleFrom(
+                                    backgroundColor:
+                                        AnswerPalette.correctBorder,
+                                    foregroundColor: Colors.white,
+                                    minimumSize:
+                                        Size(48, listenAgainButtonHeight),
+                                    padding: const EdgeInsets.symmetric(
+                                        horizontal: 20),
+                                    shape: const StadiumBorder(),
+                                    elevation: 0,
+                                    shadowColor: Colors.transparent,
+                                    textStyle: const TextStyle(
+                                      fontFamily: 'Inter',
+                                      fontSize: 15,
+                                      fontWeight: FontWeight.w700,
+                                    ),
+                                  ),
+                                  child: const Text('listen again'),
+                                ),
+                              ),
+                            ),
+                            SizedBox(height: listenAgainGap),
+                          ],
                           // Slot row: answer blanks, filled during recall (or shown directly
                           // during the reveal phase).
                           SizedBox(
@@ -1087,7 +1195,9 @@ class _AppearDisappearQuizBodyState extends State<AppearDisappearQuizBody> {
                                       final fromPlayer =
                                           i < _slotFromPlayer.length &&
                                               _slotFromPlayer[i];
-                                      final isReveal = _revealAnswer;
+                                      final slotMetrics =
+                                          _appearDisappearCellMetrics(
+                                              slotPreset.height);
 
                                       final slot = AnimatedContainer(
                                         duration:
@@ -1096,27 +1206,40 @@ class _AppearDisappearQuizBodyState extends State<AppearDisappearQuizBody> {
                                         width: word == null
                                             ? emptySlotWidth
                                             : null,
-                                        padding: const EdgeInsets.symmetric(
-                                            horizontal: 4, vertical: 4),
+                                        padding: EdgeInsets.symmetric(
+                                            horizontal:
+                                                slotMetrics.horizontalPadding /
+                                                    2,
+                                            vertical: 4),
                                         decoration: BoxDecoration(
-                                          border: Border(
-                                            bottom: BorderSide(
-                                              color: (isReveal || fromPlayer)
-                                                  ? AnswerPalette.correctBorder
-                                                  : cs.outline,
-                                              width: (isReveal || fromPlayer)
-                                                  ? 2.5
-                                                  : 1.5,
-                                            ),
+                                          color: word != null
+                                              ? (_translationPenalized
+                                                  ? AnswerPalette.revealedBg
+                                                  : AnswerPalette.correctBg)
+                                              : Colors.white,
+                                          border: Border.all(
+                                            color: word != null
+                                                ? (_translationPenalized
+                                                    ? AnswerPalette
+                                                        .revealedBorder
+                                                    : AnswerPalette
+                                                        .correctBorder)
+                                                : AnswerPalette.neutralBorder,
+                                            width: 1.5,
                                           ),
+                                          borderRadius:
+                                              BorderRadius.circular(18),
                                         ),
                                         child: Center(
-                                          child: AnimatedSwitcher(
-                                            duration: const Duration(
-                                                milliseconds: 160),
-                                            child: word == null
-                                                ? const SizedBox.shrink()
-                                                : Text(
+                                          child: word == null
+                                              ? const SizedBox(
+                                                  width: 36,
+                                                  height: 12,
+                                                )
+                                              : AnimatedSwitcher(
+                                                  duration: const Duration(
+                                                      milliseconds: 160),
+                                                  child: Text(
                                                     word,
                                                     key: ValueKey(word),
                                                     style: TextStyle(
@@ -1124,14 +1247,17 @@ class _AppearDisappearQuizBodyState extends State<AppearDisappearQuizBody> {
                                                       fontSize: slotFontSize,
                                                       fontWeight:
                                                           FontWeight.w600,
-                                                      color:
-                                                          isReveal || fromPlayer
-                                                              ? AnswerPalette
-                                                                  .correctFg
-                                                              : null,
+                                                      fontStyle: fromPlayer
+                                                          ? null
+                                                          : FontStyle.italic,
+                                                      color: _translationPenalized
+                                                          ? AnswerPalette
+                                                              .revealedFg
+                                                          : AnswerPalette
+                                                              .correctFg,
                                                     ),
                                                   ),
-                                          ),
+                                                ),
                                         ),
                                       );
                                       // Empty slots get an explicit fixed width via

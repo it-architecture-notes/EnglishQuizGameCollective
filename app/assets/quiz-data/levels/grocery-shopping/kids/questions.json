@@ -13,37 +13,37 @@
     },
     {
       "template": "ConvoTemplate-1",
-      "genders": "m-f",
       "questionData": {
+        "character1": "Daniel",
+        "character2": "Sarah",
         "line1": "Where do you _____?",
-        "line2": "I _____ here.",
+        "line2": "I _____ at the grocery store.",
         "answer": "shop",
         "distractors": [
-          "play",
+          "take",
           "live",
           "eat"
         ]
       },
       "audio_file1": "where-do-you-shop-convo",
-      "audio_file2": "i-shop-here-convo"
+      "audio_file2": "i-shop-at-the-grocery-store-convo"
     },
     {
       "template": "ClozeSequence",
-      "genders": "f",
       "questionData": {
-        "sentence": "Can I _____ this _____?",
+        "sentence": "Can I ____ this ____ at the checkout?",
+        "answer": [
+          "buy",
+          "brand"
+        ],
         "distractors": [
-          "get",
+          "move",
           "milk",
           "eat",
-          "food"
-        ],
-        "answers": [
-          "buy",
-          "bread"
+          "store"
         ]
       },
-      "audio_file": "can-i-buy-this-bread-convo"
+      "audio_file": "can-i-buy-this-brand-at-the-checkout-convo"
     },
     {
       "template": "imageQuizTemplate-1",
@@ -127,32 +127,32 @@
     },
     {
       "template": "DialogueCompletion",
-      "genders": "m-f",
       "questionData": {
+        "character1": "Omar",
+        "character2": "Sophie",
         "line1": "How much is this cheese?",
-        "answer": "It is ten dollars.",
+        "answer": "It costs ten dollars.",
         "distractors": [
-          "It is ten bags.",
+          "It weighs ten bags.",
           "You buy ten stores.",
-          "It opens at ten."
+          "It opens at ten o'clock."
         ]
       },
       "audio_file1": "how-much-is-this-cheese-convo",
-      "audio_file2": "it-is-ten-dollars-convo"
+      "audio_file2": "it-costs-ten-dollars-convo"
     },
     {
       "template": "AppearDisappear",
-      "genders": "f",
       "questionData": {
-        "words": "Pay and take your receipt.",
+        "words": "Please pay and take your receipt.",
         "distractors": [
           "who",
+          "pay",
           "cashier",
-          "enter",
-          "wait"
+          "enter"
         ]
       },
-      "audio_file": "pay-and-take-your-receipt-convo"
+      "audio_file": "please-pay-and-take-your-receipt-convo"
     },
     {
       "template": "imageQuizTemplate-2",
@@ -179,21 +179,20 @@
     },
     {
       "template": "ClozeSequence",
-      "genders": "f",
       "questionData": {
-        "sentence": "She _____ a _____ apple.",
+        "sentence": "She must _____ the best deal after she _____ the total cost.",
+        "answer": [
+          "choose",
+          "calculates"
+        ],
         "distractors": [
-          "eats",
-          "carries",
+          "eat",
+          "carry",
           "forgets",
           "loses"
-        ],
-        "answers": [
-          "chooses",
-          "good"
         ]
       },
-      "audio_file": "she-chooses-a-good-apple-convo"
+      "audio_file": "she-must-choose-the-best-deal-after-she-calculates-the-total-cost-convo"
     },
     {
       "template": "imageQuizTemplate-1",
@@ -208,20 +207,18 @@
     },
     {
       "template": "SentenceBuilder",
-      "genders": "f",
       "questionData": {
-        "correct_order": "Put bags in the car."
+        "correct_order": "Please load the bags into the car."
       },
-      "audio_file": "put-bags-in-the-car-convo"
+      "audio_file": "please-load-the-bags-into-the-car-convo"
     },
     {
-      "template": "ClozeSequence",
-      "genders": "m",
+      "template": "GrammarForm",
       "questionData": {
-        "sentence": "We _____ in line.",
+        "sentence": "We ____ in the checkout line.",
         "answer": "wait",
         "distractors": [
-          "are wait",
+          "are waiting",
           "waiting",
           "waits"
         ]
@@ -229,28 +226,29 @@
     },
     {
       "template": "ClozeSequence",
-      "genders": "f",
       "questionData": {
-        "sentence": "I _____ the _____.",
+        "sentence": "I _____ the olive oil bottles to _____ the _____.",
+        "answer": [
+          "weigh",
+          "compare",
+          "weights"
+        ],
         "distractors": [
           "try",
           "pick",
           "heavy",
           "price"
-        ],
-        "answers": [
-          "weigh",
-          "fruit"
         ]
       },
-      "audio_file": "i-weigh-the-fruit-convo"
+      "audio_file": "i-weigh-the-olive-oil-bottles-to-compare-the-weights-convo"
     },
     {
       "template": "ConvoTemplate-1",
-      "genders": "f-f",
       "questionData": {
-        "line1": "These bags are heavy.",
-        "line2": "Sure, I can _____ them.",
+        "character1": "Emma",
+        "character2": "Sophie",
+        "line1": "These bags are heavy. Can you _____ them?",
+        "line2": "Sure, I can _____ them to the car.",
         "answer": "carry",
         "distractors": [
           "drop",
@@ -258,8 +256,8 @@
           "eat"
         ]
       },
-      "audio_file1": "these-bags-are-heavy-convo",
-      "audio_file2": "sure-i-can-carry-them-convo"
+      "audio_file1": "these-bags-are-heavy-can-you-carry-them-convo",
+      "audio_file2": "sure-i-can-carry-them-to-the-car-convo"
     }
   ]
 }

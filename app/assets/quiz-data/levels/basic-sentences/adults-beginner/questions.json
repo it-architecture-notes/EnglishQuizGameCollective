@@ -1,0 +1,439 @@
+{
+  "levelQuestions": [
+    {
+      "template": "VideoConversation",
+      "videoFile": "basic-sentences1",
+      "start_at": "00:00.0",
+      "pause_at": "00:02.3",
+      "answer_until": "00:04.0",
+      "question_enter_audio": "basic-sentences1-q1-setup",
+      "question_enter_audio_text": "Excuse me, what time is it?",
+      "question_exit_correct_audio": "basic-sentences1-q1-confirm",
+      "question_exit_correct_audio_text": "It is nine o'clock.",
+      "questionData": {
+        "answer_type": "DialogueCompletion",
+        "answer": "It is nine o'clock.",
+        "distractors": [
+          "They are nine o'clock.",
+          "It are nine o'clock.",
+          "There are nine o'clock."
+        ]
+      }
+    },
+    {
+      "template": "VideoConversation",
+      "videoFile": "basic-sentences1",
+      "start_at": "00:04.0",
+      "pause_at": "00:06.9",
+      "answer_until": "00:10.3",
+      "question_enter_audio": "basic-sentences1-q2-setup",
+      "question_enter_audio_text": "Is there a bus station here? I go downtown.",
+      "question_exit_correct_audio": "basic-sentences1-q2-confirm",
+      "question_exit_correct_audio_text": "Yes, there is. And there are many taxis nearby.",
+      "questionData": {
+        "answer_type": "ClozeSequence",
+        "sentence": "Yes, _____ _____. And there _____ many taxis nearby.",
+        "answer": [
+          "there",
+          "is",
+          "are"
+        ],
+        "distractors": [
+          "here",
+          "am",
+          "be"
+        ]
+      }
+    },
+    {
+      "template": "VideoConversation",
+      "videoFile": "basic-sentences1",
+      "start_at": "00:10.3",
+      "pause_at": "00:10.3",
+      "answer_until": "00:10.3",
+      "question_enter_audio": "none",
+      "question_exit_correct_audio": [
+        "basic-sentences1-q2-pause-line1-confirm",
+        "basic-sentences1-q2-pause-confirm"
+      ],
+      "question_exit_correct_audio_text": [
+        "Where does she go?",
+        "She goes downtown."
+      ],
+      "genders": "m-f",
+      "questionData": {
+        "line1": "Where _____ she go?",
+        "answer_type": "pausedClozeSequence",
+        "sentence": "She ______ downtown.",
+        "answer": [
+          "does",
+          "goes"
+        ],
+        "distractors": [
+          "do",
+          "go",
+          "are",
+          "is"
+        ]
+      }
+    },
+    {
+      "template": "VideoConversation",
+      "videoFile": "basic-sentences1",
+      "start_at": "00:10.3",
+      "pause_at": "00:14.9",
+      "answer_until": "00:16.5",
+      "question_enter_audio": "basic-sentences1-q3-setup",
+      "question_enter_audio_text": "When is the next train to the city? Take a look at this.",
+      "question_exit_correct_audio": "basic-sentences1-q3-confirm",
+      "question_exit_correct_audio_text": "What is this?",
+      "questionData": {
+        "answer_type": "DialogueCompletion",
+        "answer": "What is this?",
+        "distractors": [
+          "What are these?",
+          "Where is this?",
+          "Who is this?"
+        ]
+      }
+    },
+    {
+      "template": "VideoConversation",
+      "videoFile": "basic-sentences1",
+      "start_at": "00:16.5",
+      "pause_at": "00:18.5",
+      "answer_until": "00:18.5",
+      "question_enter_audio": "basic-sentences1-q4-setup",
+      "question_enter_audio_text": "This is the train schedule.",
+      "question_exit_correct_audio": "basic-sentences1-q4-setup",
+      "question_exit_correct_audio_text": "This is the train schedule.",
+      "questionData": {
+        "answer_type": "AppearDisappear",
+        "words": "This is the train schedule.",
+        "distractors": [
+          "These",
+          "are",
+          "not"
+        ]
+      }
+    },
+    {
+      "template": "VideoConversation",
+      "videoFile": "basic-sentences1",
+      "start_at": "00:18.5",
+      "pause_at": "00:19.4",
+      "answer_until": "00:21.5",
+      "question_enter_audio": "basic-sentences1-q5-setup",
+      "question_enter_audio_text": "Thank you very much.",
+      "question_exit_correct_audio": "basic-sentences1-q5-confirm",
+      "question_exit_correct_audio_text": "No problem.",
+      "questionData": {
+        "answer_type": "DialogueCompletion",
+        "answer": "No problem.",
+        "distractors": [
+          "It is not mine.",
+          "There are many taxis.",
+          "This is the train schedule."
+        ]
+      }
+    },
+    {
+      "template": "VideoConversation",
+      "videoFile": "basic-sentences2",
+      "start_at": "00:00.0",
+      "pause_at": "00:01.04",
+      "answer_until": "00:03.10",
+      "question_enter_audio": "basic-sentences2-q1-setup",
+      "question_enter_audio_text": "Are you ready to go?",
+      "question_exit_correct_audio": "basic-sentences2-q1-confirm",
+      "question_exit_correct_audio_text": "Yes, I am.",
+      "questionData": {
+        "answer_type": "DialogueCompletion",
+        "answer": "Yes, I am.",
+        "distractors": [
+          "Yes, I do.",
+          "Yes, I are.",
+          "Yes, you am."
+        ]
+      }
+    },
+    {
+      "template": "VideoConversation",
+      "videoFile": "basic-sentences2",
+      "start_at": "00:03.10",
+      "pause_at": "00:06.59",
+      "answer_until": "00:06.59",
+      "question_enter_audio": "basic-sentences2-q2-setup",
+      "question_enter_audio_text": "Do you need help with the bag? No, I'm good.",
+      "question_exit_correct_audio": "basic-sentences2-q2-confirm",
+      "question_exit_correct_audio_text": "No, I'm good.",
+      "questionData": {
+        "answer_type": "AppearDisappear",
+        "words": "No, I'm good.",
+        "distractors": [
+          "yes",
+          "sure",
+          "fine",
+          "thanks"
+        ]
+      }
+    },
+    {
+      "template": "VideoConversation",
+      "videoFile": "basic-sentences2",
+      "start_at": "00:06.59",
+      "pause_at": "00:07.79",
+      "answer_until": "00:09.96",
+      "question_enter_audio": "basic-sentences2-q3-setup",
+      "question_enter_audio_text": "Is Tom coming too?",
+      "question_exit_correct_audio": "basic-sentences2-q3-confirm",
+      "question_exit_correct_audio_text": "I'm not sure.",
+      "questionData": {
+        "answer_type": "SentenceBuilder",
+        "correct_order": "I'm not sure."
+      }
+    },
+    {
+      "template": "VideoConversation",
+      "videoFile": "basic-sentences2",
+      "start_at": "00:09.96",
+      "pause_at": "00:09.96",
+      "answer_until": "00:13.13",
+      "question_enter_audio": "none",
+      "question_exit_correct_audio": "basic-sentences2-q4-setup",
+      "question_exit_correct_audio_text": "I like talking to him. I hope he comes.",
+      "questionData": {
+        "answer_type": "ClozeSequence",
+        "sentence": "I _____ talking to him. I _____ he comes.",
+        "answer": [
+          "like",
+          "hope"
+        ],
+        "distractors": [
+          "likes",
+          "hopes",
+          "am",
+          "are"
+        ]
+      }
+    },
+    {
+      "template": "SentenceBuilder",
+      "genders": "f-m",
+      "question_enter_audio": "whose-coat-is-this-convo",
+      "question_enter_audio_text": "Whose coat is this?",
+      "question_exit_correct_audio": "i-dont-know-it-is-not-mine-convo",
+      "question_exit_correct_audio_text": "I don't know. It is not mine.",
+      "questionData": {
+        "line1": "Whose coat is this?",
+        "correct_order": "I don't know. It is not mine.",
+        "image_file_name": "whose-coat-is-this"
+      }
+    },
+    {
+      "template": "ClozeSequence",
+      "genders": "m-f",
+      "question_enter_audio": "are-these-your-tickets-convo",
+      "question_enter_audio_text": "Are these your tickets?",
+      "question_exit_correct_audio": "they-are-not-these-are-for-our-friends-convo",
+      "question_exit_correct_audio_text": "No, they are not. These are for our friends.",
+      "questionData": {
+        "line1": "Are these your tickets?",
+        "sentence": "No, _____ _____ not. These are _____ our friends.",
+        "answer": [
+          "they",
+          "are",
+          "for"
+        ],
+        "distractors": [
+          "those",
+          "from",
+          "with",
+          "about"
+        ],
+        "image_file_name": "are-these-your-tickets"
+      }
+    },
+    {
+      "template": "SentenceBuilder",
+      "genders": "f-f",
+      "question_enter_audio": "isnt-she-your-teacher-convo",
+      "question_enter_audio_text": "Isn't she your teacher?",
+      "question_exit_correct_audio": "no-she-is-sams-teacher-convo",
+      "question_exit_correct_audio_text": "No, she is Sam's teacher.",
+      "questionData": {
+        "line1": "Isn't she your teacher?",
+        "correct_order": "No, she is Sam's teacher.",
+        "image_file_name": "isnt-she-your-teacher"
+      }
+    },
+    {
+      "template": "WordPairs",
+      "questionData": {
+        "english_words": [
+          "my",
+          "your",
+          "his/her",
+          "their",
+          "our"
+        ],
+        "translations": [
+          {
+            "tr": "benim",
+            "es": "mi",
+            "fr": "mon",
+            "de": "mein",
+            "it": "mio",
+            "pt": "meu",
+            "ru": "мой",
+            "zh": "我的",
+            "ja": "私の",
+            "ko": "나의",
+            "ar": "ي",
+            "hi": "मेरा"
+          },
+          {
+            "tr": "senin",
+            "es": "tu",
+            "fr": "ton",
+            "de": "dein",
+            "it": "tuo",
+            "pt": "teu",
+            "ru": "твой",
+            "zh": "你的",
+            "ja": "あなたの",
+            "ko": "당신의",
+            "ar": "ك",
+            "hi": "तुम्हारा"
+          },
+          {
+            "tr": "onun",
+            "es": "su",
+            "fr": "son / sa",
+            "de": "sein / ihr",
+            "it": "il suo / la sua",
+            "pt": "dele / dela",
+            "ru": "его / её",
+            "zh": "他 / 她的",
+            "ja": "彼の / 彼女の",
+            "ko": "그의 / 그녀의",
+            "ar": "ـه / ـها",
+            "hi": "उसका / उसकी"
+          },
+          {
+            "tr": "onların",
+            "es": "su",
+            "fr": "leur",
+            "de": "ihr",
+            "it": "loro",
+            "pt": "deles / delas",
+            "ru": "их",
+            "zh": "他们 / 她们的",
+            "ja": "彼らの / 彼女たちの",
+            "ko": "그들의",
+            "ar": "ـهم / ـهن",
+            "hi": "उनका"
+          },
+          {
+            "tr": "bizim",
+            "es": "nuestro",
+            "fr": "notre",
+            "de": "unser",
+            "it": "nostro",
+            "pt": "nosso",
+            "ru": "наш",
+            "zh": "我们的",
+            "ja": "私たちの",
+            "ko": "우리의",
+            "ar": "ـنا",
+            "hi": "हमारा"
+          }
+        ]
+      }
+    },
+    {
+      "template": "WordPairs",
+      "questionData": {
+        "english_words": [
+          "I",
+          "you",
+          "he/she/it",
+          "they",
+          "we"
+        ],
+        "translations": [
+          {
+            "tr": "ben",
+            "es": "yo",
+            "fr": "je",
+            "de": "ich",
+            "it": "io",
+            "pt": "eu",
+            "ru": "я",
+            "zh": "我",
+            "ja": "私",
+            "ko": "나",
+            "ar": "أنا",
+            "hi": "मैं"
+          },
+          {
+            "tr": "sen",
+            "es": "tú",
+            "fr": "tu",
+            "de": "du",
+            "it": "tu",
+            "pt": "você",
+            "ru": "ты",
+            "zh": "你",
+            "ja": "あなた",
+            "ko": "너",
+            "ar": "أنت",
+            "hi": "आप"
+          },
+          {
+            "tr": "o",
+            "es": "él / ella / eso",
+            "fr": "il / elle / ça",
+            "de": "er / sie / es",
+            "it": "lui / lei / esso",
+            "pt": "ele / ela / isso",
+            "ru": "он / она / оно",
+            "zh": "他 / 她 / 它",
+            "ja": "彼 / 彼女 / それ",
+            "ko": "그 / 그녀 / 그것",
+            "ar": "هو / هي / هو لغير العاقل",
+            "hi": "वह / यह"
+          },
+          {
+            "tr": "onlar",
+            "es": "ellos / ellas",
+            "fr": "ils / elles",
+            "de": "sie",
+            "it": "loro",
+            "pt": "eles / elas",
+            "ru": "они",
+            "zh": "他们 / 她们",
+            "ja": "彼ら / 彼女たち",
+            "ko": "그들",
+            "ar": "هم / هن",
+            "hi": "वे"
+          },
+          {
+            "tr": "biz",
+            "es": "nosotros",
+            "fr": "nous",
+            "de": "wir",
+            "it": "noi",
+            "pt": "nós",
+            "ru": "мы",
+            "zh": "我们",
+            "ja": "私たち",
+            "ko": "우리",
+            "ar": "نحن",
+            "hi": "हम"
+          }
+        ]
+      }
+    }
+  ]
+}

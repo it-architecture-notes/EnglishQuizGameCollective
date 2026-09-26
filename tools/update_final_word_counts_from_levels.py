@@ -32,8 +32,10 @@ alphabetically within each group.
 
 Also marks ``remove-word-list-references/3000 words oxford.txt``: prepends ``**`` to
 lines whose headword matches level vocabulary (same ``match_csv_word`` rules as the
-final-word CSVs). Marked lines have no leading tabs; unmarked vocabulary lines get
-three tabs. Header/footer lines are left untabbed.
+final-word CSVs) and appends the matching level name(s) as ``[level, names]``. Marked
+lines have no leading tabs; unmarked vocabulary lines get three tabs. Header/footer
+lines are left untabbed. Re-run safe: any previously-appended ``[...]`` suffix is
+stripped and freshly re-derived every run, so it never accumulates or goes stale.
 
 Also refreshes ``final words/common-verbs.csv`` (plain verb list or existing
 ``word,level,count,levels`` rows) in the same schema, preserving list order.
@@ -87,6 +89,7 @@ def level_counts_non_image_answer_vocab(label: str) -> bool:
 _OXFORD_MARK_PREFIX = "**"
 _OXFORD_INDENT = "\t\t\t"
 _OXFORD_LEVEL_END = re.compile(r"\b(A1|A2|B1|B2)\s*$", re.I)
+_OXFORD_LEVELS_SUFFIX_RE = re.compile(r"\s*\[[^\[\]]*\]\s*$")
 
 COMMON_VERBS_CSV = "common-verbs.csv"
 _ORDERED_REFERENCE_CSV_SKIP = frozenset({COMMON_VERBS_CSV})
@@ -182,11 +185,11 @@ def vocabulary_from_translations(path: Path) -> set[str]:
     return bucket
 
 
-def iter_level_dirs(levels_root: Path) -> set[Path]:
+def iter_level_dirs(levels_root: Path, *, flavor: str | None = None) -> set[Path]:
     found: set[Path] = set()
     for pattern in ("questions.json", "translations.json"):
         for p in levels_root.rglob(pattern):
-            if p.is_file():
+            if p.is_file() and (flavor is None or p.parent.name == flavor):
                 found.add(p.parent.resolve())
     return found
 
@@ -198,10 +201,12 @@ def level_label(level_dir: Path, levels_root: Path) -> str:
         return level_dir.name
 
 
-def collect_word_to_levels(levels_root: Path) -> dict[str, set[str]]:
+def collect_word_to_levels(
+    levels_root: Path, *, flavor: str | None = None
+) -> dict[str, set[str]]:
     """Lowercase word/phrase key -> set of level relative paths."""
     word_levels: dict[str, set[str]] = {}
-    for d in sorted(iter_level_dirs(levels_root)):
+    for d in sorted(iter_level_dirs(levels_root, flavor=flavor)):
         bucket: set[str] = set()
         qp = d / "questions.json"
         tp = d / "translations.json"
@@ -341,8 +346,9 @@ def _strip_oxford_mark(line: str) -> str:
 
 
 def _oxford_line_content(line: str) -> str:
-    """Line text without ``**`` prefix or leading tabs."""
-    return _strip_oxford_mark(line).lstrip("\t")
+    """Line text without ``**`` prefix, leading tabs, or a previously-appended
+    ``[level, names]`` suffix (re-derived fresh on every run, so it never accumulates)."""
+    return _OXFORD_LEVELS_SUFFIX_RE.sub("", _strip_oxford_mark(line).lstrip("\t"))
 
 
 def _is_oxford_vocab_line(core: str) -> bool:
@@ -376,9 +382,11 @@ def mark_oxford_wordlist(
         if not core.strip():
             continue
         head = _oxford_line_headword(core)
-        hit = bool(head) and match_csv_word(head, word_levels)[0] > 0
+        cnt, levels_str = match_csv_word(head, word_levels) if head else (0, "")
+        hit = cnt > 0
         if hit:
-            lines_out.append(f"{_OXFORD_MARK_PREFIX}{core}")
+            suffix = f" [{levels_str}]" if levels_str else ""
+            lines_out.append(f"{_OXFORD_MARK_PREFIX}{core}{suffix}")
             marked += 1
         elif _is_oxford_vocab_line(core):
             lines_out.append(f"{_OXFORD_INDENT}{core}")
@@ -513,6 +521,7 @@ def refresh_final_word_references(
     oxford_txt: Path | None = None,
     skip_oxford: bool = False,
     dry_run: bool = False,
+    flavor: str | None = None,
 ) -> int:
     """
     Re-scan all level folders and refresh final-word CSVs (including LanGeek nouns)
@@ -527,8 +536,9 @@ def refresh_final_word_references(
         print(f"Not a directory: {csv_dir}", file=sys.stderr)
         return 1
 
-    word_levels = collect_word_to_levels(levels_root)
-    print(f"Indexed vocabulary from {levels_root} ({len(word_levels)} distinct tokens/phrases).")
+    word_levels = collect_word_to_levels(levels_root, flavor=flavor)
+    scope = f"flavor={flavor!r} under {levels_root}" if flavor else str(levels_root)
+    print(f"Indexed vocabulary from {scope} ({len(word_levels)} distinct tokens/phrases).")
 
     total_rows = 0
     for csv_path in sorted(csv_dir.glob("*.csv")):
@@ -585,6 +595,15 @@ def main() -> int:
         action="store_true",
         help="Do not update the Oxford word list file",
     )
+    parser.add_argument(
+        "--flavor",
+        choices=["kids", "adults-intermediate", "adults-beginner"],
+        default=None,
+        help=(
+            "Restrict scanning to level folders under this flavor subfolder only "
+            "(e.g. 'adults-beginner'); default scans every flavor"
+        ),
+    )
     args = parser.parse_args()
 
     return refresh_final_word_references(
@@ -593,6 +612,7 @@ def main() -> int:
         oxford_txt=args.oxford_txt,
         skip_oxford=args.skip_oxford_mark,
         dry_run=args.dry_run,
+        flavor=args.flavor,
     )
 
 

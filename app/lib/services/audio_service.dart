@@ -5,10 +5,10 @@ import 'package:flutter/foundation.dart';
 
 import '../app_flavor.dart';
 
-String get _quizMusicAsset => 'audio/${AppConfig.flavorDir}/quiz_music.mp3';
-String get _clickAsset => 'audio/${AppConfig.flavorDir}/click.mp3';
-String get _correctAsset => 'audio/${AppConfig.flavorDir}/correct.mp3';
-String get _wrongAsset => 'audio/${AppConfig.flavorDir}/wrong.mp3';
+String get _quizMusicAsset => 'audio/${AppConfig.sharedAssetFlavorDir}/quiz_music.mp3';
+String get _clickAsset => 'audio/${AppConfig.sharedAssetFlavorDir}/click.mp3';
+String get _correctAsset => 'audio/${AppConfig.sharedAssetFlavorDir}/correct.mp3';
+String get _wrongAsset => 'audio/${AppConfig.sharedAssetFlavorDir}/wrong.mp3';
 
 AudioPlayer? _musicPlayer;
 AudioPlayer? _sfxPlayer;

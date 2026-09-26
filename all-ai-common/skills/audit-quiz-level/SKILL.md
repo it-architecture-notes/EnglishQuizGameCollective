@@ -35,7 +35,7 @@ Also consult:
 
 | Resource | Path |
 |----------|------|
-| Level order / placement | `app/assets/data/flow/game-flow.json` |
+| Level order / placement | `app/assets/data/flow/game-flow-adults-intermediate.json` |
 | Template schemas | `all-ai-common/context/page-designs-and-templates.md` |
 | Parsers | `app/lib/models/level_config.dart` |
 | Final word CSVs (6 files) | `all-ai-common/references/final words/` |
@@ -67,7 +67,7 @@ Check every question from these perspectives:
 
 ## Grammar progression by mainLevel
 
-Use `game-flow.json` → `mainLevel` for the level under audit.
+Use `game-flow-adults-intermediate.json` → `mainLevel` for the level under audit.
 
 ### Core rule
 
@@ -170,7 +170,7 @@ In **every** audit (including quick / final passes):
 ### 1. Gather context
 
 1. Read `questions.json` and `translations.json` (if present) for the target level.
-2. Find the level's position in `game-flow.json`. Note **level index** and **`mainLevel`**. Find which **Part** contains that `mainLevel`. Build **allowed grammar** = current Part + all earlier Parts; **forbidden** = later Parts (see **Grammar progression by mainLevel**).
+2. Find the level's position in `game-flow-adults-intermediate.json`. Note **level index** and **`mainLevel`**. Find which **Part** contains that `mainLevel`. Build **allowed grammar** = current Part + all earlier Parts; **forbidden** = later Parts (see **Grammar progression by mainLevel**).
 3. **Run the prior-usage script** (do not hand-scan prior level JSON for consumed words):
 
    ```bash

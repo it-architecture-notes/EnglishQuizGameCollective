@@ -13,34 +13,35 @@
     },
     {
       "template": "DialogueCompletion",
-      "genders": "f-m",
       "questionData": {
-        "line1": "My mouth feels funny.",
-        "answer": "That is okay.",
+        "character1": "Emma",
+        "character2": "Chris",
+        "line1": "I can't feel my lip — is that okay?",
+        "answer": "Yes, it's just frozen from the anesthesia.",
         "distractors": [
-          "Run very fast.",
-          "Read a book.",
-          "Play a game."
+          "No, that's not normal at all.",
+          "Try rinsing with cold water.",
+          "Open your mouth wider, please."
         ]
       },
-      "audio_file1": "my-mouth-feels-funny-convo",
-      "audio_file2": "that-is-okay-convo"
+      "audio_file1": "i-can-t-feel-my-lip-is-that-okay-convo",
+      "audio_file2": "yes-it-s-just-frozen-from-the-anesthesia-convo"
     },
     {
       "template": "ClozeSequence",
-      "genders": "m",
       "questionData": {
-        "sentence": "My tooth feels _____.",
+        "sentence": "My gums _____ and feel _____ when I do not floss.",
         "answer": [
+          "bleed",
           "sore"
         ],
         "distractors": [
-          "big",
-          "small",
+          "dark",
+          "itchy",
           "cold"
         ]
       },
-      "audio_file": "my-tooth-feels-convo"
+      "audio_file": "my-gums-bleed-and-feel-sore-when-i-do-not-floss-convo"
     },
     {
       "template": "imageQuizTemplate-1",
@@ -55,19 +56,20 @@
     },
     {
       "template": "ConvoTemplate-1",
-      "genders": "f-m",
       "questionData": {
-        "line1": "My gums are red.",
-        "line2": "Yes, they look _____.",
-        "answer": "sore",
+        "character1": "Beth",
+        "character2": "Alex",
+        "line1": "My gums are _____.",
+        "line2": "Yes. They look _____.",
+        "answer": "swollen",
         "distractors": [
-          "big",
-          "small",
-          "cold"
+          "wooden",
+          "square",
+          "metal"
         ]
       },
-      "audio_file1": "my-gums-are-red-convo",
-      "audio_file2": "yes-they-look-convo"
+      "audio_file1": "my-gums-are-swollen-convo",
+      "audio_file2": "yes-they-look-swollen-convo"
     },
     {
       "template": "imageQuizTemplate-1",
@@ -151,63 +153,62 @@
     },
     {
       "template": "DialogueCompletion",
-      "genders": "m-f",
       "questionData": {
-        "line1": "What do I do?",
-        "answer": "Open your mouth.",
+        "character1": "Omar",
+        "character2": "Lily",
+        "line1": "What should I do with that gauze?",
+        "answer": "You'll need to bite firmly.",
         "distractors": [
-          "Run very fast.",
-          "Read a book.",
-          "Play a game."
+          "Rinse your mouth with warm water.",
+          "Spit it out right away.",
+          "Hold it loosely between your teeth."
         ]
       },
-      "audio_file1": "what-do-i-do-convo",
-      "audio_file2": "open-your-mouth-convo"
+      "audio_file1": "what-should-i-do-with-that-gauze-convo",
+      "audio_file2": "you-ll-need-to-bite-firmly-convo"
     },
     {
       "template": "AppearDisappear",
-      "genders": "m",
       "questionData": {
-        "words": "My tooth hurts.",
+        "words": "I have been feeling some sensitivity on the lower left.",
         "distractors": [
-          "book",
-          "ball",
-          "dog",
-          "home"
+          "sharp",
+          "upper",
+          "right",
+          "noticed"
         ]
       },
-      "audio_file": "my-tooth-hurts-convo"
+      "audio_file": "i-have-been-feeling-some-sensitivity-on-the-lower-left-convo"
+    },
+    {
+      "template": "GrammarForm",
+      "questionData": {
+        "sentence": "He _____ an appointment after the painful swelling started.",
+        "answer": "scheduled",
+        "distractors": [
+          "schedule",
+          "schedules",
+          "will schedule"
+        ]
+      },
+      "audio_file": "he-scheduled-an-appointment-after-the-painful-swelling-started-convo"
     },
     {
       "template": "ClozeSequence",
-      "genders": "f",
       "questionData": {
-        "sentence": "He _____ the dentist.",
-        "answer": "sees",
-        "distractors": [
-          "see",
-          "saw",
-          "seeing"
-        ]
-      },
-      "audio_file": "he-the-dentist-convo"
-    },
-    {
-      "template": "ClozeSequence",
-      "genders": "f",
-      "questionData": {
-        "sentence": "The dentist can _____ teeth.",
+        "sentence": "The dentist _____ her before he had to _____ the tooth.",
         "answer": [
-          "clean"
+          "warned",
+          "extract"
         ],
         "distractors": [
-          "run",
-          "sleep",
-          "read",
-          "cook"
+          "told",
+          "called",
+          "remove",
+          "clean"
         ]
       },
-      "audio_file": "the-dentist-can-teeth-convo"
+      "audio_file": "the-dentist-warned-her-before-he-had-to-extract-the-tooth-convo"
     },
     {
       "template": "imageQuizTemplate-1",
@@ -233,11 +234,10 @@
     },
     {
       "template": "SentenceBuilder",
-      "genders": "f",
       "questionData": {
-        "correct_order": "My tooth hurts today."
+        "correct_order": "My tooth aches every time I chew."
       },
-      "audio_file": "my-tooth-hurts-today-convo"
+      "audio_file": "my-tooth-aches-every-time-i-chew-convo"
     },
     {
       "template": "imageQuizTemplate-1",

@@ -75,7 +75,7 @@ def load_flow_entries(flow_path: Path) -> dict[str, str]:
 
 
 def _dir_with_questions(levels_root: Path, folder_name: str, flavor: str) -> Path | None:
-    """Prefer ``{folder_name}/{flavor}/questions.json`` (current adults/kids split
+    """Prefer ``{folder_name}/{flavor}/questions.json`` (current adults-intermediate/kids split
     layout); fall back to ``{folder_name}/questions.json`` directly for any level
     that hasn't been split (legacy/root layout)."""
     levels_root = levels_root.resolve()
@@ -89,9 +89,9 @@ def _dir_with_questions(levels_root: Path, folder_name: str, flavor: str) -> Pat
     return None
 
 
-def resolve_level_dir(levels_root: Path, icon_name: str, flavor: str = "adults") -> Path | None:
+def resolve_level_dir(levels_root: Path, icon_name: str, flavor: str = "adults-intermediate") -> Path | None:
     """Find level folder containing ``questions.json`` for ``iconImageName``,
-    preferring the ``flavor`` (``adults``/``kids``) subfolder."""
+    preferring the ``flavor`` (``adults-intermediate``/``kids``) subfolder."""
     icon_name = icon_name.strip()
     levels_root = levels_root.resolve()
 
@@ -116,7 +116,7 @@ def resolve_level_dir(levels_root: Path, icon_name: str, flavor: str = "adults")
     numbered: list[tuple[int, Path]] = []
     for p in levels_root.rglob("questions.json"):
         parent = p.parent
-        is_flavor_split = parent.name in ("adults", "kids")
+        is_flavor_split = parent.name in ("adults-intermediate", "kids")
         if is_flavor_split and parent.name != flavor:
             continue
         level_folder_name = parent.parent.name if is_flavor_split else parent.name
@@ -141,7 +141,7 @@ def resolve_prior_level_dirs(
     *,
     levels_root: Path,
     flow_path: Path,
-    flavor: str = "adults",
+    flavor: str = "adults-intermediate",
 ) -> tuple[list[tuple[str, Path]], list[str]]:
     """
     Map prior flow icon names to level folders (preferring ``flavor``'s subfolder).
@@ -263,8 +263,8 @@ def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
     p.add_argument(
         "--flow",
         type=Path,
-        default=root / "app/assets/data/flow/game-flow.json",
-        help="Game flow JSON (default: app/assets/data/flow/game-flow.json)",
+        default=root / "app/assets/data/flow/game-flow-adults-intermediate.json",
+        help="Game flow JSON (default: app/assets/data/flow/game-flow-adults-intermediate.json)",
     )
     p.add_argument(
         "--levels-root",
@@ -296,10 +296,10 @@ def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
     )
     p.add_argument(
         "--flavor",
-        choices=("adults", "kids"),
-        default="adults",
-        help="Read the adults/ or kids/ subfolder's questions.json/translations.json "
-        "(default: adults). Falls back to a level's root files if that flavor "
+        choices=("adults-intermediate", "kids"),
+        default="adults-intermediate",
+        help="Read the adults-intermediate/ or kids/ subfolder's questions.json/translations.json "
+        "(default: adults-intermediate). Falls back to a level's root files if that flavor "
         "subfolder doesn't exist yet.",
     )
     return p.parse_args(argv)

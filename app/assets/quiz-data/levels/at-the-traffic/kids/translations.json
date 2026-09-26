@@ -35,6 +35,40 @@
       }
     },
     {
+      "english_word": "lane",
+      "translations": {
+        "tr": "şerit",
+        "es": "carril",
+        "fr": "voie",
+        "de": "Spur",
+        "it": "corsia",
+        "pt": "faixa",
+        "ru": "полоса",
+        "zh": "车道",
+        "ja": "車線",
+        "ko": "차선",
+        "ar": "حارة",
+        "hi": "लेन"
+      }
+    },
+    {
+      "english_word": "to brake",
+      "translations": {
+        "tr": "fren yapmak",
+        "es": "frenar",
+        "fr": "freiner",
+        "de": "bremsen",
+        "it": "frenare",
+        "pt": "frear",
+        "ru": "тормозить",
+        "zh": "刹车",
+        "ja": "ブレーキをかける",
+        "ko": "브레이크를 밟다",
+        "ar": "يفرمل",
+        "hi": "ब्रेक लगाना"
+      }
+    },
+    {
       "english_word": "to speed",
       "translations": {
         "tr": "hız yapmak",
@@ -49,6 +83,40 @@
         "ko": "과속하다",
         "ar": "يتجاوز السرعة",
         "hi": "तेज़ गति से चलना"
+      }
+    },
+    {
+      "english_word": "slow down",
+      "translations": {
+        "tr": "yavaşlamak",
+        "es": "ralentizar",
+        "fr": "ralentir",
+        "de": "verlangsamen",
+        "it": "rallentare",
+        "pt": "desacelerar",
+        "ru": "замедлять",
+        "zh": "慢下来",
+        "ja": "減速する",
+        "ko": "속도를 늦추다",
+        "ar": "تبطئ",
+        "hi": "धीमा होना"
+      }
+    },
+    {
+      "english_word": "accident",
+      "translations": {
+        "tr": "kaza",
+        "es": "accidente",
+        "fr": "accident",
+        "de": "Unfall",
+        "it": "incidente",
+        "pt": "acidente",
+        "ru": "авария",
+        "zh": "事故",
+        "ja": "事故",
+        "ko": "사고",
+        "ar": "حادث",
+        "hi": "दुर्घटना"
       }
     },
     {
@@ -100,6 +168,57 @@
         "ko": "멈추다",
         "ar": "يتوقف",
         "hi": "रुकना"
+      }
+    },
+    {
+      "english_word": "to obey the rules",
+      "translations": {
+        "tr": "kurallara uymak",
+        "es": "obedecer las reglas",
+        "fr": "obéir aux règles",
+        "de": "die Regeln befolgen",
+        "it": "obbedire alle regole",
+        "pt": "obedecer às regras",
+        "ru": "соблюдать правила",
+        "zh": "遵守规则",
+        "ja": "ルールを守る",
+        "ko": "규칙을 따르다",
+        "ar": "يطيع القواعد",
+        "hi": "नियमों का पालन करना"
+      }
+    },
+    {
+      "english_word": "to pass",
+      "translations": {
+        "tr": "sınavı geçmek",
+        "es": "aprobar",
+        "fr": "réussir",
+        "de": "bestehen",
+        "it": "superare",
+        "pt": "ser aprovado",
+        "ru": "сдать",
+        "zh": "通过",
+        "ja": "合格する",
+        "ko": "합격하다",
+        "ar": "ينجح",
+        "hi": "पास करना"
+      }
+    },
+    {
+      "english_word": "to fail",
+      "translations": {
+        "tr": "sınavda kalmak",
+        "es": "suspender",
+        "fr": "échouer",
+        "de": "durchfallen",
+        "it": "bocciare",
+        "pt": "reprovar",
+        "ru": "не сдать",
+        "zh": "不及格",
+        "ja": "不合格になる",
+        "ko": "불합격하다",
+        "ar": "يرسب",
+        "hi": "फेल होना"
       }
     }
   ]

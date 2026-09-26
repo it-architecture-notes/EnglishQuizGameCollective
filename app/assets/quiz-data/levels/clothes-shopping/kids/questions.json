@@ -13,35 +13,37 @@
     },
     {
       "template": "ConvoTemplate-1",
-      "genders": "f-m",
       "questionData": {
-        "line1": "Can I _____ this coat?",
-        "line2": "Yes, you can.",
+        "character1": "Sarah",
+        "character2": "Daniel",
+        "line1": "Excuse me, can I ____ this coat in the fitting room, please?",
+        "line2": "Of course, here you go.",
         "answer": "try",
         "distractors": [
           "buy",
-          "wear",
-          "wash"
+          "hang",
+          "carry"
         ]
       },
-      "audio_file1": "can-i-try-this-coat-convo",
-      "audio_file2": "yes-you-can-convo"
+      "audio_file1": "excuse-me-can-i-try-this-coat-in-the-fitting-room-please-convo",
+      "audio_file2": "of-course-here-you-go-convo"
     },
     {
       "template": "ConvoTemplate-1",
-      "genders": "f-m",
       "questionData": {
-        "line1": "I _____ this jacket.",
-        "line2": "It is on sale.",
-        "answer": "like",
+        "character1": "Beth",
+        "character2": "Alex",
+        "line1": "I like this jacket, but I don't want to _____ too much.",
+        "line2": "We have a 30% discount on it this week.",
+        "answer": "spend",
         "distractors": [
-          "wash",
-          "read",
-          "sleep"
+          "save",
+          "look for",
+          "find"
         ]
       },
-      "audio_file1": "i-like-this-jacket-convo",
-      "audio_file2": "it-is-on-sale-convo"
+      "audio_file1": "i-like-this-jacket-but-i-don-t-want-to-spend-too-much-convo",
+      "audio_file2": "we-have-a-30-discount-on-it-this-week-convo"
     },
     {
       "template": "imageQuizTemplate-1",
@@ -125,32 +127,32 @@
     },
     {
       "template": "DialogueCompletion",
-      "genders": "m-f",
       "questionData": {
-        "line1": "Can I try it?",
-        "answer": "Yes, you can.",
+        "character1": "Omar",
+        "character2": "Lily",
+        "line1": "Do I need to remove the price tag before I try it on?",
+        "answer": "No, please leave it on.",
         "distractors": [
-          "No, I am tired.",
-          "I like this book.",
-          "It is a big dog."
+          "No, please remove it.",
+          "No, but please show it to the cashier.",
+          "Yes, please take it off before you pay."
         ]
       },
-      "audio_file1": "can-i-try-it-convo",
-      "audio_file2": "yes-you-can-convo"
+      "audio_file1": "do-i-need-to-remove-the-price-tag-before-i-try-it-on-convo",
+      "audio_file2": "no-please-leave-it-on-convo"
     },
     {
       "template": "AppearDisappear",
-      "genders": "f",
       "questionData": {
-        "words": "I want nice clothes.",
+        "words": "I would like to dress better this year.",
         "distractors": [
-          "sad",
-          "wet",
-          "cold",
-          "tired"
+          "to",
+          "pair",
+          "shirt",
+          "best"
         ]
       },
-      "audio_file": "i-want-nice-clothes-convo"
+      "audio_file": "i-would-like-to-dress-better-this-year-convo"
     },
     {
       "template": "imageQuizTemplate-1",
@@ -176,11 +178,10 @@
     },
     {
       "template": "SentenceBuilder",
-      "genders": "m",
       "questionData": {
-        "correct_order": "These shoes fit well."
+        "correct_order": "These trousers don't fit well."
       },
-      "audio_file": "these-shoes-fit-well-convo"
+      "audio_file": "these-trousers-don-t-fit-well-convo"
     },
     {
       "template": "imageQuizTemplate-1",
@@ -195,67 +196,67 @@
     },
     {
       "template": "ClozeSequence",
-      "genders": "f",
       "questionData": {
-        "sentence": "I cannot _____ it.",
+        "sentence": "She couldn't _____ the jacket, so she decided to _____ it after buying it _____.",
         "answer": [
-          "buy"
+          "afford",
+          "return",
+          "by mistake"
         ],
         "distractors": [
-          "read",
-          "wash",
-          "cook",
-          "sleep"
+          "pay",
+          "keep",
+          "on purpose",
+          "carefully"
         ]
       },
-      "audio_file": "i-cannot-buy-it-convo"
+      "audio_file": "she-couldn-t-afford-the-jacket-so-she-decided-to-return-it-after-buying-it-by-mistake-convo"
     },
     {
-      "template": "ClozeSequence",
-      "genders": "m",
+      "template": "GrammarForm",
       "questionData": {
-        "sentence": "I _____ this style.",
-        "answer": "like",
+        "sentence": "I think you _____ this style.",
+        "answer": "will love",
         "distractors": [
-          "likes",
-          "liked",
-          "liking"
+          "love",
+          "loved",
+          "loving"
         ]
       }
     },
     {
       "template": "ClozeSequence",
-      "genders": "f",
       "questionData": {
-        "sentence": "She can _____ a dress.",
+        "sentence": "She wanted to _____ a dress that would _____ her shoes.",
         "answer": [
-          "wear"
+          "wear",
+          "match"
         ],
         "distractors": [
-          "eat",
-          "read",
-          "wash",
-          "cook"
+          "buy",
+          "fit",
+          "clash",
+          "find"
         ]
       },
-      "audio_file": "she-can-wear-a-dress-convo"
+      "audio_file": "she-wanted-to-wear-a-dress-that-would-match-her-shoes-convo"
     },
     {
       "template": "ClozeSequence",
-      "genders": "m",
       "questionData": {
-        "sentence": "I am _____ a gift.",
+        "sentence": "I am ______ the ______ gift for my mom — maybe a nice scarf or a handbag.",
         "answer": [
-          "buying"
+          "looking for",
+          "perfect"
         ],
         "distractors": [
-          "reading",
-          "sleeping",
-          "washing",
-          "cooking"
+          "looking to",
+          "searching",
+          "having",
+          "spending"
         ]
       },
-      "audio_file": "i-am-buying-a-gift-convo"
+      "audio_file": "i-am-looking-for-the-perfect-gift-for-my-mom-maybe-a-nice-scarf-or-a-handbag-convo"
     }
   ]
 }

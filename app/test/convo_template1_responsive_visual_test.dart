@@ -154,7 +154,7 @@ void main() {
         await tester.pumpWidget(
           ProviderScope(
             child: MaterialApp(
-              theme: AppTheme.forFlavor(AppFlavor.adults),
+              theme: AppTheme.forFlavor(AppFlavor.adultsIntermediate),
               home: ImageQuizScreen(
                 subLevel: const SubLevel(
                   mainLevel: 1,

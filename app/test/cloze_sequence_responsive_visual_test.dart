@@ -122,7 +122,7 @@ Widget buildTestHarness({
       // Real app theme, not a generic ThemeData(fontFamily: 'Inter') — the generic theme's
       // default Material 3 bodyMedium (14px) masked a real bug where tile text (16px in the
       // actual app_theme.dart) rendered bigger than the dialogue text on several tiers.
-      theme: AppTheme.forFlavor(AppFlavor.adults),
+      theme: AppTheme.forFlavor(AppFlavor.adultsIntermediate),
       home: Scaffold(
         body: SafeArea(
           child: Builder(

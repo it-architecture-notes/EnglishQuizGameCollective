@@ -13,8 +13,9 @@
     },
     {
       "template": "ConvoTemplate-1",
-      "genders": "f-m",
       "questionData": {
+        "character1": "Lena",
+        "character2": "Omar",
         "line1": "Can you turn on the _____ for this film?",
         "line2": "Yes, the _____ help me understand the dialogue.",
         "answer": "subtitles",
@@ -29,16 +30,15 @@
     },
     {
       "template": "AppearDisappear",
-      "genders": "f",
       "questionData": {
-        "words": "People clap at the end.",
+        "words": "The audience claps loudly at the end.",
         "distractors": [
           "quietly",
           "before",
           "begins"
         ]
       },
-      "audio_file": "people-clap-at-the-end-convo"
+      "audio_file": "the-audience-claps-loudly-at-the-end-convo"
     },
     {
       "template": "imageQuizTemplate-1",
@@ -53,22 +53,21 @@
     },
     {
       "template": "ClozeSequence",
-      "genders": "m",
       "questionData": {
-        "sentence": "The _____ _____ now.",
+        "sentence": "I want to be at the cinema before the ______ ______.",
+        "answer": [
+          "movie",
+          "starts"
+        ],
         "distractors": [
           "film",
           "ends",
           "show",
           "tonight",
           "early"
-        ],
-        "answers": [
-          "movie",
-          "starts"
         ]
       },
-      "audio_file": "the-movie-starts-now-convo"
+      "audio_file": "i-want-to-be-at-the-cinema-before-the-movie-starts-convo"
     },
     {
       "template": "imageQuizTemplate-1",
@@ -83,19 +82,20 @@
     },
     {
       "template": "ConvoTemplate-1",
-      "genders": "f-m",
       "questionData": {
-        "line1": "Let’s _____ now.",
-        "line2": "Yes, let’s _____ now.",
-        "answer": "go",
+        "character1": "Maya",
+        "character2": "Leo",
+        "line1": "We need to _____ the cinema before the doors close.",
+        "line2": "Yes, let's _____ now.",
+        "answer": "enter",
         "distractors": [
           "wait",
           "buy",
           "find"
         ]
       },
-      "audio_file1": "let-s-go-now-convo",
-      "audio_file2": "yes-let-s-go-now-convo"
+      "audio_file1": "we-need-to-enter-the-cinema-before-the-doors-close-convo",
+      "audio_file2": "yes-lets-enter-now-convo"
     },
     {
       "template": "imageQuizTemplate-1",
@@ -110,21 +110,20 @@
     },
     {
       "template": "ClozeSequence",
-      "genders": "f",
       "questionData": {
-        "sentence": "_____ or _____ it.",
+        "sentence": "We must _____ or we will _____ the film.",
+        "answer": [
+          "rush",
+          "miss"
+        ],
         "distractors": [
           "relax",
           "wait",
           "buy",
           "change"
-        ],
-        "answers": [
-          "Run",
-          "miss"
         ]
       },
-      "audio_file": "run-or-miss-it-convo"
+      "audio_file": "we-must-rush-or-we-will-miss-the-film-convo"
     },
     {
       "template": "imageQuizTemplate-1",
@@ -139,32 +138,33 @@
     },
     {
       "template": "ConvoTemplate-1",
-      "genders": "f-m",
       "questionData": {
-        "line1": "Can you _____ a film?",
-        "line2": "I _____ this film.",
-        "answer": "like",
+        "character1": "Nora",
+        "character2": "Sam",
+        "line1": "Can you _____ a good film for us to watch?",
+        "line2": "I _____ this one. It is very exciting.",
+        "answer": "recommend",
         "distractors": [
           "read",
           "help",
           "try"
         ]
       },
-      "audio_file1": "can-you-like-a-film-convo",
-      "audio_file2": "i-like-this-film-convo"
+      "audio_file1": "can-you-recommend-a-good-film-for-us-to-watch-convo",
+      "audio_file2": "i-recommend-this-one-it-is-very-exciting-convo"
     },
     {
       "template": "SentenceBuilder",
-      "genders": "m",
       "questionData": {
-        "correct_order": "I pick seats near screen."
+        "correct_order": "I will select seats near the screen."
       },
-      "audio_file": "i-pick-seats-near-screen-convo"
+      "audio_file": "i-will-select-seats-near-the-screen-convo"
     },
     {
       "template": "DialogueCompletion",
-      "genders": "f-m",
       "questionData": {
+        "character1": "Ana",
+        "character2": "Tom",
         "line1": "Do you like scary films?",
         "answer": "No, I hate scary films.",
         "distractors": [
@@ -177,35 +177,33 @@
       "audio_file2": "no-i-hate-scary-films-convo"
     },
     {
-      "template": "ClozeSequence",
-      "genders": "f",
+      "template": "GrammarForm",
       "questionData": {
-        "sentence": "We _____ to the cinema.",
-        "answer": "are going",
+        "sentence": "We _____ out to the cinema instead of staying home.",
+        "answer": "are going to go",
         "distractors": [
-          "go",
-          "going",
-          "goes"
+          "go out",
+          "going out",
+          "goes out"
         ]
       }
     },
     {
       "template": "ClozeSequence",
-      "genders": "m",
       "questionData": {
-        "sentence": "You can _____ _____.",
+        "sentence": "You can _____ your tickets online _____ for tonight's show.",
+        "answer": [
+          "book",
+          "easily"
+        ],
         "distractors": [
           "read",
           "hate",
           "open",
           "carry"
-        ],
-        "answers": [
-          "book",
-          "online"
         ]
       },
-      "audio_file": "you-can-book-online-convo"
+      "audio_file": "you-can-book-your-tickets-online-easily-for-tonights-show-convo"
     }
   ]
 }

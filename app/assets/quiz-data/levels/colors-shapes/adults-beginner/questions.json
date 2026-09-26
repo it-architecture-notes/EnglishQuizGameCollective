@@ -1,0 +1,191 @@
+{
+  "levelQuestions": [
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "black",
+        "wrongAnswers": [
+          "blue",
+          "brown",
+          "green"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "blue",
+        "wrongAnswers": [
+          "black",
+          "brown",
+          "green"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "circle",
+        "wrongAnswers": [
+          "trapezoid",
+          "cone",
+          "cube"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "brown",
+        "wrongAnswers": [
+          "black",
+          "blue",
+          "green"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "green",
+        "wrongAnswers": [
+          "black",
+          "blue",
+          "brown"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "square",
+        "wrongAnswers": [
+          "pyramid",
+          "pentagon",
+          "circle"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "orange",
+        "wrongAnswers": [
+          "pink",
+          "purple",
+          "red"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "pink",
+        "wrongAnswers": [
+          "orange",
+          "purple",
+          "white"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "cone",
+        "wrongAnswers": [
+          "cylinder",
+          "pentagon",
+          "circle"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "cube",
+        "wrongAnswers": [
+          "pentagon",
+          "trapezoid",
+          "circle"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "cylinder",
+        "wrongAnswers": [
+          "sphere",
+          "hexagonal",
+          "circle"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "purple",
+        "wrongAnswers": [
+          "pink",
+          "red",
+          "yellow"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "red",
+        "wrongAnswers": [
+          "orange",
+          "pink",
+          "purple"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "white",
+        "wrongAnswers": [
+          "brown",
+          "yellow",
+          "green"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "yellow",
+        "wrongAnswers": [
+          "orange",
+          "red",
+          "white"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "ellipse",
+        "wrongAnswers": [
+          "circle",
+          "square",
+          "cone"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "rectangle",
+        "wrongAnswers": [
+          "cone",
+          "pyramid",
+          "circle"
+        ]
+      }
+    }
+  ]
+}

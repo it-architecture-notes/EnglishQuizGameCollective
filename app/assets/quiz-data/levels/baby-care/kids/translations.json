@@ -18,20 +18,37 @@
       }
     },
     {
-      "english_word": "to talk",
+      "english_word": "to whisper",
       "translations": {
-        "tr": "konuşmak",
-        "es": "hablar",
-        "fr": "parler",
-        "de": "sprechen",
-        "it": "parlare",
-        "pt": "falar",
-        "ru": "разговаривать",
-        "zh": "说话",
-        "ja": "話す",
-        "ko": "말하다",
-        "ar": "يتحدث",
-        "hi": "बात करना"
+        "tr": "fısıldamak",
+        "es": "susurrar",
+        "fr": "chuchoter",
+        "de": "flüstern",
+        "it": "sussurrare",
+        "pt": "sussurrar",
+        "ru": "шептать",
+        "zh": "低声说",
+        "ja": "ささやく",
+        "ko": "속삭이다",
+        "ar": "يهمس",
+        "hi": "फुसफुसाना"
+      }
+    },
+    {
+      "english_word": "newborn",
+      "translations": {
+        "tr": "yeni doğmuş",
+        "es": "recién nacido",
+        "fr": "nouveau-né",
+        "de": "Neugeborenes",
+        "it": "neonato",
+        "pt": "recém-nascido",
+        "ru": "новорожденный",
+        "zh": "新生儿",
+        "ja": "新生児",
+        "ko": "신생아",
+        "ar": "حديث الولادة",
+        "hi": "नवजात"
       }
     },
     {
@@ -69,6 +86,23 @@
       }
     },
     {
+      "english_word": "to laugh",
+      "translations": {
+        "tr": "gülmek",
+        "es": "reír",
+        "fr": "rire",
+        "de": "lachen",
+        "it": "ridere",
+        "pt": "rir",
+        "ru": "смеяться",
+        "zh": "笑",
+        "ja": "笑う",
+        "ko": "웃다",
+        "ar": "يضحك",
+        "hi": "हंसना"
+      }
+    },
+    {
       "english_word": "to hold",
       "translations": {
         "tr": "tutmak",
@@ -103,6 +137,57 @@
       }
     },
     {
+      "english_word": "to need",
+      "translations": {
+        "tr": "ihtiyaç duymak",
+        "es": "necesitar",
+        "fr": "avoir besoin de",
+        "de": "brauchen",
+        "it": "aver bisogno di",
+        "pt": "precisar",
+        "ru": "нуждаться",
+        "zh": "需要",
+        "ja": "必要とする",
+        "ko": "필요하다",
+        "ar": "يحتاج",
+        "hi": "जरूरत होना"
+      }
+    },
+    {
+      "english_word": "to repeat",
+      "translations": {
+        "tr": "tekrarlamak",
+        "es": "repetir",
+        "fr": "répéter",
+        "de": "wiederholen",
+        "it": "ripetere",
+        "pt": "repetir",
+        "ru": "повторять",
+        "zh": "重复",
+        "ja": "繰り返す",
+        "ko": "반복하다",
+        "ar": "يكرر",
+        "hi": "दोहराना"
+      }
+    },
+    {
+      "english_word": "pretty",
+      "translations": {
+        "tr": "güzel",
+        "es": "bonito",
+        "fr": "joli",
+        "de": "hübsch",
+        "it": "carino",
+        "pt": "bonito",
+        "ru": "красивый",
+        "zh": "漂亮",
+        "ja": "かわいい",
+        "ko": "예쁜",
+        "ar": "جميل",
+        "hi": "सुन्दर"
+      }
+    },
+    {
       "english_word": "to kiss",
       "translations": {
         "tr": "öpmek",
@@ -117,6 +202,23 @@
         "ko": "키스하다",
         "ar": "يقبّل",
         "hi": "चूमना"
+      }
+    },
+    {
+      "english_word": "gently",
+      "translations": {
+        "tr": "nazikçe",
+        "es": "suavemente",
+        "fr": "doucement",
+        "de": "sanft",
+        "it": "delicatamente",
+        "pt": "suavemente",
+        "ru": "нежно",
+        "zh": "轻轻地",
+        "ja": "優しく",
+        "ko": "부드럽게",
+        "ar": "برفق",
+        "hi": "धीरे से"
       }
     }
   ]

@@ -1,0 +1,441 @@
+{
+  "levelQuestions": [
+    {
+      "template": "VideoConversation",
+      "videoFile": "walking-in-the-city1",
+      "start_at": "00:00.00",
+      "pause_at": "00:02.57",
+      "answer_until": "00:02.57",
+      "question_enter_audio": "walking-in-the-city1-q1-setup",
+      "question_enter_audio_text": "It's good that we left the house early.",
+      "question_exit_correct_audio": "walking-in-the-city1-q1-setup",
+      "question_exit_correct_audio_text": "It's good that we left the house early.",
+      "questionData": {
+        "answer_type": "AppearDisappear",
+        "words": "It's good that we left the house early.",
+        "distractors": [
+          "quickly",
+          "late",
+          "again"
+        ]
+      }
+    },
+    {
+      "template": "VideoConversation",
+      "videoFile": "walking-in-the-city1",
+      "start_at": "00:02.57",
+      "pause_at": "00:02.57",
+      "answer_until": "00:04.67",
+      "question_exit_correct_audio": "walking-in-the-city1-q2-confirm",
+      "question_exit_correct_audio_text": "Yes, now we won't be in a rush.",
+      "questionData": {
+        "answer_type": "ClozeSequence",
+        "sentence": "Yes, now we won't be _____.",
+        "answer": [
+          "in a rush"
+        ],
+        "distractors": [
+          "in a house",
+          "at the corner",
+          "on the way"
+        ]
+      }
+    },
+    {
+      "template": "VideoConversation",
+      "videoFile": "walking-in-the-city1",
+      "start_at": "00:04.67",
+      "pause_at": "00:06.60",
+      "answer_until": "00:09.10",
+      "question_enter_audio": "walking-in-the-city1-q3-setup",
+      "question_enter_audio_text": "Are you both walking downtown?",
+      "question_exit_correct_audio": "walking-in-the-city1-q3-confirm",
+      "question_exit_correct_audio_text": "Yes, we will cross the bridge.",
+      "questionData": {
+        "answer_type": "SentenceBuilder",
+        "correct_order": "Yes, we will cross the bridge."
+      }
+    },
+    {
+      "template": "VideoConversation",
+      "videoFile": "walking-in-the-city1",
+      "start_at": "00:09.10",
+      "pause_at": "00:10.39",
+      "answer_until": "00:12.54",
+      "question_enter_audio": "walking-in-the-city1-q4-setup",
+      "question_enter_audio_text": "Can I come with you?",
+      "question_exit_correct_audio": "walking-in-the-city1-q4-confirm",
+      "question_exit_correct_audio_text": "Sure, but stay close.",
+      "questionData": {
+        "answer_type": "DialogueCompletion",
+        "answer": "Sure, but stay close.",
+        "distractors": [
+          "Sure, but leave now.",
+          "No, stay at the house.",
+          "Sure, but wait here."
+        ]
+      }
+    },
+    {
+      "template": "VideoConversation",
+      "videoFile": "walking-in-the-city1",
+      "start_at": "00:12.54",
+      "pause_at": "00:15.08",
+      "answer_until": "00:15.08",
+      "question_enter_audio": "walking-in-the-city1-q5-setup",
+      "question_enter_audio_text": "First, we go straight for two blocks.",
+      "question_exit_correct_audio": "walking-in-the-city1-q5-setup",
+      "question_exit_correct_audio_text": "First, we go straight for two blocks.",
+      "questionData": {
+        "answer_type": "AppearDisappear",
+        "words": "First, we go straight for two blocks.",
+        "distractors": [
+          "turn",
+          "left",
+          "corner"
+        ]
+      }
+    },
+    {
+      "template": "VideoConversation",
+      "videoFile": "walking-in-the-city1",
+      "start_at": "00:15.08",
+      "pause_at": "00:15.08",
+      "answer_until": "00:19.29",
+      "question_exit_correct_audio": "walking-in-the-city1-q6-confirm",
+      "question_exit_correct_audio_text": "Do we turn left at the corner? No, we wait at the intersection, then turn right.",
+      "questionData": {
+        "answer_type": "ClozeSequence",
+        "sentence": "Do we _____ at the _____?",
+        "answer": [
+          "turn left",
+          "corner"
+        ],
+        "distractors": [
+          "go straight",
+          "the intersection",
+          "cross the street",
+          "the bridge"
+        ]
+      }
+    },
+    {
+      "template": "VideoConversation",
+      "videoFile": "walking-in-the-city2",
+      "start_at": "00:00.00",
+      "pause_at": "00:02.58",
+      "answer_until": "00:02.58",
+      "question_enter_audio": "walking-in-the-city2-q1-setup",
+      "question_enter_audio_text": "Wandering around the city is great.",
+      "question_exit_correct_audio": "walking-in-the-city2-q1-setup",
+      "question_exit_correct_audio_text": "Wandering around the city is great.",
+      "questionData": {
+        "answer_type": "AppearDisappear",
+        "words": "Wandering around the city is great.",
+        "distractors": [
+          "quietly",
+          "busy",
+          "today"
+        ]
+      }
+    },
+    {
+      "template": "VideoConversation",
+      "videoFile": "walking-in-the-city2",
+      "start_at": "00:02.58",
+      "pause_at": "00:05.18",
+      "answer_until": "00:08.25",
+      "question_enter_audio": "walking-in-the-city2-q2-setup",
+      "question_enter_audio_text": "Look at that alley. Do you recognize it?",
+      "question_exit_correct_audio": "walking-in-the-city2-q2-confirm",
+      "question_exit_correct_audio_text": "Not really, but I notice a nice house there.",
+      "questionData": {
+        "answer_type": "ClozeSequence",
+        "sentence": "Not _____, but I _____ a nice house there.",
+        "answer": [
+          "really",
+          "notice"
+        ],
+        "distractors": [
+          "actually",
+          "exactly",
+          "forget",
+          "ignore"
+        ]
+      }
+    },
+    {
+      "template": "VideoConversation",
+      "videoFile": "walking-in-the-city2",
+      "start_at": "00:08.25",
+      "pause_at": "00:13.20",
+      "answer_until": "00:13.20",
+      "question_enter_audio": "walking-in-the-city2-q3-setup-full",
+      "question_enter_audio_text": "It's where my grandparents lived for a while. Let's stop and check the entrance.",
+      "question_exit_correct_audio": "walking-in-the-city2-q3-setup",
+      "question_exit_correct_audio_text": "Let's stop and check the entrance.",
+      "questionData": {
+        "answer_type": "AppearDisappear",
+        "words": "Let's stop and check the entrance.",
+        "distractors": [
+          "wait",
+          "look",
+          "leave"
+        ]
+      }
+    },
+    {
+      "template": "VideoConversation",
+      "videoFile": "walking-in-the-city2",
+      "start_at": "00:13.20",
+      "pause_at": "00:13.20",
+      "answer_until": "00:16.25",
+      "question_exit_correct_audio": "walking-in-the-city2-q4-confirm",
+      "question_exit_correct_audio_text": "We can ask for directions to city hall too.",
+      "questionData": {
+        "answer_type": "ClozeSequence",
+        "sentence": "We can ask for _____ to _____ hall too.",
+        "answer": [
+          "directions",
+          "city"
+        ],
+        "distractors": [
+          "a map",
+          "information",
+          "town",
+          "village"
+        ]
+      }
+    },
+    {
+      "template": "VideoConversation",
+      "videoFile": "walking-in-the-city2",
+      "start_at": "00:16.25",
+      "pause_at": "00:16.25",
+      "answer_until": "00:19.00",
+      "question_exit_correct_audio": "walking-in-the-city2-q5-confirm",
+      "question_exit_correct_audio_text": "I think I can easily find the way from here.",
+      "questionData": {
+        "answer_type": "ClozeSequence",
+        "sentence": "I think I can easily _____ from here.",
+        "answer": [
+          "find the way"
+        ],
+        "distractors": [
+          "lose the way",
+          "ask a stranger",
+          "take a taxi"
+        ]
+      }
+    },
+    {
+      "template": "ClozeSequence",
+      "question_enter_audio": "walking-in-the-city-dialog3-line1",
+      "question_enter_audio_text": "I can see the café; it’s around the corner.",
+      "question_exit_correct_audio": "walking-in-the-city-dialog3-line2",
+      "question_exit_correct_audio_text": "Let’s take a shortcut from here.",
+      "questionData": {
+        "line1": "I can see the café; it’s around the corner.",
+        "imageName": "cafe-corner",
+        "sentence": "Let’s _____ from here.",
+        "answer": [
+          "take a shortcut"
+        ],
+        "distractors": [
+          "walk slowly",
+          "turn left",
+          "wait here"
+        ]
+      }
+    },
+    {
+      "template": "ConvoTemplate-1",
+      "genders": "f-m",
+      "question_enter_audio": "walking-in-the-city-dialog4-line1",
+      "question_enter_audio_text": "What if we get lost in the busy city centre?",
+      "question_exit_correct_audio": "walking-in-the-city-dialog4-line2",
+      "question_exit_correct_audio_text": "We won’t get lost if we walk along this route.",
+      "questionData": {
+        "line1": "What if we get lost in the busy city centre?",
+        "line2": "We won’t _____ if we walk along this route.",
+        "imageName": "city-route",
+        "answer": "get lost",
+        "distractors": [
+          "get there",
+          "turn around",
+          "go home"
+        ]
+      }
+    },
+    {
+      "template": "ConvoTemplate-1",
+      "genders": "f-m",
+      "question_enter_audio": "none",
+      "question_exit_correct_audio": [
+        "walking-in-the-city-dialog5-line1",
+        "walking-in-the-city-dialog5-line2"
+      ],
+      "question_exit_correct_audio_text": [
+        "We came on foot through the crowded avenue.",
+        "Let’s continue until we reach the flea market."
+      ],
+      "questionData": {
+        "line1": "We _____ through the crowded avenue.",
+        "line2": "Let’s continue until we reach the flea market.",
+        "imageName": "crowded-avenue",
+        "answer": "came on foot",
+        "distractors": [
+          "ran quickly",
+          "took a taxi",
+          "stayed inside"
+        ]
+      }
+    },
+    {
+      "template": "ClozeSequence",
+      "question_enter_audio": "walking-in-the-city-dialog6-line1",
+      "question_enter_audio_text": "Should I walk past the coffee shop?",
+      "question_exit_correct_audio": "walking-in-the-city-dialog6-line2",
+      "question_exit_correct_audio_text": "No, turn around and go straight ahead in the opposite direction.",
+      "questionData": {
+        "line1": "Should I walk past the coffee shop?",
+        "imageName": "coffee-shop-turn",
+        "sentence": "No, _____ and go _____ in the opposite direction.",
+        "answer": [
+          "turn around",
+          "straight ahead"
+        ],
+        "distractors": [
+          "keep walking",
+          "back",
+          "turn left",
+          "slowly"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "bench",
+        "wrongAnswers": [
+          "chair",
+          "stairs",
+          "statue"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "building",
+        "wrongAnswers": [
+          "barn",
+          "tower",
+          "fire-station"
+        ]
+      }
+    },
+    {
+      "template": "WordPairs",
+      "questionData": {
+        "english_words": [
+          "far",
+          "near",
+          "inside",
+          "outside"
+        ],
+        "translations": [
+          {
+            "tr": "uzak",
+            "es": "lejos",
+            "fr": "loin",
+            "de": "weit",
+            "it": "lontano",
+            "pt": "distante",
+            "ru": "далеко",
+            "zh": "远",
+            "ja": "遠い",
+            "ko": "멀다",
+            "ar": "بعيد",
+            "hi": "दूर"
+          },
+          {
+            "tr": "yakın",
+            "es": "cerca",
+            "fr": "près",
+            "de": "nahe",
+            "it": "vicino",
+            "pt": "perto",
+            "ru": "близко",
+            "zh": "近",
+            "ja": "近く",
+            "ko": "가깝다",
+            "ar": "قريب",
+            "hi": "पास में"
+          },
+          {
+            "tr": "içeri",
+            "es": "adentro",
+            "fr": "à l'intérieur",
+            "de": "innen",
+            "it": "dentro",
+            "pt": "dentro",
+            "ru": "внутри",
+            "zh": "里面",
+            "ja": "中",
+            "ko": "안에",
+            "ar": "داخل",
+            "hi": "अंदर"
+          },
+          {
+            "tr": "dışarıda",
+            "es": "afuera",
+            "fr": "dehors",
+            "de": "draußen",
+            "it": "fuori",
+            "pt": "fora",
+            "ru": "снаружи",
+            "zh": "外面",
+            "ja": "外",
+            "ko": "밖에",
+            "ar": "في الخارج",
+            "hi": "बाहर"
+          }
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "streets",
+        "wrongAnswers": [
+          "building",
+          "statue",
+          "bus-stop"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "statue",
+        "wrongAnswers": [
+          "bench",
+          "tree",
+          "fountain"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "tower",
+        "wrongAnswers": [
+          "castle",
+          "building",
+          "statue"
+        ]
+      }
+    }
+  ]
+}

@@ -69,20 +69,20 @@
       }
     },
     {
-      "english_word": "I am fine",
+      "english_word": "I am very well",
       "translations": {
-        "tr": "İyiyim",
-        "es": "estoy bien",
-        "fr": "je vais bien",
-        "de": "Mir geht es gut",
-        "it": "Sto bene",
-        "pt": "Estou bem",
-        "ru": "у меня всё хорошо",
-        "zh": "我很好",
-        "ja": "元気です",
-        "ko": "잘 지내요",
-        "ar": "أنا بخير",
-        "hi": "मैं ठीक हूं"
+        "tr": "çok iyiyim",
+        "es": "estoy muy bien",
+        "fr": "je vais très bien",
+        "de": "Mir geht es sehr gut",
+        "it": "Sto molto bene",
+        "pt": "Estou muito bem",
+        "ru": "у меня всё отлично",
+        "zh": "我非常好",
+        "ja": "とても元気です",
+        "ko": "아주 잘 지내요",
+        "ar": "أنا بخير جدا",
+        "hi": "मैं बहुत अच्छा हूं"
       }
     },
     {
@@ -120,19 +120,19 @@
       }
     },
     {
-      "english_word": "Have a nice day",
+      "english_word": "Have a great day",
       "translations": {
-        "tr": "İyi günler",
-        "es": "Que tengas un buen día",
-        "fr": "Passe une bonne journée",
+        "tr": "Harika bir gün geçir",
+        "es": "Que tengas un gran día",
+        "fr": "Passe une excellente journée",
         "de": "Hab einen schönen Tag",
         "it": "Buona giornata",
-        "pt": "Tenha um bom dia",
+        "pt": "Tenha um ótimo dia",
         "ru": "Хорошего дня",
         "zh": "祝你今天愉快",
         "ja": "良い一日を",
         "ko": "좋은 하루 보내세요",
-        "ar": "أتمنى لك يوماً سعيداً",
+        "ar": "أتمنى لك يوماً رائعاً",
         "hi": "आपका दिन अच्छा हो"
       }
     },

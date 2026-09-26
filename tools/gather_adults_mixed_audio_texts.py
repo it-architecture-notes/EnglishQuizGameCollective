@@ -2,8 +2,8 @@
 """
 Dump spoken/audio base texts for every non-image question in adult mixed levels.
 
-Reads ``app/assets/data/flow/game-flow.json`` (skips reminders + titles marked
-"Image only"), then each level's ``adults/questions.json`` (falls back to root
+Reads ``app/assets/data/flow/game-flow-adults-intermediate.json`` (skips reminders + titles marked
+"Image only"), then each level's ``adults-intermediate/questions.json`` (falls back to root
 ``questions.json``).
 
 Blanks (``___`` / ``_____``) are filled with the correct answer — the same
@@ -70,7 +70,7 @@ def load_flow_levels(flow_path: Path) -> list[tuple[int, str, str]]:
 
 
 def load_questions(levels_root: Path, directory_name: str) -> list[dict] | None:
-    adults_path = levels_root / directory_name / "adults" / "questions.json"
+    adults_path = levels_root / directory_name / "adults-intermediate" / "questions.json"
     root_path = levels_root / directory_name / "questions.json"
     path = adults_path if adults_path.is_file() else root_path
     if not path.is_file():
@@ -328,7 +328,7 @@ def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
     p.add_argument(
         "--flow",
         type=Path,
-        default=root / "app/assets/data/flow/game-flow.json",
+        default=root / "app/assets/data/flow/game-flow-adults-intermediate.json",
     )
     p.add_argument("--format", choices=("md", "json"), default="md")
     p.add_argument(

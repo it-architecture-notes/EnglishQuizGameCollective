@@ -1,71 +1,173 @@
 {
   "translations_list": [
     {
-      "english_word": "east",
+      "english_word": "sky",
       "translations": {
-        "tr": "doğu",
-        "es": "este",
-        "fr": "est",
-        "de": "Osten",
-        "it": "est",
-        "pt": "leste",
-        "ru": "восток",
-        "zh": "东",
-        "ja": "東",
-        "ko": "동쪽",
-        "ar": "الشرق",
-        "hi": "पूर्व"
+        "tr": "gökyüzü",
+        "es": "cielo",
+        "fr": "ciel",
+        "de": "Himmel",
+        "it": "cielo",
+        "pt": "céu",
+        "ru": "небо",
+        "zh": "天空",
+        "ja": "空",
+        "ko": "하늘",
+        "ar": "سماء",
+        "hi": "आसमान"
       }
     },
     {
-      "english_word": "west",
+      "english_word": "to hike",
       "translations": {
-        "tr": "batı",
-        "es": "oeste",
-        "fr": "ouest",
-        "de": "Westen",
-        "it": "ovest",
-        "pt": "oeste",
-        "ru": "запад",
-        "zh": "西",
-        "ja": "西",
-        "ko": "서쪽",
-        "ar": "الغرب",
-        "hi": "पश्चिम"
+        "tr": "yürüyüş yapmak",
+        "es": "hacer senderismo",
+        "fr": "randonner",
+        "de": "wandern",
+        "it": "fare escursionismo",
+        "pt": "fazer trilha",
+        "ru": "идти в поход",
+        "zh": "徒步",
+        "ja": "ハイキングする",
+        "ko": "하이킹하다",
+        "ar": "يتنزه في الطبيعة",
+        "hi": "लंबी पैदल यात्रा करना"
       }
     },
     {
-      "english_word": "north",
+      "english_word": "shadow",
       "translations": {
-        "tr": "kuzey",
-        "es": "norte",
-        "fr": "nord",
-        "de": "Norden",
-        "it": "nord",
-        "pt": "norte",
-        "ru": "север",
-        "zh": "北",
-        "ja": "北",
-        "ko": "북쪽",
-        "ar": "الشمال",
-        "hi": "उत्तर"
+        "tr": "gölge",
+        "es": "sombra",
+        "fr": "ombre",
+        "de": "Schatten",
+        "it": "ombra",
+        "pt": "sombra",
+        "ru": "тень",
+        "zh": "影子",
+        "ja": "影",
+        "ko": "그림자",
+        "ar": "ظل",
+        "hi": "परछाई"
       }
     },
     {
-      "english_word": "south",
+      "english_word": "big",
       "translations": {
-        "tr": "güney",
-        "es": "sur",
-        "fr": "sud",
-        "de": "Süden",
-        "it": "sud",
-        "pt": "sul",
-        "ru": "юг",
-        "zh": "南",
-        "ja": "南",
-        "ko": "남쪽",
-        "ar": "الجنوب",
-        "hi": "दಕ್ಷಿಣ"
+        "tr": "büyük",
+        "es": "grande",
+        "fr": "grand",
+        "de": "groß",
+        "it": "grande",
+        "pt": "grande",
+        "ru": "большой",
+        "zh": "大",
+        "ja": "大きい",
+        "ko": "큰",
+        "ar": "كبير",
+        "hi": "बड़ा"
+      }
+    },
+    {
+      "english_word": "to touch",
+      "translations": {
+        "tr": "dokunmak",
+        "es": "tocar",
+        "fr": "toucher",
+        "de": "berühren",
+        "it": "toccare",
+        "pt": "tocar",
+        "ru": "коснуться",
+        "zh": "触摸",
+        "ja": "触れる",
+        "ko": "만지다",
+        "ar": "يلمس",
+        "hi": "छूना"
+      }
+    },
+    {
+      "english_word": "wild",
+      "translations": {
+        "tr": "vahşi",
+        "es": "salvaje",
+        "fr": "sauvage",
+        "de": "wild",
+        "it": "selvaggio",
+        "pt": "selvagem",
+        "ru": "дикий",
+        "zh": "野生的",
+        "ja": "野生の",
+        "ko": "야생",
+        "ar": "بري",
+        "hi": "जंगली"
+      }
+    },
+    {
+      "english_word": "to notice",
+      "translations": {
+        "tr": "fark etmek",
+        "es": "darse cuenta",
+        "fr": "remarquer",
+        "de": "bemerken",
+        "it": "notare",
+        "pt": "notar",
+        "ru": "заметить",
+        "zh": "注意到",
+        "ja": "気づく",
+        "ko": "알아차리다",
+        "ar": "يلاحظ",
+        "hi": "नोटिस करना"
+      }
+    },
+    {
+      "english_word": "to observe",
+      "translations": {
+        "tr": "gözlemlemek",
+        "es": "observar",
+        "fr": "observer",
+        "de": "beobachten",
+        "it": "osservare",
+        "pt": "observar",
+        "ru": "наблюдать",
+        "zh": "观察",
+        "ja": "観察する",
+        "ko": "관찰하다",
+        "ar": "يراقب",
+        "hi": "अवलोकन करना"
+      }
+    },
+    {
+      "english_word": "steep",
+      "translations": {
+        "tr": "dik",
+        "es": "empinado",
+        "fr": "raide",
+        "de": "steil",
+        "it": "ripido",
+        "pt": "íngreme",
+        "ru": "крутой",
+        "zh": "陡峭的",
+        "ja": "急な",
+        "ko": "가파른",
+        "ar": "حاد",
+        "hi": "खड़ी"
+      }
+    },
+    {
+      "english_word": "to shout",
+      "translations": {
+        "tr": "bağırmak",
+        "es": "gritar",
+        "fr": "crier",
+        "de": "schreien",
+        "it": "gridare",
+        "pt": "gritar",
+        "ru": "кричать",
+        "zh": "喊叫",
+        "ja": "叫ぶ",
+        "ko": "소리치다",
+        "ar": "يصرخ",
+        "hi": "चिल्लाना"
       }
     },
     {
@@ -78,11 +180,96 @@
         "it": "calmo",
         "pt": "calmo",
         "ru": "спокойный",
-        "zh": "冷静的",
-        "ja": "落ち着いた",
-        "ko": "차분한",
+        "zh": "冷静",
+        "ja": "穏やかな",
+        "ko": "침착한",
         "ar": "هادئ",
         "hi": "शांत"
+      }
+    },
+    {
+      "english_word": "to melt",
+      "translations": {
+        "tr": "erimek",
+        "es": "fundirse",
+        "fr": "fondre",
+        "de": "schmelzen",
+        "it": "sciogliersi",
+        "pt": "derreter",
+        "ru": "таять",
+        "zh": "融化",
+        "ja": "溶ける",
+        "ko": "녹다",
+        "ar": "يذوب",
+        "hi": "पिघल जाना"
+      }
+    },
+    {
+      "english_word": "to discover",
+      "translations": {
+        "tr": "keşfetmek",
+        "es": "descubrir",
+        "fr": "découvrir",
+        "de": "entdecken",
+        "it": "scoprire",
+        "pt": "descobrir",
+        "ru": "обнаружить",
+        "zh": "发现",
+        "ja": "発見する",
+        "ko": "발견하다",
+        "ar": "يكتشف",
+        "hi": "खोजना"
+      }
+    },
+    {
+      "english_word": "deep",
+      "translations": {
+        "tr": "derin",
+        "es": "profundo",
+        "fr": "profond",
+        "de": "tief",
+        "it": "profondo",
+        "pt": "profundo",
+        "ru": "глубокий",
+        "zh": "深",
+        "ja": "深い",
+        "ko": "깊은",
+        "ar": "عميق",
+        "hi": "गहरा"
+      }
+    },
+    {
+      "english_word": "suddenly",
+      "translations": {
+        "tr": "aniden",
+        "es": "de repente",
+        "fr": "tout à coup",
+        "de": "plötzlich",
+        "it": "all'improvviso",
+        "pt": "de repente",
+        "ru": "внезапно",
+        "zh": "突然",
+        "ja": "突然",
+        "ko": "갑자기",
+        "ar": "فجأة",
+        "hi": "अचानक"
+      }
+    },
+    {
+      "english_word": "to scare",
+      "translations": {
+        "tr": "korkutmak",
+        "es": "asustar",
+        "fr": "faire peur",
+        "de": "erschrecken",
+        "it": "spaventare",
+        "pt": "assustar",
+        "ru": "пугать",
+        "zh": "吓唬",
+        "ja": "怖がらせる",
+        "ko": "겁을 주다",
+        "ar": "يُخيف",
+        "hi": "डराना"
       }
     }
   ]

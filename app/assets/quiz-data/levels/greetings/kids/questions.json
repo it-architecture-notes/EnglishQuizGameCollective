@@ -1,10 +1,22 @@
 {
   "levelQuestions": [
     {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "good-morning",
+        "answer": "Good Morning",
+        "wrongAnswers": [
+          "Good Night",
+          "Nice to Meet You",
+          "How Are You"
+        ]
+      }
+    },
+    {
       "template": "ConvoTemplate-1",
-      "genders": "f-m",
       "questionData": {
         "character1": "Beth",
+        "character2": "Leo",
         "line1": "Hello, I am Beth",
         "line2": "_____ you.",
         "answer": "Nice to meet",
@@ -12,19 +24,18 @@
           "Good morning",
           "I am great",
           "See you later"
-        ],
-        "image_file_name": "nice-to-meet-you"
+        ]
       },
       "audio_file1": "hello-i-am-beth-convo",
       "audio_file2": "nice-to-meet-you-convo"
     },
     {
       "template": "DialogueCompletion",
-      "genders": "f-m",
       "audio_file1": "what-is-your-name-convo",
       "audio_file2": "my-name-is-john-male-convo",
       "audio_file2_text": "My name is",
       "questionData": {
+        "character1": "Emma",
         "character2": "John",
         "line1": "What is your name?",
         "answer": "My name is John",
@@ -32,103 +43,97 @@
           "I am fine, thank you",
           "I am from Spain",
           "Nice to see you"
-        ],
-        "image_file_name": "what-is-your-name"
+        ]
       }
     },
     {
       "template": "ConvoTemplate-1",
-      "genders": "m-f",
       "questionData": {
+        "character1": "James",
+        "character2": "Anna",
         "line1": "How are you?",
-        "line2": "_____ , thank you.",
+        "line2": "_____ , and you?",
         "answer": "I am fine",
         "distractors": [
           "I am John",
           "Nice to meet you",
           "Good morning"
-        ],
-        "image_file_name": "how-are-you"
+        ]
       },
       "audio_file1": "how-are-you-convo",
-      "audio_file2": "i-am-fine-thank-you-convo"
+      "audio_file2": "i-am-fine-and-you-convo"
     },
     {
       "template": "DialogueCompletion",
-      "genders": "f-m",
       "questionData": {
+        "character1": "Grace",
+        "character2": "Mike",
         "line1": "Where are you from?",
-        "answer": "I am from Spain",
+        "answer": "I am from the United States",
         "distractors": [
           "My name is Mike",
           "I am fine, thank you.",
           "Nice to see you"
-        ],
-        "image_file_name": "where-are-you-from"
+        ]
       },
       "audio_file1": "where-are-you-from-convo",
-      "audio_file2": "i-am-from-spain-convo"
+      "audio_file2": "i-am-from-united-states-convo"
     },
     {
       "template": "DialogueCompletion",
-      "genders": "f-m",
       "questionData": {
+        "character1": "Nora",
+        "character2": "Ethan",
         "line1": "How old are you?",
         "answer": "I am 10 years old.",
         "distractors": [
           "I are 10 years old.",
           "I get 10 years.",
           "I is 10 years old."
-        ],
-        "image_file_name": "how-old-are-you"
+        ]
       },
       "audio_file1": "how-old-are-you-convo",
       "audio_file2": "i-am-10-years-old-convo"
     },
     {
       "template": "AppearDisappear",
-      "genders": "f",
       "questionData": {
-        "words": "I am fine, thank you",
+        "words": "I am very well, thank you",
         "distractors": [
           "good",
           "nice",
           "morning",
           "welcome"
-        ],
-        "imageName": "i-am-fine"
+        ]
       },
-      "audio_file": "i-am-fine-thank-you-convo"
+      "audio_file": "i-am-very-well-thank-you-convo"
     },
     {
       "template": "SentenceBuilder",
-      "genders": "m",
       "questionData": {
-        "correct_order": "Say hello to Beth.",
-        "imageName": "say-hello-to-beth"
+        "correct_order": "Please say hello to Beth."
       },
-      "audio_file": "say-hello-to-beth-convo",
-      "audio_file_text": "Say hello to Beth."
+      "audio_file": "please-say-hello-to-beth-convo",
+      "audio_file_text": "Please say hello to Beth."
     },
     {
       "template": "DialogueCompletion",
-      "genders": "m-f",
       "questionData": {
-        "line1": "Are you a student?",
-        "answer": "Yes, I am.",
+        "character1": "Alex",
+        "character2": "Sarah",
+        "line1": "What is your job?",
+        "answer": "I am a student",
         "distractors": [
-          "No, I am not.",
-          "Yes, you are.",
-          "I am ten."
-        ],
-        "image_file_name": "are-you-a-student"
+          "I have a student",
+          "I is a teacher.",
+          "I see an engineer"
+        ]
       },
-      "audio_file1": "are-you-a-student-convo",
-      "audio_file2": "yes-i-am-convo"
+      "audio_file1": "what-is-your-job-convo",
+      "audio_file2": "i-am-a-student-convo"
     },
     {
-      "template": "ClozeSequence",
-      "genders": "m",
+      "template": "GrammarForm",
       "questionData": {
         "sentence": "Where ____ she from?",
         "answer": "is",
@@ -136,26 +141,50 @@
           "am",
           "are",
           "be"
-        ],
-        "imageName": "where-is-she-from"
+        ]
+      }
+    },
+    {
+      "template": "imageQuizTemplate-1",
+      "questionData": {
+        "imageName": "afternoon",
+        "answer": "Good Afternoon",
+        "wrongAnswers": [
+          "Good Morning",
+          "Good Night",
+          "How Are You"
+        ]
       }
     },
     {
       "template": "ClozeSequence",
-      "genders": "f",
       "questionData": {
-        "sentence": "See you _____",
+        "sentence": "_____ you _____",
         "answer": [
+          "see",
           "later"
         ],
         "distractors": [
-          "morning",
-          "night",
-          "please"
-        ],
-        "imageName": "see-you-later"
+          "get",
+          "go",
+          "how",
+          "after"
+        ]
       },
       "audio_file": "see-you-later"
+    },
+    {
+      "template": "imageQuizTemplate-2",
+      "questionData": {
+        "answer": "Good Night",
+        "imageName": "night",
+        "wrongAnswers": [
+          "good-morning",
+          "afternoon",
+          "noon"
+        ]
+      },
+      "audio_file": "good-night"
     },
     {
       "template": "WordPairs",
@@ -243,18 +272,17 @@
     },
     {
       "template": "AppearDisappear",
-      "genders": "f",
       "questionData": {
-        "words": "Have a nice day!",
+        "words": "Have a great day, Alex",
         "distractors": [
-          "great",
+          "Get",
+          "What",
+          "time",
           "morning",
-          "get",
-          "time"
-        ],
-        "imageName": "have-a-nice-day"
+          "everyday"
+        ]
       },
-      "audio_file": "have-a-nice-day-convo"
+      "audio_file": "have-a-great-day-alex-convo"
     }
   ]
 }

@@ -69,6 +69,57 @@
       }
     },
     {
+      "english_word": "to take a shower",
+      "translations": {
+        "tr": "duş almak",
+        "es": "tomar una ducha",
+        "fr": "prendre une douche",
+        "de": "duschen",
+        "it": "fare una doccia",
+        "pt": "tomar banho",
+        "ru": "принять душ",
+        "zh": "洗澡",
+        "ja": "シャワーを浴びる",
+        "ko": "샤워하다",
+        "ar": "الاستحمام",
+        "hi": "स्नान करना"
+      }
+    },
+    {
+      "english_word": "usually",
+      "translations": {
+        "tr": "genellikle",
+        "es": "normalmente",
+        "fr": "habituellement",
+        "de": "gewöhnlich",
+        "it": "di solito",
+        "pt": "geralmente",
+        "ru": "обычно",
+        "zh": "通常",
+        "ja": "たいてい",
+        "ko": "보통",
+        "ar": "عادةً",
+        "hi": "आमतौर पर"
+      }
+    },
+    {
+      "english_word": "always",
+      "translations": {
+        "tr": "her zaman",
+        "es": "siempre",
+        "fr": "toujours",
+        "de": "immer",
+        "it": "sempre",
+        "pt": "sempre",
+        "ru": "всегда",
+        "zh": "总是",
+        "ja": "いつも",
+        "ko": "항상",
+        "ar": "دائماً",
+        "hi": "हमेशा"
+      }
+    },
+    {
       "english_word": "to use",
       "translations": {
         "tr": "kullanmak",
@@ -103,6 +154,23 @@
       }
     },
     {
+      "english_word": "regularly",
+      "translations": {
+        "tr": "düzenli olarak",
+        "es": "regularmente",
+        "fr": "régulièrement",
+        "de": "regelmäßig",
+        "it": "regolarmente",
+        "pt": "regularmente",
+        "ru": "регулярно",
+        "zh": "定期地",
+        "ja": "定期的に",
+        "ko": "정기적으로",
+        "ar": "بانتظام",
+        "hi": "नियमित रूप से"
+      }
+    },
+    {
       "english_word": "to dry",
       "translations": {
         "tr": "kurulamak",
@@ -117,6 +185,23 @@
         "ko": "말리다",
         "ar": "تجفيف",
         "hi": "सुखाना"
+      }
+    },
+    {
+      "english_word": "to look in the mirror",
+      "translations": {
+        "tr": "aynaya bakmak",
+        "es": "mirarse en el espejo",
+        "fr": "se regarder dans le miroir",
+        "de": "in den Spiegel schauen",
+        "it": "guardarsi allo specchio",
+        "pt": "olhar no espelho",
+        "ru": "смотреть в зеркало",
+        "zh": "照镜子",
+        "ja": "鏡を見る",
+        "ko": "거울을 보다",
+        "ar": "النظر في المرآة",
+        "hi": "आईने में देखना"
       }
     },
     {

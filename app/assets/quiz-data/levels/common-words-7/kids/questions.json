@@ -2,231 +2,121 @@
   "levelQuestions": [
     {
       "template": "ClozeSequence",
-      "genders": "m",
       "questionData": {
-        "sentence": "I _____ every day.",
-        "answer": [
-          "play"
-        ],
-        "distractors": [
-          "sleep",
-          "read",
-          "cook",
-          "wash"
-        ]
+        "sentence": "Regular practice _____ his skill and _____ to better results.",
+        "answer": ["increased", "led"],
+        "distractors": ["helped", "pointed"]
       },
-      "audio_file": "i-play-every-day-convo"
+      "audio_file": "regular-practice-increased-his-skill-and-led-to-better-results-convo"
     },
     {
       "template": "ClozeSequence",
-      "genders": "m",
       "questionData": {
-        "sentence": "She _____ her homework.",
-        "answer": [
-          "did"
-        ],
-        "distractors": [
-          "do",
-          "does",
-          "is do",
-          "make"
-        ]
+        "sentence": "She _____ on her studies and _____ with the pressure well.",
+        "answer": ["focused", "dealt"],
+        "distractors": ["worked", "coped"]
       },
-      "audio_file": "she-did-her-homework-convo"
+      "audio_file": "she-focused-on-her-studies-and-dealt-with-the-pressure-well-convo"
     },
     {
       "template": "ClozeSequence",
-      "genders": "m",
       "questionData": {
-        "sentence": "Be _____ near the road.",
-        "answer": [
-          "careful"
-        ],
-        "distractors": [
-          "loud",
-          "wet",
-          "cold",
-          "sad"
-        ]
+        "sentence": "He was not _____ of the danger, even though it was _____ to everyone else.",
+        "answer": ["aware", "obvious"],
+        "distractors": ["proud", "hidden"]
       },
-      "audio_file": "be-careful-near-the-road-convo"
+      "audio_file": "he-was-not-aware-of-the-danger-even-though-it-was-obvious-to-everyone-else-convo"
     },
     {
-      "template": "ClozeSequence",
-      "genders": "m",
+      "template": "GrammarForm",
       "questionData": {
-        "sentence": "They _____ the garden.",
-        "answer": "cleaned",
-        "distractors": [
-          "clean",
-          "cleaning",
-          "cleans"
-        ]
+        "sentence": "The soldiers _____ the village last year.",
+        "answer": "protected",
+        "distractors": ["protect", "protecting", "will protect"]
       }
     },
     {
       "template": "AppearDisappear",
-      "genders": "m",
       "questionData": {
-        "words": "Dinosaurs are big.",
-        "distractors": [
-          "small",
-          "wet",
-          "cold",
-          "sad"
-        ]
+        "words": "Dinosaurs existed millions of years ago.",
+        "distractors": ["lived", "ruled", "vanished"]
       },
-      "audio_file": "dinosaurs-are-big-convo"
+      "audio_file": "dinosaurs-existed-millions-of-years-ago-convo"
     },
     {
       "template": "AppearDisappear",
-      "genders": "f",
       "questionData": {
-        "words": "I like this.",
-        "distractors": [
-          "book",
-          "ball",
-          "dog",
-          "home"
-        ]
+        "words": "Your opinion always matters to us.",
+        "distractors": ["counts", "helps", "works"]
       },
-      "audio_file": "i-like-this-convo"
+      "audio_file": "your-opinion-always-matters-to-us-convo"
     },
     {
       "template": "AppearDisappear",
-      "genders": "m",
       "questionData": {
-        "words": "I do not like it.",
-        "distractors": [
-          "book",
-          "ball",
-          "dog",
-          "home"
-        ]
+        "words": "I don't mind the noise at all.",
+        "distractors": ["like", "enjoy", "notice"]
       },
-      "audio_file": "i-do-not-like-it-convo"
+      "audio_file": "i-dont-mind-the-noise-at-all-convo"
     },
     {
       "template": "ConvoTemplate-1",
-      "genders": "f-m",
       "questionData": {
-        "line1": "Did she say no?",
-        "line2": "Yes, she _____.",
-        "answer": "did",
-        "distractors": [
-          "do",
-          "does",
-          "is"
-        ]
+        "character1": "Mia",
+        "character2": "Noah",
+        "line1": "Did she refuse the offer?",
+        "line2": "Yes, she _____ it politely.",
+        "answer": "refused",
+        "distractors": ["accepted", "ignored", "delayed"]
       },
-      "audio_file1": "did-she-say-no-convo",
-      "audio_file2": "yes-she-did-convo"
+      "audio_file1": "did-she-refuse-the-offer-convo",
+      "audio_file2": "yes-she-refused-it-politely-convo"
     },
     {
       "template": "ConvoTemplate-1",
-      "genders": "f-m",
       "questionData": {
-        "line1": "Is this old?",
-        "line2": "No, it is _____.",
-        "answer": "new",
-        "distractors": [
-          "old",
-          "wet",
-          "cold"
-        ]
+        "character1": "Emma",
+        "character2": "Chris",
+        "line1": "Is this the old map or a new one?",
+        "line2": "It's the _____ version, updated last week.",
+        "answer": "current",
+        "distractors": ["recent", "latest", "past"]
       },
-      "audio_file1": "is-this-old-convo",
-      "audio_file2": "no-it-is-new-convo"
+      "audio_file1": "is-this-the-old-map-or-a-new-one-convo",
+      "audio_file2": "its-the-current-version-updated-last-week-convo"
     },
     {
       "template": "DialogueCompletion",
-      "genders": "m-f",
       "questionData": {
-        "line1": "Are you coming to the party?",
-        "answer": "Yes, I am coming.",
+        "character1": "Omar",
+        "character2": "Lily",
+        "line1": "Are you coming to the party tonight?",
+        "answer": "Yes, I am definitely coming; I'm currently on my way.",
         "distractors": [
-          "No, I am tired.",
-          "I read a book.",
-          "It is a big dog."
+          "No, I have other plans tonight.",
+          "Maybe, I am not sure yet.",
+          "No, I already went yesterday."
         ]
       },
-      "audio_file1": "are-you-coming-to-the-party-convo",
-      "audio_file2": "yes-i-am-coming-convo"
+      "audio_file1": "are-you-coming-to-the-party-tonight-convo",
+      "audio_file2": "yes-i-am-definitely-coming-im-currently-on-my-way-convo"
     },
     {
       "template": "SentenceBuilder",
-      "genders": "m",
       "questionData": {
-        "correct_order": "This plan is good."
+        "correct_order": "This plan is basically perfect."
       },
-      "audio_file": "this-plan-is-good-convo"
+      "audio_file": "this-plan-is-basically-perfect-convo"
     },
     {
       "template": "WordPairs",
       "questionData": {
-        "english_words": [
-          "yes",
-          "no",
-          "big",
-          "small"
-        ],
+        "english_words": ["certain", "all", "just", "active"],
         "translations": [
-          {
-            "tr": "evet",
-            "es": "sí",
-            "fr": "oui",
-            "de": "ja",
-            "it": "sì",
-            "pt": "sim",
-            "ru": "да",
-            "zh": "是",
-            "ja": "はい",
-            "ko": "네",
-            "ar": "نعم",
-            "hi": "हाँ"
-          },
-          {
-            "tr": "hayır",
-            "es": "no",
-            "fr": "non",
-            "de": "nein",
-            "it": "no",
-            "pt": "não",
-            "ru": "нет",
-            "zh": "不",
-            "ja": "いいえ",
-            "ko": "아니요",
-            "ar": "لا",
-            "hi": "नहीं"
-          },
-          {
-            "tr": "büyük",
-            "es": "grande",
-            "fr": "grand",
-            "de": "groß",
-            "it": "grande",
-            "pt": "grande",
-            "ru": "большой",
-            "zh": "大的",
-            "ja": "大きい",
-            "ko": "큰",
-            "ar": "كبير",
-            "hi": "बड़ा"
-          },
-          {
-            "tr": "küçük",
-            "es": "pequeño",
-            "fr": "petit",
-            "de": "klein",
-            "it": "piccolo",
-            "pt": "pequeno",
-            "ru": "маленький",
-            "zh": "小的",
-            "ja": "小さい",
-            "ko": "작은",
-            "ar": "صغير",
-            "hi": "छोटा"
-          }
+          {"tr": "certain", "es": "certain", "fr": "certain", "de": "certain", "it": "certain", "pt": "certain", "ru": "certain", "zh": "certain", "ja": "certain", "ko": "certain", "ar": "certain", "hi": "certain"},
+          {"tr": "all", "es": "all", "fr": "all", "de": "all", "it": "all", "pt": "all", "ru": "all", "zh": "all", "ja": "all", "ko": "all", "ar": "all", "hi": "all"},
+          {"tr": "just", "es": "just", "fr": "just", "de": "just", "it": "just", "pt": "just", "ru": "just", "zh": "just", "ja": "just", "ko": "just", "ar": "just", "hi": "just"},
+          {"tr": "active", "es": "active", "fr": "active", "de": "active", "it": "active", "pt": "active", "ru": "active", "zh": "active", "ja": "active", "ko": "active", "ar": "active", "hi": "active"}
         ]
       }
     }

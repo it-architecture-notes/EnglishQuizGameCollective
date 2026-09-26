@@ -86,6 +86,57 @@
       }
     },
     {
+      "english_word": "with",
+      "translations": {
+        "tr": "ile",
+        "es": "con",
+        "fr": "avec",
+        "de": "mit",
+        "it": "con",
+        "pt": "com",
+        "ru": "с",
+        "zh": "与",
+        "ja": "と",
+        "ko": "와",
+        "ar": "مع",
+        "hi": "के साथ"
+      }
+    },
+    {
+      "english_word": "what time is it?",
+      "translations": {
+        "tr": "Saat kaç?",
+        "es": "¿Qué hora es?",
+        "fr": "Quelle heure est-il ?",
+        "de": "Was ist die Uhrzeit?",
+        "it": "Che ora è?",
+        "pt": "Que horas são?",
+        "ru": "Который час?",
+        "zh": "现在几点了？",
+        "ja": "今何時ですか？",
+        "ko": "지금 몇 시입니까？",
+        "ar": "ما هي الساعة؟",
+        "hi": "कितने बजे हैं?"
+      }
+    },
+    {
+      "english_word": "at 2 o'clock",
+      "translations": {
+        "tr": "saat 2'de",
+        "es": "a las 2 en punto",
+        "fr": "à 14 heures",
+        "de": "um 2 Uhr",
+        "it": "alle 2 in punto",
+        "pt": "às 2 horas",
+        "ru": "в 2 часа",
+        "zh": "2点钟",
+        "ja": "2時に",
+        "ko": "2시에",
+        "ar": "في الساعة الثانية",
+        "hi": "2 बजे"
+      }
+    },
+    {
       "english_word": "I am sorry",
       "translations": {
         "tr": "Özür dilerim",
@@ -168,6 +219,23 @@
         "ko": "가다",
         "ar": "ذهاب",
         "hi": "जाना"
+      }
+    },
+    {
+      "english_word": "to say",
+      "translations": {
+        "tr": "söylemek",
+        "es": "decir",
+        "fr": "dire",
+        "de": "sagen",
+        "it": "dire",
+        "pt": "dizer",
+        "ru": "сказать",
+        "zh": "说",
+        "ja": "言う",
+        "ko": "말하다",
+        "ar": "أن يقول",
+        "hi": "कहना"
       }
     },
     {
